@@ -1,0 +1,87 @@
+/**
+ * Any CSS included here will be global. The classic template
+ * bundles Infima by default. Infima is a CSS framework designed to
+ * work well for content-centric websites.
+ */
+
+/* You can override the default Infima variables here. */
+:root {
+  --ifm-color-primary: #f77423;
+  --ifm-color-primary-dark: #c65d1c;
+  --ifm-color-primary-darker: #944615;
+  --ifm-color-primary-darkest: #632e0e;
+  --ifm-color-primary-light: #f9904f;
+  --ifm-color-primary-lighter: #faac7b;
+  --ifm-color-primary-lightest: #fcc7a7;
+  --ifm-code-font-size: 95%;
+  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
+  --docusaurus-announcement-bar-height: auto;
+}
+
+.docusaurus-highlight-code-line {
+  background-color: rgba(0, 0, 0, 0.1);
+  display: block;
+  margin: 0rem calc(-1 * var(--ifm-pre-padding));
+  padding: 0rem var(--ifm-pre-padding);
+}
+
+.hero--primary {
+  --ifm-hero-background-color: var(--ifm-font-color-base-inverse);
+  --ifm-hero-text-color: var(--ifm-font-color-base);
+}
+
+.main-wrapper {
+  display: flex;
+}
+
+.navbar__item.active {
+  display: inline-block;
+}
+
+[data-theme="light"] .DocSearch {
+  --docsearch-primary-color: var(--ifm-color-primary);
+  --docsearch-text-color: var(--ifm-font-color-base);
+  --docsearch-muted-color: var(--ifm-color-secondary-darkest);
+  --docsearch-modal-background: var(--ifm-color-secondary-lighter);
+  --docsearch-searchbox-background: var(--ifm-color-secondary);
+  --docsearch-searchbox-focus-background: var(--ifm-color-white);
+  --docsearch-hit-color: var(--ifm-font-color-base);
+  --docsearch-hit-active-color: var(--ifm-color-white);
+  --docsearch-hit-background: var(--ifm-color-white);
+  --docsearch-footer-background: var(--ifm-color-white);
+}
+
+[data-theme="dark"] .DocSearch {
+  --docsearch-text-color: var(--ifm-font-color-base);
+  --docsearch-muted-color: var(--ifm-color-secondary-darkest);
+  --docsearch-modal-background: var(--ifm-background-color);
+  --docsearch-searchbox-background: var(--ifm-background-color);
+  --docsearch-searchbox-focus-background: var(--ifm-color-black);
+  --docsearch-hit-color: var(--ifm-font-color-base);
+  --docsearch-hit-active-color: var(--ifm-color-white);
+  --docsearch-hit-background: var(--ifm-color-emphasis-100);
+  --docsearch-footer-background: var(--ifm-background-surface-color);
+}
+
+div[class^="announcementBar"][role="banner"] {
+  border-bottom-color: #E77B3B;
+}
+
+div[class^="announcementBarContent"] {
+  font-size: 15px;
+  font-weight: bold;
+}
+
+@media only screen and (max-width: 768px) {
+  .announcement {
+    font-size: 12px;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .announcement {
+    font-size: 10px;
+    line-height: 22px;
+    padding: 6px 30px;
+  }
+}
