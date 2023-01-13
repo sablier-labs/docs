@@ -4,8 +4,13 @@ title: Known Issues
 sidebar_position: 1
 ---
 
-There are several known issues and limitations with the current version of the protocol, Sablier V1.1. These will all be
-fixed in a future version, Sablier V2. We cannot fix them in V1.1 because the smart contracts are immutable.
+:::caution
+v1.0 and v1.1 are outdated versions of the battle-tested Sablier protocol, and are both no longer maintained. They also both have a set of [known issues](/protocol/technical-reference-v1/known-issues) which were fixed in Sablier v2.
+
+Unless there is a very specific reason, it's highly advised to use the latest version of the protocol instead.
+:::
+
+There are several known issues and limitations with the current version of the protocol, Sablier V1.1. These are all fixed in the new version of the protocol, Sablier V2. We cannot fix these issues in Sablier v1.1 because the smart contracts are immutable.
 
 ### Start Time
 

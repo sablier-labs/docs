@@ -124,7 +124,7 @@ const config = {
             position: "left",
           },
           {
-            href: "/protocol/technical-reference/streams",
+            href: "/protocol/technical-reference-v2/contract.SablierV2",
             label: "Technical Reference",
             position: "left",
           },

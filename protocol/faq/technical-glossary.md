@@ -6,13 +6,13 @@ sidebar_position: 2
 
 ### What is Ethereum?
 
-Sablier is built on top of Ethereum, a global, open-source platform for decentralized applications. You can read more about it on their [official website](https://ethereum.org).
+Sablier is built on top of Ethereum (as well as other smart contract blockchains), a global, open-source platform for decentralized applications. You can read more about it on their [official website](https://ethereum.org).
 
 ### What are smart contracts?
 
 Permission-less scripts that:
 
-- Run on Ethereum
+- Run on a smart contract blockchain like Ethereum
 - Cannot be modified once deployed
 - Do exactly what you tell them to do
 

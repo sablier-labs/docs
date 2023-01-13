@@ -45,7 +45,7 @@ To make withdrawals, recipients can:
 
 ### Can I cancel streams?
 
-Yes, both as a sender and a recipient.
+Yes, both as a sender and a recipient, assuming the stream was set up as cancellable when it was created. If the stream was explicitly set as uncancelable, it is obviously not cancelable.
 
 - If the stream is canceled before the start time, the whole deposit amount is returned in full to you.
 - If the stream is canceled while the stream is active, the smart contracts calculate how much has been streamed, transfer that to the recipient and return the remainder to you.
@@ -53,6 +53,6 @@ Yes, both as a sender and a recipient.
 
 ### Can I modify the streaming rate?
 
-No. Once a stream is created, it is set in stone on the Ethereum blockchain.
+No. Once a stream is created, it is set in stone on the blockchain.
 
 In a future version of the Sablier protocol, we may add the option to refill an active stream and even extend it.

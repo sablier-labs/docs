@@ -8,9 +8,8 @@ sidebar_position: 1
 
 You can access Sablier through the following web interfaces:
 
-- [pay.sablier.finance](https://pay.sablier.finance) (streaming tokens)
-- [app.sablier.finance](https://app.sablier.finance) (withdrawing the streamed tokens)
-- [gnosis-safe.io](https://gnosis-safe.io)
+- [app.sablier.finance](https://pay.sablier.finance) (official interface)
+- [safe.global](https://safe.global/) (multi-signature wallet)
 
 We're working with various projects in the DeFi ecosystem to make Sablier accessible through more and more interfaces.
 If you want to use Sablier on a testnet, you may have to get some [TestnetDAI](../guides/chains#testnet-tokens) first.
