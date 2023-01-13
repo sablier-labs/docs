@@ -20,7 +20,7 @@ function checkAndCalculateFees(uint128 grossDepositAmount, UD60x18 protocolFee, 
 
 ### checkCreateLinearParams
 
-*Checks the arguments of the `create` function in the `SablierV2Linear` ontract.*
+*Checks the arguments of the `create` function in the {SablierV2Linear} contract.*
 
 
 ```solidity
@@ -29,7 +29,7 @@ function checkCreateLinearParams(uint128 netDepositAmount, Range memory range) i
 
 ### checkCreateProParams
 
-*Checks the arguments of the `create` function in the `SablierV2Pro` ontract.*
+*Checks the arguments of the `create` function in the {SablierV2Pro} contract.*
 
 
 ```solidity
@@ -50,16 +50,11 @@ function checkDeltasAndAdjustSegments(Segment[] memory segments, uint40[] memory
 
 ### _checkProSegments
 
- :::note
-
-Checks that:
+*Checks that:
 1. The first milestone is greater than or equal to the start time.
 2. The milestones are ordered chronologically.
 3. There are no duplicate milestones.
-4. The deposit amount is equal to the segment amounts summed up.
-
-:::
-
+4. The deposit amount is equal to the segment amounts summed up.*
 
 
 ```solidity

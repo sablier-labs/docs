@@ -2,7 +2,7 @@
 [Git Source](https://github.com/sablierhq/v2-core/blob/71a38f2401905d2762c14a7b36c2334909bdb760/src/SablierV2Comptroller.sol)
 
 **Inherits:**
-[ISablierV2Comptroller](/src/interfaces/ISablierV2Comptroller.sol/contract.ISablierV2Comptroller.md), Adminable
+[ISablierV2Comptroller](/protocol/technical-reference-v2/interfaces/contract.ISablierV2Comptroller.md), Adminable
 
 *This contract implements the ISablierV2Comptroller interface.*
 
@@ -38,19 +38,14 @@ function getProtocolFee(IERC20 token) external view override returns (UD60x18 pr
 
 Sets a new protocol fee that will be charged on all streams created with the provided token.
 
- :::note
-
-Emits a `SetProtocolFee` vent.
+*Emits a {SetProtocolFee} event.
 Notes:
 - The fee is not in units of the token's decimals, instead it follows the UD60x18 number format. Refer to the
 PRBMath documentation for more detail on the logic of UD60x18.
 - Does not revert if the fee is the same.
 Requirements:
 - The caller must be the admin of the contract.
-- The new protocol fee cannot be greater than `MAX_FEE`.
-
-:::
-
+- The new protocol fee cannot be greater than `MAX_FEE`.*
 
 
 ```solidity

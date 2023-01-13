@@ -2,7 +2,7 @@
 [Git Source](https://github.com/sablierhq/v2-core/blob/71a38f2401905d2762c14a7b36c2334909bdb760/src/SablierV2Linear.sol)
 
 **Inherits:**
-[ISablierV2Linear](/src/interfaces/ISablierV2Linear.sol/contract.ISablierV2Linear.md), [SablierV2](/src/SablierV2.sol/contract.SablierV2.md), ERC721
+[ISablierV2Linear](/protocol/technical-reference-v2/interfaces/contract.ISablierV2Linear.md), [SablierV2](/protocol/technical-reference-v2/contract.SablierV2.md), ERC721
 
 *This contract implements the ISablierV2Linear interface.*
 
@@ -261,14 +261,9 @@ function tokenURI(uint256 streamId) public view override streamExists(streamId) 
 Creates a stream funded by `msg.sender` wrapped in an ERC-721 NFT, setting the start time to
 `block.timestamp` and the stop time to `block.timestamp + duration`.
 
- :::note
-
-Emits a `CreateLinearStream` nd a `Transfer` vent.
+*Emits a {CreateLinearStream} and a {Transfer} event.
 Requirements:
-- All from `createWithRange`.
-
-:::
-
+- All from `createWithRange`.*
 
 
 ```solidity
@@ -306,9 +301,7 @@ function createWithDurations(
 Creates a new stream funded by `msg.sender` wrapped in an ERC-721 NFT, setting the start time and the
 stop time to the provided values.
 
- :::note
-
-Emits a `CreateLinearStream` nd a `Transfer` vent.
+*Emits a {CreateLinearStream} and a {Transfer} event.
 Notes:
 - As long as they are ordered, it is not an error to set a range in the past.
 Requirements:
@@ -317,10 +310,7 @@ Requirements:
 - `range.start` must not be greater than `range.cliff`.
 - `range.cliff` must not be greater than `range.stop`.
 - `msg.sender` must have allowed this contract to spend at least `grossDepositAmount` tokens.
-- If set, `broker.fee` must not be greater than `MAX_FEE`.
-
-:::
-
+- If set, `broker.fee` must not be greater than `MAX_FEE`.*
 
 
 ```solidity
@@ -447,7 +437,7 @@ function _withdraw(uint256 streamId, address to, uint128 amount) internal overri
 
 
 ```solidity
-struct CreateWithRangeParams `
+struct CreateWithRangeParams {
     CreateAmounts amounts;
     Range range;
     address sender;

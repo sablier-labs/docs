@@ -2,7 +2,7 @@
 [Git Source](https://github.com/sablierhq/v2-core/blob/71a38f2401905d2762c14a7b36c2334909bdb760/src/SablierV2Pro.sol)
 
 **Inherits:**
-[ISablierV2Pro](/src/interfaces/ISablierV2Pro.sol/contract.ISablierV2Pro.md), [SablierV2](/src/SablierV2.sol/contract.SablierV2.md), ERC721
+[ISablierV2Pro](/protocol/technical-reference-v2/interfaces/contract.ISablierV2Pro.md), [SablierV2](/protocol/technical-reference-v2/contract.SablierV2.md), ERC721
 
 *This contract implements the ISablierV2Pro interface.*
 
@@ -259,14 +259,9 @@ function tokenURI(uint256 streamId) public view override streamExists(streamId) 
 Create a stream by setting the start time to `block.timestamp` and the stop time to the sum of
 `block.timestamp` and all `deltas`. The stream is funded by `msg.sender` and is wrapped in an ERC-721 NFT.
 
- :::note
-
-Emits a `CreateProStream` nd a `Transfer` vent.
+*Emits a {CreateProStream} and a {Transfer} event.
 Requirements:
-- All from `createWithMilestones`.
-
-:::
-
+- All from `createWithMilestones`.*
 
 
 ```solidity
@@ -306,9 +301,7 @@ function createWithDeltas(
 Create a stream by using the provided milestones, implying the stop time from the last segment's.
 milestone. The stream is funded by `msg.sender` and is wrapped in an ERC-721 NFT.
 
- :::note
-
-Emits a `CreateProStream` nd a `Transfer` vent.
+*Emits a {CreateProStream} and a {Transfer} event.
 Notes:
 - As long as they are ordered, it is not an error to set the `startTime` and the milestones to a past range.
 Requirements:
@@ -319,10 +312,7 @@ Requirements:
 - The first segment's milestone must be greater than or equal to `startTime`.
 - `startTime` must not be greater than the milestone of the last segment.
 - `msg.sender` must have allowed this contract to spend at least `grossDepositAmount` tokens.
-- If set, `broker.fee` must not be greater than `MAX_FEE`.
-
-:::
-
+- If set, `broker.fee` must not be greater than `MAX_FEE`.*
 
 
 ```solidity
@@ -475,7 +465,7 @@ function _withdraw(uint256 streamId, address to, uint128 amount) internal overri
 
 
 ```solidity
-struct CreateWithMilestonesParams `
+struct CreateWithMilestonesParams {
     CreateAmounts amounts;
     Segment[] segments;
     address sender;

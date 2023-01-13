@@ -28,3 +28,7 @@ grep -rl '\$ ' ./protocol/technical-reference-v2 | xargs sed -i '' 's/\$ /` /g';
 
 grep -rl ' {[^\n]' ./protocol/technical-reference-v2 | xargs sed -i '' 's/ {/ `/g';
 grep -rl '} [^\*]' ./protocol/technical-reference-v2 | xargs sed -i '' 's/} [^\*]/` /g';
+
+grep -rl 'src/interfaces/.[^)]*\.sol' ./protocol/technical-reference-v2 | xargs sed -i '' 's/src\/interfaces\/.[^)]*\.sol/protocol\/technical-reference-v2\/interfaces/g';
+
+grep -rl 'src/.*\.sol/' ./protocol/technical-reference-v2 | xargs sed -i '' 's/src\/.*\.sol\//protocol\/technical-reference-v2\//g';
