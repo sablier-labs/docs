@@ -1,5 +1,5 @@
 # Helpers
-[Git Source](https://github.com/sablierhq/v2-core/blob/71a38f2401905d2762c14a7b36c2334909bdb760/src/libraries/Helpers.sol)
+[Git Source](https://github.com/sablierhq/v2-core/blob/4918aca82c552a62619e2c71f2241abf1e877f72/src/libraries/Helpers.sol)
 
 Library with helper functions needed across the Sablier V2 contracts.
 
@@ -20,7 +20,7 @@ function checkAndCalculateFees(uint128 grossDepositAmount, UD60x18 protocolFee, 
 
 ### checkCreateLinearParams
 
-*Checks the arguments of the `create` function in the {SablierV2Linear} contract.*
+*Checks the arguments of the `create` function in the SablierV2Linear contract.*
 
 
 ```solidity
@@ -29,7 +29,7 @@ function checkCreateLinearParams(uint128 netDepositAmount, Range memory range) i
 
 ### checkCreateProParams
 
-*Checks the arguments of the `create` function in the {SablierV2Pro} contract.*
+*Checks the arguments of the `create` function in the SablierV2Pro contract.*
 
 
 ```solidity
@@ -50,16 +50,19 @@ function checkDeltasAndAdjustSegments(Segment[] memory segments, uint40[] memory
 
 ### _checkProSegments
 
-*Checks that:
+ :::note
+
+Checks that:
 1. The first milestone is greater than or equal to the start time.
 2. The milestones are ordered chronologically.
 3. There are no duplicate milestones.
-4. The deposit amount is equal to the segment amounts summed up.*
+4. The net deposit amount is equal to the segment amounts summed up.
+
+:::
+
 
 
 ```solidity
-function _checkProSegments(Segment[] memory segments, uint256 segmentCount, uint128 netDepositAmount, uint40 startTime)
-    private
-    pure;
+function _checkProSegments(Segment[] memory segments, uint128 netDepositAmount, uint40 startTime) private pure;
 ```
 

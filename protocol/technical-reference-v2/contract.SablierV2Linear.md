@@ -1,5 +1,5 @@
 # SablierV2Linear
-[Git Source](https://github.com/sablierhq/v2-core/blob/71a38f2401905d2762c14a7b36c2334909bdb760/src/SablierV2Linear.sol)
+[Git Source](https://github.com/sablierhq/v2-core/blob/4918aca82c552a62619e2c71f2241abf1e877f72/src/SablierV2Linear.sol)
 
 **Inherits:**
 [ISablierV2Linear](/protocol/technical-reference-v2/interfaces/contract.ISablierV2Linear.md), [SablierV2](/protocol/technical-reference-v2/contract.SablierV2.md), ERC721
@@ -22,13 +22,15 @@ mapping(uint256 => LinearStream) internal _streams;
 
 
 ```solidity
-constructor(ISablierV2Comptroller initialComptroller, UD60x18 maxFee) SablierV2(initialComptroller, maxFee);
+constructor(address initialAdmin, ISablierV2Comptroller initialComptroller, UD60x18 maxFee)
+    SablierV2(initialAdmin, initialComptroller, maxFee);
 ```
 **Parameters**
 
 |Name|Type|Description|
 |----|----|-----------|
-|`initialComptroller`|`ISablierV2Comptroller`|The address of the SablierV2Comptroller contract.|
+|`initialAdmin`|`address`|The address of the initial contract admin.|
+|`initialComptroller`|`ISablierV2Comptroller`|The address of the initial comptroller.|
 |`maxFee`|`UD60x18`|The maximum fee that can be charged by either the protocol or a broker, as an UD60x18 number where 100% = 1e18.|
 
 
@@ -189,13 +191,32 @@ function getStream(uint256 streamId) external view override returns (LinearStrea
 |`streamId`|`uint256`|The id of the stream to make the query for.|
 
 
+### getStreamedAmount
+
+Calculates the amount that has been streamed to the recipient, in units of the token's decimals.
+
+
+```solidity
+function getStreamedAmount(uint256 streamId) public view override returns (uint128 streamedAmount);
+```
+**Parameters**
+
+|Name|Type|Description|
+|----|----|-----------|
+|`streamId`|`uint256`|The id of the stream to make the query for.|
+
+
 ### getWithdrawableAmount
 
 Calculates the amount that the recipient can withdraw from the stream, in units of the token's decimals.
 
 
 ```solidity
-function getWithdrawableAmount(uint256 streamId) public view returns (uint128 withdrawableAmount);
+function getWithdrawableAmount(uint256 streamId)
+    public
+    view
+    override(ISablierV2, SablierV2)
+    returns (uint128 withdrawableAmount);
 ```
 **Parameters**
 
@@ -261,9 +282,14 @@ function tokenURI(uint256 streamId) public view override streamExists(streamId) 
 Creates a stream funded by `msg.sender` wrapped in an ERC-721 NFT, setting the start time to
 `block.timestamp` and the stop time to `block.timestamp + duration`.
 
-*Emits a {CreateLinearStream} and a {Transfer} event.
+ :::note
+
+Emits a `CreateLinearStream` nd a `Transfer` vent.
 Requirements:
-- All from `createWithRange`.*
+- All from `createWithRange`.
+
+:::
+
 
 
 ```solidity
@@ -301,7 +327,9 @@ function createWithDurations(
 Creates a new stream funded by `msg.sender` wrapped in an ERC-721 NFT, setting the start time and the
 stop time to the provided values.
 
-*Emits a {CreateLinearStream} and a {Transfer} event.
+ :::note
+
+Emits a `CreateLinearStream` nd a `Transfer` vent.
 Notes:
 - As long as they are ordered, it is not an error to set a range in the past.
 Requirements:
@@ -310,7 +338,10 @@ Requirements:
 - `range.start` must not be greater than `range.cliff`.
 - `range.cliff` must not be greater than `range.stop`.
 - `msg.sender` must have allowed this contract to spend at least `grossDepositAmount` tokens.
-- If set, `broker.fee` must not be greater than `MAX_FEE`.*
+- If set, `broker.fee` must not be greater than `MAX_FEE`.
+
+:::
+
 
 
 ```solidity
@@ -437,7 +468,7 @@ function _withdraw(uint256 streamId, address to, uint128 amount) internal overri
 
 
 ```solidity
-struct CreateWithRangeParams {
+struct CreateWithRangeParams `
     CreateAmounts amounts;
     Range range;
     address sender;

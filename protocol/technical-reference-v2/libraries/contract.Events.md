@@ -1,5 +1,5 @@
 # Events
-[Git Source](https://github.com/sablierhq/v2-core/blob/71a38f2401905d2762c14a7b36c2334909bdb760/src/libraries/Events.sol)
+[Git Source](https://github.com/sablierhq/v2-core/blob/4918aca82c552a62619e2c71f2241abf1e877f72/src/libraries/Events.sol)
 
 Library with events emitted across the core contracts.
 

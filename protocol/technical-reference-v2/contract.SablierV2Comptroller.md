@@ -1,5 +1,5 @@
 # SablierV2Comptroller
-[Git Source](https://github.com/sablierhq/v2-core/blob/71a38f2401905d2762c14a7b36c2334909bdb760/src/SablierV2Comptroller.sol)
+[Git Source](https://github.com/sablierhq/v2-core/blob/4918aca82c552a62619e2c71f2241abf1e877f72/src/SablierV2Comptroller.sol)
 
 **Inherits:**
 [ISablierV2Comptroller](/protocol/technical-reference-v2/interfaces/contract.ISablierV2Comptroller.md), Adminable
@@ -18,6 +18,19 @@ mapping(IERC20 => UD60x18) internal _protocolFees;
 
 
 ## Functions
+### constructor
+
+
+```solidity
+constructor(address initialAdmin);
+```
+**Parameters**
+
+|Name|Type|Description|
+|----|----|-----------|
+|`initialAdmin`|`address`|The address of the initial contract admin.|
+
+
 ### getProtocolFee
 
 Queries the protocol fee charged on all Sablier V2 streams created with the provided token, as an
@@ -38,14 +51,19 @@ function getProtocolFee(IERC20 token) external view override returns (UD60x18 pr
 
 Sets a new protocol fee that will be charged on all streams created with the provided token.
 
-*Emits a {SetProtocolFee} event.
+ :::note
+
+Emits a `SetProtocolFee` vent.
 Notes:
 - The fee is not in units of the token's decimals, instead it follows the UD60x18 number format. Refer to the
 PRBMath documentation for more detail on the logic of UD60x18.
 - Does not revert if the fee is the same.
 Requirements:
 - The caller must be the admin of the contract.
-- The new protocol fee cannot be greater than `MAX_FEE`.*
+- The new protocol fee cannot be greater than `MAX_FEE`.
+
+:::
+
 
 
 ```solidity

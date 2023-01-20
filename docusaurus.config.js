@@ -119,18 +119,8 @@ const config = {
             position: "left",
           },
           {
-            href: "/protocol/guides/getting-started",
-            label: "Guides",
-            position: "left",
-          },
-          {
             href: "/protocol/technical-reference-v2/contract.SablierV2",
             label: "Technical Reference",
-            position: "left",
-          },
-          {
-            href: "/protocol/subgraph/endpoints",
-            label: "Subgraph",
             position: "left",
           },
           {

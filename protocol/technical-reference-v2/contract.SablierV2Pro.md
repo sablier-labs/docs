@@ -1,5 +1,5 @@
 # SablierV2Pro
-[Git Source](https://github.com/sablierhq/v2-core/blob/71a38f2401905d2762c14a7b36c2334909bdb760/src/SablierV2Pro.sol)
+[Git Source](https://github.com/sablierhq/v2-core/blob/4918aca82c552a62619e2c71f2241abf1e877f72/src/SablierV2Pro.sol)
 
 **Inherits:**
 [ISablierV2Pro](/protocol/technical-reference-v2/interfaces/contract.ISablierV2Pro.md), [SablierV2](/protocol/technical-reference-v2/contract.SablierV2.md), ERC721
@@ -33,14 +33,15 @@ mapping(uint256 => ProStream) internal _streams;
 
 
 ```solidity
-constructor(ISablierV2Comptroller initialComptroller, UD60x18 maxFee, uint256 maxSegmentCount)
-    SablierV2(initialComptroller, maxFee);
+constructor(address initialAdmin, ISablierV2Comptroller initialComptroller, UD60x18 maxFee, uint256 maxSegmentCount)
+    SablierV2(initialAdmin, initialComptroller, maxFee);
 ```
 **Parameters**
 
 |Name|Type|Description|
 |----|----|-----------|
-|`initialComptroller`|`ISablierV2Comptroller`|The address of the SablierV2Comptroller contract.|
+|`initialAdmin`|`address`|The address of the initial contract admin.|
+|`initialComptroller`|`ISablierV2Comptroller`|The address of the initial comptroller.|
 |`maxFee`|`UD60x18`|The maximum fee that can be charged by either the protocol or a broker, as an UD60x18 number where 100% = 1e18.|
 |`maxSegmentCount`|`uint256`|The maximum number of segments permitted in a stream.|
 
@@ -187,13 +188,32 @@ function getStream(uint256 streamId) external view returns (ProStream memory str
 |`streamId`|`uint256`|The id of the stream to make the query for.|
 
 
+### getStreamedAmount
+
+Calculates the amount that has been streamed to the recipient, in units of the token's decimals.
+
+
+```solidity
+function getStreamedAmount(uint256 streamId) public view override returns (uint128 streamedAmount);
+```
+**Parameters**
+
+|Name|Type|Description|
+|----|----|-----------|
+|`streamId`|`uint256`|The id of the stream to make the query for.|
+
+
 ### getWithdrawableAmount
 
 Calculates the amount that the recipient can withdraw from the stream, in units of the token's decimals.
 
 
 ```solidity
-function getWithdrawableAmount(uint256 streamId) public view returns (uint128 withdrawableAmount);
+function getWithdrawableAmount(uint256 streamId)
+    public
+    view
+    override(ISablierV2, SablierV2)
+    returns (uint128 withdrawableAmount);
 ```
 **Parameters**
 
@@ -259,9 +279,14 @@ function tokenURI(uint256 streamId) public view override streamExists(streamId) 
 Create a stream by setting the start time to `block.timestamp` and the stop time to the sum of
 `block.timestamp` and all `deltas`. The stream is funded by `msg.sender` and is wrapped in an ERC-721 NFT.
 
-*Emits a {CreateProStream} and a {Transfer} event.
+ :::note
+
+Emits a `CreateProStream` nd a `Transfer` vent.
 Requirements:
-- All from `createWithMilestones`.*
+- All from `createWithMilestones`.
+
+:::
+
 
 
 ```solidity
@@ -301,7 +326,9 @@ function createWithDeltas(
 Create a stream by using the provided milestones, implying the stop time from the last segment's.
 milestone. The stream is funded by `msg.sender` and is wrapped in an ERC-721 NFT.
 
-*Emits a {CreateProStream} and a {Transfer} event.
+ :::note
+
+Emits a `CreateProStream` nd a `Transfer` vent.
 Notes:
 - As long as they are ordered, it is not an error to set the `startTime` and the milestones to a past range.
 Requirements:
@@ -312,7 +339,10 @@ Requirements:
 - The first segment's milestone must be greater than or equal to `startTime`.
 - `startTime` must not be greater than the milestone of the last segment.
 - `msg.sender` must have allowed this contract to spend at least `grossDepositAmount` tokens.
-- If set, `broker.fee` must not be greater than `MAX_FEE`.*
+- If set, `broker.fee` must not be greater than `MAX_FEE`.
+
+:::
+
 
 
 ```solidity
@@ -346,6 +376,24 @@ function createWithMilestones(
 |----|----|-----------|
 |`streamId`|`uint256`|The id of the newly created stream.|
 
+
+### _calculateStreamedAmountForMultipleSegments
+
+*Calculates the withdrawable amount for a stream with multiple segments.*
+
+
+```solidity
+function _calculateStreamedAmountForMultipleSegments(uint256 streamId) internal view returns (uint128 streamedAmount);
+```
+
+### _calculateStreamedAmountForOneSegment
+
+*Calculates the withdrawable amount for a stream with one segment.*
+
+
+```solidity
+function _calculateStreamedAmountForOneSegment(uint256 streamId) internal view returns (uint128 streamedAmount);
+```
 
 ### _isApprovedOrOwner
 
@@ -417,30 +465,6 @@ function _cancel(uint256 streamId) internal override onlySenderOrRecipient(strea
 function _createWithMilestones(CreateWithMilestonesParams memory params) internal returns (uint256 streamId);
 ```
 
-### _calculateWithdrawableAmountForMultipleSegments
-
-*Calculates the withdrawable amount for a stream with multiple segments.*
-
-
-```solidity
-function _calculateWithdrawableAmountForMultipleSegments(uint256 streamId)
-    internal
-    view
-    returns (uint128 withdrawableAmount);
-```
-
-### _calculateWithdrawableAmountForOneSegment
-
-*Calculates the withdrawable amount for a stream with one segment.*
-
-
-```solidity
-function _calculateWithdrawableAmountForOneSegment(uint256 streamId)
-    internal
-    view
-    returns (uint128 withdrawableAmount);
-```
-
 ### _renounce
 
 *See the documentation for the public functions that call this internal function.*
@@ -465,7 +489,7 @@ function _withdraw(uint256 streamId, address to, uint128 amount) internal overri
 
 
 ```solidity
-struct CreateWithMilestonesParams {
+struct CreateWithMilestonesParams `
     CreateAmounts amounts;
     Segment[] segments;
     address sender;

@@ -1,17 +1,17 @@
 # ISablierV2Linear
-[Git Source](https://github.com/sablierhq/v2-core/blob/71a38f2401905d2762c14a7b36c2334909bdb760/protocol/technical-reference-v2/interfaces)
+[Git Source](https://github.com/sablierhq/v2-core/blob/4918aca82c552a62619e2c71f2241abf1e877f72/protocol/technical-reference-v2/interfaces)
 
 **Inherits:**
 [ISablierV2](/protocol/technical-reference-v2/interfaces/contract.ISablierV2.md)
 
 Creates streams whose streaming function is:
-$$
+`
 f(x) = x * d + c
-$$
+`
 Where:
-- $x$ is the elapsed time divided by the total duration of the stream.
-- $d$ is the deposit amount.
-- $c$ is the cliff amount.
+- `x` is the elapsed time divided by the total duration of the stream.
+- `d` is the deposit amount.
+- `c` is the cliff amount.
 
 
 ## Functions
@@ -65,9 +65,14 @@ function getStream(uint256 streamId) external view returns (LinearStream memory 
 Creates a stream funded by `msg.sender` wrapped in an ERC-721 NFT, setting the start time to
 `block.timestamp` and the stop time to `block.timestamp + duration`.
 
-*Emits a {CreateLinearStream} and a {Transfer} event.
+ :::note
+
+Emits a `CreateLinearStream` nd a `Transfer` vent.
 Requirements:
-- All from `createWithRange`.*
+- All from `createWithRange`.
+
+:::
+
 
 
 ```solidity
@@ -105,7 +110,9 @@ function createWithDurations(
 Creates a new stream funded by `msg.sender` wrapped in an ERC-721 NFT, setting the start time and the
 stop time to the provided values.
 
-*Emits a {CreateLinearStream} and a {Transfer} event.
+ :::note
+
+Emits a `CreateLinearStream` nd a `Transfer` vent.
 Notes:
 - As long as they are ordered, it is not an error to set a range in the past.
 Requirements:
@@ -114,7 +121,10 @@ Requirements:
 - `range.start` must not be greater than `range.cliff`.
 - `range.cliff` must not be greater than `range.stop`.
 - `msg.sender` must have allowed this contract to spend at least `grossDepositAmount` tokens.
-- If set, `broker.fee` must not be greater than `MAX_FEE`.*
+- If set, `broker.fee` must not be greater than `MAX_FEE`.
+
+:::
+
 
 
 ```solidity
