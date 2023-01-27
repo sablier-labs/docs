@@ -1,8 +1,8 @@
-# ISablierV2Pro
-[Git Source](https://github.com/sablierhq/v2-core/blob/4918aca82c552a62619e2c71f2241abf1e877f72/protocol/technical-reference-v2/interfaces)
+# ISablierV2LockupPro
+[Git Source](https://github.com/sablierhq/v2-core/blob/cc0ad3978d3901ec331d3c24fbc36ee2b5a297c0/protocol/technical-reference-v2/interfaces)
 
 **Inherits:**
-[ISablierV2](/protocol/technical-reference-v2/interfaces/contract.ISablierV2.md)
+[ISablierV2Lockup](/protocol/technical-reference-v2/interfaces/contract.ISablierV2Lockup.md)
 
 Creates streams with custom streaming curves, based on the following mathematical model:
 `
@@ -48,7 +48,7 @@ Queries the stream struct entity.
 
 
 ```solidity
-function getStream(uint256 streamId) external view returns (ProStream memory stream);
+function getStream(uint256 streamId) external view returns (LockupProStream memory stream);
 ```
 **Parameters**
 
@@ -62,11 +62,13 @@ function getStream(uint256 streamId) external view returns (ProStream memory str
 Create a stream by setting the start time to `block.timestamp` and the stop time to the sum of
 `block.timestamp` and all `deltas`. The stream is funded by `msg.sender` and is wrapped in an ERC-721 NFT.
 
- :::note
+:::note
 
-Emits a `CreateProStream` nd a `Transfer` vent.
+Emits a `CreateLockupProStream` nd a `Transfer` vent.
+Notes:
+- The segment milestones should be empty, as they will be overridden.
 Requirements:
-- All from `createWithMilestones`.
+- All from `createWithMilestones}.
 
 :::
 
@@ -78,7 +80,7 @@ function createWithDeltas(
     address recipient,
     uint128 grossDepositAmount,
     Segment[] memory segments,
-    IERC20 token,
+    IERC20 asset,
     bool cancelable,
     uint40[] memory deltas,
     Broker calldata broker
@@ -88,11 +90,11 @@ function createWithDeltas(
 
 |Name|Type|Description|
 |----|----|-----------|
-|`sender`|`address`|The address from which to stream the tokens, which will have the ability to cancel the stream. It doesn't have to be the same as `msg.sender`.|
-|`recipient`|`address`|The address toward which to stream the tokens.|
-|`grossDepositAmount`|`uint128`|The gross amount of tokens to be deposited, inclusive of fees, in units of the token's decimals.|
+|`sender`|`address`|The address from which to stream the assets, which will have the ability to cancel the stream. It doesn't have to be the same as `msg.sender`.|
+|`recipient`|`address`|The address toward which to stream the assets.|
+|`grossDepositAmount`|`uint128`|The gross amount of assets to be deposited, inclusive of fees, in units of the asset's decimals.|
 |`segments`|`Segment[]`|The segments the protocol uses to compose the custom streaming curve.|
-|`token`|`IERC20`|The address of the ERC-20 token to use for streaming.|
+|`asset`|`IERC20`|The contract address of the ERC-20 asset to use for streaming.|
 |`cancelable`|`bool`|A boolean that indicates whether the stream is cancelable or not.|
 |`deltas`|`uint40[]`|The differences between the Unix timestamp milestones used to compose the custom streaming curve.|
 |`broker`|`Broker`|An optional struct that encapsulates (i) the address of the broker that has helped create the stream and (ii) the percentage fee that the broker is paid from the deposit amount, as an UD60x18 number.|
@@ -109,9 +111,9 @@ function createWithDeltas(
 Create a stream by using the provided milestones, implying the stop time from the last segment's.
 milestone. The stream is funded by `msg.sender` and is wrapped in an ERC-721 NFT.
 
- :::note
+:::note
 
-Emits a `CreateProStream` nd a `Transfer` vent.
+Emits a `CreateLockupProStream` nd a `Transfer` vent.
 Notes:
 - As long as they are ordered, it is not an error to set the `startTime` and the milestones to a past range.
 Requirements:
@@ -121,7 +123,7 @@ Requirements:
 - The segment amounts summed up must be equal to the net deposit amount.
 - The first segment's milestone must be greater than or equal to `startTime`.
 - `startTime` must not be greater than the milestone of the last segment.
-- `msg.sender` must have allowed this contract to spend at least `grossDepositAmount` tokens.
+- `msg.sender` must have allowed this contract to spend at least `grossDepositAmount` assets.
 - If set, `broker.fee` must not be greater than `MAX_FEE`.
 
 :::
@@ -134,7 +136,7 @@ function createWithMilestones(
     address recipient,
     uint128 grossDepositAmount,
     Segment[] memory segments,
-    IERC20 token,
+    IERC20 asset,
     bool cancelable,
     uint40 startTime,
     Broker calldata broker
@@ -144,11 +146,11 @@ function createWithMilestones(
 
 |Name|Type|Description|
 |----|----|-----------|
-|`sender`|`address`|The address from which to stream the tokens, which will have the ability to cancel the stream. It doesn't have to be the same as `msg.sender`.|
-|`recipient`|`address`|The address toward which to stream the tokens.|
-|`grossDepositAmount`|`uint128`|The gross amount of tokens to be deposited, inclusive of fees, in units of the token's decimals.|
+|`sender`|`address`|The address from which to stream the assets, which will have the ability to cancel the stream. It doesn't have to be the same as `msg.sender`.|
+|`recipient`|`address`|The address toward which to stream the assets.|
+|`grossDepositAmount`|`uint128`|The gross amount of assets to be deposited, inclusive of fees, in units of the asset's decimals.|
 |`segments`|`Segment[]`| The segments the protocol uses to compose the custom streaming curve.|
-|`token`|`IERC20`|The address of the ERC-20 token to use for streaming.|
+|`asset`|`IERC20`|The contract address of the ERC-20 asset to use for streaming.|
 |`cancelable`|`bool`|A boolean that indicates whether the stream will be cancelable or not.|
 |`startTime`|`uint40`|The Unix timestamp for when the stream will start.|
 |`broker`|`Broker`||

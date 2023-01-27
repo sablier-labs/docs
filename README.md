@@ -2,7 +2,6 @@
 
 Contributing to the Sablier docs is a great way to get involved in the dev community and help other people along the way.
 
-This website is built using [Docusaurus 2](https://docusaurus.io/), a modern static website generator.
 
 ## Installation
 
@@ -25,3 +24,10 @@ $ yarn build
 ```
 
 This command generates static content into the `build` directory and can be served using any static contents hosting service.
+
+## Updating the Technical Reference
+
+To update the technical reference with the latest changes made to the contracts, execute the following command at the root of the repository:
+```bash
+./script.sh
+```

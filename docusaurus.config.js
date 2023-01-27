@@ -9,6 +9,7 @@ const config = {
   tagline: "Documentation and Guides for Sablier",
   title: "Sablier Docs",
   url: "https://docs.sablier.finance",
+	onBrokenLinks: "warn",
   presets: [
     [
       "classic",
@@ -119,7 +120,7 @@ const config = {
             position: "left",
           },
           {
-            href: "/protocol/technical-reference-v2/contract.SablierV2",
+            href: "/protocol/technical-reference-v2/contract.SablierV2Comptroller",
             label: "Technical Reference",
             position: "left",
           },

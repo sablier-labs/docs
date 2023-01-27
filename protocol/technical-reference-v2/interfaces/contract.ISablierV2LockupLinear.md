@@ -1,8 +1,8 @@
-# ISablierV2Linear
-[Git Source](https://github.com/sablierhq/v2-core/blob/4918aca82c552a62619e2c71f2241abf1e877f72/protocol/technical-reference-v2/interfaces)
+# ISablierV2LockupLinear
+[Git Source](https://github.com/sablierhq/v2-core/blob/cc0ad3978d3901ec331d3c24fbc36ee2b5a297c0/protocol/technical-reference-v2/interfaces)
 
 **Inherits:**
-[ISablierV2](/protocol/technical-reference-v2/interfaces/contract.ISablierV2.md)
+[ISablierV2Lockup](/protocol/technical-reference-v2/interfaces/contract.ISablierV2Lockup.md)
 
 Creates streams whose streaming function is:
 `
@@ -51,7 +51,7 @@ Queries the stream struct entity.
 
 
 ```solidity
-function getStream(uint256 streamId) external view returns (LinearStream memory stream);
+function getStream(uint256 streamId) external view returns (LockupLinearStream memory stream);
 ```
 **Parameters**
 
@@ -65,11 +65,11 @@ function getStream(uint256 streamId) external view returns (LinearStream memory 
 Creates a stream funded by `msg.sender` wrapped in an ERC-721 NFT, setting the start time to
 `block.timestamp` and the stop time to `block.timestamp + duration`.
 
- :::note
+:::note
 
-Emits a `CreateLinearStream` nd a `Transfer` vent.
+Emits a `CreateLockupLinearStream` nd a `Transfer` vent.
 Requirements:
-- All from `createWithRange`.
+- All from `createWithRange}.
 
 :::
 
@@ -80,7 +80,7 @@ function createWithDurations(
     address sender,
     address recipient,
     uint128 grossDepositAmount,
-    IERC20 token,
+    IERC20 asset,
     bool cancelable,
     Durations calldata durations,
     Broker calldata broker
@@ -90,10 +90,10 @@ function createWithDurations(
 
 |Name|Type|Description|
 |----|----|-----------|
-|`sender`|`address`|The address from which to stream the tokens with a cliff period, which will have the ability to cancel the stream. It doesn't have to be the same as `msg.sender`.|
-|`recipient`|`address`|The address toward which to stream the tokens.|
-|`grossDepositAmount`|`uint128`|The gross amount of tokens to be deposited, inclusive of fees, in units of the token's decimals.|
-|`token`|`IERC20`|The address of the ERC-20 token to use for streaming.|
+|`sender`|`address`|The address from which to stream the assets, which will have the ability to cancel the stream. It doesn't have to be the same as `msg.sender`.|
+|`recipient`|`address`|The address toward which to stream the assets.|
+|`grossDepositAmount`|`uint128`|The gross amount of assets to be deposited, inclusive of fees, in units of the asset's decimals.|
+|`asset`|`IERC20`|The contract address of the ERC-20 asset to use for streaming.|
 |`cancelable`|`bool`|A boolean that indicates whether the stream will be cancelable or not.|
 |`durations`|`Durations`|A struct that encapsulates (i) the duration of the cliff period and (ii) the total duration of the stream, both in seconds.|
 |`broker`|`Broker`|An optional struct that encapsulates (i) the address of the broker that has helped create the stream and (ii) the percentage fee that the broker is paid from the gross deposit amount, as an UD60x18 number.|
@@ -110,9 +110,9 @@ function createWithDurations(
 Creates a new stream funded by `msg.sender` wrapped in an ERC-721 NFT, setting the start time and the
 stop time to the provided values.
 
- :::note
+:::note
 
-Emits a `CreateLinearStream` nd a `Transfer` vent.
+Emits a `CreateLockupLinearStream` nd a `Transfer` vent.
 Notes:
 - As long as they are ordered, it is not an error to set a range in the past.
 Requirements:
@@ -120,7 +120,7 @@ Requirements:
 - `grossDepositAmount` must not be zero.
 - `range.start` must not be greater than `range.cliff`.
 - `range.cliff` must not be greater than `range.stop`.
-- `msg.sender` must have allowed this contract to spend at least `grossDepositAmount` tokens.
+- `msg.sender` must have allowed this contract to spend at least `grossDepositAmount` assets.
 - If set, `broker.fee` must not be greater than `MAX_FEE`.
 
 :::
@@ -132,7 +132,7 @@ function createWithRange(
     address sender,
     address recipient,
     uint128 grossDepositAmount,
-    IERC20 token,
+    IERC20 asset,
     bool cancelable,
     Range calldata range,
     Broker calldata broker
@@ -142,10 +142,10 @@ function createWithRange(
 
 |Name|Type|Description|
 |----|----|-----------|
-|`sender`|`address`|The address from which to stream the tokens, which will have the ability to cancel the stream. It doesn't have to be the same as `msg.sender`.|
-|`recipient`|`address`|The address toward which to stream the tokens.|
-|`grossDepositAmount`|`uint128`|The gross amount of tokens to deposit, inclusive of fees, in units of the token's decimals.|
-|`token`|`IERC20`|The address of the ERC-20 token to use for streaming.|
+|`sender`|`address`|The address from which to stream the assets, which will have the ability to cancel the stream. It doesn't have to be the same as `msg.sender`.|
+|`recipient`|`address`|The address toward which to stream the assets.|
+|`grossDepositAmount`|`uint128`|The gross amount of assets to deposit, inclusive of fees, in units of the asset's decimals.|
+|`asset`|`IERC20`|The contract address of the ERC-20 asset to use for streaming.|
 |`cancelable`|`bool`|A boolean that indicates whether the stream will be cancelable or not.|
 |`range`|`Range`|A struct that encapsulates (i) the start time of the stream, (ii) the cliff time of the stream, and (iii) the stop time of the stream, all as Unix timestamps.|
 |`broker`|`Broker`|An optional struct that encapsulates (i) the address of the broker that has helped create the stream and (ii) the percentage fee that the broker is paid from the deposit amount, as an UD60x18 number.|

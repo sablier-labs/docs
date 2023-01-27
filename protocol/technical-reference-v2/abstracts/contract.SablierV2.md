@@ -1,16 +1,14 @@
-# ISablierV2
-[Git Source](https://github.com/sablierhq/v2-core/blob/cc0ad3978d3901ec331d3c24fbc36ee2b5a297c0/protocol/technical-reference-v2/interfaces)
+# SablierV2
+[Git Source](https://github.com/sablierhq/v2-core/blob/cc0ad3978d3901ec331d3c24fbc36ee2b5a297c0/protocol/technical-reference-v2/abstracts)
 
 **Inherits:**
-IAdminable
+[ISablierV2](/protocol/technical-reference-v2/interfaces/contract.ISablierV2.md), Adminable
 
-The common interface between all Sablier V2 streaming contracts. There are only a handful of
-administration and configuration functions defined here.
+*Abstract contract that implements the `ISablierV2` nterface.*
 
 
-## Functions
+## State Variables
 ### MAX_FEE
-
 The maximum fee that can be charged by either the protocol or a broker, as an UD60x18 number
 where 100% = 1e18.
 
@@ -18,18 +16,44 @@ where 100% = 1e18.
 
 
 ```solidity
-function MAX_FEE() external view returns (UD60x18);
+UD60x18 public immutable override MAX_FEE;
 ```
 
-### comptroller
 
+### comptroller
 The address of the `SablierV2Comptroller` ontract. The comptroller is in charge of the Sablier V2
 protocol configuration, handling such values as the protocol fees.
 
 
 ```solidity
-function comptroller() external view returns (ISablierV2Comptroller);
+ISablierV2Comptroller public override comptroller;
 ```
+
+
+### _protocolRevenues
+*Protocol revenues mapped by ERC-20 asset addresses.*
+
+
+```solidity
+mapping(IERC20 => uint128) internal _protocolRevenues;
+```
+
+
+## Functions
+### constructor
+
+
+```solidity
+constructor(address initialAdmin, ISablierV2Comptroller initialComptroller, UD60x18 maxFee);
+```
+**Parameters**
+
+|Name|Type|Description|
+|----|----|-----------|
+|`initialAdmin`|`address`|The address of the initial contract admin.|
+|`initialComptroller`|`ISablierV2Comptroller`|The address of the initial comptroller.|
+|`maxFee`|`UD60x18`|The maximum fee that can be charged by either the protocol or a broker, as an UD60x18 number where 100% = 1e18.|
+
 
 ### getProtocolRevenues
 
@@ -37,7 +61,7 @@ Queries the protocol revenues accrued for the provided ERC-20 asset, in units of
 
 
 ```solidity
-function getProtocolRevenues(IERC20 asset) external view returns (uint128 protocolRevenues);
+function getProtocolRevenues(IERC20 asset) external view override returns (uint128 protocolRevenues);
 ```
 **Parameters**
 
@@ -61,7 +85,7 @@ Requirements:
 
 
 ```solidity
-function claimProtocolRevenues(IERC20 asset) external;
+function claimProtocolRevenues(IERC20 asset) external override onlyAdmin;
 ```
 **Parameters**
 
@@ -88,7 +112,7 @@ Requirements:
 
 
 ```solidity
-function setComptroller(ISablierV2Comptroller newComptroller) external;
+function setComptroller(ISablierV2Comptroller newComptroller) external override onlyAdmin;
 ```
 **Parameters**
 

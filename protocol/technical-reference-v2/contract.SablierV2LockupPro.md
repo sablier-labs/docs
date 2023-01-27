@@ -1,10 +1,10 @@
-# SablierV2Pro
-[Git Source](https://github.com/sablierhq/v2-core/blob/4918aca82c552a62619e2c71f2241abf1e877f72/src/SablierV2Pro.sol)
+# SablierV2LockupPro
+[Git Source](https://github.com/sablierhq/v2-core/blob/cc0ad3978d3901ec331d3c24fbc36ee2b5a297c0/src/SablierV2LockupPro.sol)
 
 **Inherits:**
-[ISablierV2Pro](/protocol/technical-reference-v2/interfaces/contract.ISablierV2Pro.md), [SablierV2](/protocol/technical-reference-v2/contract.SablierV2.md), ERC721
+[ISablierV2LockupPro](/protocol/technical-reference-v2/interfaces/contract.ISablierV2LockupPro.md), ERC721, [SablierV2Lockup](/protocol/technical-reference-v2/abstracts/contract.SablierV2Lockup.md)
 
-*This contract implements the ISablierV2Pro interface.*
+*This contract implements the `ISablierV2LockupPro` nterface.*
 
 
 ## State Variables
@@ -24,7 +24,7 @@ uint256 public immutable override MAX_SEGMENT_COUNT;
 
 
 ```solidity
-mapping(uint256 => ProStream) internal _streams;
+mapping(uint256 => LockupProStream) internal _streams;
 ```
 
 
@@ -34,7 +34,7 @@ mapping(uint256 => ProStream) internal _streams;
 
 ```solidity
 constructor(address initialAdmin, ISablierV2Comptroller initialComptroller, UD60x18 maxFee, uint256 maxSegmentCount)
-    SablierV2(initialAdmin, initialComptroller, maxFee);
+    SablierV2Lockup(initialAdmin, initialComptroller, maxFee);
 ```
 **Parameters**
 
@@ -46,9 +46,30 @@ constructor(address initialAdmin, ISablierV2Comptroller initialComptroller, UD60
 |`maxSegmentCount`|`uint256`|The maximum number of segments permitted in a stream.|
 
 
+### getAsset
+
+Queries the address of the ERC-20 asset used for streaming.
+
+
+```solidity
+function getAsset(uint256 streamId) external view override returns (IERC20 asset);
+```
+**Parameters**
+
+|Name|Type|Description|
+|----|----|-----------|
+|`streamId`|`uint256`|The id of the stream to make the query for.|
+
+**Returns**
+
+|Name|Type|Description|
+|----|----|-----------|
+|`asset`|`IERC20`|The contract address of the ERC-20 asset used for streaming.|
+
+
 ### getDepositAmount
 
-Queries the amount deposited in the stream, in units of the token's decimals.
+Queries the amount deposited in the stream, in units of the asset's decimals.
 
 
 ```solidity
@@ -61,34 +82,17 @@ function getDepositAmount(uint256 streamId) external view override returns (uint
 |`streamId`|`uint256`|The id of the stream to make the query for.|
 
 
-### getERC20Token
-
-Queries the ERC-20 token used for streaming.
-
-
-```solidity
-function getERC20Token(uint256 streamId) external view override returns (IERC20 token);
-```
-**Parameters**
-
-|Name|Type|Description|
-|----|----|-----------|
-|`streamId`|`uint256`|The id of the stream to make the query for.|
-
-**Returns**
-
-|Name|Type|Description|
-|----|----|-----------|
-|`token`|`IERC20`|The ERC-20 token used for streaming.|
-
-
 ### getRecipient
 
 Queries the recipient of the stream.
 
 
 ```solidity
-function getRecipient(uint256 streamId) public view override(ISablierV2, SablierV2) returns (address recipient);
+function getRecipient(uint256 streamId)
+    public
+    view
+    override(ISablierV2Lockup, SablierV2Lockup)
+    returns (address recipient);
 ```
 **Parameters**
 
@@ -100,11 +104,11 @@ function getRecipient(uint256 streamId) public view override(ISablierV2, Sablier
 ### getReturnableAmount
 
 Calculates the amount that the sender would be returned if the stream was canceled, in units of the
-token's decimals.
+asset's decimals.
 
 
 ```solidity
-function getReturnableAmount(uint256 streamId) external view returns (uint128 returnableAmount);
+function getReturnableAmount(uint256 streamId) external view override returns (uint128 returnableAmount);
 ```
 **Parameters**
 
@@ -158,6 +162,26 @@ function getStartTime(uint256 streamId) external view override returns (uint40 s
 |`streamId`|`uint256`|The id of the stream to make the query for.|
 
 
+### getStatus
+
+Queries the status of the stream.
+
+
+```solidity
+function getStatus(uint256 streamId)
+    public
+    view
+    virtual
+    override(ISablierV2Lockup, SablierV2Lockup)
+    returns (Status status);
+```
+**Parameters**
+
+|Name|Type|Description|
+|----|----|-----------|
+|`streamId`|`uint256`|The id of the stream to make the query for.|
+
+
 ### getStopTime
 
 Queries the stop time of the stream.
@@ -179,7 +203,7 @@ Queries the stream struct entity.
 
 
 ```solidity
-function getStream(uint256 streamId) external view returns (ProStream memory stream);
+function getStream(uint256 streamId) external view override returns (LockupProStream memory stream);
 ```
 **Parameters**
 
@@ -190,7 +214,7 @@ function getStream(uint256 streamId) external view returns (ProStream memory str
 
 ### getStreamedAmount
 
-Calculates the amount that has been streamed to the recipient, in units of the token's decimals.
+Calculates the amount that has been streamed to the recipient, in units of the asset's decimals.
 
 
 ```solidity
@@ -205,14 +229,14 @@ function getStreamedAmount(uint256 streamId) public view override returns (uint1
 
 ### getWithdrawableAmount
 
-Calculates the amount that the recipient can withdraw from the stream, in units of the token's decimals.
+Calculates the amount that the recipient can withdraw from the stream, in units of the asset's decimals.
 
 
 ```solidity
 function getWithdrawableAmount(uint256 streamId)
     public
     view
-    override(ISablierV2, SablierV2)
+    override(ISablierV2Lockup, SablierV2Lockup)
     returns (uint128 withdrawableAmount);
 ```
 **Parameters**
@@ -224,7 +248,7 @@ function getWithdrawableAmount(uint256 streamId)
 
 ### getWithdrawnAmount
 
-Queries the amount withdrawn from the stream, in units of the token's decimals.
+Queries the amount withdrawn from the stream, in units of the asset's decimals.
 
 
 ```solidity
@@ -240,25 +264,12 @@ function getWithdrawnAmount(uint256 streamId) external view override returns (ui
 ### isCancelable
 
 Checks whether the stream is cancelable or not.
+Notes:
+- Always returns `false` if the stream is not active.
 
 
 ```solidity
-function isCancelable(uint256 streamId) public view override(ISablierV2, SablierV2) returns (bool result);
-```
-**Parameters**
-
-|Name|Type|Description|
-|----|----|-----------|
-|`streamId`|`uint256`|The id of the stream to make the query for.|
-
-
-### isEntity
-
-Checks whether the stream entity exists or not.
-
-
-```solidity
-function isEntity(uint256 streamId) public view override(ISablierV2, SablierV2) returns (bool result);
+function isCancelable(uint256 streamId) public view override(ISablierV2Lockup, SablierV2Lockup) returns (bool result);
 ```
 **Parameters**
 
@@ -271,7 +282,7 @@ function isEntity(uint256 streamId) public view override(ISablierV2, SablierV2) 
 
 
 ```solidity
-function tokenURI(uint256 streamId) public view override streamExists(streamId) returns (string memory uri);
+function tokenURI(uint256 streamId) public pure override(IERC721Metadata, ERC721) returns (string memory uri);
 ```
 
 ### createWithDeltas
@@ -279,11 +290,13 @@ function tokenURI(uint256 streamId) public view override streamExists(streamId) 
 Create a stream by setting the start time to `block.timestamp` and the stop time to the sum of
 `block.timestamp` and all `deltas`. The stream is funded by `msg.sender` and is wrapped in an ERC-721 NFT.
 
- :::note
+:::note
 
-Emits a `CreateProStream` nd a `Transfer` vent.
+Emits a `CreateLockupProStream` nd a `Transfer` vent.
+Notes:
+- The segment milestones should be empty, as they will be overridden.
 Requirements:
-- All from `createWithMilestones`.
+- All from `createWithMilestones}.
 
 :::
 
@@ -295,7 +308,7 @@ function createWithDeltas(
     address recipient,
     uint128 grossDepositAmount,
     Segment[] memory segments,
-    IERC20 token,
+    IERC20 asset,
     bool cancelable,
     uint40[] calldata deltas,
     Broker calldata broker
@@ -305,11 +318,11 @@ function createWithDeltas(
 
 |Name|Type|Description|
 |----|----|-----------|
-|`sender`|`address`|The address from which to stream the tokens, which will have the ability to cancel the stream. It doesn't have to be the same as `msg.sender`.|
-|`recipient`|`address`|The address toward which to stream the tokens.|
-|`grossDepositAmount`|`uint128`|The gross amount of tokens to be deposited, inclusive of fees, in units of the token's decimals.|
+|`sender`|`address`|The address from which to stream the assets, which will have the ability to cancel the stream. It doesn't have to be the same as `msg.sender`.|
+|`recipient`|`address`|The address toward which to stream the assets.|
+|`grossDepositAmount`|`uint128`|The gross amount of assets to be deposited, inclusive of fees, in units of the asset's decimals.|
 |`segments`|`Segment[]`|The segments the protocol uses to compose the custom streaming curve.|
-|`token`|`IERC20`|The address of the ERC-20 token to use for streaming.|
+|`asset`|`IERC20`|The contract address of the ERC-20 asset to use for streaming.|
 |`cancelable`|`bool`|A boolean that indicates whether the stream is cancelable or not.|
 |`deltas`|`uint40[]`|The differences between the Unix timestamp milestones used to compose the custom streaming curve.|
 |`broker`|`Broker`|An optional struct that encapsulates (i) the address of the broker that has helped create the stream and (ii) the percentage fee that the broker is paid from the deposit amount, as an UD60x18 number.|
@@ -326,9 +339,9 @@ function createWithDeltas(
 Create a stream by using the provided milestones, implying the stop time from the last segment's.
 milestone. The stream is funded by `msg.sender` and is wrapped in an ERC-721 NFT.
 
- :::note
+:::note
 
-Emits a `CreateProStream` nd a `Transfer` vent.
+Emits a `CreateLockupProStream` nd a `Transfer` vent.
 Notes:
 - As long as they are ordered, it is not an error to set the `startTime` and the milestones to a past range.
 Requirements:
@@ -338,7 +351,7 @@ Requirements:
 - The segment amounts summed up must be equal to the net deposit amount.
 - The first segment's milestone must be greater than or equal to `startTime`.
 - `startTime` must not be greater than the milestone of the last segment.
-- `msg.sender` must have allowed this contract to spend at least `grossDepositAmount` tokens.
+- `msg.sender` must have allowed this contract to spend at least `grossDepositAmount` assets.
 - If set, `broker.fee` must not be greater than `MAX_FEE`.
 
 :::
@@ -351,21 +364,21 @@ function createWithMilestones(
     address recipient,
     uint128 grossDepositAmount,
     Segment[] calldata segments,
-    IERC20 token,
+    IERC20 asset,
     bool cancelable,
     uint40 startTime,
     Broker calldata broker
-) external returns (uint256 streamId);
+) external override returns (uint256 streamId);
 ```
 **Parameters**
 
 |Name|Type|Description|
 |----|----|-----------|
-|`sender`|`address`|The address from which to stream the tokens, which will have the ability to cancel the stream. It doesn't have to be the same as `msg.sender`.|
-|`recipient`|`address`|The address toward which to stream the tokens.|
-|`grossDepositAmount`|`uint128`|The gross amount of tokens to be deposited, inclusive of fees, in units of the token's decimals.|
+|`sender`|`address`|The address from which to stream the assets, which will have the ability to cancel the stream. It doesn't have to be the same as `msg.sender`.|
+|`recipient`|`address`|The address toward which to stream the assets.|
+|`grossDepositAmount`|`uint128`|The gross amount of assets to be deposited, inclusive of fees, in units of the asset's decimals.|
 |`segments`|`Segment[]`| The segments the protocol uses to compose the custom streaming curve.|
-|`token`|`IERC20`|The address of the ERC-20 token to use for streaming.|
+|`asset`|`IERC20`|The contract address of the ERC-20 asset to use for streaming.|
 |`cancelable`|`bool`|A boolean that indicates whether the stream will be cancelable or not.|
 |`startTime`|`uint40`|The Unix timestamp for when the stream will start.|
 |`broker`|`Broker`||
@@ -444,7 +457,7 @@ function _isCallerStreamSender(uint256 streamId) internal view override returns 
 
 
 ```solidity
-function _burn(uint256 tokenId) internal override(ERC721, SablierV2);
+function _burn(uint256 tokenId) internal override(ERC721, SablierV2Lockup);
 ```
 
 ### _cancel
@@ -490,13 +503,13 @@ function _withdraw(uint256 streamId, address to, uint128 amount) internal overri
 
 ```solidity
 struct CreateWithMilestonesParams `
-    CreateAmounts amounts;
+    CreateLockupAmounts amounts;
     Segment[] segments;
     address sender;
     uint40 startTime;
     bool cancelable;
     address recipient;
-    IERC20 token;
+    IERC20 asset;
     address broker;
 }
 ```

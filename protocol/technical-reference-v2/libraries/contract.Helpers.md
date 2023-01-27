@@ -1,5 +1,5 @@
 # Helpers
-[Git Source](https://github.com/sablierhq/v2-core/blob/4918aca82c552a62619e2c71f2241abf1e877f72/src/libraries/Helpers.sol)
+[Git Source](https://github.com/sablierhq/v2-core/blob/cc0ad3978d3901ec331d3c24fbc36ee2b5a297c0/src/libraries/Helpers.sol)
 
 Library with helper functions needed across the Sablier V2 contracts.
 
@@ -15,12 +15,12 @@ broker fee amount, and the net deposit amount.*
 function checkAndCalculateFees(uint128 grossDepositAmount, UD60x18 protocolFee, UD60x18 brokerFee, UD60x18 maxFee)
     internal
     pure
-    returns (CreateAmounts memory amounts);
+    returns (CreateLockupAmounts memory amounts);
 ```
 
 ### checkCreateLinearParams
 
-*Checks the arguments of the `create` function in the SablierV2Linear contract.*
+*Checks the arguments of the `SablierV2LockupLinear-_createWithRange` unction.*
 
 
 ```solidity
@@ -29,7 +29,7 @@ function checkCreateLinearParams(uint128 netDepositAmount, Range memory range) i
 
 ### checkCreateProParams
 
-*Checks the arguments of the `create` function in the SablierV2Pro contract.*
+*Checks the arguments of the `SablierV2LockupPro-_createWithRange` unction.*
 
 
 ```solidity
@@ -43,6 +43,8 @@ function checkCreateProParams(
 
 ### checkDeltasAndAdjustSegments
 
+*Checks that the segment array counts match, and then adjusts the segments by calculating the milestones.*
+
 
 ```solidity
 function checkDeltasAndAdjustSegments(Segment[] memory segments, uint40[] memory deltas) internal view;
@@ -50,7 +52,7 @@ function checkDeltasAndAdjustSegments(Segment[] memory segments, uint40[] memory
 
 ### _checkProSegments
 
- :::note
+:::note
 
 Checks that:
 1. The first milestone is greater than or equal to the start time.
