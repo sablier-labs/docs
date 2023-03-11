@@ -2,14 +2,13 @@
 const config = {
   baseUrl: "/",
   favicon: "img/favicon.ico",
-  onBrokenLinks: "throw",
+  onBrokenLinks: "warn",
   onBrokenMarkdownLinks: "warn",
   organizationName: "sablierhq",
   projectName: "sablier-docs",
-  tagline: "Documentation and Guides for Sablier",
+  tagline: "Documentation and guides for Sablier",
   title: "Sablier Docs",
-  url: "https://docs.sablier.finance",
-	onBrokenLinks: "warn",
+  url: "https://docs.sablier.com",
   presets: [
     [
       "classic",
@@ -17,10 +16,10 @@ const config = {
       ({
         docs: {
           editUrl: "https://github.com/sablierhq/docs/tree/main/",
-          includeCurrentVersion: true,
-          path: "protocol",
-          routeBasePath: "protocol/",
           sidebarPath: require.resolve("./sidebars.js"),
+
+          // Serve the docs at the site's root
+          routeBasePath: "/",
         },
         theme: {
           customCss: require.resolve("./src/css/custom.css"),
@@ -33,41 +32,40 @@ const config = {
     ({
       algolia: {
         appId: "KF9W3YD3YG",
-        apiKey: "02ccece2d4178d2816db18726d6d9ba8",
-        indexName: "sablier",
+        apiKey: "7eab349cad720dd939e06808c4b2d6e9",
+        indexName: "sablier-docs",
       },
-      // announcementBar: {
-      //   id: 'start_time_banner',
-      //   content:
-				// 'Please note that a stream creation transaction MUST be processed by the blockchain before the start time of the stream, otherwise it will fail. Learn more about this <a target="_blank" rel="noopener noreferrer" href="/protocol/faq/known-issues">here</a>, or reach out on <a target="_blank" rel="noopener noreferrer" href="https://discord.gg/bSwRCwWRsT">Discord</a>.',
-      //   backgroundColor: '#E77B3B',
-      //   textColor: '#fff',
-      //   isCloseable: true,
-      // },
       colorMode: {
         // "light" | "dark"
-        defaultMode: "light",
+        defaultMode: "dark",
 
-        // Hides the switch in the navbar. Useful if you want to support a single color mode.
-        disableSwitch: true,
+        // Support multiple color modes.
+        disableSwitch: false,
 
         // Whether we should use the `prefers-color-scheme media-query` using user system preferences, instead of the
         // hardcoded `defaultMode`.
         respectPrefersColorScheme: true,
       },
       footer: {
-        copyright: `Copyright © ${new Date().getFullYear()} Sablier Labs Ltd.`,
         links: [
           {
             title: "Company",
             items: [
               {
                 label: "About",
-                href: "https://salbier.finance",
+                href: "https://sablierlabs.co.uk",
               },
               {
-                label: "Branding",
-                href: "https://github.com/sablierhq/branding",
+                label: "Risk Notice",
+                href: "https://sablier.com/risk-notice",
+              },
+              {
+                label: "Terms of Service",
+                href: "https://sablier.com/terms-of-service",
+              },
+              {
+                label: "Privacy Policy",
+                href: "https://docs.google.com/document/d/10OgbKJkoLnZ_pJtF6SAfcP7ufOC18K3N39MH538XeiI",
               },
             ],
           },
@@ -76,7 +74,7 @@ const config = {
             items: [
               {
                 label: "Twitter",
-                href: "https://twitter.com/sablierhq",
+                href: "https://twitter.com/Sablier",
               },
               {
                 label: "Discord",
@@ -86,22 +84,22 @@ const config = {
                 label: "Blog",
                 href: "https://medium.com/sablier",
               },
+              {
+                label: "Branding",
+                href: "https://github.com/sablierhq/branding",
+              },
             ],
           },
           {
             title: "Developers",
             items: [
               {
-                label: "Core Protocol",
+                label: "V2 Core",
                 href: "https://github.com/sablierhq/v2-core",
               },
               {
-                label: "Periphery Contracts",
+                label: "V2 Periphery",
                 href: "https://github.com/sablierhq/v2-periphery",
-              },
-              {
-                label: "Docs",
-                href: "https://github.com/sablierhq/docs",
               },
               {
                 label: "Subgraph",
@@ -115,29 +113,34 @@ const config = {
       navbar: {
         items: [
           {
-            href: "/protocol/faq/basics",
+            label: "Concepts",
+            position: "left",
+            to: "/concepts/what-is-sablier",
+          },
+          {
+            label: "Contracts",
+            position: "left",
+            to: "/contracts/v2/overview",
+          },
+          {
             label: "FAQ",
             position: "left",
+            to: "/faq/basics",
           },
           {
-            href: "/protocol/technical-reference-v2/contract.SablierV2Comptroller",
-            label: "Technical Reference",
-            position: "left",
-          },
-          {
-            href: "https://discord.gg/bSwRCwWRsT",
             label: "Discord",
             position: "right",
+            to: "https://discord.gg/bSwRCwWRsT",
           },
           {
-            href: "https://github.com/sablierhq",
             label: "GitHub",
             position: "right",
+            to: "https://github.com/sablierhq",
           },
         ],
         logo: {
-          alt: "Sablier Logo",
-          src: "img/logo.svg",
+          alt: "Sablier Hourglass",
+          src: "img/icon.svg",
         },
         title: "Sablier Docs",
       },

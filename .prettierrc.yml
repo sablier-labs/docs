@@ -1,7 +1,16 @@
-arrowParens: avoid
 bracketSpacing: true
-endOfLine: auto
+plugins: ["@trivago/prettier-plugin-sort-imports"]
 printWidth: 120
+proseWrap: "always"
 singleQuote: false
 tabWidth: 2
-trailingComma: all
+trailingComma: "all"
+
+overrides:
+  - files: ["*.mdx", "*.tsx"]
+    options:
+      importOrder:
+        - "<THIRD_PARTY_MODULES>"
+        - "^[./]"
+      importOrderSeparation: false
+      importOrderSortSpecifiers: true
