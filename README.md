@@ -1,33 +1,34 @@
-# Sablier Docs
+# Sablier Documentation
 
-Contributing to the Sablier docs is a great way to get involved in the dev community and help other people along the way.
-
+This website contains all documentation for Sablier, including older protocol releases. It is built using
+[Docusaurus 2](https://v2.docusaurus.io/), a modern static website generator.
 
 ## Installation
 
-```bash
-$ yarn
+```sh
+$ pnpm install
 ```
 
 ## Local Development
 
-```bash
-$ yarn start
+```sh
+$ pnpm start
 ```
 
-This command starts a local development server and opens up a browser window. Most changes are reflected live without having to restart the server.
+This command starts a local development server and opens up a browser window. Most changes are reflected live without
+having to restart the server.
 
 ## Build
 
-```bash
-$ yarn build
+```sh
+$ pnpm build
 ```
 
-This command generates static content into the `build` directory and can be served using any static contents hosting service.
+This command generates static content into the `build` directory, and can be served using any static contents hosting
+service.
 
-## Updating the Technical Reference
+## Clear cache
 
-To update the technical reference with the latest changes made to the contracts, execute the following command at the root of the repository:
-```bash
-./script.sh
+```sh
+$ pnpm clear
 ```

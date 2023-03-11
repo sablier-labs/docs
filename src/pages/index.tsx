@@ -4,7 +4,6 @@ import styled from "@emotion/styled";
 import { ChatIcon } from "@heroicons/react/outline";
 import Layout from "@theme/Layout";
 import React from "react";
-
 import HomepageHeader from "../components/HomepageHeader";
 import GitHubIcon from "../icons/GitHubIcon";
 import MediumIcon from "../icons/MediumIcon";
@@ -92,7 +91,7 @@ export default function Home(): JSX.Element {
   const { siteConfig } = useDocusaurusContext();
 
   return (
-    <Layout description="Technical Documentation for the Sablier Protocol" title={siteConfig.title}>
+    <Layout description="Documentation and guides for Sablier" title={siteConfig.title}>
       <OuterWrapper>
         <HomepageHeader />
         <FlexGrowDiv />
