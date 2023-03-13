@@ -1,13 +1,14 @@
 # LockupPro
-[Git Source](https://github.com/sablierhq/v2-core/blob/8b6a851f4185bd5af0e89a0f6a6eb2fed069cd10/docs/contracts/v2/reference/core/abstracts)
+
+[Git Source](https://github.com/sablierhq/v2-core/blob/87a0a16c835ea8e88ddf6a8387898c91c62ab9d1/docs/contracts/v2/reference/core)
 
 Quasi-namespace for the structs used in the {SablierV2LockupPro} contract.
 
-
 ## Structs
-### CreateWithDeltas
-Struct that encapsulates the parameters of the {SablierV2LockupPro-createWithDeltas} function.
 
+### CreateWithDeltas
+
+Struct that encapsulates the parameters of the {SablierV2LockupPro-createWithDeltas} function.
 
 ```solidity
 struct CreateWithDeltas {
@@ -22,8 +23,8 @@ struct CreateWithDeltas {
 ```
 
 ### CreateWithMilestones
-Struct that encapsulates the parameters of the {SablierV2LockupPro-createWithMilestones} function.
 
+Struct that encapsulates the parameters of the {SablierV2LockupPro-createWithMilestones} function.
 
 ```solidity
 struct CreateWithMilestones {
@@ -39,8 +40,8 @@ struct CreateWithMilestones {
 ```
 
 ### Range
-Range struct used as a field in the lockup pro stream.
 
+Range struct used as a field in the lockup pro stream.
 
 ```solidity
 struct Range {
@@ -50,8 +51,8 @@ struct Range {
 ```
 
 ### Segment
-Segment struct used in the {SablierV2LockupPro} contract.
 
+Segment struct used in the lockup pro stream.
 
 ```solidity
 struct Segment {
@@ -62,8 +63,8 @@ struct Segment {
 ```
 
 ### SegmentWithDelta
-Segment struct used in the {SablierV2LockupPro-createWithDeltas} function.
 
+Segment struct used only at runtime in the {SablierV2LockupPro-createWithDeltas} function.
 
 ```solidity
 struct SegmentWithDelta {
@@ -74,10 +75,10 @@ struct SegmentWithDelta {
 ```
 
 ### Stream
-Pro stream struct used in the {SablierV2LockupPro} contract.
 
-*The fields are arranged like this to save gas via tight variable packing.*
+Pro lockup stream struct.
 
+_The fields are arranged like this to save gas via tight variable packing._
 
 ```solidity
 struct Stream {
@@ -91,4 +92,3 @@ struct Stream {
     IERC20 asset;
 }
 ```
-

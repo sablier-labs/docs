@@ -1,10 +1,6 @@
----
-sidebar_position: 1
----
-
 # SablierV2LockupLinear
 
-[Git Source](https://github.com/sablierhq/v2-core/blob/8b6a851f4185bd5af0e89a0f6a6eb2fed069cd10/docs/contracts/v2/reference/core/abstracts)
+[Git Source](https://github.com/sablierhq/v2-core/blob/87a0a16c835ea8e88ddf6a8387898c91c62ab9d1/docs/contracts/v2/reference/core)
 
 **Inherits:** [ISablierV2LockupLinear](/docs/contracts/v2/reference/core/interfaces/interface.ISablierV2LockupLinear.md),
 ERC721, [SablierV2Lockup](/docs/contracts/v2/reference/core/abstracts/abstract.SablierV2Lockup.md)
@@ -55,9 +51,9 @@ function getAsset(uint256 streamId) external view override returns (IERC20 asset
 
 **Parameters**
 
-| Name       | Type      | Description                                 |
-| ---------- | --------- | ------------------------------------------- |
-| `streamId` | `uint256` | The id of the stream to make the query for. |
+| Name       | Type      | Description                                        |
+| ---------- | --------- | -------------------------------------------------- |
+| `streamId` | `uint256` | The id of the lockup stream to make the query for. |
 
 **Returns**
 
@@ -67,7 +63,7 @@ function getAsset(uint256 streamId) external view override returns (IERC20 asset
 
 ### getCliffTime
 
-Queries the cliff time of the stream.
+Queries the cliff time of the lockup linear stream.
 
 ```solidity
 function getCliffTime(uint256 streamId) external view override returns (uint40 cliffTime);
@@ -75,13 +71,13 @@ function getCliffTime(uint256 streamId) external view override returns (uint40 c
 
 **Parameters**
 
-| Name       | Type      | Description                                 |
-| ---------- | --------- | ------------------------------------------- |
-| `streamId` | `uint256` | The id of the stream to make the query for. |
+| Name       | Type      | Description                                               |
+| ---------- | --------- | --------------------------------------------------------- |
+| `streamId` | `uint256` | The id of the lockup linear stream to make the query for. |
 
 ### getDepositAmount
 
-Queries the amount deposited in the stream, in units of the asset's decimals.
+Queries the amount deposited in the lockup stream, in units of the asset's decimals.
 
 ```solidity
 function getDepositAmount(uint256 streamId) external view override returns (uint128 depositAmount);
@@ -89,13 +85,13 @@ function getDepositAmount(uint256 streamId) external view override returns (uint
 
 **Parameters**
 
-| Name       | Type      | Description                                 |
-| ---------- | --------- | ------------------------------------------- |
-| `streamId` | `uint256` | The id of the stream to make the query for. |
+| Name       | Type      | Description                                        |
+| ---------- | --------- | -------------------------------------------------- |
+| `streamId` | `uint256` | The id of the lockup stream to make the query for. |
 
 ### getEndTime
 
-Queries the end time of the stream.
+Queries the end time of the lockup stream.
 
 ```solidity
 function getEndTime(uint256 streamId) external view override returns (uint40 endTime);
@@ -103,14 +99,14 @@ function getEndTime(uint256 streamId) external view override returns (uint40 end
 
 **Parameters**
 
-| Name       | Type      | Description                                 |
-| ---------- | --------- | ------------------------------------------- |
-| `streamId` | `uint256` | The id of the stream to make the query for. |
+| Name       | Type      | Description                                        |
+| ---------- | --------- | -------------------------------------------------- |
+| `streamId` | `uint256` | The id of the lockup stream to make the query for. |
 
 ### getRange
 
-Queries the range of the stream, a struct that encapsulates (i) the start time of the stream, (ii) the cliff time of the
-stream, and (iii) the end time of the stream, all as Unix timestamps.
+Queries the range of the lockup linear stream, a struct that encapsulates (i) the start time of the stream, (ii) the
+cliff time of the stream, and (iii) the end time of the stream, all as Unix timestamps.
 
 ```solidity
 function getRange(uint256 streamId) external view override returns (LockupLinear.Range memory range);
@@ -118,13 +114,13 @@ function getRange(uint256 streamId) external view override returns (LockupLinear
 
 **Parameters**
 
-| Name       | Type      | Description                                 |
-| ---------- | --------- | ------------------------------------------- |
-| `streamId` | `uint256` | The id of the stream to make the query for. |
+| Name       | Type      | Description                                               |
+| ---------- | --------- | --------------------------------------------------------- |
+| `streamId` | `uint256` | The id of the lockup linear stream to make the query for. |
 
 ### getRecipient
 
-Queries the recipient of the stream.
+Queries the recipient of the lockup stream.
 
 ```solidity
 function getRecipient(uint256 streamId)
@@ -136,13 +132,13 @@ function getRecipient(uint256 streamId)
 
 **Parameters**
 
-| Name       | Type      | Description                                 |
-| ---------- | --------- | ------------------------------------------- |
-| `streamId` | `uint256` | The id of the stream to make the query for. |
+| Name       | Type      | Description                                        |
+| ---------- | --------- | -------------------------------------------------- |
+| `streamId` | `uint256` | The id of the lockup stream to make the query for. |
 
 ### getSender
 
-Queries the sender of the stream.
+Queries the sender of the lockup stream.
 
 ```solidity
 function getSender(uint256 streamId) external view override returns (address sender);
@@ -150,13 +146,13 @@ function getSender(uint256 streamId) external view override returns (address sen
 
 **Parameters**
 
-| Name       | Type      | Description                                 |
-| ---------- | --------- | ------------------------------------------- |
-| `streamId` | `uint256` | The id of the stream to make the query for. |
+| Name       | Type      | Description                                        |
+| ---------- | --------- | -------------------------------------------------- |
+| `streamId` | `uint256` | The id of the lockup stream to make the query for. |
 
 ### getStartTime
 
-Queries the start time of the stream.
+Queries the start time of the lockup stream.
 
 ```solidity
 function getStartTime(uint256 streamId) external view override returns (uint40 startTime);
@@ -164,13 +160,13 @@ function getStartTime(uint256 streamId) external view override returns (uint40 s
 
 **Parameters**
 
-| Name       | Type      | Description                                 |
-| ---------- | --------- | ------------------------------------------- |
-| `streamId` | `uint256` | The id of the stream to make the query for. |
+| Name       | Type      | Description                                        |
+| ---------- | --------- | -------------------------------------------------- |
+| `streamId` | `uint256` | The id of the lockup stream to make the query for. |
 
 ### getStatus
 
-Queries the status of the stream.
+Queries the status of the lockup stream.
 
 ```solidity
 function getStatus(uint256 streamId)
@@ -183,13 +179,13 @@ function getStatus(uint256 streamId)
 
 **Parameters**
 
-| Name       | Type      | Description                                 |
-| ---------- | --------- | ------------------------------------------- |
-| `streamId` | `uint256` | The id of the stream to make the query for. |
+| Name       | Type      | Description                                        |
+| ---------- | --------- | -------------------------------------------------- |
+| `streamId` | `uint256` | The id of the lockup stream to make the query for. |
 
 ### getStream
 
-Queries the stream struct entity.
+Queries the lockup linear stream struct entity.
 
 ```solidity
 function getStream(uint256 streamId) external view override returns (LockupLinear.Stream memory stream);
@@ -197,13 +193,13 @@ function getStream(uint256 streamId) external view override returns (LockupLinea
 
 **Parameters**
 
-| Name       | Type      | Description                                 |
-| ---------- | --------- | ------------------------------------------- |
-| `streamId` | `uint256` | The id of the stream to make the query for. |
+| Name       | Type      | Description                                               |
+| ---------- | --------- | --------------------------------------------------------- |
+| `streamId` | `uint256` | The id of the lockup linear stream to make the query for. |
 
 ### getWithdrawnAmount
 
-Queries the amount withdrawn from the stream, in units of the asset's decimals.
+Queries the amount withdrawn from the lockup stream, in units of the asset's decimals.
 
 ```solidity
 function getWithdrawnAmount(uint256 streamId) external view override returns (uint128 withdrawnAmount);
@@ -211,15 +207,15 @@ function getWithdrawnAmount(uint256 streamId) external view override returns (ui
 
 **Parameters**
 
-| Name       | Type      | Description                                 |
-| ---------- | --------- | ------------------------------------------- |
-| `streamId` | `uint256` | The id of the stream to make the query for. |
+| Name       | Type      | Description                                        |
+| ---------- | --------- | -------------------------------------------------- |
+| `streamId` | `uint256` | The id of the lockup stream to make the query for. |
 
 ### isCancelable
 
-Checks whether the stream is cancelable or not. Notes:
+Checks whether the lockup stream is cancelable or not. Notes:
 
-- Always returns `false` if the stream is not active.
+- Always returns `false` if the lockup stream is not active.
 
 ```solidity
 function isCancelable(uint256 streamId) public view override(ISablierV2Lockup, SablierV2Lockup) returns (bool result);
@@ -227,13 +223,14 @@ function isCancelable(uint256 streamId) public view override(ISablierV2Lockup, S
 
 **Parameters**
 
-| Name       | Type      | Description                                 |
-| ---------- | --------- | ------------------------------------------- |
-| `streamId` | `uint256` | The id of the stream to make the query for. |
+| Name       | Type      | Description                                        |
+| ---------- | --------- | -------------------------------------------------- |
+| `streamId` | `uint256` | The id of the lockup stream to make the query for. |
 
 ### returnableAmountOf
 
-Calculates the amount that the sender would be paid if the stream had been canceled, in units of the asset's decimals.
+Calculates the amount that the sender would be paid if the lockup stream had been canceled, in units of the asset's
+decimals.
 
 ```solidity
 function returnableAmountOf(uint256 streamId) external view returns (uint128 returnableAmount);
@@ -241,9 +238,9 @@ function returnableAmountOf(uint256 streamId) external view returns (uint128 ret
 
 **Parameters**
 
-| Name       | Type      | Description                                 |
-| ---------- | --------- | ------------------------------------------- |
-| `streamId` | `uint256` | The id of the stream to make the query for. |
+| Name       | Type      | Description                                        |
+| ---------- | --------- | -------------------------------------------------- |
+| `streamId` | `uint256` | The id of the lockup stream to make the query for. |
 
 ### streamedAmountOf
 
@@ -271,9 +268,9 @@ function streamedAmountOf(uint256 streamId)
 
 **Parameters**
 
-| Name       | Type      | Description                                 |
-| ---------- | --------- | ------------------------------------------- |
-| `streamId` | `uint256` | The id of the stream to make the query for. |
+| Name       | Type      | Description                                               |
+| ---------- | --------- | --------------------------------------------------------- |
+| `streamId` | `uint256` | The id of the lockup linear stream to make the query for. |
 
 ### tokenURI
 
@@ -283,7 +280,7 @@ function tokenURI(uint256 streamId) public view override(IERC721Metadata, ERC721
 
 ### withdrawableAmountOf
 
-Calculates the amount that the recipient can withdraw from the stream, in units of the asset's decimals.
+Calculates the amount that the recipient can withdraw from the lockup stream, in units of the asset's decimals.
 
 ```solidity
 function withdrawableAmountOf(uint256 streamId)
@@ -295,13 +292,13 @@ function withdrawableAmountOf(uint256 streamId)
 
 **Parameters**
 
-| Name       | Type      | Description                                 |
-| ---------- | --------- | ------------------------------------------- |
-| `streamId` | `uint256` | The id of the stream to make the query for. |
+| Name       | Type      | Description                                        |
+| ---------- | --------- | -------------------------------------------------- |
+| `streamId` | `uint256` | The id of the lockup stream to make the query for. |
 
 ### createWithDurations
 
-Creates a stream by setting the start time to `block.timestamp` and the end time to
+Creates a lockup linear stream with the start time set to `block.timestamp`, and the end time set to
 `block.timestamp + params.durations.total`. The stream is funded by `msg.sender` and is wrapped in an ERC-721 NFT.
 
 \*Emits a {CreateLockupLinearStream} and a {Transfer} event. Requirements:
@@ -323,15 +320,40 @@ function createWithDurations(LockupLinear.CreateWithDurations calldata params)
 
 **Returns**
 
-| Name       | Type      | Description                         |
-| ---------- | --------- | ----------------------------------- |
-| `streamId` | `uint256` | The id of the newly created stream. |
+| Name       | Type      | Description                                       |
+| ---------- | --------- | ------------------------------------------------- |
+| `streamId` | `uint256` | The id of the newly created lockup linear stream. |
 
 ### createWithRange
+
+Creates a lockup linear stream with the provided start time and end time as the range. The stream is funded by
+`msg.sender` and is wrapped in an ERC-721 NFT.
+
+\*Emits a {CreateLockupLinearStream} and a {Transfer} event. Notes:
+
+- As long as the times are ordered, it is not an error to set a range that is in the past. Requirements:
+- `params.recipient` must not be the zero address.
+- `params.totalAmount` must not be zero.
+- `params.range.start` must not be greater than `params.range.cliff`.
+- `params.range.cliff` must not be greater than `params.range.end`.
+- `msg.sender` must have allowed this contract to spend at least `params.totalAmount` assets.
+- If set, `params.broker.fee` must not be greater than `MAX_FEE`.\*
 
 ```solidity
 function createWithRange(LockupLinear.CreateWithRange calldata params) public override returns (uint256 streamId);
 ```
+
+**Parameters**
+
+| Name     | Type                           | Description                                       |
+| -------- | ------------------------------ | ------------------------------------------------- |
+| `params` | `CreateWithRange.LockupLinear` | Struct that encapsulates the function parameters. |
+
+**Returns**
+
+| Name       | Type      | Description                                       |
+| ---------- | --------- | ------------------------------------------------- |
+| `streamId` | `uint256` | The id of the newly created lockup linear stream. |
 
 ### \_isApprovedOrOwner
 

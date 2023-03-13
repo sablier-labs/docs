@@ -1,13 +1,14 @@
 # LockupLinear
-[Git Source](https://github.com/sablierhq/v2-core/blob/8b6a851f4185bd5af0e89a0f6a6eb2fed069cd10/docs/contracts/v2/reference/core/abstracts)
+
+[Git Source](https://github.com/sablierhq/v2-core/blob/87a0a16c835ea8e88ddf6a8387898c91c62ab9d1/docs/contracts/v2/reference/core)
 
 Quasi-namespace for the structs used in the {SablierV2LockupLinear} contract.
 
-
 ## Structs
-### CreateWithDurations
-Struct that encapsulates the parameters of the {SablierV2LockupLinear-createWithDurations} function.
 
+### CreateWithDurations
+
+Struct that encapsulates the parameters of the {SablierV2LockupLinear-createWithDurations} function.
 
 ```solidity
 struct CreateWithDurations {
@@ -22,8 +23,8 @@ struct CreateWithDurations {
 ```
 
 ### CreateWithRange
-Struct that encapsulates the parameters of the {SablierV2LockupLinear-createWithRange} function.
 
+Struct that encapsulates the parameters of the {SablierV2LockupLinear-createWithRange} function.
 
 ```solidity
 struct CreateWithRange {
@@ -38,8 +39,8 @@ struct CreateWithRange {
 ```
 
 ### Durations
-Simple struct that encapsulates (i) the cliff duration and (ii) the total duration.
 
+Simple struct that encapsulates (i) the cliff duration and (ii) the total duration.
 
 ```solidity
 struct Durations {
@@ -49,8 +50,8 @@ struct Durations {
 ```
 
 ### Range
-Range struct used as a field in the lockup linear stream.
 
+Range struct used as a field in the lockup linear stream.
 
 ```solidity
 struct Range {
@@ -61,10 +62,10 @@ struct Range {
 ```
 
 ### Stream
-Lockup linear stream struct used in the {SablierV2LockupLinear} contract.
 
-*The fields are arranged like this to save gas via tight variable packing.*
+Linear lockup stream struct.
 
+_The fields are arranged like this to save gas via tight variable packing._
 
 ```solidity
 struct Stream {
@@ -78,4 +79,3 @@ struct Stream {
     Lockup.Status status;
 }
 ```
-
