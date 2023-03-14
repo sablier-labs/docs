@@ -2,7 +2,8 @@
 
 [Git Source](https://github.com/sablierhq/v2-core/blob/87a0a16c835ea8e88ddf6a8387898c91c62ab9d1/docs/contracts/v2/reference/core/interfaces)
 
-**Inherits:** [ISablierV2Config](/docs/contracts/v2/reference/core/interfaces/interface.ISablierV2Config.md), IERC721Metadata
+**Inherits:** [ISablierV2Config](/docs/contracts/v2/reference/core/interfaces/interface.ISablierV2Config.md),
+IERC721Metadata
 
 The common interface between all Sablier V2 lockup streaming contracts.
 

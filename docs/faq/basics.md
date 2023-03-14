@@ -6,7 +6,8 @@ sidebar_position: 1
 
 ### What is Ethereum?
 
-Sablier is built on top of Ethereum (as well as other smart contract blockchains), a global, open-source platform for decentralized applications. You can read more about it on their [official website](https://ethereum.org).
+Sablier is built on top of Ethereum (as well as other smart contract blockchains), a global, open-source platform for
+decentralized applications. You can read more about it on their [official website](https://ethereum.org).
 
 ### What are smart contracts?
 
@@ -18,7 +19,8 @@ Permission-less scripts that:
 
 ### What are Arbitrum, Avalanche, BSC, Optimism, Polygon and Ronin?
 
-These are Ethereum-like chains that can run Ethereum smart contracts. Sablier is available on all of these chains. Please refer to their associated documentation for more information:
+These are Ethereum-like chains that can run Ethereum smart contracts. Sablier is available on all of these chains.
+Please refer to their associated documentation for more information:
 
 - [Arbitrum One](https://developer.offchainlabs.com/)
 - [Avalanche](https://docs.avax.network/)
@@ -29,9 +31,11 @@ These are Ethereum-like chains that can run Ethereum smart contracts. Sablier is
 
 ### What is ERC-20?
 
-Acronym that stands the "Ethereum Requests for Comments" number 20. It is the most popular technical standard on Ethereum and can be used for printing a currency.
+Acronym that stands the "Ethereum Requests for Comments" number 20. It is the most popular technical standard on
+Ethereum and can be used for printing a currency.
 
-Sablier is compatible with ERC-20 tokens only, such as [DAI](https://makerdao.com/) or [USDC](https://www.coinbase.com/usdc).
+Sablier is compatible with ERC-20 tokens only, such as [DAI](https://makerdao.com/) or
+[USDC](https://www.coinbase.com/usdc).
 
 ### What is a stream?
 
@@ -57,11 +61,13 @@ We're working with various projects in the DeFi ecosystem to make Sablier access
 
 ### What is real-time finance?
 
-A term coined by us to emphasize the wide-ranging use cases for the Sablier protocol. We like to think about work as an attempt to rethink the way trust is established in financial contracts.
+A term coined by us to emphasize the wide-ranging use cases for the Sablier protocol. We like to think about work as an
+attempt to rethink the way trust is established in financial contracts.
 
 ### What is token streaming?
 
-An alternative wording, [coined](https://www.youtube.com/watch?v=gF_ZQ_eijPs) by Andreas Antonopoulos in 2017. Just like you can stream movies on Netflix or music on Spotify, so you can stream tokens by the second on Sablier.
+An alternative wording, [coined](https://www.youtube.com/watch?v=gF_ZQ_eijPs) by Andreas Antonopoulos in 2017. Just like
+you can stream movies on Netflix or music on Spotify, so you can stream tokens by the second on Sablier.
 
 ### How does streaming work on Sablier?
 
@@ -70,24 +76,30 @@ Imagine Alice wants to make a 3,000 DAI payment to Bob during the whole month of
 1. Alice deposits the 3,000 DAI in Sablier _before_ Jan 1, setting the stop time to Feb 1.
 2. Bob's crypto earnings increase every second beginning Jan 1.
 3. On Jan 10, Bob will have earned approximately 1,000 DAI.
-4. If at any point during January Alice wishes to recover her tokens, she can cancel the stream and recover what
-   has not been streamed yet.
+4. If at any point during January Alice wishes to recover her tokens, she can cancel the stream and recover what has not
+   been streamed yet.
 
 ### Is the Sablier protocol safe?
 
-The security of the Sablier protocol is our outmost priority. Our team, accompanied by external auditors and consultants, has invested considerable effort to create a protocol that is safe and reliable. All contract code is publicly verifiable in our [GitHub repository](https://github.com/sablierhq/v2-core).
+The security of the Sablier protocol is our outmost priority. Our team, accompanied by external auditors and
+consultants, has invested considerable effort to create a protocol that is safe and reliable. All contract code is
+publicly verifiable in our [GitHub repository](https://github.com/sablierhq/v2-core).
 
 ### Is the Sablier protocol transparent?
 
-As transparent as it can be. Verify the smart contracts by yourself on [GitHub](https://github.com/sablierhq/v2-core/) and [Etherscan](https://etherscan.io/labelcloud/sablier).
+As transparent as it can be. Verify the smart contracts by yourself on [GitHub](https://github.com/sablierhq/v2-core/)
+and [Etherscan](https://etherscan.io/labelcloud/sablier).
 
 ### Does the Sablier protocol have an administrator?
 
-No. The contracts do not have any owner or administrator. They are as trustless as the smart contract blockchain they are deployed on.
+No. The contracts do not have any owner or administrator. They are as trustless as the smart contract blockchain they
+are deployed on.
 
 ### How can I create a stream?
 
-You need an Ethereum wallet, some Ether and an ERC-20 token like DAI. Then, choose your favorite interface for accessing the Sablier protocol (such as [app.sablier.com](https://app.sablier.com)) and fill in the recipient's address, the deposit amount and the total duration.
+You need an Ethereum wallet, some Ether and an ERC-20 token like DAI. Then, choose your favorite interface for accessing
+the Sablier protocol (such as [app.sablier.com](https://app.sablier.com)) and fill in the recipient's address, the
+deposit amount and the total duration.
 
 ### How is the start time set?
 
@@ -97,11 +109,13 @@ with an error:
 
 > start time before block.timestamp
 
-In our web interface, the start time is automatically set to ~15 minutes after the time at which the user sends the transaction to the mempool.
+In our web interface, the start time is automatically set to ~15 minutes after the time at which the user sends the
+transaction to the mempool.
 
 ### How does streaming work?
 
-Dividing the deposit amount by the difference between the stop time and the start time gives us a payment rate per second. Sablier uses this rate to transfer a small portion of tokens from the sender to the recipient once every second.
+Dividing the deposit amount by the difference between the stop time and the start time gives us a payment rate per
+second. Sablier uses this rate to transfer a small portion of tokens from the sender to the recipient once every second.
 
 For instance, if the payment rate was 0.01 DAI per second, the recipient would receive:
 
@@ -111,11 +125,13 @@ For instance, if the payment rate was 0.01 DAI per second, the recipient would r
 
 ### Where are the tokens held?
 
-In our smart contracts. You can verify this assertion by inspecting [Etherscan](https://etherscan.io/address/0xCD18eAa163733Da39c232722cBC4E8940b1D8888) or any other blockchain explorer.
+In our smart contracts. You can verify this assertion by inspecting
+[Etherscan](https://etherscan.io/address/0xCD18eAa163733Da39c232722cBC4E8940b1D8888) or any other blockchain explorer.
 
 ### How can recipients access their tokens?
 
-As the tokens are being streamed at the smart contract level, recipients can consider Sablier their real-time wallet for digital currency.
+As the tokens are being streamed at the smart contract level, recipients can consider Sablier their real-time wallet for
+digital currency.
 
 To make withdrawals, recipients can:
 
@@ -124,11 +140,14 @@ To make withdrawals, recipients can:
 
 ### Can I cancel streams?
 
-Yes, both as a sender and a recipient, assuming the stream was set up as cancellable when it was created. If the stream was explicitly set as uncancelable, it is obviously not cancelable.
+Yes, both as a sender and a recipient, assuming the stream was set up as cancellable when it was created. If the stream
+was explicitly set as uncancelable, it is obviously not cancelable.
 
 - If the stream is canceled before the start time, the whole deposit amount is returned in full to you.
-- If the stream is canceled while the stream is active, the smart contracts calculate how much has been streamed, transfer that to the recipient and return the remainder to you.
-- If the stream is canceled after the stream has stopped, the smart contracts transfers all the remaining funds (if any) to the recipient.
+- If the stream is canceled while the stream is active, the smart contracts calculate how much has been streamed,
+  transfer that to the recipient and return the remainder to you.
+- If the stream is canceled after the stream has stopped, the smart contracts transfers all the remaining funds (if any)
+  to the recipient.
 
 ### Can I modify the streaming rate?
 
@@ -138,7 +157,8 @@ In a future version of the Sablier protocol, we may add the option to refill an 
 
 ### What can Sablier be used for?
 
-We came up with a few ideas in [this discussion on Twitter](https://twitter.com/SablierHQ/status/1205533344886411264), but the sky is the limit.
+We came up with a few ideas in [this discussion on Twitter](https://twitter.com/SablierHQ/status/1205533344886411264),
+but the sky is the limit.
 
 ### Who can use Sablier?
 
