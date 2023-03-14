@@ -1,6 +1,6 @@
 # ISablierV2Lockup
 
-[Git Source](https://github.com/sablierhq/v2-core/blob/87a0a16c835ea8e88ddf6a8387898c91c62ab9d1/docs/contracts/v2/reference/core/interfaces)
+[Git Source](https://github.com/sablierhq/v2-core/blob/8bfc7785e498ccde9a6d39ad2fc8998d9077f979/docs/contracts/v2/reference/core/interfaces)
 
 **Inherits:** [ISablierV2Config](/docs/contracts/v2/reference/core/interfaces/interface.ISablierV2Config.md),
 IERC721Metadata
@@ -290,6 +290,25 @@ function renounce(uint256 streamId) external;
 | ---------- | --------- | ---------------------------------------- |
 | `streamId` | `uint256` | The id of the lockup stream to renounce. |
 
+### setNFTDescriptor
+
+Sets a new NFT descriptor contract, which produces the URI describing the Sablier stream NFTs.
+
+\*Emits a {SetNFTDescriptor} event. Notes:
+
+- Does not revert if the NFT descriptor is the same. Requirements:
+- The caller must be the contract admin.\*
+
+```solidity
+function setNFTDescriptor(ISablierV2NFTDescriptor newNFTDescriptor) external;
+```
+
+**Parameters**
+
+| Name               | Type                      | Description                                     |
+| ------------------ | ------------------------- | ----------------------------------------------- |
+| `newNFTDescriptor` | `ISablierV2NFTDescriptor` | The address of the new NFT descriptor contract. |
+
 ### withdraw
 
 Withdraws the provided amount of assets from the lockup stream to the provided address `to`.
@@ -382,6 +401,16 @@ Emitted when a sender makes a lockup stream non-cancelable.
 
 ```solidity
 event RenounceLockupStream(uint256 indexed streamId);
+```
+
+### SetNFTDescriptor
+
+Emitted when the contract admin sets the NFT descriptor contract.
+
+```solidity
+event SetNFTDescriptor(
+    address indexed admin, ISablierV2NFTDescriptor oldNFTDescriptor, ISablierV2NFTDescriptor newNFTDescriptor
+);
 ```
 
 ### WithdrawFromLockupStream

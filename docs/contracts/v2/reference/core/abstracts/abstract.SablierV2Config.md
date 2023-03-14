@@ -1,6 +1,6 @@
 # SablierV2Config
 
-[Git Source](https://github.com/sablierhq/v2-core/blob/87a0a16c835ea8e88ddf6a8387898c91c62ab9d1/docs/contracts/v2/reference/core/abstracts)
+[Git Source](https://github.com/sablierhq/v2-core/blob/8bfc7785e498ccde9a6d39ad2fc8998d9077f979/docs/contracts/v2/reference/core/abstracts)
 
 **Inherits:** [ISablierV2Config](/docs/contracts/v2/reference/core/interfaces/interface.ISablierV2Config.md),
 [SablierV2Adminable](/docs/contracts/v2/reference/core/abstracts/abstract.SablierV2Adminable.md)

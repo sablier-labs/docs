@@ -1,6 +1,6 @@
 # SablierV2LockupLinear
 
-[Git Source](https://github.com/sablierhq/v2-core/blob/87a0a16c835ea8e88ddf6a8387898c91c62ab9d1/docs/contracts/v2/reference/core)
+[Git Source](https://github.com/sablierhq/v2-core/blob/8bfc7785e498ccde9a6d39ad2fc8998d9077f979/docs/contracts/v2/reference/core)
 
 **Inherits:**
 [ISablierV2LockupLinear](/docs/contracts/v2/reference/core/interfaces/interface.ISablierV2LockupLinear.md), ERC721,
@@ -28,19 +28,19 @@ _Emits a {TransferAdmin} event._
 constructor(
     address initialAdmin,
     ISablierV2Comptroller initialComptroller,
-    ISablierV2NftDescriptor nftDescriptor,
+    ISablierV2NFTDescriptor initialNFTDescriptor,
     UD60x18 maxFee
-) SablierV2Lockup(initialAdmin, initialComptroller, nftDescriptor, maxFee);
+) SablierV2Lockup(initialAdmin, initialComptroller, initialNFTDescriptor, maxFee);
 ```
 
 **Parameters**
 
-| Name                 | Type                      | Description                                                                                                     |
-| -------------------- | ------------------------- | --------------------------------------------------------------------------------------------------------------- |
-| `initialAdmin`       | `address`                 | The address of the initial contract admin.                                                                      |
-| `initialComptroller` | `ISablierV2Comptroller`   | The address of the initial comptroller.                                                                         |
-| `nftDescriptor`      | `ISablierV2NftDescriptor` | The address of the NFT descriptor contract.                                                                     |
-| `maxFee`             | `UD60x18`                 | The maximum fee that can be charged by either the protocol or a broker, as an UD60x18 number where 100% = 1e18. |
+| Name                   | Type                      | Description                                                                                                     |
+| ---------------------- | ------------------------- | --------------------------------------------------------------------------------------------------------------- |
+| `initialAdmin`         | `address`                 | The address of the initial contract admin.                                                                      |
+| `initialComptroller`   | `ISablierV2Comptroller`   | The address of the initial comptroller.                                                                         |
+| `initialNFTDescriptor` | `ISablierV2NFTDescriptor` | The address of the initial NFT descriptor.                                                                      |
+| `maxFee`               | `UD60x18`                 | The maximum fee that can be charged by either the protocol or a broker, as an UD60x18 number where 100% = 1e18. |
 
 ### getAsset
 

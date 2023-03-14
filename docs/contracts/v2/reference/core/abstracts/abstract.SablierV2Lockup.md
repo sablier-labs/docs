@@ -1,6 +1,6 @@
 # SablierV2Lockup
 
-[Git Source](https://github.com/sablierhq/v2-core/blob/87a0a16c835ea8e88ddf6a8387898c91c62ab9d1/docs/contracts/v2/reference/core/abstracts)
+[Git Source](https://github.com/sablierhq/v2-core/blob/8bfc7785e498ccde9a6d39ad2fc8998d9077f979/docs/contracts/v2/reference/core/abstracts)
 
 **Inherits:** [SablierV2Config](/docs/contracts/v2/reference/core/abstracts/abstract.SablierV2FlashLoan.md)
 
@@ -8,20 +8,20 @@ See the documentation in the {ISablierV2Lockup} interface.
 
 ## State Variables
 
-### \_nftDescriptor
-
-_Contract that generates the non-fungible token URI._
-
-```solidity
-ISablierV2NftDescriptor internal immutable _nftDescriptor;
-```
-
 ### nextStreamId
 
 Counter for stream ids.
 
 ```solidity
 uint256 public override nextStreamId;
+```
+
+### \_nftDescriptor
+
+_Contract that generates the non-fungible token URI._
+
+```solidity
+ISablierV2NFTDescriptor internal _nftDescriptor;
 ```
 
 ## Functions
@@ -32,19 +32,19 @@ uint256 public override nextStreamId;
 constructor(
     address initialAdmin,
     ISablierV2Comptroller initialComptroller,
-    ISablierV2NftDescriptor nftDescriptor,
+    ISablierV2NFTDescriptor initialNftDescriptor,
     UD60x18 maxFee
 ) SablierV2Config(initialAdmin, initialComptroller, maxFee);
 ```
 
 **Parameters**
 
-| Name                 | Type                      | Description                                                                                                     |
-| -------------------- | ------------------------- | --------------------------------------------------------------------------------------------------------------- |
-| `initialAdmin`       | `address`                 | The address of the initial contract admin.                                                                      |
-| `initialComptroller` | `ISablierV2Comptroller`   | The address of the initial comptroller.                                                                         |
-| `nftDescriptor`      | `ISablierV2NftDescriptor` | The address of the NFT descriptor contract.                                                                     |
-| `maxFee`             | `UD60x18`                 | The maximum fee that can be charged by either the protocol or a broker, as an UD60x18 number where 100% = 1e18. |
+| Name                   | Type                      | Description                                                                                                     |
+| ---------------------- | ------------------------- | --------------------------------------------------------------------------------------------------------------- |
+| `initialAdmin`         | `address`                 | The address of the initial contract admin.                                                                      |
+| `initialComptroller`   | `ISablierV2Comptroller`   | The address of the initial comptroller.                                                                         |
+| `initialNftDescriptor` | `ISablierV2NFTDescriptor` | The address of the initial NFT descriptor.                                                                      |
+| `maxFee`               | `UD60x18`                 | The maximum fee that can be charged by either the protocol or a broker, as an UD60x18 number where 100% = 1e18. |
 
 ### isActiveStream
 
@@ -219,6 +219,25 @@ function renounce(uint256 streamId) external override isActiveStream(streamId);
 | Name       | Type      | Description                              |
 | ---------- | --------- | ---------------------------------------- |
 | `streamId` | `uint256` | The id of the lockup stream to renounce. |
+
+### setNFTDescriptor
+
+Sets a new NFT descriptor contract, which produces the URI describing the Sablier stream NFTs.
+
+\*Emits a {SetNFTDescriptor} event. Notes:
+
+- Does not revert if the NFT descriptor is the same. Requirements:
+- The caller must be the contract admin.\*
+
+```solidity
+function setNFTDescriptor(ISablierV2NFTDescriptor newNFTDescriptor) external override onlyAdmin;
+```
+
+**Parameters**
+
+| Name               | Type                      | Description                                     |
+| ------------------ | ------------------------- | ----------------------------------------------- |
+| `newNFTDescriptor` | `ISablierV2NFTDescriptor` | The address of the new NFT descriptor contract. |
 
 ### withdraw
 

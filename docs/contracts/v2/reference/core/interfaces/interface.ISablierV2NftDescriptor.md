@@ -1,27 +1,27 @@
-# ISablierV2NftDescriptor
+# ISablierV2NFTDescriptor
 
-[Git Source](https://github.com/sablierhq/v2-core/blob/87a0a16c835ea8e88ddf6a8387898c91c62ab9d1/docs/contracts/v2/reference/core/interfaces)
+[Git Source](https://github.com/sablierhq/v2-core/blob/8bfc7785e498ccde9a6d39ad2fc8998d9077f979/docs/contracts/v2/reference/core/interfaces)
 
-The contract that produces the URI describing Sablier streams.
+This contract produces the URI describing the Sablier stream NFTs.
 
 ## Functions
 
 ### tokenURI
 
-Produces the URI describing a particular stream.
+Produces the URI describing a particular stream NFT.
 
-_Note This is a data URI with the JSON contents directly inlined._
+_This is a data URI with the JSON contents directly inlined._
 
 ```solidity
-function tokenURI(ISablierV2Lockup lockup, uint256 streamId) external view returns (string memory uri);
+function tokenURI(IERC721Metadata sablierContract, uint256 streamId) external view returns (string memory uri);
 ```
 
 **Parameters**
 
-| Name       | Type               | Description                                                         |
-| ---------- | ------------------ | ------------------------------------------------------------------- |
-| `lockup`   | `ISablierV2Lockup` | The address of the lockup streaming contract the stream belongs to. |
-| `streamId` | `uint256`          | The id of the stream for which to produce a description.            |
+| Name              | Type              | Description                                                |
+| ----------------- | ----------------- | ---------------------------------------------------------- |
+| `sablierContract` | `IERC721Metadata` | The address of the Sablier contract the stream belongs to. |
+| `streamId`        | `uint256`         | The id of the stream for which to produce a description.   |
 
 **Returns**
 
