@@ -1,0 +1,4 @@
+[submodule "repos/v2-core"]
+  branch = "main"
+  path = "repos/v2-core"
+	url = "git@github.com:sablierhq/v2-core.git"

@@ -4,7 +4,6 @@
 build
 dist
 node_modules
-v2-core
 
 # files
 *.env
