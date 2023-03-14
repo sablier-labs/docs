@@ -4,7 +4,8 @@
 
 **Inherits:** [ISablierV2Adminable](/docs/contracts/v2/reference/core/interfaces/interface.ISablierV2Adminable.md)
 
-See the documentation in {ISablierV2Adminable}.
+See the documentation in
+[ISablierV2Adminable](docs/contracts/v2/reference/core/interfaces/interface.ISablierV2Adminable.md).
 
 ## State Variables
 

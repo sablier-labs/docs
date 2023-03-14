@@ -49,6 +49,13 @@ sd "src/abstracts/.*\.sol" $docs/abstracts $(find $docs -type f -name "*.md")
 sd "src/interfaces/.*\.sol" $docs/interfaces $(find $docs -type f -name "*.md")
 sd "src/.*\.sol" $docs $(find $docs -type f -name "*.md")
 
+# Update the hyperlinks for the interface NatSpec references, e.g. {ISablierV2Lockup}
+sd "\{I(\w+)\}" "[I\$1]($docs/interfaces/interface.I\$1.md)" $(find $docs -type f -name "*.md")
+
+# Update the hyperlinks for the contract NatSpec references, e.g. {SablierV2LockupLinear}
+# Note: this assumes that no abstract contracts will be caught by the regex
+sd "\{SablierV2(\w+)\}" "[SablierV2\$1]($docs/contract.SablierV2\$1.md)" $(find $docs -type f -name "*.md")
+
 # Reorder the contracts in the sidebar
 contract=$docs/contract.SablierV2LockupLinear.md
 echo "$(echo -en '---\nsidebar_position: 1\n---\n'; cat $contract)" > $contract

@@ -9,7 +9,8 @@ sidebar_position: 3
 **Inherits:** [ISablierV2Comptroller](/docs/contracts/v2/reference/core/interfaces/interface.ISablierV2Comptroller.md),
 [SablierV2Adminable](/docs/contracts/v2/reference/core/abstracts/abstract.SablierV2Adminable.md)
 
-See the documentation in {ISablierV2Comptroller}.
+See the documentation in
+[ISablierV2Comptroller](docs/contracts/v2/reference/core/interfaces/interface.ISablierV2Comptroller.md).
 
 ## State Variables
 

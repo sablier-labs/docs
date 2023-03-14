@@ -2,7 +2,8 @@
 
 [Git Source](https://github.com/sablierhq/v2-core/blob/dd92abb9f3f01149a5be0e13eb517772181c5081/docs/contracts/v2/reference/core)
 
-Quasi-namespace for the structs used in {SablierV2LockupPro}.
+Quasi-namespace for the structs used in
+[SablierV2LockupPro](docs/contracts/v2/reference/core/contract.SablierV2LockupPro.md).
 
 ## Structs
 

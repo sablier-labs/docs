@@ -10,7 +10,8 @@ sidebar_position: 1
 [ISablierV2LockupLinear](/docs/contracts/v2/reference/core/interfaces/interface.ISablierV2LockupLinear.md), ERC721,
 [SablierV2Lockup](/docs/contracts/v2/reference/core/abstracts/abstract.SablierV2Lockup.md)
 
-See the documentation in {ISablierV2LockupLinear}.
+See the documentation in
+[ISablierV2LockupLinear](docs/contracts/v2/reference/core/interfaces/interface.ISablierV2LockupLinear.md).
 
 ## State Variables
 

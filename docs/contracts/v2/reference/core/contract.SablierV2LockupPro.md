@@ -9,7 +9,8 @@ sidebar_position: 2
 **Inherits:** [ISablierV2LockupPro](/docs/contracts/v2/reference/core/interfaces/interface.ISablierV2LockupPro.md),
 ERC721, [SablierV2Lockup](/docs/contracts/v2/reference/core/abstracts/abstract.SablierV2Lockup.md)
 
-See the documentation in {ISablierV2LockupPro}.
+See the documentation in
+[ISablierV2LockupPro](docs/contracts/v2/reference/core/interfaces/interface.ISablierV2LockupPro.md).
 
 ## State Variables
 

@@ -4,7 +4,7 @@
 
 **Inherits:** [SablierV2Config](/docs/contracts/v2/reference/core/abstracts/abstract.SablierV2FlashLoan.md)
 
-See the documentation in {ISablierV2Lockup}.
+See the documentation in [ISablierV2Lockup](docs/contracts/v2/reference/core/interfaces/interface.ISablierV2Lockup.md).
 
 ## State Variables
 
