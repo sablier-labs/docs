@@ -8,7 +8,7 @@
 # - sd (https://github.com/chmln/sd)
 
 # Strict mode: https://gist.github.com/vncsna/64825d5609c146e80de8b1fd623011ca
-set -euxo pipefail
+set -euo pipefail
 
 # Delete the sablierhq/v2-core clone if it exists
 if [ -d v2-core ]; then
@@ -16,10 +16,10 @@ if [ -d v2-core ]; then
 fi
 
 # Define the reference directory
-v2_reference=docs/contracts/v2/reference/core
+docs=docs/contracts/v2/reference/core
 
 # Delete the current V2 reference
-find $v2_reference -type f -name "*.md" -delete
+find $docs -type f -name "*.md" -delete
 
 # Clone sablierhq/v2-core and cd into it
 git clone git@github.com:sablierhq/v2-core.git
@@ -32,21 +32,36 @@ forge doc
 cd ../
 
 # Copy over the auto-generated files
-rsync --archive --exclude "README.md" --exclude "SUMMARY.md" v2-core/docs/src/src/* $v2_reference
+rsync --archive \
+--exclude "README.md" \
+--exclude "SUMMARY.md" \
+--exclude "SablierV2NFTDescriptor.sol" \
+v2-core/docs/src/src/* \
+$docs
 
 # Move all Markdown files one level up
-find $v2_reference -type f -name "*.md" -execdir mv {} .. \;
+find $docs -type f -name "*.md" -execdir mv {} .. \;
 
 # Delete empty *.sol directories
-find $v2_reference -type d -empty -delete
+find $docs -type d -empty -delete
 
 # Update the hyperlinks to use the directory structure of this repository
-rg -l "src/abstracts/.*\.sol" $v2_reference | xargs sd "src/abstracts/.*\.sol" $v2_reference/abstracts
-rg -l "src/interfaces/.*\.sol" $v2_reference | xargs sd "src/interfaces/.*\.sol" $v2_reference/interfaces
-rg -l "src/.*\.sol" $v2_reference | xargs sd "src/.*\.sol" $v2_reference
+rg -l "src/abstracts/.*\.sol" $docs | xargs sd "src/abstracts/.*\.sol" $docs/abstracts
+rg -l "src/interfaces/.*\.sol" $docs | xargs sd "src/interfaces/.*\.sol" $docs/interfaces
+rg -l "src/.*\.sol" $docs | xargs sd "src/.*\.sol" $docs
+
+# Reorder the contracts in the sidebar
+contract=$docs/contract.SablierV2LockupLinear.md
+echo "$(echo -en '---\nsidebar_position: 1\n---\n'; cat $contract)" > $contract
+
+contract=$docs/contract.SablierV2LockupPro.md
+echo "$(echo -en '---\nsidebar_position: 2\n---\n'; cat $contract)" > $contract
+
+contract=$docs/contract.SablierV2Comptroller.md
+echo "$(echo -en '---\nsidebar_position: 3\n---\n'; cat $contract)" > $contract
 
 # Format the Markdown files with Prettier
-pnpm prettier --loglevel silent --write $v2_reference
+pnpm prettier --loglevel silent --write $docs
 
 # Delete the sablierhq/v2-core clone
 rm -rf v2-core
