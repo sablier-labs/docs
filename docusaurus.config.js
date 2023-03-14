@@ -1,3 +1,6 @@
+const math = require("remark-math");
+const katex = require("rehype-katex");
+
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   baseUrl: "/",
@@ -16,16 +19,24 @@ const config = {
       ({
         docs: {
           editUrl: "https://github.com/sablierhq/docs/tree/main/",
+          rehypePlugins: [katex],
+          routeBasePath: "/", // Serve the docs at the site's root
+          remarkPlugins: [math],
           sidebarPath: require.resolve("./sidebars.js"),
-
-          // Serve the docs at the site's root
-          routeBasePath: "/",
         },
         theme: {
           customCss: require.resolve("./src/css/custom.css"),
         },
       }),
     ],
+  ],
+  stylesheets: [
+    {
+      crossorigin: "anonymous",
+      href: "https://cdn.jsdelivr.net/npm/katex@0.13.24/dist/katex.min.css",
+      integrity: "sha384-odtC+0UGzzFL/6PNoE8rX/SPcQDXBJ+uRepguP4QkPCm2LBxH3FA3y+fKSiJ+AmM",
+      type: "text/css",
+    },
   ],
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
