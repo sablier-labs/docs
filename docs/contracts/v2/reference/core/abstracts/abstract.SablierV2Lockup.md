@@ -2,9 +2,7 @@
 
 [Git Source](https://github.com/sablierhq/v2-core/blob/87a0a16c835ea8e88ddf6a8387898c91c62ab9d1/docs/contracts/v2/reference/core/abstracts)
 
-**Inherits:** [SablierV2Config](/docs/contracts/v2/reference/core/abstracts/abstract.SablierV2Config.md),
-[ISablierV2Lockup](/docs/contracts/v2/reference/core/interfaces/interface.ISablierV2Lockup.md),
-[SablierV2FlashLoan](/docs/contracts/v2/reference/core/abstracts/abstract.SablierV2FlashLoan.md)
+**Inherits:** [SablierV2Config](/docs/contracts/v2/reference/core/abstracts/abstract.SablierV2FlashLoan.md)
 
 See the documentation in the {ISablierV2Lockup} interface.
 

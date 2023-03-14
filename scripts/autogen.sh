@@ -2,7 +2,7 @@
 
 # Pre-requisites:
 # - foundry (https://getfoundry.sh/)
-# - rsync (https://formulae.brew.sh/formula/rsync)
+# - rsync (https://github.com/WayneD/rsync)
 # - pnpm (https://pnpm.io)
 # - ripgrep (https://github.com/BurntSushi/ripgrep)
 # - sd (https://github.com/chmln/sd)
@@ -40,13 +40,13 @@ find $v2_reference -type f -name "*.md" -execdir mv {} .. \;
 # Delete empty *.sol directories
 find $v2_reference -type d -empty -delete
 
-# Format the Markdown files with Prettier
-pnpm prettier --loglevel=silent --write $v2_reference
-
 # Update the hyperlinks to use the directory structure of this repository
 rg -l "src/abstracts/.*\.sol" $v2_reference | xargs sd "src/abstracts/.*\.sol" $v2_reference/abstracts
 rg -l "src/interfaces/.*\.sol" $v2_reference | xargs sd "src/interfaces/.*\.sol" $v2_reference/interfaces
 rg -l "src/.*\.sol" $v2_reference | xargs sd "src/.*\.sol" $v2_reference
+
+# Format the Markdown files with Prettier
+pnpm prettier --loglevel silent --write $v2_reference
 
 # Delete the sablierhq/v2-core clone
 rm -rf v2-core
