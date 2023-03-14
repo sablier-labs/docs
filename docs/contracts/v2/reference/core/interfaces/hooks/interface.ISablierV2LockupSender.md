@@ -1,8 +1,8 @@
 # ISablierV2LockupSender
 
-[Git Source](https://github.com/sablierhq/v2-core/blob/8bfc7785e498ccde9a6d39ad2fc8998d9077f979/docs/contracts/v2/reference/core/interfaces)
+[Git Source](https://github.com/sablierhq/v2-core/blob/dd92abb9f3f01149a5be0e13eb517772181c5081/docs/contracts/v2/reference/core/interfaces)
 
-Interface for Sablier V2 sender contracts that can react to cancellations.
+Interface for sender contracts that can react to cancellations.
 
 _Implementing this interface is entirely optional. If a sender contract does not implement this interface, the function
 execution will not revert._
@@ -16,7 +16,7 @@ the recipient.
 
 \*Notes:
 
-- This function may revert, but the {SablierV2Lockup} contract will always ignore the revert.\*
+- This function may revert, but the Sablier contract will always ignore the revert.\*
 
 ```solidity
 function onStreamCanceled(uint256 streamId, uint128 senderAmount, uint128 recipientAmount) external;

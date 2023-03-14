@@ -1,8 +1,8 @@
 # ISablierV2LockupRecipient
 
-[Git Source](https://github.com/sablierhq/v2-core/blob/8bfc7785e498ccde9a6d39ad2fc8998d9077f979/docs/contracts/v2/reference/core/interfaces)
+[Git Source](https://github.com/sablierhq/v2-core/blob/dd92abb9f3f01149a5be0e13eb517772181c5081/docs/contracts/v2/reference/core/interfaces)
 
-Interface for Sablier V2 recipient contracts that can react to cancellations and withdrawals.
+Interface for recipient contracts that can react to cancellations and withdrawals.
 
 _Implementing this interface is entirely optional. If the recipient contract does not implement this interface, the
 function execution will not revert. Furthermore, if the recipient contract implements this interface only partially, the
@@ -17,7 +17,7 @@ by the sender.
 
 \*Notes:
 
-- This function may revert, but the {SablierV2Lockup} contract will always ignore the revert.\*
+- This function may revert, but the Sablier contract will always ignore the revert.\*
 
 ```solidity
 function onStreamCanceled(uint256 streamId, uint128 senderAmount, uint128 recipientAmount) external;
@@ -38,7 +38,7 @@ by the sender.
 
 \*Notes:
 
-- This function may revert, but the {SablierV2Lockup} contract will always ignore the revert.\*
+- This function may revert, but the Sablier contract will always ignore the revert.\*
 
 ```solidity
 function onStreamRenounced(uint256 streamId) external;
@@ -55,7 +55,7 @@ function onStreamRenounced(uint256 streamId) external;
 Reacts to a withdrawal from a stream.
 
 _Sablier V2 invokes this function on the recipient after a withdrawal triggered by the sender or an approved operator.
-This function may revert, but the {SablierV2Lockup} contract will always ignore the revert._
+This function may revert, but the Sablier contract will always ignore the revert._
 
 ```solidity
 function onStreamWithdrawn(uint256 streamId, address caller, address to, uint128 amount) external;

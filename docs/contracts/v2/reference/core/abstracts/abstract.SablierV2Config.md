@@ -1,11 +1,11 @@
 # SablierV2Config
 
-[Git Source](https://github.com/sablierhq/v2-core/blob/8bfc7785e498ccde9a6d39ad2fc8998d9077f979/docs/contracts/v2/reference/core/abstracts)
+[Git Source](https://github.com/sablierhq/v2-core/blob/dd92abb9f3f01149a5be0e13eb517772181c5081/docs/contracts/v2/reference/core/abstracts)
 
 **Inherits:** [ISablierV2Config](/docs/contracts/v2/reference/core/interfaces/interface.ISablierV2Config.md),
 [SablierV2Adminable](/docs/contracts/v2/reference/core/abstracts/abstract.SablierV2Adminable.md)
 
-See the documentation in the {ISablierV2Config} interface.
+See the documentation in {ISablierV2Config}.
 
 ## State Variables
 
@@ -21,8 +21,8 @@ UD60x18 public immutable override MAX_FEE;
 
 ### comptroller
 
-The address of the {SablierV2Comptroller} contract. The comptroller is in charge of the Sablier V2 protocol
-configuration, handling such values as the protocol fees.
+The address of the comptroller contract, which is in charge of the Sablier V2 protocol configuration, handling such
+values as the protocol fees.
 
 ```solidity
 ISablierV2Comptroller public override comptroller;
