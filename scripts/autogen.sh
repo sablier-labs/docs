@@ -4,7 +4,6 @@
 # - foundry (https://getfoundry.sh/)
 # - rsync (https://github.com/WayneD/rsync)
 # - pnpm (https://pnpm.io)
-# - ripgrep (https://github.com/BurntSushi/ripgrep)
 # - sd (https://github.com/chmln/sd)
 
 # Strict mode: https://gist.github.com/vncsna/64825d5609c146e80de8b1fd623011ca
@@ -45,10 +44,10 @@ find $docs -type f -name "*.md" -execdir mv {} .. \;
 # Delete empty *.sol directories
 find $docs -type d -empty -delete
 
-# Update the hyperlinks to use the directory structure of this repository
-rg -l "src/abstracts/.*\.sol" $docs | xargs sd "src/abstracts/.*\.sol" $docs/abstracts
-rg -l "src/interfaces/.*\.sol" $docs | xargs sd "src/interfaces/.*\.sol" $docs/interfaces
-rg -l "src/.*\.sol" $docs | xargs sd "src/.*\.sol" $docs
+# Update the hyperlinks to use the directory structure of this website
+sd "src/abstracts/.*\.sol" $docs/abstracts $(find $docs -type f -name "*.md")
+sd "src/interfaces/.*\.sol" $docs/interfaces $(find $docs -type f -name "*.md")
+sd "src/.*\.sol" $docs $(find $docs -type f -name "*.md")
 
 # Reorder the contracts in the sidebar
 contract=$docs/contract.SablierV2LockupLinear.md
