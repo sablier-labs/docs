@@ -134,13 +134,13 @@ function withdrawableAmountOf(uint256 streamId) public view virtual override ret
 
 Burns the NFT associated with the lockup stream.
 
-\*Emits a {Transfer} event. Notes:
+Emits a {Transfer} event. Notes:
 
 - The purpose of this function is to make the integration of Sablier V2 easier. Third-party contracts don't have to
   constantly check for the existence of the NFT. They can decide to burn the NFT themselves, or not. Requirements:
 - `streamId` must point to a lockup stream that is either canceled or depleted.
 - The NFT must exist.
-- `msg.sender` must be either an approved operator or the owner of the NFT.\*
+- `msg.sender` must be either an approved operator or the owner of the NFT.
 
 ```solidity
 function burn(uint256 streamId) external override;
@@ -156,13 +156,13 @@ function burn(uint256 streamId) external override;
 
 Cancels the lockup stream and transfers any remaining assets to the sender and the recipient.
 
-\*Emits a {CancelLockupStream} event. Notes:
+Emits a {CancelLockupStream} event. Notes:
 
 - This function will attempt to call a hook on either the sender or the recipient, depending upon who the `msg.sender`
   is, and if the resolved address is a contract. Requirements:
 - `streamId` must point to an active lockup stream.
 - `msg.sender` must be either the sender or the recipient of the stream (also known as the owner of the NFT).
-- The lockup stream must be cancelable.\*
+- The lockup stream must be cancelable.
 
 ```solidity
 function cancel(uint256 streamId) external override isActiveStream(streamId);
@@ -178,14 +178,14 @@ function cancel(uint256 streamId) external override isActiveStream(streamId);
 
 Cancels multiple lockup streams and transfers any remaining assets to the sender and the recipient.
 
-\*Emits multiple {CancelLockupStream} events. Notes:
+Emits multiple {CancelLockupStream} events. Notes:
 
 - Does not revert if one of the ids points to a lockup stream that is not active or is active but not cancelable.
 - This function will attempt to call a hook on either the sender or the recipient of each stream. Requirements:
 - Each stream id in `streamIds` must point to an active lockup.
 - `msg.sender` must be either the sender or the recipient of the stream (also known as the owner of the NFT) of every
   stream.
-- Each stream must be cancelable.\*
+- Each stream must be cancelable.
 
 ```solidity
 function cancelMultiple(uint256[] calldata streamIds) external override;
@@ -201,14 +201,14 @@ function cancelMultiple(uint256[] calldata streamIds) external override;
 
 Makes the lockup stream non-cancelable.
 
-\*Emits a {RenounceLockupStream} event. Notes:
+Emits a {RenounceLockupStream} event. Notes:
 
 - This is an irreversible operation.
 - This function will attempt to call a hook on the recipient of the stream, if the recipient is a contract.
   Requirements:
 - `streamId` must point to an active lockup stream.
 - `msg.sender` must be the sender of the stream.
-- The lockup stream must not be already non-cancelable.\*
+- The lockup stream must not be already non-cancelable.
 
 ```solidity
 function renounce(uint256 streamId) external override isActiveStream(streamId);
@@ -224,10 +224,10 @@ function renounce(uint256 streamId) external override isActiveStream(streamId);
 
 Sets a new NFT descriptor contract, which produces the URI describing the Sablier stream NFTs.
 
-\*Emits a {SetNFTDescriptor} event. Notes:
+Emits a {SetNFTDescriptor} event. Notes:
 
 - Does not revert if the NFT descriptor is the same. Requirements:
-- The caller must be the contract admin.\*
+- The caller must be the contract admin.
 
 ```solidity
 function setNFTDescriptor(ISablierV2NFTDescriptor newNFTDescriptor) external override onlyAdmin;
@@ -243,7 +243,7 @@ function setNFTDescriptor(ISablierV2NFTDescriptor newNFTDescriptor) external ove
 
 Withdraws the provided amount of assets from the lockup stream to the provided address `to`.
 
-\*Emits a {WithdrawFromLockupStream} and a {Transfer} event. Notes:
+Emits a {WithdrawFromLockupStream} and a {Transfer} event. Notes:
 
 - This function will attempt to call a hook on the recipient of the stream, if the recipient is a contract.
   Requirements:
@@ -251,7 +251,7 @@ Withdraws the provided amount of assets from the lockup stream to the provided a
 - `msg.sender` must be the sender of the stream, an approved operator, or the owner of the NFT (also known as the
   recipient of the stream).
 - `to` must be the recipient if `msg.sender` is the sender of the stream.
-- `amount` must not be zero and must not exceed the withdrawable amount.\*
+- `amount` must not be zero and must not exceed the withdrawable amount.
 
 ```solidity
 function withdraw(uint256 streamId, address to, uint128 amount)
@@ -273,10 +273,10 @@ function withdraw(uint256 streamId, address to, uint128 amount)
 
 Withdraws the maximum withdrawable amount from the lockup stream to the provided address `to`.
 
-\*Emits a {WithdrawFromLockupStream} and a {Transfer} event. Notes:
+Emits a {WithdrawFromLockupStream} and a {Transfer} event. Notes:
 
 - All from {withdraw}. Requirements:
-- All from {withdraw}.\*
+- All from {withdraw}.
 
 ```solidity
 function withdrawMax(uint256 streamId, address to) external override;
@@ -293,13 +293,13 @@ function withdrawMax(uint256 streamId, address to) external override;
 
 Withdraws assets from multiple lockup streams to the provided address `to`.
 
-\*Emits multiple {WithdrawFromLockupStream} and {Transfer} events. Notes:
+Emits multiple {WithdrawFromLockupStream} and {Transfer} events. Notes:
 
 - Does not revert if one of the ids points to a lockup stream that is not active.
 - This function will attempt to call a hook on the recipient of each stream. Requirements:
 - The count of `streamIds` must match the count of `amounts`.
 - `msg.sender` must be either the recipient of the stream (a.k.a the owner of the NFT) or an approved operator.
-- Every amount in `amounts` must not be zero and must not exceed the withdrawable amount.\*
+- Every amount in `amounts` must not be zero and must not exceed the withdrawable amount.
 
 ```solidity
 function withdrawMultiple(uint256[] calldata streamIds, address to, uint128[] calldata amounts) external override;

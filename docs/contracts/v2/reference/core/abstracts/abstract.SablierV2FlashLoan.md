@@ -23,12 +23,12 @@ bytes32 internal constant CALLBACK_SUCCESS = keccak256("ERC3156FlashBorrower.onF
 
 The amount of fees to charge for a hypothetical flash loan amount.
 
-\*You might notice a bit of a terminology clash here, since the ERC-3156 standard refers to the "flash fee" as an
-amount, whereas the flash fee queried from the comptroller is a percentage. In this code base, the "amount" suffix is
-typically appended to variables that represent amounts, but in this context, the name be kept unchanged to comply with
-the ERC. Requirements:
+You might notice a bit of a terminology clash here, since the ERC-3156 standard refers to the "flash fee" as an amount,
+whereas the flash fee queried from the comptroller is a percentage. In this code base, the "amount" suffix is typically
+appended to variables that represent amounts, but in this context, the name be kept unchanged to comply with the ERC.
+Requirements:
 
-- The ERC-20 asset must be flash loanable.\*
+- The ERC-20 asset must be flash loanable.
 
 ```solidity
 function flashFee(address asset, uint256 amount) public view override returns (uint256 fee);
@@ -74,14 +74,14 @@ function maxFlashLoan(address asset) external view override returns (uint256 amo
 Allows smart contracts to access the entire liquidity of the Sablier V2 contract within one transaction as long as the
 principal plus a flash fee is returned.
 
-\*Emits a {FlashLoan} event. Requirements:
+Emits a {FlashLoan} event. Requirements:
 
 - All from {flashFee}.
 - `amount` must be less than 2^128.
 - `fee` must be less than 2^128.
 - `amount` must not exceed the liquidity available for `asset`.
 - `msg.sender` must allow this contract to spend at least `amount + fee` assets.
-- `receiver` implementation of {IERC3156FlashBorrower-onFlashLoan} must return `CALLBACK_SUCCESS`.\*
+- `receiver` implementation of {IERC3156FlashBorrower-onFlashLoan} must return `CALLBACK_SUCCESS`.
 
 ```solidity
 function flashLoan(IERC3156FlashBorrower receiver, address asset, uint256 amount, bytes calldata data)

@@ -1,7 +1,6 @@
 ---
 sidebar_position: 2
 ---
-
 # SablierV2LockupPro
 
 [Git Source](https://github.com/sablierhq/v2-core/blob/dd92abb9f3f01149a5be0e13eb517772181c5081/docs/contracts/v2/reference/core)
@@ -263,7 +262,7 @@ function returnableAmountOf(uint256 streamId) external view override returns (ui
 
 Calculates the amount that has been streamed to the recipient, in units of the asset's decimals.
 
-\*The streaming function is:
+The streaming function is:
 
 $$
 f(x) = x^{exp} * csa + esas
@@ -274,7 +273,7 @@ Where:
 - $x$ is the elapsed time divided by the total time in the current segment.
 - $exp$ is the current segment exponent.
 - $csa$ is the current segment amount.
-- $esas$ are the elapsed segments' amounts summed up.\*
+- $esas$ are the elapsed segments' amounts summed up.
 
 ```solidity
 function streamedAmountOf(uint256 streamId)
@@ -319,9 +318,9 @@ function withdrawableAmountOf(uint256 streamId)
 Create a lockup pro stream by setting the start time to `block.timestamp` and the end time to the sum of
 `block.timestamp` and all segment deltas. The stream is funded by `msg.sender` and is wrapped in an ERC-721 NFT.
 
-\*Emits a {CreateLockupProStream} and a {Transfer} event. Requirements:
+Emits a {CreateLockupProStream} and a {Transfer} event. Requirements:
 
-- All from {createWithMilestones}.\*
+- All from {createWithMilestones}.
 
 ```solidity
 function createWithDeltas(LockupPro.CreateWithDeltas calldata params) external override returns (uint256 streamId);
@@ -344,7 +343,7 @@ function createWithDeltas(LockupPro.CreateWithDeltas calldata params) external o
 Create a lockup pro stream with the provided milestones, implying the end time from the last segment's milestone. The
 stream is funded by `msg.sender` and is wrapped in an ERC-721 NFT.
 
-\*Emits a {CreateLockupProStream} and a {Transfer} event. Notes:
+Emits a {CreateLockupProStream} and a {Transfer} event. Notes:
 
 - As long as the milestones are ordered, it is not an error to set the `params.startTime` and the milestones to a range
   that is in the past. Requirements:
@@ -355,7 +354,7 @@ stream is funded by `msg.sender` and is wrapped in an ERC-721 NFT.
 - The first segment's milestone must be greater than or equal to `params.startTime`.
 - `params.startTime` must not be greater than the milestone of the last segment.
 - `msg.sender` must have allowed this contract to spend at least `params.totalAmount` assets.
-- If set, `params.broker.fee` must not be greater than `MAX_FEE`.\*
+- If set, `params.broker.fee` must not be greater than `MAX_FEE`.
 
 ```solidity
 function createWithMilestones(LockupPro.CreateWithMilestones calldata params)

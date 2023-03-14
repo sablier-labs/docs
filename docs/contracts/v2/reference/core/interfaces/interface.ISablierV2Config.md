@@ -45,9 +45,9 @@ function getProtocolRevenues(IERC20 asset) external view returns (uint128 protoc
 
 Claims all protocol revenues accrued for the provided ERC-20 asset.
 
-\*Emits a {ClaimProtocolRevenues} event. Requirements:
+Emits a {ClaimProtocolRevenues} event. Requirements:
 
-- The caller must be the owner of the contract.\*
+- The caller must be the owner of the contract.
 
 ```solidity
 function claimProtocolRevenues(IERC20 asset) external;
@@ -64,10 +64,10 @@ function claimProtocolRevenues(IERC20 asset) external;
 Sets a new comptroller contract. The comptroller is in charge of the protocol configuration, handling such values as the
 protocol fees.
 
-\*Emits a {SetComptroller} event. Notes:
+Emits a {SetComptroller} event. Notes:
 
 - Does not revert if the comptroller is the same. Requirements:
-- The caller must be the contract admin.\*
+- The caller must be the contract admin.
 
 ```solidity
 function setComptroller(ISablierV2Comptroller newComptroller) external;

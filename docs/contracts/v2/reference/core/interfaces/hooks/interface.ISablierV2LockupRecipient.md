@@ -15,9 +15,9 @@ function execution will not revert either._
 Reacts to the cancellation of a stream. Sablier V2 invokes this function on the recipient after a cancellation triggered
 by the sender.
 
-\*Notes:
+Notes:
 
-- This function may revert, but the Sablier contract will always ignore the revert.\*
+- This function may revert, but the Sablier contract will always ignore the revert.
 
 ```solidity
 function onStreamCanceled(uint256 streamId, uint128 senderAmount, uint128 recipientAmount) external;
@@ -36,9 +36,9 @@ function onStreamCanceled(uint256 streamId, uint128 senderAmount, uint128 recipi
 Reacts to the renouncement of a stream. Sablier V2 invokes this function on the recipient after a renouncement triggered
 by the sender.
 
-\*Notes:
+Notes:
 
-- This function may revert, but the Sablier contract will always ignore the revert.\*
+- This function may revert, but the Sablier contract will always ignore the revert.
 
 ```solidity
 function onStreamRenounced(uint256 streamId) external;

@@ -52,12 +52,12 @@ function checkDeltasAndCalculateMilestones(LockupPro.SegmentWithDelta[] memory s
 
 ### \_checkProSegments
 
-\*Checks that:
+Checks that:
 
 1. The first milestone is greater than or equal to the start time.
 2. The milestones are ordered chronologically.
 3. There are no duplicate milestones.
-4. The deposit amount is equal to the segment amounts summed up.\*
+4. The deposit amount is equal to the segment amounts summed up.
 
 ```solidity
 function _checkProSegments(LockupPro.Segment[] memory segments, uint128 depositAmount, uint40 startTime) private pure;

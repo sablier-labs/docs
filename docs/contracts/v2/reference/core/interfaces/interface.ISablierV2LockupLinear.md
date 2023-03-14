@@ -55,7 +55,7 @@ function getStream(uint256 streamId) external view returns (LockupLinear.Stream 
 
 Calculates the amount that has been streamed to the recipient, in units of the asset's decimals.
 
-\*The streaming function is:
+The streaming function is:
 
 $$
 f(x) = x * d + c
@@ -65,7 +65,7 @@ Where:
 
 - $x$ is the elapsed time divided by the total duration of the stream.
 - $d$ is the deposit amount.
-- $c$ is the cliff amount.\*
+- $c$ is the cliff amount.
 
 ```solidity
 function streamedAmountOf(uint256 streamId) external view returns (uint128 streamedAmount);
@@ -82,9 +82,9 @@ function streamedAmountOf(uint256 streamId) external view returns (uint128 strea
 Creates a lockup linear stream with the start time set to `block.timestamp`, and the end time set to
 `block.timestamp + params.durations.total`. The stream is funded by `msg.sender` and is wrapped in an ERC-721 NFT.
 
-\*Emits a {CreateLockupLinearStream} and a {Transfer} event. Requirements:
+Emits a {CreateLockupLinearStream} and a {Transfer} event. Requirements:
 
-- All from {createWithRange}.\*
+- All from {createWithRange}.
 
 ```solidity
 function createWithDurations(LockupLinear.CreateWithDurations calldata params) external returns (uint256 streamId);
@@ -107,7 +107,7 @@ function createWithDurations(LockupLinear.CreateWithDurations calldata params) e
 Creates a lockup linear stream with the provided start time and end time as the range. The stream is funded by
 `msg.sender` and is wrapped in an ERC-721 NFT.
 
-\*Emits a {CreateLockupLinearStream} and a {Transfer} event. Notes:
+Emits a {CreateLockupLinearStream} and a {Transfer} event. Notes:
 
 - As long as the times are ordered, it is not an error to set a range that is in the past. Requirements:
 - `params.recipient` must not be the zero address.
@@ -115,7 +115,7 @@ Creates a lockup linear stream with the provided start time and end time as the 
 - `params.range.start` must not be greater than `params.range.cliff`.
 - `params.range.cliff` must not be greater than `params.range.end`.
 - `msg.sender` must have allowed this contract to spend at least `params.totalAmount` assets.
-- If set, `params.broker.fee` must not be greater than `MAX_FEE`.\*
+- If set, `params.broker.fee` must not be greater than `MAX_FEE`.
 
 ```solidity
 function createWithRange(LockupLinear.CreateWithRange calldata params) external returns (uint256 streamId);

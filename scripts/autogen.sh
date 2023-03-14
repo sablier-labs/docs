@@ -50,6 +50,15 @@ sd "\{I(\w+)\}" "[I\$1]($docs/interfaces/interface.I\$1.md)" $(find $docs -type 
 # Note: this assumes that no abstract contracts will be caught by the regex
 sd "\{SablierV2(\w+)\}" "[SablierV2\$1]($docs/contract.SablierV2\$1.md)" $(find $docs -type f -name "*.md")
 
+# Format the docs with Prettier
+pnpm prettier --loglevel silent --write $docs
+
+# Remove the italic asterisks added by `forge doc`: https://github.com/foundry-rs/foundry/issues/4540
+sd --string-mode "\*" "" $(find $docs -type f -name "*.md")
+
+# Re-format the docs with Prettier
+pnpm prettier --loglevel silent --write $docs
+
 # Reorder the contracts in the sidebar
 contract=$docs/contract.SablierV2LockupLinear.md
 echo "$(echo -en '---\nsidebar_position: 1\n---\n'; cat $contract)" > $contract
@@ -59,6 +68,3 @@ echo "$(echo -en '---\nsidebar_position: 2\n---\n'; cat $contract)" > $contract
 
 contract=$docs/contract.SablierV2Comptroller.md
 echo "$(echo -en '---\nsidebar_position: 3\n---\n'; cat $contract)" > $contract
-
-# Format the Markdown files with Prettier
-pnpm prettier --loglevel silent --write $docs
