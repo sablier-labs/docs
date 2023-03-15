@@ -1,6 +1,6 @@
 ---
 sidebar_position: 1
-title: Asset Streaming
+title: "Proxy Target"
 ---
 
 :::note

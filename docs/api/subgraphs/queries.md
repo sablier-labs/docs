@@ -1,6 +1,6 @@
 ---
-sidebar_position: 1
-title: "Overview"
+sidebar_position: 3
+title: "Sample Queries"
 ---
 
 :::note

@@ -1,5 +1,5 @@
 {
   "editor.defaultFormatter": "esbenp.prettier-vscode",
-  "prettier.documentSelectors": ["**/*.mdx", "**/*.tsx"],
+  "prettier.documentSelectors": ["**/*.tsx"],
   "typescript.tsdk": "node_modules/typescript/lib"
 }

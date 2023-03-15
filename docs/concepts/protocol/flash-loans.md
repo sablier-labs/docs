@@ -1,6 +1,6 @@
 ---
 sidebar_position: 6
-title: Flash Loans
+title: "Flash Loans"
 ---
 
 :::note

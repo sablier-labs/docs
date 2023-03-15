@@ -1,6 +1,6 @@
 ---
-sidebar_position: 1
-title: "Overview"
+sidebar_position: 2
+title: "Linear Stream"
 ---
 
 :::note

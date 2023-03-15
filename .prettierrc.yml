@@ -7,7 +7,7 @@ tabWidth: 2
 trailingComma: "all"
 
 overrides:
-  - files: ["*.mdx", "*.tsx"]
+  - files: ["*.tsx"]
     options:
       importOrder:
         - "<THIRD_PARTY_MODULES>"

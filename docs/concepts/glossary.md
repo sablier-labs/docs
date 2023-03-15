@@ -1,6 +1,6 @@
 ---
 sidebar_position: 5
-title: Glossary
+title: "Glossary"
 ---
 
 ## Asset
@@ -8,7 +8,7 @@ title: Glossary
 Although digital assets can exist in various forms, the Sablier Protocol exclusively supports the streaming of ERC-20
 assets.
 
-The stream itself is represented in the form of an NFT (ERC-721).
+The stream itself is represented as an NFT (ERC-721).
 
 ## Broker
 
@@ -48,7 +48,7 @@ those with the
 
 A global, open-source platform for decentralized applications.
 
-## Ethereum Virtual Machine (EVM)
+## Ethereum Virtual Machine
 
 The technical architecture of Ethereum, which many other blockchains have appropriated.
 

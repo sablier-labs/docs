@@ -134,9 +134,14 @@ const config = {
             to: "/contracts/v2/overview",
           },
           {
+            label: "APIs",
+            position: "left",
+            to: "/api/subgraphs/overview",
+          },
+          {
             label: "FAQ",
             position: "left",
-            to: "/faq/basics",
+            to: "/faq",
           },
           {
             label: "Discord",
@@ -151,7 +156,9 @@ const config = {
         ],
         logo: {
           alt: "Sablier Hourglass",
+          height: "20",
           src: "img/icon.svg",
+          width: "20",
         },
         title: "Sablier Docs",
       },

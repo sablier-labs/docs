@@ -58,6 +58,34 @@
   display: flex;
 }
 
+.markdown > h1 {
+  --ifm-h1-font-size: 1.75rem;
+}
+
+.markdown > h1:first-child {
+  --ifm-h1-font-size: 1.75rem;
+}
+
+.markdown > h2 {
+  --ifm-h2-font-size: 1.5rem;
+}
+
+.markdown > h3 {
+  --ifm-h3-font-size: 1.25rem;
+}
+
+.markdown > h4 {
+  --ifm-h4-font-size: 1rem;
+}
+
+.markdown > h5 {
+  --ifm-h5-font-size: 0.875rem;
+}
+
+.markdown > h6 {
+  --ifm-h6-font-size: 0.85rem;
+}
+
 .navbar__item.active {
   display: inline-block;
 }

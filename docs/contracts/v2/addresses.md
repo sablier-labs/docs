@@ -1,6 +1,6 @@
 ---
 sidebar_position: 2
-title: Lockup Streams
+title: "Deployment Addresses"
 ---
 
 :::note

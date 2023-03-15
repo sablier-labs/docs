@@ -1,6 +1,6 @@
 ---
 id: v2-explainer
-title: Sablier v2 Explainer
+title: "Sablier V2 Explainer"
 sidebar_position: 6
 ---
 

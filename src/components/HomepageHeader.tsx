@@ -11,8 +11,8 @@ export default function HomepageHeader() {
       <div className="container">
         <h1 className="hero__title">{siteConfig.title}</h1>
         <p className="hero__subtitle">
-          Documentation and guides for Sablier, the cryptoasset streaming protocol that facilitates streaming of ERC-20
-          assets on Ethereum and other EVM blockchains.
+          Documentation and guides for Sablier, the smart contract protocol that facilitates streaming of ERC-20 assets
+          on Ethereum and other EVM blockchains.
         </p>
         <div className={styles.buttons}>
           <Link className="button button--primary button--lg" to="/concepts/what-is-sablier">

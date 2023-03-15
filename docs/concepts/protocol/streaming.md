@@ -1,6 +1,6 @@
 ---
-sidebar_position: 5
-title: Fees
+sidebar_position: 1
+title: "Streaming"
 ---
 
 :::note
