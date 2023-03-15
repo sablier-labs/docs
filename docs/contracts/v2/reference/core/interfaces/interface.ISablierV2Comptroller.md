@@ -1,6 +1,6 @@
 # ISablierV2Comptroller
 
-[Git Source](https://github.com/sablierhq/v2-core/blob/dd92abb9f3f01149a5be0e13eb517772181c5081/docs/contracts/v2/reference/core/interfaces)
+[Git Source](https://github.com/sablierhq/v2-core/blob/9df2bf8f303f7d13337716257672553e60783b8c/docs/contracts/v2/reference/core/interfaces)
 
 **Inherits:** [ISablierV2Adminable](/docs/contracts/v2/reference/core/interfaces/interface.ISablierV2Adminable.md)
 
