@@ -1,7 +1,7 @@
 ---
-id: v2-explainer
+id: "explainer"
+sidebar_position: 2
 title: "Sablier V2 Explainer"
-sidebar_position: 6
 ---
 
 ### Focus On Vesting

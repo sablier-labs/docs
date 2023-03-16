@@ -1,5 +1,6 @@
 ---
-sidebar_position: 2
+id: "linear-stream"
+sidebar_position: 1
 title: "Linear Stream"
 ---
 

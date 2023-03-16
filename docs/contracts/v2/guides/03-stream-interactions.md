@@ -1,4 +1,5 @@
 ---
+id: "stream-interactions"
 sidebar_position: 3
 title: "Interacting with Streams"
 ---

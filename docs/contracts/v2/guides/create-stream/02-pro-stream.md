@@ -1,5 +1,6 @@
 ---
-sidebar_position: 3
+id: "pro-stream"
+sidebar_position: 2
 title: "Pro Stream"
 ---
 

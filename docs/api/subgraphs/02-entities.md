@@ -1,4 +1,5 @@
 ---
+id: "entities"
 sidebar_position: 2
 title: "GraphQL Entities"
 ---

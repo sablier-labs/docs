@@ -1,8 +1,8 @@
 ---
+id: "overview"
 sidebar_position: 1
+title: "Overview"
 ---
-
-# Overview
 
 Welcome to the Sablier V1 smart contract documentation.
 
