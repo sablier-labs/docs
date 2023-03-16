@@ -1,7 +1,7 @@
 ---
-id: "stream-interactions"
+id: "cancel"
 sidebar_position: 3
-title: "Interacting with Streams"
+title: "Cancel Stream"
 ---
 
 :::note

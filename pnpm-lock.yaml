@@ -15,6 +15,7 @@ specifiers:
   '@tsconfig/docusaurus': ^1.0.7
   '@types/node': ^18.15.3
   clsx: ^1.2.1
+  docusaurus-theme-github-codeblock: ^1.1.4
   hast-util-is-element: 1.1.0
   prettier: ^2.8.4
   prism-react-renderer: ^1.3.5
@@ -34,6 +35,7 @@ dependencies:
   '@heroicons/react': 2.0.16_react@17.0.2
   '@mdx-js/react': 1.6.22_react@17.0.2
   clsx: 1.2.1
+  docusaurus-theme-github-codeblock: 1.1.4_sfoxds7t5ydpegc3knd667wn6m
   hast-util-is-element: 1.1.0
   prism-react-renderer: 1.3.5_react@17.0.2
   react: 17.0.2
@@ -4292,6 +4294,19 @@ packages:
     engines: {node: '>=6'}
     dependencies:
       '@leichtgewicht/ip-codec': 2.0.4
+    dev: false
+
+  /docusaurus-theme-github-codeblock/1.1.4_sfoxds7t5ydpegc3knd667wn6m:
+    resolution: {integrity: sha512-a8sBUHTpbXBg8qS8H43VogRusOrY4aqpVYs6RiA08lQqI5FxYjAVGMArHQD/Rz0mYm3h/iiqgsVc3K4lTaIt3A==}
+    dependencies:
+      '@docusaurus/types': 2.3.1_sfoxds7t5ydpegc3knd667wn6m
+    transitivePeerDependencies:
+      - '@swc/core'
+      - esbuild
+      - react
+      - react-dom
+      - uglify-js
+      - webpack-cli
     dev: false
 
   /dom-converter/0.2.0:

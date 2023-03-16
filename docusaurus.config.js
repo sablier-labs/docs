@@ -38,6 +38,7 @@ const config = {
       type: "text/css",
     },
   ],
+  themes: ["docusaurus-theme-github-codeblock"],
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
@@ -45,6 +46,9 @@ const config = {
         appId: "KF9W3YD3YG",
         apiKey: "7eab349cad720dd939e06808c4b2d6e9",
         indexName: "sablier-docs",
+      },
+      codeblock: {
+        showGithubLink: false,
       },
       colorMode: {
         // "light" | "dark"

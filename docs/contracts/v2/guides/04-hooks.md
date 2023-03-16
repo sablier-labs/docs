@@ -1,7 +1,7 @@
 ---
 id: "hooks"
 sidebar_position: 4
-title: "Write Hooks"
+title: "Implement Hooks"
 ---
 
 ## Recipient
