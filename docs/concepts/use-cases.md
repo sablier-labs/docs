@@ -20,7 +20,7 @@ This is **time intensive**, is **prone to errors**, and **offers a bad user expe
 Recipients receive their compensation gradually over time: every second they receive a fraction of the funds. **This fits great for both parties**. The organization only needs to spend time once, to set up all the streams. On the other hand, the recipients receive the funds gradually over time, allowing them to manage their finances as they wish.
 
 ### 2. Release Schedules Imply a Schelling Point for Speculators
-> In game theory, [a focal point](https://en.wikipedia.org/wiki/Focal_point_(game_theory) (also called Schelling point) is a solution that people tend to choose by default in the absence of communication.
+> In game theory, [a focal point](https://en.wikipedia.org/wiki/Focal_point_(game_theory)) (also called Schelling point) is a solution that people tend to choose by default in the absence of communication.
 
 Since traditional vesting contracts have a predictable release schedule, the day on which a vesting period ends may be used as a Schelling point for speculators.
 
@@ -38,9 +38,9 @@ These problems don't happen with Sablier as when the tokens are streamed, **anyo
 In short: **transparency is native to Sablier**.
 
 ## Airdrops
-**Unless you have a very specific reason not to, you should be using Sablier to airdrop your new token to your community.**
+Unless you have a very specific reason not to, you should be using Sablier to airdrop your new token to your community.
 
-### Traditional Airdrops Are Flawed
+### 1. Traditional Airdrops Are Flawed
 Airdrops have become a routine in the crypto industry. Over the years it has become the standard way of launching a new token and for good reasons: it's a great way to give ownership of a project to the right people.
 
 However, **the traditional way of doing airdrops is flawed**. The vast majority of airdrop receivers only claim the tokens to dump them on the market afterwards, and the interest these airdrops gather is short-lived.
@@ -49,7 +49,7 @@ The real major problem, though, is that **traditional airdrops don't create the 
 
 The solution to this problem is extremely elegant and creates the right incentives for community members to think on a long-term perspective. It will guarantee that community members keep the project's future as their first and foremost priority. That solution is called token streams.
 
-### Using Token Streams to Airdrop Your Token
+### 2. Using Token Streams to Airdrop Your Token
 
 Instead of airdropping the entirety of the tokens all at once, airdrop recipients receive a fraction of the tokens every second through a token stream.
 
@@ -61,7 +61,7 @@ With token streams, airdrop recipients only receive a fraction of the tokens eve
 
 Using Sablier, **token streams can be linear** where the recipients receive the same amount every second, **exponential** where the recipients receive exponentially more over time, etc.
 
-### Token Streams > Every Other Airdrop Solution
+### 3. Token Streams > Every Other Airdrop Solution
 Token streams provide a much better way to stream tokens than do traditional airdrops. The former gets community members to be aligned with the project's interests and think on a long-term perspective, the latter doesn't.
 
 If you are launching a new token, use token streams.
