@@ -168,7 +168,7 @@ const config = {
       },
       prism: {
         additionalLanguages: ["solidity"],
-        darkTheme: require("prism-react-renderer/themes/dracula"),
+        darkTheme: require("prism-react-renderer/themes/palenight"),
         theme: require("prism-react-renderer/themes/github"),
       },
     }),
