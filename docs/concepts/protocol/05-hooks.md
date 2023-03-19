@@ -1,6 +1,7 @@
 ---
+id: "hooks"
 sidebar_position: 5
-title: "Fees"
+title: "Hooks"
 ---
 
 :::note

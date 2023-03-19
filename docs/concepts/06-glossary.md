@@ -1,19 +1,19 @@
 ---
-sidebar_position: 5
+id: "glossary"
+sidebar_position: 6
 title: "Glossary"
 ---
 
 ## Asset
 
-Although digital assets can exist in various forms, the Sablier Protocol exclusively supports the streaming of ERC-20
-assets.
+Digital assets can exist in various forms, but the Sablier Protocol exclusively supports the streaming of ERC-20 assets.
 
 The stream itself is represented as an NFT (ERC-721).
 
 ## Broker
 
-A third-party entity that interacts with the Sablier Protocol and charges fees upon creating streams on behalf of their
-users.
+A third-party entity that interacts with the Sablier Protocol on behalf of its users, who may charge service fees for
+facilitating these interactions.
 
 ## Broker Fees
 
@@ -29,6 +29,12 @@ accrue in the stream.
 Smart contracts that are considered foundational, and are essential for Sablier to exist. Upgrading to a new version of
 core would require deploying an entirely new set of smart contracts, and would be considered a new version of the
 Sablier Protocol.
+
+## DeFi
+
+Short for Decentralized Finance, which is an ecosystem of financial applications and services built on blockchain
+networks, primarily Ethereum, that leverage smart contracts to enable trustless, permissionless, and transparent
+financial transactions without relying on traditional intermediaries like banks or financial institutions.
 
 ## End Time
 
