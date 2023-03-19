@@ -1,6 +1,6 @@
 # SablierV2FlashLoan
 
-[Git Source](https://github.com/sablierhq/v2-core/blob/6223a7bce69cdec996b0a95cb95d0f04cdb809be/docs/contracts/v2/reference/core/abstracts)
+[Git Source](https://github.com/sablierhq/v2-core/blob/e69c450f9b8808e324f31933450818ca28d0800b/docs/contracts/v2/reference/core/abstracts)
 
 **Inherits:** IERC3156FlashLender,
 [SablierV2Base](/docs/contracts/v2/reference/core/abstracts/abstract.SablierV2Base.md)
@@ -25,8 +25,8 @@ The amount of fees to charge for a hypothetical flash loan amount.
 
 You might notice a bit of a terminology clash here, since the ERC-3156 standard refers to the "flash fee" as an amount,
 whereas the flash fee queried from the comptroller is a percentage. In this code base, the "amount" suffix is typically
-appended to variables that represent amounts, but in this context, the name be kept unchanged to comply with the ERC.
-Requirements:
+appended to variables that represent amounts, but in this context, the name must be kept unchanged to comply with the
+ERC. Requirements:
 
 - The ERC-20 asset must be flash loanable.
 
@@ -76,6 +76,7 @@ principal plus a flash fee is returned.
 
 Emits a {FlashLoan} event. Requirements:
 
+- The call must not be a delegate call.
 - All from {flashFee}.
 - `amount` must be less than 2^128.
 - `fee` must be less than 2^128.

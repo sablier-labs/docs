@@ -1,6 +1,6 @@
 # SablierV2Base
 
-[Git Source](https://github.com/sablierhq/v2-core/blob/6223a7bce69cdec996b0a95cb95d0f04cdb809be/docs/contracts/v2/reference/core/abstracts)
+[Git Source](https://github.com/sablierhq/v2-core/blob/e69c450f9b8808e324f31933450818ca28d0800b/docs/contracts/v2/reference/core/abstracts)
 
 **Inherits:** [ISablierV2Base](/docs/contracts/v2/reference/core/interfaces/interface.ISablierV2Base.md),
 [NoDelegateCall](/docs/contracts/v2/reference/core/abstracts/abstract.Adminable.md)
@@ -60,7 +60,7 @@ Claims all protocol revenues accrued for the provided ERC-20 asset.
 
 Emits a {ClaimProtocolRevenues} event. Requirements:
 
-- The caller must be the owner of the contract.
+- The caller must be the contract admin.
 
 ```solidity
 function claimProtocolRevenues(IERC20 asset) external override onlyAdmin;

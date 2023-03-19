@@ -1,6 +1,6 @@
 # LockupLinear
 
-[Git Source](https://github.com/sablierhq/v2-core/blob/6223a7bce69cdec996b0a95cb95d0f04cdb809be/docs/contracts/v2/reference/core)
+[Git Source](https://github.com/sablierhq/v2-core/blob/e69c450f9b8808e324f31933450818ca28d0800b/docs/contracts/v2/reference/core)
 
 Quasi-namespace for the structs used in
 [SablierV2LockupLinear](docs/contracts/v2/reference/core/contract.SablierV2LockupLinear.md).

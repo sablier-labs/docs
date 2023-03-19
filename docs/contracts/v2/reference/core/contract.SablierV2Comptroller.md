@@ -3,7 +3,7 @@ sidebar_position: 3
 ---
 # SablierV2Comptroller
 
-[Git Source](https://github.com/sablierhq/v2-core/blob/6223a7bce69cdec996b0a95cb95d0f04cdb809be/docs/contracts/v2/reference/core)
+[Git Source](https://github.com/sablierhq/v2-core/blob/e69c450f9b8808e324f31933450818ca28d0800b/docs/contracts/v2/reference/core)
 
 **Inherits:** [ISablierV2Comptroller](/docs/contracts/v2/reference/core/interfaces/interface.ISablierV2Comptroller.md),
 [Adminable](/docs/contracts/v2/reference/core/abstracts/abstract.Adminable.md)

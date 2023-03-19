@@ -1,6 +1,6 @@
 # IAdminable
 
-[Git Source](https://github.com/sablierhq/v2-core/blob/6223a7bce69cdec996b0a95cb95d0f04cdb809be/docs/contracts/v2/reference/core/interfaces)
+[Git Source](https://github.com/sablierhq/v2-core/blob/e69c450f9b8808e324f31933450818ca28d0800b/docs/contracts/v2/reference/core/interfaces)
 
 Contract module that provides a basic access control mechanism, with an admin that can be granted exclusive access to
 specific functions. The inheriting contract must set the initial admin in the constructor.
@@ -17,7 +17,9 @@ function admin() external view returns (address);
 
 ### transferAdmin
 
-Transfers the admin of the contract to a new address. Notes:
+Transfers the contract admin to a new address.
+
+Notes:
 
 - Does not revert if the admin is the same.
 - This function can potentially leave the contract without an admin, thereby removing any functionality that is only

@@ -1,6 +1,6 @@
 # ISablierV2LockupDynamic
 
-[Git Source](https://github.com/sablierhq/v2-core/blob/6223a7bce69cdec996b0a95cb95d0f04cdb809be/docs/contracts/v2/reference/core/interfaces)
+[Git Source](https://github.com/sablierhq/v2-core/blob/e69c450f9b8808e324f31933450818ca28d0800b/docs/contracts/v2/reference/core/interfaces)
 
 **Inherits:** [ISablierV2Lockup](/docs/contracts/v2/reference/core/interfaces/interface.ISablierV2Lockup.md)
 
@@ -120,17 +120,18 @@ The stream is funded by `msg.sender` and is wrapped in an ERC-721 NFT.
 
 Emits a {CreateLockupDynamicStream} and a {Transfer} event. Notes:
 
-- As long as the milestones are ordered, it is not an error to set the `params.startTime` and the milestones to a range
-  that is in the past. Requirements:
-- `params.recipient` must not be the zero address.
-- `params.totalAmount` must not be zero.
-- `params.segments` must hold at least one segment, but not more than `MAX_SEGMENT_COUNT`.
-- The sum of the segment amounts must be equal to the deposit amount.
-- The first segment's milestone must be greater than or equal to `params.startTime`.
-- `params.startTime` must not be greater than the milestone of the last segment.
-- `msg.sender` must have allowed this contract to spend at least `params.totalAmount` assets.
-- If set, `params.broker.fee` must not be greater than `MAX_FEE`.
+- As long as the segment milestones are arranged in ascending order, it is not an error for some of them to be in the
+  past. Requirements:
 - The call must not be a delegate call.
+- `params.totalAmount` must not be zero.
+- If set, `params.broker.fee` must not be greater than `MAX_FEE`.
+- `params.segments` must have at least one segment, but not more than `MAX_SEGMENT_COUNT`.
+- The first segment's milestone must be greater than or equal to `params.startTime`.
+- The segment milestones must be arranged in ascending order.
+- `params.startTime` must not be greater than the last segment's milestone.
+- The sum of the segment amounts must be equal to the deposit amount.
+- `params.recipient` must not be the zero address.
+- `msg.sender` must have allowed this contract to spend at least `params.totalAmount` assets.
 
 ```solidity
 function createWithMilestones(LockupDynamic.CreateWithMilestones calldata params) external returns (uint256 streamId);

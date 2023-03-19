@@ -3,7 +3,7 @@ sidebar_position: 1
 ---
 # SablierV2LockupLinear
 
-[Git Source](https://github.com/sablierhq/v2-core/blob/6223a7bce69cdec996b0a95cb95d0f04cdb809be/docs/contracts/v2/reference/core)
+[Git Source](https://github.com/sablierhq/v2-core/blob/e69c450f9b8808e324f31933450818ca28d0800b/docs/contracts/v2/reference/core)
 
 **Inherits:**
 [ISablierV2LockupLinear](/docs/contracts/v2/reference/core/interfaces/interface.ISablierV2LockupLinear.md), ERC721,
@@ -227,7 +227,9 @@ function getWithdrawnAmount(uint256 streamId) external view override returns (ui
 
 ### isCancelable
 
-Checks whether the lockup stream is cancelable or not. Notes:
+Checks whether the lockup stream is cancelable or not.
+
+Notes:
 
 - Always returns `false` when the lockup stream is not active.
 
@@ -355,13 +357,13 @@ Creates a lockup linear stream with the provided start time and end time as the 
 Emits a {CreateLockupLinearStream} and a {Transfer} event. Notes:
 
 - As long as the times are ordered, it is not an error to set a range that is in the past. Requirements:
-- `params.recipient` must not be the zero address.
+- The call must not be a delegate call.
 - `params.totalAmount` must not be zero.
+- If set, `params.broker.fee` must not be greater than `MAX_FEE`.
 - `params.range.start` must not be greater than `params.range.cliff`.
 - `params.range.cliff` must not be greater than `params.range.end`.
+- `params.recipient` must not be the zero address.
 - `msg.sender` must have allowed this contract to spend at least `params.totalAmount` assets.
-- If set, `params.broker.fee` must not be greater than `MAX_FEE`.
-- The call must not be a delegate call.
 
 ```solidity
 function createWithRange(LockupLinear.CreateWithRange calldata params)
