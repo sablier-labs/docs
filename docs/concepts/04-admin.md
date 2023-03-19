@@ -1,0 +1,44 @@
+---
+id: "governance"
+sidebar_position: 4
+title: "Governance"
+---
+
+The protocol admin is an entity that has exclusive access to specific functions of the protocol. More concretely, the
+admin is a multisig wallet currently in control of Sablier Labs, which has the following permissions:
+
+| Permission              | Function                | Contract(s)                                       |
+| ----------------------- | ----------------------- | ------------------------------------------------- |
+| Claim Protocol Revenues | `claimProtocolRevenues` | `SablierV2LockupDynamic`, `SablierV2LockupLinear` |
+| Set Comptroller         | `setComptroller`        | `SablierV2LockupDynamic`, `SablierV2LockupLinear` |
+| Set NFT Descriptor      | `setNFTDescriptor`      | `SablierV2LockupDynamic`, `SablierV2LockupLinear` |
+| Set Flash Fee           | `setFlashFee`           | `SablierV2Comptroller`                            |
+| Set Protocol Fee        | `setProtocolFee`        | `SablierV2Comptroller`                            |
+| Toggle Flash Asset      | `toggleFlashAsset`      | `SablierV2Comptroller`                            |
+
+The comptroller is a special contract that manages the configuration of the protocol. To learn more about the
+comptroller, see the [reference](/docs/contracts/v2/reference/core/contract.SablierV2Comptroller.md).
+
+## Trustlessness
+
+Despite having an admin, the Sablier Protocol maintains its trustless nature thanks to the following reasons:
+
+1. The protocol is permissionless, i.e. it can be freely accessed by anyone with an Internet connection.
+2. The protocol is persistent, i.e. the admin cannot pause it.
+3. The streaming logic is non-upgradeable, i.e. the admin cannot tamper with the streams created by users.
+4. There are no escape hatches that allow the admin to withdraw funds.
+5. There is a hard-coded upper limit of 10% to the fees that the admin can set.
+
+## Governance
+
+As a startup, Sablier has to deal with uncertainty regarding:
+
+1. Protocol-market fit
+2. Smart contract security
+
+Attaining success in these areas is no easy feat, and as such, decentralizing the protocol's governance will not be an
+initial priority.
+
+Nonetheless, we believe that progressive decentralization is the most effective approach to scaling a smart contract
+protocol. Therefore, as our confidence in the protocol's scalability grows, we will incrementally decentralize its
+governance.
