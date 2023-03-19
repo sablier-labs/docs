@@ -4,21 +4,25 @@ sidebar_position: 2
 title: "Linear Streams"
 ---
 
-Linear streams are the simplest form of streams one could think of: **a straight line, up and to the right.**
+Linear streams are the simplest type of stream. They follow a straight line that goes up and to the right on a graph,
+which corresponds to the identity function $f(x) = x$.
 
-If you were to plot them on a graph, you would see a straight line to the right corresponding to the $f(x) = x$ function
-if you know your math.
+With linear streams, the payment rate remains constant, meaning that the same fraction of the deposit amount is streamed
+to the recipient every second. This provides greater predictability and is very easy to understand because of how
+intuitive it is. Imagine a diagonal line going up and to the right – that's how simple it is.
 
-With linear streams, the same fraction of the total amount being streamed is streamed over to the recipient every
-second. In other words, **the payment rate never changes**. This allows for greater predictability and is also very easy
-to understand because of how intuitive it is. Just picture a straight diagonal line going up towards the right, that's
-how simple it is.
+## Cliffs
 
-Now to make things more spicy, we added a variant of the old school linear stream: **linear cliff streams**. The only
-difference with the traditional linear stream, is that the linear cliff streams begins with a cliff, obviously. This
-means nothing will be streamed in the beginning, then suddenly a specific amount if streamed over to the recipient, and
-from there the stream works just like a traditional linear stream.
+It is possible to add a **cliff** to a linear stream, which sets a cut-off point for releasing assets. Prior to the
+cliff ,the recipient cannot withdraw any assets, although the stream continues to accrue them. After the cliff, the
+stream operates like a typical linear stream.
 
-This is a great fit if you are looking to vest tokens, as it allows you to, for example, have a 1-year cliff, and then 3
-years of linear streaming. If the stream is meant for an employee, you can set it as cancellable so that if the employee
-leaves your company during the stream, you can stop it at any time by cancelling it.
+Cliffs a great fit if you are looking to vest ERC-20 assets, as it allows you to, for example, have a 1-year cliff, and
+then 3 additional years of linear streaming. If the stream is meant for an employee, you can make it cancellable so that
+if the employee leaves your company during the stream, you can cancel it at any time and recover the assets not streamed
+already.
+
+This feature is especially useful for vesting ERC-20 assets, as it allows you to have, for example, a 1-year cliff, and
+then 3 additional years of linear streaming. If the stream is for an employee, you can make it cancellable so that if
+the employee leaves your company during the stream, you can cancel it at any time and recover the assets that have not
+yet been streamed.

@@ -4,13 +4,17 @@ sidebar_position: 1
 title: "Streaming"
 ---
 
-Token streaming is what Sablier is all about. Using this incredible technology, **anyone can send tokens over time to
-someone else.**
+Cryptoasset streaming is what Sablier is all about. Using this new money lego, anyone with an Internet connection can
+make by-the-second payments to anyone else in the world.
 
 Picture an hourglass with sand flowing through it. Now replace the sand with your tokens, and the hourglass with our
 protocol. That it's, you understood token streaming.
 
-> If you didn't know, "Sablier" literally means hourglass in French.
+:::info
+
+Fun trivia: "Sablier" means hourglass in French.
+
+:::
 
 Let's use an example to further explain this. Bob could send Alice's paycheck every two weeks, or every month, or he
 could use Sablier and stream it over the course of the month. Every second, Alice will receive a fraction of her
