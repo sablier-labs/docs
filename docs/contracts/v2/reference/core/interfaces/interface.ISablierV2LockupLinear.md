@@ -1,6 +1,6 @@
 # ISablierV2LockupLinear
 
-[Git Source](https://github.com/sablierhq/v2-core/blob/9df2bf8f303f7d13337716257672553e60783b8c/docs/contracts/v2/reference/core/interfaces)
+[Git Source](https://github.com/sablierhq/v2-core/blob/6223a7bce69cdec996b0a95cb95d0f04cdb809be/docs/contracts/v2/reference/core/interfaces)
 
 **Inherits:** [ISablierV2Lockup](/docs/contracts/v2/reference/core/interfaces/interface.ISablierV2Lockup.md)
 
@@ -116,6 +116,7 @@ Emits a {CreateLockupLinearStream} and a {Transfer} event. Notes:
 - `params.range.cliff` must not be greater than `params.range.end`.
 - `msg.sender` must have allowed this contract to spend at least `params.totalAmount` assets.
 - If set, `params.broker.fee` must not be greater than `MAX_FEE`.
+- The call must not be a delegate call.
 
 ```solidity
 function createWithRange(LockupLinear.CreateWithRange calldata params) external returns (uint256 streamId);

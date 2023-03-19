@@ -1,6 +1,6 @@
 # Broker
 
-[Git Source](https://github.com/sablierhq/v2-core/blob/9df2bf8f303f7d13337716257672553e60783b8c/docs/contracts/v2/reference/core)
+[Git Source](https://github.com/sablierhq/v2-core/blob/6223a7bce69cdec996b0a95cb95d0f04cdb809be/docs/contracts/v2/reference/core)
 
 Simple struct that encapsulates the optional broker parameters that can be passed to the create functions.
 

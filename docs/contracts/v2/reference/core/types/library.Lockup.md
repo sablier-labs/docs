@@ -1,10 +1,10 @@
 # Lockup
 
-[Git Source](https://github.com/sablierhq/v2-core/blob/9df2bf8f303f7d13337716257672553e60783b8c/docs/contracts/v2/reference/core)
+[Git Source](https://github.com/sablierhq/v2-core/blob/6223a7bce69cdec996b0a95cb95d0f04cdb809be/docs/contracts/v2/reference/core)
 
 Quasi-namespace for the structs used in both
 [SablierV2LockupLinear](docs/contracts/v2/reference/core/contract.SablierV2LockupLinear.md) and
-[SablierV2LockupPro](docs/contracts/v2/reference/core/contract.SablierV2LockupPro.md).
+[SablierV2LockupDynamic](docs/contracts/v2/reference/core/contract.SablierV2LockupDynamic.md).
 
 ## Structs
 

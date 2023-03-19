@@ -1,20 +1,12 @@
 # SablierV2Lockup
 
-[Git Source](https://github.com/sablierhq/v2-core/blob/9df2bf8f303f7d13337716257672553e60783b8c/docs/contracts/v2/reference/core/abstracts)
+[Git Source](https://github.com/sablierhq/v2-core/blob/6223a7bce69cdec996b0a95cb95d0f04cdb809be/docs/contracts/v2/reference/core/abstracts)
 
-**Inherits:** [SablierV2Config](/docs/contracts/v2/reference/core/abstracts/abstract.SablierV2FlashLoan.md)
+**Inherits:** [SablierV2Base](/docs/contracts/v2/reference/core/abstracts/abstract.SablierV2FlashLoan.md)
 
 See the documentation in [ISablierV2Lockup](docs/contracts/v2/reference/core/interfaces/interface.ISablierV2Lockup.md).
 
 ## State Variables
-
-### nextStreamId
-
-Counter for stream ids.
-
-```solidity
-uint256 public override nextStreamId;
-```
 
 ### \_nftDescriptor
 
@@ -34,7 +26,8 @@ constructor(
     ISablierV2Comptroller initialComptroller,
     ISablierV2NFTDescriptor initialNftDescriptor,
     UD60x18 maxFee
-) SablierV2Config(initialAdmin, initialComptroller, maxFee);
+)
+    SablierV2Base(initialAdmin, initialComptroller, maxFee);
 ```
 
 **Parameters**
@@ -104,7 +97,7 @@ function getStatus(uint256 streamId) public view virtual override returns (Locku
 
 Checks whether the lockup stream is cancelable or not. Notes:
 
-- Always returns `false` if the lockup stream is not active.
+- Always returns `false` when the lockup stream is not active.
 
 ```solidity
 function isCancelable(uint256 streamId) public view virtual override returns (bool result);
@@ -141,9 +134,10 @@ Emits a {Transfer} event. Notes:
 - `streamId` must point to a lockup stream that is either canceled or depleted.
 - The NFT must exist.
 - `msg.sender` must be either an approved operator or the owner of the NFT.
+- The call must not be a delegate call.
 
 ```solidity
-function burn(uint256 streamId) external override;
+function burn(uint256 streamId) external override noDelegateCall;
 ```
 
 **Parameters**
@@ -163,9 +157,10 @@ Emits a {CancelLockupStream} event. Notes:
 - `streamId` must point to an active lockup stream.
 - `msg.sender` must be either the sender or the recipient of the stream (also known as the owner of the NFT).
 - The lockup stream must be cancelable.
+- The call must not be a delegate call.
 
 ```solidity
-function cancel(uint256 streamId) external override isActiveStream(streamId);
+function cancel(uint256 streamId) external override noDelegateCall isActiveStream(streamId);
 ```
 
 **Parameters**
@@ -186,9 +181,10 @@ Emits multiple {CancelLockupStream} events. Notes:
 - `msg.sender` must be either the sender or the recipient of the stream (also known as the owner of the NFT) of every
   stream.
 - Each stream must be cancelable.
+- The call must not be a delegate call.
 
 ```solidity
-function cancelMultiple(uint256[] calldata streamIds) external override;
+function cancelMultiple(uint256[] calldata streamIds) external override noDelegateCall;
 ```
 
 **Parameters**
@@ -209,9 +205,10 @@ Emits a {RenounceLockupStream} event. Notes:
 - `streamId` must point to an active lockup stream.
 - `msg.sender` must be the sender of the stream.
 - The lockup stream must not be already non-cancelable.
+- The call must not be a delegate call.
 
 ```solidity
-function renounce(uint256 streamId) external override isActiveStream(streamId);
+function renounce(uint256 streamId) external override noDelegateCall isActiveStream(streamId);
 ```
 
 **Parameters**
@@ -252,11 +249,17 @@ Emits a {WithdrawFromLockupStream} and a {Transfer} event. Notes:
   recipient of the stream).
 - `to` must be the recipient if `msg.sender` is the sender of the stream.
 - `amount` must not be zero and must not exceed the withdrawable amount.
+- The call must not be a delegate call.
 
 ```solidity
-function withdraw(uint256 streamId, address to, uint128 amount)
+function withdraw(
+    uint256 streamId,
+    address to,
+    uint128 amount
+)
     public
     override
+    noDelegateCall
     isActiveStream(streamId)
     isAuthorizedForStream(streamId);
 ```
@@ -300,9 +303,17 @@ Emits multiple {WithdrawFromLockupStream} and {Transfer} events. Notes:
 - The count of `streamIds` must match the count of `amounts`.
 - `msg.sender` must be either the recipient of the stream (a.k.a the owner of the NFT) or an approved operator.
 - Every amount in `amounts` must not be zero and must not exceed the withdrawable amount.
+- The call must not be a delegate call.
 
 ```solidity
-function withdrawMultiple(uint256[] calldata streamIds, address to, uint128[] calldata amounts) external override;
+function withdrawMultiple(
+    uint256[] calldata streamIds,
+    address to,
+    uint128[] calldata amounts
+)
+    external
+    override
+    noDelegateCall;
 ```
 
 **Parameters**

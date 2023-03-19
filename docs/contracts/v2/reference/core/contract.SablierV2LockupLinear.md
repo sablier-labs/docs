@@ -3,7 +3,7 @@ sidebar_position: 1
 ---
 # SablierV2LockupLinear
 
-[Git Source](https://github.com/sablierhq/v2-core/blob/9df2bf8f303f7d13337716257672553e60783b8c/docs/contracts/v2/reference/core)
+[Git Source](https://github.com/sablierhq/v2-core/blob/6223a7bce69cdec996b0a95cb95d0f04cdb809be/docs/contracts/v2/reference/core)
 
 **Inherits:**
 [ISablierV2LockupLinear](/docs/contracts/v2/reference/core/interfaces/interface.ISablierV2LockupLinear.md), ERC721,
@@ -14,12 +14,20 @@ See the documentation in
 
 ## State Variables
 
-### \_streams
+### \_nextStreamId
 
-_Sablier V2 linear lockup streams mapped by unsigned integers._
+_Counter for stream ids, used in the create functions._
 
 ```solidity
-mapping(uint256 id => LockupLinear.Stream stream) internal _streams;
+uint256 private _nextStreamId;
+```
+
+### \_streams
+
+_Sablier V2 lockup linear streams mapped by unsigned integers._
+
+```solidity
+mapping(uint256 id => LockupLinear.Stream stream) private _streams;
 ```
 
 ## Functions
@@ -34,7 +42,8 @@ constructor(
     ISablierV2Comptroller initialComptroller,
     ISablierV2NFTDescriptor initialNFTDescriptor,
     UD60x18 maxFee
-) SablierV2Lockup(initialAdmin, initialComptroller, initialNFTDescriptor, maxFee);
+)
+    SablierV2Lockup(initialAdmin, initialComptroller, initialNFTDescriptor, maxFee);
 ```
 
 **Parameters**
@@ -220,7 +229,7 @@ function getWithdrawnAmount(uint256 streamId) external view override returns (ui
 
 Checks whether the lockup stream is cancelable or not. Notes:
 
-- Always returns `false` if the lockup stream is not active.
+- Always returns `false` when the lockup stream is not active.
 
 ```solidity
 function isCancelable(uint256 streamId) public view override(ISablierV2Lockup, SablierV2Lockup) returns (bool result);
@@ -232,9 +241,17 @@ function isCancelable(uint256 streamId) public view override(ISablierV2Lockup, S
 | ---------- | --------- | -------------------------------------------------- |
 | `streamId` | `uint256` | The id of the lockup stream to make the query for. |
 
+### nextStreamId
+
+Counter for stream ids, used in the create functions.
+
+```solidity
+function nextStreamId() external view returns (uint256);
+```
+
 ### returnableAmountOf
 
-Calculates the amount that the sender would be paid if the lockup stream had been canceled, in units of the asset's
+Calculates the amount that the sender would be paid if the lockup stream were to be canceled, in units of the asset's
 decimals.
 
 ```solidity
@@ -314,6 +331,7 @@ Emits a {CreateLockupLinearStream} and a {Transfer} event. Requirements:
 function createWithDurations(LockupLinear.CreateWithDurations calldata params)
     external
     override
+    noDelegateCall
     returns (uint256 streamId);
 ```
 
@@ -343,9 +361,14 @@ Emits a {CreateLockupLinearStream} and a {Transfer} event. Notes:
 - `params.range.cliff` must not be greater than `params.range.end`.
 - `msg.sender` must have allowed this contract to spend at least `params.totalAmount` assets.
 - If set, `params.broker.fee` must not be greater than `MAX_FEE`.
+- The call must not be a delegate call.
 
 ```solidity
-function createWithRange(LockupLinear.CreateWithRange calldata params) public override returns (uint256 streamId);
+function createWithRange(LockupLinear.CreateWithRange calldata params)
+    public
+    override
+    noDelegateCall
+    returns (uint256 streamId);
 ```
 
 **Parameters**
@@ -367,7 +390,10 @@ Checks whether the spender is authorized to interact with the stream.
 _Unlike the ERC-721 implementation, this function does not check whether the owner is the zero address._
 
 ```solidity
-function _isApprovedOrOwner(uint256 streamId, address spender)
+function _isApprovedOrOwner(
+    uint256 streamId,
+    address spender
+)
     internal
     view
     override

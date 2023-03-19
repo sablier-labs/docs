@@ -3,10 +3,10 @@ sidebar_position: 3
 ---
 # SablierV2Comptroller
 
-[Git Source](https://github.com/sablierhq/v2-core/blob/9df2bf8f303f7d13337716257672553e60783b8c/docs/contracts/v2/reference/core)
+[Git Source](https://github.com/sablierhq/v2-core/blob/6223a7bce69cdec996b0a95cb95d0f04cdb809be/docs/contracts/v2/reference/core)
 
 **Inherits:** [ISablierV2Comptroller](/docs/contracts/v2/reference/core/interfaces/interface.ISablierV2Comptroller.md),
-[SablierV2Adminable](/docs/contracts/v2/reference/core/abstracts/abstract.SablierV2Adminable.md)
+[Adminable](/docs/contracts/v2/reference/core/abstracts/abstract.Adminable.md)
 
 See the documentation in
 [ISablierV2Comptroller](docs/contracts/v2/reference/core/interfaces/interface.ISablierV2Comptroller.md).
@@ -19,28 +19,28 @@ The global flash fee as an UD60x18 number where 100% = 1e18.
 
 Notes:
 
-- This is a fee percentage, not a fee amount. This should not be confused with the {IERC3156FlashLender-flashFee}
-  function, which returns the fee amount for a given flash loan amount.
+- This is a fee percentage, not a fee amount, and it should not be confused with {IERC3156FlashLender-flashFee}, which
+  returns the fee amount for a given flash loan amount.
 - Unlike the protocol fee, this is not a per-asset fee. It's a global fee applied to all flash loans.
 
 ```solidity
 UD60x18 public override flashFee;
 ```
 
-### \_flashAssets
+### flashAssets
 
-_ERC-20 assets that can be flash loaned._
+Whether the provided ERC-20 asset is flash loanable or not.
 
 ```solidity
-mapping(IERC20 asset => bool supported) internal _flashAssets;
+mapping(IERC20 asset => bool supported) public override flashAssets;
 ```
 
-### \_protocolFees
+### protocolFees
 
-_Global fees mapped by ERC-20 asset addresses._
+The protocol fee charged on all streams created with the provided ERC-20 asset across all Sablier V2 contracts.
 
 ```solidity
-mapping(IERC20 asset => UD60x18 fee) internal _protocolFees;
+mapping(IERC20 asset => UD60x18 fee) public override protocolFees;
 ```
 
 ## Functions
@@ -58,40 +58,6 @@ constructor(address initialAdmin);
 | Name           | Type      | Description                                |
 | -------------- | --------- | ------------------------------------------ |
 | `initialAdmin` | `address` | The address of the initial contract admin. |
-
-### getProtocolFee
-
-Queries the protocol fee charged on all streams created with the provided ERC-20 asset across all Sablier V2 contracts.
-
-```solidity
-function getProtocolFee(IERC20 asset) external view override returns (UD60x18 protocolFee);
-```
-
-**Parameters**
-
-| Name    | Type     | Description                                                     |
-| ------- | -------- | --------------------------------------------------------------- |
-| `asset` | `IERC20` | The contract address of the ERC-20 asset to make the query for. |
-
-**Returns**
-
-| Name          | Type      | Description                                              |
-| ------------- | --------- | -------------------------------------------------------- |
-| `protocolFee` | `UD60x18` | The protocol fee as an UD60x18 number where 100% = 1e18. |
-
-### isFlashLoanable
-
-Checks whether the provided ERC-20 asset is flash loanable or not.
-
-```solidity
-function isFlashLoanable(IERC20 asset) external view override returns (bool result);
-```
-
-**Parameters**
-
-| Name    | Type     | Description |
-| ------- | -------- | ----------- |
-| `asset` | `IERC20` |             |
 
 ### setFlashFee
 

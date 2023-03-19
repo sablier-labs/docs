@@ -1,15 +1,15 @@
-# LockupPro
+# LockupDynamic
 
-[Git Source](https://github.com/sablierhq/v2-core/blob/9df2bf8f303f7d13337716257672553e60783b8c/docs/contracts/v2/reference/core)
+[Git Source](https://github.com/sablierhq/v2-core/blob/6223a7bce69cdec996b0a95cb95d0f04cdb809be/docs/contracts/v2/reference/core)
 
 Quasi-namespace for the structs used in
-[SablierV2LockupPro](docs/contracts/v2/reference/core/contract.SablierV2LockupPro.md).
+[SablierV2LockupDynamic](docs/contracts/v2/reference/core/contract.SablierV2LockupDynamic.md).
 
 ## Structs
 
 ### CreateWithDeltas
 
-Struct that encapsulates the parameters of the {SablierV2LockupPro-createWithDeltas} function.
+Struct that encapsulates the parameters of the {SablierV2LockupDynamic-createWithDeltas} function.
 
 ```solidity
 struct CreateWithDeltas {
@@ -18,18 +18,18 @@ struct CreateWithDeltas {
     uint128 totalAmount;
     IERC20 asset;
     bool cancelable;
-    LockupPro.SegmentWithDelta[] segments;
+    LockupDynamic.SegmentWithDelta[] segments;
     Broker broker;
 }
 ```
 
 ### CreateWithMilestones
 
-Struct that encapsulates the parameters of the {SablierV2LockupPro-createWithMilestones} function.
+Struct that encapsulates the parameters of the {SablierV2LockupDynamic-createWithMilestones} function.
 
 ```solidity
 struct CreateWithMilestones {
-    LockupPro.Segment[] segments;
+    LockupDynamic.Segment[] segments;
     address sender;
     uint40 startTime;
     bool cancelable;
@@ -42,7 +42,7 @@ struct CreateWithMilestones {
 
 ### Range
 
-Range struct used as a field in the lockup pro stream.
+Range struct used as a field in the lockup dynamic stream.
 
 ```solidity
 struct Range {
@@ -53,7 +53,7 @@ struct Range {
 
 ### Segment
 
-Segment struct used in the lockup pro stream.
+Segment struct used in the lockup dynamic stream.
 
 ```solidity
 struct Segment {
@@ -65,7 +65,7 @@ struct Segment {
 
 ### SegmentWithDelta
 
-Segment struct used only at runtime in the {SablierV2LockupPro-createWithDeltas} function.
+Segment struct used only at runtime in {SablierV2LockupDynamic-createWithDeltas}.
 
 ```solidity
 struct SegmentWithDelta {
@@ -77,7 +77,7 @@ struct SegmentWithDelta {
 
 ### Stream
 
-Pro lockup stream struct.
+Lockup dynamic stream struct.
 
 _The fields are arranged like this to save gas via tight variable packing._
 

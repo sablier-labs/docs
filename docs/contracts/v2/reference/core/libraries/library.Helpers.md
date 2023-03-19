@@ -1,6 +1,6 @@
 # Helpers
 
-[Git Source](https://github.com/sablierhq/v2-core/blob/9df2bf8f303f7d13337716257672553e60783b8c/docs/contracts/v2/reference/core)
+[Git Source](https://github.com/sablierhq/v2-core/blob/6223a7bce69cdec996b0a95cb95d0f04cdb809be/docs/contracts/v2/reference/core)
 
 Library with helper functions needed across the Sablier V2 contracts.
 
@@ -12,31 +12,38 @@ _Checks that neither fee is greater than `maxFee`, and then calculates the proto
 and the deposit amount from the total amount._
 
 ```solidity
-function checkAndCalculateFees(uint128 totalAmount, UD60x18 protocolFee, UD60x18 brokerFee, UD60x18 maxFee)
+function checkAndCalculateFees(
+    uint128 totalAmount,
+    UD60x18 protocolFee,
+    UD60x18 brokerFee,
+    UD60x18 maxFee
+)
     internal
     pure
     returns (Lockup.CreateAmounts memory amounts);
 ```
 
+### checkCreateDynamicParams
+
+_Checks the parameters of the {SablierV2LockupDynamic-\_createWithMilestones} function._
+
+```solidity
+function checkCreateDynamicParams(
+    uint128 depositAmount,
+    LockupDynamic.Segment[] memory segments,
+    uint256 maxSegmentCount,
+    uint40 startTime
+)
+    internal
+    pure;
+```
+
 ### checkCreateLinearParams
 
-_Checks the arguments of the {SablierV2LockupLinear-\_createWithRange} function._
+_Checks the parameters of the {SablierV2LockupLinear-\_createWithRange} function._
 
 ```solidity
 function checkCreateLinearParams(uint128 depositAmount, LockupLinear.Range memory range) internal pure;
-```
-
-### checkCreateProParams
-
-_Checks the arguments of the {SablierV2LockupPro-\_createWithRange} function._
-
-```solidity
-function checkCreateProParams(
-    uint128 depositAmount,
-    LockupPro.Segment[] memory segments,
-    uint256 maxSegmentCount,
-    uint40 startTime
-) internal pure;
 ```
 
 ### checkDeltasAndCalculateMilestones
@@ -44,13 +51,13 @@ function checkCreateProParams(
 _Checks that the segment array counts match, and then adjusts the segments by calculating the milestones._
 
 ```solidity
-function checkDeltasAndCalculateMilestones(LockupPro.SegmentWithDelta[] memory segments)
+function checkDeltasAndCalculateMilestones(LockupDynamic.SegmentWithDelta[] memory segments)
     internal
     view
-    returns (LockupPro.Segment[] memory segmentsWithMilestones);
+    returns (LockupDynamic.Segment[] memory segmentsWithMilestones);
 ```
 
-### \_checkProSegments
+### \_checkSegments
 
 Checks that:
 
@@ -60,5 +67,11 @@ Checks that:
 4. The deposit amount is equal to the segment amounts summed up.
 
 ```solidity
-function _checkProSegments(LockupPro.Segment[] memory segments, uint128 depositAmount, uint40 startTime) private pure;
+function _checkSegments(
+    LockupDynamic.Segment[] memory segments,
+    uint128 depositAmount,
+    uint40 startTime
+)
+    private
+    pure;
 ```

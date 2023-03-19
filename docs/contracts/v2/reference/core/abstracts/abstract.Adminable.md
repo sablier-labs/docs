@@ -1,11 +1,10 @@
-# SablierV2Adminable
+# Adminable
 
-[Git Source](https://github.com/sablierhq/v2-core/blob/9df2bf8f303f7d13337716257672553e60783b8c/docs/contracts/v2/reference/core/abstracts)
+[Git Source](https://github.com/sablierhq/v2-core/blob/6223a7bce69cdec996b0a95cb95d0f04cdb809be/docs/contracts/v2/reference/core/abstracts)
 
-**Inherits:** [ISablierV2Adminable](/docs/contracts/v2/reference/core/interfaces/interface.ISablierV2Adminable.md)
+**Inherits:** [IAdminable](/docs/contracts/v2/reference/core/interfaces/interface.IAdminable.md)
 
-See the documentation in
-[ISablierV2Adminable](docs/contracts/v2/reference/core/interfaces/interface.ISablierV2Adminable.md).
+See the documentation in [IAdminable](docs/contracts/v2/reference/core/interfaces/interface.IAdminable.md).
 
 ## State Variables
 

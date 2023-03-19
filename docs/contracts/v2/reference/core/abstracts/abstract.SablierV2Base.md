@@ -1,11 +1,11 @@
-# SablierV2Config
+# SablierV2Base
 
-[Git Source](https://github.com/sablierhq/v2-core/blob/9df2bf8f303f7d13337716257672553e60783b8c/docs/contracts/v2/reference/core/abstracts)
+[Git Source](https://github.com/sablierhq/v2-core/blob/6223a7bce69cdec996b0a95cb95d0f04cdb809be/docs/contracts/v2/reference/core/abstracts)
 
-**Inherits:** [ISablierV2Config](/docs/contracts/v2/reference/core/interfaces/interface.ISablierV2Config.md),
-[SablierV2Adminable](/docs/contracts/v2/reference/core/abstracts/abstract.SablierV2Adminable.md)
+**Inherits:** [ISablierV2Base](/docs/contracts/v2/reference/core/interfaces/interface.ISablierV2Base.md),
+[NoDelegateCall](/docs/contracts/v2/reference/core/abstracts/abstract.Adminable.md)
 
-See the documentation in [ISablierV2Config](docs/contracts/v2/reference/core/interfaces/interface.ISablierV2Config.md).
+See the documentation in [ISablierV2Base](docs/contracts/v2/reference/core/interfaces/interface.ISablierV2Base.md).
 
 ## State Variables
 
@@ -28,12 +28,12 @@ values as the protocol fees.
 ISablierV2Comptroller public override comptroller;
 ```
 
-### \_protocolRevenues
+### protocolRevenues
 
-_Protocol revenues mapped by ERC-20 asset addresses._
+The protocol revenues accrued for the provided ERC-20 asset, in units of the asset's decimals.
 
 ```solidity
-mapping(IERC20 asset => uint128 revenues) internal _protocolRevenues;
+mapping(IERC20 asset => uint128 revenues) public override protocolRevenues;
 ```
 
 ## Functions
@@ -53,20 +53,6 @@ constructor(address initialAdmin, ISablierV2Comptroller initialComptroller, UD60
 | `initialAdmin`       | `address`               | The address of the initial contract admin.                                                                      |
 | `initialComptroller` | `ISablierV2Comptroller` | The address of the initial comptroller.                                                                         |
 | `maxFee`             | `UD60x18`               | The maximum fee that can be charged by either the protocol or a broker, as an UD60x18 number where 100% = 1e18. |
-
-### getProtocolRevenues
-
-Queries the protocol revenues accrued for the provided ERC-20 asset, in units of the asset's decimals.
-
-```solidity
-function getProtocolRevenues(IERC20 asset) external view override returns (uint128 protocolRevenues);
-```
-
-**Parameters**
-
-| Name    | Type     | Description                                                     |
-| ------- | -------- | --------------------------------------------------------------- |
-| `asset` | `IERC20` | The contract address of the ERC-20 asset to make the query for. |
 
 ### claimProtocolRevenues
 

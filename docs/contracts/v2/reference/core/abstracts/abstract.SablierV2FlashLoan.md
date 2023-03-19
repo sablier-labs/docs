@@ -1,9 +1,9 @@
 # SablierV2FlashLoan
 
-[Git Source](https://github.com/sablierhq/v2-core/blob/9df2bf8f303f7d13337716257672553e60783b8c/docs/contracts/v2/reference/core/abstracts)
+[Git Source](https://github.com/sablierhq/v2-core/blob/6223a7bce69cdec996b0a95cb95d0f04cdb809be/docs/contracts/v2/reference/core/abstracts)
 
 **Inherits:** IERC3156FlashLender,
-[SablierV2Config](/docs/contracts/v2/reference/core/abstracts/abstract.SablierV2Config.md)
+[SablierV2Base](/docs/contracts/v2/reference/core/abstracts/abstract.SablierV2Base.md)
 
 This contract implements the ERC-3156 standard to enable flash loans.
 
@@ -84,9 +84,15 @@ Emits a {FlashLoan} event. Requirements:
 - `receiver` implementation of {IERC3156FlashBorrower-onFlashLoan} must return `CALLBACK_SUCCESS`.
 
 ```solidity
-function flashLoan(IERC3156FlashBorrower receiver, address asset, uint256 amount, bytes calldata data)
+function flashLoan(
+    IERC3156FlashBorrower receiver,
+    address asset,
+    uint256 amount,
+    bytes calldata data
+)
     external
     override
+    noDelegateCall
     returns (bool success);
 ```
 

@@ -1,9 +1,9 @@
-# ISablierV2Adminable
+# IAdminable
 
-[Git Source](https://github.com/sablierhq/v2-core/blob/9df2bf8f303f7d13337716257672553e60783b8c/docs/contracts/v2/reference/core/interfaces)
+[Git Source](https://github.com/sablierhq/v2-core/blob/6223a7bce69cdec996b0a95cb95d0f04cdb809be/docs/contracts/v2/reference/core/interfaces)
 
 Contract module that provides a basic access control mechanism, with an admin that can be granted exclusive access to
-specific functions. The inheriting contract must set the admin in the constructor.
+specific functions. The inheriting contract must set the initial admin in the constructor.
 
 ## Functions
 

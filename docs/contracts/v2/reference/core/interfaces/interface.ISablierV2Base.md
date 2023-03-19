@@ -1,10 +1,10 @@
-# ISablierV2Config
+# ISablierV2Base
 
-[Git Source](https://github.com/sablierhq/v2-core/blob/9df2bf8f303f7d13337716257672553e60783b8c/docs/contracts/v2/reference/core/interfaces)
+[Git Source](https://github.com/sablierhq/v2-core/blob/6223a7bce69cdec996b0a95cb95d0f04cdb809be/docs/contracts/v2/reference/core/interfaces)
 
-**Inherits:** [ISablierV2Adminable](/docs/contracts/v2/reference/core/interfaces/interface.ISablierV2Adminable.md)
+**Inherits:** [IAdminable](/docs/contracts/v2/reference/core/interfaces/interface.IAdminable.md)
 
-This contract contains the common configuration between all Sablier V2 streaming contracts.
+Common base between all Sablier V2 streaming contracts.
 
 ## Functions
 
@@ -27,12 +27,12 @@ values as the protocol fees.
 function comptroller() external view returns (ISablierV2Comptroller);
 ```
 
-### getProtocolRevenues
+### protocolRevenues
 
-Queries the protocol revenues accrued for the provided ERC-20 asset, in units of the asset's decimals.
+The protocol revenues accrued for the provided ERC-20 asset, in units of the asset's decimals.
 
 ```solidity
-function getProtocolRevenues(IERC20 asset) external view returns (uint128 protocolRevenues);
+function protocolRevenues(IERC20 asset) external view returns (uint128 revenues);
 ```
 
 **Parameters**

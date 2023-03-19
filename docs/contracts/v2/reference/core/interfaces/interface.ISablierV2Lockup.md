@@ -1,8 +1,8 @@
 # ISablierV2Lockup
 
-[Git Source](https://github.com/sablierhq/v2-core/blob/9df2bf8f303f7d13337716257672553e60783b8c/docs/contracts/v2/reference/core/interfaces)
+[Git Source](https://github.com/sablierhq/v2-core/blob/6223a7bce69cdec996b0a95cb95d0f04cdb809be/docs/contracts/v2/reference/core/interfaces)
 
-**Inherits:** [ISablierV2Config](/docs/contracts/v2/reference/core/interfaces/interface.ISablierV2Config.md),
+**Inherits:** [ISablierV2Base](/docs/contracts/v2/reference/core/interfaces/interface.ISablierV2Base.md),
 IERC721Metadata
 
 The common interface between all Sablier V2 lockup streaming contracts.
@@ -131,7 +131,7 @@ function getWithdrawnAmount(uint256 streamId) external view returns (uint128 wit
 
 Checks whether the lockup stream is cancelable or not. Notes:
 
-- Always returns `false` if the lockup stream is not active.
+- Always returns `false` when the lockup stream is not active.
 
 ```solidity
 function isCancelable(uint256 streamId) external view returns (bool result);
@@ -145,21 +145,15 @@ function isCancelable(uint256 streamId) external view returns (bool result);
 
 ### nextStreamId
 
-Counter for stream ids.
+Counter for stream ids, used in the create functions.
 
 ```solidity
 function nextStreamId() external view returns (uint256);
 ```
 
-**Returns**
-
-| Name     | Type      | Description         |
-| -------- | --------- | ------------------- |
-| `<none>` | `uint256` | The next stream id. |
-
 ### returnableAmountOf
 
-Calculates the amount that the sender would be paid if the lockup stream had been canceled, in units of the asset's
+Calculates the amount that the sender would be paid if the lockup stream were to be canceled, in units of the asset's
 decimals.
 
 ```solidity
@@ -211,6 +205,7 @@ Emits a {Transfer} event. Notes:
 - `streamId` must point to a lockup stream that is either canceled or depleted.
 - The NFT must exist.
 - `msg.sender` must be either an approved operator or the owner of the NFT.
+- The call must not be a delegate call.
 
 ```solidity
 function burn(uint256 streamId) external;
@@ -233,6 +228,7 @@ Emits a {CancelLockupStream} event. Notes:
 - `streamId` must point to an active lockup stream.
 - `msg.sender` must be either the sender or the recipient of the stream (also known as the owner of the NFT).
 - The lockup stream must be cancelable.
+- The call must not be a delegate call.
 
 ```solidity
 function cancel(uint256 streamId) external;
@@ -256,6 +252,7 @@ Emits multiple {CancelLockupStream} events. Notes:
 - `msg.sender` must be either the sender or the recipient of the stream (also known as the owner of the NFT) of every
   stream.
 - Each stream must be cancelable.
+- The call must not be a delegate call.
 
 ```solidity
 function cancelMultiple(uint256[] calldata streamIds) external;
@@ -279,6 +276,7 @@ Emits a {RenounceLockupStream} event. Notes:
 - `streamId` must point to an active lockup stream.
 - `msg.sender` must be the sender of the stream.
 - The lockup stream must not be already non-cancelable.
+- The call must not be a delegate call.
 
 ```solidity
 function renounce(uint256 streamId) external;
@@ -322,6 +320,7 @@ Emits a {WithdrawFromLockupStream} and a {Transfer} event. Notes:
   recipient of the stream).
 - `to` must be the recipient if `msg.sender` is the sender of the stream.
 - `amount` must not be zero and must not exceed the withdrawable amount.
+- The call must not be a delegate call.
 
 ```solidity
 function withdraw(uint256 streamId, address to, uint128 amount) external;
@@ -366,6 +365,7 @@ Emits multiple {WithdrawFromLockupStream} and {Transfer} events. Notes:
 - The count of `streamIds` must match the count of `amounts`.
 - `msg.sender` must be either the recipient of the stream (a.k.a the owner of the NFT) or an approved operator.
 - Every amount in `amounts` must not be zero and must not exceed the withdrawable amount.
+- The call must not be a delegate call.
 
 ```solidity
 function withdrawMultiple(uint256[] calldata streamIds, address to, uint128[] calldata amounts) external;

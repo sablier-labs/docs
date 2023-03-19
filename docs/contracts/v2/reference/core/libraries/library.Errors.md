@@ -1,17 +1,33 @@
 # Errors
 
-[Git Source](https://github.com/sablierhq/v2-core/blob/9df2bf8f303f7d13337716257672553e60783b8c/docs/contracts/v2/reference/core)
+[Git Source](https://github.com/sablierhq/v2-core/blob/6223a7bce69cdec996b0a95cb95d0f04cdb809be/docs/contracts/v2/reference/core)
 
-Library with custom errors used across the core contracts.
+Library that contains all the custom errors that the protocol may revert with.
 
 ## Errors
 
-### SablierV2Adminable_CallerNotAdmin
+### CallerNotAdmin
 
 Thrown when the caller is not the admin.
 
 ```solidity
-error SablierV2Adminable_CallerNotAdmin(address admin, address caller);
+error CallerNotAdmin(address admin, address caller);
+```
+
+### DelegateCall
+
+Thrown when attempting to delegate call to a function that does not allow delegate calls.
+
+```solidity
+error DelegateCall();
+```
+
+### SablierV2Base_NoProtocolRevenues
+
+Thrown when attempting to claim protocol revenues for an asset that did not accrue any revenues.
+
+```solidity
+error SablierV2Base_NoProtocolRevenues(IERC20 asset);
 ```
 
 ### SablierV2FlashLoan_AmountTooHigh
@@ -68,14 +84,6 @@ Thrown when attempting to create a stream with a zero deposit amount.
 
 ```solidity
 error SablierV2Lockup_DepositAmountZero();
-```
-
-### SablierV2Lockup_NoProtocolRevenues
-
-Thrown when attempting to claim protocol revenues for an asset that did not accrue any revenues.
-
-```solidity
-error SablierV2Lockup_NoProtocolRevenues(IERC20 asset);
 ```
 
 ### SablierV2Lockup_ProtocolFeeTooHigh
@@ -187,42 +195,44 @@ Thrown when attempting to create a stream with a start time greater than the cli
 error SablierV2LockupLinear_StartTimeGreaterThanCliffTime(uint40 startTime, uint40 cliffTime);
 ```
 
-### SablierV2LockupPro_DepositAmountNotEqualToSegmentAmountsSum
+### SablierV2LockupDynamic_DepositAmountNotEqualToSegmentAmountsSum
 
 Thrown when attempting to create a stream with a deposit amount that does not equal the segment amounts sum.
 
 ```solidity
-error SablierV2LockupPro_DepositAmountNotEqualToSegmentAmountsSum(uint128 depositAmount, uint128 segmentAmountsSum);
+error SablierV2LockupDynamic_DepositAmountNotEqualToSegmentAmountsSum(uint128 depositAmount, uint128 segmentAmountsSum);
 ```
 
-### SablierV2LockupPro_SegmentCountTooHigh
+### SablierV2LockupDynamic_SegmentCountTooHigh
 
 Thrown when attempting to create a stream with more segments than the maximum permitted.
 
 ```solidity
-error SablierV2LockupPro_SegmentCountTooHigh(uint256 count);
+error SablierV2LockupDynamic_SegmentCountTooHigh(uint256 count);
 ```
 
-### SablierV2LockupPro_SegmentCountZero
+### SablierV2LockupDynamic_SegmentCountZero
 
 Thrown when attempting to create a stream with zero segments.
 
 ```solidity
-error SablierV2LockupPro_SegmentCountZero();
+error SablierV2LockupDynamic_SegmentCountZero();
 ```
 
-### SablierV2LockupPro_SegmentMilestonesNotOrdered
+### SablierV2LockupDynamic_SegmentMilestonesNotOrdered
 
 Thrown when attempting to create a stream with segment milestones that are not ordered.
 
 ```solidity
-error SablierV2LockupPro_SegmentMilestonesNotOrdered(uint256 index, uint40 previousMilestone, uint40 currentMilestone);
+error SablierV2LockupDynamic_SegmentMilestonesNotOrdered(
+    uint256 index, uint40 previousMilestone, uint40 currentMilestone
+);
 ```
 
-### SablierV2LockupPro_StartTimeNotLessThanFirstSegmentMilestone
+### SablierV2LockupDynamic_StartTimeNotLessThanFirstSegmentMilestone
 
 Thrown when attempting to create a stream with a start time that is not strictly less than the first segment milestone.
 
 ```solidity
-error SablierV2LockupPro_StartTimeNotLessThanFirstSegmentMilestone(uint40 startTime, uint40 firstSegmentMilestone);
+error SablierV2LockupDynamic_StartTimeNotLessThanFirstSegmentMilestone(uint40 startTime, uint40 firstSegmentMilestone);
 ```

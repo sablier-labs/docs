@@ -1,6 +1,6 @@
 # LockupLinear
 
-[Git Source](https://github.com/sablierhq/v2-core/blob/9df2bf8f303f7d13337716257672553e60783b8c/docs/contracts/v2/reference/core)
+[Git Source](https://github.com/sablierhq/v2-core/blob/6223a7bce69cdec996b0a95cb95d0f04cdb809be/docs/contracts/v2/reference/core)
 
 Quasi-namespace for the structs used in
 [SablierV2LockupLinear](docs/contracts/v2/reference/core/contract.SablierV2LockupLinear.md).
@@ -64,7 +64,7 @@ struct Range {
 
 ### Stream
 
-Linear lockup stream struct.
+Lockup linear stream struct.
 
 _The fields are arranged like this to save gas via tight variable packing._
 

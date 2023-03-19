@@ -1,21 +1,22 @@
 ---
 sidebar_position: 2
 ---
-# SablierV2LockupPro
+# SablierV2LockupDynamic
 
-[Git Source](https://github.com/sablierhq/v2-core/blob/9df2bf8f303f7d13337716257672553e60783b8c/docs/contracts/v2/reference/core)
+[Git Source](https://github.com/sablierhq/v2-core/blob/6223a7bce69cdec996b0a95cb95d0f04cdb809be/docs/contracts/v2/reference/core)
 
-**Inherits:** [ISablierV2LockupPro](/docs/contracts/v2/reference/core/interfaces/interface.ISablierV2LockupPro.md),
-ERC721, [SablierV2Lockup](/docs/contracts/v2/reference/core/abstracts/abstract.SablierV2Lockup.md)
+**Inherits:**
+[ISablierV2LockupDynamic](/docs/contracts/v2/reference/core/interfaces/interface.ISablierV2LockupDynamic.md), ERC721,
+[SablierV2Lockup](/docs/contracts/v2/reference/core/abstracts/abstract.SablierV2Lockup.md)
 
 See the documentation in
-[ISablierV2LockupPro](docs/contracts/v2/reference/core/interfaces/interface.ISablierV2LockupPro.md).
+[ISablierV2LockupDynamic](docs/contracts/v2/reference/core/interfaces/interface.ISablierV2LockupDynamic.md).
 
 ## State Variables
 
 ### MAX_SEGMENT_COUNT
 
-The maximum number of segments permitted in a lockup pro stream.
+The maximum number of segments permitted in a lockup dynamic stream.
 
 _This is initialized at construction time and cannot be changed later._
 
@@ -23,12 +24,20 @@ _This is initialized at construction time and cannot be changed later._
 uint256 public immutable override MAX_SEGMENT_COUNT;
 ```
 
-### \_streams
+### \_nextStreamId
 
-_Sablier V2 pro streams mapped by unsigned integers ids._
+_Counter for stream ids, used in the create functions._
 
 ```solidity
-mapping(uint256 id => LockupPro.Stream stream) internal _streams;
+uint256 private _nextStreamId;
+```
+
+### \_streams
+
+_Lockup dynamic streams mapped by unsigned integers ids._
+
+```solidity
+mapping(uint256 id => LockupDynamic.Stream stream) private _streams;
 ```
 
 ## Functions
@@ -44,7 +53,8 @@ constructor(
     ISablierV2NFTDescriptor initialNFTDescriptor,
     UD60x18 maxFee,
     uint256 maxSegmentCount
-) SablierV2Lockup(initialAdmin, initialComptroller, initialNFTDescriptor, maxFee);
+)
+    SablierV2Lockup(initialAdmin, initialComptroller, initialNFTDescriptor, maxFee);
 ```
 
 **Parameters**
@@ -107,18 +117,18 @@ function getEndTime(uint256 streamId) external view override returns (uint40 end
 
 ### getRange
 
-Queries the range of the lockup pro stream, a struct that encapsulates (i) the start time of the stream, and (ii) the
-end time of of the stream, both as Unix timestamps.
+Queries the range of the lockup dynamic stream, a struct that encapsulates (i) the start time of the stream, and (ii)
+the end time of of the stream, both as Unix timestamps.
 
 ```solidity
-function getRange(uint256 streamId) external view override returns (LockupPro.Range memory range);
+function getRange(uint256 streamId) external view override returns (LockupDynamic.Range memory range);
 ```
 
 **Parameters**
 
-| Name       | Type      | Description                                            |
-| ---------- | --------- | ------------------------------------------------------ |
-| `streamId` | `uint256` | The id of the lockup pro stream to make the query for. |
+| Name       | Type      | Description                                                |
+| ---------- | --------- | ---------------------------------------------------------- |
+| `streamId` | `uint256` | The id of the lockup dynamic stream to make the query for. |
 
 ### getRecipient
 
@@ -143,14 +153,14 @@ function getRecipient(uint256 streamId)
 Queries the segments the protocol uses to compose the custom streaming curve.
 
 ```solidity
-function getSegments(uint256 streamId) external view override returns (LockupPro.Segment[] memory segments);
+function getSegments(uint256 streamId) external view override returns (LockupDynamic.Segment[] memory segments);
 ```
 
 **Parameters**
 
-| Name       | Type      | Description                                            |
-| ---------- | --------- | ------------------------------------------------------ |
-| `streamId` | `uint256` | The id of the lockup pro stream to make the query for. |
+| Name       | Type      | Description                                                |
+| ---------- | --------- | ---------------------------------------------------------- |
+| `streamId` | `uint256` | The id of the lockup dynamic stream to make the query for. |
 
 ### getSender
 
@@ -201,17 +211,17 @@ function getStatus(uint256 streamId)
 
 ### getStream
 
-Queries the lockup pro stream struct entity.
+Queries the lockup dynamic stream struct entity.
 
 ```solidity
-function getStream(uint256 streamId) external view override returns (LockupPro.Stream memory stream);
+function getStream(uint256 streamId) external view override returns (LockupDynamic.Stream memory stream);
 ```
 
 **Parameters**
 
-| Name       | Type      | Description                                            |
-| ---------- | --------- | ------------------------------------------------------ |
-| `streamId` | `uint256` | The id of the lockup pro stream to make the query for. |
+| Name       | Type      | Description                                                |
+| ---------- | --------- | ---------------------------------------------------------- |
+| `streamId` | `uint256` | The id of the lockup dynamic stream to make the query for. |
 
 ### getWithdrawnAmount
 
@@ -231,7 +241,7 @@ function getWithdrawnAmount(uint256 streamId) external view override returns (ui
 
 Checks whether the lockup stream is cancelable or not. Notes:
 
-- Always returns `false` if the lockup stream is not active.
+- Always returns `false` when the lockup stream is not active.
 
 ```solidity
 function isCancelable(uint256 streamId) public view override(ISablierV2Lockup, SablierV2Lockup) returns (bool result);
@@ -243,9 +253,17 @@ function isCancelable(uint256 streamId) public view override(ISablierV2Lockup, S
 | ---------- | --------- | -------------------------------------------------- |
 | `streamId` | `uint256` | The id of the lockup stream to make the query for. |
 
+### nextStreamId
+
+Counter for stream ids, used in the create functions.
+
+```solidity
+function nextStreamId() external view returns (uint256);
+```
+
 ### returnableAmountOf
 
-Calculates the amount that the sender would be paid if the lockup stream had been canceled, in units of the asset's
+Calculates the amount that the sender would be paid if the lockup stream were to be canceled, in units of the asset's
 decimals.
 
 ```solidity
@@ -265,7 +283,7 @@ Calculates the amount that has been streamed to the recipient, in units of the a
 The streaming function is:
 
 $$
-f(x) = x^{exp} * csa + esas
+f(x) = x^{exp} * csa + \Sigma(esa)
 $$
 
 Where:
@@ -273,21 +291,21 @@ Where:
 - $x$ is the elapsed time divided by the total time in the current segment.
 - $exp$ is the current segment exponent.
 - $csa$ is the current segment amount.
-- $esas$ are the elapsed segments' amounts summed up.
+- $\Sigma(esa)$ is the sum of all elapsed segments' amounts.
 
 ```solidity
 function streamedAmountOf(uint256 streamId)
     public
     view
-    override(ISablierV2Lockup, ISablierV2LockupPro)
+    override(ISablierV2Lockup, ISablierV2LockupDynamic)
     returns (uint128 streamedAmount);
 ```
 
 **Parameters**
 
-| Name       | Type      | Description                                            |
-| ---------- | --------- | ------------------------------------------------------ |
-| `streamId` | `uint256` | The id of the lockup pro stream to make the query for. |
+| Name       | Type      | Description                                                |
+| ---------- | --------- | ---------------------------------------------------------- |
+| `streamId` | `uint256` | The id of the lockup dynamic stream to make the query for. |
 
 ### tokenURI
 
@@ -315,35 +333,39 @@ function withdrawableAmountOf(uint256 streamId)
 
 ### createWithDeltas
 
-Create a lockup pro stream by setting the start time to `block.timestamp` and the end time to the sum of
+Creates a lockup dynamic stream by setting the start time to `block.timestamp` and the end time to the sum of
 `block.timestamp` and all segment deltas. The stream is funded by `msg.sender` and is wrapped in an ERC-721 NFT.
 
-Emits a {CreateLockupProStream} and a {Transfer} event. Requirements:
+Emits a {CreateLockupDynamicStream} and a {Transfer} event. Requirements:
 
 - All from {createWithMilestones}.
 
 ```solidity
-function createWithDeltas(LockupPro.CreateWithDeltas calldata params) external override returns (uint256 streamId);
+function createWithDeltas(LockupDynamic.CreateWithDeltas calldata params)
+    external
+    override
+    noDelegateCall
+    returns (uint256 streamId);
 ```
 
 **Parameters**
 
-| Name     | Type                         | Description                                       |
-| -------- | ---------------------------- | ------------------------------------------------- |
-| `params` | `CreateWithDeltas.LockupPro` | Struct that encapsulates the function parameters. |
+| Name     | Type                             | Description                                       |
+| -------- | -------------------------------- | ------------------------------------------------- |
+| `params` | `CreateWithDeltas.LockupDynamic` | Struct that encapsulates the function parameters. |
 
 **Returns**
 
-| Name       | Type      | Description                                    |
-| ---------- | --------- | ---------------------------------------------- |
-| `streamId` | `uint256` | The id of the newly created lockup pro stream. |
+| Name       | Type      | Description                                        |
+| ---------- | --------- | -------------------------------------------------- |
+| `streamId` | `uint256` | The id of the newly created lockup dynamic stream. |
 
 ### createWithMilestones
 
-Create a lockup pro stream with the provided milestones, implying the end time from the last segment's milestone. The
-stream is funded by `msg.sender` and is wrapped in an ERC-721 NFT.
+Creates a lockup dynamic stream with the provided milestones, implying the end time from the last segment's milestone.
+The stream is funded by `msg.sender` and is wrapped in an ERC-721 NFT.
 
-Emits a {CreateLockupProStream} and a {Transfer} event. Notes:
+Emits a {CreateLockupDynamicStream} and a {Transfer} event. Notes:
 
 - As long as the milestones are ordered, it is not an error to set the `params.startTime` and the milestones to a range
   that is in the past. Requirements:
@@ -355,25 +377,27 @@ Emits a {CreateLockupProStream} and a {Transfer} event. Notes:
 - `params.startTime` must not be greater than the milestone of the last segment.
 - `msg.sender` must have allowed this contract to spend at least `params.totalAmount` assets.
 - If set, `params.broker.fee` must not be greater than `MAX_FEE`.
+- The call must not be a delegate call.
 
 ```solidity
-function createWithMilestones(LockupPro.CreateWithMilestones calldata params)
+function createWithMilestones(LockupDynamic.CreateWithMilestones calldata params)
     external
     override
+    noDelegateCall
     returns (uint256 streamId);
 ```
 
 **Parameters**
 
-| Name     | Type                             | Description                                       |
-| -------- | -------------------------------- | ------------------------------------------------- |
-| `params` | `CreateWithMilestones.LockupPro` | Struct that encapsulates the function parameters. |
+| Name     | Type                                 | Description                                       |
+| -------- | ------------------------------------ | ------------------------------------------------- |
+| `params` | `CreateWithMilestones.LockupDynamic` | Struct that encapsulates the function parameters. |
 
 **Returns**
 
-| Name       | Type      | Description                                    |
-| ---------- | --------- | ---------------------------------------------- |
-| `streamId` | `uint256` | The id of the newly created lockup pro stream. |
+| Name       | Type      | Description                                        |
+| ---------- | --------- | -------------------------------------------------- |
+| `streamId` | `uint256` | The id of the newly created lockup dynamic stream. |
 
 ### \_calculateStreamedAmountForMultipleSegments
 
@@ -400,7 +424,10 @@ Checks whether the spender is authorized to interact with the stream.
 _Unlike the ERC-721 implementation, this function does not check whether the owner is the zero address._
 
 ```solidity
-function _isApprovedOrOwner(uint256 streamId, address spender)
+function _isApprovedOrOwner(
+    uint256 streamId,
+    address spender
+)
     internal
     view
     override
@@ -455,7 +482,7 @@ function _cancel(uint256 streamId) internal override onlySenderOrRecipient(strea
 _See the documentation for the public functions that call this internal function._
 
 ```solidity
-function _createWithMilestones(LockupPro.CreateWithMilestones memory params) internal returns (uint256 streamId);
+function _createWithMilestones(LockupDynamic.CreateWithMilestones memory params) internal returns (uint256 streamId);
 ```
 
 ### \_renounce
