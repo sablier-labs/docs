@@ -1,0 +1,54 @@
+---
+id: "flash-loans"
+sidebar_position: 6
+title: "Flash Loans"
+---
+
+import { links } from "@site/src/constants";
+
+# Brief Primer
+
+Flash loans are a unique feature of blockchain systems that allows users to borrow a large amount of cryptocurrency
+(typically ERC-20 assets) without providing any collateral. These loans are designed be taken and repaid within the same
+blockchain transaction.
+
+The concept behind flash loans is made possible by the atomic nature of blockchain transactions. In Ethereum,
+transactions are either executed entirely or not at all. This allows users to borrow funds, perform actions (like
+arbitrage, liquidations, or self-liquidations), and repay the loan along with a small fee, all in a single transaction.
+If the transaction fails at any point or if the loan is not repaid, the entire transaction is reverted, ensuring that
+the lending protocol doesn't lose any funds.
+
+Flash loans gained popularity with the emergence of DeFi platforms such as Aave and dYdX, which pioneered these
+services. They have enabled developers and traders to get instant access to liquidity.
+
+## Flash Loans in Sablier
+
+Sablier V2 enables flash loans for specific ERC-20 assets approved by the [protocol admin](/docs/concepts/04-admin.md).
+It's important to note that no asset is available for flash loaning by default.
+
+A percentage fee, known as the flash fee, is applied to every flash loan involving any ERC-20 asset and is managed by
+the protocol admin. The flash fee is currently set at 0.05%.
+
+Our flash loan implementation adheres to the [ERC-3156](https://eips.ethereum.org/EIPS/eip-3156) specification. Detailed
+instructions on how to execute a flash loan can be found [here](/docs/contracts/v2/guides/05-flash-loans.md).
+
+:::tip
+
+Interested in enabling your asset for flash loaning? Reach out on <a href={links.discord}>Discord</a>, or send an email
+to [sales@sablier.com](mailto:sales@sablier.com).
+
+:::
+
+## Supported Assets
+
+The following tables present the assets available for flash loaning.
+
+### Ethereum Mainnet
+
+| Asset | Address                                    |
+| ----- | ------------------------------------------ |
+| DAI   | 0x6b175474e89094c44da98b954eedeac495271d0f |
+| LUSD  | 0x5f98805A4E8be255a32880FDeC7F6728C6568bA0 |
+| USDC  | 0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48 |
+| USDT  | 0xdAC17F958D2ee523a2206206994597C13D831ec7 |
+| WETH  | 0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2 |

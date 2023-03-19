@@ -30,6 +30,12 @@ Smart contracts that are considered foundational, and are essential for Sablier 
 core would require deploying an entirely new set of smart contracts, and would be considered a new version of the
 Sablier Protocol.
 
+## DeFi
+
+Short for Decentralized Finance, which is an ecosystem of financial applications and services built on blockchain
+networks, primarily Ethereum, that leverage smart contracts to enable trustless, permissionless, and transparent
+financial transactions without relying on traditional intermediaries like banks or financial institutions.
+
 ## End Time
 
 The time when a stream is scheduled to end.
