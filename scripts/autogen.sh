@@ -9,20 +9,23 @@
 # Strict mode: https://gist.github.com/vncsna/64825d5609c146e80de8b1fd623011ca
 set -euo pipefail
 
-# Define the reference directory
-docs=docs/contracts/v2/reference/core
-
-# Delete the current V2 reference
-find $docs -type f -name "*.md" -delete
-
 # cd into sablierhq/v2-core
 cd repos/v2-core
+
+# Delete the previously generated docs
+rm -rf docs
 
 # Auto-generate the V2 reference with Forge
 forge doc
 
 # Go back to the root
 cd ../../
+
+# Define the reference directory
+docs=docs/contracts/v2/reference/core
+
+# Delete the current V2 reference
+find $docs -type f -name "*.md" -delete
 
 # Copy over the auto-generated files
 rsync --archive \
@@ -63,7 +66,7 @@ pnpm prettier --loglevel silent --write $docs
 contract=$docs/contract.SablierV2LockupLinear.md
 echo "$(echo -en '---\nsidebar_position: 1\n---\n'; cat $contract)" > $contract
 
-contract=$docs/contract.SablierV2LockupPro.md
+contract=$docs/contract.SablierV2LockupDynamic.md
 echo "$(echo -en '---\nsidebar_position: 2\n---\n'; cat $contract)" > $contract
 
 contract=$docs/contract.SablierV2Comptroller.md

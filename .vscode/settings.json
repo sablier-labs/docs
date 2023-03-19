@@ -1,5 +1,10 @@
 {
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "prettier.documentSelectors": ["**/*.tsx"],
+  "search.exclude": {
+    "**/.docusaurus": true,
+    "**/node_modules": true,
+    "**/repos": true
+  },
   "typescript.tsdk": "node_modules/typescript/lib"
 }
