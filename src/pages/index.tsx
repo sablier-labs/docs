@@ -1,10 +1,10 @@
 import Link from "@docusaurus/Link";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import styled from "@emotion/styled";
-import { ChatIcon } from "@heroicons/react/outline";
 import Layout from "@theme/Layout";
 import React from "react";
 import HomepageHeader from "../components/HomepageHeader";
+import { links } from "../constants";
 import GitHubIcon from "../icons/GitHubIcon";
 import MediumIcon from "../icons/MediumIcon";
 
@@ -96,7 +96,7 @@ export default function Home(): JSX.Element {
         <HomepageHeader />
         <FlexGrowDiv />
         <BodyWrapper>
-          <StyledLink href={"https://discord.gg/bSwRCwWRsT"}>
+          <StyledLink href={links.discord}>
             <img src="img/social/discord.svg" style={{ width: "48px", height: "48px" }} />
             <div>
               <h3>Discord</h3>
@@ -104,7 +104,7 @@ export default function Home(): JSX.Element {
             </div>
           </StyledLink>
 
-          <StyledLink href={"https://github.com/sablierhq"}>
+          <StyledLink href={links.github}>
             <StyledGitHubIcon>
               <GitHubIcon size={48} />{" "}
             </StyledGitHubIcon>
@@ -114,7 +114,7 @@ export default function Home(): JSX.Element {
             </div>
           </StyledLink>
 
-          <StyledLink href={"https://medium.com/sablier"}>
+          <StyledLink href={links.medium}>
             <StyledMediumIcon>
               <MediumIcon size={48} />{" "}
             </StyledMediumIcon>

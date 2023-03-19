@@ -6,15 +6,14 @@ title: "Glossary"
 
 ## Asset
 
-Although digital assets can exist in various forms, the Sablier Protocol exclusively supports the streaming of ERC-20
-assets.
+Digital assets can exist in various forms, but the Sablier Protocol exclusively supports the streaming of ERC-20 assets.
 
 The stream itself is represented as an NFT (ERC-721).
 
 ## Broker
 
-A third-party entity that interacts with the Sablier Protocol and charges fees upon creating streams on behalf of their
-users.
+A third-party entity that interacts with the Sablier Protocol on behalf of its users, who may charge service fees for
+facilitating these interactions.
 
 ## Broker Fees
 

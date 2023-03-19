@@ -1,0 +1,65 @@
+---
+id: "fees"
+sidebar_position: 4
+title: "Fees"
+---
+
+import { links } from "@site/src/constants";
+
+There are three types of fees in Sablier V2: protocol fees, broker fees, and flash loan fees.
+
+## Protocol Fees
+
+Sablier V2 features a protocol fee that the [protocol admin](/docs/concepts/04-admin.md) can enable for specific ERC-20
+assets.
+
+This fee is charged as a percentage of the streamed amount (not a flat rate), and it applies globally to all streams
+created with a particular ERC-20 asset, regardless of the stream creation method — be it through the Sablier Interface
+or a third-party front-end application integrating the Sablier Protocol.
+
+The admin has the ability to modify the protocol fee for individual ERC-20 assets; however, no fee may exceed the
+hard-coded limit of 10%.
+
+:::note
+
+The protocol fee is currently set to 0% for all ERC-20 assets.
+
+:::
+
+## Broker Fees
+
+In the Sablier ecosystem, a "broker" refers to any third-party entity that interacts with the Sablier Protocol on behalf
+of other users. These brokers have the ability to charge service fees for facilitating such interactions.
+
+Broker fees are particularly useful for front-end applications that integrate the Sablier Protocol. They enable
+front-end operators to levy a fee on each Sablier stream created through their platform.
+
+Just like with protocol fees, the broker fee is a percentage of the total amount streamed, and it cannot be higher than
+10%.
+
+:::note
+
+The official [Sablier Interface](https://app.sablier.com) does not charge any broker fees.
+
+:::
+
+:::tip
+
+Interesting in becoming a broker? Reach out on <a href={links.discord}>Discord</a>, or send an email to
+[sales@sablier.com](mailto:sales@sablier.com).
+
+:::
+
+## Flash Loan Fees
+
+Sablier V2 allows anyone to [flash loan](/docs/concepts/protocol/06-flash-loans.md) certain ERC-20 assets that have been
+enabled by the protocol admin. It's important to note that no asset is available for flash loaning by default.
+
+The flash fee is charged as a percentage of the principal, and is globally applied to all flash loans involving any
+ERC-20 asset.
+
+:::note
+
+The flash loan fee is currently set to 0.05%
+
+:::
