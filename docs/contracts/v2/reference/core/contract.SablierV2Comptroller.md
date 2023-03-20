@@ -3,7 +3,7 @@ sidebar_position: 3
 ---
 # SablierV2Comptroller
 
-[Git Source](https://github.com/sablierhq/v2-core/blob/e69c450f9b8808e324f31933450818ca28d0800b/docs/contracts/v2/reference/core)
+[Git Source](https://github.com/sablierhq/v2-core/blob/8bd57ebb31fddf6ef262477e5a378027db8b85d8/docs/contracts/v2/reference/core)
 
 **Inherits:** [ISablierV2Comptroller](/docs/contracts/v2/reference/core/interfaces/interface.ISablierV2Comptroller.md),
 [Adminable](/docs/contracts/v2/reference/core/abstracts/abstract.Adminable.md)
@@ -12,6 +12,14 @@ See the documentation in
 [ISablierV2Comptroller](docs/contracts/v2/reference/core/interfaces/interface.ISablierV2Comptroller.md).
 
 ## State Variables
+
+### flashAssets
+
+Whether the provided ERC-20 asset is flash loanable or not.
+
+```solidity
+mapping(IERC20 asset => bool supported) public override flashAssets;
+```
 
 ### flashFee
 
@@ -25,14 +33,6 @@ Notes:
 
 ```solidity
 UD60x18 public override flashFee;
-```
-
-### flashAssets
-
-Whether the provided ERC-20 asset is flash loanable or not.
-
-```solidity
-mapping(IERC20 asset => bool supported) public override flashAssets;
 ```
 
 ### protocolFees
