@@ -32,9 +32,9 @@ Sablier Protocol.
 
 ## DeFi
 
-Short for Decentralized Finance, which is an ecosystem of financial applications and services built on blockchain
-networks, primarily Ethereum, that leverage smart contracts to enable trustless, permissionless, and transparent
-financial transactions without relying on traditional intermediaries like banks or financial institutions.
+Short for Decentralized Finance: an ecosystem of financial applications and services built on blockchain networks,
+primarily Ethereum, that leverage smart contracts to enable trustless, permissionless, and transparent financial
+transactions without relying on traditional intermediaries like banks or financial institutions.
 
 ## End Time
 
