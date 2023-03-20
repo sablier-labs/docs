@@ -98,6 +98,10 @@ deployed without migrating streams.
 
 Refers to either (i) non-linear streams, or (ii) the smart contract that can create non-linear streams.
 
+## Renounce
+
+A renounced stream is a stream that cannot be canceled anymore.
+
 ## PRBMath
 
 [PRBMath][prb-math] is fixed-point arithmetic library used by Sablier Core to facilitate non-linear streaming and

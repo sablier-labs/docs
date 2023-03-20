@@ -100,7 +100,7 @@ Paste the following code into `src/StreamCreator.sol` (a detailed explanation of
 [here](/docs/contracts/v2/guides/create-stream/01-linear-stream.md)):
 
 ```solidity reference title="Stream Creator"
-https://github.com/sablierhq/examples/blob/5a2c1bf/v2/core/LinearStreamCreator.sol
+https://github.com/sablierhq/examples/blob/28dceb/v2/core/LinearStreamCreator.sol
 ```
 
 Let's use Forge to compile this contract:
@@ -136,7 +136,7 @@ As a prerequisite, you will need an RPC that supports forking. A good solution f
 Once you have obtained your RPC, you can proceed to run the following test:
 
 ```solidity reference title="Stream Creator Test"
-https://github.com/sablierhq/examples/blob/5a2c1bf/v2/core/LinearStreamCreator.t.sol
+https://github.com/sablierhq/examples/blob/28dceb/v2/core/LinearStreamCreator.t.sol
 ```
 
 You can run the test using Forge:
