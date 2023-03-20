@@ -1,7 +1,7 @@
 ---
-id: "pro-stream"
+id: "Dynamic-stream"
 sidebar_position: 2
-title: "Pro Stream"
+title: "Dynamic Stream"
 ---
 
 :::note

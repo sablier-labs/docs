@@ -50,7 +50,7 @@ covering what's new:
 
 1. **An even better multi-chain experience**
 2. The streaming dashboard now features **a brand new and amazingly useful search utility for all-things-streaming**
-3. **Custom stream creation** - v2 brings the cliff, as well as pro streams with custom curves such as exponentials,
+3. **Custom stream creation** - v2 brings the cliff, as well as dynamic streams with custom curves such as exponentials,
    logarithms...
 4. **The new interface is even more permissionless**: anyone can now use a custom token in the app without requiring a
    manual listing

@@ -36,6 +36,10 @@ Short for Decentralized Finance: an ecosystem of financial applications and serv
 primarily Ethereum, that leverage smart contracts to enable trustless, permissionless, and transparent financial
 transactions without relying on traditional intermediaries like banks or financial institutions.
 
+## Dynamic
+
+Refers to either (i) non-linear streams, or (ii) the smart contract that can create non-linear streams.
+
 ## End Time
 
 The time when a stream is scheduled to end.
@@ -78,7 +82,7 @@ A type of stream in which the creator has to lock up a specified amount of asset
 
 ## Milestones
 
-A milestone is the time component of a segment, which itself is a component of a pro stream.
+A milestone is the time component of a segment, which itself is a component of a dynamic stream.
 
 Milestones play a crucial role in the calculation of the custom streaming curve.
 
@@ -93,10 +97,6 @@ released by the stream can only increase over time and never decrease."
 
 External smart contracts that are useful, but not required for Sablier to exist. New periphery contracts can always be
 deployed without migrating streams.
-
-## Pro
-
-Refers to either (i) non-linear streams, or (ii) the smart contract that can create non-linear streams.
 
 ## Renounce
 
@@ -121,8 +121,8 @@ Fees that are rewarded to the Sablier Protocol itself.
 The range of a linear stream consists of three components: (i) the start time, (ii) the cliff time, and (iii) the end
 time.
 
-The range of a pro stream is determined by combining (i) the start time, (ii) the segment milestones, and (iii) the end
-time.
+The range of a dynamic stream is determined by combining (i) the start time, (ii) the segment milestones, and (iii) the
+end time.
 
 ## Real-Time Finance
 
