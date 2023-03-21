@@ -1,0 +1,117 @@
+---
+id: "use-cases"
+sidebar_position: 5
+title: "Use Cases"
+---
+
+import LinkPreview from "@site/src/components/LinkPreview";
+import { links } from "@site/src/constants";
+
+While Sablier is a general-purpose protocol that can be used for a
+[wide variety](https://twitter.com/Sablier/status/1205533344886411264) of applications, some use cases are more popular
+than others. In this article, we will cover the three primary reasons people are using Sablier at the moment: vesting,
+payroll, and airdrops.
+
+## Vesting
+
+### 1. Efficiency
+
+Traditional vesting schemes require a lot of manual input. Payments must be processed manually over an extended period,
+demanding continuous dedication from the treasury management team. The treasury admin has to initiate numerous
+transactions each month to compensate contributors and oversee the vesting of employees and investors
+
+As a result, traditional vesting proves to be labor-intensive, prone to errors, and ultimately delivers a subpar user
+experience for everyone involved. Organizations need to devote considerable time to administer funds, while recipients
+wait months, quarters, or sometimes even longer to obtain their compensation.
+
+Sablier solves these problems by automating the entire vesting process.
+
+The initial setup involves creating the streams, which only needs to be done once. You simply to specify the total
+duration of the stream (e.g., two years), and that's all - no further actions are required from you. With Sablier,
+vesting is a "set it and forget it" process.
+
+Then, recipients receive their compensation gradually over time: with every second that passes, they receive a fraction
+of their allocated compensation. This model aligns with the incentives of both parties. The organization only needs to
+spend time once, to create the streams, while recipients receive the funds gradually over time, allowing them to manage
+their finances as they wish.
+
+### 2. Schelling Points
+
+:::tip
+
+In game theory, a "focal point" (also called Schelling point) is a solution that people tend to choose by default in the
+absence of communication.
+
+:::
+
+Since traditional vesting contracts have a predictable release schedule, the day on which a vesting period unlocks may
+be used as a Schelling point for speculation. As a result, some token holders may dump their tokens as soon as they
+receive them.
+
+By contrast, Sablier streams distribute a fraction of the total payment every second to recipients, enabling them to
+withdraw a portion of funds at any time. This effectively addresses the problem of coordinated dumping.
+
+### 3. Transparency
+
+It's hard to aggregate discrete payments, which is why they typically lack transparency. Just by looking at a
+transaction on Etherscan, it's difficult to pin down to whom it was made, or for what purpose. This issue is
+particularly relevant to DAOs, where transparency is critical to enabling contributors to understand how the treasury
+funds are allocated and for what purposes.
+
+With Sablier streams, the issues mentioned above are avoided. Anyone can use the Sablier Interface to monitor all
+streams created by a particular address, as well as all transactions associated with each stream.
+
+To illustrate this, <a href={links.example}>here</a>'s an example of a stream as viewed on the Sablier Interface.
+
+## Payroll
+
+We have also seen Sablier being used for payroll. Streaming salaries through Sablier can significantly enhance employee
+satisfaction and retention.
+
+The benefits outlined in the "Efficiency" section earlier apply equally to this use case, since traditional payroll
+solutions, like vesting schemes, can be both labor-intensive and prone to errors.
+
+## Airdrops
+
+This section explores why streaming provide a superior method of distributing tokens compared to simple airdrops.
+
+### 1. Flaws in Simple Airdrops
+
+[Retroactive airdrops](https://members.delphidigital.io/learn/retroactive-airdrops) have become a common practice in the
+cryptocurrency industry. They are often used to launch new tokens, and for good reason: it allows for the distribution
+of project ownership to the right people.
+
+However, the simple way of doing airdrops is flawed, because the majority of recipients typically sell their tokens
+immediately after claiming them, and as a result the interest gathered by these airdrops is short-lived.
+
+Simple airdrops fail to incentivize community members to think long-term. Recipients receive all of their tokens at
+once, rather than over time. This is problematic, beacuse community members are the backbone of a crypto project, and
+losing their support immediately after the airdrop is not ideal.
+
+Fortunately, there is an elegant solution that encourages long-term thinking among community members. By streaming your
+airdrop with Sablier, you can ensure that community members prioritize the project's future. This approach creates the
+right incentives for members to think about the project's long-term success.
+
+### 2. Streaming Airdrops
+
+Instead of airdropping the entirety of the token allocation all at once, airdrop recipients receive a fraction of the
+tokens every second through a Sablier stream.
+
+A stream can have any duration you want. You can choose to vest your new token over a period of 6 months, 2 years, or
+any other duration you prefer. This way, airdrop recipients are forced to think about the the project's long-term
+development and stay engaged with it.
+
+1. The token price may fluctuate over time, which motivates recipients to do whatever they can to increase the price.
+2. In cases where a recipient fails to remain involved with the project, the creator of the airdrop has the ability to
+   cancel the recipient's stream. Canceling a stream will not undo any tokens that have already been streamed, but it
+   will prevent the recipient from receiving any more tokens.
+
+### 3. Price Crashes
+
+Streaming not only creates the right incentives for airdrops, but also ensures that the price of the token won't crash
+on day one. This has been the case for many airdrops, where a large percentage of recipients dumped immediately after
+claiming their tokens.
+
+If you are insterested in airdropping your token, check out the <a href={links.app}>Sablier Interface</a>, where you can
+create multiple streams in a single transaction. Or, if you prefer to create the streams programmatically, check out the
+docs on the [V2 Protocol](/contracts/v2/overview).

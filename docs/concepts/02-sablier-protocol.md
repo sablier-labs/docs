@@ -18,7 +18,13 @@ under BUSL-1.1. Both protocol versions are open-source and can be accessed on Sa
 As long as the Ethereum blockchain continues to exist, every version of Sablier that gets deployed will operate
 continuously and without interruption, with a guarantee of 100% uptime.
 
-## How doe Sablier differ from traditional payment systems?
+:::info
+
+Sablier is the first asset streaming protocol ever built in crypto, tracing its roots back to 2019.
+
+:::
+
+## How does Sablier differ from traditional payment systems?
 
 To understand the unique characteristics of Sablier, it is helpful to examine two aspects: the concept of streaming as
 an alternative to conventional payment methods, and the permissionless nature of the protocol compared to traditional
@@ -26,11 +32,11 @@ systems.
 
 ### Streaming vs Conventional Payments
 
-Traditional payment systems generally involve lump-sum transfers that require trust between parties and tend to be slow
-in processing. In the context of bank transfers, payments are also subject to substantial fees and can face delays due
-to intermediaries.
+Traditional payment systems generally involve lump-sum transfers, which rely on trust between parties, have slow
+processing times, and are prone to errors. In the context of bank transfers, payments are also subject to substantial
+fees and can face delays due to intermediaries.
 
-By contrast, Sablier introduces the concept of money streaming, enabling users to make continuous, real-time payments on
+By contrast, Sablier introduces the concept of asset streaming, enabling users to make continuous, real-time payments on
 a per-second basis. This innovative approach enables seamless, frictionless transactions and promotes increased
 financial flexibility for users, businesses, and other entities. Sablier makes the passage of time itself the
 trust-binding mechanism, unlocking business opportunities that were previously unavailable.

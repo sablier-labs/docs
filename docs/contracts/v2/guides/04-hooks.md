@@ -4,7 +4,7 @@ sidebar_position: 4
 title: "Implement Hooks"
 ---
 
-In this guide, we will go over how to implement [hooks](/docs/concepts/protocol/05-hooks.md) in your integration of
+In this guide, we will go over how to implement [hooks](/docs/concepts/protocol/04-hooks.md) in your integration of
 Sablier V2.
 
 ### Overview

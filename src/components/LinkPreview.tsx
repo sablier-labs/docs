@@ -1,7 +1,7 @@
 import Link from "@docusaurus/Link";
 import styled from "@emotion/styled";
-import React from "react";
-
+import SablierIcon from "@site/static/img/logo.svg";
+import React, { useCallback } from "react";
 import GitHubIcon from "../icons/GitHubIcon";
 
 const Wrapper = styled(Link)`
@@ -58,9 +58,18 @@ interface LinkPreviewProps {
 }
 
 export default function LinkPreview(props: LinkPreviewProps): JSX.Element {
+  const renderIcon = useCallback(() => {
+    switch (props.icon) {
+      case "github":
+        return <GitHubIcon size={28} />;
+      default:
+        return <SablierIcon height={28} width={28} />;
+    }
+  }, [props.icon]);
+
   return (
     <Wrapper href={props.href}>
-      <IconWrapper>{props.icon == "github" ? <GitHubIcon size={32} /> : null}</IconWrapper>
+      <IconWrapper>{renderIcon()}</IconWrapper>
       <LabelWrapper>
         <Title>{props.title}</Title>
         <Subtitle>{props.subtitle}</Subtitle>
