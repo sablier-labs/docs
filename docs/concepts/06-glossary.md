@@ -15,7 +15,7 @@ The stream itself is represented as an NFT (ERC-721).
 A third-party entity that interacts with the Sablier Protocol on behalf of its users, who may charge service fees for
 facilitating these interactions.
 
-## Broker Fees
+## Broker fees
 
 The fees collected by the broker upon creating a stream for their users.
 
@@ -26,8 +26,8 @@ accrue in the stream.
 
 ## Core
 
-Smart contracts that are considered foundational, and are essential for Sablier to exist. Upgrading to a new version of
-core would require deploying an entirely new set of smart contracts, and would be considered a new version of the
+Sablier contracts that are considered foundational, and are essential for Sablier to exist. Upgrading to a new version
+of core would require deploying an entirely new set of smart contracts, and would be considered a new version of the
 Sablier Protocol.
 
 ## DeFi
@@ -40,7 +40,7 @@ transactions without relying on traditional intermediaries like banks or financi
 
 Refers to either (i) non-linear streams, or (ii) the smart contract that can create non-linear streams.
 
-## End Time
+## End time
 
 The time when a stream is scheduled to end.
 
@@ -95,8 +95,8 @@ released by the stream can only increase over time and never decrease."
 
 ## Periphery
 
-External smart contracts that are useful, but not required for Sablier to exist. New periphery contracts can always be
-deployed without migrating streams.
+Sablier contracts that are useful, but not required for Sablier to exist. New periphery contracts can always be deployed
+without migrating streams.
 
 ## Renounce
 
@@ -112,7 +112,7 @@ compute percentage values.
 [PRBProxy][prb-proxy] is a proxy contract that can compose transactions on behalf of the owner. PRBProxy is a key
 component of Sablier Periphery.
 
-## Protocol Fees
+## Protocol fees
 
 Fees that are rewarded to the Sablier Protocol itself.
 
@@ -124,7 +124,7 @@ time.
 The range of a dynamic stream is determined by combining (i) the start time, (ii) the segment milestones, and (iii) the
 end time.
 
-## Real-Time Finance
+## Real-time finance
 
 A term coined by us in 2019 to emphasize the wide-ranging use cases for the Sablier Protocol.
 
@@ -142,7 +142,7 @@ An entity with three properties:
 A segment is an essential component of a non-linear stream, as it facilitates the calculation of the custom streaming
 curve.
 
-## Start Time
+## Start time
 
 The time when a stream is scheduled to start.
 

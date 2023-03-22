@@ -1,7 +1,7 @@
 ---
 id: "frontend"
 sidebar_position: 6
-title: "Front End Integrations"
+title: "Front-End Integrations"
 ---
 
 Throughout this series, we've been focusing on creating an on-chain integration with Sablier. But maybe you're
@@ -16,7 +16,7 @@ the following:
 - [React](https://reactjs.org/)
 - [Wagmi](https://wagmi.sh/)
 
-## Project Setup
+## Project setup
 
 Let's start by creating a new Next.js project:
 

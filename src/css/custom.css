@@ -86,10 +86,6 @@
   --ifm-h6-font-size: 0.85rem;
 }
 
-.mermaid .node circle {
-  r: 100 !important;
-}
-
 .navbar__item.active {
   display: inline-block;
 }

@@ -30,7 +30,7 @@ To understand the unique characteristics of Sablier, it is helpful to examine tw
 an alternative to conventional payment methods, and the permissionless nature of the protocol compared to traditional
 systems.
 
-### Streaming vs Conventional Payments
+### Streaming vs conventional payments
 
 Traditional payment systems generally involve lump-sum transfers, which rely on trust between parties, have slow
 processing times, and are prone to errors. In the context of bank transfers, payments are also subject to substantial
@@ -44,7 +44,7 @@ trust-binding mechanism, unlocking business opportunities that were previously u
 A good mental model to contrast streaming with conventional payment models is to view the former as "real-time finance"
 or "continuous finance", and the latter as of "discrete finance".
 
-### Permissionless Systems
+### Permissionless systems
 
 Sablier is rooted in the essential ideas of open access and immutability, deriving inspiration from Ethereum's
 foundational principles and the core values of the DeFi[^1] movement. These concepts are crucial in shaping a future
