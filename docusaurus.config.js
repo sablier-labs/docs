@@ -5,6 +5,9 @@ const katex = require("rehype-katex");
 const config = {
   baseUrl: "/",
   favicon: "img/favicon.ico",
+  markdown: {
+    mermaid: true,
+  },
   onBrokenLinks: "warn",
   onBrokenMarkdownLinks: "warn",
   organizationName: "sablierhq",
@@ -38,7 +41,7 @@ const config = {
       type: "text/css",
     },
   ],
-  themes: ["docusaurus-theme-github-codeblock"],
+  themes: ["@docusaurus/theme-mermaid", "docusaurus-theme-github-codeblock"],
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
@@ -124,6 +127,9 @@ const config = {
           },
         ],
         style: "dark",
+      },
+      mermaid: {
+        theme: { light: "neutral", dark: "dark" },
       },
       navbar: {
         items: [

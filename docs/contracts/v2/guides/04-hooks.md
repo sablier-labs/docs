@@ -29,17 +29,17 @@ And these are the hooks that can be implemented by a sender contract:
 | :----------------- | :---------------------------------------- | :------------------------------------------------- |
 | `onStreamCanceled` | `(streamId,senderAmount,recipientAmount)` | Called when the stream is cancelled by the sender. |
 
-### Sample Implementation
+### Sample Implementations
 
-### Recipient
+#### Recipient
 
-```solidity reference title="Recipient Hooks Implementation"
+```solidity reference title="Sablier Recipient Hooks"
 https://github.com/sablierhq/examples/blob/28dceb/v2/core/RecipientHooks.sol
 ```
 
-### Sender
+#### Sender
 
-```solidity reference title="Sender Hooks Implementation"
+```solidity reference title="Sablier Sender Hooks"
 https://github.com/sablierhq/examples/blob/28dceb/v2/core/SenderHooks.sol
 ```
 

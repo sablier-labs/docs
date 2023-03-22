@@ -9,9 +9,9 @@ admin is a multisig wallet currently in control of Sablier Labs, which has the f
 
 | Permission              | Function                | Contract(s)                                       |
 | ----------------------- | ----------------------- | ------------------------------------------------- |
-| Claim Protocol Revenues | `claimProtocolRevenues` | `SablierV2LockupDynamic`, `SablierV2LockupLinear` |
-| Set Comptroller         | `setComptroller`        | `SablierV2LockupDynamic`, `SablierV2LockupLinear` |
-| Set NFT Descriptor      | `setNFTDescriptor`      | `SablierV2LockupDynamic`, `SablierV2LockupLinear` |
+| Claim Protocol Revenues | `claimProtocolRevenues` | `SablierV2LockupLinear`, `SablierV2LockupDynamic` |
+| Set Comptroller         | `setComptroller`        | `SablierV2LockupLinear`, `SablierV2LockupDynamic` |
+| Set NFT Descriptor      | `setNFTDescriptor`      | `SablierV2LockupLinear`, `SablierV2LockupDynamic` |
 | Set Flash Fee           | `setFlashFee`           | `SablierV2Comptroller`                            |
 | Set Protocol Fee        | `setProtocolFee`        | `SablierV2Comptroller`                            |
 | Toggle Flash Asset      | `toggleFlashAsset`      | `SablierV2Comptroller`                            |
@@ -21,7 +21,7 @@ comptroller, see the [reference](/docs/contracts/v2/reference/core/contract.Sabl
 
 ## Trustlessness
 
-Despite having an admin, the Sablier Protocol maintains its trustless nature thanks to the following reasons:
+Despite having an admin, the Sablier Protocol maintains its trustless nature due to the following reasons:
 
 1. The protocol is permissionless, i.e. it can be freely accessed by anyone with an Internet connection.
 2. The protocol is persistent, i.e. the admin cannot pause it.

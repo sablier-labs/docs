@@ -4,8 +4,122 @@ sidebar_position: 4
 title: "Access Control"
 ---
 
-:::note
+With the exception of the [admin functions](/docs/concepts/05-admin.md), all functionality in Sablier is related to one
+or more streams.
 
-This page is a stub.
+This article will provide a comprehensive overview of the actions that can be performed on streams, as well as the
+corresponding user permissions for each action.
+
+:::tip
+
+Every stream has a sender, a recipient, and possibly multiple NFT operators, with the recipient being the owner of the
+NFT.
 
 :::
+
+## Overview
+
+The table below offers a quick overview of the access control for each action that can be performed on a stream.
+
+| Action            | Sender | Recipient | Operator(s) |
+| ----------------- | :----: | :-------: | :---------: |
+| Burn NFT          |   ❌   |    ✅     |     ✅      |
+| Cancel            |   ✅   |    ✅     |     ❌      |
+| Cancel Multiple   |   ✅   |    ✅     |     ❌      |
+| Renounce          |   ✅   |    ❌     |     ❌      |
+| Withdraw          |   ✅   |    ✅     |     ✅      |
+| Withdraw Multiple |   ❌   |    ✅     |     ✅      |
+
+## Burn NFT
+
+Either the recipient or an approved NFT operator can burn the NFT.
+
+```mermaid
+flowchart LR;
+    recipient((Recipient));
+    operator((Operator));
+    stream[(Stream)];
+
+    recipient-- burn -->stream;
+    recipient-- approve -->operator;
+    operator-- burn -->stream;
+```
+
+## Cancel
+
+Either the sender or the recipient can cancel a stream.
+
+```mermaid
+flowchart LR;
+    sender((Sender));
+    recipient((Recipient));
+    stream[(Stream)];
+
+    sender-- cancel -->stream;
+    recipient-- cancel -->stream;
+```
+
+## Cancel Multiple
+
+Either the sender or the recipient can cancel multiple streams.
+
+- The caller must be either the sender or the recipient of each stream.
+
+```mermaid
+flowchart LR;
+  sender((Sender));
+  recipient((Recipient));
+  streams[(Multiple Streams)];
+
+  sender-- cancelMultiple -->streams;
+  recipient-- cancelMultiple -->streams;
+```
+
+## Renounce
+
+Only the sender can renounce a stream.
+
+```mermaid
+flowchart LR;
+    sender((Sender));
+    stream[(Stream)];
+    sender-- renounce -->stream;
+```
+
+## Withdraw
+
+The assets in a stream can be withdrawn by the sender, recipient, or an approved NFT operator.
+
+- Both the recipient and the NFT operator have the option to specify a custom address to withdraw the assets to.
+- The sender, however, is limited to withdrawing assets directly to the recipient's address.
+
+```mermaid
+flowchart LR;
+    sender((Sender));
+    recipient((Recipient));
+    operator((Operator));
+    stream[(Stream)];
+
+    sender-- withdraw --->stream;
+    recipient-- withdraw -->stream;
+    recipient-- approve -->operator;
+    operator-- withdraw -->stream;
+```
+
+## Withdraw Multiple
+
+Either the recipient or an approved NFT operator can withdraw assets from multiple streams.
+
+- The caller has the option to specify a custom address to withdraw the assets to.
+- The caller must be either the recipient or an approved NFT operator of each stream.
+
+```mermaid
+flowchart LR;
+    recipient((Recipient));
+    operator((Operator));
+    streams[(Multiple Streams)];
+
+    recipient-- withdrawMultiple --->streams
+    recipient-- approve -->operator;
+    operator-- withdrawMultiple -->streams;
+```
