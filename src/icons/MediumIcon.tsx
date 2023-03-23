@@ -4,7 +4,7 @@ interface MediumIconProps {
   size: number;
 }
 
-export default function MediumIcon(props: MediumIconProps): JSX.Element {
+export default function MediumIcon(_props: MediumIconProps): JSX.Element {
   return (
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1043.63 592.71">
       <g id="Layer_2" data-name="Layer 2">

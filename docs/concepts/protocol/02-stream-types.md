@@ -47,7 +47,7 @@ the $f(x) = log(x)$ function.
 Part of the Sablier Dynamic offering, **exponential streams allow for streams where the recipients receive more and more
 tokens as time moves forward**.
 
-For our math junkies out there, it's somewhat similar to the $f(x) = e^x - 1$ function. This is especially a great fit
+For our math junkies out there, it's somewhat similar to the $f(x) = e^x - 1$ function. This is especially a great fit
 if you are looking to airdrop tokens to your community, as instead of receiving the tokens all at once (no streaming) or
 in a linear fashion (linear stream), your community members will receive the majority of the tokens towards the end of
 the stream. **This incentivizes long-term behavior and a constructive attitude**.

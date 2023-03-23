@@ -35,7 +35,13 @@ const FeatureList = [
   },
 ];
 
-function Feature({ Svg, title, description }) {
+interface FeatureProps {
+  description: React.ReactNode;
+  Svg: React.FC;
+  title: string;
+}
+
+function Feature({ title, description, Svg }: FeatureProps) {
   return (
     <div className={clsx("col col--4")}>
       <div className="text--center">
