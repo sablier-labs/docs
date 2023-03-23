@@ -2,8 +2,10 @@
   // This file is not used in compilation. It is here just for a nice editor experience.
   "extends": "@tsconfig/docusaurus/tsconfig.json",
   "compilerOptions": {
+    "checkJs": true,
     "baseUrl": ".",
-    "checkJs": true
+    "module": "ESNext",
+    "target": "ESNext"
   },
   "exclude": [".docusaurus", "node_modules"],
   "include": ["**/*.js", "**/*.ts", "**/*.tsx"]

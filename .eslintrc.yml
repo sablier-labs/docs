@@ -1,0 +1,35 @@
+env:
+  shared-node-browser: true
+extends:
+  - "eslint:recommended"
+  - "plugin:@docusaurus/recommended"
+  - "plugin:@typescript-eslint/recommended"
+  - "plugin:mdx/recommended"
+  - "plugin:react/recommended"
+overrides:
+  - files:
+      - "*.md"
+      - "*.mdx"
+    parser: "eslint-mdx"
+  - files:
+      - "*.ts"
+      - "*.tsx"
+    parser: "@typescript-eslint/parser"
+    parserOptions:
+      project: "tsconfig.json"
+    plugins:
+      - "@typescript-eslint"
+    rules:
+      "@typescript-eslint/no-floating-promises":
+        - error
+        - ignoreIIFE: true
+          ignoreVoid: true
+parserOptions:
+  ecmaFeatures:
+    jsx: true
+  ecmaVersion: "latest"
+  sourceType: "module"
+root: true
+settings:
+  react:
+    version: "detect"
