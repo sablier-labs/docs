@@ -58,7 +58,7 @@ restrictions based on factors such as location, financial status, or age.
 
 As an immutable protocol, Sablier is not upgradeable, meaning that no party can pause the contracts, reverse
 transactions, or alter the users' streams in any way. This ensures the system remains transparent, secure, and resistant
-to manipulation or abuse. It should be noted that the protocol administrator reserves the right (though not obligated)
+to manipulation or abuse.
 
 It is worth noting that the protocol admin has the right (but not the obligation) to impose a fee on every stream
 created using specific ERC-20 assets. However, this capability is known to all participants in advance, and to avert
