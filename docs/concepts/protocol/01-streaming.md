@@ -12,7 +12,7 @@ protocol. That it's, you understood token streaming.
 
 :::info
 
-Fun trivia: "Sablier" means hourglass in French.
+Fun trivia: "sablier" means "hourglass" in French.
 
 :::
 
@@ -21,10 +21,9 @@ could use Sablier and stream it over the course of the month. Every second, Alic
 paycheck, and she can withdraw the funds which have already been streamed at any time.
 
 What's beautiful about this is that Bob doesn't have to worry all the time about handling payroll, he can just set up a
-stream at the beginning of the year and relax. Alice, can then withdraw the funds which have been streamed when she
-wants to, whenever that is. If Alice leaves the company while the stream is still running, Bob can simply cancel it
-(assuming the stream was configured as cancelable when it was created) and get the funds back which haven't yet been
-streamed.
+stream at the beginning of the year and relax. Alice can then withdraw the funds which have been streamed when she wants
+to, whenever that is. If Alice leaves the company while the stream is still running, Bob can simply cancel it (assuming
+the stream was configured as cancelable when it was created) and get the funds back which haven't yet been streamed.
 
 Every interaction with the Sablier protocol is in relation to a specific token stream. This is how we refer to a
 real-time payment.
