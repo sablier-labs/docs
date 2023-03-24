@@ -21,11 +21,11 @@
     "url": "https://github.com/sablierhq/v2-docs/issues"
   },
   "dependencies": {
-    "@algolia/client-search": "^4.15.0",
-    "@docusaurus/core": "2.3.1",
-    "@docusaurus/preset-classic": "2.3.1",
-    "@docusaurus/theme-classic": "^2.3.1",
-    "@docusaurus/theme-mermaid": "^2.3.1",
+    "@algolia/client-search": "^4.16.0",
+    "@docusaurus/core": "^2.4.0",
+    "@docusaurus/preset-classic": "^2.4.0",
+    "@docusaurus/theme-classic": "^2.4.0",
+    "@docusaurus/theme-mermaid": "^2.4.0",
     "@emotion/react": "^11.10.6",
     "@emotion/styled": "^11.10.6",
     "@heroicons/react": "^2.0.16",
@@ -40,18 +40,18 @@
     "remark-math": "3"
   },
   "devDependencies": {
-    "@docusaurus/eslint-plugin": "^2.3.1",
+    "@docusaurus/eslint-plugin": "^2.4.0",
     "@docusaurus/module-type-aliases": "2.3.1",
-    "@docusaurus/types": "^2.3.1",
+    "@docusaurus/types": "^2.4.0",
     "@trivago/prettier-plugin-sort-imports": "^4.1.1",
     "@tsconfig/docusaurus": "^1.0.7",
-    "@types/node": "^18.15.3",
+    "@types/node": "^18.15.7",
     "@typescript-eslint/eslint-plugin": "^5.56.0",
     "@typescript-eslint/parser": "^5.56.0",
     "eslint": "^8.36.0",
     "eslint-plugin-mdx": "^2.0.5",
     "eslint-plugin-react": "^7.32.2",
-    "prettier": "^2.8.4",
+    "prettier": "^2.8.7",
     "typescript": "^4.9.5"
   },
   "engines": {
