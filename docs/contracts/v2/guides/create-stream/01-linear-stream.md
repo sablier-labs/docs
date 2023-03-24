@@ -4,56 +4,100 @@ sidebar_position: 1
 title: "Linear Stream"
 ---
 
-Linear streams are streams created using the
+Linear streams are streams created via the
 [`SablierV2LockupLinear`](/docs/contracts/v2/reference/core/contract.SablierV2LockupLinear.md) contract.
 
-To create a linear stream programmatically, follow these steps:
+This is how you can create a linear stream programmatically:
 
-1. Initialize the Sablier contract.
-2. Fund your contract with ERC-20 assets[^1].
-3. Approve the Sablier contract to spend the ERC-20 assets from your contract.
-4. Decide what create function you want to use: either `createWithDurations` or `createWithRange`.
-5. Prepare the parameters for the chosen create function.
-6. Invoke the create function by passing in the prepared parameters.
+1. Set up a contract.
+2. Initialize the Sablier contract.
+3. Fund your contract with ERC-20 assets[^1].
+4. Approve the Sablier contract to spend the ERC-20 assets from your contract.
+5. Decide what create function you want to use: either `createWithDurations` or `createWithRange`.
+6. Prepare the parameters for the chosen create function.
+7. Invoke the create function by passing in the prepared parameters.
+
+:::note
+
+This guide assumes that you have already read the [Protocol Concepts](/docs/concepts/protocol/01-streaming.md) section.
+
+:::
+
+:::caution
+
+The code in this guide is not production-ready, and is implemented in a simplistic manner for the purpose of learning.
+
+:::
+
+## Set up a contract
+
+Declare the Solidity version used to compile the contract:
+
+```solidity
+// SPDX-License-Identifier: GPL-3.0-or-later
+pragma solidity >=0.8.13;
+```
+
+Import the relevant symbols from `@sablier/v2-core`:
+
+```solidity
+import { ISablierV2LockupLinear } from "@sablier/v2-core/interfaces/ISablierV2LockupLinear.sol";
+import { Broker, LockupLinear } from "@sablier/v2-core/types/DataTypes.sol";
+import { ud60x18 } from "@sablier/v2-core/types/Math.sol";
+import { IERC20 } from "@sablier/v2-core/types/Tokens.sol";
+```
+
+Create a contract called `LinearStreamCreator`, and declare a constant `DAI` of type `IERC20` and an immutable variable
+`sablier` of type `ISablierV2LockupLinear`:
+
+```solidity
+contract LinearStreamCreator {
+    IERC20 public constant DAI = IERC20(0x6B175474E89094C44Da98b954EedeAC495271d0F);
+    ISablierV2LockupLinear public immutable sablier;
+}
+```
+
+In the code above, the address of the [DAI](https://makerdao.com) stablecoin is hardcoded. However, in production, you
+would likely use an input parameter for this and pass the input into a memory variable, allowing the contract to change
+the assets it interacts with on a per transaction basis.
 
 ## Initialization
 
 To initialize the Sablier contract, you first need to grab its address from the
-[Deployment Addresses](/docs/contracts/v2/02-addresses.md) page. Once you have obtained the address, you can use it in
-this contract:
+[Deployment Addresses](/docs/contracts/v2/02-addresses.md) page. Once you have obtained it, pass it to the constructor
+of the creator contract:
 
 ```solidity
-import { ISablierV2LockupLinear } from "@sablier/v2-core/interfaces/ISablierV2LockupLinear.sol";
-
-contract LinearStreamCreator {
-    ISablierV2LockupLinear public immutable sablier;
-
-    constructor(ISablierV2LockupLinear sablier_) {
-        sablier = sablier_;
-    }
+constructor(ISablierV2LockupLinear sablier_) {
+    sablier = sablier_;
 }
 ```
 
 ## ERC-20 Steps
 
-Sablier re-exports OpenZeppelin's
-[ERC-20 interface](https://github.com/OpenZeppelin/openzeppelin-contracts/blob/release-v4.8/contracts/token/ERC20/IERC20.sol)
-so that you don't have to install it separately:
+To create a stream, the caller must `approve` the creator contract to pull the tokens from the calling address's
+account. This is necessary because we must also approve the Sablier contract to pull the assets that the creator
+contract will be in possession of after they are transferred from the calling address (you):
 
 ```solidity
-import { IERC20 } from "@sablier/v2-core/types/Tokens.sol";
+function createLinearStream(uint256 amount) external returns (uint256 streamId) {
+    // Transfer the provided amount of DAI tokens to this contract
+    DAI.transferFrom(msg.sender, address(this), amount);
+
+    // Approve the Sablier contract to spend DAI
+    DAI.approve(address(sablier), amount);
 ```
 
-For guidance on how to approve and transfer ERC-20 assets, see
+For more guidance on how to approve and transfer ERC-20 assets, see
 [this article](https://ethereum.org/en/developers/docs/standards/tokens/erc-20/) on the Ethereum website.
 
 ## Create functions
 
 There are two create functions available in the linear contract:
 
-- `createWithDurations`: sets the start time set to
+- `createWithDurations`: sets the start time to
   [`block.timestamp`](https://docs.soliditylang.org/en/v0.8.19/cheatsheet.html#global-variables)
-- `createWithRange`: uses the start time provided by you
+- `createWithRange`: uses specific start and end times
 
 Which one you choose depends on your use case. In this guide, we will use `createWithDurations`.
 
@@ -61,7 +105,7 @@ Which one you choose depends on your use case. In this guide, we will use `creat
 
 Sablier uses structs to encode the parameters of its create functions.
 
-Since we're using `createWithDurations`, we have to initialize a struct of type
+Since we're using `createWithDurations`, we have to use the struct
 [`LockupLinear.CreateWithDurations`](/docs/contracts/v2/reference/core/types/library.LockupLinear.md):
 
 ```solidity
@@ -97,12 +141,9 @@ params.totalAmount = amount;
 
 ### Asset
 
-The contract address of the ERC-20 asset to use for streaming. In this example, we will use
-[DAI](https://makerdao.com/en/):
+The contract address of the ERC-20 asset to use for streaming. In this example, we will use DAI:
 
 ```solidity
-import { IERC20 } from "@sablier/v2-core/types/Tokens.sol";
-IERC20 public constant DAI = IERC20(0x6B175474E89094C44Da98b954EedeAC495271d0F);
 params.asset = DAI;
 ```
 
@@ -120,7 +161,6 @@ Struct that encapsulates (i) the start time of the stream, (ii) the cliff time o
 the stream, all as Unix timestamps.
 
 ```solidity
-import { LockupLinear } from "@sablier/v2-core/types/DataTypes.sol";
 params.durations = LockupLinear.Durations({
     cliff: 4 weeks,
     total: 52 weeks
@@ -136,8 +176,6 @@ to charge yourself a fee. In practice, this parameter will mostly be used by
 [front-end applications](/docs/contracts/v2/guides/05-frontend.md).
 
 ```solidity
-import { Broker } from "@sablier/v2-core/types/DataTypes.sol";
-import { ud60x18 } from "@sablier/v2-core/types/Math.sol";
 params.broker = Broker(address(0), ud60x18(0));
 ```
 
@@ -160,7 +198,7 @@ streamId = sablier.createWithDurations(params);
 
 ## The full contract
 
-Below you can see the complete functioning code example: contract that generates linear streams, each starting at
+Below you can see the complete functioning code example: a contract that generates linear streams that start at
 `block.timestamp`. You can access the code on GitHub through
 [this link](https://github.com/sablierhq/examples/blob/main/v2/core/LinearStreamCreator.sol).
 
