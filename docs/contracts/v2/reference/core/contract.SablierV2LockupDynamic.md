@@ -1,6 +1,7 @@
 ---
 sidebar_position: 2
 ---
+
 # SablierV2LockupDynamic
 
 [Git Source](https://github.com/sablierhq/v2-core/blob/8bd57ebb31fddf6ef262477e5a378027db8b85d8/docs/contracts/v2/reference/core)
