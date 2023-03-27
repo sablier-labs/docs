@@ -13,7 +13,7 @@ functionality without the need for trusted intermediaries who may selectively re
 Currently, there are two major versions of the protocol: V1, which is available under GNU V3, and V2, which is licensed
 under BUSL-1.1. Both protocol versions are open-source and can be accessed on Sablier's
 [GitHub page](https://github.com/sablierhq). Detailed technical reference for each version can be found in the
-[Contracts](/docs/contracts) section of this website.
+[Contracts](/contracts/v2/overview) section of this website.
 
 As long as the Ethereum blockchain continues to exist, every version of Sablier that gets deployed will operate
 continuously and without interruption, with a guarantee of 100% uptime.

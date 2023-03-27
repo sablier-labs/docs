@@ -17,7 +17,7 @@ admin is a multisig wallet currently in control of Sablier Labs, which has the f
 | Toggle Flash Asset      | `toggleFlashAsset`      | `SablierV2Comptroller`                            |
 
 The comptroller is a special contract that manages the configuration of the protocol. To learn more about the
-comptroller, see the [reference](/docs/contracts/v2/reference/core/contract.SablierV2Comptroller.md).
+comptroller, see the [reference](/contracts/v2/reference/core/contract.SablierV2Comptroller).
 
 ## Trustlessness
 

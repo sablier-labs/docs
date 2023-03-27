@@ -37,4 +37,4 @@ programmatically react to these events.
 
 ## Next steps
 
-Looking to incorporate a hook in your Sablier integration? Refer to this [guide](/docs/contracts/v2/guides/04-hooks.md).
+Looking to incorporate a hook in your Sablier integration? Refer to this [guide](/contracts/v2/guides/hooks).

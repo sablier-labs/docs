@@ -4,8 +4,8 @@ sidebar_position: 4
 title: "Implement Hooks"
 ---
 
-In this guide, we will explain how to implement [hooks](/docs/concepts/protocol/06-hooks.md) in your on-chain
-integration of Sablier.
+In this guide, we will explain how to implement [hooks](/concepts/protocol/hooks) in your on-chain integration of
+Sablier.
 
 ### Overview
 
@@ -47,7 +47,7 @@ https://github.com/sablierhq/examples/blob/main/v2/core/SenderHooks.sol
 
 :::danger
 
-Reverts in your hooks will NOT be bubbled up. If your hook reverts, the original transaction will go through, but any
-state changes made by your hook will be reverted.
+Reverts in your hooks will NOT be picked up by Sablier. If your hook reverts, the original transaction will go through,
+but any state changes made by your hook will be reverted.
 
 :::

@@ -6,6 +6,6 @@ title: "Renounce Stream"
 
 :::note
 
-This page is a stub.
+This section assumes that you have already gone through the [setup](/contracts/v2/guides/stream-management/setup) part.
 
 :::

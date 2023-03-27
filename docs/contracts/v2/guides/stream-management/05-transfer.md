@@ -1,11 +1,11 @@
 ---
 id: "transfer"
 sidebar_position: 5
-title: "Transfer NFT"
+title: "Transfer Ownership"
 ---
 
 :::note
 
-This page is a stub.
+This section assumes that you have already gone through the [setup](/contracts/v2/guides/stream-management/setup) part.
 
 :::

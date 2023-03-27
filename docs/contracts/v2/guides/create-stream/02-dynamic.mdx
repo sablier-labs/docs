@@ -1,7 +1,7 @@
 ---
-id: "dynamic-stream"
+id: "dynamic"
 sidebar_position: 2
-title: "Create a Dynamic Stream"
+title: "Dynamic Stream"
 ---
 
 import AdmonitionSimpleCode from "@site/docs/snippets/AdmonitionSimpleCode.mdx";
@@ -13,12 +13,14 @@ import ParamRecipient from "@site/docs/snippets/ParamRecipient.mdx";
 import ParamSender from "@site/docs/snippets/ParamSender.mdx";
 import ParamTotalAmount from "@site/docs/snippets/ParamTotalAmount.mdx";
 
+# Create a dynamic stream
+
 Dynamic streams are streams with custom streaming curves. In this guide, we will show you how to create a dynamic stream
 programmatically.
 
 :::note
 
-This guide assumes that you have already read the [Protocol Concepts](/docs/concepts/protocol/01-streaming.md) section.
+This guide assumes that you have already read the [Protocol Concepts](/concepts/protocol/streaming) section.
 
 :::
 
@@ -52,15 +54,15 @@ contract DynamicStreamCreator {
 }
 ```
 
-In the code above, the address of the [DAI](https://makerdao.com) stablecoin is hardcoded. However, in production, you
+In the code above, the address of the [DAI](https://makerdao.com) stablecoin is hard-coded. However, in production, you
 would likely use an input parameter for this and pass the input into a memory variable, allowing the contract to change
 the assets it interacts with on a per transaction basis.
 
 ## Initialization
 
 To initialize the Sablier contract, you first need to grab its address from the
-[Deployment Addresses](/docs/contracts/v2/02-addresses.md) page. Once you have obtained it, pass it to the constructor
-of the creator contract:
+[Deployment Addresses](/contracts/v2/addresses) page. Once you have obtained it, pass it to the constructor of the
+creator contract:
 
 ```solidity
 constructor(ISablierV2LockupDynamic sablier_) {
@@ -102,8 +104,8 @@ uint256 totalAmount = amount0 + amount1;
 ## Parameters
 
 Sablier uses structs to encode the parameters of its create functions. The struct associated with `createWithDurations`
-is [`LockupDynamic.CreateWithMilestones`](/docs/contracts/v2/reference/core/types/library.LockupDynamic.md), and it can
-be initialized like this:
+is [`LockupDynamic.CreateWithMilestones`](/contracts/v2/reference/core/types/library.LockupDynamic), and it can be
+initialized like this:
 
 ```solidity
 LockupDynamic.CreateWithMilestones memory params;
@@ -141,7 +143,7 @@ segments, see the [Segments](/concepts/protocol/segments) guide.
 The term "milestones" in the function `createWithMilestones` refers to the splitting of the stream into several distinct
 segments, with each segment characterized by a specific amount, exponent, and milestone. These segments are supplied to
 the function in the form of an array containing
-[`LockupDynamic.Segment`](/docs/contracts/v2/reference/core/types/library.LockupDynamic.md) structs.
+[`LockupDynamic.Segment`](/contracts/v2/reference/core/types/library.LockupDynamic) structs.
 
 Let's define two dummy segments:
 
@@ -179,7 +181,7 @@ stream to a variable:
 streamId = sablier.createWithMilestones(params);
 ```
 
-## The full contract
+## The complete dynamic stream creator contract
 
 Below you can see the complete functioning code: a contract that creates dynamic streams with predefined segment
 milestones. You can access the code on GitHub through
