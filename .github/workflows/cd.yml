@@ -1,0 +1,56 @@
+name: "Deploy the website to Vercel"
+
+on:
+  pull_request:
+  push:
+  workflow_dispatch:
+    branches:
+      - "main"
+
+env:
+  VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+  VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+  VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+
+jobs:
+  cd:
+    runs-on: "ubuntu-latest"
+    steps:
+      - name: "Check out the repo"
+        uses: "actions/checkout@v3"
+
+      - name: "Install Pnpm"
+        uses: "pnpm/action-setup@v2"
+        with:
+          version: "latest"
+
+      - name: "Install Node.js"
+        uses: "actions/setup-node@v3"
+        with:
+          cache: "pnpm"
+          node-version: "lts/*"
+
+      - name: "Install the dependencies"
+        run: "pnpm install"
+
+      - name: "Lint the code"
+        run: "pnpm lint"
+
+      - name: "Pull Vercel environment information"
+        run: "pnpm vercel pull --environment=production --token=$VERCEL_TOKEN --yes"
+
+      - name: "Build the website"
+        run: "pnpm vercel build --prod --token=$VERCEL_TOKEN"
+
+      - name: "Add build summary"
+        run: |
+          echo "## Build results" >> $GITHUB_STEP_SUMMARY
+          echo "✅ Passed" >> $GITHUB_STEP_SUMMARY
+
+      - name: "Deploy website to Vercel"
+        run: "pnpm vercel deploy --prebuilt --prod --token=$VERCEL_TOKEN"
+
+      - name: "Add deploy summary"
+        run: |
+          echo "## Deploy results" >> $GITHUB_STEP_SUMMARY
+          echo "✅ Passed" >> $GITHUB_STEP_SUMMARY
