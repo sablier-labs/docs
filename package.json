@@ -81,7 +81,7 @@
     "clear": "docusaurus clear",
     "deploy": "docusaurus deploy",
     "docusaurus": "docusaurus",
-    "lint": "eslint . --ext md,mdx,ts,tsx && prettier:check",
+    "lint": "pnpm eslint . --ext md,mdx,ts,tsx && pnpm prettier:check",
     "prettier:check": "prettier --check \"**/*.{json,md,mdx,ts,tsx,yml}\"",
     "prettier:write": "prettier --write \"**/*.{json,md,mdx,ts,tsx,yml}\"",
     "serve": "docusaurus serve",
