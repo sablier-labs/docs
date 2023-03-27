@@ -1,7 +1,7 @@
 ---
-id: "statuses"
+id: "segments"
 sidebar_position: 3
-titles: "Stream Statuses"
+title: "Segments"
 ---
 
 :::note

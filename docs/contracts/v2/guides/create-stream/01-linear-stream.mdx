@@ -1,0 +1,150 @@
+---
+id: "linear-stream"
+sidebar_position: 1
+title: "Create a Linear Stream"
+---
+
+import AdmonitionSimpleCode from "@site/docs/snippets/AdmonitionSimpleCode.mdx";
+import ERC20Steps from "@site/docs/snippets/ERC20Steps.mdx";
+import ParamAsset from "@site/docs/snippets/ParamAsset.mdx";
+import ParamBroker from "@site/docs/snippets/ParamBroker.mdx";
+import ParamCancelable from "@site/docs/snippets/ParamCancelable.mdx";
+import ParamRecipient from "@site/docs/snippets/ParamRecipient.mdx";
+import ParamSender from "@site/docs/snippets/ParamSender.mdx";
+import ParamTotalAmount from "@site/docs/snippets/ParamTotalAmount.mdx";
+
+Linear streams are streams with a strictly linear streaming function. In this guide, we will show you how to create a
+linear stream programmatically.
+
+:::note
+
+This guide assumes that you have already read the [Protocol Concepts](/docs/concepts/protocol/01-streaming.md) section.
+
+:::
+
+<AdmonitionSimpleCode />
+
+## Set up a contract
+
+Declare the Solidity version used to compile the contract:
+
+```solidity
+// SPDX-License-Identifier: GPL-3.0-or-later
+pragma solidity >=0.8.13;
+```
+
+Import the relevant symbols from `@sablier/v2-core`:
+
+```solidity
+import { ISablierV2LockupLinear } from "@sablier/v2-core/interfaces/ISablierV2LockupLinear.sol";
+import { Broker, LockupLinear } from "@sablier/v2-core/types/DataTypes.sol";
+import { ud60x18 } from "@sablier/v2-core/types/Math.sol";
+import { IERC20 } from "@sablier/v2-core/types/Tokens.sol";
+```
+
+Create a contract called `LinearStreamCreator`, and declare a constant `DAI` of type `IERC20` and an immutable variable
+`sablier` of type `ISablierV2LockupLinear`:
+
+```solidity
+contract LinearStreamCreator {
+    IERC20 public constant DAI = IERC20(0x6B175474E89094C44Da98b954EedeAC495271d0F);
+    ISablierV2LockupLinear public immutable sablier;
+}
+```
+
+In the code above, the address of the [DAI](https://makerdao.com) stablecoin is hardcoded. However, in production, you
+would likely use an input parameter for this and pass the input into a memory variable, allowing the contract to change
+the assets it interacts with on a per transaction basis.
+
+## Initialization
+
+To initialize the Sablier contract, you first need to grab its address from the
+[Deployment Addresses](/docs/contracts/v2/02-addresses.md) page. Once you have obtained it, pass it to the constructor
+of the creator contract:
+
+```solidity
+constructor(ISablierV2LockupLinear sablier_) {
+    sablier = sablier_;
+}
+```
+
+## Create functions
+
+There are two create functions in the linear contract:
+
+- `createWithDurations`: sets the start time to
+  [`block.timestamp`](https://docs.soliditylang.org/en/v0.8.19/cheatsheet.html#global-variables), and calculates the end
+  time based on the provided durations
+- `createWithRange`: uses specific start and end times
+
+Which one you choose depends upon your use case. In this guide, we will use `createWithDurations`.
+
+<ERC20Steps />
+
+## Function definition
+
+Define a function called `createLinearStream` which takes a single parameter `totalAmount`, and which returns the id of
+the created stream:
+
+```solidity
+function createLinearStream(uint256 totalAmount) external returns (uint256 streamId) {
+  // ...
+}
+```
+
+## Parameters
+
+Sablier uses structs to encode the parameters of its create functions. The struct associated with `createWithDurations`
+is [`LockupLinear.CreateWithDurations`](/docs/contracts/v2/reference/core/types/library.LockupLinear.md), and it can be
+initialized like this:
+
+```solidity
+LockupLinear.CreateWithDurations memory params;
+```
+
+Let's review each parameter in detail.
+
+<ParamSender />
+
+<ParamRecipient />
+
+<ParamTotalAmount />
+
+<ParamAsset />
+
+<ParamCancelable />
+
+<ParamBroker />
+
+### Durations
+
+Struct that encapsulates (i) the start time of the stream, (ii) the cliff time of the stream, and (iii) the end time of
+the stream, all as Unix timestamps.
+
+```solidity
+params.durations = LockupLinear.Durations({
+    cliff: 4 weeks,
+    total: 52 weeks
+});
+```
+
+## Invoke the create function
+
+With all parameters set, we can now call the `createWithDurations` function, and assign the id of the newly created
+stream to a variable:
+
+```solidity
+streamId = sablier.createWithDurations(params);
+```
+
+## The full contract
+
+Below you can see the complete functioning code: a contract that creates linear streams that start at `block.timestamp`.
+You can access the code on GitHub through
+[this link](https://github.com/sablierhq/examples/blob/main/v2/core/LinearStreamCreator.sol).
+
+```solidity reference title="Linear Stream Creator"
+https://github.com/sablierhq/examples/blob/main/v2/core/LinearStreamCreator.sol
+```
+
+[^1]: If creating streams on behalf of end users, they will have to approve your contract first.

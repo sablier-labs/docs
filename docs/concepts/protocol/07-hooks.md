@@ -1,6 +1,6 @@
 ---
 id: "hooks"
-sidebar_position: 4
+sidebar_position: 7
 title: "Hooks"
 ---
 
