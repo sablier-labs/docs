@@ -4,9 +4,9 @@ sidebar_position: 2
 title: "The Sablier Protocol"
 ---
 
-Sablier is a cryptoasset streaming protocol built with [Ethereum](https://ethereum.org/) smart contracts, designed to
-enable by-the-second payments for cryptocurrencies (specifically
-[ERC-20](https://ethereum.org/en/developers/docs/standards/tokens/erc-20/) assets). The protocol employs a set of
+Sablier is a cryptoasset streaming protocol developed with [Ethereum](https://ethereum.org/) smart contracts, designed
+to facilitate by-the-second payments for cryptocurrencies, specifically
+[ERC-20](https://ethereum.org/en/developers/docs/standards/tokens/erc-20/) assets. The protocol employs a set of
 persistent and non-upgradable smart contracts that prioritize security, censorship resistance, self-custody, and
 functionality without the need for trusted intermediaries who may selectively restrict access.
 
