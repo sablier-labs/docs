@@ -1,7 +1,7 @@
 ---
 id: "cancel"
 sidebar_position: 3
-title: "Cancel Stream"
+title: "Cancel Streams"
 ---
 
 :::note
@@ -9,3 +9,32 @@ title: "Cancel Stream"
 This section assumes that you have already gone through the [setup](/contracts/v2/guides/stream-management/setup) part.
 
 :::
+
+:::tip
+
+See the [Access Control](/contracts/v2/reference/access-control) guide for an overview of who is allowed to cancel
+streams.
+
+:::
+
+Canceling streams involves stopping the flow of assets before the stream's end time and returning the remaining funds to
+the sender. The amount that has already been streamed is transferred to the recipient.
+
+There are two functions that can be used to cancel streams:
+
+1. `cancel`: cancels a single stream
+2. `cancelMultiple`: cancels multiple streams at once
+
+To call any of the functions above, you must first have an active, cancelable stream. If you don't have one yet, go
+ahead and create a stream. Once that is done, you can use the `cancel` function like this:
+
+```solidity reference title="Stream Management: Cancel"
+https://github.com/sablierhq/examples/blob/main/v2/core/StreamManagement.sol#L14-L16
+```
+
+In addition to the `cancel` function, there is the `cancelMultiple` function, which allows you to cancel several streams
+at once:
+
+```solidity reference title="Stream Management: Cancel Multiple"
+https://github.com/sablierhq/examples/blob/main/v2/core/StreamManagement.sol#L19-L21
+```

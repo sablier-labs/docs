@@ -10,7 +10,7 @@ or more streams.
 This article will provide a comprehensive overview of the actions that can be performed on streams once they are
 created, as well as the corresponding user permissions for each action.
 
-:::tip
+:::note
 
 Every stream has a sender, a recipient, and possibly multiple NFT operators, with the recipient being the owner of the
 NFT.
@@ -27,22 +27,23 @@ The table below offers a quick overview of the access control for each action th
 | Cancel            |   ✅   |    ✅     |     ❌      |
 | Cancel Multiple   |   ✅   |    ✅     |     ❌      |
 | Renounce          |   ✅   |    ❌     |     ❌      |
+| Transfer NFT      |   ❌   |    ✅     |     ✅      |
 | Withdraw          |   ✅   |    ✅     |     ✅      |
 | Withdraw Multiple |   ❌   |    ✅     |     ✅      |
 
 ## Burn NFT
 
-Either the recipient or an approved NFT operator can burn the NFT.
+Either the recipient or an approved operator can burn the NFT associated with a stream.
 
 ```mermaid
 flowchart LR;
     recipient((Recipient));
     operator((Operator));
-    stream[(Stream)];
+    nft[(NFT)];
 
-    recipient-- burn -->stream;
+    recipient-- burn -->nft;
     recipient-- approve -->operator;
-    operator-- burn -->stream;
+    operator-- burn -->nft;
 ```
 
 ## Cancel
@@ -84,6 +85,21 @@ flowchart LR;
     sender((Sender));
     stream[(Stream)];
     sender-- renounce -->stream;
+```
+
+## Transfer NFT
+
+Either the recipient or an approved operator can transfer the NFT associated with a stream.
+
+```mermaid
+flowchart LR;
+    recipient((Recipient));
+    operator((Operator));
+    nft[(NFT)];
+
+    recipient-- transfer -->nft;
+    recipient-- approve -->operator;
+    operator-- transfer -->nft;
 ```
 
 ## Withdraw

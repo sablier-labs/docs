@@ -1,12 +1,19 @@
 ---
 id: "withdraw"
 sidebar_position: 2
-title: "Withdraw from Stream"
+title: "Withdraw from Streams"
 ---
 
 :::note
 
 This section assumes that you have already gone through the [setup](/contracts/v2/guides/stream-management/setup) part.
+
+:::
+
+:::tip
+
+See the [Access Control](/contracts/v2/reference/access-control) guide for an overview of who is allowed to withdraw
+from streams.
 
 :::
 
@@ -19,9 +26,9 @@ There are three functions that can be used to withdraw from streams:
 2. `withdrawMax`: withdraws the maximum amount of assets available at the time of invocation
 3. `withdrawMultiple`: withdraws specific amounts of assets from multiple streams at once
 
-To initiate withdrawals, you must first have a stream. Go ahead and create a stream with a brief duration, and assign
-the `StreamManagement` contract as the recipient - this contract was set up in a previous guide. Once completed, you can
-use the `withdraw` function to retrieve assets from the stream:
+To call any of the functions above, you must first have an active stream. If you don't have one yet, create a stream
+with a brief duration, and assign the `StreamManagement` contract as the recipient - this contract was set up in a
+previous guide. Once that is done, you can use the `withdraw` function like this:
 
 ```solidity reference title="Stream Management: Withdraw"
 https://github.com/sablierhq/examples/blob/main/v2/core/StreamManagement.sol#L34-L36
