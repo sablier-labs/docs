@@ -10,20 +10,37 @@ This section assumes that you have already gone through the [setup](/contracts/v
 
 :::
 
-Begin by creating a stream with a short duration so that we can quickly withdraw from it, and set the recipient as the
-`StreamManagement` contract created in the earlier guide. Then, you can withdraw assets from the stream like this:
+Withdrawing from streams means claiming the assets that have become due to the recipient, who has the option to direct
+the withdrawal to an alternative address.
+
+There are three functions that can be used to withdraw from streams:
+
+1. `withdraw`: withdraws a specific amount of assets
+2. `withdrawMax`: withdraws the maximum amount of assets available at the time of invocation
+3. `withdrawMultiple`: withdraws specific amounts of assets from multiple streams at once
+
+To initiate withdrawals, you must first have a stream. Go ahead and create a stream with a brief duration, and assign
+the `StreamManagement` contract as the recipient - this contract was set up in a previous guide. Once completed, you can
+use the `withdraw` function to retrieve assets from the stream:
 
 ```solidity reference title="Stream Management: Withdraw"
-https://github.com/sablierhq/examples/blob/main/v2/core/StreamManagement.sol#L29-L31
+https://github.com/sablierhq/examples/blob/main/v2/core/StreamManagement.sol#L34-L36
 ```
 
-In this example, the withdrawal address and withdrawal amount are hard-coded for demonstration purposes. In a production
-environment, these values would be user-configurable function parameters.
+In this example, the withdrawal address and withdrawal amount are hard-coded for demonstration purposes. However, in a
+production environment, these values would likely be adjustable parameters determined by the user.
 
-:::tip
+In addition to the `withdraw` function, there is the `withdrawMax` function, which you can use to withdraw the maximum
+amount of assets available in a stream at the time of invocation:
 
-The `withdraw` function is not the only withdrawal method available in Sablier. You could also use the `withdrawMax`
-function, which withdraws the maximum amount of assets available in a stream at the time of invocation. And you could
-also use the `withdrawMultiple` function to withdraw assets from multiple streams simultaneously.
+```solidity reference title="Stream Management: Withdraw Max"
+https://github.com/sablierhq/examples/blob/main/v2/core/StreamManagement.sol#L39-L41
+```
 
-:::
+In effect, what `withdrawMax` does is call the `withdrawableAmountOf` function, and pass its result to `withdraw`.
+
+Lastly, there is the `withdrawMultiple` function, with which you can withdraw from multiple streams at once:
+
+```solidity reference title="Stream Management: Withdraw Multiple"
+https://github.com/sablierhq/examples/blob/main/v2/core/StreamManagement.sol#L44-L46
+```
