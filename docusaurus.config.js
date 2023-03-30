@@ -33,6 +33,39 @@ const config = {
       }),
     ],
   ],
+  plugins: [
+    [
+      "@docusaurus/plugin-client-redirects",
+      {
+        redirects: [
+          {
+            to: "/faq",
+            from: "/protocol/faq/basics",
+          },
+          {
+            to: "/contracts/v1/guides/getting-started",
+            from: "/protocol/guides/getting-started",
+          },
+          {
+            to: "/contracts/v1/guides/chains",
+            from: "/protocol/guides/chains",
+          },
+          {
+            to: "/concepts/what-is-sablier",
+            from: "/protocol/introduction",
+          },
+          {
+            to: "/contracts/v1/guides/chains",
+            from: "/protocol/guides/chains",
+          },
+          {
+            to: "/api/subgraphs/overview",
+            from: "/protocol/subgraphs/endpoints",
+          },
+        ],
+      },
+    ],
+  ],
   stylesheets: [
     {
       crossorigin: "anonymous",
