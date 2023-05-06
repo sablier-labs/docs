@@ -159,6 +159,19 @@ In a future version of the Sablier protocol, we may add the option to refill an 
 We came up with a few ideas in [this discussion on Twitter](https://twitter.com/SablierHQ/status/1205533344886411264),
 but the sky is the limit.
 
+## Does Sablier handle traditional payroll laws?
+
+While Sablier can be used for a variety of payment use cases, including handling payroll, it is important to note that
+Sablier does not handle payroll regulation.
+
+Payroll regulation is a complex and important legal requirement that varies by country and jurisdiction. While Sablier
+can be used to automate the payment of wages, it is not designed to handle the legal and regulatory requirements
+associated with payroll. It is the responsibility of the employer or payroll provider to ensure compliance with payroll
+regulation.
+
+Employers should consult with legal and tax professionals to understand their payroll obligations and ensure that they
+are complying with all relevant regulations.
+
 ## Who can use Sablier?
 
 Anyone in the world with an Internet connection and an Ethereum wallet.
