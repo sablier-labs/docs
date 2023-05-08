@@ -10,10 +10,7 @@ export default function HomepageHeader() {
     <header className={clsx("hero hero--primary", styles.heroBanner)}>
       <div className="container">
         <h1 className="hero__title">{siteConfig.title}</h1>
-        <p className="hero__subtitle">
-          Documentation and guides for Sablier, the smart contract protocol that facilitates streaming of ERC-20 assets
-          on Ethereum and other EVM blockchains.
-        </p>
+        <p className="hero__subtitle">The cryptoasset streaming protocol.</p>
         <div className={styles.buttons}>
           <Link className="button button--primary button--lg" to="/concepts/what-is-sablier">
             Learn More
