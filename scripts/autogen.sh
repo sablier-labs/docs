@@ -1,4 +1,4 @@
-#!/usr/bin bash
+#!/usr/bin/env bash
 
 # Pre-requisites:
 # - foundry (https://getfoundry.sh/)
