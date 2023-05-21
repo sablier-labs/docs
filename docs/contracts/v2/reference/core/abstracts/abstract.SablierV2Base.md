@@ -1,9 +1,8 @@
 # SablierV2Base
 
-[Git Source](https://github.com/sablierhq/v2-core/blob/8bd57ebb31fddf6ef262477e5a378027db8b85d8/docs/contracts/v2/reference/core/abstracts)
+[Git Source](https://github.com/sablier-labs/v2-core/blob/b048c0e28a5120b396c3eb3cdd0bc4e8784dc155/docs/contracts/v2/reference/core/abstracts)
 
-**Inherits:** [ISablierV2Base](/docs/contracts/v2/reference/core/interfaces/interface.ISablierV2Base.md),
-[NoDelegateCall](/docs/contracts/v2/reference/core/abstracts/abstract.Adminable.md)
+**Inherits:** [NoDelegateCall](/docs/contracts/v2/reference/core/abstracts/abstract.Adminable.md)
 
 See the documentation in [ISablierV2Base](docs/contracts/v2/reference/core/interfaces/interface.ISablierV2Base.md).
 
@@ -11,18 +10,18 @@ See the documentation in [ISablierV2Base](docs/contracts/v2/reference/core/inter
 
 ### MAX_FEE
 
-The maximum fee that can be charged by either the protocol or a broker, as an UD60x18 number where 100% = 1e18.
+Retrieves the maximum fee that can be charged by the protocol or a broker, denoted as a fixed-point number where 1e18 is
+100%.
 
-_This is initialized at construction time and cannot be changed later._
+_This value is hard coded as a constant._
 
 ```solidity
-UD60x18 public immutable override MAX_FEE;
+UD60x18 public constant override MAX_FEE = UD60x18.wrap(0.1e18);
 ```
 
 ### comptroller
 
-The address of the comptroller contract, which is in charge of the Sablier V2 protocol configuration, handling such
-values as the protocol fees.
+Retrieves the address of the comptroller contract, responsible for the Sablier V2 protocol configuration.
 
 ```solidity
 ISablierV2Comptroller public override comptroller;
@@ -30,7 +29,7 @@ ISablierV2Comptroller public override comptroller;
 
 ### protocolRevenues
 
-The protocol revenues accrued for the provided ERC-20 asset, in units of the asset's decimals.
+Retrieves the protocol revenues accrued for the provided ERC-20 asset, in units of the asset's decimals.
 
 ```solidity
 mapping(IERC20 asset => uint128 revenues) public override protocolRevenues;
@@ -43,24 +42,23 @@ mapping(IERC20 asset => uint128 revenues) public override protocolRevenues;
 _Emits a {TransferAdmin} event._
 
 ```solidity
-constructor(address initialAdmin, ISablierV2Comptroller initialComptroller, UD60x18 maxFee);
+constructor(address initialAdmin, ISablierV2Comptroller initialComptroller);
 ```
 
 **Parameters**
 
-| Name                 | Type                    | Description                                                                                                     |
-| -------------------- | ----------------------- | --------------------------------------------------------------------------------------------------------------- |
-| `initialAdmin`       | `address`               | The address of the initial contract admin.                                                                      |
-| `initialComptroller` | `ISablierV2Comptroller` | The address of the initial comptroller.                                                                         |
-| `maxFee`             | `UD60x18`               | The maximum fee that can be charged by either the protocol or a broker, as an UD60x18 number where 100% = 1e18. |
+| Name                 | Type                    | Description                                |
+| -------------------- | ----------------------- | ------------------------------------------ |
+| `initialAdmin`       | `address`               | The address of the initial contract admin. |
+| `initialComptroller` | `ISablierV2Comptroller` | The address of the initial comptroller.    |
 
 ### claimProtocolRevenues
 
-Claims all protocol revenues accrued for the provided ERC-20 asset.
+Claims all accumulated protocol revenues for the provided ERC-20 asset.
 
 Emits a {ClaimProtocolRevenues} event. Requirements:
 
-- The caller must be the contract admin.
+- `msg.sender` must be the contract admin.
 
 ```solidity
 function claimProtocolRevenues(IERC20 asset) external override onlyAdmin;
@@ -68,19 +66,18 @@ function claimProtocolRevenues(IERC20 asset) external override onlyAdmin;
 
 **Parameters**
 
-| Name    | Type     | Description                                                                  |
-| ------- | -------- | ---------------------------------------------------------------------------- |
-| `asset` | `IERC20` | The contract address of the ERC-20 asset to claim the protocol revenues for. |
+| Name    | Type     | Description                                                                    |
+| ------- | -------- | ------------------------------------------------------------------------------ |
+| `asset` | `IERC20` | The contract address of the ERC-20 asset for which to claim protocol revenues. |
 
 ### setComptroller
 
-Sets a new comptroller contract. The comptroller is in charge of the protocol configuration, handling such values as the
-protocol fees.
+Assigns a new comptroller contract responsible for the protocol configuration.
 
 Emits a {SetComptroller} event. Notes:
 
 - Does not revert if the comptroller is the same. Requirements:
-- The caller must be the contract admin.
+- `msg.sender` must be the contract admin.
 
 ```solidity
 function setComptroller(ISablierV2Comptroller newComptroller) external override onlyAdmin;

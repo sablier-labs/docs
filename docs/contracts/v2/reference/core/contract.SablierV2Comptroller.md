@@ -1,10 +1,9 @@
 ---
 sidebar_position: 3
 ---
-
 # SablierV2Comptroller
 
-[Git Source](https://github.com/sablierhq/v2-core/blob/8bd57ebb31fddf6ef262477e5a378027db8b85d8/docs/contracts/v2/reference/core)
+[Git Source](https://github.com/sablier-labs/v2-core/blob/b048c0e28a5120b396c3eb3cdd0bc4e8784dc155/docs/contracts/v2/reference/core)
 
 **Inherits:** [ISablierV2Comptroller](/docs/contracts/v2/reference/core/interfaces/interface.ISablierV2Comptroller.md),
 [Adminable](/docs/contracts/v2/reference/core/abstracts/abstract.Adminable.md)
@@ -14,31 +13,31 @@ See the documentation in
 
 ## State Variables
 
-### flashAssets
-
-Whether the provided ERC-20 asset is flash loanable or not.
-
-```solidity
-mapping(IERC20 asset => bool supported) public override flashAssets;
-```
-
 ### flashFee
 
-The global flash fee as an UD60x18 number where 100% = 1e18.
+Retrieves the global flash fee, denoted as a fixed-point number where 1e18 is 100%.
 
 Notes:
 
-- This is a fee percentage, not a fee amount, and it should not be confused with {IERC3156FlashLender-flashFee}, which
-  returns the fee amount for a given flash loan amount.
-- Unlike the protocol fee, this is not a per-asset fee. It's a global fee applied to all flash loans.
+- This fee represents a percentage, not an amount. Do not confuse it with {IERC3156FlashLender.flashFee}, which
+  calculates the fee amount for a specified flash loan amount.
+- Unlike the protocol fee, this is a global fee applied to all flash loans, not a per-asset fee.
 
 ```solidity
 UD60x18 public override flashFee;
 ```
 
+### isFlashAsset
+
+Retrieves a flag indicating whether the provided ERC-20 asset can be flash loaned.
+
+```solidity
+mapping(IERC20 asset => bool supported) public override isFlashAsset;
+```
+
 ### protocolFees
 
-The protocol fee charged on all streams created with the provided ERC-20 asset across all Sablier V2 contracts.
+Retrieves the protocol fee for all streams created with the provided ERC-20 asset.
 
 ```solidity
 mapping(IERC20 asset => UD60x18 fee) public override protocolFees;
@@ -62,12 +61,12 @@ constructor(address initialAdmin);
 
 ### setFlashFee
 
-Sets a new flash fee that will be charged on all flash loans made with any ERC-20 asset.
+Updates the flash fee charged on all flash loans made with any ERC-20 asset.
 
 Emits a {SetFlashFee} event. Notes:
 
 - Does not revert if the fee is the same. Requirements:
-- The caller must be the contract admin.
+- `msg.sender` must be the contract admin.
 
 ```solidity
 function setFlashFee(UD60x18 newFlashFee) external override onlyAdmin;
@@ -75,21 +74,20 @@ function setFlashFee(UD60x18 newFlashFee) external override onlyAdmin;
 
 **Parameters**
 
-| Name          | Type      | Description                                                       |
-| ------------- | --------- | ----------------------------------------------------------------- |
-| `newFlashFee` | `UD60x18` | The new flash fee to set, as an UD60x18 number where 100% = 1e18. |
+| Name          | Type      | Description                                                                   |
+| ------------- | --------- | ----------------------------------------------------------------------------- |
+| `newFlashFee` | `UD60x18` | The new flash fee to set, denoted as a fixed-point number where 1e18 is 100%. |
 
 ### setProtocolFee
 
-Sets a new protocol fee that will be charged on all streams created with the provided ERC-20 asset across all Sablier V2
-contracts.
+Sets a new protocol fee that will be charged on all streams created with the provided ERC-20 asset.
 
 Emits a {SetProtocolFee} event. Notes:
 
-- The fee is not in units of the asset's decimals, but in the UD60x18 number format. Refer to the PRBMath documentation
-  for more detail on the logic of UD60x18.
+- The fee is not denoted in units of the asset's decimals; it is a fixed-point number. Refer to the PRBMath
+  documentation for more detail on the logic of UD60x18.
 - Does not revert if the fee is the same. Requirements:
-- The caller must be the contract admin.
+- `msg.sender` must be the contract admin.
 
 ```solidity
 function setProtocolFee(IERC20 asset, UD60x18 newProtocolFee) external override onlyAdmin;
@@ -97,18 +95,18 @@ function setProtocolFee(IERC20 asset, UD60x18 newProtocolFee) external override 
 
 **Parameters**
 
-| Name             | Type      | Description                                                          |
-| ---------------- | --------- | -------------------------------------------------------------------- |
-| `asset`          | `IERC20`  | The contract address of the ERC-20 asset to make the query for.      |
-| `newProtocolFee` | `UD60x18` | The new protocol fee to set, as an UD60x18 number where 100% = 1e18. |
+| Name             | Type      | Description                                                               |
+| ---------------- | --------- | ------------------------------------------------------------------------- |
+| `asset`          | `IERC20`  | The contract address of the ERC-20 asset to update the fee for.           |
+| `newProtocolFee` | `UD60x18` | The new protocol fee, denoted as a fixed-point number where 1e18 is 100%. |
 
 ### toggleFlashAsset
 
-Toggles the flash loanability of an ERC-20 asset. This flag is applied to all Sablier V2 contracts.
+Toggles the flash loanability of an ERC-20 asset.
 
 Emits a {ToggleFlashAsset} event. Requirements:
 
-- The caller must be the admin.
+- `msg.sender` must be the admin.
 
 ```solidity
 function toggleFlashAsset(IERC20 asset) external override onlyAdmin;

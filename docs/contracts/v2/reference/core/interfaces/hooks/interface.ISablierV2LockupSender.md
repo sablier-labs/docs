@@ -1,31 +1,37 @@
 # ISablierV2LockupSender
 
-[Git Source](https://github.com/sablierhq/v2-core/blob/8bd57ebb31fddf6ef262477e5a378027db8b85d8/docs/contracts/v2/reference/core/interfaces)
+[Git Source](https://github.com/sablier-labs/v2-core/blob/b048c0e28a5120b396c3eb3cdd0bc4e8784dc155/docs/contracts/v2/reference/core/interfaces)
 
-Interface for sender contracts that can react to cancellations.
+Interface for sender contracts capable of reacting to cancellations.
 
-_Implementing this interface is entirely optional. If a sender contract does not implement this interface, the function
-execution will not revert._
+_Implementation of this interface is optional. If a sender contract doesn't implement this interface, function execution
+will not revert._
 
 ## Functions
 
 ### onStreamCanceled
 
-Reacts to the cancellation of a stream. Sablier V2 invokes this function on the sender after a cancellation triggered by
-the recipient.
+Responds to recipient-triggered cancellations.
 
 Notes:
 
-- This function may revert, but the Sablier contract will always ignore the revert.
+- This function may revert, but the Sablier contract will ignore the revert.
 
 ```solidity
-function onStreamCanceled(uint256 streamId, uint128 senderAmount, uint128 recipientAmount) external;
+function onStreamCanceled(
+    uint256 streamId,
+    address recipient,
+    uint128 senderAmount,
+    uint128 recipientAmount
+)
+    external;
 ```
 
 **Parameters**
 
-| Name              | Type      | Description                                                                        |
-| ----------------- | --------- | ---------------------------------------------------------------------------------- |
-| `streamId`        | `uint256` | The id of the stream that has been canceled.                                       |
-| `senderAmount`    | `uint128` | The amount of assets returned to the sender, in units of the asset's decimals.     |
-| `recipientAmount` | `uint128` | The amount of assets withdrawn to the recipient, in units of the asset's decimals. |
+| Name              | Type      | Description                                                                                                 |
+| ----------------- | --------- | ----------------------------------------------------------------------------------------------------------- |
+| `streamId`        | `uint256` | The id of the canceled stream.                                                                              |
+| `recipient`       | `address` | The stream's recipient, who canceled the stream.                                                            |
+| `senderAmount`    | `uint128` | The amount of assets refunded to the stream's sender, denoted in units of the asset's decimals.             |
+| `recipientAmount` | `uint128` | The amount of assets left for the stream's recipient to withdraw, denoted in units of the asset's decimals. |

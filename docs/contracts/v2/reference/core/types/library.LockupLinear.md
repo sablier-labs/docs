@@ -1,15 +1,15 @@
 # LockupLinear
 
-[Git Source](https://github.com/sablierhq/v2-core/blob/8bd57ebb31fddf6ef262477e5a378027db8b85d8/docs/contracts/v2/reference/core)
+[Git Source](https://github.com/sablier-labs/v2-core/blob/b048c0e28a5120b396c3eb3cdd0bc4e8784dc155/docs/contracts/v2/reference/core)
 
-Quasi-namespace for the structs used in
+Namespace for the structs used in
 [SablierV2LockupLinear](docs/contracts/v2/reference/core/contract.SablierV2LockupLinear.md).
 
 ## Structs
 
 ### CreateWithDurations
 
-Struct that encapsulates the parameters of the {SablierV2LockupLinear-createWithDurations} function.
+Struct encapsulating the parameters for the {SablierV2LockupLinear.createWithDurations} function.
 
 ```solidity
 struct CreateWithDurations {
@@ -18,14 +18,14 @@ struct CreateWithDurations {
     uint128 totalAmount;
     IERC20 asset;
     bool cancelable;
-    LockupLinear.Durations durations;
+    Durations durations;
     Broker broker;
 }
 ```
 
 ### CreateWithRange
 
-Struct that encapsulates the parameters of the {SablierV2LockupLinear-createWithRange} function.
+Struct encapsulating the parameters for the {SablierV2LockupLinear.createWithRange} function.
 
 ```solidity
 struct CreateWithRange {
@@ -41,7 +41,7 @@ struct CreateWithRange {
 
 ### Durations
 
-Simple struct that encapsulates (i) the cliff duration and (ii) the total duration.
+Struct encapsulating the cliff duration and the total duration.
 
 ```solidity
 struct Durations {
@@ -52,7 +52,7 @@ struct Durations {
 
 ### Range
 
-Range struct used as a field in the lockup linear stream.
+Struct encapsulating the time range of a lockup linear stream.
 
 ```solidity
 struct Range {
@@ -64,19 +64,21 @@ struct Range {
 
 ### Stream
 
-Lockup linear stream struct.
+Lockup linear stream.
 
 _The fields are arranged like this to save gas via tight variable packing._
 
 ```solidity
 struct Stream {
-    Lockup.Amounts amounts;
     address sender;
     uint40 startTime;
     uint40 cliffTime;
     bool isCancelable;
+    bool wasCanceled;
     IERC20 asset;
     uint40 endTime;
-    Lockup.Status status;
+    bool isDepleted;
+    bool isStream;
+    Lockup.Amounts amounts;
 }
 ```

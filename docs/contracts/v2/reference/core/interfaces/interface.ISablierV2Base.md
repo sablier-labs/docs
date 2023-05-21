@@ -1,18 +1,19 @@
 # ISablierV2Base
 
-[Git Source](https://github.com/sablierhq/v2-core/blob/8bd57ebb31fddf6ef262477e5a378027db8b85d8/docs/contracts/v2/reference/core/interfaces)
+[Git Source](https://github.com/sablier-labs/v2-core/blob/b048c0e28a5120b396c3eb3cdd0bc4e8784dc155/docs/contracts/v2/reference/core/interfaces)
 
 **Inherits:** [IAdminable](/docs/contracts/v2/reference/core/interfaces/interface.IAdminable.md)
 
-Common base between all Sablier V2 streaming contracts.
+Base logic for all Sablier V2 streaming contracts.
 
 ## Functions
 
 ### MAX_FEE
 
-The maximum fee that can be charged by either the protocol or a broker, as an UD60x18 number where 100% = 1e18.
+Retrieves the maximum fee that can be charged by the protocol or a broker, denoted as a fixed-point number where 1e18 is
+100%.
 
-_This is initialized at construction time and cannot be changed later._
+_This value is hard coded as a constant._
 
 ```solidity
 function MAX_FEE() external view returns (UD60x18);
@@ -20,8 +21,7 @@ function MAX_FEE() external view returns (UD60x18);
 
 ### comptroller
 
-The address of the comptroller contract, which is in charge of the Sablier V2 protocol configuration, handling such
-values as the protocol fees.
+Retrieves the address of the comptroller contract, responsible for the Sablier V2 protocol configuration.
 
 ```solidity
 function comptroller() external view returns (ISablierV2Comptroller);
@@ -29,7 +29,7 @@ function comptroller() external view returns (ISablierV2Comptroller);
 
 ### protocolRevenues
 
-The protocol revenues accrued for the provided ERC-20 asset, in units of the asset's decimals.
+Retrieves the protocol revenues accrued for the provided ERC-20 asset, in units of the asset's decimals.
 
 ```solidity
 function protocolRevenues(IERC20 asset) external view returns (uint128 revenues);
@@ -37,17 +37,17 @@ function protocolRevenues(IERC20 asset) external view returns (uint128 revenues)
 
 **Parameters**
 
-| Name    | Type     | Description                                                     |
-| ------- | -------- | --------------------------------------------------------------- |
-| `asset` | `IERC20` | The contract address of the ERC-20 asset to make the query for. |
+| Name    | Type     | Description                                        |
+| ------- | -------- | -------------------------------------------------- |
+| `asset` | `IERC20` | The contract address of the ERC-20 asset to query. |
 
 ### claimProtocolRevenues
 
-Claims all protocol revenues accrued for the provided ERC-20 asset.
+Claims all accumulated protocol revenues for the provided ERC-20 asset.
 
 Emits a {ClaimProtocolRevenues} event. Requirements:
 
-- The caller must be the contract admin.
+- `msg.sender` must be the contract admin.
 
 ```solidity
 function claimProtocolRevenues(IERC20 asset) external;
@@ -55,19 +55,18 @@ function claimProtocolRevenues(IERC20 asset) external;
 
 **Parameters**
 
-| Name    | Type     | Description                                                                  |
-| ------- | -------- | ---------------------------------------------------------------------------- |
-| `asset` | `IERC20` | The contract address of the ERC-20 asset to claim the protocol revenues for. |
+| Name    | Type     | Description                                                                    |
+| ------- | -------- | ------------------------------------------------------------------------------ |
+| `asset` | `IERC20` | The contract address of the ERC-20 asset for which to claim protocol revenues. |
 
 ### setComptroller
 
-Sets a new comptroller contract. The comptroller is in charge of the protocol configuration, handling such values as the
-protocol fees.
+Assigns a new comptroller contract responsible for the protocol configuration.
 
 Emits a {SetComptroller} event. Notes:
 
 - Does not revert if the comptroller is the same. Requirements:
-- The caller must be the contract admin.
+- `msg.sender` must be the contract admin.
 
 ```solidity
 function setComptroller(ISablierV2Comptroller newComptroller) external;
@@ -83,7 +82,7 @@ function setComptroller(ISablierV2Comptroller newComptroller) external;
 
 ### ClaimProtocolRevenues
 
-Emitted when the contract admin claims all protocol revenues accrued for the provided ERC-20 asset.
+Emitted when the admin claims all protocol revenues accrued for a particular ERC-20 asset.
 
 ```solidity
 event ClaimProtocolRevenues(address indexed admin, IERC20 indexed asset, uint128 protocolRevenues);
@@ -91,7 +90,7 @@ event ClaimProtocolRevenues(address indexed admin, IERC20 indexed asset, uint128
 
 ### SetComptroller
 
-Emitted when the contract admin sets a new comptroller contract.
+Emitted when the admin sets a new comptroller contract.
 
 ```solidity
 event SetComptroller(address indexed admin, ISablierV2Comptroller oldComptroller, ISablierV2Comptroller newComptroller);

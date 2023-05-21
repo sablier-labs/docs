@@ -1,16 +1,18 @@
 # ISablierV2LockupLinear
 
-[Git Source](https://github.com/sablierhq/v2-core/blob/8bd57ebb31fddf6ef262477e5a378027db8b85d8/docs/contracts/v2/reference/core/interfaces)
+[Git Source](https://github.com/sablier-labs/v2-core/blob/b048c0e28a5120b396c3eb3cdd0bc4e8784dc155/docs/contracts/v2/reference/core/interfaces)
 
 **Inherits:** [ISablierV2Lockup](/docs/contracts/v2/reference/core/interfaces/interface.ISablierV2Lockup.md)
 
-Creates and manages lockup streams whose streaming function is strictly linear.
+Creates and manages lockup streams with a linear streaming function.
 
 ## Functions
 
 ### getCliffTime
 
-Queries the cliff time of the lockup linear stream.
+Retrieves the linear stream's cliff time, which is a Unix timestamp.
+
+_Reverts if `streamId` references a null stream._
 
 ```solidity
 function getCliffTime(uint256 streamId) external view returns (uint40 cliffTime);
@@ -18,14 +20,16 @@ function getCliffTime(uint256 streamId) external view returns (uint40 cliffTime)
 
 **Parameters**
 
-| Name       | Type      | Description                                               |
-| ---------- | --------- | --------------------------------------------------------- |
-| `streamId` | `uint256` | The id of the lockup linear stream to make the query for. |
+| Name       | Type      | Description                         |
+| ---------- | --------- | ----------------------------------- |
+| `streamId` | `uint256` | The linear stream id for the query. |
 
 ### getRange
 
-Queries the range of the lockup linear stream, a struct that encapsulates (i) the start time of the stream, (ii) the
-cliff time of the stream, and (iii) the end time of the stream, all as Unix timestamps.
+Retrieves the range of the linear stream, a struct containing (i) the stream's start time, (ii) cliff time, and (iii)
+end time, all as Unix timestamps.
+
+_Reverts if `streamId` references a null stream._
 
 ```solidity
 function getRange(uint256 streamId) external view returns (LockupLinear.Range memory range);
@@ -33,13 +37,15 @@ function getRange(uint256 streamId) external view returns (LockupLinear.Range me
 
 **Parameters**
 
-| Name       | Type      | Description                                               |
-| ---------- | --------- | --------------------------------------------------------- |
-| `streamId` | `uint256` | The id of the lockup linear stream to make the query for. |
+| Name       | Type      | Description                         |
+| ---------- | --------- | ----------------------------------- |
+| `streamId` | `uint256` | The linear stream id for the query. |
 
 ### getStream
 
-Queries the lockup linear stream struct entity.
+Retrieves the linear stream entity.
+
+_Reverts if `streamId` references a null stream._
 
 ```solidity
 function getStream(uint256 streamId) external view returns (LockupLinear.Stream memory stream);
@@ -47,15 +53,14 @@ function getStream(uint256 streamId) external view returns (LockupLinear.Stream 
 
 **Parameters**
 
-| Name       | Type      | Description                                               |
-| ---------- | --------- | --------------------------------------------------------- |
-| `streamId` | `uint256` | The id of the lockup linear stream to make the query for. |
+| Name       | Type      | Description                         |
+| ---------- | --------- | ----------------------------------- |
+| `streamId` | `uint256` | The linear stream id for the query. |
 
 ### streamedAmountOf
 
-Calculates the amount that has been streamed to the recipient, in units of the asset's decimals.
-
-The streaming function is:
+Calculates the amount streamed to the recipient, denoted in units of the asset's decimals. When the stream is warm, the
+streaming function is:
 
 $$
 f(x) = x * d + c
@@ -63,9 +68,13 @@ $$
 
 Where:
 
-- $x$ is the elapsed time divided by the total duration of the stream.
-- $d$ is the deposit amount.
-- $c$ is the cliff amount.
+- $x$ is the elapsed time divided by the stream's total duration.
+- $d$ is the deposited amount.
+- $c$ is the cliff amount. Upon cancellation of the stream, the amount streamed is calculated as the difference between
+  the deposited amount and the refunded amount. Ultimately, when the stream becomes depleted, the streamed amount is
+  equivalent to the total amount withdrawn.
+
+_Reverts if `streamId` references a null stream._
 
 ```solidity
 function streamedAmountOf(uint256 streamId) external view returns (uint128 streamedAmount);
@@ -73,18 +82,18 @@ function streamedAmountOf(uint256 streamId) external view returns (uint128 strea
 
 **Parameters**
 
-| Name       | Type      | Description                                               |
-| ---------- | --------- | --------------------------------------------------------- |
-| `streamId` | `uint256` | The id of the lockup linear stream to make the query for. |
+| Name       | Type      | Description                         |
+| ---------- | --------- | ----------------------------------- |
+| `streamId` | `uint256` | The linear stream id for the query. |
 
 ### createWithDurations
 
-Creates a lockup linear stream with the start time set to `block.timestamp`, and the end time set to
-`block.timestamp + params.durations.total`. The stream is funded by `msg.sender` and is wrapped in an ERC-721 NFT.
+Creates a linear stream by setting the start time to `block.timestamp`, and the end time to the sum of `block.timestamp`
+and `params.durations.total. The stream is funded by `msg.sender` and is wrapped in an ERC-721 NFT.
 
 Emits a {CreateLockupLinearStream} and a {Transfer} event. Requirements:
 
-- All from {createWithRange}.
+- All requirements in {createWithRange} must be met for the calculated parameters.
 
 ```solidity
 function createWithDurations(LockupLinear.CreateWithDurations calldata params) external returns (uint256 streamId);
@@ -92,29 +101,30 @@ function createWithDurations(LockupLinear.CreateWithDurations calldata params) e
 
 **Parameters**
 
-| Name     | Type                               | Description                                       |
-| -------- | ---------------------------------- | ------------------------------------------------- |
-| `params` | `CreateWithDurations.LockupLinear` | Struct that encapsulates the function parameters. |
+| Name     | Type                               | Description                                                                        |
+| -------- | ---------------------------------- | ---------------------------------------------------------------------------------- |
+| `params` | `LockupLinear.CreateWithDurations` | Struct encapsulating the function parameters, which are documented in {DataTypes}. |
 
 **Returns**
 
-| Name       | Type      | Description                                       |
-| ---------- | --------- | ------------------------------------------------- |
-| `streamId` | `uint256` | The id of the newly created lockup linear stream. |
+| Name       | Type      | Description                                |
+| ---------- | --------- | ------------------------------------------ |
+| `streamId` | `uint256` | The id of the newly created linear stream. |
 
 ### createWithRange
 
-Creates a lockup linear stream with the provided start time and end time as the range. The stream is funded by
-`msg.sender` and is wrapped in an ERC-721 NFT.
+Creates a linear stream with the provided start time and end time as the range. The stream is funded by `msg.sender` and
+is wrapped in an ERC-721 NFT.
 
 Emits a {CreateLockupLinearStream} and a {Transfer} event. Notes:
 
-- As long as the times are ordered, it is not an error to set a range that is in the past. Requirements:
-- The call must not be a delegate call.
-- `params.totalAmount` must not be zero.
+- As long as the times are ordered, it is not an error for the start or the cliff time to be in the past. Requirements:
+- Must not be delegate called.
+- `params.totalAmount` must be greater than zero.
 - If set, `params.broker.fee` must not be greater than `MAX_FEE`.
-- `params.range.start` must not be greater than `params.range.cliff`.
-- `params.range.cliff` must not be greater than `params.range.end`.
+- `params.range.start` must be less than or equal to `params.range.cliff`.
+- `params.range.cliff` must be less than `params.range.end`.
+- `params.range.end` must be in the future.
 - `params.recipient` must not be the zero address.
 - `msg.sender` must have allowed this contract to spend at least `params.totalAmount` assets.
 
@@ -124,21 +134,21 @@ function createWithRange(LockupLinear.CreateWithRange calldata params) external 
 
 **Parameters**
 
-| Name     | Type                           | Description                                       |
-| -------- | ------------------------------ | ------------------------------------------------- |
-| `params` | `CreateWithRange.LockupLinear` | Struct that encapsulates the function parameters. |
+| Name     | Type                           | Description                                                                        |
+| -------- | ------------------------------ | ---------------------------------------------------------------------------------- |
+| `params` | `LockupLinear.CreateWithRange` | Struct encapsulating the function parameters, which are documented in {DataTypes}. |
 
 **Returns**
 
-| Name       | Type      | Description                                       |
-| ---------- | --------- | ------------------------------------------------- |
-| `streamId` | `uint256` | The id of the newly created lockup linear stream. |
+| Name       | Type      | Description                                |
+| ---------- | --------- | ------------------------------------------ |
+| `streamId` | `uint256` | The id of the newly created linear stream. |
 
 ## Events
 
 ### CreateLockupLinearStream
 
-Emitted when a lockup linear stream is created.
+Emitted when a linear stream is created.
 
 ```solidity
 event CreateLockupLinearStream(

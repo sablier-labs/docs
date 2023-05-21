@@ -1,8 +1,8 @@
 # Lockup
 
-[Git Source](https://github.com/sablierhq/v2-core/blob/8bd57ebb31fddf6ef262477e5a378027db8b85d8/docs/contracts/v2/reference/core)
+[Git Source](https://github.com/sablier-labs/v2-core/blob/b048c0e28a5120b396c3eb3cdd0bc4e8784dc155/docs/contracts/v2/reference/core)
 
-Quasi-namespace for the structs used in both
+Namespace for the structs used in both
 [SablierV2LockupLinear](docs/contracts/v2/reference/core/contract.SablierV2LockupLinear.md) and
 [SablierV2LockupDynamic](docs/contracts/v2/reference/core/contract.SablierV2LockupDynamic.md).
 
@@ -10,19 +10,22 @@ Quasi-namespace for the structs used in both
 
 ### Amounts
 
-Simple struct that encapsulates the deposit and the withdrawn amounts.
+Struct encapsulating the deposit, withdrawn, and refunded amounts, all denoted in units of the asset's decimals.
+
+_Because the deposited and the withdrawn amount are often read together, declaring them in the same slot saves gas._
 
 ```solidity
 struct Amounts {
-    uint128 deposit;
+    uint128 deposited;
     uint128 withdrawn;
+    uint128 refunded;
 }
 ```
 
 ### CreateAmounts
 
-Simple struct that encapsulates (i) the deposit amount, (ii) the protocol fee amount, and (iii) the broker fee amount,
-each in units of the asset's decimals.
+Struct encapsulating the deposit amount, the protocol fee amount, and the broker fee amount, all denoted in units of the
+asset's decimals.
 
 ```solidity
 struct CreateAmounts {
@@ -36,12 +39,13 @@ struct CreateAmounts {
 
 ### Status
 
-Enum with all possible statuses of a lockup stream.
+Enum representing the different statuses of a stream.
 
 ```solidity
 enum Status {
-    NULL,
-    ACTIVE,
+    PENDING,
+    STREAMING,
+    SETTLED,
     CANCELED,
     DEPLETED
 }

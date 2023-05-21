@@ -1,6 +1,6 @@
 # Helpers
 
-[Git Source](https://github.com/sablierhq/v2-core/blob/8bd57ebb31fddf6ef262477e5a378027db8b85d8/docs/contracts/v2/reference/core)
+[Git Source](https://github.com/sablier-labs/v2-core/blob/b048c0e28a5120b396c3eb3cdd0bc4e8784dc155/docs/contracts/v2/reference/core)
 
 Library with helper functions needed across the Sablier V2 contracts.
 
@@ -35,7 +35,7 @@ function checkCreateDynamicParams(
     uint40 startTime
 )
     internal
-    pure;
+    view;
 ```
 
 ### checkCreateLinearParams
@@ -43,7 +43,7 @@ function checkCreateDynamicParams(
 _Checks the parameters of the {SablierV2LockupLinear-\_createWithRange} function._
 
 ```solidity
-function checkCreateLinearParams(uint128 depositAmount, LockupLinear.Range memory range) internal pure;
+function checkCreateLinearParams(uint128 depositAmount, LockupLinear.Range memory range) internal view;
 ```
 
 ### checkDeltasAndCalculateMilestones
@@ -61,10 +61,10 @@ function checkDeltasAndCalculateMilestones(LockupDynamic.SegmentWithDelta[] memo
 
 Checks that:
 
-1. The first milestone is greater than or equal to the start time.
+1. The first milestone is strictly greater than the start time.
 2. The milestones are ordered chronologically.
 3. There are no duplicate milestones.
-4. The deposit amount is equal to the segment amounts summed up.
+4. The deposit amount is equal to the sum of all segment amounts.
 
 ```solidity
 function _checkSegments(
@@ -73,5 +73,5 @@ function _checkSegments(
     uint40 startTime
 )
     private
-    pure;
+    view;
 ```

@@ -1,8 +1,8 @@
 # Broker
 
-[Git Source](https://github.com/sablierhq/v2-core/blob/8bd57ebb31fddf6ef262477e5a378027db8b85d8/docs/contracts/v2/reference/core)
+[Git Source](https://github.com/sablier-labs/v2-core/blob/b048c0e28a5120b396c3eb3cdd0bc4e8784dc155/docs/contracts/v2/reference/core)
 
-Simple struct that encapsulates the optional broker parameters that can be passed to the create functions.
+Struct encapsulating the broker parameters passed to the create functions. Both can be set to zero.
 
 ```solidity
 struct Broker {

@@ -1,6 +1,6 @@
 # Adminable
 
-[Git Source](https://github.com/sablierhq/v2-core/blob/8bd57ebb31fddf6ef262477e5a378027db8b85d8/docs/contracts/v2/reference/core/abstracts)
+[Git Source](https://github.com/sablier-labs/v2-core/blob/b048c0e28a5120b396c3eb3cdd0bc4e8784dc155/docs/contracts/v2/reference/core/abstracts)
 
 **Inherits:** [IAdminable](/docs/contracts/v2/reference/core/interfaces/interface.IAdminable.md)
 
@@ -35,7 +35,7 @@ Notes:
 - Does not revert if the admin is the same.
 - This function can potentially leave the contract without an admin, thereby removing any functionality that is only
   available to the admin. Requirements:
-- The caller must be the contract admin.
+- `msg.sender` must be the contract admin.
 
 ```solidity
 function transferAdmin(address newAdmin) public virtual override onlyAdmin;

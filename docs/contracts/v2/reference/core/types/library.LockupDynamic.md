@@ -1,35 +1,34 @@
 # LockupDynamic
 
-[Git Source](https://github.com/sablierhq/v2-core/blob/8bd57ebb31fddf6ef262477e5a378027db8b85d8/docs/contracts/v2/reference/core)
+[Git Source](https://github.com/sablier-labs/v2-core/blob/b048c0e28a5120b396c3eb3cdd0bc4e8784dc155/docs/contracts/v2/reference/core)
 
-Quasi-namespace for the structs used in
+Namespace for the structs used in
 [SablierV2LockupDynamic](docs/contracts/v2/reference/core/contract.SablierV2LockupDynamic.md).
 
 ## Structs
 
 ### CreateWithDeltas
 
-Struct that encapsulates the parameters of the {SablierV2LockupDynamic-createWithDeltas} function.
+Struct encapsulating the parameters for the {SablierV2LockupDynamic.createWithDeltas} function.
 
 ```solidity
 struct CreateWithDeltas {
     address sender;
+    bool cancelable;
     address recipient;
     uint128 totalAmount;
     IERC20 asset;
-    bool cancelable;
-    LockupDynamic.SegmentWithDelta[] segments;
     Broker broker;
+    SegmentWithDelta[] segments;
 }
 ```
 
 ### CreateWithMilestones
 
-Struct that encapsulates the parameters of the {SablierV2LockupDynamic-createWithMilestones} function.
+Struct encapsulating the parameters for the {SablierV2LockupDynamic.createWithMilestones} function.
 
 ```solidity
 struct CreateWithMilestones {
-    LockupDynamic.Segment[] segments;
     address sender;
     uint40 startTime;
     bool cancelable;
@@ -37,12 +36,13 @@ struct CreateWithMilestones {
     uint128 totalAmount;
     IERC20 asset;
     Broker broker;
+    Segment[] segments;
 }
 ```
 
 ### Range
 
-Range struct used as a field in the lockup dynamic stream.
+Struct encapsulating the time range of a lockup dynamic stream.
 
 ```solidity
 struct Range {
@@ -65,7 +65,7 @@ struct Segment {
 
 ### SegmentWithDelta
 
-Segment struct used only at runtime in {SablierV2LockupDynamic-createWithDeltas}.
+Segment struct used at runtime in {SablierV2LockupDynamic.createWithDeltas}.
 
 ```solidity
 struct SegmentWithDelta {
@@ -77,19 +77,21 @@ struct SegmentWithDelta {
 
 ### Stream
 
-Lockup dynamic stream struct.
+Lockup dynamic stream.
 
 _The fields are arranged like this to save gas via tight variable packing._
 
 ```solidity
 struct Stream {
-    Lockup.Amounts amounts;
-    Segment[] segments;
     address sender;
     uint40 startTime;
     uint40 endTime;
     bool isCancelable;
-    Lockup.Status status;
+    bool wasCanceled;
     IERC20 asset;
+    bool isDepleted;
+    bool isStream;
+    Lockup.Amounts amounts;
+    Segment[] segments;
 }
 ```

@@ -1,44 +1,42 @@
 # ISablierV2LockupRecipient
 
-[Git Source](https://github.com/sablierhq/v2-core/blob/8bd57ebb31fddf6ef262477e5a378027db8b85d8/docs/contracts/v2/reference/core/interfaces)
+[Git Source](https://github.com/sablier-labs/v2-core/blob/b048c0e28a5120b396c3eb3cdd0bc4e8784dc155/docs/contracts/v2/reference/core/interfaces)
 
-Interface for recipient contracts that can react to cancellations and withdrawals.
+Interface for recipient contracts capable of reacting to cancellations, renouncements, and withdrawals.
 
-_Implementing this interface is entirely optional. If the recipient contract does not implement this interface, the
-function execution will not revert. Furthermore, if the recipient contract implements this interface only partially, the
-function execution will not revert either._
+_Implementation of this interface is optional. If a recipient contract doesn't implement this interface or implements it
+partially, function execution will not revert._
 
 ## Functions
 
 ### onStreamCanceled
 
-Reacts to the cancellation of a stream. Sablier V2 invokes this function on the recipient after a cancellation triggered
-by the sender.
+Responds to sender-triggered cancellations.
 
 Notes:
 
-- This function may revert, but the Sablier contract will always ignore the revert.
+- This function may revert, but the Sablier contract will ignore the revert.
 
 ```solidity
-function onStreamCanceled(uint256 streamId, uint128 senderAmount, uint128 recipientAmount) external;
+function onStreamCanceled(uint256 streamId, address sender, uint128 senderAmount, uint128 recipientAmount) external;
 ```
 
 **Parameters**
 
-| Name              | Type      | Description                                                                        |
-| ----------------- | --------- | ---------------------------------------------------------------------------------- |
-| `streamId`        | `uint256` | The id of the stream that has been canceled.                                       |
-| `senderAmount`    | `uint128` | The amount of assets returned to the sender, in units of the asset's decimals.     |
-| `recipientAmount` | `uint128` | The amount of assets withdrawn to the recipient, in units of the asset's decimals. |
+| Name              | Type      | Description                                                                                                 |
+| ----------------- | --------- | ----------------------------------------------------------------------------------------------------------- |
+| `streamId`        | `uint256` | The id of the canceled stream.                                                                              |
+| `sender`          | `address` | The stream's sender, who canceled the stream.                                                               |
+| `senderAmount`    | `uint128` | The amount of assets refunded to the stream's sender, denoted in units of the asset's decimals.             |
+| `recipientAmount` | `uint128` | The amount of assets left for the stream's recipient to withdraw, denoted in units of the asset's decimals. |
 
 ### onStreamRenounced
 
-Reacts to the renouncement of a stream. Sablier V2 invokes this function on the recipient after a renouncement triggered
-by the sender.
+Responds to renouncements.
 
 Notes:
 
-- This function may revert, but the Sablier contract will always ignore the revert.
+- This function may revert, but the Sablier contract will ignore the revert.
 
 ```solidity
 function onStreamRenounced(uint256 streamId) external;
@@ -46,16 +44,17 @@ function onStreamRenounced(uint256 streamId) external;
 
 **Parameters**
 
-| Name       | Type      | Description                                   |
-| ---------- | --------- | --------------------------------------------- |
-| `streamId` | `uint256` | The id of the stream that has been renounced. |
+| Name       | Type      | Description                     |
+| ---------- | --------- | ------------------------------- |
+| `streamId` | `uint256` | The id of the renounced stream. |
 
 ### onStreamWithdrawn
 
-Reacts to a withdrawal from a stream.
+Responds to withdrawals triggered by either the stream's sender or an approved third party.
 
-_Sablier V2 invokes this function on the recipient after a withdrawal triggered by the sender or an approved operator.
-This function may revert, but the Sablier contract will always ignore the revert._
+Notes:
+
+- This function may revert, but the Sablier contract will ignore the revert.
 
 ```solidity
 function onStreamWithdrawn(uint256 streamId, address caller, address to, uint128 amount) external;
@@ -63,9 +62,9 @@ function onStreamWithdrawn(uint256 streamId, address caller, address to, uint128
 
 **Parameters**
 
-| Name       | Type      | Description                                                                        |
-| ---------- | --------- | ---------------------------------------------------------------------------------- |
-| `streamId` | `uint256` | The id of the stream that has been withdrawn from.                                 |
-| `caller`   | `address` | The address of the original `msg.sender` address which triggered the cancellation. |
-| `to`       | `address` | The address that has received the withdrawn assets.                                |
-| `amount`   | `uint128` | The amount of assets that have been withdrawn, in units of the asset's decimals.   |
+| Name       | Type      | Description                                                               |
+| ---------- | --------- | ------------------------------------------------------------------------- |
+| `streamId` | `uint256` | The id of the stream being withdrawn from.                                |
+| `caller`   | `address` | The original `msg.sender` address that triggered the withdrawal.          |
+| `to`       | `address` | The address receiving the withdrawn assets.                               |
+| `amount`   | `uint128` | The amount of assets withdrawn, denoted in units of the asset's decimals. |

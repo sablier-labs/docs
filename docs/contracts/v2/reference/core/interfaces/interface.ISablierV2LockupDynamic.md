@@ -1,16 +1,16 @@
 # ISablierV2LockupDynamic
 
-[Git Source](https://github.com/sablierhq/v2-core/blob/8bd57ebb31fddf6ef262477e5a378027db8b85d8/docs/contracts/v2/reference/core/interfaces)
+[Git Source](https://github.com/sablier-labs/v2-core/blob/b048c0e28a5120b396c3eb3cdd0bc4e8784dc155/docs/contracts/v2/reference/core/interfaces)
 
 **Inherits:** [ISablierV2Lockup](/docs/contracts/v2/reference/core/interfaces/interface.ISablierV2Lockup.md)
 
-Creates and manages lockup streams with custom streaming curves.
+Creates and manages lockup streams with dynamic streaming functions.
 
 ## Functions
 
 ### MAX_SEGMENT_COUNT
 
-The maximum number of segments permitted in a lockup dynamic stream.
+The maximum number of segments allowed in a dynamic stream.
 
 _This is initialized at construction time and cannot be changed later._
 
@@ -20,8 +20,10 @@ function MAX_SEGMENT_COUNT() external view returns (uint256);
 
 ### getRange
 
-Queries the range of the lockup dynamic stream, a struct that encapsulates (i) the start time of the stream, and (ii)
-the end time of of the stream, both as Unix timestamps.
+Retrieves the dynamic stream's range, a struct containing (i) the stream's start time and (ii) end time, both as Unix
+timestamps.
+
+_Reverts if `streamId` references a null stream._
 
 ```solidity
 function getRange(uint256 streamId) external view returns (LockupDynamic.Range memory range);
@@ -29,13 +31,15 @@ function getRange(uint256 streamId) external view returns (LockupDynamic.Range m
 
 **Parameters**
 
-| Name       | Type      | Description                                                |
-| ---------- | --------- | ---------------------------------------------------------- |
-| `streamId` | `uint256` | The id of the lockup dynamic stream to make the query for. |
+| Name       | Type      | Description                          |
+| ---------- | --------- | ------------------------------------ |
+| `streamId` | `uint256` | The dynamic stream id for the query. |
 
 ### getSegments
 
-Queries the segments the protocol uses to compose the custom streaming curve.
+Retrieves the segments the protocol uses to compose the custom streaming curve.
+
+_Reverts if `streamId` references a null stream._
 
 ```solidity
 function getSegments(uint256 streamId) external view returns (LockupDynamic.Segment[] memory segments);
@@ -43,13 +47,15 @@ function getSegments(uint256 streamId) external view returns (LockupDynamic.Segm
 
 **Parameters**
 
-| Name       | Type      | Description                                                |
-| ---------- | --------- | ---------------------------------------------------------- |
-| `streamId` | `uint256` | The id of the lockup dynamic stream to make the query for. |
+| Name       | Type      | Description                          |
+| ---------- | --------- | ------------------------------------ |
+| `streamId` | `uint256` | The dynamic stream id for the query. |
 
 ### getStream
 
-Queries the lockup dynamic stream struct entity.
+Retrieves the dynamic stream entity.
+
+_Reverts if `streamId` references a null stream._
 
 ```solidity
 function getStream(uint256 streamId) external view returns (LockupDynamic.Stream memory stream);
@@ -57,15 +63,14 @@ function getStream(uint256 streamId) external view returns (LockupDynamic.Stream
 
 **Parameters**
 
-| Name       | Type      | Description                                                |
-| ---------- | --------- | ---------------------------------------------------------- |
-| `streamId` | `uint256` | The id of the lockup dynamic stream to make the query for. |
+| Name       | Type      | Description                          |
+| ---------- | --------- | ------------------------------------ |
+| `streamId` | `uint256` | The dynamic stream id for the query. |
 
 ### streamedAmountOf
 
-Calculates the amount that has been streamed to the recipient, in units of the asset's decimals.
-
-The streaming function is:
+Calculates the amount streamed to the recipient, denoted in units of the asset's decimals. When the stream is warm, the
+streaming function is:
 
 $$
 f(x) = x^{exp} * csa + \Sigma(esa)
@@ -76,7 +81,11 @@ Where:
 - $x$ is the elapsed time divided by the total time in the current segment.
 - $exp$ is the current segment exponent.
 - $csa$ is the current segment amount.
-- $\Sigma(esa)$ is the sum of all elapsed segments' amounts.
+- $\Sigma(esa)$ is the sum of all elapsed segments' amounts. Upon cancellation of the stream, the amount streamed is
+  calculated as the difference between the deposited amount and the refunded amount. Ultimately, when the stream becomes
+  depleted, the streamed amount is equivalent to the total amount withdrawn.
+
+_Reverts if `streamId` references a null stream._
 
 ```solidity
 function streamedAmountOf(uint256 streamId) external view returns (uint128 streamedAmount);
@@ -84,18 +93,19 @@ function streamedAmountOf(uint256 streamId) external view returns (uint128 strea
 
 **Parameters**
 
-| Name       | Type      | Description                                                |
-| ---------- | --------- | ---------------------------------------------------------- |
-| `streamId` | `uint256` | The id of the lockup dynamic stream to make the query for. |
+| Name       | Type      | Description                          |
+| ---------- | --------- | ------------------------------------ |
+| `streamId` | `uint256` | The dynamic stream id for the query. |
 
 ### createWithDeltas
 
-Creates a lockup dynamic stream by setting the start time to `block.timestamp` and the end time to the sum of
-`block.timestamp` and all segment deltas. The stream is funded by `msg.sender` and is wrapped in an ERC-721 NFT.
+Creates a dynamic stream by setting the start time to `block.timestamp`, and the end time to the sum of
+`block.timestamp` and all specified time deltas. The segment milestones are derived from these deltas. The stream is
+funded by `msg.sender` and is wrapped in an ERC-721 NFT.
 
 Emits a {CreateLockupDynamicStream} and a {Transfer} event. Requirements:
 
-- All from {createWithMilestones}.
+- All requirements in {createWithMilestones} must be met for the calculated parameters.
 
 ```solidity
 function createWithDeltas(LockupDynamic.CreateWithDeltas calldata params) external returns (uint256 streamId);
@@ -103,33 +113,33 @@ function createWithDeltas(LockupDynamic.CreateWithDeltas calldata params) extern
 
 **Parameters**
 
-| Name     | Type                             | Description                                       |
-| -------- | -------------------------------- | ------------------------------------------------- |
-| `params` | `CreateWithDeltas.LockupDynamic` | Struct that encapsulates the function parameters. |
+| Name     | Type                             | Description                                                                        |
+| -------- | -------------------------------- | ---------------------------------------------------------------------------------- |
+| `params` | `LockupDynamic.CreateWithDeltas` | Struct encapsulating the function parameters, which are documented in {DataTypes}. |
 
 **Returns**
 
-| Name       | Type      | Description                                        |
-| ---------- | --------- | -------------------------------------------------- |
-| `streamId` | `uint256` | The id of the newly created lockup dynamic stream. |
+| Name       | Type      | Description                                 |
+| ---------- | --------- | ------------------------------------------- |
+| `streamId` | `uint256` | The id of the newly created dynamic stream. |
 
 ### createWithMilestones
 
-Creates a lockup dynamic stream with the provided milestones, implying the end time from the last segment's milestone.
-The stream is funded by `msg.sender` and is wrapped in an ERC-721 NFT.
+Creates a dynamic stream with the provided segment milestones, implying the end time from the last milestone. The stream
+is funded by `msg.sender` and is wrapped in an ERC-721 NFT.
 
 Emits a {CreateLockupDynamicStream} and a {Transfer} event. Notes:
 
 - As long as the segment milestones are arranged in ascending order, it is not an error for some of them to be in the
   past. Requirements:
-- The call must not be a delegate call.
-- `params.totalAmount` must not be zero.
+- Must not be delegate called.
+- `params.totalAmount` must be greater than zero.
 - If set, `params.broker.fee` must not be greater than `MAX_FEE`.
 - `params.segments` must have at least one segment, but not more than `MAX_SEGMENT_COUNT`.
-- The first segment's milestone must be greater than or equal to `params.startTime`.
+- `params.startTime` must be less than the first segment's milestone.
 - The segment milestones must be arranged in ascending order.
-- `params.startTime` must not be greater than the last segment's milestone.
-- The sum of the segment amounts must be equal to the deposit amount.
+- The last segment milestone (i.e. the stream's end time) must be in the future.
+- The sum of the segment amounts must equal the deposit amount.
 - `params.recipient` must not be the zero address.
 - `msg.sender` must have allowed this contract to spend at least `params.totalAmount` assets.
 
@@ -139,21 +149,21 @@ function createWithMilestones(LockupDynamic.CreateWithMilestones calldata params
 
 **Parameters**
 
-| Name     | Type                                 | Description                                       |
-| -------- | ------------------------------------ | ------------------------------------------------- |
-| `params` | `CreateWithMilestones.LockupDynamic` | Struct that encapsulates the function parameters. |
+| Name     | Type                                 | Description                                                                        |
+| -------- | ------------------------------------ | ---------------------------------------------------------------------------------- |
+| `params` | `LockupDynamic.CreateWithMilestones` | Struct encapsulating the function parameters, which are documented in {DataTypes}. |
 
 **Returns**
 
-| Name       | Type      | Description                                        |
-| ---------- | --------- | -------------------------------------------------- |
-| `streamId` | `uint256` | The id of the newly created lockup dynamic stream. |
+| Name       | Type      | Description                                 |
+| ---------- | --------- | ------------------------------------------- |
+| `streamId` | `uint256` | The id of the newly created dynamic stream. |
 
 ## Events
 
 ### CreateLockupDynamicStream
 
-Emitted when a lockup dynamic stream is created.
+Emitted when a dynamic stream is created.
 
 ```solidity
 event CreateLockupDynamicStream(

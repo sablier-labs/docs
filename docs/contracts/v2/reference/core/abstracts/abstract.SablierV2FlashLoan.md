@@ -1,8 +1,8 @@
 # SablierV2FlashLoan
 
-[Git Source](https://github.com/sablierhq/v2-core/blob/8bd57ebb31fddf6ef262477e5a378027db8b85d8/docs/contracts/v2/reference/core/abstracts)
+[Git Source](https://github.com/sablier-labs/v2-core/blob/b048c0e28a5120b396c3eb3cdd0bc4e8784dc155/docs/contracts/v2/reference/core/abstracts)
 
-**Inherits:** IERC3156FlashLender,
+**Inherits:** [IERC3156FlashLender](/docs/contracts/v2/reference/core/interfaces/interface.IERC3156FlashLender.md),
 [SablierV2Base](/docs/contracts/v2/reference/core/abstracts/abstract.SablierV2Base.md)
 
 This contract implements the ERC-3156 standard to enable flash loans.
@@ -24,9 +24,9 @@ bytes32 internal constant CALLBACK_SUCCESS = keccak256("ERC3156FlashBorrower.onF
 The amount of fees to charge for a hypothetical flash loan amount.
 
 You might notice a bit of a terminology clash here, since the ERC-3156 standard refers to the "flash fee" as an amount,
-whereas the flash fee queried from the comptroller is a percentage. In this code base, the "amount" suffix is typically
-appended to variables that represent amounts, but in this context, the name must be kept unchanged to comply with the
-ERC. Requirements:
+whereas the flash fee retrieved from the comptroller is a percentage. Throughout the code base, the "amount" suffix is
+typically appended to variables that represent amounts, but, in this context, the name must be kept unchanged to comply
+with the ERC. Requirements:
 
 - The ERC-20 asset must be flash loanable.
 
@@ -49,7 +49,7 @@ function flashFee(address asset, uint256 amount) public view override returns (u
 
 ### maxFlashLoan
 
-The amount of ERC-20 assets available to be flash loaned.
+The amount of ERC-20 assets available for flash loan.
 
 _If the ERC-20 asset is not flash loanable, this function returns zero._
 
@@ -59,9 +59,9 @@ function maxFlashLoan(address asset) external view override returns (uint256 amo
 
 **Parameters**
 
-| Name    | Type      | Description                                            |
-| ------- | --------- | ------------------------------------------------------ |
-| `asset` | `address` | The address of the ERC-20 asset to make the query for. |
+| Name    | Type      | Description                               |
+| ------- | --------- | ----------------------------------------- |
+| `asset` | `address` | The address of the ERC-20 asset to query. |
 
 **Returns**
 
@@ -76,13 +76,13 @@ principal plus a flash fee is returned.
 
 Emits a {FlashLoan} event. Requirements:
 
-- The call must not be a delegate call.
-- All from {flashFee}.
+- Must not be delegate called.
+- Refer to the requirements in {flashFee}.
 - `amount` must be less than 2^128.
 - `fee` must be less than 2^128.
 - `amount` must not exceed the liquidity available for `asset`.
 - `msg.sender` must allow this contract to spend at least `amount + fee` assets.
-- `receiver` implementation of {IERC3156FlashBorrower-onFlashLoan} must return `CALLBACK_SUCCESS`.
+- `receiver` implementation of {IERC3156FlashBorrower.onFlashLoan} must return `CALLBACK_SUCCESS`.
 
 ```solidity
 function flashLoan(
