@@ -156,8 +156,8 @@ In a future version of the Sablier protocol, we may add the option to refill an 
 
 ## What can Sablier be used for?
 
-We came up with a few ideas in [this discussion on Twitter](https://twitter.com/SablierHQ/status/1205533344886411264),
-but the sky is the limit.
+We came up with a few ideas in [this discussion on Twitter](https://twitter.com/Sablier/status/1205533344886411264), but
+the sky is the limit.
 
 ## Does Sablier handle traditional payroll laws?
 
