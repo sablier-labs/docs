@@ -269,7 +269,7 @@ This section is a stub
 
 ## Resources
 
-- [Git Source](https://github.com/sablierhq/v2-core/blob/9df2bf8f303f7d13337716257672553e60783b8c/docs/contracts/v2/reference/core):
+- [Git Source](https://github.com/sablier-labs/v2-core/blob/9df2bf8f303f7d13337716257672553e60783b8c/docs/contracts/v2/reference/core):
   link to the source code where the errors are defined
 - [Custom Errors in Solidity](https://blog.soliditylang.org/2021/04/21/custom-errors/): deep dive into the custom error
   syntax

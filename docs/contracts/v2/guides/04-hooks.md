@@ -34,13 +34,13 @@ And these are the hooks that can be implemented by a sender contract:
 #### Recipient
 
 ```solidity reference title="Sablier Recipient Hooks"
-https://github.com/sablierhq/examples/blob/main/v2/core/RecipientHooks.sol
+https://github.com/sablier-labs/examples/blob/main/v2/core/RecipientHooks.sol
 ```
 
 #### Sender
 
 ```solidity reference title="Sablier Sender Hooks"
-https://github.com/sablierhq/examples/blob/main/v2/core/SenderHooks.sol
+https://github.com/sablier-labs/examples/blob/main/v2/core/SenderHooks.sol
 ```
 
 ## Error Management

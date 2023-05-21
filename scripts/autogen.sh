@@ -9,7 +9,7 @@
 # Strict mode: https://gist.github.com/vncsna/64825d5609c146e80de8b1fd623011ca
 set -euo pipefail
 
-# cd into sablierhq/v2-core
+# cd into sablier-labs/v2-core
 cd repos/v2-core
 
 # Delete the previously generated docs

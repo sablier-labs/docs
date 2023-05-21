@@ -31,7 +31,7 @@ with a brief duration, and assign the `StreamManagement` contract as the recipie
 previous guide. Once that is done, you can use the `withdraw` function like this:
 
 ```solidity reference title="Stream Management: Withdraw"
-https://github.com/sablierhq/examples/blob/main/v2/core/StreamManagement.sol#L34-L36
+https://github.com/sablier-labs/examples/blob/main/v2/core/StreamManagement.sol#L34-L36
 ```
 
 In this example, the withdrawal address and withdrawal amount are hard-coded for demonstration purposes. However, in a
@@ -41,7 +41,7 @@ In addition to the `withdraw` function, there is the `withdrawMax` function, whi
 amount of assets available in a stream at the time of invocation:
 
 ```solidity reference title="Stream Management: Withdraw Max"
-https://github.com/sablierhq/examples/blob/main/v2/core/StreamManagement.sol#L39-L41
+https://github.com/sablier-labs/examples/blob/main/v2/core/StreamManagement.sol#L39-L41
 ```
 
 In effect, what `withdrawMax` does is call the `withdrawableAmountOf` function, and pass its result to `withdraw`.
@@ -49,5 +49,5 @@ In effect, what `withdrawMax` does is call the `withdrawableAmountOf` function, 
 Lastly, there is the `withdrawMultiple` function, with which you can withdraw from multiple streams at once:
 
 ```solidity reference title="Stream Management: Withdraw Multiple"
-https://github.com/sablierhq/examples/blob/main/v2/core/StreamManagement.sol#L44-L46
+https://github.com/sablier-labs/examples/blob/main/v2/core/StreamManagement.sol#L44-L46
 ```

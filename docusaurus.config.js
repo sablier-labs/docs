@@ -10,7 +10,7 @@ const config = {
   },
   onBrokenLinks: "warn",
   onBrokenMarkdownLinks: "warn",
-  organizationName: "sablierhq",
+  organizationName: "sablier-labs",
   projectName: "sablier-docs",
   tagline: "Documentation and guides for Sablier",
   title: "Sablier Docs",
@@ -21,7 +21,7 @@ const config = {
       /** @type {import('@docusaurus/preset-classic').Options} */
       ({
         docs: {
-          editUrl: "https://github.com/sablierhq/docs/tree/main/",
+          editUrl: "https://github.com/sablier-labs/docs/tree/main/",
           rehypePlugins: [katex],
           routeBasePath: "/", // Serve the docs at the site's root
           remarkPlugins: [math],
@@ -104,7 +104,7 @@ const config = {
               },
               {
                 label: "Branding",
-                href: "https://github.com/sablierhq/branding",
+                href: "https://github.com/sablier-labs/branding",
               },
             ],
           },
@@ -113,15 +113,15 @@ const config = {
             items: [
               {
                 label: "V2 Core",
-                href: "https://github.com/sablierhq/v2-core",
+                href: "https://github.com/sablier-labs/v2-core",
               },
               {
                 label: "V2 Periphery",
-                href: "https://github.com/sablierhq/v2-periphery",
+                href: "https://github.com/sablier-labs/v2-periphery",
               },
               {
                 label: "Subgraph",
-                href: "https://github.com/sablierhq/subgraph",
+                href: "https://github.com/sablier-labs/subgraph",
               },
             ],
           },
@@ -161,7 +161,7 @@ const config = {
           {
             label: "GitHub",
             position: "right",
-            to: "https://github.com/sablierhq",
+            to: "https://github.com/sablier-labs",
           },
         ],
         logo: {

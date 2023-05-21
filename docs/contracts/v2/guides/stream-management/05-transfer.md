@@ -26,14 +26,14 @@ To transfer ownership of a stream, invoke the ERC-721 `safeTransferFrom` functio
 the `StreamManagement` contract:
 
 ```solidity reference title="Stream Management: Transfer Ownership"
-https://github.com/sablierhq/examples/blob/main/v2/core/StreamManagement.sol#L29-L31
+https://github.com/sablier-labs/examples/blob/main/v2/core/StreamManagement.sol#L29-L31
 ```
 
 This `safeTransferFrom` function ensures that the new owner is a contract implementing the `ERC721TokenReceiver`
 interface. If this check is not required, opt for the `transferFrom` function instead:
 
 ```solidity reference title="Stream Management: Transfer Ownership"
-https://github.com/sablierhq/examples/blob/main/v2/core/StreamManagement.sol#L34-L36
+https://github.com/sablier-labs/examples/blob/main/v2/core/StreamManagement.sol#L34-L36
 ```
 
 In the examples above, the new owner is hard-coded for demonstration purposes. However, in a production environment,

@@ -29,12 +29,12 @@ To call any of the functions above, you must first have an active, cancelable st
 ahead and create a stream. Once that is done, you can use the `cancel` function like this:
 
 ```solidity reference title="Stream Management: Cancel"
-https://github.com/sablierhq/examples/blob/main/v2/core/StreamManagement.sol#L14-L16
+https://github.com/sablier-labs/examples/blob/main/v2/core/StreamManagement.sol#L14-L16
 ```
 
 In addition to the `cancel` function, there is the `cancelMultiple` function, which allows you to cancel several streams
 at once:
 
 ```solidity reference title="Stream Management: Cancel Multiple"
-https://github.com/sablierhq/examples/blob/main/v2/core/StreamManagement.sol#L19-L21
+https://github.com/sablier-labs/examples/blob/main/v2/core/StreamManagement.sol#L19-L21
 ```

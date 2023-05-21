@@ -18,7 +18,7 @@
     ]
   },
   "bugs": {
-    "url": "https://github.com/sablierhq/v2-docs/issues"
+    "url": "https://github.com/sablier-labs/v2-docs/issues"
   },
   "dependencies": {
     "@algolia/client-search": "^4.16.0",
@@ -75,7 +75,7 @@
   "private": true,
   "repository": {
     "type": "git",
-    "url": "https://github.com/sablierhq/v2-docs"
+    "url": "https://github.com/sablier-labs/v2-docs"
   },
   "scripts": {
     "build": "docusaurus build",

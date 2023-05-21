@@ -82,12 +82,12 @@ Imagine Alice wants to make a 3,000 DAI payment to Bob during the whole month of
 
 The security of the Sablier protocol is our outmost priority. Our team, accompanied by external auditors and
 consultants, has invested considerable effort to create a protocol that is safe and reliable. All contract code is
-publicly verifiable in our [GitHub repository](https://github.com/sablierhq/v2-core).
+publicly verifiable in our [GitHub repository](https://github.com/sablier-labs/v2-core).
 
 ## Is the Sablier protocol transparent?
 
-As transparent as it can be. Verify the smart contracts by yourself on [GitHub](https://github.com/sablierhq/v2-core/)
-and [Etherscan](https://etherscan.io/labelcloud/sablier).
+As transparent as it can be. Verify the smart contracts by yourself on
+[GitHub](https://github.com/sablier-labs/v2-core/) and [Etherscan](https://etherscan.io/labelcloud/sablier).
 
 ## Does the Sablier protocol have an administrator?
 
