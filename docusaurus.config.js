@@ -46,7 +46,7 @@ const config = {
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
       algolia: {
-        appId: "KF9W3YD3YG",
+        appId: "K1JLKUW9ML",
         apiKey: "7eab349cad720dd939e06808c4b2d6e9",
         indexName: "sablier-docs",
       },
