@@ -4,76 +4,77 @@ sidebar_position: 2
 title: "Types of Streams"
 ---
 
-## Linear Streams
+## Lockup Linear
 
-Linear streams are the simplest type of stream. They follow a straight line that goes up and to the right on a graph,
-which corresponds to the identity function $f(x) = x$ ([see on Desmos](https://www.desmos.com/calculator/hfqmupvqe3)).
+Lockup Linear streams are the simplest type of stream in Sablier. They follow a straight line that goes up and to the
+right on a graph, which corresponds to the identity function $f(x) = x$
+([see on Desmos](https://www.desmos.com/calculator/hfqmupvqe3)).
 
-With linear streams, the payment rate remains constant, meaning that the same fraction of the deposit amount is streamed
-to the recipient every second. This provides greater predictability and is very easy to understand because of how
+With this type of stream, the payment rate remains constant, meaning that the same fraction of the deposit amount is
+streamed to the recipient every second. This provides greater predictability and is easy to understand because of how
 intuitive it is. Imagine a diagonal line going up and to the right – that's how simple it is.
+
+:::tip
+
+You will hear the term **"Lockup"** a lot when dealing with Sablier. This is a term coined by us to describe the
+requirement that the sender must lock up a certain amount of assets at the beginning of the stream.
+
+:::
 
 ### Cliffs
 
-It is possible to add a **cliff** to a linear stream, which sets a cut-off point for releasing assets. Prior to the
-cliff ,the recipient cannot withdraw any assets, although the stream continues to accrue them. After the cliff, the
-stream operates like a typical linear stream ([see on Desmos](https://www.desmos.com/calculator/kigb45ntwp)).
+It is possible to attach a "cliff" to a Lockup Linear stream, which sets a cut-off point for releasing assets. Prior to
+the cliff, the recipient cannot withdraw any assets, but the stream continues to accrue them. After the cliff, the
+constant payment rate per second kicks in ([see on Desmos](https://www.desmos.com/calculator/kigb45ntwp)).
 
-Cliffs a great fit if you are looking to vest ERC-20 assets, as it allows you to, for example, have a 1-year cliff, and
-then 3 additional years of linear streaming. If the stream is meant for an employee, you can make it cancellable so that
-if the employee leaves your company during the stream, you can cancel it at any time and recover the assets not streamed
-already.
-
-This feature is especially useful for vesting ERC-20 assets, as it allows you to have, for example, a 1-year cliff, and
+This feature is especially useful for vesting ERC-20 assets as it allows you to have, for example, a 1-year cliff, and
 then 3 additional years of linear streaming. If the stream is for an employee, you can make it cancellable so that if
-the employee leaves your company during the stream, you can cancel it at any time and recover the assets that have not
-yet been streamed.
+the employee leaves your company during the stream, you can cancel it and recover the assets that have not yet been
+streamed.
 
-## Dynamic Streams
+## Lockup Dynamic
 
-Dynamic streams are what makes Sablier so unique. Another way to describe Dynamic streams would be by calling them "non
-linear streams". Why you ask? Well, because they aren't linear, of course!
+Lockup Dynamic streams are what makes Sablier so unique, since they enable the creation of any type of streaming curve,
+including non-linear ones.
 
-**Theoretically, any type of stream can be created using the Sablier protocol, not just linear streams**. On our
-[user interface](https://app.sablier.com), we allow for the creation of exponential streams, for example.
+On our [user interface](https://app.sablier.com), we support only a few streaming models, such as exponential streams,
+but the potential for innovation is limitless when you interact programmatically with the contracts. As an example, one
+could design a logarithmic stream that emulates the $f(x) = log(x)$ function.
 
-We will go over what these are later in this article, but what's important to note here is that while we don't offer
-many other types of streams on the interface, you should be able to create any type of stream by interacting
-programmatically with our contracts. You could create a logarithmic stream, for example, which would more or less follow
-the $f(x) = log(x)$ function.
+These streams are powered by a number of user-provided "segments", which we will cover in the next article. What is
+important to note here is that with Lockup Dynamic, Sablier has evolved into a universal streaming engine, capable of
+supporting any custom streaming curve.
 
-### Exponential Streams
+### Exponential
 
-Part of the Sablier Dynamic offering, **exponential streams allow for streams where the recipients receive more and more
-tokens as time moves forward** ([see on Desmos](https://www.desmos.com/calculator/p0mxvfotlk)).
+A fantastic use case for Lockup Dynamic is Exponential streams, a streaming model under which the recipient receives
+increasingly more tokens as time moves forward ([see on Desmos](https://www.desmos.com/calculator/p0mxvfotlk)).
 
-This is especially a great fit if you are looking to airdrop tokens to your community, as instead of receiving the
-tokens all at once (no streaming) or in a linear fashion (linear stream), your community members will receive the
-majority of the tokens towards the end of the stream. **This incentivizes long-term behavior and a constructive
-attitude**.
+Exponentials are a great fit if you are looking to airdrop tokens, because your community members will receive the
+majority of the tokens towards the end of the stream instead of receiving the tokens all at once (no streaming) or in a
+linear fashion (Lockup Linear). This incentivizes long-term behavior and a constructive attitude.
 
-### Exponential Cliff Streams
+### Exponential Cliff
 
-Part of the Sablier Dynamic offering, the Exponential Cliff streaming curve is a mix between the Cliff Stream and the
-Exponential streaming curves ([see on Desmos](https://www.desmos.com/calculator/z8ugxfnlqh)).
+Another use case for Lockup Dynamic is a variation of the previous design: an Exponential Cliff
+([see on Desmos](https://www.desmos.com/calculator/z8ugxfnlqh)).
 
-**The stream starts with a cliff** (however long you want), a specific amount is then instantly unlocked and streamed
-over to the recipient, and from the rest of the streaming curve is an exponential.
+The stream starts with a cliff (which can be how long you want), a specific amount instantly unlocked when the cliff
+ends, and then the rest of the stream is exponentially streamed.
 
-**This is an excellent fit if you are a company looking to vest tokens for your employees**. It will incentivize your
-employees to stay at the company for the long run, as the more time moves forward the more they will earn until the
-stream ends.
+This is an excellent model if you are a company looking to set up a token vesting plan for your employees. Your
+employees will have an incentive to remain with your company in the long run, as they will receive an increasingly
+larger number of tokens.
 
-### Traditional Unlock Streams
+### Traditional Unlock
 
-Part of the Sablier Dynamic offering, the Traditional Unlock streaming curve is literally just that: a traditional
-vesting contract with periodic unlocks ([see on Desmos](https://www.desmos.com/calculator/ptj2mdnpzx)).
+Because Lockup Dynamic is so flexible, it can even be used to create a traditional vesting contract with periodic
+unlocks ([see on Desmos](https://www.desmos.com/calculator/ptj2mdnpzx)). In this case, the "streaming" rate would be not
+be by the second, but by the week, month, or year.
 
-Every month, quarter or year (or an other time setting) depending on how you configure it, a specific amount will be
-unlocked and sent over to the recipient.
+After each period, a specific amount becomes unlocked and and available for the recipient to withdraw. Past unlocks
+accumulate, so if the recipient doesn't withdraw them, they will be able to withdraw them later.
 
-**The advantage of using Traditional Unlock instead of a normal vesting contract, is that using Sablier provides both
-parties (senders and recipients) a great user experience.**
-
-Instead of having to manually claim the tokens by interacting with the contract on Etherscan, **Sablier provides a
-native and easy-to-understand experience where your employees/investors/… will feel right at home.**
+The advantage of using Traditional Unlock instead of a normal vesting contract is that Sablier automates the entire
+process. You don't have to worry about setting up a vesting contract or creating a user interface for your employees to
+claim their tokens.

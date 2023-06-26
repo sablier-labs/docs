@@ -36,10 +36,6 @@ Short for Decentralized Finance: an ecosystem of financial applications and serv
 primarily Ethereum, that leverage smart contracts to enable trustless, permissionless, and transparent financial
 transactions without relying on traditional intermediaries like banks or financial institutions.
 
-## Dynamic
-
-Refers to either (i) non-linear streams, or (ii) the smart contract that can create non-linear streams.
-
 ## End time
 
 The time when a stream is scheduled to end.
@@ -72,26 +68,28 @@ flash fee is returned. Sablier's flash loan implementation adheres to
 
 [Foundry][foundry] is the application development toolkit that has been used to develop the Sablier Protocol.
 
-## Linear
-
-A linear stream has the same payment rate per second.
-
 ## Lockup
 
-A type of stream in which the creator has to lock up a specified amount of assets.
+A term coined by us to refer to the requirement of locking up assets in order to create a stream.
+
+## Lockup Dynamic
+
+A Lockup stream with a payment rate per second that can vary over time.
+
+## Lockup Linear
+
+A Lockup stream with a a constant payment rate per second.
 
 ## Milestones
 
-A milestone is the time component of a segment, which itself is a component of a dynamic stream.
+A milestone is the time component of a segment, which itself is a component of a Lockup Dynamic stream.
 
 Milestones play a crucial role in the calculation of the custom streaming curve.
 
-## Non-Linear
+## Monotonicity
 
-A non-linear stream features a payment rate per second that can vary over time.
-
-Moreover, the streaming function is characterized by monotonicity, which implies that the total amount of assets
-released by the stream can only increase over time and never decrease."
+A protocol invariant that states that the total amount of assets released by the stream can only increase over time and
+never decrease.
 
 ## Periphery
 
@@ -104,8 +102,8 @@ A renounced stream is a stream that cannot be canceled anymore.
 
 ## PRBMath
 
-[PRBMath][prb-math] is fixed-point arithmetic library used by Sablier Core to facilitate non-linear streaming and
-compute percentage values.
+[PRBMath][prb-math] is fixed-point arithmetic library used by Sablier Core to compute percentage values and the
+exponents used in Lockup Dynamic.
 
 ## PRBProxy
 
@@ -118,11 +116,11 @@ Fees that are rewarded to the Sablier Protocol itself.
 
 ## Range
 
-The range of a linear stream consists of three components: (i) the start time, (ii) the cliff time, and (iii) the end
-time.
-
-The range of a dynamic stream is determined by combining (i) the start time, (ii) the segment milestones, and (iii) the
+The range of a Lockup Linear stream consists of three components: (i) the start time, (ii) the cliff time, and (iii) the
 end time.
+
+The range of a Lockup Dynamic stream is determined by combining (i) the start time, (ii) the segment milestones, and
+(iii) the end time.
 
 ## Real-time finance
 
@@ -133,14 +131,14 @@ transactions.
 
 ## Segment
 
-An entity with three properties:
+A data entity with three properties:
 
 1. Amount
 2. Exponent
 3. Milestone
 
-A segment is an essential component of a non-linear stream, as it facilitates the calculation of the custom streaming
-curve.
+A segment is an essential component of a Lockup Dynamic stream, as it facilitates the calculation of the custom
+streaming curve.
 
 ## Start time
 

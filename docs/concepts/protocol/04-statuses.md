@@ -6,16 +6,19 @@ title: "Statuses"
 
 # Stream Statuses
 
-A Sablier stream can have one of four distinct statuses, as shown in the table below:
+A Sablier stream can have one of five distinct statuses:
 
 | Status    | Description                                                                                                                             |
 | --------- | --------------------------------------------------------------------------------------------------------------------------------------- |
-| NULL      | The stream has not been created yet. This is the default value.                                                                         |
 | PENDING   | The has been created, but hasn't yet started, it's in a pending state.                                                                  |
 | STREAMING | The stream has been created and it is active, assets are being streamed.                                                                |
 | SETTLED   | All assets have been streamed, the recipient is due to withdraw them.                                                                   |
 | CANCELED  | The stream has been canceled, remaining assets (those that were streamed before the cancellation) await for the recipient's withdrawal. |
 | DEPLETED  | The stream has been depleted, meaning all assets have been withdrawn.                                                                   |
+
+## What about null streams?
+
+Passing a stream id that does reference any created stream would result in a revert.
 
 ## What to do with a stream status?
 

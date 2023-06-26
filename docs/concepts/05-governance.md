@@ -4,8 +4,8 @@ sidebar_position: 5
 title: "Governance"
 ---
 
-The protocol admin is an entity that has exclusive access to specific functions of the protocol. More concretely, the
-admin is a multisig wallet currently in control of Sablier Labs, which has the following permissions:
+The protocol admin is an entity with exclusive access to specific functions of the protocol. More concretely, the admin
+is a multisig wallet currently in control of Sablier Labs, which has the following permissions:
 
 | Permission              | Function                | Contract(s)                                       |
 | ----------------------- | ----------------------- | ------------------------------------------------- |
@@ -16,12 +16,12 @@ admin is a multisig wallet currently in control of Sablier Labs, which has the f
 | Set Protocol Fee        | `setProtocolFee`        | `SablierV2Comptroller`                            |
 | Toggle Flash Asset      | `toggleFlashAsset`      | `SablierV2Comptroller`                            |
 
-The comptroller is a special contract that manages the configuration of the protocol. To learn more about the
-comptroller, see the [reference](/contracts/v2/reference/core/contract.SablierV2Comptroller).
+The comptroller is a special contract that holds configuration parameters. To learn more about the comptroller, see the
+[reference](/contracts/v2/reference/core/contract.SablierV2Comptroller).
 
 ## Trustlessness
 
-Despite having an admin, the Sablier Protocol maintains its trustless nature due to the following reasons:
+Despite having an admin, the Sablier Protocol remains trustless. This is because:
 
 1. The protocol is permissionless, i.e. it can be freely accessed by anyone with an Internet connection.
 2. The protocol is persistent, i.e. the admin cannot pause it.
@@ -40,5 +40,4 @@ Attaining success in these areas is no easy feat, and as such, decentralizing th
 initial priority.
 
 Nonetheless, we believe that progressive decentralization is the most effective approach to scaling a smart contract
-protocol. Therefore, as our confidence in the protocol's scalability grows, we will incrementally decentralize its
-governance.
+protocol. As the protocol matures, we will decentralize its governance incrementally.

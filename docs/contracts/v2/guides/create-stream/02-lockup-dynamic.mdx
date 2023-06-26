@@ -1,7 +1,7 @@
 ---
-id: "dynamic"
+id: "lockup-dynamic"
 sidebar_position: 2
-title: "Dynamic Stream"
+title: "Lockup Dynamic"
 ---
 
 import AdmonitionSimpleCode from "@site/docs/snippets/AdmonitionSimpleCode.mdx";
@@ -13,10 +13,10 @@ import ParamRecipient from "@site/docs/snippets/ParamRecipient.mdx";
 import ParamSender from "@site/docs/snippets/ParamSender.mdx";
 import ParamTotalAmount from "@site/docs/snippets/ParamTotalAmount.mdx";
 
-# Create a dynamic stream
+# Create a Lockup Dynamic stream
 
-Dynamic streams are streams with custom streaming curves. In this guide, we will show you how to create a dynamic stream
-programmatically.
+Lockup Dynamic are streams with custom streaming curves. In this guide, we will show you how to create a Lockup Dynamic
+stream programmatically.
 
 :::note
 
@@ -44,11 +44,11 @@ import { ud2x18, ud60x18 } from "@sablier/v2-core/types/Math.sol";
 import { IERC20 } from "@sablier/v2-core/types/Tokens.sol";
 ```
 
-Create a contract called `DynamicStreamCreator`, and declare a constant `DAI` of type `IERC20` and an immutable variable
-`sablier` of type `ISablierV2LockupDynamic`:
+Create a contract called `LockupDynamicStreamCreator`, and declare a constant `DAI` of type `IERC20` and an immutable
+variable `sablier` of type `ISablierV2LockupDynamic`:
 
 ```solidity
-contract DynamicStreamCreator {
+contract LockupDynamicStreamCreator {
     IERC20 public constant DAI = IERC20(0x6B175474E89094C44Da98b954EedeAC495271d0F);
     ISablierV2LockupDynamic public immutable sablier;
 }
@@ -72,7 +72,7 @@ constructor(ISablierV2LockupDynamic sablier_) {
 
 ## Create functions
 
-There are two create functions in the dynamic contract:
+There are two create functions in the Lockup Dynamic contract:
 
 - `createWithMilestones`: uses specific start and end times, as well as a predefined list of segment milestones
 - `createWithDeltas`: sets the start time to
@@ -83,11 +83,11 @@ Which one you choose depends upon your use case. In this guide, we will use `cre
 
 ## Function definition
 
-Define a function called `createDynamicStream` which takes two parameters, `amount0` and `amount1`, and which returns
-the id of the created stream:
+Define a function called `createLockupDynamicStream` which takes two parameters, `amount0` and `amount1`, and which
+returns the id of the created stream:
 
 ```solidity
-function createDynamicStream(uint256 amount0, uint256 amount1) external returns (uint256 streamId) {
+function createLockupDynamicStream(uint256 amount0, uint256 amount1) external returns (uint256 streamId) {
   // ...
 }
 ```
@@ -137,8 +137,8 @@ params.startTime = block.timestamp + 100 seconds;
 
 ### Segments
 
-Segments are what the protocol uses to compose the custom streaming curve of a dynamic stream. For a full exposition of
-segments, see the [Segments](/concepts/protocol/segments) guide.
+Segments are what the protocol uses to compose the custom streaming curve of a Lockup Dynamic stream. For a full
+exposition of segments, see the [Segments](/concepts/protocol/segments) guide.
 
 The term "milestones" in the function `createWithMilestones` refers to the splitting of the stream into several distinct
 segments, with each segment characterized by a specific amount, exponent, and milestone. These segments are supplied to
@@ -167,7 +167,7 @@ The segment milestones must be in ascending order.
 
 :::info
 
-The `ud2x18` function wraps a basic integer to the `UD2x18` value type, which is also part of the
+The `ud2x18` function wraps a basic integer to the `UD2x18` value type, which is part of the
 [PRBMath](https://github.com/PaulRBerg/prb-math) library.
 
 :::
@@ -181,14 +181,14 @@ stream to a variable:
 streamId = sablier.createWithMilestones(params);
 ```
 
-## The complete dynamic stream creator contract
+## The complete Lockup Dynamic stream creator contract
 
-Below you can see the complete functioning code: a contract that creates dynamic streams with predefined segment
+Below you can see the complete functioning code: a contract that creates Lockup Dynamic streams with predefined segment
 milestones. You can access the code on GitHub through
-[this link](https://github.com/sablier-labs/examples/blob/main/v2/core/DynamicStreamCreator.sol).
+[this link](https://github.com/sablier-labs/examples/blob/main/v2/core/LockupDynamicStreamCreator.sol).
 
-```solidity reference title="Dynamic Stream Creator"
-https://github.com/sablier-labs/examples/blob/main/v2/core/DynamicStreamCreator.sol
+```solidity reference title="Lockup Dynamic Stream Creator"
+https://github.com/sablier-labs/examples/blob/main/v2/core/LockupDynamicStreamCreator.sol
 ```
 
 [^1]: If creating streams on behalf of end users, they will have to approve your contract first.

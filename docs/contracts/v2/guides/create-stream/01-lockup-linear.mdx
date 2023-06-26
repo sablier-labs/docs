@@ -1,7 +1,7 @@
 ---
-id: "linear"
+id: "lockup-linear"
 sidebar_position: 1
-title: "Linear Stream"
+title: "Lockup Linear"
 ---
 
 import AdmonitionSimpleCode from "@site/docs/snippets/AdmonitionSimpleCode.mdx";
@@ -13,10 +13,10 @@ import ParamRecipient from "@site/docs/snippets/ParamRecipient.mdx";
 import ParamSender from "@site/docs/snippets/ParamSender.mdx";
 import ParamTotalAmount from "@site/docs/snippets/ParamTotalAmount.mdx";
 
-# Create a linear stream
+# Create a Lockup Linear stream
 
-Linear streams are streams with a strictly linear streaming function. In this guide, we will show you how to create a
-linear stream programmatically.
+Lockup Linear are streams with a strictly linear streaming function. In this guide, we will show you how to create a
+Lockup Linear stream programmatically.
 
 :::note
 
@@ -44,11 +44,11 @@ import { ud60x18 } from "@sablier/v2-core/types/Math.sol";
 import { IERC20 } from "@sablier/v2-core/types/Tokens.sol";
 ```
 
-Create a contract called `LinearStreamCreator`, and declare a constant `DAI` of type `IERC20` and an immutable variable
-`sablier` of type `ISablierV2LockupLinear`:
+Create a contract called `LockupLinearStreamCreator`, and declare a constant `DAI` of type `IERC20` and an immutable
+variable `sablier` of type `ISablierV2LockupLinear`:
 
 ```solidity
-contract LinearStreamCreator {
+contract LockupLinearStreamCreator {
     IERC20 public constant DAI = IERC20(0x6B175474E89094C44Da98b954EedeAC495271d0F);
     ISablierV2LockupLinear public immutable sablier;
 }
@@ -72,7 +72,7 @@ constructor(ISablierV2LockupLinear sablier_) {
 
 ## Create functions
 
-There are two create functions in the linear contract:
+There are two create functions in the Lockup Linear contract:
 
 - `createWithDurations`: sets the start time to
   [`block.timestamp`](https://docs.soliditylang.org/en/v0.8.19/cheatsheet.html#global-variables), and calculates the end
@@ -85,11 +85,11 @@ Which one you choose depends upon your use case. In this guide, we will use `cre
 
 ## Function definition
 
-Define a function called `createLinearStream` which takes a single parameter `totalAmount`, and which returns the id of
-the created stream:
+Define a function called `createLockupLinearStream` which takes a single parameter `totalAmount`, and which returns the
+id of the created stream:
 
 ```solidity
-function createLinearStream(uint256 totalAmount) external returns (uint256 streamId) {
+function createLockupLinearStream(uint256 totalAmount) external returns (uint256 streamId) {
   // ...
 }
 ```
@@ -139,13 +139,13 @@ stream to a variable:
 streamId = sablier.createWithDurations(params);
 ```
 
-## The complete linear stream creator contract
+## The complete Lockup Linear stream creator contract
 
-Below you can see the complete functioning code: a contract that creates linear streams that start at `block.timestamp`.
-You can access the code on GitHub through
+Below you can see the complete functioning code: a contract that creates Lockup Linear streams that start at
+`block.timestamp`. You can access the code on GitHub through
 [this link](https://github.com/sablier-labs/examples/blob/main/v2/core/LinearStreamCreator.sol).
 
-```solidity reference title="Linear Stream Creator"
+```solidity reference title="Lockup Linear Stream Creator"
 https://github.com/sablier-labs/examples/blob/main/v2/core/LinearStreamCreator.sol
 ```
 

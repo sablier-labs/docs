@@ -9,7 +9,7 @@ renounce, and transfer ownership of streams.
 
 Before diving in, please note the following:
 
-1. We assume you are already familiar with [creating streams](/contracts/v2/guides/create-stream/linear).
+1. We assume you are already familiar with [creating streams](/contracts/v2/guides/create-stream/lockup-linear).
 2. We also assume that the stream management contract possesses the necessary permissions to invoke each respective
    function. To learn more about access control in Sablier, refer to the
    [Access Control](/contracts/v2/guides/access-control) guide.
@@ -44,7 +44,7 @@ contract StreamManagement {
 
 Just like in the create stream guides, the next step requires you to head over to the
 [Deployment Addresses](/contracts/v2/addresses) page and copy the address of the Sablier contract you intend to use
-(either a linear or dynamic contract). Then, you can deploy the stream management contract:
+(either Lockup Linear or Lockup Dynamic). Then, you can deploy the stream management contract:
 
 ```solidity
 constructor(ISablierV2Lockup sablier_) {
