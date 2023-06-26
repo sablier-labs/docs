@@ -92,10 +92,8 @@ echo "$(echo -en '---\nsidebar_position: 3\n---\n'; cat $contract)" > $contract
 #                                 V2 Periphery                                 #
 # ---------------------------------------------------------------------------- #
 
-
 # Generate the raw docs with Forge
-# run "periphery"
-
+run "periphery"
 
 # ---------------------------------------------------------------------------- #
 #                                  Final Steps                                 #

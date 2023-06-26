@@ -2,3 +2,7 @@
   branch = "main"
   path = "repos/v2-core"
 	url = "https://github.com/sablier-labs/v2-core"
+[submodule "repos/v2-periphery"]
+  branch = "main"
+	path = "repos/v2-periphery"
+	url = "https://github.com/sablier-labs/v2-periphery"
