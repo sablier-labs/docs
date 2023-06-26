@@ -42,15 +42,16 @@ find $docs -type f -name "*.md" -execdir mv {} .. \;
 find $docs -type d -empty -delete
 
 # Update the hyperlinks to use the directory structure of this website
-sd "src/abstracts/.*\.sol" $docs/abstracts $(find $docs -type f -name "*.md")
-sd "src/interfaces/.*\.sol" $docs/interfaces $(find $docs -type f -name "*.md")
-sd "src/.*\.sol" $docs $(find $docs -type f -name "*.md")
+sd "src/abstracts/\w+\.sol" $docs/abstracts $(find $docs -type f -name "*.md")
+sd "src/interfaces/erc3156/\w+\.sol" $docs/interfaces/erc3156 $(find $docs -type f -name "*.md")
+sd "src/interfaces/\w+\.sol" $docs/interfaces $(find $docs -type f -name "*.md")
+sd "src/\w+\.sol" $docs $(find $docs -type f -name "*.md")
 
-# Update the hyperlinks for the interface NatSpec references, e.g. {ISablierV2Lockup}
+# # Replace the interface references, e.g. {ISablierV2Lockup}, with hyperlinks
 sd "\{I(\w+)\}" "[I\$1]($docs/interfaces/interface.I\$1.md)" $(find $docs -type f -name "*.md")
 
-# Update the hyperlinks for the contract NatSpec references, e.g. {SablierV2LockupLinear}
-# Note: this assumes that no abstract contracts will be caught by the regex
+# Replace the contract references, e.g. {SablierV2LockupLinear}, with hyperlinks
+# Note: abstract contracts won't work
 sd "\{SablierV2(\w+)\}" "[SablierV2\$1]($docs/contract.SablierV2\$1.md)" $(find $docs -type f -name "*.md")
 
 # Format the docs with Prettier
