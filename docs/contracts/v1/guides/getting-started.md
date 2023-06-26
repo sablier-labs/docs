@@ -13,9 +13,3 @@ What we will cover:
 - Smart contract architecture and ABI.
 - Networks and typical gas costs.
 - How to create, withdraw from and cancel streams.
-
-:::info
-
-If you're looking for a high-level non-technical overview, you may want to read the [FAQ](/faq) first.
-
-:::
