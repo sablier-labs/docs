@@ -33,6 +33,40 @@ const config = {
       }),
     ],
   ],
+  plugins: [
+    [
+      "@docusaurus/plugin-client-redirects",
+      // V1 redirects
+      {
+        redirects: [
+          {
+            from: "/protocol/faq/basics",
+            to: "/concepts/what-is-sablier",
+          },
+          {
+            from: "/protocol/guides/getting-started",
+            to: "/contracts/v1/guides/getting-started",
+          },
+          {
+            from: "/protocol/guides/chains",
+            to: "/contracts/v1/guides/chains",
+          },
+          {
+            from: "/protocol/introduction",
+            to: "/concepts/what-is-sablier",
+          },
+          {
+            from: "/protocol/guides/chains",
+            to: "/contracts/v1/guides/chains",
+          },
+          {
+            from: "/protocol/subgraphs/endpoints",
+            to: "/api/subgraphs/overview",
+          },
+        ],
+      },
+    ],
+  ],
   stylesheets: [
     {
       crossorigin: "anonymous",
@@ -147,11 +181,6 @@ const config = {
             label: "APIs",
             position: "left",
             to: "/api/subgraphs/overview",
-          },
-          {
-            label: "FAQ",
-            position: "left",
-            to: "/faq",
           },
           {
             label: "Discord",
