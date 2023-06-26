@@ -4,8 +4,8 @@ sidebar_position: 4
 title: "Access Control"
 ---
 
-With the exception of the [admin functions](/docs/concepts/05-admin.md), all functionality in Sablier is related to one
-or more streams.
+With the exception of the [admin functions](/docs/concepts/05-governance.md), all functionality in Sablier is related to
+one or more streams.
 
 This article will provide a comprehensive overview of the actions that can be performed on streams once they are
 created, as well as the corresponding user permissions for each action.
