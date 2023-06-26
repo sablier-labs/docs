@@ -7,7 +7,7 @@ title: "Types of Streams"
 ## Linear Streams
 
 Linear streams are the simplest type of stream. They follow a straight line that goes up and to the right on a graph,
-which corresponds to the identity function $f(x) = x$ ([see on Desmos](https://www.desmos.com/calculator/fqajxzhbx8)).
+which corresponds to the identity function $f(x) = x$ ([see on Desmos](https://www.desmos.com/calculator/hfqmupvqe3)).
 
 With linear streams, the payment rate remains constant, meaning that the same fraction of the deposit amount is streamed
 to the recipient every second. This provides greater predictability and is very easy to understand because of how
@@ -17,7 +17,7 @@ intuitive it is. Imagine a diagonal line going up and to the right – that's ho
 
 It is possible to add a **cliff** to a linear stream, which sets a cut-off point for releasing assets. Prior to the
 cliff ,the recipient cannot withdraw any assets, although the stream continues to accrue them. After the cliff, the
-stream operates like a typical linear stream ([see on Desmos](https://www.desmos.com/calculator/mk7422ivwp)).
+stream operates like a typical linear stream ([see on Desmos](https://www.desmos.com/calculator/kigb45ntwp)).
 
 Cliffs a great fit if you are looking to vest ERC-20 assets, as it allows you to, for example, have a 1-year cliff, and
 then 3 additional years of linear streaming. If the stream is meant for an employee, you can make it cancellable so that
@@ -45,7 +45,7 @@ the $f(x) = log(x)$ function.
 ### Exponential Streams
 
 Part of the Sablier Dynamic offering, **exponential streams allow for streams where the recipients receive more and more
-tokens as time moves forward** ([see on Desmos](https://www.desmos.com/calculator/xgzguiata7)).
+tokens as time moves forward** ([see on Desmos](https://www.desmos.com/calculator/p0mxvfotlk)).
 
 This is especially a great fit if you are looking to airdrop tokens to your community, as instead of receiving the
 tokens all at once (no streaming) or in a linear fashion (linear stream), your community members will receive the
@@ -55,7 +55,7 @@ attitude**.
 ### Exponential Cliff Streams
 
 Part of the Sablier Dynamic offering, the Exponential Cliff streaming curve is a mix between the Cliff Stream and the
-Exponential streaming curves ([see on Desmos](https://www.desmos.com/calculator/rzoygqlixt)).
+Exponential streaming curves ([see on Desmos](https://www.desmos.com/calculator/z8ugxfnlqh)).
 
 **The stream starts with a cliff** (however long you want), a specific amount is then instantly unlocked and streamed
 over to the recipient, and from the rest of the streaming curve is an exponential.
@@ -67,7 +67,7 @@ stream ends.
 ### Traditional Unlock Streams
 
 Part of the Sablier Dynamic offering, the Traditional Unlock streaming curve is literally just that: a traditional
-vesting contract with periodic unlocks ([see on Desmos](https://www.desmos.com/calculator/wf6uogrwei)).
+vesting contract with periodic unlocks ([see on Desmos](https://www.desmos.com/calculator/ptj2mdnpzx)).
 
 Every month, quarter or year (or an other time setting) depending on how you configure it, a specific amount will be
 unlocked and sent over to the recipient.
