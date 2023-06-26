@@ -9,6 +9,10 @@
 # Strict mode: https://gist.github.com/vncsna/64825d5609c146e80de8b1fd623011ca
 set -euo pipefail
 
+# ---------------------------------------------------------------------------- #
+#                                    Common                                    #
+# ---------------------------------------------------------------------------- #
+
 # Define the reference directories
 all=docs/contracts/v2/reference
 core=docs/contracts/v2/reference/core
@@ -18,9 +22,6 @@ periphery=docs/contracts/v2/reference/periphery
 find $core -type f -name "*.md" -delete
 find $periphery -type f -name "*.md" -delete
 
-# ---------------------------------------------------------------------------- #
-#                                    Common                                    #
-# ---------------------------------------------------------------------------- #
 
 run() {
   # This is either "core" or "periphery"
@@ -56,6 +57,17 @@ run() {
 
   # Delete empty *.sol directories
   find $reference -type d -empty -delete
+
+  # The Periphery has certain references to the Core
+  sd "\{SablierV2LockupDynamic\}" "[SablierV2LockupDynamic]($core/contract.SablierV2LockupDynamic.md)" $(find $reference -type f -name "*.md")
+  sd "\{SablierV2LockupLinear\}" "[SablierV2LockupLinear]($core/contract.SablierV2LockupLinear.md)" $(find $reference -type f -name "*.md")
+
+  # Replace the interface references, e.g. {ISablierV2Lockup}, with hyperlinks
+  sd "\{I(\w+)\}" "[I\$1]($reference/interfaces/interface.I\$1.md)" $(find $reference -type f -name "*.md")
+
+  # Replace the contract references, e.g. {SablierV2LockupLinear}, with hyperlinks
+  # Note: abstract contracts won't work
+  sd "\{SablierV2(\w+)\}" "[SablierV2\$1]($reference/contract.SablierV2\$1.md)" $(find $reference -type f -name "*.md")
 }
 
 # ---------------------------------------------------------------------------- #
@@ -65,18 +77,11 @@ run() {
 # Generate the raw docs with Forge
 run "core"
 
-# Update the hyperlinks to use the directory structure of this website
+# Update the hyperlinks to use the directory structure of the docs website
 sd "src/abstracts/\w+\.sol" $core/abstracts $(find $core -type f -name "*.md")
 sd "src/interfaces/erc3156/\w+\.sol" $core/interfaces/erc3156 $(find $core -type f -name "*.md")
 sd "src/interfaces/\w+\.sol" $core/interfaces $(find $core -type f -name "*.md")
 sd "src/\w+\.sol" $core $(find $core -type f -name "*.md")
-
-# Replace the interface references, e.g. {ISablierV2Lockup}, with hyperlinks
-sd "\{I(\w+)\}" "[I\$1]($core/interfaces/interface.I\$1.md)" $(find $core -type f -name "*.md")
-
-# Replace the contract references, e.g. {SablierV2LockupLinear}, with hyperlinks
-# Note: abstract contracts won't work
-sd "\{SablierV2(\w+)\}" "[SablierV2\$1]($core/contract.SablierV2\$1.md)" $(find $core -type f -name "*.md")
 
 # Reorder the contracts in the sidebar
 contract=$core/contract.SablierV2LockupLinear.md
@@ -94,6 +99,21 @@ echo "$(echo -en '---\nsidebar_position: 3\n---\n'; cat $contract)" > $contract
 
 # Generate the raw docs with Forge
 run "periphery"
+
+# Update the hyperlinks to use the directory structure of the docs website
+sd "src/abstracts/\w+\.sol" $periphery/abstracts $(find $periphery -type f -name "*.md")
+sd "src/interfaces/\w+\.sol" $periphery/interfaces $(find $periphery -type f -name "*.md")
+sd "src/\w+\.sol" $periphery $(find $periphery -type f -name "*.md")
+
+# Reorder the contracts in the sidebar
+contract=$periphery/contract.SablierV2Archive.md
+echo "$(echo -en '---\nsidebar_position: 1\n---\n'; cat $contract)" > $contract
+
+contract=$periphery/contract.SablierV2ProxyPlugin.md
+echo "$(echo -en '---\nsidebar_position: 2\n---\n'; cat $contract)" > $contract
+
+contract=$periphery/contract.SablierV2ProxyTarget.md
+echo "$(echo -en '---\nsidebar_position: 3\n---\n'; cat $contract)" > $contract
 
 # ---------------------------------------------------------------------------- #
 #                                  Final Steps                                 #
