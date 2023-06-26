@@ -31,7 +31,6 @@ find $docs -type f -name "*.md" -delete
 rsync --archive \
 --exclude "README.md" \
 --exclude "SUMMARY.md" \
---exclude "SablierV2NFTDescriptor.sol" \
 repos/v2-core/docs/src/src/* \
 $docs
 
