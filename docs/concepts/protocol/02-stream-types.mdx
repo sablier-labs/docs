@@ -4,11 +4,14 @@ sidebar_position: 2
 title: "Types of Streams"
 ---
 
+import FunctionPlot from "@site/src/components/FunctionPlot";
+
 ## Lockup Linear
 
-Lockup Linear streams are the simplest type of stream in Sablier. They follow a straight line that goes up and to the
-right on a graph, which corresponds to the identity function $f(x) = x$
-([see on Desmos](https://www.desmos.com/calculator/hfqmupvqe3)).
+Lockup Linear streams are the simplest type of stream in Sablier. The streamed amount over time follows a straight line
+that goes up and to the right on a graph, which corresponds to the identity function $f(x) = x$:
+
+<FunctionPlot options={{ data: [{ fn: "x" }] }} />
 
 With this type of stream, the payment rate remains constant, meaning that the same fraction of the deposit amount is
 streamed to the recipient every second. This provides greater predictability and is easy to understand because of how
@@ -16,7 +19,7 @@ intuitive it is. Imagine a diagonal line going up and to the right – that's ho
 
 :::tip
 
-You will hear the term **"Lockup"** a lot when dealing with Sablier. This is a term coined by us to describe the
+You will often hear the term **"Lockup"** when dealing with Sablier. This is a term coined by us to describe the
 requirement that the sender must lock up a certain amount of assets at the beginning of the stream.
 
 :::
