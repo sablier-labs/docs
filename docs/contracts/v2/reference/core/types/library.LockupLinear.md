@@ -1,6 +1,6 @@
 # LockupLinear
 
-[Git Source](https://github.com/sablier-labs/v2-core/blob/b048c0e28a5120b396c3eb3cdd0bc4e8784dc155/docs/contracts/v2/reference/core)
+[Git Source](https://github.com/sablier-labs/v2-core/blob/6ab33735951a1e93a3236fed3ca9c60f75ab76a7/src/types/DataTypes.sol)
 
 Namespace for the structs used in
 [SablierV2LockupLinear](docs/contracts/v2/reference/core/contract.SablierV2LockupLinear.md).
@@ -52,7 +52,7 @@ struct Durations {
 
 ### Range
 
-Struct encapsulating the time range of a lockup linear stream.
+Struct encapsulating the time range.
 
 ```solidity
 struct Range {
@@ -64,7 +64,7 @@ struct Range {
 
 ### Stream
 
-Lockup linear stream.
+Lockup Linear stream.
 
 _The fields are arranged like this to save gas via tight variable packing._
 

@@ -1,8 +1,9 @@
 # SablierV2FlashLoan
 
-[Git Source](https://github.com/sablier-labs/v2-core/blob/b048c0e28a5120b396c3eb3cdd0bc4e8784dc155/docs/contracts/v2/reference/core/abstracts)
+[Git Source](https://github.com/sablier-labs/v2-core/blob/6ab33735951a1e93a3236fed3ca9c60f75ab76a7/docs/contracts/v2/reference/core/abstracts)
 
-**Inherits:** [IERC3156FlashLender](/docs/contracts/v2/reference/core/interfaces/interface.IERC3156FlashLender.md),
+**Inherits:**
+[IERC3156FlashLender](/docs/contracts/v2/reference/core/interfaces/erc3156/interface.IERC3156FlashLender.md),
 [SablierV2Base](/docs/contracts/v2/reference/core/abstracts/abstract.SablierV2Base.md)
 
 This contract implements the ERC-3156 standard to enable flash loans.

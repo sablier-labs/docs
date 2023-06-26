@@ -1,6 +1,6 @@
 # LockupDynamic
 
-[Git Source](https://github.com/sablier-labs/v2-core/blob/b048c0e28a5120b396c3eb3cdd0bc4e8784dc155/docs/contracts/v2/reference/core)
+[Git Source](https://github.com/sablier-labs/v2-core/blob/6ab33735951a1e93a3236fed3ca9c60f75ab76a7/src/types/DataTypes.sol)
 
 Namespace for the structs used in
 [SablierV2LockupDynamic](docs/contracts/v2/reference/core/contract.SablierV2LockupDynamic.md).
@@ -42,7 +42,7 @@ struct CreateWithMilestones {
 
 ### Range
 
-Struct encapsulating the time range of a lockup dynamic stream.
+Struct encapsulating the time range.
 
 ```solidity
 struct Range {
@@ -53,7 +53,7 @@ struct Range {
 
 ### Segment
 
-Segment struct used in the lockup dynamic stream.
+Segment struct used in the Lockup Dynamic stream.
 
 ```solidity
 struct Segment {
@@ -77,7 +77,7 @@ struct SegmentWithDelta {
 
 ### Stream
 
-Lockup dynamic stream.
+Lockup Dynamic stream.
 
 _The fields are arranged like this to save gas via tight variable packing._
 

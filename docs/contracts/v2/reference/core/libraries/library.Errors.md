@@ -1,6 +1,6 @@
 # Errors
 
-[Git Source](https://github.com/sablier-labs/v2-core/blob/b048c0e28a5120b396c3eb3cdd0bc4e8784dc155/docs/contracts/v2/reference/core)
+[Git Source](https://github.com/sablier-labs/v2-core/blob/6ab33735951a1e93a3236fed3ca9c60f75ab76a7/src/libraries/Errors.sol)
 
 Library containing all custom errors the protocol may revert with.
 
@@ -193,7 +193,7 @@ error SablierV2Lockup_WithdrawToZeroAddress();
 
 ### SablierV2LockupDynamic_DepositAmountNotEqualToSegmentAmountsSum
 
-Thrown when trying to create a dynamic stream with a deposit amount not equal to the sum of the segment amounts.
+Thrown when trying to create a stream with a deposit amount not equal to the sum of the segment amounts.
 
 ```solidity
 error SablierV2LockupDynamic_DepositAmountNotEqualToSegmentAmountsSum(uint128 depositAmount, uint128 segmentAmountsSum);
@@ -201,7 +201,7 @@ error SablierV2LockupDynamic_DepositAmountNotEqualToSegmentAmountsSum(uint128 de
 
 ### SablierV2LockupDynamic_SegmentCountTooHigh
 
-Thrown when trying to create a dynamic stream with more segments than the maximum allowed.
+Thrown when trying to create a stream with more segments than the maximum allowed.
 
 ```solidity
 error SablierV2LockupDynamic_SegmentCountTooHigh(uint256 count);
@@ -209,7 +209,7 @@ error SablierV2LockupDynamic_SegmentCountTooHigh(uint256 count);
 
 ### SablierV2LockupDynamic_SegmentCountZero
 
-Thrown when trying to create a dynamic stream with no segments.
+Thrown when trying to create a stream with no segments.
 
 ```solidity
 error SablierV2LockupDynamic_SegmentCountZero();
@@ -217,7 +217,7 @@ error SablierV2LockupDynamic_SegmentCountZero();
 
 ### SablierV2LockupDynamic_SegmentMilestonesNotOrdered
 
-Thrown when trying to create a dynamic stream with unordered segment milestones.
+Thrown when trying to create a stream with unordered segment milestones.
 
 ```solidity
 error SablierV2LockupDynamic_SegmentMilestonesNotOrdered(
@@ -235,7 +235,7 @@ error SablierV2LockupDynamic_StartTimeNotLessThanFirstSegmentMilestone(uint40 st
 
 ### SablierV2LockupLinear_CliffTimeNotLessThanEndTime
 
-Thrown when trying to create a linear stream with a cliff time not strictly less than the end time.
+Thrown when trying to create a stream with a cliff time not strictly less than the end time.
 
 ```solidity
 error SablierV2LockupLinear_CliffTimeNotLessThanEndTime(uint40 cliffTime, uint40 endTime);
@@ -243,8 +243,16 @@ error SablierV2LockupLinear_CliffTimeNotLessThanEndTime(uint40 cliffTime, uint40
 
 ### SablierV2LockupLinear_StartTimeGreaterThanCliffTime
 
-Thrown when trying to create a linear stream with a start time greater than the cliff time.
+Thrown when trying to create a stream with a start time greater than the cliff time.
 
 ```solidity
 error SablierV2LockupLinear_StartTimeGreaterThanCliffTime(uint40 startTime, uint40 cliffTime);
+```
+
+### SablierV2NFTDescriptor_UnknownNFT
+
+Thrown when trying to generate the token URI for an unknown ERC-721 NFT contract.
+
+```solidity
+error SablierV2NFTDescriptor_UnknownNFT(IERC721Metadata nft, string symbol);
 ```

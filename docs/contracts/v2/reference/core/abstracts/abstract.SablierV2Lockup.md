@@ -1,8 +1,9 @@
 # SablierV2Lockup
 
-[Git Source](https://github.com/sablier-labs/v2-core/blob/b048c0e28a5120b396c3eb3cdd0bc4e8784dc155/docs/contracts/v2/reference/core/abstracts)
+[Git Source](https://github.com/sablier-labs/v2-core/blob/6ab33735951a1e93a3236fed3ca9c60f75ab76a7/docs/contracts/v2/reference/core/abstracts)
 
-**Inherits:** [SablierV2Base](/docs/contracts/v2/reference/core/abstracts/interface.ISablierV2Lockup.md), ERC721
+**Inherits:** [SablierV2Base](/docs/contracts/v2/reference/core/abstracts/abstract.SablierV2Base.md),
+[ISablierV2Lockup](/docs/contracts/v2/reference/core/interfaces/interface.ISablierV2Lockup.md), ERC721
 
 See the documentation in [ISablierV2Lockup](docs/contracts/v2/reference/core/interfaces/interface.ISablierV2Lockup.md).
 

@@ -1,10 +1,9 @@
 ---
 sidebar_position: 1
 ---
-
 # SablierV2LockupLinear
 
-[Git Source](https://github.com/sablier-labs/v2-core/blob/b048c0e28a5120b396c3eb3cdd0bc4e8784dc155/docs/contracts/v2/reference/core)
+[Git Source](https://github.com/sablier-labs/v2-core/blob/6ab33735951a1e93a3236fed3ca9c60f75ab76a7/docs/contracts/v2/reference/core)
 
 **Inherits:**
 [ISablierV2LockupLinear](/docs/contracts/v2/reference/core/interfaces/interface.ISablierV2LockupLinear.md),
@@ -25,7 +24,7 @@ uint256 private _nextStreamId;
 
 ### \_streams
 
-_Sablier V2 lockup linear streams mapped by unsigned integers._
+_Sablier V2 Lockup Linear streams mapped by unsigned integers._
 
 ```solidity
 mapping(uint256 id => LockupLinear.Stream stream) private _streams;
@@ -73,7 +72,7 @@ function getAsset(uint256 streamId) external view override notNull(streamId) ret
 
 ### getCliffTime
 
-Retrieves the linear stream's cliff time, which is a Unix timestamp.
+Retrieves the stream's cliff time, which is a Unix timestamp.
 
 _Reverts if `streamId` references a null stream._
 
@@ -83,9 +82,9 @@ function getCliffTime(uint256 streamId) external view override notNull(streamId)
 
 **Parameters**
 
-| Name       | Type      | Description                         |
-| ---------- | --------- | ----------------------------------- |
-| `streamId` | `uint256` | The linear stream id for the query. |
+| Name       | Type      | Description                  |
+| ---------- | --------- | ---------------------------- |
+| `streamId` | `uint256` | The stream id for the query. |
 
 ### getDepositedAmount
 
@@ -126,8 +125,8 @@ function getEndTime(uint256 streamId) external view override notNull(streamId) r
 
 ### getRange
 
-Retrieves the range of the linear stream, a struct containing (i) the stream's start time, (ii) cliff time, and (iii)
-end time, all as Unix timestamps.
+Retrieves the range of the stream, a struct containing (i) the stream's start time, (ii) cliff time, and (iii) end time,
+all as Unix timestamps.
 
 _Reverts if `streamId` references a null stream._
 
@@ -142,9 +141,9 @@ function getRange(uint256 streamId)
 
 **Parameters**
 
-| Name       | Type      | Description                         |
-| ---------- | --------- | ----------------------------------- |
-| `streamId` | `uint256` | The linear stream id for the query. |
+| Name       | Type      | Description                  |
+| ---------- | --------- | ---------------------------- |
+| `streamId` | `uint256` | The stream id for the query. |
 
 ### getRefundedAmount
 
@@ -202,7 +201,7 @@ function getStartTime(uint256 streamId) external view override notNull(streamId)
 
 ### getStream
 
-Retrieves the linear stream entity.
+Retrieves the stream entity.
 
 _Reverts if `streamId` references a null stream._
 
@@ -217,9 +216,9 @@ function getStream(uint256 streamId)
 
 **Parameters**
 
-| Name       | Type      | Description                         |
-| ---------- | --------- | ----------------------------------- |
-| `streamId` | `uint256` | The linear stream id for the query. |
+| Name       | Type      | Description                  |
+| ---------- | --------- | ---------------------------- |
+| `streamId` | `uint256` | The stream id for the query. |
 
 ### getWithdrawnAmount
 
@@ -401,9 +400,9 @@ function streamedAmountOf(uint256 streamId)
 
 **Parameters**
 
-| Name       | Type      | Description                         |
-| ---------- | --------- | ----------------------------------- |
-| `streamId` | `uint256` | The linear stream id for the query. |
+| Name       | Type      | Description                  |
+| ---------- | --------- | ---------------------------- |
+| `streamId` | `uint256` | The stream id for the query. |
 
 ### wasCanceled
 
@@ -428,8 +427,8 @@ function wasCanceled(uint256 streamId)
 
 ### createWithDurations
 
-Creates a linear stream by setting the start time to `block.timestamp`, and the end time to the sum of `block.timestamp`
-and `params.durations.total. The stream is funded by `msg.sender` and is wrapped in an ERC-721 NFT.
+Creates a stream by setting the start time to `block.timestamp`, and the end time to the sum of `block.timestamp` and
+`params.durations.total. The stream is funded by `msg.sender` and is wrapped in an ERC-721 NFT.
 
 Emits a {CreateLockupLinearStream} and a {Transfer} event. Requirements:
 
@@ -451,14 +450,14 @@ function createWithDurations(LockupLinear.CreateWithDurations calldata params)
 
 **Returns**
 
-| Name       | Type      | Description                                |
-| ---------- | --------- | ------------------------------------------ |
-| `streamId` | `uint256` | The id of the newly created linear stream. |
+| Name       | Type      | Description                         |
+| ---------- | --------- | ----------------------------------- |
+| `streamId` | `uint256` | The id of the newly created stream. |
 
 ### createWithRange
 
-Creates a linear stream with the provided start time and end time as the range. The stream is funded by `msg.sender` and
-is wrapped in an ERC-721 NFT.
+Creates a stream with the provided start time and end time as the range. The stream is funded by `msg.sender` and is
+wrapped in an ERC-721 NFT.
 
 Emits a {CreateLockupLinearStream} and a {Transfer} event. Notes:
 
@@ -488,9 +487,9 @@ function createWithRange(LockupLinear.CreateWithRange calldata params)
 
 **Returns**
 
-| Name       | Type      | Description                                |
-| ---------- | --------- | ------------------------------------------ |
-| `streamId` | `uint256` | The id of the newly created linear stream. |
+| Name       | Type      | Description                         |
+| ---------- | --------- | ----------------------------------- |
+| `streamId` | `uint256` | The id of the newly created stream. |
 
 ### \_calculateStreamedAmount
 

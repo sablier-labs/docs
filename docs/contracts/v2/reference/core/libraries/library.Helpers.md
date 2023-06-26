@@ -1,6 +1,6 @@
 # Helpers
 
-[Git Source](https://github.com/sablier-labs/v2-core/blob/b048c0e28a5120b396c3eb3cdd0bc4e8784dc155/docs/contracts/v2/reference/core)
+[Git Source](https://github.com/sablier-labs/v2-core/blob/6ab33735951a1e93a3236fed3ca9c60f75ab76a7/src/libraries/Helpers.sol)
 
 Library with helper functions needed across the Sablier V2 contracts.
 
@@ -23,12 +23,12 @@ function checkAndCalculateFees(
     returns (Lockup.CreateAmounts memory amounts);
 ```
 
-### checkCreateDynamicParams
+### checkCreateWithMilestones
 
 _Checks the parameters of the {SablierV2LockupDynamic-\_createWithMilestones} function._
 
 ```solidity
-function checkCreateDynamicParams(
+function checkCreateWithMilestones(
     uint128 depositAmount,
     LockupDynamic.Segment[] memory segments,
     uint256 maxSegmentCount,
@@ -38,12 +38,12 @@ function checkCreateDynamicParams(
     view;
 ```
 
-### checkCreateLinearParams
+### checkCreateWithRange
 
 _Checks the parameters of the {SablierV2LockupLinear-\_createWithRange} function._
 
 ```solidity
-function checkCreateLinearParams(uint128 depositAmount, LockupLinear.Range memory range) internal view;
+function checkCreateWithRange(uint128 depositAmount, LockupLinear.Range memory range) internal view;
 ```
 
 ### checkDeltasAndCalculateMilestones
