@@ -11,7 +11,7 @@ import FunctionPlot from "@site/src/components/FunctionPlot";
 Lockup Linear streams are the simplest type of stream in Sablier. The streamed amount over time follows a straight line
 that goes up and to the right on a graph, which corresponds to the identity function $f(x) = x$:
 
-<FunctionPlot options={{ data: [{ fn: "x" }] }} />
+<FunctionPlot options={{ data: [{ fn: "x", color: "orange" }] }} />
 
 With this type of stream, the payment rate remains constant, meaning that the same fraction of the deposit amount is
 streamed to the recipient every second. This provides greater predictability and is easy to understand because of how
@@ -28,7 +28,25 @@ requirement that the sender must lock up a certain amount of assets at the begin
 
 It is possible to attach a "cliff" to a Lockup Linear stream, which sets a cut-off point for releasing assets. Prior to
 the cliff, the recipient cannot withdraw any assets, but the stream continues to accrue them. After the cliff, the
-constant payment rate per second kicks in ([see on Desmos](https://www.desmos.com/calculator/kigb45ntwp)).
+constant payment rate per second kicks in.
+
+<FunctionPlot
+  options={{
+    data: [
+      { fn: "0", range: [0, 50], color: "orange" },
+      { fn: "x - 30", range: [50, 100], color: "orange" },
+      {
+        points: [
+          [50, 0],
+          [50, 20],
+        ],
+        fnType: "points",
+        graphType: "polyline",
+        color: "orange",
+      },
+    ],
+  }}
+/>
 
 This feature is especially useful for vesting ERC-20 assets as it allows you to have, for example, a 1-year cliff, and
 then 3 additional years of linear streaming. If the stream is for an employee, you can make it cancellable so that if
@@ -51,7 +69,9 @@ supporting any custom streaming curve.
 ### Exponential
 
 A fantastic use case for Lockup Dynamic is Exponential streams, a streaming model under which the recipient receives
-increasingly more tokens as time moves forward ([see on Desmos](https://www.desmos.com/calculator/p0mxvfotlk)).
+increasingly more tokens as time moves forward.
+
+<FunctionPlot options={{ data: [{ fn: "(x/70)^6 * 10", color: "orange" }] }} />
 
 Exponentials are a great fit if you are looking to airdrop tokens, because your community members will receive the
 majority of the tokens towards the end of the stream instead of receiving the tokens all at once (no streaming) or in a
@@ -59,8 +79,25 @@ linear fashion (Lockup Linear). This incentivizes long-term behavior and a const
 
 ### Exponential Cliff
 
-Another use case for Lockup Dynamic is a variation of the previous design: an Exponential Cliff
-([see on Desmos](https://www.desmos.com/calculator/z8ugxfnlqh)).
+Another use case for Lockup Dynamic is a variation of the previous design: an Exponential Cliff.
+
+<FunctionPlot
+  options={{
+    data: [
+      { fn: "0", range: [0, 50], color: "orange" },
+      { fn: "(x/70)^6 * 10 + 18.672", color: "orange", range: [50, 100] },
+      {
+        points: [
+          [50, 0],
+          [50, 20],
+        ],
+        fnType: "points",
+        graphType: "polyline",
+        color: "orange",
+      },
+    ],
+  }}
+/>
 
 The stream starts with a cliff (which can be how long you want), a specific amount instantly unlocked when the cliff
 ends, and then the rest of the stream is exponentially streamed.
@@ -72,8 +109,105 @@ larger number of tokens.
 ### Traditional Unlock
 
 Because Lockup Dynamic is so flexible, it can even be used to create a traditional vesting contract with periodic
-unlocks ([see on Desmos](https://www.desmos.com/calculator/ptj2mdnpzx)). In this case, the "streaming" rate would be not
-be by the second, but by the week, month, or year.
+unlocks. In this case, the "streaming" rate would be not be by the second, but by the week, month, or year.
+
+<FunctionPlot
+  options={{
+    data: [
+      { fn: "0", range: [0, 10], color: "orange" },
+      { fn: "10", range: [10, 20], color: "orange" },
+      { fn: "20", range: [20, 30], color: "orange" },
+      { fn: "30", range: [30, 40], color: "orange" },
+      { fn: "40", range: [40, 50], color: "orange" },
+      { fn: "50", range: [50, 60], color: "orange" },
+      { fn: "60", range: [60, 70], color: "orange" },
+      { fn: "70", range: [70, 80], color: "orange" },
+      { fn: "80", range: [80, 90], color: "orange" },
+      { fn: "90", range: [90, 100], color: "orange" },
+      {
+        points: [
+          [10, 0],
+          [10, 9.8],
+        ],
+        fnType: "points",
+        graphType: "polyline",
+        color: "orange",
+      },
+      {
+        points: [
+          [20, 10],
+          [20, 19.8],
+        ],
+        fnType: "points",
+        graphType: "polyline",
+        color: "orange",
+      },
+      {
+        points: [
+          [30, 20],
+          [30, 29.8],
+        ],
+        fnType: "points",
+        graphType: "polyline",
+        color: "orange",
+      },
+      {
+        points: [
+          [40, 30],
+          [40, 39.8],
+        ],
+        fnType: "points",
+        graphType: "polyline",
+        color: "orange",
+      },
+      {
+        points: [
+          [50, 40],
+          [50, 49.8],
+        ],
+        fnType: "points",
+        graphType: "polyline",
+        color: "orange",
+      },
+      {
+        points: [
+          [60, 50],
+          [60, 59.8],
+        ],
+        fnType: "points",
+        graphType: "polyline",
+        color: "orange",
+      },
+      {
+        points: [
+          [70, 60],
+          [70, 69.8],
+        ],
+        fnType: "points",
+        graphType: "polyline",
+        color: "orange",
+      },
+      {
+        points: [
+          [80, 70],
+          [80, 79.8],
+        ],
+        fnType: "points",
+        graphType: "polyline",
+        color: "orange",
+      },
+      {
+        points: [
+          [90, 80],
+          [90, 89.8],
+        ],
+        fnType: "points",
+        graphType: "polyline",
+        color: "orange",
+      },
+    ],
+  }}
+/>
 
 After each period, a specific amount becomes unlocked and and available for the recipient to withdraw. Past unlocks
 accumulate, so if the recipient doesn't withdraw them, they will be able to withdraw them later.
