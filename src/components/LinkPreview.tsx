@@ -57,7 +57,7 @@ interface LinkPreviewProps {
   title: string;
 }
 
-export default function LinkPreview(props: LinkPreviewProps): JSX.Element {
+export default function LinkPreview(props: LinkPreviewProps) {
   const renderIcon = useCallback(() => {
     switch (props.icon) {
       case "github":
