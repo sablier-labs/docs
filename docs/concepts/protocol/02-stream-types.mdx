@@ -11,7 +11,7 @@ import FunctionPlot from "@site/src/components/FunctionPlot";
 Lockup Linear streams are the simplest type of stream in Sablier. The streamed amount over time follows a straight line
 that goes up and to the right on a graph, which corresponds to the identity function $f(x) = x$:
 
-<FunctionPlot options={{ data: [{ fn: "x", color: "orange" }] }} />
+<FunctionPlot options={{ data: [{ fn: "x", color: "#f77423" }] }} />
 
 With this type of stream, the payment rate remains constant, meaning that the same fraction of the deposit amount is
 streamed to the recipient every second. This provides greater predictability and is easy to understand because of how
@@ -33,16 +33,16 @@ constant payment rate per second kicks in.
 <FunctionPlot
   options={{
     data: [
-      { fn: "0", range: [0, 50], color: "orange" },
-      { fn: "x - 30", range: [50, 100], color: "orange" },
+      { fn: "0", range: [0, 25], color: "#f77423" },
+      { fn: "x", range: [25, 100], color: "#f77423" },
       {
         points: [
-          [50, 0],
-          [50, 20],
+          [25, 0],
+          [25, 25],
         ],
         fnType: "points",
         graphType: "polyline",
-        color: "orange",
+        color: "#f77423",
       },
     ],
   }}
@@ -58,8 +58,8 @@ streamed.
 Lockup Dynamic streams are what makes Sablier so unique, since they enable the creation of any type of streaming curve,
 including non-linear ones.
 
-On our [user interface](https://app.sablier.com), we support only a few streaming models, such as exponential streams,
-but the potential for innovation is limitless when you interact programmatically with the contracts. As an example, one
+On our [user interface](https://app.sablier.com), we support only a few streaming models (the ones enumarated below),
+but the potential for innovation is limitless when you interact programmatically with the contracts. For example, one
 could design a logarithmic stream that emulates the $f(x) = log(x)$ function.
 
 These streams are powered by a number of user-provided "segments", which we will cover in the next article. What is
@@ -71,7 +71,7 @@ supporting any custom streaming curve.
 A fantastic use case for Lockup Dynamic is Exponential streams, a streaming model under which the recipient receives
 increasingly more tokens as time moves forward.
 
-<FunctionPlot options={{ data: [{ fn: "(x/70)^6 * 10", color: "orange" }] }} />
+<FunctionPlot options={{ data: [{ fn: "(x/70)^6 * 10", color: "#f77423" }] }} />
 
 Exponentials are a great fit if you are looking to airdrop tokens, because your community members will receive the
 majority of the tokens towards the end of the stream instead of receiving the tokens all at once (no streaming) or in a
@@ -84,8 +84,8 @@ Another use case for Lockup Dynamic is a variation of the previous design: an Ex
 <FunctionPlot
   options={{
     data: [
-      { fn: "0", range: [0, 50], color: "orange" },
-      { fn: "(x/70)^6 * 10 + 18.672", color: "orange", range: [50, 100] },
+      { fn: "0", range: [0, 50], color: "#f77423" },
+      { fn: "(x/70)^6 * 10 + 18.672", color: "#f77423", range: [50, 100] },
       {
         points: [
           [50, 0],
@@ -93,7 +93,7 @@ Another use case for Lockup Dynamic is a variation of the previous design: an Ex
         ],
         fnType: "points",
         graphType: "polyline",
-        color: "orange",
+        color: "#f77423",
       },
     ],
   }}
@@ -114,97 +114,20 @@ unlocks. In this case, the "streaming" rate would be not be by the second, but b
 <FunctionPlot
   options={{
     data: [
-      { fn: "0", range: [0, 10], color: "orange" },
-      { fn: "10", range: [10, 20], color: "orange" },
-      { fn: "20", range: [20, 30], color: "orange" },
-      { fn: "30", range: [30, 40], color: "orange" },
-      { fn: "40", range: [40, 50], color: "orange" },
-      { fn: "50", range: [50, 60], color: "orange" },
-      { fn: "60", range: [60, 70], color: "orange" },
-      { fn: "70", range: [70, 80], color: "orange" },
-      { fn: "80", range: [80, 90], color: "orange" },
-      { fn: "90", range: [90, 100], color: "orange" },
-      {
-        points: [
-          [10, 0],
-          [10, 9.8],
-        ],
+      ...Array.from({ length: 10 }, (_, i) => ({
+        color: "#f77423",
+        fn: `${i * 10}`,
+        range: [i * 10, (i + 1) * 10],
+      })),
+      ...Array.from({ length: 9 }, (_, i) => ({
+        color: "#f77423",
         fnType: "points",
         graphType: "polyline",
-        color: "orange",
-      },
-      {
         points: [
-          [20, 10],
-          [20, 19.8],
+          [(i + 1) * 10, i * 10],
+          [(i + 1) * 10, i * 10 + 9.8],
         ],
-        fnType: "points",
-        graphType: "polyline",
-        color: "orange",
-      },
-      {
-        points: [
-          [30, 20],
-          [30, 29.8],
-        ],
-        fnType: "points",
-        graphType: "polyline",
-        color: "orange",
-      },
-      {
-        points: [
-          [40, 30],
-          [40, 39.8],
-        ],
-        fnType: "points",
-        graphType: "polyline",
-        color: "orange",
-      },
-      {
-        points: [
-          [50, 40],
-          [50, 49.8],
-        ],
-        fnType: "points",
-        graphType: "polyline",
-        color: "orange",
-      },
-      {
-        points: [
-          [60, 50],
-          [60, 59.8],
-        ],
-        fnType: "points",
-        graphType: "polyline",
-        color: "orange",
-      },
-      {
-        points: [
-          [70, 60],
-          [70, 69.8],
-        ],
-        fnType: "points",
-        graphType: "polyline",
-        color: "orange",
-      },
-      {
-        points: [
-          [80, 70],
-          [80, 79.8],
-        ],
-        fnType: "points",
-        graphType: "polyline",
-        color: "orange",
-      },
-      {
-        points: [
-          [90, 80],
-          [90, 89.8],
-        ],
-        fnType: "points",
-        graphType: "polyline",
-        color: "orange",
-      },
+      })),
     ],
   }}
 />
