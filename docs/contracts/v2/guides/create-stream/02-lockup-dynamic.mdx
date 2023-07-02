@@ -32,7 +32,7 @@ Declare the Solidity version used to compile the contract:
 
 ```solidity
 // SPDX-License-Identifier: GPL-3.0-or-later
-pragma solidity >=0.8.13;
+pragma solidity >=0.8.19;
 ```
 
 Import the relevant symbols from `@sablier/v2-core`:
@@ -55,8 +55,8 @@ contract LockupDynamicStreamCreator {
 ```
 
 In the code above, the address of the [DAI](https://makerdao.com) stablecoin is hard-coded. However, in production, you
-would likely use an input parameter for this and pass the input into a memory variable, allowing the contract to change
-the assets it interacts with on a per transaction basis.
+would likely use an input parameter to allow the contract to change the assets it interacts with on a per transaction
+basis.
 
 ## Initialization
 

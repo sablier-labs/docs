@@ -32,7 +32,7 @@ Declare the Solidity version used to compile the contract:
 
 ```solidity
 // SPDX-License-Identifier: GPL-3.0-or-later
-pragma solidity >=0.8.13;
+pragma solidity >=0.8.19;
 ```
 
 Import the relevant symbols from `@sablier/v2-core`:
@@ -55,8 +55,8 @@ contract LockupLinearStreamCreator {
 ```
 
 In the code above, the address of the [DAI](https://makerdao.com) stablecoin is hard-coded. However, in production, you
-would likely use an input parameter for this and pass the input into a memory variable, allowing the contract to change
-the assets it interacts with on a per transaction basis.
+would likely use an input parameter to allow the contract to change the assets it interacts with on a per transaction
+basis.
 
 ## Initialization
 
@@ -143,10 +143,10 @@ streamId = sablier.createWithDurations(params);
 
 Below you can see the complete functioning code: a contract that creates Lockup Linear streams that start at
 `block.timestamp`. You can access the code on GitHub through
-[this link](https://github.com/sablier-labs/examples/blob/main/v2/core/LinearStreamCreator.sol).
+[this link](https://github.com/sablier-labs/examples/blob/main/v2/core/LockupLinearStreamCreator.sol).
 
 ```solidity reference title="Lockup Linear Stream Creator"
-https://github.com/sablier-labs/examples/blob/main/v2/core/LinearStreamCreator.sol
+https://github.com/sablier-labs/examples/blob/main/v2/core/LockupLinearStreamCreator.sol
 ```
 
 [^1]: If creating streams on behalf of end users, they will have to approve your contract first.
