@@ -13,21 +13,26 @@ Sablier.
 
 These are the hooks that can be implemented by a recipient contract:
 
-| Hook                | Arguments                                 | Description                                                                      |
-| ------------------- | ----------------------------------------- | -------------------------------------------------------------------------------- |
-| `onStreamCanceled`  | `(streamId,senderAmount,recipientAmount)` | Called when the stream is cancelled by the sender.                               |
-| `onStreamRenounced` | `(streamId)`                              | Called when the stream is renounced by the sender.                               |
-| `onStreamWithdrawn` | `(streamId,caller,to,amount)`             | Called when the sender or an an approved NFT operator withdraws from the stream. |
+| Hook                | Arguments                                        | Description                                                                      |
+| ------------------- | ------------------------------------------------ | -------------------------------------------------------------------------------- |
+| `onStreamCanceled`  | `(streamId,sender,senderAmount,recipientAmount)` | Called when the stream is canceled by the sender.                                |
+| `onStreamRenounced` | `(streamId)`                                     | Called when the stream is renounced by the sender.                               |
+| `onStreamWithdrawn` | `(streamId,caller,to,amount)`                    | Called when the sender or an an approved NFT operator withdraws from the stream. |
 
-The recipient need not implement all hooks.
+:::caution
+
+While it isn't mandatory, we highly recommend implementing the `onStreamCanceled` and, more importantly, the
+`onStreamWithdrawn` hook. Doing so enables your contract to keep its internal accounting updated accurately.
+
+:::
 
 ### Sender
 
 And these are the hooks that can be implemented by a sender contract:
 
-| Hook               | Arguments                                 | Description                                        |
-| ------------------ | ----------------------------------------- | -------------------------------------------------- |
-| `onStreamCanceled` | `(streamId,senderAmount,recipientAmount)` | Called when the stream is cancelled by the sender. |
+| Hook               | Arguments                                        | Description                                       |
+| ------------------ | ------------------------------------------------ | ------------------------------------------------- |
+| `onStreamCanceled` | `(streamId,sender,senderAmount,recipientAmount)` | Called when the stream is canceled by the sender. |
 
 ### Sample Implementations
 

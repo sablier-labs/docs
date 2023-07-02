@@ -8,14 +8,19 @@ import { links } from "@site/src/constants";
 import NFTGalleryURL from "@site/static/img/nft-gallery.png";
 import NFTSVG from "@site/static/img/nft.svg";
 
-The protocol mints an ERC-721 non-fungible token (NFT) at the time of creating a stream, making the stream recipient the
-owner of the NFT. The recipient can transfer the NFT to another address, but this also transfers the right to withdraw
+The Sablier Protocol wraps every stream in an ERC-721 non-fungible token (NFT), assignin the stream recipient as the
+owner of the NFT. The recipient can transfer the NFT to another address, and this also transfers the right to withdraw
 funds from the stream, including any funds already streamed.
+
+## Integrations
+
+The transferability of the NFT makes Sablier streams tradable and usable as collateral in DeFi. Imagine an NFT lending
+marketplace that allows users to borrow funds by locking their streams as collateral (effectively borrowing against
+their future income). Or a decentralized exchange that allows users to trade streams for other assets.
 
 :::tip
 
-The NFT representation makes Sablier streams tradable and usable as collateral in DeFi. If you're interested in making
-an integration, come say hi on <a href={links.discord}>Discord</a>, or send an email to
+If you're interested in making an integration, come say hi on <a href={links.discord}>Discord</a>, or send an email to
 [sales@sablier.com](mailto:sales@sablier.com).
 
 :::

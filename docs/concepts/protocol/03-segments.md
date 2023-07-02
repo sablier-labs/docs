@@ -8,12 +8,11 @@ title: "Segments"
 
 ## Definition
 
-A Lockup Dynamic stream can be composed out of multiple segments, meaning separate partitions in which the streaming
-amount and rate differ. The protocol uses these segments to enable custom streaming curves, which power exponential
-streams, cliff streams, etc.
+A Lockup Dynamic stream can be composed out of multiple segments, which are separate partitions with different streaming
+amount and rates. The protocol uses these segments to enable custom streaming curves, which power exponential streams,
+cliff streams, etc.
 
-A segment is a struct that with the following
-[three properties](../../contracts/v2/reference/core/types/library.LockupDynamic.md):
+A segment is a [struct](/contracts/v2/reference/core/types/library.LockupDynamic.md#segment) with three fields:
 
 - **Amount (a `uint128`):** the amount of assets to be streamed in this segment, denoted in units of the asset's
   decimals.

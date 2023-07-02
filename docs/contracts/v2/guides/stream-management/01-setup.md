@@ -10,9 +10,8 @@ renounce, and transfer ownership of streams.
 Before diving in, please note the following:
 
 1. We assume you are already familiar with [creating streams](/contracts/v2/guides/create-stream/lockup-linear).
-2. We also assume that the stream management contract possesses the necessary permissions to invoke each respective
-   function. To learn more about access control in Sablier, refer to the
-   [Access Control](/contracts/v2/guides/access-control) guide.
+2. We also assume that the stream management contract is authorized to invoke each respective function. To learn more
+   about access control in Sablier, see the [Access Control](/contracts/v2/guides/access-control) guide.
 
 With that said, let's begin. First, declare the Solidity version used to compile the contract:
 
@@ -29,8 +28,8 @@ import { ISablierV2Lockup } from "@sablier/v2-core/interfaces/ISablierV2Lockup.s
 
 :::info
 
-`ISablierV2Lockup` is a common interface for `ISablierV2LockupLinear` and `ISablierV2LockupDynamic`, allowing users to
-interact with both contract types using a single interface.
+`ISablierV2Lockup` is a shared interface between `ISablierV2LockupLinear` and `ISablierV2LockupDynamic`, allowing users
+to interact with either contract type using a single interface.
 
 :::
 
