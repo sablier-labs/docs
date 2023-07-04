@@ -1,5 +1,5 @@
-import functionPlot, { FunctionPlotOptions } from "function-plot";
 import React, { useEffect, useRef } from "react";
+import functionPlot, { FunctionPlotOptions } from "function-plot";
 
 export interface FunctionPlotProps {
   options?: FunctionPlotOptions;

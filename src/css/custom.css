@@ -15,6 +15,38 @@
   --ifm-color-primary-lightest: #fcc7a7;
   --ifm-code-font-size: 95%;
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
+
+  --ifm-navbar-background-color: var(--sablier-color-background);
+  --ifm-footer-background-color: var(--sablier-color-dark100);
+  --ifm-container-width: var(--sablier-size-content);
+  --ifm-font-family-base: "Urbanist", system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans,
+    sans-serif, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
+    "Segoe UI Symbol";
+
+  font-weight: 500;
+}
+
+html {
+  padding: 0 !important;
+}
+
+html[data-theme="dark"] {
+  --ifm-navbar-background-color: var(--sablier-color-background);
+  --ifm-footer-background-color: var(--sablier-color-dark100);
+  --ifm-toc-border-color: var(--sablier-color-border);
+
+  --docusaurus-container-background: var(--sablier-color-background);
+
+  background: var(--sablier-color-background);
+}
+html[data-theme="dark"] body > div > nav {
+  border-bottom: 2px solid var(--sablier-color-border);
+}
+
+html[data-theme="dark"] body .footer--dark {
+  padding-top: 60px;
+  background: var(--sablier-color-dark050) !important;
+  border-top: 2px solid var(--sablier-color-border);
 }
 
 [data-theme="light"] .DocSearch {

@@ -1,7 +1,7 @@
+import React, { useCallback } from "react";
 import Link from "@docusaurus/Link";
 import styled from "@emotion/styled";
 import SablierIcon from "@site/static/img/logo.svg";
-import React, { useCallback } from "react";
 import GitHubIcon from "../icons/GitHubIcon";
 
 const Wrapper = styled(Link)`

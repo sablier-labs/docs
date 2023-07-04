@@ -28,7 +28,7 @@ const config = {
           sidebarPath: require.resolve("./sidebars.js"),
         },
         theme: {
-          customCss: require.resolve("./src/css/custom.css"),
+          customCss: [require.resolve("./src/css/sablier.css"), require.resolve("./src/css/custom.css")],
         },
       },
     ],
@@ -71,6 +71,7 @@ const config = {
       type: "text/css",
     },
   ],
+  staticDirectories: ["static"],
   themes: ["@docusaurus/theme-mermaid", "docusaurus-theme-github-codeblock"],
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
@@ -183,9 +184,9 @@ const config = {
             to: "/api/subgraphs/overview",
           },
           {
-            label: "Discord",
+            label: "Links",
             position: "right",
-            to: "https://discord.gg/bSwRCwWRsT",
+            to: "https://linktr.ee/SablierLabs",
           },
           {
             label: "GitHub",
