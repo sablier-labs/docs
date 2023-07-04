@@ -56,10 +56,6 @@ const config = {
             to: "/concepts/what-is-sablier",
           },
           {
-            from: "/protocol/guides/chains",
-            to: "/contracts/v1/guides/chains",
-          },
-          {
             from: "/protocol/subgraphs/endpoints",
             to: "/api/subgraphs/overview",
           },
