@@ -10,10 +10,10 @@ title: "Deployment Addresses"
 
 | Contract               | Address                                                                                                               | Deployment                                                                          |
 | :--------------------- | :-------------------------------------------------------------------------------------------------------------------- | :---------------------------------------------------------------------------------- |
-| SablierV2LockupLinear  | [0xC3Be6BffAeab7B297c03383B4254aa3Af2b9a5BA](https://etherscan.io/address/0xC3Be6BffAeab7B297c03383B4254aa3Af2b9a5BA) | [core-v1.0.0](https://github.com/sablier-labs/v2-deployments/tree/main/core/v1.0.0) |
+| SablierV2LockupLinear  | [0xB10daee1FCF62243aE27776D7a92D39dC8740f95](https://etherscan.io/address/0xB10daee1FCF62243aE27776D7a92D39dC8740f95) | [core-v1.0.0](https://github.com/sablier-labs/v2-deployments/tree/main/core/v1.0.0) |
 | SablierV2LockupDynamic | [0x39EFdC3dbB57B2388CcC4bb40aC4CB1226Bc9E44](https://etherscan.io/address/0x39EFdC3dbB57B2388CcC4bb40aC4CB1226Bc9E44) | [core-v1.0.0](https://github.com/sablier-labs/v2-deployments/tree/main/core/v1.0.0) |
 | SablierV2NFTDescriptor | [0x39D3A61A81Ff5DD46A0D4a7A4C8eA303BcCABfcE](https://etherscan.io/address/0x39D3A61A81Ff5DD46A0D4a7A4C8eA303BcCABfcE) | [core-v1.0.0](https://github.com/sablier-labs/v2-deployments/tree/main/core/v1.0.0) |
-| SablierV2Comptroller   | [0xB10daee1FCF62243aE27776D7a92D39dC8740f95](https://etherscan.io/address/0xB10daee1FCF62243aE27776D7a92D39dC8740f95) | [core-v1.0.0](https://github.com/sablier-labs/v2-deployments/tree/main/core/v1.0.0) |
+| SablierV2Comptroller   | [0xC3Be6BffAeab7B297c03383B4254aa3Af2b9a5BA](https://etherscan.io/address/0xC3Be6BffAeab7B297c03383B4254aa3Af2b9a5BA) | [core-v1.0.0](https://github.com/sablier-labs/v2-deployments/tree/main/core/v1.0.0) |
 
 ### Periphery
 
