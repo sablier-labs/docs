@@ -30,6 +30,12 @@ html {
   padding: 0 !important;
 }
 
+body .footer {
+  padding-top: 60px;
+  background: var(--sablier-color-dark050-keep) !important;
+  border-top: 2px solid var(--sablier-color-border);
+}
+
 html[data-theme="dark"] {
   --ifm-navbar-background-color: var(--sablier-color-background);
   --ifm-footer-background-color: var(--sablier-color-dark100);
@@ -41,12 +47,6 @@ html[data-theme="dark"] {
 }
 html[data-theme="dark"] body > div > nav {
   border-bottom: 2px solid var(--sablier-color-border);
-}
-
-html[data-theme="dark"] body .footer--dark {
-  padding-top: 60px;
-  background: var(--sablier-color-dark050) !important;
-  border-top: 2px solid var(--sablier-color-border);
 }
 
 [data-theme="light"] .DocSearch {

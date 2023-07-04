@@ -56,7 +56,7 @@ const Social = styled(Link)`
 
   &:active,
   &:hover {
-    border: 1px solid var(--ifm-color-emphasis-400);
+    border: 2px solid var(--ifm-color-emphasis-400);
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.05);
     color: var(--ifm-font-color-base);
     text-decoration: none;

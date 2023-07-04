@@ -42,7 +42,7 @@ const Light = styled.div<{ horizontal: "left" | "right"; vertical: string }>`
       var(--sablier-color-background) 30%,
       transparent 30%
     );
-    opacity: 0.4;
+    opacity: var(--sablier-size-light);
     filter: blur(60px);
   }
 

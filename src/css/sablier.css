@@ -3,6 +3,7 @@
   --sablier-color-dark000: #14161f;
   --sablier-color-dark000-50: #14161f50;
   --sablier-color-dark050: #1a1d28;
+  --sablier-color-dark050-keep: #1a1d28;
   --sablier-color-dark050-50: #1a1d2850;
   --sablier-color-dark100: #1e212f;
   --sablier-color-dark100-50: #1e212f50;
@@ -57,6 +58,26 @@
 
   --sablier-size-content: 960px;
   --sablier-size-edge: 16px;
+  --sablier-size-light: 0.4;
+}
+
+[data-theme="light"] {
+  --sablier-color-white: #1a1d28;
+  --sablier-color-dark000: #ffffff;
+  --sablier-color-dark000-50: #ffffff50;
+  --sablier-color-dark050: #eeeeee;
+  --sablier-color-dark050-50: #eeeeee50;
+  --sablier-color-dark100: #eeeeee;
+  --sablier-color-dark100-50: #eeeeee50;
+  --sablier-color-dark200: #eeeeee;
+  --sablier-color-dark200-50: #eeeeee50;
+  --sablier-color-gray200: #242838;
+  --sablier-color-dark300: #c3c9d5;
+  --sablier-color-dark400: #c3c9d5;
+
+  --sablier-size-light: 1;
+  --sablier-color-border: #c3c9d5;
+  --sablier-color-borderLanding: #e1e4ea;
 }
 
 @import url("https://fonts.googleapis.com/css2?family=Urbanist:wght@200;300;400;500;600;700;800;900&display=swap");
