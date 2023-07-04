@@ -19,7 +19,7 @@ const config = {
     [
       "classic",
       /** @type {import('@docusaurus/preset-classic').Options} */
-      ({
+      {
         docs: {
           editUrl: "https://github.com/sablier-labs/docs/tree/main/",
           rehypePlugins: [katex],
@@ -30,7 +30,7 @@ const config = {
         theme: {
           customCss: require.resolve("./src/css/custom.css"),
         },
-      }),
+      },
     ],
   ],
   plugins: [
