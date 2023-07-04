@@ -4,11 +4,10 @@ sidebar_position: 2
 
 # SablierV2ProxyPlugin
 
-[Git Source](https://github.com/sablier-labs/v2-periphery/blob/453a35ef662183654138bfe8cab2b523f340fa5b/docs/contracts/v2/reference/periphery)
+[Git Source](https://github.com/sablier-labs/v2-periphery/blob/a17edc8e290789f96ef9ddaf0e4d1c99d8ce1acf/docs/contracts/v2/reference/periphery)
 
 **Inherits:** [OnlyDelegateCall](/docs/contracts/v2/reference/periphery/abstracts/abstract.OnlyDelegateCall.md),
-[ISablierV2ProxyPlugin](/docs/contracts/v2/reference/periphery/interfaces/interface.ISablierV2ProxyPlugin.md),
-PRBProxyPlugin
+[ISablierV2ProxyPlugin](/docs/contracts/v2/reference/periphery/interfaces/interface.ISablierV2ProxyPlugin.md)
 
 See the documentation in
 [ISablierV2ProxyPlugin](docs/contracts/v2/reference/periphery/interfaces/interface.ISablierV2ProxyPlugin.md).
@@ -31,10 +30,10 @@ ISablierV2Archive public immutable override archive;
 constructor(ISablierV2Archive archive_);
 ```
 
-### methodList
+### getMethods
 
 ```solidity
-function methodList() external pure returns (bytes4[] memory methods);
+function getMethods() external pure returns (bytes4[] memory methods);
 ```
 
 ### onStreamCanceled

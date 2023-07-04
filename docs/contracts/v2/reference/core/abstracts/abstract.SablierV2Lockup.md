@@ -1,13 +1,21 @@
 # SablierV2Lockup
 
-[Git Source](https://github.com/sablier-labs/v2-core/blob/6ab33735951a1e93a3236fed3ca9c60f75ab76a7/docs/contracts/v2/reference/core/abstracts)
+[Git Source](https://github.com/sablier-labs/v2-core/blob/159e87a2f5af03967faf292df81fef93c14be2e2/docs/contracts/v2/reference/core/abstracts)
 
-**Inherits:** [SablierV2Base](/docs/contracts/v2/reference/core/abstracts/abstract.SablierV2Base.md),
+**Inherits:** IERC4906, [SablierV2Base](/docs/contracts/v2/reference/core/abstracts/abstract.SablierV2Base.md),
 [ISablierV2Lockup](/docs/contracts/v2/reference/core/interfaces/interface.ISablierV2Lockup.md), ERC721
 
 See the documentation in [ISablierV2Lockup](docs/contracts/v2/reference/core/interfaces/interface.ISablierV2Lockup.md).
 
 ## State Variables
+
+### nextStreamId
+
+Counter for stream ids, used in the create functions.
+
+```solidity
+uint256 public override nextStreamId;
+```
 
 ### \_nftDescriptor
 
@@ -44,6 +52,14 @@ _Checks that `streamId` does not reference a null stream._
 
 ```solidity
 modifier notNull(uint256 streamId);
+```
+
+### updateMetadata
+
+_Emits an ERC-4906 event to trigger an update of the NFT metadata._
+
+```solidity
+modifier updateMetadata(uint256 streamId);
 ```
 
 ### getRecipient
@@ -162,7 +178,7 @@ function burn(uint256 streamId) external override noDelegateCall;
 
 Cancels the stream and refunds any remaining assets to the sender.
 
-Emits a {CancelLockupStream} event and a {Transfer} event. Notes:
+Emits a {Transfer}, {CancelLockupStream}, and {MetadataUpdate} event. Notes:
 
 - If there any assets left for the recipient to withdraw, the stream is marked as canceled. Otherwise, the stream is
   marked as depleted.
@@ -173,7 +189,7 @@ Emits a {CancelLockupStream} event and a {Transfer} event. Notes:
 - `msg.sender` must be either the stream's sender or the stream's recipient (i.e. the NFT owner).
 
 ```solidity
-function cancel(uint256 streamId) public override noDelegateCall;
+function cancel(uint256 streamId) public override noDelegateCall updateMetadata(streamId);
 ```
 
 **Parameters**
@@ -186,7 +202,7 @@ function cancel(uint256 streamId) public override noDelegateCall;
 
 Cancels multiple streams and refunds any remaining assets to the sender.
 
-Emits multiple {CancelLockupStream} and {Transfer} events. Notes:
+Emits multiple {Transfer}, {CancelLockupStream}, and {MetadataUpdate} events. Notes:
 
 - Refer to the notes in {cancel}. Requirements:
 - All requirements from {cancel} must be met for each stream.
@@ -205,7 +221,7 @@ function cancelMultiple(uint256[] calldata streamIds) external override noDelega
 
 Removes the right of the stream's sender to cancel the stream.
 
-Emits a {RenounceLockupStream} event. Notes:
+Emits a {RenounceLockupStream} and {MetadataUpdate} event. Notes:
 
 - This is an irreversible operation.
 - This function attempts to invoke a hook on the stream's recipient, provided that the recipient is a contract.
@@ -216,7 +232,7 @@ Emits a {RenounceLockupStream} event. Notes:
 - The stream must be cancelable.
 
 ```solidity
-function renounce(uint256 streamId) external override noDelegateCall notNull(streamId);
+function renounce(uint256 streamId) external override noDelegateCall notNull(streamId) updateMetadata(streamId);
 ```
 
 **Parameters**
@@ -229,7 +245,7 @@ function renounce(uint256 streamId) external override noDelegateCall notNull(str
 
 Sets a new NFT descriptor contract, which produces the URI describing the Sablier stream NFTs.
 
-Emits a {SetNFTDescriptor} event. Notes:
+Emits a {SetNFTDescriptor} and {BatchMetadataUpdate} event. Notes:
 
 - Does not revert if the NFT descriptor is the same. Requirements:
 - `msg.sender` must be the contract admin.
@@ -248,19 +264,27 @@ function setNFTDescriptor(ISablierV2NFTDescriptor newNFTDescriptor) external ove
 
 Withdraws the provided amount of assets from the stream to the `to` address.
 
-Emits a {WithdrawFromLockupStream} and a {Transfer} event. Notes:
+Emits a {Transfer}, {WithdrawFromLockupStream}, and {MetadataUpdate} event. Notes:
 
 - This function attempts to invoke a hook on the stream's recipient, provided that the recipient is a contract and
   `msg.sender` is either the sender or an approved operator. Requirements:
 - Must not be delegate called.
-- `streamId` must not reference a null, pending, or depleted stream.
+- `streamId` must not reference a null or depleted stream.
 - `msg.sender` must be the stream's sender, the stream's recipient or an approved third party.
 - `to` must be the recipient if `msg.sender` is the stream's sender.
 - `to` must not be the zero address.
 - `amount` must be greater than zero and must not exceed the withdrawable amount.
 
 ```solidity
-function withdraw(uint256 streamId, address to, uint128 amount) public override noDelegateCall;
+function withdraw(
+    uint256 streamId,
+    address to,
+    uint128 amount
+)
+    public
+    override
+    noDelegateCall
+    updateMetadata(streamId);
 ```
 
 **Parameters**
@@ -268,14 +292,14 @@ function withdraw(uint256 streamId, address to, uint128 amount) public override 
 | Name       | Type      | Description                                                       |
 | ---------- | --------- | ----------------------------------------------------------------- |
 | `streamId` | `uint256` | The id of the stream to withdraw from.                            |
-| `to`       | `address` | The address that receives the withdrawn assets.                   |
+| `to`       | `address` | The address receiving the withdrawn assets.                       |
 | `amount`   | `uint128` | The amount to withdraw, denoted in units of the asset's decimals. |
 
 ### withdrawMax
 
-Withdraws the maximum withdrawable amount from the stream to the `to` address.
+Withdraws the maximum withdrawable amount from the stream to the provided address `to`.
 
-Emits a {WithdrawFromLockupStream} and a {Transfer} event. Notes:
+Emits a {Transfer}, {WithdrawFromLockupStream}, and {MetadataUpdate} event. Notes:
 
 - Refer to the notes in {withdraw}. Requirements:
 - Refer to the requirements in {withdraw}.
@@ -286,16 +310,48 @@ function withdrawMax(uint256 streamId, address to) external override;
 
 **Parameters**
 
-| Name       | Type      | Description                                     |
-| ---------- | --------- | ----------------------------------------------- |
-| `streamId` | `uint256` | The id of the stream to withdraw from.          |
-| `to`       | `address` | The address that receives the withdrawn assets. |
+| Name       | Type      | Description                                 |
+| ---------- | --------- | ------------------------------------------- |
+| `streamId` | `uint256` | The id of the stream to withdraw from.      |
+| `to`       | `address` | The address receiving the withdrawn assets. |
+
+### withdrawMaxAndTransfer
+
+Withdraws the maximum withdrawable amount from the stream to the current recipient, and transfers the NFT to
+`newRecipient`.
+
+Emits a {WithdrawFromLockupStream} and a {Transfer} event. Notes:
+
+- If the withdrawable amount is zero, the withdrawal is skipped.
+- Refer to the notes in {withdraw}. Requirements:
+- `msg.sender` must be the stream's recipient.
+- Refer to the requirements in {withdraw}.
+- Refer to the requirements in {IERC721.transferFrom}.
+
+```solidity
+function withdrawMaxAndTransfer(
+    uint256 streamId,
+    address newRecipient
+)
+    external
+    override
+    noDelegateCall
+    notNull(streamId)
+    updateMetadata(streamId);
+```
+
+**Parameters**
+
+| Name           | Type      | Description                                     |
+| -------------- | --------- | ----------------------------------------------- |
+| `streamId`     | `uint256` | The id of the stream NFT to transfer.           |
+| `newRecipient` | `address` | The address of the new owner of the stream NFT. |
 
 ### withdrawMultiple
 
 Withdraws assets from streams to the provided address `to`.
 
-Emits multiple {WithdrawFromLockupStream} and {Transfer} events. Notes:
+Emits multiple {Transfer}, {WithdrawFromLockupStream}, and {MetadataUpdate} events. Notes:
 
 - This function attempts to call a hook on the recipient of each stream, unless `msg.sender` is the recipient.
   Requirements:
@@ -318,7 +374,7 @@ function withdrawMultiple(
 | Name        | Type        | Description                                                        |
 | ----------- | ----------- | ------------------------------------------------------------------ |
 | `streamIds` | `uint256[]` | The ids of the streams to withdraw from.                           |
-| `to`        | `address`   | The address that receives the withdrawn assets.                    |
+| `to`        | `address`   | The address receiving the withdrawn assets.                        |
 | `amounts`   | `uint128[]` | The amounts to withdraw, denoted in units of the asset's decimals. |
 
 ### \_isCallerStreamRecipientOrApproved
@@ -326,7 +382,7 @@ function withdrawMultiple(
 Checks whether `msg.sender` is the stream's recipient or an approved third party.
 
 ```solidity
-function _isCallerStreamRecipientOrApproved(uint256 streamId) internal view returns (bool result);
+function _isCallerStreamRecipientOrApproved(uint256 streamId) internal view returns (bool);
 ```
 
 **Parameters**
@@ -340,7 +396,7 @@ function _isCallerStreamRecipientOrApproved(uint256 streamId) internal view retu
 Checks whether `msg.sender` is the stream's sender.
 
 ```solidity
-function _isCallerStreamSender(uint256 streamId) internal view virtual returns (bool result);
+function _isCallerStreamSender(uint256 streamId) internal view virtual returns (bool);
 ```
 
 **Parameters**
@@ -354,7 +410,7 @@ function _isCallerStreamSender(uint256 streamId) internal view virtual returns (
 _Retrieves the stream's status without performing a null check._
 
 ```solidity
-function _statusOf(uint256 streamId) internal view virtual returns (Lockup.Status status);
+function _statusOf(uint256 streamId) internal view virtual returns (Lockup.Status);
 ```
 
 ### \_withdrawableAmountOf
@@ -362,7 +418,7 @@ function _statusOf(uint256 streamId) internal view virtual returns (Lockup.Statu
 _See the documentation for the user-facing functions that call this internal function._
 
 ```solidity
-function _withdrawableAmountOf(uint256 streamId) internal view virtual returns (uint128 withdrawableAmount);
+function _withdrawableAmountOf(uint256 streamId) internal view virtual returns (uint128);
 ```
 
 ### \_cancel

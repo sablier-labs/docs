@@ -1,6 +1,6 @@
 # Errors
 
-[Git Source](https://github.com/sablier-labs/v2-core/blob/6ab33735951a1e93a3236fed3ca9c60f75ab76a7/src/libraries/Errors.sol)
+[Git Source](https://github.com/sablier-labs/v2-core/blob/159e87a2f5af03967faf292df81fef93c14be2e2/src/libraries/Errors.sol)
 
 Library containing all custom errors the protocol may revert with.
 

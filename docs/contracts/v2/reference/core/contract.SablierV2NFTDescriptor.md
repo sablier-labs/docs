@@ -1,6 +1,6 @@
 # SablierV2NFTDescriptor
 
-[Git Source](https://github.com/sablier-labs/v2-core/blob/6ab33735951a1e93a3236fed3ca9c60f75ab76a7/docs/contracts/v2/reference/core)
+[Git Source](https://github.com/sablier-labs/v2-core/blob/159e87a2f5af03967faf292df81fef93c14be2e2/docs/contracts/v2/reference/core)
 
 **Inherits:**
 [ISablierV2NFTDescriptor](/docs/contracts/v2/reference/core/interfaces/interface.ISablierV2NFTDescriptor.md)
@@ -151,7 +151,7 @@ Retrieves the asset's decimals safely, defaulting to "0" if an error occurs.
 _Performs a low-level call to handle assets in which the decimals are not implemented._
 
 ```solidity
-function safeAssetDecimals(address asset) internal view returns (uint8 decimals);
+function safeAssetDecimals(address asset) internal view returns (uint8);
 ```
 
 ### safeAssetSymbol

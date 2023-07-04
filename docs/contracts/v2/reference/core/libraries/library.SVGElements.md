@@ -1,6 +1,6 @@
 # SVGElements
 
-[Git Source](https://github.com/sablier-labs/v2-core/blob/6ab33735951a1e93a3236fed3ca9c60f75ab76a7/src/libraries/SVGElements.sol)
+[Git Source](https://github.com/sablier-labs/v2-core/blob/159e87a2f5af03967faf292df81fef93c14be2e2/src/libraries/SVGElements.sol)
 
 ## State Variables
 
@@ -115,7 +115,7 @@ string internal constant SIGN_LT = "&lt;";
 ### card
 
 ```solidity
-function card(CardType cardType, string memory content) internal pure returns (uint256 width, string memory card_);
+function card(CardType cardType, string memory content) internal pure returns (uint256, string memory);
 ```
 
 ### card

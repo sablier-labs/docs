@@ -1,6 +1,6 @@
 # ISablierV2LockupDynamic
 
-[Git Source](https://github.com/sablier-labs/v2-core/blob/6ab33735951a1e93a3236fed3ca9c60f75ab76a7/docs/contracts/v2/reference/core/interfaces)
+[Git Source](https://github.com/sablier-labs/v2-core/blob/159e87a2f5af03967faf292df81fef93c14be2e2/docs/contracts/v2/reference/core/interfaces)
 
 **Inherits:** [ISablierV2Lockup](/docs/contracts/v2/reference/core/interfaces/interface.ISablierV2Lockup.md)
 
@@ -20,7 +20,7 @@ function MAX_SEGMENT_COUNT() external view returns (uint256);
 
 ### getRange
 
-Retrieves the stream's range, a struct containing (i) the stream's start time and (ii) end time, both as Unix
+Retrieves the stream's range, which is a struct containing (i) the stream's start time and (ii) end time, both as Unix
 timestamps.
 
 _Reverts if `streamId` references a null stream._
@@ -103,7 +103,7 @@ Creates a stream by setting the start time to `block.timestamp`, and the end tim
 all specified time deltas. The segment milestones are derived from these deltas. The stream is funded by `msg.sender`
 and is wrapped in an ERC-721 NFT.
 
-Emits a {CreateLockupDynamicStream} and a {Transfer} event. Requirements:
+Emits a {Transfer} and {CreateLockupDynamicStream} event. Requirements:
 
 - All requirements in {createWithMilestones} must be met for the calculated parameters.
 
@@ -128,7 +128,7 @@ function createWithDeltas(LockupDynamic.CreateWithDeltas calldata params) extern
 Creates a stream with the provided segment milestones, implying the end time from the last milestone. The stream is
 funded by `msg.sender` and is wrapped in an ERC-721 NFT.
 
-Emits a {CreateLockupDynamicStream} and a {Transfer} event. Notes:
+Emits a {Transfer} and {CreateLockupDynamicStream} event. Notes:
 
 - As long as the segment milestones are arranged in ascending order, it is not an error for some of them to be in the
   past. Requirements:
@@ -168,11 +168,11 @@ Emitted when a stream is created.
 ```solidity
 event CreateLockupDynamicStream(
     uint256 streamId,
-    address indexed funder,
+    address funder,
     address indexed sender,
     address indexed recipient,
     Lockup.CreateAmounts amounts,
-    IERC20 asset,
+    IERC20 indexed asset,
     bool cancelable,
     LockupDynamic.Segment[] segments,
     LockupDynamic.Range range,

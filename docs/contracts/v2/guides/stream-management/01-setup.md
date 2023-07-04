@@ -11,7 +11,7 @@ Before diving in, please note the following:
 
 1. We assume you are already familiar with [creating streams](/contracts/v2/guides/create-stream/lockup-linear).
 2. We also assume that the stream management contract is authorized to invoke each respective function. To learn more
-   about access control in Sablier, see the [Access Control](/contracts/v2/guides/access-control) guide.
+   about access control in Sablier, see the [Access Control](/contracts/v2/reference/access-control) guide.
 
 With that said, let's begin. First, declare the Solidity version used to compile the contract:
 

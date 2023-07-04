@@ -1,8 +1,8 @@
 # ISablierV2ProxyTarget
 
-[Git Source](https://github.com/sablier-labs/v2-periphery/blob/453a35ef662183654138bfe8cab2b523f340fa5b/docs/contracts/v2/reference/periphery/interfaces)
+[Git Source](https://github.com/sablier-labs/v2-periphery/blob/a17edc8e290789f96ef9ddaf0e4d1c99d8ce1acf/docs/contracts/v2/reference/periphery/interfaces)
 
-Proxy target with stateless scripts for interacting with Sablier V2 Core, designed to be used by stream senders.
+Proxy target with stateless scripts for interacting with Sablier V2, designed to be used by stream senders.
 
 _Intended for use with an instance of PRBProxy through delegate calls. Any standard calls will be reverted._
 
@@ -102,6 +102,16 @@ _Must be delegate called._
 
 ```solidity
 function withdrawMax(ISablierV2Lockup lockup, uint256 streamId, address to) external;
+```
+
+### withdrawMaxAndTransfer
+
+Mirror for {ISablierV2Lockup.withdrawMaxAndTransfer}.
+
+_Must be delegate called._
+
+```solidity
+function withdrawMaxAndTransfer(ISablierV2Lockup lockup, uint256 streamId, address newRecipient) external;
 ```
 
 ### batchCreateWithDurations

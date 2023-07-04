@@ -4,7 +4,7 @@ sidebar_position: 2
 
 # SablierV2LockupDynamic
 
-[Git Source](https://github.com/sablier-labs/v2-core/blob/6ab33735951a1e93a3236fed3ca9c60f75ab76a7/docs/contracts/v2/reference/core)
+[Git Source](https://github.com/sablier-labs/v2-core/blob/159e87a2f5af03967faf292df81fef93c14be2e2/docs/contracts/v2/reference/core)
 
 **Inherits:**
 [ISablierV2LockupDynamic](/docs/contracts/v2/reference/core/interfaces/interface.ISablierV2LockupDynamic.md),
@@ -23,14 +23,6 @@ _This is initialized at construction time and cannot be changed later._
 
 ```solidity
 uint256 public immutable override MAX_SEGMENT_COUNT;
-```
-
-### \_nextStreamId
-
-_Counter for stream ids, used in the create functions._
-
-```solidity
-uint256 private _nextStreamId;
 ```
 
 ### \_streams
@@ -122,7 +114,7 @@ function getEndTime(uint256 streamId) external view override notNull(streamId) r
 
 ### getRange
 
-Retrieves the stream's range, a struct containing (i) the stream's start time and (ii) end time, both as Unix
+Retrieves the stream's range, which is a struct containing (i) the stream's start time and (ii) end time, both as Unix
 timestamps.
 
 _Reverts if `streamId` references a null stream._
@@ -344,14 +336,6 @@ function isWarm(uint256 streamId) external view override notNull(streamId) retur
 | ---------- | --------- | ---------------------------- |
 | `streamId` | `uint256` | The stream id for the query. |
 
-### nextStreamId
-
-Counter for stream ids, used in the create functions.
-
-```solidity
-function nextStreamId() external view override returns (uint256);
-```
-
 ### refundableAmountOf
 
 Calculates the amount that the sender would be refunded if the stream were canceled, denoted in units of the asset's
@@ -450,7 +434,7 @@ Creates a stream by setting the start time to `block.timestamp`, and the end tim
 all specified time deltas. The segment milestones are derived from these deltas. The stream is funded by `msg.sender`
 and is wrapped in an ERC-721 NFT.
 
-Emits a {CreateLockupDynamicStream} and a {Transfer} event. Requirements:
+Emits a {Transfer} and {CreateLockupDynamicStream} event. Requirements:
 
 - All requirements in {createWithMilestones} must be met for the calculated parameters.
 
@@ -479,7 +463,7 @@ function createWithDeltas(LockupDynamic.CreateWithDeltas calldata params)
 Creates a stream with the provided segment milestones, implying the end time from the last milestone. The stream is
 funded by `msg.sender` and is wrapped in an ERC-721 NFT.
 
-Emits a {CreateLockupDynamicStream} and a {Transfer} event. Notes:
+Emits a {Transfer} and {CreateLockupDynamicStream} event. Notes:
 
 - As long as the segment milestones are arranged in ascending order, it is not an error for some of them to be in the
   past. Requirements:
@@ -519,7 +503,7 @@ function createWithMilestones(LockupDynamic.CreateWithMilestones calldata params
 _Calculates the streamed amount without looking up the stream's status._
 
 ```solidity
-function _calculateStreamedAmount(uint256 streamId) internal view returns (uint128 streamedAmount);
+function _calculateStreamedAmount(uint256 streamId) internal view returns (uint128);
 ```
 
 ### \_calculateStreamedAmountForMultipleSegments
@@ -528,11 +512,11 @@ Calculates the streamed amount for a stream with multiple segments. Notes:
 
 1. Normalization to 18 decimals is not needed because there is no mix of amounts with different decimals.
 2. The stream's start time must be in the past so that the calculations below do not overflow.
-3. The stream's end time must be in the future so that the the loop below does not panic with an "index out of bounds"
+3. The stream's end time must be in the future so that the loop below does not panic with an "index out of bounds"
    error.
 
 ```solidity
-function _calculateStreamedAmountForMultipleSegments(uint256 streamId) internal view returns (uint128 streamedAmount);
+function _calculateStreamedAmountForMultipleSegments(uint256 streamId) internal view returns (uint128);
 ```
 
 ### \_calculateStreamedAmountForOneSegment
@@ -541,7 +525,7 @@ _Calculates the streamed amount for a a stream with one segment. Normalization t
 there is no mix of amounts with different decimals._
 
 ```solidity
-function _calculateStreamedAmountForOneSegment(uint256 streamId) internal view returns (uint128 streamedAmount);
+function _calculateStreamedAmountForOneSegment(uint256 streamId) internal view returns (uint128);
 ```
 
 ### \_isCallerStreamSender
@@ -549,7 +533,7 @@ function _calculateStreamedAmountForOneSegment(uint256 streamId) internal view r
 Checks whether `msg.sender` is the stream's sender.
 
 ```solidity
-function _isCallerStreamSender(uint256 streamId) internal view override returns (bool result);
+function _isCallerStreamSender(uint256 streamId) internal view override returns (bool);
 ```
 
 **Parameters**
@@ -563,7 +547,7 @@ function _isCallerStreamSender(uint256 streamId) internal view override returns 
 _Retrieves the stream's status without performing a null check._
 
 ```solidity
-function _statusOf(uint256 streamId) internal view override returns (Lockup.Status status);
+function _statusOf(uint256 streamId) internal view override returns (Lockup.Status);
 ```
 
 ### \_streamedAmountOf
@@ -571,7 +555,7 @@ function _statusOf(uint256 streamId) internal view override returns (Lockup.Stat
 _See the documentation for the user-facing functions that call this internal function._
 
 ```solidity
-function _streamedAmountOf(uint256 streamId) internal view returns (uint128 streamedAmount);
+function _streamedAmountOf(uint256 streamId) internal view returns (uint128);
 ```
 
 ### \_withdrawableAmountOf
@@ -579,7 +563,7 @@ function _streamedAmountOf(uint256 streamId) internal view returns (uint128 stre
 _See the documentation for the user-facing functions that call this internal function._
 
 ```solidity
-function _withdrawableAmountOf(uint256 streamId) internal view override returns (uint128 withdrawableAmount);
+function _withdrawableAmountOf(uint256 streamId) internal view override returns (uint128);
 ```
 
 ### \_cancel

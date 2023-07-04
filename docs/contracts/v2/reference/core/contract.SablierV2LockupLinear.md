@@ -4,7 +4,7 @@ sidebar_position: 1
 
 # SablierV2LockupLinear
 
-[Git Source](https://github.com/sablier-labs/v2-core/blob/6ab33735951a1e93a3236fed3ca9c60f75ab76a7/docs/contracts/v2/reference/core)
+[Git Source](https://github.com/sablier-labs/v2-core/blob/159e87a2f5af03967faf292df81fef93c14be2e2/docs/contracts/v2/reference/core)
 
 **Inherits:**
 [ISablierV2LockupLinear](/docs/contracts/v2/reference/core/interfaces/interface.ISablierV2LockupLinear.md),
@@ -14,14 +14,6 @@ See the documentation in
 [ISablierV2LockupLinear](docs/contracts/v2/reference/core/interfaces/interface.ISablierV2LockupLinear.md).
 
 ## State Variables
-
-### \_nextStreamId
-
-_Counter for stream ids, used in the create functions._
-
-```solidity
-uint256 private _nextStreamId;
-```
 
 ### \_streams
 
@@ -126,8 +118,8 @@ function getEndTime(uint256 streamId) external view override notNull(streamId) r
 
 ### getRange
 
-Retrieves the range of the stream, a struct containing (i) the stream's start time, (ii) cliff time, and (iii) end time,
-all as Unix timestamps.
+Retrieves the stream's range, which is a struct containing (i) the stream's start time, (ii) cliff time, and (iii) end
+time, all as Unix timestamps.
 
 _Reverts if `streamId` references a null stream._
 
@@ -327,14 +319,6 @@ function isWarm(uint256 streamId) external view override notNull(streamId) retur
 | ---------- | --------- | ---------------------------- |
 | `streamId` | `uint256` | The stream id for the query. |
 
-### nextStreamId
-
-Counter for stream ids, used in the create functions.
-
-```solidity
-function nextStreamId() external view override returns (uint256);
-```
-
 ### refundableAmountOf
 
 Calculates the amount that the sender would be refunded if the stream were canceled, denoted in units of the asset's
@@ -431,7 +415,7 @@ function wasCanceled(uint256 streamId)
 Creates a stream by setting the start time to `block.timestamp`, and the end time to the sum of `block.timestamp` and
 `params.durations.total. The stream is funded by `msg.sender` and is wrapped in an ERC-721 NFT.
 
-Emits a {CreateLockupLinearStream} and a {Transfer} event. Requirements:
+Emits a {Transfer} and {CreateLockupLinearStream} event. Requirements:
 
 - All requirements in {createWithRange} must be met for the calculated parameters.
 
@@ -460,7 +444,7 @@ function createWithDurations(LockupLinear.CreateWithDurations calldata params)
 Creates a stream with the provided start time and end time as the range. The stream is funded by `msg.sender` and is
 wrapped in an ERC-721 NFT.
 
-Emits a {CreateLockupLinearStream} and a {Transfer} event. Notes:
+Emits a {Transfer} and {CreateLockupLinearStream} event. Notes:
 
 - As long as the times are ordered, it is not an error for the start or the cliff time to be in the past. Requirements:
 - Must not be delegate called.
@@ -497,7 +481,7 @@ function createWithRange(LockupLinear.CreateWithRange calldata params)
 _Calculates the streamed amount without looking up the stream's status._
 
 ```solidity
-function _calculateStreamedAmount(uint256 streamId) internal view returns (uint128 streamedAmount);
+function _calculateStreamedAmount(uint256 streamId) internal view returns (uint128);
 ```
 
 ### \_isCallerStreamSender
@@ -505,7 +489,7 @@ function _calculateStreamedAmount(uint256 streamId) internal view returns (uint1
 Checks whether `msg.sender` is the stream's sender.
 
 ```solidity
-function _isCallerStreamSender(uint256 streamId) internal view override returns (bool result);
+function _isCallerStreamSender(uint256 streamId) internal view override returns (bool);
 ```
 
 **Parameters**
@@ -519,7 +503,7 @@ function _isCallerStreamSender(uint256 streamId) internal view override returns 
 _Retrieves the stream's status without performing a null check._
 
 ```solidity
-function _statusOf(uint256 streamId) internal view override returns (Lockup.Status status);
+function _statusOf(uint256 streamId) internal view override returns (Lockup.Status);
 ```
 
 ### \_streamedAmountOf
@@ -527,7 +511,7 @@ function _statusOf(uint256 streamId) internal view override returns (Lockup.Stat
 _See the documentation for the user-facing functions that call this internal function._
 
 ```solidity
-function _streamedAmountOf(uint256 streamId) internal view returns (uint128 streamedAmount);
+function _streamedAmountOf(uint256 streamId) internal view returns (uint128);
 ```
 
 ### \_withdrawableAmountOf
@@ -535,7 +519,7 @@ function _streamedAmountOf(uint256 streamId) internal view returns (uint128 stre
 _See the documentation for the user-facing functions that call this internal function._
 
 ```solidity
-function _withdrawableAmountOf(uint256 streamId) internal view override returns (uint128 withdrawableAmount);
+function _withdrawableAmountOf(uint256 streamId) internal view override returns (uint128);
 ```
 
 ### \_cancel

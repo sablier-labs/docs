@@ -1,6 +1,6 @@
 # ISablierV2LockupLinear
 
-[Git Source](https://github.com/sablier-labs/v2-core/blob/6ab33735951a1e93a3236fed3ca9c60f75ab76a7/docs/contracts/v2/reference/core/interfaces)
+[Git Source](https://github.com/sablier-labs/v2-core/blob/159e87a2f5af03967faf292df81fef93c14be2e2/docs/contracts/v2/reference/core/interfaces)
 
 **Inherits:** [ISablierV2Lockup](/docs/contracts/v2/reference/core/interfaces/interface.ISablierV2Lockup.md)
 
@@ -26,8 +26,8 @@ function getCliffTime(uint256 streamId) external view returns (uint40 cliffTime)
 
 ### getRange
 
-Retrieves the range of the stream, a struct containing (i) the stream's start time, (ii) cliff time, and (iii) end time,
-all as Unix timestamps.
+Retrieves the stream's range, which is a struct containing (i) the stream's start time, (ii) cliff time, and (iii) end
+time, all as Unix timestamps.
 
 _Reverts if `streamId` references a null stream._
 
@@ -91,7 +91,7 @@ function streamedAmountOf(uint256 streamId) external view returns (uint128 strea
 Creates a stream by setting the start time to `block.timestamp`, and the end time to the sum of `block.timestamp` and
 `params.durations.total. The stream is funded by `msg.sender` and is wrapped in an ERC-721 NFT.
 
-Emits a {CreateLockupLinearStream} and a {Transfer} event. Requirements:
+Emits a {Transfer} and {CreateLockupLinearStream} event. Requirements:
 
 - All requirements in {createWithRange} must be met for the calculated parameters.
 
@@ -116,7 +116,7 @@ function createWithDurations(LockupLinear.CreateWithDurations calldata params) e
 Creates a stream with the provided start time and end time as the range. The stream is funded by `msg.sender` and is
 wrapped in an ERC-721 NFT.
 
-Emits a {CreateLockupLinearStream} and a {Transfer} event. Notes:
+Emits a {Transfer} and {CreateLockupLinearStream} event. Notes:
 
 - As long as the times are ordered, it is not an error for the start or the cliff time to be in the past. Requirements:
 - Must not be delegate called.
@@ -153,11 +153,11 @@ Emitted when a stream is created.
 ```solidity
 event CreateLockupLinearStream(
     uint256 streamId,
-    address indexed funder,
+    address funder,
     address indexed sender,
     address indexed recipient,
     Lockup.CreateAmounts amounts,
-    IERC20 asset,
+    IERC20 indexed asset,
     bool cancelable,
     LockupLinear.Range range,
     address broker

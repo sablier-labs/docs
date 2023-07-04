@@ -4,16 +4,30 @@ sidebar_position: 3
 
 # SablierV2ProxyTarget
 
-[Git Source](https://github.com/sablier-labs/v2-periphery/blob/453a35ef662183654138bfe8cab2b523f340fa5b/docs/contracts/v2/reference/periphery)
+[Git Source](https://github.com/sablier-labs/v2-periphery/blob/a17edc8e290789f96ef9ddaf0e4d1c99d8ce1acf/docs/contracts/v2/reference/periphery)
 
 **Inherits:**
 [ISablierV2ProxyTarget](/docs/contracts/v2/reference/periphery/interfaces/interface.ISablierV2ProxyTarget.md),
-[OnlyDelegateCall](/docs/contracts/v2/reference/periphery/abstracts/abstract.OnlyDelegateCall.md), PRBProxyStorage
+[OnlyDelegateCall](/docs/contracts/v2/reference/periphery/abstracts/abstract.OnlyDelegateCall.md)
 
 See the documentation in
 [ISablierV2ProxyTarget](docs/contracts/v2/reference/periphery/interfaces/interface.ISablierV2ProxyTarget.md).
 
+## State Variables
+
+### PERMIT2
+
+```solidity
+IAllowanceTransfer internal immutable PERMIT2;
+```
+
 ## Functions
+
+### constructor
+
+```solidity
+constructor(IAllowanceTransfer permit2);
+```
 
 ### batchCancelMultiple
 
@@ -120,6 +134,22 @@ _Must be delegate called._
 
 ```solidity
 function withdrawMax(ISablierV2Lockup lockup, uint256 streamId, address to) external onlyDelegateCall;
+```
+
+### withdrawMaxAndTransfer
+
+Mirror for {ISablierV2Lockup.withdrawMaxAndTransfer}.
+
+_Must be delegate called._
+
+```solidity
+function withdrawMaxAndTransfer(
+    ISablierV2Lockup lockup,
+    uint256 streamId,
+    address newRecipient
+)
+    external
+    onlyDelegateCall;
 ```
 
 ### batchCreateWithDurations
@@ -716,9 +746,17 @@ _Helper function to retrieve the proxy's balance for the provided assets._
 function _getBalances(IERC20[] calldata assets) internal view returns (uint256[] memory initialBalances);
 ```
 
+### \_getOwner
+
+_Helper function to retrieve the proxy's owner, which is stored as an immutable variable in the proxy._
+
+```solidity
+function _getOwner() internal view returns (address);
+```
+
 ### \_postMultipleCancellations
 
-_Shared logic between `cancelMultiple` and `batchCancelMultiple`._
+_Shared logic between {cancelMultiple} and {batchCancelMultiple}._
 
 ```solidity
 function _postMultipleCancellations(uint256[] memory initialBalances, IERC20[] calldata assets) internal;

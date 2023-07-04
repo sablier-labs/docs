@@ -1,15 +1,15 @@
 # ISablierV2ProxyPlugin
 
-[Git Source](https://github.com/sablier-labs/v2-periphery/blob/453a35ef662183654138bfe8cab2b523f340fa5b/docs/contracts/v2/reference/periphery/interfaces)
+[Git Source](https://github.com/sablier-labs/v2-periphery/blob/a17edc8e290789f96ef9ddaf0e4d1c99d8ce1acf/docs/contracts/v2/reference/periphery/interfaces)
 
 **Inherits:** ISablierV2LockupSender, IPRBProxyPlugin
 
-Proxy plugin for forwarding the refunded assets to the proxy owner when the recipient cancels a stream whose sender is
+Proxy plugin that forwards the refunded assets to the proxy owner when the recipient cancels a stream whose sender is
 the proxy contract.
 
 Requirements:
 
-- The call must not be a standard call.
+- The call must be a delegate call.
 - The caller must be Sablier.
 
 ## Functions
