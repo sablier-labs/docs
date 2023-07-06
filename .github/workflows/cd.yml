@@ -1,9 +1,8 @@
 name: "Deploy the website to Vercel"
 
 on:
-  pull_request:
-  push:
   workflow_dispatch:
+  push:
     branches:
       - "main"
 
