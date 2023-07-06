@@ -11,10 +11,10 @@ import LinkPreview from "../../../../src/components/LinkPreview";
 The Sablier Protocol is hosted on GitHub and the source code for each contract is verified on Etherscan.
 
 <LinkPreview
-  href="https://github.com/sablierhq/sablier"
+  href="https://github.com/sablier-labs/v1-protocol"
   icon="github"
   subtitle="GitHub"
-  title="Github - sablierhq/sablier: Token streaming protocol"
+  title="Github - sablier-labs/sablier: Cryptoasset streaming protocol"
 />
 
 ## ABIs
@@ -25,17 +25,17 @@ the Ethereum virtual machine code.
 
 There are two ways to obtain it:‌
 
-1. Copy `Sablier.json` from [sablierhq/sablier-abis](https://github.com/sablierhq/sablier-abis).
-2. Clone [sablierhq/sablier](https://github.com/sablierhq/sablier) and compile the contract yourself.
+1. Copy `Sablier.json` from [sablier-labs/v1-abis](https://github.com/sablier-labs/v1-abis).
+2. Clone [sablier-labs/v1-protocol](https://github.com/sablier-labs/v1-protocol) and compile the contract yourself.
 
 Here's an example for how to do step 2 with yarn and truffle:
 
 ```bash
-$ git clone git@github.com/sablierhq/sablier.git
+$ git clone git@github.com/sablier-labs/v1-protocol.git
 $ cd ./sablier
 $ yarn bootstrap
 $ cd ./packages/protocol
 $ truffle compile
 ```
 
-The `Sablier.json` artifact should be generated in the relative `build/contracts` folder.‌
+The `Sablier.json` artifact should be generated in the relative `build/contracts` folder.
