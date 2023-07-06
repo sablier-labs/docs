@@ -1,6 +1,6 @@
 import React from "react";
-import Link from "@docusaurus/Link";
 import styled from "@emotion/styled";
+import Link from "@docusaurus/Link";
 import ArrowRightIcon from "@heroicons/react/24/outline/ArrowRightIcon";
 import type UserCircleIcon from "@heroicons/react/24/outline/UserCircleIcon";
 
@@ -99,9 +99,9 @@ const Wrapper = styled(WrapperPartial)`
     border: 2px solid var(--sablier-color-dark400);
     text-decoration: none;
 
-    & > div:first-child {
+    & > div:first-of-type {
       svg {
-        &:first-child {
+        &:first-of-type {
           display: none;
         }
         &:last-child {

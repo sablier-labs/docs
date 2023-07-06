@@ -10,7 +10,8 @@ overrides:
   - files: ["*.ts", "*.tsx"]
     options:
       importOrder: #https://github.com/trivago/prettier-plugin-sort-imports#importorder
-        - "^react$|^styled-components"
+        - "^react"
+        - "^@emotion"
         - "<THIRD_PARTY_MODULES>"
         - "<THIRD_PARTY_TS_TYPES>"
         - "<TS_TYPES>"

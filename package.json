@@ -1,5 +1,5 @@
 {
-  "name": "@sablier/docs",
+  "name": "@sablier/v2-docs",
   "description": "Documentation and guides for Sablier",
   "author": {
     "name": "Sablier Labs Ltd",
@@ -78,10 +78,13 @@
   "repository": "github:sablier-labs/v2-docs",
   "scripts": {
     "build": "docusaurus build",
+    "check": "pnpm prettier:check && pnpm lint:fix",
     "clear": "docusaurus clear",
     "deploy": "docusaurus deploy",
     "docusaurus": "docusaurus",
-    "lint": "pnpm eslint . --ext md,mdx,ts,tsx && pnpm prettier:check",
+    "fix": "pnpm prettier:write && pnpm lint:fix",
+    "lint:check": "pnpm eslint . --ext md,mdx,ts,tsx",
+    "lint:fix": "pnpm eslint . --ext md,mdx,ts,tsx --fix",
     "prettier:check": "prettier --check \"**/*.{json,md,mdx,ts,tsx,yml}\"",
     "prettier:write": "prettier --write \"**/*.{json,md,mdx,ts,tsx,yml}\"",
     "serve": "docusaurus serve",

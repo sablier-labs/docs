@@ -1,6 +1,6 @@
 import React from "react";
-import Link from "@docusaurus/Link";
 import styled from "@emotion/styled";
+import Link from "@docusaurus/Link";
 import { links } from "../../../constants";
 import GitHubIcon from "../../../icons/GitHubIcon";
 import MediumIcon from "../../../icons/MediumIcon";

@@ -184,6 +184,11 @@ const config = {
             to: "/api/subgraphs/overview",
           },
           {
+            label: "Discord",
+            position: "right",
+            to: "http://discord.sablier.com",
+          },
+          {
             label: "Links",
             position: "right",
             to: "https://linktr.ee/SablierLabs",

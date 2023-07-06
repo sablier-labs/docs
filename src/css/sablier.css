@@ -61,6 +61,11 @@
   --sablier-size-light: 0.4;
 }
 
+/* TODO:
+ * Refactor explicitly used color "names" to "purpose" when the v2-interfaces will support light mode.
+ * This will keep --sablier-color-<shade> raw and unchanged, while --sablier-color-<purpose> can adapt with the theme (light/dark).
+ */
+
 [data-theme="light"] {
   --sablier-color-white: #1a1d28;
   --sablier-color-dark000: #ffffff;

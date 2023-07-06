@@ -1,6 +1,6 @@
 import React, { useCallback } from "react";
-import Link from "@docusaurus/Link";
 import styled from "@emotion/styled";
+import Link from "@docusaurus/Link";
 import SablierIcon from "@site/static/img/logo.svg";
 import GitHubIcon from "../icons/GitHubIcon";
 
@@ -10,6 +10,7 @@ const Wrapper = styled(Link)`
   box-sizing: border-box;
   display: flex;
   flex-flow: row nowrap;
+
   margin: 1.25rem auto;
   padding: 1rem 1.25rem;
   width: 100%;
