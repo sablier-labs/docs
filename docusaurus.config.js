@@ -150,6 +150,10 @@ const config = {
                 href: "https://github.com/sablier-labs/v2-periphery",
               },
               {
+                label: "V2 Integration Template",
+                href: "https://github.com/sablier-labs/sablier-v2-integration-template",
+              },
+              {
                 label: "Subgraph",
                 href: "https://github.com/sablier-labs/subgraph",
               },
