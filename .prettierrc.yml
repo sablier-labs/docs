@@ -7,10 +7,14 @@ tabWidth: 2
 trailingComma: "all"
 
 overrides:
-  - files: ["*.tsx"]
+  - files: ["*.ts", "*.tsx"]
     options:
-      importOrder:
+      importOrder: #https://github.com/trivago/prettier-plugin-sort-imports#importorder
+        - "^react"
+        - "^@emotion"
         - "<THIRD_PARTY_MODULES>"
+        - "<THIRD_PARTY_TS_TYPES>"
+        - "<TS_TYPES>"
         - "^[./]"
       importOrderSeparation: false
       importOrderSortSpecifiers: true

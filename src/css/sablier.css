@@ -1,0 +1,88 @@
+:root {
+  --sablier-color-black: #000000;
+  --sablier-color-dark000: #14161f;
+  --sablier-color-dark000-50: #14161f50;
+  --sablier-color-dark050: #1a1d28;
+  --sablier-color-dark050-keep: #1a1d28;
+  --sablier-color-dark050-50: #1a1d2850;
+  --sablier-color-dark100: #1e212f;
+  --sablier-color-dark100-50: #1e212f50;
+  --sablier-color-dark150: #212433;
+  --sablier-color-dark200: #242838;
+  --sablier-color-dark200-50: #24283850;
+  --sablier-color-dark250: #262a3b;
+  --sablier-color-dark300: #2a2e41;
+  --sablier-color-dark300-50: #2a2e4150;
+  --sablier-color-dark400: #30354a;
+  --sablier-color-dark400-50: #30354a50;
+  --sablier-color-dark500: #363b54;
+  --sablier-color-dark500-50: #363b5450;
+  --sablier-color-dark600: #3c425d;
+  --sablier-color-dark700: #424966;
+  --sablier-color-dark800: #484f70;
+  --sablier-color-dark900: #4e5679;
+  --sablier-color-dark1000: #545c82;
+  --sablier-color-gray100: #e1e4ea;
+  --sablier-color-gray200: #c3c9d5;
+  --sablier-color-gray300: #a5aec0;
+  --sablier-color-gray400: #8792ab;
+  --sablier-color-gray500: #6a7795;
+  --sablier-color-green: #00d395;
+  --sablier-color-primaryEnd: #ffb800;
+  --sablier-color-primaryMiddle: #ff9c00;
+  --sablier-color-primaryStart: #ff7300;
+  --sablier-color-red: #e52e52;
+  --sablier-color-redEnd: #c9183b;
+  --sablier-color-redDesaturated: #db3959;
+  --sablier-color-redStart: #e52e52;
+  --sablier-color-secondaryDesaturated: #266cd9;
+  --sablier-color-secondaryEnd: #00b7ff;
+  --sablier-color-secondaryMiddle: #0063ff;
+  --sablier-color-secondaryStart: #003dff;
+  --sablier-color-transparent: transparent;
+  --sablier-color-white: #ffffff;
+  --sablier-color-background: var(--sablier-color-dark000);
+  --sablier-color-backgroundLights: #484f70;
+  --sablier-color-border: #2a2e41;
+  --sablier-color-borderLanding: #1e212f;
+  --sablier-color-dark: #14161f;
+  --sablier-color-inputBorder: #30354a;
+  --sablier-color-light: #ffffff;
+  --sablier-color-modalBackground: #1e212f;
+  --sablier-color-modalDetailsBackground: #1e212f;
+  --sablier-color-orange: #ff9c00;
+  --sablier-color-text: #e1e4ea;
+  --sablier-color-thumbnailEnd: rgba(255, 156, 0, 0.01);
+  --sablier-color-thumbnailStart: rgba(255, 156, 0, 0.25);
+  --sablier-color-yellow: #ffb800;
+
+  --sablier-size-content: 960px;
+  --sablier-size-edge: 16px;
+  --sablier-size-light: 0.4;
+}
+
+/* TODO:
+ * Refactor explicitly used color "names" to "purpose" when the v2-interfaces will support light mode.
+ * This will keep --sablier-color-<shade> raw and unchanged, while --sablier-color-<purpose> can adapt with the theme (light/dark).
+ */
+
+[data-theme="light"] {
+  --sablier-color-white: #1a1d28;
+  --sablier-color-dark000: #ffffff;
+  --sablier-color-dark000-50: #ffffff50;
+  --sablier-color-dark050: #eeeeee;
+  --sablier-color-dark050-50: #eeeeee50;
+  --sablier-color-dark100: #eeeeee;
+  --sablier-color-dark100-50: #eeeeee50;
+  --sablier-color-dark200: #eeeeee;
+  --sablier-color-dark200-50: #eeeeee50;
+  --sablier-color-gray200: #242838;
+  --sablier-color-dark300: #c3c9d5;
+  --sablier-color-dark400: #c3c9d5;
+
+  --sablier-size-light: 1;
+  --sablier-color-border: #c3c9d5;
+  --sablier-color-borderLanding: #e1e4ea;
+}
+
+@import url("https://fonts.googleapis.com/css2?family=Urbanist:wght@200;300;400;500;600;700;800;900&display=swap");

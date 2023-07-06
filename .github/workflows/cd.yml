@@ -33,7 +33,7 @@ jobs:
         run: "pnpm install"
 
       - name: "Lint the code"
-        run: "pnpm lint"
+        run: "pnpm check"
 
       - name: "Pull Vercel environment information"
         run: "pnpm vercel pull --environment=production --token=$VERCEL_TOKEN --yes"

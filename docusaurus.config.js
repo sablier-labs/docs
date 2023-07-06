@@ -19,7 +19,7 @@ const config = {
     [
       "classic",
       /** @type {import('@docusaurus/preset-classic').Options} */
-      ({
+      {
         docs: {
           editUrl: "https://github.com/sablier-labs/docs/tree/main/",
           rehypePlugins: [katex],
@@ -28,9 +28,9 @@ const config = {
           sidebarPath: require.resolve("./sidebars.js"),
         },
         theme: {
-          customCss: require.resolve("./src/css/custom.css"),
+          customCss: [require.resolve("./src/css/sablier.css"), require.resolve("./src/css/custom.css")],
         },
-      }),
+      },
     ],
   ],
   plugins: [
@@ -71,6 +71,7 @@ const config = {
       type: "text/css",
     },
   ],
+  staticDirectories: ["static"],
   themes: ["@docusaurus/theme-mermaid", "docusaurus-theme-github-codeblock"],
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
@@ -185,7 +186,12 @@ const config = {
           {
             label: "Discord",
             position: "right",
-            to: "https://discord.gg/bSwRCwWRsT",
+            to: "http://discord.sablier.com",
+          },
+          {
+            label: "Links",
+            position: "right",
+            to: "https://linktr.ee/SablierLabs",
           },
           {
             label: "GitHub",
