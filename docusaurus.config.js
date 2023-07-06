@@ -189,14 +189,14 @@ const config = {
             to: "http://discord.sablier.com",
           },
           {
-            label: "Links",
-            position: "right",
-            to: "https://linktr.ee/SablierLabs",
-          },
-          {
             label: "GitHub",
             position: "right",
             to: "https://github.com/sablier-labs",
+          },
+          {
+            label: "Links",
+            position: "right",
+            to: "https://linktr.ee/SablierLabs",
           },
         ],
         logo: {
