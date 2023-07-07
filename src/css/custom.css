@@ -8,8 +8,6 @@
 :root {
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
 
-  --ifm-link-color: var(--sablier-color-secondaryDesaturated);
-
   --ifm-code-font-size: 95%;
   --ifm-color-primary: #f77423;
   --ifm-color-primary-dark: #c65d1c;
@@ -18,6 +16,7 @@
   --ifm-color-primary-light: #f9904f;
   --ifm-color-primary-lighter: #faac7b;
   --ifm-color-primary-lightest: #fcc7a7;
+  --ifm-link-color: var(--sablier-color-secondaryDesaturated);
 
   --ifm-container-width: var(--sablier-size-content);
   --ifm-footer-background-color: var(--sablier-color-dark100);
