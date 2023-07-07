@@ -29,8 +29,8 @@ structure, pre-configured Sablier imports, and a selection of sample contracts a
 To install it, simply execute the following commands:
 
 ```shell
-$ mkdir sablier-integration-template && cd sablier-integration-template
-$ forge init --template sablier-labs/sablier-integration-template
+$ mkdir sablier-v2-integration-template && cd sablier-v2-integration-template
+$ forge init --template sablier-v2-integration-template
 $ pnpm install
 ```
 
