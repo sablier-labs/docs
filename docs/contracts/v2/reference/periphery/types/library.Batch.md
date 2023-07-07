@@ -1,6 +1,6 @@
 # Batch
 
-[Git Source](https://github.com/sablier-labs/v2-periphery/blob/a17edc8e290789f96ef9ddaf0e4d1c99d8ce1acf/src/types/DataTypes.sol)
+[Git Source](https://github.com/sablier-labs/v2-periphery/blob/0c389e73d0b3467ccfab52e98140aad7c099aacf/src/types/DataTypes.sol)
 
 ## Structs
 
