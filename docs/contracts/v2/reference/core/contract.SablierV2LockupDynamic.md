@@ -11,7 +11,7 @@ sidebar_position: 2
 [SablierV2Lockup](/docs/contracts/v2/reference/core/abstracts/abstract.SablierV2Lockup.md)
 
 See the documentation in
-[ISablierV2LockupDynamic](docs/contracts/v2/reference/core/interfaces/interface.ISablierV2LockupDynamic.md).
+[ISablierV2LockupDynamic](/docs/contracts/v2/reference/core/interfaces/interface.ISablierV2LockupDynamic.md).
 
 ## State Variables
 

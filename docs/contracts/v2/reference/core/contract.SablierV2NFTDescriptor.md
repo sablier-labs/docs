@@ -6,7 +6,7 @@
 [ISablierV2NFTDescriptor](/docs/contracts/v2/reference/core/interfaces/interface.ISablierV2NFTDescriptor.md)
 
 See the documentation in
-[ISablierV2NFTDescriptor](docs/contracts/v2/reference/core/interfaces/interface.ISablierV2NFTDescriptor.md).
+[ISablierV2NFTDescriptor](/docs/contracts/v2/reference/core/interfaces/interface.ISablierV2NFTDescriptor.md).
 
 ## Functions
 

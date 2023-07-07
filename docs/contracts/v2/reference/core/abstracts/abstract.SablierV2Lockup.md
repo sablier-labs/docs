@@ -5,7 +5,7 @@
 **Inherits:** IERC4906, [SablierV2Base](/docs/contracts/v2/reference/core/abstracts/abstract.SablierV2Base.md),
 [ISablierV2Lockup](/docs/contracts/v2/reference/core/interfaces/interface.ISablierV2Lockup.md), ERC721
 
-See the documentation in [ISablierV2Lockup](docs/contracts/v2/reference/core/interfaces/interface.ISablierV2Lockup.md).
+See the documentation in [ISablierV2Lockup](/docs/contracts/v2/reference/core/interfaces/interface.ISablierV2Lockup.md).
 
 ## State Variables
 

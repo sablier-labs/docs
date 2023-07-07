@@ -63,11 +63,11 @@ run() {
   sd "\{SablierV2LockupLinear\}" "[SablierV2LockupLinear]($core/contract.SablierV2LockupLinear.md)" $(find $reference -type f -name "*.md")
 
   # Replace the interface references, e.g. {ISablierV2Lockup}, with hyperlinks
-  sd "\{I(\w+)\}" "[I\$1]($reference/interfaces/interface.I\$1.md)" $(find $reference -type f -name "*.md")
+  sd "\{I(\w+)\}" "[I\$1](/$reference/interfaces/interface.I\$1.md)" $(find $reference -type f -name "*.md")
 
   # Replace the contract references, e.g. {SablierV2LockupLinear}, with hyperlinks
   # Note: abstract contracts won't work
-  sd "\{SablierV2(\w+)\}" "[SablierV2\$1]($reference/contract.SablierV2\$1.md)" $(find $reference -type f -name "*.md")
+  sd "\{SablierV2(\w+)\}" "[SablierV2\$1](/$reference/contract.SablierV2\$1.md)" $(find $reference -type f -name "*.md")
 }
 
 # ---------------------------------------------------------------------------- #
