@@ -4,7 +4,7 @@
 
 **Inherits:** [IAdminable](/docs/contracts/v2/reference/core/interfaces/interface.IAdminable.md)
 
-See the documentation in [IAdminable](docs/contracts/v2/reference/core/interfaces/interface.IAdminable.md).
+See the documentation in [IAdminable](/docs/contracts/v2/reference/core/interfaces/interface.IAdminable.md).
 
 ## State Variables
 

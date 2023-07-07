@@ -1,3 +1,7 @@
+---
+sidebar_position: 3
+---
+
 # SablierV2NFTDescriptor
 
 [Git Source](https://github.com/sablier-labs/v2-core/blob/412ec3d3998a766507de96afdb26c797d2ae491d/docs/contracts/v2/reference/core)
@@ -6,7 +10,7 @@
 [ISablierV2NFTDescriptor](/docs/contracts/v2/reference/core/interfaces/interface.ISablierV2NFTDescriptor.md)
 
 See the documentation in
-[ISablierV2NFTDescriptor](docs/contracts/v2/reference/core/interfaces/interface.ISablierV2NFTDescriptor.md).
+[ISablierV2NFTDescriptor](/docs/contracts/v2/reference/core/interfaces/interface.ISablierV2NFTDescriptor.md).
 
 ## Functions
 

@@ -10,7 +10,7 @@ sidebar_position: 1
 Adminable
 
 _See the documentation in
-[ISablierV2Archive](docs/contracts/v2/reference/periphery/interfaces/interface.ISablierV2Archive.md)._
+[ISablierV2Archive](/docs/contracts/v2/reference/periphery/interfaces/interface.ISablierV2Archive.md)._
 
 ## State Variables
 

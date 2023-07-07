@@ -6,7 +6,7 @@
 [ISablierV2Base](/docs/contracts/v2/reference/core/interfaces/interface.ISablierV2Base.md),
 [Adminable](/docs/contracts/v2/reference/core/abstracts/abstract.Adminable.md)
 
-See the documentation in [ISablierV2Base](docs/contracts/v2/reference/core/interfaces/interface.ISablierV2Base.md).
+See the documentation in [ISablierV2Base](/docs/contracts/v2/reference/core/interfaces/interface.ISablierV2Base.md).
 
 ## State Variables
 

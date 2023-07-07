@@ -11,7 +11,7 @@ sidebar_position: 3
 [OnlyDelegateCall](/docs/contracts/v2/reference/periphery/abstracts/abstract.OnlyDelegateCall.md)
 
 See the documentation in
-[ISablierV2ProxyTarget](docs/contracts/v2/reference/periphery/interfaces/interface.ISablierV2ProxyTarget.md).
+[ISablierV2ProxyTarget](/docs/contracts/v2/reference/periphery/interfaces/interface.ISablierV2ProxyTarget.md).
 
 ## State Variables
 

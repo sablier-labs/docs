@@ -10,7 +10,7 @@ sidebar_position: 2
 [ISablierV2ProxyPlugin](/docs/contracts/v2/reference/periphery/interfaces/interface.ISablierV2ProxyPlugin.md)
 
 See the documentation in
-[ISablierV2ProxyPlugin](docs/contracts/v2/reference/periphery/interfaces/interface.ISablierV2ProxyPlugin.md).
+[ISablierV2ProxyPlugin](/docs/contracts/v2/reference/periphery/interfaces/interface.ISablierV2ProxyPlugin.md).
 
 ## State Variables
 

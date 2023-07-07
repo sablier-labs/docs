@@ -1,5 +1,5 @@
 ---
-sidebar_position: 3
+sidebar_position: 4
 ---
 
 # SablierV2Comptroller
@@ -10,7 +10,7 @@ sidebar_position: 3
 [Adminable](/docs/contracts/v2/reference/core/abstracts/abstract.Adminable.md)
 
 See the documentation in
-[ISablierV2Comptroller](docs/contracts/v2/reference/core/interfaces/interface.ISablierV2Comptroller.md).
+[ISablierV2Comptroller](/docs/contracts/v2/reference/core/interfaces/interface.ISablierV2Comptroller.md).
 
 ## State Variables
 

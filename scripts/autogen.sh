@@ -63,11 +63,11 @@ run() {
   sd "\{SablierV2LockupLinear\}" "[SablierV2LockupLinear]($core/contract.SablierV2LockupLinear.md)" $(find $reference -type f -name "*.md")
 
   # Replace the interface references, e.g. {ISablierV2Lockup}, with hyperlinks
-  sd "\{I(\w+)\}" "[I\$1]($reference/interfaces/interface.I\$1.md)" $(find $reference -type f -name "*.md")
+  sd "\{I(\w+)\}" "[I\$1](/$reference/interfaces/interface.I\$1.md)" $(find $reference -type f -name "*.md")
 
   # Replace the contract references, e.g. {SablierV2LockupLinear}, with hyperlinks
   # Note: abstract contracts won't work
-  sd "\{SablierV2(\w+)\}" "[SablierV2\$1]($reference/contract.SablierV2\$1.md)" $(find $reference -type f -name "*.md")
+  sd "\{SablierV2(\w+)\}" "[SablierV2\$1](/$reference/contract.SablierV2\$1.md)" $(find $reference -type f -name "*.md")
 }
 
 # ---------------------------------------------------------------------------- #
@@ -90,8 +90,11 @@ echo "$(echo -en '---\nsidebar_position: 1\n---\n'; cat $contract)" > $contract
 contract=$core/contract.SablierV2LockupDynamic.md
 echo "$(echo -en '---\nsidebar_position: 2\n---\n'; cat $contract)" > $contract
 
-contract=$core/contract.SablierV2Comptroller.md
+contract=$core/contract.SablierV2NFTDescriptor.md
 echo "$(echo -en '---\nsidebar_position: 3\n---\n'; cat $contract)" > $contract
+
+contract=$core/contract.SablierV2Comptroller.md
+echo "$(echo -en '---\nsidebar_position: 4\n---\n'; cat $contract)" > $contract
 
 # ---------------------------------------------------------------------------- #
 #                                 V2 Periphery                                 #
