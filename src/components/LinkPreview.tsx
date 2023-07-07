@@ -51,6 +51,12 @@ const Subtitle = styled.span`
   text-transform: none;
 `;
 
+const StyledGitHubIcon = styled.div`
+  svg {
+    fill: var(--ifm-font-color-base);
+  }
+`;
+
 interface LinkPreviewProps {
   href: string;
   icon: "github";
@@ -62,7 +68,11 @@ export default function LinkPreview(props: LinkPreviewProps) {
   const renderIcon = useCallback(() => {
     switch (props.icon) {
       case "github":
-        return <GitHubIcon size={28} />;
+        return (
+          <StyledGitHubIcon>
+            <GitHubIcon size={28} />
+          </StyledGitHubIcon>
+        );
       default:
         return <SablierIcon height={28} width={28} />;
     }
