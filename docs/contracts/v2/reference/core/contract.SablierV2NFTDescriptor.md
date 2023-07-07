@@ -1,3 +1,7 @@
+---
+sidebar_position: 3
+---
+
 # SablierV2NFTDescriptor
 
 [Git Source](https://github.com/sablier-labs/v2-core/blob/412ec3d3998a766507de96afdb26c797d2ae491d/docs/contracts/v2/reference/core)

@@ -90,8 +90,11 @@ echo "$(echo -en '---\nsidebar_position: 1\n---\n'; cat $contract)" > $contract
 contract=$core/contract.SablierV2LockupDynamic.md
 echo "$(echo -en '---\nsidebar_position: 2\n---\n'; cat $contract)" > $contract
 
-contract=$core/contract.SablierV2Comptroller.md
+contract=$core/contract.SablierV2NFTDescriptor.md
 echo "$(echo -en '---\nsidebar_position: 3\n---\n'; cat $contract)" > $contract
+
+contract=$core/contract.SablierV2Comptroller.md
+echo "$(echo -en '---\nsidebar_position: 4\n---\n'; cat $contract)" > $contract
 
 # ---------------------------------------------------------------------------- #
 #                                 V2 Periphery                                 #
