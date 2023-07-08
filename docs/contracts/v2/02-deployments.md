@@ -1,5 +1,5 @@
 ---
-id: "addresses"
+id: "deployments"
 sidebar_position: 2
 title: "Deployment Addresses"
 ---
