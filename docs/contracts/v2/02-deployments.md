@@ -1,8 +1,34 @@
 ---
 id: "deployments"
+toc_max_heading_level: 2
 sidebar_position: 2
 title: "Deployment Addresses"
 ---
+
+The latest versions of [@sablier/v2-core][v2-core] and [@sablier/v2-periphery][v2-periphery] are deployed at the
+addresses listed below.
+
+[v2-core]: (https://npmjs.com/package/@sablier/v2-core)
+[v2-periphery]: (https://npmjs.com/package/@sablier/v2-periphery)
+
+Here a few noteworthy details about the deployments:
+
+- The addresses are final
+- All LockupLinear and LockupDynamic contracts are non-upgradeable (see [Governance](/concepts/governance))
+- The source code is verified on Etherscan across all chains
+- Compiler settings:
+  - Solidity v0.8.19
+  - EVM version: Paris
+  - Optimized enabled with 1,000 runs (in V2 Core) and 10,000 runs (in V2 Periphery)
+  - [Via IR](https://docs.soliditylang.org/en/v0.8.19/ir-breaking-changes.html) enabled
+
+:::note
+
+Came here looking for the V1 addresses? [Click here](/contracts/v1/deployments).
+
+Or maybe you're looking for the PRBProxy deployments? Check out [prbproxy.com](https://prbproxy.com/)
+
+:::
 
 ## Mainnet
 
