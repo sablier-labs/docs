@@ -20,6 +20,13 @@ chain where Sablier is deployed:
 The Comptroller is a special contract that holds configuration parameters. To learn more about the Comptroller, see its
 [reference](/contracts/v2/reference/core/contract.SablierV2Comptroller).
 
+:::info
+
+While the Comptroller holds configuration parameters for flash loaning, no Sablier contract currently implements this
+feature.
+
+:::
+
 ## Multisig Addresses
 
 Here are the multisig addresses that are currently administering the Sablier Protocol:
