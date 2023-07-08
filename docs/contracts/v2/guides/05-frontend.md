@@ -1,4 +1,5 @@
 ---
+draft: true
 id: "frontend"
 sidebar_position: 6
 title: "Front-End Integrations"
