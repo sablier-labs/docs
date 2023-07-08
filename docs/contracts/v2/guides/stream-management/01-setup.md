@@ -42,7 +42,7 @@ contract StreamManagement {
 ```
 
 Just like in the create stream guides, the next step requires you to head over to the
-[Deployment Addresses](/contracts/v2/addresses) page and copy the address of the Sablier contract you intend to use
+[Deployment Addresses](/contracts/v2/deployments) page and copy the address of the Sablier contract you intend to use
 (either Lockup Linear or Lockup Dynamic). Then, you can deploy the stream management contract:
 
 ```solidity

@@ -96,6 +96,10 @@ never decrease.
 Sablier contracts that are useful, but not required for Sablier to exist. New periphery contracts can always be deployed
 without migrating streams.
 
+## Protocol Admin
+
+An entity with exclusive access to specific functions of the protocol.
+
 ## Renounce
 
 A renounced stream is a stream that cannot be canceled anymore.
@@ -131,14 +135,13 @@ transactions.
 
 ## Segment
 
-A data entity with three properties:
+A data object that encapsulates three properties:
 
 1. Amount
 2. Exponent
 3. Milestone
 
-A segment is an essential component of a Lockup Dynamic stream, as it facilitates the calculation of the custom
-streaming curve.
+Segments are an essential component of Lockup Dynamic, as they facilitate the calculation of the custom streaming curve.
 
 ## Start time
 
@@ -162,12 +165,14 @@ up a specified amount of assets.
 
 ## Streaming
 
-The action of making by-the-second payments.
+By-the-second payments.
 
 ## Vesting
 
-One of the most popular use cases for streaming. The purpose of vesting is to delay gratification. Founders, investors,
-and employees must wait a certain amount of time before being able to access tokens.
+One of the most popular use cases for streaming today.
+
+The purpose of vesting is to delay gratification. Founders, investors, and employees must wait a certain amount of time
+before being able to access tokens.
 
 <!-- Links -->
 

@@ -1,18 +1,18 @@
 ---
-id: chains
-title: Chains
+id: deployments
+title: Deployments
 sidebar_position: 3
 ---
 
 Depending on what [EVM](https://ethereum.org/en/developers/docs/evm/) chains you want to use Sablier on, you will need
-to use a different contract address. Sablier runs on top of one single master contract that manages all streams.
+to use a different contract address. Sablier V1 runs on top of a singleton contract that manages all streams.
 
 ## Official deployments
 
 Official deployments are deployments made by the Sablier team and supported in the
 [official user interface](https://pay.sablier.finance).
 
-### Sablier v1.1
+### Sablier V1.1
 
 | Contract    | Chain            | Address                                                                                                                              |
 | ----------- | ---------------- | ------------------------------------------------------------------------------------------------------------------------------------ |
@@ -25,7 +25,7 @@ Official deployments are deployments made by the Sablier team and supported in t
 | Sablier.sol | Ronin            | [0xDe9dCc27aa1552d591Fc9B9c21881feE43BD8118](https://explorer.roninchain.com/address/ronin:de9dcc27aa1552d591fc9b9c21881fee43bd8118) |
 | Sablier.sol | Goerli           | [0xFc7E3a3073F88B0f249151192812209117C2014b](https://goerli.etherscan.io/address/0xFc7E3a3073F88B0f249151192812209117C2014b)         |
 
-### Sablier v1.0
+### Sablier V1.0
 
 _This is an outdated deployment_.
 

@@ -49,7 +49,7 @@ const config = {
           },
           {
             from: "/protocol/guides/chains",
-            to: "/contracts/v1/guides/chains",
+            to: "/contracts/v1/guides/deployments",
           },
           {
             from: "/protocol/introduction",
