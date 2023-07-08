@@ -1,9 +1,9 @@
 import React from "react";
 import styled from "@emotion/styled";
 import Link from "@docusaurus/Link";
-import { links } from "../../../constants";
-import GitHubIcon from "../../../icons/GitHubIcon";
-import MediumIcon from "../../../icons/MediumIcon";
+import { links } from "../../constants";
+import GitHubIcon from "../../icons/GitHubIcon";
+import MediumIcon from "../../icons/MediumIcon";
 
 const Wrapper = styled.main`
   display: flex;
@@ -112,7 +112,7 @@ function Socials() {
           </StyledMediumIcon>
           <div>
             <h4>Medium</h4>
-            <p>Follow our announcements on our blog.</p>
+            <p>Follow the announcements on our blog.</p>
           </div>
         </Social>
       </List>

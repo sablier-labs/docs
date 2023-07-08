@@ -3,8 +3,8 @@ import styled from "@emotion/styled";
 import CubeIcon from "@heroicons/react/24/outline/CubeIcon";
 import DocumentTextIcon from "@heroicons/react/24/outline/DocumentTextIcon";
 import LightBulbIcon from "@heroicons/react/24/outline/LightBulbIcon";
-import Feature from "../../molecules/Feature";
-import Underlay from "./Underlay";
+import Feature from "../molecules/Feature";
+import Underlay from "./Header/Underlay";
 
 const Wrapper = styled.header`
   width: 100%;
@@ -95,7 +95,7 @@ export default function Header() {
           <h1>Sablier Docs</h1>
         </Title>
         <Subtitle>
-          <p>The cryptoasset streaming protocol&apos;s documentation</p>
+          <p>Documentation for the Sablier cryptoasset streaming protocol</p>
         </Subtitle>
         <Collection>
           <Feature
@@ -105,13 +105,13 @@ export default function Header() {
             to={"/concepts/what-is-sablier"}
           />
           <Feature
-            description={"Contract documentation, deployments, technical references"}
+            description={"Deployment addresses, setup guides, and technical reference"}
             Icon={DocumentTextIcon}
             title={"Contracts"}
             to={"/contracts/v2/overview"}
           />
           <Feature
-            description={"Related utilities such as the subgraph"}
+            description={"Off-chain utilities such as the subgraph"}
             Icon={CubeIcon}
             title={"APIs"}
             to={"/api/subgraphs/overview"}

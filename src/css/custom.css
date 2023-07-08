@@ -26,18 +26,18 @@
   --ifm-navbar-background-color: var(--sablier-color-background);
 }
 
-html {
-  -moz-osx-font-smoothing: grayscale;
-  font-weight: 500;
-  padding: 0 !important;
-  text-rendering: optimizeLegibility;
-}
-
 body .footer {
   background: var(--sablier-color-dark050-keep) !important;
   border-top: 2px solid var(--sablier-color-border);
   font-weight: 500;
   padding-top: 60px;
+}
+
+html {
+  -moz-osx-font-smoothing: grayscale;
+  font-weight: 500;
+  padding: 0 !important;
+  text-rendering: optimizeLegibility;
 }
 
 html[data-theme="dark"] {
