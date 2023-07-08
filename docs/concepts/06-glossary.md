@@ -58,12 +58,6 @@ A global, open-source platform for decentralized applications.
 
 The technical architecture of Ethereum, which many other blockchains have appropriated.
 
-## Flash Loan
-
-A way to access the entire liquidity of the Sablier Protocol within one transaction as long as the principal plus a
-flash fee is returned. Sablier's flash loan implementation adheres to
-[ERC-3156](https://eips.ethereum.org/EIPS/eip-3156).
-
 ## Foundry
 
 [Foundry][foundry] is the application development toolkit that has been used to develop the Sablier Protocol.

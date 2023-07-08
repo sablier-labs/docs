@@ -60,7 +60,7 @@ As an immutable protocol, Sablier is not upgradeable, meaning that no party can 
 transactions, or alter the users' streams in any way. This ensures the system remains transparent, secure, and resistant
 to manipulation or abuse.
 
-It is worth noting that the protocol admin has the right (but not the obligation) to impose a fee on every stream
+It is worth noting that the Protocol Admin has the right (but not the obligation) to impose a fee on every stream
 created using specific ERC-20 assets. However, this capability is known to all participants in advance, and to avert
 misuse, the fee percentage is restricted to a range of 0% to 10%.
 
