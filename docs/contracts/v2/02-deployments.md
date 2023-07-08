@@ -19,7 +19,7 @@ Here a few noteworthy details about the deployments:
 - Compiler settings:
   - Solidity v0.8.19
   - EVM version: Paris
-  - Optimized enabled with 1,000 runs (in V2 Core) and 10,000 runs (in V2 Periphery)
+  - Optimized enabled with 1000 runs (in V2 Core) and 10,000 runs (in V2 Periphery)
   - [Via IR](https://docs.soliditylang.org/en/v0.8.19/ir-breaking-changes.html) enabled
 
 :::note
