@@ -8,8 +8,8 @@ title: "Deployment Addresses"
 The latest versions of [@sablier/v2-core][v2-core] and [@sablier/v2-periphery][v2-periphery] are deployed at the
 addresses listed below.
 
-[v2-core]: (https://npmjs.com/package/@sablier/v2-core)
-[v2-periphery]: (https://npmjs.com/package/@sablier/v2-periphery)
+[v2-core]: https://npmjs.com/package/@sablier/v2-core
+[v2-periphery]: https://npmjs.com/package/@sablier/v2-periphery
 
 Here a few noteworthy details about the deployments:
 
@@ -24,7 +24,7 @@ Here a few noteworthy details about the deployments:
 
 :::note
 
-Came here looking for the V1 addresses? [Click here](/contracts/v1/deployments).
+Came here looking for the V1 addresses? [Click here](/contracts/v1/guides/deployments).
 
 Or maybe you're looking for the PRBProxy deployments? Check out [prbproxy.com](https://prbproxy.com/)
 
