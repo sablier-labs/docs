@@ -6,7 +6,7 @@ title: "Development"
 
 import LinkPreview from "@site/src/components/LinkPreview";
 
-# Development
+## Integrating
 
 To integrate the Sablier V2 subgraph into your own product, start from the official subgraph repository. We recommend
 using:
