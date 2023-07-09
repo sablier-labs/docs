@@ -6,18 +6,19 @@ title: "Fees"
 
 import { links } from "@site/src/constants";
 
-There are two types of fees in Sablier: protocol fees and broker fees.
+There are two types of fees in Sablier: protocol fees and broker fees. Both are charged when a stream is created. In the
+event of an early stream cancellation, the fees are not refunded.
 
 ## Protocol Fees
 
-The protocol features a fee parameter that the [Protocol Admin](/concepts/governance) can enable for specific ERC-20
-assets.
+The Sablier Protocol features a fee parameter that the [Protocol Admin](/concepts/governance) can enable for specific
+ERC-20 assets.
 
 This fee is charged as a percentage of the streamed amount (not a flat rate), and it applies globally to all streams
 created with a particular ERC-20 asset, regardless of the stream creation method — be it through the Sablier Interface
 or a third-party front-end application integrating the Sablier Protocol.
 
-The admin has the ability to modify the protocol fee for individual ERC-20 assets; however, no fee may exceed the
+The Admin has the ability to modify the protocol fee for individual ERC-20 assets; however, no fee can exceed the
 hard-coded limit of 10%.
 
 :::note
@@ -28,14 +29,13 @@ The protocol fee is currently set to 0% for all ERC-20 assets.
 
 ## Broker fees
 
-In the Sablier ecosystem, a "broker" refers to any third-party entity that interacts with the Sablier Protocol on behalf
-of other users. These brokers have the ability to charge service fees for facilitating such interactions.
+In the Sablier ecosystem, a "broker" is any third-party entity that interacts with the Sablier Protocol on behalf of
+other users. These brokers have the ability to charge service fees for facilitating such interactions.
 
 Broker fees are particularly useful for front-end applications that integrate the Sablier Protocol. They enable
 front-end operators to levy a fee on each Sablier stream created through their platform.
 
-Just like with protocol fees, the broker fee is a percentage of the total amount streamed, and it cannot be higher than
-10%.
+Just like with protocol fees, the broker fee is a percentage of the streamed amount, and it cannot be higher than 10%.
 
 :::note
 
