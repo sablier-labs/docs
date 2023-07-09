@@ -1,5 +1,5 @@
 ---
-id: "deployandinstallplugin"
+id: "deploy-and-install-plugin"
 sidebar_position: 2
 title: "Deploy and install plugin"
 ---
@@ -19,27 +19,27 @@ Declare the Solidity version used to compile the contract:
 pragma solidity >=0.8.19;
 ```
 
-Import the relevant symbols from `@prb/proxy` and `@sablier/v2-periphery`:
+Import the relevant symbols from `@sablier/v2-periphery`:
 
 ```solidity
-import { IPRBProxy } from "@prb/proxy/interfaces/IPRBProxy.sol";
-import { IPRBProxyRegistry } from "@prb/proxy/interfaces/IPRBProxyRegistry.sol";
+import { IPRBProxy, IPRBProxyRegistry } from "@sablier/v2-periphery/types/Proxy.sol";
 import { ISablierV2ProxyPlugin } from "@sablier/v2-periphery/interfaces/ISablierV2ProxyPlugin.sol";
 ```
 
 Create a contract called `ProxyDeployerAndPluginInstaller`, and declare a constant `PROXY_REGISTRY` of type
-`IPRBProxyRegistry` and an immutable variable `sablierProxyPlugin` of type `ISablierV2ProxyPlugin`:
+`IPRBProxyRegistry` and an immutable variable `proxyPlugin` of type `ISablierV2ProxyPlugin`:
 
 ```solidity
 contract ProxyDeployerAndPluginInstaller {
     IPRBProxyRegistry public constant PROXY_REGISTRY = IPRBProxyRegistry(0xD42a2bB59775694c9Df4c7822BfFAb150e6c699D);
-    ISablierV2ProxyPlugin public immutable sablierProxyPlugin;
+    ISablierV2ProxyPlugin public immutable proxyPlugin;
 }
 ```
 
-In the code above, the address of the proxy registry is hard-coded. However, in production, you would likely use an
-input parameter to allow the contract to change the assets it interacts with on a per transaction basis. Keep in mind
-that it's deployed at the same address on these [chains](https://prbproxy.com/deployments).
+In the code above, the address of the Proxy Registry is hard-coded. However, in production, you would likely use an
+input parameter to allow the contract to change the assets it interacts with on a per transaction basis. That being
+said, keep in mind that `PROXY_REGISTRY` is deployed at the same address across these
+[chains](https://prbproxy.com/deployments).
 
 ## Initialization
 
@@ -48,8 +48,8 @@ To initialize the Sablier plugin contract, you first need to grab its address fr
 creator contract:
 
 ```solidity
-constructor(ISablierV2ProxyPlugin sablierProxyPlugin_) {
-    sablierProxyPlugin = sablierProxyPlugin_;
+constructor(ISablierV2ProxyPlugin proxyPlugin_) {
+    proxyPlugin = proxyPlugin_;
 }
 ```
 
@@ -72,20 +72,24 @@ Firstly, we need to make a call on `PROXY_REGISTRY`:
 proxy = PROXY_REGISTRY.getProxy({ owner: address(this) });
 ```
 
-Secondly, we are going to deploy the proxy if doesn't exists and install the plugin.
+Secondly, we are going to deploy the proxy if it doesn't exists and install the plugin.
 
 ```solidity
 if (address(proxy) == address(0)) {
-    // Deploy the proxy if it doesn't exist and install the plugin.
-    proxy = PROXY_REGISTRY.deployAndInstallPlugin({ plugin: sablierProxyPlugin });
+    // If a proxy doesn't exist, deploy one and install the plugin
+    proxy = PROXY_REGISTRY.deployAndInstallPlugin({ plugin: proxyPlugin });
 } else {
-    // If it exists then just install the plugin.
-    PROXY_REGISTRY.installPlugin({ plugin: sablierProxyPlugin });
+    // If the proxy exists, then just install the plugin.
+    PROXY_REGISTRY.installPlugin({ plugin: proxyPlugin });
 }
 ```
 
 ## The complete Plugin deployer And Plugin installer contract
 
+Below you can see the complete functioning code: a contract that queries the Proxy Registry, deploys the proxy if it
+doesn't exist, and installs the plugin. You can access the code on GitHub through
+[this link](https://github.com/sablier-labs/examples/blob/main/v2/core/LockupLinearStreamCreator.sol).
+
 ```solidity reference title="Plugin deployer And Plugin installer"
-https://github.com/sablier-labs/examples/blob/main/v2/periphery/ProxyDeployerAndPluginInstaller.sol
+https://github.com/sablier-labs/examples/blob/main/v2/periphery/DeployProxyAndInstallPlugin.sol
 ```
