@@ -12,34 +12,6 @@ Sablier uses multiple [subgraphs](https://thegraph.com/docs/about/introduction#w
 organizing data from the Sablier smart contracts. These subgraphs are hosted on The Graph Network, as well as on the The
 Graph Hosted Service, and can be used to query Sablier data.
 
-## Sablier V2
-
-### Endpoints
-
-| Chain     | Explorer Page                 | API Endpoint                         |
-| --------- | ----------------------------- | ------------------------------------ |
-| Ethereum  | [Page][v2-explorer-ethereum]  | [Endpoint][v2-endpoint-ethereum][^1] |
-| Arbitrum  | [Page][v2-explorer-arbitrum]  | [Endpoint][v2-endpoint-arbitrum]     |
-| Optimism  | [Page][v2-explorer-optimism]  | [Endpoint][v2-endpoint-optimism]     |
-| Polygon   | [Page][v2-explorer-matic]     | [Endpoint][v2-endpoint-matic]        |
-| Avalanche | [Page][v2-explorer-avalanche] | [Endpoint][v2-endpoint-avalanche]    |
-| BSC       | [Page][v2-explorer-bsc]       | [Endpoint][v2-endpoint-bsc]          |
-
-[v2-endpoint-arbitrum]: https://api.thegraph.com/subgraphs/name/sablier-labs/sablier-v2-arbitrum
-[v2-endpoint-avalanche]: https://api.thegraph.com/subgraphs/name/sablier-labs/sablier-v2-avalanche
-[v2-endpoint-bsc]: https://api.thegraph.com/subgraphs/name/sablier-labs/sablier-v2-bsc
-[v2-endpoint-ethereum]: https://api.thegraph.com/subgraphs/name/sablier-labs/sablier-v2
-[v2-endpoint-optimism]: https://api.thegraph.com/subgraphs/name/sablier-labs/sablier-v2-optimism
-[v2-endpoint-matic]: https://api.thegraph.com/subgraphs/name/sablier-labs/sablier-v2-matic
-[v2-explorer-arbitrum]: https://thegraph.com/hosted-service/subgraph/sablier-labs/sablier-v2-arbitrum
-[v2-explorer-avalanche]: https://thegraph.com/hosted-service/subgraph/sablier-labs/sablier-v2-avalanche
-[v2-explorer-bsc]: https://thegraph.com/hosted-service/subgraph/sablier-labs/sablier-v2-bsc
-[v2-explorer-ethereum]: https://thegraph.com/hosted-service/subgraph/sablier-labs/sablier-v2
-[v2-explorer-optimism]: https://thegraph.com/hosted-service/subgraph/sablier-labs/sablier-v2-optimism
-[v2-explorer-matic]: https://thegraph.com/hosted-service/subgraph/sablier-labs/sablier-v2-matic
-
-### Code
-
 <LinkPreview
   href="https://github.com/sablier-labs/v2-subgraphs"
   icon="github"
@@ -47,44 +19,21 @@ Graph Hosted Service, and can be used to query Sablier data.
   title="Github - sablier-labs/v2-subgraphs: Sablier V2 Subgraphs"
 />
 
-## Sablier V1
+## Architecture
 
-### Endpoints
+To study the architecture of the subgraphs and learn about their design, have a look at the high level
+[Entities](/api/subgraphs/architecture/entities) and their [Structural](/api/subgraphs/architecture/structure) details.
 
-| Chain     | Explorer Page                 | API Endpoint                         |
-| --------- | ----------------------------- | ------------------------------------ |
-| Ethereum  | [Page][v1-explorer-ethereum]  | [Endpoint][v1-endpoint-ethereum][^1] |
-| Arbitrum  | [Page][v1-explorer-arbitrum]  | [Endpoint][v1-endpoint-arbitrum]     |
-| Optimism  | [Page][v1-explorer-optimism]  | [Endpoint][v1-endpoint-optimism]     |
-| Polygon   | [Page][v1-explorer-matic]     | [Endpoint][v1-endpoint-matic]        |
-| Avalanche | [Page][v1-explorer-avalanche] | [Endpoint][v1-endpoint-avalanche]    |
-| BSC       | [Page][v1-explorer-bsc]       | [Endpoint][v1-endpoint-bsc]          |
+## Endpoints
 
-[v1-endpoint-arbitrum]: https://api.thegraph.com/subgraphs/name/sablier-labs/sablier-arbitrum
-[v1-endpoint-avalanche]: https://api.thegraph.com/subgraphs/name/sablier-labs/sablier-avalanche
-[v1-endpoint-bsc]: https://api.thegraph.com/subgraphs/name/sablier-labs/sablier-bsc
-[v1-endpoint-ethereum]:
-  https://gateway.thegraph.com/api/YOUR_API_KEY/subgraphs/id/A5XzhYZ4muyRegVTYmwWbCbKWvD4LTWqac43CEGTEGdK
-[v1-endpoint-optimism]: https://api.thegraph.com/subgraphs/name/sablier-labs/sablier-optimism
-[v1-endpoint-matic]: https://api.thegraph.com/subgraphs/name/sablier-labs/sablier-matic
-[v1-explorer-arbitrum]: https://thegraph.com/hosted-service/subgraph/sablier-labs/sablier-arbitrum
-[v1-explorer-avalanche]: https://thegraph.com/hosted-service/subgraph/sablier-labs/sablier-avalanche
-[v1-explorer-bsc]: https://thegraph.com/hosted-service/subgraph/sablier-labs/sablier-bsc
-[v1-explorer-ethereum]: https://thegraph.com/explorer/subgraph?id=A5XzhYZ4muyRegVTYmwWbCbKWvD4LTWqac43CEGTEGdK
-[v1-explorer-optimism]: https://thegraph.com/hosted-service/subgraph/sablier-labs/sablier-optimism
-[v1-explorer-matic]: https://thegraph.com/hosted-service/subgraph/sablier-labs/sablier-matic
+To start using the subgraphs in your own applications check out the [Endpoints](/api/subgraphs/endpoints).
 
-### Code
+## Queries
 
-<LinkPreview
-  href="https://github.com/sablier-labs/v1-subgraph"
-  icon="github"
-  subtitle="GitHub"
-  title="Github - sablier-labs/v1-subgraph: Sablier V1 Subgraph"
-/>
+To get started integrating the subgraph into your own applications you can extend some of the
+[example](/api/subgraphs/queries) queries. These will also showcase the filtering logic used by our own V2 apps.
 
-[^1]:
-    Because the Ethereum subgraph operates on The Graph Network, you will need to substitute the `YOUR_API_KEY`
-    placeholder in the URL with your own API key. If you require assistance with managing your API keys and configuring
-    indexer preferences, [this article](https://thegraph.com/docs/en/studio/managing-api-keys/) serves as an excellent
-    guide.
+## Development
+
+To contribute, learn or suggest improvements to the subgraphs, check out the official
+[`v2-subgraphs`](https://github.com/sablier-labs/v2-subgraphs) github repository.
