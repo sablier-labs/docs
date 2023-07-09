@@ -11,22 +11,17 @@ addresses listed below.
 [v2-core]: https://npmjs.com/package/@sablier/v2-core
 [v2-periphery]: https://npmjs.com/package/@sablier/v2-periphery
 
-Here a few noteworthy details about the deployments:
+A few noteworthy details about the deployments:
 
 - The addresses are final
 - All LockupLinear and LockupDynamic contracts are non-upgradeable (see [Governance](/concepts/governance))
 - The source code is verified on Etherscan across all chains
-- Compiler settings:
-  - Solidity v0.8.19
-  - EVM version: Paris
-  - Optimized enabled with 1000 runs (in V2 Core) and 10,000 runs (in V2 Periphery)
-  - [Via IR](https://docs.soliditylang.org/en/v0.8.19/ir-breaking-changes.html) enabled
 
 :::note
 
 Came here looking for the V1 addresses? [Click here](/contracts/v1/guides/deployments).
 
-Or maybe you're looking for the PRBProxy deployments? Check out [prbproxy.com](https://prbproxy.com/)
+Or maybe you're looking for the PRBProxy deployments? Check out [prbproxy.com](https://prbproxy.com)
 
 :::
 
