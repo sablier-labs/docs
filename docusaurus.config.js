@@ -120,6 +120,7 @@ const config = {
           },
           {
             title: "Community",
+
             items: [
               {
                 label: "Twitter",
@@ -177,6 +178,11 @@ const config = {
             label: "Contracts",
             position: "left",
             to: "/contracts/v2/overview",
+          },
+          {
+            label: "Apps",
+            position: "left",
+            to: "/apps/overview",
           },
           {
             label: "APIs",

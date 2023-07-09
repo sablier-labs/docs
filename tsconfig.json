@@ -4,7 +4,8 @@
   "compilerOptions": {
     "baseUrl": ".",
     "checkJs": true,
-    "module": "Node16",
+    "moduleResolution": "node",
+    "module": "ESNext",
     "target": "ESNext"
   },
   "exclude": [".docusaurus", "node_modules"],
