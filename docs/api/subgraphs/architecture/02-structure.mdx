@@ -7,13 +7,18 @@ title: "Structure"
 We'll break down the [schema](https://github.com/sablier-labs/v2-subgraphs/blob/main/packages/core/schema.graphql) into
 primary and secondary entities.
 
+| Type      | Entities                                 |
+| --------- | ---------------------------------------- |
+| Primary   | Contract, Action, Stream, Asset, Segment |
+| Secondary | Batch, Batcher, Watcher                  |
+
 ## Contract
 
-The subgraph is designed to track multiple deployments. Therefore, at any given time, there may be multiple instances of
-`SablierV2LockupLinear` or `SablierV2LockupDynamic` contracts the indexer will listen to for updates.
+The subgraph is designed to track multiple deployments. Therefore, at any given time the indexer may listen for updates
+on many instances of `SablierV2LockupLinear` or `SablierV2LockupDynamic` contracts .
 
-A unique `alias` will be attributed to every contract, such that streams will be identifiable through both a long form
-and a short form identifier. See the [Stream](#stream) notes below.
+A unique `alias` will be attributed to every contract, such that contracts (and later streams) will be identifiable
+through both a long form and a short form identifier. See the [Stream](#stream) for details.
 
 ---
 
@@ -24,7 +29,7 @@ Events emitted by the Sablier Lockup contracts will:
 1. Be used to mutate the data stored in the individual `Stream` entities
 2. Be stored as historical logs (list of `Action`) to show the evolution of a related stream
 
-Based on the schema defined ActionCategory, the following actions will be tracked throughout the subgraph:
+Based on the schema defined `ActionCategory`, the following actions will be tracked by the subgraph:
 
 | Action         | Contract Events                                     |
 | -------------- | --------------------------------------------------- |
@@ -39,7 +44,7 @@ Based on the schema defined ActionCategory, the following actions will be tracke
 To keep all actions under the same umbrella, some details will be stored under general purpose attributes like
 `amountA`, `amountB`, `addressA`, `addressB` which based on the type of action can be resolved to context-specific
 values. Am example can be found
-[here](https://github.com/sablier-labs/v2-subgraphs/blob/36db1f3e3c4bd2558016b948b1b284900974d8ae/packages/core/src/mappings/handle-stream.ts#L79-L82),
+[here](https://github.com/sablier-labs/v2-subgraphs/blob/36db1f3e3c4bd2558016b948b1b284900974d8ae/packages/core/src/mappings/handle-stream.ts#L79-L82)
 for the Cancel event.
 
 ---
@@ -49,7 +54,7 @@ for the Cancel event.
 ### Identifying
 
 Inside the contracts, streams will be assigned a unique `tokenId` (or `streamId`). While this makes it easy to identify
-items at the contract level, we need to consider the following for both subgraphs and our interfaces:
+items at the contract level, we need to consider the following for both subgraphs and client interfaces:
 
 - items should be uniquely recognizable across multiple contract instances
 - items should be uniquely identifiable across multiple chains
@@ -62,31 +67,32 @@ To address these observations, the subgraph uses two related identifiers for a S
 | `Stream.id`    | A self-explanatory structure built using the following structure: `contractAddress-chainId-tokenId` | <nobr>`0xAB..12-5-21`</nobr> |
 | `Stream.alias` | A short version of the `id` where the contract is aliased: `contractAlias-chainId-tokenId`          | <nobr>`LL-5-21`</nobr>       |
 
-Both examples from the table above translate to: **_a stream on Goerli (chain id `5`), within the Lockup contract at
-address `0xAB..12`, with the tokenId `21`_**.
+Both examples from the table above translate to: **_a stream on Goerli (chain id `5`), within the Lockup Linear contract
+at address `0xAB..12`, with the tokenId `21`_**.
 
 :::note
 
-The aliases defined in the subgraph will be used by the app to resolve data about a stream. Make sure to keep them in
-sync, avoid conflicts and regard them as immutable (once decided, never change them).
+The aliases defined in the subgraph will be used by client apps to resolve data about a stream. Make sure to keep them
+in sync, avoid conflicts and regard them as immutable (once decided, never change them).
 
 :::
 
 ### Aliases
 
-To provide a simple visual structure, while also accounting for future stream types (backwards compatibility) we start
-by using following abbreviations as aliases:
+To provide a simple visual structure, while also accounting for future stream types (backwards compatibility) we use the
+following abbreviations as aliases:
 
-- LockupLinear contracts become `LL` (e.g. `LL-5-1`)
-- LockupDynamic contracts become `LD` (e.g. `LD-5-1`)
+- Lockup Linear contracts become `LL` (e.g. `LL-5-1`)
+- Lockup Dynamic contracts become `LD` (e.g. `LD-5-1`)
 - Contracts with [flash loans](/contracts/v2/guides/flash-loans) enabled become `LLF` or `LLD`
 
 ### Relevant parties
 
-Within the larger Sablier V2 ecosystem, the number of relevant entities participating in a stream has grown passed a
-`sender` and a `recipient`. Therefore, we identify the following parties involved in a stream.
+Within the larger Sablier V2 ecosystem, the number of relevant entities participating in a stream (and the dynamics
+between them) has grown past the immutable `sender` and `recipient` (as in V1). Therefore, we identify the following
+parties involved in a stream.
 
-#### The recipient
+#### The recipient (gets paid\*)
 
 As funds are being streamed, they will slowly become eligible to withdraw and spend unlocked assets. The `recipient` is
 defined at the start of the stream but can change as a result of a transfer.
@@ -94,12 +100,12 @@ defined at the start of the stream but can change as a result of a transfer.
 On transfer, the old recipient moves the NFT (the stream itself) to another address, which becomes the new recipient.
 Rights to withdraw and claim future streamed funds are naturally transferred to this new address.
 
-#### The sender
+#### The sender (will pay\*)
 
 They are an immutable party, defined at the start of the stream. Based on the configuration chosen for the stream, they
 will be entitles to later cancel the stream, renounce it (disable cancelability) or withdraw on behalf of the recipient.
 
-In case of a cancelation, the `sender` will receive any unstreamed funds as part of the refund.
+In case of a cancelation, the `sender` will receive any unstreamed assets as part of the refund.
 
 #### The funder
 
@@ -112,21 +118,21 @@ while also marking them as the sender. In that case, this initial address will b
 
 While not mandatory for the core functionality, Sablier V2 (through its
 [periphery](https://github.com/sablier-labs/v2-periphery)) makes use of
-[PRBProxy](https://github.com/paulrberg/prb-proxy). The interfaces will mainly provide support for functionality exposed
-through this proxy integration.
+[PRBProxy](https://github.com/paulrberg/prb-proxy). The official client interfaces will mainly provide support for
+functionality exposed through this proxy integration.
 
 For streams crated within this "extended" ecosystem, a few attributes and entities will change meaning as such:
 
 - the `stream.proxied` flag will turn `true`
 - the `stream.sender` address will resolve to a `proxy` contract address, owned by the `stream.proxender`
-- the `stream.proxender` address (usually an EOA) will control this `sender` proxy and direct it to perform actions on
+- the `stream.proxender` address (usually an EOA) will control this `sender` proxy and instruct it to perform actions on
   its behalf (like a special account)
 
 | #   | Examples of supported flows                                                                                          |
 | --- | -------------------------------------------------------------------------------------------------------------------- |
-| 1   | `0xF` the funder (EOA), funds a stream on behalf of `0xA`, the sender (EOA), towards `0xB` the recipient             |
-| 2   | `0xA` the sender (EOA), creates a stream towards `0xB`, the recipient (EOA)                                          |
-| 3   | `0xA` the proxender (EOA), through their proxy `0xA1` (Proxy contract), creates a stream towards `0xB` the recipient |
+| 1   | `0xF` the funder (EOA), funds a stream on behalf of `0xA`, the sender (EOA), towards `0xB` the recipient (EOA)       |
+| 2   | `0xA` the sender (EOA), creates a stream towards `0xB` the recipient (EOA)                                           |
+| 3   | `0xA` the proxender (EOA), through their proxy `0xA1` (proxy contract), creates a stream towards `0xB` the recipient |
 
 While other combinations are possible, the most likely ones (as supported by the official interfaces) will be similar to
 example #3.
