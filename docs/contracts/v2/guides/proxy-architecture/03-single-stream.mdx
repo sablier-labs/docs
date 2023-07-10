@@ -4,9 +4,9 @@ sidebar_position: 3
 title: "Single stream"
 ---
 
-In this guide, we will show you how to create a single stream via the Proxy and Sablier's Proxy Target programmatically.
-
 import AdmonitionSimpleCode from "@site/docs/snippets/AdmonitionSimpleCode.mdx";
+
+In this guide, we will show you how to create a single stream via the Proxy and Sablier's Proxy Target programmatically.
 
 :::note
 
@@ -26,13 +26,13 @@ There are four create functions in the Proxy Target contract, two for each Locku
 
 Lockup Linear:
 
-- [`createWithDurations`](/contracts/v2/guides/create-stream/lockup-linear#create-functions)
-- [`createWithRange`](/contracts/v2/guides/create-stream/lockup-linear#create-functions)
+- [`createWithDurations`](/contracts/v2/reference/core/contract.SablierV2LockupLinear#createwithdurations)
+- [`createWithRange`](/contracts/v2/reference/core/contract.SablierV2LockupLinear#createwithrange)
 
 Lockup Dynamic:
 
-- [`createWithDeltas`](/contracts/v2/guides/create-stream/lockup-dynamic#create-functions)
-- [`createWithMilestones`](/contracts/v2/guides/create-stream/lockup-dynamic#create-functions)
+- [`createWithDeltas`](/contracts/v2/reference/core/contract.SablierV2LockupDynamic#createwithdeltas)
+- [`createWithMilestones`](/contracts/v2/reference/core/contract.SablierV2LockupDynamic#createwithmilestones)
 
 Let's start with a Lockup Linear example:
 
@@ -104,7 +104,7 @@ function singleCreateLockupLinearStream(
     public
     returns (uint256 streamId)
 {
-// ...
+    // ...
 }
 ```
 
@@ -191,7 +191,7 @@ Due to the nature of `delegateCall`, it's necessary to encode the parameters dec
 bytes memory data = abi.encodeCall(proxyTarget.createWithDurations, (lockupLinear, createParams, permit2Params));
 ```
 
-Once this set-up is complete, we can create a single stream via the Proxy and Sablier's proxy target:
+Once this set-up is complete, we can create a single stream via the Proxy and Sablier's Proxy Target:
 
 ```solidity
 bytes memory response = proxy.execute(address(proxyTarget), data);
@@ -205,6 +205,10 @@ streamId = abi.decode(response, (uint256));
 
 ## The complete Single Lockup Linear stream creator contract
 
+Below you can see the complete functioning code: a contract that creates Lockup Linear single streams via the Proxy and
+Sablier's Proxy Target that start at `block.timestamp`. You can access the code on GitHub through this
+[link](https://github.com/sablier-labs/examples/blob/main/v2/periphery/SingleLockupLinearStreamCreator.sol).
+
 ```solidity reference title="Single Lockup Linear stream creator"
 https://github.com/sablier-labs/examples/blob/main/v2/periphery/SingleLockupLinearStreamCreator.sol
 ```
@@ -214,6 +218,10 @@ https://github.com/sablier-labs/examples/blob/main/v2/periphery/SingleLockupLine
 For the Lockup Dynamic example, we can follow the same steps, we will not go through each one again:
 
 ## The complete Single Lockup Dynamic stream creator contract
+
+Below you can see the complete functioning code: a contract that creates Lockup Dynamic single streams via the Proxy and
+Sablier's Proxy Target with predefined segment milestones. You can access the code on GitHub through this
+[link](https://github.com/sablier-labs/examples/blob/main/v2/periphery/SingleLockupDynamicStreamCreator.sol).
 
 ```solidity reference title="Single Lockup Dynamic stream creator"
 https://github.com/sablier-labs/examples/blob/main/v2/periphery/SingleLockupDynamicStreamCreator.sol
