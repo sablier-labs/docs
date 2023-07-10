@@ -120,7 +120,6 @@ const config = {
           },
           {
             title: "Community",
-
             items: [
               {
                 label: "Twitter",
