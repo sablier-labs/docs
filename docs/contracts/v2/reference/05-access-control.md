@@ -1,6 +1,6 @@
 ---
 id: "access-control"
-sidebar_position: 4
+sidebar_position: 5
 title: "Access Control"
 ---
 
@@ -41,9 +41,9 @@ flowchart LR;
     operator((Operator));
     nft[(NFT)];
 
-    recipient-- burn -->nft;
-    recipient-- approve -->operator;
-    operator-- burn -->nft;
+    recipient -- burn -->nft;
+    recipient -- approve -->operator;
+    operator -- burn -->nft;
 ```
 
 ## Cancel
@@ -56,8 +56,8 @@ flowchart LR;
     recipient((Recipient));
     stream[(Stream)];
 
-    sender-- cancel -->stream;
-    recipient-- cancel -->stream;
+    sender -- cancel -->stream;
+    recipient -- cancel -->stream;
 ```
 
 ## Cancel Multiple
@@ -72,8 +72,8 @@ flowchart LR;
   recipient((Recipient));
   streams[(Multiple Streams)];
 
-  sender-- cancelMultiple -->streams;
-  recipient-- cancelMultiple -->streams;
+  sender -- cancelMultiple -->streams;
+  recipient -- cancelMultiple -->streams;
 ```
 
 ## Renounce
@@ -84,7 +84,7 @@ Only the sender can renounce a stream.
 flowchart LR;
     sender((Sender));
     stream[(Stream)];
-    sender-- renounce -->stream;
+    sender -- renounce -->stream;
 ```
 
 ## Transfer NFT
@@ -97,9 +97,9 @@ flowchart LR;
     operator((Operator));
     nft[(NFT)];
 
-    recipient-- transfer -->nft;
-    recipient-- approve -->operator;
-    operator-- transfer -->nft;
+    recipient -- transfer -->nft;
+    recipient -- approve -->operator;
+    operator -- transfer -->nft;
 ```
 
 ## Withdraw
@@ -116,10 +116,10 @@ flowchart LR;
     operator((Operator));
     stream[(Stream)];
 
-    sender-- withdraw --->stream;
-    recipient-- withdraw -->stream;
-    recipient-- approve -->operator;
-    operator-- withdraw -->stream;
+    sender -- withdraw --->stream;
+    recipient -- withdraw -->stream;
+    recipient -- approve -->operator;
+    operator -- withdraw -->stream;
 ```
 
 ## Withdraw Multiple
@@ -135,7 +135,7 @@ flowchart LR;
     operator((Operator));
     streams[(Multiple Streams)];
 
-    recipient-- withdrawMultiple --->streams
-    recipient-- approve -->operator;
-    operator-- withdrawMultiple -->streams;
+    recipient -- withdrawMultiple --->streams
+    recipient -- approve -->operator;
+    operator -- withdrawMultiple -->streams;
 ```
