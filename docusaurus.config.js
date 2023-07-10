@@ -74,12 +74,12 @@ const config = {
   staticDirectories: ["static"],
   themes: ["@docusaurus/theme-mermaid", "docusaurus-theme-github-codeblock"],
   themeConfig:
-    /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
+    // @type {import('@docusaurus/preset-classic').ThemeConfig}
     ({
       algolia: {
-        appId: "K1JLKUW9ML",
-        apiKey: "7eab349cad720dd939e06808c4b2d6e9",
-        indexName: "sablier-docs",
+        appId: "9L7N2RKHWE",
+        apiKey: "3e33b6f83cd14e6e4ffc4873559732c8",
+        indexName: "sablierdocs",
       },
       codeblock: {
         showGithubLink: false,
