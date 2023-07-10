@@ -1,0 +1,34 @@
+---
+id: "entities"
+sidebar_position: 1
+title: "Entities"
+---
+
+## Entity Architecture
+
+GraphQL entities defined by the Sablier subgraphs are meant to mirror the functionality exposed by the v2-core
+contracts. To achieve this, events are stored as historical entries (e.g. Action) while also being used to mutate
+attributes for live entities (e.g. Stream). Some external utilities may also be used by this subgraph to improve the
+developer experience (e.g. tracking the immutable PRBProxy for data on the creator of a stream).
+
+Inside the **core** subgraph, the
+[`schema.graphql`](https://github.com/sablier-labs/v2-subgraphs/blob/main/packages/core/schema.graphql) file is
+responsible of defining the following Sablier entities:
+
+### Primary
+
+| Entity   | Description                                                                                |
+| -------- | ------------------------------------------------------------------------------------------ |
+| Contract | Instances of `SablierV2LockupLinear` or `SablierV2LockupDynamic`                           |
+| Action   | Emitted events transformed into historical entries (e.g. Create, Withdraw)                 |
+| Stream   | Primary entity tracking the up to date state of a stream                                   |
+| Asset    | The ERC20 asset that is being streamed                                                     |
+| Segment  | The function segment used to build the custom curve in cases of LockupDynamic streams care |
+
+### Secondary
+
+| Entity  | Description                                                                                                     |
+| ------- | --------------------------------------------------------------------------------------------------------------- |
+| Batch   | An entity grouping a set of stream created all at once (action done through the `v2-periphery`)                 |
+| Batcher | An entity resolving 1:1 to a stream sender, in charge of managing the count of "batches" of streams one creates |
+| Watcher | A singleton data store for subgraph-level unique indexes such as the stream or action index                     |

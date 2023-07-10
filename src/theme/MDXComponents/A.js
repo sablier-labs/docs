@@ -18,15 +18,21 @@ const Arrow = styled.span`
 `;
 
 export default function AWrapper(props) {
-  const isFootnote = useMemo(() => {
+  const isIndependent = useMemo(() => {
     const value = props.children;
 
     if (typeof value === "number") {
       return true;
     }
 
-    if (typeof value === "string" && !value.startsWith("0x") && Number.isInteger(parseInt(value))) {
-      return true;
+    if (typeof value === "string") {
+      if(!value.startsWith("0x") && Number.isInteger(parseInt(value))){
+        return true;
+      }
+      if(value === "↩" ){
+        return true;
+      }
+
     }
 
     return false;
@@ -36,7 +42,7 @@ export default function AWrapper(props) {
     <>
       <A {...props} style={{ display: "inline-flex" }}>
         {props.children || null}
-        {!isFootnote && (
+        {!isIndependent && (
           <Arrow>
             <ArrowIcon />
           </Arrow>

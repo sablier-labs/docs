@@ -1,0 +1,172 @@
+---
+id: "structure"
+sidebar_position: 2
+title: "Structure"
+---
+
+We'll break down the [schema](https://github.com/sablier-labs/v2-subgraphs/blob/main/packages/core/schema.graphql) into
+primary and secondary entities.
+
+| Type      | Entities                                 |
+| --------- | ---------------------------------------- |
+| Primary   | Contract, Action, Stream, Asset, Segment |
+| Secondary | Batch, Batcher, Watcher                  |
+
+## Contract
+
+The subgraph is designed to track multiple deployments. Therefore, at any given time the indexer may listen for updates
+on many instances of `SablierV2LockupLinear` or `SablierV2LockupDynamic` contracts .
+
+A unique `alias` will be attributed to every contract, such that contracts (and later streams) will be identifiable
+through both a long form and a short form identifier. See the [Stream](#stream) for details.
+
+---
+
+## Action
+
+Events emitted by the Sablier Lockup contracts will:
+
+1. Be used to mutate the data stored in the individual `Stream` entities
+2. Be stored as historical logs (list of `Action`) to show the evolution of a related stream
+
+Based on the schema defined `ActionCategory`, the following actions will be tracked by the subgraph:
+
+| Action         | Contract Events                                     |
+| -------------- | --------------------------------------------------- |
+| Approval       | Approval                                            |
+| ApprovalForAll | ApprovalForAll                                      |
+| Create         | CreateLockupLinearStream, CreateLockupDynamicStream |
+| Cancel         | CancelLockupStream                                  |
+| Renounce       | RenounceLockupStream                                |
+| Transfer       | Transfer                                            |
+| Withdraw       | WithdrawFromLockupStream                            |
+
+To keep all actions under the same umbrella, some details will be stored under general purpose attributes like
+`amountA`, `amountB`, `addressA`, `addressB` which based on the type of action can be resolved to context-specific
+values. Am example can be found
+[here](https://github.com/sablier-labs/v2-subgraphs/blob/36db1f3e3c4bd2558016b948b1b284900974d8ae/packages/core/src/mappings/handle-stream.ts#L79-L82)
+for the Cancel event.
+
+---
+
+## Stream
+
+### Identifying
+
+Inside the contracts, streams will be assigned a unique `tokenId` (or `streamId`). While this makes it easy to identify
+items at the contract level, we need to consider the following for both subgraphs and client interfaces:
+
+- items should be uniquely recognizable across multiple contract instances
+- items should be uniquely identifiable across multiple chains
+- items should be identifiable with short, easy to digest names
+
+To address these observations, the subgraph uses two related identifiers for a Stream.
+
+| Type           | Description                                                                                         | Example                      |
+| -------------- | --------------------------------------------------------------------------------------------------- | ---------------------------- |
+| `Stream.id`    | A self-explanatory structure built using the following structure: `contractAddress-chainId-tokenId` | <nobr>`0xAB..12-5-21`</nobr> |
+| `Stream.alias` | A short version of the `id` where the contract is aliased: `contractAlias-chainId-tokenId`          | <nobr>`LL-5-21`</nobr>       |
+
+Both examples from the table above translate to: **_a stream on Goerli (chain id `5`), within the Lockup Linear contract
+at address `0xAB..12`, with the tokenId `21`_**.
+
+:::note
+
+The aliases defined in the subgraph will be used by client apps to resolve data about a stream. Make sure to keep them
+in sync, avoid conflicts and regard them as immutable (once decided, never change them).
+
+:::
+
+### Aliases
+
+To provide a simple visual structure, while also accounting for future stream types (backwards compatibility) we use the
+following abbreviations as aliases:
+
+- Lockup Linear contracts become `LL` (e.g. `LL-5-1`)
+- Lockup Dynamic contracts become `LD` (e.g. `LD-5-1`)
+- Contracts with [flash loans](/contracts/v2/guides/flash-loans) enabled become `LLF` or `LLD`
+
+### Relevant parties
+
+Within the larger Sablier V2 ecosystem, the number of relevant entities participating in a stream (and the dynamics
+between them) has grown past the immutable `sender` and `recipient` (as in V1). Therefore, we identify the following
+parties involved in a stream.
+
+#### The recipient (gets paid\*)
+
+As funds are being streamed, they will slowly become eligible to withdraw and spend unlocked assets. The `recipient` is
+defined at the start of the stream but can change as a result of a transfer.
+
+On transfer, the old recipient moves the NFT (the stream itself) to another address, which becomes the new recipient.
+Rights to withdraw and claim future streamed funds are naturally transferred to this new address.
+
+#### The sender (will pay\*)
+
+They are an immutable party, defined at the start of the stream. Based on the configuration chosen for the stream, they
+will be entitles to later cancel the stream, renounce it (disable cancelability) or withdraw on behalf of the recipient.
+
+In case of a cancelation, the `sender` will receive any unstreamed assets as part of the refund.
+
+#### The funder
+
+When the stream is created, they provide the assets to be gradually streamed to the recipient. Usually, they are the
+same entity as the sender. However, there may be cases when someone wishes to create a stream on another user's behalf,
+while also marking them as the sender. In that case, this initial address will be accounted for as the stream's
+`funder`.
+
+#### The proxender
+
+While not mandatory for the core functionality, Sablier V2 (through its
+[periphery](https://github.com/sablier-labs/v2-periphery)) makes use of
+[PRBProxy](https://github.com/paulrberg/prb-proxy). The official client interfaces will mainly provide support for
+functionality exposed through this proxy integration.
+
+For streams crated within this "extended" ecosystem, a few attributes and entities will change meaning as such:
+
+- the `stream.proxied` flag will turn `true`
+- the `stream.sender` address will resolve to a `proxy` contract address, owned by the `stream.proxender`
+- the `stream.proxender` address (usually an EOA) will control this `sender` proxy and instruct it to perform actions on
+  its behalf (like a special account)
+
+| #   | Examples of supported flows                                                                                          |
+| --- | -------------------------------------------------------------------------------------------------------------------- |
+| 1   | `0xF` the funder (EOA), funds a stream on behalf of `0xA`, the sender (EOA), towards `0xB` the recipient (EOA)       |
+| 2   | `0xA` the sender (EOA), creates a stream towards `0xB` the recipient (EOA)                                           |
+| 3   | `0xA` the proxender (EOA), through their proxy `0xA1` (proxy contract), creates a stream towards `0xB` the recipient |
+
+While other combinations are possible, the most likely ones (as supported by the official interfaces) will be similar to
+example #3.
+
+---
+
+## Asset
+
+Tokens (ERC20) streamed through the protocol will be defined through an `Asset` entity.
+
+---
+
+## Segment
+
+The custom emission curve used by LockupDynamic streams will be defined as a sequence of
+[segments](/concepts/protocol/segments). This entity will store data regarding those segments, which will be later used
+to reconstruct the shape of the curve client side.
+
+---
+
+## Batch and Batcher
+
+The v2-periphery, while not explicitly tracked by the subgraph will offer some extra functionality to proxy-sourced
+streams. One of these functionalities will be **batch stream creation** (or **stream grouping**). Using methods like
+[`batchCreateWithRange`](https://github.com/sablier-labs/v2-periphery/blob/main/src/SablierV2ProxyTarget.sol) or
+`batchCreateWithDeltas` a sender will be able to create multiple streams at once - considered part of the same batch.
+
+To identify these relationships between stream items, the `Batch` entity will group items created in the same
+transaction, by finding events emitted with the same tx hash. The `Batcher` will then assign a user-specific unique
+index to every group.
+
+---
+
+## Watcher
+
+The Watcher (one for the entire subgraph) will provide specific utilities to the entire system, like global stream
+identifiers (a numeric id unique to a stream across all contract instances) and global action identifiers.
