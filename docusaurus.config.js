@@ -179,6 +179,11 @@ const config = {
             to: "/contracts/v2/overview",
           },
           {
+            label: "Apps",
+            position: "left",
+            to: "/apps/overview",
+          },
+          {
             label: "APIs",
             position: "left",
             to: "/api/subgraphs/overview",
