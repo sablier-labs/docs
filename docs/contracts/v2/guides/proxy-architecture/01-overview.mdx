@@ -36,7 +36,7 @@ flowchart LR;
     coreContract[(Core Contract)];
 
     proxyOwner-- execute -->proxy;
-    proxy-- delegateCall -->proxyTarget;
+    proxy-- delegatecall -->proxyTarget;
     proxyTarget-- createStreamLogic -->proxy
     proxy-- createStream -->coreContract;
 ```

@@ -45,6 +45,20 @@ Declare the Solidity version used to compile the contract:
 pragma solidity >=0.8.19;
 ```
 
+As mentioned in the [Overview](/contracts/v2/guides/proxy-architecture/overview), we use `Permit2` for all token
+interactions. In our example we will deal with a contract creator, and contracts can't signt transactions. Having that
+said, we will need an implementation of the [EIP-1271](https://eips.ethereum.org/EIPS/eip-1271) standard.
+
+Let's declare a dummy contract `ERC1271` which returns the magic value (the function signature of `isValidSignature`):
+
+```solidity
+contract ERC1271 {
+    function isValidSignature(bytes32, bytes memory) public pure returns (bytes4) {
+        return this.isValidSignature.selector;
+    }
+}
+```
+
 Import the relevant symbols from `@sablier/v2-core` and `@sablier/v2-periphery`:
 
 ```solidity
@@ -57,12 +71,13 @@ import { IAllowanceTransfer, Permit2Params } from "@sablier/v2-periphery/types/P
 import { IPRBProxy, IPRBProxyRegistry } from "@sablier/v2-periphery/types/Proxy.sol";
 ```
 
-Create a contract called `SingleLockupLinearStreamCreator`, and declare a constant `DAI` of type `IERC20`, a constant
-`PERMIT2` of type `IAllowanceTransfer`, a constant `PROXY_REGISTRY` of type `IPRBProxyRegistry`, an immutable variable
-`lockupLinear` of type `ISablierV2LockupLinear` and an immutable variable `proxyTarget` of type `ISablierV2ProxyTarget`:
+Create a contract called `SingleLockupLinearStreamCreator` that inherits `ERC1271`, and declare a constant `DAI` of type
+`IERC20`, a constant `PERMIT2` of type `IAllowanceTransfer`, a constant `PROXY_REGISTRY` of type `IPRBProxyRegistry`, an
+immutable variable `lockupLinear` of type `ISablierV2LockupLinear` and an immutable variable `proxyTarget` of type
+`ISablierV2ProxyTarget`:
 
 ```solidity
-contract SingleLockupLinearStreamCreator {
+contract SingleLockupLinearStreamCreator is ERC1271 {
     IERC20 public constant DAI = IERC20(0x6B175474E89094C44Da98b954EedeAC495271d0F);
     IAllowanceTransfer public constant PERMIT2 = IAllowanceTransfer(0x000000000022D473030F116dDEE9F6B43aC78BA3);
     IPRBProxyRegistry public constant PROXY_REGISTRY = IPRBProxyRegistry(0xD42a2bB59775694c9Df4c7822BfFAb150e6c699D);
@@ -93,17 +108,11 @@ constructor(ISablierV2LockupLinear lockupLinear_, ISablierV2ProxyTarget proxyTar
 
 ## Function definition
 
-Define a function called `singleCreateLockupLinearStream` which takes a two parameters `totalAmount` and the
-`permit2Signature`, and which returns the id of the created stream:
+Define a function called `singleCreateLockupLinearStream` which takes a parameter `totalAmount`, and which returns the
+id of the created stream:
 
 ```solidity
-function singleCreateLockupLinearStream(
-    uint256 totalAmount,
-    bytes memory permit2Signature
-)
-    public
-    returns (uint256 streamId)
-{
+function singleCreateLockupLinearStream(uint256 totalAmount) public returns (uint256 streamId) {
     // ...
 }
 ```
@@ -141,23 +150,32 @@ if (allowance < totalAmount) {
 ## Permit2 Steps
 
 We are going to declare the Permit2 variables needed in the
-[Proxy Target](/contracts/v2/reference/periphery/types/struct.Permit2Params):
+[Proxy Target](/contracts/v2/reference/periphery/types/struct.Permit2Params).
 
 ```solidity
 // Set up Permit2. See the full documentation at https://github.com/Uniswap/permit2
-IAllowanceTransfer.PermitDetails memory permitDetails; permitDetails.token = address(DAI); permitDetails.amount = uint160(totalAmount);
+IAllowanceTransfer.PermitDetails memory permitDetails;
+permitDetails.token = address(DAI);
+permitDetails.amount = uint160(totalAmount);
 permitDetails.expiration = type(uint48).max; // maximum expiration possible
 (,, permitDetails.nonce) = PERMIT2.allowance({ user: address(this), token: address(DAI), spender: address(proxy) });
 
 IAllowanceTransfer.PermitSingle memory permitSingle;
 permitSingle.details = permitDetails;
+permitSingle.spender = address(proxy); // the proxy will be the spender
 permitSingle.sigDeadline = type(uint48).max; // same deadline as expiration
 
 // Declare the Permit2 params needed by Sablier
 Permit2Params memory permit2Params;
 permit2Params.permitSingle = permitSingle;
-permit2Params.signature = permit2Signature;
+permit2Params.signature = bytes("");
 ```
+
+In the code above, we passed a null bytes because contracts can't sign transactions. If you were to use an EOA, a valid
+signature would be required.
+
+You can find the documentation for the Permit2 structs on Uniswap's
+[website](https://docs.uniswap.org/contracts/permit2/reference/allowance-transfer).
 
 ## Parameters
 
@@ -185,7 +203,7 @@ multiple parameters in the target's create
 
 ## Create a single stream
 
-Due to the nature of `delegateCall`, it's necessary to encode the parameters declared above into `bytes`:
+Due to the nature of `delegatecall`, it's necessary to encode the parameters declared above into `bytes`:
 
 ```solidity
 bytes memory data = abi.encodeCall(proxyTarget.createWithDurations, (lockupLinear, createParams, permit2Params));
@@ -215,7 +233,27 @@ https://github.com/sablier-labs/examples/blob/main/v2/periphery/SingleLockupLine
 
 <hr style={{ borderTop: "1px solid black" }} />
 
-For the Lockup Dynamic example, we can follow the same steps, we will not go through each one again:
+For the Lockup Dynamic example, we can apply the same steps as above, we won't detail each step again here.
+
+The difference compared to the Lockup Linear example is that we have two `amount` parameters that need to be summed
+together, as explained in the [Create Stream](/contracts/v2/guides/create-stream/lockup-dynamic#function-definition)
+section.
+
+```solidity
+function singleCreateLockupDynamicStream(uint256 amount0, uint256 amount1) public returns (uint256 streamId) {
+    /// ...
+
+    // Sum the segment amounts
+    uint256 totalAmount = amount0 + amount1;
+}
+```
+
+Of course, we've also declared a different create struct:
+
+```solidity
+// Declare the create function params
+LockupDynamic.CreateWithMilestones memory createParams;
+```
 
 ## The complete Single Lockup Dynamic stream creator contract
 
