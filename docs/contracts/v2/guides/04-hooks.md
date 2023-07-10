@@ -21,7 +21,7 @@ These are the hooks that can be implemented by a recipient contract:
 
 :::caution
 
-While it isn't mandatory, we highly recommend implementing the `onStreamCanceled` and, more importantly, the
+While it isn't mandatory, we highly recommended implementing the `onStreamCanceled` hook and, more importantly, the
 `onStreamWithdrawn` hook. Doing so enables your contract to keep its internal accounting updated accurately.
 
 :::
