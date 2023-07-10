@@ -27,8 +27,10 @@ We put together a template repository that you can use to get started quickly. T
 structure, pre-configured Sablier imports, and a selection of sample contracts and tests.
 
 :::tip
+
 Make sure you are using the latest version of Foundry by running `foundryup` before executing the following
 commands.
+
 :::
 
 To install it, simply execute the following commands:
