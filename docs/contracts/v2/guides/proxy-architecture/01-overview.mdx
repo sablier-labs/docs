@@ -26,7 +26,7 @@ This guide assumes that you have already gone through [Access Control](/contract
 
 You can view a proxy contract as an extension of the Externally-owned account
 ([EOA](https://ethereum.org/en/developers/docs/accounts/#types-of-account)). When it comes to the core contracts, the
-sender, which will be stored, will be the address of the proxy itself.
+sender which will be stored, will be the address of the proxy itself.
 
 ```mermaid
 flowchart LR;
@@ -41,9 +41,9 @@ flowchart LR;
     proxy-- createStream -->coreContract;
 ```
 
-In the Proxy Target, we use [Permit2](https://github.com/uniswap/permit2#permit2) for all interactions involving
-[ERC-20](https://ethereum.org/en/developers/docs/standards/tokens/erc-20/) tokens being transferred from the Proxy owner
-to the Proxy contract. To be more specific, we are using the `AllowanceTransfer` contract over the `SignatureTransfer`
+In the Proxy Target, we use [Permit2](https://github.com/uniswap/permit2#permit2) for all interactions that involve
+transferring [ERC-20](https://ethereum.org/en/developers/docs/standards/tokens/erc-20/) tokens from the Proxy owner to
+the Proxy contract. To be more specific, we are using the `AllowanceTransfer` contract over the `SignatureTransfer`
 because it offers a more user-friendly
 [nonce schema](https://docs.uniswap.org/contracts/permit2/reference/allowance-transfer#nonce-schema).
 

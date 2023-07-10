@@ -132,9 +132,8 @@ if (address(proxy) == address(0)) {
 ## ERC-20 Steps
 
 To create a stream, the caller must approve the creator contract to pull the tokens from the calling address's account.
-Then, if the allowance is less than the transferred amount that the creator contract will be in possession from the
-calling address (you), we have to approve the Permit2 contract. To take maximum advantage of Permit2, we should do a max
-approval:
+Then, if the allowance is less than the transferred amount, we have to also approve the Permit2 contract. To take
+maximum advantage of Permit2, we should do a max approval:
 
 ```solidity
 // Transfer the provided amount of DAI tokens to this contract
@@ -171,7 +170,7 @@ permit2Params.permitSingle = permitSingle;
 permit2Params.signature = bytes("");
 ```
 
-In the code above, we passed a null bytes because contracts can't sign transactions. If you were to use an EOA, a valid
+In the code above, we passed a null `bytes` because contracts can't sign transactions. If you were to use an EOA, a valid
 signature would be required.
 
 You can find the documentation for the Permit2 structs on Uniswap's
@@ -233,7 +232,7 @@ https://github.com/sablier-labs/examples/blob/main/v2/periphery/SingleLockupLine
 
 <hr style={{ borderTop: "1px solid black" }} />
 
-For the Lockup Dynamic example, we can apply the same steps as above, we won't detail each step again here.
+For the Lockup Dynamic example, we can apply the same steps as for Lockup Linear, we won't detail each step again here.
 
 The difference compared to the Lockup Linear example is that we have two `amount` parameters that need to be summed
 together, as explained in the [Create Stream](/contracts/v2/guides/create-stream/lockup-dynamic#function-definition)
