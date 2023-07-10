@@ -5,26 +5,53 @@ title: "Hooks"
 ---
 
 In Sablier, hooks are arbitrary functions that get automatically executed by the protocol in response to specific
-events. Their purpose is to programmatically notify some users when specific actions are taken by other users.
+events. Their purpose is to programmatically notify the recipient when the sender interacts with a stream, and vice
+versa.
 
-Hooks can only be written in a smart contract, so typical EOAs cannot implement them. However, hooks are optional, so
-you can interact with the Sablier Protocol without implementing any hooks.
+Hooks can only be written in smart contracts, so typical EOAs cannot implement them. However, they are entirely
+optional. You can interact with the Sablier Protocol without implementing any hooks.
 
 :::info
 
-Hooks in smart contracts are analogous to callback functions in web2.
+Hooks in smart contracts are similar to callback functions in web2.
 
 :::
 
 ## Visual representation
 
-Here's a diagram that shows how hooks work:
+### Sender actions
 
-:::note
+If the recipient is not a smart contract, the hooks will not be run.
 
-This section is a stub.
+```mermaid
+flowchart LR
+  S((Sender))
+  subgraph Core
+    LL[LockupLinear]
+  end
+  R((Recipient))
+  S -- "cancel" --> LL
+  S -- "renounce" --> LL
+  S -- "withdraw" --> LL
+  LL -- "onStreamCanceled" --> R
+  LL -- "onStreamRenounced" --> R
+  LL -- "onStreamWithdrawn" --> R
+```
 
-:::
+### Recipient side
+
+If the sender is not a smart contract, the hook will not be run.
+
+```mermaid
+flowchart LR
+  R((Recipient))
+  subgraph Core
+    LL[LockupLinear]
+  end
+  S((Sender))
+  R -- "cancel" --> LL
+  LL -- "onStreamCanceled" --> S
+```
 
 ## Example scenario
 
@@ -37,4 +64,4 @@ programmatically react to these events.
 
 ## Next steps
 
-Looking to incorporate a hook in your Sablier integration? Refer to this [guide](/contracts/v2/guides/hooks).
+Looking to incorporate a hook in your Sablier integration? Check out this [guide](/contracts/v2/guides/hooks).
