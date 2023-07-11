@@ -14,10 +14,11 @@ cliff streams, etc.
 
 A segment is a [struct](/contracts/v2/reference/core/types/library.LockupDynamic.md#segment) with three fields:
 
-- **Amount (a `uint128`):** the amount of assets to be streamed in this segment, denoted in units of the asset's
-  decimals.
-- **Exponent (a `UD2x18`):** the exponent of this segment, denoted as a fixed-point number.
-- **Milestone (a `uint40`):** the Unix timestamp indicating this segment's end.
+| Field     | Type      | Description                                                                                    |
+| :-------- | :-------- | :--------------------------------------------------------------------------------------------- |
+| Amount    | `uint128` | The amount of assets to be streamed in this segment, denoted in units of the asset's decimals. |
+| Exponent  | `UD2x18`  | The exponent of this segment, denoted as a fixed-point number.                                 |
+| Milestone | `uint40`  | The Unix timestamp indicating this segment's end.                                              |
 
 Each segment has its own streaming function:
 

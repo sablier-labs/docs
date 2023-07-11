@@ -10,7 +10,7 @@ use a different contract address. Sablier V1 runs on top of a singleton contract
 ## Official deployments
 
 Official deployments are deployments made by the Sablier team and supported in the
-[official user interface](https://pay.sablier.finance).
+[official user interface](https://v1-pay.sablier.com).
 
 ### Sablier V1.1
 
@@ -37,7 +37,7 @@ _This is an outdated deployment_.
 ## Unofficial deployments
 
 Unofficial deployments are deployments made by external teams and not supported in the
-[official user interface](https://pay.sablier.finance).
+[official user interface](https://v1-pay.sablier.com).
 
 | Chain | Address                                                                                                                | Deployer                                   |
 | ----- | ---------------------------------------------------------------------------------------------------------------------- | ------------------------------------------ |
