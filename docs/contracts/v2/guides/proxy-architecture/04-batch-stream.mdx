@@ -21,7 +21,7 @@ Batch create as the name suggests, involves creating multiple streams within a t
 multiple streams, we will not use the core create structs, instead, we declared a
 [Batch](/contracts/v2/reference/periphery/types/library.Batch) library. Using the same structs would have been
 inefficient due to multiple ERC-20 transfers from the Proxy owner to the Proxy, so we pass the token as a parameter in
-the function, without encoding it in the struct.
+the function, without encapsulating it in each struct of the array.
 
 ## Batch create functions
 
@@ -29,13 +29,13 @@ There are four batch create functions in the Proxy Target contract, two for each
 
 Lockup Linear:
 
-- [`batchCreateWithDurations`](/contracts/v2/reference/periphery/contract.SablierV2ProxyTarget#batchCreateWithDurations)
-- [`batchCreateWithRange`](/contracts/v2/reference/periphery/contract.SablierV2ProxyTarget#batchCreateWithRange)
+- [`batchCreateWithDurations`](/contracts/v2/reference/periphery/contract.SablierV2ProxyTarget#batchcreatewithdurations)
+- [`batchCreateWithRange`](/contracts/v2/reference/periphery/contract.SablierV2ProxyTarget#batchcreatewithrange)
 
 Lockup Dynamic:
 
-- [`batchCreateWithDeltas`](/contracts/v2/reference/periphery/contract.SablierV2ProxyTarget#batchCreateWithDeltas)
-- [`batchCreateWithMilestones`](/contracts/v2/reference/periphery/contract.SablierV2ProxyTarget#batchCreateWithMilestones)
+- [`batchCreateWithDeltas`](/contracts/v2/reference/periphery/contract.SablierV2ProxyTarget#batchcreatewithdeltas)
+- [`batchCreateWithMilestones`](/contracts/v2/reference/periphery/contract.SablierV2ProxyTarget#batchcreatewithmilestones)
 
 Let's start with a Lockup Linear example:
 
@@ -49,14 +49,15 @@ pragma solidity >=0.8.19;
 ```
 
 As mentioned in the [Overview](/contracts/v2/guides/proxy-architecture/overview), we use `Permit2` for all token
-interactions. In our example we will deal with a contract creator, and contracts can't signt transactions. Having that
+interactions. In our example we will deal with a contract creator, and contracts can't sign transactions. Having that
 said, we will need an implementation of the [EIP-1271](https://eips.ethereum.org/EIPS/eip-1271) standard.
 
 Let's declare a dummy contract `ERC1271` which returns the magic value (the function signature of `isValidSignature`):
 
 ```solidity
+/// @notice Permit2 uses this ERC to validate contract signatures.
 contract ERC1271 {
-    function isValidSignature(bytes32, bytes memory) public pure returns (bytes4) {
+    function isValidSignature(bytes32, /* hash */ bytes memory /* signature */ ) public pure returns (bytes4) {
         return this.isValidSignature.selector;
     }
 }
@@ -66,10 +67,11 @@ Import the relevant symbols from `@sablier/v2-core` and `@sablier/v2-periphery`:
 
 ```solidity
 import { ISablierV2LockupLinear } from "@sablier/v2-core/interfaces/ISablierV2LockupLinear.sol";
-import { Broker, LockupLinear } from "@sablier/v2-core/types/DataTypes.sol";
-import { ud2x18, ud60x18 } from "@sablier/v2-core/types/Math.sol";
+import { LockupLinear } from "@sablier/v2-core/types/DataTypes.sol";
+import { ud60x18 } from "@sablier/v2-core/types/Math.sol";
 import { IERC20 } from "@sablier/v2-core/types/Tokens.sol";
 import { ISablierV2ProxyTarget } from "@sablier/v2-periphery/interfaces/ISablierV2ProxyTarget.sol";
+import { Batch, Broker } from "@sablier/v2-periphery/types/DataTypes.sol";
 import { IAllowanceTransfer, Permit2Params } from "@sablier/v2-periphery/types/Permit2.sol";
 import { IPRBProxy, IPRBProxyRegistry } from "@sablier/v2-periphery/types/Proxy.sol";
 ```
@@ -83,7 +85,7 @@ immutable variable `lockupLinear` of type `ISablierV2LockupLinear` and an immuta
 contract BatchLockupLinearStreamCreator is ERC1271 {
     IERC20 public constant DAI = IERC20(0x6B175474E89094C44Da98b954EedeAC495271d0F);
     IAllowanceTransfer public constant PERMIT2 = IAllowanceTransfer(0x000000000022D473030F116dDEE9F6B43aC78BA3);
-    IPRBProxyRegistry public constant PROXY_REGISTRY = IPRBProxyRegistry(0xD42a2bB59775694c9Df4c7822BfFAb150e6c699D);
+    IPRBProxyRegistry public constant PROXY_REGISTRY = IPRBProxyRegistry(0x584009E9eDe26e212182c9745F5c000191296a78);
     ISablierV2LockupLinear public immutable lockupLinear;
     ISablierV2ProxyTarget public immutable proxyTarget;
 }
@@ -91,7 +93,7 @@ contract BatchLockupLinearStreamCreator is ERC1271 {
 
 In the code above, the address of the [DAI](https://makerdao.com) stablecoin, Permit2 and Proxy Registry are hard-coded.
 However, you would likely use an input parameter to allow the contract to change the assets it interacts with on a per
-transaction basis. That being said, keep in mind that Permit2 is deployed at the same
+transaction basis. Keep in mind that Permit2 is deployed at the same
 [address](https://docs.uniswap.org/contracts/v3/reference/deployments) on all [chains](/contracts/v2/deployments) where
 Sablier V2 is live, also Proxy Registry is deployed at the same address across these
 [chains](https://prbproxy.com/deployments).
@@ -146,7 +148,7 @@ uint256 transferAmount = perStreamAmount * batchSize;
 
 To batch create streams, the caller must approve the creator contract to pull the tokens from the calling address's
 account. Then, if the allowance is less than the transferred amount, we have to also approve the Permit2 contract. To
-take maximum advantage of Permit2, we should do a max approval:
+fully benefit from Permit2, we should do a maximum approval:
 
 ```solidity
 // Transfer the provided amount of DAI tokens to this contract
@@ -180,7 +182,7 @@ permitSingle.sigDeadline = type(uint48).max; // same deadline as expiration
 // Declare the Permit2 params needed by Sablier
 Permit2Params memory permit2Params;
 permit2Params.permitSingle = permitSingle;
-permit2Params.signature = bytes("");
+permit2Params.signature = bytes(""); // dummy signature
 ```
 
 In the code above, we passed a null `bytes` because contracts can't sign transactions. If you were to use an EOA, a
@@ -235,7 +237,7 @@ batch[0] = stream0;
 batch[1] = stream1;
 ```
 
-## Create batch streams
+## Batch create streams
 
 Due to the nature of `delegatecall`, it's necessary to encode the parameters declared above into `bytes`:
 
@@ -243,7 +245,7 @@ Due to the nature of `delegatecall`, it's necessary to encode the parameters dec
 bytes memory data = abi.encodeCall(proxyTarget.batchCreateWithDurations, (lockupLinear, DAI, batch, permit2Params));
 ```
 
-Once this set-up is complete, we can create a batch stream via the Proxy and Sablier's Proxy Target:
+Once this set-up is complete, we can batch create streams via the Proxy and Sablier's Proxy Target:
 
 ```solidity
 bytes memory response = proxy.execute(address(proxyTarget), data);
@@ -257,7 +259,7 @@ streamIds = abi.decode(response, (uint256[]));
 
 ## The complete Batch Lockup Linear stream creator contract
 
-Below you can see the complete functioning code: a contract that creates Lockup Linear batch streams via the Proxy and
+Below you can see the complete functioning code: a contract that batch creates Lockup Linear streams via the Proxy and
 Sablier's Proxy Target that start at `block.timestamp`. You can access the code on GitHub through this
 [link](https://github.com/sablier-labs/examples/blob/main/v2/periphery/BatchLockupLinearStreamCreator.sol).
 
@@ -286,7 +288,7 @@ batch[1] = stream1;
 
 ## The complete Batch Lockup Dynamic stream creator contract
 
-Below you can see the complete functioning code: a contract that creates Lockup Dynamic batch streams via the Proxy and
+Below you can see the complete functioning code: a contract that batch creates Lockup Dynamic streams via the Proxy and
 Sablier's Proxy Target with predefined segment milestones. You can access the code on GitHub through this
 [link](https://github.com/sablier-labs/examples/blob/main/v2/periphery/BatchLockupDynamicStreamCreator.sol).
 

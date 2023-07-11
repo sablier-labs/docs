@@ -46,14 +46,15 @@ pragma solidity >=0.8.19;
 ```
 
 As mentioned in the [Overview](/contracts/v2/guides/proxy-architecture/overview), we use `Permit2` for all token
-interactions. In our example we will deal with a contract creator, and contracts can't signt transactions. Having that
+interactions. In our example we will deal with a contract creator, and contracts can't sign transactions. Having that
 said, we will need an implementation of the [EIP-1271](https://eips.ethereum.org/EIPS/eip-1271) standard.
 
 Let's declare a dummy contract `ERC1271` which returns the magic value (the function signature of `isValidSignature`):
 
 ```solidity
+/// @notice Permit2 uses this ERC to validate contract signatures.
 contract ERC1271 {
-    function isValidSignature(bytes32, bytes memory) public pure returns (bytes4) {
+    function isValidSignature(bytes32, /* hash */ bytes memory /* signature */ ) public pure returns (bytes4) {
         return this.isValidSignature.selector;
     }
 }
@@ -80,7 +81,7 @@ immutable variable `lockupLinear` of type `ISablierV2LockupLinear` and an immuta
 contract SingleLockupLinearStreamCreator is ERC1271 {
     IERC20 public constant DAI = IERC20(0x6B175474E89094C44Da98b954EedeAC495271d0F);
     IAllowanceTransfer public constant PERMIT2 = IAllowanceTransfer(0x000000000022D473030F116dDEE9F6B43aC78BA3);
-    IPRBProxyRegistry public constant PROXY_REGISTRY = IPRBProxyRegistry(0xD42a2bB59775694c9Df4c7822BfFAb150e6c699D);
+    IPRBProxyRegistry public constant PROXY_REGISTRY = IPRBProxyRegistry(0x584009E9eDe26e212182c9745F5c000191296a78);
     ISablierV2LockupLinear public immutable lockupLinear;
     ISablierV2ProxyTarget public immutable proxyTarget;
 }
@@ -88,7 +89,7 @@ contract SingleLockupLinearStreamCreator is ERC1271 {
 
 In the code above, the address of the [DAI](https://makerdao.com) stablecoin, Permit2 and Proxy Registry are hard-coded.
 However, you would likely use an input parameter to allow the contract to change the assets it interacts with on a per
-transaction basis. That being said, keep in mind that Permit2 is deployed at the same
+transaction basis. Keep in mind that Permit2 is deployed at the same
 [address](https://docs.uniswap.org/contracts/v3/reference/deployments) on all [chains](/contracts/v2/deployments) where
 Sablier V2 is live, also Proxy Registry is deployed at the same address across these
 [chains](https://prbproxy.com/deployments).
@@ -131,9 +132,9 @@ if (address(proxy) == address(0)) {
 
 ## ERC-20 Steps
 
-To create a stream, the caller must approve the creator contract to pull the tokens from the calling address's account.
-Then, if the allowance is less than the transferred amount, we have to also approve the Permit2 contract. To take
-maximum advantage of Permit2, we should do a max approval:
+To create a single stream, the caller must approve the creator contract to pull the tokens from the calling address's
+account. Then, if the allowance is less than the transferred amount, we have to also approve the Permit2 contract. To
+fully benefit from Permit2, we should do a maximum approval:
 
 ```solidity
 // Transfer the provided amount of DAI tokens to this contract
@@ -167,11 +168,11 @@ permitSingle.sigDeadline = type(uint48).max; // same deadline as expiration
 // Declare the Permit2 params needed by Sablier
 Permit2Params memory permit2Params;
 permit2Params.permitSingle = permitSingle;
-permit2Params.signature = bytes("");
+permit2Params.signature = bytes(""); // dummy signature
 ```
 
-In the code above, we passed a null `bytes` because contracts can't sign transactions. If you were to use an EOA, a valid
-signature would be required.
+In the code above, we passed a null `bytes` because contracts can't sign transactions. If you were to use an EOA, a
+valid signature would be required.
 
 You can find the documentation for the Permit2 structs on Uniswap's
 [website](https://docs.uniswap.org/contracts/permit2/reference/allowance-transfer).
