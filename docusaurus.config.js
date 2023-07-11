@@ -49,7 +49,7 @@ const config = {
           },
           {
             from: "/protocol/guides/chains",
-            to: "/contracts/v1/guides/deployments",
+            to: "/contracts/v1/deployments",
           },
           {
             from: "/protocol/introduction",
@@ -75,7 +75,7 @@ const config = {
   themes: ["@docusaurus/theme-mermaid", "docusaurus-theme-github-codeblock"],
   themeConfig:
     // @type {import('@docusaurus/preset-classic').ThemeConfig}
-    ({
+    {
       algolia: {
         appId: "9L7N2RKHWE",
         apiKey: "3e33b6f83cd14e6e4ffc4873559732c8",
@@ -217,7 +217,7 @@ const config = {
         darkTheme: require("prism-react-renderer/themes/palenight"),
         theme: require("prism-react-renderer/themes/github"),
       },
-    }),
+    },
 };
 
 module.exports = config;

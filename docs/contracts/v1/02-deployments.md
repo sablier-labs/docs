@@ -1,11 +1,11 @@
 ---
 id: deployments
 title: Deployments
-sidebar_position: 3
+sidebar_position: 2
 ---
 
-Depending on what [EVM](https://ethereum.org/en/developers/docs/evm/) chains you want to use Sablier on, you will need
-to use a different contract address. Sablier V1 runs on top of a singleton contract that manages all streams.
+Depending on what [EVM](https://ethereum.org/en/developers/docs/evm/) chain you want to use Sablier on, you will need to
+use a different contract address. Sablier V1 runs on top of a singleton contract that manages all streams.
 
 ## Official deployments
 
