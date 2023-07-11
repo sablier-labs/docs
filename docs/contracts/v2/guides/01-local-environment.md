@@ -28,15 +28,15 @@ structure, pre-configured Sablier imports, and a selection of sample contracts a
 
 :::tip
 
-Make sure you are using the latest version of Foundry by running `foundryup` before executing the following
-commands.
+Make sure you are using the latest version of Foundry by running `foundryup`.
 
 :::
 
-To install it, simply execute the following commands:
+To install the template, simply execute the following commands:
 
 ```shell
-$ mkdir sablier-v2-integration-template && cd sablier-v2-integration-template
+$ mkdir sablier-v2-integration-template
+$ cd sablier-v2-integration-template
 $ forge init --template sablier-v2-integration-template
 $ pnpm install
 ```
