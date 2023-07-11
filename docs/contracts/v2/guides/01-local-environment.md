@@ -26,11 +26,18 @@ In addition, familiarity with [Ethereum](https://ethereum.org/) and [Solidity](h
 We put together a template repository that you can use to get started quickly. This repository features a basic project
 structure, pre-configured Sablier imports, and a selection of sample contracts and tests.
 
-To install it, simply execute the following commands:
+:::tip
+
+Make sure you are using the latest version of Foundry by running `foundryup`.
+
+:::
+
+To install the template, simply execute the following commands:
 
 ```shell
-$ forge init --template sablier-labs/sablier-integration-template
-$ cd sablier-integration-template
+$ mkdir sablier-v2-integration-template
+$ cd sablier-v2-integration-template
+$ forge init --template sablier-v2-integration-template
 $ pnpm install
 ```
 
