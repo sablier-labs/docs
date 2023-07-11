@@ -30,15 +30,13 @@ sender which will be stored, will be the address of the proxy itself.
 
 ```mermaid
 flowchart LR;
-    proxyOwner((Proxy Owner));
-    proxy((Proxy));
-    proxyTarget((Proxy Target))
-    coreContract[(Core Contract)];
 
-    proxyOwner-- execute -->proxy;
-    proxy-- delegatecall -->proxyTarget;
-    proxyTarget-- createStreamLogic -->proxy
-    proxy-- createStream -->coreContract;
+    PO((Proxy Owner))-- "execute" -->P;
+    P[Proxy];
+    PT[Proxy Target]
+    P-- "create-delegatecall" -->PT;
+    PT-- "createStreamLogic" -->P
+    P-- "createStream" -->CC[Core Contract];
 ```
 
 In the Proxy Target, we use [Permit2](https://github.com/uniswap/permit2#permit2) for all interactions that involve
