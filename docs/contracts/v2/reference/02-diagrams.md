@@ -16,6 +16,7 @@ would still be valid.
 :::
 
 ## Lockup Linear
+
 An example of two streams being stored in the Lockup Linear contract.
 
 ```mermaid
@@ -44,6 +45,7 @@ flowchart LR;
 ```
 
 ## Lockup Dynamic
+
 An example of two streams being stored in the Lockup Dynamic contract.
 
 ```mermaid
@@ -84,6 +86,23 @@ flowchart LR;
 		contract --> stream_2;
 
 		class contract,stream_1,stream_2,property_1,property_2,property_3,property_4,property_5,property_6,property_7,property_8 object;
+```
+
+## Protocol participants
+
+```mermaid
+flowchart LR;
+		classDef object stroke:#ff9C00,color:#ffffff;
+    contract[Sablier V2];
+		developers[Developers]
+		governance[Protocol Admin]
+		users[Stream creators/recipients]
+
+		governance--"governs"-->contract;
+		users--"use"-->contract;
+		developers--"maintain"-->contract;
+
+		class contract,developers,governance,users object;
 ```
 
 ## Set up proxy
