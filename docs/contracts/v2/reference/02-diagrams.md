@@ -15,6 +15,33 @@ would still be valid.
 
 :::
 
+## Lockup Linear
+
+```mermaid
+flowchart LR;
+		classDef object stroke:#ff9C00,color:#ffffff;
+    contract["Lockup Linear
+		contract"];
+		stream_1[(Stream LL-1-1)];
+		property_1([Start time]);
+		property_2([End time]);
+		property_3([Deposit amount]);
+		stream_1 --> property_1;
+		stream_1 --> property_2;
+		stream_1 --> property_3;
+		contract --> stream_1;
+
+		stream_2[(Stream LL-1-2)];
+		property_4([Start time]);
+		property_5([Stop time]);
+		property_6([Deposit amount]);
+		stream_2 --> property_4;
+		stream_2 --> property_5;
+		stream_2 --> property_6;
+		contract --> stream_2;
+		class contract,stream_1,stream_2,property_1,property_2,property_3,property_4,property_5,property_6 object;
+```
+
 ## Set up proxy
 
 This is the first action that the sender needs to take in order to create a stream via the Sablier Interface. It is a
