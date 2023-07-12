@@ -16,6 +16,7 @@ would still be valid.
 :::
 
 ## Lockup Linear
+An example of two streams being stored in the Lockup Linear contract.
 
 ```mermaid
 flowchart LR;
@@ -43,6 +44,7 @@ flowchart LR;
 ```
 
 ## Lockup Dynamic
+An example of two streams being stored in the Lockup Dynamic contract.
 
 ```mermaid
 flowchart LR;
