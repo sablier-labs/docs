@@ -40,9 +40,9 @@ Or maybe you're looking for the PRBProxy deployments? Check out [prbproxy.com](h
 
 | Contract             | Address                                                                                                               | Deployment                                                                                    |
 | :------------------- | :-------------------------------------------------------------------------------------------------------------------- | :-------------------------------------------------------------------------------------------- |
-| SablierV2Archive     | [0x0Be20a8242B0781B6fd4d453e90DCC1CcF7DBcc6](https://etherscan.io/address/0x0Be20a8242B0781B6fd4d453e90DCC1CcF7DBcc6) | [periphery-v1.0.0](https://github.com/sablier-labs/v2-deployments/tree/main/periphery/v1.0.0) |
-| SablierV2ProxyPlugin | [0x9bdebF4F9adEB99387f46e4020FBf3dDa885D2b8](https://etherscan.io/address/0x9bdebF4F9adEB99387f46e4020FBf3dDa885D2b8) | [periphery-v1.0.0](https://github.com/sablier-labs/v2-deployments/tree/main/periphery/v1.0.0) |
-| SablierV2ProxyTarget | [0x297b43aE44660cA7826ef92D8353324C018573Ef](https://etherscan.io/address/0x297b43aE44660cA7826ef92D8353324C018573Ef) | [periphery-v1.0.0](https://github.com/sablier-labs/v2-deployments/tree/main/periphery/v1.0.0) |
+| SablierV2Archive     | [0x0Be20a8242B0781B6fd4d453e90DCC1CcF7DBcc6](https://etherscan.io/address/0x0Be20a8242B0781B6fd4d453e90DCC1CcF7DBcc6) | [periphery-v1.0.1](https://github.com/sablier-labs/v2-deployments/tree/main/periphery/v1.0.1) |
+| SablierV2ProxyPlugin | [0x9bdebF4F9adEB99387f46e4020FBf3dDa885D2b8](https://etherscan.io/address/0x9bdebF4F9adEB99387f46e4020FBf3dDa885D2b8) | [periphery-v1.0.1](https://github.com/sablier-labs/v2-deployments/tree/main/periphery/v1.0.1) |
+| SablierV2ProxyTarget | [0x297b43aE44660cA7826ef92D8353324C018573Ef](https://etherscan.io/address/0x297b43aE44660cA7826ef92D8353324C018573Ef) | [periphery-v1.0.1](https://github.com/sablier-labs/v2-deployments/tree/main/periphery/v1.0.1) |
 
 ## Arbitrum One
 
@@ -59,9 +59,9 @@ Or maybe you're looking for the PRBProxy deployments? Check out [prbproxy.com](h
 
 | Contract             | Address                                                                                                              | Deployment                                                                                    |
 | :------------------- | :------------------------------------------------------------------------------------------------------------------- | :-------------------------------------------------------------------------------------------- |
-| SablierV2Archive     | [0xDFa4512d07AbD4eb8Be570Cd79e2e6Fe21ff15C9](https://arbiscan.io/address/0xDFa4512d07AbD4eb8Be570Cd79e2e6Fe21ff15C9) | [periphery-v1.0.0](https://github.com/sablier-labs/v2-deployments/tree/main/periphery/v1.0.0) |
-| SablierV2ProxyPlugin | [0x9aB73CA73c89AF0bdc69642aCeb23CC6A55A514C](https://arbiscan.io/address/0x9aB73CA73c89AF0bdc69642aCeb23CC6A55A514C) | [periphery-v1.0.0](https://github.com/sablier-labs/v2-deployments/tree/main/periphery/v1.0.0) |
-| SablierV2ProxyTarget | [0xB7185AcAF42C4966fFA3c81486d9ED9633aa4c13](https://arbiscan.io/address/0xB7185AcAF42C4966fFA3c81486d9ED9633aa4c13) | [periphery-v1.0.0](https://github.com/sablier-labs/v2-deployments/tree/main/periphery/v1.0.0) |
+| SablierV2Archive     | [0xDFa4512d07AbD4eb8Be570Cd79e2e6Fe21ff15C9](https://arbiscan.io/address/0xDFa4512d07AbD4eb8Be570Cd79e2e6Fe21ff15C9) | [periphery-v1.0.1](https://github.com/sablier-labs/v2-deployments/tree/main/periphery/v1.0.1) |
+| SablierV2ProxyPlugin | [0x9aB73CA73c89AF0bdc69642aCeb23CC6A55A514C](https://arbiscan.io/address/0x9aB73CA73c89AF0bdc69642aCeb23CC6A55A514C) | [periphery-v1.0.1](https://github.com/sablier-labs/v2-deployments/tree/main/periphery/v1.0.1) |
+| SablierV2ProxyTarget | [0xB7185AcAF42C4966fFA3c81486d9ED9633aa4c13](https://arbiscan.io/address/0xB7185AcAF42C4966fFA3c81486d9ED9633aa4c13) | [periphery-v1.0.1](https://github.com/sablier-labs/v2-deployments/tree/main/periphery/v1.0.1) |
 
 ## Avalanche
 
@@ -78,9 +78,9 @@ Or maybe you're looking for the PRBProxy deployments? Check out [prbproxy.com](h
 
 | Contract             | Address                                                                                                               | Deployment                                                                                    |
 | :------------------- | :-------------------------------------------------------------------------------------------------------------------- | :-------------------------------------------------------------------------------------------- |
-| SablierV2Archive     | [0x7b1ef644ce9a625537e9e0c3d7fef3be667e6159](https://snowtrace.io/address/0x7b1ef644ce9a625537e9e0c3d7fef3be667e6159) | [periphery-v1.0.0](https://github.com/sablier-labs/v2-deployments/tree/main/periphery/v1.0.0) |
-| SablierV2ProxyPlugin | [0x17167A7e2763121e263B4331B700a1BF9113b387](https://snowtrace.io/address/0x17167A7e2763121e263B4331B700a1BF9113b387) | [periphery-v1.0.0](https://github.com/sablier-labs/v2-deployments/tree/main/periphery/v1.0.0) |
-| SablierV2ProxyTarget | [0x48B4889cf5d6f8360050f9d7606505F1433120BC](https://snowtrace.io/address/0x48B4889cf5d6f8360050f9d7606505F1433120BC) | [periphery-v1.0.0](https://github.com/sablier-labs/v2-deployments/tree/main/periphery/v1.0.0) |
+| SablierV2Archive     | [0x7b1ef644ce9a625537e9e0c3d7fef3be667e6159](https://snowtrace.io/address/0x7b1ef644ce9a625537e9e0c3d7fef3be667e6159) | [periphery-v1.0.1](https://github.com/sablier-labs/v2-deployments/tree/main/periphery/v1.0.1) |
+| SablierV2ProxyPlugin | [0x17167A7e2763121e263B4331B700a1BF9113b387](https://snowtrace.io/address/0x17167A7e2763121e263B4331B700a1BF9113b387) | [periphery-v1.0.1](https://github.com/sablier-labs/v2-deployments/tree/main/periphery/v1.0.1) |
+| SablierV2ProxyTarget | [0x48B4889cf5d6f8360050f9d7606505F1433120BC](https://snowtrace.io/address/0x48B4889cf5d6f8360050f9d7606505F1433120BC) | [periphery-v1.0.1](https://github.com/sablier-labs/v2-deployments/tree/main/periphery/v1.0.1) |
 
 ## BSC
 
@@ -97,9 +97,9 @@ Or maybe you're looking for the PRBProxy deployments? Check out [prbproxy.com](h
 
 | Contract             | Address                                                                                                              | Deployment                                                                                    |
 | :------------------- | :------------------------------------------------------------------------------------------------------------------- | :-------------------------------------------------------------------------------------------- |
-| SablierV2Archive     | [0xeDe48EB173A869c0b27Cb98CC56d00BC391e5887](https://bscscan.com/address/0xeDe48EB173A869c0b27Cb98CC56d00BC391e5887) | [periphery-v1.0.0](https://github.com/sablier-labs/v2-deployments/tree/main/periphery/v1.0.0) |
-| SablierV2ProxyPlugin | [0xC43b2d8CedB71df30F45dFd9a21eC1E50A813bD6](https://bscscan.com/address/0xC43b2d8CedB71df30F45dFd9a21eC1E50A813bD6) | [periphery-v1.0.0](https://github.com/sablier-labs/v2-deployments/tree/main/periphery/v1.0.0) |
-| SablierV2ProxyTarget | [0x135e78B8E17B1d189Af75FcfCC018ab2E6c7b879](https://bscscan.com/address/0x135e78B8E17B1d189Af75FcfCC018ab2E6c7b879) | [periphery-v1.0.0](https://github.com/sablier-labs/v2-deployments/tree/main/periphery/v1.0.0) |
+| SablierV2Archive     | [0xeDe48EB173A869c0b27Cb98CC56d00BC391e5887](https://bscscan.com/address/0xeDe48EB173A869c0b27Cb98CC56d00BC391e5887) | [periphery-v1.0.1](https://github.com/sablier-labs/v2-deployments/tree/main/periphery/v1.0.1) |
+| SablierV2ProxyPlugin | [0xC43b2d8CedB71df30F45dFd9a21eC1E50A813bD6](https://bscscan.com/address/0xC43b2d8CedB71df30F45dFd9a21eC1E50A813bD6) | [periphery-v1.0.1](https://github.com/sablier-labs/v2-deployments/tree/main/periphery/v1.0.1) |
+| SablierV2ProxyTarget | [0x135e78B8E17B1d189Af75FcfCC018ab2E6c7b879](https://bscscan.com/address/0x135e78B8E17B1d189Af75FcfCC018ab2E6c7b879) | [periphery-v1.0.1](https://github.com/sablier-labs/v2-deployments/tree/main/periphery/v1.0.1) |
 
 ## Goerli
 
@@ -116,9 +116,9 @@ Or maybe you're looking for the PRBProxy deployments? Check out [prbproxy.com](h
 
 | Contract             | Address                                                                                                                      | Deployment                                                                                    |
 | :------------------- | :--------------------------------------------------------------------------------------------------------------------------- | :-------------------------------------------------------------------------------------------- |
-| SablierV2Archive     | [0xFd14E62e6fe4d96F033cf972556ae56D09Bd49cA](https://goerli.etherscan.io/address/0xFd14E62e6fe4d96F033cf972556ae56D09Bd49cA) | [periphery-v1.0.0](https://github.com/sablier-labs/v2-deployments/tree/main/periphery/v1.0.0) |
-| SablierV2ProxyPlugin | [0x9CA1dFFC744318198bE9Cf92283A803CE16b698a](https://goerli.etherscan.io/address/0x9CA1dFFC744318198bE9Cf92283A803CE16b698a) | [periphery-v1.0.0](https://github.com/sablier-labs/v2-deployments/tree/main/periphery/v1.0.0) |
-| SablierV2ProxyTarget | [0x0eE01680645c361B740ab4dCDdF238988eB20411](https://goerli.etherscan.io/address/0x0eE01680645c361B740ab4dCDdF238988eB20411) | [periphery-v1.0.0](https://github.com/sablier-labs/v2-deployments/tree/main/periphery/v1.0.0) |
+| SablierV2Archive     | [0xFd14E62e6fe4d96F033cf972556ae56D09Bd49cA](https://goerli.etherscan.io/address/0xFd14E62e6fe4d96F033cf972556ae56D09Bd49cA) | [periphery-v1.0.1](https://github.com/sablier-labs/v2-deployments/tree/main/periphery/v1.0.1) |
+| SablierV2ProxyPlugin | [0x9CA1dFFC744318198bE9Cf92283A803CE16b698a](https://goerli.etherscan.io/address/0x9CA1dFFC744318198bE9Cf92283A803CE16b698a) | [periphery-v1.0.1](https://github.com/sablier-labs/v2-deployments/tree/main/periphery/v1.0.1) |
+| SablierV2ProxyTarget | [0x0eE01680645c361B740ab4dCDdF238988eB20411](https://goerli.etherscan.io/address/0x0eE01680645c361B740ab4dCDdF238988eB20411) | [periphery-v1.0.1](https://github.com/sablier-labs/v2-deployments/tree/main/periphery/v1.0.1) |
 
 ## Gnosis
 
@@ -135,9 +135,9 @@ Or maybe you're looking for the PRBProxy deployments? Check out [prbproxy.com](h
 
 | Contract             | Address                                                                                                                | Deployment                                                                                    |
 | :------------------- | :--------------------------------------------------------------------------------------------------------------------- | :-------------------------------------------------------------------------------------------- |
-| SablierV2Archive     | [0xF4A6F47Da7c6b26b6Dd774671aABA48fb4bFE309](https://gnosisscan.io/address/0xF4A6F47Da7c6b26b6Dd774671aABA48fb4bFE309) | [periphery-v1.0.0](https://github.com/sablier-labs/v2-deployments/tree/main/periphery/v1.0.0) |
-| SablierV2ProxyPlugin | [0xc84f0e95815A576171A19EB9E0fA55a217Ab1536](https://gnosisscan.io/address/0xc84f0e95815A576171A19EB9E0fA55a217Ab1536) | [periphery-v1.0.0](https://github.com/sablier-labs/v2-deployments/tree/main/periphery/v1.0.0) |
-| SablierV2ProxyTarget | [0x5B144C3B9C8cfd48297Aeb59B90a024Ef3fCcE92](https://gnosisscan.io/address/0x5B144C3B9C8cfd48297Aeb59B90a024Ef3fCcE92) | [periphery-v1.0.0](https://github.com/sablier-labs/v2-deployments/tree/main/periphery/v1.0.0) |
+| SablierV2Archive     | [0xF4A6F47Da7c6b26b6Dd774671aABA48fb4bFE309](https://gnosisscan.io/address/0xF4A6F47Da7c6b26b6Dd774671aABA48fb4bFE309) | [periphery-v1.0.1](https://github.com/sablier-labs/v2-deployments/tree/main/periphery/v1.0.1) |
+| SablierV2ProxyPlugin | [0xc84f0e95815A576171A19EB9E0fA55a217Ab1536](https://gnosisscan.io/address/0xc84f0e95815A576171A19EB9E0fA55a217Ab1536) | [periphery-v1.0.1](https://github.com/sablier-labs/v2-deployments/tree/main/periphery/v1.0.1) |
+| SablierV2ProxyTarget | [0x5B144C3B9C8cfd48297Aeb59B90a024Ef3fCcE92](https://gnosisscan.io/address/0x5B144C3B9C8cfd48297Aeb59B90a024Ef3fCcE92) | [periphery-v1.0.1](https://github.com/sablier-labs/v2-deployments/tree/main/periphery/v1.0.1) |
 
 ## Optimism
 
@@ -154,9 +154,9 @@ Or maybe you're looking for the PRBProxy deployments? Check out [prbproxy.com](h
 
 | Contract             | Address                                                                                                                          | Deployment                                                                                    |
 | :------------------- | :------------------------------------------------------------------------------------------------------------------------------- | :-------------------------------------------------------------------------------------------- |
-| SablierV2Archive     | [0x9A09eC6f991386718854aDDCEe68647776Befd5b](https://optimistic.etherscan.io/address/0x9A09eC6f991386718854aDDCEe68647776Befd5b) | [periphery-v1.0.0](https://github.com/sablier-labs/v2-deployments/tree/main/periphery/v1.0.0) |
-| SablierV2ProxyPlugin | [0x77C8516B1F327890C956bb38F93Ac2d6B24795Ea](https://optimistic.etherscan.io/address/0x77C8516B1F327890C956bb38F93Ac2d6B24795Ea) | [periphery-v1.0.0](https://github.com/sablier-labs/v2-deployments/tree/main/periphery/v1.0.0) |
-| SablierV2ProxyTarget | [0x194ed7D6005C8ba4084A948406545DF299ad37cD](https://optimistic.etherscan.io/address/0x194ed7D6005C8ba4084A948406545DF299ad37cD) | [periphery-v1.0.0](https://github.com/sablier-labs/v2-deployments/tree/main/periphery/v1.0.0) |
+| SablierV2Archive     | [0x9A09eC6f991386718854aDDCEe68647776Befd5b](https://optimistic.etherscan.io/address/0x9A09eC6f991386718854aDDCEe68647776Befd5b) | [periphery-v1.0.1](https://github.com/sablier-labs/v2-deployments/tree/main/periphery/v1.0.1) |
+| SablierV2ProxyPlugin | [0x77C8516B1F327890C956bb38F93Ac2d6B24795Ea](https://optimistic.etherscan.io/address/0x77C8516B1F327890C956bb38F93Ac2d6B24795Ea) | [periphery-v1.0.1](https://github.com/sablier-labs/v2-deployments/tree/main/periphery/v1.0.1) |
+| SablierV2ProxyTarget | [0x194ed7D6005C8ba4084A948406545DF299ad37cD](https://optimistic.etherscan.io/address/0x194ed7D6005C8ba4084A948406545DF299ad37cD) | [periphery-v1.0.1](https://github.com/sablier-labs/v2-deployments/tree/main/periphery/v1.0.1) |
 
 ## Polygon
 
@@ -173,6 +173,6 @@ Or maybe you're looking for the PRBProxy deployments? Check out [prbproxy.com](h
 
 | Contract             | Address                                                                                                                  | Deployment                                                                                    |
 | :------------------- | :----------------------------------------------------------------------------------------------------------------------- | :-------------------------------------------------------------------------------------------- |
-| SablierV2Archive     | [0xA2f5B2e798e7ADd59d85d9b76645E6AC13fC4e1f](https://polygonscan.com/address/0xA2f5B2e798e7ADd59d85d9b76645E6AC13fC4e1f) | [periphery-v1.0.0](https://github.com/sablier-labs/v2-deployments/tree/main/periphery/v1.0.0) |
-| SablierV2ProxyPlugin | [0xBe4cad0e99865CC62787Ecf029aD9DD4815d3d2e](https://polygonscan.com/address/0xBe4cad0e99865CC62787Ecf029aD9DD4815d3d2e) | [periphery-v1.0.0](https://github.com/sablier-labs/v2-deployments/tree/main/periphery/v1.0.0) |
-| SablierV2ProxyTarget | [0x576743075fc5F771bbC1376c3267A6185Af9D62B](https://polygonscan.com/address/0x576743075fc5F771bbC1376c3267A6185Af9D62B) | [periphery-v1.0.0](https://github.com/sablier-labs/v2-deployments/tree/main/periphery/v1.0.0) |
+| SablierV2Archive     | [0xA2f5B2e798e7ADd59d85d9b76645E6AC13fC4e1f](https://polygonscan.com/address/0xA2f5B2e798e7ADd59d85d9b76645E6AC13fC4e1f) | [periphery-v1.0.1](https://github.com/sablier-labs/v2-deployments/tree/main/periphery/v1.0.1) |
+| SablierV2ProxyPlugin | [0xBe4cad0e99865CC62787Ecf029aD9DD4815d3d2e](https://polygonscan.com/address/0xBe4cad0e99865CC62787Ecf029aD9DD4815d3d2e) | [periphery-v1.0.1](https://github.com/sablier-labs/v2-deployments/tree/main/periphery/v1.0.1) |
+| SablierV2ProxyTarget | [0x576743075fc5F771bbC1376c3267A6185Af9D62B](https://polygonscan.com/address/0x576743075fc5F771bbC1376c3267A6185Af9D62B) | [periphery-v1.0.1](https://github.com/sablier-labs/v2-deployments/tree/main/periphery/v1.0.1) |
