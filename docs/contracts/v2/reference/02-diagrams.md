@@ -42,6 +42,48 @@ flowchart LR;
 		class contract,stream_1,stream_2,property_1,property_2,property_3,property_4,property_5,property_6 object;
 ```
 
+## Lockup Dynamic
+
+```mermaid
+flowchart LR;
+		classDef object stroke:#ff9C00,color:#ffffff;
+    contract["Lockup Dynamic
+		contract"];
+		stream_1[(Stream LD-1-1)];
+		property_1([Start time]);
+		property_2([End time]);
+		property_3([Deposit amount]);
+		property_4["segment 1
+		segment 2
+		segment 3
+		segment 4
+		...
+		segment n"]
+		stream_1 --> property_1;
+		stream_1 --> property_2;
+		stream_1 --> property_3;
+		stream_1 --> property_4;
+		contract --> stream_1;
+
+		stream_2[(Stream LD-1-2)];
+		property_5([Start time]);
+		property_6([Stop time]);
+		property_7([Deposit amount]);
+		property_8["segment 1
+		segment 2
+		segment 3
+		segment 4
+		...
+		segment n"]
+		stream_2 --> property_5;
+		stream_2 --> property_6;
+		stream_2 --> property_7;
+		stream_2 --> property_8;
+		contract --> stream_2;
+
+		class contract,stream_1,stream_2,property_1,property_2,property_3,property_4,property_5,property_6,property_7,property_8 object;
+```
+
 ## Set up proxy
 
 This is the first action that the sender needs to take in order to create a stream via the Sablier Interface. It is a
