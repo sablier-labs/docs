@@ -78,7 +78,7 @@ const config = {
     {
       algolia: {
         appId: "9L7N2RKHWE",
-        apiKey: "3e33b6f83cd14e6e4ffc4873559732c8",
+        apiKey: "4fc960889335dad720b725a02667d46a",
         indexName: "sablierdocs",
       },
       codeblock: {
