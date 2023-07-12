@@ -163,6 +163,7 @@ const config = {
         ],
         style: "dark",
       },
+      image: "img/open-graph.png",
       mermaid: {
         theme: { light: "neutral", dark: "dark" },
       },
