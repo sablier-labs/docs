@@ -4,106 +4,84 @@ sidebar_position: 2
 title: "Diagrams"
 ---
 
-A collection of scenarios to help you understand how the Sablier Protocol works from end to end.
+## Storage layout
 
-:::note
+Each Lockup contract is a singleton that stores all streams created by all users. The following diagrams will give you
+an idea of how the storage layout looks like.
 
-In the diagrams below, LockupLinear is used as an example, but LockupDynamic could be used in its place and the diagrams
-would still be valid.
-
-"ERC20" can be any ERC20-compliant token.
-
-:::
-
-## Lockup Linear
-
-An example of two streams being stored in the Lockup Linear contract.
+### Lockup Linear
 
 ```mermaid
 flowchart LR;
-		classDef object stroke:#ff9C00,color:#ffffff;
-    contract["Lockup Linear
-		contract"];
-		stream_1[(Stream LL-1-1)];
-		property_1([Start time]);
-		property_2([End time]);
-		property_3([Deposit amount]);
-		stream_1 --> property_1;
-		stream_1 --> property_2;
-		stream_1 --> property_3;
-		contract --> stream_1;
+  C["LockupLinear\ncontract"];
+  S0[(Stream LL-1-1)];
+  P0([Start time]);
+  P1([End time]);
+  P2([Deposit amount]);
+  S0 --> P0;
+  S0 --> P1;
+  S0 --> P2;
+  C --> S0;
 
-		stream_2[(Stream LL-1-2)];
-		property_4([Start time]);
-		property_5([Stop time]);
-		property_6([Deposit amount]);
-		stream_2 --> property_4;
-		stream_2 --> property_5;
-		stream_2 --> property_6;
-		contract --> stream_2;
-		class contract,stream_1,stream_2,property_1,property_2,property_3,property_4,property_5,property_6 object;
+  S1[(Stream LL-1-2)];
+  P3([Start time]);
+  P4([Stop time]);
+  P5([Deposit amount]);
+  S1 --> P3;
+  S1 --> P4;
+  S1 --> P5;
+  C --> S1;
 ```
 
-## Lockup Dynamic
+### Lockup Dynamic
 
 An example of two streams being stored in the Lockup Dynamic contract.
 
 ```mermaid
 flowchart LR;
-		classDef object stroke:#ff9C00,color:#ffffff;
-    contract["Lockup Dynamic
-		contract"];
-		stream_1[(Stream LD-1-1)];
-		property_1([Start time]);
-		property_2([End time]);
-		property_3([Deposit amount]);
-		property_4["segment 1
-		segment 2
-		segment 3
-		segment 4
-		...
-		segment n"]
-		stream_1 --> property_1;
-		stream_1 --> property_2;
-		stream_1 --> property_3;
-		stream_1 --> property_4;
-		contract --> stream_1;
+  C["LockupDynamic\ncontract"];
+  S0[(Stream LD-1-1)];
+  P0([Start time]);
+  P1([End time]);
+  P2([Deposit amount]);
+  P3["Segment 1
+  Segment 2
+  ...
+  Segment n"]
 
-		stream_2[(Stream LD-1-2)];
-		property_5([Start time]);
-		property_6([Stop time]);
-		property_7([Deposit amount]);
-		property_8["segment 1
-		segment 2
-		segment 3
-		segment 4
-		...
-		segment n"]
-		stream_2 --> property_5;
-		stream_2 --> property_6;
-		stream_2 --> property_7;
-		stream_2 --> property_8;
-		contract --> stream_2;
+  S0 --> P0;
+  S0 --> P1;
+  S0 --> P2;
+  S0 --> P3;
+  C --> S0;
 
-		class contract,stream_1,stream_2,property_1,property_2,property_3,property_4,property_5,property_6,property_7,property_8 object;
+  S1[(Stream LD-1-2)];
+  P4([Start time]);
+  P5([Stop time]);
+  P6([Deposit amount]);
+  P7["Segment 1
+  Segment 2
+  ...
+  Segment n"]
+  S1 --> P4;
+  S1 --> P5;
+  S1 --> P6;
+  S1 --> P7;
+  C --> S1;
 ```
 
-## Protocol participants
+## Scenarios
 
-```mermaid
-flowchart LR;
-		classDef object stroke:#ff9C00,color:#ffffff;
-    contract[Sablier V2];
-		developers[Developers]
-		governance[Protocol Admin]
-		users[Stream creators/recipients]
+A collection of scenarios to help you understand how the Sablier Protocol works from end to end.
 
-		governance--"governs"-->contract;
-		users--"use"-->contract;
-		developers--"maintain"-->contract;
+:::note
 
-		class contract,developers,governance,users object;
-```
+In the diagrams below, LockupLinear is used as an example. LockupDynamic could be used in its place and the diagrams
+would still be valid.
+
+"ERC20" can be any ERC20-compliant token.
+
+:::
 
 ## Set up proxy
 
@@ -112,7 +90,6 @@ one-time action that deploy a [PRBProxy](https://github.com/PaulRBerg/prb-proxy)
 
 ```mermaid
 flowchart LR
-	classDef object stroke:#ff9C00,color:#ffffff;
   S((Sender))
   PR[PRBProxyRegistry]
   P[PRBProxy]
@@ -120,14 +97,12 @@ flowchart LR
   S -- "deployAndInstallPlugin" --> PR
   PR -- "deploy" --> P
   PR -- "installPlugin" --> PP
-	class S,PR,P,PP object;
 ```
 
 ## Create a stream
 
 ```mermaid
 flowchart LR
-	classDef object stroke:#ff9C00,color:#ffffff;
   S((Sender))
   P2[Permit2]
   subgraph Periphery
@@ -141,7 +116,6 @@ flowchart LR
   P -- "execute" --> PT
   PT -- "transferFrom" --> P2
   PT -- "create" --> LL
-	class S,P,PT,P2,LL object;
 ```
 
 ### Withdraw from a stream
@@ -150,7 +124,6 @@ flowchart LR
 
 ```mermaid
 flowchart LR
-	classDef object stroke:#ff9C00,color:#ffffff;
   S((Sender))
   subgraph Periphery
     P[Proxy]
@@ -164,14 +137,12 @@ flowchart LR
   P -- "execute" --> PT
   PT -- "withdraw" --> LL
   LL -- "transfer(Recipient)" --> E
-	class E,S,P,PT,LL object;
 ```
 
 ### Recipient withdraws
 
 ```mermaid
 flowchart LR
-	classDef object stroke:#ff9C00,color:#ffffff;
   E[ERC20]
   subgraph Core
     LL[LockupLinear]
@@ -179,7 +150,6 @@ flowchart LR
   R((Recipient))
   R -- "withdraw" --> LL
   LL -- "transfer(Recipient)" --> E
-	class E,R,LL object;
 ```
 
 ## Cancel a stream
@@ -188,7 +158,6 @@ flowchart LR
 
 ```mermaid
 flowchart LR
-	classDef object stroke:#ff9C00,color:#ffffff;
   S((Sender))
   subgraph Periphery
     P[Proxy]
@@ -202,7 +171,6 @@ flowchart LR
   P -- "execute" --> PT
   PT -- "cancel" --> LL
   LL -- "transfer(Sender)" --> E
-	class E,S,P,PT,LL object;
 ```
 
 ### Recipient cancels
@@ -214,7 +182,6 @@ the refund to the sender.
 
 ```mermaid
 flowchart RL
-	classDef object stroke:#ff9C00,color:#ffffff;
   subgraph Periphery
     P[Sender's Proxy]
     PP[Sender's ProxyPlugin]
@@ -228,5 +195,4 @@ flowchart RL
   LL -- "onStreamCanceled" --> P
   P -- "onStreamCanceled" --> PP
   PP -- "transfer(Sender)" --> E
-	class R,E,LL,P,PP object;
 ```
