@@ -91,6 +91,7 @@ one-time action that deploy a [PRBProxy](https://github.com/PaulRBerg/prb-proxy)
 
 ```mermaid
 flowchart LR
+	classDef object stroke:#ff9C00,color:#ffffff;
   S((Sender))
   PR[PRBProxyRegistry]
   P[PRBProxy]
@@ -98,12 +99,14 @@ flowchart LR
   S -- "deployAndInstallPlugin" --> PR
   PR -- "deploy" --> P
   PR -- "installPlugin" --> PP
+	class S,PR,P,PP object;
 ```
 
 ## Create a stream
 
 ```mermaid
 flowchart LR
+	classDef object stroke:#ff9C00,color:#ffffff;
   S((Sender))
   P2[Permit2]
   subgraph Periphery
@@ -117,6 +120,7 @@ flowchart LR
   P -- "execute" --> PT
   PT -- "transferFrom" --> P2
   PT -- "create" --> LL
+	class S,P,PT,P2,LL object;
 ```
 
 ### Withdraw from a stream
@@ -125,6 +129,7 @@ flowchart LR
 
 ```mermaid
 flowchart LR
+	classDef object stroke:#ff9C00,color:#ffffff;
   S((Sender))
   subgraph Periphery
     P[Proxy]
@@ -138,12 +143,14 @@ flowchart LR
   P -- "execute" --> PT
   PT -- "withdraw" --> LL
   LL -- "transfer(Recipient)" --> E
+	class E,S,P,PT,LL object;
 ```
 
 ### Recipient withdraws
 
 ```mermaid
 flowchart LR
+	classDef object stroke:#ff9C00,color:#ffffff;
   E[ERC20]
   subgraph Core
     LL[LockupLinear]
@@ -151,6 +158,7 @@ flowchart LR
   R((Recipient))
   R -- "withdraw" --> LL
   LL -- "transfer(Recipient)" --> E
+	class E,R,LL object;
 ```
 
 ## Cancel a stream
@@ -159,6 +167,7 @@ flowchart LR
 
 ```mermaid
 flowchart LR
+	classDef object stroke:#ff9C00,color:#ffffff;
   S((Sender))
   subgraph Periphery
     P[Proxy]
@@ -172,6 +181,7 @@ flowchart LR
   P -- "execute" --> PT
   PT -- "cancel" --> LL
   LL -- "transfer(Sender)" --> E
+	class E,S,P,PT,LL object;
 ```
 
 ### Recipient cancels
@@ -183,6 +193,7 @@ the refund to the sender.
 
 ```mermaid
 flowchart RL
+	classDef object stroke:#ff9C00,color:#ffffff;
   subgraph Periphery
     P[Sender's Proxy]
     PP[Sender's ProxyPlugin]
@@ -196,4 +207,5 @@ flowchart RL
   LL -- "onStreamCanceled" --> P
   P -- "onStreamCanceled" --> PP
   PP -- "transfer(Sender)" --> E
+	class R,E,LL,P,PP object;
 ```
