@@ -76,10 +76,7 @@ A collection of scenarios to help you understand how the Sablier Protocol works 
 
 :::note
 
-In the diagrams below, LockupLinear is used as an example. LockupDynamic could be used in its place and the diagrams
-would still be valid.
-
-"ERC20" can be any ERC20-compliant token.
+In the diagrams below, we use `Core Contract` to refer to either the `LockupLinear` or `LockupDynamic` contract.
 
 :::
 
@@ -104,18 +101,19 @@ flowchart LR
 ```mermaid
 flowchart LR
   S((Sender))
-  P2[Permit2]
   subgraph Periphery
     P[Proxy]
     PT[ProxyTarget]
+    P2[Permit2]
   end
-  subgraph Core
-    LL[LockupLinear]
-  end
-  S -- "create" --> P
-  P -- "execute" --> PT
-  PT -- "transferFrom" --> P2
-  PT -- "create" --> LL
+  CC[Core Contract]
+
+  S -- "execute" --> P
+  P -- "create-delegatecall" --> PT
+  PT -- "createLogic" --> P
+  P -- "permit" --> P2
+  P2 -- "transferFrom" --> P
+  P -- "create" --> CC
 ```
 
 ### Withdraw from a stream
@@ -125,31 +123,31 @@ flowchart LR
 ```mermaid
 flowchart LR
   S((Sender))
-  subgraph Periphery
-    P[Proxy]
-    PT[ProxyTarget]
-  end
-  subgraph Core
-    LL[LockupLinear]
-  end
-  E[ERC20]
-  S -- "withdraw" --> P
-  P -- "execute" --> PT
-  PT -- "withdraw" --> LL
-  LL -- "transfer(Recipient)" --> E
+  R((Recipient))
+  P[Proxy]
+  PT[ProxyTarget]
+  CC[Core Contract]
+
+  S -- "execute" --> P
+  P -- "withdraw-delegatecall" --> PT
+  PT -- "withdrawLogic" --> P
+  P -- "withdraw" --> CC
+  CC -- "transfer" --> R
 ```
 
 ### Recipient withdraws
 
+In the diagram below, we've numbered the functions to indicate their sequence. This is due to limitation in the
+[Mermaid](https://github.com/mermaid-js/mermaid) library, which we're using to generate these diagrams. The library does
+not currently support the custom ordering of lines
+
 ```mermaid
-flowchart LR
-  E[ERC20]
-  subgraph Core
-    LL[LockupLinear]
-  end
+flowchart RL
+  CC[Core Contract]
   R((Recipient))
-  R -- "withdraw" --> LL
-  LL -- "transfer(Recipient)" --> E
+
+  R -- "1-withdraw" --> CC
+  CC -- "2-transfer" --> R
 ```
 
 ## Cancel a stream
@@ -159,18 +157,16 @@ flowchart LR
 ```mermaid
 flowchart LR
   S((Sender))
-  subgraph Periphery
-    P[Proxy]
-    PT[ProxyTarget]
-  end
-  subgraph Core
-    LL[LockupLinear]
-  end
-  E[ERC20]
-  S -- "cancel" --> P
-  P -- "execute" --> PT
-  PT -- "cancel" --> LL
-  LL -- "transfer(Sender)" --> E
+  P[Proxy]
+  PT[ProxyTarget]
+  CC[Core Contract]
+
+  S -- "execute" --> P
+  P -- "cancel-delegatecall" --> PT
+  PT -- "cancelLogic" --> P
+  P -- "cancel" --> CC
+  CC -- "transfer" --> P
+  P -- "transfer" --> S
 ```
 
 ### Recipient cancels
@@ -181,18 +177,19 @@ If the sender create the stream via a proxy, the proxy plugin will be notified o
 the refund to the sender.
 
 ```mermaid
-flowchart RL
+flowchart LR
   subgraph Periphery
     P[Sender's Proxy]
-    PP[Sender's ProxyPlugin]
+    PP[SablierV2ProxyPlugin]
   end
-  subgraph Core
-    LL[LockupLinear]
-  end
+  CC[Core Contract]
+
   R((Recipient))
-  E[ERC20]
-  R -- "cancel" --> LL
-  LL -- "onStreamCanceled" --> P
-  P -- "onStreamCanceled" --> PP
-  PP -- "transfer(Sender)" --> E
+  S((Sender))
+  R -- "cancel" --> CC
+  CC -- "transfer" --> P
+  CC -- "onStreamCanceled" --> P
+  P -- "fallback-delegatecall" --> PP
+  PP -- "pluginLogic" --> P
+  P -- "transfer" --> S
 ```
