@@ -6,26 +6,8 @@ title: "Fees"
 
 import { links } from "@site/src/constants";
 
-There are two types of fees in Sablier: protocol fees and broker fees. Both are charged when a stream is created. In the
+There are two types of fees in Sablier: broker fees and protocol fees. Both are charged when a stream is created. In the
 event of an early stream cancellation, the fees are not refunded.
-
-## Protocol Fees
-
-The Sablier Protocol features a fee parameter that the [Protocol Admin](/concepts/governance) can enable for specific
-ERC-20 assets.
-
-This fee is charged as a percentage of the streamed amount (not a flat rate), and it applies globally to all streams
-created with a particular ERC-20 asset, regardless of the stream creation method — be it through the Sablier Interface
-or a third-party front-end application integrating the Sablier Protocol.
-
-The Admin has the ability to modify the protocol fee for individual ERC-20 assets; however, no fee can exceed the
-hard-coded limit of 10%.
-
-:::note
-
-The protocol fee is currently set to 0% for all ERC-20 assets.
-
-:::
 
 ## Broker fees
 
@@ -35,7 +17,7 @@ other users. These brokers have the ability to charge service fees for facilitat
 Broker fees are particularly useful for front-end applications that integrate the Sablier Protocol. They enable
 front-end operators to levy a fee on each Sablier stream created through their platform.
 
-Just like with protocol fees, the broker fee is a percentage of the streamed amount, and it cannot be higher than 10%.
+The broker fee is a percentage of the streamed amount, and it cannot be higher than 10%.
 
 :::note
 
@@ -47,5 +29,23 @@ The official [Sablier Interface](https://app.sablier.com) does not currently cha
 
 Interested in becoming a broker? Come say hi on <a href={links.discord}>Discord</a>, or send an email to
 [sales@sablier.com](mailto:sales@sablier.com).
+
+:::
+
+## Protocol Fees
+
+The Sablier Protocol features a fee parameter that the [Protocol Admin](/concepts/governance) can enable for specific
+ERC-20 assets.
+
+Just like protocol fees, the broker fee is charged as a percentage of the streamed amount (not a flat rate), and it
+applies globally to all streams created with a particular ERC-20 asset, regardless of the stream creation method — be it
+through the Sablier Interface or a third-party front-end application integrating the Sablier Protocol.
+
+The Admin has the ability to modify the protocol fee for individual ERC-20 assets; however, no fee can exceed the
+hard-coded limit of 10%.
+
+:::note
+
+The protocol fee is currently set to 0% for all ERC-20 assets.
 
 :::
