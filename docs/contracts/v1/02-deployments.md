@@ -19,7 +19,7 @@ Official deployments are deployments made by the Sablier team and supported in t
 | Sablier.sol | Ethereum Mainnet | [0xCD18eAa163733Da39c232722cBC4E8940b1D8888](https://etherscan.io/address/0xCD18eAa163733Da39c232722cBC4E8940b1D8888)                |
 | Sablier.sol | Arbitrum One     | [0xaDB944B478818d95659067E70D2e5Fc43Fa3eDe9](https://arbiscan.io/address/0xaDB944B478818d95659067E70D2e5Fc43Fa3eDe9)                 |
 | Sablier.sol | Avalanche        | [0x73f503fad13203C87889c3D5c567550b2d41D7a4](https://snowtrace.io/address/0x73f503fad13203C87889c3D5c567550b2d41D7a4)                |
-| Sablier.sol | BSC Mainnet      | [0x05BC7f5fb7F248d44d38703e5C921A8c16825161](https://bscscan.com/address/0x05BC7f5fb7F248d44d38703e5C921A8c16825161)                 |
+| Sablier.sol | BNB Smart Chain  | [0x05BC7f5fb7F248d44d38703e5C921A8c16825161](https://bscscan.com/address/0x05BC7f5fb7F248d44d38703e5C921A8c16825161)                 |
 | Sablier.sol | Optimism         | [0x6C5927c0679e6d857E87367bb635decbcB20F31c](https://optimistic.etherscan.io/address/0x6C5927c0679e6d857E87367bb635decbcB20F31c)     |
 | Sablier.sol | Polygon Mainnet  | [0xAC18EAB6592F5fF6F9aCf5E0DCE0Df8E49124C06](https://polygonscan.com/address/0xAC18EAB6592F5fF6F9aCf5E0DCE0Df8E49124C06)             |
 | Sablier.sol | Ronin            | [0xDe9dCc27aa1552d591Fc9B9c21881feE43BD8118](https://explorer.roninchain.com/address/ronin:de9dcc27aa1552d591fc9b9c21881fee43bd8118) |
