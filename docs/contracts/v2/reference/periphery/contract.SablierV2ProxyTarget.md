@@ -4,7 +4,7 @@ sidebar_position: 3
 
 # SablierV2ProxyTarget
 
-[Git Source](https://github.com/sablier-labs/v2-periphery/blob/0c389e73d0b3467ccfab52e98140aad7c099aacf/docs/contracts/v2/reference/periphery)
+[Git Source](https://github.com/sablier-labs/v2-periphery/blob/561f49f77dc855cb4c3a7a449a43613e8f71d655/docs/contracts/v2/reference/periphery)
 
 **Inherits:**
 [ISablierV2ProxyTarget](/docs/contracts/v2/reference/periphery/interfaces/interface.ISablierV2ProxyTarget.md),
@@ -36,8 +36,8 @@ Cancels multiple streams across different lockup contracts.
 Notes:
 
 - All refunded assets are forwarded to the proxy owner.
-- It is assumed that `assets` includes all assets associated with the stream ids in `batch`. If any asset is missing,
-  the refunded amount will be left in the proxy. Requirements:
+- It is assumed that `assets` includes only the assets associated with the stream ids in `batch`. If any asset is
+  missing, the refunded amount will be left in the proxy. Requirements:
 - Must be delegate called.
 - There must be at least one element in `batch`.
 
@@ -71,7 +71,10 @@ function burn(ISablierV2Lockup lockup, uint256 streamId) external onlyDelegateCa
 
 Mirror for {ISablierV2Lockup.cancel}.
 
-_Must be delegate called._
+Notes:
+
+- All refunded assets are forwarded to the proxy owner. Requirements:
+- Must be delegate called.
 
 ```solidity
 function cancel(ISablierV2Lockup lockup, uint256 streamId) public onlyDelegateCall;
@@ -84,8 +87,8 @@ Mirror for {ISablierV2Lockup.cancelMultiple}.
 Notes:
 
 - All refunded assets are forwarded to the proxy owner.
-- It is assumed that `assets` includes all assets associated with `streamIds`. If any asset is missing, the refunded
-  amount will be left in the proxy. Requirements:
+- It is assumed that `assets` includes only the assets associated with `streamIds`. If any asset is missing, the
+  refunded amount will be left in the proxy. Requirements:
 - Must be delegate called.
 
 ```solidity
@@ -102,7 +105,7 @@ function cancelMultiple(
 
 | Name        | Type               | Description                                                     |
 | ----------- | ------------------ | --------------------------------------------------------------- |
-| `lockup`    | `ISablierV2Lockup` | The address of the lockup streaming contract.                   |
+| `lockup`    | `ISablierV2Lockup` | The address of the Lockup streaming contract.                   |
 | `assets`    | `IERC20[]`         | The contract addresses of the ERC-20 assets used for streaming. |
 | `streamIds` | `uint256[]`        | The stream ids to cancel.                                       |
 
@@ -257,7 +260,7 @@ function cancelAndCreateWithDurations(
 
 | Name            | Type                               | Description                                                                                                                                                 |
 | --------------- | ---------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `lockup`        | `ISablierV2Lockup`                 | The address of the lockup streaming contract where the stream to cancel is.                                                                                 |
+| `lockup`        | `ISablierV2Lockup`                 | The address of the Lockup streaming contract where the stream to cancel is.                                                                                 |
 | `streamId`      | `uint256`                          | The id of the stream to cancel.                                                                                                                             |
 | `lockupLinear`  | `ISablierV2LockupLinear`           | The address of the [SablierV2LockupLinear](docs/contracts/v2/reference/core/contract.SablierV2LockupLinear.md) contract to use for creating the new stream. |
 | `createParams`  | `LockupLinear.CreateWithDurations` |                                                                                                                                                             |
@@ -298,7 +301,7 @@ function cancelAndCreateWithRange(
 
 | Name            | Type                           | Description                                                                                                                                                 |
 | --------------- | ------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `lockup`        | `ISablierV2Lockup`             | The address of the lockup streaming contract where the stream to cancel is.                                                                                 |
+| `lockup`        | `ISablierV2Lockup`             | The address of the Lockup streaming contract where the stream to cancel is.                                                                                 |
 | `streamId`      | `uint256`                      | The id of the stream to cancel.                                                                                                                             |
 | `lockupLinear`  | `ISablierV2LockupLinear`       | The address of the [SablierV2LockupLinear](docs/contracts/v2/reference/core/contract.SablierV2LockupLinear.md) contract to use for creating the new stream. |
 | `createParams`  | `LockupLinear.CreateWithRange` |                                                                                                                                                             |
@@ -539,7 +542,7 @@ function cancelAndCreateWithDeltas(
 
 | Name            | Type                             | Description                                                                               |
 | --------------- | -------------------------------- | ----------------------------------------------------------------------------------------- |
-| `lockup`        | `ISablierV2Lockup`               | The address of the lockup streaming contract where the stream to cancel is.               |
+| `lockup`        | `ISablierV2Lockup`               | The address of the Lockup streaming contract where the stream to cancel is.               |
 | `streamId`      | `uint256`                        | The id of the stream to cancel.                                                           |
 | `dynamic`       | `ISablierV2LockupDynamic`        |                                                                                           |
 | `createParams`  | `LockupDynamic.CreateWithDeltas` | A struct encapsulating the create function parameters, which are documented in V2 Core.   |
@@ -580,7 +583,7 @@ function cancelAndCreateWithMilestones(
 
 | Name            | Type                                 | Description                                                                               |
 | --------------- | ------------------------------------ | ----------------------------------------------------------------------------------------- |
-| `lockup`        | `ISablierV2Lockup`                   | The address of the lockup streaming contract where the stream to cancel is.               |
+| `lockup`        | `ISablierV2Lockup`                   | The address of the Lockup streaming contract where the stream to cancel is.               |
 | `streamId`      | `uint256`                            | The id of the stream to cancel.                                                           |
 | `dynamic`       | `ISablierV2LockupDynamic`            |                                                                                           |
 | `createParams`  | `LockupDynamic.CreateWithMilestones` | A struct encapsulating the create function parameters, which are documented in V2 Core.   |

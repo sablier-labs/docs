@@ -1,6 +1,6 @@
 # ISablierV2Archive
 
-[Git Source](https://github.com/sablier-labs/v2-periphery/blob/0c389e73d0b3467ccfab52e98140aad7c099aacf/docs/contracts/v2/reference/periphery/interfaces)
+[Git Source](https://github.com/sablier-labs/v2-periphery/blob/561f49f77dc855cb4c3a7a449a43613e8f71d655/docs/contracts/v2/reference/periphery/interfaces)
 
 **Inherits:** IAdminable
 

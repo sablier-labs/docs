@@ -1,6 +1,6 @@
 # Helpers
 
-[Git Source](https://github.com/sablier-labs/v2-core/blob/412ec3d3998a766507de96afdb26c797d2ae491d/src/libraries/Helpers.sol)
+[Git Source](https://github.com/sablier-labs/v2-core/blob/bca1d9ea0485b065544486bb01f4148d44289644/src/libraries/Helpers.sol)
 
 Library with helper functions needed across the Sablier V2 contracts.
 
