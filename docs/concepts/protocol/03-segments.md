@@ -43,7 +43,7 @@ Segments can be used to represent any monotonic increasing function.
 
 Because x is a percentage, the streaming rate is inversely proportional to the exponent. For example, if the exponent is
 0.5, the rate is quadratically faster compared to the baseline when the exponent is 1. Conversely, if exponent is 2, the
-rate is quadratically faster compared to baseline.
+rate is quadratically slower compared to baseline.
 
 :::
 
