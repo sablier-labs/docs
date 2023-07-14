@@ -21,7 +21,7 @@ const config = {
       /** @type {import('@docusaurus/preset-classic').Options} */
       {
         docs: {
-          editUrl: "https://github.com/sablier-labs/docs/tree/main/",
+          editUrl: "https://github.com/sablier-labs/v2-docs/tree/main/",
           rehypePlugins: [katex],
           routeBasePath: "/", // Serve the docs at the site's root
           remarkPlugins: [math],
