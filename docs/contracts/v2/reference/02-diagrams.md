@@ -9,6 +9,14 @@ title: "Diagrams"
 Each Lockup contract is a singleton that stores all streams created by all users. The following diagrams will give you
 an idea of how the storage layout looks like.
 
+:::note
+
+In the diagrams below, we will show only some of the storage properties. The full list for `LockupLinear` can be found
+[here](/contracts/v2/reference/core/types/library.LockupLinear#stream), and for `LockupDynamic`
+[here](/contracts/v2/reference/core/types/library.LockupDynamic#stream).
+
+:::
+
 ### Lockup Linear
 
 ```mermaid
@@ -76,14 +84,13 @@ A collection of scenarios to help you understand how the Sablier Protocol works 
 
 :::note
 
-In the diagrams below, LockupLinear is used as an example. LockupDynamic could be used in its place and the diagrams
-would still be valid.
-
-"ERC20" can be any ERC20-compliant token.
+In the diagrams below, [`LockupLinear`](/contracts/v2/reference/core/contract.SablierV2LockupLinear) is used as an
+example. However, [`LockupDynamic`](/contracts/v2/reference/core/contract.SablierV2LockupLinear) could be used in its
+place and the diagrams would still be valid.
 
 :::
 
-## Set up proxy
+### Set up proxy
 
 This is the first action that the sender needs to take in order to create a stream via the Sablier Interface. It is a
 one-time action that deploy a [PRBProxy](https://github.com/PaulRBerg/prb-proxy) contract for senders.
@@ -99,28 +106,31 @@ flowchart LR
   PR -- "installPlugin" --> PP
 ```
 
-## Create a stream
+### Create a stream
 
 ```mermaid
 flowchart LR
   S((Sender))
-  P2[Permit2]
   subgraph Periphery
     P[Proxy]
     PT[ProxyTarget]
+    P2[Permit2]
   end
   subgraph Core
-    LL[LockupLinear]
+    LL[Lockup Linear]
   end
-  S -- "create" --> P
-  P -- "execute" --> PT
-  PT -- "transferFrom" --> P2
-  PT -- "create" --> LL
+
+  S -- "execute" --> P
+  P -- "delegatecall" --> PT
+  PT -- "create logic" --> P
+  P -- "permit" --> P2
+  P -- "transferFrom" --> P2
+  P -- "create" ---> LL
 ```
 
 ### Withdraw from a stream
 
-### Sender withdraws
+#### Sender withdraws
 
 ```mermaid
 flowchart LR
@@ -130,31 +140,31 @@ flowchart LR
     PT[ProxyTarget]
   end
   subgraph Core
-    LL[LockupLinear]
-  end
-  E[ERC20]
-  S -- "withdraw" --> P
-  P -- "execute" --> PT
-  PT -- "withdraw" --> LL
-  LL -- "transfer(Recipient)" --> E
-```
-
-### Recipient withdraws
-
-```mermaid
-flowchart LR
-  E[ERC20]
-  subgraph Core
-    LL[LockupLinear]
+    LL[Lockup Linear]
   end
   R((Recipient))
-  R -- "withdraw" --> LL
-  LL -- "transfer(Recipient)" --> E
+
+  S -- "execute" --> P
+  P -- "delegatecall" --> PT
+  PT -- "withdraw logic" --> P
+  P -- "withdraw" --> LL
+  LL -- "transfer" ---> R
 ```
 
-## Cancel a stream
+#### Recipient withdraws
 
-### Sender cancels
+```mermaid
+flowchart RL
+  LL[Lockup Linear]
+  R((Recipient))
+
+  R -- "withdraw" --> LL
+  LL -- "transfer" --> R
+```
+
+### Cancel a stream
+
+#### Sender cancels
 
 ```mermaid
 flowchart LR
@@ -164,16 +174,20 @@ flowchart LR
     PT[ProxyTarget]
   end
   subgraph Core
-    LL[LockupLinear]
+    LL[Lockup Linear]
   end
-  E[ERC20]
-  S -- "cancel" --> P
-  P -- "execute" --> PT
-  PT -- "cancel" --> LL
-  LL -- "transfer(Sender)" --> E
+  PEnd[Proxy]
+  SEnd((Sender))
+
+  S -- "execute" --> P
+  P -- "delegatecall" --> PT
+  PT -- "cancel logic" --> P
+  P -- "cancel" --> LL
+  LL -- "transfer" --> PEnd
+  PEnd -- "transfer" --> SEnd
 ```
 
-### Recipient cancels
+#### Recipient cancels
 
 When the recipient cancels a stream, the sender is automatically refunded the remaining balance.
 
@@ -181,18 +195,21 @@ If the sender create the stream via a proxy, the proxy plugin will be notified o
 the refund to the sender.
 
 ```mermaid
-flowchart RL
+flowchart LR
+  R((Recipient))
+  subgraph Core
+    LL[Lockup Linear]
+  end
   subgraph Periphery
     P[Sender's Proxy]
-    PP[Sender's ProxyPlugin]
+    PP[SablierV2ProxyPlugin]
   end
-  subgraph Core
-    LL[LockupLinear]
-  end
-  R((Recipient))
-  E[ERC20]
+  S((Sender))
+
   R -- "cancel" --> LL
+  LL -- "transfer" --> P
   LL -- "onStreamCanceled" --> P
-  P -- "onStreamCanceled" --> PP
-  PP -- "transfer(Sender)" --> E
+  P -- "delegatecall" --> PP
+  PP -- "plugin logic" --> P
+  P -- "transfer" ---> S
 ```
