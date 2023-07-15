@@ -4,7 +4,7 @@ sidebar_position: 1
 
 # SablierV2Archive
 
-[Git Source](https://github.com/sablier-labs/v2-periphery/blob/561f49f77dc855cb4c3a7a449a43613e8f71d655/docs/contracts/v2/reference/periphery)
+[Git Source](https://github.com/sablier-labs/v2-periphery/blob/05c331e79e05886c7837dfda1bc21197c1c3c748/docs/contracts/v2/reference/periphery)
 
 **Inherits:** [ISablierV2Archive](/docs/contracts/v2/reference/periphery/interfaces/interface.ISablierV2Archive.md),
 Adminable
