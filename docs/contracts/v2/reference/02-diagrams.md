@@ -11,8 +11,8 @@ an idea of how the storage layout looks like.
 
 :::note
 
-In the diagrams below, we will be showing only a few of the storage variables, you can find the complete list for the
-`Lockup Linear` [here](/contracts/v2/reference/core/types/library.LockupLinear#stream), and for the `Lockup Dynamic`
+In the diagrams below, we will show only some of the storage properties. The full list for `LockupLinear` can be found
+[here](/contracts/v2/reference/core/types/library.LockupLinear#stream), and for `LockupDynamic`
 [here](/contracts/v2/reference/core/types/library.LockupDynamic#stream).
 
 :::
@@ -84,11 +84,13 @@ A collection of scenarios to help you understand how the Sablier Protocol works 
 
 :::note
 
-In the diagrams below, we use `Core Contract` to refer to either the `LockupLinear` or `LockupDynamic` contract.
+In the diagrams below, [`LockupLinear`](/contracts/v2/reference/core/contract.SablierV2LockupLinear) is used as an
+example. However, [`LockupDynamic`](/contracts/v2/reference/core/contract.SablierV2LockupLinear) could be used in its
+place and the diagrams would still be valid.
 
 :::
 
-## Set up proxy
+### Set up proxy
 
 This is the first action that the sender needs to take in order to create a stream via the Sablier Interface. It is a
 one-time action that deploy a [PRBProxy](https://github.com/PaulRBerg/prb-proxy) contract for senders.
@@ -104,7 +106,7 @@ flowchart LR
   PR -- "installPlugin" --> PP
 ```
 
-## Create a stream
+### Create a stream
 
 ```mermaid
 flowchart LR
@@ -114,70 +116,78 @@ flowchart LR
     PT[ProxyTarget]
     P2[Permit2]
   end
-  CC[Core Contract]
+  subgraph Core
+    LL[Lockup Linear]
+  end
 
   S -- "execute" --> P
-  P -- "create-delegatecall" --> PT
-  PT -- "createLogic" --> P
+  P -- "delegatecall" --> PT
+  PT -- "create logic" --> P
   P -- "permit" --> P2
-  P2 -- "transferFrom" --> P
-  P -- "create" --> CC
+  P -- "transferFrom" --> P2
+  P -- "create" ---> LL
 ```
 
 ### Withdraw from a stream
 
-### Sender withdraws
+#### Sender withdraws
 
 ```mermaid
 flowchart LR
   S((Sender))
+  subgraph Periphery
+    P[Proxy]
+    PT[ProxyTarget]
+  end
+  subgraph Core
+    LL[Lockup Linear]
+  end
   R((Recipient))
-  P[Proxy]
-  PT[ProxyTarget]
-  CC[Core Contract]
 
   S -- "execute" --> P
-  P -- "withdraw-delegatecall" --> PT
-  PT -- "withdrawLogic" --> P
-  P -- "withdraw" --> CC
-  CC -- "transfer" --> R
+  P -- "delegatecall" --> PT
+  PT -- "withdraw logic" --> P
+  P -- "withdraw" --> LL
+  LL -- "transfer" ---> R
 ```
 
-### Recipient withdraws
-
-In the diagram below, we've numbered the functions to indicate their sequence. This is due to limitation in the
-[Mermaid](https://github.com/mermaid-js/mermaid) library, which we're using to generate these diagrams. The library does
-not currently support the custom ordering of lines
+#### Recipient withdraws
 
 ```mermaid
 flowchart RL
-  CC[Core Contract]
+  LL[Lockup Linear]
   R((Recipient))
 
-  R -- "1-withdraw" --> CC
-  CC -- "2-transfer" --> R
+  R -- "withdraw" --> LL
+  LL -- "transfer" --> R
 ```
 
-## Cancel a stream
+### Cancel a stream
 
-### Sender cancels
+#### Sender cancels
 
 ```mermaid
 flowchart LR
   S((Sender))
-  P[Proxy]
-  PT[ProxyTarget]
-  CC[Core Contract]
+  subgraph Periphery
+    P[Proxy]
+    PT[ProxyTarget]
+  end
+  subgraph Core
+    LL[Lockup Linear]
+  end
+  PEnd[Proxy]
+  SEnd((Sender))
 
   S -- "execute" --> P
-  P -- "cancel-delegatecall" --> PT
-  PT -- "cancelLogic" --> P
-  P -- "cancel" --> CC
-  CC -- "transfer" --> P
-  P -- "transfer" --> S
+  P -- "delegatecall" --> PT
+  PT -- "cancel logic" --> P
+  P -- "cancel" --> LL
+  LL -- "transfer" --> PEnd
+  PEnd -- "transfer" --> SEnd
 ```
 
-### Recipient cancels
+#### Recipient cancels
 
 When the recipient cancels a stream, the sender is automatically refunded the remaining balance.
 
@@ -186,18 +196,20 @@ the refund to the sender.
 
 ```mermaid
 flowchart LR
+  R((Recipient))
+  subgraph Core
+    LL[Lockup Linear]
+  end
   subgraph Periphery
     P[Sender's Proxy]
     PP[SablierV2ProxyPlugin]
   end
-  CC[Core Contract]
-
-  R((Recipient))
   S((Sender))
-  R -- "cancel" --> CC
-  CC -- "transfer" --> P
-  CC -- "onStreamCanceled" --> P
-  P -- "fallback-delegatecall" --> PP
-  PP -- "pluginLogic" --> P
-  P -- "transfer" --> S
+
+  R -- "cancel" --> LL
+  LL -- "transfer" --> P
+  LL -- "onStreamCanceled" --> P
+  P -- "delegatecall" --> PP
+  PP -- "plugin logic" --> P
+  P -- "transfer" ---> S
 ```
