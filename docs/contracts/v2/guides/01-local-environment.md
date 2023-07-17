@@ -37,7 +37,7 @@ To install the template, simply execute the following commands:
 ```shell
 $ mkdir sablier-v2-integration-template
 $ cd sablier-v2-integration-template
-$ forge init --template sablier-v2-integration-template
+$ forge init --template sablier-labs/sablier-v2-integration-template
 $ pnpm install
 ```
 
