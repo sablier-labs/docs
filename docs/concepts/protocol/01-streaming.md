@@ -8,7 +8,15 @@ Asset streaming means the ability to make continuous, real-time payments on a pe
 making payments is the core concept of Sablier.
 
 Envision an hourglass, with grains of sand steadily flowing through it. Now, replace the sand with your crypto assets
-and the hourglass with Sablier. There you have it: a clear understanding of asset streaming.
+and the hourglass with Sablier. There you have it: a clear understanding of token streaming.
+
+As an example, if you stream $100 worth of tokens to Bob over a month, every second, Bob will receive a fraction of
+those tokens. Every second, Bob will be earning more tokens. At the end of the month, Bob will have received all funds.
+But Bob can already withdraw the funds that have already been streamed during the month.
+
+This is especially useful for use cases like payroll, for example, where employees don't need to wait the end of the
+month anymore to spend their paycheck, as they receive it by the second instead of every two weeks or month. No more
+waiting, just earning.
 
 :::info
 
