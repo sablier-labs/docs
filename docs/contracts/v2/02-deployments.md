@@ -165,7 +165,7 @@ Or maybe you're looking for the PRBProxy deployments? Check out [prbproxy.com](h
 | Contract               | Address                                                                                                                     | Deployment                                                                          |
 | :--------------------- | :-------------------------------------------------------------------------------------------------------------------------- | :---------------------------------------------------------------------------------- |
 | SablierV2LockupLinear  | [0x323B629635b6cFfe2453Aa2869c5957AfF55F445](https://goerli.arbiscan.io/address/0x323B629635b6cFfe2453Aa2869c5957AfF55F445) | [core-v1.0.0](https://github.com/sablier-labs/v2-deployments/tree/main/core/v1.0.0) |
-| SablierV2LockupDynamic | [s](https://goerli.arbiscan.io/address/0xdc0a619fF975de6a08c7615ea383533fd265f2e3)                                          | [core-v1.0.0](https://github.com/sablier-labs/v2-deployments/tree/main/core/v1.0.0) |
+| SablierV2LockupDynamic | [0xdc0a619fF975de6a08c7615ea383533fd265f2e3](https://goerli.arbiscan.io/address/0xdc0a619fF975de6a08c7615ea383533fd265f2e3) | [core-v1.0.0](https://github.com/sablier-labs/v2-deployments/tree/main/core/v1.0.0) |
 | SablierV2NFTDescriptor | [0x740509d893BC15a31EAE8542683Ed32085c559cB](https://goerli.arbiscan.io/address/0x740509d893BC15a31EAE8542683Ed32085c559cB) | [core-v1.0.1](https://github.com/sablier-labs/v2-deployments/tree/main/core/v1.0.1) |
 | SablierV2Comptroller   | [0xECF737BDb9BB094489beCa39f0b9Ae66E0C14ba8](https://goerli.arbiscan.io/address/0xECF737BDb9BB094489beCa39f0b9Ae66E0C14ba8) | [core-v1.0.0](https://github.com/sablier-labs/v2-deployments/tree/main/core/v1.0.0) |
 
