@@ -82,6 +82,25 @@ Or maybe you're looking for the PRBProxy deployments? Check out [prbproxy.com](h
 | SablierV2ProxyPlugin | [0x17167A7e2763121e263B4331B700a1BF9113b387](https://snowtrace.io/address/0x17167A7e2763121e263B4331B700a1BF9113b387) | [periphery-v1.0.0](https://github.com/sablier-labs/v2-deployments/tree/main/periphery/v1.0.0) |
 | SablierV2ProxyTarget | [0x48B4889cf5d6f8360050f9d7606505F1433120BC](https://snowtrace.io/address/0x48B4889cf5d6f8360050f9d7606505F1433120BC) | [periphery-v1.0.0](https://github.com/sablier-labs/v2-deployments/tree/main/periphery/v1.0.0) |
 
+## Base
+
+### Core
+
+| Contract               | Address                                                                                                               | Deployment                                                                          |
+| :--------------------- | :-------------------------------------------------------------------------------------------------------------------- | :---------------------------------------------------------------------------------- |
+| SablierV2LockupLinear  | [0x6b9a46C8377f21517E65fa3899b3A9Fab19D17f5](https://basescan.org/address/0x6b9a46C8377f21517E65fa3899b3A9Fab19D17f5) | [core-v1.0.0](https://github.com/sablier-labs/v2-deployments/tree/main/core/v1.0.0) |
+| SablierV2LockupDynamic | [0x645B00960Dc352e699F89a81Fc845C0C645231cf](https://basescan.org/address/0x645B00960Dc352e699F89a81Fc845C0C645231cf) | [core-v1.0.0](https://github.com/sablier-labs/v2-deployments/tree/main/core/v1.0.0) |
+| SablierV2NFTDescriptor | [0xEFc2896c29F70bc23e82892Df827d4e2259028Fd](https://basescan.org/address/0xEFc2896c29F70bc23e82892Df827d4e2259028Fd) | [core-v1.0.1](https://github.com/sablier-labs/v2-deployments/tree/main/core/v1.0.1) |
+| SablierV2Comptroller   | [0x7Faaedd40B1385C118cA7432952D9DC6b5CbC49e](https://basescan.org/address/0x7Faaedd40B1385C118cA7432952D9DC6b5CbC49e) | [core-v1.0.0](https://github.com/sablier-labs/v2-deployments/tree/main/core/v1.0.0) |
+
+### Periphery
+
+| Contract             | Address                                                                                                               | Deployment                                                                                    |
+| :------------------- | :-------------------------------------------------------------------------------------------------------------------- | :-------------------------------------------------------------------------------------------- |
+| SablierV2Archive     | [0x1C5Ac71dd48c7ff291743e5E6e3689ba92F73cC6](https://basescan.org/address/0x1C5Ac71dd48c7ff291743e5E6e3689ba92F73cC6) | [periphery-v1.0.0](https://github.com/sablier-labs/v2-deployments/tree/main/periphery/v1.0.0) |
+| SablierV2ProxyPlugin | [0x50E8B9dC7F28e5cA9253759455C1077e497c4232](https://basescan.org/address/0x50E8B9dC7F28e5cA9253759455C1077e497c4232) | [periphery-v1.0.0](https://github.com/sablier-labs/v2-deployments/tree/main/periphery/v1.0.0) |
+| SablierV2ProxyTarget | [0x0648C80b969501c7778b6ff3ba47aBb78fEeDF39](https://basescan.org/address/0x0648C80b969501c7778b6ff3ba47aBb78fEeDF39) | [periphery-v1.0.0](https://github.com/sablier-labs/v2-deployments/tree/main/periphery/v1.0.0) |
+
 ## BNB Smart Chain
 
 ### Core
