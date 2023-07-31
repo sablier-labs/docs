@@ -9,16 +9,16 @@ common GraphQL queries for fetching data from the Sablier V2 subgraph.
 
 ### Recent streams
 
-```graphql title="The most recent 10 streams"
+```graphql title="The 10 most recent streams"
 streams(
   first: 10
   orderBy: timestamp
   orderDirection: desc
-  ) {
-      id
-      alias
-      category
-    }
+) {
+  id
+  alias
+  category
+}
 ```
 
 ### Paginated streams
@@ -35,11 +35,11 @@ streams(
   orderBy: $subgraphId
   orderDirection: desc
   where: { subgraphId_lt: $subgraphId }
-  ) {
-      id
-      alias
-      category
-    }
+) {
+  id
+  alias
+  category
+}
 ```
 
 ### Streams by sender
@@ -59,16 +59,16 @@ streams(
   orderBy: $subgraphId
   orderDirection: desc
   where: {
-      or: [
-           { and: [{ sender: $sender }, { subgraphId_lt: $subgraphId }] }
-           { and: [{ proxender: $sender }, { subgraphId_lt: $subgraphId }] }
-       ]
-    }
-) {
-      id
-      alias
-      category
+    or: [
+      { and: [{ sender: $sender }, { subgraphId_lt: $subgraphId }] }
+      { and: [{ proxender: $sender }, { subgraphId_lt: $subgraphId }] }
+    ]
   }
+) {
+  id
+  alias
+  category
+}
 ```
 
 ### Streams by sender or recipient
@@ -85,23 +85,23 @@ streams(
   orderBy: $subgraphId
   orderDirection: desc
   where: {
-      or: [
-           { and: [{ sender: $sender }, { subgraphId_lt: $subgraphId }] }
-           { and: [{ proxender: $sender }, { subgraphId_lt: $subgraphId }] }
-           { and: [{ recipient: $recipient }, { subgraphId_lt: $subgraphId }] }
-       ]
-    }
+    or: [
+      { and: [{ sender: $sender }, { subgraphId_lt: $subgraphId }] }
+      { and: [{ proxender: $sender }, { subgraphId_lt: $subgraphId }] }
+      { and: [{ recipient: $recipient }, { subgraphId_lt: $subgraphId }] }
+    ]
+  }
 ) {
-      id
-      alias
-      category
+    id
+    alias
+    category
   }
 ```
 
 ### Streams by filters
 
-The official V2 Interfaces will provide a search interface where one may query for a list of streams filtered by (the
-conditions will be combined)
+The official V2 Interfaces will provide a search interface where one may query for a list of streams using the following
+filters (the conditions will be combined)
 
 - the sender address
 - the recipient address
@@ -141,17 +141,17 @@ where: {
 
 ```graphql title="Most recent 100 stream actions such as withdrawals or transfers"
 actions(
-    first: 100
-    orderBy: subgraphId # Action's subgraph id
-    orderDirection: desc
-    where: { stream: $streamId }
-  ) {
+  first: 100
+  orderBy: subgraphId # Action's subgraph id
+  orderDirection: desc
+  where: { stream: $streamId }
+) {
+  id
+  category
+  stream {
     id
+    alias
     category
-    stream {
-      id
-      alias
-      category
-    }
   }
+}
 ```
