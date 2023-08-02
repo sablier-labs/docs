@@ -15,8 +15,8 @@ import ParamTotalAmount from "@site/docs/snippets/ParamTotalAmount.mdx";
 
 # Create a Lockup Linear stream
 
-Lockup Linear are streams with a strictly linear streaming function. In this guide, we will show you how to create a
-Lockup Linear stream programmatically.
+Lockup Linear are streams with a strictly linear streaming function. In this guide, we will show you how to
+programmatically create a Lockup Linear stream.
 
 :::note
 
@@ -81,18 +81,18 @@ There are two create functions in the Lockup Linear contract:
 
 Which one you choose depends upon your use case. In this guide, we will use `createWithDurations`.
 
-<ERC20Steps />
-
 ## Function definition
 
 Define a function called `createLockupLinearStream` which takes a single parameter `totalAmount`, and which returns the
 id of the created stream:
 
 ```solidity
-function createLockupLinearStream(uint256 totalAmount) external returns (uint256 streamId) {
+function createLockupLinearStream(uint256 totalAmount) public returns (uint256 streamId) {
   // ...
 }
 ```
+
+<ERC20Steps />
 
 ## Parameters
 
@@ -136,7 +136,7 @@ With all parameters set, we can now call the `createWithDurations` function, and
 stream to a variable:
 
 ```solidity
-streamId = sablier.createWithDurations(params);
+streamId = lockupLinear.createWithDurations(params);
 ```
 
 ## The complete Lockup Linear stream creator contract

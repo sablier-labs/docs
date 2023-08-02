@@ -15,8 +15,8 @@ import ParamTotalAmount from "@site/docs/snippets/ParamTotalAmount.mdx";
 
 # Create a Lockup Dynamic stream
 
-Lockup Dynamic are streams with custom streaming curves. In this guide, we will show you how to create a Lockup Dynamic
-stream programmatically.
+Lockup Dynamic are streams with custom streaming curves. In this guide, we will show you how to programmatically create
+a Lockup Dynamic stream.
 
 :::note
 
@@ -87,7 +87,7 @@ Define a function called `createLockupDynamicStream` which takes two parameters,
 returns the id of the created stream:
 
 ```solidity
-function createLockupDynamicStream(uint256 amount0, uint256 amount1) external returns (uint256 streamId) {
+function createLockupDynamicStream(uint256 amount0, uint256 amount1) public returns (uint256 streamId) {
   // ...
 }
 ```
@@ -148,15 +148,22 @@ the function in the form of an array containing
 Let's define two dummy segments:
 
 ```solidity
-params.segments.push(
-    LockupDynamic.Segment({ amount: amount0, exponent: ud2x18(3.14e18), milestone: block.timestamp + 4 weeks })
-);
-params.segments.push(
-    LockupDynamic.Segment({ amount: amount1, exponent: ud2x18(0.5e18), milestone: block.timestamp + 2 years })
+params.segments = new LockupDynamic.Segment[](2);
+params.segments[0] = LockupDynamic.Segment({
+    amount: uint128(amount0),
+    exponent: ud2x18(1e18),
+    milestone: uint40(block.timestamp + 4 weeks)
+});
+params.segments[1] = (
+    LockupDynamic.Segment({
+        amount: uint128(amount1),
+        exponent: ud2x18(3.14e18),
+        milestone: uint40(block.timestamp + 52 weeks)
+    })
 );
 ```
 
-In this example, the first segment (`amount0`) will stream much slower than the second segment (`amount1`), because the
+In this example, the first segment (`amount0`) will stream much faster than the second segment (`amount1`), because the
 exponents are different. As a rule of thumb: the higher the exponent, the slower the stream.
 
 :::note
@@ -178,7 +185,7 @@ With all parameters set, we can now call the `createWithMilestones` function, an
 stream to a variable:
 
 ```solidity
-streamId = sablier.createWithMilestones(params);
+streamId = lockupDynamic.createWithMilestones(params);
 ```
 
 ## The complete Lockup Dynamic stream creator contract

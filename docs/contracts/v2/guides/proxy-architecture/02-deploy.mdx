@@ -1,0 +1,113 @@
+---
+id: "deploy"
+sidebar_position: 2
+title: "Deploy Proxy"
+---
+
+# Deploy Proxy and Install Plugin
+
+import AdmonitionSimpleCode from "@site/docs/snippets/AdmonitionSimpleCode.mdx";
+
+## Context
+
+In this guide, we will show you how to programmatically deploy a proxy and install the official Sablier plugin.
+
+While the proxy architecture offers many benefits, it presents us with a challenge in a particular circumstance. When a
+recipient cancels a stream, the protocol transfers the sender's refund to the proxy contract. To improve the user
+experience, we wrote a specialized plugin that can be installed on the proxy contract to auto-forward the refunded
+assets back to the original user.
+
+<AdmonitionSimpleCode />
+
+## Set up a contract
+
+Declare the Solidity version used to compile the contract:
+
+```solidity
+// SPDX-License-Identifier: GPL-3.0-or-later
+pragma solidity >=0.8.19;
+```
+
+Import the relevant symbols from `@sablier/v2-periphery`:
+
+```solidity
+import { IPRBProxy, IPRBProxyRegistry } from "@sablier/v2-periphery/types/Proxy.sol";
+import { ISablierV2ProxyPlugin } from "@sablier/v2-periphery/interfaces/ISablierV2ProxyPlugin.sol";
+```
+
+Create a contract called `ProxyDeployerAndPluginInstaller`, and declare a constant `PROXY_REGISTRY` of type
+`IPRBProxyRegistry` and an immutable variable `proxyPlugin` of type `ISablierV2ProxyPlugin`:
+
+```solidity
+contract ProxyDeployerAndPluginInstaller {
+    IPRBProxyRegistry public constant PROXY_REGISTRY = IPRBProxyRegistry(0x584009E9eDe26e212182c9745F5c000191296a78);
+    ISablierV2ProxyPlugin public immutable proxyPlugin;
+}
+```
+
+:::info
+
+The `PRBProxyRegistry` contract is deployed at the same address across all chains. You can see a list of all deployments
+[here](https://prbproxy.com/deployments).
+
+:::
+
+## Initialization
+
+To initialize the address of the Sablier `ProxyPlugin` contract, you first need to grab its address from the
+[Deployment Addresses](/contracts/v2/addresses) page. Once you have obtained it, pass it to the constructor of the
+deployer contract:
+
+```solidity
+constructor(ISablierV2ProxyPlugin proxyPlugin_) {
+    proxyPlugin = proxyPlugin_;
+}
+```
+
+## Function definition
+
+Define a function called `deployProxyAndInstallPlugin` which returns the `proxy` of the contract itself:
+
+```solidity
+function deployProxyAndInstallPlugin() public returns (IPRBProxy proxy) {
+    // ...
+}
+```
+
+## Steps
+
+First, check if the proxy already exists:
+
+```solidity
+// Get the proxy for this contract
+proxy = PROXY_REGISTRY.getProxy({ user: address(this) });
+```
+
+Second, deploy the proxy and install the plugin if the proxy doesn't exist, or otherwise just install the plugin:
+
+```solidity
+if (address(proxy) == address(0)) {
+    // If a proxy doesn't exist, deploy one and install the plugin
+    proxy = PROXY_REGISTRY.deployAndInstallPlugin({ plugin: proxyPlugin });
+} else {
+    // If the proxy exists, then just install the plugin.
+    PROXY_REGISTRY.installPlugin({ plugin: proxyPlugin });
+}
+```
+
+:::note
+
+There can only be one PRBProxy contract per address. If you try to deploy a proxy for an address that already has one,
+the transaction will revert.
+
+:::
+
+## The complete deployer contract
+
+Below you can see the complete functioning code: a contract that queries the registry, deploys the proxy if it doesn't
+exist, and installs the plugin. You can access the code on GitHub through
+[this link](https://github.com/sablier-labs/examples/blob/main/v2/periphery/DeployProxyAndInstallPlugin.sol).
+
+```solidity reference title="Proxy Deployer and Plugin Installer"
+https://github.com/sablier-labs/examples/blob/main/v2/periphery/DeployProxyAndInstallPlugin.sol
+```
