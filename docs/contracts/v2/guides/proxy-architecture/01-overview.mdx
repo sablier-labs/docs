@@ -23,7 +23,7 @@ concepts. PRBProxy is not upgradeable.
 
 While reading the pages under this guide, it might helpful to keep the following docs in separate tabs:
 [Access Control](/contracts/v2/reference/access-control),
-[Proxy Target](/contracts/v2/reference/periphery/contract.SablierV2ProxyPlugin), and
+[Proxy Target](/contracts/v2/reference/periphery/contract.SablierV2ProxyTarget), and
 [Technical Reference: Periphery](/contracts/v2/reference/overview#periphery).
 
 :::
@@ -44,8 +44,9 @@ flowchart LR;
 
 ## Permit2
 
-In the [ProxyTarget][proxy-target], we use [Permit2](https://github.com/uniswap/permit2) for all interactions that
-involve transfers of [ERC-20](https://ethereum.org/en/developers/docs/standards/tokens/erc-20/) tokens from the proxy
-owner to the proxy contract. To be more specific, we are using the `AllowanceTransfer` contract instead of
-`SignatureTransfer` because it offers a more user-friendly
+In the [ProxyTarget](/contracts/v2/reference/periphery/contract.SablierV2ProxyTarget), we use
+[Permit2](https://github.com/uniswap/permit2) for all interactions that involve transfers of
+[ERC-20](https://ethereum.org/en/developers/docs/standards/tokens/erc-20/) tokens from the proxy owner to the proxy
+contract. To be more specific, we are using the `AllowanceTransfer` contract instead of `SignatureTransfer` because it
+offers a more user-friendly
 [nonce schema](https://docs.uniswap.org/contracts/permit2/reference/allowance-transfer#nonce-schema).
