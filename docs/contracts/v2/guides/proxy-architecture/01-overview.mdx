@@ -5,13 +5,12 @@ title: "Overview"
 ---
 
 Sablier V2 uses a forwarding proxy architecture designed to make the protocol more modular and extensible without
-introducing upgradeability. When using the Sablier Interface, senders are required to deploy a proxy before being able
-to interact with the Sablier Protocol. However, deploying the proxy is a one-time event.
+introducing upgradeability. The particular forwarding proxy contract that we are using is
+[PRBProxy](https://github.com/PaulRBerg/prb-proxy). You can think of this as an extension of externally-owned accounts
+([EOAs](https://ethereum.org/en/developers/docs/accounts/#types-of-account) in short).
 
-The particular forwarding proxy contract that we are using is [PRBProxy](https://github.com/PaulRBerg/prb-proxy).
-
-You can think of a forwarding proxy as an extension of externally-owned accounts (
-[EOAs](https://ethereum.org/en/developers/docs/accounts/#types-of-account) in short).
+When using the Sablier Interface, senders are required to deploy a proxy before being able to interact with the Sablier
+Protocol. However, deploying the proxy is a one-time event.
 
 :::note
 
@@ -31,7 +30,7 @@ While reading the pages under this guide, it might helpful to keep the following
 
 ## Proxy is Sender
 
-When creating streams via the proxy contract, two proxy will be recorded as the stream's sender:
+When creating streams via the proxy contract, the Sablier Protocol will record the proxy as the stream's sender:
 
 ```mermaid
 flowchart LR;
