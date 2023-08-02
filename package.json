@@ -55,7 +55,7 @@
     "eslint-plugin-react": "^7.32.2",
     "prettier": "^3.0.0",
     "typescript": "^5.1.6",
-    "vercel": "^31.0.1"
+    "vercel": "^31.2.2"
   },
   "engines": {
     "node": ">=16.14"
