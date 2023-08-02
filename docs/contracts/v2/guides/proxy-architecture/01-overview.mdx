@@ -4,47 +4,49 @@ sidebar_position: 1
 title: "Overview"
 ---
 
-In Sablier V2, we are using a proxy architecture that is designed for the stream creators. A proxy contract allows
-multiple calls within a single transaction. To gain a better understanding of how it works, refer to the prb-proxy
-[documentation](https://github.com/PaulRBerg/prb-proxy/tree/0f68785ecf795d6aaf83c4e8ba5c0173139f1234).
+Sablier V2 uses a forwarding proxy architecture designed to make the protocol more modular and extensible without
+introducing upgradeability. When using the Sablier Interface, senders are required to deploy a proxy before being able
+to interact with the Sablier Protocol. However, deploying the proxy is a one-time event.
 
-:::caution
+The particular forwarding proxy contract that we are using is [PRBProxy](https://github.com/PaulRBerg/prb-proxy).
 
-**Do not** confuse our approach with the use of an
-[upgradable pattern](https://docs.openzeppelin.com/upgrades-plugins/1.x/proxies). Despite sharing the same name, these
-are two different concepts.
-
-:::
+You can think of a forwarding proxy as an extension of externally-owned accounts (
+[EOAs](https://ethereum.org/en/developers/docs/accounts/#types-of-account) in short).
 
 :::note
 
-This guide assumes that you have already gone through [Access Control](/contracts/v2/reference/access-control),
-[Proxy Target](/contracts/v2/reference/periphery/contract.SablierV2ProxyTarget) and
-[Proxy Plugin](/contracts/v2/reference/periphery/contract.SablierV2ProxyPlugin) sections.
+**Do not** confuse this approach with upgradable proxies. Despite having a similar name, these are two different
+concepts. PRBProxy is not upgradeable.
 
 :::
 
-You can view a proxy contract as an extension of the Externally-owned account
-([EOA](https://ethereum.org/en/developers/docs/accounts/#types-of-account)). When it comes to the core contracts, the
-sender which will be stored, will be the address of the proxy itself.
+:::info
+
+While reading the pages under this guide, it might helpful to keep the following docs in separate tabs:
+[Access Control](/contracts/v2/reference/access-control),
+[Proxy Target](/contracts/v2/reference/periphery/contract.SablierV2ProxyPlugin), and
+[Technical Reference: Periphery](/contracts/v2/reference/overview#periphery).
+
+:::
+
+## Proxy is Sender
+
+When creating streams via the proxy contract, two proxy will be recorded as the stream's sender:
 
 ```mermaid
 flowchart LR;
-
-    PO((Proxy Owner))-- "execute" -->P;
-    P[Proxy];
-    PT[Proxy Target]
-    P-- "create-delegatecall" -->PT;
-    PT-- "createStreamLogic" -->P
-    P-- "createStream" -->CC[Core Contract];
+  PO((Proxy Owner))-- "execute" -->P;
+  P[Proxy];
+  PT[Proxy Target]
+  P-- "create-delegatecall" -->PT;
+  PT-- "createStreamLogic" -->P
+  P-- "createStream" -->CC[Core Contract];
 ```
 
-In the Proxy Target, we use [Permit2](https://github.com/uniswap/permit2#permit2) for all interactions that involve
-transferring [ERC-20](https://ethereum.org/en/developers/docs/standards/tokens/erc-20/) tokens from the Proxy owner to
-the Proxy contract. To be more specific, we are using the `AllowanceTransfer` contract over the `SignatureTransfer`
-because it offers a more user-friendly
-[nonce schema](https://docs.uniswap.org/contracts/permit2/reference/allowance-transfer#nonce-schema).
+## Permit2
 
-While this architecture offers many benefits, we encountered a minor issue when a recipient cancels a stream. This issue
-arises because the funds would be withdrawn to the proxy, and we need to automatically redirect them to the sender. To
-address this, we introduced the [plugins](https://github.com/PaulRBerg/prb-proxy/wiki/Plugins).
+In the [ProxyTarget][proxy-target], we use [Permit2](https://github.com/uniswap/permit2) for all interactions that
+involve transfers of [ERC-20](https://ethereum.org/en/developers/docs/standards/tokens/erc-20/) tokens from the proxy
+owner to the proxy contract. To be more specific, we are using the `AllowanceTransfer` contract instead of
+`SignatureTransfer` because it offers a more user-friendly
+[nonce schema](https://docs.uniswap.org/contracts/permit2/reference/allowance-transfer#nonce-schema).

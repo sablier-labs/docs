@@ -6802,7 +6802,7 @@ packages:
       chownr: 2.0.0
       fs-minipass: 2.1.0
       glob: 7.2.3
-      infer-owner: 1.0.4
+      infer-user: 1.0.4
       lru-cache: 6.0.0
       minipass: 3.3.6
       minipass-collect: 1.0.2
