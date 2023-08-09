@@ -50,8 +50,8 @@ rate is quadratically slower compared to baseline.
 ## Requirements
 
 - The sum of all segment amounts must equal the deposit amount.
-- There is a limit to how many segments there can be in a stream, which is due to the block gas limit. If the limit
-  didn't exist and someone created a stream with an excessively large number of segments, the transaction would simply
-  revert as it wouldn't fit within a block.
+- There is a limit to how many segments there can be in a stream, and that is 300 segments. This requirement is due to
+  the block gas limit. If it didn't exist and someone created a stream with an excessively large number of segments, the
+  transaction would revert as it wouldn't fit within a block.
 - The milestones must be sorted in ascending order. It's not possible for the `i-1`th milestone to be greater than `i`th
   milestone (given we are dealing with increasing monotonic functions).
