@@ -52,13 +52,6 @@ website as promised. By streaming money to the worker instead, your potential lo
 streamed in the short term. If the remote worker disappears, you can simply cancel the stream and reclaim any unstreamed
 funds.
 
-First, streaming involves a significantly smaller degree of trust compared to lump-sum payments, since it makes it
-possible to avoid making advance payments. An example will let you see why this is the case. Suppose you hire a remote
-worker to build a website for you, and they ask you for an advance payment. Making a lump-sum payment is risky, because
-you have no guarantee of knowing whether they will actually deliver the website. If you were to instead stream money to
-them, your loss would be limited to the little amount of money that will stream to them in the short term. If the remote
-worker ghosts you, you can just cancel the stream and reclaim the money that has not been streamed yet.
-
 Secondly, money streaming is substantially faster than lump-sum payments for evident reasons. Streaming transactions
 settle in real-time, with small amounts of assets being released from the sender to the recipient every second. This
 automates the payment process and ensures a continuous flow of funds.
