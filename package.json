@@ -89,6 +89,7 @@
     "prettier:write": "prettier --write \"**/*.{json,md,mdx,ts,tsx,yml}\"",
     "serve": "docusaurus serve",
     "start": "docusaurus start",
+    "submodule-reset": "git submodule deinit --all -f && git submodule update --init --recursive",
     "swizzle": "docusaurus swizzle",
     "vercel-build": "docusaurus build",
     "typecheck": "tsc",
