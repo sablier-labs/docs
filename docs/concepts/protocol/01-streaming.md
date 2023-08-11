@@ -45,12 +45,11 @@ Conventional lump-sum payments come with inherent challenges such as the need fo
 times, and susceptibility to errors. Asset streaming, or continuous by-the-second payments, addresses these issues and
 offers additional benefits (see [Use Cases](/concepts/use-cases)).
 
-Firstly, streaming significantly reduces the required trust between parties compared to lump-sum payments, as it
-eliminates the need for advance payments. For instance, imagine hiring a remote worker to create a website and they
-request an upfront payment. A lump-sum payment is risky because there is no guarantee the worker will deliver the
-website as promised. By streaming money to the worker instead, your potential loss is limited to the small amount
-streamed in the short term. If the remote worker disappears, you can simply cancel the stream and reclaim any unstreamed
-funds.
+First, streaming involves a significantly smaller degree of trust compared to lump-sum payments, as it eliminates the
+need for advance payments. For instance, suppose you hire a remote worker to build a website for you, and they ask you
+for an advance payment. A lump-sum payment is risky because there is no guarantee the worker will deliver the website as
+promised. By streaming money to the worker instead, your potential loss is limited to the small amount streamed in the
+short term. If the remote worker disappears, you can simply cancel the stream and reclaim any unstreamed funds.
 
 Secondly, money streaming is substantially faster than lump-sum payments for evident reasons. Streaming transactions
 settle in real-time, with small amounts of assets being released from the sender to the recipient every second. This
