@@ -2,60 +2,62 @@
 draft: false
 id: "etherscan"
 sidebar_position: 8
-title: "Etherscan - Manual Interactions"
+title: "Etherscan"
 ---
+
+# Etherscan: Manual Operations
 
 ## Introduction
 
-Just like with any other truly open protocol, Sablier V2 can be interacted with directly through an explorer like
-Etherscan.
+Just like with any other truly open protocol, Sablier V2 can be interacted with directly through a blockchain explorer
+like Etherscan.
 
-In this guide, we will go over how to create a stream and how to withdraw from a stream by manually interacting with the
+In this guide, we will show you how to create a stream and withdraw from a stream by manually interacting with the
 Sablier V2 contracts on Etherscan.
 
 ## Creating a Stream
 
 ### Prerequisites
 
-Before being able to create a stream using the Sablier V2 Core contracts you need to grant the right allowance. See the
-[Allowances](#allowances) section for a guide on how to do that.
+Before being able to create a stream using the Sablier V2 Core contracts you need to have granted a sufficient token
+allowance. See the [Allowances](#erc20-allowances) section below for a guide on how to do that.
 
 ### Step 1: Go to contract page
 
-Head over to our [deployments](/contracts/v2/deployments) list and select the contract address you want to interact
-with. For every chain, that will either be `SablierV2LockupLinear` or `SablierV2LockupDynamic`. In this tutorial, we
-will show how to create a stream using **Linear** variant on Goerli.
+Head over to our [deployments](/contracts/v2/deployments) list to pick the contract address you want to interact with.
+For each chain, that will be either `SablierV2LockupLinear` or `SablierV2LockupDynamic`. In this tutorial, we will
+create a **LockupLinear** stream on Goerli.
 
-Once you found the right contract, click on the address to access its explorer's page. Click on the "Contract" tab, and
+Once you find the right contract, click on the address to access its explorer's page. Click on the "Contract" tab, and
 then on the "Write Contract" sub-tab.
 
-![](/img/etherscan-tutorial/01.png)
+![Etherscan 01](/img/etherscan-tutorial/01.png)
 
-![](/img/etherscan-tutorial/02.png)
+![Etherscan 02](/img/etherscan-tutorial/02.png)
 
 You can now connect your wallet to the interface by clicking on "Connect to Web3".
 
-![](/img/etherscan-tutorial/03.png)
+![Etherscan 03](/img/etherscan-tutorial/03.png)
 
 ### Step 2: Fill in parameters
 
-We will now proceed by creating our first stream. Let's go with:
+We will now proceed to create our first stream. Let's go with the following parameters:
 
-- a Linear stream
-- of 20,000 DAI
-- starting Jan 1, 2024 ending Jan 1, 2025
+- a `LockupLinear` stream
+- and a deposit of 20,000 DAI
+- starting Jan 1, 2024 and ending Jan 1, 2025
 - with no cliff
 - and non-cancelable
 
 As the start and end date are fixed, we'll be using the `createWithRange` method. Please note, however, that using
-`createWithDurations` is possible too. To learn more about the difference between these two functions, head over
+`createWithDurations` is possible, too. To learn more about the difference between these two functions, head over
 [here](/contracts/v2/reference/core/interfaces/interface.ISablierV2LockupLinear#createwithdurations).
 
-Open the **"createWithRange"** method, and you start filling in the stream details.
+Open the **"createWithRange"** method, and start filling in the stream details:
 
-![](/img/etherscan-tutorial/04.png)
+![Etherscan 04](/img/etherscan-tutorial/04.png)
 
-```ts
+```typescript
 {
   sender: "0xe0ae83a6b9cc4f24d0638dc27179f311671e4e2a",
   recipient: "0xb4bf8a8475d1e8e9a2088f118ad0e2cdc2896183",
@@ -69,45 +71,45 @@ Open the **"createWithRange"** method, and you start filling in the stream detai
 
 #### Sender
 
-The `sender` is the wallet that will have the ability to cancel the stream, if the stream is cancelable. If it's
-non-cancelable, the sender address will keep some limited capabilities (as mapped
-[here](/contracts/v2/reference/access-control#overview)).
+If the stream is cancelable, the `sender` is the wallet that will have the ability to cancel the stream. Otherwise, if
+the stream is non-cancelable, the `sender` only has a symbolic value.
 
 Most users will put their own wallet address there.
 
 #### Recipient
 
-The address you want to stream tokens to. They will be able to [withdraw](#withdrawing-from-a-stream) tokens as they
-become available.
+The address you want to stream tokens to. The controller of this address will be able to
+[withdraw](#withdrawing-from-a-stream) tokens as they become available.
 
 #### Total Amount
 
-The `totalAmount` is the total amount of tokens you want to stream, **DECIMALS INCLUDED**. If the token you are looking
-to stream has 18 decimals, for example, you will need to add eighteen zeros after the amount you are looking to stream.
-Let's say you want to stream 20,000 DAI like in this example, you will need to fill in `20000000000000000000000`.
+The `totalAmount` is the total amount of tokens you want to stream, **DECIMALS and FEES INCLUDED**. If the token you are
+looking to stream has 18 decimals, for example, you will need to add eighteen zeros after the amount. Let's say you want
+to stream 20,000 DAI like in this example, you will need to fill in `20000000000000000000000`.
 
 #### Asset
 
-The `asset` is the contract address of the token you are looking to stream. You can get this from the
-[frontend interface](#step-1-go-to-token-page) or from any other wallet/explorer. Please double check the token is
+The `asset` is the contract address of the ERC-20 token you are looking to stream. You can get this from the
+[Sablier Interface](#step-1-go-to-token-page) or from any other wallet/explorer. Please double check the token is
 correct before continuing the process.
 
 #### Cancelable
 
-The `cancelable` field is there to set whether or not you want the stream to be cancelable. This can be set to either
-`true` or `false`. If set to true, the stream remains cancelable - this flag can be switched off later, but never
-switched back on.
+The `cancelable` field indicates whether or not you want the stream to be cancelable. This can be set to either `true`
+or `false`. If set to true, the stream will be cancelable.
+
+This flag can be switched off later, but never switched back on.
 
 #### Range
 
-The `range` contains the start, end of cliff, and end of stream dates, respectively. They should be put in as UNIX
+The `range` contains the start, cliff date, and the end time of the stream, respectively. They should be put in as UNIX
 timestamps (represented as **seconds**). You can find a Unix timestamp converter [here](https://www.unixtimestamp.com/).
 
 If you prefer to not have a cliff, you can simply put the same timestamp for the cliff as the start timestamp of the
 stream, like in this example (a.k.a. the duration of the cliff is kept as `0`). If, however, you want to have a cliff,
 fill in the end date of the cliff there, as the middle parameter (as a Unix timestamp, of course). Make sure to **not**
 leave spaces between the values, including after the commas. Here is how it should look like
-`[<start timestamp>,<end of cliff timestamp>,<end of stream timestamp>]`
+`[<start timestamp>,<cliff timestamp>,<end timestamp>]`
 
 | Ranges              | [Start, Cliff, End]                  |
 | :------------------ | :----------------------------------- |
@@ -116,7 +118,9 @@ leave spaces between the values, including after the commas. Here is how it shou
 
 #### Broker
 
-You can set the `broker` field to address zero and `zero` fees. Read about fees
+An optional parameter that can be set in order to charge a fee as a percentage of `totalAmount`.
+
+You can set the `broker` field to address zero and `zero` fees. Read more about fees
 [here](/concepts/protocol/fees#broker-fees).
 
 :::caution
@@ -124,22 +128,22 @@ You can set the `broker` field to address zero and `zero` fees. Read about fees
 Inside tuples/arrays (the `[ ... ]` structures in the example) make sure that you:
 
 - don't leave empty spaces after `,` (e.g. `[a,b]` is fine, but `[a, b]` isn't)
-- wrap addresses between `" "`
+- wrap addresses between double quotes, i.e. `" "`
 
 :::
 
-Once the data is filled, and after you double-checked, click on the "Write" button and confirm the transaction prompt in
-your wallet. That's it! You are done. You can now head over to [our online app interface](https://app.sablier.com),
-connect your wallet, and your stream should appear:
+Once the data is filled, and after you double-checked, click on the "Write" button and confirm the transaction in your
+wallet. That's all! You are done. You can now head over to the [Sablier Interface](https://app.sablier.com), connect
+your wallet, and your stream should appear like this:
 
-![](/img/etherscan-tutorial/05.png)
+![Etherscan 05](/img/etherscan-tutorial/05.png)
 
 #### How about `createWithDurations`?
 
 For the durations version, we'll replace the `range` parameter with a new one representing the total length of the
 stream (in seconds) and the size of the cliff (in seconds).
 
-```ts
+```typescript
 {
   ...
   durations: [0, 31536000] // no cliff and a total duration of 1 year ~= 365 days
@@ -155,47 +159,46 @@ stream (in seconds) and the size of the cliff (in seconds).
 
 ### Prerequisites
 
-To withdraw from a stream using Etherscan, you will need the Token ID of your stream's NFT. To get it without relying on
-our own interface, locate the transaction in which the stream was created on Etherscan.
-[Here](https://goerli.etherscan.io/tx/0xa4ed68ab0c6bbedb2720ba9f7366abc12dfffc5f139ea6d7bcb967e28abc4ecb) is what it
-should look like, as an example.
+To withdraw from a stream using Etherscan, you will need to obtain the stream's id. To know what this is without using
+the Sablier Interface, find the transaction in which the stream was created on Etherscan. See
+[this](https://goerli.etherscan.io/tx/0xa4ed68ab0c6bbedb2720ba9f7366abc12dfffc5f139ea6d7bcb967e28abc4ecb) as an example
+of what it should look.
 
-Once found, you will find your Token ID between the two brackets.
+Once found, you will see the stream id between the two brackets. Note that stream id and "Token ID" are the same thing.
 
 :::info
 
 You may withdraw from streams where you control the address marked as the "recipient". You may allow other parties to
-withdraw on your behalf (e.g. ask them to pay for the gas fee) but you can read more about these advanced flows
+withdraw on your behalf (e.g. ask them to pay for the gas fee); you can read more about these advanced flows
 [here](/contracts/v2/reference/access-control#overview).
 
 :::
 
-![](/img/etherscan-tutorial/06.png)
+![Etherscan 06](/img/etherscan-tutorial/06.png)
 
 ### Step 1: Go to contract page
 
-Head over to our [deployments](/contracts/v2/deployments) list and select the contract address you want to interact
-with. For every chain, that will either be `SablierV2LockupLinear` or `SablierV2LockupDynamic`. In this tutorial, we
-will show how to create a stream using **Linear** variant on Goerli.
+Head over to our [deployments](/contracts/v2/deployments) list and pick the contract address you want to interact with.
+For each chain, that will be either `SablierV2LockupLinear` or `SablierV2LockupDynamic`.
 
-Once you found the right contract, click on the address to access its explorer's page. Click on the "Contract" tab, and
+Once you find the right contract, click on the address to access its explorer's page. Click on the "Contract" tab, and
 then on the "Write Contract" sub-tab.
 
-![](/img/etherscan-tutorial/01.png)
+![Etherscan 01](/img/etherscan-tutorial/01.png)
 
-![](/img/etherscan-tutorial/02.png)
+![Etherscan 02](/img/etherscan-tutorial/02.png)
 
 You can now connect your wallet to the interface by clicking on "Connect to Web3".
 
-![](/img/etherscan-tutorial/03.png)
+![Etherscan 03](/img/etherscan-tutorial/03.png)
 
 ### Step 2: Fill in parameters
 
 Head over to the **`withdraw`** method, and fill in the data.
 
-![](/img/etherscan-tutorial/07.png)
+![Etherscan 07](/img/etherscan-tutorial/07.png)
 
-```ts
+```typescript
 {
   streamId: 169,
   to: "0xb4bf8a8475d1e8e9a2088f118ad0e2cdc2896183",
@@ -205,45 +208,44 @@ Head over to the **`withdraw`** method, and fill in the data.
 
 #### Stream Id
 
-The `streamId` is your Token ID that you previously located in the transaction in which the stream was created.
+The `streamId` is the value you have previously located in the transaction in which the stream was created.
 
 #### To
 
-The `to (address)` field is there for the stream's recipient address. This will most likely be your own wallet , but
-(assuming you are the recipient of the stream) you can also withdraw/redirect these funds to another wallet (e.g. a
-different cold wallet).
+The `to (address)` field is there for the stream recipient's address. This will most likely be your own wallet, but you
+can also choose to withdraw these funds to another wallet (e.g. a separate cold wallet) if you are the stream's
+recipient.
 
 #### Amount
 
-This represents the amount of tokens that you want to withdraw, **DECIMALS INCLUDED**. If the token you are looking to
-withdraw has 18 decimals, for example, you will need to add eighteen zeros after the amount you are looking to stream.
-Let's say you want to withdraw 100 DAI like in this example, you will need to put in `100000000000000000000`. Oh, and
-make sure that that amount has already been streamed, you cannot withdraw funds that haven't yet been streamed over to
-you.
+This represents the amount of tokens that you want to withdraw, **DECIMALS INCLUDED**. For example, if the token you are
+looking to withdraw has 18 decimals, you will need to add eighteen zeros after the amount. Let's say you want to
+withdraw 100 DAI like in this example, you will need to put in `100000000000000000000`. Oh, and make sure that that
+amount has already been streamed, you cannot withdraw funds that haven't yet been streamed over to you.
 
-Once ready, click on the "Write" button, and confirm the transaction prompt in your wallet. You are done!
+Once ready, click on the "Write" button, and confirm the transaction in your wallet. You are done!
 
 ---
 
 Apart from the main flows, you may be required to do some other actions, usually listed as prerequisites.
 
-## ERC20 Allowances / Approvals
+## ERC20 Allowances
 
 Before interacting directly with the Sablier V2 [contracts](/contracts/v2/deployments) to
 [create a stream](#creating-a-stream) you will need to manually grant proper ERC20 allowances.
 
 ### Step 1: Go to token page
 
-Pick a token you want to stream e.g. Ethereum's
-[DAI](https://etherscan.io/token/0x6b175474e89094c44da98b954eedeac495271d0f). Using its address, visit the token page on
-Etherscan (in this example we're using the one on Ethereum): `https://etherscan.io/token/<INSERT-TOKEN-ADDRESS>`
+Pick a token you want to stream, e.g. [DAI](https://etherscan.io/token/0x6b175474e89094c44da98b954eedeac495271d0f).
+Using its address, visit the token page on Etherscan (in this example, we're using Ethereum):
+`https://etherscan.io/token/<INSERT-TOKEN-ADDRESS>`
 
 :::info
 
-To get the address of an asset in the [app](/apps/overview) you can click on its name in the token list dialog or find
-an existing stream with that token and click on the icon inside the stream circle.
+To get the address of an asset in the [Sablier Interface](/apps/overview), you can click on its name in the token list
+dialog or find an existing stream with that token and click on the icon inside the stream circle.
 
-![](/img/etherscan-tutorial/09.png) ![](/img/etherscan-tutorial/10.png)
+![Etherscan 09](/img/etherscan-tutorial/09.png) ![](/img/etherscan-tutorial/10.png)
 
 :::
 
@@ -252,13 +254,13 @@ an existing stream with that token and click on the icon inside the stream circl
 Next, look for the "Contract" tab and the "Write Contract" sub-tab.
 
 You'll see a list of methods that can be called for that token. Pick the `approve` method (e.g.
-[DAI's approve](https://etherscan.io/token/0x6b175474e89094c44da98b954eedeac495271d0f#writeContract#F1)). Most ERC20
+[DAI's approve](https://etherscan.io/token/0x6b175474e89094c44da98b954eedeac495271d0f#writeContract#F1)). Most ERC-20
 approve methods will contain two fields:
 
-1. The spender (sometimes labeled as `usr` _... yes DAI, we're looking at you_).
-2. The amount (sometimes labeled as `wad`)
+1. The spender
+2. The amount
 
-:::info
+:::tip
 
 Some tokens like [USDC](https://etherscan.io/token/0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48?a=#writeProxyContract) or
 [AAVE](https://etherscan.io/token/0x7fc66500c84a76ad7e9c93437bfc5ac33e2ddae9?a=#writeProxyContract) are upgradeable and
@@ -268,13 +270,12 @@ use a proxy pattern. For these you have to search for the "Write as Proxy" tab.
 
 ### Step 3: Send transaction
 
-For the purpose of creating a **Linear** stream with Sablier V2, the spender will be the
+For the purpose of creating a **LockupLinear** stream with Sablier V2, the spender will be the
 [SablierV2LockupLinear](/contracts/v2/deployments#core) contract.
 
 As for the amount, you'll have to pad it with the right number of decimals. For DAI (18 decimals) a value of `100` will
-turn into `100 * 1e18` (100 followed by 18 zeroes), while for USDC, a value of `100` transforms into `100 * 100000000`
-(100 followed by 8 zeroes). Same system applies to the total amounts when creating the stream (see
-[section](#total-amount)).
+turn into `100 * 1e18` (100 followed by 18 zeroes), while for USDC, a value of `100` transforms into `100 * 1e8` (100
+followed by 8 zeroes). The same logic applies to the [total amounts](#total-amount) when creating the stream.
 
 ```ts
 {
@@ -283,7 +284,7 @@ turn into `100 * 1e18` (100 followed by 18 zeroes), while for USDC, a value of `
 }
 ```
 
-![](/img/etherscan-tutorial/11.png)
+![Etherscan 11](/img/etherscan-tutorial/11.png)
 
-Before clicking on the "Write" button to submit your transactions (and update the allowance) make sure to connect your
-wallet to the interface by clicking on "Connect to Web3".
+Before clicking on the "Write" button to submit your allowance update, make sure to connect your wallet to the interface
+by clicking on "Connect to Web3".
