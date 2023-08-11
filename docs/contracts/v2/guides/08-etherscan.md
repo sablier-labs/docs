@@ -109,8 +109,8 @@ fill in the end date of the cliff there, as the middle parameter (as a Unix time
 leave spaces between the values, including after the commas. Here is how it should look like
 `[<start timestamp>,<end of cliff timestamp>,<end of stream timestamp>]`
 
-| Ranges              |                                      |
-| ------------------- | ------------------------------------ |
+| Ranges              | [Start, Cliff, End]                  |
+| :------------------ | :----------------------------------- |
 | 1 year, no cliff    | `[1704067200,1704067200,1735689600]` |
 | 1 year, 1 day cliff | `[1704067200,1704153600,1735689600]` |
 
@@ -133,6 +133,23 @@ your wallet. That's it! You are done. You can now head over to [our online app i
 connect your wallet, and your stream should appear:
 
 ![](/img/etherscan-tutorial/05.png)
+
+#### How about `createWithDurations`?
+
+For the durations version, we'll replace the `range` parameter with a new one representing the total length of the
+stream (in seconds) and the size of the cliff (in seconds).
+
+```ts
+{
+  ...
+  durations: [0, 31536000] // no cliff and a total duration of 1 year ~= 365 days
+}
+```
+
+| Durations            | [Cliff, Total]   |
+| :------------------- | :--------------- |
+| 10 days, no cliff    | `[0,864000]`     |
+| 10 days, 1 day cliff | `[86400,864000]` |
 
 ## Withdrawing from a Stream
 
