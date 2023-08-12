@@ -83,9 +83,16 @@ The address you want to stream tokens to. The controller of this address will be
 
 #### Total Amount
 
-The `totalAmount` is the total amount of tokens you want to stream, **DECIMALS and FEES INCLUDED**. If the token you are
+The `totalAmount` is the final amount of tokens what will be streamed, **DECIMALS INCLUDED**. If the token you are
 looking to stream has 18 decimals, for example, you will need to add eighteen zeros after the amount. Let's say you want
 to stream 20,000 DAI like in this example, you will need to fill in `20000000000000000000000`.
+
+:::note
+
+The total amount will also include any [broker or protocol fees](/concepts/protocol/fees). When fees are kept at zero
+(most likely), the final streamed amount will be equal to this total amount.
+
+:::
 
 #### Asset
 
