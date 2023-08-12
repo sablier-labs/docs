@@ -71,10 +71,10 @@ Open the **"createWithRange"** method, and start filling in the stream details:
 
 #### Sender
 
-If the stream is cancelable, the `sender` is the wallet that will have the ability to cancel the stream. Otherwise, if
-the stream is non-cancelable, the `sender` only has a symbolic value.
+If the stream is cancelable, the `sender` is the wallet that will have the ability to cancel the stream and withdraw on
+behalf of the recipient. But if the stream is non-cancelable, the `sender` cannot cancel the stream.
 
-Most users will put their own wallet address there.
+Most users will set their own wallet address as the `sender`.
 
 #### Recipient
 
