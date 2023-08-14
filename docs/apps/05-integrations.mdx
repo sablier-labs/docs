@@ -1,0 +1,62 @@
+---
+id: "integrations"
+sidebar_position: 5
+title: "Integrations"
+---
+
+## Integrate through create stream autofill
+
+The create stream form supports autofill by using query params. If you want to use this feature here is a list with all
+the parameters and how to use them:
+
+| Parameter  | Description                                                                                                                                                          | Values                                                                                      |
+| :--------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :------------------------------------------------------------------------------------------ |
+| shape      | String values that defines the type of stream                                                                                                                        | linear, cliff, dynamicExponential, dynamicExponentialCliff, dynamicStepper                  |
+| chainId    | Numeric value, which defaults to the connected chain. It is used to resolve the token address.                                                                       | 1, 10, 56, 100, 42161 etc.                                                                  |
+| token      | String value, represents the address of the token that will be used. It should be a token that exists on the specified chain.                                        | 0x6b175474e89094c44da98b954eedeac495271d0f, 0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48 etc. |
+| cancelable | Boolean value, determines if a stream is cancelable or not. It defaults to true.                                                                                     | true, false                                                                                 |
+| recipient  | String value, represents the address or the ens of the recipient.                                                                                                    | 0x....., vitalik.eth                                                                        |
+| isDuration | Boolean value, determines the timing aspect between duration and range(start date/end date). It defaults to true.                                                    | true, false                                                                                 |
+| duration   | Numeric value, represents the stream duration expressed in seconds. It is read only if isDuration is true.                                                           | 2630000, 604800 etc.                                                                        |
+| start      | Numeric value, represents the start date of the stream expressed in seconds. It is read only if isDuration is false.                                                 | 1692009403, 1702000403 etc.                                                                 |
+| end        | Numeric value, represents the end date of the stream expressed in seconds. It is read only if isDuration is false.                                                   | 1692009403, 1702000403 etc.                                                                 |
+| cliff      | Numeric value, represents the cliff duration or the cliff end date, depending on the isDuration flag, for the cliff-related shapes( cliff, dynamicExponentialCliff ) | 2630000, 1702000403 etc.                                                                    |
+| steps      | Numeric value, represents the number of steps for the dynamicStepper.                                                                                                | 2, 3, 4 etc.                                                                                |
+
+If everything is set up correctly a modal will appear with a summary of the stream
+
+|                                                   |
+| ------------------------------------------------- |
+| ![AutofillModal](/screenshots/autofill-valid.png) |
+
+In the case of some parameters are not configured properly the modal will display some validation errors
+
+|                                                              |                                                                |
+| ------------------------------------------------------------ | -------------------------------------------------------------- |
+| ![AutofillWrongToken](/screenshots/autofill-wrong-token.png) | ![AutofillWrongAmount](/screenshots/autofill-wrong-amount.png) |
+
+Here is an example
+
+|                                                                                                                                                                                                                                                           |                                                     |
+| --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------- |
+| [Example](https://app.sablier.com/create/single/?shape=cliff&amount=75&chainId=5&cliff=1691740197&end=1791740197&recipient=0xf31b00e025584486f7c37Cf0AE0073c97c12c634&start=1591740197&token=0x97cb342cf2f6ecf48c1285fb8668f5a4237bf862&isDuration=false) | ![AutofilledForm](/screenshots/autofilled-form.png) |
+
+## Integrate through the search engine
+
+The interface provides a helpful search engine, that can also be accessed directly through the query parameters. If you
+want to use this feature here is a list with all the params and how to use them:
+
+| Parameter | Description                                                                                                                          | Values                     |
+| :-------- | :----------------------------------------------------------------------------------------------------------------------------------- | :------------------------- |
+| t         | String value, representing the active tab in the dashboard. !When performing a search this parameter should have the value `search`. | search, sender, recipient  |
+| c         | Numeric value, represents the chain of the streams in the search result. This param is mandatory!                                    | 1, 10, 56, 100, 42161 etc. |
+| s         | String value, represents the address of the sender for the streams in the search result.                                             | 0x....., vitalik.eth       |
+| r         | String value, represents the address of the recipient for the streams in the search result.                                          | 0x....., vitalik.eth       |
+| i         | Array of strings, represents an array of stream aliases upon which the search is performed.                                          | LL-5-1, LD-5-14 etc.       |
+
+Here you can find some examples of urls and the associated search modal for each operations
+
+|                                                                                                                                                                                 |                                                                   |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------- |
+| [All streams from goerli that involve address](https://app.sablier.com/?t=search&c=5&s=0xf31b00e025584486f7c37cf0ae0073c97c12c634&r=0xf31b00e025584486f7c37cf0ae0073c97c12c634) | ![AutofilledForm](/screenshots/all-streams-involving-address.png) |
+| [Streams that have address as sender from list](https://app.sablier.com/?t=search&c=5&s=0xf31b00e025584486f7c37cf0ae0073c97c12c634&i=ll-5-29,ll-5-1,ll-5-2)                     | ![AutofilledForm](/screenshots/streams-with-sender.png)           |

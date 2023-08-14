@@ -41,45 +41,6 @@ Group streams and save time when creating streams for your employees, investors,
 | --------------------------------------- |
 | ![Group](/screenshots/create-group.png) |
 
-## Form autofill
-
-The create stream form supports autofill by using query params. If you want to use this feature here is a list with all
-the parameters and how to use them:
-
-| Parameter  |                                                                             Description                                                                              |                                           Values                                            |
-| ---------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------: |
-| shape      |                                                            String values that defines the type of stream                                                             |         linear, cliff, dynamicExponential, dynamicExponentialCliff, dynamicStepper          |
-| chainId    |                                    Numeric value, which defaults to the connected chain. It is used to resolve the token address.                                    |                                 1, 10, 56, 100, 42161 etc.                                  |
-| token      |                    String value, represents the address of the token that will be used. It should be a token that exists on the specified chain.                     | 0x6b175474e89094c44da98b954eedeac495271d0f, 0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48 etc. |
-| cancelable |                                           Boolean value, determines if a stream is cancelable or not. It defaults to true.                                           |                                         true, false                                         |
-| recipient  |                                                  String value, represents the address or the ens of the recipient.                                                   |                                                                                             |
-| isDuration |                          Boolean value, determines the timing aspect between duration and range(start date/end date). It defaults to true.                           |                                         true, false                                         |
-| duration   |                              Numeric value, represents the stream duration expressed in seconds. It is read only if isDuration is true.                              |                                    2630000, 604800 etc.                                     |
-| start      |                         Numeric value, represents the start date of the stream expressed in seconds. It is read only if isDuration is false.                         |                                 1692009403, 1702000403 etc.                                 |
-| end        |                          Numeric value, represents the end date of the stream expressed in seconds. It is read only if isDuration is false.                          |                                 1692009403, 1702000403 etc.                                 |
-| cliff      | Numeric value, represents the cliff duration or the cliff end date, depending on the isDuration flag, for the cliff-related shapes( cliff, dynamicExponentialCliff ) |                                  2630000, 1702000403 etc.                                   |
-| steps      |                                                Numeric value, represents the number of steps for the dynamicStepper.                                                 |                                        2, 3, 4 etc.                                         |
-
-If everything is set up correctly a modal will appear with a summary of the sent dynamicExponential
-
-|                                                   |
-| ------------------------------------------------- |
-| ![AutofillModal](/screenshots/autofill-valid.png) |
-
-In the case of some parameters are not configured properly the modal will display some validation errors
-
-|                                                              |                                                                |
-| ------------------------------------------------------------ | -------------------------------------------------------------- |
-| ![AutofillWrongToken](/screenshots/autofill-wrong-token.png) | ![AutofillWrongAmount](/screenshots/autofill-wrong-amount.png) |
-
-For example from a this params
-shape=cliff&amount=75&chainId=5&cliff=1691740197&end=1791740197&recipient=0xf31b00e025584486f7c37Cf0AE0073c97c12c634&start=1591740197&token=0x97cb342cf2f6ecf48c1285fb8668f5a4237bf862&isDuration=false
-will fill the following form:
-
-|                                                     |
-| --------------------------------------------------- |
-| ![AutofilledForm](/screenshots/autofilled-form.png) |
-
 ## Support for any ERC-20 asset
 
 Stream your favorite token! Thanks to our integration of Token Lists, any ERC-20 token can be streamed on Sablier.
