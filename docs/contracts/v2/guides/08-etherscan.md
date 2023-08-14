@@ -9,11 +9,14 @@ title: "Etherscan"
 
 ## Introduction
 
-Just like with any other truly open protocol, Sablier V2 can be interacted with directly through a blockchain explorer
-like Etherscan.
+Just like any other open protocol, Sablier V2 can be interacted with directly through a blockchain explorer like
+Etherscan.
 
 In this guide, we will show you how to create a stream and withdraw from a stream by manually interacting with the
 Sablier V2 contracts on Etherscan.
+
+If you're interested in interacting with V1, please refer to this
+[article](https://medium.com/sablier/operating-the-sablier-protocol-manually-e6569092c533).
 
 ## Creating a Stream
 
