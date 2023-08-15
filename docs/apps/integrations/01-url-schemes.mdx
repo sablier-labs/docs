@@ -1,0 +1,139 @@
+---
+id: "url-schemes"
+sidebar_position: 1
+title: "URL Schemes"
+---
+
+The Sablier V2 client [interface](/apps/features) makes it easy for integrators to direct their users to specific
+resources. We'll cover a number of resource locators used by the apps, as well as dive into how you can understand and
+re-create them.
+
+## Stream Page
+
+|                                                  |
+| ------------------------------------------------ |
+| ![Stream profile](/screenshots/stream-share.png) |
+
+### Elements
+
+Every stream created through the Sablier V2 protocol (and its official [deployments](/contracts/v2/deployments)) can be
+identified through a set of parameters:
+
+- a **chainId** (e.g. `1` for Ethereum, `10` for [Optimism](https://chainlist.org/) )
+- a **contract** address (e.g. `0x12..AB`) or **alias** (e.g. `LL` or `LD`)
+- a **streamId** (emitted at stream creation)
+
+#### Contract Aliases
+
+Sablier V2 supports multiple versions and variants of streaming contracts e.g. `SablierV2LockupLinear` and
+`SablierV2LockupDynamic` - **specifically, their `core-v1.0.0` versions**. To provide a simple visual structure, while
+also accounting for future stream types (backwards compatibility) we use the following abbreviations as aliases:
+
+- Lockup Linear contracts become `LL` (e.g. `LL-5-1`)
+- Lockup Dynamic contracts become `LD` (e.g. `LD-5-1`)
+
+### Building the URL
+
+By combining the elements described above, you can send users from your interface directly to the stream page features
+in the Sablier V2 apps. To build the link to a stream resource, we recommend you concatenate (joined by `-`) the
+uppercase contract `alias`, the `chainId` and the `streamId` and add them to the base link (app.sablier.com/stream/).
+
+| URL                                                                                                                     | Description                                   |
+| :---------------------------------------------------------------------------------------------------------------------- | :-------------------------------------------- |
+| [app.sablier.com/stream/LL-5-40](https://app.sablier.com/stream/LL-5-40)                                                | Lockup Linear (v1.0.0) stream #40 on Goerli   |
+| [app.sablier.com/stream/LL-1-6](https://app.sablier.com/stream/LL-1-6)                                                  | Lockup Linear (v1.0.0) stream #6 on Ethereum  |
+| [app.sablier.com/stream/0xB10...f95-1-6](https://app.sablier.com/stream/0xB10daee1FCF62243aE27776D7a92D39dC8740f95-1-6) | Lockup Linear (v1.0.0) stream #6 on Ethereum  |
+| [app.sablier.com/stream/LD-137-13](https://app.sablier.com/stream/LD-137-13)                                            | Lockup Dynamic (v1.0.0) stream #13 on Polygon |
+
+As you can see, the main format will be `contractA-chainId-streamId`. This is supported both at app and subgraph level.
+For situations when an alias cannot be used, we fallback to the following format: `contractAddress-chainId-streamId`.
+Read more about identifiers and aliases in our
+[subgraph documentation](/api/subgraphs/architecture/structure#identifying).
+
+---
+
+## Create Stream Form (Autofill)
+
+|                                           |
+| ----------------------------------------- |
+| ![Form](/screenshots/autofilled-form.png) |
+
+### Elements
+
+Using URL query parameters integrators can suggest a set of values for the fields of the Create Single Stream form.
+Here's a list of all supported values (to be appended to the create form link):
+
+| Parameter  | Description                                                                                                                                                         | Example                                                                                                                                     |
+| :--------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------ | :------------------------------------------------------------------------------------------------------------------------------------------ |
+| shape      | String - type of stream                                                                                                                                             | `linear`, `cliff`, `dynamicExponential`, `dynamicExponentialCliff`, `dynamicStepper`                                                        |
+| chainId    | Number - defaults to the connected chain                                                                                                                            | `1`, `10`, `42161` or any other support [chain](/contracts/v2/deployments).                                                                 |
+| token      | String - address of the asset                                                                                                                                       | `0x6b17...1d0f` ([DAI](https://etherscan.io/token/0x6b175474e89094c44da98b954eedeac495271d0f) on Ethereum) or any other ERC20 token address |
+| cancelable | Boolean - if a stream is cancelable or not, defaults to `true`                                                                                                      | `true`, `false`                                                                                                                             |
+| recipient  | String - recipient's address or the ENS                                                                                                                             | `0x12...AB`, `vitalik.eth`                                                                                                                  |
+| isDuration | Boolean - if the time is set to a duration or a range, defaults to `true`                                                                                           | `true` (expecting duration), `false` (expecting range - start / end date)                                                                   |
+| duration   | Number - stream duration **in seconds**, read only if `isDuration` is true                                                                                          | `86400` (1 day), `360` (1 hour)                                                                                                             |
+| start      | Number - start date **in seconds**, read only if `isDuration` is false                                                                                              | `1692009403`                                                                                                                                |
+| end        | Number - end date **in seconds**, read only if `isDuration` is false                                                                                                | `1702000403`                                                                                                                                |
+| cliff      | Number - cliff duration or the cliff end date **in seconds** (depending on the `isDuration` flag, for the cliff-related shapes( `cliff`, `dynamicExponentialCliff`) | `1296000` (12 hours)                                                                                                                        |
+| steps      | Number - number of steps for the `dynamicStepper` shape.                                                                                                            | `2`, `3`, `4` etc.                                                                                                                          |
+
+:::info
+
+Make sure the `token` is available on the selected chain. To reduce friction with new assets, you can submit a request
+for the token to be added by default to
+[Sablier's Community Token List](https://github.com/sablier-labs/community-token-list).
+
+:::
+
+### Building the URL
+
+By combining the elements described above, you can send users from your interface directly to the stream creation page
+in the Sablier V2 apps. To build the link to a stream resource, we recommend you append all these elements to the base
+link (`app.sablier.com/create/single`) as query parameters (`?key1=value1&key2=value2`).
+
+| URL                                                                                                                                                                                                                                                                                                               | Description                                                  |
+| ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------ |
+| [app.sablier.com/create/single/?shape=linear&chainId=1&duration=86400](https://app.sablier.com/create/single/?shape=linear&chainId=1&duration=86400)                                                                                                                                                              | A partially configured stream (chain, duration)              |
+| [app.sablier.com/create/single/?shape=linear&chainId=1&duration=86400&token=0x...](https://app.sablier.com/create/single/?shape=linear&chainId=1&duration=86400&token=0x6b175474e89094c44da98b954eedeac495271d0f)                                                                                                 | A partially configured stream (chain, duration, token = DAI) |
+| [app.sablier.com/create/single/?shape=cliff&...&isDuration=false](https://app.sablier.com/create/single/?shape=cliff&amount=75&chainId=5&cliff=1691740197&end=1791740197&recipient=0xf31b00e025584486f7c37Cf0AE0073c97c12c634&start=1591740197&token=0x97cb342cf2f6ecf48c1285fb8668f5a4237bf862&isDuration=false) | A fully configured stream                                    |
+
+If everything is set up correctly a modal will show up with a summary of the stream.
+
+| Modal                                     | Form after **Fill in**                    |
+| ----------------------------------------- | ----------------------------------------- |
+| ![Modal](/screenshots/autofill-valid.png) | ![Form](/screenshots/autofilled-form.png) |
+
+In case some parameters are not configured properly the modal will attempt to help the user by displaying some errors or
+special utilities.
+
+|                                                              |                                                                |
+| ------------------------------------------------------------ | -------------------------------------------------------------- |
+| ![AutofillWrongToken](/screenshots/autofill-wrong-token.png) | ![AutofillWrongAmount](/screenshots/autofill-wrong-amount.png) |
+
+## Search Streams
+
+### Elements
+
+The interface provides a helpful search engine, that can also be accessed directly through the query parameters. If you
+want to use this feature here is a list with all the params and how to use them:
+
+| Parameter | Description                                                                                                                              | Values                                                                      |
+| :-------- | :--------------------------------------------------------------------------------------------------------------------------------------- | :-------------------------------------------------------------------------- |
+| t         | String value, representing the active tab in the dashboard. For global/public queries please use the `search` value for this parameters. | `search` (or `sender`, `recipient` for connected users)                     |
+| c         | Numeric value, represents the chain of the streams in the search result. This parameter is mandatory!                                    | `1`, `10`, `42161` or any other support [chain](/contracts/v2/deployments). |
+| s         | String value, represents the address of the sender for the streams in the search result.                                                 | `0x12...AB`, `vitalik.eth`                                                  |
+| r         | String value, represents the address of the recipient for the streams in the search result.                                              | `0x12...AB`, `vitalik.eth`                                                  |
+| i         | Array of strings, represents an array of stream aliases upon which the search is performed.                                              | `LL-5-1`, `LD-5-14` etc.                                                    |
+
+### Building the URL
+
+By combining the elements described above, you can send users from your interface directly to the stream creation page
+in the Sablier V2 apps. To build the link to a stream resource, we recommend you append all these elements to the base
+link (`app.sablier.com/`) as query parameters (e.g. `?t=search&c=1&s=0x..1&r=0x...2&i=LL-1-1,LL-5-2`).
+
+Here are some examples of urls and the associated search modal for each operations.
+
+|                                                                                                                                                                                    |                                                         |
+| ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------- |
+| [All streams from goerli that involve am address](https://app.sablier.com/?t=search&c=5&s=0xf31b00e025584486f7c37cf0ae0073c97c12c634&r=0xf31b00e025584486f7c37cf0ae0073c97c12c634) | ![Form](/screenshots/all-streams-involving-address.png) |
+| [Streams that have address as sender from list](https://app.sablier.com/?t=search&c=5&s=0xf31b00e025584486f7c37cf0ae0073c97c12c634&i=ll-5-29,ll-5-1,ll-5-2)                        | ![Form](/screenshots/streams-with-sender.png)           |
