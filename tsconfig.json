@@ -8,6 +8,6 @@
     "module": "ESNext",
     "target": "ESNext"
   },
-  "exclude": [".docusaurus", "node_modules"],
+  "exclude": [".docusaurus", "node_modules", "static/js"],
   "include": ["**/*.js", "**/*.ts", "**/*.tsx"]
 }

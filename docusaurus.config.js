@@ -63,6 +63,12 @@ const config = {
       },
     ],
   ],
+  scripts: [
+    {
+      src: "/js/crisp-chat.js",
+      async: false,
+    },
+  ],
   stylesheets: [
     {
       crossorigin: "anonymous",
