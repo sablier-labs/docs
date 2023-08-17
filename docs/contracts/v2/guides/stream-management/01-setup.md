@@ -23,7 +23,7 @@ pragma solidity >=0.8.19;
 Import the relevant symbols from `@sablier/v2-core`:
 
 ```solidity
-import { ISablierV2Lockup } from "@sablier/v2-core/interfaces/ISablierV2Lockup.sol";
+import { ISablierV2Lockup } from "@sablier/v2-core/src/interfaces/ISablierV2Lockup.sol";
 ```
 
 :::info

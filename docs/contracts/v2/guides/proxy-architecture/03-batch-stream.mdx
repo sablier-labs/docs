@@ -65,14 +65,14 @@ contract ERC1271 {
 Now, import the relevant symbols from `@sablier/v2-core` and `@sablier/v2-periphery`:
 
 ```solidity
-import { ISablierV2LockupLinear } from "@sablier/v2-core/interfaces/ISablierV2LockupLinear.sol";
-import { LockupLinear } from "@sablier/v2-core/types/DataTypes.sol";
-import { ud60x18 } from "@sablier/v2-core/types/Math.sol";
-import { IERC20 } from "@sablier/v2-core/types/Tokens.sol";
-import { ISablierV2ProxyTarget } from "@sablier/v2-periphery/interfaces/ISablierV2ProxyTarget.sol";
-import { Batch, Broker } from "@sablier/v2-periphery/types/DataTypes.sol";
-import { IAllowanceTransfer, Permit2Params } from "@sablier/v2-periphery/types/Permit2.sol";
-import { IPRBProxy, IPRBProxyRegistry } from "@sablier/v2-periphery/types/Proxy.sol";
+import { ISablierV2LockupLinear } from "@sablier/v2-core/src/interfaces/ISablierV2LockupLinear.sol";
+import { LockupLinear } from "@sablier/v2-core/src/types/DataTypes.sol";
+import { ud60x18 } from "@sablier/v2-core/src/types/Math.sol";
+import { IERC20 } from "@sablier/v2-core/src/types/Tokens.sol";
+import { ISablierV2ProxyTarget } from "@sablier/v2-periphery/src/interfaces/ISablierV2ProxyTarget.sol";
+import { Batch, Broker } from "@sablier/v2-periphery/src/types/DataTypes.sol";
+import { IAllowanceTransfer, Permit2Params } from "@sablier/v2-periphery/src/types/Permit2.sol";
+import { IPRBProxy, IPRBProxyRegistry } from "@sablier/v2-periphery/src/types/Proxy.sol";
 ```
 
 Create a contract called `BatchLockupLinearStreamCreator` that inherits `ERC1271`, and declare the following constants:
