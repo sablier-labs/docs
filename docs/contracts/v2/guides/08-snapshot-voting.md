@@ -47,7 +47,7 @@ recipients.
 
 #### Primary policies
 
-| Policy ⭐️             | Methodology                                                               |
+| Policy                 | Methodology                                                               |
 | :--------------------- | :------------------------------------------------------------------------ |
 | withdrawable-recipient | Tokens available/withdrawable by the stream's recipient.                  |
 | reserved-recipient     | Tokens available/withdrawable aggregated with unstreamed tokens (future). |
@@ -98,7 +98,7 @@ For the best results, we recommend using the primary policies.
 
 1. The first option is to use the `withdrawable-recipient` policy alongside `erc20-balance-of`. Doing so will aggregate
    tokens streamed but not withdrawn yet, as well as tokens in the user's wallet.
-2. The second best option is using `reserved-recipient` with `erc20-balance-of`. It will aggregate: tokens streamed but
+2. The second best option is using `reserved-recipient` with `erc20-balance-of`. Will aggregate: tokens streamed but
    not withdrawn yet, unstreamed funds (accessible in the future) and finally, tokens in the user's wallet.
 
 ### Details and Caveats
@@ -116,7 +116,7 @@ Voting power: realized (present).
 #### `reserved-recipient` ⭐️
 
 The reserved amount combines tokens that have been streamed but not withdrawn yet (similar to `withdrawable-recipient`)
-with tokens that haven't been streamed (still locked yet accessible in the future). It can be computed as
+with tokens that haven't been streamed (still locked yet accessible in the future). Can be computed as
 `reserved = withdrawable + unstreamed === deposited - withdrawn`. Canceled streams will only count the final
 withdrawable amount, if any.
 
@@ -126,7 +126,7 @@ Voting power: realized (present) + expected (future).
 
 #### `deposited-recipient`
 
-It aggregates historical deposits up to the snapshot time, counting only the streams owned by the recipient.
+Aggregates historical deposits up to the snapshot time, counting only the streams owned by the recipient.
 
 :::caution Caveat
 
@@ -136,20 +136,20 @@ It aggregates historical deposits up to the snapshot time, counting only the str
 
 #### `deposited-sender`
 
-It aggregates historical deposits up to the snapshot time, counting only the streams started by the sender.
+Aggregates historical deposits up to the snapshot time, counting only the streams started by the sender.
 
 :::caution Caveats
 
 - Streaming, canceling and streaming again will cause tokens to be counted multiple times.
-- It takes into account streams created through [PRBProxy](/contracts/v2/reference/overview#periphery) instances
+- Takes into account streams created through [PRBProxy](/contracts/v2/reference/overview#periphery) instances
   configured through the official [Sablier Interface](https://app.sablier.com/).
 
 :::
 
 #### `streamed-recipient`
 
-It aggregates historical amounts that have already been streamed to the recipient. Crucially, it includes already
-withdrawn tokens.
+Aggregates historical amounts that have already been streamed to the recipient. Crucially, withdrawn tokens are
+included.
 
 It relies on the `streamedAmountOf` methods in the
 [LockupLinear](contracts/v2/reference/core/contract.SablierV2LockupLinear#streamedamountof) and
@@ -166,7 +166,7 @@ It relies on the `streamedAmountOf` methods in the
 #### `unstreamed-recipient`
 
 The opposite of `streamed-recipient`, counting amounts that have not been streamed yet (locked, but will become
-available in the future). It subtracts the `streamed` amount from the initial `deposit`. For canceled streams, the
+available in the future). Subtracts the `streamed` amount from the initial `deposit`. For canceled streams, the
 unstreamed amount will be `0`.
 
 ## Sablier V1
@@ -175,7 +175,7 @@ unstreamed amount will be `0`.
 - [Snapshot code repository](https://github.com/snapshot-labs/snapshot-strategies/tree/master/src/strategies/sablier-v1-deposit) -
   dive into the implementation
 
-The Sablier V1 strategy will regard the voter as a stream recipient. It returns the voting power for any voter as the
+The Sablier V1 strategy will regard the voter as a stream recipient. Returns the voting power for any voter as the
 **sum of all deposits** made by a sender towards the recipient (the **voter**) for a specific ERC20 token.
 
 :::caution Caveats
