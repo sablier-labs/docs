@@ -6,20 +6,17 @@ title: "Snapshot Strategies"
 
 # Snapshot Voting Strategies
 
-To enable off-chain governance, we designed a set of Snapshot Strategies which compute voting power for assets used in
-Sablier streams.
+To enable off-chain governance, we designed a collection of Snapshot Strategies that compute the voting power of assets
+stored in Sablier streams.
 
 ## Sablier V2
 
 - [Snapshot playground](https://snapshot.org/#/playground/sablier-v2) - test the strategies
 - [Snapshot code repository](https://github.com/snapshot-labs/snapshot-strategies/tree/master/src/strategies/sablier-v2) -
-  dive into the implementation
-
-In Sablier V2, a stream creator locks up an amount of ERC-20 tokens in a contract that progressively allocates the funds
-to the designated recipient. The tokens are released by the second, and the recipient can withdraw them at any time.
+  see the implementation
 
 The following strategies will read the various amounts that can be found in Sablier V2 streams. The voting power will be
-decided based on some sub-strategies called `policies`.
+calculated based on some sub-strategies called `policies`.
 
 | Snapshot Playground                                  |
 | :--------------------------------------------------- |
@@ -47,15 +44,14 @@ recipients.
 
 #### Primary policies
 
-| Policy                 | Methodology                                                               |
-| :--------------------- | :------------------------------------------------------------------------ |
-| withdrawable-recipient | Tokens available/withdrawable by the stream's recipient.                  |
-| reserved-recipient     | Tokens available/withdrawable aggregated with unstreamed tokens (future). |
+| Policy                 | Methodology                                                       |
+| :--------------------- | :---------------------------------------------------------------- |
+| withdrawable-recipient | Tokens that are available for the stream's recipient to withdraw. |
+| reserved-recipient     | Tokens available for withdraw aggregated with unstreamed tokens.  |
 
 #### Secondary policies
 
-These computation methods are here to aid with special use cases. We still recommend using the primary policies to avoid
-most caveats.
+These policies are designed to address specific edge cases. We strongly recommend using the primary policies.
 
 | Policy               | Methodology                                                                           |
 | :------------------- | :------------------------------------------------------------------------------------ |
@@ -96,10 +92,11 @@ Snapshot: Day 15 (midway) with a streamed amount of TKN 500
 
 For the best results, we recommend using the primary policies.
 
-1. The first option is to use the `withdrawable-recipient` policy alongside `erc20-balance-of`. Doing so will aggregate
+1. The best option is to combine the `withdrawable-recipient` policy with `erc20-balance-of`. Doing so will aggregate
    tokens streamed but not withdrawn yet, as well as tokens in the user's wallet.
-2. The second best option is using `reserved-recipient` with `erc20-balance-of`. Will aggregate: tokens streamed but
-   not withdrawn yet, unstreamed funds (accessible in the future) and finally, tokens in the user's wallet.
+2. The second best option is to combine `reserved-recipient` with `erc20-balance-of`. They will aggregate (i) tokens
+   streamed but not withdrawn yet, (ii) unstreamed funds (which will become available in the future), and (iii) the
+   tokens in the user's wallet.
 
 ### Details and Caveats
 
@@ -116,7 +113,7 @@ Voting power: realized (present).
 #### `reserved-recipient` ⭐️
 
 The reserved amount combines tokens that have been streamed but not withdrawn yet (similar to `withdrawable-recipient`)
-with tokens that haven't been streamed (still locked yet accessible in the future). Can be computed as
+with tokens that haven't been streamed (which will become available in the future). Can be computed as
 `reserved = withdrawable + unstreamed === deposited - withdrawn`. Canceled streams will only count the final
 withdrawable amount, if any.
 
@@ -141,8 +138,8 @@ Aggregates historical deposits up to the snapshot time, counting only the stream
 :::caution Caveats
 
 - Streaming, canceling and streaming again will cause tokens to be counted multiple times.
-- Takes into account streams created through [PRBProxy](/contracts/v2/reference/overview#periphery) instances
-  configured through the official [Sablier Interface](https://app.sablier.com/).
+- Takes into account streams created through [PRBProxy](/contracts/v2/reference/overview#periphery) instances configured
+  through the official [Sablier Interface](https://app.sablier.com/).
 
 :::
 
@@ -175,8 +172,8 @@ unstreamed amount will be `0`.
 - [Snapshot code repository](https://github.com/snapshot-labs/snapshot-strategies/tree/master/src/strategies/sablier-v1-deposit) -
   dive into the implementation
 
-The Sablier V1 strategy will regard the voter as a stream recipient. Returns the voting power for any voter as the
-**sum of all deposits** made by a sender towards the recipient (the **voter**) for a specific ERC20 token.
+The Sablier V1 strategy regards the stream recipient as the voter. It returns the voting power for any voter as the
+**sum of all deposits** made by a sender towards the recipient (the **voter**) for a specific ERC-20 token.
 
 :::caution Caveats
 
