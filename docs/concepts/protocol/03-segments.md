@@ -8,7 +8,7 @@ title: "Segments"
 
 ## Definition
 
-A Lockup Dynamic stream can be composed out of multiple segments, which are separate partitions with different streaming
+A Lockup Dynamic stream can be composed of multiple segments, which are separate partitions with different streaming
 amount and rates. The protocol uses these segments to enable custom streaming curves, which power exponential streams,
 cliff streams, etc.
 

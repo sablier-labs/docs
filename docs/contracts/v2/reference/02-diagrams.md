@@ -191,8 +191,8 @@ flowchart LR
 
 When the recipient cancels a stream, the sender is automatically refunded the remaining balance.
 
-If the sender create the stream via a proxy, the proxy plugin will be notified of the cancellation and will auto-forward
-the refund to the sender.
+If the sender creates the stream via a proxy, the proxy plugin will be notified of the cancellation and will
+auto-forward the refund to the sender.
 
 ```mermaid
 flowchart LR

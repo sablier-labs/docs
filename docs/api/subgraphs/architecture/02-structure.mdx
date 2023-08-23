@@ -103,7 +103,7 @@ Rights to withdraw and claim future streamed funds are naturally transferred to 
 #### The sender (will pay\*)
 
 They are an immutable party, defined at the start of the stream. Based on the configuration chosen for the stream, they
-will be entitles to later cancel the stream, renounce it (disable cancelability) or withdraw on behalf of the recipient.
+will be entitled to later cancel the stream, renounce it (disable cancelability) or withdraw on behalf of the recipient.
 
 In case of a cancelation, the `sender` will receive any unstreamed assets as part of the refund.
 
@@ -121,7 +121,7 @@ While not mandatory for the core functionality, Sablier V2 (through its
 [PRBProxy](https://github.com/paulrberg/prb-proxy). The official client interfaces will mainly provide support for
 functionality exposed through this proxy integration.
 
-For streams crated within this "extended" ecosystem, a few attributes and entities will change meaning as such:
+For streams created within this "extended" ecosystem, a few attributes and entities will change meaning as such:
 
 - the `stream.proxied` flag will turn `true`
 - the `stream.sender` address will resolve to a `proxy` contract address, owned by the `stream.proxender`
