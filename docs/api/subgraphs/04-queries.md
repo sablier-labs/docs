@@ -73,7 +73,7 @@ streams(
 
 ### Streams by sender or recipient
 
-To show all stream that have an address marked as a sender (all cases) or a recipient, extend the example above to
+To show all streams that have an address marked as a sender (all cases) or a recipient, extend the example above to
 account for the recipient aspect.
 
 This query includes pagination.
