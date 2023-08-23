@@ -72,7 +72,7 @@ A Lockup stream with a payment rate per second that can vary over time.
 
 ## Lockup Linear
 
-A Lockup stream with a a constant payment rate per second.
+A Lockup stream with a constant payment rate per second.
 
 ## Milestones
 
