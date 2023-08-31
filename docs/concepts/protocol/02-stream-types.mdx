@@ -6,6 +6,19 @@ title: "Types of Streams"
 
 import FunctionPlot from "@site/src/components/FunctionPlot";
 
+## Lockup
+
+"Lockup" is a higher-level category that refers to the requirement that the creator of a stream must lock up a certain
+amount of assets in a smart contract. All streams currently supported by Sablier are Lockup streams.
+
+Let's take an example. Imagine Alice wants to stream 3,000 DAI to Bob during the whole month of January.
+
+1. Alice deposits the 3,000 DAI in Sablier before Jan 1, setting the end time to Feb 1.
+2. Bob's allocation of the DAI deposit increases every second beginning Jan 1.
+3. On Jan 10, Bob has earned approximately 1,000 DAI. He can send a transaction to Sablier to withdraw the tokens.
+4. If at any point during January Alice wishes to get back her tokens, she can cancel the stream and recover what has
+   not been streamed yet.
+
 ## Lockup Linear
 
 Lockup Linear streams are the simplest type of stream in Sablier. The streamed amount over time follows a straight line
@@ -16,13 +29,6 @@ that goes up and to the right on a graph, which corresponds to the identity func
 With this type of stream, the payment rate remains constant, meaning that the same fraction of the deposit amount is
 streamed to the recipient every second. This provides greater predictability and is easy to understand because of how
 intuitive it is. Imagine a diagonal line going up and to the right – that's how simple it is.
-
-:::tip
-
-You will often hear the term **"Lockup"** when dealing with Sablier. This is a term coined by us to describe the
-requirement that the sender must lock up a certain amount of assets at the beginning of the stream.
-
-:::
 
 ### Cliffs
 
