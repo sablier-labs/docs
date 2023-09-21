@@ -77,7 +77,7 @@ supporting any custom streaming curve.
 A fantastic use case for Lockup Dynamic is Exponential streams, a streaming model under which the recipient receives
 increasingly more tokens as time moves forward.
 
-<FunctionPlot options={{ data: [{ fn: "(x/70)^6 * 10", color: "#f77423" }] }} />
+<FunctionPlot options={{ data: [{ fn: "(x/70)^6 * 12", color: "#f77423" }] }} />
 
 Exponentials are a great fit if you are looking to airdrop tokens, because your community members will receive the
 majority of the tokens towards the end of the stream instead of receiving the tokens all at once (no streaming) or in a
@@ -91,7 +91,7 @@ Another use case for Lockup Dynamic is a variation of the previous design: an Ex
   options={{
     data: [
       { fn: "0", range: [0, 50], color: "#f77423" },
-      { fn: "(x/70)^6 * 10 + 18.672", color: "#f77423", range: [50, 100] },
+      { fn: "(x/70)^6 * 9.6 + 18.672", color: "#f77423", range: [50, 100] },
       {
         points: [
           [50, 0],
