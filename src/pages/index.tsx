@@ -1,6 +1,5 @@
 import React from "react";
 import styled from "@emotion/styled";
-import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import Layout from "@theme/Layout";
 import Header from "../components/organisms/Header";
 import Socials from "../components/organisms/Socials";
@@ -33,10 +32,8 @@ const Divider = styled.div`
 `;
 
 export default function Home() {
-  const { siteConfig } = useDocusaurusContext();
-
   return (
-    <Layout description="Documentation and guides for Sablier" title={siteConfig.title}>
+    <Layout description="Documentation and guides for Sablier">
       <Wrapper>
         <Header />
         <Divider />
