@@ -234,6 +234,25 @@ Or maybe you're looking for the PRBProxy deployments? Check out [prbproxy.com](h
 | SablierV2ProxyPlugin | [0x9CA1dFFC744318198bE9Cf92283A803CE16b698a](https://goerli.etherscan.io/address/0x9CA1dFFC744318198bE9Cf92283A803CE16b698a) | [periphery-v1.0.0](https://github.com/sablier-labs/v2-deployments/tree/main/periphery/v1.0.0) |
 | SablierV2ProxyTarget | [0x0eE01680645c361B740ab4dCDdF238988eB20411](https://goerli.etherscan.io/address/0x0eE01680645c361B740ab4dCDdF238988eB20411) | [periphery-v1.0.0](https://github.com/sablier-labs/v2-deployments/tree/main/periphery/v1.0.0) |
 
+## Scroll
+
+### Core
+
+| Contract               | Address                                                                                                                       | Deployment                                                                          |
+| :--------------------- | :---------------------------------------------------------------------------------------------------------------------------- | :---------------------------------------------------------------------------------- |
+| SablierV2LockupLinear  | [0x80640ca758615ee83801EC43452feEA09a202D33](https://blockscout.scroll.io/address/0x80640ca758615ee83801EC43452feEA09a202D33) | [core-v1.0.0](https://github.com/sablier-labs/v2-deployments/tree/main/core/v1.0.0) |
+| SablierV2LockupDynamic | [0xde6a30D851eFD0Fc2a9C922F294801Cfd5FCB3A1](https://blockscout.scroll.io/address/0xde6a30D851eFD0Fc2a9C922F294801Cfd5FCB3A1) | [core-v1.0.0](https://github.com/sablier-labs/v2-deployments/tree/main/core/v1.0.0) |
+| SablierV2NFTDescriptor | [0xC1fa624733203F2B7185c3724039C4D5E5234fE4](https://blockscout.scroll.io/address/0xC1fa624733203F2B7185c3724039C4D5E5234fE4) | [core-v1.0.1](https://github.com/sablier-labs/v2-deployments/tree/main/core/v1.0.1) |
+| SablierV2Comptroller   | [0x859708495E3B3c61Bbe19e6E3E1F41dE3A5C5C5b](https://blockscout.scroll.io/address/0x859708495E3B3c61Bbe19e6E3E1F41dE3A5C5C5b) | [core-v1.0.0](https://github.com/sablier-labs/v2-deployments/tree/main/core/v1.0.0) |
+
+### Periphery
+
+| Contract             | Address                                                                                                                       | Deployment                                                                                    |
+| :------------------- | :---------------------------------------------------------------------------------------------------------------------------- | :-------------------------------------------------------------------------------------------- |
+| SablierV2Archive     | [0x94A18AC6e4B7d97E31f1587f6a666Dc5503086c3](https://blockscout.scroll.io/address/0x94A18AC6e4B7d97E31f1587f6a666Dc5503086c3) | [periphery-v1.0.0](https://github.com/sablier-labs/v2-deployments/tree/main/periphery/v1.0.0) |
+| SablierV2ProxyPlugin | [0xED1591BD6038032a74D786A452A23536b3201490](https://blockscout.scroll.io/address/0xED1591BD6038032a74D786A452A23536b3201490) | [periphery-v1.0.0](https://github.com/sablier-labs/v2-deployments/tree/main/periphery/v1.0.0) |
+| SablierV2ProxyTarget | [0x91154fc80933D25793E6B4D7CE19fb51dE6794B7](https://blockscout.scroll.io/address/0x91154fc80933D25793E6B4D7CE19fb51dE6794B7) | [periphery-v1.0.0](https://github.com/sablier-labs/v2-deployments/tree/main/periphery/v1.0.0) |
+
 ## Sepolia
 
 ### Core
