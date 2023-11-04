@@ -79,20 +79,22 @@ The folder structure should be intuitive:
 - `script` is where you'll write scripts to perform actions like deploying contracts (you guessed it, in Solidity)
 - `foundry.toml` is where you can configure your Foundry settings, which we will leave as is in this guide
 
-Let's install the Sablier contracts:
+Let's install the Sablier Node.js packages using Pnpm:
 
 ```shell
-$ forge install sablier-labs/v2-core sablier-labs/v2-periphery
+$ pnpm install @sablier/v2-core @sablier/v2-periphery
 ```
 
-Under the hood, Foundry will clone the Sablier repositories and install the contracts as git submodules.
+Pnpm will download the Sablier contracts and put them in the `node_modules` directory.
 
-Finally, let's remap the `@sablier/v2-core` and `@sablier/v2-periphery` paths to point to the installed contracts. This
-step is required so that the Solidity compiler can find the Sablier contracts when you import them:
+Let's remap the package names to point to the installed contracts. This step is required so that the Solidity compiler
+can find the Sablier contracts when you import them:
 
 ```shell
-$ echo "@sablier/v2-core=lib/v2-core/src" >> remappings.txt
-$ echo "@sablier/v2-periphery=lib/v2-periphery/src" >> remappings.txt
+$ echo "@sablier/v2-core=node_modules/@sablier/v2-core/" >> remappings.txt
+$ echo "@sablier/v2-periphery=node_modules/@sablier/v2-periphery/" >> remappings.txt
+$ echo "@openzeppelin/contracts/=node_modules/@openzeppelin/contracts/" >> remappings.txt
+$ echo "@prb/math/=node_modules/@prb/math/" >> remappings.txt
 ```
 
 That's it! You should now have a functional development environment to start building on-chain Sablier integrations.
