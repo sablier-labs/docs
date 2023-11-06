@@ -96,7 +96,7 @@ export default function Header() {
           <h1>Sablier Docs</h1>
         </Title>
         <Subtitle>
-          <p>Documentation for the Sablier token streaming protocol</p>
+          <p>Documentation for the Sablier token distribution protocol</p>
         </Subtitle>
         <Collection>
           <Feature
