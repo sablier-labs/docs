@@ -4,12 +4,14 @@ sidebar_position: 2
 title: "Features"
 ---
 
+import NFTSVG from "@site/static/img/nft.svg";
+
 The Sablier V2 interface has been redesigned from the ground up to support all the new features of the Sablier V2
 Protocol, and more. Start exploring at [app.sablier.com](https://app.sablier.com).
 
-## Flexible payment curves
+## Flexible payments
 
-You are in full control of the payment curve:
+Almost any payment schedule can be expressed as a stream. Sablier V2 supports the following options out of the box:
 
 - Linear
 - Cliff-Linear
@@ -20,11 +22,22 @@ You are in full control of the payment curve:
 - Exponential
 - Cliff-Exponential
 
-Or any other dynamic curve you can dream up.
+But programmatically, you can create any schedule you want. See the [Types of Streams](/concepts/protocol/stream-types)
+for more details.
 
 |                                        |
 | -------------------------------------- |
 | ![Gallery](/screenshots/gallery-2.png) |
+
+## NFT Representation
+
+Each stream in wrapped in an ERC-721 non-fungible token (NFT), making the stream recipient the owner of the NFT.
+
+Thus streams can be transferred, traded, and used as collateral in NFT lending protocols.
+
+|                                     |
+| ----------------------------------- |
+| <NFTSVG height={500} width={500} /> |
 
 ## Dashboard for your streams
 
