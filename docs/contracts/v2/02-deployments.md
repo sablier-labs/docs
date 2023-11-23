@@ -19,7 +19,7 @@ A few noteworthy details about the deployments:
 
 :::note
 
-Came here looking for the V1 addresses? [Click here](/contracts/v1/guides/deployments).
+Came here looking for the V1 addresses? [Click here](/contracts/v1/deployments).
 
 Or maybe you're looking for the PRBProxy deployments? Check out [prbproxy.com](https://prbproxy.com)
 
