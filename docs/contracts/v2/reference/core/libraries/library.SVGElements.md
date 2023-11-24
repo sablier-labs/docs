@@ -1,6 +1,6 @@
 # SVGElements
 
-[Git Source](https://github.com/sablier-labs/v2-core/blob/bca1d9ea0485b065544486bb01f4148d44289644/src/libraries/SVGElements.sol)
+[Git Source](https://github.com/sablier-labs/v2-core/tree/release/src/libraries/SVGElements.sol)
 
 ## State Variables
 
@@ -186,7 +186,7 @@ function stringifyCardType(CardType cardType) internal pure returns (string memo
 enum CardType {
     PROGRESS,
     STATUS,
-    STREAMED,
+    AMOUNT,
     DURATION
 }
 ```

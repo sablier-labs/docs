@@ -4,7 +4,7 @@ sidebar_position: 3
 
 # SablierV2NFTDescriptor
 
-[Git Source](https://github.com/sablier-labs/v2-core/blob/bca1d9ea0485b065544486bb01f4148d44289644/docs/contracts/v2/reference/core)
+[Git Source](https://github.com/sablier-labs/v2-core/tree/release/src/SablierV2NFTDescriptor.sol)
 
 **Inherits:**
 [ISablierV2NFTDescriptor](/docs/contracts/v2/reference/core/interfaces/interface.ISablierV2NFTDescriptor.md)

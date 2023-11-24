@@ -57,31 +57,13 @@ This contract is in charge of the Sablier V2 protocol configuration, handling su
 
 > [**Periphery Source Code**](https://github.com/sablier-labs/v2-periphery)
 
-The Periphery is a collection of contracts meant to make the Sablier Protocol more modular, more secure, and more
-extensible without introducing upgradeability. The key to all this is to use a forwarding proxy like
-[PRBProxy](https://github.com/PaulRBerg/prb-proxy).
+The Periphery is a collection of contracts meant to make the Sablier Protocol more modular and more secure while
+introducing functionalities such as Airstream campaigns.
 
-Although this design requires users to deploy a proxy before interacting with the Sablier Protocol, the benefits are
-worth it. By bringing support for delegate calls to any Ethereum account, the proxy enables smooth migrations and opens
-the door for the implementation of features in a permissionless and backwards-compatible way.
+The word "Airstream" is a portmanteau of "airdrop" and "stream". This concept is implemented by the `MerkleStreamer`
+contract, which enables `ERC20` token creators to automatically distribute tokens to their investors and community
+members over a predetermined period.
 
-### ProxyTarget
+## MerkleStreamer
 
-> [**ProxyTarget Reference**](./periphery/contract.SablierV2ProxyTarget)
-
-Proxy target with stateless scripts for interacting with Sablier V2, designed to be used by stream senders.
-
-### ProxyPlugin
-
-> [**ProxyPlugin Reference**](./periphery/contract.SablierV2ProxyPlugin)
-
-Proxy plugin that forwards the refunded assets to the proxy owner when the recipient cancels a stream whose sender is
-the proxy contract.
-
-Recall that cancelling a stream refunds the sender the unstreamed balance of the stream.
-
-### Archive
-
-> [**Archive Reference**](./periphery/contract.SablierV2Archive)
-
-An on-chain contract registry that keeps a record of all Sablier V2 contracts, including old deployments.
+> [**MerkleStreamer Reference**](./periphery/contract.SablierV2MerkleStreamerLL)

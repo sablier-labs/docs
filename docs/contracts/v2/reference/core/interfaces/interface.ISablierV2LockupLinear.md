@@ -159,6 +159,7 @@ event CreateLockupLinearStream(
     Lockup.CreateAmounts amounts,
     IERC20 indexed asset,
     bool cancelable,
+    bool transferable,
     LockupLinear.Range range,
     address broker
 );

@@ -4,7 +4,7 @@ sidebar_position: 2
 
 # SablierV2LockupDynamic
 
-[Git Source](https://github.com/sablier-labs/v2-core/blob/bca1d9ea0485b065544486bb01f4148d44289644/docs/contracts/v2/reference/core)
+[Git Source](https://github.com/sablier-labs/v2-core/tree/release/src/SablierV2LockupDynamic.sol)
 
 **Inherits:**
 [ISablierV2LockupDynamic](/docs/contracts/v2/reference/core/interfaces/interface.ISablierV2LockupDynamic.md),
@@ -33,7 +33,9 @@ _Sablier V2 Lockup Dynamic streams mapped by unsigned integer ids._
 mapping(uint256 id => LockupDynamic.Stream stream) private _streams;
 ```
 
-## Functions
+See the struct `LockupDynamic.Stream` in [Types](/contracts/v2/reference/core/types/library.LockupDynamic#stream).
+
+## User Facing Functions
 
 ### constructor
 
@@ -61,7 +63,7 @@ constructor(
 
 ### getAsset
 
-Retrieves the address of the ERC-20 asset used for streaming.
+Retrieves the address of the `ERC-20` asset used for streaming.
 
 _Reverts if `streamId` references a null stream._
 
@@ -320,6 +322,22 @@ function isStream(uint256 streamId) public view override(ISablierV2Lockup, Sabli
 | ---------- | --------- | ---------------------------- |
 | `streamId` | `uint256` | The stream id for the query. |
 
+### isTransferable
+
+Retrieves a flag indicating whether the stream NFT can be transferred.
+
+_Reverts if `streamId` references a null stream._
+
+```solidity
+function isTransferable(uint256 streamId) external view returns (bool result);
+```
+
+**Parameters**
+
+| Name       | Type      | Description                  |
+| ---------- | --------- | ---------------------------- |
+| `streamId` | `uint256` | The stream id for the query. |
+
 ### isWarm
 
 Retrieves a flag indicating whether the stream is warm, i.e. either pending or streaming.
@@ -432,7 +450,7 @@ function wasCanceled(uint256 streamId)
 
 Creates a stream by setting the start time to `block.timestamp`, and the end time to the sum of `block.timestamp` and
 all specified time deltas. The segment milestones are derived from these deltas. The stream is funded by `msg.sender`
-and is wrapped in an ERC-721 NFT.
+and is wrapped in an `ERC-721` NFT.
 
 Emits a {Transfer} and {CreateLockupDynamicStream} event. Requirements:
 
@@ -448,9 +466,9 @@ function createWithDeltas(LockupDynamic.CreateWithDeltas calldata params)
 
 **Parameters**
 
-| Name     | Type                             | Description                                                                        |
-| -------- | -------------------------------- | ---------------------------------------------------------------------------------- |
-| `params` | `LockupDynamic.CreateWithDeltas` | Struct encapsulating the function parameters, which are documented in {DataTypes}. |
+| Name     | Type                             | Description                                                                                                                                               |
+| -------- | -------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `params` | `LockupDynamic.CreateWithDeltas` | Struct encapsulating the function parameters, which are documented in [Types](/contracts/v2/reference/core/types/library.LockupDynamic#createwithdeltas). |
 
 **Returns**
 
@@ -461,7 +479,7 @@ function createWithDeltas(LockupDynamic.CreateWithDeltas calldata params)
 ### createWithMilestones
 
 Creates a stream with the provided segment milestones, implying the end time from the last milestone. The stream is
-funded by `msg.sender` and is wrapped in an ERC-721 NFT.
+funded by `msg.sender` and is wrapped in an `ERC-721` NFT.
 
 Emits a {Transfer} and {CreateLockupDynamicStream} event. Notes:
 
@@ -488,15 +506,17 @@ function createWithMilestones(LockupDynamic.CreateWithMilestones calldata params
 
 **Parameters**
 
-| Name     | Type                                 | Description                                                                        |
-| -------- | ------------------------------------ | ---------------------------------------------------------------------------------- |
-| `params` | `LockupDynamic.CreateWithMilestones` | Struct encapsulating the function parameters, which are documented in {DataTypes}. |
+| Name     | Type                                 | Description                                                                                                                                                   |
+| -------- | ------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `params` | `LockupDynamic.CreateWithMilestones` | Struct encapsulating the function parameters, which are documented in [Types](/contracts/v2/reference/core/types/library.LockupDynamic#createwithmilestones). |
 
 **Returns**
 
 | Name       | Type      | Description                         |
 | ---------- | --------- | ----------------------------------- |
 | `streamId` | `uint256` | The id of the newly created stream. |
+
+## Internal Functions
 
 ### \_calculateStreamedAmount
 
@@ -552,7 +572,8 @@ function _statusOf(uint256 streamId) internal view override returns (Lockup.Stat
 
 ### \_streamedAmountOf
 
-_See the documentation for the user-facing functions that call this internal function._
+_Implements the internal logic for
+[streamedAmountOf](/contracts/v2/reference/core/contract.SablierV2LockupLinear#streamedamountof)._
 
 ```solidity
 function _streamedAmountOf(uint256 streamId) internal view returns (uint128);
@@ -560,7 +581,8 @@ function _streamedAmountOf(uint256 streamId) internal view returns (uint128);
 
 ### \_withdrawableAmountOf
 
-_See the documentation for the user-facing functions that call this internal function._
+_Implements the internal logic for
+[withdrawableAmountOf](/contracts/v2/reference/core/abstracts/abstract.SablierV2Lockup#withdrawableamountof)._
 
 ```solidity
 function _withdrawableAmountOf(uint256 streamId) internal view override returns (uint128);
@@ -568,7 +590,7 @@ function _withdrawableAmountOf(uint256 streamId) internal view override returns 
 
 ### \_cancel
 
-_See the documentation for the user-facing functions that call this internal function._
+_Implements the internal logic for [cancel](/contracts/v2/reference/core/abstracts/abstract.SablierV2Lockup#cancel)._
 
 ```solidity
 function _cancel(uint256 streamId) internal override;
@@ -584,7 +606,8 @@ function _createWithMilestones(LockupDynamic.CreateWithMilestones memory params)
 
 ### \_renounce
 
-_See the documentation for the user-facing functions that call this internal function._
+_Implements the internal logic for
+[renounce](/contracts/v2/reference/core/abstracts/abstract.SablierV2Lockup#renounce)._
 
 ```solidity
 function _renounce(uint256 streamId) internal override;
@@ -592,7 +615,8 @@ function _renounce(uint256 streamId) internal override;
 
 ### \_withdraw
 
-_See the documentation for the user-facing functions that call this internal function._
+_Implements the internal logic for
+[\_withdraw](/contracts/v2/reference/core/abstracts/abstract.SablierV2Lockup#_withdraw)._
 
 ```solidity
 function _withdraw(uint256 streamId, address to, uint128 amount) internal override;

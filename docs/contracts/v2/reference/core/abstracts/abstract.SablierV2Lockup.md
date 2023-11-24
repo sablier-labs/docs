@@ -1,9 +1,12 @@
 # SablierV2Lockup
 
-[Git Source](https://github.com/sablier-labs/v2-core/blob/bca1d9ea0485b065544486bb01f4148d44289644/docs/contracts/v2/reference/core/abstracts)
+[Git Source](https://github.com/sablier-labs/v2-core/blob/release/src/abstracts/SablierV2Lockup.sol)
 
-**Inherits:** IERC4906, [SablierV2Base](/docs/contracts/v2/reference/core/abstracts/abstract.SablierV2Base.md),
-[ISablierV2Lockup](/docs/contracts/v2/reference/core/interfaces/interface.ISablierV2Lockup.md), ERC721
+**Inherits:**
+[IERC4906](https://github.com/OpenZeppelin/openzeppelin-contracts/blob/e50c24f5839db17f46991478384bfda14acfb830/contracts/interfaces/IERC4906.sol),
+[SablierV2Base](/docs/contracts/v2/reference/core/abstracts/abstract.SablierV2Base.md),
+[ISablierV2Lockup](/docs/contracts/v2/reference/core/interfaces/interface.ISablierV2Lockup.md),
+[ERC721](https://github.com/OpenZeppelin/openzeppelin-contracts/blob/e50c24f5839db17f46991478384bfda14acfb830/contracts/token/ERC721/ERC721.sol)
 
 See the documentation in [ISablierV2Lockup](/docs/contracts/v2/reference/core/interfaces/interface.ISablierV2Lockup.md).
 
@@ -56,7 +59,7 @@ modifier notNull(uint256 streamId);
 
 ### updateMetadata
 
-_Emits an ERC-4906 event to trigger an update of the NFT metadata._
+_Emits an `ERC-4906` event to trigger an update of the NFT metadata._
 
 ```solidity
 modifier updateMetadata(uint256 streamId);
@@ -182,14 +185,13 @@ Emits a {Transfer}, {CancelLockupStream}, and {MetadataUpdate} event. Notes:
 
 - If there any assets left for the recipient to withdraw, the stream is marked as canceled. Otherwise, the stream is
   marked as depleted.
-- This function attempts to invoke a hook on either the sender or the recipient, depending on who `msg.sender` is, and
-  if the resolved address is a contract. Requirements:
+- This function attempts to invoke a hook on the recipient, if the resolved address is a contract. Requirements:
 - Must not be delegate called.
 - The stream must be warm and cancelable.
-- `msg.sender` must be either the stream's sender or the stream's recipient (i.e. the NFT owner).
+- `msg.sender` must be the stream's sender.
 
 ```solidity
-function cancel(uint256 streamId) public override noDelegateCall updateMetadata(streamId);
+function cancel(uint256 streamId) public override noDelegateCall;
 ```
 
 **Parameters**
@@ -376,6 +378,63 @@ function withdrawMultiple(
 | `streamIds` | `uint256[]` | The ids of the streams to withdraw from.                           |
 | `to`        | `address`   | The address receiving the withdrawn assets.                        |
 | `amounts`   | `uint128[]` | The amounts to withdraw, denoted in units of the asset's decimals. |
+
+### \_afterTokenTransfer
+
+Overrides the internal `ERC-721` transfer function to emit an `ERC-4906` event upon transfer. The goal is to refresh the
+NFT metadata on external platforms. This event is also emitted when the NFT is minted or burned.
+
+```solidity
+function _afterTokenTransfer(
+    address, /* from */
+    address, /* to */
+    uint256 streamId,
+    uint256 /* batchSize */
+)
+    internal
+    override
+    updateMetadata(streamId)
+{ }
+```
+
+**Parameters**
+
+| Name        | Type      | Description                  |
+| ----------- | --------- | ---------------------------- |
+| `from`      | `address` | Ignored.                     |
+| `to`        | `address` | Ignored.                     |
+| `streamId`  | `uint256` | The stream id for the query. |
+| `batchSize` | `uint256` | Ignored.                     |
+
+### \_beforeTokenTransfer
+
+Overrides the internal `ERC-721` transfer function to check that the stream is transferable. There are two cases when
+the transferable flag is ignored:
+
+- If `from` is 0, then the transfer is a mint and is allowed.
+- If `to` is 0, then the transfer is a burn and is also allowed.
+
+```solidity
+function _beforeTokenTransfer(
+    address from,
+    address to,
+    uint256 streamId,
+    uint256 /* batchSize */
+)
+    internal
+    view
+    override
+{ }
+```
+
+**Parameters**
+
+| Name        | Type      | Description                   |
+| ----------- | --------- | ----------------------------- |
+| `from`      | `address` | The address to transfer from. |
+| `to`        | `address` | The address to transfer to.   |
+| `streamId`  | `uint256` | The stream id for the query.  |
+| `batchSize` | `uint256` | Ignored.                      |
 
 ### \_isCallerStreamRecipientOrApproved
 

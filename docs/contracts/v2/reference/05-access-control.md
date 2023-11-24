@@ -24,12 +24,12 @@ The table below offers a quick overview of the access control for each action th
 | Action            | Sender | Recipient | Operator(s) |
 | ----------------- | :----: | :-------: | :---------: |
 | Burn NFT          |   ❌   |    ✅     |     ✅      |
-| Cancel            |   ✅   |    ✅     |     ❌      |
-| Cancel Multiple   |   ✅   |    ✅     |     ❌      |
+| Cancel            |   ✅   |    ❌     |     ❌      |
+| Cancel Multiple   |   ✅   |    ❌     |     ❌      |
 | Renounce          |   ✅   |    ❌     |     ❌      |
 | Transfer NFT      |   ❌   |    ✅     |     ✅      |
 | Withdraw          |   ✅   |    ✅     |     ✅      |
-| Withdraw Multiple |   ❌   |    ✅     |     ✅      |
+| Withdraw Multiple |   ✅   |    ✅     |     ✅      |
 
 ## Burn NFT
 
@@ -48,32 +48,25 @@ flowchart LR;
 
 ## Cancel
 
-Either the sender or the recipient can cancel a stream.
+Only the sender can cancel a stream.
 
 ```mermaid
 flowchart LR;
     sender((Sender));
-    recipient((Recipient));
     stream[(Stream)];
-
     sender -- cancel -->stream;
-    recipient -- cancel -->stream;
 ```
 
 ## Cancel Multiple
 
-Either the sender or the recipient can cancel multiple streams.
-
-- The caller must be either the sender or the recipient of each stream.
+Only the sender can cancel multiple streams.
 
 ```mermaid
 flowchart LR;
   sender((Sender));
-  recipient((Recipient));
   streams[(Multiple Streams)];
 
   sender -- cancelMultiple -->streams;
-  recipient -- cancelMultiple -->streams;
 ```
 
 ## Renounce
@@ -90,6 +83,8 @@ flowchart LR;
 ## Transfer NFT
 
 Either the recipient or an approved operator can transfer the NFT associated with a stream.
+
+- Only if the stream is transferable.
 
 ```mermaid
 flowchart LR;
