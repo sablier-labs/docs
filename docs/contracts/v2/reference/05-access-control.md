@@ -119,17 +119,19 @@ flowchart LR;
 
 ## Withdraw Multiple
 
-Either the recipient or an approved NFT operator can withdraw assets from multiple streams.
+Either the recipient, an approved NFT operator, or the sender can withdraw assets from multiple streams.
 
-- The caller has the option to specify a custom address to withdraw the assets to.
-- The caller must be either the recipient or an approved NFT operator of each stream.
+- Both the recipient and the NFT operator have the option to specify a custom address to withdraw the assets to.
+- The sender, however, is limited to withdrawing assets directly to the recipient's address of each stream.
 
 ```mermaid
 flowchart LR;
+    sender((Sender));
     recipient((Recipient));
     operator((Operator));
     streams[(Multiple Streams)];
 
+    sender -- withdrawMultiple --->streams;
     recipient -- withdrawMultiple --->streams
     recipient -- approve -->operator;
     operator -- withdrawMultiple -->streams;
