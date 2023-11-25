@@ -34,6 +34,14 @@ The cut-off point for the Merkle streamer, as a Unix timestamp. A value of zero 
 function EXPIRATION() external returns (uint40);
 ```
 
+### LOCKUP
+
+_The address of the {SablierV2Lockup} contract._
+
+```solidity
+function LOCKUP external returns (ISablierV2Lockup);
+```
+
 ### hasClaimed
 
 Returns a flag indicating whether a claim has been made for a given index.

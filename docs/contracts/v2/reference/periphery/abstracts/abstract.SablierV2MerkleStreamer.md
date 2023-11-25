@@ -32,6 +32,14 @@ _The cut-off point for the Merkle streamer, as a Unix timestamp. A value of zero
 uint40 public immutable override EXPIRATION;
 ```
 
+### LOCKUP
+
+_The address of the {SablierV2Lockup} contract._
+
+```solidity
+ISablierV2Lockup public immutable override LOCKUP;
+```
+
 ### MERKLE_ROOT
 
 _The root of the Merkle tree used to validate the claims._
@@ -58,7 +66,7 @@ BitMaps.BitMap internal _claimedBitMap;
 
 We are using
 [BitMaps](https://github.com/OpenZeppelin/openzeppelin-contracts/blob/e50c24f5839db17f46991478384bfda14acfb830/contracts/utils/structs/BitMaps.sol)
-openzeppelin's library.
+OpenZeppelin's library.
 
 ## User Facing Functions
 
