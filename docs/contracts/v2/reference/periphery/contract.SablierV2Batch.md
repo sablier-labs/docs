@@ -128,7 +128,7 @@ function createWithMilestones(
 
 ### \_approve
 
-Helper function to approve a Sablier contract to spend funds from the proxy. If the current allowance is insufficient,
+Helper function to approve a Sablier contract to spend funds from the batch. If the current allowance is insufficient,
 this function approves Sablier to spend the exact `amount`. The {SafeERC20.forceApprove} function is used to handle
 special `ERC-20 assets` (e.g. USDT) that require the current allowance to be zero before setting it to a non-zero value.
 
