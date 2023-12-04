@@ -133,5 +133,5 @@ function clawback(address to, uint128 amount) external;
 Validates the parameters of the `claim` function, which is implemented by child contracts.
 
 ```solidity
-function \_checkClaim(uint256 index, bytes32 leaf, bytes32[] calldata merkleProof) internal view;
+function _checkClaim(uint256 index, bytes32 leaf, bytes32[] calldata merkleProof) internal view;
 ```

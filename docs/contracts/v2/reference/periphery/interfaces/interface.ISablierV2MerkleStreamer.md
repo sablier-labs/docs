@@ -39,7 +39,7 @@ function EXPIRATION() external returns (uint40);
 _The address of the {SablierV2Lockup} contract._
 
 ```solidity
-function LOCKUP external returns (ISablierV2Lockup);
+function LOCKUP() external returns (ISablierV2Lockup);
 ```
 
 ### hasClaimed

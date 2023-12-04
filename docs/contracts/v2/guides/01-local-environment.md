@@ -79,13 +79,13 @@ The folder structure should be intuitive:
 - `script` is where you'll write scripts to perform actions like deploying contracts (you guessed it, in Solidity)
 - `foundry.toml` is where you can configure your Foundry settings, which we will leave as is in this guide
 
-Let's install the Sablier Node.js packages using Pnpm:
+Let's install the Sablier Node.js packages using Yarn:
 
 ```shell
-$ pnpm install @sablier/v2-core @sablier/v2-periphery
+$ yarn install @sablier/v2-core @sablier/v2-periphery
 ```
 
-Pnpm will download the Sablier contracts and put them in the `node_modules` directory.
+Yarn will download the Sablier contracts, along with their dependencies, and put them in the `node_modules` directory.
 
 Let's remap the package names to point to the installed contracts. This step is required so that the Solidity compiler
 can find the Sablier contracts when you import them:

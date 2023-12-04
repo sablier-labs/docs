@@ -6,14 +6,6 @@ Library containing all custom errors the protocol may revert with.
 
 ## Errors
 
-### CallNotDelegateCall
-
-Thrown when trying to perform a standard call to a function that allows only delegate calls.
-
-```solidity
-error CallNotDelegateCall();
-```
-
 ### SablierV2Batch_BatchSizeZero
 
 Thrown when trying to create a batch with zero elements.

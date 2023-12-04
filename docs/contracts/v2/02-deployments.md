@@ -5,11 +5,8 @@ sidebar_position: 2
 title: "Deployment Addresses"
 ---
 
-The latest versions (V2.1) of [@sablier/v2-core][v2-core] and [@sablier/v2-periphery][v2-periphery] are deployed at the
-addresses listed below.
-
-[v2-core]: https://npmjs.com/package/@sablier/v2-core
-[v2-periphery]: https://npmjs.com/package/@sablier/v2-periphery
+The latest versions (V2.1) of [@sablier/v2-core](https://npmjs.com/package/@sablier/v2-core) and
+[@sablier/v2-periphery](https://npmjs.com/package/@sablier/v2-periphery) are deployed at the addresses listed below.
 
 A few noteworthy details about the deployments:
 
