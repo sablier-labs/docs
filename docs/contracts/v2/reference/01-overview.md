@@ -27,25 +27,25 @@ on-chain configuration module).
 
 ### LockupLinear
 
-> [**LockupLinear Reference**](./core/contract.SablierV2LockupLinear/tree/release)
+> [**LockupLinear Reference**](./core/contract.SablierV2LockupLinear)
 
 Creates and manages Lockup streams with a linear streaming function.
 
 ### LockupDynamic
 
-> [**LockupDynamic Reference**](./core/contract.SablierV2LockupDynamic/tree/release)
+> [**LockupDynamic Reference**](./core/contract.SablierV2LockupDynamic)
 
 Creates and manages Lockup streams with dynamic streaming functions.
 
 ### NFTDescriptor
 
-> [**NFTDescriptor Reference**](./core/contract.SablierV2NFTDescriptor/tree/release)
+> [**NFTDescriptor Reference**](./core/contract.SablierV2NFTDescriptor)
 
 Generates the URI describing the Sablier V2 stream NFTs.
 
 ### Comptroller
 
-> [**Comptroller Reference**](./core/contract.SablierV2Comptroller/tree/release)
+> [**Comptroller Reference**](./core/contract.SablierV2Comptroller)
 
 This contract is in charge of the Sablier V2 protocol configuration, handling such values as the protocol fees.
 

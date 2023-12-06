@@ -5,6 +5,9 @@
 **Inherits:**
 [ISablierV2MerkleStreamer](/contracts/v2/reference/periphery/interfaces/interface.ISablierV2MerkleStreamer)
 
+_See the documentation in
+[ISablierV2MerkleStreamer](/contracts/v2/reference/periphery/interfaces/interface.ISablierV2MerkleStreamer)._
+
 _Merkle streamer that creates Lockup Linear streams._
 
 ## Functions

@@ -61,9 +61,9 @@ function abbreviateAmount(uint256 amount, uint256 decimals) internal pure return
 
 **Returns**
 
-| Name     | Type     | Description                                                                      |
-| -------- | -------- | -------------------------------------------------------------------------------- |
-| `<none>` | `string` | abbreviation The abbreviated representation of the provided amount, as a string. |
+| Name     | Type     | Description                                                         |
+| -------- | -------- | ------------------------------------------------------------------- |
+| `<none>` | `string` | The abbreviated representation of the provided amount, as a string. |
 
 ### calculateDurationInDays
 
