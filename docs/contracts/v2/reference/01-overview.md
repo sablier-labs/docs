@@ -54,11 +54,7 @@ This contract is in charge of the Sablier V2 protocol configuration, handling su
 > [**Periphery Source Code**](https://github.com/sablier-labs/v2-periphery/tree/release)
 
 The Periphery is a collection of contracts meant to make the Sablier Protocol more modular while introducing
-functionalities such as Airstream campaigns.
-
-The word "Airstream" is a portmanteau of "airdrop" and "stream". This is an airdrop model where the tokens are
-distributed over time, as opposed to all at once. This concept is implemented by the `MerkleStreamer` contract, which
-lets user claim Sablier streams using Merkle proofs.
+functionalities such as [Airstream Campaigns](/concepts/protocol/airstream-campaigns).
 
 ## MerkleStreamer
 

@@ -77,3 +77,29 @@ flowchart LR;
   S1 --> P7;
   C --> S1;
 ```
+
+### Airstream Campaign
+
+An example of a user creating an Airstream campaign.
+
+![](/img/diagram-airstream-campaign.png)
+
+```mermaid
+flowchart LR
+  S((Airstream Creator))
+  subgraph Periphery
+    MSF[MerkleStreamFactory]
+    MS[(MerkleStream)]
+  end
+  subgraph Core
+    LL[LockupLinear]
+  end
+  R1((Recipient1))
+  R2((Recipient2))
+  S -- "createCampaign" --> MSF
+  MSF -- "deployCampaign" --> MS
+  R1 -- "claim" --> MS
+  R2 -- "claim" --> MS
+  MS -- "createStream" --> LL
+  MS -- "createStream" --> LL
+```
