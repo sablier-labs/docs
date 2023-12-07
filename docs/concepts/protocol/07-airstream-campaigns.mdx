@@ -16,18 +16,19 @@ At the core of an airdrop, the concept that allows distributing tokens to a larg
 and secure manner is called _Merkle Distributor_. Fundamental to this system is the Merkle Tree, a data structure used
 for efficiently summarizing and verifying the integrity of large sets of data.
 
-# Airstream Campaigns
+## Airstream Campaigns
 
 The word "Airstream" is a portmanteau of "airdrop" and "stream". This is an airdrop model where the tokens are
 distributed over time, as opposed to all at once.
 
 Sablier inovated by combing the _Merkle Distributor_ with the concept of streaming and we call them _Airstream
-Campaigns_, which lets user claim Sablier streams using Merkle proofs. An Airstream campaign is an unique smart
+Campaigns_, which lets user claim Sablier streams using Merkle proofs. An Airstream Campaign is an unique smart
 contract, that anyone can configure and deploy through the [Sablier UI](https://app.sablier.com/airstreams). Each
 campaign has an unique and secure tree of recipients and their respective shares of the total amount of tokens to be
-distributed.
+distributed. Another aspect of the campaign is that it can be configured to either have a claim period window or no
+expiration.
 
-The contract that implements an Airstream Campaign is called `MerkleStream`. For those interested in the technical part,
-[click here](/contracts/v2/reference/periphery/contract.SablierV2MerkleStreamerLL).
+The contract that implements an Airstream Campaign is called `MerkleStreamer`. For those interested in the technical
+part, [click here](/contracts/v2/reference/periphery/contract.SablierV2MerkleStreamerLL).
 
-![](diagram-airstream-campaign.png)
+![](/img/diagram-airstream-campaign.png)
