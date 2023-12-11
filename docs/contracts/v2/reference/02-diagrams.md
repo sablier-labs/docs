@@ -82,8 +82,6 @@ flowchart LR;
 
 An example of a user creating an Airstream campaign.
 
-![](/img/diagram-airstream-campaign.png)
-
 ```mermaid
 flowchart LR
   S((Airstream Creator))
