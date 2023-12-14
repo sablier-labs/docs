@@ -215,12 +215,12 @@ _Needed to avoid Stack Too Deep._
 struct TokenURIVars {
     address asset;
     string assetSymbol;
+    uint128 depositedAmount;
     string json;
     ISablierV2Lockup sablier;
     string sablierAddress;
     string status;
     string svg;
-    uint128 streamedAmount;
     uint256 streamedPercentage;
     string streamingModel;
 }
