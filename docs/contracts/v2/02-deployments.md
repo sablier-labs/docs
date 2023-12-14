@@ -243,6 +243,25 @@ Or maybe you're looking for the PRBProxy deployments? Check out [prbproxy.com](h
 | SablierV2ProxyPlugin        | [0xD37832B8993bEe6F41A8183967a7488C6e2a3551](https://goerli.arbiscan.io/address/0xD37832B8993bEe6F41A8183967a7488C6e2a3551) | [periphery-v1.0.0](https://github.com/sablier-labs/v2-deployments/tree/main/periphery/v1.0.0) |
 | SablierV2ProxyTargetPermit2 | [0x2Ebd987e12432Ee3a74Fe0A55Afe5D866096e354](https://goerli.arbiscan.io/address/0x2Ebd987e12432Ee3a74Fe0A55Afe5D866096e354) | [periphery-v1.0.0](https://github.com/sablier-labs/v2-deployments/tree/main/periphery/v1.0.0) |
 
+## Arbitrum Sepolia
+
+### Core
+
+| Contract               | Address                                                                                                                      | Deployment                                                                          |
+| :--------------------- | :--------------------------------------------------------------------------------------------------------------------------- | :---------------------------------------------------------------------------------- |
+| SablierV2LockupLinear  | [0xa3e36b51B7A456812c92253780f4B15bad56e34c](https://sepolia.arbiscan.io/address/0xa3e36b51B7A456812c92253780f4B15bad56e34c) | [core-v1.0.0](https://github.com/sablier-labs/v2-deployments/tree/main/core/v1.0.0) |
+| SablierV2LockupDynamic | [0x7938c18a59FaD2bA11426AcfBe8d74F0F598a4D2](https://sepolia.arbiscan.io/address/0x7938c18a59FaD2bA11426AcfBe8d74F0F598a4D2) | [core-v1.0.0](https://github.com/sablier-labs/v2-deployments/tree/main/core/v1.0.0) |
+| SablierV2NFTDescriptor | [0xEe93BFf599C17C6fF8e31F2De6c3e40bd5e51312](https://sepolia.arbiscan.io/address/0xEe93BFf599C17C6fF8e31F2De6c3e40bd5e51312) | [core-v1.0.1](https://github.com/sablier-labs/v2-deployments/tree/main/core/v1.0.1) |
+| SablierV2Comptroller   | [0xA6A0cfA3442053fbB516D55205A749Ef2D33aed9](https://sepolia.arbiscan.io/address/0xA6A0cfA3442053fbB516D55205A749Ef2D33aed9) | [core-v1.0.0](https://github.com/sablier-labs/v2-deployments/tree/main/core/v1.0.0) |
+
+### Periphery
+
+| Contract                    | Address                                                                                                                      | Deployment                                                                                    |
+| :-------------------------- | :--------------------------------------------------------------------------------------------------------------------------- | :-------------------------------------------------------------------------------------------- |
+| SablierV2Archive            | [0x2C8fA48361C7D48Dc21b27a3D549402Cf8AE16B0](https://sepolia.arbiscan.io/address/0x2C8fA48361C7D48Dc21b27a3D549402Cf8AE16B0) | [periphery-v1.0.0](https://github.com/sablier-labs/v2-deployments/tree/main/periphery/v1.0.0) |
+| SablierV2ProxyPlugin        | [0x7D310803c3824636bAff74e4f80e81ece167c440](https://sepolia.arbiscan.io/address/0x7D310803c3824636bAff74e4f80e81ece167c440) | [periphery-v1.0.0](https://github.com/sablier-labs/v2-deployments/tree/main/periphery/v1.0.0) |
+| SablierV2ProxyTargetPermit2 | [0x396A3a169918A4C0B339ECf86C583f46D696254E](https://sepolia.arbiscan.io/address/0x396A3a169918A4C0B339ECf86C583f46D696254E) | [periphery-v1.0.0](https://github.com/sablier-labs/v2-deployments/tree/main/periphery/v1.0.0) |
+
 ## Goerli
 
 ### Core
