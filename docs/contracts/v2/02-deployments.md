@@ -1,12 +1,15 @@
 ---
 id: "deployments"
-toc_max_heading_level: 2
 sidebar_position: 2
 title: "Deployment Addresses"
+toc_max_heading_level: 2
 ---
 
-The latest versions (V2.1) of [@sablier/v2-core](https://npmjs.com/package/@sablier/v2-core) and
-[@sablier/v2-periphery](https://npmjs.com/package/@sablier/v2-periphery) are deployed at the addresses listed below.
+This document contains the deployment addresses for the V2.1 release of [@sablier/v2-core][v2-core] and
+[@sablier/v2-periphery][v2-periphery].
+
+[v2-core]: https://npmjs.com/package/@sablier/v2-core
+[v2-periphery]: https://npmjs.com/package/@sablier/v2-periphery
 
 A few noteworthy details about the deployments:
 
@@ -14,11 +17,11 @@ A few noteworthy details about the deployments:
 - All LockupLinear and LockupDynamic contracts are non-upgradeable (see [Governance](/concepts/governance))
 - The source code is verified on Etherscan across all chains
 
-:::note
+:::info
 
-Came here looking for the V1 addresses? [Click here](/contracts/v1/deployments).
+Came here looking for the V2.0 deployments? [Click here](/contracts/v2/deployments/v2.0).
 
-Or maybe you're looking for the older V2.0? [Check here](/contracts/v2/deployments/v2.0).
+Or maybe you're looking for V1? [Click here](/contracts/v1/deployments).
 
 :::
 
