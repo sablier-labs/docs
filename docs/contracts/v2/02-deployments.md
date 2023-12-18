@@ -191,19 +191,19 @@ Or maybe you're looking for V1? [Click here](/contracts/v1/deployments).
 
 ### Core
 
-| Contract               | Address                                                                                                                       | Deployment                                                                          |
-| :--------------------- | :---------------------------------------------------------------------------------------------------------------------------- | :---------------------------------------------------------------------------------- |
-| SablierV2LockupLinear  | [0xd545A0780C4fB34eC4E661D05608299fC0C46438](https://sepolia.etherscan.io/address/0xd545A0780C4fB34eC4E661D05608299fC0C46438) | [core-v1.1.1](https://github.com/sablier-labs/v2-deployments/tree/main/core/v1.1.1) |
-| SablierV2LockupDynamic | [0x257e1821F71A7378affCC677F3161Cf9b3298B32](https://sepolia.etherscan.io/address/0x257e1821F71A7378affCC677F3161Cf9b3298B32) | [core-v1.1.1](https://github.com/sablier-labs/v2-deployments/tree/main/core/v1.1.1) |
-| SablierV2NFTDescriptor | [0x593050f0360518C3A4F11c32Eb936146e1096FD1](https://sepolia.etherscan.io/address/0x593050f0360518C3A4F11c32Eb936146e1096FD1) | [core-v1.1.1](https://github.com/sablier-labs/v2-deployments/tree/main/core/v1.1.1) |
-| SablierV2Comptroller   | [0x82a4CFC82c159988C18c1052987D38dc2B868212](https://sepolia.etherscan.io/address/0x82a4CFC82c159988C18c1052987D38dc2B868212) | [core-v1.1.1](https://github.com/sablier-labs/v2-deployments/tree/main/core/v1.0.0) |
+| Contract               | Address                                                                                                                      | Deployment                                                                          |
+| :--------------------- | :--------------------------------------------------------------------------------------------------------------------------- | :---------------------------------------------------------------------------------- |
+| SablierV2LockupLinear  | [0xd545A0780C4fB34eC4E661D05608299fC0C46438](https://sepolia.arbiscan.io/address/0xd545A0780C4fB34eC4E661D05608299fC0C46438) | [core-v1.1.1](https://github.com/sablier-labs/v2-deployments/tree/main/core/v1.1.1) |
+| SablierV2LockupDynamic | [0x257e1821F71A7378affCC677F3161Cf9b3298B32](https://sepolia.arbiscan.io/address/0x257e1821F71A7378affCC677F3161Cf9b3298B32) | [core-v1.1.1](https://github.com/sablier-labs/v2-deployments/tree/main/core/v1.1.1) |
+| SablierV2NFTDescriptor | [0x593050f0360518C3A4F11c32Eb936146e1096FD1](https://sepolia.arbiscan.io/address/0x593050f0360518C3A4F11c32Eb936146e1096FD1) | [core-v1.1.1](https://github.com/sablier-labs/v2-deployments/tree/main/core/v1.1.1) |
+| SablierV2Comptroller   | [0x82a4CFC82c159988C18c1052987D38dc2B868212](https://sepolia.arbiscan.io/address/0x82a4CFC82c159988C18c1052987D38dc2B868212) | [core-v1.1.1](https://github.com/sablier-labs/v2-deployments/tree/main/core/v1.0.0) |
 
 ### Periphery
 
-| Contract                       | Address                                                                                                                       | Deployment                                                                                    |
-| :----------------------------- | :---------------------------------------------------------------------------------------------------------------------------- | :-------------------------------------------------------------------------------------------- |
-| SablierV2Batch                 | [0x72D921E579aB7FC5D19CD398B6be24d626Ccb6e7](https://sepolia.etherscan.io/address/0x72D921E579aB7FC5D19CD398B6be24d626Ccb6e7) | [periphery-v1.1.0](https://github.com/sablier-labs/v2-deployments/tree/main/periphery/v1.1.0) |
-| SablierV2MerkleStreamerFactory | [0xcc87b1A4de285832f226BD585bd54a2184D32105](https://sepolia.etherscan.io/address/0xcc87b1A4de285832f226BD585bd54a2184D32105) | [periphery-v1.1.0](https://github.com/sablier-labs/v2-deployments/tree/main/periphery/v1.1.0) |
+| Contract                       | Address                                                                                                                      | Deployment                                                                                    |
+| :----------------------------- | :--------------------------------------------------------------------------------------------------------------------------- | :-------------------------------------------------------------------------------------------- |
+| SablierV2Batch                 | [0x72D921E579aB7FC5D19CD398B6be24d626Ccb6e7](https://sepolia.arbiscan.io/address/0x72D921E579aB7FC5D19CD398B6be24d626Ccb6e7) | [periphery-v1.1.0](https://github.com/sablier-labs/v2-deployments/tree/main/periphery/v1.1.0) |
+| SablierV2MerkleStreamerFactory | [0xcc87b1A4de285832f226BD585bd54a2184D32105](https://sepolia.arbiscan.io/address/0xcc87b1A4de285832f226BD585bd54a2184D32105) | [periphery-v1.1.0](https://github.com/sablier-labs/v2-deployments/tree/main/periphery/v1.1.0) |
 
 ## Sepolia
 
