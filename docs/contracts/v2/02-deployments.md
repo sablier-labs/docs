@@ -40,8 +40,8 @@ Or maybe you're looking for V1? [Click here](/contracts/v1/deployments).
 
 | Contract                       | Address                                                                                                               | Deployment                                                                                    |
 | :----------------------------- | :-------------------------------------------------------------------------------------------------------------------- | :-------------------------------------------------------------------------------------------- |
-| SablierV2Batch                 | [0x0Be20a8242B0781B6fd4d453e90DCC1CcF7DBcc6](https://etherscan.io/address/0x0Be20a8242B0781B6fd4d453e90DCC1CcF7DBcc6) | [periphery-v1.1.0](https://github.com/sablier-labs/v2-deployments/tree/main/periphery/v1.1.0) |
-| SablierV2MerkleStreamerFactory | [0x9bdebF4F9adEB99387f46e4020FBf3dDa885D2b8](https://etherscan.io/address/0x9bdebF4F9adEB99387f46e4020FBf3dDa885D2b8) | [periphery-v1.1.0](https://github.com/sablier-labs/v2-deployments/tree/main/periphery/v1.1.0) |
+| SablierV2Batch                 | [0xEa07DdBBeA804E7fe66b958329F8Fa5cDA95Bd55](https://etherscan.io/address/0xEa07DdBBeA804E7fe66b958329F8Fa5cDA95Bd55) | [periphery-v1.1.0](https://github.com/sablier-labs/v2-deployments/tree/main/periphery/v1.1.0) |
+| SablierV2MerkleStreamerFactory | [0x1A272b596b10f02931480BC7a3617db4a8d154E3](https://etherscan.io/address/0x1A272b596b10f02931480BC7a3617db4a8d154E3) | [periphery-v1.1.0](https://github.com/sablier-labs/v2-deployments/tree/main/periphery/v1.1.0) |
 
 ## Arbitrum One
 
