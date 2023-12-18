@@ -61,24 +61,6 @@ Or maybe you're looking for V1? [Click here](/contracts/v1/deployments).
 | SablierV2Batch                 | [0xAFd1434296e29a0711E24014656158055F00784c](https://arbiscan.io/address/0xAFd1434296e29a0711E24014656158055F00784c) | [periphery-v1.1.0](https://github.com/sablier-labs/v2-deployments/tree/main/periphery/v1.1.0) |
 | SablierV2MerkleStreamerFactory | [0x237400eF5a41886a75B0e036228221Df075b3B80](https://arbiscan.io/address/0x237400eF5a41886a75B0e036228221Df075b3B80) | [periphery-v1.1.0](https://github.com/sablier-labs/v2-deployments/tree/main/periphery/v1.1.0) |
 
-## Avalanche
-
-### Core
-
-| Contract               | Address                                                                                                               | Deployment                                                                          |
-| :--------------------- | :-------------------------------------------------------------------------------------------------------------------- | :---------------------------------------------------------------------------------- |
-| SablierV2LockupLinear  | [0x901Aa7aEf6b677a911ea4D4956f8267be17EaE21](https://snowtrace.io/address/0x901Aa7aEf6b677a911ea4D4956f8267be17EaE21) | [core-v1.1.1](https://github.com/sablier-labs/v2-deployments/tree/main/core/v1.1.1) |
-| SablierV2LockupDynamic | [0x80c8817CcD7bA236Aa925e179e52EAc024EF9DE2](https://snowtrace.io/address/0x80c8817CcD7bA236Aa925e179e52EAc024EF9DE2) | [core-v1.1.1](https://github.com/sablier-labs/v2-deployments/tree/main/core/v1.1.1) |
-| SablierV2NFTDescriptor | [0x73dD4d5080133d8cC29ffA9CFD941bBaC643B3EE](https://snowtrace.io/address/0x73dD4d5080133d8cC29ffA9CFD941bBaC643B3EE) | [core-v1.1.1](https://github.com/sablier-labs/v2-deployments/tree/main/core/v1.1.1) |
-| SablierV2Comptroller   | [0x66F5431B0765D984f82A4fc4551b2c9ccF7eAC9C](https://snowtrace.io/address/0x66F5431B0765D984f82A4fc4551b2c9ccF7eAC9C) | [core-v1.0.0](https://github.com/sablier-labs/v2-deployments/tree/main/core/v1.0.0) |
-
-### Periphery
-
-| Contract                       | Address                                                                                                               | Deployment                                                                                    |
-| :----------------------------- | :-------------------------------------------------------------------------------------------------------------------- | :-------------------------------------------------------------------------------------------- |
-| SablierV2Batch                 | [0x7b1ef644ce9a625537e9e0c3d7fef3be667e6159](https://snowtrace.io/address/0x7b1ef644ce9a625537e9e0c3d7fef3be667e6159) | [periphery-v1.1.0](https://github.com/sablier-labs/v2-deployments/tree/main/periphery/v1.1.0) |
-| SablierV2MerkleStreamerFactory | [0x17167A7e2763121e263B4331B700a1BF9113b387](https://snowtrace.io/address/0x17167A7e2763121e263B4331B700a1BF9113b387) | [periphery-v1.1.0](https://github.com/sablier-labs/v2-deployments/tree/main/periphery/v1.1.0) |
-
 ## Base
 
 ### Core
