@@ -62,6 +62,11 @@ The technical architecture of Ethereum, which many other blockchains have approp
 
 [Foundry][foundry] is the application development toolkit that has been used to develop the Sablier Protocol.
 
+## Gas Fee
+
+Transaction fee paid to the blockchain miners/validators in the native token. This fee is only paid during deposits and
+withdrawals.
+
 ## Lockup
 
 A term coined by us to refer to the requirement of locking up assets in order to create a stream.
