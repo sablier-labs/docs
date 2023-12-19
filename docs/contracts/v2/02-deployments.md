@@ -178,7 +178,7 @@ Or maybe you're looking for V1? [Click here](/contracts/v1/deployments).
 | SablierV2LockupLinear  | [0x483bdd560dE53DC20f72dC66ACdB622C5075de34](https://sepolia.arbiscan.io/address/0x483bdd560dE53DC20f72dC66ACdB622C5075de34) | [core-v1.1.2](https://github.com/sablier-labs/v2-deployments/tree/main/core/v1.1.2) |
 | SablierV2LockupDynamic | [0x8c8102b92B1f31cC304A085D490796f4DfdF7aF3](https://sepolia.arbiscan.io/address/0x8c8102b92B1f31cC304A085D490796f4DfdF7aF3) | [core-v1.1.2](https://github.com/sablier-labs/v2-deployments/tree/main/core/v1.1.2) |
 | SablierV2NFTDescriptor | [0x593050f0360518C3A4F11c32Eb936146e1096FD1](https://sepolia.arbiscan.io/address/0x593050f0360518C3A4F11c32Eb936146e1096FD1) | [core-v1.1.1](https://github.com/sablier-labs/v2-deployments/tree/main/core/v1.1.1) |
-| SablierV2Comptroller   | [0x82a4CFC82c159988C18c1052987D38dc2B868212](https://sepolia.arbiscan.io/address/0x82a4CFC82c159988C18c1052987D38dc2B868212) | [core-v1.1.1](https://github.com/sablier-labs/v2-deployments/tree/main/core/v1.0.0) |
+| SablierV2Comptroller   | [0xA6A0cfA3442053fbB516D55205A749Ef2D33aed9](https://sepolia.arbiscan.io/address/0xA6A0cfA3442053fbB516D55205A749Ef2D33aed9) | [core-v1.1.1](https://github.com/sablier-labs/v2-deployments/tree/main/core/v1.0.0) |
 
 ### Periphery
 
