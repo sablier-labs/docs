@@ -31,8 +31,8 @@ Or maybe you're looking for V1? [Click here](/contracts/v1/deployments).
 
 | Contract               | Address                                                                                                               | Deployment                                                                          |
 | :--------------------- | :-------------------------------------------------------------------------------------------------------------------- | :---------------------------------------------------------------------------------- |
-| SablierV2LockupLinear  | [0xe99AEff5BB41d0d7340e7B0c8001F593768ba0E5](https://etherscan.io/address/0xe99AEff5BB41d0d7340e7B0c8001F593768ba0E5) | [core-v1.1.1](https://github.com/sablier-labs/v2-deployments/tree/main/core/v1.1.1) |
-| SablierV2LockupDynamic | [0x3C7Cd8bE42489252CbCc6dC94a17F7f4ec74437E](https://etherscan.io/address/0x3C7Cd8bE42489252CbCc6dC94a17F7f4ec74437E) | [core-v1.1.1](https://github.com/sablier-labs/v2-deployments/tree/main/core/v1.1.1) |
+| SablierV2LockupLinear  | [0xAFb979d9afAd1aD27C5eFf4E27226E3AB9e5dCC9](https://etherscan.io/address/0xAFb979d9afAd1aD27C5eFf4E27226E3AB9e5dCC9) | [core-v1.1.2](https://github.com/sablier-labs/v2-deployments/tree/main/core/v1.1.2) |
+| SablierV2LockupDynamic | [0x7CC7e125d83A581ff438608490Cc0f7bDff79127](https://etherscan.io/address/0x7CC7e125d83A581ff438608490Cc0f7bDff79127) | [core-v1.1.2](https://github.com/sablier-labs/v2-deployments/tree/main/core/v1.1.2) |
 | SablierV2NFTDescriptor | [0x23eD5DA55AF4286c0dE55fAcb414dEE2e317F4CB](https://etherscan.io/address/0x23eD5DA55AF4286c0dE55fAcb414dEE2e317F4CB) | [core-v1.1.1](https://github.com/sablier-labs/v2-deployments/tree/main/core/v1.1.1) |
 | SablierV2Comptroller   | [0xC3Be6BffAeab7B297c03383B4254aa3Af2b9a5BA](https://etherscan.io/address/0xC3Be6BffAeab7B297c03383B4254aa3Af2b9a5BA) | [core-v1.0.0](https://github.com/sablier-labs/v2-deployments/tree/main/core/v1.0.0) |
 
@@ -49,8 +49,8 @@ Or maybe you're looking for V1? [Click here](/contracts/v1/deployments).
 
 | Contract               | Address                                                                                                              | Deployment                                                                          |
 | :--------------------- | :------------------------------------------------------------------------------------------------------------------- | :---------------------------------------------------------------------------------- |
-| SablierV2LockupLinear  | [0x6e532612Aa60c5Dc0d157B72fA90910F68245D10](https://arbiscan.io/address/0x6e532612Aa60c5Dc0d157B72fA90910F68245D10) | [core-v1.1.1](https://github.com/sablier-labs/v2-deployments/tree/main/core/v1.1.1) |
-| SablierV2LockupDynamic | [0x6e78BD0566F0fe860346f92566257706fEd2a86f](https://arbiscan.io/address/0x6e78BD0566F0fe860346f92566257706fEd2a86f) | [core-v1.1.1](https://github.com/sablier-labs/v2-deployments/tree/main/core/v1.1.1) |
+| SablierV2LockupLinear  | [0xFDD9d122B451F549f48c4942c6fa6646D849e8C1](https://arbiscan.io/address/0xFDD9d122B451F549f48c4942c6fa6646D849e8C1) | [core-v1.1.2](https://github.com/sablier-labs/v2-deployments/tree/main/core/v1.1.2) |
+| SablierV2LockupDynamic | [0x6e78BD0566F0fe860346f92566257706fEd2a86f](https://arbiscan.io/address/0x6e78BD0566F0fe860346f92566257706fEd2a86f) | [core-v1.1.2](https://github.com/sablier-labs/v2-deployments/tree/main/core/v1.1.2) |
 | SablierV2NFTDescriptor | [0x2fb103fC853b2F5022a840091ab1cDf5172E7cfa](https://arbiscan.io/address/0x2fb103fC853b2F5022a840091ab1cDf5172E7cfa) | [core-v1.1.1](https://github.com/sablier-labs/v2-deployments/tree/main/core/v1.1.1) |
 | SablierV2Comptroller   | [0x17Ec73692F0aDf7E7C554822FBEAACB4BE781762](https://arbiscan.io/address/0x17Ec73692F0aDf7E7C554822FBEAACB4BE781762) | [core-v1.0.0](https://github.com/sablier-labs/v2-deployments/tree/main/core/v1.0.0) |
 
@@ -67,8 +67,8 @@ Or maybe you're looking for V1? [Click here](/contracts/v1/deployments).
 
 | Contract               | Address                                                                                                               | Deployment                                                                          |
 | :--------------------- | :-------------------------------------------------------------------------------------------------------------------- | :---------------------------------------------------------------------------------- |
-| SablierV2LockupLinear  | [0xd90D5FA069d73C73B54AB4caFD1C4417a44Dce2E](https://basescan.org/address/0xd90D5FA069d73C73B54AB4caFD1C4417a44Dce2E) | [core-v1.1.1](https://github.com/sablier-labs/v2-deployments/tree/main/core/v1.1.1) |
-| SablierV2LockupDynamic | [0x1706c097679E26524F89A627C36977FE9A1DCCEC](https://basescan.org/address/0x1706c097679E26524F89A627C36977FE9A1DCCEC) | [core-v1.1.1](https://github.com/sablier-labs/v2-deployments/tree/main/core/v1.1.1) |
+| SablierV2LockupLinear  | [0xFCF737582d167c7D20A336532eb8BCcA8CF8e350](https://basescan.org/address/0xFCF737582d167c7D20A336532eb8BCcA8CF8e350) | [core-v1.1.2](https://github.com/sablier-labs/v2-deployments/tree/main/core/v1.1.2) |
+| SablierV2LockupDynamic | [0x461E13056a3a3265CEF4c593F01b2e960755dE91](https://basescan.org/address/0x461E13056a3a3265CEF4c593F01b2e960755dE91) | [core-v1.1.2](https://github.com/sablier-labs/v2-deployments/tree/main/core/v1.1.2) |
 | SablierV2NFTDescriptor | [0x67e0a126b695DBA35128860cd61926B90C420Ceb](https://basescan.org/address/0x67e0a126b695DBA35128860cd61926B90C420Ceb) | [core-v1.1.1](https://github.com/sablier-labs/v2-deployments/tree/main/core/v1.1.1) |
 | SablierV2Comptroller   | [0x7Faaedd40B1385C118cA7432952D9DC6b5CbC49e](https://basescan.org/address/0x7Faaedd40B1385C118cA7432952D9DC6b5CbC49e) | [core-v1.0.0](https://github.com/sablier-labs/v2-deployments/tree/main/core/v1.0.0) |
 
@@ -85,8 +85,8 @@ Or maybe you're looking for V1? [Click here](/contracts/v1/deployments).
 
 | Contract               | Address                                                                                                              | Deployment                                                                          |
 | :--------------------- | :------------------------------------------------------------------------------------------------------------------- | :---------------------------------------------------------------------------------- |
-| SablierV2LockupLinear  | [0x9721F0bdeD9196aD2E19eFE8B915a013d67A49C0](https://bscscan.com/address/0x9721F0bdeD9196aD2E19eFE8B915a013d67A49C0) | [core-v1.1.1](https://github.com/sablier-labs/v2-deployments/tree/main/core/v1.1.1) |
-| SablierV2LockupDynamic | [0x4b4319f0251F0d1773Ca167B9F707D144465a500](https://bscscan.com/address/0x4b4319f0251F0d1773Ca167B9F707D144465a500) | [core-v1.1.1](https://github.com/sablier-labs/v2-deployments/tree/main/core/v1.1.1) |
+| SablierV2LockupLinear  | [0x14c35E126d75234a90c9fb185BF8ad3eDB6A90D2](https://bscscan.com/address/0x14c35E126d75234a90c9fb185BF8ad3eDB6A90D2) | [core-v1.1.2](https://github.com/sablier-labs/v2-deployments/tree/main/core/v1.1.2) |
+| SablierV2LockupDynamic | [0xf900c5E3aA95B59Cc976e6bc9c0998618729a5fa](https://bscscan.com/address/0xf900c5E3aA95B59Cc976e6bc9c0998618729a5fa) | [core-v1.1.2](https://github.com/sablier-labs/v2-deployments/tree/main/core/v1.1.2) |
 | SablierV2NFTDescriptor | [0xEcAfcF09c23057210cB6470eB5D0FD8Bafd1755F](https://bscscan.com/address/0xEcAfcF09c23057210cB6470eB5D0FD8Bafd1755F) | [core-v1.1.1](https://github.com/sablier-labs/v2-deployments/tree/main/core/v1.1.1) |
 | SablierV2Comptroller   | [0x33511f69A784Fd958E6713aCaC7c9dCF1A5578E8](https://bscscan.com/address/0x33511f69A784Fd958E6713aCaC7c9dCF1A5578E8) | [core-v1.0.0](https://github.com/sablier-labs/v2-deployments/tree/main/core/v1.0.0) |
 
@@ -103,8 +103,8 @@ Or maybe you're looking for V1? [Click here](/contracts/v1/deployments).
 
 | Contract               | Address                                                                                                                | Deployment                                                                          |
 | :--------------------- | :--------------------------------------------------------------------------------------------------------------------- | :---------------------------------------------------------------------------------- |
-| SablierV2LockupLinear  | [0x009C856209C45fb8C21388b220ADd9405a78C957](https://gnosisscan.io/address/0x009C856209C45fb8C21388b220ADd9405a78C957) | [core-v1.1.1](https://github.com/sablier-labs/v2-deployments/tree/main/core/v1.1.1) |
-| SablierV2LockupDynamic | [0x85533763f9ED8E7eEea943f5Afaeb3410Ae1D16F](https://gnosisscan.io/address/0x85533763f9ED8E7eEea943f5Afaeb3410Ae1D16F) | [core-v1.1.1](https://github.com/sablier-labs/v2-deployments/tree/main/core/v1.1.1) |
+| SablierV2LockupLinear  | [0xce49854a647a1723e8Fb7CC3D190CAB29A44aB48](https://gnosisscan.io/address/0xce49854a647a1723e8Fb7CC3D190CAB29A44aB48) | [core-v1.1.2](https://github.com/sablier-labs/v2-deployments/tree/main/core/v1.1.2) |
+| SablierV2LockupDynamic | [0x1DF83C7682080B0f0c26a20C6C9CB8623e0Df24E](https://gnosisscan.io/address/0x1DF83C7682080B0f0c26a20C6C9CB8623e0Df24E) | [core-v1.1.2](https://github.com/sablier-labs/v2-deployments/tree/main/core/v1.1.2) |
 | SablierV2NFTDescriptor | [0x01dbFE22205d8B109959e2Be02d0095379309eed](https://gnosisscan.io/address/0x01dbFE22205d8B109959e2Be02d0095379309eed) | [core-v1.1.1](https://github.com/sablier-labs/v2-deployments/tree/main/core/v1.1.1) |
 | SablierV2Comptroller   | [0x73962c44c0fB4cC5e4545FB91732a5c5e87F55C2](https://gnosisscan.io/address/0x73962c44c0fB4cC5e4545FB91732a5c5e87F55C2) | [core-v1.0.0](https://github.com/sablier-labs/v2-deployments/tree/main/core/v1.0.0) |
 
@@ -121,8 +121,8 @@ Or maybe you're looking for V1? [Click here](/contracts/v1/deployments).
 
 | Contract               | Address                                                                                                                          | Deployment                                                                          |
 | :--------------------- | :------------------------------------------------------------------------------------------------------------------------------- | :---------------------------------------------------------------------------------- |
-| SablierV2LockupLinear  | [0x8bA6B2e5c8d97C61deC50833a47FB59Ce889C7BB](https://optimistic.etherscan.io/address/0x8bA6B2e5c8d97C61deC50833a47FB59Ce889C7BB) | [core-v1.1.1](https://github.com/sablier-labs/v2-deployments/tree/main/core/v1.1.1) |
-| SablierV2LockupDynamic | [0x72Fa6cA4973B7BaE1EFA39E0104ad56A0E551f92](https://optimistic.etherscan.io/address/0x72Fa6cA4973B7BaE1EFA39E0104ad56A0E551f92) | [core-v1.1.1](https://github.com/sablier-labs/v2-deployments/tree/main/core/v1.1.1) |
+| SablierV2LockupLinear  | [0x4b45090152a5731b5bc71b5baF71E60e05B33867](https://optimistic.etherscan.io/address/0x4b45090152a5731b5bc71b5baF71E60e05B33867) | [core-v1.1.2](https://github.com/sablier-labs/v2-deployments/tree/main/core/v1.1.2) |
+| SablierV2LockupDynamic | [0xd6920c1094eABC4b71f3dC411A1566f64f4c206e](https://optimistic.etherscan.io/address/0xd6920c1094eABC4b71f3dC411A1566f64f4c206e) | [core-v1.1.2](https://github.com/sablier-labs/v2-deployments/tree/main/core/v1.1.2) |
 | SablierV2NFTDescriptor | [0xF5050c04425E639C647F5ED632218b16ce96694d](https://optimistic.etherscan.io/address/0xF5050c04425E639C647F5ED632218b16ce96694d) | [core-v1.1.1](https://github.com/sablier-labs/v2-deployments/tree/main/core/v1.1.1) |
 | SablierV2Comptroller   | [0x1EECb6e6EaE6a1eD1CCB4323F3a146A7C5443A10](https://optimistic.etherscan.io/address/0x1EECb6e6EaE6a1eD1CCB4323F3a146A7C5443A10) | [core-v1.0.0](https://github.com/sablier-labs/v2-deployments/tree/main/core/v1.0.0) |
 
@@ -139,8 +139,8 @@ Or maybe you're looking for V1? [Click here](/contracts/v1/deployments).
 
 | Contract               | Address                                                                                                                  | Deployment                                                                          |
 | :--------------------- | :----------------------------------------------------------------------------------------------------------------------- | :---------------------------------------------------------------------------------- |
-| SablierV2LockupLinear  | [0x46e103068C1C48FB1a4897d833d0D336BdA9Df17](https://polygonscan.com/address/0x46e103068C1C48FB1a4897d833d0D336BdA9Df17) | [core-v1.1.1](https://github.com/sablier-labs/v2-deployments/tree/main/core/v1.1.1) |
-| SablierV2LockupDynamic | [0x523ddF780d7d5183B3B86A071dC905CeDBeD1E5d](https://polygonscan.com/address/0x523ddF780d7d5183B3B86A071dC905CeDBeD1E5d) | [core-v1.1.1](https://github.com/sablier-labs/v2-deployments/tree/main/core/v1.1.1) |
+| SablierV2LockupLinear  | [0x5f0e1dea4A635976ef51eC2a2ED41490d1eBa003](https://polygonscan.com/address/0x5f0e1dea4A635976ef51eC2a2ED41490d1eBa003) | [core-v1.1.2](https://github.com/sablier-labs/v2-deployments/tree/main/core/v1.1.2) |
+| SablierV2LockupDynamic | [0xB194c7278C627D52E440316b74C5F24FC70c1565](https://polygonscan.com/address/0xB194c7278C627D52E440316b74C5F24FC70c1565) | [core-v1.1.2](https://github.com/sablier-labs/v2-deployments/tree/main/core/v1.1.2) |
 | SablierV2NFTDescriptor | [0x8683da9DF8c5c3528e8251a5764EC7DAc7264795](https://polygonscan.com/address/0x8683da9DF8c5c3528e8251a5764EC7DAc7264795) | [core-v1.1.1](https://github.com/sablier-labs/v2-deployments/tree/main/core/v1.1.1) |
 | SablierV2Comptroller   | [0x9761692EDf10F5F2A69f0150e2fd50dcecf05F2E](https://polygonscan.com/address/0x9761692EDf10F5F2A69f0150e2fd50dcecf05F2E) | [core-v1.0.0](https://github.com/sablier-labs/v2-deployments/tree/main/core/v1.0.0) |
 
@@ -157,8 +157,8 @@ Or maybe you're looking for V1? [Click here](/contracts/v1/deployments).
 
 | Contract               | Address                                                                                                                 | Deployment                                                                          |
 | :--------------------- | :---------------------------------------------------------------------------------------------------------------------- | :---------------------------------------------------------------------------------- |
-| SablierV2LockupLinear  | [0x67B6300bfcF3D83A18b04f6e9f05076cE4026787](https://scrollscan.com/address/0x67B6300bfcF3D83A18b04f6e9f05076cE4026787) | [core-v1.1.1](https://github.com/sablier-labs/v2-deployments/tree/main/core/v1.1.1) |
-| SablierV2LockupDynamic | [0xe1e51E810968a54AAB91f215D2F2819eF29B4aaA](https://scrollscan.com/address/0xe1e51E810968a54AAB91f215D2F2819eF29B4aaA) | [core-v1.1.1](https://github.com/sablier-labs/v2-deployments/tree/main/core/v1.1.1) |
+| SablierV2LockupLinear  | [0x57e14AB4DAd920548899d86B54AD47Ea27F00987](https://scrollscan.com/address/0x57e14AB4DAd920548899d86B54AD47Ea27F00987) | [core-v1.1.2](https://github.com/sablier-labs/v2-deployments/tree/main/core/v1.1.2) |
+| SablierV2LockupDynamic | [0xAaff2D11f9e7Cd2A9cDC674931fAC0358a165995](https://scrollscan.com/address/0xAaff2D11f9e7Cd2A9cDC674931fAC0358a165995) | [core-v1.1.2](https://github.com/sablier-labs/v2-deployments/tree/main/core/v1.1.2) |
 | SablierV2NFTDescriptor | [0xB71440B85172332E8B768e85EdBfdb34CB457c1c](https://scrollscan.com/address/0xB71440B85172332E8B768e85EdBfdb34CB457c1c) | [core-v1.1.1](https://github.com/sablier-labs/v2-deployments/tree/main/core/v1.1.1) |
 | SablierV2Comptroller   | [0x859708495E3B3c61Bbe19e6E3E1F41dE3A5C5C5b](https://scrollscan.com/address/0x859708495E3B3c61Bbe19e6E3E1F41dE3A5C5C5b) | [core-v1.0.0](https://github.com/sablier-labs/v2-deployments/tree/main/core/v1.0.0) |
 
@@ -175,8 +175,8 @@ Or maybe you're looking for V1? [Click here](/contracts/v1/deployments).
 
 | Contract               | Address                                                                                                                      | Deployment                                                                          |
 | :--------------------- | :--------------------------------------------------------------------------------------------------------------------------- | :---------------------------------------------------------------------------------- |
-| SablierV2LockupLinear  | [0xd545A0780C4fB34eC4E661D05608299fC0C46438](https://sepolia.arbiscan.io/address/0xd545A0780C4fB34eC4E661D05608299fC0C46438) | [core-v1.1.1](https://github.com/sablier-labs/v2-deployments/tree/main/core/v1.1.1) |
-| SablierV2LockupDynamic | [0x257e1821F71A7378affCC677F3161Cf9b3298B32](https://sepolia.arbiscan.io/address/0x257e1821F71A7378affCC677F3161Cf9b3298B32) | [core-v1.1.1](https://github.com/sablier-labs/v2-deployments/tree/main/core/v1.1.1) |
+| SablierV2LockupLinear  | [0x483bdd560dE53DC20f72dC66ACdB622C5075de34](https://sepolia.arbiscan.io/address/0x483bdd560dE53DC20f72dC66ACdB622C5075de34) | [core-v1.1.2](https://github.com/sablier-labs/v2-deployments/tree/main/core/v1.1.2) |
+| SablierV2LockupDynamic | [0x8c8102b92B1f31cC304A085D490796f4DfdF7aF3](https://sepolia.arbiscan.io/address/0x8c8102b92B1f31cC304A085D490796f4DfdF7aF3) | [core-v1.1.2](https://github.com/sablier-labs/v2-deployments/tree/main/core/v1.1.2) |
 | SablierV2NFTDescriptor | [0x593050f0360518C3A4F11c32Eb936146e1096FD1](https://sepolia.arbiscan.io/address/0x593050f0360518C3A4F11c32Eb936146e1096FD1) | [core-v1.1.1](https://github.com/sablier-labs/v2-deployments/tree/main/core/v1.1.1) |
 | SablierV2Comptroller   | [0x82a4CFC82c159988C18c1052987D38dc2B868212](https://sepolia.arbiscan.io/address/0x82a4CFC82c159988C18c1052987D38dc2B868212) | [core-v1.1.1](https://github.com/sablier-labs/v2-deployments/tree/main/core/v1.0.0) |
 
@@ -193,8 +193,8 @@ Or maybe you're looking for V1? [Click here](/contracts/v1/deployments).
 
 | Contract               | Address                                                                                                                       | Deployment                                                                          |
 | :--------------------- | :---------------------------------------------------------------------------------------------------------------------------- | :---------------------------------------------------------------------------------- |
-| SablierV2LockupLinear  | [0x26a8515AF672e4D66d71a941A3d6A3e9E5E61A8C](https://sepolia.etherscan.io/address/0x26a8515AF672e4D66d71a941A3d6A3e9E5E61A8C) | [core-v1.1.1](https://github.com/sablier-labs/v2-deployments/tree/main/core/v1.1.1) |
-| SablierV2LockupDynamic | [0x418D0eC4F0E9A6A2efBF3d8155791d5A7ddD0dF7](https://sepolia.etherscan.io/address/0x418D0eC4F0E9A6A2efBF3d8155791d5A7ddD0dF7) | [core-v1.1.1](https://github.com/sablier-labs/v2-deployments/tree/main/core/v1.1.1) |
+| SablierV2LockupLinear  | [0x7a43F8a888fa15e68C103E18b0439Eb1e98E4301](https://sepolia.etherscan.io/address/0x7a43F8a888fa15e68C103E18b0439Eb1e98E4301) | [core-v1.1.2](https://github.com/sablier-labs/v2-deployments/tree/main/core/v1.1.2) |
+| SablierV2LockupDynamic | [0xc9940AD8F43aAD8e8f33A4D5dbBf0a8F7FF4429A](https://sepolia.etherscan.io/address/0xc9940AD8F43aAD8e8f33A4D5dbBf0a8F7FF4429A) | [core-v1.1.2](https://github.com/sablier-labs/v2-deployments/tree/main/core/v1.1.2) |
 | SablierV2NFTDescriptor | [0xE8fFEbA8963CD9302ffD39c704dc2c027128D36F](https://sepolia.etherscan.io/address/0xE8fFEbA8963CD9302ffD39c704dc2c027128D36F) | [core-v1.1.1](https://github.com/sablier-labs/v2-deployments/tree/main/core/v1.1.1) |
 | SablierV2Comptroller   | [0x2006d43E65e66C5FF20254836E63947FA8bAaD68](https://sepolia.etherscan.io/address/0x2006d43E65e66C5FF20254836E63947FA8bAaD68) | [core-v1.0.0](https://github.com/sablier-labs/v2-deployments/tree/main/core/v1.0.0) |
 
