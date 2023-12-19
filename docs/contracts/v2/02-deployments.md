@@ -50,7 +50,7 @@ Or maybe you're looking for V1? [Click here](/contracts/v1/deployments).
 | Contract               | Address                                                                                                              | Deployment                                                                          |
 | :--------------------- | :------------------------------------------------------------------------------------------------------------------- | :---------------------------------------------------------------------------------- |
 | SablierV2LockupLinear  | [0xFDD9d122B451F549f48c4942c6fa6646D849e8C1](https://arbiscan.io/address/0xFDD9d122B451F549f48c4942c6fa6646D849e8C1) | [core-v1.1.2](https://github.com/sablier-labs/v2-deployments/tree/main/core/v1.1.2) |
-| SablierV2LockupDynamic | [0x6e78BD0566F0fe860346f92566257706fEd2a86f](https://arbiscan.io/address/0x6e78BD0566F0fe860346f92566257706fEd2a86f) | [core-v1.1.2](https://github.com/sablier-labs/v2-deployments/tree/main/core/v1.1.2) |
+| SablierV2LockupDynamic | [0xf390cE6f54e4dc7C5A5f7f8689062b7591F7111d](https://arbiscan.io/address/0xf390cE6f54e4dc7C5A5f7f8689062b7591F7111d) | [core-v1.1.2](https://github.com/sablier-labs/v2-deployments/tree/main/core/v1.1.2) |
 | SablierV2NFTDescriptor | [0x2fb103fC853b2F5022a840091ab1cDf5172E7cfa](https://arbiscan.io/address/0x2fb103fC853b2F5022a840091ab1cDf5172E7cfa) | [core-v1.1.1](https://github.com/sablier-labs/v2-deployments/tree/main/core/v1.1.1) |
 | SablierV2Comptroller   | [0x17Ec73692F0aDf7E7C554822FBEAACB4BE781762](https://arbiscan.io/address/0x17Ec73692F0aDf7E7C554822FBEAACB4BE781762) | [core-v1.0.0](https://github.com/sablier-labs/v2-deployments/tree/main/core/v1.0.0) |
 
