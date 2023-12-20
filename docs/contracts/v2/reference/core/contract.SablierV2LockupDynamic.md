@@ -269,22 +269,6 @@ function isCancelable(uint256 streamId) external view override notNull(streamId)
 | ---------- | --------- | ---------------------------- |
 | `streamId` | `uint256` | The stream id for the query. |
 
-### isCold
-
-Retrieves a flag indicating whether the stream is cold, i.e. settled, canceled, or depleted.
-
-_Reverts if `streamId` references a null stream._
-
-```solidity
-function isCold(uint256 streamId) external view override notNull(streamId) returns (bool result);
-```
-
-**Parameters**
-
-| Name       | Type      | Description                  |
-| ---------- | --------- | ---------------------------- |
-| `streamId` | `uint256` | The stream id for the query. |
-
 ### isDepleted
 
 Retrieves a flag indicating whether the stream is depleted.
@@ -330,22 +314,6 @@ _Reverts if `streamId` references a null stream._
 
 ```solidity
 function isTransferable(uint256 streamId) external view returns (bool result);
-```
-
-**Parameters**
-
-| Name       | Type      | Description                  |
-| ---------- | --------- | ---------------------------- |
-| `streamId` | `uint256` | The stream id for the query. |
-
-### isWarm
-
-Retrieves a flag indicating whether the stream is warm, i.e. either pending or streaming.
-
-_Reverts if `streamId` references a null stream._
-
-```solidity
-function isWarm(uint256 streamId) external view override notNull(streamId) returns (bool result);
 ```
 
 **Parameters**
