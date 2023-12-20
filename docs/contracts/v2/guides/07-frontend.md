@@ -24,19 +24,3 @@ Let's start by creating a new Next.js project:
 ```sh
 npx create-next-app my-project
 ```
-
-## Proxy
-
-:::note
-
-This section is a stub.
-
-:::
-
-## Permit2
-
-:::note
-
-This section is a stub.
-
-:::
