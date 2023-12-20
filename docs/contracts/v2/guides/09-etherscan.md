@@ -288,7 +288,7 @@ followed by 8 zeroes). The same logic applies to the [total amounts](#total-amou
 
 ```ts
 {
-  spender: "0xB10daee1FCF62243aE27776D7a92D39dC8740f95",
+  spender: "0xAFb979d9afAd1aD27C5eFf4E27226E3AB9e5dCC9",
   amount: 100000000000000000000
 }
 ```
