@@ -17,7 +17,9 @@ struct CancelMultiple {
 
 ### CreateWithDeltas
 
-A struct encapsulating all parameters of {SablierV2LockupDynamic.createWithDelta} except for the asset.
+A struct encapsulating all parameters of
+[SablierV2LockupDynamic.createWithDelta](/contracts/v2/reference/core/types/library.LockupDynamic#createwithdeltas)
+except for the asset.
 
 ```solidity
 struct CreateWithDeltas {
@@ -32,7 +34,9 @@ struct CreateWithDeltas {
 
 ### CreateWithDurations
 
-A struct encapsulating all parameters of {SablierV2LockupLinear.createWithDurations} except for the asset.
+A struct encapsulating all parameters of
+[SablierV2LockupLinear.createWithDurations](/contracts/v2/reference/core/types/library.LockupLinear#createwithdurations)
+except for the asset.
 
 ```solidity
 struct CreateWithDurations {
@@ -47,7 +51,9 @@ struct CreateWithDurations {
 
 ### CreateWithMilestones
 
-A struct encapsulating all parameters of {SablierV2LockupDynamic.createWithMilestones} except for the asset.
+A struct encapsulating all parameters of
+[SablierV2LockupDynamic.createWithMilestones](/contracts/v2/reference/core/types/library.LockupDynamic#createwithmilestones)
+except for the asset.
 
 ```solidity
 struct CreateWithMilestones {
@@ -63,7 +69,9 @@ struct CreateWithMilestones {
 
 ### CreateWithRange
 
-A struct encapsulating all parameters of {SablierV2LockupLinear.createWithRange} except for the asset.
+A struct encapsulating all parameters of
+[SablierV2LockupLinear.createWithRange](/contracts/v2/reference/core/types/library.LockupLinear#createwithrange)) except
+for the asset.
 
 ```solidity
 struct CreateWithRange {

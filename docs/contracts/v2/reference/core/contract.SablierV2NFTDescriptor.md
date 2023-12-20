@@ -4,7 +4,7 @@ sidebar_position: 3
 
 # SablierV2NFTDescriptor
 
-[Git Source](https://github.com/sablier-labs/v2-core/blob/bca1d9ea0485b065544486bb01f4148d44289644/docs/contracts/v2/reference/core)
+[Git Source](https://github.com/sablier-labs/v2-core/blob/release/src/SablierV2NFTDescriptor.sol)
 
 **Inherits:**
 [ISablierV2NFTDescriptor](/docs/contracts/v2/reference/core/interfaces/interface.ISablierV2NFTDescriptor.md)
@@ -61,9 +61,9 @@ function abbreviateAmount(uint256 amount, uint256 decimals) internal pure return
 
 **Returns**
 
-| Name     | Type     | Description                                                                      |
-| -------- | -------- | -------------------------------------------------------------------------------- |
-| `<none>` | `string` | abbreviation The abbreviated representation of the provided amount, as a string. |
+| Name     | Type     | Description                                                         |
+| -------- | -------- | ------------------------------------------------------------------- |
+| `<none>` | `string` | The abbreviated representation of the provided amount, as a string. |
 
 ### calculateDurationInDays
 
@@ -215,12 +215,12 @@ _Needed to avoid Stack Too Deep._
 struct TokenURIVars {
     address asset;
     string assetSymbol;
+    uint128 depositedAmount;
     string json;
     ISablierV2Lockup sablier;
     string sablierAddress;
     string status;
     string svg;
-    uint128 streamedAmount;
     uint256 streamedPercentage;
     string streamingModel;
 }

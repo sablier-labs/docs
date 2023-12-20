@@ -1,12 +1,12 @@
 ---
 id: "deployments"
-toc_max_heading_level: 2
 sidebar_position: 2
 title: "Deployment Addresses"
+toc_max_heading_level: 2
 ---
 
-The latest versions of [@sablier/v2-core][v2-core] and [@sablier/v2-periphery][v2-periphery] are deployed at the
-addresses listed below.
+This document contains the deployment addresses for the V2.1 release of [@sablier/v2-core][v2-core] and
+[@sablier/v2-periphery][v2-periphery].
 
 [v2-core]: https://npmjs.com/package/@sablier/v2-core
 [v2-periphery]: https://npmjs.com/package/@sablier/v2-periphery
@@ -17,11 +17,11 @@ A few noteworthy details about the deployments:
 - All LockupLinear and LockupDynamic contracts are non-upgradeable (see [Governance](/concepts/governance))
 - The source code is verified on Etherscan across all chains
 
-:::note
+:::info
 
-Came here looking for the V1 addresses? [Click here](/contracts/v1/deployments).
+Came here looking for the V2.0 deployments? [Click here](/contracts/v2/deployments/v2.0).
 
-Or maybe you're looking for the PRBProxy deployments? Check out [prbproxy.com](https://prbproxy.com)
+Or maybe you're looking for V1? [Click here](/contracts/v1/deployments).
 
 :::
 
@@ -31,19 +31,17 @@ Or maybe you're looking for the PRBProxy deployments? Check out [prbproxy.com](h
 
 | Contract               | Address                                                                                                               | Deployment                                                                          |
 | :--------------------- | :-------------------------------------------------------------------------------------------------------------------- | :---------------------------------------------------------------------------------- |
-| SablierV2LockupLinear  | [0xB10daee1FCF62243aE27776D7a92D39dC8740f95](https://etherscan.io/address/0xB10daee1FCF62243aE27776D7a92D39dC8740f95) | [core-v1.0.0](https://github.com/sablier-labs/v2-deployments/tree/main/core/v1.0.0) |
-| SablierV2LockupDynamic | [0x39EFdC3dbB57B2388CcC4bb40aC4CB1226Bc9E44](https://etherscan.io/address/0x39EFdC3dbB57B2388CcC4bb40aC4CB1226Bc9E44) | [core-v1.0.0](https://github.com/sablier-labs/v2-deployments/tree/main/core/v1.0.0) |
-| SablierV2NFTDescriptor | [0x98F2196fECc01C240d1429B624d007Ca268EEA29](https://etherscan.io/address/0x98F2196fECc01C240d1429B624d007Ca268EEA29) | [core-v1.0.1](https://github.com/sablier-labs/v2-deployments/tree/main/core/v1.0.1) |
+| SablierV2LockupLinear  | [0xAFb979d9afAd1aD27C5eFf4E27226E3AB9e5dCC9](https://etherscan.io/address/0xAFb979d9afAd1aD27C5eFf4E27226E3AB9e5dCC9) | [core-v1.1.2](https://github.com/sablier-labs/v2-deployments/tree/main/core/v1.1.2) |
+| SablierV2LockupDynamic | [0x7CC7e125d83A581ff438608490Cc0f7bDff79127](https://etherscan.io/address/0x7CC7e125d83A581ff438608490Cc0f7bDff79127) | [core-v1.1.2](https://github.com/sablier-labs/v2-deployments/tree/main/core/v1.1.2) |
+| SablierV2NFTDescriptor | [0x23eD5DA55AF4286c0dE55fAcb414dEE2e317F4CB](https://etherscan.io/address/0x23eD5DA55AF4286c0dE55fAcb414dEE2e317F4CB) | [core-v1.1.1](https://github.com/sablier-labs/v2-deployments/tree/main/core/v1.1.1) |
 | SablierV2Comptroller   | [0xC3Be6BffAeab7B297c03383B4254aa3Af2b9a5BA](https://etherscan.io/address/0xC3Be6BffAeab7B297c03383B4254aa3Af2b9a5BA) | [core-v1.0.0](https://github.com/sablier-labs/v2-deployments/tree/main/core/v1.0.0) |
 
 ### Periphery
 
-| Contract                    | Address                                                                                                               | Deployment                                                                                    |
-| :-------------------------- | :-------------------------------------------------------------------------------------------------------------------- | :-------------------------------------------------------------------------------------------- |
-| SablierV2Archive            | [0x0Be20a8242B0781B6fd4d453e90DCC1CcF7DBcc6](https://etherscan.io/address/0x0Be20a8242B0781B6fd4d453e90DCC1CcF7DBcc6) | [periphery-v1.0.0](https://github.com/sablier-labs/v2-deployments/tree/main/periphery/v1.0.0) |
-| SablierV2ProxyPlugin        | [0x9bdebF4F9adEB99387f46e4020FBf3dDa885D2b8](https://etherscan.io/address/0x9bdebF4F9adEB99387f46e4020FBf3dDa885D2b8) | [periphery-v1.0.0](https://github.com/sablier-labs/v2-deployments/tree/main/periphery/v1.0.0) |
-| SablierV2ProxyTargetPermit2 | [0x297b43aE44660cA7826ef92D8353324C018573Ef](https://etherscan.io/address/0x297b43aE44660cA7826ef92D8353324C018573Ef) | [periphery-v1.0.0](https://github.com/sablier-labs/v2-deployments/tree/main/periphery/v1.0.0) |
-| SablierV2ProxyTargetApprove | [0x638a7aC8315767cEAfc57a6f5e3559454347C3f6](https://etherscan.io/address/0x638a7aC8315767cEAfc57a6f5e3559454347C3f6) | [periphery-v1.0.1](https://github.com/sablier-labs/v2-deployments/tree/main/periphery/v1.0.1) |
+| Contract                       | Address                                                                                                               | Deployment                                                                                    |
+| :----------------------------- | :-------------------------------------------------------------------------------------------------------------------- | :-------------------------------------------------------------------------------------------- |
+| SablierV2Batch                 | [0xEa07DdBBeA804E7fe66b958329F8Fa5cDA95Bd55](https://etherscan.io/address/0xEa07DdBBeA804E7fe66b958329F8Fa5cDA95Bd55) | [periphery-v1.1.0](https://github.com/sablier-labs/v2-deployments/tree/main/periphery/v1.1.0) |
+| SablierV2MerkleStreamerFactory | [0x1A272b596b10f02931480BC7a3617db4a8d154E3](https://etherscan.io/address/0x1A272b596b10f02931480BC7a3617db4a8d154E3) | [periphery-v1.1.0](https://github.com/sablier-labs/v2-deployments/tree/main/periphery/v1.1.0) |
 
 ## Arbitrum One
 
@@ -51,58 +49,17 @@ Or maybe you're looking for the PRBProxy deployments? Check out [prbproxy.com](h
 
 | Contract               | Address                                                                                                              | Deployment                                                                          |
 | :--------------------- | :------------------------------------------------------------------------------------------------------------------- | :---------------------------------------------------------------------------------- |
-| SablierV2LockupLinear  | [0x197D655F3be03903fD25e7828c3534504bfe525e](https://arbiscan.io/address/0x197D655F3be03903fD25e7828c3534504bfe525e) | [core-v1.0.0](https://github.com/sablier-labs/v2-deployments/tree/main/core/v1.0.0) |
-| SablierV2LockupDynamic | [0xA9EfBEf1A35fF80041F567391bdc9813b2D50197](https://arbiscan.io/address/0xA9EfBEf1A35fF80041F567391bdc9813b2D50197) | [core-v1.0.0](https://github.com/sablier-labs/v2-deployments/tree/main/core/v1.0.0) |
-| SablierV2NFTDescriptor | [0xc245d6C9608769CeF91C3858e4d2a74802B9f1bB](https://arbiscan.io/address/0xc245d6C9608769CeF91C3858e4d2a74802B9f1bB) | [core-v1.0.1](https://github.com/sablier-labs/v2-deployments/tree/main/core/v1.0.1) |
+| SablierV2LockupLinear  | [0xFDD9d122B451F549f48c4942c6fa6646D849e8C1](https://arbiscan.io/address/0xFDD9d122B451F549f48c4942c6fa6646D849e8C1) | [core-v1.1.2](https://github.com/sablier-labs/v2-deployments/tree/main/core/v1.1.2) |
+| SablierV2LockupDynamic | [0xf390cE6f54e4dc7C5A5f7f8689062b7591F7111d](https://arbiscan.io/address/0xf390cE6f54e4dc7C5A5f7f8689062b7591F7111d) | [core-v1.1.2](https://github.com/sablier-labs/v2-deployments/tree/main/core/v1.1.2) |
+| SablierV2NFTDescriptor | [0x2fb103fC853b2F5022a840091ab1cDf5172E7cfa](https://arbiscan.io/address/0x2fb103fC853b2F5022a840091ab1cDf5172E7cfa) | [core-v1.1.1](https://github.com/sablier-labs/v2-deployments/tree/main/core/v1.1.1) |
 | SablierV2Comptroller   | [0x17Ec73692F0aDf7E7C554822FBEAACB4BE781762](https://arbiscan.io/address/0x17Ec73692F0aDf7E7C554822FBEAACB4BE781762) | [core-v1.0.0](https://github.com/sablier-labs/v2-deployments/tree/main/core/v1.0.0) |
 
 ### Periphery
 
-| Contract                    | Address                                                                                                              | Deployment                                                                                    |
-| :-------------------------- | :------------------------------------------------------------------------------------------------------------------- | :-------------------------------------------------------------------------------------------- |
-| SablierV2Archive            | [0xDFa4512d07AbD4eb8Be570Cd79e2e6Fe21ff15C9](https://arbiscan.io/address/0xDFa4512d07AbD4eb8Be570Cd79e2e6Fe21ff15C9) | [periphery-v1.0.0](https://github.com/sablier-labs/v2-deployments/tree/main/periphery/v1.0.0) |
-| SablierV2ProxyPlugin        | [0x9aB73CA73c89AF0bdc69642aCeb23CC6A55A514C](https://arbiscan.io/address/0x9aB73CA73c89AF0bdc69642aCeb23CC6A55A514C) | [periphery-v1.0.0](https://github.com/sablier-labs/v2-deployments/tree/main/periphery/v1.0.0) |
-| SablierV2ProxyTargetPermit2 | [0xB7185AcAF42C4966fFA3c81486d9ED9633aa4c13](https://arbiscan.io/address/0xB7185AcAF42C4966fFA3c81486d9ED9633aa4c13) | [periphery-v1.0.0](https://github.com/sablier-labs/v2-deployments/tree/main/periphery/v1.0.0) |
-| SablierV2ProxyTargetApprove | [0x90cc23dc3e12e80f27c05b8137b5f0d2b1edfa20](https://arbiscan.io/address/0x90cc23dc3e12e80f27c05b8137b5f0d2b1edfa20) | [periphery-v1.0.1](https://github.com/sablier-labs/v2-deployments/tree/main/periphery/v1.0.1) |
-
-## Arbitrum Nova
-
-### Core
-
-| Contract               | Address                                                                                                                   | Deployment                                                                          |
-| :--------------------- | :------------------------------------------------------------------------------------------------------------------------ | :---------------------------------------------------------------------------------- |
-| SablierV2LockupLinear  | [0x18306C9550AbfE3F5900d1206FFdce9ce5763A89](https://nova.arbiscan.io/address/0x18306C9550AbfE3F5900d1206FFdce9ce5763A89) | [core-v1.0.0](https://github.com/sablier-labs/v2-deployments/tree/main/core/v1.0.0) |
-| SablierV2LockupDynamic | [0xd6b66A8D797c1e83DdEcE8f483E7D1264B9DFDa6](https://nova.arbiscan.io/address/0xd6b66A8D797c1e83DdEcE8f483E7D1264B9DFDa6) | [core-v1.0.0](https://github.com/sablier-labs/v2-deployments/tree/main/core/v1.0.0) |
-| SablierV2NFTDescriptor | [0xE88d26d1E8802be5cc023264b3FccF63Bc38C20c](https://nova.arbiscan.io/address/0xE88d26d1E8802be5cc023264b3FccF63Bc38C20c) | [core-v1.0.1](https://github.com/sablier-labs/v2-deployments/tree/main/core/v1.0.1) |
-| SablierV2Comptroller   | [0x203f1722d4adb9b67bf652c878d0dc3cc8099113](https://nova.arbiscan.io/address/0x203f1722d4adb9b67bf652c878d0dc3cc8099113) | [core-v1.0.0](https://github.com/sablier-labs/v2-deployments/tree/main/core/v1.0.0) |
-
-### Periphery
-
-| Contract                    | Address                                                                                                                   | Deployment                                                                                    |
-| :-------------------------- | :------------------------------------------------------------------------------------------------------------------------ | :-------------------------------------------------------------------------------------------- |
-| SablierV2Archive            | [0x17DE7707D0b25F878Ae4FaC03cdE2481CD616EDd](https://nova.arbiscan.io/address/0x17DE7707D0b25F878Ae4FaC03cdE2481CD616EDd) | [periphery-v1.0.0](https://github.com/sablier-labs/v2-deployments/tree/main/periphery/v1.0.0) |
-| SablierV2ProxyPlugin        | [0x1f09ce4be5ad6e76cda6242af91921440df2306e](https://nova.arbiscan.io/address/0x1f09ce4be5ad6e76cda6242af91921440df2306e) | [periphery-v1.0.0](https://github.com/sablier-labs/v2-deployments/tree/main/periphery/v1.0.0) |
-| SablierV2ProxyTargetPermit2 | [0x4487F233bdf7d3C977F936891D5A0Ff1b275A2a8](https://nova.arbiscan.io/address/0x4487F233bdf7d3C977F936891D5A0Ff1b275A2a8) | [periphery-v1.0.0](https://github.com/sablier-labs/v2-deployments/tree/main/periphery/v1.0.0) |
-
-## Avalanche
-
-### Core
-
-| Contract               | Address                                                                                                               | Deployment                                                                          |
-| :--------------------- | :-------------------------------------------------------------------------------------------------------------------- | :---------------------------------------------------------------------------------- |
-| SablierV2LockupLinear  | [0x610346E9088AFA70D6B03e96A800B3267E75cA19](https://snowtrace.io/address/0x610346E9088AFA70D6B03e96A800B3267E75cA19) | [core-v1.0.0](https://github.com/sablier-labs/v2-deployments/tree/main/core/v1.0.0) |
-| SablierV2LockupDynamic | [0x665d1C8337F1035cfBe13DD94bB669110b975f5F](https://snowtrace.io/address/0x665d1C8337F1035cfBe13DD94bB669110b975f5F) | [core-v1.0.0](https://github.com/sablier-labs/v2-deployments/tree/main/core/v1.0.0) |
-| SablierV2NFTDescriptor | [0xFd050AFA2e04aA0596947DaD3Ec5690162aDc77F](https://snowtrace.io/address/0xFd050AFA2e04aA0596947DaD3Ec5690162aDc77F) | [core-v1.0.1](https://github.com/sablier-labs/v2-deployments/tree/main/core/v1.0.1) |
-| SablierV2Comptroller   | [0x66F5431B0765D984f82A4fc4551b2c9ccF7eAC9C](https://snowtrace.io/address/0x66F5431B0765D984f82A4fc4551b2c9ccF7eAC9C) | [core-v1.0.0](https://github.com/sablier-labs/v2-deployments/tree/main/core/v1.0.0) |
-
-### Periphery
-
-| Contract                    | Address                                                                                                               | Deployment                                                                                    |
-| :-------------------------- | :-------------------------------------------------------------------------------------------------------------------- | :-------------------------------------------------------------------------------------------- |
-| SablierV2Archive            | [0x7b1ef644ce9a625537e9e0c3d7fef3be667e6159](https://snowtrace.io/address/0x7b1ef644ce9a625537e9e0c3d7fef3be667e6159) | [periphery-v1.0.0](https://github.com/sablier-labs/v2-deployments/tree/main/periphery/v1.0.0) |
-| SablierV2ProxyPlugin        | [0x17167A7e2763121e263B4331B700a1BF9113b387](https://snowtrace.io/address/0x17167A7e2763121e263B4331B700a1BF9113b387) | [periphery-v1.0.0](https://github.com/sablier-labs/v2-deployments/tree/main/periphery/v1.0.0) |
-| SablierV2ProxyTargetPermit2 | [0x48B4889cf5d6f8360050f9d7606505F1433120BC](https://snowtrace.io/address/0x48B4889cf5d6f8360050f9d7606505F1433120BC) | [periphery-v1.0.0](https://github.com/sablier-labs/v2-deployments/tree/main/periphery/v1.0.0) |
-| SablierV2ProxyTargetApprove | [0x817fE1364A9d57d1fB951945B53942234163Ef10](https://snowtrace.io/address/0x817fE1364A9d57d1fB951945B53942234163Ef10) | [periphery-v1.0.1](https://github.com/sablier-labs/v2-deployments/tree/main/periphery/v1.0.1) |
+| Contract                       | Address                                                                                                              | Deployment                                                                                    |
+| :----------------------------- | :------------------------------------------------------------------------------------------------------------------- | :-------------------------------------------------------------------------------------------- |
+| SablierV2Batch                 | [0xAFd1434296e29a0711E24014656158055F00784c](https://arbiscan.io/address/0xAFd1434296e29a0711E24014656158055F00784c) | [periphery-v1.1.0](https://github.com/sablier-labs/v2-deployments/tree/main/periphery/v1.1.0) |
+| SablierV2MerkleStreamerFactory | [0x237400eF5a41886a75B0e036228221Df075b3B80](https://arbiscan.io/address/0x237400eF5a41886a75B0e036228221Df075b3B80) | [periphery-v1.1.0](https://github.com/sablier-labs/v2-deployments/tree/main/periphery/v1.1.0) |
 
 ## Base
 
@@ -110,19 +67,17 @@ Or maybe you're looking for the PRBProxy deployments? Check out [prbproxy.com](h
 
 | Contract               | Address                                                                                                               | Deployment                                                                          |
 | :--------------------- | :-------------------------------------------------------------------------------------------------------------------- | :---------------------------------------------------------------------------------- |
-| SablierV2LockupLinear  | [0x6b9a46C8377f21517E65fa3899b3A9Fab19D17f5](https://basescan.org/address/0x6b9a46C8377f21517E65fa3899b3A9Fab19D17f5) | [core-v1.0.0](https://github.com/sablier-labs/v2-deployments/tree/main/core/v1.0.0) |
-| SablierV2LockupDynamic | [0x645B00960Dc352e699F89a81Fc845C0C645231cf](https://basescan.org/address/0x645B00960Dc352e699F89a81Fc845C0C645231cf) | [core-v1.0.0](https://github.com/sablier-labs/v2-deployments/tree/main/core/v1.0.0) |
-| SablierV2NFTDescriptor | [0xEFc2896c29F70bc23e82892Df827d4e2259028Fd](https://basescan.org/address/0xEFc2896c29F70bc23e82892Df827d4e2259028Fd) | [core-v1.0.1](https://github.com/sablier-labs/v2-deployments/tree/main/core/v1.0.1) |
+| SablierV2LockupLinear  | [0xFCF737582d167c7D20A336532eb8BCcA8CF8e350](https://basescan.org/address/0xFCF737582d167c7D20A336532eb8BCcA8CF8e350) | [core-v1.1.2](https://github.com/sablier-labs/v2-deployments/tree/main/core/v1.1.2) |
+| SablierV2LockupDynamic | [0x461E13056a3a3265CEF4c593F01b2e960755dE91](https://basescan.org/address/0x461E13056a3a3265CEF4c593F01b2e960755dE91) | [core-v1.1.2](https://github.com/sablier-labs/v2-deployments/tree/main/core/v1.1.2) |
+| SablierV2NFTDescriptor | [0x67e0a126b695DBA35128860cd61926B90C420Ceb](https://basescan.org/address/0x67e0a126b695DBA35128860cd61926B90C420Ceb) | [core-v1.1.1](https://github.com/sablier-labs/v2-deployments/tree/main/core/v1.1.1) |
 | SablierV2Comptroller   | [0x7Faaedd40B1385C118cA7432952D9DC6b5CbC49e](https://basescan.org/address/0x7Faaedd40B1385C118cA7432952D9DC6b5CbC49e) | [core-v1.0.0](https://github.com/sablier-labs/v2-deployments/tree/main/core/v1.0.0) |
 
 ### Periphery
 
-| Contract                    | Address                                                                                                               | Deployment                                                                                    |
-| :-------------------------- | :-------------------------------------------------------------------------------------------------------------------- | :-------------------------------------------------------------------------------------------- |
-| SablierV2Archive            | [0x1C5Ac71dd48c7ff291743e5E6e3689ba92F73cC6](https://basescan.org/address/0x1C5Ac71dd48c7ff291743e5E6e3689ba92F73cC6) | [periphery-v1.0.0](https://github.com/sablier-labs/v2-deployments/tree/main/periphery/v1.0.0) |
-| SablierV2ProxyPlugin        | [0x50E8B9dC7F28e5cA9253759455C1077e497c4232](https://basescan.org/address/0x50E8B9dC7F28e5cA9253759455C1077e497c4232) | [periphery-v1.0.0](https://github.com/sablier-labs/v2-deployments/tree/main/periphery/v1.0.0) |
-| SablierV2ProxyTargetPermit2 | [0x0648C80b969501c7778b6ff3ba47aBb78fEeDF39](https://basescan.org/address/0x0648C80b969501c7778b6ff3ba47aBb78fEeDF39) | [periphery-v1.0.0](https://github.com/sablier-labs/v2-deployments/tree/main/periphery/v1.0.0) |
-| SablierV2ProxyTargetApprove | [0xf19576Ab425753816eCbF98aca8132A0f693aEc5](https://basescan.org/address/0xf19576Ab425753816eCbF98aca8132A0f693aEc5) | [periphery-v1.0.1](https://github.com/sablier-labs/v2-deployments/tree/main/periphery/v1.0.1) |
+| Contract                       | Address                                                                                                               | Deployment                                                                                    |
+| :----------------------------- | :-------------------------------------------------------------------------------------------------------------------- | :-------------------------------------------------------------------------------------------- |
+| SablierV2Batch                 | [0x94E596EEd73b4e3171c067f05A87AB0268cA993c](https://basescan.org/address/0x94E596EEd73b4e3171c067f05A87AB0268cA993c) | [periphery-v1.1.0](https://github.com/sablier-labs/v2-deployments/tree/main/periphery/v1.1.0) |
+| SablierV2MerkleStreamerFactory | [0x5545c8E7c3E1F74aDc98e518F2E8D23A002C4412](https://basescan.org/address/0x5545c8E7c3E1F74aDc98e518F2E8D23A002C4412) | [periphery-v1.1.0](https://github.com/sablier-labs/v2-deployments/tree/main/periphery/v1.1.0) |
 
 ## BNB Smart Chain
 
@@ -130,19 +85,17 @@ Or maybe you're looking for the PRBProxy deployments? Check out [prbproxy.com](h
 
 | Contract               | Address                                                                                                              | Deployment                                                                          |
 | :--------------------- | :------------------------------------------------------------------------------------------------------------------- | :---------------------------------------------------------------------------------- |
-| SablierV2LockupLinear  | [0x3FE4333f62A75c2a85C8211c6AeFd1b9Bfde6e51](https://bscscan.com/address/0x3FE4333f62A75c2a85C8211c6AeFd1b9Bfde6e51) | [core-v1.0.0](https://github.com/sablier-labs/v2-deployments/tree/main/core/v1.0.0) |
-| SablierV2LockupDynamic | [0xF2f3feF2454DcA59ECA929D2D8cD2a8669Cc6214](https://bscscan.com/address/0xF2f3feF2454DcA59ECA929D2D8cD2a8669Cc6214) | [core-v1.0.0](https://github.com/sablier-labs/v2-deployments/tree/main/core/v1.0.0) |
-| SablierV2NFTDescriptor | [0x3daD1bF57edCFF979Fb68a802AC54c5AAfB78F4c](https://bscscan.com/address/0x3daD1bF57edCFF979Fb68a802AC54c5AAfB78F4c) | [core-v1.0.1](https://github.com/sablier-labs/v2-deployments/tree/main/core/v1.0.1) |
+| SablierV2LockupLinear  | [0x14c35E126d75234a90c9fb185BF8ad3eDB6A90D2](https://bscscan.com/address/0x14c35E126d75234a90c9fb185BF8ad3eDB6A90D2) | [core-v1.1.2](https://github.com/sablier-labs/v2-deployments/tree/main/core/v1.1.2) |
+| SablierV2LockupDynamic | [0xf900c5E3aA95B59Cc976e6bc9c0998618729a5fa](https://bscscan.com/address/0xf900c5E3aA95B59Cc976e6bc9c0998618729a5fa) | [core-v1.1.2](https://github.com/sablier-labs/v2-deployments/tree/main/core/v1.1.2) |
+| SablierV2NFTDescriptor | [0xEcAfcF09c23057210cB6470eB5D0FD8Bafd1755F](https://bscscan.com/address/0xEcAfcF09c23057210cB6470eB5D0FD8Bafd1755F) | [core-v1.1.1](https://github.com/sablier-labs/v2-deployments/tree/main/core/v1.1.1) |
 | SablierV2Comptroller   | [0x33511f69A784Fd958E6713aCaC7c9dCF1A5578E8](https://bscscan.com/address/0x33511f69A784Fd958E6713aCaC7c9dCF1A5578E8) | [core-v1.0.0](https://github.com/sablier-labs/v2-deployments/tree/main/core/v1.0.0) |
 
 ### Periphery
 
-| Contract                    | Address                                                                                                              | Deployment                                                                                    |
-| :-------------------------- | :------------------------------------------------------------------------------------------------------------------- | :-------------------------------------------------------------------------------------------- |
-| SablierV2Archive            | [0xeDe48EB173A869c0b27Cb98CC56d00BC391e5887](https://bscscan.com/address/0xeDe48EB173A869c0b27Cb98CC56d00BC391e5887) | [periphery-v1.0.0](https://github.com/sablier-labs/v2-deployments/tree/main/periphery/v1.0.0) |
-| SablierV2ProxyPlugin        | [0xC43b2d8CedB71df30F45dFd9a21eC1E50A813bD6](https://bscscan.com/address/0xC43b2d8CedB71df30F45dFd9a21eC1E50A813bD6) | [periphery-v1.0.0](https://github.com/sablier-labs/v2-deployments/tree/main/periphery/v1.0.0) |
-| SablierV2ProxyTargetPermit2 | [0x135e78B8E17B1d189Af75FcfCC018ab2E6c7b879](https://bscscan.com/address/0x135e78B8E17B1d189Af75FcfCC018ab2E6c7b879) | [periphery-v1.0.0](https://github.com/sablier-labs/v2-deployments/tree/main/periphery/v1.0.0) |
-| SablierV2ProxyTargetApprove | [0xc9bf2A6bD467A813908d836c1506efE61E465761](https://bscscan.com/address/0xc9bf2A6bD467A813908d836c1506efE61E465761) | [periphery-v1.0.1](https://github.com/sablier-labs/v2-deployments/tree/main/periphery/v1.0.1) |
+| Contract                       | Address                                                                                                              | Deployment                                                                                    |
+| :----------------------------- | :------------------------------------------------------------------------------------------------------------------- | :-------------------------------------------------------------------------------------------- |
+| SablierV2Batch                 | [0x2E30a2ae6565Db78C06C28dE937F668597c80a1c](https://bscscan.com/address/0x2E30a2ae6565Db78C06C28dE937F668597c80a1c) | [periphery-v1.1.0](https://github.com/sablier-labs/v2-deployments/tree/main/periphery/v1.1.0) |
+| SablierV2MerkleStreamerFactory | [0x434D73465aAc4125d204A6637eB6C579d8D69f48](https://bscscan.com/address/0x434D73465aAc4125d204A6637eB6C579d8D69f48) | [periphery-v1.1.0](https://github.com/sablier-labs/v2-deployments/tree/main/periphery/v1.1.0) |
 
 ## Gnosis
 
@@ -150,19 +103,17 @@ Or maybe you're looking for the PRBProxy deployments? Check out [prbproxy.com](h
 
 | Contract               | Address                                                                                                                | Deployment                                                                          |
 | :--------------------- | :--------------------------------------------------------------------------------------------------------------------- | :---------------------------------------------------------------------------------- |
-| SablierV2LockupLinear  | [0x685E92c9cA2bB23f1B596d0a7D749c0603e88585](https://gnosisscan.io/address/0x685E92c9cA2bB23f1B596d0a7D749c0603e88585) | [core-v1.0.0](https://github.com/sablier-labs/v2-deployments/tree/main/core/v1.0.0) |
-| SablierV2LockupDynamic | [0xeb148E4ec13aaA65328c0BA089a278138E9E53F9](https://gnosisscan.io/address/0xeb148E4ec13aaA65328c0BA089a278138E9E53F9) | [core-v1.0.0](https://github.com/sablier-labs/v2-deployments/tree/main/core/v1.0.0) |
-| SablierV2NFTDescriptor | [0x8CE9Cd651e03325Cf6D4Ce9cfa74BE79CDf6d530](https://gnosisscan.io/address/0x8CE9Cd651e03325Cf6D4Ce9cfa74BE79CDf6d530) | [core-v1.0.1](https://github.com/sablier-labs/v2-deployments/tree/main/core/v1.0.1) |
+| SablierV2LockupLinear  | [0xce49854a647a1723e8Fb7CC3D190CAB29A44aB48](https://gnosisscan.io/address/0xce49854a647a1723e8Fb7CC3D190CAB29A44aB48) | [core-v1.1.2](https://github.com/sablier-labs/v2-deployments/tree/main/core/v1.1.2) |
+| SablierV2LockupDynamic | [0x1DF83C7682080B0f0c26a20C6C9CB8623e0Df24E](https://gnosisscan.io/address/0x1DF83C7682080B0f0c26a20C6C9CB8623e0Df24E) | [core-v1.1.2](https://github.com/sablier-labs/v2-deployments/tree/main/core/v1.1.2) |
+| SablierV2NFTDescriptor | [0x01dbFE22205d8B109959e2Be02d0095379309eed](https://gnosisscan.io/address/0x01dbFE22205d8B109959e2Be02d0095379309eed) | [core-v1.1.1](https://github.com/sablier-labs/v2-deployments/tree/main/core/v1.1.1) |
 | SablierV2Comptroller   | [0x73962c44c0fB4cC5e4545FB91732a5c5e87F55C2](https://gnosisscan.io/address/0x73962c44c0fB4cC5e4545FB91732a5c5e87F55C2) | [core-v1.0.0](https://github.com/sablier-labs/v2-deployments/tree/main/core/v1.0.0) |
 
 ### Periphery
 
-| Contract                    | Address                                                                                                                | Deployment                                                                                    |
-| :-------------------------- | :--------------------------------------------------------------------------------------------------------------------- | :-------------------------------------------------------------------------------------------- |
-| SablierV2Archive            | [0xF4A6F47Da7c6b26b6Dd774671aABA48fb4bFE309](https://gnosisscan.io/address/0xF4A6F47Da7c6b26b6Dd774671aABA48fb4bFE309) | [periphery-v1.0.0](https://github.com/sablier-labs/v2-deployments/tree/main/periphery/v1.0.0) |
-| SablierV2ProxyPlugin        | [0xc84f0e95815A576171A19EB9E0fA55a217Ab1536](https://gnosisscan.io/address/0xc84f0e95815A576171A19EB9E0fA55a217Ab1536) | [periphery-v1.0.0](https://github.com/sablier-labs/v2-deployments/tree/main/periphery/v1.0.0) |
-| SablierV2ProxyTargetPermit2 | [0x5B144C3B9C8cfd48297Aeb59B90a024Ef3fCcE92](https://gnosisscan.io/address/0x5B144C3B9C8cfd48297Aeb59B90a024Ef3fCcE92) | [periphery-v1.0.0](https://github.com/sablier-labs/v2-deployments/tree/main/periphery/v1.0.0) |
-| SablierV2ProxyTargetApprove | [0x89AfE038714e547C29Fa881029DD4B5CFB008454](https://gnosisscan.io/address/0x89AfE038714e547C29Fa881029DD4B5CFB008454) | [periphery-v1.0.1](https://github.com/sablier-labs/v2-deployments/tree/main/periphery/v1.0.1) |
+| Contract                       | Address                                                                                                                | Deployment                                                                                    |
+| :----------------------------- | :--------------------------------------------------------------------------------------------------------------------- | :-------------------------------------------------------------------------------------------- |
+| SablierV2Batch                 | [0xBd9DDbC55B85FF6Dc0b76E9EFdCd2547Ab482501](https://gnosisscan.io/address/0xBd9DDbC55B85FF6Dc0b76E9EFdCd2547Ab482501) | [periphery-v1.1.0](https://github.com/sablier-labs/v2-deployments/tree/main/periphery/v1.1.0) |
+| SablierV2MerkleStreamerFactory | [0x777F66477FF83aBabADf39a3F22A8CC3AEE43765](https://gnosisscan.io/address/0x777F66477FF83aBabADf39a3F22A8CC3AEE43765) | [periphery-v1.1.0](https://github.com/sablier-labs/v2-deployments/tree/main/periphery/v1.1.0) |
 
 ## Optimism
 
@@ -170,19 +121,17 @@ Or maybe you're looking for the PRBProxy deployments? Check out [prbproxy.com](h
 
 | Contract               | Address                                                                                                                          | Deployment                                                                          |
 | :--------------------- | :------------------------------------------------------------------------------------------------------------------------------- | :---------------------------------------------------------------------------------- |
-| SablierV2LockupLinear  | [0xB923aBdCA17Aed90EB5EC5E407bd37164f632bFD](https://optimistic.etherscan.io/address/0xB923aBdCA17Aed90EB5EC5E407bd37164f632bFD) | [core-v1.0.0](https://github.com/sablier-labs/v2-deployments/tree/main/core/v1.0.0) |
-| SablierV2LockupDynamic | [0x6f68516c21E248cdDfaf4898e66b2b0Adee0e0d6](https://optimistic.etherscan.io/address/0x6f68516c21E248cdDfaf4898e66b2b0Adee0e0d6) | [core-v1.0.0](https://github.com/sablier-labs/v2-deployments/tree/main/core/v1.0.0) |
-| SablierV2NFTDescriptor | [0xe0138C596939CC0D2382046795bC163ad5755e0E](https://optimistic.etherscan.io/address/0xe0138C596939CC0D2382046795bC163ad5755e0E) | [core-v1.0.1](https://github.com/sablier-labs/v2-deployments/tree/main/core/v1.0.1) |
+| SablierV2LockupLinear  | [0x4b45090152a5731b5bc71b5baF71E60e05B33867](https://optimistic.etherscan.io/address/0x4b45090152a5731b5bc71b5baF71E60e05B33867) | [core-v1.1.2](https://github.com/sablier-labs/v2-deployments/tree/main/core/v1.1.2) |
+| SablierV2LockupDynamic | [0xd6920c1094eABC4b71f3dC411A1566f64f4c206e](https://optimistic.etherscan.io/address/0xd6920c1094eABC4b71f3dC411A1566f64f4c206e) | [core-v1.1.2](https://github.com/sablier-labs/v2-deployments/tree/main/core/v1.1.2) |
+| SablierV2NFTDescriptor | [0xF5050c04425E639C647F5ED632218b16ce96694d](https://optimistic.etherscan.io/address/0xF5050c04425E639C647F5ED632218b16ce96694d) | [core-v1.1.1](https://github.com/sablier-labs/v2-deployments/tree/main/core/v1.1.1) |
 | SablierV2Comptroller   | [0x1EECb6e6EaE6a1eD1CCB4323F3a146A7C5443A10](https://optimistic.etherscan.io/address/0x1EECb6e6EaE6a1eD1CCB4323F3a146A7C5443A10) | [core-v1.0.0](https://github.com/sablier-labs/v2-deployments/tree/main/core/v1.0.0) |
 
 ### Periphery
 
-| Contract                    | Address                                                                                                                          | Deployment                                                                                    |
-| :-------------------------- | :------------------------------------------------------------------------------------------------------------------------------- | :-------------------------------------------------------------------------------------------- |
-| SablierV2Archive            | [0x9A09eC6f991386718854aDDCEe68647776Befd5b](https://optimistic.etherscan.io/address/0x9A09eC6f991386718854aDDCEe68647776Befd5b) | [periphery-v1.0.0](https://github.com/sablier-labs/v2-deployments/tree/main/periphery/v1.0.0) |
-| SablierV2ProxyPlugin        | [0x77C8516B1F327890C956bb38F93Ac2d6B24795Ea](https://optimistic.etherscan.io/address/0x77C8516B1F327890C956bb38F93Ac2d6B24795Ea) | [periphery-v1.0.0](https://github.com/sablier-labs/v2-deployments/tree/main/periphery/v1.0.0) |
-| SablierV2ProxyTargetPermit2 | [0x194ed7D6005C8ba4084A948406545DF299ad37cD](https://optimistic.etherscan.io/address/0x194ed7D6005C8ba4084A948406545DF299ad37cD) | [periphery-v1.0.0](https://github.com/sablier-labs/v2-deployments/tree/main/periphery/v1.0.0) |
-| SablierV2ProxyTargetApprove | [0x8a6974c162fdc7Cb67996F7dB8bAAFb9a99566e0](https://optimistic.etherscan.io/address/0x8a6974c162fdc7Cb67996F7dB8bAAFb9a99566e0) | [periphery-v1.0.1](https://github.com/sablier-labs/v2-deployments/tree/main/periphery/v1.0.1) |
+| Contract                       | Address                                                                                                                          | Deployment                                                                                    |
+| :----------------------------- | :------------------------------------------------------------------------------------------------------------------------------- | :-------------------------------------------------------------------------------------------- |
+| SablierV2Batch                 | [0x8145429538dDBdDc4099B2bAfd24DD8958fa03b8](https://optimistic.etherscan.io/address/0x8145429538dDBdDc4099B2bAfd24DD8958fa03b8) | [periphery-v1.1.0](https://github.com/sablier-labs/v2-deployments/tree/main/periphery/v1.1.0) |
+| SablierV2MerkleStreamerFactory | [0x044EC80FbeC40f0eE7E7b3856828170971796C19](https://optimistic.etherscan.io/address/0x044EC80FbeC40f0eE7E7b3856828170971796C19) | [periphery-v1.1.0](https://github.com/sablier-labs/v2-deployments/tree/main/periphery/v1.1.0) |
 
 ## Polygon
 
@@ -190,19 +139,17 @@ Or maybe you're looking for the PRBProxy deployments? Check out [prbproxy.com](h
 
 | Contract               | Address                                                                                                                  | Deployment                                                                          |
 | :--------------------- | :----------------------------------------------------------------------------------------------------------------------- | :---------------------------------------------------------------------------------- |
-| SablierV2LockupLinear  | [0x67422C3E36A908D5C3237e9cFfEB40bDE7060f6E](https://polygonscan.com/address/0x67422C3E36A908D5C3237e9cFfEB40bDE7060f6E) | [core-v1.0.0](https://github.com/sablier-labs/v2-deployments/tree/main/core/v1.0.0) |
-| SablierV2LockupDynamic | [0x7313AdDb53f96a4f710D3b91645c62B434190725](https://polygonscan.com/address/0x7313AdDb53f96a4f710D3b91645c62B434190725) | [core-v1.0.0](https://github.com/sablier-labs/v2-deployments/tree/main/core/v1.0.0) |
-| SablierV2NFTDescriptor | [0xA820946EaAceB2a85aF123f706f23192c28bC6B9](https://polygonscan.com/address/0xA820946EaAceB2a85aF123f706f23192c28bC6B9) | [core-v1.0.1](https://github.com/sablier-labs/v2-deployments/tree/main/core/v1.0.1) |
+| SablierV2LockupLinear  | [0x5f0e1dea4A635976ef51eC2a2ED41490d1eBa003](https://polygonscan.com/address/0x5f0e1dea4A635976ef51eC2a2ED41490d1eBa003) | [core-v1.1.2](https://github.com/sablier-labs/v2-deployments/tree/main/core/v1.1.2) |
+| SablierV2LockupDynamic | [0xB194c7278C627D52E440316b74C5F24FC70c1565](https://polygonscan.com/address/0xB194c7278C627D52E440316b74C5F24FC70c1565) | [core-v1.1.2](https://github.com/sablier-labs/v2-deployments/tree/main/core/v1.1.2) |
+| SablierV2NFTDescriptor | [0x8683da9DF8c5c3528e8251a5764EC7DAc7264795](https://polygonscan.com/address/0x8683da9DF8c5c3528e8251a5764EC7DAc7264795) | [core-v1.1.1](https://github.com/sablier-labs/v2-deployments/tree/main/core/v1.1.1) |
 | SablierV2Comptroller   | [0x9761692EDf10F5F2A69f0150e2fd50dcecf05F2E](https://polygonscan.com/address/0x9761692EDf10F5F2A69f0150e2fd50dcecf05F2E) | [core-v1.0.0](https://github.com/sablier-labs/v2-deployments/tree/main/core/v1.0.0) |
 
 ### Periphery
 
-| Contract                    | Address                                                                                                                  | Deployment                                                                                    |
-| :-------------------------- | :----------------------------------------------------------------------------------------------------------------------- | :-------------------------------------------------------------------------------------------- |
-| SablierV2Archive            | [0xA2f5B2e798e7ADd59d85d9b76645E6AC13fC4e1f](https://polygonscan.com/address/0xA2f5B2e798e7ADd59d85d9b76645E6AC13fC4e1f) | [periphery-v1.0.0](https://github.com/sablier-labs/v2-deployments/tree/main/periphery/v1.0.0) |
-| SablierV2ProxyPlugin        | [0xBe4cad0e99865CC62787Ecf029aD9DD4815d3d2e](https://polygonscan.com/address/0xBe4cad0e99865CC62787Ecf029aD9DD4815d3d2e) | [periphery-v1.0.0](https://github.com/sablier-labs/v2-deployments/tree/main/periphery/v1.0.0) |
-| SablierV2ProxyTargetPermit2 | [0x576743075fc5F771bbC1376c3267A6185Af9D62B](https://polygonscan.com/address/0x576743075fc5F771bbC1376c3267A6185Af9D62B) | [periphery-v1.0.0](https://github.com/sablier-labs/v2-deployments/tree/main/periphery/v1.0.0) |
-| SablierV2ProxyTargetApprove | [0xccA6dd77bA2cfcccEdA01A82CB309e2A17901682](https://polygonscan.com/address/0xccA6dd77bA2cfcccEdA01A82CB309e2A17901682) | [periphery-v1.0.1](https://github.com/sablier-labs/v2-deployments/tree/main/periphery/v1.0.1) |
+| Contract                       | Address                                                                                                                  | Deployment                                                                                    |
+| :----------------------------- | :----------------------------------------------------------------------------------------------------------------------- | :-------------------------------------------------------------------------------------------- |
+| SablierV2Batch                 | [0x5865C73789C4496665eDE1CAF018dc52ac248598](https://polygonscan.com/address/0x5865C73789C4496665eDE1CAF018dc52ac248598) | [periphery-v1.1.0](https://github.com/sablier-labs/v2-deployments/tree/main/periphery/v1.1.0) |
+| SablierV2MerkleStreamerFactory | [0xF4906225e783fb8977410BDBFb960caBed6C2EF4](https://polygonscan.com/address/0xF4906225e783fb8977410BDBFb960caBed6C2EF4) | [periphery-v1.1.0](https://github.com/sablier-labs/v2-deployments/tree/main/periphery/v1.1.0) |
 
 ## Scroll
 
@@ -210,38 +157,17 @@ Or maybe you're looking for the PRBProxy deployments? Check out [prbproxy.com](h
 
 | Contract               | Address                                                                                                                 | Deployment                                                                          |
 | :--------------------- | :---------------------------------------------------------------------------------------------------------------------- | :---------------------------------------------------------------------------------- |
-| SablierV2LockupLinear  | [0x80640ca758615ee83801EC43452feEA09a202D33](https://scrollscan.com/address/0x80640ca758615ee83801EC43452feEA09a202D33) | [core-v1.0.0](https://github.com/sablier-labs/v2-deployments/tree/main/core/v1.0.0) |
-| SablierV2LockupDynamic | [0xde6a30D851eFD0Fc2a9C922F294801Cfd5FCB3A1](https://scrollscan.com/address/0xde6a30D851eFD0Fc2a9C922F294801Cfd5FCB3A1) | [core-v1.0.0](https://github.com/sablier-labs/v2-deployments/tree/main/core/v1.0.0) |
-| SablierV2NFTDescriptor | [0xC1fa624733203F2B7185c3724039C4D5E5234fE4](https://scrollscan.com/address/0xC1fa624733203F2B7185c3724039C4D5E5234fE4) | [core-v1.0.1](https://github.com/sablier-labs/v2-deployments/tree/main/core/v1.0.1) |
+| SablierV2LockupLinear  | [0x57e14AB4DAd920548899d86B54AD47Ea27F00987](https://scrollscan.com/address/0x57e14AB4DAd920548899d86B54AD47Ea27F00987) | [core-v1.1.2](https://github.com/sablier-labs/v2-deployments/tree/main/core/v1.1.2) |
+| SablierV2LockupDynamic | [0xAaff2D11f9e7Cd2A9cDC674931fAC0358a165995](https://scrollscan.com/address/0xAaff2D11f9e7Cd2A9cDC674931fAC0358a165995) | [core-v1.1.2](https://github.com/sablier-labs/v2-deployments/tree/main/core/v1.1.2) |
+| SablierV2NFTDescriptor | [0xB71440B85172332E8B768e85EdBfdb34CB457c1c](https://scrollscan.com/address/0xB71440B85172332E8B768e85EdBfdb34CB457c1c) | [core-v1.1.1](https://github.com/sablier-labs/v2-deployments/tree/main/core/v1.1.1) |
 | SablierV2Comptroller   | [0x859708495E3B3c61Bbe19e6E3E1F41dE3A5C5C5b](https://scrollscan.com/address/0x859708495E3B3c61Bbe19e6E3E1F41dE3A5C5C5b) | [core-v1.0.0](https://github.com/sablier-labs/v2-deployments/tree/main/core/v1.0.0) |
 
 ### Periphery
 
-| Contract                    | Address                                                                                                                 | Deployment                                                                                    |
-| :-------------------------- | :---------------------------------------------------------------------------------------------------------------------- | :-------------------------------------------------------------------------------------------- |
-| SablierV2Archive            | [0x94A18AC6e4B7d97E31f1587f6a666Dc5503086c3](https://scrollscan.com/address/0x94A18AC6e4B7d97E31f1587f6a666Dc5503086c3) | [periphery-v1.0.0](https://github.com/sablier-labs/v2-deployments/tree/main/periphery/v1.0.0) |
-| SablierV2ProxyPlugin        | [0xED1591BD6038032a74D786A452A23536b3201490](https://scrollscan.com/address/0xED1591BD6038032a74D786A452A23536b3201490) | [periphery-v1.0.0](https://github.com/sablier-labs/v2-deployments/tree/main/periphery/v1.0.0) |
-| SablierV2ProxyTargetPermit2 | [0x91154fc80933D25793E6B4D7CE19fb51dE6794B7](https://scrollscan.com/address/0x91154fc80933D25793E6B4D7CE19fb51dE6794B7) | [periphery-v1.0.0](https://github.com/sablier-labs/v2-deployments/tree/main/periphery/v1.0.0) |
-| SablierV2ProxyTargetApprove | [0x71CeA9c4d15fed2E58785cE0C05165CE34313A74](https://scrollscan.com/address/0x71CeA9c4d15fed2E58785cE0C05165CE34313A74) | [periphery-v1.0.1](https://github.com/sablier-labs/v2-deployments/tree/main/periphery/v1.0.1) |
-
-## Arbitrum Goerli
-
-### Core
-
-| Contract               | Address                                                                                                                     | Deployment                                                                          |
-| :--------------------- | :-------------------------------------------------------------------------------------------------------------------------- | :---------------------------------------------------------------------------------- |
-| SablierV2LockupLinear  | [0x323B629635b6cFfe2453Aa2869c5957AfF55F445](https://goerli.arbiscan.io/address/0x323B629635b6cFfe2453Aa2869c5957AfF55F445) | [core-v1.0.0](https://github.com/sablier-labs/v2-deployments/tree/main/core/v1.0.0) |
-| SablierV2LockupDynamic | [0xdc0a619fF975de6a08c7615ea383533fd265f2e3](https://goerli.arbiscan.io/address/0xdc0a619fF975de6a08c7615ea383533fd265f2e3) | [core-v1.0.0](https://github.com/sablier-labs/v2-deployments/tree/main/core/v1.0.0) |
-| SablierV2NFTDescriptor | [0x740509d893BC15a31EAE8542683Ed32085c559cB](https://goerli.arbiscan.io/address/0x740509d893BC15a31EAE8542683Ed32085c559cB) | [core-v1.0.1](https://github.com/sablier-labs/v2-deployments/tree/main/core/v1.0.1) |
-| SablierV2Comptroller   | [0xECF737BDb9BB094489beCa39f0b9Ae66E0C14ba8](https://goerli.arbiscan.io/address/0xECF737BDb9BB094489beCa39f0b9Ae66E0C14ba8) | [core-v1.0.0](https://github.com/sablier-labs/v2-deployments/tree/main/core/v1.0.0) |
-
-### Periphery
-
-| Contract                    | Address                                                                                                                     | Deployment                                                                                    |
-| :-------------------------- | :-------------------------------------------------------------------------------------------------------------------------- | :-------------------------------------------------------------------------------------------- |
-| SablierV2Archive            | [0x4371d767Cd7991248D20eD61d425e1e70c6CEEab](https://goerli.arbiscan.io/address/0x4371d767Cd7991248D20eD61d425e1e70c6CEEab) | [periphery-v1.0.0](https://github.com/sablier-labs/v2-deployments/tree/main/periphery/v1.0.0) |
-| SablierV2ProxyPlugin        | [0xD37832B8993bEe6F41A8183967a7488C6e2a3551](https://goerli.arbiscan.io/address/0xD37832B8993bEe6F41A8183967a7488C6e2a3551) | [periphery-v1.0.0](https://github.com/sablier-labs/v2-deployments/tree/main/periphery/v1.0.0) |
-| SablierV2ProxyTargetPermit2 | [0x2Ebd987e12432Ee3a74Fe0A55Afe5D866096e354](https://goerli.arbiscan.io/address/0x2Ebd987e12432Ee3a74Fe0A55Afe5D866096e354) | [periphery-v1.0.0](https://github.com/sablier-labs/v2-deployments/tree/main/periphery/v1.0.0) |
+| Contract                       | Address                                                                                                                 | Deployment                                                                                    |
+| :----------------------------- | :---------------------------------------------------------------------------------------------------------------------- | :-------------------------------------------------------------------------------------------- |
+| SablierV2Batch                 | [0xD18faa233E02d41EDFFdb64f20281dE0592FA3b5](https://scrollscan.com/address/0xD18faa233E02d41EDFFdb64f20281dE0592FA3b5) | [periphery-v1.1.0](https://github.com/sablier-labs/v2-deployments/tree/main/periphery/v1.1.0) |
+| SablierV2MerkleStreamerFactory | [0xb3ade5463000E6c0D376e7d7570f372eBf98BDAf](https://scrollscan.com/address/0xb3ade5463000E6c0D376e7d7570f372eBf98BDAf) | [periphery-v1.1.0](https://github.com/sablier-labs/v2-deployments/tree/main/periphery/v1.1.0) |
 
 ## Arbitrum Sepolia
 
@@ -249,38 +175,17 @@ Or maybe you're looking for the PRBProxy deployments? Check out [prbproxy.com](h
 
 | Contract               | Address                                                                                                                      | Deployment                                                                          |
 | :--------------------- | :--------------------------------------------------------------------------------------------------------------------------- | :---------------------------------------------------------------------------------- |
-| SablierV2LockupLinear  | [0xa3e36b51B7A456812c92253780f4B15bad56e34c](https://sepolia.arbiscan.io/address/0xa3e36b51B7A456812c92253780f4B15bad56e34c) | [core-v1.0.0](https://github.com/sablier-labs/v2-deployments/tree/main/core/v1.0.0) |
-| SablierV2LockupDynamic | [0x7938c18a59FaD2bA11426AcfBe8d74F0F598a4D2](https://sepolia.arbiscan.io/address/0x7938c18a59FaD2bA11426AcfBe8d74F0F598a4D2) | [core-v1.0.0](https://github.com/sablier-labs/v2-deployments/tree/main/core/v1.0.0) |
-| SablierV2NFTDescriptor | [0xEe93BFf599C17C6fF8e31F2De6c3e40bd5e51312](https://sepolia.arbiscan.io/address/0xEe93BFf599C17C6fF8e31F2De6c3e40bd5e51312) | [core-v1.0.1](https://github.com/sablier-labs/v2-deployments/tree/main/core/v1.0.1) |
-| SablierV2Comptroller   | [0xA6A0cfA3442053fbB516D55205A749Ef2D33aed9](https://sepolia.arbiscan.io/address/0xA6A0cfA3442053fbB516D55205A749Ef2D33aed9) | [core-v1.0.0](https://github.com/sablier-labs/v2-deployments/tree/main/core/v1.0.0) |
+| SablierV2LockupLinear  | [0x483bdd560dE53DC20f72dC66ACdB622C5075de34](https://sepolia.arbiscan.io/address/0x483bdd560dE53DC20f72dC66ACdB622C5075de34) | [core-v1.1.2](https://github.com/sablier-labs/v2-deployments/tree/main/core/v1.1.2) |
+| SablierV2LockupDynamic | [0x8c8102b92B1f31cC304A085D490796f4DfdF7aF3](https://sepolia.arbiscan.io/address/0x8c8102b92B1f31cC304A085D490796f4DfdF7aF3) | [core-v1.1.2](https://github.com/sablier-labs/v2-deployments/tree/main/core/v1.1.2) |
+| SablierV2NFTDescriptor | [0x593050f0360518C3A4F11c32Eb936146e1096FD1](https://sepolia.arbiscan.io/address/0x593050f0360518C3A4F11c32Eb936146e1096FD1) | [core-v1.1.1](https://github.com/sablier-labs/v2-deployments/tree/main/core/v1.1.1) |
+| SablierV2Comptroller   | [0xA6A0cfA3442053fbB516D55205A749Ef2D33aed9](https://sepolia.arbiscan.io/address/0xA6A0cfA3442053fbB516D55205A749Ef2D33aed9) | [core-v1.1.1](https://github.com/sablier-labs/v2-deployments/tree/main/core/v1.0.0) |
 
 ### Periphery
 
-| Contract                    | Address                                                                                                                      | Deployment                                                                                    |
-| :-------------------------- | :--------------------------------------------------------------------------------------------------------------------------- | :-------------------------------------------------------------------------------------------- |
-| SablierV2Archive            | [0x2C8fA48361C7D48Dc21b27a3D549402Cf8AE16B0](https://sepolia.arbiscan.io/address/0x2C8fA48361C7D48Dc21b27a3D549402Cf8AE16B0) | [periphery-v1.0.0](https://github.com/sablier-labs/v2-deployments/tree/main/periphery/v1.0.0) |
-| SablierV2ProxyPlugin        | [0x7D310803c3824636bAff74e4f80e81ece167c440](https://sepolia.arbiscan.io/address/0x7D310803c3824636bAff74e4f80e81ece167c440) | [periphery-v1.0.0](https://github.com/sablier-labs/v2-deployments/tree/main/periphery/v1.0.0) |
-| SablierV2ProxyTargetPermit2 | [0x396A3a169918A4C0B339ECf86C583f46D696254E](https://sepolia.arbiscan.io/address/0x396A3a169918A4C0B339ECf86C583f46D696254E) | [periphery-v1.0.0](https://github.com/sablier-labs/v2-deployments/tree/main/periphery/v1.0.0) |
-
-## Goerli
-
-### Core
-
-| Contract               | Address                                                                                                                      | Deployment                                                                          |
-| :--------------------- | :--------------------------------------------------------------------------------------------------------------------------- | :---------------------------------------------------------------------------------- |
-| SablierV2LockupLinear  | [0x6E3678c005815Ab34986D8d66A353Cd3699103DE](https://goerli.etherscan.io/address/0x6E3678c005815Ab34986D8d66A353Cd3699103DE) | [core-v1.0.0](https://github.com/sablier-labs/v2-deployments/tree/main/core/v1.0.0) |
-| SablierV2LockupDynamic | [0x4BE70EDe968e9dBA12DB42b9869Bec66bEDC17d7](https://goerli.etherscan.io/address/0x4BE70EDe968e9dBA12DB42b9869Bec66bEDC17d7) | [core-v1.0.0](https://github.com/sablier-labs/v2-deployments/tree/main/core/v1.0.0) |
-| SablierV2NFTDescriptor | [0x1D83CDd66BCf0ea8c99E745cC868478d6C3633f0](https://goerli.etherscan.io/address/0x1D83CDd66BCf0ea8c99E745cC868478d6C3633f0) | [core-v1.0.1](https://github.com/sablier-labs/v2-deployments/tree/main/core/v1.0.1) |
-| SablierV2Comptroller   | [0x9B75F65bCCd05545C400145Cca29dA52DA57AC2b](https://goerli.etherscan.io/address/0x9B75F65bCCd05545C400145Cca29dA52DA57AC2b) | [core-v1.0.0](https://github.com/sablier-labs/v2-deployments/tree/main/core/v1.0.0) |
-
-### Periphery
-
-| Contract                    | Address                                                                                                                      | Deployment                                                                                    |
-| :-------------------------- | :--------------------------------------------------------------------------------------------------------------------------- | :-------------------------------------------------------------------------------------------- |
-| SablierV2Archive            | [0xFd14E62e6fe4d96F033cf972556ae56D09Bd49cA](https://goerli.etherscan.io/address/0xFd14E62e6fe4d96F033cf972556ae56D09Bd49cA) | [periphery-v1.0.0](https://github.com/sablier-labs/v2-deployments/tree/main/periphery/v1.0.0) |
-| SablierV2ProxyPlugin        | [0x9CA1dFFC744318198bE9Cf92283A803CE16b698a](https://goerli.etherscan.io/address/0x9CA1dFFC744318198bE9Cf92283A803CE16b698a) | [periphery-v1.0.0](https://github.com/sablier-labs/v2-deployments/tree/main/periphery/v1.0.0) |
-| SablierV2ProxyTargetPermit2 | [0x0eE01680645c361B740ab4dCDdF238988eB20411](https://goerli.etherscan.io/address/0x0eE01680645c361B740ab4dCDdF238988eB20411) | [periphery-v1.0.0](https://github.com/sablier-labs/v2-deployments/tree/main/periphery/v1.0.0) |
-| SablierV2ProxyTargetApprove | [0x0e563B883dfe11469915194F8651a65212fdB96F](https://goerli.etherscan.io/address/0x0e563B883dfe11469915194F8651a65212fdB96F) | [periphery-v1.0.1](https://github.com/sablier-labs/v2-deployments/tree/main/periphery/v1.0.1) |
+| Contract                       | Address                                                                                                                      | Deployment                                                                                    |
+| :----------------------------- | :--------------------------------------------------------------------------------------------------------------------------- | :-------------------------------------------------------------------------------------------- |
+| SablierV2Batch                 | [0x72D921E579aB7FC5D19CD398B6be24d626Ccb6e7](https://sepolia.arbiscan.io/address/0x72D921E579aB7FC5D19CD398B6be24d626Ccb6e7) | [periphery-v1.1.0](https://github.com/sablier-labs/v2-deployments/tree/main/periphery/v1.1.0) |
+| SablierV2MerkleStreamerFactory | [0xcc87b1A4de285832f226BD585bd54a2184D32105](https://sepolia.arbiscan.io/address/0xcc87b1A4de285832f226BD585bd54a2184D32105) | [periphery-v1.1.0](https://github.com/sablier-labs/v2-deployments/tree/main/periphery/v1.1.0) |
 
 ## Sepolia
 
@@ -288,16 +193,14 @@ Or maybe you're looking for the PRBProxy deployments? Check out [prbproxy.com](h
 
 | Contract               | Address                                                                                                                       | Deployment                                                                          |
 | :--------------------- | :---------------------------------------------------------------------------------------------------------------------------- | :---------------------------------------------------------------------------------- |
-| SablierV2LockupLinear  | [0xd4300c5bc0b9e27c73ebabdc747ba990b1b570db](https://sepolia.etherscan.io/address/0xd4300c5bc0b9e27c73ebabdc747ba990b1b570db) | [core-v1.0.0](https://github.com/sablier-labs/v2-deployments/tree/main/core/v1.0.0) |
-| SablierV2LockupDynamic | [0x421e1E7a53FF360f70A2D02037Ee394FA474e035](https://sepolia.etherscan.io/address/0x421e1E7a53FF360f70A2D02037Ee394FA474e035) | [core-v1.0.0](https://github.com/sablier-labs/v2-deployments/tree/main/core/v1.0.0) |
-| SablierV2NFTDescriptor | [0x3cb51943ebcea05b23c35c50491b3d296ff675db](https://sepolia.etherscan.io/address/0x3cb51943ebcea05b23c35c50491b3d296ff675db) | [core-v1.0.1](https://github.com/sablier-labs/v2-deployments/tree/main/core/v1.0.1) |
+| SablierV2LockupLinear  | [0x7a43F8a888fa15e68C103E18b0439Eb1e98E4301](https://sepolia.etherscan.io/address/0x7a43F8a888fa15e68C103E18b0439Eb1e98E4301) | [core-v1.1.2](https://github.com/sablier-labs/v2-deployments/tree/main/core/v1.1.2) |
+| SablierV2LockupDynamic | [0xc9940AD8F43aAD8e8f33A4D5dbBf0a8F7FF4429A](https://sepolia.etherscan.io/address/0xc9940AD8F43aAD8e8f33A4D5dbBf0a8F7FF4429A) | [core-v1.1.2](https://github.com/sablier-labs/v2-deployments/tree/main/core/v1.1.2) |
+| SablierV2NFTDescriptor | [0xE8fFEbA8963CD9302ffD39c704dc2c027128D36F](https://sepolia.etherscan.io/address/0xE8fFEbA8963CD9302ffD39c704dc2c027128D36F) | [core-v1.1.1](https://github.com/sablier-labs/v2-deployments/tree/main/core/v1.1.1) |
 | SablierV2Comptroller   | [0x2006d43E65e66C5FF20254836E63947FA8bAaD68](https://sepolia.etherscan.io/address/0x2006d43E65e66C5FF20254836E63947FA8bAaD68) | [core-v1.0.0](https://github.com/sablier-labs/v2-deployments/tree/main/core/v1.0.0) |
 
 ### Periphery
 
-| Contract                    | Address                                                                                                                       | Deployment                                                                                     |
-| :-------------------------- | :---------------------------------------------------------------------------------------------------------------------------- | :--------------------------------------------------------------------------------------------- |
-| SablierV2Archive            | [0x83495d8DF6221f566232e1353a6e7231A86C61fF](https://sepolia.etherscan.io/address/0x83495d8DF6221f566232e1353a6e7231A86C61fF) | [periphery-v1.0.0](https://github.com/sablier-labs/v2-deployments/tree/main/periphery/v1.0.0)  |
-| SablierV2ProxyPlugin        | [0xa333c8233CfD04740E64AB4fd5447995E357561B](https://sepolia.etherscan.io/address/0xa333c8233CfD04740E64AB4fd5447995E357561B) | [periphery-v1.0.0](https://github.com/sablier-labs/v2-deployments/tree/main/periphery/v1.0.0)  |
-| SablierV2ProxyTargetPermit2 | [0x5091900B7cF803a7407FCE6333A6bAE4aA779Fd4](https://sepolia.etherscan.io/address/0x5091900B7cF803a7407FCE6333A6bAE4aA779Fd4) | [periphery-v1.0.0](https://github.com/sablier-labs/v2-deployments/tree/main/periphery/v1.0.0)  |
-| SablierV2ProxyTargetApprove | [0x105E7728C5706Ad41d194EbDc7873B047352F3d2](https://sepolia.etherscan.io/address/0x105E7728C5706Ad41d194EbDc7873B047352F3d2) | [periphery-v1.0.1 ](https://github.com/sablier-labs/v2-deployments/tree/main/periphery/v1.0.1) |
+| Contract                       | Address                                                                                                                       | Deployment                                                                                    |
+| :----------------------------- | :---------------------------------------------------------------------------------------------------------------------------- | :-------------------------------------------------------------------------------------------- |
+| SablierV2Batch                 | [0xd2569DC4A58dfE85d807Dffb976dbC0a3bf0B0Fb](https://sepolia.etherscan.io/address/0xd2569DC4A58dfE85d807Dffb976dbC0a3bf0B0Fb) | [periphery-v1.1.0](https://github.com/sablier-labs/v2-deployments/tree/main/periphery/v1.1.0) |
+| SablierV2MerkleStreamerFactory | [0xBacC1d151A78eeD71D504f701c25E8739DC0262D](https://sepolia.etherscan.io/address/0xBacC1d151A78eeD71D504f701c25E8739DC0262D) | [periphery-v1.1.0](https://github.com/sablier-labs/v2-deployments/tree/main/periphery/v1.1.0) |

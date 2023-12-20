@@ -1,39 +1,61 @@
 # Errors
 
-[Git Source](https://github.com/sablier-labs/v2-periphery/blob/05c331e79e05886c7837dfda1bc21197c1c3c748/src/libraries/Errors.sol)
+[Git Source](https://github.com/sablier-labs/v2-periphery/blob/release/src/libraries/Errors.sol)
 
 Library containing all custom errors the protocol may revert with.
 
 ## Errors
 
-### CallNotDelegateCall
+### SablierV2Batch_BatchSizeZero
 
-Thrown when trying to perform a standard call to a function that allows only delegate calls.
+Thrown when trying to create a batch with zero elements.
 
 ```solidity
-error CallNotDelegateCall();
+error SablierV2Batch_BatchSizeZero();
 ```
 
-### SablierV2ProxyPlugin_UnknownCaller
+### SablierV2MerkleStreamer_CampaignExpired
 
-Thrown when the caller is an unknown address, which is not listed in the archive.
+Thrown when trying to claim after the campaign has expired.
 
 ```solidity
-error SablierV2ProxyPlugin_UnknownCaller(address caller);
+error SablierV2MerkleStreamer_CampaignExpired(uint256 currentTime, uint40 expiration);
 ```
 
-### SablierV2ProxyTarget_BatchSizeZero
+### SablierV2MerkleStreamer_CampaignNotExpired
 
-Thrown when trying to perform an action that requires the batch size to not be zero.
+Thrown when trying to claim when Merkle streamer has not expired.
 
 ```solidity
-error SablierV2ProxyTarget_BatchSizeZero();
+error SablierV2MerkleStreamer_CampaignNotExpired(uint256 currentTime, uint40 expiration);
 ```
 
-### SablierV2ProxyTarget_CreditAmountMismatch
+### SablierV2MerkleStreamer_InvalidProof
 
-Thrown when trying to wrap and create a stream and the credit amount is not equal to `msg.value`.
+Thrown when trying to claim with an invalid Merkle proof.
 
 ```solidity
-error SablierV2ProxyTarget_CreditAmountMismatch(uint256 msgValue, uint256 creditAmount);
+error SablierV2MerkleStreamer_InvalidProof();
+```
+
+Thrown when trying to clawback when the protocol fee is zero.
+
+```solidity
+error SablierV2MerkleStreamer_ProtocolFeeZero();
+```
+
+### SablierV2MerkleStreamer_ProtocolFeeNotZero
+
+Thrown when trying to claim when the protocol fee is not zero.
+
+```solidity
+error SablierV2MerkleStreamer_ProtocolFeeNotZero();
+```
+
+### SablierV2MerkleStreamer_StreamClaimed
+
+Thrown when trying to claim the same stream more than once.
+
+```solidity
+error SablierV2MerkleStreamer_StreamClaimed(uint256 index);
 ```

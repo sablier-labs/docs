@@ -4,7 +4,7 @@ sidebar_position: 1
 
 # SablierV2LockupLinear
 
-[Git Source](https://github.com/sablier-labs/v2-core/blob/bca1d9ea0485b065544486bb01f4148d44289644/docs/contracts/v2/reference/core)
+[Git Source](https://github.com/sablier-labs/v2-core/blob/release/src/SablierV2LockupLinear.sol)
 
 **Inherits:**
 [ISablierV2LockupLinear](/docs/contracts/v2/reference/core/interfaces/interface.ISablierV2LockupLinear.md),
@@ -23,7 +23,9 @@ _Sablier V2 Lockup Linear streams mapped by unsigned integers._
 mapping(uint256 id => LockupLinear.Stream stream) private _streams;
 ```
 
-## Functions
+See the struct `LockupLinear.Stream` in [Types](/contracts/v2/reference/core/types/library.LockupLinear#stream).
+
+## User Facing Functions
 
 ### constructor
 
@@ -49,7 +51,7 @@ constructor(
 
 ### getAsset
 
-Retrieves the address of the ERC-20 asset used for streaming.
+Retrieves the address of the `ERC-20` asset used for streaming.
 
 _Reverts if `streamId` references a null stream._
 
@@ -250,22 +252,6 @@ function isCancelable(uint256 streamId) external view override notNull(streamId)
 | ---------- | --------- | ---------------------------- |
 | `streamId` | `uint256` | The stream id for the query. |
 
-### isCold
-
-Retrieves a flag indicating whether the stream is cold, i.e. settled, canceled, or depleted.
-
-_Reverts if `streamId` references a null stream._
-
-```solidity
-function isCold(uint256 streamId) external view override notNull(streamId) returns (bool result);
-```
-
-**Parameters**
-
-| Name       | Type      | Description                  |
-| ---------- | --------- | ---------------------------- |
-| `streamId` | `uint256` | The stream id for the query. |
-
 ### isDepleted
 
 Retrieves a flag indicating whether the stream is depleted.
@@ -303,14 +289,14 @@ function isStream(uint256 streamId) public view override(ISablierV2Lockup, Sabli
 | ---------- | --------- | ---------------------------- |
 | `streamId` | `uint256` | The stream id for the query. |
 
-### isWarm
+### isTransferable
 
-Retrieves a flag indicating whether the stream is warm, i.e. either pending or streaming.
+Retrieves a flag indicating whether the stream NFT can be transferred.
 
 _Reverts if `streamId` references a null stream._
 
 ```solidity
-function isWarm(uint256 streamId) external view override notNull(streamId) returns (bool result);
+function isTransferable(uint256 streamId) external view returns (bool result);
 ```
 
 **Parameters**
@@ -413,7 +399,7 @@ function wasCanceled(uint256 streamId)
 ### createWithDurations
 
 Creates a stream by setting the start time to `block.timestamp`, and the end time to the sum of `block.timestamp` and
-`params.durations.total. The stream is funded by `msg.sender` and is wrapped in an ERC-721 NFT.
+`params.durations.total`. The stream is funded by `msg.sender` and is wrapped in an `ERC-721` NFT.
 
 Emits a {Transfer} and {CreateLockupLinearStream} event. Requirements:
 
@@ -429,9 +415,9 @@ function createWithDurations(LockupLinear.CreateWithDurations calldata params)
 
 **Parameters**
 
-| Name     | Type                               | Description                                                                        |
-| -------- | ---------------------------------- | ---------------------------------------------------------------------------------- |
-| `params` | `LockupLinear.CreateWithDurations` | Struct encapsulating the function parameters, which are documented in {DataTypes}. |
+| Name     | Type                               | Description                                                                                                                                                 |
+| -------- | ---------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `params` | `LockupLinear.CreateWithDurations` | Struct encapsulating the function parameters, which are documented in [Types](/contracts/v2/reference/core/types/library.LockupLinear#createwithdurations). |
 
 **Returns**
 
@@ -442,7 +428,7 @@ function createWithDurations(LockupLinear.CreateWithDurations calldata params)
 ### createWithRange
 
 Creates a stream with the provided start time and end time as the range. The stream is funded by `msg.sender` and is
-wrapped in an ERC-721 NFT.
+wrapped in an `ERC-721` NFT.
 
 Emits a {Transfer} and {CreateLockupLinearStream} event. Notes:
 
@@ -466,15 +452,17 @@ function createWithRange(LockupLinear.CreateWithRange calldata params)
 
 **Parameters**
 
-| Name     | Type                           | Description                                                                        |
-| -------- | ------------------------------ | ---------------------------------------------------------------------------------- |
-| `params` | `LockupLinear.CreateWithRange` | Struct encapsulating the function parameters, which are documented in {DataTypes}. |
+| Name     | Type                           | Description                                                                                                                                             |
+| -------- | ------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `params` | `LockupLinear.CreateWithRange` | Struct encapsulating the function parameters, which are documented in [Types](/contracts/v2/reference/core/types/library.LockupLinear#createwithrange). |
 
 **Returns**
 
 | Name       | Type      | Description                         |
 | ---------- | --------- | ----------------------------------- |
 | `streamId` | `uint256` | The id of the newly created stream. |
+
+## Internal Functions
 
 ### \_calculateStreamedAmount
 
@@ -508,7 +496,8 @@ function _statusOf(uint256 streamId) internal view override returns (Lockup.Stat
 
 ### \_streamedAmountOf
 
-_See the documentation for the user-facing functions that call this internal function._
+_Implements the internal logic for
+[streamedAmountOf](/contracts/v2/reference/core/contract.SablierV2LockupLinear#streamedamountof)._
 
 ```solidity
 function _streamedAmountOf(uint256 streamId) internal view returns (uint128);
@@ -516,7 +505,8 @@ function _streamedAmountOf(uint256 streamId) internal view returns (uint128);
 
 ### \_withdrawableAmountOf
 
-_See the documentation for the user-facing functions that call this internal function._
+_Implements the internal logic for
+[withdrawableAmountOf](/contracts/v2/reference/core/abstracts/abstract.SablierV2Lockup#withdrawableamountof)._
 
 ```solidity
 function _withdrawableAmountOf(uint256 streamId) internal view override returns (uint128);
@@ -524,7 +514,7 @@ function _withdrawableAmountOf(uint256 streamId) internal view override returns 
 
 ### \_cancel
 
-_See the documentation for the user-facing functions that call this internal function._
+_Implements the internal logic for [cancel](/contracts/v2/reference/core/abstracts/abstract.SablierV2Lockup#cancel)._
 
 ```solidity
 function _cancel(uint256 streamId) internal override;
@@ -532,7 +522,8 @@ function _cancel(uint256 streamId) internal override;
 
 ### \_createWithRange
 
-_See the documentation for the user-facing functions that call this internal function._
+_Implements the internal logic for
+[createWithRange](/contracts/v2/reference/core/contract.SablierV2LockupLinear#createwithrange)._
 
 ```solidity
 function _createWithRange(LockupLinear.CreateWithRange memory params) internal returns (uint256 streamId);
@@ -540,7 +531,8 @@ function _createWithRange(LockupLinear.CreateWithRange memory params) internal r
 
 ### \_renounce
 
-_See the documentation for the user-facing functions that call this internal function._
+_Implements the internal logic for
+[renounce](/contracts/v2/reference/core/abstracts/abstract.SablierV2Lockup#renounce)._
 
 ```solidity
 function _renounce(uint256 streamId) internal override;
@@ -548,7 +540,8 @@ function _renounce(uint256 streamId) internal override;
 
 ### \_withdraw
 
-_See the documentation for the user-facing functions that call this internal function._
+_Implements the internal logic for
+[\_withdraw](/contracts/v2/reference/core/abstracts/abstract.SablierV2Lockup#_withdraw)._
 
 ```solidity
 function _withdraw(uint256 streamId, address to, uint128 amount) internal override;

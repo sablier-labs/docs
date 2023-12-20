@@ -1,0 +1,153 @@
+---
+id: "batch-dynamic-streams"
+sidebar_position: 2
+title: "Batch Dynamic Streams"
+---
+
+import AdmonitionSimpleCode from "@site/docs/snippets/AdmonitionSimpleCode.mdx";
+import BatchCommonSteps from "@site/docs/snippets/BatchCommonSteps.mdx";
+import ConstantsComment from "@site/docs/snippets/ConstantsComment.mdx";
+
+# Create a Batch of Lockup Dynamic Streams
+
+In this guide, we will show you how to programmatically batch create dynamic streams via the Sablier's
+[Batch](/contracts/v2/reference/periphery/contract.SablierV2Batch) contract.
+
+This guide assumes that you have already gone through the [Protocol Concepts](/concepts/protocol/streaming) section.
+
+:::note
+
+This guide interacts with the Periphery contract.
+
+:::
+
+<AdmonitionSimpleCode />
+
+## Set up a contract
+
+Declare the Solidity version used to compile the contract:
+
+```solidity
+// SPDX-License-Identifier: GPL-3.0-or-later
+pragma solidity >=0.8.19;
+```
+
+Now, import the relevant symbols from `@sablier/v2-core` and `@sablier/v2-periphery`:
+
+```solidity
+import { ISablierV2LockupDynamic } from "@sablier/v2-core/src/interfaces/ISablierV2LockupDynamic.sol";
+import { Broker, LockupDynamic } from "@sablier/v2-core/src/types/LockupDynamic.sol";
+import { ud60x18 } from "@sablier/v2-core/src/types/Math.sol";
+import { IERC20 } from "@sablier/v2-core/src/types/Tokens.sol";
+import { ISablierV2Batch } from "@sablier/v2-periphery/src/interfaces/ISablierV2Batch.sol";
+import { Batch} from "@sablier/v2-periphery/src/types/DataTypes.sol";
+```
+
+Create a contract called `BatchLockupDynamicStreamCreator`, and declare a constant `DAI` of type `IERC20`, a constant
+`LOCKUP_DYNAMIC` of type `ISablierV2LockupDynamic`, and a constant `BATCH` of type `ISablierV2Batch`:
+
+```solidity
+contract BatchLockupDynamicStreamCreator {
+    IERC20 public constant DAI = IERC20(0x6B175474E89094C44Da98b954EedeAC495271d0F);
+    ISablierV2LockupDynamic public constant LOCKUP_DYNAMIC =
+        ISablierV2LockupDynamic(0x7CC7e125d83A581ff438608490Cc0f7bDff79127);
+    ISablierV2Batch public constant BATCH = ISablierV2Batch(0xEa07DdBBeA804E7fe66b958329F8Fa5cDA95Bd55);
+}
+```
+
+<ConstantsComment />
+
+## Batch create functions
+
+There are two batch create functions for the Lockup Dynamic contract:
+
+- [`createWithDeltas`](/contracts/v2/reference/periphery/contract.SablierV2Batch#createwithdeltas)
+- [`createWithMilestones`](/contracts/v2/reference/periphery/contract.SablierV2Batch#createwithmilestones)
+
+Which one you choose depends upon your use case. In this guide, we will use `createWithMilestones`.
+
+<BatchCommonSteps />
+
+## Stream Parameters
+
+Given that we declared a `batchSize` of two, we need to define two
+[Batch.CreateWithMilestones](/contracts/v2/reference/periphery/types/library.Batch#createwithmilestones) structs:
+
+```solidity
+// Declare the first stream in the batch
+Batch.CreateWithMilestones memory stream0;
+stream0.sender = address(0xABCD); // The sender to stream the assets, he will be able to cancel the stream
+stream0.recipient = address(0xCAFE); // The recipient of the streamed assets
+stream0.totalAmount = perStreamAmount; // The total amount of each stream, inclusive of all fees
+stream0.cancelable = true; // Whether the stream will be cancelable or not
+stream0.broker = Broker(address(0), ud60x18(0)); // Optional parameter left undefined
+
+// Declare some dummy segments
+stream0.segments = new LockupDynamic.Segment[](2);
+stream0.segments[0] = LockupDynamic.Segment({
+    amount: uint128(perStreamAmount / 2),
+    exponent: ud2x18(0.25e18),
+    milestone: uint40(block.timestamp + 1 weeks)
+});
+stream0.segments[1] = (
+    LockupDynamic.Segment({
+        amount: uint128(perStreamAmount - stream0.segments[0].amount),
+        exponent: ud2x18(2.71e18),
+        milestone: uint40(block.timestamp + 24 weeks)
+    })
+);
+```
+
+To add some variety, we will change the parameters of the second stream:
+
+```solidity
+Batch.CreateWithMilestones memory stream1;
+stream1.sender = address(0xABCD); // The sender to stream the assets, he will be able to cancel the stream
+stream1.recipient = address(0xBEEF); // The recipient of the streamed assets
+stream1.totalAmount = uint128(perStreamAmount); // The total amount of each stream, inclusive of all fees
+stream1.cancelable = false; // Whether the stream will be cancelable or not
+stream1.broker = Broker(address(0), ud60x18(0)); // Optional parameter left undefined
+
+// Declare some dummy segments
+stream1.segments = new LockupDynamic.Segment[](2);
+stream1.segments[0] = LockupDynamic.Segment({
+    amount: uint128(perStreamAmount / 4),
+    exponent: ud2x18(1e18),
+    milestone: uint40(block.timestamp + 4 weeks)
+});
+stream1.segments[1] = (
+    LockupDynamic.Segment({
+        amount: uint128(perStreamAmount - stream1.segments[0].amount),
+        exponent: ud2x18(3.14e18),
+        milestone: uint40(block.timestamp + 52 weeks)
+    })
+);
+```
+
+Once both structs are declared, the batch array has to be filled:
+
+```solidity
+// Fill the batch array
+Batch.CreateWithMilestones[] memory batch = new Batch.CreateWithMilestones[](batchSize);
+batch[0] = stream0;
+batch[1] = stream1;
+```
+
+## Invoke the batch create function
+
+With all parameters set, we can now call the `createWithMilestones` function, and assign the ids of the newly created
+streams to the array:
+
+```solidity
+streamIds = BATCH.createWithMilestones(LOCKUP_DYNAMIC, DAI, batch);
+```
+
+## The complete Batch Lockup Dynamic stream creator contract
+
+Below you can see the complete functioning code: a contract that batch creates Lockup Dynamic streams using Sablier's
+`Batch` that start at `block.timestamp`. You can access the code on GitHub through this
+[link](https://github.com/sablier-labs/examples/blob/main/v2/periphery/BatchLockupDynamicStreamCreator.sol).
+
+```solidity reference title="Batch Lockup Dynamic stream creator"
+https://github.com/sablier-labs/examples/blob/main/v2/periphery/BatchLockupDynamicStreamCreator.sol
+```

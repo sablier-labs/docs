@@ -17,7 +17,7 @@ You will need the following software on your machine:
 - [Git](https://git-scm.com/downloads)
 - [Foundry](https://github.com/foundry-rs/foundry)
 - [Node.js](https://nodejs.org/en/download)
-- [Pnpm](https://pnpm.io)
+- [Yarn](https://yarnpkg.com/)
 
 In addition, familiarity with [Ethereum](https://ethereum.org/) and [Solidity](https://soliditylang.org/) is requisite.
 
@@ -38,7 +38,7 @@ To install the template, simply execute the following commands:
 $ mkdir sablier-v2-integration-template
 $ cd sablier-v2-integration-template
 $ forge init --template sablier-labs/sablier-v2-integration-template
-$ pnpm install
+$ yarn install
 ```
 
 Then, hop to the `Run a Fork Test` section to complete your set up and start developing.
@@ -79,13 +79,13 @@ The folder structure should be intuitive:
 - `script` is where you'll write scripts to perform actions like deploying contracts (you guessed it, in Solidity)
 - `foundry.toml` is where you can configure your Foundry settings, which we will leave as is in this guide
 
-Let's install the Sablier Node.js packages using Pnpm:
+Let's install the Sablier Node.js packages using Yarn:
 
 ```shell
-$ pnpm install @sablier/v2-core @sablier/v2-periphery
+$ yarn add @sablier/v2-core @sablier/v2-periphery
 ```
 
-Pnpm will download the Sablier contracts and put them in the `node_modules` directory.
+Yarn will download the Sablier contracts, along with their dependencies, and put them in the `node_modules` directory.
 
 Let's remap the package names to point to the installed contracts. This step is required so that the Solidity compiler
 can find the Sablier contracts when you import them:

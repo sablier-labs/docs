@@ -1,6 +1,6 @@
 # Errors
 
-[Git Source](https://github.com/sablier-labs/v2-core/blob/bca1d9ea0485b065544486bb01f4148d44289644/src/libraries/Errors.sol)
+[Git Source](https://github.com/sablier-labs/v2-core/blob/release/src/libraries/Errors.sol)
 
 Library containing all custom errors the protocol may revert with.
 
@@ -92,6 +92,14 @@ Thrown when the stream's sender tries to withdraw to an address other than the r
 
 ```solidity
 error SablierV2Lockup_InvalidSenderWithdrawal(uint256 streamId, address sender, address to);
+```
+
+### SablierV2Lockup_NotTransferrable
+
+Thrown when trying to transfer Stream NFT when transferability is disabled.
+
+```solidity
+error SablierV2Lockup_NotTransferrable(uint256 tokenId);
 ```
 
 ### SablierV2Lockup_Null

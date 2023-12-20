@@ -1,0 +1,79 @@
+---
+id: "airstreams"
+sidebar_position: 7
+title: "Airstreams"
+---
+
+:::note
+
+Please refer to the [airdrop section](/concepts/use-cases#airdrops) of our use-cases page for an explanation regarding
+why streaming an airdrop makes sense.
+
+:::
+
+## Why Airstreams?
+
+The gist of Airstreams is that instead of airdropping the entirety of the tokens all at once, airdrop recipients receive
+a fraction of the tokens every second through a token stream.
+
+The beauty of it is that airdrop recipients are forced to think long-term and keep the project’s future as their first
+and foremost priority. They are forced to, because instead of receiving all the tokens at once, they receive them over
+time in the gorgeous Airstreams [interface](app.sablier.com/airstreams).
+
+:::info
+
+An airstream can have claim period of a few days, months, years or even no expiration, you get to chose. You could, for
+example, configure the airdrop of your new token to vest over years, but the recipients will receive the streaming
+tokens only if a claim is made in the interval set.
+
+:::
+
+Airstreams not only create the right incentives for token holders, but also prevents them from dumping their tokens on
+day one, as has been the case for many airdrops in the past.
+
+With Airstreams, airdrop recipients only receive a fraction of the tokens every second, only after they claim a stream
+and have to withdraw the tokens which are getting streamed.
+
+## How It Works
+
+Thanks to our battle-tested token streaming and distribution protocol, you can quickly create Airstreams for thousands
+of recipients in a few clicks using our interface. Recipients and their respective airdrop allocations can be added by
+uploading a simple CSV spreadsheet to the [interface](app.sablier.com/airstreams).
+
+Our spreadsheet feature is the perfect fit for airstreams: it allows you to upload a CSV file with tens of thousands of
+recipients and the interface will automatically create a new airstream for each of these recipients.
+
+Another great advantage, is that creating an Airstream campaign with thousands of recipients won't ruin you in terms of
+gas fees, on the contrary. When launching a campaign, a contract is deployed, and Airstreams are only created when they
+are claimed by the Airstream recipients. This is made possible by a system called _Merkle Distributor_, which is backed
+by a Merkle Tree, a data structure used for efficiently summarizing and verifying the integrity of large sets of data.
+
+:::note
+
+The contract that implements an Airstream Campaign is called `MerkleStreamer`. For those interested in the technical
+part, [click here](/contracts/v2/reference/periphery/contract.SablierV2MerkleStreamerLL).
+
+:::
+
+When you create an Airstream campaign, all you are really doing is deploying a contract that allows for the recipients
+you put in to prove that they are eligible, and create a stream if they are. That's all it is.
+
+Additionally, you don't have to immediately fund the Airstream contract. You can first create the contract, and at a
+later date fund it with the tokens to be streamed over.
+
+**This has three great implications:**
+
+- **Recipients pay for the gas fees themselves to create the stream**, when they claim (the claim action creates the
+  stream). Creating a campaign with thousands of recipients would be incredibly costly if the campaign creator had to
+  pay for all the gas fees.
+- **You keep full control over unclaimed Airstream token allocations**. If a recipient doesn't claim their Airstream,
+  it's not created, and you remain in full control over that token allocation.
+  - This is the case only if the campaign itself has an expiration date. If the campaign has no expiration date, the
+    recipients can claim their Airstreams at any time in the future.
+- **You don't have to fund the campaign directly in order to deploy it**. You can deploy the campaign contract now, and
+  fund it at a later date when you feel comfortable doing so. There is no rush.
+
+Once the Airstream campaign is launched, recipients who have claimed can withdraw the tokens which have already been
+streamed at any time using our interface. The deployment page, the last step when launching an Airstream campaign.
+
+![](/img/diagram-airstream-campaign.png)

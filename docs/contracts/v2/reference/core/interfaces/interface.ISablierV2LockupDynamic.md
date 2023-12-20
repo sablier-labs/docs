@@ -174,6 +174,7 @@ event CreateLockupDynamicStream(
     Lockup.CreateAmounts amounts,
     IERC20 indexed asset,
     bool cancelable,
+    bool transferable,
     LockupDynamic.Segment[] segments,
     LockupDynamic.Range range,
     address broker

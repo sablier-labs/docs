@@ -5,7 +5,7 @@ title: "Lockup Linear"
 ---
 
 import AdmonitionSimpleCode from "@site/docs/snippets/AdmonitionSimpleCode.mdx";
-import ERC20Steps from "@site/docs/snippets/ERC20Steps.mdx";
+import ConstantsComment from "@site/docs/snippets/ConstantsComment.mdx";
 import ParamAsset from "@site/docs/snippets/ParamAsset.mdx";
 import ParamBroker from "@site/docs/snippets/ParamBroker.mdx";
 import ParamCancelable from "@site/docs/snippets/ParamCancelable.mdx";
@@ -22,9 +22,7 @@ This guide assumes that you have already gone through the [Protocol Concepts](/c
 
 :::note
 
-This guide interacts with the Core contracts directly. To get access to the whole gamut of Sablier features, we
-recommend creating streams via the Periphery contracts instead. See the
-[Proxy Architecture](/contracts/v2/guides/proxy-architecture/overview) section.
+This guide interacts with the Core contracts directly.
 
 :::
 
@@ -48,31 +46,18 @@ import { ud60x18 } from "@sablier/v2-core/src/types/Math.sol";
 import { IERC20 } from "@sablier/v2-core/src/types/Tokens.sol";
 ```
 
-Create a contract called `LockupLinearStreamCreator`, and declare a constant `DAI` of type `IERC20` and an immutable
-variable `sablier` of type `ISablierV2LockupLinear`:
+Create a contract called `LockupLinearStreamCreator`, and declare a constant `DAI` of type `IERC20` and a constant
+`LOCKUP_LINEAR` of type `ISablierV2LockupLinear`:
 
 ```solidity
 contract LockupLinearStreamCreator {
     IERC20 public constant DAI = IERC20(0x6B175474E89094C44Da98b954EedeAC495271d0F);
-    ISablierV2LockupLinear public immutable sablier;
+    ISablierV2LockupLinear public constant LOCKUP_LINEAR =
+        ISablierV2LockupLinear(0xAFb979d9afAd1aD27C5eFf4E27226E3AB9e5dCC9);
 }
 ```
 
-In the code above, the address of the [DAI](https://makerdao.com) stablecoin is hard-coded. However, in production, you
-would likely use an input parameter to allow the contract to change the assets it interacts with on a per transaction
-basis.
-
-## Initialization
-
-To initialize the Sablier contract, you first need to grab its address from the
-[Deployment Addresses](/contracts/v2/deployments) page. Once you have obtained it, pass it to the constructor of the
-creator contract:
-
-```solidity
-constructor(ISablierV2LockupLinear sablier_) {
-    sablier = sablier_;
-}
-```
+<ConstantsComment />
 
 ## Create functions
 
@@ -87,16 +72,31 @@ Which one you choose depends upon your use case. In this guide, we will use `cre
 
 ## Function definition
 
-Define a function called `createLockupLinearStream` which takes a single parameter `totalAmount`, and which returns the
-id of the created stream:
+Define a function called `createStream` which takes a single parameter `totalAmount`, and which returns the id of the
+created stream:
 
 ```solidity
-function createLockupLinearStream(uint256 totalAmount) public returns (uint256 streamId) {
+function createStream(uint128 totalAmount) public returns (uint256 streamId) {
   // ...
 }
 ```
 
-<ERC20Steps />
+## ERC-20 steps
+
+To create a stream, the caller must approve the creator contract to pull the tokens from the calling address's account.
+Then, we have to also approve the Sablier contract to pull the assets that the creator contract will be in possession of
+after they are transferred from the calling address (you):
+
+```solidity
+// Transfer the provided amount of DAI tokens to this contract
+DAI.transferFrom(msg.sender, address(this), totalAmount);
+
+// Approve the Sablier contract to spend DAI
+DAI.approve(address(LOCKUP_LINEAR), totalAmount);
+```
+
+For more guidance on how to approve and transfer ERC-20 assets, see
+[this article](https://ethereum.org/en/developers/docs/standards/tokens/erc-20/) on the Ethereum website.
 
 ## Parameters
 
@@ -152,5 +152,3 @@ Below you can see the complete functioning code: a contract that creates Lockup 
 ```solidity reference title="Lockup Linear Stream Creator"
 https://github.com/sablier-labs/examples/blob/main/v2/core/LockupLinearStreamCreator.sol
 ```
-
-[^1]: If creating streams on behalf of end users, they will have to approve your contract first.

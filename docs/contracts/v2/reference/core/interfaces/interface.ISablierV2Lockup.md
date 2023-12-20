@@ -1,9 +1,9 @@
 # ISablierV2Lockup
 
-[Git Source](https://github.com/sablier-labs/v2-core/blob/bca1d9ea0485b065544486bb01f4148d44289644/docs/contracts/v2/reference/core/interfaces)
+[Git Source](https://github.com/sablier-labs/v2-core/blob/release/src/interfaces/ISablierV2Lockup.sol)
 
 **Inherits:** [ISablierV2Base](/docs/contracts/v2/reference/core/interfaces/interface.ISablierV2Base.md),
-IERC721Metadata
+[IERC721Metadata](https://github.com/OpenZeppelin/openzeppelin-contracts/blob/e50c24f5839db17f46991478384bfda14acfb830/contracts/token/ERC721/extensions/IERC721Metadata.sol)
 
 Common logic between all Sablier V2 lockup streaming contracts.
 
@@ -202,6 +202,22 @@ function isStream(uint256 streamId) external view returns (bool result);
 | ---------- | --------- | ---------------------------- |
 | `streamId` | `uint256` | The stream id for the query. |
 
+### isTransferable
+
+Retrieves a flag indicating whether the stream NFT can be transferred.
+
+_Reverts if `streamId` references a null stream._
+
+```solidity
+function isTransferable(uint256 streamId) external view returns (bool result);
+```
+
+**Parameters**
+
+| Name       | Type      | Description                  |
+| ---------- | --------- | ---------------------------- |
+| `streamId` | `uint256` | The stream id for the query. |
+
 ### isWarm
 
 Retrieves a flag indicating whether the stream is warm, i.e. either pending or streaming.
@@ -334,11 +350,10 @@ Emits a {Transfer}, {CancelLockupStream}, and {MetadataUpdate} event. Notes:
 
 - If there any assets left for the recipient to withdraw, the stream is marked as canceled. Otherwise, the stream is
   marked as depleted.
-- This function attempts to invoke a hook on either the sender or the recipient, depending on who `msg.sender` is, and
-  if the resolved address is a contract. Requirements:
+- This function attempts to invoke a hook on the recipient, if the resolved address is a contract. Requirements:
 - Must not be delegate called.
 - The stream must be warm and cancelable.
-- `msg.sender` must be either the stream's sender or the stream's recipient (i.e. the NFT owner).
+- `msg.sender` must be the stream's sender.
 
 ```solidity
 function cancel(uint256 streamId) external;
@@ -514,9 +529,10 @@ Emitted when a stream is canceled.
 
 ```solidity
 event CancelLockupStream(
-    uint256 indexed streamId,
+    uint256 streamId,
     address indexed sender,
     address indexed recipient,
+    address indexed asset,
     uint128 senderAmount,
     uint128 recipientAmount
 );
@@ -545,5 +561,5 @@ event SetNFTDescriptor(
 Emitted when assets are withdrawn from a stream.
 
 ```solidity
-event WithdrawFromLockupStream(uint256 indexed streamId, address indexed to, uint128 amount);
+event WithdrawFromLockupStream(uint256 indexed streamId, address indexed to, address indexed asset, uint128 amount);
 ```

@@ -26,26 +26,12 @@ Doing so enables your contract to keep its internal accounting updated accuratel
 
 :::
 
-### Sender
-
-And these are the hooks that can be implemented by a sender contract:
-
-| Hook               | Arguments                                        | Description                                       |
-| ------------------ | ------------------------------------------------ | ------------------------------------------------- |
-| `onStreamCanceled` | `(streamId,sender,senderAmount,recipientAmount)` | Called when the stream is canceled by the sender. |
-
 ### Sample Implementations
 
 #### Recipient
 
 ```solidity reference title="Sablier Recipient Hooks"
 https://github.com/sablier-labs/examples/blob/main/v2/core/RecipientHooks.sol
-```
-
-#### Sender
-
-```solidity reference title="Sablier Sender Hooks"
-https://github.com/sablier-labs/examples/blob/main/v2/core/SenderHooks.sol
 ```
 
 ## Error Management
