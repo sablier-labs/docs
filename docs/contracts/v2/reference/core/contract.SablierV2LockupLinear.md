@@ -4,7 +4,7 @@ sidebar_position: 1
 
 # SablierV2LockupLinear
 
-[Git Source](https://github.com/sablier-labs/v2-core/tree/release/src/SablierV2LockupLinear.sol)
+[Git Source](https://github.com/sablier-labs/v2-core/blob/release/src/SablierV2LockupLinear.sol)
 
 **Inherits:**
 [ISablierV2LockupLinear](/docs/contracts/v2/reference/core/interfaces/interface.ISablierV2LockupLinear.md),

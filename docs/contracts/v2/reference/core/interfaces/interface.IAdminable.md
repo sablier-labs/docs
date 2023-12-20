@@ -1,6 +1,6 @@
 # IAdminable
 
-[Git Source](https://github.com/sablier-labs/v2-core/tree/release/src/interfaces/IAdminable.sol)
+[Git Source](https://github.com/sablier-labs/v2-core/blob/release/src/interfaces/IAdminable.sol)
 
 Contract module that provides a basic access control mechanism, with an admin that can be granted exclusive access to
 specific functions. The inheriting contract must set the initial admin in the constructor.

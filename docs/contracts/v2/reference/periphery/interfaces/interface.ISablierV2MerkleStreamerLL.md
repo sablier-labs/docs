@@ -1,6 +1,6 @@
 # ISablierV2MerkleStreamerLL
 
-[Git Source](https://github.com/sablier-labs/v2-periphery/tree/release/src/interfaces/ISablierV2MerkleStreamerLL.sol)
+[Git Source](https://github.com/sablier-labs/v2-periphery/blob/release/src/interfaces/ISablierV2MerkleStreamerLL.sol)
 
 **Inherits:**
 [ISablierV2MerkleStreamer](/contracts/v2/reference/periphery/interfaces/interface.ISablierV2MerkleStreamer)

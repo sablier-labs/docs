@@ -1,6 +1,6 @@
 # ISablierV2LockupRecipient
 
-[Git Source](https://github.com/sablier-labs/v2-core/tree/release/src/interfaces/hooks/ISablierV2LockupRecipient.sol)
+[Git Source](https://github.com/sablier-labs/v2-core/blob/release/src/interfaces/hooks/ISablierV2LockupRecipient.sol)
 
 Interface for recipient contracts capable of reacting to cancellations, renouncements, and withdrawals.
 

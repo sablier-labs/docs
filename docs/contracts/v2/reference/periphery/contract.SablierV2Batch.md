@@ -1,6 +1,6 @@
 # SablierV2Batch
 
-[Git Source](https://github.com/sablier-labs/v2-periphery/tree/release/src/SablierV2Batch.sol)
+[Git Source](https://github.com/sablier-labs/v2-periphery/blob/release/src/SablierV2Batch.sol)
 
 **Inherits:** [ISablierV2Batch](/contracts/v2/reference/periphery/interfaces/interface.ISablierV2Batch)
 

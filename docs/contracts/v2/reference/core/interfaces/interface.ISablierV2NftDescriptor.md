@@ -1,6 +1,6 @@
 # ISablierV2NFTDescriptor
 
-[Git Source](https://github.com/sablier-labs/v2-core/tree/release/src/interfaces/ISablierV2NFTDescriptor.sol)
+[Git Source](https://github.com/sablier-labs/v2-core/blob/release/src/interfaces/ISablierV2NFTDescriptor.sol)
 
 This contract generates the URI describing the Sablier V2 stream NFTs.
 

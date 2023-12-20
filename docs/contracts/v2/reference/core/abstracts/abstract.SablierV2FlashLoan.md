@@ -1,6 +1,6 @@
 # SablierV2FlashLoan
 
-[Git Source](https://github.com/sablier-labs/v2-core/tree/release/src/abstracts/SablierV2FlashLoan.sol)
+[Git Source](https://github.com/sablier-labs/v2-core/blob/release/src/abstracts/SablierV2FlashLoan.sol)
 
 **Inherits:**
 [IERC3156FlashLender](/docs/contracts/v2/reference/core/interfaces/erc3156/interface.IERC3156FlashLender.md),

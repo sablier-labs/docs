@@ -4,7 +4,7 @@ sidebar_position: 2
 
 # SablierV2LockupDynamic
 
-[Git Source](https://github.com/sablier-labs/v2-core/tree/release/src/SablierV2LockupDynamic.sol)
+[Git Source](https://github.com/sablier-labs/v2-core/blob/release/src/SablierV2LockupDynamic.sol)
 
 **Inherits:**
 [ISablierV2LockupDynamic](/docs/contracts/v2/reference/core/interfaces/interface.ISablierV2LockupDynamic.md),

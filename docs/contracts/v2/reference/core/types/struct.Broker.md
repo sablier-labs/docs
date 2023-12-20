@@ -1,6 +1,6 @@
 # Broker
 
-[Git Source](https://github.com/sablier-labs/v2-core/tree/release/src/types/DataTypes.sol)
+[Git Source](https://github.com/sablier-labs/v2-core/blob/release/src/types/DataTypes.sol)
 
 Struct encapsulating the broker parameters passed to the create functions. Both can be set to zero.
 

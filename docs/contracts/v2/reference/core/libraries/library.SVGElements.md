@@ -1,6 +1,6 @@
 # SVGElements
 
-[Git Source](https://github.com/sablier-labs/v2-core/tree/release/src/libraries/SVGElements.sol)
+[Git Source](https://github.com/sablier-labs/v2-core/blob/release/src/libraries/SVGElements.sol)
 
 ## State Variables
 

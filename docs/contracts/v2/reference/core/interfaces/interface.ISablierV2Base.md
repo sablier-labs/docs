@@ -1,6 +1,6 @@
 # ISablierV2Base
 
-[Git Source](https://github.com/sablier-labs/v2-core/tree/release/src/interfaces/ISablierV2Base.sol)
+[Git Source](https://github.com/sablier-labs/v2-core/blob/release/src/interfaces/ISablierV2Base.sol)
 
 **Inherits:** [IAdminable](/docs/contracts/v2/reference/core/interfaces/interface.IAdminable.md)
 

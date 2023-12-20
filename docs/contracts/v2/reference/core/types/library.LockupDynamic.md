@@ -1,6 +1,6 @@
 # LockupDynamic
 
-[Git Source](https://github.com/sablier-labs/v2-core/tree/release/src/types/DataTypes.sol)
+[Git Source](https://github.com/sablier-labs/v2-core/blob/release/src/types/DataTypes.sol)
 
 Namespace for the structs used in
 [SablierV2LockupDynamic](docs/contracts/v2/reference/core/contract.SablierV2LockupDynamic.md).

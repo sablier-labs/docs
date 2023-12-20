@@ -1,6 +1,6 @@
 # ISablierV2Batch
 
-[Git Source](https://github.com/sablier-labs/v2-periphery/tree/release/src/interfaces/ISablierV2Batch.sol)
+[Git Source](https://github.com/sablier-labs/v2-periphery/blob/release/src/interfaces/ISablierV2Batch.sol)
 
 **Inherits:** [IAdminable](/docs/contracts/v2/reference/core/interfaces/interface.IAdminable.md)
 

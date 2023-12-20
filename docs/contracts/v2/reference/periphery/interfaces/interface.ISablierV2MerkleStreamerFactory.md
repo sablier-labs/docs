@@ -1,6 +1,6 @@
 # ISablierV2MerkleStreamerFactory
 
-[Git Source](https://github.com/sablier-labs/v2-periphery/tree/release/src/interfaces/ISablierV2MerkleStreamerFactory.sol)
+[Git Source](https://github.com/sablier-labs/v2-periphery/blob/release/src/interfaces/ISablierV2MerkleStreamerFactory.sol)
 
 _Deploys new Lockup Linear Merkle streamers via CREATE2._
 

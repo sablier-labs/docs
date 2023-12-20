@@ -1,6 +1,6 @@
 # ISablierV2MerkleStreamer
 
-[Git Source](https://github.com/sablier-labs/v2-periphery/tree/release/src/interfaces/ISablierV2MerkleStreamer.sol)
+[Git Source](https://github.com/sablier-labs/v2-periphery/blob/release/src/interfaces/ISablierV2MerkleStreamer.sol)
 
 **Inherits:** [IAdminable](/docs/contracts/v2/reference/core/interfaces/interface.IAdminable.md)
 
