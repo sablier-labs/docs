@@ -15,25 +15,22 @@ best things for a "genesis" point were:
 
 To reduce the number of dependencies required to kickstart a subgraph, we chose to rely on the second approach.
 Therefore, when setting up a deployment, you'll need to follow a few
-[rules](https://github.com/sablier-labs/v2-subgraphs/blob/main/packages/core/src/constants/chains/goerli.ts).
+[rules](https://github.com/sablier-labs/v2-subgraphs/blob/main/packages/core/src/constants/chains/sepolia.ts).
 
-```ts title="core/src/constants/chains/goerli.ts"
-export let chainId = 5;
-export let chain = "goerli";
+```ts title="core/src/constants/chains/sepolia.ts"
+export let chainId = 11155111;
+export let chain = "sepolia";
 export let startBlock = 9283515;
 
 /**
  * Keep aliases unique and always in sync with the frontend
  * Keep addresses unique and lowercased
- * @example export let linear = [[address1, alias2], [address2, alias2]]
+ * @example export let lockupLinear = [[address1, alias2], [address2, alias2]]
  */
 
-export let linear: string[][] = [["0x6e3678c005815ab34986d8d66a353cd3699103de", "LL"]];
+export let lockupLinear: string[][] = [["0x7a43F8a888fa15e68C103E18b0439Eb1e98E4301", "LL2"]];
 
-export let dynamic: string[][] = [["0x4be70ede968e9dba12db42b9869bec66bedc17d7", "LD"]];
-
-/** PRBProxy registry */
-export let registry = "0xd42a2bb59775694c9df4c7822bffab150e6c699d";
+export let lockupDynamic: string[][] = [["0xc9940AD8F43aAD8e8f33A4D5dbBf0a8F7FF4429A", "LD2"]];
 
 // highlight-start
 /**

@@ -62,13 +62,13 @@ items at the contract level, we need to consider the following for both subgraph
 
 To address these observations, the subgraph uses two related identifiers for a Stream.
 
-| Type           | Description                                                                                         | Example                      |
-| -------------- | --------------------------------------------------------------------------------------------------- | ---------------------------- |
-| `Stream.id`    | A self-explanatory structure built using the following structure: `contractAddress-chainId-tokenId` | <nobr>`0xAB..12-5-21`</nobr> |
-| `Stream.alias` | A short version of the `id` where the contract is aliased: `contractAlias-chainId-tokenId`          | <nobr>`LL-5-21`</nobr>       |
+| Type           | Description                                                                                         | Example                        |
+| -------------- | --------------------------------------------------------------------------------------------------- | ------------------------------ |
+| `Stream.id`    | A self-explanatory structure built using the following structure: `contractAddress-chainId-tokenId` | <nobr>`0xAB..12-137-21`</nobr> |
+| `Stream.alias` | A short version of the `id` where the contract is aliased: `contractAlias-chainId-tokenId`          | <nobr>`LL-137-21`</nobr>       |
 
-Both examples from the table above translate to: **_a stream on Goerli (chain id `5`), within the Lockup Linear contract
-at address `0xAB..12`, with the tokenId `21`_**.
+Both examples from the table above translate to: **_a stream on Polygon (chain id `137`), within the Lockup Linear
+contract at address `0xAB..12`, with the tokenId `21`_**.
 
 :::note
 
@@ -82,9 +82,10 @@ in sync, avoid conflicts and regard them as immutable (once decided, never chang
 To provide a simple visual structure, while also accounting for future stream types (backwards compatibility) we use the
 following abbreviations as aliases:
 
-- Lockup Linear contracts become `LL` (e.g. `LL-5-1`)
-- Lockup Dynamic contracts become `LD` (e.g. `LD-5-1`)
-- Contracts with [flash loans](/contracts/v2/guides/flash-loans) enabled become `LLF` or `LLD`
+- Lockup Linear V2.0 contracts become `LL`, e.g. `LL-137-1`
+- Lockup Linear V2.1 contracts become `LL2`, e.g. `LL2-137-1`
+- Lockup Dynamic V2.0 contracts become `LD`, e.g. `LD-137-1`
+- Lockup Dynamic V2.1 contracts become `LD2`, e.g. `LD2-137-1`
 
 ### Relevant parties
 

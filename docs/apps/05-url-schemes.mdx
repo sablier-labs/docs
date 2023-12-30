@@ -24,25 +24,28 @@ Every stream created through the Sablier Protocol is identified through three pa
 #### Contract Aliases
 
 Sablier V2 supports multiple versions and variants of streaming contracts, e.g. `SablierV2LockupLinear` and
-`SablierV2LockupDynamic`. Specifically, their [`core-1.0.0`](/contracts/v2/deployments). To provide a simple visual
-structure, while also accounting for future stream types (backwards compatibility), we use the following abbreviations
-as aliases:
+`SablierV2LockupDynamic`. To provide a visual resolver, while also accounting for future stream types (backwards
+compatibility), we alias the contract addresses with the following abbreviations:
 
-- Lockup Linear contracts become `LL`, e.g. `LL-5-1`
-- Lockup Dynamic contracts become `LD`, e.g. `LD-5-1`
+- Lockup Linear V2.0 contracts become `LL`, e.g. `LL-137-1`
+- Lockup Linear V2.1 contracts become `LL2`, e.g. `LL2-137-1`
+- Lockup Dynamic V2.0 contracts become `LD`, e.g. `LD-137-1`
+- Lockup Dynamic V2.1 contracts become `LD2`, e.g. `LD2-137-1`
 
 ### Building the URL
 
-By combining the elements described above, you can send users from your interface directly to the stream page featured
-in the Sablier Interface. To build the link to a stream resource, you use a hyphen `-` to concatenate the uppercase
-contract `alias`, the `chainId`, and the `streamId`, and then you add them to the base link `app.sablier.com/stream/`:
+By combining the elements described above, you can send users from your interface directly to the create stream page in
+the Sablier Interface. To build the link to a stream resource, you use a hyphen `-` to concatenate the uppercase
+contract `alias`, the `chainId`, and the `streamId`, and then you add them to the base URL `app.sablier.com/stream/`:
 
-| URL                                                                                                                     | Description                                   |
-| :---------------------------------------------------------------------------------------------------------------------- | :-------------------------------------------- |
-| [app.sablier.com/stream/LL-5-40](https://app.sablier.com/stream/LL-5-40)                                                | Lockup Linear (v1.0.0) stream #40 on Goerli   |
-| [app.sablier.com/stream/LL-1-6](https://app.sablier.com/stream/LL-1-6)                                                  | Lockup Linear (v1.0.0) stream #6 on Ethereum  |
-| [app.sablier.com/stream/0xB10...f95-1-6](https://app.sablier.com/stream/0xB10daee1FCF62243aE27776D7a92D39dC8740f95-1-6) | Lockup Linear (v1.0.0) stream #6 on Ethereum  |
-| [app.sablier.com/stream/LD-137-13](https://app.sablier.com/stream/LD-137-13)                                            | Lockup Dynamic (v1.0.0) stream #13 on Polygon |
+| URL                                                                                                                     | Description                               |
+| :---------------------------------------------------------------------------------------------------------------------- | :---------------------------------------- |
+| [app.sablier.com/stream/LL2-137-29](https://app.sablier.com/stream/LL2-137-29)                                          | Lockup Linear V2.1 stream #29 on Polygon  |
+| [app.sablier.com/stream/LL-137-32](https://app.sablier.com/stream/LL-137-32)                                            | Lockup Linear V2.0 stream #32 on Polygon  |
+| [app.sablier.com/stream/LD-137-13](https://app.sablier.com/stream/LD-137-13)                                            | Lockup Dynamic V2.0 stream #13 on Polygon |
+| [app.sablier.com/stream/LL-1-6](https://app.sablier.com/stream/LL-1-6)                                                  | Lockup Linear V2.0 stream #6 on Ethereum  |
+| [app.sablier.com/stream/0xB10...f95-1-6](https://app.sablier.com/stream/0xB10daee1FCF62243aE27776D7a92D39dC8740f95-1-6) | Lockup Linear V2.0 stream #6 on Ethereum  |
+| [app.sablier.com/stream/LL2-11155111-40](https://app.sablier.com/stream/LL2-11155111-40)                                | Lockup Linear V2.1 stream #40 on Sepolia  |
 
 As you can see, the main format is `contractA-chainId-streamId`. This is supported both at the app and the subgraph
 level. For situations when an alias cannot be used, we fallback to the following format:
@@ -62,25 +65,25 @@ level. For situations when an alias cannot be used, we fallback to the following
 Using URL query parameters, integrators can suggest a set of values for the fields of the Create Single Stream form.
 Here's a list of all supported values (to be appended to the create form link):
 
-| Parameter  | Type    | Description                                                                                                   | Example                                                                                        |
-| :--------- | :------ | :------------------------------------------------------------------------------------------------------------ | ---------------------------------------------------------------------------------------------- |
-| shape      | String  | Type of payment                                                                                               | `linear`, `cliff`, `dynamicExponential`, `dynamicExponentialCliff`, `dynamicStepper`           |
-| chainId    | Number  | Defaults to the connected chain                                                                               | `1`, `10`, `42161` or any other supported [chain](/contracts/v2/deployments)                   |
-| token      | String  | Address of the asset                                                                                          | `0x6b17...1d0f` ([DAI](https://etherscan.io/token/0x6b175474e89094c44da98b954eedeac495271d0f)) |
-| cancelable | Boolean | If a stream is cancelable or not, defaults to `true`                                                          | `true`, `false`                                                                                |
-| recipient  | String  | Recipient's address or ENS                                                                                    | `0x12...AB`, `vitalik.eth`                                                                     |
-| isDuration | Boolean | If the time is set to a duration or a fixed range, defaults to `true`                                         | `true`, `false`                                                                                |
-| duration   | Number  | Stream duration **in seconds**, read only if `isDuration` is true                                             | `86400` (1 day)                                                                                |
-| start      | Number  | Start date **in seconds**, read only if `isDuration` is false                                                 | `1692009403`                                                                                   |
-| end        | Number  | End date **in seconds**, read only if `isDuration` is false                                                   | `1702000403`                                                                                   |
-| cliff      | Number  | Cliff duration or the cliff end date as a Unix timestamp **in seconds** (depends on `isDuration` and `shape`) | `1296000` (12 hours)                                                                           |
-| steps      | Number  | Number of steps for the `dynamicStepper` shape.                                                               | `2`, `3`, `4`, etc.                                                                            |
+| Parameter  | Type    | Description                                                                                               | Example                                                                                        |
+| :--------- | :------ | :-------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- |
+| shape      | String  | Type of payment                                                                                           | `linear`, `cliff`, `dynamicExponential`, `dynamicExponentialCliff`, `dynamicStepper`           |
+| chainId    | Number  | Defaults to the connected chain                                                                           | `1`, `10`, `42161` or any other supported [chain](/contracts/v2/deployments)                   |
+| token      | String  | Address of the asset                                                                                      | `0x6b17...1d0f` ([DAI](https://etherscan.io/token/0x6b175474e89094c44da98b954eedeac495271d0f)) |
+| cancelable | Boolean | If a stream is cancelable or not, defaults to `true`                                                      | `true`, `false`                                                                                |
+| recipient  | String  | Recipient's address or ENS                                                                                | `0x12...AB`, `vitalik.eth`                                                                     |
+| isDuration | Boolean | If the time is set to a duration or a fixed range, defaults to `true`                                     | `true`, `false`                                                                                |
+| duration   | Number  | Stream duration in seconds, read only if `isDuration` is true                                             | `86400` (1 day)                                                                                |
+| start      | Number  | Start date in seconds, read only if `isDuration` is false                                                 | `1692009403`                                                                                   |
+| end        | Number  | End date in seconds, read only if `isDuration` is false                                                   | `1702000403`                                                                                   |
+| cliff      | Number  | Cliff duration or the cliff end date as a Unix timestamp in seconds (depends on `isDuration` and `shape`) | `1296000` (12 hours)                                                                           |
+| steps      | Number  | Number of steps for the `dynamicStepper` shape.                                                           | `2`, `3`, `4`, etc.                                                                            |
 
 :::info
 
-Make sure the `token` is available on the selected chain. To make the token appear in the default list, you can submit a
-request to add it to the
-[Sablier Community Token List](https://github.com/sablier-labs/community-token-list/issues/new?assignees=&labels=token+request&projects=&template=token-request.md&title=Add+%7BTOKEN_SYMBOL%7D%3A+%7BTOKEN_NAME%7D).
+Make sure the `token` is available on the selected chain. To make it appear in the default list, you can submit a
+request to add it to our
+[Community Token List](https://github.com/sablier-labs/community-token-list/issues/new?assignees=&labels=token+request&projects=&template=token-request.md&title=Add+%7BTOKEN_SYMBOL%7D%3A+%7BTOKEN_NAME%7D).
 
 :::
 
@@ -98,7 +101,7 @@ Here are some examples:
 | [app.sablier.com/create/single/?shape=linear&chainId=1&duration=86400&token=0x...](https://app.sablier.com/create/single/?shape=linear&chainId=1&duration=86400&token=0x6b175474e89094c44da98b954eedeac495271d0f)                                                                                                 | A partially configured stream (chain, duration, token = DAI) |
 | [app.sablier.com/create/single/?shape=cliff&...&isDuration=false](https://app.sablier.com/create/single/?shape=cliff&amount=75&chainId=5&cliff=1691740197&end=1791740197&recipient=0xf31b00e025584486f7c37Cf0AE0073c97c12c634&start=1591740197&token=0x97cb342cf2f6ecf48c1285fb8668f5a4237bf862&isDuration=false) | A fully configured stream                                    |
 
-If everything is set up correctly, a modal will show up with a summary of the stream.
+If everything is set up correctly, a modal will show up with a summary:
 
 | Modal                                     | Form after "Fill in"                      |
 | ----------------------------------------- | ----------------------------------------- |
@@ -117,23 +120,23 @@ If some parameters are not configured properly, the modal will give some indicat
 The Sablier Interface comes with an advanced search view that can be accessed directly through URL parameters. If you
 want to use this feature, here is a table with all the available parameters:
 
-| Parameter | Type         | Description                                                                | Values                                                                       |
-| :-------- | :----------- | :------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
-| t         | String       | The active tab in the dashboard. For global queries, use `search`.         | `search`, `sender`, or `recipient`                                           |
-| c         | Number       | The chain of the streams in the search result. This parameter is required. | `1`, `10`, `42161` or any other supported [chain](/contracts/v2/deployments) |
-| s         | String       | The address of the stream sender by which to filter                        | `0x12...AB`, `vitalik.eth`                                                   |
-| r         | String       | The address of the stream recipient by which to filter                     | `0x12...AB`, `vitalik.eth`                                                   |
-| i         | String array | An array of stream identifiers to look up                                  | `LL-5-1`, `LD-5-14` etc.                                                     |
+| Parameter | Type         | Description                                                                | Values                                                                   |
+| :-------- | :----------- | :------------------------------------------------------------------------- | ------------------------------------------------------------------------ |
+| t         | String       | The active tab in the dashboard. For global queries, use `search`.         | `search`, `sender`, or `recipient`                                       |
+| c         | Number       | The chain of the streams in the search result. This parameter is required. | `1`, `10`, `42161` or other [supported chain](/contracts/v2/deployments) |
+| s         | String       | The address of the stream sender by which to filter                        | `0x12...AB`, `vitalik.eth`                                               |
+| r         | String       | The address of the stream recipient by which to filter                     | `0x12...AB`, `vitalik.eth`                                               |
+| i         | String array | An array of IDs to look up                                                 | `LL-5-1`, `LD-5-14` etc.                                                 |
 
 ### Building the URL
 
 By combining the parameters described above, you can send users from your interface directly to the search view in the
 Sablier Interface. To build the link, you append all these elements to the base link `app.sablier.com/` as query
-parameters, e.g. `?t=search&c=1&s=0x..1&r=0x...2&i=LL-1-1,LL-5-2`.
+parameters, e.g. `?t=search&c=1&s=0x..1&r=0x...2&i=LL-1-2,LL2-1-29`.
 
 Here are some examples of URLs and the associated search modal for each:
 
-|                                                                                                                                                                                    |                                                         |
-| ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------- |
-| [All streams from goerli that involve am address](https://app.sablier.com/?t=search&c=5&s=0xf31b00e025584486f7c37cf0ae0073c97c12c634&r=0xf31b00e025584486f7c37cf0ae0073c97c12c634) | ![Form](/screenshots/all-streams-involving-address.png) |
-| [Streams that have address as sender from list](https://app.sablier.com/?t=search&c=5&s=0xf31b00e025584486f7c37cf0ae0073c97c12c634&i=ll-5-29,ll-5-1,ll-5-2)                        | ![Form](/screenshots/streams-with-sender.png)           |
+|                                                                                                                            |                                              |
+| -------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------- |
+| [Streams created by a particular user](https://app.sablier.com/?t=search&c=1&s=0x0aAeF7BbC21c627f14caD904E283e199cA2b72cC) | ![Form](/screenshots/search-with-sender.png) |
+| [Streams with particular IDs](https://app.sablier.com/?t=search&c=1&i=LL2-1-2,LL-1-29)                                     | ![Form](/screenshots/search-with-ids.png)    |

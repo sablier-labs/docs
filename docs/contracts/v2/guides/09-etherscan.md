@@ -28,7 +28,7 @@ allowance. See the [Allowances](#erc20-allowances) section below for a guide on 
 
 Head over to our [deployments](/contracts/v2/deployments) list to pick the contract address you want to interact with.
 For each chain, that will be either `SablierV2LockupLinear` or `SablierV2LockupDynamic`. In this tutorial, we will
-create a **LockupLinear** stream on Goerli.
+create a **LockupLinear** stream on Sepolia.
 
 Once you find the right contract, click on the address to access its explorer's page. Click on the "Contract" tab, and
 then on the "Write Contract" sub-tab.
@@ -47,7 +47,8 @@ We will now proceed to create our first stream. Let's go with the following para
 
 - a `LockupLinear` stream
 - and a deposit of 20,000 DAI
-- starting Jan 1, 2024 and ending Jan 1, 2025
+- starting Jan 1, 2024
+- ending Jan 1, 2025
 - with no cliff
 - and non-cancelable
 
@@ -59,15 +60,15 @@ Open the **"createWithRange"** method, and start filling in the stream details:
 
 ![Etherscan 04](/img/etherscan-tutorial/04.png)
 
-```typescript
+```json
 {
-  sender: "0xe0ae83a6b9cc4f24d0638dc27179f311671e4e2a",
-  recipient: "0xb4bf8a8475d1e8e9a2088f118ad0e2cdc2896183",
-  totalAmount: 20000000000000000000000,
-  asset: "0x97cb342cf2f6ecf48c1285fb8668f5a4237bf862",
-  cancelable: false,
-  range: [1704067200,1704067200,1735689600],
-  broker: ["0x0000000000000000000000000000000000000000",0]
+  "sender": "0xe0ae83a6b9cc4f24d0638dc27179f311671e4e2a",
+  "recipient": "0xb4bf8a8475d1e8e9a2088f118ad0e2cdc2896183",
+  "totalAmount": 20000000000000000000000,
+  "asset": "0x97cb342cf2f6ecf48c1285fb8668f5a4237bf862",
+  "cancelable": false,
+  "range": [1704067200, 1704067200, 1735689600],
+  "broker": ["0x0000000000000000000000000000000000000000", 0]
 }
 ```
 
@@ -152,10 +153,9 @@ your wallet, and your stream should appear like this:
 For the durations version, we'll replace the `range` parameter with a new one representing the total length of the
 stream (in seconds) and the size of the cliff (in seconds).
 
-```typescript
+```json
 {
-  ...
-  durations: [0, 31536000] // no cliff and a total duration of 1 year ~= 365 days
+  "durations": [0, 31536000] // no cliff and a total duration of 1 year ~= 365 days
 }
 ```
 
@@ -168,17 +168,17 @@ stream (in seconds) and the size of the cliff (in seconds).
 
 ### Prerequisites
 
-To withdraw from a stream using Etherscan, you will need to obtain the stream's id. To know what this is without using
-the Sablier Interface, find the transaction in which the stream was created on Etherscan. See
-[this](https://goerli.etherscan.io/tx/0xa4ed68ab0c6bbedb2720ba9f7366abc12dfffc5f139ea6d7bcb967e28abc4ecb) as an example
-of what it should look.
+To withdraw from a stream using Etherscan, you will need to obtain the stream's ID. To obtain this without the Sablier
+Interface, find the transaction which created the stream on Etherscan. Here's an
+[example](https://sepolia.etherscan.io/tx/0xe1beef35643bd40ca17e8bf8ced365fe1cace475dbbf4ce4c41e7f299b741dce) of what it
+should look like.
 
-Once found, you will see the stream id between the two brackets. Note that stream id and "Token ID" are the same thing.
+Once found, you will see the stream ID between the two brackets. Note that stream ID and "Token ID" are the same thing.
 
 :::info
 
-You may withdraw from streams where you control the address marked as the "recipient". You may allow other parties to
-withdraw on your behalf (e.g. ask them to pay for the gas fee); you can read more about these advanced flows
+You may withdraw only from streams for which you are the recipient, but you can also allow other parties to withdraw on
+your behalf (e.g., have them pay the gas fee). You can read more about this advanced feature
 [here](/contracts/v2/reference/access-control#overview).
 
 :::
@@ -187,8 +187,8 @@ withdraw on your behalf (e.g. ask them to pay for the gas fee); you can read mor
 
 ### Step 1: Go to contract page
 
-Head over to our [deployments](/contracts/v2/deployments) list and pick the contract address you want to interact with.
-For each chain, that will be either `SablierV2LockupLinear` or `SablierV2LockupDynamic`.
+Head over to our [deployments](/contracts/v2/deployments) list and select the contract address you want to interact
+with. For each chain, that will be either `SablierV2LockupLinear` or `SablierV2LockupDynamic`.
 
 Once you find the right contract, click on the address to access its explorer's page. Click on the "Contract" tab, and
 then on the "Write Contract" sub-tab.
@@ -207,15 +207,15 @@ Head over to the **`withdraw`** method, and fill in the data.
 
 ![Etherscan 07](/img/etherscan-tutorial/07.png)
 
-```typescript
+```json
 {
-  streamId: 169,
-  to: "0xb4bf8a8475d1e8e9a2088f118ad0e2cdc2896183",
-  amount: 100000000000000000000,
+  "streamId": 169,
+  "to": "0xb4bf8a8475d1e8e9a2088f118ad0e2cdc2896183",
+  "amount": 100000000000000000000
 }
 ```
 
-#### Stream Id
+#### Stream ID
 
 The `streamId` is the value you have previously located in the transaction in which the stream was created.
 
@@ -254,7 +254,7 @@ Using its address, visit the token page on Etherscan (in this example, we're usi
 To get the address of an asset in the [Sablier Interface](/apps/overview), you can click on its name in the token list
 dialog or find an existing stream with that token and click on the icon inside the stream circle.
 
-![Etherscan 09](/img/etherscan-tutorial/09.png) ![](/img/etherscan-tutorial/10.png)
+![Etherscan 09](/img/etherscan-tutorial/09.png) ![Etherscan 10](/img/etherscan-tutorial/10.png)
 
 :::
 
@@ -282,14 +282,15 @@ use a proxy pattern. For these you have to search for the "Write as Proxy" tab.
 For the purpose of creating a **LockupLinear** stream with Sablier V2, the spender will be the
 [SablierV2LockupLinear](/contracts/v2/deployments#core) contract.
 
-As for the amount, you'll have to pad it with the right number of decimals. For DAI (18 decimals) a value of `100` will
-turn into `100 * 1e18` (100 followed by 18 zeroes), while for USDC, a value of `100` transforms into `100 * 1e8` (100
-followed by 8 zeroes). The same logic applies to the [total amounts](#total-amount) when creating the stream.
+As for the amount, you'll have to pad it with the right number of decimals. For DAI, that's 18 decimals, so a value of
+`100` will turn into `100 * 1e18` (100 followed by 18 zeroes). For USDC,that's 6 decimals, so a value of `100` will turn
+into `100 * 1e8` (100 followed by 8 zeroes). The same logic applies to the [total amounts](#total-amount) when creating
+the stream.
 
-```ts
+```json
 {
-  spender: "0xAFb979d9afAd1aD27C5eFf4E27226E3AB9e5dCC9",
-  amount: 100000000000000000000
+  "spender": "0xAFb979d9afAd1aD27C5eFf4E27226E3AB9e5dCC9",
+  "amount": 100000000000000000000
 }
 ```
 

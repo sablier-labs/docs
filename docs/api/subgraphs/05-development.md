@@ -28,24 +28,24 @@ To contribute to the V2 subgraphs or deploy your own, head over to the GitHub
 [`v2-subgraphs`](https://github.com/sablier-labs/v2-subgraphs) repository. Get started by reviewing the `packages/core`
 directory.
 
-To bootstrap a subgraph project, run the following commands. These will install all the necessary dependencies and
-generate the code for a possible `goerli` deployment.
+To bootstrap a subgraph project, run the following commands. They will install the requisite dependencies and generate
+the code for a Sepolia deployment.
 
 ```bash
 cd ./packages/core
 yarn install
-yarn setup:goerli
+yarn setup:sepolia
 ```
 
-To deploy a new subgraph (e.g. on Goerli):
+To deploy a new subgraph on Sepolia:
 
-1. make sure to create a new item (e.g. using The Graph's hosted network)
-2. add its name/endpoint under the `deploy:goerli` script in `package.json`
-3. add your own Sablier V2 contract addresses in `./constants/chains/goerli.ts`
-4. make sure you're [authenticated](the-graph-auth) in the terminal
-5. run `yarn deploy:goerli`
+1. Create a new item using The Graph's hosted network
+2. Add its name/endpoint under the `deploy:sepolia` script in `package.json`
+3. Add your own Sablier V2 contract addresses in `./constants/chains/sepolia.ts`
+4. Make sure you're [authenticated][the-graph-auth] on your local machine
+5. Run `yarn deploy:sepolia`
 
-Read more about the way The Graph works in their official [docs](the-graph-docs).
+You can read more about how the The Graph works in their [official docs][the-graph-docs].
 
 [the-graph-auth]: https://thegraph.com/docs/en/deploying/deploying-a-subgraph-to-hosted/#store-the-access-token
 [the-graph-docs]: https://thegraph.com/docs/en/
