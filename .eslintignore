@@ -5,4 +5,8 @@ repos
 
 # files
 babel.config.js
+bun.lockb
 docusaurus.config.js
+package-lock.json
+pnpm-lock.yaml
+yarn.lock
