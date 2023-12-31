@@ -3,7 +3,7 @@
 # Pre-requisites:
 # - foundry (https://getfoundry.sh/)
 # - rsync (https://github.com/WayneD/rsync)
-# - pnpm (https://pnpm.io)
+# - bun (https://bun.sh)
 # - sd (https://github.com/chmln/sd)
 
 # Strict mode: https://gist.github.com/vncsna/64825d5609c146e80de8b1fd623011ca
@@ -123,10 +123,10 @@ echo "$(echo -en '---\nsidebar_position: 3\n---\n'; cat $contract)" > $contract
 # ---------------------------------------------------------------------------- #
 
 # Format the docs with Prettier
-pnpm prettier --loglevel silent --write $all
+bun prettier --loglevel silent --write $all
 
 # Remove the italic asterisks added by `forge doc`: https://github.com/foundry-rs/foundry/issues/4540
 sd --string-mode "\*" "" $(find $all -type f -name "*.md")
 
 # Re-format the docs with Prettier
-pnpm prettier --loglevel silent --write $all
+bun prettier --loglevel silent --write $all

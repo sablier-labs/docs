@@ -18,36 +18,28 @@ jobs:
       - name: "Check out the repo"
         uses: "actions/checkout@v3"
 
-      - name: "Install Pnpm"
-        uses: "pnpm/action-setup@v2"
-        with:
-          version: "8"
-
-      - name: "Install Node.js"
-        uses: "actions/setup-node@v3"
-        with:
-          cache: "pnpm"
-          node-version: "lts/*"
+      - name: "Install Bun"
+        uses: "oven-sh/setup-bun@v1"
 
       - name: "Install the dependencies"
-        run: "pnpm install"
+        run: "bun install"
 
       - name: "Lint the code"
-        run: "pnpm check"
+        run: "bun run check"
 
       - name: "Pull Vercel environment information"
-        run: "pnpm vercel pull --environment=production --token=$VERCEL_TOKEN --yes"
+        run: "bun vercel pull --environment=production --token=$VERCEL_TOKEN --yes"
 
       - name: "Build the website"
-        run: "pnpm vercel build --prod --token=$VERCEL_TOKEN"
+        run: "bun vercel build --prod --token=$VERCEL_TOKEN"
 
       - name: "Add build summary"
         run: |
           echo "## Build results" >> $GITHUB_STEP_SUMMARY
           echo "✅ Passed" >> $GITHUB_STEP_SUMMARY
 
-      - name: "Deploy website to Vercel"
-        run: "pnpm vercel deploy --prebuilt --prod --token=$VERCEL_TOKEN"
+      - name: "Deploy the website to Vercel"
+        run: "bun vercel deploy --prebuilt --prod --token=$VERCEL_TOKEN"
 
       - name: "Add deploy summary"
         run: |
