@@ -1,6 +1,6 @@
 # Helpers
 
-[Git Source](https://github.com/sablier-labs/v2-core/blob/release/src/libraries/Helpers.sol)
+[Git Source](https://github.com/sablier-labs/v2-core/blob/a4bf69cf7024006b9a324eef433f20b74597eaaf/src/libraries/Helpers.sol)
 
 Library with helper functions needed across the Sablier V2 contracts.
 
@@ -40,7 +40,9 @@ function checkCreateWithMilestones(
 
 ### checkCreateWithRange
 
-_Checks the parameters of the {SablierV2LockupLinear-\_createWithRange} function._
+_Checks the parameters of the
+[SablierV2LockupLinear-\_createWithRange](/docs/contracts/v2/reference/core/contract.SablierV2LockupLinear.md#_createwithrange)
+function._
 
 ```solidity
 function checkCreateWithRange(uint128 depositAmount, LockupLinear.Range memory range) internal view;

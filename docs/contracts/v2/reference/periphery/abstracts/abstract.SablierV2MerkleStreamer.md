@@ -1,16 +1,21 @@
 # SablierV2MerkleStreamer
 
-[Git Source](https://github.com/sablier-labs/v2-periphery/blob/release/src/abstracts/SablierV2MerkleStreamer.sol)
+[Git Source](https://github.com/sablier-labs/v2-periphery/blob/53e259087984ff748fca6fb932fdb9c663c2b365/src/abstracts/SablierV2MerkleStreamer.sol)
 
 **Inherits:**
-[ISablierV2MerkleStreamer](/docs/contracts/v2/reference/periphery/interfaces/interface.ISablierV2MerkleStreamer.md)
-[Adminable](/docs/contracts/v2/reference/core/abstracts/abstract.Adminable.md)
+[ISablierV2MerkleStreamer](/docs/contracts/v2/reference/periphery/interfaces/interface.ISablierV2MerkleStreamer.md),
+Adminable
+
+See the documentation in
+[ISablierV2MerkleStreamer](/docs/contracts/v2/reference/periphery/interfaces/interface.ISablierV2MerkleStreamer.md).
 
 ## State Variables
 
 ### ASSET
 
-_The streamed ERC-20 asset._
+The streamed ERC-20 asset.
+
+_This is an immutable state variable._
 
 ```solidity
 IERC20 public immutable override ASSET;
@@ -18,7 +23,9 @@ IERC20 public immutable override ASSET;
 
 ### CANCELABLE
 
-_A flag indicating whether the streams can be canceled._
+A flag indicating whether the streams can be canceled.
+
+_This is an immutable state variable._
 
 ```solidity
 bool public immutable override CANCELABLE;
@@ -26,7 +33,9 @@ bool public immutable override CANCELABLE;
 
 ### EXPIRATION
 
-_The cut-off point for the Merkle streamer, as a Unix timestamp. A value of zero means there is no expiration._
+The cut-off point for the Merkle streamer, as a Unix timestamp. A value of zero means there is no expiration.
+
+_This is an immutable state variable._
 
 ```solidity
 uint40 public immutable override EXPIRATION;
@@ -34,7 +43,7 @@ uint40 public immutable override EXPIRATION;
 
 ### LOCKUP
 
-_The address of the {SablierV2Lockup} contract._
+The address of the [SablierV2Lockup](/docs/contracts/v2/reference/periphery/contract.SablierV2Lockup.md) contract.
 
 ```solidity
 ISablierV2Lockup public immutable override LOCKUP;
@@ -42,7 +51,9 @@ ISablierV2Lockup public immutable override LOCKUP;
 
 ### MERKLE_ROOT
 
-_The root of the Merkle tree used to validate the claims._
+The root of the Merkle tree used to validate the claims.
+
+_This is an immutable state variable._
 
 ```solidity
 bytes32 public immutable override MERKLE_ROOT;
@@ -50,13 +61,15 @@ bytes32 public immutable override MERKLE_ROOT;
 
 ### TRANSFERABLE
 
-_A flag indicating whether the stream NFTs are transferable._
+A flag indicating whether the stream NFTs are transferable.
+
+_This is an immutable state variable._
 
 ```solidity
 bool public immutable override TRANSFERABLE;
 ```
 
-### \_claimedBitMap;
+### \_claimedBitMap
 
 _Packed booleans that record the history of claims._
 
@@ -64,15 +77,11 @@ _Packed booleans that record the history of claims._
 BitMaps.BitMap internal _claimedBitMap;
 ```
 
-We are using
-[BitMaps](https://github.com/OpenZeppelin/openzeppelin-contracts/blob/e50c24f5839db17f46991478384bfda14acfb830/contracts/utils/structs/BitMaps.sol)
-OpenZeppelin's library.
-
-## User Facing Functions
+## Functions
 
 ### constructor
 
-_Sets the immutable state variables._
+_Constructs the contract by initializing the immutable state variables._
 
 ```solidity
 constructor(
@@ -88,10 +97,12 @@ constructor(
 
 ### hasClaimed
 
-Returns a flag indicating whether a claim has been made for a given index. Uses a bitmap to save gas.
+Returns a flag indicating whether a claim has been made for a given index.
+
+_Uses a bitmap to save gas._
 
 ```solidity
-function hasClaimed(uint256 index) external returns (bool);
+function hasClaimed(uint256 index) public view override returns (bool);
 ```
 
 **Parameters**
@@ -105,20 +116,21 @@ function hasClaimed(uint256 index) external returns (bool);
 Returns a flag indicating whether the Merkle streamer has expired.
 
 ```solidity
-function hasExpired() external returns (bool);
+function hasExpired() public view override returns (bool);
 ```
 
 ### clawback
 
 Claws back the unclaimed tokens from the Merkle streamer.
 
-Emits a {Clawback} event. Requirements:
+Emits a {Clawback} event. Notes:
 
-- `msg.sender` must be the contract admin.
-- The Merkle streamer must have expired.
+- If the protocol is not zero, the expiration check is not made. Requirements:
+- The caller must be the admin.
+- The campaign must either be expired or not have an expiration.
 
 ```solidity
-function clawback(address to, uint128 amount) external;
+function clawback(address to, uint128 amount) external override onlyAdmin;
 ```
 
 **Parameters**
@@ -128,9 +140,9 @@ function clawback(address to, uint128 amount) external;
 | `to`     | `address` | The address to receive the tokens. |
 | `amount` | `uint128` | The amount of tokens to claw back. |
 
-## Internal Functions
+### \_checkClaim
 
-Validates the parameters of the `claim` function, which is implemented by child contracts.
+_Validates the parameters of the `claim` function, which is implemented by child contracts._
 
 ```solidity
 function _checkClaim(uint256 index, bytes32 leaf, bytes32[] calldata merkleProof) internal view;

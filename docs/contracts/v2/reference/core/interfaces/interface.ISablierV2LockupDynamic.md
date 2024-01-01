@@ -1,10 +1,10 @@
 # ISablierV2LockupDynamic
 
-[Git Source](https://github.com/sablier-labs/v2-core/blob/bca1d9ea0485b065544486bb01f4148d44289644/docs/contracts/v2/reference/core/interfaces)
+[Git Source](https://github.com/sablier-labs/v2-core/blob/a4bf69cf7024006b9a324eef433f20b74597eaaf/src/interfaces/ISablierV2LockupDynamic.sol)
 
 **Inherits:** [ISablierV2Lockup](/docs/contracts/v2/reference/core/interfaces/interface.ISablierV2Lockup.md)
 
-Creates and manages lockup streams with dynamic streaming functions.
+Creates and manages Lockup streams with dynamic streaming functions.
 
 ## Functions
 
@@ -180,3 +180,19 @@ event CreateLockupDynamicStream(
     address broker
 );
 ```
+
+**Parameters**
+
+| Name           | Type                      | Description                                                                                                                                            |
+| -------------- | ------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `streamId`     | `uint256`                 | The id of the newly created stream.                                                                                                                    |
+| `funder`       | `address`                 | The address which has funded the stream.                                                                                                               |
+| `sender`       | `address`                 | The address from which to stream the assets, who will have the ability to cancel the stream.                                                           |
+| `recipient`    | `address`                 | The address toward which to stream the assets.                                                                                                         |
+| `amounts`      | `Lockup.CreateAmounts`    | Struct containing (i) the deposit amount, (ii) the protocol fee amount, and (iii) the broker fee amount, all denoted in units of the asset's decimals. |
+| `asset`        | `IERC20`                  | The contract address of the ERC-20 asset used for streaming.                                                                                           |
+| `cancelable`   | `bool`                    | Boolean indicating whether the stream will be cancelable or not.                                                                                       |
+| `transferable` | `bool`                    | Boolean indicating whether the stream NFT is transferable or not.                                                                                      |
+| `segments`     | `LockupDynamic.Segment[]` | The segments the protocol uses to compose the custom streaming curve.                                                                                  |
+| `range`        | `LockupDynamic.Range`     | Struct containing (i) the stream's start time and (ii) end time, both as Unix timestamps.                                                              |
+| `broker`       | `address`                 | The address of the broker who has helped create the stream, e.g. a front-end website.                                                                  |

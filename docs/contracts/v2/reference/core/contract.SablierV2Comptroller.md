@@ -4,7 +4,7 @@ sidebar_position: 4
 
 # SablierV2Comptroller
 
-[Git Source](https://github.com/sablier-labs/v2-core/blob/release/src/SablierV2Comptroller.sol)
+[Git Source](https://github.com/sablier-labs/v2-core/blob/a4bf69cf7024006b9a324eef433f20b74597eaaf/src/SablierV2Comptroller.sol)
 
 **Inherits:** [ISablierV2Comptroller](/docs/contracts/v2/reference/core/interfaces/interface.ISablierV2Comptroller.md),
 [Adminable](/docs/contracts/v2/reference/core/abstracts/abstract.Adminable.md)

@@ -1,6 +1,6 @@
 # IERC3156FlashLender
 
-[Git Source](https://github.com/sablier-labs/v2-core/blob/release/src/interfaces/erc3156/IERC3156FlashLender.sol)
+[Git Source](https://github.com/sablier-labs/v2-core/blob/a4bf69cf7024006b9a324eef433f20b74597eaaf/src/interfaces/erc3156/IERC3156FlashLender.sol)
 
 Interface for ERC-3156 flash lenders.
 

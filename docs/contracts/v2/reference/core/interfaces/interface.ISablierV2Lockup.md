@@ -1,11 +1,11 @@
 # ISablierV2Lockup
 
-[Git Source](https://github.com/sablier-labs/v2-core/blob/release/src/interfaces/ISablierV2Lockup.sol)
+[Git Source](https://github.com/sablier-labs/v2-core/blob/a4bf69cf7024006b9a324eef433f20b74597eaaf/src/interfaces/ISablierV2Lockup.sol)
 
 **Inherits:** [ISablierV2Base](/docs/contracts/v2/reference/core/interfaces/interface.ISablierV2Base.md),
-[IERC721Metadata](https://github.com/OpenZeppelin/openzeppelin-contracts/blob/e50c24f5839db17f46991478384bfda14acfb830/contracts/token/ERC721/extensions/IERC721Metadata.sol)
+IERC721Metadata
 
-Common logic between all Sablier V2 lockup streaming contracts.
+Common logic between all Sablier V2 Lockup streaming contracts.
 
 ## Functions
 
@@ -388,7 +388,9 @@ function cancelMultiple(uint256[] calldata streamIds) external;
 
 Removes the right of the stream's sender to cancel the stream.
 
-Emits a {RenounceLockupStream} and {MetadataUpdate} event. Notes:
+Emits a
+[RenounceLockupStream](/docs/contracts/v2/reference/core/interfaces/interface.ISablierV2Lockup.md#renouncelockupstream)
+and {MetadataUpdate} event. Notes:
 
 - This is an irreversible operation.
 - This function attempts to invoke a hook on the stream's recipient, provided that the recipient is a contract.
@@ -412,7 +414,8 @@ function renounce(uint256 streamId) external;
 
 Sets a new NFT descriptor contract, which produces the URI describing the Sablier stream NFTs.
 
-Emits a {SetNFTDescriptor} and {BatchMetadataUpdate} event. Notes:
+Emits a [SetNFTDescriptor](/docs/contracts/v2/reference/core/interfaces/interface.ISablierV2Lockup.md#setnftdescriptor)
+and {BatchMetadataUpdate} event. Notes:
 
 - Does not revert if the NFT descriptor is the same. Requirements:
 - `msg.sender` must be the contract admin.
@@ -479,7 +482,9 @@ function withdrawMax(uint256 streamId, address to) external;
 Withdraws the maximum withdrawable amount from the stream to the current recipient, and transfers the NFT to
 `newRecipient`.
 
-Emits a {WithdrawFromLockupStream} and a {Transfer} event. Notes:
+Emits a
+[WithdrawFromLockupStream](/docs/contracts/v2/reference/core/interfaces/interface.ISablierV2Lockup.md#withdrawfromlockupstream)
+and a {Transfer} event. Notes:
 
 - If the withdrawable amount is zero, the withdrawal is skipped.
 - Refer to the notes in {withdraw}. Requirements:
@@ -532,11 +537,22 @@ event CancelLockupStream(
     uint256 streamId,
     address indexed sender,
     address indexed recipient,
-    address indexed asset,
+    IERC20 indexed asset,
     uint128 senderAmount,
     uint128 recipientAmount
 );
 ```
+
+**Parameters**
+
+| Name              | Type      | Description                                                                                                 |
+| ----------------- | --------- | ----------------------------------------------------------------------------------------------------------- |
+| `streamId`        | `uint256` | The id of the stream.                                                                                       |
+| `sender`          | `address` | The address of the stream's sender.                                                                         |
+| `recipient`       | `address` | The address of the stream's recipient.                                                                      |
+| `asset`           | `IERC20`  | The contract address of the ERC-20 asset used for streaming.                                                |
+| `senderAmount`    | `uint128` | The amount of assets refunded to the stream's sender, denoted in units of the asset's decimals.             |
+| `recipientAmount` | `uint128` | The amount of assets left for the stream's recipient to withdraw, denoted in units of the asset's decimals. |
 
 ### RenounceLockupStream
 
@@ -545,6 +561,12 @@ Emitted when a sender gives up the right to cancel a stream.
 ```solidity
 event RenounceLockupStream(uint256 indexed streamId);
 ```
+
+**Parameters**
+
+| Name       | Type      | Description           |
+| ---------- | --------- | --------------------- |
+| `streamId` | `uint256` | The id of the stream. |
 
 ### SetNFTDescriptor
 
@@ -556,10 +578,27 @@ event SetNFTDescriptor(
 );
 ```
 
+**Parameters**
+
+| Name               | Type                      | Description                                     |
+| ------------------ | ------------------------- | ----------------------------------------------- |
+| `admin`            | `address`                 | The address of the current contract admin.      |
+| `oldNFTDescriptor` | `ISablierV2NFTDescriptor` | The address of the old NFT descriptor contract. |
+| `newNFTDescriptor` | `ISablierV2NFTDescriptor` | The address of the new NFT descriptor contract. |
+
 ### WithdrawFromLockupStream
 
 Emitted when assets are withdrawn from a stream.
 
 ```solidity
-event WithdrawFromLockupStream(uint256 indexed streamId, address indexed to, address indexed asset, uint128 amount);
+event WithdrawFromLockupStream(uint256 indexed streamId, address indexed to, IERC20 indexed asset, uint128 amount);
 ```
+
+**Parameters**
+
+| Name       | Type      | Description                                                               |
+| ---------- | --------- | ------------------------------------------------------------------------- |
+| `streamId` | `uint256` | The id of the stream.                                                     |
+| `to`       | `address` | The address that has received the withdrawn assets.                       |
+| `asset`    | `IERC20`  | The contract address of the ERC-20 asset used for streaming.              |
+| `amount`   | `uint128` | The amount of assets withdrawn, denoted in units of the asset's decimals. |

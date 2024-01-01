@@ -1,6 +1,6 @@
 # LockupDynamic
 
-[Git Source](https://github.com/sablier-labs/v2-core/blob/release/src/types/DataTypes.sol)
+[Git Source](https://github.com/sablier-labs/v2-core/blob/a4bf69cf7024006b9a324eef433f20b74597eaaf/src/types/DataTypes.sol)
 
 Namespace for the structs used in
 [SablierV2LockupDynamic](docs/contracts/v2/reference/core/contract.SablierV2LockupDynamic.md).
@@ -24,7 +24,7 @@ struct CreateWithDeltas {
 }
 ```
 
-**Parameters**
+**Properties**
 
 | Name           | Type                 | Description                                                                                                                                                                                                    |
 | -------------- | -------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -32,8 +32,8 @@ struct CreateWithDeltas {
 | `cancelable`   | `bool`               | Indicates if the stream is cancelable.                                                                                                                                                                         |
 | `transferable` | `bool`               | Indicates if the stream NFT is transferable.                                                                                                                                                                   |
 | `recipient`    | `address`            | The address receiving the assets.                                                                                                                                                                              |
-| `totalAmount`  | `uint128`            | The total amount of `ERC-20` assets to be paid, including the stream deposit and any potential fees, all denoted in units of the asset's decimals.                                                             |
-| `asset`        | `IERC20`             | The contract address of the `ERC-20` asset used for streaming.                                                                                                                                                 |
+| `totalAmount`  | `uint128`            | The total amount of ERC-20 assets to be paid, including the stream deposit and any potential fees, all denoted in units of the asset's decimals.                                                               |
+| `asset`        | `IERC20`             | The contract address of the ERC-20 asset used for streaming.                                                                                                                                                   |
 | `broker`       | `Broker`             | Struct containing (i) the address of the broker assisting in creating the stream, and (ii) the percentage fee paid to the broker from `totalAmount`, denoted as a fixed-point number. Both can be set to zero. |
 | `segments`     | `SegmentWithDelta[]` | Segments with deltas used to compose the custom streaming curve. Milestones are calculated by starting from `block.timestamp` and adding each delta to the previous milestone.                                 |
 
@@ -55,7 +55,7 @@ struct CreateWithMilestones {
 }
 ```
 
-**Parameters**
+**Properties**
 
 | Name           | Type        | Description                                                                                                                                                                                                    |
 | -------------- | ----------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -64,8 +64,8 @@ struct CreateWithMilestones {
 | `cancelable`   | `bool`      | Indicates if the stream is cancelable.                                                                                                                                                                         |
 | `transferable` | `bool`      | Indicates if the stream NFT is transferable.                                                                                                                                                                   |
 | `recipient`    | `address`   | The address receiving the assets.                                                                                                                                                                              |
-| `totalAmount`  | `uint128`   | The total amount of `ERC-20` assets to be paid, including the stream deposit and any potential fees, all denoted in units of the asset's decimals.                                                             |
-| `asset`        | `IERC20`    | The contract address of the `ERC-20` asset used for streaming.                                                                                                                                                 |
+| `totalAmount`  | `uint128`   | The total amount of ERC-20 assets to be paid, including the stream deposit and any potential fees, all denoted in units of the asset's decimals.                                                               |
+| `asset`        | `IERC20`    | The contract address of the ERC-20 asset used for streaming.                                                                                                                                                   |
 | `broker`       | `Broker`    | Struct containing (i) the address of the broker assisting in creating the stream, and (ii) the percentage fee paid to the broker from `totalAmount`, denoted as a fixed-point number. Both can be set to zero. |
 | `segments`     | `Segment[]` | Segments used to compose the custom streaming curve.                                                                                                                                                           |
 
@@ -80,6 +80,13 @@ struct Range {
 }
 ```
 
+**Properties**
+
+| Name    | Type     | Description                                       |
+| ------- | -------- | ------------------------------------------------- |
+| `start` | `uint40` | The Unix timestamp indicating the stream's start. |
+| `end`   | `uint40` | The Unix timestamp indicating the stream's end.   |
+
 ### Segment
 
 Segment struct used in the Lockup Dynamic stream.
@@ -92,7 +99,7 @@ struct Segment {
 }
 ```
 
-**Parameters**
+**Properties**
 
 | Name        | Type      | Description                                                                                    |
 | ----------- | --------- | ---------------------------------------------------------------------------------------------- |
@@ -112,13 +119,13 @@ struct SegmentWithDelta {
 }
 ```
 
-**Parameters**
+**Properties**
 
-| Name        | Type      | Description                                                                                    |
-| ----------- | --------- | ---------------------------------------------------------------------------------------------- |
-| `amount`    | `uint128` | The amount of assets to be streamed in this segment, denoted in units of the asset's decimals. |
-| `exponent`  | `UD2x18`  | The exponent of this segment, denoted as a fixed-point number.                                 |
-| `milestone` | `uint40`  | The time difference in seconds between this segment and the previous one.                      |
+| Name       | Type      | Description                                                                                    |
+| ---------- | --------- | ---------------------------------------------------------------------------------------------- |
+| `amount`   | `uint128` | The amount of assets to be streamed in this segment, denoted in units of the asset's decimals. |
+| `exponent` | `UD2x18`  | The exponent of this segment, denoted as a fixed-point number.                                 |
+| `delta`    | `uint40`  | The time difference in seconds between this segment and the previous one.                      |
 
 ### Stream
 
@@ -142,18 +149,18 @@ struct Stream {
 }
 ```
 
-**Parameters**
+**Properties**
 
-| Name             | Type             | Description                                                                                                              |
-| ---------------- | ---------------- | ------------------------------------------------------------------------------------------------------------------------ |
-| `sender`         | `address`        | The address streaming the assets, with the ability to cancel the stream. It doesn't have to be the same as `msg.sender`. |
-| `startTime`      | `uint40`         | The Unix timestamp indicating the stream's start.                                                                        |
-| `endTime`        | `uint40`         | The Unix timestamp indicating the stream's end.                                                                          |
-| `isCancelable`   | `bool`           | Boolean indicating if the stream is cancelable.                                                                          |
-| `wasCanceled`    | `bool`           | Boolean indicating if the stream was canceled.                                                                           |
-| `asset`          | `IERC20`         | The contract address of the `ERC-20` asset used for streaming.                                                           |
-| `isDepleted`     | `bool`           | Boolean indicating if the stream is depleted.                                                                            |
-| `isStream`       | `bool`           | Boolean indicating if the struct entity exists.                                                                          |
-| `isTransferable` | `bool`           | Boolean indicating if the stream NFT is transferable.                                                                    |
-| `amounts`        | `Lockup.Amounts` | Struct containing the deposit, withdrawn, and refunded amounts, all denoted in units of the asset's decimals.            |
-| `segments`       | `Segment[]`      | Segments used to compose the custom streaming curve.                                                                     |
+| Name             | Type             | Description                                                                                                   |
+| ---------------- | ---------------- | ------------------------------------------------------------------------------------------------------------- |
+| `sender`         | `address`        | The address streaming the assets, with the ability to cancel the stream.                                      |
+| `startTime`      | `uint40`         | The Unix timestamp indicating the stream's start.                                                             |
+| `endTime`        | `uint40`         | The Unix timestamp indicating the stream's end.                                                               |
+| `isCancelable`   | `bool`           | Boolean indicating if the stream is cancelable.                                                               |
+| `wasCanceled`    | `bool`           | Boolean indicating if the stream was canceled.                                                                |
+| `asset`          | `IERC20`         | The contract address of the ERC-20 asset used for streaming.                                                  |
+| `isDepleted`     | `bool`           | Boolean indicating if the stream is depleted.                                                                 |
+| `isStream`       | `bool`           | Boolean indicating if the struct entity exists.                                                               |
+| `isTransferable` | `bool`           | Boolean indicating if the stream NFT is transferable.                                                         |
+| `amounts`        | `Lockup.Amounts` | Struct containing the deposit, withdrawn, and refunded amounts, all denoted in units of the asset's decimals. |
+| `segments`       | `Segment[]`      | Segments used to compose the custom streaming curve.                                                          |

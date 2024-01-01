@@ -1,6 +1,6 @@
 # SablierV2FlashLoan
 
-[Git Source](https://github.com/sablier-labs/v2-core/blob/release/src/abstracts/SablierV2FlashLoan.sol)
+[Git Source](https://github.com/sablier-labs/v2-core/blob/a4bf69cf7024006b9a324eef433f20b74597eaaf/src/abstracts/SablierV2FlashLoan.sol)
 
 **Inherits:**
 [IERC3156FlashLender](/docs/contracts/v2/reference/core/interfaces/erc3156/interface.IERC3156FlashLender.md),
@@ -75,7 +75,8 @@ function maxFlashLoan(address asset) external view override returns (uint256 amo
 Allows smart contracts to access the entire liquidity of the Sablier V2 contract within one transaction as long as the
 principal plus a flash fee is returned.
 
-Emits a {FlashLoan} event. Requirements:
+Emits a [FlashLoan](/docs/contracts/v2/reference/core/abstracts/abstract.SablierV2FlashLoan.md#flashloan) event.
+Requirements:
 
 - Must not be delegate called.
 - Refer to the requirements in {flashFee}.
@@ -129,3 +130,14 @@ event FlashLoan(
     bytes data
 );
 ```
+
+**Parameters**
+
+| Name        | Type                    | Description                                                 |
+| ----------- | ----------------------- | ----------------------------------------------------------- |
+| `initiator` | `address`               | The address of the flash loan initiator.                    |
+| `receiver`  | `IERC3156FlashBorrower` | The address of the flash borrower.                          |
+| `asset`     | `IERC20`                | The address of the ERC-20 asset that has been flash loaned. |
+| `amount`    | `uint256`               | The amount of `asset` flash loaned.                         |
+| `feeAmount` | `uint256`               | The fee amount of `asset` charged by the protocol.          |
+| `data`      | `bytes`                 | The data passed to the flash borrower.                      |

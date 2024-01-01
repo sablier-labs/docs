@@ -1,6 +1,6 @@
 # Batch
 
-[Git Source](https://github.com/sablier-labs/v2-periphery/blob/05c331e79e05886c7837dfda1bc21197c1c3c748/src/types/DataTypes.sol)
+[Git Source](https://github.com/sablier-labs/v2-periphery/blob/53e259087984ff748fca6fb932fdb9c663c2b365/src/types/DataTypes.sol)
 
 ## Structs
 
@@ -17,14 +17,13 @@ struct CancelMultiple {
 
 ### CreateWithDeltas
 
-A struct encapsulating all parameters of
-[SablierV2LockupDynamic.createWithDelta](/contracts/v2/reference/core/types/library.LockupDynamic#createwithdeltas)
-except for the asset.
+A struct encapsulating all parameters of {SablierV2LockupDynamic.createWithDelta} except for the asset.
 
 ```solidity
 struct CreateWithDeltas {
     address sender;
     bool cancelable;
+    bool transferable;
     address recipient;
     uint128 totalAmount;
     Broker broker;
@@ -34,9 +33,7 @@ struct CreateWithDeltas {
 
 ### CreateWithDurations
 
-A struct encapsulating all parameters of
-[SablierV2LockupLinear.createWithDurations](/contracts/v2/reference/core/types/library.LockupLinear#createwithdurations)
-except for the asset.
+A struct encapsulating all parameters of {SablierV2LockupLinear.createWithDurations} except for the asset.
 
 ```solidity
 struct CreateWithDurations {
@@ -44,6 +41,7 @@ struct CreateWithDurations {
     address recipient;
     uint128 totalAmount;
     bool cancelable;
+    bool transferable;
     LockupLinear.Durations durations;
     Broker broker;
 }
@@ -51,15 +49,14 @@ struct CreateWithDurations {
 
 ### CreateWithMilestones
 
-A struct encapsulating all parameters of
-[SablierV2LockupDynamic.createWithMilestones](/contracts/v2/reference/core/types/library.LockupDynamic#createwithmilestones)
-except for the asset.
+A struct encapsulating all parameters of {SablierV2LockupDynamic.createWithMilestones} except for the asset.
 
 ```solidity
 struct CreateWithMilestones {
     address sender;
     uint40 startTime;
     bool cancelable;
+    bool transferable;
     address recipient;
     uint128 totalAmount;
     Broker broker;
@@ -69,9 +66,7 @@ struct CreateWithMilestones {
 
 ### CreateWithRange
 
-A struct encapsulating all parameters of
-[SablierV2LockupLinear.createWithRange](/contracts/v2/reference/core/types/library.LockupLinear#createwithrange)) except
-for the asset.
+A struct encapsulating all parameters of {SablierV2LockupLinear.createWithRange} except for the asset.
 
 ```solidity
 struct CreateWithRange {
@@ -79,6 +74,7 @@ struct CreateWithRange {
     address recipient;
     uint128 totalAmount;
     bool cancelable;
+    bool transferable;
     LockupLinear.Range range;
     Broker broker;
 }
