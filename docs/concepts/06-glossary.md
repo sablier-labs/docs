@@ -64,8 +64,10 @@ The technical architecture of Ethereum, which many other blockchains have approp
 
 ## Gas Fee
 
-Transaction fee paid to the blockchain miners/validators in the native token. This fee is only paid during deposits and
-withdrawals.
+[Gas fees](https://www.investopedia.com/terms/g/gas-ethereum.asp) are transaction fees paid to the blockchain validators
+in native tokens such as ETH. Sablier Labs does not take any cut from this.
+
+Gas is paid only when streams are created, canceled, transferred, or withdrawn from. It does not accrue in real-time.
 
 ## Lockup
 
