@@ -13,7 +13,7 @@ using:
 
 - [GraphQL Code Generator](https://the-guild.dev/graphql/codegen/docs/getting-started) to create types from your GraphQL
   fragments and queries
-- [TanStack Query](tanstack.com/query/) to fetch results from the exposed endpoints.
+- [TanStack Query](https://tanstack.com/query) to fetch results from the exposed endpoints.
 
 <LinkPreview
   href="https://github.com/sablier-labs/v2-subgraphs"
