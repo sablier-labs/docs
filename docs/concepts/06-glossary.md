@@ -62,6 +62,13 @@ The technical architecture of Ethereum, which many other blockchains have approp
 
 [Foundry][foundry] is the application development toolkit that has been used to develop the Sablier Protocol.
 
+## Gas Fee
+
+[Gas fees](https://www.investopedia.com/terms/g/gas-ethereum.asp) are transaction fees paid to the blockchain validators
+in native tokens such as ETH. Sablier Labs does not take any cut from this.
+
+Gas is paid only when streams are created, canceled, transferred, or withdrawn from. It does not accrue in real-time.
+
 ## Lockup
 
 A term coined by us to refer to the requirement of locking up assets in order to create a stream.
