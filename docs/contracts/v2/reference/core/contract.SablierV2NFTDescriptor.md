@@ -4,7 +4,7 @@ sidebar_position: 3
 
 # SablierV2NFTDescriptor
 
-[Git Source](https://github.com/sablier-labs/v2-core/blob/release/src/SablierV2NFTDescriptor.sol)
+[Git Source](https://github.com/sablier-labs/v2-core/blob/a4bf69cf7024006b9a324eef433f20b74597eaaf/src/SablierV2NFTDescriptor.sol)
 
 **Inherits:**
 [ISablierV2NFTDescriptor](/docs/contracts/v2/reference/core/interfaces/interface.ISablierV2NFTDescriptor.md)
@@ -61,9 +61,9 @@ function abbreviateAmount(uint256 amount, uint256 decimals) internal pure return
 
 **Returns**
 
-| Name     | Type     | Description                                                         |
-| -------- | -------- | ------------------------------------------------------------------- |
-| `<none>` | `string` | The abbreviated representation of the provided amount, as a string. |
+| Name     | Type     | Description                                                                      |
+| -------- | -------- | -------------------------------------------------------------------------------- |
+| `<none>` | `string` | abbreviation The abbreviated representation of the provided amount, as a string. |
 
 ### calculateDurationInDays
 

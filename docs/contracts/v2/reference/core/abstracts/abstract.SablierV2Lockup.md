@@ -1,12 +1,9 @@
 # SablierV2Lockup
 
-[Git Source](https://github.com/sablier-labs/v2-core/blob/release/src/abstracts/SablierV2Lockup.sol)
+[Git Source](https://github.com/sablier-labs/v2-core/blob/a4bf69cf7024006b9a324eef433f20b74597eaaf/src/abstracts/SablierV2Lockup.sol)
 
-**Inherits:**
-[IERC4906](https://github.com/OpenZeppelin/openzeppelin-contracts/blob/e50c24f5839db17f46991478384bfda14acfb830/contracts/interfaces/IERC4906.sol),
-[SablierV2Base](/docs/contracts/v2/reference/core/abstracts/abstract.SablierV2Base.md),
-[ISablierV2Lockup](/docs/contracts/v2/reference/core/interfaces/interface.ISablierV2Lockup.md),
-[ERC721](https://github.com/OpenZeppelin/openzeppelin-contracts/blob/e50c24f5839db17f46991478384bfda14acfb830/contracts/token/ERC721/ERC721.sol)
+**Inherits:** IERC4906, [SablierV2Base](/docs/contracts/v2/reference/core/abstracts/abstract.SablierV2Base.md),
+[ISablierV2Lockup](/docs/contracts/v2/reference/core/interfaces/interface.ISablierV2Lockup.md), ERC721
 
 See the documentation in [ISablierV2Lockup](/docs/contracts/v2/reference/core/interfaces/interface.ISablierV2Lockup.md).
 
@@ -59,7 +56,7 @@ modifier notNull(uint256 streamId);
 
 ### updateMetadata
 
-_Emits an `ERC-4906` event to trigger an update of the NFT metadata._
+_Emits an ERC-4906 event to trigger an update of the NFT metadata._
 
 ```solidity
 modifier updateMetadata(uint256 streamId);
@@ -180,6 +177,22 @@ function withdrawableAmountOf(uint256 streamId)
     override
     notNull(streamId)
     returns (uint128 withdrawableAmount);
+```
+
+**Parameters**
+
+| Name       | Type      | Description                  |
+| ---------- | --------- | ---------------------------- |
+| `streamId` | `uint256` | The stream id for the query. |
+
+### isTransferable
+
+Retrieves a flag indicating whether the stream NFT can be transferred.
+
+_Reverts if `streamId` references a null stream._
+
+```solidity
+function isTransferable(uint256 streamId) public view virtual returns (bool);
 ```
 
 **Parameters**
@@ -370,8 +383,7 @@ function withdrawMaxAndTransfer(
     external
     override
     noDelegateCall
-    notNull(streamId)
-    updateMetadata(streamId);
+    notNull(streamId);
 ```
 
 **Parameters**
@@ -413,60 +425,27 @@ function withdrawMultiple(
 
 ### \_afterTokenTransfer
 
-Overrides the internal `ERC-721` transfer function to emit an `ERC-4906` event upon transfer. The goal is to refresh the
-NFT metadata on external platforms. This event is also emitted when the NFT is minted or burned.
+Overrides the internal ERC-721 transfer function to emit an ERC-4906 event upon transfer. The goal is to refresh the NFT
+metadata on external platforms.
+
+_This event is also emitted when the NFT is minted or burned._
 
 ```solidity
-function _afterTokenTransfer(
-    address, /* from */
-    address, /* to */
-    uint256 streamId,
-    uint256 /* batchSize */
-)
-    internal
-    override
-    updateMetadata(streamId)
-{ }
+function _afterTokenTransfer(address, address, uint256 streamId, uint256) internal override updateMetadata(streamId);
 ```
-
-**Parameters**
-
-| Name        | Type      | Description                  |
-| ----------- | --------- | ---------------------------- |
-| `from`      | `address` | Ignored.                     |
-| `to`        | `address` | Ignored.                     |
-| `streamId`  | `uint256` | The stream id for the query. |
-| `batchSize` | `uint256` | Ignored.                     |
 
 ### \_beforeTokenTransfer
 
-Overrides the internal `ERC-721` transfer function to check that the stream is transferable. There are two cases when
-the transferable flag is ignored:
+Overrides the internal ERC-721 transfer function to check that the stream is transferable.
+
+There are two cases when the transferable flag is ignored:
 
 - If `from` is 0, then the transfer is a mint and is allowed.
 - If `to` is 0, then the transfer is a burn and is also allowed.
 
 ```solidity
-function _beforeTokenTransfer(
-    address from,
-    address to,
-    uint256 streamId,
-    uint256 /* batchSize */
-)
-    internal
-    view
-    override
-{ }
+function _beforeTokenTransfer(address from, address to, uint256 streamId, uint256) internal view override;
 ```
-
-**Parameters**
-
-| Name        | Type      | Description                   |
-| ----------- | --------- | ----------------------------- |
-| `from`      | `address` | The address to transfer from. |
-| `to`        | `address` | The address to transfer to.   |
-| `streamId`  | `uint256` | The stream id for the query.  |
-| `batchSize` | `uint256` | Ignored.                      |
 
 ### \_isCallerStreamRecipientOrApproved
 

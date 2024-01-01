@@ -1,6 +1,6 @@
 # IAdminable
 
-[Git Source](https://github.com/sablier-labs/v2-core/blob/release/src/interfaces/IAdminable.sol)
+[Git Source](https://github.com/sablier-labs/v2-core/blob/a4bf69cf7024006b9a324eef433f20b74597eaaf/src/interfaces/IAdminable.sol)
 
 Contract module that provides a basic access control mechanism, with an admin that can be granted exclusive access to
 specific functions. The inheriting contract must set the initial admin in the constructor.
@@ -45,3 +45,10 @@ Emitted when the admin is transferred.
 ```solidity
 event TransferAdmin(address indexed oldAdmin, address indexed newAdmin);
 ```
+
+**Parameters**
+
+| Name       | Type      | Description                   |
+| ---------- | --------- | ----------------------------- |
+| `oldAdmin` | `address` | The address of the old admin. |
+| `newAdmin` | `address` | The address of the new admin. |

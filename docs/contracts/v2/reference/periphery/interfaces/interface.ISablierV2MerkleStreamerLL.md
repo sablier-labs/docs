@@ -1,31 +1,28 @@
 # ISablierV2MerkleStreamerLL
 
-[Git Source](https://github.com/sablier-labs/v2-periphery/blob/release/src/interfaces/ISablierV2MerkleStreamerLL.sol)
+[Git Source](https://github.com/sablier-labs/v2-periphery/blob/53e259087984ff748fca6fb932fdb9c663c2b365/src/interfaces/ISablierV2MerkleStreamerLL.sol)
 
 **Inherits:**
-[ISablierV2MerkleStreamer](/contracts/v2/reference/periphery/interfaces/interface.ISablierV2MerkleStreamer)
+[ISablierV2MerkleStreamer](/docs/contracts/v2/reference/periphery/interfaces/interface.ISablierV2MerkleStreamer.md)
 
-_See the documentation in
-[ISablierV2MerkleStreamer](/contracts/v2/reference/periphery/interfaces/interface.ISablierV2MerkleStreamer)._
-
-_Merkle streamer that creates Lockup Linear streams._
+Merkle streamer that creates Lockup Linear streams.
 
 ## Functions
 
 ### LOCKUP_LINEAR
 
-The address of the {SablierV2LockupLinear} contract.
+The address of the [SablierV2LockupLinear](docs/contracts/v2/reference/core/contract.SablierV2LockupLinear.md) contract.
 
 ```solidity
-function LOCKUP_LINEAR() external returns (ISablierV2LockupLinear);
+function LOCKUP_LINEAR() external view returns (ISablierV2LockupLinear);
 ```
 
 ### streamDurations
 
-The total streaming duration of each stream, after claim.
+The total streaming duration of each stream.
 
 ```solidity
-function streamDurations() external returns (uint40 cliff, uint40 duration);
+function streamDurations() external view returns (uint40 cliff, uint40 duration);
 ```
 
 ### claim
@@ -34,9 +31,9 @@ Makes the claim by creating a Lockup Linear stream to the recipient.
 
 Emits a {Claim} event. Requirements:
 
-- The protocol fee must be zero.
 - The campaign must not have expired.
 - The stream must not have been claimed already.
+- The protocol fee must be zero.
 - The Merkle proof must be valid.
 
 ```solidity
@@ -50,9 +47,17 @@ function claim(
     returns (uint256 streamId);
 ```
 
-| Name      | Type          | Description                                    |
-| --------- | ------------- | ---------------------------------------------- |
-| `index`   | `uint256`     | The index of the recipient in the Merkle tree. |
-| `address` | `recipient`   | The address of the stream holder.              |
-| `amount`  | `uint128`     | The amount of tokens to be streamed.           |
-| `bytes32` | `merkleProof` | The Merkle proof of inclusion in the stream.   |
+**Parameters**
+
+| Name          | Type        | Description                                    |
+| ------------- | ----------- | ---------------------------------------------- |
+| `index`       | `uint256`   | The index of the recipient in the Merkle tree. |
+| `recipient`   | `address`   | The address of the stream holder.              |
+| `amount`      | `uint128`   | The amount of tokens to be streamed.           |
+| `merkleProof` | `bytes32[]` | The Merkle proof of inclusion in the stream.   |
+
+**Returns**
+
+| Name       | Type      | Description                         |
+| ---------- | --------- | ----------------------------------- |
+| `streamId` | `uint256` | The id of the newly created stream. |

@@ -1,6 +1,6 @@
 # ISablierV2Base
 
-[Git Source](https://github.com/sablier-labs/v2-core/blob/release/src/interfaces/ISablierV2Base.sol)
+[Git Source](https://github.com/sablier-labs/v2-core/blob/a4bf69cf7024006b9a324eef433f20b74597eaaf/src/interfaces/ISablierV2Base.sol)
 
 **Inherits:** [IAdminable](/docs/contracts/v2/reference/core/interfaces/interface.IAdminable.md)
 
@@ -45,7 +45,9 @@ function protocolRevenues(IERC20 asset) external view returns (uint128 revenues)
 
 Claims all accumulated protocol revenues for the provided ERC-20 asset.
 
-Emits a {ClaimProtocolRevenues} event. Requirements:
+Emits a
+[ClaimProtocolRevenues](/docs/contracts/v2/reference/core/interfaces/interface.ISablierV2Base.md#claimprotocolrevenues)
+event. Requirements:
 
 - `msg.sender` must be the contract admin.
 
@@ -63,7 +65,8 @@ function claimProtocolRevenues(IERC20 asset) external;
 
 Assigns a new comptroller contract responsible for the protocol configuration.
 
-Emits a {SetComptroller} event. Notes:
+Emits a [SetComptroller](/docs/contracts/v2/reference/core/interfaces/interface.ISablierV2Base.md#setcomptroller) event.
+Notes:
 
 - Does not revert if the comptroller is the same. Requirements:
 - `msg.sender` must be the contract admin.
@@ -88,6 +91,14 @@ Emitted when the admin claims all protocol revenues accrued for a particular ERC
 event ClaimProtocolRevenues(address indexed admin, IERC20 indexed asset, uint128 protocolRevenues);
 ```
 
+**Parameters**
+
+| Name               | Type      | Description                                                                           |
+| ------------------ | --------- | ------------------------------------------------------------------------------------- |
+| `admin`            | `address` | The address of the contract admin.                                                    |
+| `asset`            | `IERC20`  | The contract address of the ERC-20 asset the protocol revenues have been claimed for. |
+| `protocolRevenues` | `uint128` | The amount of protocol revenues claimed, denoted in units of the asset's decimals.    |
+
 ### SetComptroller
 
 Emitted when the admin sets a new comptroller contract.
@@ -95,3 +106,11 @@ Emitted when the admin sets a new comptroller contract.
 ```solidity
 event SetComptroller(address indexed admin, ISablierV2Comptroller oldComptroller, ISablierV2Comptroller newComptroller);
 ```
+
+**Parameters**
+
+| Name             | Type                    | Description                                  |
+| ---------------- | ----------------------- | -------------------------------------------- |
+| `admin`          | `address`               | The address of the contract admin.           |
+| `oldComptroller` | `ISablierV2Comptroller` | The address of the old comptroller contract. |
+| `newComptroller` | `ISablierV2Comptroller` | The address of the new comptroller contract. |

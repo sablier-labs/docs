@@ -1,6 +1,6 @@
 # ISablierV2Comptroller
 
-[Git Source](https://github.com/sablier-labs/v2-core/blob/release/src/interfaces/ISablierV2Comptroller.sol)
+[Git Source](https://github.com/sablier-labs/v2-core/blob/a4bf69cf7024006b9a324eef433f20b74597eaaf/src/interfaces/ISablierV2Comptroller.sol)
 
 **Inherits:** [IAdminable](/docs/contracts/v2/reference/core/interfaces/interface.IAdminable.md)
 
@@ -60,7 +60,8 @@ function protocolFees(IERC20 asset) external view returns (UD60x18 fee);
 
 Updates the flash fee charged on all flash loans made with any ERC-20 asset.
 
-Emits a {SetFlashFee} event. Notes:
+Emits a [SetFlashFee](/docs/contracts/v2/reference/core/interfaces/interface.ISablierV2Comptroller.md#setflashfee)
+event. Notes:
 
 - Does not revert if the fee is the same. Requirements:
 - `msg.sender` must be the contract admin.
@@ -79,7 +80,8 @@ function setFlashFee(UD60x18 newFlashFee) external;
 
 Sets a new protocol fee that will be charged on all streams created with the provided ERC-20 asset.
 
-Emits a {SetProtocolFee} event. Notes:
+Emits a [SetProtocolFee](/docs/contracts/v2/reference/core/interfaces/interface.ISablierV2Comptroller.md#setprotocolfee)
+event. Notes:
 
 - The fee is not denoted in units of the asset's decimals; it is a fixed-point number. Refer to the PRBMath
   documentation for more detail on the logic of UD60x18.
@@ -101,7 +103,9 @@ function setProtocolFee(IERC20 asset, UD60x18 newProtocolFee) external;
 
 Toggles the flash loanability of an ERC-20 asset.
 
-Emits a {ToggleFlashAsset} event. Requirements:
+Emits a
+[ToggleFlashAsset](/docs/contracts/v2/reference/core/interfaces/interface.ISablierV2Comptroller.md#toggleflashasset)
+event. Requirements:
 
 - `msg.sender` must be the admin.
 
@@ -125,6 +129,14 @@ Emitted when the admin sets a new flash fee.
 event SetFlashFee(address indexed admin, UD60x18 oldFlashFee, UD60x18 newFlashFee);
 ```
 
+**Parameters**
+
+| Name          | Type      | Description                                         |
+| ------------- | --------- | --------------------------------------------------- |
+| `admin`       | `address` | The address of the contract admin.                  |
+| `oldFlashFee` | `UD60x18` | The old flash fee, denoted as a fixed-point number. |
+| `newFlashFee` | `UD60x18` | The new flash fee, denoted as a fixed-point number. |
+
 ### SetProtocolFee
 
 Emitted when the admin sets a new protocol fee for the provided ERC-20 asset.
@@ -133,6 +145,15 @@ Emitted when the admin sets a new protocol fee for the provided ERC-20 asset.
 event SetProtocolFee(address indexed admin, IERC20 indexed asset, UD60x18 oldProtocolFee, UD60x18 newProtocolFee);
 ```
 
+**Parameters**
+
+| Name             | Type      | Description                                                                     |
+| ---------------- | --------- | ------------------------------------------------------------------------------- |
+| `admin`          | `address` | The address of the contract admin.                                              |
+| `asset`          | `IERC20`  | The contract address of the ERC-20 asset the new protocol fee has been set for. |
+| `oldProtocolFee` | `UD60x18` | The old protocol fee, denoted as a fixed-point number.                          |
+| `newProtocolFee` | `UD60x18` | The new protocol fee, denoted as a fixed-point number.                          |
+
 ### ToggleFlashAsset
 
 Emitted when the admin enables or disables an ERC-20 asset for flash loaning.
@@ -140,3 +161,11 @@ Emitted when the admin enables or disables an ERC-20 asset for flash loaning.
 ```solidity
 event ToggleFlashAsset(address indexed admin, IERC20 indexed asset, bool newFlag);
 ```
+
+**Parameters**
+
+| Name      | Type      | Description                                         |
+| --------- | --------- | --------------------------------------------------- |
+| `admin`   | `address` | The address of the contract admin.                  |
+| `asset`   | `IERC20`  | The contract address of the ERC-20 asset to toggle. |
+| `newFlag` | `bool`    | Whether the ERC-20 asset can be flash loaned.       |

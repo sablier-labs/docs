@@ -1,6 +1,6 @@
 # SablierV2Base
 
-[Git Source](https://github.com/sablier-labs/v2-core/blob/release/src/abstracts/SablierV2Base.sol)
+[Git Source](https://github.com/sablier-labs/v2-core/blob/a4bf69cf7024006b9a324eef433f20b74597eaaf/src/abstracts/SablierV2Base.sol)
 
 **Inherits:** [NoDelegateCall](/docs/contracts/v2/reference/core/abstracts/abstract.NoDelegateCall.md),
 [ISablierV2Base](/docs/contracts/v2/reference/core/interfaces/interface.ISablierV2Base.md),

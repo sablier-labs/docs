@@ -22,7 +22,6 @@ periphery=docs/contracts/v2/reference/periphery
 find $core -type f -name "*.md" -delete
 find $periphery -type f -name "*.md" -delete
 
-
 run() {
   # This is either "core" or "periphery"
   repo=$1
@@ -78,10 +77,11 @@ run() {
 run "core"
 
 # Update the hyperlinks to use the directory structure of the docs website
-sd "src/abstracts/\w+\.sol" $core/abstracts $(find $core -type f -name "*.md")
-sd "src/interfaces/erc3156/\w+\.sol" $core/interfaces/erc3156 $(find $core -type f -name "*.md")
-sd "src/interfaces/\w+\.sol" $core/interfaces $(find $core -type f -name "*.md")
-sd "src/\w+\.sol" $core $(find $core -type f -name "*.md")
+# We need the capturing group to avoid replacing the "Git Source" URLs
+sd "src/abstracts/\w+\.sol/([\w.]+)" $core'/abstracts/$1' $(find $core -type f -name "*.md")
+sd "src/interfaces/erc3156/\w+\.sol/([\w.]+)" $core'/interfaces/erc3156/$1' $(find $core -type f -name "*.md")
+sd "src/interfaces/\w+\.sol/([\w.]+)" $core'/interfaces/$1' $(find $core -type f -name "*.md")
+sd "src/\w+\.sol/([\w.]+)" $core/'$1' $(find $core -type f -name "*.md")
 
 # Reorder the contracts in the sidebar
 contract=$core/contract.SablierV2LockupLinear.md
@@ -104,18 +104,18 @@ echo "$(echo -en '---\nsidebar_position: 4\n---\n'; cat $contract)" > $contract
 run "periphery"
 
 # Update the hyperlinks to use the directory structure of the docs website
-sd "src/abstracts/\w+\.sol" $periphery/abstracts $(find $periphery -type f -name "*.md")
-sd "src/interfaces/\w+\.sol" $periphery/interfaces $(find $periphery -type f -name "*.md")
-sd "src/\w+\.sol" $periphery $(find $periphery -type f -name "*.md")
+sd "src/abstracts/\w+\.sol/([\w.]+)" $periphery'/abstracts/$1' $(find $periphery -type f -name "*.md")
+sd "src/interfaces/\w+\.sol/([\w.]+)" $periphery'/interfaces/$1' $(find $periphery -type f -name "*.md")
+sd "src/\w+\.sol/([\w.]+)" $periphery'/$1' $(find $periphery -type f -name "*.md")
 
 # Reorder the contracts in the sidebar
-contract=$periphery/contract.SablierV2Archive.md
+contract=$periphery/contract.SablierV2Batch.md
 echo "$(echo -en '---\nsidebar_position: 1\n---\n'; cat $contract)" > $contract
 
-contract=$periphery/contract.SablierV2ProxyPlugin.md
+contract=$periphery/contract.SablierV2MerkleStreamerFactory.md
 echo "$(echo -en '---\nsidebar_position: 2\n---\n'; cat $contract)" > $contract
 
-contract=$periphery/contract.SablierV2ProxyTarget.md
+contract=$periphery/contract.SablierV2MerkleStreamerLL.md
 echo "$(echo -en '---\nsidebar_position: 3\n---\n'; cat $contract)" > $contract
 
 # ---------------------------------------------------------------------------- #
@@ -123,10 +123,10 @@ echo "$(echo -en '---\nsidebar_position: 3\n---\n'; cat $contract)" > $contract
 # ---------------------------------------------------------------------------- #
 
 # Format the docs with Prettier
-bun prettier --loglevel silent --write $all
+bun prettier --log-level silent --write $all
 
 # Remove the italic asterisks added by `forge doc`: https://github.com/foundry-rs/foundry/issues/4540
 sd --string-mode "\*" "" $(find $all -type f -name "*.md")
 
 # Re-format the docs with Prettier
-bun prettier --loglevel silent --write $all
+bun prettier --log-level silent --write $all
