@@ -66,7 +66,6 @@ Once the initialization completes, take a look around at what got set up:
 
 ```tree
 ├── foundry.toml
-├── lib
 ├── script
 ├── src
 └── test
@@ -74,8 +73,8 @@ Once the initialization completes, take a look around at what got set up:
 
 The folder structure should be intuitive:
 
-- `src` is where you’ll write Solidity contracts
-- `test` is where you’ll write tests (also in Solidity)
+- `src` is where you'll write Solidity contracts
+- `test` is where you'll write tests (also in Solidity)
 - `script` is where you'll write scripts to perform actions like deploying contracts (you guessed it, in Solidity)
 - `foundry.toml` is where you can configure your Foundry settings, which we will leave as is in this guide
 
