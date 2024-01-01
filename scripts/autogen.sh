@@ -58,6 +58,7 @@ run() {
   find $reference -type d -empty -delete
 
   # The Periphery has certain references to the Core
+  sd "\{SablierV2Lockup\}" "[SablierV2Lockup]($core/abstracts/abstract.SablierV2Lockup.md)" $(find $reference -type f -name "*.md")
   sd "\{SablierV2LockupDynamic\}" "[SablierV2LockupDynamic]($core/contract.SablierV2LockupDynamic.md)" $(find $reference -type f -name "*.md")
   sd "\{SablierV2LockupLinear\}" "[SablierV2LockupLinear]($core/contract.SablierV2LockupLinear.md)" $(find $reference -type f -name "*.md")
 

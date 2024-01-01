@@ -69,7 +69,7 @@ function hasExpired() external view returns (bool);
 
 ### LOCKUP
 
-The address of the [SablierV2Lockup](/docs/contracts/v2/reference/periphery/contract.SablierV2Lockup.md) contract.
+The address of the [SablierV2Lockup](docs/contracts/v2/reference/core/abstracts/abstract.SablierV2Lockup.md) contract.
 
 ```solidity
 function LOCKUP() external returns (ISablierV2Lockup);
