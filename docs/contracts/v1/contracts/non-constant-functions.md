@@ -34,7 +34,7 @@ to access their token balance.
 
 :::
 
-:::warning
+:::danger
 
 The transaction must be processed by the Ethereum blockchain before the start time of the stream, or otherwise the
 contract will revert with a "start time before block.timestamp" message.
