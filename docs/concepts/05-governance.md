@@ -22,8 +22,8 @@ The Comptroller is a special contract that holds configuration parameters. To le
 
 :::info
 
-While the Comptroller holds configuration parameters for flash loaning, no Sablier contract currently implements this
-feature.
+While the Comptroller holds configuration parameters for fees, no Sablier contract charges users at the moment. You can
+read more about fees [here](/concepts/protocol/fee).
 
 :::
 
@@ -45,13 +45,21 @@ Here are the multisig addresses that are currently administering the Sablier Pro
 
 ## Trustlessness
 
-Despite having an admin, the Sablier Protocol remains trustless. This is because:
+Despite having an admin, the Sablier Protocol remains trustless. Here are the reasons why:
 
 1. The protocol is permissionless, i.e. it can be freely accessed by anyone with an Internet connection.
 2. The protocol is persistent, i.e. the admin cannot pause it.
 3. The streaming logic is non-upgradeable, i.e. the admin cannot tamper with the streams created by users.
 4. There are no escape hatches that allow the admin to claim user funds.
 5. There is a hard-coded upper limit of 10% to the fees that the admin can charge.
+
+## Timelocks
+
+The parameter changes that can be effected are NOT subject to a timelock. This means that the admin can execute any of
+the functions listed above at any time.
+
+However, you should note that the fees would only be charged on new streams. The admin cannot retroactively charge fees
+on existing streams. The streams you have already created will remain free of charge, forever.
 
 ## Governance
 
