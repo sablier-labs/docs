@@ -78,7 +78,7 @@
   "repository": "github:sablier-labs/v2-docs",
   "scripts": {
     "build": "docusaurus build",
-    "check": "bun run prettier:check && bun run lint:fix",
+    "check": "bun run prettier:check && bun run lint:check",
     "clear": "docusaurus clear",
     "deploy": "docusaurus deploy",
     "fix": "bun run prettier:write && bun run lint:fix",

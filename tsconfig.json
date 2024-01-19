@@ -6,8 +6,8 @@
     "checkJs": true,
     "moduleResolution": "node",
     "module": "ESNext",
-    "target": "ESNext"
+    "target": "ESNext",
   },
   "exclude": [".docusaurus", "node_modules", "static/js"],
-  "include": ["**/*.js", "**/*.ts", "**/*.tsx"]
+  "include": ["**/*.js", "**/*.ts", "**/*.tsx"],
 }
