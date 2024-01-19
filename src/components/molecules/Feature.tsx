@@ -3,6 +3,7 @@ import styled from "@emotion/styled";
 import Link from "@docusaurus/Link";
 import ArrowRightIcon from "@heroicons/react/24/outline/ArrowRightIcon";
 import type UserCircleIcon from "@heroicons/react/24/outline/UserCircleIcon";
+import Heading from "@theme/Heading";
 
 const WrapperPartial = styled(Link)`
   display: flex;
@@ -127,7 +128,7 @@ function Feature({ description, Icon, title, to }: Props) {
         <ArrowRightIcon />
       </Box>
       <Title>
-        <h3>{title}</h3>
+        <Heading as="h3">{title}</Heading>
       </Title>
       <Description>
         <p>{description}</p>

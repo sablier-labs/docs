@@ -6,6 +6,9 @@
     "checkJs": true,
     "moduleResolution": "node",
     "module": "ESNext",
+    "paths": {
+      "react": ["./node_modules/@types/react"],
+    },
     "target": "ESNext",
   },
   "exclude": [".docusaurus", "node_modules", "static/js"],

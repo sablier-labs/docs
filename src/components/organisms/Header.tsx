@@ -4,6 +4,7 @@ import ComputerDesktopIcon from "@heroicons/react/24/outline/ComputerDesktopIcon
 import CubeIcon from "@heroicons/react/24/outline/CubeIcon";
 import DocumentTextIcon from "@heroicons/react/24/outline/DocumentTextIcon";
 import LightBulbIcon from "@heroicons/react/24/outline/LightBulbIcon";
+import Heading from "@theme/Heading";
 import Feature from "../molecules/Feature";
 import Underlay from "./Header/Underlay";
 
@@ -93,7 +94,7 @@ export default function Header() {
       <Underlay />
       <Content>
         <Title>
-          <h1>Sablier Docs</h1>
+          <Heading as="h1">Sablier Docs</Heading>
         </Title>
         <Subtitle>
           <p>Documentation for the Sablier token distribution protocol</p>

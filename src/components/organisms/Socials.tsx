@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "@emotion/styled";
 import Link from "@docusaurus/Link";
+import Heading from "@theme/Heading";
 import { links } from "../../constants";
 import GitHubIcon from "../../icons/GitHubIcon";
 import MediumIcon from "../../icons/MediumIcon";
@@ -91,7 +92,7 @@ function Socials() {
         <Social href={links.discord}>
           <img src="img/social/discord.svg" style={{ width: "48px", height: "48px" }} />
           <div>
-            <h4>Discord</h4>
+            <Heading as="h4">Discord</Heading>
             <p>Hop in to the #dev channel to get help.</p>
           </div>
         </Social>
@@ -101,7 +102,7 @@ function Socials() {
             <GitHubIcon size={48} />{" "}
           </StyledGitHubIcon>
           <div>
-            <h4>GitHub</h4>
+            <Heading as="h4">GitHub</Heading>
             <p>View all Sablier code repositories.</p>
           </div>
         </Social>
@@ -111,7 +112,7 @@ function Socials() {
             <MediumIcon size={48} />{" "}
           </StyledMediumIcon>
           <div>
-            <h4>Medium</h4>
+            <Heading as="h4">Medium</Heading>
             <p>Follow the announcements on our blog.</p>
           </div>
         </Social>
