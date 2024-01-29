@@ -92,5 +92,8 @@
     "swizzle": "docusaurus swizzle",
     "typecheck": "tsc",
     "write-heading-ids": "docusaurus write-heading-ids"
+  },
+  "resolutions": {
+    "jackspeak": "2.1.1"
   }
 }
