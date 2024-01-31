@@ -69,7 +69,7 @@ Or maybe you're looking for V1? [Click here](/contracts/v1/deployments).
 | :--------------------- | :-------------------------------------------------------------------------------------------------------------------- | :---------------------------------------------------------------------------------- |
 | SablierV2LockupLinear  | [0xB24B65E015620455bB41deAAd4e1902f1Be9805f](https://snowtrace.io/address/0xB24B65E015620455bB41deAAd4e1902f1Be9805f) | [core-v1.1.2](https://github.com/sablier-labs/v2-deployments/tree/main/core/v1.1.2) |
 | SablierV2LockupDynamic | [0x0310Da0D8fF141166eD47548f00c96464880781F](https://snowtrace.io/address/0x0310Da0D8fF141166eD47548f00c96464880781F) | [core-v1.1.2](https://github.com/sablier-labs/v2-deployments/tree/main/core/v1.1.2) |
-| SablierV2NFTDescriptor | [0xaBEdCf46c5D1d8eD8B9a487144189887695835DC](https://snowtrace.io/address/0xaBEdCf46c5D1d8eD8B9a487144189887695835DC) | [core-v1.1.1](https://github.com/sablier-labs/v2-deployments/tree/main/core/v1.1.1) |
+| SablierV2NFTDescriptor | [0xaBEdCf46c5D1d8eD8B9a487144189887695835DC](https://snowtrace.io/address/0xaBEdCf46c5D1d8eD8B9a487144189887695835DC) | [core-v1.1.2](https://github.com/sablier-labs/v2-deployments/tree/main/core/v1.1.2) |
 | SablierV2Comptroller   | [0x66F5431B0765D984f82A4fc4551b2c9ccF7eAC9C](https://snowtrace.io/address/0x66F5431B0765D984f82A4fc4551b2c9ccF7eAC9C) | [core-v1.0.0](https://github.com/sablier-labs/v2-deployments/tree/main/core/v1.0.0) |
 
 ### Periphery
@@ -213,8 +213,8 @@ Or maybe you're looking for V1? [Click here](/contracts/v1/deployments).
 | :--------------------- | :--------------------------------------------------------------------------------------------------------------------------------------- | :---------------------------------------------------------------------------------- |
 | SablierV2LockupLinear  | [0xe59D28bEF2D37E99b93E734ed1dDcFc4B9C1bf73](https://sepolia-optimistic.etherscan.io/address/0xe59D28bEF2D37E99b93E734ed1dDcFc4B9C1bf73) | [core-v1.1.2](https://github.com/sablier-labs/v2-deployments/tree/main/core/v1.1.2) |
 | SablierV2LockupDynamic | [0xf9e4095C1dfC058B34135C5c48cae66a8D2b3Aa5](https://sepolia-optimistic.etherscan.io/address/0xf9e4095C1dfC058B34135C5c48cae66a8D2b3Aa5) | [core-v1.1.2](https://github.com/sablier-labs/v2-deployments/tree/main/core/v1.1.2) |
-| SablierV2NFTDescriptor | [0x3590f54c5d3d83BA68c17cF5C28DB89C5d1DfA10](https://sepolia-optimistic.etherscan.io/address/0x3590f54c5d3d83BA68c17cF5C28DB89C5d1DfA10) | [core-v1.1.1](https://github.com/sablier-labs/v2-deployments/tree/main/core/v1.1.1) |
-| SablierV2Comptroller   | [0x6587166c4F4E0b6203549463EbAB4dBeFA63fd8f](https://sepolia-optimistic.etherscan.io/address/0x6587166c4F4E0b6203549463EbAB4dBeFA63fd8f) | [core-v1.1.1](https://github.com/sablier-labs/v2-deployments/tree/main/core/v1.0.0) |
+| SablierV2NFTDescriptor | [0x3590f54c5d3d83BA68c17cF5C28DB89C5d1DfA10](https://sepolia-optimistic.etherscan.io/address/0x3590f54c5d3d83BA68c17cF5C28DB89C5d1DfA10) | [core-v1.1.2](https://github.com/sablier-labs/v2-deployments/tree/main/core/v1.1.2) |
+| SablierV2Comptroller   | [0x6587166c4F4E0b6203549463EbAB4dBeFA63fd8f](https://sepolia-optimistic.etherscan.io/address/0x6587166c4F4E0b6203549463EbAB4dBeFA63fd8f) | [core-v1.1.2](https://github.com/sablier-labs/v2-deployments/tree/main/core/v1.1.2) |
 
 ### Periphery
 
