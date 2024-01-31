@@ -133,6 +133,24 @@ Or maybe you're looking for V1? [Click here](/contracts/v1/deployments).
 | SablierV2Batch                 | [0xBd9DDbC55B85FF6Dc0b76E9EFdCd2547Ab482501](https://gnosisscan.io/address/0xBd9DDbC55B85FF6Dc0b76E9EFdCd2547Ab482501) | [periphery-v1.1.0](https://github.com/sablier-labs/v2-deployments/tree/main/periphery/v1.1.0) |
 | SablierV2MerkleStreamerFactory | [0x777F66477FF83aBabADf39a3F22A8CC3AEE43765](https://gnosisscan.io/address/0x777F66477FF83aBabADf39a3F22A8CC3AEE43765) | [periphery-v1.1.0](https://github.com/sablier-labs/v2-deployments/tree/main/periphery/v1.1.0) |
 
+## LightLink
+
+### Core
+
+| Contract               | Address                                                                                                                       | Deployment                                                                          |
+| :--------------------- | :---------------------------------------------------------------------------------------------------------------------------- | :---------------------------------------------------------------------------------- |
+| SablierV2LockupLinear  | [0x17c4f98c40e69a6A0D5c42B11E3733f076A99E20](https://phoenix.lightlink.io/address/0x17c4f98c40e69a6A0D5c42B11E3733f076A99E20) | [core-v1.1.2](https://github.com/sablier-labs/v2-deployments/tree/main/core/v1.1.2) |
+| SablierV2LockupDynamic | [0x49d753422ff05daa291A9efa383E4f57daEAd889](https://phoenix.lightlink.io/address/0x49d753422ff05daa291A9efa383E4f57daEAd889) | [core-v1.1.2](https://github.com/sablier-labs/v2-deployments/tree/main/core/v1.1.2) |
+| SablierV2NFTDescriptor | [0xda55fB3E53b7d205e37B6bdCe990b789255e4302](https://phoenix.lightlink.io/address/0xda55fB3E53b7d205e37B6bdCe990b789255e4302) | [core-v1.1.2](https://github.com/sablier-labs/v2-deployments/tree/main/core/v1.1.2) |
+| SablierV2Comptroller   | [0xb568f9Bc0dcE39B9B64e843bC19DA102B5E3E939](https://phoenix.lightlink.io/address/0xb568f9Bc0dcE39B9B64e843bC19DA102B5E3E939) | [core-v1.1.2](https://github.com/sablier-labs/v2-deployments/tree/main/core/v1.1.2) |
+
+### Periphery
+
+| Contract                       | Address                                                                                                                       | Deployment                                                                                    |
+| :----------------------------- | :---------------------------------------------------------------------------------------------------------------------------- | :-------------------------------------------------------------------------------------------- |
+| SablierV2Batch                 | [0x3eb9F8f80354a157315Fce64990C554434690c2f](https://phoenix.lightlink.io/address/0x3eb9F8f80354a157315Fce64990C554434690c2f) | [periphery-v1.1.0](https://github.com/sablier-labs/v2-deployments/tree/main/periphery/v1.1.0) |
+| SablierV2MerkleStreamerFactory | [0xdB07a1749D5Ca49909C7C4159652Fbd527c735B8](https://phoenix.lightlink.io/address/0xdB07a1749D5Ca49909C7C4159652Fbd527c735B8) | [periphery-v1.1.0](https://github.com/sablier-labs/v2-deployments/tree/main/periphery/v1.1.0) |
+
 ## Optimism
 
 ### Core
