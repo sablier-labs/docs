@@ -13,9 +13,7 @@ chain where Sablier is deployed:
 | Claim Protocol Revenues[^1] | `claimProtocolRevenues` | `SablierV2LockupLinear`, `SablierV2LockupDynamic` |
 | Set Comptroller             | `setComptroller`        | `SablierV2LockupLinear`, `SablierV2LockupDynamic` |
 | Set NFT Descriptor          | `setNFTDescriptor`      | `SablierV2LockupLinear`, `SablierV2LockupDynamic` |
-| Set Flash Fee               | `setFlashFee`           | `SablierV2Comptroller`                            |
 | Set Protocol Fee            | `setProtocolFee`        | `SablierV2Comptroller`                            |
-| Toggle Flash Asset          | `toggleFlashAsset`      | `SablierV2Comptroller`                            |
 
 The Comptroller is a special contract that holds configuration parameters. To learn more about the Comptroller, see its
 [reference](/contracts/v2/reference/core/contract.SablierV2Comptroller).
