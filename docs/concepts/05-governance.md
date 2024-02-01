@@ -27,9 +27,10 @@ read more about fees [here](/concepts/protocol/fee).
 
 :::
 
-## Multisig Addresses
+## Admins
 
-Here are the multisig addresses that are currently administering the Sablier Protocol:
+Here are the addresses that are currently administering the Sablier Protocol. Most of them are Safe multi-signature
+wallets.
 
 | Chain           | Address                                                                                                                          |
 | :-------------- | :------------------------------------------------------------------------------------------------------------------------------- |
@@ -39,6 +40,7 @@ Here are the multisig addresses that are currently administering the Sablier Pro
 | Base            | [0x83A6fA8c04420B3F9C7A4CF1c040b63Fbbc89B66](https://basescan.org/address/0x83A6fA8c04420B3F9C7A4CF1c040b63Fbbc89B66)            |
 | BNB Smart Chain | [0x6666cA940D2f4B65883b454b7Bc7EEB039f64fa3](https://bscscan.com/address/0x6666cA940D2f4B65883b454b7Bc7EEB039f64fa3)             |
 | Gnosis          | [0x72ACB57fa6a8fa768bE44Db453B1CDBa8B12A399](https://gnosisscan.io/address/0x72ACB57fa6a8fa768bE44Db453B1CDBa8B12A399)           |
+| LightLink       | [0xb1bEF51ebCA01EB12001a639bDBbFF6eEcA12B9F](https://phoenix.lightlink.io/address/0xb1bEF51ebCA01EB12001a639bDBbFF6eEcA12B9F)    |
 | Optimism        | [0x43c76FE8Aec91F63EbEfb4f5d2a4ba88ef880350](https://optimistic.etherscan.io/address/0x43c76FE8Aec91F63EbEfb4f5d2a4ba88ef880350) |
 | Polygon         | [0x40A518C5B9c1d3D6d62Ba789501CE4D526C9d9C6](https://polygonscan.com/address/0x40A518C5B9c1d3D6d62Ba789501CE4D526C9d9C6)         |
 | Scroll          | [0x0F7Ad835235Ede685180A5c611111610813457a9](https://scrollscan.com/address/0x0F7Ad835235Ede685180A5c611111610813457a9)          |
