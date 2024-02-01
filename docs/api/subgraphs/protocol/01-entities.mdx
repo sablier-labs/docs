@@ -6,13 +6,12 @@ title: "Entities"
 
 ## Entity Architecture
 
-GraphQL entities defined by the Sablier subgraphs are meant to mirror the functionality exposed by the v2-core
+GraphQL entities defined by the Sablier subgraphs are meant to mirror the functionality exposed by our v2-core
 contracts. To achieve this, events are stored as historical entries (e.g. Action) while also being used to mutate
-attributes for live entities (e.g. Stream). Some external utilities may also be used by this subgraph to improve the
-developer experience (e.g. tracking the immutable PRBProxy for data on the creator of a stream).
+attributes for live entities (e.g. Stream).
 
-Inside the **core** subgraph, the
-[`schema.graphql`](https://github.com/sablier-labs/v2-subgraphs/blob/main/packages/core/schema.graphql) file is
+Inside the **protocol** subgraph, the
+[`schema.graphql`](https://github.com/sablier-labs/v2-subgraphs/blob/main/apps/protocol/schema.graphql) file is
 responsible of defining the following Sablier entities:
 
 ### Primary

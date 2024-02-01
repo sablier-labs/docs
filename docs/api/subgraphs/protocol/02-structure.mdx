@@ -115,12 +115,21 @@ same entity as the sender. However, there may be cases when someone wishes to cr
 while also marking them as the sender. In that case, this initial address will be accounted for as the stream's
 `funder`.
 
-#### The proxender
+#### The proxender (relevant only for V2.0, deprecated with V2.1+)
 
-While not mandatory for the core functionality, Sablier V2 (through its
-[periphery](https://github.com/sablier-labs/v2-periphery)) makes use of
-[PRBProxy](https://github.com/paulrberg/prb-proxy). The official client interfaces will mainly provide support for
-functionality exposed through this proxy integration.
+:::warning Warning: Deprecated
+
+Sablier V2.0 involved users deploying a "PRBProxy" contract through which they interacted with the Sablier contracts.
+With Sablier V2.1+ this is not the case any more as streams are now designed to be managed without these forwarder
+contracts. Therefore, you don't need to worry about `proxenders` and `proxy` if you're not looking to support old
+versions of the protocol.
+
+:::
+
+[In V2.0] While not mandatory for the core functionality, Sablier (through its
+[periphery](https://github.com/sablier-labs/v2-periphery)) made use of
+[PRBProxy](https://github.com/paulrberg/prb-proxy). The official client interfaces provided support for functionality
+exposed through both EOAs and this proxy integration, at the same time.
 
 For streams created within this "extended" ecosystem, a few attributes and entities will change meaning as such:
 
@@ -138,11 +147,25 @@ For streams created within this "extended" ecosystem, a few attributes and entit
 While other combinations are possible, the most likely ones (as supported by the official interfaces) will be similar to
 example #3.
 
+:::warning
+
+For Sablier V2.1 and above, you should only rely on the `recipient` and `sender` parties.
+
+:::
+
 ---
 
 ## Asset
 
 Tokens (ERC20) streamed through the protocol will be defined through an `Asset` entity.
+
+:::info
+
+As a development caveat, some ERC20 contracts are designed to store details (e.g. name, symbol) as `bytes32` and not
+`string`. Prior to deploying a subgraph, make sure you take into account these details as part of any Asset entity
+implementation. For examples, see the asset "helper" files inside this subgraph's repository code.
+
+:::
 
 ---
 

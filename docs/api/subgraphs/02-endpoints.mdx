@@ -1,0 +1,164 @@
+---
+id: "endpoints"
+sidebar_position: 1
+title: "Endpoints"
+---
+
+import LinkPreview from "@site/src/components/LinkPreview";
+
+## Sablier V2 - Protocol
+
+This subgraph tracks events mainly emitted by the [`@sablier/v2-core`](/contracts/v2/reference/overview#core) contracts.
+It deals with core protocol actions like creating, withdrawing or transferring streams.
+
+### Endpoints
+
+| Chain            | Explorer                                   | Hosted Network                                              | Decentralized Explorer[^1]          |
+| ---------------- | ------------------------------------------ | ----------------------------------------------------------- | ----------------------------------- |
+| Ethereum         | [Playground][v2-explorer-ethereum]         | [sablier-v2][v2-endpoint-ethereum]                          | [Studio](v2-decentralized-ethereum) |
+| Arbitrum         | [Playground][v2-explorer-arbitrum]         | [sablier-v2-arbitrum][v2-endpoint-arbitrum]                 | [Studio](v2-decentralized-arbitrum) |
+| Arbitrum Sepolia | [Playground][v2-explorer-arbitrum-sepolia] | [sablier-v2-arbitrum-sepolia][v2-endpoint-arbitrum-sepolia] | N/A                                 |
+| Avalanche        | [Playground][v2-explorer-avalanche]        | [sablier-v2-avalanche][v2-endpoint-avalanche]               | N/A                                 |
+| Base             | [Playground][v2-explorer-base]             | [sablier-v2-avalanche][v2-endpoint-base]                    | N/A                                 |
+| Optimism         | [Playground][v2-explorer-optimism]         | [sablier-v2-optimism][v2-endpoint-optimism]                 | N/A                                 |
+| Polygon          | [Playground][v2-explorer-polygon]          | [sablier-v2-matic][v2-endpoint-polygon]                     | [Studio](v2-decentralized-polygon)  |
+| BNB Smart Chain  | [Playground][v2-explorer-bsc]              | [sablier-v2-bsc][v2-endpoint-bsc]                           | N/A                                 |
+| Gnosis           | [Playground][v2-explorer-gnosis]           | [sablier-v2-gnosis][v2-endpoint-gnosis]                     | N/A                                 |
+| Scroll           | [Playground][v2-explorer-scroll]           | [sablier-v2-scroll][v2-endpoint-scroll]                     | N/A                                 |
+| Sepolia          | [Playground][v2-explorer-sepolia]          | [sablier-v2-sepolia][v2-endpoint-sepolia]                   | N/A                                 |
+
+[v2-decentralized-ethereum]:
+  https://thegraph.com/explorer/subgraphs/EuZZnhFtdCGqN2Zt7EMGYDqQKNrVuhJL63KAfwvF35bL?view=Overview&chain=arbitrum-one
+[v2-decentralized-arbitrum]:
+  https://thegraph.com/explorer/subgraphs/8BnGPBojHycDxVo83LP468pUo4xDyCQbtTpHGZXR6SiB?view=Overview&chain=arbitrum-one
+[v2-decentralized-polygon]:
+  https://thegraph.com/explorer/subgraphs/CsDNYv9XPUMP8vufuwDVKQrVhsxhzzRHezjLFFKZZbrx?view=Overview&chain=arbitrum-one
+[v2-endpoint-arbitrum]: https://api.thegraph.com/subgraphs/name/sablier-labs/sablier-v2-arbitrum
+[v2-endpoint-arbitrum-sepolia]: https://api.thegraph.com/subgraphs/name/sablier-labs/sablier-v2-arbitrum-sepolia
+[v2-endpoint-avalanche]: https://api.thegraph.com/subgraphs/name/sablier-labs/sablier-v2-avalanche
+[v2-endpoint-base]: https://api.thegraph.com/subgraphs/name/sablier-labs/sablier-v2-base
+[v2-endpoint-bsc]: https://api.thegraph.com/subgraphs/name/sablier-labs/sablier-v2-bsc
+[v2-endpoint-ethereum]: https://api.thegraph.com/subgraphs/name/sablier-labs/sablier-v2
+[v2-endpoint-optimism]: https://api.thegraph.com/subgraphs/name/sablier-labs/sablier-v2-optimism
+[v2-endpoint-polygon]: https://api.thegraph.com/subgraphs/name/sablier-labs/sablier-v2-polygon
+[v2-endpoint-gnosis]: https://api.thegraph.com/subgraphs/name/sablier-labs/sablier-v2-gnosis
+[v2-endpoint-sepolia]: https://api.thegraph.com/subgraphs/name/sablier-labs/sablier-v2-sepolia
+[v2-endpoint-scroll]: https://api.thegraph.com/subgraphs/name/sablier-labs/sablier-v2-scroll
+[v2-explorer-arbitrum]: https://thegraph.com/hosted-service/subgraph/sablier-labs/sablier-v2-arbitrum
+[v2-explorer-arbitrum-sepolia]: https://thegraph.com/hosted-service/subgraph/sablier-labs/sablier-v2-arbitrum-sepolia
+[v2-explorer-avalanche]: https://thegraph.com/hosted-service/subgraph/sablier-labs/sablier-v2-avalanche
+[v2-explorer-base]: https://thegraph.com/hosted-service/subgraph/sablier-labs/sablier-v2-base
+[v2-explorer-bsc]: https://thegraph.com/hosted-service/subgraph/sablier-labs/sablier-v2-bsc
+[v2-explorer-ethereum]: https://thegraph.com/hosted-service/subgraph/sablier-labs/sablier-v2
+[v2-explorer-optimism]: https://thegraph.com/hosted-service/subgraph/sablier-labs/sablier-v2-optimism
+[v2-explorer-polygon]: https://thegraph.com/hosted-service/subgraph/sablier-labs/sablier-v2-polygon
+[v2-explorer-gnosis]: https://thegraph.com/hosted-service/subgraph/sablier-labs/sablier-v2-gnosis
+[v2-explorer-sepolia]: https://thegraph.com/hosted-service/subgraph/sablier-labs/sablier-v2-sepolia
+[v2-explorer-scroll]: https://thegraph.com/hosted-service/subgraph/sablier-labs/sablier-v2-scroll
+
+### Code
+
+<LinkPreview
+  href="https://github.com/sablier-labs/v2-subgraphs/tree/main/apps/protocol"
+  icon="github"
+  subtitle="Github - sablier-labs/v2-subgraphs"
+  title="Sablier V2 protocol subgraph (The Graph)"
+/>
+
+## Sablier V2 - Merkle (Airstreams)
+
+This subgraph tracks events emitted by the [`@sablier/v2-periphery`](/contracts/v2/reference/overview#periphery)
+contracts, specifically the
+[`Merkle Factory`](contracts/v2/reference/periphery/contract.SablierV2MerkleStreamerFactory). It deals with airstream
+specific actions like the factory creating a campaign, admin clawbacks or users claiming streams as defined in the
+attached Merkle tree.
+
+| Chain            | Explorer                                | Hosted Network                                              | Decentralized Explorer [^1] |
+| ---------------- | --------------------------------------- | ----------------------------------------------------------- | --------------------------- |
+| Ethereum         | [Playground][v2-explorer-ms-ethereum]   | [sablier-v2-ms][v2-endpoint-ms-ethereum]                    | N/A                         |
+| Arbitrum         | [Playground][v2-explorer-ms-arbitrum]   | [sablier-v2-ms-arbitrum][v2-endpoint-ms-arbitrum]           | N/A                         |
+| Arbitrum Sepolia | [Playground][v2-explorer-ms-arbitrum-s] | [sablier-v2-ms-arbitrum-sepolia][v2-endpoint-ms-arbitrum-s] | N/A                         |
+| Avalanche        | [Playground][v2-explorer-ms-avalanche]  | [sablier-v2-ms-avalanche][v2-endpoint-ms-avalanche]         | N/A                         |
+| Base             | [Playground][v2-explorer-ms-base]       | [sablier-v2-ms-avalanche][v2-endpoint-ms-base]              | N/A                         |
+| Optimism         | [Playground][v2-explorer-ms-optimism]   | [sablier-v2-ms-optimism][v2-endpoint-ms-optimism]           | N/A                         |
+| Polygon          | [Playground][v2-explorer-ms-polygon]    | [sablier-v2-ms-matic][v2-endpoint-ms-polygon]               | N/A                         |
+| BNB Smart Chain  | [Playground][v2-explorer-ms-bsc]        | [sablier-v2-ms-bsc][v2-endpoint-ms-bsc]                     | N/A                         |
+| Gnosis           | [Playground][v2-explorer-ms-gnosis]     | [sablier-v2-ms-gnosis][v2-endpoint-ms-gnosis]               | N/A                         |
+| Scroll           | [Playground][v2-explorer-ms-scroll]     | [sablier-v2-ms-scroll][v2-endpoint-ms-scroll]               | N/A                         |
+| Sepolia          | [Playground][v2-explorer-ms-sepolia]    | [sablier-v2-ms-sepolia][v2-endpoint-ms-sepolia]             | N/A                         |
+
+[v2-endpoint-ms-arbitrum]: https://api.thegraph.com/subgraphs/name/sablier-labs/sablier-v2-ms-arbitrum
+[v2-endpoint-ms-arbitrum-s]: https://api.thegraph.com/subgraphs/name/sablier-labs/sablier-v2-ms-arbitrum-sepolia
+[v2-endpoint-ms-avalanche]: https://api.thegraph.com/subgraphs/name/sablier-labs/sablier-v2-ms-avalanche
+[v2-endpoint-ms-base]: https://api.thegraph.com/subgraphs/name/sablier-labs/sablier-v2-ms-base
+[v2-endpoint-ms-bsc]: https://api.thegraph.com/subgraphs/name/sablier-labs/sablier-v2-ms-bsc
+[v2-endpoint-ms-ethereum]: https://api.thegraph.com/subgraphs/name/sablier-labs/sablier-v2-ms
+[v2-endpoint-ms-optimism]: https://api.thegraph.com/subgraphs/name/sablier-labs/sablier-v2-ms-optimism
+[v2-endpoint-ms-polygon]: https://api.thegraph.com/subgraphs/name/sablier-labs/sablier-v2-ms-polygon
+[v2-endpoint-ms-gnosis]: https://api.thegraph.com/subgraphs/name/sablier-labs/sablier-v2-ms-gnosis
+[v2-endpoint-ms-sepolia]: https://api.thegraph.com/subgraphs/name/sablier-labs/sablier-v2-ms-sepolia
+[v2-endpoint-ms-scroll]: https://api.thegraph.com/subgraphs/name/sablier-labs/sablier-v2-ms-scroll
+[v2-explorer-ms-arbitrum]: https://thegraph.com/hosted-service/subgraph/sablier-labs/sablier-v2-ms-arbitrum
+[v2-explorer-ms-arbitrum-s]: https://thegraph.com/hosted-service/subgraph/sablier-labs/sablier-v2-ms-arbitrum-sepolia
+[v2-explorer-ms-avalanche]: https://thegraph.com/hosted-service/subgraph/sablier-labs/sablier-v2-ms-avalanche
+[v2-explorer-ms-base]: https://thegraph.com/hosted-service/subgraph/sablier-labs/sablier-v2-ms-base
+[v2-explorer-ms-bsc]: https://thegraph.com/hosted-service/subgraph/sablier-labs/sablier-v2-ms-bsc
+[v2-explorer-ms-ethereum]: https://thegraph.com/hosted-service/subgraph/sablier-labs/sablier-v2-ms
+[v2-explorer-ms-optimism]: https://thegraph.com/hosted-service/subgraph/sablier-labs/sablier-v2-ms-optimism
+[v2-explorer-ms-polygon]: https://thegraph.com/hosted-service/subgraph/sablier-labs/sablier-v2-ms-polygon
+[v2-explorer-ms-gnosis]: https://thegraph.com/hosted-service/subgraph/sablier-labs/sablier-v2-ms-gnosis
+[v2-explorer-ms-sepolia]: https://thegraph.com/hosted-service/subgraph/sablier-labs/sablier-v2-ms-sepolia
+[v2-explorer-ms-scroll]: https://thegraph.com/hosted-service/subgraph/sablier-labs/sablier-v2-ms-scroll
+
+### Code
+
+<LinkPreview
+  href="https://github.com/sablier-labs/v2-subgraphs/tree/main/apps/protocol"
+  icon="github"
+  subtitle="Github - sablier-labs/v2-subgraphs"
+  title="Sablier V2 protocol subgraph (The Graph)"
+/>
+
+## Sablier V1
+
+### Endpoints
+
+| Chain           | Explorer                          | Hosted Network                             | Decentralized Explorer [^1]         |
+| --------------- | --------------------------------- | ------------------------------------------ | ----------------------------------- |
+| Ethereum        | [Playground][v1-hosted-ethereum]  | [sablier][v1-endpoint-ethereum]            | [Studio][v1-decentralized-ethereum] |
+| Arbitrum        | [Playground][v1-hosted-arbitrum]  | [sablier-arbitrum][v1-endpoint-arbitrum]   | N/A                                 |
+| Optimism        | [Playground][v1-hosted-optimism]  | [sablier-optimism][v1-endpoint-optimism]   | N/A                                 |
+| Polygon         | [Playground][v1-hosted-polygon]   | [sablier-matic][v1-endpoint-polygon]       | N/A                                 |
+| Avalanche       | [Playground][v1-hosted-avalanche] | [sablier-avalanche][v1-endpoint-avalanche] | N/A                                 |
+| BNB Smart Chain | [Playground][v1-hosted-bsc]       | [sablier-bsc][v1-endpoint-bsc]             | N/A                                 |
+
+[v1-decentralized-ethereum]: https://thegraph.com/explorer/subgraph?id=A5XzhYZ4muyRegVTYmwWbCbKWvD4LTWqac43CEGTEGdK
+[v1-endpoint-arbitrum]: https://api.thegraph.com/subgraphs/name/sablier-labs/sablier-arbitrum
+[v1-endpoint-avalanche]: https://api.thegraph.com/subgraphs/name/sablier-labs/sablier-avalanche
+[v1-endpoint-bsc]: https://api.thegraph.com/subgraphs/name/sablier-labs/sablier-bsc
+[v1-endpoint-ethereum]: https://api.thegraph.com/subgraphs/name/sablier-labs/sablier
+[v1-endpoint-optimism]: https://api.thegraph.com/subgraphs/name/sablier-labs/sablier-optimism
+[v1-endpoint-polygon]: https://api.thegraph.com/subgraphs/name/sablier-labs/sablier-matic
+[v1-hosted-arbitrum]: https://thegraph.com/hosted-service/subgraph/sablier-labs/sablier-arbitrum
+[v1-hosted-avalanche]: https://thegraph.com/hosted-service/subgraph/sablier-labs/sablier-avalanche
+[v1-hosted-bsc]: https://thegraph.com/hosted-service/subgraph/sablier-labs/sablier-bsc
+[v1-hosted-ethereum]: https://thegraph.com/hosted-service/subgraph/sablier-labs/sablier
+[v1-hosted-optimism]: https://thegraph.com/hosted-service/subgraph/sablier-labs/sablier-optimism
+[v1-hosted-polygon]: https://thegraph.com/hosted-service/subgraph/sablier-labs/sablier-matic
+
+### Code
+
+<LinkPreview
+  href="https://github.com/sablier-labs/v1-subgraph"
+  icon="github"
+  subtitle="GitHub"
+  title="Github - sablier-labs/v1-subgraph: Sablier V1 Subgraph"
+/>
+
+[^1]:
+
+Because the "Decentralized service" subgraph flavors (e.g. V1 Ethereum) operate on The Graph Network, you will need to
+substitute the `YOUR_API_KEY` placeholder in the
+[Query URL](https://thegraph.com/docs/en/deploying/subgraph-studio-faqs/#6-how-do-i-find-query-urls-for-subgraphs-if-im-not-the-developer-of-the-subgraph-i-want-to-use)
+with your own API key. If you require assistance with managing your API keys and configuring indexer preferences,
+[this article](https://thegraph.com/docs/en/studio/managing-api-keys/) serves as an excellent guide.

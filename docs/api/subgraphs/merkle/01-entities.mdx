@@ -1,0 +1,44 @@
+---
+id: "entities"
+sidebar_position: 1
+title: "Entities (+)"
+---
+
+:::info
+
+For an introduction into the base Sablier primitives and some architectural choices, make sure to check out the
+[protocol subgraph](/api/subgraphs/protocol/entities) before reading about the merkle subgraph.
+
+:::
+
+## Entity Architecture
+
+Inside the **merkle** subgraph, the
+[`schema.graphql`](https://github.com/sablier-labs/v2-subgraphs/blob/main/apps/merkle/schema.graphql) file is
+responsible of defining the following Sablier entities:
+
+### Primary
+
+| Entity   | Description                                                                                                                |
+| -------- | -------------------------------------------------------------------------------------------------------------------------- |
+| Factory  | Instances of `SablierV2MerkleStreamerFactory`                                                                              |
+| Campaign | Instances of `SablierV2MerkleStreamerLL`, the primary entity tracking the up to date state of an Airstream/Merkle campaign |
+| Action   | Emitted events transformed into historical entries (e.g. Claim, Create, Clawback)                                          |
+| Activity | An entity tracking daily usage (one item per day) for each campaign (e.g. amount claimed per day)                          |
+| Asset    | The ERC20 asset that is being streamed                                                                                     |
+
+### Secondary
+
+| Entity  | Description                                                                                   |
+| ------- | --------------------------------------------------------------------------------------------- |
+| Watcher | A singleton data store for subgraph-level unique indexes such as the campaign or action index |
+
+## Structure
+
+The structure of these entities is built on the same rules and mindset which was applied on the
+[protocol entities](/api/subgraphs/protocol/structure).
+
+## Data Flow
+
+The data flow applied to this subgraph is identical to the one used in the
+[protocol subgraph](/api/subgraphs/protocol/flow).

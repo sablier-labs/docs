@@ -200,7 +200,7 @@ const config: Config = {
         {
           label: "APIs",
           position: "left",
-          to: "/api/subgraphs/overview",
+          to: "/api/overview",
         },
         {
           label: "Discord",

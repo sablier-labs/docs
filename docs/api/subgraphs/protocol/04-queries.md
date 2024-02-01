@@ -1,10 +1,10 @@
 ---
 id: "queries"
-sidebar_position: 4
+sidebar_position: 3
 title: "Queries"
 ---
 
-Building on top of the [entity structure](/api/subgraphs/architecture/structure) defined earlier, here are some common
+Building on top of the [entity structure](/api/subgraphs/protocol/structure) defined earlier, here are some common
 GraphQL queries for fetching data from the Sablier V2 subgraph.
 
 ### Recent streams
@@ -44,8 +44,8 @@ streams(
 
 ### Streams by sender
 
-To support both [proxy senders](/api/subgraphs/architecture/structure#the-proxender) (case 3) and
-[native senders](/api/subgraphs/architecture/structure#the-proxender) (case 2) we query for:
+To support both [proxy senders](/api/subgraphs/protocol/structure#the-proxender) (case 3) and
+[native senders](/api/subgraphs/protocol/structure#the-proxender) (case 2) we query for:
 
 - streams where the connected account is the native sender
 - streams where the connected account is the proxender - the owner of the proxy labeled as a sender
