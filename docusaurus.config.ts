@@ -186,21 +186,25 @@ const config: Config = {
           label: "Concepts",
           position: "left",
           to: "/concepts/what-is-sablier",
+          activeBasePath: "/concepts",
         },
         {
           label: "Contracts",
           position: "left",
           to: "/contracts/v2/overview",
+          activeBasePath: "/contracts",
         },
         {
           label: "Apps",
           position: "left",
           to: "/apps/overview",
+          activeBasePath: "/apps",
         },
         {
           label: "APIs",
           position: "left",
           to: "/api/overview",
+          activeBasePath: "/api",
         },
         {
           label: "Discord",

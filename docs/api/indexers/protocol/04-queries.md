@@ -4,18 +4,18 @@ sidebar_position: 4
 title: "Queries"
 ---
 
-Building on top of the [entity structure](/api/subgraphs/protocol/structure) defined earlier, here are some common
+Building on top of the [entity structure](/api/indexers/protocol/structure) defined earlier, here are some common
 GraphQL queries for fetching data from the Sablier V2 subgraph.
 
 ### Recent streams
 
 ```graphql title="The 10 most recent streams"
 query getStreams() {
-  streams(first: 10, orderBy: subgraphId, orderDirection: desc) {
+  stream(limit: 10, order_by: { subgraphId: desc }) {
     id
     alias
     category
-    asset {
+    assetObject {
       id
       symbol
     }
@@ -32,11 +32,16 @@ This query includes pagination.
 
 ```graphql title="The next streams indexed before the last seen subgraphId"
 query getStreams($first: Int!, $subgraphId: numeric!) {
-  streams(first: $first, orderBy: subgraphId, orderDirection: desc, where: { subgraphId_lt: $subgraphId }) {
+  streams(
+    limit: $first
+    distinct_on: [subgraphId]
+    order_by: { subgraphId: desc }
+    where: { subgraphId: { _lt: $subgraphId } }
+  ) {
     id
     alias
     category
-    asset {
+    assetObject {
       id
       symbol
     }
@@ -54,32 +59,23 @@ To support both [proxy senders](/api/subgraphs/protocol/structure#the-proxender)
 
 This query includes pagination.
 
-```graphql title="The next streams indexed before the last seen subgraphId"
-query getStreams($first: Int!, $skip: Int!, $subgraphId: BigInt!) {
-  streams(
-    first: $first
-    skip: $skip
-    orderBy: $subgraphId
-    orderDirection: desc
-    where: { subgraphId_lt: $subgraphId }
-  ) {
-    id
-    alias
-    category
-  }
-}
-```
+:::warning
+
+Some queries, especially those using `OR` will potentially yield duplicate results. To make sure we only retrieve unique
+streams/entities with a query, we make use of the `distinct_on` filter (and apply it on keys included in `order_by`).
+
+:::
 
 ```graphql title="The next streams created by an address (natively or through a proxy)"
-streams(
-  first: $first
-  skip: $skip
-  orderBy: $subgraphId
-  orderDirection: desc
+Stream(
+  limit: $first
+  offset: $skip
+  distinct_on: [subgraphId]
+  order_by: { subgraphId: desc }
   where: {
-    or: [
-      { and: [{ sender: $sender }, { subgraphId_lt: $subgraphId }] }
-      { and: [{ proxender: $sender }, { subgraphId_lt: $subgraphId }] }
+    _or: [
+      { _and: [{ sender: {_eq: $sender} }, { subgraphId: {_lt: $subgraphId} }] }
+      { _and: [{ proxender: {_eq:  $sender} }, { subgraphId: {_lt:$subgraphId} }] }
     ]
   }
 ) {
@@ -97,16 +93,16 @@ account for the recipient aspect.
 This query includes pagination.
 
 ```graphql title="The next streams related to an address, as a sender/proxender or recipient"
-streams(
-  first: $first
-  skip: $skip
-  orderBy: $subgraphId
-  orderDirection: desc
+Stream(
+  limit: $first
+  offset: $skip
+  distinct_on: [subgraphId]
+  order_by: { subgraphId: desc }
   where: {
     or: [
-      { and: [{ sender: $sender }, { subgraphId_lt: $subgraphId }] }
-      { and: [{ proxender: $sender }, { subgraphId_lt: $subgraphId }] }
-      { and: [{ recipient: $recipient }, { subgraphId_lt: $subgraphId }] }
+      { _and: [{ sender: {_eq: $sender} }, { subgraphId: {_lt:  $subgraphId} }] }
+      { _and: [{ proxender: {_eq: $sender} }, { subgraphId: {_lt: $subgraphId} }] }
+      { _and: [{ proxender: {_eq: $recipient} }, { subgraphId: {_lt: $subgraphId} }] }
     ]
   }
 ) {
@@ -129,30 +125,30 @@ This query includes pagination.
 
 ```graphql title="The 'where' clause for a complex paginated search filter"
 where: {
-  or: [
-    {
-      and: [
-        { sender: $sender }
-        { id_in: $streamIds }
-        { subgraphId_lt: $subgraphId }
-      ]
-    }
-    {
-      and: [
-        { proxender: $sender }
-        { id_in: $streamIds }
-        { subgraphId_lt: $subgraphId }
-      ]
-    }
-    {
-      and: [
-        { recipient: $recipient }
-        { id_in: $streamIds }
-        { subgraphId_lt: $subgraphId }
-      ]
-    }
-  ]
-}
+    _or: [
+      {
+        _and: [
+          { chainId: { _eq: $chainId } }
+          { sender: { _eq: $sender } }
+          { subgraphId: { _lt: $subgraphId } }
+        ]
+      }
+      {
+        _and: [
+          { chainId: { _eq: $chainId } }
+          { proxender: { _eq: $sender } }
+          { subgraphId: { _lt: $subgraphId } }
+        ]
+      }
+      {
+        _and: [
+          { chainId: { _eq: $chainId } }
+          { recipient: { _eq: $recipient } }
+          { subgraphId: { _lt: $subgraphId } }
+        ]
+      }
+    ]
+  }
 ```
 
 ### Actions by stream
@@ -164,11 +160,11 @@ To avoid writing the same entity definitions over and over again, check out Frag
 :::
 
 ```graphql title="Most recent 100 stream actions such as withdrawals or transfers"
-actions(
-  first: 100
-  orderBy: subgraphId # Action's subgraph id
-  orderDirection: desc
-  where: { stream: $streamId }
+Action(
+  limit: 100
+  distinct_on: [subgraphId]
+  order_by: { subgraphId: desc }
+  where: { stream: {_eq: $streamId} }
 ) {
   id
   category

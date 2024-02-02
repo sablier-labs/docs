@@ -10,13 +10,22 @@ queries for fetching data from the Sablier V2 subgraph.
 ### Recent streams
 
 ```graphql title="The 10 most recent campaigns"
-campaigns(
-  first: 10
-  orderBy: timestamp
-  orderDirection: desc
+Campaign(
+  limit: 10
+  order_by: {timestamp: desc}
 ) {
   id
 }
+
+# OR
+
+Campaign(
+  limit: 10
+  order_by: {subgraphId: desc}
+) {
+  id
+}
+
 ```
 
 ### Paginated campaigns
@@ -26,12 +35,11 @@ To query campaigns in sets/pages we can use the unique `subgraphId`.
 This query includes pagination.
 
 ```graphql title="The next campaigns indexed before the last seen subgraphId"
-campaigns(
-  first: $first
-  skip: $skip
-  orderBy: subgraphId
-  orderDirection: desc
-  where: { subgraphId_lt: $subgraphId }
+Campaign(
+  limit: $first
+  offset: $skip
+  order_by: {subgraphId: desc}
+  where: { subgraphId: {_lt: $subgraphId} }
 ) {
   id
 }
@@ -53,12 +61,17 @@ a simple GraphQL description of what a certain entity (here the campaign) looks 
 
 ```graphql title="The next campaigns created by an address with a certain asset"
 query getAirstreams_ByAsset($first: Int!, $skip: Int!, $asset: String!, $subgraphId: BigInt!, $chainId: BigInt!) {
-  campaigns(
-    first: $first
-    skip: $skip
-    orderBy: subgraphId
-    orderDirection: desc
-    where: { asset: $asset, subgraphId_lt: $subgraphId, chainId: $chainId }
+  Campaign(
+    limit: $first
+    offset: $skip
+    order_by: {subgraphId: desc}
+    where: {
+      _and: [
+        { asset: {_eq: $asset} }
+        { subgraphId: {_lt: $subgraphId}}
+        { chainId: {_eq: $chainId}}
+      ]
+    }
   ) {
     ...CampaignFragment
   }
@@ -90,10 +103,10 @@ const CampaignFragment = gql(/* GraphQL */ `
     claimedAmount
     claimedCount
     version
-    asset {
+    assetObject {
       ...AssetFragment
     }
-    factory {
+    factoryObject {
       ...FactoryFragment
     }
   }
@@ -108,8 +121,8 @@ on behalf of that user. If the query yields a result, it means the uses has alre
 
 ```graphql title="Claim action of a user on a certain campaign"
 query getClaim($campaignId: ID!, $user: String!) {
-  actions(where: { campaign: $campaignId, category: Claim, claimRecipient: $user }) {
-    campaign {
+  Action(where: { campaign: { _eq: $campaignId }, category: { _eq: "Claim" }, claimRecipient: { _eq: $uer } }) {
+    campaignObject {
       id
       lockup
     }
