@@ -1,0 +1,58 @@
+---
+id: "endpoints"
+sidebar_position: 2
+title: "REST API"
+---
+
+import LinkPreview from "@site/src/components/LinkPreview";
+
+## Create: `/api/create`
+
+Call this route to create a new Merkle/Airstream campaign.
+
+### Prerequisites
+
+You need to obtain:
+
+- The `decimals` of the asset you're basing the campaign upon
+- A CSV file including a list of `[address, amount]` for every campaign recipient
+
+:::tip
+
+The CSV will contain a header row, followed by pairs of addresses and amounts. The amounts will be in humanized form, as
+the API deals with the padding of each value (with the decimals of the token) on its own.
+
+:::
+
+### Description
+
+|                  |                              |
+| :--------------- | ---------------------------- |
+| **Endpoint**     | `/api/create`                |
+| **Method**       | `POST`                       |
+| **Query Params** | `{decimals: number}`         |
+| **Body**         | `FormData` on `{data: File}` |
+
+```typescript Response
+type Response = {
+  /** IPFS content identifier for the uploaded file */
+  cid: string;
+  /** Expected number of recipients */
+  recipients: string;
+  /** HEX root fo the merkle tree */
+  root: string;
+  /** Humanized status */
+  status: string;
+  /** Expected amount of assets required by the campaign */
+  total: string;
+};
+```
+
+## Code
+
+<LinkPreview
+  href="https://github.com/sablier-labs/v2-merkle-api"
+  icon="github"
+  subtitle="Github - sablier-labs/v2-merkle-api"
+  title="Sablier V2 Merkle API (Rust)"
+/>

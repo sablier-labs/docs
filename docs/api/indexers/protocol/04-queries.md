@@ -10,7 +10,7 @@ GraphQL queries for fetching data from the Sablier V2 subgraph.
 ### Recent streams
 
 ```graphql title="The 10 most recent streams"
-query getStreams() {
+query getStreams {
   stream(limit: 10, order_by: { subgraphId: desc }) {
     id
     alias

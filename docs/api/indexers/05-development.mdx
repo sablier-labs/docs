@@ -1,0 +1,46 @@
+---
+id: "development"
+sidebar_position: 5
+title: "Development"
+---
+
+import LinkPreview from "@site/src/components/LinkPreview";
+
+## Integrating
+
+To integrate the Sablier V2 indexers into your own product, start from the official `@sablier/v2-subgraphs` repository.
+We recommend using:
+
+- [GraphQL Code Generator](https://the-guild.dev/graphql/codegen/docs/getting-started) to create types from your GraphQL
+  fragments and queries
+- [TanStack Query](https://tanstack.com/query) to fetch results from the exposed endpoints.
+
+<LinkPreview
+  href="https://github.com/sablier-labs/v2-subgraphs"
+  icon="github"
+  subtitle="GitHub"
+  title="Github - sablier-labs/v2-subgraphs: Sablier V2 Indexers"
+/>
+
+## Contributing
+
+To contribute to the V2 indexers (Envio x Sablier) or deploy your own, head over to the GitHub
+[`v2-subgraphs`](https://github.com/sablier-labs/v2-subgraphs) repository. Get started by reviewing the
+`apps/protocol-envio` directory.
+
+To bootstrap an indexer project, run the following commands. They will install the requisite dependencies and generate
+the code for a multi-chain deployment.
+
+```bash
+cd ./packages/core
+pnpm install
+pnpm run setup
+
+# OR
+
+pnpm dev
+```
+
+You'll find a local Hasura process at `http://localhost:8080` which also includes a `GraphQL` endpoint to query locally.
+To deploy without hosting yourself, have a look at the Envio
+[Hosted Service](https://docs.envio.dev/docs/hosted-service) docs.
