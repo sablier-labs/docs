@@ -20,10 +20,11 @@ It deals with core protocol actions like creating, withdrawing or transferring s
 | Arbitrum Sepolia | [Playground][v2-explorer-arbitrum-sepolia] | [sablier-v2-arbitrum-sepolia][v2-endpoint-arbitrum-sepolia] | N/A                                 |
 | Avalanche        | [Playground][v2-explorer-avalanche]        | [sablier-v2-avalanche][v2-endpoint-avalanche]               | N/A                                 |
 | Base             | [Playground][v2-explorer-base]             | [sablier-v2-avalanche][v2-endpoint-base]                    | N/A                                 |
-| Optimism         | [Playground][v2-explorer-optimism]         | [sablier-v2-optimism][v2-endpoint-optimism]                 | N/A                                 |
-| Polygon          | [Playground][v2-explorer-polygon]          | [sablier-v2-matic][v2-endpoint-polygon]                     | [Studio](v2-decentralized-polygon)  |
 | BNB Smart Chain  | [Playground][v2-explorer-bsc]              | [sablier-v2-bsc][v2-endpoint-bsc]                           | N/A                                 |
 | Gnosis           | [Playground][v2-explorer-gnosis]           | [sablier-v2-gnosis][v2-endpoint-gnosis]                     | N/A                                 |
+| Lightlink        | [Playground\*][v2-explorer-lightlink]      | [sablier-v2-lightlink\*][v2-endpoint-lightlink]             | Node hosted by Lightlink\*          |
+| Optimism         | [Playground][v2-explorer-optimism]         | [sablier-v2-optimism][v2-endpoint-optimism]                 | N/A                                 |
+| Polygon          | [Playground][v2-explorer-polygon]          | [sablier-v2-matic][v2-endpoint-polygon]                     | [Studio](v2-decentralized-polygon)  |
 | Scroll           | [Playground][v2-explorer-scroll]           | [sablier-v2-scroll][v2-endpoint-scroll]                     | N/A                                 |
 | Sepolia          | [Playground][v2-explorer-sepolia]          | [sablier-v2-sepolia][v2-endpoint-sepolia]                   | N/A                                 |
 
@@ -44,6 +45,7 @@ It deals with core protocol actions like creating, withdrawing or transferring s
 [v2-endpoint-gnosis]: https://api.thegraph.com/subgraphs/name/sablier-labs/sablier-v2-gnosis
 [v2-endpoint-sepolia]: https://api.thegraph.com/subgraphs/name/sablier-labs/sablier-v2-sepolia
 [v2-endpoint-scroll]: https://api.thegraph.com/subgraphs/name/sablier-labs/sablier-v2-scroll
+[v2-endpoint-lightlink]: https://graph.phoenix.lightlink.io/query/subgraphs/name/lightlink/sablier-v2-lightlink/graphql
 [v2-explorer-arbitrum]: https://thegraph.com/hosted-service/subgraph/sablier-labs/sablier-v2-arbitrum
 [v2-explorer-arbitrum-sepolia]: https://thegraph.com/hosted-service/subgraph/sablier-labs/sablier-v2-arbitrum-sepolia
 [v2-explorer-avalanche]: https://thegraph.com/hosted-service/subgraph/sablier-labs/sablier-v2-avalanche
@@ -55,6 +57,7 @@ It deals with core protocol actions like creating, withdrawing or transferring s
 [v2-explorer-gnosis]: https://thegraph.com/hosted-service/subgraph/sablier-labs/sablier-v2-gnosis
 [v2-explorer-sepolia]: https://thegraph.com/hosted-service/subgraph/sablier-labs/sablier-v2-sepolia
 [v2-explorer-scroll]: https://thegraph.com/hosted-service/subgraph/sablier-labs/sablier-v2-scroll
+[v2-explorer-lightlink]: https://graph.phoenix.lightlink.io/query/subgraphs/name/lightlink/sablier-v2-lightlink/graphql
 
 ### Code
 
@@ -73,19 +76,20 @@ contracts, specifically the
 specific actions like the factory creating a campaign, admin clawbacks or users claiming streams as defined in the
 attached Merkle tree.
 
-| Chain            | Explorer                                | Hosted Network                                              | Decentralized Explorer [^1] |
-| ---------------- | --------------------------------------- | ----------------------------------------------------------- | --------------------------- |
-| Ethereum         | [Playground][v2-explorer-ms-ethereum]   | [sablier-v2-ms][v2-endpoint-ms-ethereum]                    | N/A                         |
-| Arbitrum         | [Playground][v2-explorer-ms-arbitrum]   | [sablier-v2-ms-arbitrum][v2-endpoint-ms-arbitrum]           | N/A                         |
-| Arbitrum Sepolia | [Playground][v2-explorer-ms-arbitrum-s] | [sablier-v2-ms-arbitrum-sepolia][v2-endpoint-ms-arbitrum-s] | N/A                         |
-| Avalanche        | [Playground][v2-explorer-ms-avalanche]  | [sablier-v2-ms-avalanche][v2-endpoint-ms-avalanche]         | N/A                         |
-| Base             | [Playground][v2-explorer-ms-base]       | [sablier-v2-ms-avalanche][v2-endpoint-ms-base]              | N/A                         |
-| Optimism         | [Playground][v2-explorer-ms-optimism]   | [sablier-v2-ms-optimism][v2-endpoint-ms-optimism]           | N/A                         |
-| Polygon          | [Playground][v2-explorer-ms-polygon]    | [sablier-v2-ms-matic][v2-endpoint-ms-polygon]               | N/A                         |
-| BNB Smart Chain  | [Playground][v2-explorer-ms-bsc]        | [sablier-v2-ms-bsc][v2-endpoint-ms-bsc]                     | N/A                         |
-| Gnosis           | [Playground][v2-explorer-ms-gnosis]     | [sablier-v2-ms-gnosis][v2-endpoint-ms-gnosis]               | N/A                         |
-| Scroll           | [Playground][v2-explorer-ms-scroll]     | [sablier-v2-ms-scroll][v2-endpoint-ms-scroll]               | N/A                         |
-| Sepolia          | [Playground][v2-explorer-ms-sepolia]    | [sablier-v2-ms-sepolia][v2-endpoint-ms-sepolia]             | N/A                         |
+| Chain            | Explorer                                 | Hosted Network                                              | Decentralized Explorer [^1] |
+| ---------------- | ---------------------------------------- | ----------------------------------------------------------- | --------------------------- |
+| Ethereum         | [Playground][v2-explorer-ms-ethereum]    | [sablier-v2-ms][v2-endpoint-ms-ethereum]                    | N/A                         |
+| Arbitrum         | [Playground][v2-explorer-ms-arbitrum]    | [sablier-v2-ms-arbitrum][v2-endpoint-ms-arbitrum]           | N/A                         |
+| Arbitrum Sepolia | [Playground][v2-explorer-ms-arbitrum-s]  | [sablier-v2-ms-arbitrum-sepolia][v2-endpoint-ms-arbitrum-s] | N/A                         |
+| Avalanche        | [Playground][v2-explorer-ms-avalanche]   | [sablier-v2-ms-avalanche][v2-endpoint-ms-avalanche]         | N/A                         |
+| Base             | [Playground][v2-explorer-ms-base]        | [sablier-v2-ms-avalanche][v2-endpoint-ms-base]              | N/A                         |
+| BNB Smart Chain  | [Playground][v2-explorer-ms-bsc]         | [sablier-v2-ms-bsc][v2-endpoint-ms-bsc]                     | N/A                         |
+| Gnosis           | [Playground][v2-explorer-ms-gnosis]      | [sablier-v2-ms-gnosis][v2-endpoint-ms-gnosis]               | N/A                         |
+| Lightlink        | [Playground\*][v2-explorer-ms-lightlink] | [sablier-v2-ms-lightlink\*][v2-endpoint-ms-lightlink]       | Node hosted by Lightlink\*  |
+| Optimism         | [Playground][v2-explorer-ms-optimism]    | [sablier-v2-ms-optimism][v2-endpoint-ms-optimism]           | N/A                         |
+| Polygon          | [Playground][v2-explorer-ms-polygon]     | [sablier-v2-ms-matic][v2-endpoint-ms-polygon]               | N/A                         |
+| Scroll           | [Playground][v2-explorer-ms-scroll]      | [sablier-v2-ms-scroll][v2-endpoint-ms-scroll]               | N/A                         |
+| Sepolia          | [Playground][v2-explorer-ms-sepolia]     | [sablier-v2-ms-sepolia][v2-endpoint-ms-sepolia]             | N/A                         |
 
 [v2-endpoint-ms-arbitrum]: https://api.thegraph.com/subgraphs/name/sablier-labs/sablier-v2-ms-arbitrum
 [v2-endpoint-ms-arbitrum-s]: https://api.thegraph.com/subgraphs/name/sablier-labs/sablier-v2-ms-arbitrum-sepolia
@@ -98,6 +102,8 @@ attached Merkle tree.
 [v2-endpoint-ms-gnosis]: https://api.thegraph.com/subgraphs/name/sablier-labs/sablier-v2-ms-gnosis
 [v2-endpoint-ms-sepolia]: https://api.thegraph.com/subgraphs/name/sablier-labs/sablier-v2-ms-sepolia
 [v2-endpoint-ms-scroll]: https://api.thegraph.com/subgraphs/name/sablier-labs/sablier-v2-ms-scroll
+[v2-endpoint-ms-lightlink]:
+  https://graph.phoenix.lightlink.io/query/subgraphs/name/lightlink/sablier-v2-ms-lightlink/graphql
 [v2-explorer-ms-arbitrum]: https://thegraph.com/hosted-service/subgraph/sablier-labs/sablier-v2-ms-arbitrum
 [v2-explorer-ms-arbitrum-s]: https://thegraph.com/hosted-service/subgraph/sablier-labs/sablier-v2-ms-arbitrum-sepolia
 [v2-explorer-ms-avalanche]: https://thegraph.com/hosted-service/subgraph/sablier-labs/sablier-v2-ms-avalanche
@@ -109,6 +115,8 @@ attached Merkle tree.
 [v2-explorer-ms-gnosis]: https://thegraph.com/hosted-service/subgraph/sablier-labs/sablier-v2-ms-gnosis
 [v2-explorer-ms-sepolia]: https://thegraph.com/hosted-service/subgraph/sablier-labs/sablier-v2-ms-sepolia
 [v2-explorer-ms-scroll]: https://thegraph.com/hosted-service/subgraph/sablier-labs/sablier-v2-ms-scroll
+[v2-explorer-ms-lightlink]:
+  https://graph.phoenix.lightlink.io/query/subgraphs/name/lightlink/sablier-v2-ms-lightlink/graphql
 
 ### Code
 
