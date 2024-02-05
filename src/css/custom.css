@@ -124,3 +124,8 @@ html[data-theme="dark"] body > div > nav {
     display: none;
   }
 }
+
+.markdown li > p {
+  margin-bottom: 6px;
+  margin-top: 8px;
+}
