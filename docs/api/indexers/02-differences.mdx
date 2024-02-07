@@ -6,7 +6,7 @@ title: "Differences"
 
 # Differences (The Graph vs. Envio)
 
-:::note
+:::info
 
 If you're looking to support both subgraphs (The Graph) and indexers (Envio) into your apps, please make sure to scroll
 down to the "Different Results" section to understand how results from both APIs may differ for the same entities.
@@ -15,9 +15,9 @@ down to the "Different Results" section to understand how results from both APIs
 
 ## General
 
-In contrast to The Graph, Envio offers a slightly different DX (Developer Experience) as far as indexer implementation.
-While for consumers, the query specific don't change a lot, here are a few items to consider before developing on top of
-the Sablier indexers/subgraphs:
+In contrast to The Graph, Envio offers a slightly different Developer Experience (DX) in terms of indexer
+implementation. While for consumers, the query specifics don't change a lot, here are a few items to consider before
+developing on top of the Sablier indexers/subgraphs:
 
 ### Querying Language
 
@@ -25,20 +25,29 @@ Both solutions create a **GraphQL** API for consumers to read data from. It is i
 customized subset of GraphQL operations, which makes is impossible to use the same queries between both indexers and
 subgraphs, whereas Envio deploys a GraphQL API over a Postgres DB. Some examples:
 
-| Example           | The Graph                             | Envio                                         |
-| ----------------- | ------------------------------------- | --------------------------------------------- |
-| Pagination        | `first`, `skip`                       | `limit`, `offset`                             |
-| Filter by id      | `stream(id)`                          | `Stream(where: {id: {_eq: 1}})`               |
-| Single vs. Plural | `stream(id){}`, `streams{}`           | `Stream(where...){}` for both                 |
-| Nested items      | `campaigns{ id, asset: {id, symbol}}` | `Campaign{ asset, assetObject: {id, symbol}}` |
+| Example              | The Graph                             | Envio                                         |
+| -------------------- | ------------------------------------- | --------------------------------------------- |
+| Pagination           | `first`, `skip`                       | `limit`, `offset`                             |
+| Filter by id         | `stream(id)`                          | `Stream(where: {id: {_eq: 1}})`               |
+| Single vs. Plural    | `stream(id){}`, `streams{}`           | `Stream(where...){}` for both                 |
+| Nested items         | `campaigns{ id, asset: {id, symbol}}` | `Campaign{ asset, assetObject: {id, symbol}}` |
+| Filter similar items | `assets(id: $id)`                     | `Asset(where: {id: {_iregex: $id}})`          |
 
-#### Notes
+#### Important Notes
 
 For the 3rd example, querying for a single item vs. a collection will have separate keywords for The Graph. With Envio,
-you'll have to identify within the app itself if the query is supposed to yield one or multiple items.
+you'll have to identify within the app itself if the query is supposed to yield one or multiple items. As you may tell,
+with Envio you'll query for `Stream` (capitalized) while with The Graph you'll query for `stream` or `streams`.
 
-For the 4th example, with Envio the name of an object will yield its `id`, while the `<name>Object` label will ask for
-the object itself (e.g. `asset` vs `assetObject`).
+For the 4th example, in Envio indexers the name of an object will yield its `id`, while the `<name>Object` label will
+ask for the object itself (e.g. `asset` vs `assetObject`).
+
+:::warning
+
+This `asset` vs `assetObject` discrepancy may change in future versions of Envio. Please checks the docs accordingly
+before developing features on top of the Sablier V2 indexers.
+
+:::
 
 ### Handler Language
 
@@ -53,7 +62,7 @@ Example: In the case of a Withdraw event, we'll **pre-load** the `Stream` entity
 second part we'll **handle** the creation of a new `Action` of type Withdraw, we'll update the `Stream`'s
 `withdrawnAmount` and increase the `Watcher`'s index.
 
-## Specific
+## Specifics
 
 ### Initializer Contracts
 

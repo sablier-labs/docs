@@ -19,7 +19,7 @@ To get a hold of a campaign's IPFS CID you can:
 <ol type="A">
   <li>
     Check the [create](/contracts/v2/reference/periphery/interfaces/interface.ISablierV2MerkleStreamerFactory#Event)
-    event issued by the Merkle factory
+    event emitted by the Merkle factory
   </li>
   <li>Use the Sablier V2 [subgraphs / indexers](/api/overview) to query for that particular piece of information.</li>
 </ol>
@@ -72,7 +72,7 @@ backend.
 1. Get the campaign CID (see [the example](/api/merkle-api/examples#get-a-campaigns-cid) above)
 2. Call the`/api/eligibility` route using the CID and the wallet address
 
-Please read more in the dedicated route documentation within the
+Please read more on the dedicated route documentation within the
 [/api/eligibility](<(/api/merkle-api/functionality#eligibility-apieligibility)>) section of the functionality page.
 
 As an alternative, you can also check the eligibility of an address (and bypass the backend) by simply searching for
@@ -89,7 +89,7 @@ To get a hold of a `tokenId` linked to a claim you can:
 <ol type="A">
   <li>
     Listen to the [claim](/contracts/v2/reference/periphery/interfaces/interface.ISablierV2MerkleStreamerLL#claim)
-    method and the Claim event issued by the Merkle contract instance
+    method and the Claim event emitted by the Merkle contract instance
   </li>
   <li>Use the Sablier V2 [subgraphs / indexers](/api/overview) to query for that particular piece of information.</li>
 </ol>

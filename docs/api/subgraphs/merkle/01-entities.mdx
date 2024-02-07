@@ -38,6 +38,31 @@ responsible of defining the following Sablier entities:
 The structure of these entities is built on the same rules and mindset which was applied on the
 [protocol entities](/api/subgraphs/protocol/structure).
 
+### Identifying
+
+Airstreams will be assigned a unique `contract address` once they are deployed by the Merkle Factory. While this makes
+it easy to identify items at the contract level, we need to consider the following for both subgraphs and client
+interfaces:
+
+- items should be uniquely identifiable across multiple chains
+- items should be identifiable with short, easy to digest names (TBD)
+
+To address the first observation, the subgraph uses the following identifier for an Airstream.
+
+| Type           | Description                                                                                 | Example                         |
+| -------------- | ------------------------------------------------------------------------------------------- | ------------------------------- |
+| `Airstream.id` | A self-explanatory structure built using the following structure: `contractAddress-chainId` | <nobr>`0xAB..12-1115511`</nobr> |
+
+The example from the table above translates to: **_a stream on Sepolia (chain id `1115511`), with the contract address
+`0xAB..12`_**.
+
+:::info
+
+We've chosen not to apply aliases to Airstreams for now. In the future, we may ask the campaign creator to provide a
+name or an alias to be used in the URL.
+
+:::
+
 ## Data Flow
 
 The data flow applied to this subgraph is identical to the one used in the

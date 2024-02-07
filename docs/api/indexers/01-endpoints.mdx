@@ -8,13 +8,13 @@ import LinkPreview from "@site/src/components/LinkPreview";
 
 :::tip Chains: Individual vs. Aggregated
 
-While subgraphs have a chain-focused approach (one subgraph endpoint/deployment for every chain), it is important to
-note that Envio will index all chains within the same deployment. This makes is so data from all chains is available to
-query from the same place.
+While subgraphs have a chain-focused approach (one subgraph endpoint/deployment per chain), it is important to note that
+Envio will index all chains within the same deployment. This makes it so data from all chains can be queried from the
+same place.
 
 :::
 
-:::note
+:::warning Note
 
 The Sablier Envio indexers are still under development so links may change in time. Please reach out if the endpoints
 don't work any more
@@ -29,9 +29,9 @@ creating, withdrawing or transferring streams.
 
 ### Endpoints
 
-| Chain            | Endpoint (Hosted Network)                            |
-| ---------------- | ---------------------------------------------------- |
-| All-Networks[^1] | https://indexer.bigdevenergy.link/be2052e/v1/graphql |
+| Chain            | Endpoint (Hosted Network)                                                 |
+| ---------------- | ------------------------------------------------------------------------- |
+| All-Networks[^1] | [https://indexer.bigdevenergy.link/[...]/v1/graphql]([endpoint-protocol]) |
 
 Use [Hasura's online explorer](https://cloud.hasura.io/public/graphiql?) to view the entities and query API.
 
@@ -54,9 +54,9 @@ attached Merkle tree.
 
 ### Endpoints
 
-| Chain        | Endpoint (Hosted Network)                            |
-| ------------ | ---------------------------------------------------- |
-| All-Networks | https://indexer.bigdevenergy.link/61cf6be/v1/graphql |
+| Chain        | Endpoint (Hosted Network)                                               |
+| ------------ | ----------------------------------------------------------------------- |
+| All-Networks | [https://indexer.bigdevenergy.link/[...]/v1/graphql]([endpoint-merkle]) |
 
 Use [Hasura's online explorer](https://cloud.hasura.io/public/graphiql?) to view the entities and query API.
 
@@ -74,3 +74,6 @@ Use [Hasura's online explorer](https://cloud.hasura.io/public/graphiql?) to view
     list can be found in
     [this](https://github.com/sablier-labs/v2-subgraphs/blob/main/apps/protocol-envio/src/constants/chains/index.ts)
     configuration file.
+
+[endpoint-protocol]: https://indexer.bigdevenergy.link/be2052e/v1/graphql
+[endpoint-merkle]: https://indexer.bigdevenergy.link/61cf6be/v1/graphql

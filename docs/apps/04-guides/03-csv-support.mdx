@@ -1,6 +1,6 @@
 ---
 id: "csv-support"
-sidebar_position: 6
+sidebar_position: 3
 title: "CSV Support"
 ---
 
@@ -128,6 +128,38 @@ the app itself. We suggest double-checking in the Sablier app that the dates hav
 | unlockEnd      | Date type - string that expresses the cliff end date of the stream, for the unlock cliff (see format above)     | `24/02/2024 16:15`, `14/02/2026 17:25`            |
 | unlock         | Number - the amount that will be initially unlocked                                                             | `100`, `2500`, `42161` or any other valid amount. |
 
-## Airstreams
+## Airstreams: Create
 
-Coming soon...
+|                                              |                                                         |
+| -------------------------------------------- | ------------------------------------------------------- |
+| ![Create](/screenshots/airstream-create.png) | ![Create](/screenshots/airstream-create-recipients.png) |
+
+Using a pre-configured CSV, deploy tens of thousands of streams, all onchain, all in one campaign. Start from the
+suggested template, fill in rows with addresses, amounts and other details. Finally, create the airstream campaign in a
+single transaction. Recipients will be able to start claiming their streams as soon as the campaign is deployed and
+funded.
+
+### Navigation
+
+In order to access this feature you will need to:
+
+1. Access the [create airstream](https://app.sablier.com/airstream/create/) page
+2. Continue to the second step to enable uploading the CSV
+
+### Working with the CSV template
+
+Working with the CSV template is pretty straightforward and similar to what we discussed in the previous guide (creating
+stream groups).
+
+:::info
+
+For now, creating airstreams is only possible using Lockup Linear contracts, no cliff and a "duration"-driven timing.
+Therefore, you don't have to worry about multiple templates or different configurations.
+
+:::
+
+For convenience, here's a table with the main template:
+
+| URL                                                                               | Description                                 |
+| :-------------------------------------------------------------------------------- | :------------------------------------------ |
+| [Airstreams - Linear](https://files.sablier.com/templates/airstream-template.csv) | Duration based template with linear streams |
