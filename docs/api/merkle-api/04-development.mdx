@@ -1,0 +1,78 @@
+---
+id: "development"
+sidebar_position: 4
+title: "Development"
+---
+
+import LinkPreview from "@site/src/components/LinkPreview";
+
+## Integrating
+
+To integrate the Sablier V2 Merkle API into your own product, start from the official `@sablier/v2-merkle-api`
+repository. We recommend using:
+
+<LinkPreview
+  href="https://github.com/sablier-labs/v2-merkle-api"
+  icon="github"
+  subtitle="GitHub"
+  title="Github - sablier-labs/v2-merkle-api: Sablier V2 Merkle API (Airstreams)"
+/>
+
+## Contributing
+
+To contribute to the V2 Merkle API or deploy your own, head over to the GitHub
+[`v2-merkle-api`](https://github.com/sablier-labs/v2-merkle-api) repository. Get started by reviewing the `controllers`
+directory.
+
+## Running an instance
+
+### Locally
+
+In order to make the API work properly, you will need to create a `.env` file by following the `.env.example` file:
+
+```text
+PINATA_ACCESS_TOKEN=
+PINATA_API_KEY=
+PINATA_API_SERVER=
+PINATA_SECRET_API_KEY=
+IPFS_GATEWAY=
+```
+
+After a campaign is created via the API, we use Pinata to upload and pin the file to IPFS. In order to obtain the
+`PINATA_API_KEY`, `PINATA_SECRET_API_KEY` and `PINATA_ACCESS_TOKEN`, follow these steps:
+
+1. Sign up or log in on https://app.pinata.cloud/
+1. Select the API Keys tab
+1. Select New Key
+1. The key should have the permissions `pinFileToIPFS` and `pinJSONToIPFS`
+1. Set a name for the key
+1. Click Create Key
+1. From the popup, take the API Key and the API Secret and put them in the `.env` file. The `IPFS_GATEWAY` variable can
+   be any IPFS gateway but we recommend using a private one (Pinata offers this as well). For more details about the
+   interactions with IPFS, check [`src/services/ipfs.rs`](./src/services/ipfs.rs).
+1. Select the "Access Controls" tab
+1. Click on the "Request Token" button
+1. Copy the token and put in th `.env` file in the `PINATA_ACCESS_TOKEN` variable
+
+Simulate the cloud environment by finally running:
+
+```sh
+$ cargo run --bin sablier_merkle_api
+```
+
+This command will run a standard web API and expose it on port 3000 on localhost.
+
+### Vercel
+
+We use Vercel for hosting, and this is why we have separate binaries for each endpoint. For local development, use this
+command:
+
+```sh
+$ vercel dev
+```
+
+This command will run a standard web API and expose it on port 3000 on localhost.
+
+If you wish to deploy your backend to vercel, check the official
+[Github Actions](https://github.com/sablier-labs/v2-merkle-api/blob/main/.github/workflows/deploy-merkle-api.yml)
+workflow for deploying. Rust is supported through Vercel's [`rust runtime`](https://github.com/vercel-community/rust).

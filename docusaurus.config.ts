@@ -61,6 +61,22 @@ const config: Config = {
             from: "/protocol/subgraphs/endpoints",
             to: "/api/subgraphs/overview",
           },
+          {
+            from: "/apps/features",
+            to: "/apps/features/streams",
+          },
+          {
+            from: "/apps/guides",
+            to: "/apps/guides/how-to",
+          },
+          {
+            from: "/apps/url-schemes",
+            to: "/apps/guides/url-schemes",
+          },
+          {
+            from: "/apps/csv-support",
+            to: "/apps/guides/csv-support",
+          },
         ],
       },
     ],
@@ -186,21 +202,25 @@ const config: Config = {
           label: "Concepts",
           position: "left",
           to: "/concepts/what-is-sablier",
+          activeBasePath: "/concepts",
         },
         {
           label: "Contracts",
           position: "left",
           to: "/contracts/v2/overview",
+          activeBasePath: "/contracts",
         },
         {
           label: "Apps",
           position: "left",
           to: "/apps/overview",
+          activeBasePath: "/apps",
         },
         {
           label: "APIs",
           position: "left",
-          to: "/api/subgraphs/overview",
+          to: "/api/overview",
+          activeBasePath: "/api",
         },
         {
           label: "Discord",

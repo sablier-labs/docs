@@ -1,0 +1,88 @@
+---
+id: "overview"
+sidebar_position: 1
+title: "Overview"
+---
+
+import LinkPreview from "@site/src/components/LinkPreview";
+
+# The Sablier APIs
+
+Sablier relies on specific dependencies to source data or manage off-chain flows. All of these are either public or
+fully open-source, so feel free to roam around and suggest improvements or optimizations where needed.
+
+## Subgraphs and Indexers (GraphQL)
+
+As an alternative to reading data from the contracts or listening to onchain events, we use a set of subgraphs and
+indexers. These act as a middleware between the chain and our interfaces and allow for caching, formatting and querying
+data.
+
+### The Graph's Subgraphs
+
+[The Graph](https://thegraph.com/) has been the vendor of choice for the EVM space for the past few years. We've been
+integrating The Graph since 2019 with Sablier V1. For Sablier V2, we designed a special set of feature-oriented
+subgraphs used not only by us (in the official apps) but by 3rd party services (e.g. snapshot) and integrators alike.
+
+These subgraphs are hosted on The Graph Network, as well as on the The Graph Hosted Service. They can be used to query
+Sablier data from the official [endpoints](/api/subgraphs/endpoints). Every network has its own subgraph endpoints.
+
+Read more on the dedicated page about our `protocol` and `merkle` [subgraphs](/api/subgraphs/overview) or check out the
+[official vendor docs](https://thegraph.com/docs/en/quick-start/).
+
+<LinkPreview
+  href="https://github.com/sablier-labs/v2-subgraphs"
+  icon="github"
+  subtitle="@sablier/v2-subgraphs"
+  title="Github - apps/protocol, apps/merkle"
+/>
+
+### Envio's Indexers
+
+[Envio](https://envio.dev/) offers a suite of fast and flexible tools to access on-chain data. Their HyperIndex service
+provides for a similar GraphQL driven API to access cached data and serve it into our client interfaces.
+
+We designed a set of indexers that mimic the features and entities exposed by subgraphs and take advantage of the speed
+and optimized environment configured through HyperIndex. Read more on the dedicated page about our `protocol-envio` and
+`merkle-envio` [indexers](/api/indexers/overview).
+
+All networks share the same indexer endpoint (for one indexer type), as Envio promotes a cross-chain indexing
+architecture.
+
+:::tip
+
+Before diving into integrating Envio's indexer as a data source for your application, please read the
+[main differences](/api/indexers/differences) between subgraphs and indexers (generally as well as applied to the
+Sablier deployments).
+
+:::
+
+<LinkPreview
+  href="https://github.com/sablier-labs/v2-subgraphs"
+  icon="github"
+  subtitle="@sablier/v2-subgraphs"
+  title="Github - apps/protocol-envio, apps/merkle-envio"
+/>
+
+## Merkle API (Rust)
+
+To support our Merkle distribution (a.k.a. [Airstreams](/apps/features#airstreams)) system we developed a backend
+service called `@sablier/v2-merkle-api`. This backend deals with the validation, creation and management of Merkle
+trees, used to define eligibility and claiming rules for Sablier's Airstream campaigns.
+
+This service is open-source and can be used by integrators as a plug-n-play solution to support (and even deploy)
+similar campaigns from their own dashboards. Read more on the dedicated page about the `merkle-api`
+[backend](/api/merkle-api/overview).
+
+<LinkPreview
+  href="https://github.com/sablier-labs/v2-merkle-api"
+  icon="github"
+  subtitle="@sablier/v2-merkle-api"
+  title="Github - Rust based API to generate Merkle distribution"
+/>
+
+## Explorer
+
+To preview the GraphQL APIs for subgraphs and indexers you can plug them into
+[Hasura's](https://cloud.hasura.io/public/graphiql) online explorer.
+[Here](https://cloud.hasura.io/public/graphiql?endpoint=https%3A%2F%2Fapi.thegraph.com%2Fsubgraphs%2Fname%2Fsablier-labs%2Fsablier-v2-experimental)'s
+an example setup for the `sablier-v2` mainnet subgraph inside Hasura's explorer.

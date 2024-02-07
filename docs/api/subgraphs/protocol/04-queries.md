@@ -4,20 +4,22 @@ sidebar_position: 4
 title: "Queries"
 ---
 
-Building on top of the [entity structure](/api/subgraphs/architecture/structure) defined earlier, here are some common
+Building on top of the [entity structure](/api/subgraphs/protocol/structure) defined earlier, here are some common
 GraphQL queries for fetching data from the Sablier V2 subgraph.
 
 ### Recent streams
 
 ```graphql title="The 10 most recent streams"
-streams(
-  first: 10
-  orderBy: timestamp
-  orderDirection: desc
-) {
-  id
-  alias
-  category
+query getStreams {
+  streams(first: 10, orderBy: subgraphId, orderDirection: desc) {
+    id
+    alias
+    category
+    asset {
+      id
+      symbol
+    }
+  }
 }
 ```
 
@@ -29,28 +31,44 @@ can use the unique `subgraphId`.
 This query includes pagination.
 
 ```graphql title="The next streams indexed before the last seen subgraphId"
-streams(
-  first: $first
-  skip: $skip
-  orderBy: $subgraphId
-  orderDirection: desc
-  where: { subgraphId_lt: $subgraphId }
-) {
-  id
-  alias
-  category
+query getStreams($first: Int!, $subgraphId: numeric!) {
+  streams(first: $first, orderBy: subgraphId, orderDirection: desc, where: { subgraphId_lt: $subgraphId }) {
+    id
+    alias
+    category
+    asset {
+      id
+      symbol
+    }
+  }
 }
 ```
 
-### Streams by sender
+### Streams by sender (with support for the old V2.0)
 
-To support both [proxy senders](/api/subgraphs/architecture/structure#the-proxender) (case 3) and
-[native senders](/api/subgraphs/architecture/structure#the-proxender) (case 2) we query for:
+To support both [proxy senders](/api/subgraphs/protocol/structure#the-proxender) (case 3) and
+[native senders](/api/subgraphs/protocol/structure#the-proxender) (case 2) we query for:
 
 - streams where the connected account is the native sender
 - streams where the connected account is the proxender - the owner of the proxy labeled as a sender
 
 This query includes pagination.
+
+```graphql title="The next streams indexed before the last seen subgraphId"
+query getStreams($first: Int!, $skip: Int!, $subgraphId: BigInt!) {
+  streams(
+    first: $first
+    skip: $skip
+    orderBy: $subgraphId
+    orderDirection: desc
+    where: { subgraphId_lt: $subgraphId }
+  ) {
+    id
+    alias
+    category
+  }
+}
+```
 
 ```graphql title="The next streams created by an address (natively or through a proxy)"
 streams(
@@ -139,6 +157,12 @@ where: {
 
 ### Actions by stream
 
+:::tip
+
+To avoid writing the same entity definitions over and over again, check out Fragments.
+
+:::
+
 ```graphql title="Most recent 100 stream actions such as withdrawals or transfers"
 actions(
   first: 100
@@ -149,9 +173,7 @@ actions(
   id
   category
   stream {
-    id
-    alias
-    category
+    ...StreamFragment
   }
 }
 ```

@@ -1,0 +1,130 @@
+---
+id: "differences"
+sidebar_position: 1
+title: "Differences"
+---
+
+# Differences (The Graph vs. Envio)
+
+:::info
+
+If you're looking to support both subgraphs (The Graph) and indexers (Envio) into your apps, please make sure to scroll
+down to the "Different Results" section to understand how results from both APIs may differ for the same entities.
+
+:::
+
+## General
+
+In contrast to The Graph, Envio offers a slightly different Developer Experience (DX) in terms of indexer
+implementation. While for consumers, the query specifics don't change a lot, here are a few items to consider before
+developing on top of the Sablier indexers/subgraphs:
+
+### Querying Language
+
+Both solutions create a **GraphQL** API for consumers to read data from. It is important to note that The Graph uses a
+customized subset of GraphQL operations, which makes is impossible to use the same queries between both indexers and
+subgraphs, whereas Envio deploys a GraphQL API over a Postgres DB. Some examples:
+
+| Example              | The Graph                             | Envio                                         |
+| -------------------- | ------------------------------------- | --------------------------------------------- |
+| Pagination           | `first`, `skip`                       | `limit`, `offset`                             |
+| Filter by id         | `stream(id)`                          | `Stream(where: {id: {_eq: 1}})`               |
+| Single vs. Plural    | `stream(id){}`, `streams{}`           | `Stream(where...){}` for both                 |
+| Nested items         | `campaigns{ id, asset: {id, symbol}}` | `Campaign{ asset, assetObject: {id, symbol}}` |
+| Filter similar items | `assets(id: $id)`                     | `Asset(where: {id: {_iregex: $id}})`          |
+
+#### Important Notes
+
+For the 3rd example, querying for a single item vs. a collection will have separate keywords for The Graph. With Envio,
+you'll have to identify within the app itself if the query is supposed to yield one or multiple items. As you may tell,
+with Envio you'll query for `Stream` (capitalized) while with The Graph you'll query for `stream` or `streams`.
+
+For the 4th example, in Envio indexers the name of an object will yield its `id`, while the `<name>Object` label will
+ask for the object itself (e.g. `asset` vs `assetObject`).
+
+:::warning
+
+This `asset` vs `assetObject` discrepancy may change in future versions of Envio. Please checks the docs accordingly
+before developing features on top of the Sablier V2 indexers.
+
+:::
+
+### Handler Language
+
+- The Graph: uses Assembly script
+- Envio: we've chosen Typescript, but you can use JS, TS or Rescript
+
+For Envio, one important mental model is in the concept of loaders vs. handlers. To optimize querying speeds, Envio will
+ask you to write 2 methods: a `loader`, where you can express which existing entities you're expecting to use and
+mutate, and a `handler` where you manage these entities and/or create new ones.
+
+Example: In the case of a Withdraw event, we'll **pre-load** the `Stream` entity and maybe the `Watcher`, while in the
+second part we'll **handle** the creation of a new `Action` of type Withdraw, we'll update the `Stream`'s
+`withdrawnAmount` and increase the `Watcher`'s index.
+
+## Specifics
+
+### Initializer Contracts
+
+We've architected this indexer around a set of pre-configured contracts.
+
+Similar to The Graph, we start by pre-configuring a set of contracts. While Envio's indexer doesn't have the same
+[requirement](https://discord.com/channels/438038660412342282/438070183794573313/1153155902933831811) of pre-configuring
+contracts to listen to, we'll keep this feature to ensure we can query against those entities, even if they'll be empty
+at start.
+
+We'll ensure contracts have been initialized (see the `watcher.ts` helper) by making a call against the initializer at
+the start of each method. It should only come into play within the create handlers.
+
+### Versioning and Lockup Flavors
+
+While for The Graph's subgraphs we track flavor-first (see `subgraph.template.yaml` for the configuration of
+`SablierV2LockupLinear` and `SablierV2LockupDynamic`), for Envio's indexers we'll have a version-first approach.
+
+Therefore, `LockupLinear` and `LockupDynamic` will be bundled under the same `Lockup<Version>` contract tracker (see
+`./config.template.mustache`). Different versions of the protocol will be tracked separately, which is why we have
+`Lockup_V20` (v2.0) and `Lockup_V21` (v2.1) in our configuration. Later on, inside the handler logic, we'll separate
+contracts by flavor.
+
+```tree title="Envio: Contract configuration tree (version-first)"
+└── contracts/
+    ├── LockupV20/
+    │   ├── event: CreateLockupDynamicStream
+    │   └── event: CreateLockupLinearStream
+    └── LockupV21/
+        ├── event: CreateLockupDynamicStream
+        └── event: CreateLockupLinearStream
+```
+
+```tree title="The Graph: Contract configuration tree (flavor-first)"
+└── contracts/
+    ├── LockupDynamic/
+    │   ├── event: CreateLockupDynamicStreamV20
+    │   └── event: CreateLockupDynamicStreamV21
+    └── LockupLinear/
+        ├── event: CreateLockupLinearStreamV20
+        └── event: CreateLockupLinearStreamV21
+```
+
+## Different Results (\*)
+
+Due to the cross-chain indexing aspect, entities in Envio will need to have a chainId suffix attached to them to ensure
+they're unique across the board. At the same time, there are some minor features missing, which will cause some
+differences listed below.
+
+- For Envio indexers, some entities will have different identifiers (from what The Graph's subgraph have):
+  1.  `protocol-envio`: the `Action`, `Asset`, `Batch`, `Batcher`, `Contract` have a `-chainId` appended to the ID
+  2.  `merkle-envio`: the `Action`, `Asset` and `Factory` have a `-chainId` appended to the ID
+
+:::tip
+
+To avoid writing separate systems when assigning variables to queries, you can use slightly different filters. For
+example, given the different `id`s of an `Asset` (`address` in The Graph and `address-chainId` in Envio) you can query
+for certain assets with:
+
+1. `asset(id: $assetId)` for The Graph
+2. `Asset(where: {id: {_iregex: $assetId}})`
+
+With `assetId` in both cases being assigned to the Asset's `address`.
+
+:::

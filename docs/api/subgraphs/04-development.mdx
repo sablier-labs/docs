@@ -1,6 +1,6 @@
 ---
 id: "development"
-sidebar_position: 5
+sidebar_position: 4
 title: "Development"
 ---
 
@@ -8,8 +8,8 @@ import LinkPreview from "@site/src/components/LinkPreview";
 
 ## Integrating
 
-To integrate the Sablier V2 subgraph into your own product, start from the official subgraph repository. We recommend
-using:
+To integrate the Sablier V2 subgraph or indexers into your own product, start from the official `@sablier/v2-subgraphs`
+repository. We recommend using:
 
 - [GraphQL Code Generator](https://the-guild.dev/graphql/codegen/docs/getting-started) to create types from your GraphQL
   fragments and queries
@@ -25,7 +25,7 @@ using:
 ## Contributing
 
 To contribute to the V2 subgraphs or deploy your own, head over to the GitHub
-[`v2-subgraphs`](https://github.com/sablier-labs/v2-subgraphs) repository. Get started by reviewing the `packages/core`
+[`v2-subgraphs`](https://github.com/sablier-labs/v2-subgraphs) repository. Get started by reviewing the `apps/protocol`
 directory.
 
 To bootstrap a subgraph project, run the following commands. They will install the requisite dependencies and generate
@@ -41,7 +41,7 @@ To deploy a new subgraph on Sepolia:
 
 1. Create a new item using The Graph's hosted network
 2. Add its name/endpoint under the `deploy:sepolia` script in `package.json`
-3. Add your own Sablier V2 contract addresses in `./constants/chains/sepolia.ts`
+3. Add your own Sablier V2 contract addresses in `../constants/chains/sepolia.ts`
 4. Make sure you're [authenticated][the-graph-auth] on your local machine
 5. Run `yarn deploy:sepolia`
 

@@ -1,0 +1,79 @@
+---
+id: "endpoints"
+sidebar_position: 1
+title: "Endpoints"
+---
+
+import LinkPreview from "@site/src/components/LinkPreview";
+
+:::tip Chains: Individual vs. Aggregated
+
+While subgraphs have a chain-focused approach (one subgraph endpoint/deployment per chain), it is important to note that
+Envio will index all chains within the same deployment. This makes it so data from all chains can be queried from the
+same place.
+
+:::
+
+:::warning Note
+
+The Sablier Envio indexers are still under development so links may change in time. Please reach out if the endpoints
+don't work any more
+
+:::
+
+## Sablier V2 - Protocol-Envio
+
+The `protocol-envio` indexer tracks events mainly emitted by the
+[`@sablier/v2-core`](/contracts/v2/reference/overview#core) contracts. It deals with core protocol actions like
+creating, withdrawing or transferring streams.
+
+### Endpoints
+
+| Chain            | Endpoint (Hosted Network)                                                 |
+| ---------------- | ------------------------------------------------------------------------- |
+| All-Networks[^1] | [https://indexer.bigdevenergy.link/[...]/v1/graphql]([endpoint-protocol]) |
+
+Use [Hasura's online explorer](https://cloud.hasura.io/public/graphiql?) to view the entities and query API.
+
+### Code
+
+<LinkPreview
+  href="https://github.com/sablier-labs/v2-subgraphs/tree/main/apps/protocol-envio"
+  icon="github"
+  subtitle="Github - sablier-labs/v2-subgraphs"
+  title="Sablier V2 protocol subgraph (Envio)"
+/>
+
+## Sablier V2 - Merkle-Envio (Airstreams)
+
+This subgraph tracks events emitted by the [`@sablier/v2-periphery`](/contracts/v2/reference/overview#periphery)
+contracts, specifically the
+[`Merkle Factory`](/contracts/v2/reference/periphery/contract.SablierV2MerkleStreamerFactory). It deals with airstream
+specific actions like the factory creating a campaign, admin clawbacks or users claiming streams as defined in the
+attached Merkle tree.
+
+### Endpoints
+
+| Chain        | Endpoint (Hosted Network)                                               |
+| ------------ | ----------------------------------------------------------------------- |
+| All-Networks | [https://indexer.bigdevenergy.link/[...]/v1/graphql]([endpoint-merkle]) |
+
+Use [Hasura's online explorer](https://cloud.hasura.io/public/graphiql?) to view the entities and query API.
+
+### Code
+
+<LinkPreview
+  href="https://github.com/sablier-labs/v2-subgraphs/tree/main/apps/protocol"
+  icon="github"
+  subtitle="Github - sablier-labs/v2-subgraphs"
+  title="Sablier V2 protocol subgraph (The Graph)"
+/>
+
+[^1]:
+    All-Networks = most of the supported networks from Sablier's app e.g. Optimism, Polygon, Sepolia, Mainnet. The full
+    list can be found in
+    [this](https://github.com/sablier-labs/v2-subgraphs/blob/main/apps/protocol-envio/src/constants/chains/index.ts)
+    configuration file.
+
+[endpoint-protocol]: https://indexer.bigdevenergy.link/be2052e/v1/graphql
+[endpoint-merkle]: https://indexer.bigdevenergy.link/61cf6be/v1/graphql

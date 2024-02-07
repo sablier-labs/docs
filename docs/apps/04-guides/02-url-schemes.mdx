@@ -1,6 +1,6 @@
 ---
 id: "url-schemes"
-sidebar_position: 5
+sidebar_position: 2
 title: "URL Schemes"
 ---
 
@@ -50,7 +50,7 @@ contract `alias`, the `chainId`, and the `streamId`, and then you add them to th
 As you can see, the main format is `contractA-chainId-streamId`. This is supported both at the app and the subgraph
 level. For situations when an alias cannot be used, we fallback to the following format:
 `contractAddress-chainId-streamId`. Read more about identifiers and aliases in our
-[subgraph documentation](/api/subgraphs/architecture/structure#identifying).
+[subgraph documentation](/api/subgraphs/protocol/structure#identifying).
 
 ---
 
@@ -129,6 +129,7 @@ want to use this feature, here is a table with all the available parameters:
 | c         | Number       | The chain of the streams in the search result. This parameter is required. | `1`, `10`, `42161` or other [supported chain](/contracts/v2/deployments) |
 | s         | String       | The address of the stream sender by which to filter                        | `0x12...AB`, `vitalik.eth`                                               |
 | r         | String       | The address of the stream recipient by which to filter                     | `0x12...AB`, `vitalik.eth`                                               |
+| a         | String       | The address of the asset to filter for                                     | `0x12...CD` for DAI                                                      |
 | i         | String array | An array of IDs to look up                                                 | `LL-5-1`, `LD-5-14` etc.                                                 |
 
 ### Building the URL
@@ -143,3 +144,58 @@ Here are some examples of URLs and the associated search modal for each:
 | -------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------- |
 | [Streams created by a particular user](https://app.sablier.com/?t=search&c=1&s=0x0aAeF7BbC21c627f14caD904E283e199cA2b72cC) | ![Form](/screenshots/search-with-sender.png) |
 | [Streams with particular IDs](https://app.sablier.com/?t=search&c=1&i=LL2-1-2,LL-1-29)                                     | ![Form](/screenshots/search-with-ids.png)    |
+
+---
+
+## Airstream Page
+
+|                                                          |
+| -------------------------------------------------------- |
+| ![Airstream profile](/screenshots/airstream-profile.png) |
+
+### Elements
+
+Every airstream created through the Sablier Protocol is identified through three parameters:
+
+- a **chainId** (e.g. `1` for Ethereum, `10` for [Optimism](https://chainlist.org/) )
+- a **contract** address (e.g. `0x12..AB`)
+
+:::info
+
+We've chosen not to apply aliases to Airstreams for now. In the future, we may ask the campaign creator to provide a
+name or an alias to be used in the URL.
+
+:::
+
+### Building the URL
+
+By combining the elements described above, you can send users from your interface directly to the create stream page in
+the Sablier Interface. To build the link to a stream resource, you use a hyphen `-` to concatenate the uppercase
+contract `alias`, the `chainId`, and the `streamId`, and then you add them to the base URL `app.sablier.com/stream/`:
+
+| URL                                                                                                                                   | Description          |
+| :------------------------------------------------------------------------------------------------------------------------------------ | :------------------- |
+| [app.sablier.com/stream/0xfd0[...]cd83a-11155111](https://app.sablier.com/stream/0xfd02cf6270329d95b6408e8bcc2f5d792d8cd83a-11155111) | Airstream on Sepolia |
+
+As you can see, the main format is `contractA-chainId`. This is supported both at the app and the subgraph level. Read
+more about identifiers and aliases in our [subgraph documentation](/api/subgraphs/merkle/entities#identifying).
+
+## Search Airstreams
+
+### Elements
+
+The Sablier Interface comes with an advanced search view that can be accessed directly through URL parameters. If you
+want to use this feature, here is a table with all the available parameters:
+
+| Parameter | Type   | Description                                                                   | Values                                                                   |
+| :-------- | :----- | :---------------------------------------------------------------------------- | ------------------------------------------------------------------------ |
+| t         | String | The active tab in the dashboard. For global queries, use `search`.            | `search`                                                                 |
+| c         | Number | The chain of the airstreams in the search result. This parameter is required. | `1`, `10`, `42161` or other [supported chain](/contracts/v2/deployments) |
+| m         | String | The address of the campaign admin by which to filter                          | `0x12...AB`, `vitalik.eth`                                               |
+| a         | String | The address of the asset to filter for                                        | `0x12...CD` for DAI                                                      |
+
+### Building the URL
+
+By combining the parameters described above, you can send users from your interface directly to the search view in the
+Sablier Interface. To build the link, you append all these elements to the base link `app.sablier.com/airstreams` as
+query parameters, e.g. `?t=search&c=1&m=0x..1&a=0x`.
