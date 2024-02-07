@@ -59,7 +59,7 @@ const config: Config = {
           },
           {
             from: "/protocol/subgraphs/endpoints",
-            to: "/api/subgraphs/overview",
+            to: "/api/overview",
           },
           {
             from: "/apps/features",
