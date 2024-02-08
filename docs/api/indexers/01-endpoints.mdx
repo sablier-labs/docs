@@ -14,18 +14,18 @@ same place.
 
 :::
 
-:::warning Note
-
-The Sablier Envio indexers are still under development so links may change in time. Please reach out if the endpoints
-don't work any more
-
-:::
-
 ## Sablier V2 - Protocol-Envio
 
 The `protocol-envio` indexer tracks events mainly emitted by the
 [`@sablier/v2-core`](/contracts/v2/reference/overview#core) contracts. It deals with core protocol actions like
 creating, withdrawing or transferring streams.
+
+:::warning Note
+
+The Sablier Envio indexers are still under development so links may change in time. Please reach out if the endpoints
+don't work any more. This warning will be removed once indexers are deployed in production and endpoints are stable.
+
+:::
 
 ### Endpoints
 
@@ -52,6 +52,8 @@ contracts, specifically the
 specific actions like the factory creating a campaign, admin clawbacks or users claiming streams as defined in the
 attached Merkle tree.
 
+[endpoint-protocol]: https://indexer.bigdevenergy.link/be2052e/v1/graphql
+
 ### Endpoints
 
 | Chain        | Endpoint (Hosted Network)                                               |
@@ -59,6 +61,8 @@ attached Merkle tree.
 | All-Networks | [https://indexer.bigdevenergy.link/[...]/v1/graphql]([endpoint-merkle]) |
 
 Use [Hasura's online explorer](https://cloud.hasura.io/public/graphiql?) to view the entities and query API.
+
+[endpoint-merkle]: https://indexer.bigdevenergy.link/61cf6be/v1/graphql
 
 ### Code
 
@@ -74,6 +78,3 @@ Use [Hasura's online explorer](https://cloud.hasura.io/public/graphiql?) to view
     list can be found in
     [this](https://github.com/sablier-labs/v2-subgraphs/blob/main/apps/protocol-envio/src/constants/chains/index.ts)
     configuration file.
-
-[endpoint-protocol]: https://indexer.bigdevenergy.link/be2052e/v1/graphql
-[endpoint-merkle]: https://indexer.bigdevenergy.link/61cf6be/v1/graphql
