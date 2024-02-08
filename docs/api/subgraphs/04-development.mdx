@@ -47,5 +47,17 @@ To deploy a new subgraph on Sepolia:
 
 You can read more about how the The Graph works in their [official docs][the-graph-docs].
 
+To publish on the hosted service:
+
+1. [Authenticate](https://thegraph.com/docs/en/deploying/hosted-service/) with the hosted service credentials
+
+   ```
+   graph auth --product hosted-service <ACCESS_TOKEN>
+   ```
+
+2. Generate configuration
+
+   Run `yarn deploy:<chain_name>` to generate imports, configurations and deploy in the same script.
+
 [the-graph-auth]: https://thegraph.com/docs/en/deploying/deploying-a-subgraph-to-hosted/#store-the-access-token
 [the-graph-docs]: https://thegraph.com/docs/en/
