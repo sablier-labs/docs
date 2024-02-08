@@ -62,6 +62,14 @@ const config: Config = {
             to: "/api/overview",
           },
           {
+            from: "/api/subgraphs/overview",
+            to: "/api/overview",
+          },
+          {
+            from: "/api",
+            to: "/api/overview",
+          },
+          {
             from: "/apps/features",
             to: "/apps/features/streams",
           },

@@ -123,7 +123,7 @@ export default function Header() {
             description={"Off-chain utilities such as the subgraph"}
             Icon={CubeIcon}
             title={"APIs"}
-            to={"/api/subgraphs/overview"}
+            to={"/api/overview"}
           />
         </Collection>
       </Content>
