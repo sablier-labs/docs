@@ -223,6 +223,24 @@ Or maybe you're looking for V1? [Click here](/contracts/v1/deployments).
 | SablierV2Batch                 | [0x72D921E579aB7FC5D19CD398B6be24d626Ccb6e7](https://sepolia.arbiscan.io/address/0x72D921E579aB7FC5D19CD398B6be24d626Ccb6e7) | [periphery-v1.1.0](https://github.com/sablier-labs/v2-deployments/tree/main/periphery/v1.1.0) |
 | SablierV2MerkleStreamerFactory | [0xcc87b1A4de285832f226BD585bd54a2184D32105](https://sepolia.arbiscan.io/address/0xcc87b1A4de285832f226BD585bd54a2184D32105) | [periphery-v1.1.0](https://github.com/sablier-labs/v2-deployments/tree/main/periphery/v1.1.0) |
 
+## Blast Sepolia
+
+### Core
+
+| Contract               | Address                                                                                                                       | Deployment                                                                          |
+| :--------------------- | :---------------------------------------------------------------------------------------------------------------------------- | :---------------------------------------------------------------------------------- |
+| SablierV2LockupLinear  | [0x3F530bB78F27910Bb42B3907bf8A12DC30EB351C](https://testnet.blastscan.io/address/0x3F530bB78F27910Bb42B3907bf8A12DC30EB351C) | [core-v1.1.2](https://github.com/sablier-labs/v2-deployments/tree/main/core/v1.1.2) |
+| SablierV2LockupDynamic | [0xC4CFE91FC326741bCD582F804C15fde2eb226475](https://testnet.blastscan.io/address/0xC4CFE91FC326741bCD582F804C15fde2eb226475) | [core-v1.1.2](https://github.com/sablier-labs/v2-deployments/tree/main/core/v1.1.2) |
+| SablierV2NFTDescriptor | [0x08A4934d1B2eA19D2b754c00Db478cBE5Ef7204C](https://testnet.blastscan.io/address/0x08A4934d1B2eA19D2b754c00Db478cBE5Ef7204C) | [core-v1.1.2](https://github.com/sablier-labs/v2-deployments/tree/main/core/v1.1.2) |
+| SablierV2Comptroller   | [0x20d23025B5ca585836b481bF9E067F0103B45dcf](https://testnet.blastscan.io/address/0x20d23025B5ca585836b481bF9E067F0103B45dcf) | [core-v1.1.2](https://github.com/sablier-labs/v2-deployments/tree/main/core/v1.1.2) |
+
+### Periphery
+
+| Contract                       | Address                                                                                                                       | Deployment                                                                                    |
+| :----------------------------- | :---------------------------------------------------------------------------------------------------------------------------- | :-------------------------------------------------------------------------------------------- |
+| SablierV2Batch                 | [0xC974e0A6d123F8B2Aecdaf3183c672659ee51d27](https://testnet.blastscan.io/address/0xC974e0A6d123F8B2Aecdaf3183c672659ee51d27) | [periphery-v1.1.0](https://github.com/sablier-labs/v2-deployments/tree/main/periphery/v1.1.0) |
+| SablierV2MerkleStreamerFactory | [0x028f3DCb276E8461AF30d4b1F4b2020053823C98](https://testnet.blastscan.io/address/0x028f3DCb276E8461AF30d4b1F4b2020053823C98) | [periphery-v1.1.0](https://github.com/sablier-labs/v2-deployments/tree/main/periphery/v1.1.0) |
+
 ## Optimism Sepolia
 
 ### Core
