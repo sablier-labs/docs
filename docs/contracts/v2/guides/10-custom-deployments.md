@@ -7,7 +7,7 @@ title: "Custom Deployments"
 :::info
 
 Due to limited bandwidth, we are not able to deploy the Sablier Protocol on every EVM chain. However, we are happy to
-consider your project if you fill out this [form](https://forms.gle/kHKq7RSZ993WVoB2A) and meet the requirements below.
+consider your project if you fill out this [form](https://forms.gle/9EaRarDie98Fw1mw6) and meet the requirements below.
 
 :::
 
