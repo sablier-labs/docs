@@ -97,6 +97,24 @@ Or maybe you're looking for V1? [Click here](/contracts/v1/deployments).
 | SablierV2Batch                 | [0x94E596EEd73b4e3171c067f05A87AB0268cA993c](https://basescan.org/address/0x94E596EEd73b4e3171c067f05A87AB0268cA993c) | [periphery-v1.1.0](https://github.com/sablier-labs/v2-deployments/tree/main/periphery/v1.1.0) |
 | SablierV2MerkleStreamerFactory | [0x5545c8E7c3E1F74aDc98e518F2E8D23A002C4412](https://basescan.org/address/0x5545c8E7c3E1F74aDc98e518F2E8D23A002C4412) | [periphery-v1.1.0](https://github.com/sablier-labs/v2-deployments/tree/main/periphery/v1.1.0) |
 
+## Blast
+
+### Core
+
+| Contract               | Address                                                                                                               | Deployment                                                                          |
+| :--------------------- | :-------------------------------------------------------------------------------------------------------------------- | :---------------------------------------------------------------------------------- |
+| SablierV2LockupLinear  | [0xcb099EfC90e88690e287259410B9AE63e1658CC6](https://blastscan.io/address/0xcb099EfC90e88690e287259410B9AE63e1658CC6) | [core-v1.1.2](https://github.com/sablier-labs/v2-deployments/tree/main/core/v1.1.2) |
+| SablierV2LockupDynamic | [0xDf578C2c70A86945999c65961417057363530a1c](https://blastscan.io/address/0xDf578C2c70A86945999c65961417057363530a1c) | [core-v1.1.2](https://github.com/sablier-labs/v2-deployments/tree/main/core/v1.1.2) |
+| SablierV2NFTDescriptor | [0x67e0a126b695DBA35128860cd61926B90C420Ceb](https://blastscan.io/address/0xCff4a803b0Bf55dD1BE38Fb96088478F3D2eeCF2) | [core-v1.1.1](https://github.com/sablier-labs/v2-deployments/tree/main/core/v1.1.1) |
+| SablierV2Comptroller   | [0x2De92156000269fa2fde7544F10f01E8cBC80fFa](https://blastscan.io/address/0x2De92156000269fa2fde7544F10f01E8cBC80fFa) | [core-v1.0.0](https://github.com/sablier-labs/v2-deployments/tree/main/core/v1.0.0) |
+
+### Periphery
+
+| Contract                       | Address                                                                                                                | Deployment                                                                                    |
+| :----------------------------- | :--------------------------------------------------------------------------------------------------------------------- | :-------------------------------------------------------------------------------------------- |
+| SablierV2Batch                 | [0x0eDA15D606733f6CDe9DB67263E546bfcDDe9264](https://blastscan.io//address/0x0eDA15D606733f6CDe9DB67263E546bfcDDe9264) | [periphery-v1.1.0](https://github.com/sablier-labs/v2-deployments/tree/main/periphery/v1.1.0) |
+| SablierV2MerkleStreamerFactory | [0x92FC05e49c27884d554D98a5C01Ff0894a9DC29a](https://blastscan.io//address/0x92FC05e49c27884d554D98a5C01Ff0894a9DC29a) | [periphery-v1.1.0](https://github.com/sablier-labs/v2-deployments/tree/main/periphery/v1.1.0) |
+
 ## BNB Smart Chain
 
 ### Core
