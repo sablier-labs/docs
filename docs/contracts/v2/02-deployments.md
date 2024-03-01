@@ -103,8 +103,8 @@ Or maybe you're looking for V1? [Click here](/contracts/v1/deployments).
 
 | Contract               | Address                                                                                                               | Deployment                                                                               |
 | :--------------------- | :-------------------------------------------------------------------------------------------------------------------- | :--------------------------------------------------------------------------------------- |
-| SablierV2LockupDynamic | [0xDf578C2c70A86945999c65961417057363530a1c](https://blastscan.io/address/0xDf578C2c70A86945999c65961417057363530a1c) | [core-blast](https://github.com/sablier-labs/v2-deployments/tree/blast-l2/blast/mainnet) |
 | SablierV2LockupLinear  | [0xcb099EfC90e88690e287259410B9AE63e1658CC6](https://blastscan.io/address/0xcb099EfC90e88690e287259410B9AE63e1658CC6) | [core-blast](https://github.com/sablier-labs/v2-deployments/tree/blast-l2/blast/mainnet) |
+| SablierV2LockupDynamic | [0xDf578C2c70A86945999c65961417057363530a1c](https://blastscan.io/address/0xDf578C2c70A86945999c65961417057363530a1c) | [core-blast](https://github.com/sablier-labs/v2-deployments/tree/blast-l2/blast/mainnet) |
 | SablierV2NFTDescriptor | [0x67e0a126b695DBA35128860cd61926B90C420Ceb](https://blastscan.io/address/0xCff4a803b0Bf55dD1BE38Fb96088478F3D2eeCF2) | [core-blast](https://github.com/sablier-labs/v2-deployments/tree/blast-l2/blast/mainnet) |
 | SablierV2Comptroller   | [0x2De92156000269fa2fde7544F10f01E8cBC80fFa](https://blastscan.io/address/0x2De92156000269fa2fde7544F10f01E8cBC80fFa) | [core-blast](https://github.com/sablier-labs/v2-deployments/tree/blast-l2/blast/mainnet) |
 
@@ -247,17 +247,17 @@ Or maybe you're looking for V1? [Click here](/contracts/v1/deployments).
 
 | Contract               | Address                                                                                                                       | Deployment                                                                               |
 | :--------------------- | :---------------------------------------------------------------------------------------------------------------------------- | :--------------------------------------------------------------------------------------- |
-| SablierV2LockupLinear  | [0x3F530bB78F27910Bb42B3907bf8A12DC30EB351C](https://testnet.blastscan.io/address/0x3F530bB78F27910Bb42B3907bf8A12DC30EB351C) | [core-blast](https://github.com/sablier-labs/v2-deployments/tree/blast-l2/blast/testnet) |
-| SablierV2LockupDynamic | [0xC4CFE91FC326741bCD582F804C15fde2eb226475](https://testnet.blastscan.io/address/0xC4CFE91FC326741bCD582F804C15fde2eb226475) | [core-blast](https://github.com/sablier-labs/v2-deployments/tree/blast-l2/blast/testnet) |
-| SablierV2NFTDescriptor | [0x08A4934d1B2eA19D2b754c00Db478cBE5Ef7204C](https://testnet.blastscan.io/address/0x08A4934d1B2eA19D2b754c00Db478cBE5Ef7204C) | [core-blast](https://github.com/sablier-labs/v2-deployments/tree/blast-l2/blast/testnet) |
-| SablierV2Comptroller   | [0x20d23025B5ca585836b481bF9E067F0103B45dcf](https://testnet.blastscan.io/address/0x20d23025B5ca585836b481bF9E067F0103B45dcf) | [core-blast](https://github.com/sablier-labs/v2-deployments/tree/blast-l2/blast/testnet) |
+| SablierV2LockupLinear  | [0xe31Ac61c7762930625D4700D7ea9282B7E57b816](https://testnet.blastscan.io/address/0xe31Ac61c7762930625D4700D7ea9282B7E57b816) | [core-blast](https://github.com/sablier-labs/v2-deployments/tree/blast-l2/blast/testnet) |
+| SablierV2LockupDynamic | [0x8aB55a8E046634D5AD87f64d65C1E96275e48712](https://testnet.blastscan.io/address/0x8aB55a8E046634D5AD87f64d65C1E96275e48712) | [core-blast](https://github.com/sablier-labs/v2-deployments/tree/blast-l2/blast/testnet) |
+| SablierV2NFTDescriptor | [0x1e7217Aa198A17F79cc45aB5C90277Ff1d18b5DB](https://testnet.blastscan.io/address/0x1e7217Aa198A17F79cc45aB5C90277Ff1d18b5DB) | [core-blast](https://github.com/sablier-labs/v2-deployments/tree/blast-l2/blast/testnet) |
+| SablierV2Comptroller   | [0x9e216126115AFcdA9531232D3B735731905B4DC4](https://testnet.blastscan.io/address/0x9e216126115AFcdA9531232D3B735731905B4DC4) | [core-blast](https://github.com/sablier-labs/v2-deployments/tree/blast-l2/blast/testnet) |
 
 ### Periphery
 
 | Contract                       | Address                                                                                                                       | Deployment                                                                                    |
 | :----------------------------- | :---------------------------------------------------------------------------------------------------------------------------- | :-------------------------------------------------------------------------------------------- |
-| SablierV2Batch                 | [0xC974e0A6d123F8B2Aecdaf3183c672659ee51d27](https://testnet.blastscan.io/address/0xC974e0A6d123F8B2Aecdaf3183c672659ee51d27) | [periphery-blast](https://github.com/sablier-labs/v2-deployments/tree/blast-l2/blast/testnet) |
-| SablierV2MerkleStreamerFactory | [0x028f3DCb276E8461AF30d4b1F4b2020053823C98](https://testnet.blastscan.io/address/0x028f3DCb276E8461AF30d4b1F4b2020053823C98) | [periphery-blast](https://github.com/sablier-labs/v2-deployments/tree/blast-l2/blast/testnet) |
+| SablierV2Batch                 | [0x72D91DB141fd38eD5DDc0D4b00BdDd2A17Cf6D55](https://testnet.blastscan.io/address/0x72D91DB141fd38eD5DDc0D4b00BdDd2A17Cf6D55) | [periphery-blast](https://github.com/sablier-labs/v2-deployments/tree/blast-l2/blast/testnet) |
+| SablierV2MerkleStreamerFactory | [0x6F147f9A251A1F004A1d043b8E486aAb00A49cef](https://testnet.blastscan.io/address/0x6F147f9A251A1F004A1d043b8E486aAb00A49cef) | [periphery-blast](https://github.com/sablier-labs/v2-deployments/tree/blast-l2/blast/testnet) |
 
 ## Optimism Sepolia
 
