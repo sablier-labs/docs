@@ -110,11 +110,6 @@ A renounced stream is a stream that cannot be canceled anymore.
 [PRBMath][prb-math] is fixed-point arithmetic library used by Sablier Core to compute percentage values and the
 exponents used in Lockup Dynamic.
 
-## PRBProxy
-
-[PRBProxy][prb-proxy] is a proxy contract that can compose transactions on behalf of the owner. PRBProxy is a key
-component of Sablier Periphery.
-
 ## Protocol fees
 
 Fees that are rewarded to the Sablier Protocol itself.
