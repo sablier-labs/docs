@@ -76,8 +76,8 @@ Or maybe you're looking for V1? [Click here](/contracts/v1/deployments).
 
 | Contract                       | Address                                                                                                               | Deployment                                                                                    |
 | :----------------------------- | :-------------------------------------------------------------------------------------------------------------------- | :-------------------------------------------------------------------------------------------- |
-| SablierV2Batch                 | [0x68f156E5fa8C23D65B33aBEbbA50e0CA3626F741](https://snowtrace.io/address/0x68f156E5fa8C23D65B33aBEbbA50e0CA3626F741) | [periphery-v1.1.0](https://github.com/sablier-labs/v2-deployments/tree/main/periphery/v1.1.0) |
-| SablierV2MerkleStreamerFactory | [0x4849e797d7Aab20FCC8f807EfafDffF98A83412E](https://snowtrace.io/address/0x4849e797d7Aab20FCC8f807EfafDffF98A83412E) | [periphery-v1.1.0](https://github.com/sablier-labs/v2-deployments/tree/main/periphery/v1.1.0) |
+| SablierV2Batch                 | [0x68f156E5fa8C23D65B33aBEbbA50e0CA3626F741](https://snowtrace.io/address/0x68f156E5fa8C23D65B33aBEbbA50e0CA3626F741) | [periphery-v1.1.1](https://github.com/sablier-labs/v2-deployments/tree/main/periphery/v1.1.1) |
+| SablierV2MerkleStreamerFactory | [0x4849e797d7Aab20FCC8f807EfafDffF98A83412E](https://snowtrace.io/address/0x4849e797d7Aab20FCC8f807EfafDffF98A83412E) | [periphery-v1.1.1](https://github.com/sablier-labs/v2-deployments/tree/main/periphery/v1.1.1) |
 
 ## Base
 
@@ -166,8 +166,8 @@ Or maybe you're looking for V1? [Click here](/contracts/v1/deployments).
 
 | Contract                       | Address                                                                                                                       | Deployment                                                                                    |
 | :----------------------------- | :---------------------------------------------------------------------------------------------------------------------------- | :-------------------------------------------------------------------------------------------- |
-| SablierV2Batch                 | [0x3eb9F8f80354a157315Fce64990C554434690c2f](https://phoenix.lightlink.io/address/0x3eb9F8f80354a157315Fce64990C554434690c2f) | [periphery-v1.1.0](https://github.com/sablier-labs/v2-deployments/tree/main/periphery/v1.1.0) |
-| SablierV2MerkleStreamerFactory | [0xdB07a1749D5Ca49909C7C4159652Fbd527c735B8](https://phoenix.lightlink.io/address/0xdB07a1749D5Ca49909C7C4159652Fbd527c735B8) | [periphery-v1.1.0](https://github.com/sablier-labs/v2-deployments/tree/main/periphery/v1.1.0) |
+| SablierV2Batch                 | [0x3eb9F8f80354a157315Fce64990C554434690c2f](https://phoenix.lightlink.io/address/0x3eb9F8f80354a157315Fce64990C554434690c2f) | [periphery-v1.1.1](https://github.com/sablier-labs/v2-deployments/tree/main/periphery/v1.1.1) |
+| SablierV2MerkleStreamerFactory | [0xdB07a1749D5Ca49909C7C4159652Fbd527c735B8](https://phoenix.lightlink.io/address/0xdB07a1749D5Ca49909C7C4159652Fbd527c735B8) | [periphery-v1.1.1](https://github.com/sablier-labs/v2-deployments/tree/main/periphery/v1.1.1) |
 
 ## Optimism
 
@@ -241,6 +241,24 @@ Or maybe you're looking for V1? [Click here](/contracts/v1/deployments).
 | SablierV2Batch                 | [0x72D921E579aB7FC5D19CD398B6be24d626Ccb6e7](https://sepolia.arbiscan.io/address/0x72D921E579aB7FC5D19CD398B6be24d626Ccb6e7) | [periphery-v1.1.0](https://github.com/sablier-labs/v2-deployments/tree/main/periphery/v1.1.0) |
 | SablierV2MerkleStreamerFactory | [0xcc87b1A4de285832f226BD585bd54a2184D32105](https://sepolia.arbiscan.io/address/0xcc87b1A4de285832f226BD585bd54a2184D32105) | [periphery-v1.1.0](https://github.com/sablier-labs/v2-deployments/tree/main/periphery/v1.1.0) |
 
+## Base Sepolia
+
+### Core
+
+| Contract               | Address                                                                                                                       | Deployment                                                                          |
+| :--------------------- | :---------------------------------------------------------------------------------------------------------------------------- | :---------------------------------------------------------------------------------- |
+| SablierV2LockupLinear  | [0xbd7AAA2984c0a887E93c66baae222749883763d3](https://sepolia.basescan.org/address/0xbd7AAA2984c0a887E93c66baae222749883763d3) | [core-v1.1.2](https://github.com/sablier-labs/v2-deployments/tree/main/core/v1.1.2) |
+| SablierV2LockupDynamic | [0xF46d5fA9bFC964E8d06846c8739AEc69BC06344d](https://sepolia.basescan.org/address/0xF46d5fA9bFC964E8d06846c8739AEc69BC06344d) | [core-v1.1.2](https://github.com/sablier-labs/v2-deployments/tree/main/core/v1.1.2) |
+| SablierV2NFTDescriptor | [0xb2b4b1E69B16411AEBD30c8EA5aB395E13069160](https://sepolia.basescan.org/address/0xb2b4b1E69B16411AEBD30c8EA5aB395E13069160) | [core-v1.1.2](https://github.com/sablier-labs/v2-deployments/tree/main/core/v1.1.2) |
+| SablierV2Comptroller   | [0x90b1C663314cFb55c8FF6f9a50a8D57a2D83a664](https://sepolia.basescan.org/address/0x90b1c663314cfb55c8ff6f9a50a8d57a2d83a664) | [core-v1.1.2](https://github.com/sablier-labs/v2-deployments/tree/main/core/v1.1.2) |
+
+### Periphery
+
+| Contract                       | Address                                                                                                                       | Deployment                                                                                    |
+| :----------------------------- | :---------------------------------------------------------------------------------------------------------------------------- | :-------------------------------------------------------------------------------------------- |
+| SablierV2Batch                 | [0xbD636B8EF09760aC91f6Df3c6AC5531250420200](https://sepolia.basescan.org/address/0xbD636B8EF09760aC91f6Df3c6AC5531250420200) | [periphery-v1.1.1](https://github.com/sablier-labs/v2-deployments/tree/main/periphery/v1.1.1) |
+| SablierV2MerkleStreamerFactory | [0xf632521bbAb0dBC2bEf169865e6c8e285AFe0a42](https://sepolia.basescan.org/address/0xf632521bbAb0dBC2bEf169865e6c8e285AFe0a42) | [periphery-v1.1.1](https://github.com/sablier-labs/v2-deployments/tree/main/periphery/v1.1.1) |
+
 ## Blast Sepolia
 
 ### Core
@@ -274,8 +292,8 @@ Or maybe you're looking for V1? [Click here](/contracts/v1/deployments).
 
 | Contract                       | Address                                                                                                                                  | Deployment                                                                                    |
 | :----------------------------- | :--------------------------------------------------------------------------------------------------------------------------------------- | :-------------------------------------------------------------------------------------------- |
-| SablierV2Batch                 | [0x65D3A5b99372ef59E741EE768443dF884aB56E0b](https://sepolia-optimistic.etherscan.io/address/0x65D3A5b99372ef59E741EE768443dF884aB56E0b) | [periphery-v1.1.0](https://github.com/sablier-labs/v2-deployments/tree/main/periphery/v1.1.0) |
-| SablierV2MerkleStreamerFactory | [0x9b6cC73522f22Ad3f2F8187e892A51b95f1A0E8a](https://sepolia-optimistic.etherscan.io/address/0x9b6cC73522f22Ad3f2F8187e892A51b95f1A0E8a) | [periphery-v1.1.0](https://github.com/sablier-labs/v2-deployments/tree/main/periphery/v1.1.0) |
+| SablierV2Batch                 | [0x65D3A5b99372ef59E741EE768443dF884aB56E0b](https://sepolia-optimistic.etherscan.io/address/0x65D3A5b99372ef59E741EE768443dF884aB56E0b) | [periphery-v1.1.1](https://github.com/sablier-labs/v2-deployments/tree/main/periphery/v1.1.1) |
+| SablierV2MerkleStreamerFactory | [0x9b6cC73522f22Ad3f2F8187e892A51b95f1A0E8a](https://sepolia-optimistic.etherscan.io/address/0x9b6cC73522f22Ad3f2F8187e892A51b95f1A0E8a) | [periphery-v1.1.1](https://github.com/sablier-labs/v2-deployments/tree/main/periphery/v1.1.1) |
 
 ## Sepolia
 
