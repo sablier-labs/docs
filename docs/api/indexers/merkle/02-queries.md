@@ -67,7 +67,7 @@ query getAirstreams_ByAsset($first: Int!, $skip: Int!, $asset: String!, $subgrap
     order_by: {subgraphId: desc}
     where: {
       _and: [
-        { asset: {_eq: $asset} }
+        { asset_id: {_eq: $asset} }
         { subgraphId: {_lt: $subgraphId}}
         { chainId: {_eq: $chainId}}
       ]
@@ -103,10 +103,12 @@ const CampaignFragment = gql(/* GraphQL */ `
     claimedAmount
     claimedCount
     version
-    assetObject {
+    asset_id
+    asset {
       ...AssetFragment
     }
-    factoryObject {
+    factory_id
+    factory {
       ...FactoryFragment
     }
   }
@@ -121,8 +123,8 @@ on behalf of that user. If the query yields a result, it means the uses has alre
 
 ```graphql title="Claim action of a user on a certain campaign"
 query getClaim($campaignId: ID!, $user: String!) {
-  Action(where: { campaign: { _eq: $campaignId }, category: { _eq: "Claim" }, claimRecipient: { _eq: $uer } }) {
-    campaignObject {
+  Action(where: { campaign_id: { _eq: $campaignId }, category: { _eq: "Claim" }, claimRecipient: { _eq: $uer } }) {
+    campaign {
       id
       lockup
     }

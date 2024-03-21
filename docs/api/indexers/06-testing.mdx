@@ -1,0 +1,40 @@
+---
+id: "testing"
+sidebar_position: 6
+title: "Testing"
+---
+
+import LinkPreview from "@site/src/components/LinkPreview";
+
+## Integrating
+
+To ensure Envio indexers are delivering the same set of data as The Graph's subgraphs we've implemented a set of
+differentials tests over both `merkle` and `protocol` configurations.
+
+Check them out inside the `apps/[...]/test/` folders.
+
+<LinkPreview
+  href="https://github.com/sablier-labs/v2-subgraphs"
+  icon="github"
+  subtitle="GitHub"
+  title="Github - sablier-labs/v2-subgraphs: Sablier V2 Indexers"
+/>
+
+## Running
+
+The differentials tests are powered by Jest. Inside `test/setup/constants.ts` you will find the full configuration for
+these tests. This is where you'll also be able to toggle between using the local endpoint (see
+[development](/api/indexers/development) to bootstrap a project locally) and the hosted-service one, using the `REMOTE`
+flag.
+
+```bash
+pnpm run test
+```
+
+:::info
+
+As the set of streams or campaigns grows, the final tests (full-coverage over the entire list of elements) may start
+timing out. We suggest either splitting them chunks or simply adding a manual limit to the number of iterations the loop
+can cover at once. Alternatively, one can also increase the timeout of those tests.
+
+:::
