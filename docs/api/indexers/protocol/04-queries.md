@@ -15,7 +15,7 @@ query getStreams {
     id
     alias
     category
-    assetObject {
+    asset {
       id
       symbol
     }
@@ -41,7 +41,7 @@ query getStreams($first: Int!, $subgraphId: numeric!) {
     id
     alias
     category
-    assetObject {
+    asset {
       id
       symbol
     }
