@@ -1,6 +1,6 @@
 # LockupLinear
 
-[Git Source](https://github.com/sablier-labs/v2-core/blob/a4bf69cf7024006b9a324eef433f20b74597eaaf/src/types/DataTypes.sol)
+[Git Source](https://github.com/sablier-labs/v2-core/blob/36b49d3bf2a396d19083d28247e8e03d7a3a2ee1/src/types/DataTypes.sol)
 
 Namespace for the structs used in
 [SablierV2LockupLinear](docs/contracts/v2/reference/core/contract.SablierV2LockupLinear.md).
@@ -9,7 +9,7 @@ Namespace for the structs used in
 
 ### CreateWithDurations
 
-Struct encapsulating the parameters for the {SablierV2LockupLinear.createWithDurations} function.
+Struct encapsulating the parameters of the {SablierV2LockupLinear.createWithDurations} function.
 
 ```solidity
 struct CreateWithDurations {
@@ -28,44 +28,44 @@ struct CreateWithDurations {
 
 | Name           | Type        | Description                                                                                                                                                                                                    |
 | -------------- | ----------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `sender`       | `address`   | The address streaming the assets, with the ability to cancel the stream. It doesn't have to be the same as `msg.sender`.                                                                                       |
+| `sender`       | `address`   | The address distributing the assets, with the ability to cancel the stream. It doesn't have to be the same as `msg.sender`.                                                                                    |
 | `recipient`    | `address`   | The address receiving the assets.                                                                                                                                                                              |
-| `totalAmount`  | `uint128`   | The total amount of ERC-20 assets to be paid, including the stream deposit and any potential fees, all denoted in units of the asset's decimals.                                                               |
-| `asset`        | `IERC20`    | The contract address of the ERC-20 asset used for streaming.                                                                                                                                                   |
+| `totalAmount`  | `uint128`   | The total amount of ERC-20 assets to be distributed, including the stream deposit and any broker fee, both denoted in units of the asset's decimals.                                                           |
+| `asset`        | `IERC20`    | The contract address of the ERC-20 asset to be distributed.                                                                                                                                                    |
 | `cancelable`   | `bool`      | Indicates if the stream is cancelable.                                                                                                                                                                         |
 | `transferable` | `bool`      | Indicates if the stream NFT is transferable.                                                                                                                                                                   |
 | `durations`    | `Durations` | Struct containing (i) cliff period duration and (ii) total stream duration, both in seconds.                                                                                                                   |
 | `broker`       | `Broker`    | Struct containing (i) the address of the broker assisting in creating the stream, and (ii) the percentage fee paid to the broker from `totalAmount`, denoted as a fixed-point number. Both can be set to zero. |
 
-### CreateWithRange
+### CreateWithTimestamps
 
-Struct encapsulating the parameters for the {SablierV2LockupLinear.createWithRange} function.
+Struct encapsulating the parameters of the {SablierV2LockupLinear.createWithTimestamps} function.
 
 ```solidity
-struct CreateWithRange {
+struct CreateWithTimestamps {
     address sender;
     address recipient;
     uint128 totalAmount;
     IERC20 asset;
     bool cancelable;
     bool transferable;
-    Range range;
+    Timestamps timestamps;
     Broker broker;
 }
 ```
 
 **Properties**
 
-| Name           | Type      | Description                                                                                                                                                                                                    |
-| -------------- | --------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `sender`       | `address` | The address streaming the assets, with the ability to cancel the stream. It doesn't have to be the same as `msg.sender`.                                                                                       |
-| `recipient`    | `address` | The address receiving the assets.                                                                                                                                                                              |
-| `totalAmount`  | `uint128` | The total amount of ERC-20 assets to be paid, including the stream deposit and any potential fees, all denoted in units of the asset's decimals.                                                               |
-| `asset`        | `IERC20`  | The contract address of the ERC-20 asset used for streaming.                                                                                                                                                   |
-| `cancelable`   | `bool`    | Indicates if the stream is cancelable.                                                                                                                                                                         |
-| `transferable` | `bool`    | Indicates if the stream NFT is transferable.                                                                                                                                                                   |
-| `range`        | `Range`   | Struct containing (i) the stream's start time, (ii) cliff time, and (iii) end time, all as Unix timestamps.                                                                                                    |
-| `broker`       | `Broker`  | Struct containing (i) the address of the broker assisting in creating the stream, and (ii) the percentage fee paid to the broker from `totalAmount`, denoted as a fixed-point number. Both can be set to zero. |
+| Name           | Type         | Description                                                                                                                                                                                                    |
+| -------------- | ------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `sender`       | `address`    | The address distributing the assets, with the ability to cancel the stream. It doesn't have to be the same as `msg.sender`.                                                                                    |
+| `recipient`    | `address`    | The address receiving the assets.                                                                                                                                                                              |
+| `totalAmount`  | `uint128`    | The total amount of ERC-20 assets to be distributed, including the stream deposit and any broker fee, both denoted in units of the asset's decimals.                                                           |
+| `asset`        | `IERC20`     | The contract address of the ERC-20 asset to be distributed.                                                                                                                                                    |
+| `cancelable`   | `bool`       | Indicates if the stream is cancelable.                                                                                                                                                                         |
+| `transferable` | `bool`       | Indicates if the stream NFT is transferable.                                                                                                                                                                   |
+| `timestamps`   | `Timestamps` | Struct containing (i) the stream's start time, (ii) cliff time, and (iii) end time, all as Unix timestamps.                                                                                                    |
+| `broker`       | `Broker`     | Struct containing (i) the address of the broker assisting in creating the stream, and (ii) the percentage fee paid to the broker from `totalAmount`, denoted as a fixed-point number. Both can be set to zero. |
 
 ### Durations
 
@@ -85,37 +85,17 @@ struct Durations {
 | `cliff` | `uint40` | The cliff duration in seconds. |
 | `total` | `uint40` | The total duration in seconds. |
 
-### Range
+### StreamLL
 
-Struct encapsulating the time range.
+Struct encapsulating the full details of a stream.
 
-```solidity
-struct Range {
-    uint40 start;
-    uint40 cliff;
-    uint40 end;
-}
-```
-
-**Properties**
-
-| Name    | Type     | Description                                    |
-| ------- | -------- | ---------------------------------------------- |
-| `start` | `uint40` | The Unix timestamp for the stream's start.     |
-| `cliff` | `uint40` | The Unix timestamp for the cliff period's end. |
-| `end`   | `uint40` | The Unix timestamp for the stream's end.       |
-
-### Stream
-
-Lockup Linear stream.
-
-_The fields are arranged like this to save gas via tight variable packing._
+_Extends `Lockup.Stream` by including the recipient and the cliff time._
 
 ```solidity
-struct Stream {
+struct StreamLL {
     address sender;
+    address recipient;
     uint40 startTime;
-    uint40 cliffTime;
     bool isCancelable;
     bool wasCanceled;
     IERC20 asset;
@@ -124,21 +104,26 @@ struct Stream {
     bool isStream;
     bool isTransferable;
     Lockup.Amounts amounts;
+    uint40 cliffTime;
+}
+```
+
+### Timestamps
+
+Struct encapsulating the LockupLinear timestamps.
+
+```solidity
+struct Timestamps {
+    uint40 start;
+    uint40 cliff;
+    uint40 end;
 }
 ```
 
 **Properties**
 
-| Name             | Type             | Description                                                                                                   |
-| ---------------- | ---------------- | ------------------------------------------------------------------------------------------------------------- |
-| `sender`         | `address`        | The address streaming the assets, with the ability to cancel the stream.                                      |
-| `startTime`      | `uint40`         | The Unix timestamp indicating the stream's start.                                                             |
-| `cliffTime`      | `uint40`         | The Unix timestamp indicating the cliff period's end.                                                         |
-| `isCancelable`   | `bool`           | Boolean indicating if the stream is cancelable.                                                               |
-| `wasCanceled`    | `bool`           | Boolean indicating if the stream was canceled.                                                                |
-| `asset`          | `IERC20`         | The contract address of the ERC-20 asset used for streaming.                                                  |
-| `endTime`        | `uint40`         | The Unix timestamp indicating the stream's end.                                                               |
-| `isDepleted`     | `bool`           | Boolean indicating if the stream is depleted.                                                                 |
-| `isStream`       | `bool`           | Boolean indicating if the struct entity exists.                                                               |
-| `isTransferable` | `bool`           | Boolean indicating if the stream NFT is transferable.                                                         |
-| `amounts`        | `Lockup.Amounts` | Struct containing the deposit, withdrawn, and refunded amounts, all denoted in units of the asset's decimals. |
+| Name    | Type     | Description                                                                             |
+| ------- | -------- | --------------------------------------------------------------------------------------- |
+| `start` | `uint40` | The Unix timestamp for the stream's start.                                              |
+| `cliff` | `uint40` | The Unix timestamp for the cliff period's end. A value of zero means there is no cliff. |
+| `end`   | `uint40` | The Unix timestamp for the stream's end.                                                |

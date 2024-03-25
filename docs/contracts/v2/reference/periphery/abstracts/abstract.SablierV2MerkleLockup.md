@@ -1,19 +1,19 @@
-# SablierV2MerkleStreamer
+# SablierV2MerkleLockup
 
-[Git Source](https://github.com/sablier-labs/v2-periphery/blob/53e259087984ff748fca6fb932fdb9c663c2b365/src/abstracts/SablierV2MerkleStreamer.sol)
+[Git Source](https://github.com/sablier-labs/v2-periphery/blob/c10978dd4cdb54301b9c2d63c7e0af41da9110f3/src/abstracts/SablierV2MerkleLockup.sol)
 
 **Inherits:**
-[ISablierV2MerkleStreamer](/docs/contracts/v2/reference/periphery/interfaces/interface.ISablierV2MerkleStreamer.md),
+[ISablierV2MerkleLockup](/docs/contracts/v2/reference/periphery/interfaces/interface.ISablierV2MerkleLockup.md),
 Adminable
 
 See the documentation in
-[ISablierV2MerkleStreamer](/docs/contracts/v2/reference/periphery/interfaces/interface.ISablierV2MerkleStreamer.md).
+[ISablierV2MerkleLockup](/docs/contracts/v2/reference/periphery/interfaces/interface.ISablierV2MerkleLockup.md).
 
 ## State Variables
 
 ### ASSET
 
-The streamed ERC-20 asset.
+The ERC-20 asset to distribute.
 
 _This is an immutable state variable._
 
@@ -33,7 +33,7 @@ bool public immutable override CANCELABLE;
 
 ### EXPIRATION
 
-The cut-off point for the Merkle streamer, as a Unix timestamp. A value of zero means there is no expiration.
+The cut-off point for the campaign, as a Unix timestamp. A value of zero means there is no expiration.
 
 _This is an immutable state variable._
 
@@ -41,22 +41,22 @@ _This is an immutable state variable._
 uint40 public immutable override EXPIRATION;
 ```
 
-### LOCKUP
-
-The address of the [SablierV2Lockup](docs/contracts/v2/reference/core/abstracts/abstract.SablierV2Lockup.md) contract.
-
-```solidity
-ISablierV2Lockup public immutable override LOCKUP;
-```
-
 ### MERKLE_ROOT
 
-The root of the Merkle tree used to validate the claims.
+The root of the Merkle tree used to validate the proofs of inclusion.
 
 _This is an immutable state variable._
 
 ```solidity
 bytes32 public immutable override MERKLE_ROOT;
+```
+
+### NAME
+
+_The name of the campaign stored as bytes32._
+
+```solidity
+bytes32 internal immutable NAME;
 ```
 
 ### TRANSFERABLE
@@ -69,12 +69,28 @@ _This is an immutable state variable._
 bool public immutable override TRANSFERABLE;
 ```
 
+### ipfsCID
+
+The content identifier for indexing the campaign on IPFS.
+
+```solidity
+string public ipfsCID;
+```
+
 ### \_claimedBitMap
 
 _Packed booleans that record the history of claims._
 
 ```solidity
 BitMaps.BitMap internal _claimedBitMap;
+```
+
+### \_firstClaimTime
+
+_The timestamp when the first claim is made._
+
+```solidity
+uint40 internal _firstClaimTime;
 ```
 
 ## Functions
@@ -84,15 +100,15 @@ BitMaps.BitMap internal _claimedBitMap;
 _Constructs the contract by initializing the immutable state variables._
 
 ```solidity
-constructor(
-    address initialAdmin,
-    IERC20 asset,
-    ISablierV2Lockup lockup,
-    bytes32 merkleRoot,
-    uint40 expiration,
-    bool cancelable,
-    bool transferable
-);
+constructor(MerkleLockup.ConstructorParams memory params);
+```
+
+### getFirstClaimTime
+
+Returns the timestamp when the first claim is made.
+
+```solidity
+function getFirstClaimTime() external view override returns (uint40);
 ```
 
 ### hasClaimed
@@ -113,21 +129,29 @@ function hasClaimed(uint256 index) public view override returns (bool);
 
 ### hasExpired
 
-Returns a flag indicating whether the Merkle streamer has expired.
+Returns a flag indicating whether the campaign has expired.
 
 ```solidity
 function hasExpired() public view override returns (bool);
 ```
 
+### name
+
+Retrieves the name of the campaign.
+
+```solidity
+function name() external view override returns (string memory);
+```
+
 ### clawback
 
-Claws back the unclaimed tokens from the Merkle streamer.
+Claws back the unclaimed tokens from the campaign.
 
-Emits a {Clawback} event. Notes:
+Emits a {Clawback} event. Requirements:
 
-- If the protocol is not zero, the expiration check is not made. Requirements:
 - The caller must be the admin.
-- The campaign must either be expired or not have an expiration.
+- No claim must be made, OR The current timestamp must not exceed 7 days after the first claim, OR The campaign must be
+  expired.
 
 ```solidity
 function clawback(address to, uint128 amount) external override onlyAdmin;
@@ -140,10 +164,20 @@ function clawback(address to, uint128 amount) external override onlyAdmin;
 | `to`     | `address` | The address to receive the tokens. |
 | `amount` | `uint128` | The amount of tokens to claw back. |
 
+### \_hasGracePeriodPassed
+
+Returns a flag indicating whether the grace period has passed.
+
+_The grace period is 7 days after the first claim._
+
+```solidity
+function _hasGracePeriodPassed() internal view returns (bool);
+```
+
 ### \_checkClaim
 
 _Validates the parameters of the `claim` function, which is implemented by child contracts._
 
 ```solidity
-function _checkClaim(uint256 index, bytes32 leaf, bytes32[] calldata merkleProof) internal view;
+function _checkClaim(uint256 index, bytes32 leaf, bytes32[] calldata merkleProof) internal;
 ```

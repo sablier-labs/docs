@@ -1,11 +1,11 @@
 ---
 id: "hooks"
-sidebar_position: 8
+sidebar_position: 9
 title: "Hooks"
 ---
 
-In Sablier, hooks are arbitrary functions that get automatically executed by the protocol in response to specific
-events. Their purpose is to programmatically notify the recipient when the sender interacts with a stream.
+In Sablier, hooks are arbitrary functions that get automatically executed by the protocol in response to `cancel` and
+`withdraw` events.
 
 Hooks can only be written in smart contracts, so typical EOAs cannot implement them. However, they are entirely
 optional. You can interact with the Sablier Protocol without implementing any hooks.
@@ -18,7 +18,7 @@ Hooks in smart contracts are similar to callback functions in web2.
 
 ## Visual representation
 
-### Sender actions
+### Recipient hook
 
 If the recipient is not a smart contract, the hooks will not be run.
 
@@ -30,11 +30,18 @@ flowchart LR
   end
   R((Recipient))
   S -- "cancel" --> LL
-  S -- "renounce" --> LL
-  S -- "withdraw" --> LL
-  LL -- "onStreamCanceled" --> R
-  LL -- "onStreamRenounced" --> R
-  LL -- "onStreamWithdrawn" --> R
+  LL -- "onSablierLockupCancel" --> R
+```
+
+```mermaid
+flowchart LR
+  A((Anyone))
+  subgraph Core
+    LL[LockupLinear]
+  end
+  R((Recipient))
+  A -- "withdraw" --> LL
+  LL -- "onSablierLockupWithdraw" --> R
 ```
 
 ## Example scenario

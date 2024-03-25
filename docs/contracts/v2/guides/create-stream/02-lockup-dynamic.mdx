@@ -6,6 +6,7 @@ title: "Lockup Dynamic"
 
 import AdmonitionSimpleCode from "@site/docs/snippets/AdmonitionSimpleCode.mdx";
 import ConstantsComment from "@site/docs/snippets/ConstantsComment.mdx";
+import CreateFunctions from "@site/docs/snippets/CreateFunctions.mdx";
 import ParamAsset from "@site/docs/snippets/ParamAsset.mdx";
 import ParamBroker from "@site/docs/snippets/ParamBroker.mdx";
 import ParamCancelable from "@site/docs/snippets/ParamCancelable.mdx";
@@ -35,7 +36,7 @@ Declare the Solidity version used to compile the contract:
 
 ```solidity
 // SPDX-License-Identifier: GPL-3.0-or-later
-pragma solidity >=0.8.19;
+pragma solidity >=0.8.22;
 ```
 
 Import the relevant symbols from `@sablier/v2-core`:
@@ -61,16 +62,9 @@ contract LockupDynamicStreamCreator {
 
 <ConstantsComment />
 
-## Create functions
+<CreateFunctions />
 
-There are two create functions in the Lockup Dynamic contract:
-
-- `createWithMilestones`: uses specific start and end times, as well as a predefined list of segment milestones
-- `createWithDeltas`: sets the start time to
-  [`block.timestamp`](https://docs.soliditylang.org/en/v0.8.19/cheatsheet.html#global-variables), and calculates the end
-  time and the segment milestones based on the provided deltas
-
-Which one you choose depends upon your use case. In this guide, we will use `createWithMilestones`.
+Which one you choose depends upon your use case. In this guide, we will use `createWithTimestamps`.
 
 ## Function definition
 
@@ -109,13 +103,12 @@ For more guidance on how to approve and transfer ERC-20 assets, see
 
 ## Parameters
 
-Sablier uses structs to encode the parameters of its create functions. The struct associated with `createWithDurations`
-is
-[`LockupDynamic.CreateWithMilestones`](/contracts/v2/reference/core/types/library.LockupDynamic#createwithmilestones),
-and it can be initialized like this:
+Sablier uses structs to encode the parameters of its create functions. The struct associated with `createWithTimestamps`
+is [`LockupDynamic.CreateWithTimestamps`](/contracts/v2/reference/core/types/library.LockupDynamic), and it can be
+initialized like this:
 
 ```solidity
-LockupDynamic.CreateWithMilestones memory params;
+LockupDynamic.CreateWithTimestamps memory params;
 ```
 
 Let's review each parameter in detail.
@@ -149,10 +142,9 @@ params.startTime = uint40(block.timestamp + 100 seconds);
 Segments are what the protocol uses to compose the custom streaming curve of a Lockup Dynamic stream. For a full
 exposition of segments, see the [Segments](/concepts/protocol/segments) guide.
 
-The term "milestones" in the function `createWithMilestones` refers to the splitting of the stream into several distinct
-segments, with each segment characterized by a specific amount, exponent, and milestone. These segments are supplied to
-the function in the form of an array containing
-[`LockupDynamic.Segment`](/contracts/v2/reference/core/types/library.LockupDynamic#segment) structs.
+The term "segment" refers to the splitting of the stream into several distinct segments, with each segment characterized
+by a specific amount, exponent, and timestamp. These segments are supplied to the function in the form of an array
+containing [`LockupDynamic.Segment`](/contracts/v2/reference/core/types/library.LockupDynamic) structs.
 
 Let's define two dummy segments:
 
@@ -161,13 +153,13 @@ params.segments = new LockupDynamic.Segment[](2);
 params.segments[0] = LockupDynamic.Segment({
     amount: amount0,
     exponent: ud2x18(1e18),
-    milestone: uint40(block.timestamp + 4 weeks)
+    timestamp: uint40(block.timestamp + 4 weeks)
 });
 params.segments[1] = (
     LockupDynamic.Segment({
         amount: amount1,
         exponent: ud2x18(3.14e18),
-        milestone: uint40(block.timestamp + 52 weeks)
+        timestamp: uint40(block.timestamp + 52 weeks)
     })
 );
 ```
@@ -177,7 +169,7 @@ exponents are different. As a rule of thumb: the higher the exponent, the slower
 
 :::note
 
-The segment milestones must be in ascending order.
+The segment timestamp must be in ascending order.
 
 :::
 
@@ -190,17 +182,17 @@ The `ud2x18` function wraps a basic integer to the `UD2x18` value type, which is
 
 ## Invoke the create function
 
-With all parameters set, we can now call the `createWithMilestones` function, and assign the id of the newly created
+With all parameters set, we can now call the `createWithTimestamps` function, and assign the id of the newly created
 stream to a variable:
 
 ```solidity
-streamId = LOCKUP_DYNAMIC.createWithMilestones(params);
+streamId = LOCKUP_DYNAMIC.createWithTimestamps(params);
 ```
 
 ## The complete Lockup Dynamic stream creator contract
 
-Below you can see the complete functioning code: a contract that creates a Lockup Dynamic stream with predefined segment
-milestones. You can access the code on GitHub through
+Below you can see the complete functioning code: a contract that creates a Lockup Dynamic stream. You can access the
+code on GitHub through
 [this link](https://github.com/sablier-labs/examples/blob/main/v2/core/LockupDynamicStreamCreator.sol).
 
 ```solidity reference title="Lockup Dynamic Stream Creator"

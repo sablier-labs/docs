@@ -56,13 +56,13 @@ the API deals with the padding of each value (with the decimals of the token) on
 
 ### Description
 
-|                  |                                                        |
-| :--------------- | ------------------------------------------------------ |
-| **Endpoint**     | `/api/create`                                          |
-| **Method**       | `POST`                                                 |
-| **Query Params** | `{decimals: number}`                                   |
-| **Body**         | `FormData` on `{data: File}`                           |
-| **Response**     | See in [Rust](api-create-response) Overview TS (below) |
+|                  |                                                                                                                             |
+| :--------------- | --------------------------------------------------------------------------------------------------------------------------- |
+| **Endpoint**     | `/api/create`                                                                                                               |
+| **Method**       | `POST`                                                                                                                      |
+| **Query Params** | `{decimals: number}`                                                                                                        |
+| **Body**         | `FormData` on `{data: File}`                                                                                                |
+| **Response**     | See in [Rust](https://github.com/sablier-labs/v2-merkle-api/blob/main/src/data_objects/response.rs#L22) Overview TS (below) |
 
 ```typescript
 type Response = {
@@ -131,12 +131,12 @@ To get a hold of the second item you can see some options here in the
 
 ### Description
 
-|                  |                                                             |
-| :--------------- | ----------------------------------------------------------- |
-| **Endpoint**     | `/api/eligibility`                                          |
-| **Method**       | `GET`                                                       |
-| **Query Params** | `{address: string, cid: string}`                            |
-| **Response**     | See in [Rust](api-eligibility-response) Overview TS (below) |
+|                  |                                                                                                                             |
+| :--------------- | --------------------------------------------------------------------------------------------------------------------------- |
+| **Endpoint**     | `/api/eligibility`                                                                                                          |
+| **Method**       | `GET`                                                                                                                       |
+| **Query Params** | `{address: string, cid: string}`                                                                                            |
+| **Response**     | See in [Rust](https://github.com/sablier-labs/v2-merkle-api/blob/main/src/data_objects/response.rs#L32) Overview TS (below) |
 
 ```typescript
 type Response = {
@@ -188,12 +188,12 @@ page.
 
 ### Description
 
-|                  |                                                          |
-| :--------------- | -------------------------------------------------------- |
-| **Endpoint**     | `/api/validity`                                          |
-| **Method**       | `GET`                                                    |
-| **Query Params** | `{cid: string}`                                          |
-| **Response**     | See in [Rust](api-validity-response) Overview TS (below) |
+|                  |                                                                                                                             |
+| :--------------- | --------------------------------------------------------------------------------------------------------------------------- |
+| **Endpoint**     | `/api/validity`                                                                                                             |
+| **Method**       | `GET`                                                                                                                       |
+| **Query Params** | `{cid: string}`                                                                                                             |
+| **Response**     | See in [Rust](https://github.com/sablier-labs/v2-merkle-api/blob/main/src/data_objects/response.rs#L41) Overview TS (below) |
 
 ```typescript
 type Response = {
@@ -225,7 +225,3 @@ For more insight, check out the implementation details.
   subtitle="Github - sablier-labs/v2-merkle-api"
   title="validity.rs"
 />
-
-[api-create-response]: https://github.com/sablier-labs/v2-merkle-api/blob/main/src/data_objects/response.rs#L22
-[api-eligibility-response]: https://github.com/sablier-labs/v2-merkle-api/blob/main/src/data_objects/response.rs#L32
-[api-validity-response]: https://github.com/sablier-labs/v2-merkle-api/blob/main/src/data_objects/response.rs#L41

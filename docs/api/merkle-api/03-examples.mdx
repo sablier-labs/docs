@@ -18,8 +18,8 @@ To get a hold of a campaign's IPFS CID you can:
 
 <ol type="A">
   <li>
-    Check the [create](/contracts/v2/reference/periphery/interfaces/interface.ISablierV2MerkleStreamerFactory#Event)
-    event emitted by the Merkle factory
+    Check the [create](/contracts/v2/reference/periphery/interfaces/interface.ISablierV2MerkleLockupFactory#events)
+    events emitted by the Merkle factory
   </li>
   <li>Use the Sablier V2 [subgraphs / indexers](/api/overview) to query for that particular piece of information.</li>
 </ol>
@@ -63,17 +63,16 @@ For approach "B", run the following query against the official endpoints:
 
 ## Check eligibility for an address
 
-To check if an address is eligible, you'll have to use the
-[/api/eligibility](/api/merkle-api/functionality#eligibility-apieligibility) route provided by the v2-merkle-api
-backend.
+To check if an address is eligible, you'll have to use the [/api/eligibility](functionality#eligibility-apieligibility)
+route provided by the v2-merkle-api backend.
 
 #### Steps
 
-1. Get the campaign CID (see [the example](/api/merkle-api/examples#get-a-campaigns-cid) above)
+1. Get the campaign CID (see [the example](examples#get-a-campaigns-cid) above)
 2. Call the`/api/eligibility` route using the CID and the wallet address
 
 Please read more on the dedicated route documentation within the
-[/api/eligibility](<(/api/merkle-api/functionality#eligibility-apieligibility)>) section of the functionality page.
+[/api/eligibility](functionality#eligibility-apieligibility) section of the functionality page.
 
 As an alternative, you can also check the eligibility of an address (and bypass the backend) by simply searching for
 that address in the list stored within the IPFS file from step 1. You'll still have to download the file first, using
@@ -88,8 +87,8 @@ To get a hold of a `tokenId` linked to a claim you can:
 
 <ol type="A">
   <li>
-    Listen to the [claim](/contracts/v2/reference/periphery/interfaces/interface.ISablierV2MerkleStreamerLL#claim)
-    method and the Claim event emitted by the Merkle contract instance
+    Listen to the [claim](/contracts/v2/reference/periphery/interfaces/interface.ISablierV2MerkleLL#claim) method and
+    the Claim event emitted by the Merkle contract instance
   </li>
   <li>Use the Sablier V2 [subgraphs / indexers](/api/overview) to query for that particular piece of information.</li>
 </ol>
@@ -165,7 +164,7 @@ To check if a user has already claimed their stream from a campaign you can:
 
 <ol type="A">
   <li>
-    Call the [hasClaimed](/contracts/v2/reference/periphery/interfaces/interface.ISablierV2MerkleStreamer#hasclaimed)
+    Call the [hasClaimed](/contracts/v2/reference/periphery/interfaces/interface.ISablierV2MerkleLockup#hasclaimed)
     method form the Merkle contract instance
   </li>
   <li>Use the Sablier V2 [subgraphs / indexers](/api/overview) to query for that particular piece of information.</li>

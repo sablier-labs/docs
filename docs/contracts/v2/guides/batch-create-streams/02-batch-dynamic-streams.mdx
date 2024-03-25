@@ -11,7 +11,7 @@ import ConstantsComment from "@site/docs/snippets/ConstantsComment.mdx";
 # Create a Batch of Lockup Dynamic Streams
 
 In this guide, we will show you how to programmatically batch create dynamic streams via the Sablier's
-[Batch](/contracts/v2/reference/periphery/contract.SablierV2Batch) contract.
+[Batch](/contracts/v2/reference/periphery/contract.SablierV2BatchLockup) contract.
 
 This guide assumes that you have already gone through the [Protocol Concepts](/concepts/protocol/streaming) section.
 
@@ -29,7 +29,7 @@ Declare the Solidity version used to compile the contract:
 
 ```solidity
 // SPDX-License-Identifier: GPL-3.0-or-later
-pragma solidity >=0.8.19;
+pragma solidity >=0.8.22;
 ```
 
 Now, import the relevant symbols from `@sablier/v2-core` and `@sablier/v2-periphery`:
@@ -61,25 +61,27 @@ contract BatchLockupDynamicStreamCreator {
 
 There are two batch create functions for the Lockup Dynamic contract:
 
-- [`createWithDeltas`](/contracts/v2/reference/periphery/contract.SablierV2Batch#createwithdeltas)
-- [`createWithMilestones`](/contracts/v2/reference/periphery/contract.SablierV2Batch#createwithmilestones)
+- [`createWithDurationsLD`](/contracts/v2/reference/periphery/contract.SablierV2BatchLockup#createwithdurationsld)
+- [`createWithTimestampsLD`](/contracts/v2/reference/periphery/contract.SablierV2BatchLockup#createwithtimestampsld)
 
-Which one you choose depends upon your use case. In this guide, we will use `createWithMilestones`.
+Which one you choose depends upon your use case. In this guide, we will use `createWithTimestampsLD`.
 
 <BatchCommonSteps />
 
 ## Stream Parameters
 
 Given that we declared a `batchSize` of two, we need to define two
-[Batch.CreateWithMilestones](/contracts/v2/reference/periphery/types/library.Batch#createwithmilestones) structs:
+[Batch.CreateWithTimestampsLD](/contracts/v2/reference/periphery/types/library.BatchLockup#createwithtimestampsld)
+structs:
 
 ```solidity
 // Declare the first stream in the batch
-Batch.CreateWithMilestones memory stream0;
+Batch.CreateWithTimestampsLD memory stream0;
 stream0.sender = address(0xABCD); // The sender to stream the assets, he will be able to cancel the stream
 stream0.recipient = address(0xCAFE); // The recipient of the streamed assets
 stream0.totalAmount = perStreamAmount; // The total amount of each stream, inclusive of all fees
 stream0.cancelable = true; // Whether the stream will be cancelable or not
+stream0.transferable = false; // Whether the recipient can transfer the NFT or not
 stream0.broker = Broker(address(0), ud60x18(0)); // Optional parameter left undefined
 
 // Declare some dummy segments
@@ -87,13 +89,13 @@ stream0.segments = new LockupDynamic.Segment[](2);
 stream0.segments[0] = LockupDynamic.Segment({
     amount: uint128(perStreamAmount / 2),
     exponent: ud2x18(0.25e18),
-    milestone: uint40(block.timestamp + 1 weeks)
+    timestamp: uint40(block.timestamp + 1 weeks)
 });
 stream0.segments[1] = (
     LockupDynamic.Segment({
         amount: uint128(perStreamAmount - stream0.segments[0].amount),
         exponent: ud2x18(2.71e18),
-        milestone: uint40(block.timestamp + 24 weeks)
+        timestamp: uint40(block.timestamp + 24 weeks)
     })
 );
 ```
@@ -101,11 +103,12 @@ stream0.segments[1] = (
 To add some variety, we will change the parameters of the second stream:
 
 ```solidity
-Batch.CreateWithMilestones memory stream1;
+Batch.CreateWithTimestampsLD memory stream1;
 stream1.sender = address(0xABCD); // The sender to stream the assets, he will be able to cancel the stream
 stream1.recipient = address(0xBEEF); // The recipient of the streamed assets
 stream1.totalAmount = uint128(perStreamAmount); // The total amount of each stream, inclusive of all fees
 stream1.cancelable = false; // Whether the stream will be cancelable or not
+stream0.transferable = false; // Whether the recipient can transfer the NFT or not
 stream1.broker = Broker(address(0), ud60x18(0)); // Optional parameter left undefined
 
 // Declare some dummy segments
@@ -113,13 +116,13 @@ stream1.segments = new LockupDynamic.Segment[](2);
 stream1.segments[0] = LockupDynamic.Segment({
     amount: uint128(perStreamAmount / 4),
     exponent: ud2x18(1e18),
-    milestone: uint40(block.timestamp + 4 weeks)
+    timestamp: uint40(block.timestamp + 4 weeks)
 });
 stream1.segments[1] = (
     LockupDynamic.Segment({
         amount: uint128(perStreamAmount - stream1.segments[0].amount),
         exponent: ud2x18(3.14e18),
-        milestone: uint40(block.timestamp + 52 weeks)
+        timestamp: uint40(block.timestamp + 52 weeks)
     })
 );
 ```
@@ -128,18 +131,18 @@ Once both structs are declared, the batch array has to be filled:
 
 ```solidity
 // Fill the batch array
-Batch.CreateWithMilestones[] memory batch = new Batch.CreateWithMilestones[](batchSize);
+Batch.CreateWithTimestampsLD[] memory batch = new Batch.CreateWithTimestampsLD[](batchSize);
 batch[0] = stream0;
 batch[1] = stream1;
 ```
 
 ## Invoke the batch create function
 
-With all parameters set, we can now call the `createWithMilestones` function, and assign the ids of the newly created
+With all parameters set, we can now call the `createWithTimestampsLD` function, and assign the ids of the newly created
 streams to the array:
 
 ```solidity
-streamIds = BATCH.createWithMilestones(LOCKUP_DYNAMIC, DAI, batch);
+streamIds = BATCH.createWithTimestampsLD(LOCKUP_DYNAMIC, DAI, batch);
 ```
 
 ## The complete Batch Lockup Dynamic stream creator contract

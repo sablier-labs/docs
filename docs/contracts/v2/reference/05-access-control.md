@@ -4,8 +4,8 @@ sidebar_position: 5
 title: "Access Control"
 ---
 
-With the exception of the [admin functions](/docs/concepts/05-governance.md), all functionality in Sablier is related to
-one or more streams.
+With the exception of the [allow list](/contracts/v2/reference/core/abstracts/abstract.SablierV2Lockup#allowtohook), all
+functionality in Sablier is related to one or more streams.
 
 This article will provide a comprehensive overview of the actions that can be performed on streams once they are
 created, as well as the corresponding user permissions for each action.
@@ -21,15 +21,16 @@ NFT.
 
 The table below offers a quick overview of the access control for each action that can be performed on a stream.
 
-| Action            | Sender | Recipient | Operator(s) |
-| ----------------- | :----: | :-------: | :---------: |
-| Burn NFT          |   ❌   |    ✅     |     ✅      |
-| Cancel            |   ✅   |    ❌     |     ❌      |
-| Cancel Multiple   |   ✅   |    ❌     |     ❌      |
-| Renounce          |   ✅   |    ❌     |     ❌      |
-| Transfer NFT      |   ❌   |    ✅     |     ✅      |
-| Withdraw          |   ✅   |    ✅     |     ✅      |
-| Withdraw Multiple |   ✅   |    ✅     |     ✅      |
+| Action                  | Sender | Recipient / Approved third party | Unknown Caller |
+| ----------------------- | :----: | :------------------------------: | :------------: |
+| Burn NFT                |   ❌   |                ✅                |       ❌       |
+| Cancel                  |   ✅   |                ❌                |       ❌       |
+| Cancel Multiple         |   ✅   |                ❌                |       ❌       |
+| Renounce                |   ✅   |                ❌                |       ❌       |
+| Transfer NFT            |   ❌   |                ✅                |       ❌       |
+| Withdraw to recipient   |   ✅   |                ✅                |       ✅       |
+| Withdraw to any address |   ❌   |                ✅                |       ❌       |
+| Withdraw Multiple       |   ✅   |                ✅                |       ✅       |
 
 ## Burn NFT
 
@@ -97,42 +98,62 @@ flowchart LR;
     operator -- transfer -->nft;
 ```
 
-## Withdraw
+## Withdraw to recipient
 
-The assets in a stream can be withdrawn by the sender, recipient, or an approved NFT operator.
-
-- Both the recipient and the NFT operator have the option to specify a custom address to withdraw the assets to.
-- The sender, however, is limited to withdrawing assets directly to the recipient's address.
+The assets in a stream can be withdrawn to the recipient by anyone including sender, recipient or an approved third
+party.
 
 ```mermaid
 flowchart LR;
-    sender((Sender));
+    unknown((Unknown caller));
     recipient((Recipient));
     operator((Operator));
+    sender((Sender));
     stream[(Stream)];
+    toAddress[Recipient address];
 
+    unknown -- withdraw ----> stream;
     sender -- withdraw --->stream;
     recipient -- withdraw -->stream;
     recipient -- approve -->operator;
     operator -- withdraw -->stream;
+    stream -- tokens --> toAddress;
+```
+
+## Withdraw to any address
+
+The assets in a stream can be withdrawn to any address only by the recipient and an approved third party.
+
+```mermaid
+flowchart LR;
+    recipient((Recipient));
+    operator((Operator));
+    stream[(Stream)];
+    toAddress[Any address];
+
+    recipient -- withdraw -->stream;
+    recipient -- approve -->operator;
+    operator -- withdraw -->stream;
+    stream -- tokens --> toAddress;
 ```
 
 ## Withdraw Multiple
 
-Either the recipient, an approved NFT operator, or the sender can withdraw assets from multiple streams.
-
-- Both the recipient and the NFT operator have the option to specify a custom address to withdraw the assets to.
-- The sender, however, is limited to withdrawing assets directly to the recipient's address of each stream.
+Anybody can withdraw assets from multiple streams to the recipients of each stream.
 
 ```mermaid
 flowchart LR;
-    sender((Sender));
+    unknown((Unknown caller));
     recipient((Recipient));
     operator((Operator));
-    streams[(Multiple Streams)];
+    sender((Sender));
+    streams[(Stream)];
+    toAddress[Recipient address];
 
+    unknown -- withdrawMultiple --> streams;
     sender -- withdrawMultiple --->streams;
     recipient -- withdrawMultiple --->streams
     recipient -- approve -->operator;
     operator -- withdrawMultiple -->streams;
+    streams -- tokens --> toAddress;
 ```

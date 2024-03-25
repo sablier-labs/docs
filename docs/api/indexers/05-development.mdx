@@ -18,11 +18,9 @@ We recommend using:
 If you're integrated the Sablier V2 subgraphs, we recommend using request and response wrappers/middleware to format
 results coming from Envio's indexer in the same shape as those from The Graph. Suggestions:
 
-1. Write queries in both systems (based on the
-   [querying language specifics](/api/indexers/differences#querying-language)) using the same `operationName` and swap
-   query strings between vendors based on it
-2. Write response middleware that converts results into similar shapes (see these
-   [important notes](api/indexers/differences#important-notes))
+1. Write queries in both systems (based on the [querying language specifics](differences#querying-language)) using the
+   same `operationName` and swap query strings between vendors based on it
+2. Write response middleware that converts results into similar shapes (see these [important notes](differences))
 
 <LinkPreview
   href="https://github.com/sablier-labs/v2-subgraphs"

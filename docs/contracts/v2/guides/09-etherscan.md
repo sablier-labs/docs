@@ -12,7 +12,7 @@ Just like any other open protocol, Sablier V2 can be interacted with directly th
 Etherscan.
 
 In this guide, we will show you how to create a stream and withdraw from a stream by manually interacting with the
-Sablier V2 contracts on Etherscan.
+Sablier V2 core contracts on Etherscan.
 
 If you're interested in interacting with V1, please refer to this
 [article](https://blog.sablier.com/operating-the-sablier-v1-protocol-manually/).
@@ -27,8 +27,8 @@ allowance. See the [Allowances](#erc20-allowances) section below for a guide on 
 ### Step 1: Go to contract page
 
 Head over to our [deployments](/contracts/v2/deployments) list to pick the contract address you want to interact with.
-For each chain, that will be either `SablierV2LockupLinear` or `SablierV2LockupDynamic`. In this tutorial, we will
-create a **LockupLinear** stream on Sepolia.
+For each chain, that will be either `SablierV2LockupLinear` or `SablierV2LockupDynamic` or `SablierV2LockupTranched`. In
+this tutorial, we will create a **LockupLinear** stream on Sepolia.
 
 Once you find the right contract, click on the address to access its explorer's page. Click on the "Contract" tab, and
 then on the "Write Contract" sub-tab.
@@ -52,11 +52,11 @@ We will now proceed to create our first stream. Let's go with the following para
 - with no cliff
 - and non-cancelable
 
-As the start and end date are fixed, we'll be using the `createWithRange` method. Please note, however, that using
+As the start and end date are fixed, we'll be using the `createWithTimestamps` method. Please note, however, that using
 `createWithDurations` is possible, too. To learn more about the difference between these two functions, head over
 [here](/contracts/v2/reference/core/interfaces/interface.ISablierV2LockupLinear#createwithdurations).
 
-Open the **"createWithRange"** method, and start filling in the stream details:
+Open the **"createWithTimestamps"** method, and start filling in the stream details:
 
 ![Etherscan 04](/img/etherscan-tutorial/04.png)
 
@@ -67,6 +67,7 @@ Open the **"createWithRange"** method, and start filling in the stream details:
   "totalAmount": 20000000000000000000000,
   "asset": "0x97cb342cf2f6ecf48c1285fb8668f5a4237bf862",
   "cancelable": false,
+  "transferable": true,
   "range": [1704067200, 1704067200, 1735689600],
   "broker": ["0x0000000000000000000000000000000000000000", 0]
 }
@@ -92,8 +93,8 @@ to stream 20,000 DAI like in this example, you will need to fill in `20000000000
 
 :::note
 
-The total amount will also include any [broker or protocol fees](/concepts/protocol/fees). When fees are kept at zero
-(most likely), the final streamed amount will be equal to this total amount.
+The total amount will also include any [broker fee](/concepts/protocol/fees). While fees are kept at zero (most likely),
+the final streamed amount will be equal to this total amount.
 
 :::
 
@@ -109,6 +110,13 @@ The `cancelable` field indicates whether or not you want the stream to be cancel
 or `false`. If set to true, the stream will be cancelable.
 
 This flag can be switched off later, but never switched back on.
+
+#### Transferable
+
+The `transferable` field indicates whether the NFT owner is allowed to transfer te NFT or not. THis can be set either to
+`true` or `false`. If set to true, the NFT will be transferable.
+
+This flag cannot be changed later.
 
 #### Range
 
@@ -177,9 +185,9 @@ Once found, you will see the stream ID between the two brackets. Note that strea
 
 :::info
 
-You may withdraw only from streams for which you are the recipient, but you can also allow other parties to withdraw on
-your behalf (e.g., have them pay the gas fee). You can read more about this advanced feature
-[here](/contracts/v2/reference/access-control#overview).
+Anyone can withdraw on your behalf and they also pay the gas fee. However, the withdraw will only be allowed to your
+address. But if you are the recipient, you can choose to withdraw to any other address. You can read more about this
+advanced feature [here](/contracts/v2/reference/access-control#overview).
 
 :::
 
@@ -280,7 +288,7 @@ use a proxy pattern. For these you have to search for the "Write as Proxy" tab.
 ### Step 3: Send transaction
 
 For the purpose of creating a **LockupLinear** stream with Sablier V2, the spender will be the
-[SablierV2LockupLinear](/contracts/v2/deployments#core) contract.
+[SablierV2LockupLinear](/contracts/v2/deployments) contract.
 
 As for the amount, you'll have to pad it with the right number of decimals. For DAI, that's 18 decimals, so a value of
 `100` will turn into `100 * 1e18` (100 followed by 18 zeroes). For USDC,that's 6 decimals, so a value of `100` will turn

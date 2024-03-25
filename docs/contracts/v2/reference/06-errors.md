@@ -35,12 +35,11 @@ multiple contracts.
 
 ### Core
 
-[Click here](/docs/contracts/v2/reference/core/libraries/library.Errors.md) to see the full error list in V2 Core.
+[Click here](core/libraries/library.Errors) to see the full error list in V2 Core.
 
 ### Periphery
 
-[Click here](/docs/contracts/v2/reference/periphery/libraries/library.Errors.md) to see the full error list in V2
-Periphery.
+[Click here](periphery/libraries/library.Errors) to see the full error list in V2 Periphery.
 
 ## Resources
 

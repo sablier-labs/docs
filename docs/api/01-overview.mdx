@@ -43,7 +43,7 @@ provides for a similar GraphQL driven API to access cached data and serve it int
 
 We designed a set of indexers that mimic the features and entities exposed by subgraphs and take advantage of the speed
 and optimized environment configured through HyperIndex. Read more on the dedicated page about our `protocol-envio` and
-`merkle-envio` [indexers](/api/indexers/overview).
+`merkle-envio` [indexers](/api/indexers/endpoints).
 
 All networks share the same indexer endpoint (for one indexer type), as Envio promotes a cross-chain indexing
 architecture.
@@ -65,13 +65,13 @@ Sablier deployments).
 
 ## Merkle API (Rust)
 
-To support our Merkle distribution (a.k.a. [Airstreams](/apps/features#airstreams)) system we developed a backend
+To support our Merkle distribution (a.k.a. [Airstreams](/apps/features/airstreams)) system we developed a backend
 service called `@sablier/v2-merkle-api`. This backend deals with the validation, creation and management of Merkle
 trees, used to define eligibility and claiming rules for Sablier's Airstream campaigns.
 
 This service is open-source and can be used by integrators as a plug-n-play solution to support (and even deploy)
 similar campaigns from their own dashboards. Read more on the dedicated page about the `merkle-api`
-[backend](/api/merkle-api/overview).
+[backend](/api/merkle-api/intro).
 
 <LinkPreview
   href="https://github.com/sablier-labs/v2-merkle-api"

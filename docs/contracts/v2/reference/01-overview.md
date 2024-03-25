@@ -7,8 +7,8 @@ title: "Overview"
 Sablier V2 is a binary smart contract system comprised of many contracts, libraries, and types, which together make Core
 and Periphery.
 
-- **Core** provides the fundamental streaming logic of the Sablier V2 Protocol. It contains LockupLinear and
-  LockupDynamic, which are the primary contracts that users will interact with.
+- **Core** provides the fundamental streaming logic of the Sablier V2 Protocol. It contains LockupLinear, LockupDynamic
+  and LockupTranched, which are the primary contracts that users will interact with.
 - **Periphery** contracts interact with one or more Core contracts but are not part of the Core. They are an abstraction
   layer that enhance the security and the extensibility of the protocol without introducing upgradeability.
 
@@ -37,17 +37,17 @@ Creates and manages Lockup streams with a linear streaming function.
 
 Creates and manages Lockup streams with dynamic streaming functions.
 
+### LockupTranched
+
+> [**LockupTranched Reference**](./core/contract.SablierV2LockupTranched)
+
+Creates and manages Lockup streams with tranches.
+
 ### NFTDescriptor
 
 > [**NFTDescriptor Reference**](./core/contract.SablierV2NFTDescriptor)
 
 Generates the URI describing the Sablier V2 stream NFTs.
-
-### Comptroller
-
-> [**Comptroller Reference**](./core/contract.SablierV2Comptroller)
-
-This contract is in charge of the Sablier V2 protocol configuration, handling such values as the protocol fees.
 
 ## Periphery
 
@@ -56,6 +56,10 @@ This contract is in charge of the Sablier V2 protocol configuration, handling su
 The Periphery is a collection of contracts meant to make the Sablier Protocol more modular while introducing
 functionalities such as [Airstream Campaigns](/concepts/protocol/airstreams).
 
-## MerkleStreamer
+### MerkleLockupLL
 
-> [**MerkleStreamer Reference**](./periphery/contract.SablierV2MerkleStreamerLL)
+> [**MerkleLockupLL Reference**](./periphery/contract.SablierV2MerkleLL)
+
+### MerkleLockupLT
+
+> [**MerkleLockupLT Reference**](./periphery/contract.SablierV2MerkleLT)

@@ -6,6 +6,7 @@ title: "Lockup Linear"
 
 import AdmonitionSimpleCode from "@site/docs/snippets/AdmonitionSimpleCode.mdx";
 import ConstantsComment from "@site/docs/snippets/ConstantsComment.mdx";
+import CreateFunctions from "@site/docs/snippets/CreateFunctions.mdx";
 import ParamAsset from "@site/docs/snippets/ParamAsset.mdx";
 import ParamBroker from "@site/docs/snippets/ParamBroker.mdx";
 import ParamCancelable from "@site/docs/snippets/ParamCancelable.mdx";
@@ -35,7 +36,7 @@ Declare the Solidity version used to compile the contract:
 
 ```solidity
 // SPDX-License-Identifier: GPL-3.0-or-later
-pragma solidity >=0.8.19;
+pragma solidity >=0.8.22;
 ```
 
 Import the relevant symbols from `@sablier/v2-core`:
@@ -60,14 +61,7 @@ contract LockupLinearStreamCreator {
 
 <ConstantsComment />
 
-## Create functions
-
-There are two create functions in the Lockup Linear contract:
-
-- `createWithDurations`: sets the start time to
-  [`block.timestamp`](https://docs.soliditylang.org/en/v0.8.19/cheatsheet.html#global-variables), and calculates the end
-  time based on the provided durations
-- `createWithRange`: uses specific start and end times
+<CreateFunctions />
 
 Which one you choose depends upon your use case. In this guide, we will use `createWithDurations`.
 

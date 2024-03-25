@@ -1,21 +1,20 @@
-# ISablierV2MerkleStreamer
+# ISablierV2MerkleLockup
 
-[Git Source](https://github.com/sablier-labs/v2-periphery/blob/53e259087984ff748fca6fb932fdb9c663c2b365/src/interfaces/ISablierV2MerkleStreamer.sol)
+[Git Source](https://github.com/sablier-labs/v2-periphery/blob/c10978dd4cdb54301b9c2d63c7e0af41da9110f3/src/interfaces/ISablierV2MerkleLockup.sol)
 
 **Inherits:** IAdminable
 
-A contract that lets user claim Sablier streams using Merkle proofs. An interesting use case for MerkleStream is
-airstreams, which is a portmanteau of "airdrop" and "stream". This is an airdrop model where the tokens are distributed
-over time, as opposed to all at once.
+A contract that lets user claim Sablier streams using Merkle proofs. A popular use case for MerkleLockup is airstreams:
+a portmanteau of "airdrop" and "stream". This is an airdrop model where the tokens are distributed over time, as opposed
+to all at once.
 
-_This is the base interface for MerkleStreamer contracts. See the Sablier docs for more guidance on how streaming works:
-https://docs.sablier.com/._
+_This is the base interface for MerkleLockup. See the Sablier docs for more guidance: https://docs.sablier.com_
 
 ## Functions
 
 ### ASSET
 
-The streamed ERC-20 asset.
+The ERC-20 asset to distribute.
 
 _This is an immutable state variable._
 
@@ -35,12 +34,20 @@ function CANCELABLE() external returns (bool);
 
 ### EXPIRATION
 
-The cut-off point for the Merkle streamer, as a Unix timestamp. A value of zero means there is no expiration.
+The cut-off point for the campaign, as a Unix timestamp. A value of zero means there is no expiration.
 
 _This is an immutable state variable._
 
 ```solidity
 function EXPIRATION() external returns (uint40);
+```
+
+### getFirstClaimTime
+
+Returns the timestamp when the first claim is made.
+
+```solidity
+function getFirstClaimTime() external view returns (uint40);
 ```
 
 ### hasClaimed
@@ -61,28 +68,36 @@ function hasClaimed(uint256 index) external returns (bool);
 
 ### hasExpired
 
-Returns a flag indicating whether the Merkle streamer has expired.
+Returns a flag indicating whether the campaign has expired.
 
 ```solidity
 function hasExpired() external view returns (bool);
 ```
 
-### LOCKUP
+### ipfsCID
 
-The address of the [SablierV2Lockup](docs/contracts/v2/reference/core/abstracts/abstract.SablierV2Lockup.md) contract.
+The content identifier for indexing the campaign on IPFS.
 
 ```solidity
-function LOCKUP() external returns (ISablierV2Lockup);
+function ipfsCID() external view returns (string memory);
 ```
 
 ### MERKLE_ROOT
 
-The root of the Merkle tree used to validate the claims.
+The root of the Merkle tree used to validate the proofs of inclusion.
 
 _This is an immutable state variable._
 
 ```solidity
 function MERKLE_ROOT() external returns (bytes32);
+```
+
+### name
+
+Retrieves the name of the campaign.
+
+```solidity
+function name() external returns (string memory);
 ```
 
 ### TRANSFERABLE
@@ -97,14 +112,14 @@ function TRANSFERABLE() external returns (bool);
 
 ### clawback
 
-Claws back the unclaimed tokens from the Merkle streamer.
+Claws back the unclaimed tokens from the campaign.
 
-Emits a [Clawback](/docs/contracts/v2/reference/periphery/interfaces/interface.ISablierV2MerkleStreamer.md#clawback)
-event. Notes:
+Emits a [Clawback](/docs/contracts/v2/reference/periphery/interfaces/interface.ISablierV2MerkleLockup.md#clawback)
+event. Requirements:
 
-- If the protocol is not zero, the expiration check is not made. Requirements:
 - The caller must be the admin.
-- The campaign must either be expired or not have an expiration.
+- No claim must be made, OR The current timestamp must not exceed 7 days after the first claim, OR The campaign must be
+  expired.
 
 ```solidity
 function clawback(address to, uint128 amount) external;

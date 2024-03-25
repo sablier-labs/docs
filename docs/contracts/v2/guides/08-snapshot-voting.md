@@ -148,9 +148,8 @@ Aggregates historical deposits up to the snapshot time, counting only the stream
 Aggregates historical amounts that have already been streamed to the recipient. Crucially, withdrawn tokens are
 included.
 
-It relies on the `streamedAmountOf` methods in the
-[LockupLinear](/contracts/v2/reference/core/contract.SablierV2LockupLinear#streamedamountof) and
-[LockupDynamic](/contracts/v2/reference/core/contract.SablierV2LockupDynamic#streamedamountof) contracts.
+It relies on the `streamedAmountOf` method in the
+[SablierV2Lockup](/contracts/v2/reference/core/abstracts/abstract.SablierV2Lockup#streamedamountof) contract.
 
 :::caution Caveats
 

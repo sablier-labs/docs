@@ -20,11 +20,11 @@ from streams.
 Withdrawing from streams means claiming the assets that have become due to the recipient, who has the option to direct
 the withdrawal to an alternative address of their choice.
 
-There are three withdrawal functions:
+There are four withdrawal functions:
 
-1. `withdraw`: withdraws a specific amount of assets
-2. `withdrawMax`: withdraws the maximum amount of assets available at the time of invocation
-3. `withdrawMultiple`: withdraws specific amounts of assets from multiple streams at once
+1. `withdraw`: withdraws a specific amount of assets.
+2. `withdrawMax`: withdraws the maximum withdrawable amount of assets.
+3. `withdrawMultiple`: withdraws specific amounts of assets from multiple streams at once.
 
 To call any of these functions, you need to have created a stream. If you don't have one yet, go back to the
 [previous guide](/contracts/v2/guides/create-stream/lockup-linear) and create a stream with a brief duration, assigning
@@ -38,7 +38,7 @@ In this example, the withdrawal address and withdrawal amount are hard-coded for
 production environment, these values would likely be adjustable parameters determined by the user.
 
 In addition to the `withdraw` function, there is the `withdrawMax` function, which you can use to withdraw the maximum
-amount of assets available in a stream at the time of invocation:
+withdrawable amount of assets at the time of invocation:
 
 ```solidity reference title="Stream Management: Withdraw Max"
 https://github.com/sablier-labs/examples/blob/main/v2/core/StreamManagement.sol#L25-L27
