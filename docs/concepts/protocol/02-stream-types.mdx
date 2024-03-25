@@ -119,20 +119,22 @@ unlocks. In this case, the "streaming" rate would not be by the second, but by t
 <FunctionPlot
   options={{
     data: [
-      ...Array.from({ length: 10 }, (_, i) => ({
-        color: "#f77423",
-        fn: `${i * 10}`,
-        range: [i * 10, (i + 1) * 10],
-      })),
-      ...Array.from({ length: 10 }, (_, i) => ({
-        color: "#f77423",
+      {
+        points: [
+          [0.01, 0.01],
+          [25, 0],
+          [25, 25],
+          [50, 25],
+          [50, 50],
+          [75, 50],
+          [75, 75],
+          [99.99, 75],
+          [99.99, 99.99],
+        ],
         fnType: "points",
         graphType: "polyline",
-        points: [
-          [(i + 1) * 10, i * 10],
-          [(i + 1) * 10, i * 10 + 9.8],
-        ],
-      })),
+        color: "#f77423",
+      },
     ],
   }}
 />
@@ -143,3 +145,85 @@ accumulate, so if the recipient doesn't withdraw them, they will be able to with
 The advantage of using Unlock in Steps instead of a normal vesting contract is that Sablier automates the entire
 process. No more worries about setting up vesting contracts or creating a user interface for your employees to claim
 their tokens.
+
+### Monthly Unlocks
+
+<FunctionPlot
+  options={{
+    xAxisLabel: "x - Months",
+    xDomainLimit: 12,
+    yDomainLimit: 120,
+    data: [
+      {
+        fnType: "points",
+        graphType: "polyline",
+        color: "#f77423",
+        points: Array.from({ length: 24 }, (_, i) => [
+          1 + Math.floor(i / 2),
+          10 * Math.floor(i / 2) + (i % 2 === 1 ? 10 : 0),
+        ]),
+      },
+    ],
+  }}
+/>
+
+### Timelock
+
+<FunctionPlot
+  options={{
+    data: [
+      {
+        points: [
+          [0.01, 0.01],
+          [90, 0],
+          [90, 99.7],
+          [99.99, 99.99],
+        ],
+        fnType: "points",
+        graphType: "polyline",
+        color: "#f77423",
+      },
+    ],
+  }}
+/>
+
+### Unlock Linear
+
+<FunctionPlot
+  options={{
+    data: [
+      { fn: "25", range: [0, 0.15], color: "#f77423" },
+      { fn: "(x-0.15)*0.75015 + 25", range: [0.15, 100], color: "#f77423" },
+      {
+        points: [
+          [0.15, 0],
+          [0.15, 25],
+        ],
+        fnType: "points",
+        graphType: "polyline",
+        color: "#f77423",
+      },
+    ],
+  }}
+/>
+
+### Unlock Cliff
+
+<FunctionPlot
+  options={{
+    data: [
+      { fn: "0", range: [0, 25], color: "#f77423" },
+      { fn: "1.5*(x-50)+25", color: "#f77423", range: [50, 100] },
+      {
+        points: [
+          [0.15, 0],
+          [0.15, 25],
+          [50, 25],
+        ],
+        fnType: "points",
+        graphType: "polyline",
+        color: "#f77423",
+      },
+    ],
+  }}
+/>
