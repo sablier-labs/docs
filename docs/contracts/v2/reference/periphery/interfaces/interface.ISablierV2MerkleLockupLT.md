@@ -1,39 +1,39 @@
-# ISablierV2MerkleStreamerLL
+# ISablierV2MerkleLockupLT
 
-[Git Source](https://github.com/sablier-labs/v2-periphery/blob/53e259087984ff748fca6fb932fdb9c663c2b365/src/interfaces/ISablierV2MerkleStreamerLL.sol)
+[Git Source](https://github.com/sablier-labs/v2-periphery/blob/73831c7dcaa5ec4e2fed6caa0f8040154e53030a/src/interfaces/ISablierV2MerkleLockupLT.sol)
 
 **Inherits:**
-[ISablierV2MerkleStreamer](/docs/contracts/v2/reference/periphery/interfaces/interface.ISablierV2MerkleStreamer.md)
+[ISablierV2MerkleLockup](/docs/contracts/v2/reference/periphery/interfaces/interface.ISablierV2MerkleLockup.md)
 
-Merkle streamer that creates Lockup Linear streams.
+Merkle Lockup that creates Lockup Tranched streams.
 
 ## Functions
 
-### LOCKUP_LINEAR
+### getTranchesWithPercentages
 
-The address of the [SablierV2LockupLinear](docs/contracts/v2/reference/core/contract.SablierV2LockupLinear.md) contract.
+Retrieves the tranches with their respective unlock percentages and durations.
 
 ```solidity
-function LOCKUP_LINEAR() external view returns (ISablierV2LockupLinear);
+function getTranchesWithPercentages() external view returns (MerkleLockupLT.TrancheWithPercentage[] memory);
 ```
 
-### streamDurations
+### LOCKUP_TRANCHED
 
-The total streaming duration of each stream.
+The address of the [SablierV2LockupTranched](docs/contracts/v2/reference/core/contract.SablierV2LockupTranched.md)
+contract.
 
 ```solidity
-function streamDurations() external view returns (uint40 cliff, uint40 duration);
+function LOCKUP_TRANCHED() external view returns (ISablierV2LockupTranched);
 ```
 
 ### claim
 
-Makes the claim by creating a Lockup Linear stream to the recipient.
+Makes the claim by creating a Lockup Tranched stream to the recipient.
 
 Emits a {Claim} event. Requirements:
 
 - The campaign must not have expired.
 - The stream must not have been claimed already.
-- The protocol fee must be zero.
 - The Merkle proof must be valid.
 
 ```solidity

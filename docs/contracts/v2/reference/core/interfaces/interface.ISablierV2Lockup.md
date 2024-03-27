@@ -1,9 +1,8 @@
 # ISablierV2Lockup
 
-[Git Source](https://github.com/sablier-labs/v2-core/blob/a4bf69cf7024006b9a324eef433f20b74597eaaf/src/interfaces/ISablierV2Lockup.sol)
+[Git Source](https://github.com/sablier-labs/v2-core/blob/63113dc3fbe43438eb305663e0d6b74eefc15857/src/interfaces/ISablierV2Lockup.sol)
 
-**Inherits:** [ISablierV2Base](/docs/contracts/v2/reference/core/interfaces/interface.ISablierV2Base.md),
-IERC721Metadata
+**Inherits:** [IAdminable](/docs/contracts/v2/reference/core/interfaces/interface.IAdminable.md), IERC721Metadata
 
 Common logic between all Sablier V2 Lockup streaming contracts.
 
@@ -234,12 +233,30 @@ function isWarm(uint256 streamId) external view returns (bool result);
 | ---------- | --------- | ---------------------------- |
 | `streamId` | `uint256` | The stream id for the query. |
 
+### MAX_BROKER_FEE
+
+Retrieves the maximum broker fee that can be charged by the broker, denoted as a fixed-point number where 1e18 is 100%.
+
+_This value is hard coded as a constant._
+
+```solidity
+function MAX_BROKER_FEE() external view returns (UD60x18);
+```
+
 ### nextStreamId
 
 Counter for stream ids, used in the create functions.
 
 ```solidity
 function nextStreamId() external view returns (uint256);
+```
+
+### nftDescriptor
+
+Contract that generates the non-fungible token URI.
+
+```solidity
+function nftDescriptor() external view returns (ISablierV2NFTDescriptor);
 ```
 
 ### refundableAmountOf
@@ -277,7 +294,11 @@ function statusOf(uint256 streamId) external view returns (Lockup.Status status)
 
 Calculates the amount streamed to the recipient, denoted in units of the asset's decimals.
 
-_Reverts if `streamId` references a null stream._
+Reverts if `streamId` references a null stream. Notes:
+
+- Upon cancellation of the stream, the amount streamed is calculated as the difference between the deposited amount and
+  the refunded amount. Ultimately, when the stream becomes depleted, the streamed amount is equivalent to the total
+  amount withdrawn.
 
 ```solidity
 function streamedAmountOf(uint256 streamId) external view returns (uint128 streamedAmount);
@@ -436,14 +457,13 @@ Withdraws the provided amount of assets from the stream to the `to` address.
 
 Emits a {Transfer}, {WithdrawFromLockupStream}, and {MetadataUpdate} event. Notes:
 
-- This function attempts to invoke a hook on the stream's recipient, provided that the recipient is a contract and
-  `msg.sender` is either the sender or an approved operator. Requirements:
+- This function attempts to call a hook on the recipient of the stream, unless `msg.sender` is the recipient.
+- This function attempts to call a hook on the sender of the stream, unless `msg.sender` is the sender. Requirements:
 - Must not be delegate called.
 - `streamId` must not reference a null or depleted stream.
-- `msg.sender` must be the stream's sender, the stream's recipient or an approved third party.
-- `to` must be the recipient if `msg.sender` is the stream's sender.
 - `to` must not be the zero address.
 - `amount` must be greater than zero and must not exceed the withdrawable amount.
+- `to` must be the recipient if `msg.sender` is not the stream's recipient or an approved third party.
 
 ```solidity
 function withdraw(uint256 streamId, address to, uint128 amount) external;
@@ -505,17 +525,19 @@ function withdrawMaxAndTransfer(uint256 streamId, address newRecipient) external
 
 ### withdrawMultiple
 
-Withdraws assets from streams to the provided address `to`.
+Withdraws assets from streams to the recipient of each stream.
 
 Emits multiple {Transfer}, {WithdrawFromLockupStream}, and {MetadataUpdate} events. Notes:
 
 - This function attempts to call a hook on the recipient of each stream, unless `msg.sender` is the recipient.
-  Requirements:
-- All requirements from {withdraw} must be met for each stream.
+- This function attempts to call a hook on the sender of each stream, unless `msg.sender` is the sender. Requirements:
+- Must not be delegate called.
 - There must be an equal number of `streamIds` and `amounts`.
+- Each stream id in the array must not reference a null or depleted stream.
+- Each amount in the array must be greater than zero and must not exceed the withdrawable amount.
 
 ```solidity
-function withdrawMultiple(uint256[] calldata streamIds, address to, uint128[] calldata amounts) external;
+function withdrawMultiple(uint256[] calldata streamIds, uint128[] calldata amounts) external;
 ```
 
 **Parameters**
@@ -523,7 +545,6 @@ function withdrawMultiple(uint256[] calldata streamIds, address to, uint128[] ca
 | Name        | Type        | Description                                                        |
 | ----------- | ----------- | ------------------------------------------------------------------ |
 | `streamIds` | `uint256[]` | The ids of the streams to withdraw from.                           |
-| `to`        | `address`   | The address receiving the withdrawn assets.                        |
 | `amounts`   | `uint128[]` | The amounts to withdraw, denoted in units of the asset's decimals. |
 
 ## Events

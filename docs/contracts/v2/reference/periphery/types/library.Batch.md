@@ -1,6 +1,6 @@
 # Batch
 
-[Git Source](https://github.com/sablier-labs/v2-periphery/blob/53e259087984ff748fca6fb932fdb9c663c2b365/src/types/DataTypes.sol)
+[Git Source](https://github.com/sablier-labs/v2-periphery/blob/73831c7dcaa5ec4e2fed6caa0f8040154e53030a/src/types/DataTypes.sol)
 
 ## Structs
 
@@ -15,28 +15,28 @@ struct CancelMultiple {
 }
 ```
 
-### CreateWithDeltas
+### CreateWithDurationsLD
 
-A struct encapsulating all parameters of {SablierV2LockupDynamic.createWithDelta} except for the asset.
+A struct encapsulating all parameters of {SablierV2LockupDynamic.createWithDurations} except for the asset.
 
 ```solidity
-struct CreateWithDeltas {
+struct CreateWithDurationsLD {
     address sender;
-    bool cancelable;
-    bool transferable;
     address recipient;
     uint128 totalAmount;
+    bool cancelable;
+    bool transferable;
+    LockupDynamic.SegmentWithDuration[] segments;
     Broker broker;
-    LockupDynamic.SegmentWithDelta[] segments;
 }
 ```
 
-### CreateWithDurations
+### CreateWithDurationsLL
 
 A struct encapsulating all parameters of {SablierV2LockupLinear.createWithDurations} except for the asset.
 
 ```solidity
-struct CreateWithDurations {
+struct CreateWithDurationsLL {
     address sender;
     address recipient;
     uint128 totalAmount;
@@ -47,35 +47,68 @@ struct CreateWithDurations {
 }
 ```
 
-### CreateWithMilestones
+### CreateWithDurationsLT
 
-A struct encapsulating all parameters of {SablierV2LockupDynamic.createWithMilestones} except for the asset.
+A struct encapsulating all parameters of {SablierV2LockupTranched.createWithDurations} except for the asset.
 
 ```solidity
-struct CreateWithMilestones {
+struct CreateWithDurationsLT {
     address sender;
-    uint40 startTime;
-    bool cancelable;
-    bool transferable;
     address recipient;
     uint128 totalAmount;
+    bool cancelable;
+    bool transferable;
+    LockupTranched.TrancheWithDuration[] tranches;
     Broker broker;
-    LockupDynamic.Segment[] segments;
 }
 ```
 
-### CreateWithRange
+### CreateWithTimestampsLD
 
-A struct encapsulating all parameters of {SablierV2LockupLinear.createWithRange} except for the asset.
+A struct encapsulating all parameters of {SablierV2LockupDynamic.createWithTimestamps} except for the asset.
 
 ```solidity
-struct CreateWithRange {
+struct CreateWithTimestampsLD {
+    address sender;
+    address recipient;
+    uint128 totalAmount;
+    bool cancelable;
+    bool transferable;
+    uint40 startTime;
+    LockupDynamic.Segment[] segments;
+    Broker broker;
+}
+```
+
+### CreateWithTimestampsLL
+
+A struct encapsulating all parameters of {SablierV2LockupLinear.createWithTimestamps} except for the asset.
+
+```solidity
+struct CreateWithTimestampsLL {
     address sender;
     address recipient;
     uint128 totalAmount;
     bool cancelable;
     bool transferable;
     LockupLinear.Range range;
+    Broker broker;
+}
+```
+
+### CreateWithTimestampsLT
+
+A struct encapsulating all parameters of {SablierV2LockupTranched.createWithTimestamps} except for the asset.
+
+```solidity
+struct CreateWithTimestampsLT {
+    address sender;
+    address recipient;
+    uint128 totalAmount;
+    bool cancelable;
+    bool transferable;
+    uint40 startTime;
+    LockupTranched.Tranche[] tranches;
     Broker broker;
 }
 ```

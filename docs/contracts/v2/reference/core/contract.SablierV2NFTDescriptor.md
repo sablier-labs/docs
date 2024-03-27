@@ -4,7 +4,7 @@ sidebar_position: 3
 
 # SablierV2NFTDescriptor
 
-[Git Source](https://github.com/sablier-labs/v2-core/blob/a4bf69cf7024006b9a324eef433f20b74597eaaf/src/SablierV2NFTDescriptor.sol)
+[Git Source](https://github.com/sablier-labs/v2-core/blob/63113dc3fbe43438eb305663e0d6b74eefc15857/src/SablierV2NFTDescriptor.sol)
 
 **Inherits:**
 [ISablierV2NFTDescriptor](/docs/contracts/v2/reference/core/interfaces/interface.ISablierV2NFTDescriptor.md)
@@ -119,9 +119,10 @@ Generates a string with the NFT's JSON metadata description, which provides a hi
 function generateDescription(
     string memory streamingModel,
     string memory assetSymbol,
-    string memory streamId,
     string memory sablierAddress,
-    string memory assetAddress
+    string memory assetAddress,
+    string memory streamId,
+    bool isTransferable
 )
     internal
     pure

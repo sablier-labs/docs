@@ -1,26 +1,20 @@
----
-sidebar_position: 3
----
+# ISablierV2MerkleLockupLL
 
-# SablierV2MerkleStreamerLL
-
-[Git Source](https://github.com/sablier-labs/v2-periphery/blob/53e259087984ff748fca6fb932fdb9c663c2b365/src/SablierV2MerkleStreamerLL.sol)
+[Git Source](https://github.com/sablier-labs/v2-periphery/blob/73831c7dcaa5ec4e2fed6caa0f8040154e53030a/src/interfaces/ISablierV2MerkleLockupLL.sol)
 
 **Inherits:**
-[ISablierV2MerkleStreamerLL](/docs/contracts/v2/reference/periphery/interfaces/interface.ISablierV2MerkleStreamerLL.md),
-[SablierV2MerkleStreamer](/docs/contracts/v2/reference/periphery/abstracts/abstract.SablierV2MerkleStreamer.md)
+[ISablierV2MerkleLockup](/docs/contracts/v2/reference/periphery/interfaces/interface.ISablierV2MerkleLockup.md)
 
-See the documentation in
-[ISablierV2MerkleStreamerLL](/docs/contracts/v2/reference/periphery/interfaces/interface.ISablierV2MerkleStreamerLL.md).
+Merkle Lockup that creates Lockup Linear streams.
 
-## State Variables
+## Functions
 
 ### LOCKUP_LINEAR
 
 The address of the [SablierV2LockupLinear](docs/contracts/v2/reference/core/contract.SablierV2LockupLinear.md) contract.
 
 ```solidity
-ISablierV2LockupLinear public immutable override LOCKUP_LINEAR;
+function LOCKUP_LINEAR() external view returns (ISablierV2LockupLinear);
 ```
 
 ### streamDurations
@@ -28,27 +22,7 @@ ISablierV2LockupLinear public immutable override LOCKUP_LINEAR;
 The total streaming duration of each stream.
 
 ```solidity
-LockupLinear.Durations public override streamDurations;
-```
-
-## Functions
-
-### constructor
-
-_Constructs the contract by initializing the immutable state variables, and max approving the Sablier contract._
-
-```solidity
-constructor(
-    address initialAdmin,
-    ISablierV2LockupLinear lockupLinear,
-    IERC20 asset,
-    bytes32 merkleRoot,
-    uint40 expiration,
-    LockupLinear.Durations memory streamDurations_,
-    bool cancelable,
-    bool transferable
-)
-    SablierV2MerkleStreamer(initialAdmin, asset, lockupLinear, merkleRoot, expiration, cancelable, transferable);
+function streamDurations() external view returns (uint40 cliff, uint40 duration);
 ```
 
 ### claim
@@ -59,7 +33,6 @@ Emits a {Claim} event. Requirements:
 
 - The campaign must not have expired.
 - The stream must not have been claimed already.
-- The protocol fee must be zero.
 - The Merkle proof must be valid.
 
 ```solidity
@@ -70,7 +43,6 @@ function claim(
     bytes32[] calldata merkleProof
 )
     external
-    override
     returns (uint256 streamId);
 ```
 

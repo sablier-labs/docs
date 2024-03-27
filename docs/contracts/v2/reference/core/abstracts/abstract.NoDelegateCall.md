@@ -1,6 +1,6 @@
 # NoDelegateCall
 
-[Git Source](https://github.com/sablier-labs/v2-core/blob/a4bf69cf7024006b9a324eef433f20b74597eaaf/src/abstracts/NoDelegateCall.sol)
+[Git Source](https://github.com/sablier-labs/v2-core/blob/63113dc3fbe43438eb305663e0d6b74eefc15857/src/abstracts/NoDelegateCall.sol)
 
 This contract implements logic to prevent delegate calls.
 

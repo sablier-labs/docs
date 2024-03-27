@@ -1,6 +1,6 @@
 # Errors
 
-[Git Source](https://github.com/sablier-labs/v2-core/blob/a4bf69cf7024006b9a324eef433f20b74597eaaf/src/libraries/Errors.sol)
+[Git Source](https://github.com/sablier-labs/v2-core/blob/63113dc3fbe43438eb305663e0d6b74eefc15857/src/libraries/Errors.sol)
 
 Library containing all custom errors the protocol may revert with.
 
@@ -22,52 +22,12 @@ Thrown when trying to delegate call to a function that disallows delegate calls.
 error DelegateCall();
 ```
 
-### SablierV2Base_NoProtocolRevenues
-
-Thrown when trying to claim protocol revenues for an asset with no accrued revenues.
-
-```solidity
-error SablierV2Base_NoProtocolRevenues(IERC20 asset);
-```
-
-### SablierV2FlashLoan_AssetNotFlashLoanable
-
-Thrown when trying to flash loan an unsupported asset.
-
-```solidity
-error SablierV2FlashLoan_AssetNotFlashLoanable(IERC20 asset);
-```
-
-### SablierV2FlashLoan_AmountTooHigh
-
-Thrown when trying to flash loan an amount greater than or equal to 2^128.
-
-```solidity
-error SablierV2FlashLoan_AmountTooHigh(uint256 amount);
-```
-
-### SablierV2FlashLoan_CalculatedFeeTooHigh
-
-Thrown when the calculated fee during a flash loan is greater than or equal to 2^128.
-
-```solidity
-error SablierV2FlashLoan_CalculatedFeeTooHigh(uint256 amount);
-```
-
-### SablierV2FlashLoan_FlashBorrowFail
-
-Thrown when the callback to the flash borrower fails.
-
-```solidity
-error SablierV2FlashLoan_FlashBorrowFail();
-```
-
 ### SablierV2Lockup_BrokerFeeTooHigh
 
 Thrown when the broker fee exceeds the maximum allowed fee.
 
 ```solidity
-error SablierV2Lockup_BrokerFeeTooHigh(UD60x18 brokerFee, UD60x18 maxFee);
+error SablierV2Lockup_BrokerFeeTooHigh(UD60x18 brokerFee, UD60x18 maxBrokerFee);
 ```
 
 ### SablierV2Lockup_DepositAmountZero
@@ -84,14 +44,6 @@ Thrown when trying to create a stream with an end time not in the future.
 
 ```solidity
 error SablierV2Lockup_EndTimeNotInTheFuture(uint40 currentTime, uint40 endTime);
-```
-
-### SablierV2Lockup_InvalidSenderWithdrawal
-
-Thrown when the stream's sender tries to withdraw to an address other than the recipient's.
-
-```solidity
-error SablierV2Lockup_InvalidSenderWithdrawal(uint256 streamId, address sender, address to);
 ```
 
 ### SablierV2Lockup_NotTransferable
@@ -118,12 +70,12 @@ Thrown when trying to withdraw an amount greater than the withdrawable amount.
 error SablierV2Lockup_Overdraw(uint256 streamId, uint128 amount, uint128 withdrawableAmount);
 ```
 
-### SablierV2Lockup_ProtocolFeeTooHigh
+### SablierV2Lockup_StartTimeZero
 
-Thrown when the protocol fee exceeds the maximum allowed fee.
+Thrown when trying to create a stream with a zero start time.
 
 ```solidity
-error SablierV2Lockup_ProtocolFeeTooHigh(UD60x18 protocolFee, UD60x18 maxFee);
+error SablierV2Lockup_StartTimeZero();
 ```
 
 ### SablierV2Lockup_StreamCanceled
@@ -172,6 +124,14 @@ Thrown when `msg.sender` lacks authorization to perform an action.
 
 ```solidity
 error SablierV2Lockup_Unauthorized(uint256 streamId, address caller);
+```
+
+### SablierV2Lockup_WithdrawalAddressNotRecipient
+
+Thrown when trying to withdraw to an address other than the recipient's.
+
+```solidity
+error SablierV2Lockup_WithdrawalAddressNotRecipient(uint256 streamId, address caller, address to);
 ```
 
 ### SablierV2Lockup_WithdrawAmountZero
@@ -223,22 +183,22 @@ Thrown when trying to create a stream with no segments.
 error SablierV2LockupDynamic_SegmentCountZero();
 ```
 
-### SablierV2LockupDynamic_SegmentMilestonesNotOrdered
+### SablierV2LockupDynamic_SegmentTimestampsNotOrdered
 
-Thrown when trying to create a stream with unordered segment milestones.
+Thrown when trying to create a stream with unordered segment timestamps.
 
 ```solidity
-error SablierV2LockupDynamic_SegmentMilestonesNotOrdered(
-    uint256 index, uint40 previousMilestone, uint40 currentMilestone
+error SablierV2LockupDynamic_SegmentTimestampsNotOrdered(
+    uint256 index, uint40 previousTimestamp, uint40 currentTimestamp
 );
 ```
 
-### SablierV2LockupDynamic_StartTimeNotLessThanFirstSegmentMilestone
+### SablierV2LockupDynamic_StartTimeNotLessThanFirstSegmentTimestamp
 
-Thrown when trying to create a stream with a start time not strictly less than the first segment milestone.
+Thrown when trying to create a stream with a start time not strictly less than the first segment timestamp.
 
 ```solidity
-error SablierV2LockupDynamic_StartTimeNotLessThanFirstSegmentMilestone(uint40 startTime, uint40 firstSegmentMilestone);
+error SablierV2LockupDynamic_StartTimeNotLessThanFirstSegmentTimestamp(uint40 startTime, uint40 firstSegmentTimestamp);
 ```
 
 ### SablierV2LockupLinear_CliffTimeNotLessThanEndTime
@@ -249,12 +209,20 @@ Thrown when trying to create a stream with a cliff time not strictly less than t
 error SablierV2LockupLinear_CliffTimeNotLessThanEndTime(uint40 cliffTime, uint40 endTime);
 ```
 
-### SablierV2LockupLinear_StartTimeGreaterThanCliffTime
+### SablierV2LockupLinear_StartTimeNotLessThanCliffTime
 
 Thrown when trying to create a stream with a start time greater than the cliff time.
 
 ```solidity
-error SablierV2LockupLinear_StartTimeGreaterThanCliffTime(uint40 startTime, uint40 cliffTime);
+error SablierV2LockupLinear_StartTimeNotLessThanCliffTime(uint40 startTime, uint40 cliffTime);
+```
+
+### SablierV2LockupLinear_StartTimeNotLessThanEndTime
+
+Thrown when trying to create a stream with a start time greater than the end time.
+
+```solidity
+error SablierV2LockupLinear_StartTimeNotLessThanEndTime(uint40 startTime, uint40 endTime);
 ```
 
 ### SablierV2NFTDescriptor_UnknownNFT
@@ -263,4 +231,46 @@ Thrown when trying to generate the token URI for an unknown ERC-721 NFT contract
 
 ```solidity
 error SablierV2NFTDescriptor_UnknownNFT(IERC721Metadata nft, string symbol);
+```
+
+### SablierV2LockupTranched_DepositAmountNotEqualToTrancheAmountsSum
+
+Thrown when trying to create a stream with a deposit amount not equal to the sum of the tranche amounts.
+
+```solidity
+error SablierV2LockupTranched_DepositAmountNotEqualToTrancheAmountsSum(uint128 depositAmount, uint128 trancheAmountsSum);
+```
+
+### SablierV2LockupTranched_StartTimeNotLessThanFirstTrancheTimestamp
+
+Thrown when trying to create a stream with a start time not strictly less than the first tranche timestamp.
+
+```solidity
+error SablierV2LockupTranched_StartTimeNotLessThanFirstTrancheTimestamp(uint40 startTime, uint40 firstTrancheTimestamp);
+```
+
+### SablierV2LockupTranched_TrancheCountTooHigh
+
+Thrown when trying to create a stream with more tranches than the maximum allowed.
+
+```solidity
+error SablierV2LockupTranched_TrancheCountTooHigh(uint256 count);
+```
+
+### SablierV2LockupTranched_TrancheCountZero
+
+Thrown when trying to create a stream with no tranches.
+
+```solidity
+error SablierV2LockupTranched_TrancheCountZero();
+```
+
+### SablierV2LockupTranched_TrancheTimestampsNotOrdered
+
+Thrown when trying to create a stream with unordered tranche timestamps.
+
+```solidity
+error SablierV2LockupTranched_TrancheTimestampsNotOrdered(
+    uint256 index, uint40 previousTimestamp, uint40 currentTimestamp
+);
 ```
