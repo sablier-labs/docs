@@ -1,6 +1,6 @@
 # SablierV2MerkleLockup
 
-[Git Source](https://github.com/sablier-labs/v2-periphery/blob/73831c7dcaa5ec4e2fed6caa0f8040154e53030a/src/abstracts/SablierV2MerkleLockup.sol)
+[Git Source](https://github.com/sablier-labs/v2-periphery/blob/a3131838ec731b38b1e2e03735fba874ab66f5e2/src/abstracts/SablierV2MerkleLockup.sol)
 
 **Inherits:**
 [ISablierV2MerkleLockup](/docs/contracts/v2/reference/periphery/interfaces/interface.ISablierV2MerkleLockup.md),

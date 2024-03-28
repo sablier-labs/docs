@@ -4,7 +4,7 @@ sidebar_position: 2
 
 # SablierV2LockupTranched
 
-[Git Source](https://github.com/sablier-labs/v2-core/blob/63113dc3fbe43438eb305663e0d6b74eefc15857/src/SablierV2LockupTranched.sol)
+[Git Source](https://github.com/sablier-labs/v2-core/blob/e080f20eafef0fc18049bcc77f1694db043860f1/src/SablierV2LockupTranched.sol)
 
 **Inherits:**
 [ISablierV2LockupTranched](/docs/contracts/v2/reference/core/interfaces/interface.ISablierV2LockupTranched.md),
