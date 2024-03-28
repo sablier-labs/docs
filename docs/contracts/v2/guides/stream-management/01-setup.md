@@ -28,8 +28,8 @@ import { ISablierV2Lockup } from "@sablier/v2-core/src/interfaces/ISablierV2Lock
 
 :::info
 
-`ISablierV2Lockup` is a shared interface between `ISablierV2LockupLinear` and `ISablierV2LockupDynamic`, allowing users
-to interact with either contract type using a single interface.
+`ISablierV2Lockup` is a shared interface between `ISablierV2LockupLinear`, `ISablierV2LockupDynamic` and
+`ISablierV2LockupTranched`, allowing users to interact with either contract type using a single interface.
 
 :::
 

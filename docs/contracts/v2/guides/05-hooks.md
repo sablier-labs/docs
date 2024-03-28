@@ -1,6 +1,6 @@
 ---
 id: "hooks"
-sidebar_position: 5
+sidebar_position: 6
 title: "Implement Hooks"
 ---
 
@@ -13,16 +13,24 @@ Sablier.
 
 These are the hooks that can be implemented by a recipient contract:
 
-| Hook                | Arguments                                        | Description                                                                  |
-| ------------------- | ------------------------------------------------ | ---------------------------------------------------------------------------- |
-| `onStreamCanceled`  | `(streamId,sender,senderAmount,recipientAmount)` | Called when the stream is canceled by the sender.                            |
-| `onStreamRenounced` | `(streamId)`                                     | Called when the stream is renounced by the sender.                           |
-| `onStreamWithdrawn` | `(streamId,caller,to,amount)`                    | Called when the sender or an approved third party withdraws from the stream. |
+| Hook                      | Arguments                                        | Description                                         |
+| ------------------------- | ------------------------------------------------ | --------------------------------------------------- |
+| `onLockupStreamCanceled`  | `(streamId,sender,senderAmount,recipientAmount)` | Called when the stream is canceled by the sender.   |
+| `onLockupStreamRenounced` | `(streamId)`                                     | Called when the stream is renounced by the sender.  |
+| `onLockupStreamWithdrawn` | `(streamId,caller,to,amount)`                    | Called when an amount is withdrawn from the stream. |
+
+### Sender
+
+These are the hooks that can be implemented by a sender contract:
+
+| Hook                      | Arguments                     | Description                                         |
+| ------------------------- | ----------------------------- | --------------------------------------------------- |
+| `onLockupStreamWithdrawn` | `(streamId,caller,to,amount)` | Called when an amount is withdrawn from the stream. |
 
 :::caution
 
-While it isn't mandatory, we highly recommend implementing the `onStreamCanceled` and the `onStreamWithdrawn` hooks.
-Doing so enables your contract to keep its internal accounting updated accurately.
+While it isn't mandatory, we highly recommend implementing the `onLockupStreamCanceled` and the
+`onLockupStreamWithdrawn` hooks. Doing so enables your contract to keep its internal accounting updated accurately.
 
 :::
 
@@ -32,6 +40,12 @@ Doing so enables your contract to keep its internal accounting updated accuratel
 
 ```solidity reference title="Sablier Recipient Hooks"
 https://github.com/sablier-labs/examples/blob/main/v2/core/RecipientHooks.sol
+```
+
+#### Sender
+
+```solidity reference title="Sablier Sender Hooks"
+https://github.com/sablier-labs/examples/blob/main/v2/core/SenderHooks.sol
 ```
 
 ## Error Management
