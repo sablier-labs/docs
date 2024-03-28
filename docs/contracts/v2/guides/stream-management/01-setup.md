@@ -17,7 +17,7 @@ With that said, let's begin. First, declare the Solidity version used to compile
 
 ```solidity
 // SPDX-License-Identifier: GPL-3.0-or-later
-pragma solidity >=0.8.19;
+pragma solidity >=0.8.22;
 ```
 
 Import the relevant symbols from `@sablier/v2-core`:
