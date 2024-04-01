@@ -8,9 +8,8 @@ import LinkPreview from "@site/src/components/LinkPreview";
 
 :::tip Chains: Individual vs. Aggregated
 
-While subgraphs have a chain-focused approach (one subgraph endpoint/deployment per chain), it is important to note that
-Envio will index all chains within the same deployment. This makes it so data from all chains can be queried from the
-same place.
+While subgraphs are chain-tethered (one subgraph endpoint per chain), Envio indexes all chains within the same
+deployment. The data from all of chains that Sablier is deployed on can be queried from the same place.
 
 :::
 
@@ -18,7 +17,7 @@ same place.
 
 The `protocol-envio` indexer tracks events mainly emitted by the
 [`@sablier/v2-core`](/contracts/v2/reference/overview#core) contracts. It deals with core protocol actions like
-creating, withdrawing or transferring streams.
+creating, withdrawing, or transferring streams.
 
 ### Endpoints
 
@@ -49,7 +48,7 @@ attached Merkle tree.
 
 ### Endpoints
 
-| Chain        | Endpoint (Hosted Network)                                             |
+| Chain        | Endpoint on the Hosted Network                                        |
 | ------------ | --------------------------------------------------------------------- |
 | All-Networks | [https://indexer.bigdevenergy.link/[...]/v1/graphql][endpoint-merkle] |
 
@@ -67,7 +66,6 @@ Use [Hasura's online explorer](https://cloud.hasura.io/public/graphiql?) to view
 />
 
 [^1]:
-    All-Networks = most of the supported networks from Sablier's app e.g. Optimism, Polygon, Sepolia, Mainnet. The full
-    list can be found in
-    [this](https://github.com/sablier-labs/v2-subgraphs/blob/main/apps/protocol-envio/src/constants/chains/index.ts)
-    configuration file.
+    All-Networks = most of the networks supported by Sablier, e.g., Mainnet, Optimism, Polygon, Sepolia. The full list
+    can be found
+    [here](https://github.com/sablier-labs/v2-subgraphs/blob/main/apps/protocol-envio/src/constants/chains/index.ts).

@@ -8,23 +8,22 @@ title: "Differences"
 
 :::warning
 
-If you're looking to support both subgraphs (The Graph) and indexers (Envio) into your apps, please make sure to scroll
-down to the "Different Results (\*)" 📌 section to understand how results from both APIs may differ for the same
-entities.
+If you're looking to support both subgraphs (The Graph) and indexers (Envio) into your apps, see the "Different Results
+(\*)" 📌 section below to understand how results from these two APIs may differ for the same entities.
 
 :::
 
 ## General
 
 In contrast to The Graph, Envio offers a slightly different Developer Experience (DX) in terms of indexer
-implementation. While for consumers, the query specifics don't change a lot, here are a few items to consider before
+implementation. While the query specifics don't change a lot for consumers, here are a few items to consider before
 developing on top of the Sablier indexers/subgraphs:
 
 ### Querying Language
 
-Both solutions create a **GraphQL** API for consumers to read data from. It is important to note that The Graph uses a
-customized subset of GraphQL operations, which makes is impossible to use the same queries between both indexers and
-subgraphs, whereas Envio deploys a GraphQL API over a Postgres DB. Some examples:
+Both solutions create a **GraphQL** API for consumers to read data from. The Graph uses a customized subset of GraphQL
+operations, which makes is impossible to use the same queries between both indexers and subgraphs, whereas Envio deploys
+a GraphQL API over a Postgres DB. Here are some examples:
 
 | Example              | The Graph                             | Envio                                      |
 | -------------------- | ------------------------------------- | ------------------------------------------ |
@@ -34,26 +33,27 @@ subgraphs, whereas Envio deploys a GraphQL API over a Postgres DB. Some examples
 | Nested items         | `campaigns{ id, asset: {id, symbol}}` | `Campaign{ asset_id, asset: {id, symbol}}` |
 | Filter similar items | `assets(id: $id)`                     | `Asset(where: {id: {_iregex: $id}})`       |
 
-#### Important Notes
+Notes:
 
-For the 3rd example, querying for a single item vs. a collection will have separate keywords for The Graph. With Envio,
-you'll have to identify within the app itself if the query is supposed to yield one or multiple items. As you may tell,
-with Envio you'll query for `Stream` (capitalized) while with The Graph you'll query for `stream` or `streams`.
-
-For the 4th example, in Envio Indexers the `name` of an object will yield its contents (`{}`), while the `<name>_id`
-label will ask for the identifier of the object (e.g. `asset` vs `asset_id`). Keep this in mind for "where" filtering.
+- For the 3rd example, querying for a single item vs. a collection will have separate keywords for The Graph. With
+  Envio, you'll have to identify within the app itself if the query is supposed to yield one or multiple items. As you
+  may tell, with Envio you'll query for `Stream` (capitalized), while with The Graph you'll query for `stream` or
+  `streams`.
+- For the 4th example, Envio Indexers will yield the contents of the `name` of an object with (`{}`), while the
+  `<name>_id` label will ask for the identifier of the object (e.g., `asset` vs `asset_id`). Keep this in mind for
+  "where" filtering.
 
 ### Handler Language
 
 - The Graph: uses Assembly Script
-- Envio: we've chosen Typescript, but you can use JS, TS or Rescript
+- Envio: Sablier uses TypeScript by default, but you can also use JavaScript or Rescript
 
-For Envio, one important mental model is in the concept of loaders vs. handlers. To optimize querying speeds, Envio will
-ask you to write 2 methods: a `loader`, where you can express which existing entities you're expecting to use and
-mutate, and a `handler` where you manage these entities and/or create new ones.
+With Envio, one important mental model is in the concept of loaders vs. handlers. To optimize querying speeds, Envio
+will ask you to write 2 methods: (i) a `loader`, where you can express which existing entities you're expecting to use
+and mutate, and (ii) a `handler` where you manage these entities and/or create new ones.
 
-Example: In the case of a Withdraw event, we'll **pre-load** the `Stream` entity and maybe the `Watcher`, while in the
-second part we'll **handle** the creation of a new `Action` of type Withdraw, we'll update the `Stream`'s
+Example: In the case of a Withdraw event, we weill **pre-load** the `Stream` entity and maybe the `Watcher`, while in
+the second part we'll **handle** the creation of a new `Action` of type Withdraw, we'll update the `Stream`'s
 `withdrawnAmount` and increase the `Watcher`'s index.
 
 ## Specifics

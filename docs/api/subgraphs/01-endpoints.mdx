@@ -15,8 +15,8 @@ It deals with core protocol actions like creating, withdrawing or transferring s
 
 | Chain            | Explorer                                   | Hosted Endpoints                                            | Other Endpoints[^1]                                |
 | ---------------- | ------------------------------------------ | ----------------------------------------------------------- | -------------------------------------------------- |
-| Ethereum         | [Playground][v2-explorer-ethereum]         | [sablier-v2][v2-endpoint-ethereum]                          | [Decentralized Network](v2-decentralized-ethereum) |
-| Arbitrum         | [Playground][v2-explorer-arbitrum]         | [sablier-v2-arbitrum][v2-endpoint-arbitrum]                 | [Decentralized Network](v2-decentralized-arbitrum) |
+| Ethereum         | [Playground][v2-explorer-ethereum]         | [sablier-v2][v2-endpoint-ethereum]                          | [Decentralized Network][v2-decentralized-ethereum] |
+| Arbitrum         | [Playground][v2-explorer-arbitrum]         | [sablier-v2-arbitrum][v2-endpoint-arbitrum]                 | [Decentralized Network][v2-decentralized-arbitrum] |
 | Arbitrum Sepolia | [Playground][v2-explorer-arbitrum-sepolia] | [sablier-v2-arbitrum-sepolia][v2-endpoint-arbitrum-sepolia] | N/A                                                |
 | Avalanche        | [Playground][v2-explorer-avalanche]        | [sablier-v2-avalanche][v2-endpoint-avalanche]               | N/A                                                |
 | Base             | [Playground][v2-endpoint-base]             | N/A                                                         | [Subgraph Studio][v2-endpoint-base]                |
@@ -25,7 +25,7 @@ It deals with core protocol actions like creating, withdrawing or transferring s
 | Gnosis           | [Playground][v2-explorer-gnosis]           | [sablier-v2-gnosis][v2-endpoint-gnosis]                     | N/A                                                |
 | Lightlink        | [Playground\*][v2-explorer-lightlink]      | N/A                                                         | [Lightlink Node\*][v2-endpoint-lightlink]          |
 | Optimism         | [Playground][v2-explorer-optimism]         | [sablier-v2-optimism][v2-endpoint-optimism]                 | N/A                                                |
-| Polygon          | [Playground][v2-explorer-polygon]          | [sablier-v2-matic][v2-endpoint-polygon]                     | [Decentralized Network](v2-decentralized-polygon)  |
+| Polygon          | [Playground][v2-explorer-polygon]          | [sablier-v2-matic][v2-endpoint-polygon]                     | [Decentralized Network][v2-decentralized-polygon]  |
 | Scroll           | [Playground][v2-endpoint-scroll]           | N/A                                                         | [Subgraph Studio][v2-endpoint-scroll]              |
 | Sepolia          | [Playground][v2-explorer-sepolia]          | [sablier-v2-sepolia][v2-endpoint-sepolia]                   | N/A                                                |
 
@@ -82,13 +82,12 @@ It deals with core protocol actions like creating, withdrawing or transferring s
   title="Sablier V2 protocol subgraph (The Graph)"
 />
 
-## Sablier V2 - Merkle (Airstreams)
+## Sablier V2 - Airstreams
 
-This subgraph tracks events emitted by the [`@sablier/v2-periphery`](/contracts/v2/reference/overview#periphery)
-contracts, specifically the
-[`Merkle Factory`](contracts/v2/reference/periphery/contract.SablierV2MerkleStreamerFactory). It deals with airstream
-specific actions like the factory creating a campaign, admin clawbacks or users claiming streams as defined in the
-attached Merkle tree.
+This subgraph tracks the events emitted by the [`@sablier/v2-periphery`](/contracts/v2/reference/overview#periphery)
+contracts, specifically [`MerkleFactory`](contracts/v2/reference/periphery/contract.SablierV2MerkleStreamerFactory). It
+deals with airstream-specific actions like the factory creating a campaign, admin clawbacks, or users claiming stream
+NFTs as defined in the attached Merkle tree.
 
 | Chain            | Explorer                                 | Hosted Endpoints                                            | Other Endpoints [^1]                         |
 | ---------------- | ---------------------------------------- | ----------------------------------------------------------- | -------------------------------------------- |
