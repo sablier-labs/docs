@@ -16,5 +16,5 @@ independent auditors. For a comprehensive list of all audits conducted, please c
 ## Bug Bounty
 
 The Sablier Protocol is subject to a bug bounty program per the terms outlined
-[here](https://github.com/sablier-labs/v2-core/blob/main/SECURITY.md). We are offering a bounty of up to $50,000 for
+[here](https://github.com/sablier-labs/v2-core/blob/main/SECURITY.md). We are offering a bounty of up to $100,000 for
 reporting critical vulnerabilities.
