@@ -63,8 +63,8 @@ flowchart LR
 
 :::caution
 
-While `onLockupStreamCanceled` and `onLockupStreamRenounced` can only be triggered by sender only functions,
-`onLockupStreamWithdrawn` will be called by the publicly callable `withdraw` function.
+While `onLockupStreamCanceled` and `onLockupStreamRenounced` can only be triggered by sender, `onLockupStreamWithdrawn`
+can be called by the anyone since `withdraw` is a public function.
 
 :::
 
