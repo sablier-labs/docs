@@ -111,10 +111,12 @@ This is an excellent model if you are a company looking to set up a token vestin
 employees will have an incentive to remain with your company in the long run, as they will receive an increasingly
 larger number of tokens.
 
-### Unlock in Steps
+## Lockup Tranched
 
-Because Lockup Dynamic is so flexible, it can even be used to create a traditional vesting contract with periodic
-unlocks. In this case, the "streaming" rate would not be by the second, but by the week, month, or year.
+Lockup Tranched streams are, as the name says, streams that have token unlocks in tranches. Even though you can use
+Lockup Dynamic to create a traditional vesting structure with periodic unlocks, Lockup Tranched is specifically design
+for that use case. As a result, a stream with tranches created using Lockup Tranched is more gas efficient than the same
+stream created using Lockup Dynamic.
 
 <FunctionPlot
   options={{
@@ -138,9 +140,9 @@ unlocks. In this case, the "streaming" rate would not be by the second, but by t
     ],
   }}
 />
+These streams are powered by a number of user-provided "tranches", which is covered in the tranches article.
 
-After each period, a specific amount becomes unlocked and available for the recipient to withdraw. Past unlocks
-accumulate, so if the recipient doesn't withdraw them, they will be able to withdraw them later.
+:::note
 
 The advantage of using Unlock in Steps instead of a normal vesting contract is that Sablier automates the entire
 process. No more worries about setting up vesting contracts or creating a user interface for your employees to claim
@@ -227,3 +229,9 @@ their tokens.
     ],
   }}
 />
+If you are interested in learning how to programmatically create the curves shown below in Solidity, check out the [examples](https://github.com/sablier-labs/examples/blob/main/v2/core/LockupTranchedCurvesCreator.sol)
+repository.
+
+:::
+
+### Will be added later.

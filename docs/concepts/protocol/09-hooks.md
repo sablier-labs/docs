@@ -1,6 +1,6 @@
 ---
 id: "hooks"
-sidebar_position: 8
+sidebar_position: 9
 title: "Hooks"
 ---
 
@@ -18,7 +18,7 @@ Hooks in smart contracts are similar to callback functions in web2.
 
 ## Visual representation
 
-### Sender actions
+### Recipient hook
 
 If the recipient is not a smart contract, the hooks will not be run.
 
@@ -31,11 +31,42 @@ flowchart LR
   R((Recipient))
   S -- "cancel" --> LL
   S -- "renounce" --> LL
-  S -- "withdraw" --> LL
-  LL -- "onStreamCanceled" --> R
-  LL -- "onStreamRenounced" --> R
-  LL -- "onStreamWithdrawn" --> R
+  LL -- "onLockupStreamCanceled" --> R
+  LL -- "onLockupStreamRenounced" --> R
 ```
+
+```mermaid
+flowchart LR
+  A((Anyone))
+  subgraph Core
+    LL[LockupLinear]
+  end
+  R((Recipient))
+  A -- "withdraw" --> LL
+  LL -- "onLockupStreamWithdrawn" --> R
+```
+
+### Sender hook
+
+If the sender is not a smart contract, the hooks will not be run.
+
+```mermaid
+flowchart LR
+  A((Anyone))
+  subgraph Core
+    LL[LockupLinear]
+  end
+  S((Sender))
+  A -- "withdraw" --> LL
+  LL -- "onLockupStreamWithdrawn" --> S
+```
+
+:::caution
+
+While `onLockupStreamCanceled` and `onLockupStreamRenounced` can only be triggered by sender only functions,
+`onLockupStreamWithdrawn` will be called by the publicly callable `withdraw` function.
+
+:::
 
 ## Example scenario
 
