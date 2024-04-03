@@ -11,10 +11,10 @@ an idea of how the storage layout looks like.
 
 :::note
 
-In the diagrams below, we will show only some of the storage properties. The full list for `LockupLinear` can be found
-[here](/contracts/v2/reference/core/types/library.LockupLinear#stream), for `LockupDynamic`
-[here](/contracts/v2/reference/core/types/library.LockupDynamic#stream), and for `LockupTranched`
-[here](/contracts/v2/reference/core/types/library.LockupTranched#stream).
+To see the full list of storage variables, [click here](/contracts/v2/reference/core/types/library.LockupLinear#stream)
+for for `LockupLinear`, [click here](/contracts/v2/reference/core/types/library.LockupDynamic#stream) for
+`LockupDynamic`, and [click here](/contracts/v2/reference/core/types/library.LockupTranched#stream) for
+`LockupTranched`.
 
 :::
 
