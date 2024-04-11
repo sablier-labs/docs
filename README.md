@@ -1,7 +1,7 @@
 # Sablier Documentation
 
 This website contains all documentation for Sablier, including older protocol releases. It is built using
-[Docusaurus 2](https://v2.docusaurus.io/), a modern static website generator.
+[Docusaurus](https://docusaurus.io/), a modern static website generator.
 
 ## Installation
 
