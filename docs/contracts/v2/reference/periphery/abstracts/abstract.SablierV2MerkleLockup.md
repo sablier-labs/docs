@@ -1,13 +1,13 @@
-# SablierV2MerkleStreamer
+# SablierV2MerkleLockup
 
-[Git Source](https://github.com/sablier-labs/v2-periphery/blob/53e259087984ff748fca6fb932fdb9c663c2b365/src/abstracts/SablierV2MerkleStreamer.sol)
+[Git Source](https://github.com/sablier-labs/v2-periphery/blob/a3131838ec731b38b1e2e03735fba874ab66f5e2/src/abstracts/SablierV2MerkleLockup.sol)
 
 **Inherits:**
-[ISablierV2MerkleStreamer](/docs/contracts/v2/reference/periphery/interfaces/interface.ISablierV2MerkleStreamer.md),
+[ISablierV2MerkleLockup](/docs/contracts/v2/reference/periphery/interfaces/interface.ISablierV2MerkleLockup.md),
 Adminable
 
 See the documentation in
-[ISablierV2MerkleStreamer](/docs/contracts/v2/reference/periphery/interfaces/interface.ISablierV2MerkleStreamer.md).
+[ISablierV2MerkleLockup](/docs/contracts/v2/reference/periphery/interfaces/interface.ISablierV2MerkleLockup.md).
 
 ## State Variables
 
@@ -33,20 +33,12 @@ bool public immutable override CANCELABLE;
 
 ### EXPIRATION
 
-The cut-off point for the Merkle streamer, as a Unix timestamp. A value of zero means there is no expiration.
+The cut-off point for the Merkle Lockup contract, as a Unix timestamp. A value of zero means there is no expiration.
 
 _This is an immutable state variable._
 
 ```solidity
 uint40 public immutable override EXPIRATION;
-```
-
-### LOCKUP
-
-The address of the [SablierV2Lockup](docs/contracts/v2/reference/core/abstracts/abstract.SablierV2Lockup.md) contract.
-
-```solidity
-ISablierV2Lockup public immutable override LOCKUP;
 ```
 
 ### MERKLE_ROOT
@@ -59,6 +51,14 @@ _This is an immutable state variable._
 bytes32 public immutable override MERKLE_ROOT;
 ```
 
+### NAME
+
+_The name of the campaign stored as bytes32._
+
+```solidity
+bytes32 internal immutable NAME;
+```
+
 ### TRANSFERABLE
 
 A flag indicating whether the stream NFTs are transferable.
@@ -67,6 +67,14 @@ _This is an immutable state variable._
 
 ```solidity
 bool public immutable override TRANSFERABLE;
+```
+
+### ipfsCID
+
+The content identifier for indexing the contract on IPFS.
+
+```solidity
+string public ipfsCID;
 ```
 
 ### \_claimedBitMap
@@ -84,15 +92,7 @@ BitMaps.BitMap internal _claimedBitMap;
 _Constructs the contract by initializing the immutable state variables._
 
 ```solidity
-constructor(
-    address initialAdmin,
-    IERC20 asset,
-    ISablierV2Lockup lockup,
-    bytes32 merkleRoot,
-    uint40 expiration,
-    bool cancelable,
-    bool transferable
-);
+constructor(MerkleLockup.ConstructorParams memory params);
 ```
 
 ### hasClaimed
@@ -113,19 +113,26 @@ function hasClaimed(uint256 index) public view override returns (bool);
 
 ### hasExpired
 
-Returns a flag indicating whether the Merkle streamer has expired.
+Returns a flag indicating whether the campaign has expired.
 
 ```solidity
 function hasExpired() public view override returns (bool);
 ```
 
+### name
+
+Retrieves the name of the campaign.
+
+```solidity
+function name() external view override returns (string memory);
+```
+
 ### clawback
 
-Claws back the unclaimed tokens from the Merkle streamer.
+Claws back the unclaimed tokens from the Merkle Lockup.
 
-Emits a {Clawback} event. Notes:
+Emits a {Clawback} event. Requirements:
 
-- If the protocol is not zero, the expiration check is not made. Requirements:
 - The caller must be the admin.
 - The campaign must either be expired or not have an expiration.
 

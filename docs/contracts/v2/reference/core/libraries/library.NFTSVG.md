@@ -1,6 +1,6 @@
 # NFTSVG
 
-[Git Source](https://github.com/sablier-labs/v2-core/blob/a4bf69cf7024006b9a324eef433f20b74597eaaf/src/libraries/NFTSVG.sol)
+[Git Source](https://github.com/sablier-labs/v2-core/blob/e080f20eafef0fc18049bcc77f1694db043860f1/src/libraries/NFTSVG.sol)
 
 ## State Variables
 
