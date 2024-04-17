@@ -148,6 +148,9 @@ their tokens.
 
 ### Monthly Unlocks
 
+Monthly Unlocks is a special case of Unlock in Steps where assets are unlocked on the same day every month. This is
+particularly suited for use cases where users want to distribute tokens every month such as distributing salaries.
+
 <FunctionPlot
   options={{
     xAxisLabel: "x - Months",
@@ -167,7 +170,15 @@ their tokens.
   }}
 />
 
+Each month, on a preset day, a specific amount of tokens becomes unlocked and available for withdrawal. Like the Unlock
+in Steps model, unwithdrawn tokens will carry over to the next period, providing flexibility and control to the
+recipient. This model is ideal for employers who wish to set up advanced payment schedules for their employees, offering
+them access to funds on a predictable, monthly basis.
+
 ### Timelock
+
+The Timelock model enables locking tokens for a specified period. This model is designed to foster longer-term
+investment and holding strategies by deferring availability.
 
 <FunctionPlot
   options={{
@@ -187,7 +198,14 @@ their tokens.
   }}
 />
 
+Once the set period elapses, the full amount becomes accessible to the recipient. This setup is particularly
+advantageous for projects seeking to stabilize token pricing and minimize market volatility, encouraging investors to
+maintain their stake over a more extended period.
+
 ### Unlock Linear
+
+The Unlock Linear model combines an initial immediate release of tokens with a steady, linear payout over time. This
+model is ideal for employment contracts that include a signing bonus along with a regular payout schedule.
 
 <FunctionPlot
   options={{
@@ -207,7 +225,17 @@ their tokens.
   }}
 />
 
+At the beginning of the stream, a fixed amount of tokens is instantly available to the recipient — this is your "signing
+bonus". Following this, the remaining tokens begin to stream continuously at a consistent rate until the end of the
+contract term — this is your "salary".
+
+Another use case is a token distribution to investors where a particular amount gets unlocked immediately followed by a
+linear vesting plan.
+
 ### Unlock Cliff
+
+This shape is useful for companies who want to distribute tokens to their investors using a cliff followed by linear
+vesting but also want to unlock some liquidity at the beginning to be able to allow investors to bootstrap AMM pools.
 
 <FunctionPlot
   options={{
@@ -227,3 +255,6 @@ their tokens.
     ],
   }}
 />
+
+Initially, a set amount of tokens are made available to the recipient as an upfront payment. After this initial unlock,
+the tokens are held during the cliff period until the moment of time set. The release resumes in a linearly post-cliff.
