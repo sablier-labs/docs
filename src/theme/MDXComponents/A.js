@@ -26,13 +26,12 @@ export default function AWrapper(props) {
     }
 
     if (typeof value === "string") {
-      if(!value.startsWith("0x") && Number.isInteger(parseInt(value))){
+      if (!value.startsWith("0x") && Number.isInteger(parseInt(value))) {
         return true;
       }
-      if(value === "↩" ){
+      if (value === "↩") {
         return true;
       }
-
     }
 
     return false;
