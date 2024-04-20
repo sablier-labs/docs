@@ -321,8 +321,8 @@ Or maybe you're looking for V1? [Click here](/contracts/v1/deployments).
 | :--------------------- | :-------------------------------------------------------------------------------------------------------------------------------- | :---------------------------------------------------------------------------------- |
 | SablierV2LockupLinear  | [0xcb099EfC90e88690e287259410B9AE63e1658CC6](https://explorer.hekla.taiko.xyz/address/0xcb099EfC90e88690e287259410B9AE63e1658CC6) | [core-v1.1.2](https://github.com/sablier-labs/v2-deployments/tree/main/core/v1.1.2) |
 | SablierV2LockupDynamic | [0xDf578C2c70A86945999c65961417057363530a1c](https://explorer.hekla.taiko.xyz/address/0xDf578C2c70A86945999c65961417057363530a1c) | [core-v1.1.2](https://github.com/sablier-labs/v2-deployments/tree/main/core/v1.1.2) |
-| SablierV2NFTDescriptor | [0xCff4a803b0Bf55dD1BE38Fb96088478F3D2eeCF2](https://explorer.hekla.taiko.xyz/address/0xCff4a803b0Bf55dD1BE38Fb96088478F3D2eeCF2) | [core-v1.1.1](https://github.com/sablier-labs/v2-deployments/tree/main/core/v1.1.1) |
-| SablierV2Comptroller   | [0x2De92156000269fa2fde7544F10f01E8cBC80fFa](https://explorer.hekla.taiko.xyz/address/0x2De92156000269fa2fde7544F10f01E8cBC80fFa) | [core-v1.0.0](https://github.com/sablier-labs/v2-deployments/tree/main/core/v1.0.0) |
+| SablierV2NFTDescriptor | [0xCff4a803b0Bf55dD1BE38Fb96088478F3D2eeCF2](https://explorer.hekla.taiko.xyz/address/0xCff4a803b0Bf55dD1BE38Fb96088478F3D2eeCF2) | [core-v1.1.2](https://github.com/sablier-labs/v2-deployments/tree/main/core/v1.1.2) |
+| SablierV2Comptroller   | [0x2De92156000269fa2fde7544F10f01E8cBC80fFa](https://explorer.hekla.taiko.xyz/address/0x2De92156000269fa2fde7544F10f01E8cBC80fFa) | [core-v1.1.2](https://github.com/sablier-labs/v2-deployments/tree/main/core/v1.1.2) |
 
 ### Periphery
 
