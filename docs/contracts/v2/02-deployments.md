@@ -312,3 +312,21 @@ Or maybe you're looking for V1? [Click here](/contracts/v1/deployments).
 | :----------------------------- | :---------------------------------------------------------------------------------------------------------------------------- | :-------------------------------------------------------------------------------------------- |
 | SablierV2Batch                 | [0xd2569DC4A58dfE85d807Dffb976dbC0a3bf0B0Fb](https://sepolia.etherscan.io/address/0xd2569DC4A58dfE85d807Dffb976dbC0a3bf0B0Fb) | [periphery-v1.1.0](https://github.com/sablier-labs/v2-deployments/tree/main/periphery/v1.1.0) |
 | SablierV2MerkleStreamerFactory | [0xBacC1d151A78eeD71D504f701c25E8739DC0262D](https://sepolia.etherscan.io/address/0xBacC1d151A78eeD71D504f701c25E8739DC0262D) | [periphery-v1.1.0](https://github.com/sablier-labs/v2-deployments/tree/main/periphery/v1.1.0) |
+
+## Taiko
+
+### Core
+
+| Contract               | Address                                                                                                                           | Deployment                                                                          |
+| :--------------------- | :-------------------------------------------------------------------------------------------------------------------------------- | :---------------------------------------------------------------------------------- |
+| SablierV2LockupLinear  | [0xcb099EfC90e88690e287259410B9AE63e1658CC6](https://explorer.hekla.taiko.xyz/address/0xcb099EfC90e88690e287259410B9AE63e1658CC6) | [core-v1.1.2](https://github.com/sablier-labs/v2-deployments/tree/main/core/v1.1.2) |
+| SablierV2LockupDynamic | [0xDf578C2c70A86945999c65961417057363530a1c](https://explorer.hekla.taiko.xyz/address/0xDf578C2c70A86945999c65961417057363530a1c) | [core-v1.1.2](https://github.com/sablier-labs/v2-deployments/tree/main/core/v1.1.2) |
+| SablierV2NFTDescriptor | [0xCff4a803b0Bf55dD1BE38Fb96088478F3D2eeCF2](https://explorer.hekla.taiko.xyz/address/0xCff4a803b0Bf55dD1BE38Fb96088478F3D2eeCF2) | [core-v1.1.1](https://github.com/sablier-labs/v2-deployments/tree/main/core/v1.1.1) |
+| SablierV2Comptroller   | [0x2De92156000269fa2fde7544F10f01E8cBC80fFa](https://explorer.hekla.taiko.xyz/address/0x2De92156000269fa2fde7544F10f01E8cBC80fFa) | [core-v1.0.0](https://github.com/sablier-labs/v2-deployments/tree/main/core/v1.0.0) |
+
+### Periphery
+
+| Contract                       | Address                                                                                                                           | Deployment                                                                                    |
+| :----------------------------- | :-------------------------------------------------------------------------------------------------------------------------------- | :-------------------------------------------------------------------------------------------- |
+| SablierV2Batch                 | [0xd641a0E4509Cced67cC24E7BDcDe2a31b7F7cF77](https://explorer.hekla.taiko.xyz/address/0xd641a0E4509Cced67cC24E7BDcDe2a31b7F7cF77) | [periphery-v1.1.0](https://github.com/sablier-labs/v2-deployments/tree/main/periphery/v1.1.0) |
+| SablierV2MerkleStreamerFactory | [0x29a8d9F67608d77D0B4544A70FC2ab80BA5525f5](https://explorer.hekla.taiko.xyz/address/0x29a8d9F67608d77D0B4544A70FC2ab80BA5525f5) | [periphery-v1.1.0](https://github.com/sablier-labs/v2-deployments/tree/main/periphery/v1.1.0) |
