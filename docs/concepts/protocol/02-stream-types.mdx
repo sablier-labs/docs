@@ -11,6 +11,13 @@ import FunctionPlot from "@site/src/components/FunctionPlot";
 "Lockup" is a higher-level category that refers to the requirement that the creator of a stream must lock up a certain
 amount of assets in a smart contract. All streams currently supported by Sablier are Lockup streams.
 
+:::note
+
+The gas estimation for the shapes can be found at
+[this branch](https://github.com/sablier-labs/examples/tree/shapes-benchmark).
+
+:::
+
 ## Lockup Linear
 
 Lockup Linear streams are the simplest type of stream in Sablier. The streamed amount over time follows a straight line
@@ -24,7 +31,7 @@ intuitive it is. Imagine a diagonal line going up and to the right – that's ho
 
 :::info
 
-The gas cost for this shape is approximately _217,445_ on mainnet. This may vary due to multiple factors.
+The gas cost for this shape is approximately _152,019_ on Mainnet. This may vary due to multiple factors.
 
 :::
 
@@ -56,6 +63,12 @@ This feature is especially useful for vesting ERC-20 assets as it allows you to 
 then 3 additional years of linear streaming. If the stream is for an employee, you can make it cancellable so that if
 the employee leaves your company during the stream, you can cancel it and recover the assets that have not yet been
 streamed.
+
+:::info
+
+The gas cost for this shape is approximately _152,019_ on Mainnet. This may vary due to multiple factors.
+
+:::
 
 ## Lockup Dynamic
 
@@ -90,7 +103,7 @@ linear fashion (Lockup Linear). This incentivizes long-term behavior and a const
 
 :::info
 
-The gas cost for this shape is approximately _279,262_ on mainnet. This may vary due to multiple factors.
+The gas cost for this shape is approximately _213,610_ on Mainnet. This may vary due to multiple factors.
 
 :::
 
@@ -125,7 +138,7 @@ larger number of tokens.
 
 :::info
 
-The gas cost for this shape is approximately _331,143_ on mainnet. This may vary due to multiple factors.
+The gas cost for this shape is approximately _264,854_ on Mainnet. This may vary due to multiple factors.
 
 :::
 
@@ -166,7 +179,7 @@ their tokens.
 
 :::info
 
-The gas cost for this shape is approximately _462,013_ on mainnet for four unlocks. This may vary as there are multiple
+The gas cost for this shape is approximately _392,982_ on Mainnet for four unlocks. This may vary as there are multiple
 factors to consider.
 
 :::
@@ -202,7 +215,7 @@ access to funds on a predictable, monthly basis.
 
 :::info
 
-The gas cost for this shape is approximately _878,643_ on mainnet for a period of exactly **one year**. This may vary as
+The gas cost for this shape is approximately _803,150_ on Mainnet for a period of exactly **one year**. This may vary as
 there are multiple factors to consider.
 
 :::
@@ -235,7 +248,7 @@ maintain their stake over a more extended period.
 
 :::info
 
-The gas cost for this shape is approximately _305,265_ on mainnet. This may vary due to multiple factors.
+The gas cost for this shape is approximately _239,232_ on Mainnet. This may vary due to multiple factors.
 
 :::
 
@@ -271,7 +284,7 @@ linear vesting plan.
 
 :::info
 
-The gas cost for this shape is approximately _305,235_ on mainnet. This may vary due to multiple factors.
+The gas cost for this shape is approximately _239,232_ on Mainnet. This may vary due to multiple factors.
 
 :::
 
@@ -305,6 +318,6 @@ the tokens are held during the cliff period until the moment of time set. The re
 
 :::info
 
-The gas cost for this shape is approximately _331,178_ on mainnet. This may vary due to multiple factors.
+The gas cost for this shape is approximately _290,477_ on Mainnet. This may vary due to multiple factors.
 
 :::
