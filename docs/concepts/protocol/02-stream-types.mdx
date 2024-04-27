@@ -240,12 +240,13 @@ vesting but also want to unlock some liquidity at the beginning to be able to al
   options={{
     data: [
       { fn: "0", range: [0, 25], color: "#f77423" },
-      { fn: "1.5*(x-50)+25", color: "#f77423", range: [50, 100] },
+      { fn: "1.5*(x-50)+50", color: "#f77423", range: [50, 100] },
       {
         points: [
           [0.15, 0],
           [0.15, 25],
           [50, 25],
+          [50, 50],
         ],
         fnType: "points",
         graphType: "polyline",
