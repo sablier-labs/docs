@@ -22,6 +22,12 @@ With this type of stream, the payment rate remains constant, meaning that the sa
 streamed to the recipient every second. This provides greater predictability and is easy to understand because of how
 intuitive it is. Imagine a diagonal line going up and to the right – that's how simple it is.
 
+:::info
+
+The gas cost for this shape is approximately _217,445_ on mainnet. This may vary due to multiple factors.
+
+:::
+
 ### Cliffs
 
 It is possible to attach a "cliff" to a Lockup Linear stream, which sets a cut-off point for releasing assets. Prior to
@@ -82,6 +88,12 @@ Exponentials are a great fit if you are looking to airdrop tokens, because your 
 majority of the tokens towards the end of the stream instead of receiving the tokens all at once (no streaming) or in a
 linear fashion (Lockup Linear). This incentivizes long-term behavior and a constructive attitude.
 
+:::info
+
+The gas cost for this shape is approximately _279,262_ on mainnet. This may vary due to multiple factors.
+
+:::
+
 ### Exponential Cliff
 
 Another use case for Lockup Dynamic is a variation of the previous design: an Exponential Cliff.
@@ -110,6 +122,12 @@ ends, and then the rest of the stream is exponentially streamed.
 This is an excellent distribution if you are a company looking to set up a token vesting plan for your employees. Your
 employees will have an incentive to remain with your company in the long run, as they will receive an increasingly
 larger number of tokens.
+
+:::info
+
+The gas cost for this shape is approximately _331,143_ on mainnet. This may vary due to multiple factors.
+
+:::
 
 ### Unlock in Steps
 
@@ -146,6 +164,13 @@ The advantage of using Unlock in Steps instead of a normal vesting contract is t
 process. No more worries about setting up vesting contracts or creating a user interface for your employees to claim
 their tokens.
 
+:::info
+
+The gas cost for this shape is approximately _462,013_ on mainnet for four unlocks. This may vary as there are multiple
+factors to consider.
+
+:::
+
 ### Monthly Unlocks
 
 Monthly Unlocks is a special case of Unlock in Steps where assets are unlocked on the same day every month, e.g. the 1st
@@ -175,6 +200,13 @@ in Steps, unwithdrawn tokens will carry over to the next period, providing flexi
 This shape is ideal for employers who wish to set up advanced payment schedules for their employees, offering them
 access to funds on a predictable, monthly basis.
 
+:::info
+
+The gas cost for this shape is approximately _878,643_ on mainnet for a period of exactly **one year**. This may vary as
+there are multiple factors to consider.
+
+:::
+
 ### Timelock
 
 The Timelock shape locks all tokens for a specified period. Users cannot access the tokens until the set period elapses.
@@ -200,6 +232,12 @@ The Timelock shape locks all tokens for a specified period. Users cannot access 
 Once the set period elapses, the full amount becomes accessible to the recipient. This setup is particularly
 advantageous for projects seeking to stabilize token pricing and minimize market volatility, encouraging investors to
 maintain their stake over a more extended period.
+
+:::info
+
+The gas cost for this shape is approximately _305,265_ on mainnet. This may vary due to multiple factors.
+
+:::
 
 ### Unlock Linear
 
@@ -231,6 +269,12 @@ contract term — this is your "salary".
 Another use case is a token distribution to investors where a particular amount gets unlocked immediately followed by a
 linear vesting plan.
 
+:::info
+
+The gas cost for this shape is approximately _305,235_ on mainnet. This may vary due to multiple factors.
+
+:::
+
 ### Unlock Cliff
 
 This shape is useful for companies who want to distribute tokens to their investors using a cliff followed by linear
@@ -258,3 +302,9 @@ vesting but also want to unlock some liquidity at the beginning to be able to al
 
 Initially, a set amount of tokens are made available to the recipient as an upfront payment. After this initial unlock,
 the tokens are held during the cliff period until the moment of time set. The release resumes in a linearly post-cliff.
+
+:::info
+
+The gas cost for this shape is approximately _331,178_ on mainnet. This may vary due to multiple factors.
+
+:::
