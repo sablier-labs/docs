@@ -223,6 +223,24 @@ Or maybe you're looking for V1? [Click here](/contracts/v1/deployments).
 | SablierV2Batch                 | [0xD18faa233E02d41EDFFdb64f20281dE0592FA3b5](https://scrollscan.com/address/0xD18faa233E02d41EDFFdb64f20281dE0592FA3b5) | [periphery-v1.1.0](https://github.com/sablier-labs/v2-deployments/tree/main/periphery/v1.1.0) |
 | SablierV2MerkleStreamerFactory | [0xb3ade5463000E6c0D376e7d7570f372eBf98BDAf](https://scrollscan.com/address/0xb3ade5463000E6c0D376e7d7570f372eBf98BDAf) | [periphery-v1.1.0](https://github.com/sablier-labs/v2-deployments/tree/main/periphery/v1.1.0) |
 
+## zkSync Era
+
+### Core
+
+| Contract               | Address                                                                                                                     | Deployment                                                                          |
+| :--------------------- | :-------------------------------------------------------------------------------------------------------------------------- | :---------------------------------------------------------------------------------- |
+| SablierV2LockupLinear  | [0x2FcA69fa0a318EFDf4c15eE8F13A873347a8A8D4](https://explorer.zksync.io/address/0x2FcA69fa0a318EFDf4c15eE8F13A873347a8A8D4) | [core-v1.1.2](https://github.com/sablier-labs/v2-deployments/tree/main/core/v1.1.2) |
+| SablierV2LockupDynamic | [0xE6c7324BEA8474209103e407779Eec600c07cF3F](https://explorer.zksync.io/address/0xE6c7324BEA8474209103e407779Eec600c07cF3F) | [core-v1.1.2](https://github.com/sablier-labs/v2-deployments/tree/main/core/v1.1.2) |
+| SablierV2NFTDescriptor | [0xf12d2B8ff4Fc0495Db9c6d16b6a03bff9a10657A](https://explorer.zksync.io/address/0xf12d2B8ff4Fc0495Db9c6d16b6a03bff9a10657A) | [core-v1.1.2](https://github.com/sablier-labs/v2-deployments/tree/main/core/v1.1.2) |
+| SablierV2Comptroller   | [0xD05bdb4cF6Be7D647c5FEcC7952660bdD82cE44C](https://explorer.zksync.io/address/0xD05bdb4cF6Be7D647c5FEcC7952660bdD82cE44C) | [core-v1.1.2](https://github.com/sablier-labs/v2-deployments/tree/main/core/v1.1.2) |
+
+### Periphery
+
+| Contract                       | Address                                                                                                                     | Deployment                                                                                    |
+| :----------------------------- | :-------------------------------------------------------------------------------------------------------------------------- | :-------------------------------------------------------------------------------------------- |
+| SablierV2Batch                 | [0x37A20Fb12DD6e0ADA47B327C0466A231dDc4504A](https://explorer.zksync.io/address/0x37A20Fb12DD6e0ADA47B327C0466A231dDc4504A) | [periphery-v1.1.1](https://github.com/sablier-labs/v2-deployments/tree/main/periphery/v1.1.1) |
+| SablierV2MerkleStreamerFactory | [0x46DE683D20c3575A0381fFd66C10Ab6836390140](https://explorer.zksync.io/address/0x46DE683D20c3575A0381fFd66C10Ab6836390140) | [periphery-v1.1.1](https://github.com/sablier-labs/v2-deployments/tree/main/periphery/v1.1.1) |
+
 ## Arbitrum Sepolia
 
 ### Core
