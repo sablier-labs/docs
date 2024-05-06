@@ -231,6 +231,12 @@ const config: Config = {
           activeBasePath: "/api",
         },
         {
+          label: "Support",
+          position: "left",
+          to: "/support/faq",
+          activeBasePath: "/support",
+        },
+        {
           label: "Discord",
           position: "right",
           to: "http://discord.sablier.com",
