@@ -74,10 +74,6 @@ const config: Config = {
             to: "/apps/features/streams",
           },
           {
-            from: "/apps/guides",
-            to: "/apps/guides/how-to",
-          },
-          {
             from: "/apps/url-schemes",
             to: "/apps/guides/url-schemes",
           },
