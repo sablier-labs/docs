@@ -78,6 +78,10 @@ const config: Config = {
             to: "/apps/guides/url-schemes",
           },
           {
+            from: "/apps/guides/how-to",
+            to: "/support/how-to",
+          },
+          {
             from: "/apps/csv-support",
             to: "/apps/guides/csv-support",
           },
