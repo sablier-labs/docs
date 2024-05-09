@@ -144,7 +144,7 @@ As a prerequisite, you will need an RPC that supports forking. A good solution f
 Once you have obtained your RPC, you can proceed to run the following test:
 
 ```solidity reference title="Stream Creator Test"
-https://github.com/sablier-labs/examples/blob/main/v2/core/LockupLinearStreamCreator.t.sol
+https://github.com/sablier-labs/examples/blob/main/v2/core/LockupStreamCreator.t.sol
 ```
 
 You can run the test using Forge:
