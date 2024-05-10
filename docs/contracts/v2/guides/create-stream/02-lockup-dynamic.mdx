@@ -41,10 +41,11 @@ pragma solidity >=0.8.19;
 Import the relevant symbols from `@sablier/v2-core`:
 
 ```solidity
+import { IERC20 } from "@openzeppelin/contracts/token/ERC20/IERC20.sol";
+import { ud2x18 } from "@prb/math/src/UD2x18.sol";
+import { ud60x18 } from "@prb/math/src/UD60x18.sol";
 import { ISablierV2LockupDynamic } from "@sablier/v2-core/src/interfaces/ISablierV2LockupDynamic.sol";
 import { Broker, LockupDynamic } from "@sablier/v2-core/src/types/DataTypes.sol";
-import { ud2x18, ud60x18 } from "@sablier/v2-core/src/types/Math.sol";
-import { IERC20 } from "@sablier/v2-core/src/types/Tokens.sol";
 ```
 
 Create a contract called `LockupDynamicStreamCreator`, and declare a constant `DAI` of type `IERC20` and a constant
@@ -53,7 +54,7 @@ Create a contract called `LockupDynamicStreamCreator`, and declare a constant `D
 ```solidity
 contract LockupDynamicStreamCreator {
     IERC20 public constant DAI = IERC20(0x6B175474E89094C44Da98b954EedeAC495271d0F);
-    ISablierV2LockupDynamic public constant LOCKUP_Dynamic =
+    ISablierV2LockupDynamic public constant LOCKUP_DYNAMIC =
         ISablierV2LockupDynamic(0x7CC7e125d83A581ff438608490Cc0f7bDff79127);
 }
 ```
@@ -109,7 +110,7 @@ For more guidance on how to approve and transfer ERC-20 assets, see
 ## Parameters
 
 Sablier uses structs to encode the parameters of its create functions. The struct associated with `createWithDurations`
-is [`LockupDynamic.CreateWithMilestones`](/contracts/v2/reference/core/types/library.LockupDynamic), and it can be
+is [`LockupDynamic.CreateWithMilestones`](/contracts/v2/reference/core/types/library.LockupDynamic#createwithmilestones), and it can be
 initialized like this:
 
 ```solidity
@@ -139,7 +140,7 @@ The Unix timestamp for when the stream will start.
 In this example, the start time is set to 100 seconds into the future:
 
 ```solidity
-params.startTime = block.timestamp + 100 seconds;
+params.startTime = uint40(block.timestamp + 100 seconds);
 ```
 
 ### Segments
@@ -150,7 +151,7 @@ exposition of segments, see the [Segments](/concepts/protocol/segments) guide.
 The term "milestones" in the function `createWithMilestones` refers to the splitting of the stream into several distinct
 segments, with each segment characterized by a specific amount, exponent, and milestone. These segments are supplied to
 the function in the form of an array containing
-[`LockupDynamic.Segment`](/contracts/v2/reference/core/types/library.LockupDynamic) structs.
+[`LockupDynamic.Segment`](/contracts/v2/reference/core/types/library.LockupDynamic#segment) structs.
 
 Let's define two dummy segments:
 

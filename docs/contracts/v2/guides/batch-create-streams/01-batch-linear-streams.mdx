@@ -35,12 +35,11 @@ pragma solidity >=0.8.19;
 Now, import the relevant symbols from `@sablier/v2-core` and `@sablier/v2-periphery`:
 
 ```solidity
+import { IERC20 } from "@openzeppelin/contracts/token/ERC20/IERC20.sol";
+import { ud60x18 } from "@prb/math/src/UD60x18.sol";
 import { ISablierV2LockupLinear } from "@sablier/v2-core/src/interfaces/ISablierV2LockupLinear.sol";
-import { Broker, LockupLinear } from "@sablier/v2-core/src/types/LockupLinear.sol";
-import { ud60x18 } from "@sablier/v2-core/src/types/Math.sol";
-import { IERC20 } from "@sablier/v2-core/src/types/Tokens.sol";
 import { ISablierV2Batch } from "@sablier/v2-periphery/src/interfaces/ISablierV2Batch.sol";
-import { Batch} from "@sablier/v2-periphery/src/types/DataTypes.sol";
+import { Batch, Broker, LockupLinear } from "@sablier/v2-periphery/src/types/DataTypes.sol";
 ```
 
 Create a contract called `BatchLockupLinearStreamCreator`, and declare a constant `DAI` of type `IERC20`, a constant
