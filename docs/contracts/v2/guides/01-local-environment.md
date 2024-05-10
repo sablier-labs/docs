@@ -156,9 +156,10 @@ $ forge test
 If the test passed, you should see a message like this:
 
 ```text
-Running 1 test for test/StreamCreator.t.sol:StreamCreatorTest
-[PASS] test_CreateStream() (gas: { gasValue })
-Test result: ok. 1 passed; 0 failed; finished in { time }
+Ran 2 tests for v2/core/LockupStreamCreator.t.sol:LockupStreamCreatorTest
+[PASS] test_LockupDynamicStreamCreator() (gas: 273719)
+[PASS] test_LockupLinearStreamCreator() (gas: 186388)
+Suite result: ok. 2 passed; 0 failed; 0 skipped; finished in 6.34s (5.80s CPU time)
 ```
 
 ## Next steps
