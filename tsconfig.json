@@ -7,10 +7,10 @@
     "moduleResolution": "node",
     "module": "ESNext",
     "paths": {
-      "react": ["./node_modules/@types/react"]
+      "react": ["./node_modules/@types/react"],
     },
-    "target": "ESNext"
+    "target": "ESNext",
   },
   "exclude": [".docusaurus", "node_modules", "static/js"],
-  "include": ["**/*.js", "**/*.ts", "**/*.tsx"]
+  "include": ["**/*.js", "**/*.ts", "**/*.tsx"],
 }
