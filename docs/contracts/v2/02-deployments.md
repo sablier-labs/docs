@@ -331,7 +331,7 @@ Or maybe you're looking for V1? [Click here](/contracts/v1/deployments).
 | SablierV2Batch                 | [0xd2569DC4A58dfE85d807Dffb976dbC0a3bf0B0Fb](https://sepolia.etherscan.io/address/0xd2569DC4A58dfE85d807Dffb976dbC0a3bf0B0Fb) | [periphery-v1.1.0](https://github.com/sablier-labs/v2-deployments/tree/main/periphery/v1.1.0) |
 | SablierV2MerkleStreamerFactory | [0xBacC1d151A78eeD71D504f701c25E8739DC0262D](https://sepolia.etherscan.io/address/0xBacC1d151A78eeD71D504f701c25E8739DC0262D) | [periphery-v1.1.0](https://github.com/sablier-labs/v2-deployments/tree/main/periphery/v1.1.0) |
 
-## Taiko
+## Taiko Hekla
 
 ### Core
 
