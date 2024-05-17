@@ -14,7 +14,7 @@ This document contains the deployment addresses for the V2.1 release of [@sablie
 A few noteworthy details about the deployments:
 
 - The addresses are final
-- All LockupLinear and LockupDynamic contracts are non-upgradeable (see [Governance](/concepts/governance))
+- All `Lockup` contracts are non-upgradeable (see [Governance](/concepts/governance))
 - The source code is verified on Etherscan across all chains
 
 :::info
