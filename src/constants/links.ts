@@ -6,5 +6,5 @@ export const links = {
     integrations: "https://forms.gle/KKDo1aMGp2b2tdEr5",
   },
   github: "https://github.com/sablier-labs",
-  medium: "https://medium.com/sablier",
+  medium: "https://blog.sablier.com",
 };
