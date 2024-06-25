@@ -42,6 +42,7 @@ wallets.
 | Optimism        | [0x43c76FE8Aec91F63EbEfb4f5d2a4ba88ef880350](https://optimistic.etherscan.io/address/0x43c76FE8Aec91F63EbEfb4f5d2a4ba88ef880350) |
 | Polygon         | [0x40A518C5B9c1d3D6d62Ba789501CE4D526C9d9C6](https://polygonscan.com/address/0x40A518C5B9c1d3D6d62Ba789501CE4D526C9d9C6)         |
 | Scroll          | [0x0F7Ad835235Ede685180A5c611111610813457a9](https://scrollscan.com/address/0x0F7Ad835235Ede685180A5c611111610813457a9)          |
+| zkSync Era      | [0xaFeA787Ef04E280ad5Bb907363f214E4BAB9e288](https://era.zksync.network/address/0xaFeA787Ef04E280ad5Bb907363f214E4BAB9e288)      |
 
 ## Trustlessness
 
