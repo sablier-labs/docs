@@ -229,17 +229,17 @@ Or maybe you're looking for V1? [Click here](/contracts/v1/deployments).
 
 | Contract               | Address                                                                                                                     | Deployment                                                                          |
 | :--------------------- | :-------------------------------------------------------------------------------------------------------------------------- | :---------------------------------------------------------------------------------- |
-| SablierV2LockupLinear  | [0x2FcA69fa0a318EFDf4c15eE8F13A873347a8A8D4](https://explorer.zksync.io/address/0x2FcA69fa0a318EFDf4c15eE8F13A873347a8A8D4) | [core-v1.1.2](https://github.com/sablier-labs/v2-deployments/tree/main/core/v1.1.2) |
-| SablierV2LockupDynamic | [0xE6c7324BEA8474209103e407779Eec600c07cF3F](https://explorer.zksync.io/address/0xE6c7324BEA8474209103e407779Eec600c07cF3F) | [core-v1.1.2](https://github.com/sablier-labs/v2-deployments/tree/main/core/v1.1.2) |
-| SablierV2NFTDescriptor | [0xf12d2B8ff4Fc0495Db9c6d16b6a03bff9a10657A](https://explorer.zksync.io/address/0xf12d2B8ff4Fc0495Db9c6d16b6a03bff9a10657A) | [core-v1.1.2](https://github.com/sablier-labs/v2-deployments/tree/main/core/v1.1.2) |
-| SablierV2Comptroller   | [0xD05bdb4cF6Be7D647c5FEcC7952660bdD82cE44C](https://explorer.zksync.io/address/0xD05bdb4cF6Be7D647c5FEcC7952660bdD82cE44C) | [core-v1.1.2](https://github.com/sablier-labs/v2-deployments/tree/main/core/v1.1.2) |
+| SablierV2LockupLinear  | [0x2FcA69fa0a318EFDf4c15eE8F13A873347a8A8D4](https://era.zksync.network/address/0x2FcA69fa0a318EFDf4c15eE8F13A873347a8A8D4) | [core-v1.1.2](https://github.com/sablier-labs/v2-deployments/tree/main/core/v1.1.2) |
+| SablierV2LockupDynamic | [0xE6c7324BEA8474209103e407779Eec600c07cF3F](https://era.zksync.network/address/0xE6c7324BEA8474209103e407779Eec600c07cF3F) | [core-v1.1.2](https://github.com/sablier-labs/v2-deployments/tree/main/core/v1.1.2) |
+| SablierV2NFTDescriptor | [0xf12d2B8ff4Fc0495Db9c6d16b6a03bff9a10657A](https://era.zksync.network/address/0xf12d2B8ff4Fc0495Db9c6d16b6a03bff9a10657A) | [core-v1.1.2](https://github.com/sablier-labs/v2-deployments/tree/main/core/v1.1.2) |
+| SablierV2Comptroller   | [0xD05bdb4cF6Be7D647c5FEcC7952660bdD82cE44C](https://era.zksync.network/address/0xD05bdb4cF6Be7D647c5FEcC7952660bdD82cE44C) | [core-v1.1.2](https://github.com/sablier-labs/v2-deployments/tree/main/core/v1.1.2) |
 
 ### Periphery
 
 | Contract                       | Address                                                                                                                     | Deployment                                                                                    |
 | :----------------------------- | :-------------------------------------------------------------------------------------------------------------------------- | :-------------------------------------------------------------------------------------------- |
-| SablierV2Batch                 | [0x37A20Fb12DD6e0ADA47B327C0466A231dDc4504A](https://explorer.zksync.io/address/0x37A20Fb12DD6e0ADA47B327C0466A231dDc4504A) | [periphery-v1.1.1](https://github.com/sablier-labs/v2-deployments/tree/main/periphery/v1.1.1) |
-| SablierV2MerkleStreamerFactory | [0x46DE683D20c3575A0381fFd66C10Ab6836390140](https://explorer.zksync.io/address/0x46DE683D20c3575A0381fFd66C10Ab6836390140) | [periphery-v1.1.1](https://github.com/sablier-labs/v2-deployments/tree/main/periphery/v1.1.1) |
+| SablierV2Batch                 | [0x37A20Fb12DD6e0ADA47B327C0466A231dDc4504A](https://era.zksync.network/address/0x37A20Fb12DD6e0ADA47B327C0466A231dDc4504A) | [periphery-v1.1.1](https://github.com/sablier-labs/v2-deployments/tree/main/periphery/v1.1.1) |
+| SablierV2MerkleStreamerFactory | [0x46DE683D20c3575A0381fFd66C10Ab6836390140](https://era.zksync.network/address/0x46DE683D20c3575A0381fFd66C10Ab6836390140) | [periphery-v1.1.1](https://github.com/sablier-labs/v2-deployments/tree/main/periphery/v1.1.1) |
 
 ## Arbitrum Sepolia
 
@@ -355,14 +355,14 @@ Or maybe you're looking for V1? [Click here](/contracts/v1/deployments).
 
 | Contract               | Address                                                                                                                             | Deployment                                                                          |
 | :--------------------- | :---------------------------------------------------------------------------------------------------------------------------------- | :---------------------------------------------------------------------------------- |
-| SablierV2LockupLinear  | [0xdFC6F5D327dcF5DB579eC1b47fb260F93e042409](https://sepolia.explorer.zksync.io/address/0xdFC6F5D327dcF5DB579eC1b47fb260F93e042409) | [core-v1.1.2](https://github.com/sablier-labs/v2-deployments/tree/main/core/v1.1.2) |
-| SablierV2LockupDynamic | [0xe101C69A6f9c071Ab79aEE0be56928565962F56d](https://sepolia.explorer.zksync.io/address/0xe101C69A6f9c071Ab79aEE0be56928565962F56d) | [core-v1.1.2](https://github.com/sablier-labs/v2-deployments/tree/main/core/v1.1.2) |
-| SablierV2NFTDescriptor | [0xABF4a24519c9A3c68a354FD6d5D4429De0A0D36C](https://sepolia.explorer.zksync.io/address/0xABF4a24519c9A3c68a354FD6d5D4429De0A0D36C) | [core-v1.1.2](https://github.com/sablier-labs/v2-deployments/tree/main/core/v1.1.2) |
-| SablierV2Comptroller   | [0xEB4570723ae207a0473D73B3c2B255b0D5Ec9f01](https://sepolia.explorer.zksync.io/address/0xEB4570723ae207a0473D73B3c2B255b0D5Ec9f01) | [core-v1.1.2](https://github.com/sablier-labs/v2-deployments/tree/main/core/v1.1.2) |
+| SablierV2LockupLinear  | [0xdFC6F5D327dcF5DB579eC1b47fb260F93e042409](https://sepolia-era.zksync.network/address/0xdFC6F5D327dcF5DB579eC1b47fb260F93e042409) | [core-v1.1.2](https://github.com/sablier-labs/v2-deployments/tree/main/core/v1.1.2) |
+| SablierV2LockupDynamic | [0xe101C69A6f9c071Ab79aEE0be56928565962F56d](https://sepolia-era.zksync.network/address/0xe101C69A6f9c071Ab79aEE0be56928565962F56d) | [core-v1.1.2](https://github.com/sablier-labs/v2-deployments/tree/main/core/v1.1.2) |
+| SablierV2NFTDescriptor | [0xABF4a24519c9A3c68a354FD6d5D4429De0A0D36C](https://sepolia-era.zksync.network/address/0xABF4a24519c9A3c68a354FD6d5D4429De0A0D36C) | [core-v1.1.2](https://github.com/sablier-labs/v2-deployments/tree/main/core/v1.1.2) |
+| SablierV2Comptroller   | [0xEB4570723ae207a0473D73B3c2B255b0D5Ec9f01](https://sepolia-era.zksync.network/address/0xEB4570723ae207a0473D73B3c2B255b0D5Ec9f01) | [core-v1.1.2](https://github.com/sablier-labs/v2-deployments/tree/main/core/v1.1.2) |
 
 ### Periphery
 
 | Contract                       | Address                                                                                                                             | Deployment                                                                                    |
 | :----------------------------- | :---------------------------------------------------------------------------------------------------------------------------------- | :-------------------------------------------------------------------------------------------- |
-| SablierV2Batch                 | [0x5F812F1332A2294149b9e1cBd216a5eED12cEbDD](https://sepolia.explorer.zksync.io/address/0x5F812F1332A2294149b9e1cBd216a5eED12cEbDD) | [periphery-v1.1.1](https://github.com/sablier-labs/v2-deployments/tree/main/periphery/v1.1.1) |
-| SablierV2MerkleStreamerFactory | [0xd9a834135c816FFd133a411a36219aAFD190fF97](https://sepolia.explorer.zksync.io/address/0xd9a834135c816FFd133a411a36219aAFD190fF97) | [periphery-v1.1.1](https://github.com/sablier-labs/v2-deployments/tree/main/periphery/v1.1.1) |
+| SablierV2Batch                 | [0x5F812F1332A2294149b9e1cBd216a5eED12cEbDD](https://sepolia-era.zksync.network/address/0x5F812F1332A2294149b9e1cBd216a5eED12cEbDD) | [periphery-v1.1.1](https://github.com/sablier-labs/v2-deployments/tree/main/periphery/v1.1.1) |
+| SablierV2MerkleStreamerFactory | [0xd9a834135c816FFd133a411a36219aAFD190fF97](https://sepolia-era.zksync.network/address/0xd9a834135c816FFd133a411a36219aAFD190fF97) | [periphery-v1.1.1](https://github.com/sablier-labs/v2-deployments/tree/main/periphery/v1.1.1) |
