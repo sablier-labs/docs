@@ -15,9 +15,7 @@ Let's take an example. Imagine Alice wants to stream 3,000 DAI to Bob during the
 4. If at any point during January Alice wishes to get back her tokens, she can cancel the stream and recover what has
    not been streamed yet.
 
-This payment model is especially useful for use cases like payroll, for example, where employees don't need to wait the
-end of the month anymore to spend their paycheck, as they receive it by the second instead of every two weeks or month.
-No more waiting, just earning.
+This streaming model is especially useful for use cases like vesting, payroll and airdrops.
 
 :::info
 

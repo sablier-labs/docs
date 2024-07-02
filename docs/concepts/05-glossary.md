@@ -87,9 +87,8 @@ A Lockup stream with a payments in tranches.
 
 ## Timestamp
 
-A timestamp is the time component of a segment or a tranche. It indicated the end of a particular segment or tranche.
-
-Timestamp plays a crucial role in the calculation of the lockup dynamic and lockup tranched streaming curves.
+A timestamp is the time component of a stream. In lockup linear, it represents start time, cliff time and end time
+whereas in lockup dynamic and lockup tranched, it plays a crucial role in the calculation of streaming curves.
 
 ## Monotonicity
 
@@ -137,12 +136,14 @@ The time when a stream is scheduled to start.
 
 ## Status
 
-A stream can have one out of four possible statuses:
+A stream can have one out of six possible statuses:
 
 1. Null
-2. Active
-3. Canceled
-4. Depleted
+2. Pending
+3. Streaming
+4. Settled
+5. Canceled
+6. Depleted
 
 ## Stream
 

@@ -7,8 +7,16 @@ title: "Hooks"
 In Sablier, hooks are arbitrary functions that get automatically executed by the protocol in response to `cancel` and
 `withdraw` events.
 
-Hooks can only be written in smart contracts, so typical EOAs cannot implement them. However, they are entirely
-optional. You can interact with the Sablier Protocol without implementing any hooks.
+Hooks are powerful feature that enable Sablier streams to interact with other DeFi protocols. Let's consider an example.
+You own a Sablier stream that expires in 2 years. You are interested into taking a loan against it with the intention to
+pay it all back after it expires. Hooks are what enable you to do that. With the help of Hooks, we can create an
+ecosystem of varied use cases for Sablier streams. This can range from lending, staking, credit and many more.
+
+Currently, in order to hook to the Sablier Protocol, external DeFi protocols must be added to the `allowlist` which is
+managed by the protocol admin. In the future, we aim to decentralize it through governance.
+
+Hooks are entirely optional. They are only executed if the recipient of the Sablier stream is one of the contracts from
+the `allowlist`.
 
 :::info
 
@@ -18,9 +26,7 @@ Hooks in smart contracts are similar to callback functions in web2.
 
 ## Visual representation
 
-### Recipient hook
-
-If the recipient is not a smart contract, the hooks will not be run.
+If the recipient contract is not on the allowlist, the hooks will not be executed.
 
 ```mermaid
 flowchart LR
@@ -44,15 +50,6 @@ flowchart LR
   LL -- "onSablierLockupWithdraw" --> R
 ```
 
-## Example scenario
-
-Suppose you have created an NFT lending marketplace and wish to integrate Sablier. As a first step, you would typically
-ask your users to deposit their Sablier NFTs into your contracts, so that they can be used as collateral.
-
-In such a scenario, you are naturally interested to know what's happening to the stream. For instance, you might want to
-know whether the stream has been canceled or if funds have been withdrawn from it. Hooks enable your protocol to
-programmatically react to these events.
-
 ## Next steps
 
-Looking to incorporate a hook in your Sablier integration? Check out this [guide](/contracts/v2/guides/hooks).
+Looking to get on the allowlist? Reach out to us on [Discord](https://discord.gg/bSwRCwWRsT).

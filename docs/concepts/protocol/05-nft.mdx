@@ -26,7 +26,7 @@ Not all Sablier streams are transferable. The stream creator can choose to make 
 
 :::
 
-:::tip
+:::info
 
 If you're interested in making an integration, please fill out this <Link href={links.forms.integrations}>form</Link>
 and we will try to respond as soon as possible.
@@ -48,6 +48,13 @@ If you prefer the granularity of a blockchain explorer, you can also view the st
 [Etherscan](https://etherscan.io/token/0xB10daee1FCF62243aE27776D7a92D39dC8740f95). See the
 [Deployments](/contracts/v2/deployments) page for the full list of addresses.
 
+:::caution
+
+Be careful when buying NFTs that represent cancelable stream. When these streams are canceled, any unvested amount is
+returned to the sender.
+
+:::
+
 ### Caching
 
 The SVG artwork is generated using certain real-time values, such as the current time on the blockchain. However, NFT
@@ -62,13 +69,11 @@ To ensure you're viewing the most recent version of the NFT SVG, it's recommende
 
 ## Hourglass SVG
 
-Similar to Uniswap V3 Positions, Sablier V2 Streams are represented as unique on-chain generated hourglass SVGs, which
-change their color and content based on user data. Here's an example for a stream that is 42.35% way through:
+Sablier V2 streams are represented as unique on-chain generated hourglass SVGs, which change their color and content
+based on user data. Here's an example for a stream that is 42.35% way through:
 
 <NFTSVG height={500} width={500} />
 
-## Gallery of Hourglass SVGs
-
-Here's a gallery with multiple Sablier NFT SVGs:
+### Gallery of multiple Sablier NFT SVGs
 
 <img src={NFTGalleryURL} height={500} width={500} />

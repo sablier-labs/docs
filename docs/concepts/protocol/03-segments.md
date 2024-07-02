@@ -53,6 +53,8 @@ rate is quadratically slower compared to baseline.
 - There is a limit to how many segments there can be in a stream as enforced by the the block gas limit. If someone
   creates a stream with an excessively large number of segments, the transaction would revert as it wouldn't fit within
   a block. You can fetch the limit using
-  [MAX_SEGMENT_COUNT](/contracts/v2/reference/core/contract.SablierV2LockupDynamic#max_segment_count).
-- The timestamps must be sorted in ascending order. It's not possible for the `i-1`th timestamp to be greater than `i`th
-  timestamp (given we are dealing with increasing monotonic functions).
+  [MAX_SEGMENT_COUNT](/contracts/v2/reference/core/contract.SablierV2LockupDynamic#max_segment_count). Alternatively,
+  you can find the limit for each chain
+  [here](https://github.com/sablier-labs/v2-core/blob/staging/script/Base.s.sol#L90-L131).
+- The timestamps must be sorted in ascending order. It's not possible for the $(i-1)^{th}$ timestamp to be greater than
+  $i^{th}$ timestamp (assuming we are dealing with increasing monotonic functions).
