@@ -23,6 +23,12 @@ A segment is a [struct](/contracts/v2/reference/core/types/library.LockupDynamic
 Each segment has its own streaming function:
 
 $$
+f(x) = x^{exp} * csa
+$$
+
+Therefore, the streaming function of a dynamic stream becomes:
+
+$$
 f(x) = x^{exp} * csa + \Sigma(esa)
 $$
 
@@ -57,4 +63,4 @@ rate is quadratically slower compared to baseline.
   you can find the limit for each chain
   [here](https://github.com/sablier-labs/v2-core/blob/staging/script/Base.s.sol#L90-L131).
 - The timestamps must be sorted in ascending order. It's not possible for the $(i-1)^{th}$ timestamp to be greater than
-  $i^{th}$ timestamp (assuming we are dealing with increasing monotonic functions).
+  $i^{th}$ timestamp (assuming we are dealing with increasing monotonic functions). $$

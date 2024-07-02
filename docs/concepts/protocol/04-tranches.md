@@ -18,7 +18,7 @@ A tranche is a [struct](/contracts/v2/reference/core/types/library.LockupTranche
 | Amount    | `uint128` | The amount of assets to be unlocked in a tranche, denoted in units of the asset's decimals. |
 | Timestamp | `uint40`  | The Unix timestamp indicating the tranche's end.                                            |
 
-Each tranche has its own streaming function:
+The streaming function of a Lockup tranched stream:
 
 $$
 f(x) = \Sigma(eta)
