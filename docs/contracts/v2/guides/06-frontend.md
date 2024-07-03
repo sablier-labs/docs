@@ -1,7 +1,7 @@
 ---
 draft: true
-id: "frontend"
 sidebar_position: 6
+id: "frontend"
 title: "Frontend Integrations"
 ---
 
