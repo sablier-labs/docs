@@ -1,6 +1,6 @@
 ---
 id: "custom-deployments"
-sidebar_position: 10
+sidebar_position: 9
 title: "Custom Deployments"
 ---
 

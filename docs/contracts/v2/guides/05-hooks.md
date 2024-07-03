@@ -4,19 +4,47 @@ sidebar_position: 6
 title: "Implement Hooks"
 ---
 
-In this guide, we will explain how to implement [hooks](/concepts/protocol/hooks) in your on-chain integration of
-Sablier.
+Hooks provide an interface for recipient contracts to react upon cancellations and withdrawals. In order to allow your
+contract to be able to hook into Sablier, you must implement this interface and it must have been allowlisted by the
+Lockup contract's admin.
+
+In this guide, we will explain how to implement [hooks](/concepts/protocol/hooks) in your smart contract to allow
+interacting with Sablier streams.
 
 ### Overview
 
-### Recipient
+### Requirements
+
+The recipient contract should implement the `{IERC165-supportsInterface}` method, which MUST return `true` when called
+with `0xf8ee98d3`, which is the interface ID for `ISablierLockupRecipient`.
+
+```solidity
+function supportsInterface(bytes4 interfaceId)
+  public
+  view
+  override(IERC165, ERC165)
+  returns (bool) {
+    return interfaceId == 0xf8ee98d3;
+}
+```
+
+### Hook Functions
 
 These are the hooks that can be implemented by a recipient contract:
 
-| Hook                      | Arguments                                        | Description                                         |
-| ------------------------- | ------------------------------------------------ | --------------------------------------------------- |
-| `onSablierLockupCancel`   | `(streamId,sender,senderAmount,recipientAmount)` | Called when the stream is canceled by the sender.   |
-| `onSablierLockupWithdraw` | `(streamId,caller,to,amount)`                    | Called when an amount is withdrawn from the stream. |
+| Hook                      | Arguments                                           | Return value      | Description                                         |
+| ------------------------- | --------------------------------------------------- | ----------------- | --------------------------------------------------- |
+| `onSablierLockupCancel`   | `(streamId, sender, senderAmount, recipientAmount)` | function selector | Called when the stream is canceled by the sender.   |
+| `onSablierLockupWithdraw` | `(streamId, caller, to, amount)`                    | function selector | Called when an amount is withdrawn from the stream. |
+
+The complete interface for `ISablierLockupRecipient` can be found
+[here](/contracts/v2/reference/core/interfaces/interface.ISablierLockupRecipient).
+
+:::tip
+
+Looking to get on the allowlist? Reach out to us on [Discord](https://discord.gg/bSwRCwWRsT).
+
+:::
 
 ### Sample Implementations
 

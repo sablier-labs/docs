@@ -1,8 +1,8 @@
 ---
 draft: true
 id: "frontend"
-sidebar_position: 7
-title: "Front-End Integrations"
+sidebar_position: 6
+title: "Frontend Integrations"
 ---
 
 Throughout this series, we've been focusing on creating an on-chain integration with Sablier. But maybe you're
