@@ -104,8 +104,9 @@ For more guidance on how to approve and transfer ERC-20 assets, see
 ## Parameters
 
 Sablier uses structs to encode the parameters of its create functions. The struct associated with `createWithTimestamps`
-is [`LockupDynamic.CreateWithTimestamps`](/contracts/v2/reference/core/types/library.LockupDynamic), and it can be
-initialized like this:
+is
+[`LockupDynamic.CreateWithTimestamps`](/contracts/v2/reference/core/types/library.LockupDynamic#createwithtimestamps),
+and it can be initialized like this:
 
 ```solidity
 LockupDynamic.CreateWithTimestamps memory params;
@@ -125,8 +126,6 @@ Let's review each parameter in detail.
 
 <ParamTransferable />
 
-<ParamBroker />
-
 ### Start time
 
 The Unix timestamp for when the stream will start.
@@ -144,7 +143,7 @@ exposition of segments, see the [Segments](/concepts/protocol/segments) guide.
 
 The term "segment" refers to the splitting of the stream into several distinct segments, with each segment characterized
 by a specific amount, exponent, and timestamp. These segments are supplied to the function in the form of an array
-containing [`LockupDynamic.Segment`](/contracts/v2/reference/core/types/library.LockupDynamic) structs.
+containing [`LockupDynamic.Segment`](/contracts/v2/reference/core/types/library.LockupDynamic#segment) structs.
 
 Let's define two dummy segments:
 
@@ -179,6 +178,8 @@ The `ud2x18` function wraps a basic integer to the `UD2x18` value type, which is
 [PRBMath](https://github.com/PaulRBerg/prb-math) library.
 
 :::
+
+<ParamBroker />
 
 ## Invoke the create function
 

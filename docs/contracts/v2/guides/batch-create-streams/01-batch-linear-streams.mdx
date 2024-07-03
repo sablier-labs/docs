@@ -11,7 +11,7 @@ import ConstantsComment from "@site/docs/snippets/ConstantsComment.mdx";
 # Create a Batch of Lockup Linear Streams
 
 In this guide, we will show you how to programmatically batch create linear streams via the Sablier's
-[Batch](/contracts/v2/reference/periphery/contract.SablierV2BatchLockup) contract.
+[Batch Lockup](/contracts/v2/reference/periphery/contract.SablierV2BatchLockup) contract.
 
 This guide assumes that you have already gone through the [Protocol Concepts](/concepts/protocol/streaming) section.
 
@@ -38,19 +38,20 @@ Now, import the relevant symbols from `@sablier/v2-core` and `@sablier/v2-periph
 import { IERC20 } from "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 import { ud60x18 } from "@prb/math/src/UD60x18.sol";
 import { ISablierV2LockupLinear } from "@sablier/v2-core/src/interfaces/ISablierV2LockupLinear.sol";
-import { ISablierV2Batch } from "@sablier/v2-periphery/src/interfaces/ISablierV2Batch.sol";
-import { Batch, Broker, LockupLinear } from "@sablier/v2-periphery/src/types/DataTypes.sol";
+import { Broker, LockupLinear } from "@sablier/v2-core/src/types/DataTypes.sol";
+import { ISablierV2BatchLockup } from "@sablier/v2-periphery/src/interfaces/ISablierV2BatchLockup.sol";
+import { BatchLockup } from "@sablier/v2-periphery/src/types/DataTypes.sol";
 ```
 
-Create a contract called `BatchLockupLinearStreamCreator`, and declare a constant `DAI` of type `IERC20`, a constant
-`LOCKUP_LINEAR` of type `ISablierV2LockupLinear`, and a constant `BATCH` of type `ISablierV2Batch`:
+Create a contract called `BatchLLStreamCreator`, and declare a constant `DAI` of type `IERC20`, a constant
+`LOCKUP_LINEAR` of type `ISablierV2LockupLinear`, and a constant `BATCH_LOCKUP` of type `ISablierV2BatchLockup`:
 
 ```solidity
-contract BatchLockupLinearStreamCreator {
+contract BatchLLStreamCreator {
     IERC20 public constant DAI = IERC20(0x6B175474E89094C44Da98b954EedeAC495271d0F);
     ISablierV2LockupLinear public constant LOCKUP_LINEAR =
         ISablierV2LockupLinear(0xAFb979d9afAd1aD27C5eFf4E27226E3AB9e5dCC9);
-    ISablierV2Batch public constant BATCH = ISablierV2Batch(0xEa07DdBBeA804E7fe66b958329F8Fa5cDA95Bd55);
+    ISablierV2BatchLockup public constant BATCH_LOCKUP = ISablierV2BatchLockup(0xEa07DdBBeA804E7fe66b958329F8Fa5cDA95Bd55);
 }
 ```
 
@@ -70,12 +71,12 @@ Which one you choose depends upon your use case. In this guide, we will use `cre
 ## Stream Parameters
 
 Given that we declared a `batchSize` of two, we need to define two
-[Batch.CreateWithDurationsLL](/contracts/v2/reference/periphery/types/library.BatchLockup#createwithdurationsll)
+[BatchLockup.CreateWithDurationsLL](/contracts/v2/reference/periphery/types/library.BatchLockup#createwithdurationsll)
 structs:
 
 ```solidity
 // Declare the first stream in the batch
-Batch.CreateWithDurationsLL memory stream0;
+BatchLockup.CreateWithDurationsLL memory stream0;
 stream0.sender = address(0xABCD); // The sender to stream the assets, he will be able to cancel the stream
 stream0.recipient = address(0xCAFE); // The recipient of the streamed assets
 stream0.totalAmount = perStreamAmount; // The total amount of each stream, inclusive of all fees
@@ -92,7 +93,7 @@ To add some variety, we will change the parameters of the second stream:
 
 ```solidity
 // Declare the second stream in the batch
-Batch.CreateWithDurationsLL memory stream1;
+BatchLockup.CreateWithDurationsLL memory stream1;
 stream1.sender = address(0xABCD); // The sender to stream the assets, he will be able to cancel the stream
 stream1.recipient = address(0xBEEF); // The recipient of the streamed assets
 stream1.totalAmount = perStreamAmount; // The total amount of each stream, inclusive of all fees
@@ -109,7 +110,7 @@ Once both structs are declared, the batch array has to be filled:
 
 ```solidity
 // Fill the batch param
-Batch.CreateWithDurationsLL[] memory batch = new Batch.CreateWithDurationsLL[](batchSize);
+BatchLockup.CreateWithDurationsLL[] memory batch = new BatchLockup.CreateWithDurationsLL[](batchSize);
 batch[0] = stream0;
 batch[1] = stream1;
 ```
@@ -120,15 +121,15 @@ With all parameters set, we can now call the `createWithDurationsLL` function, a
 streams to the array:
 
 ```solidity
-streamIds = BATCH.createWithDurationsLL(LOCKUP_LINEAR, DAI, batch);
+streamIds = BATCH_LOCKUP.createWithDurationsLL(LOCKUP_LINEAR, DAI, batch);
 ```
 
 ## The complete Batch Lockup Linear stream creator contract
 
 Below you can see the complete functioning code: a contract that batch creates Lockup Linear streams using Sablier's
 `Batch` that start at `block.timestamp`. You can access the code on GitHub through this
-[link](https://github.com/sablier-labs/examples/blob/main/v2/periphery/BatchLockupLinearStreamCreator.sol).
+[link](https://github.com/sablier-labs/examples/blob/main/v2/periphery/BatchLLStreamCreator.sol).
 
 ```solidity reference title="Batch Lockup Linear stream creator"
-https://github.com/sablier-labs/examples/blob/main/v2/periphery/BatchLockupLinearStreamCreator.sol
+https://github.com/sablier-labs/examples/blob/main/v2/periphery/BatchLLStreamCreator.sol
 ```

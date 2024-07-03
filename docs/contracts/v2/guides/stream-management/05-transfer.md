@@ -22,8 +22,10 @@ You may remember from the [NFT](/concepts/protocol/nft) guide that every Sablier
 that the recipient of the stream has the ability to transfer the NFT to a different address, effectively redirecting the
 streaming of assets to that new address.
 
-To transfer ownership of a stream, it is recommended to invoke the `withdrawMaxAndTransfer` function, which withdraws
-all the unclaimed funds to the current recipient prior to transferring ownership to the new recipient:
+To transfer ownership of a stream, it is recommended to invoke the
+[`withdrawMaxAndTransfer`](/contracts/v2/reference/core/abstracts/abstract.SablierV2Lockup#withdrawmaxandtransfer)
+function, which withdraws all the unclaimed funds to the current recipient prior to transferring ownership to the new
+recipient:
 
 ```solidity reference title="Stream Management: Withdraw and Transfer Ownership"
 https://github.com/sablier-labs/examples/blob/main/v2/core/StreamManagement.sol#L72-L74
@@ -31,7 +33,7 @@ https://github.com/sablier-labs/examples/blob/main/v2/core/StreamManagement.sol#
 
 The withdrawal will be skipped if there are no unclaimed funds.
 
-If you want to transfer ownership without withdrawing the funds, you can use the `transferFrom` function:
+If you want to transfer ownership without withdrawing the funds, you can use the `IERC721.transferFrom` function:
 
 ```solidity reference title="Stream Management: Transfer Ownership"
 https://github.com/sablier-labs/examples/blob/main/v2/core/StreamManagement.sol#L67-L69
