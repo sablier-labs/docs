@@ -7,8 +7,9 @@ title: "Fees"
 import Link from "@docusaurus/Link";
 import { links } from "@site/src/constants";
 
-There are two types of fees in Sablier: broker fees and protocol fees. Both are charged when a stream is created. In the
-event of an early stream cancellation, the fees are not refunded.
+Sablier protocol is entirely free to use. There is no protocol fee. However, external integrators who manage their own
+UI may charge broker free in exchange for providing their services. Broker fee can only be charged when a stream is
+created and is capped at 10%.
 
 ## Broker fees
 
@@ -18,7 +19,8 @@ other users. These brokers have the ability to charge service fees for facilitat
 Broker fees are particularly useful for front-end applications that integrate the Sablier Protocol. They enable
 front-end operators to levy a fee on each Sablier stream created through their platform.
 
-The broker fee is a percentage of the streamed amount, and it cannot be higher than 10%.
+The broker fee is a percentage of the streamed amount, and it cannot be higher than 10%. In the event of cancellation,
+broker fee is non-refundable.
 
 :::info
 
