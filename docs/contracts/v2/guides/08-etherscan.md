@@ -47,14 +47,17 @@ We will now proceed to create our first stream. Let's go with the following para
 
 - a `LockupLinear` stream
 - and a deposit of 20,000 DAI
-- starting Jan 1, 2024
-- ending Jan 1, 2025
+- starting Jan 1, 2025
+- ending Jan 1, 2026
 - with no cliff
-- and non-cancelable
+- non-cancelable
+- and transferrable
 
-As the start and end date are fixed, we'll be using the `createWithTimestamps` method. Please note, however, that using
-`createWithDurations` is possible, too. To learn more about the difference between these two functions, head over
-[here](/contracts/v2/reference/core/interfaces/interface.ISablierV2LockupLinear#createwithdurations).
+As the start and end date are fixed, we'll be using the
+[`createWithTimestamps`](/contracts/v2/reference/core/interfaces/interface.ISablierV2LockupLinear#createwithtimestamps)
+method. Please note that using
+[`createWithDurations`](/contracts/v2/reference/core/interfaces/interface.ISablierV2LockupLinear#createwithdurations) is
+possible too if you specify durations instead of the timestamps.
 
 Open the **"createWithTimestamps"** method, and start filling in the stream details:
 
@@ -68,71 +71,101 @@ Open the **"createWithTimestamps"** method, and start filling in the stream deta
   "asset": "0x97cb342cf2f6ecf48c1285fb8668f5a4237bf862",
   "cancelable": false,
   "transferable": true,
-  "range": [1704067200, 1704067200, 1735689600],
+  "timestamps": [1704067200, 0, 1735689600],
   "broker": ["0x0000000000000000000000000000000000000000", 0]
 }
 ```
 
+If etherscan UI does not breakdown the input into separate fields (like in the above screenshot), you will have to
+provide it as the following:
+
+```json
+[
+  "0xe0ae83a6b9cc4f24d0638dc27179f311671e4e2a",
+  "0xb4bf8a8475d1e8e9a2088f118ad0e2cdc2896183",
+  "20000000000000000000000",
+  "0x97cb342cf2f6ecf48c1285fb8668f5a4237bf862",
+  false,
+  true,
+  [1704067200, 0, 1735689600],
+  ["0x0000000000000000000000000000000000000000", 0]
+]
+```
+
+:::tip
+
+In case of inline input, ensure the following best practices:
+
+1. Wrap addresses in quotes
+2. Use square brakets
+3. Wrap large numbers in quotes
+
+Follow [this guide](https://info.etherscan.com/understanding-the-required-input-formats-for-read-write-contract-tab/)
+from Etherscan to learn how to correctly format input data for Write Contract tab.
+
+:::
+
 #### Sender
 
-If the stream is cancelable, the `sender` is the wallet that will have the ability to cancel the stream and withdraw on
-behalf of the recipient. But if the stream is non-cancelable, the `sender` cannot cancel the stream.
+If the stream is cancelable, the sender is the wallet that will have the ability to cancel and renounce the stream. But
+if the stream is non-cancelable, the sender cannot cancel the stream.
 
-Most users will set their own wallet address as the `sender`.
+Most users will set their own wallet address as the sender.
 
 #### Recipient
 
-The address you want to stream tokens to. The controller of this address will be able to
-[withdraw](#withdrawing-from-a-stream) tokens as they become available.
+The address you want to stream tokens to. The owner of this address is the stream recipient and will receive tokens on
+[withdraw](#withdrawing-from-a-stream).
 
 #### Total Amount
 
-The `totalAmount` is the final amount of tokens what will be streamed, **DECIMALS INCLUDED**. If the token you are
-looking to stream has 18 decimals, for example, you will need to add eighteen zeros after the amount. Let's say you want
-to stream 20,000 DAI like in this example, you will need to fill in `20000000000000000000000`.
+This is the total amount of assets available to be streamed, **DECIMALS INCLUDED**. If the asset has 18 decimals, for
+example, you will need to add eighteen zeros after the amount. Let's say you want to stream 20,000 DAI like in this
+example, you will need to fill in `20000000000000000000000`.
 
 :::note
 
-The total amount will also include any [broker fee](/concepts/protocol/fees). While fees are kept at zero (most likely),
-the final streamed amount will be equal to this total amount.
+The total amount will also include any [broker fee](/concepts/protocol/fees). While fees are kept at zero in Sablier UI,
+the total amount should be equal to the streamed amount plus the broker amount.
 
 :::
 
 #### Asset
 
-The `asset` is the contract address of the ERC-20 token you are looking to stream. You can get this from the
-[Sablier Interface](#step-1-go-to-token-page) or from any other wallet/explorer. Please double check the token is
-correct before continuing the process.
+The asset is the contract address of the ERC-20 token being streamed. You can get this from the
+[Sablier Interface](#step-1-go-to-token-page) or from any other
+[etherscan explorer](https://etherscan.io/token/0x6b175474e89094c44da98b954eedeac495271d0f). Please double check the
+token address is correct before continuing the process.
 
 #### Cancelable
 
-The `cancelable` field indicates whether or not you want the stream to be cancelable. This can be set to either `true`
-or `false`. If set to true, the stream will be cancelable.
+This field indicates whether or not you want the stream to be cancelable. This can be set to either `true` or `false`.
+If set to true, the stream will be cancelable.
 
-This flag can be switched off later, but never switched back on.
+You can make a cancelable stream non-cancelable after the stream has been created, but if its a non-cancelable stream,
+it cannot become cancelable post-creation.
 
 #### Transferable
 
 The `transferable` field indicates whether the NFT owner is allowed to transfer te NFT or not. THis can be set either to
-`true` or `false`. If set to true, the NFT will be transferable.
+`true` or `false`.
 
 This flag cannot be changed later.
 
-#### Range
+#### Timestamps
 
-The `range` contains the start, cliff date, and the end time of the stream, respectively. They should be put in as UNIX
-timestamps (represented as **seconds**). You can find a Unix timestamp converter [here](https://www.unixtimestamp.com/).
+The `timestamps` field contains the start time, cliff time and the end time of the stream, in this order. The values
+should be UNIX timestamps (represented in **seconds**). You can find a Unix timestamp converter
+[here](https://www.unixtimestamp.com/).
 
-If you prefer to not have a cliff, you can simply put the same timestamp for the cliff as the start timestamp of the
-stream, like in this example (a.k.a. the duration of the cliff is kept as `0`). If, however, you want to have a cliff,
-fill in the end date of the cliff there, as the middle parameter (as a Unix timestamp, of course). Make sure to **not**
-leave spaces between the values, including after the commas. Here is how it should look like
-`[<start timestamp>,<cliff timestamp>,<end timestamp>]`
+If you prefer to not have a cliff, you can simply put the cliff time as 0 like in this example. If, however, you want to
+have a cliff, fill in the timestamp for the the cliff there. Make sure to not leave spaces between the values, including
+after the commas. Here is how it should look like `[<start timestamp>,<cliff timestamp>,<end timestamp>]`
 
-| Ranges              | [Start, Cliff, End]                  |
-| :------------------ | :----------------------------------- |
-| 1 year, no cliff    | `[1704067200,1704067200,1735689600]` |
-| 1 year, 1 day cliff | `[1704067200,1704153600,1735689600]` |
+| Total Duration | Cliff Duration | [Start, Cliff, End]                  |
+| :------------- | :------------- | ------------------------------------ |
+| 1 year         | no cliff       | `[1704067200,0,1735689600]`          |
+| 1 year         | 1 day          | `[1704067200,1704153600,1735689600]` |
 
 #### Broker
 
@@ -158,19 +191,19 @@ your wallet, and your stream should appear like this:
 
 #### How about `createWithDurations`?
 
-For the durations version, we'll replace the `range` parameter with a new one representing the total length of the
-stream (in seconds) and the size of the cliff (in seconds).
+For the durations version, we'll replace the `timestamps` parameter with `durations` to represent the total duration of
+the stream (in seconds) and the duration of the cliff (in seconds).
 
 ```json
 {
-  "durations": [0, 31536000] // no cliff and a total duration of 1 year ~= 365 days
+  "durations": [0, 864000] // no cliff and a total duration of 10 days
 }
 ```
 
-| Durations            | [Cliff, Total]   |
-| :------------------- | :--------------- |
-| 10 days, no cliff    | `[0,864000]`     |
-| 10 days, 1 day cliff | `[86400,864000]` |
+| Total Duration | Cliff Duration | [Cliff, Total]   |
+| :------------- | :------------- | ---------------- |
+| 10 days        | no cliff       | `[0,864000]`     |
+| 10 days        | 1 day          | `[86400,864000]` |
 
 ## Withdrawing from a Stream
 
