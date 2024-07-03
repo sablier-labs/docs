@@ -22,7 +22,7 @@ If you're interested in interacting with V1, please refer to this
 ### Prerequisites
 
 Before being able to create a stream using the Sablier V2 Core contracts you need to have granted a sufficient token
-allowance. See the [Allowances](#erc20-allowances) section below for a guide on how to do that.
+allowance. See the [Allowances](#prerequisite-erc20-allowances) section below for a guide on how to do that.
 
 ### Step 1: Go to contract page
 
@@ -229,7 +229,7 @@ advanced feature [here](/contracts/v2/reference/access-control#overview).
 ### Step 1: Go to contract page
 
 Head over to our [deployments](/contracts/v2/deployments) list and select the contract address you want to interact
-with. For each chain, that will be either `SablierV2LockupLinear` or `SablierV2LockupDynamic`.
+with.
 
 Once you find the right contract, click on the address to access its explorer's page. Click on the "Contract" tab, and
 then on the "Write Contract" sub-tab.
@@ -262,9 +262,9 @@ The `streamId` is the value you have previously located in the transaction in wh
 
 #### To
 
-The `to (address)` field is there for the stream recipient's address. This will most likely be your own wallet, but you
-can also choose to withdraw these funds to another wallet (e.g. a separate cold wallet) if you are the stream's
-recipient.
+The `to` field is there for the stream recipient's address. This will most likely be your own wallet, but you can also
+choose to withdraw these funds to another wallet (e.g. a separate cold wallet) if you are the stream's recipient. If you
+are not the stream recipient, it MUST be the address of the recipient.
 
 #### Amount
 
@@ -279,7 +279,7 @@ Once ready, click on the "Write" button, and confirm the transaction in your wal
 
 Apart from the main flows, you may be required to do some other actions, usually listed as prerequisites.
 
-## ERC20 Allowances
+## Prerequisite: ERC20 Allowances
 
 Before interacting directly with the Sablier V2 [contracts](/contracts/v2/deployments) to
 [create a stream](#creating-a-stream) you will need to manually grant proper ERC20 allowances.

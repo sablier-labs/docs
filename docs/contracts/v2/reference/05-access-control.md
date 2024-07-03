@@ -5,15 +5,16 @@ title: "Access Control"
 ---
 
 With the exception of the [allow list](/contracts/v2/reference/core/abstracts/abstract.SablierV2Lockup#allowtohook), all
-functionality in Sablier is related to one or more streams.
+functionalities in Sablier can only be triggered by the users. Sablier admin has no control over any stream or any part
+of the protocol.
 
 This article will provide a comprehensive overview of the actions that can be performed on streams once they are
 created, as well as the corresponding user permissions for each action.
 
 :::note
 
-Every stream has a sender, a recipient, and possibly multiple NFT operators, with the recipient being the owner of the
-NFT.
+Every stream has a sender and a recipient. Recipients can approve third parties to take actions on their behalf. An
+unknown caller is any address outside of sender and recipient.
 
 :::
 

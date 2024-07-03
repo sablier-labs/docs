@@ -1,7 +1,7 @@
 ---
-id: deployments
-title: Deployments
-sidebar_position: 2
+id: "deployments"
+title: V1 Protocol
+sidebar_position: 1
 ---
 
 Depending on what [EVM](https://ethereum.org/en/developers/docs/evm/) chain you want to use Sablier on, you will need to
