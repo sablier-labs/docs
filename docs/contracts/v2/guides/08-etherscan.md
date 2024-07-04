@@ -134,7 +134,7 @@ the total amount should be equal to the streamed amount plus the broker amount.
 
 The asset is the contract address of the ERC-20 token being streamed. You can get this from the
 [Sablier Interface](#step-1-go-to-token-page) or from any other
-[etherscan explorer](https://etherscan.io/token/0x6b175474e89094c44da98b954eedeac495271d0f). Please double check the
+[etherscan explorer](https://etherscan.io/token/0x68194a729C2450ad26072b3D33ADaCbcef39D574). Please double check the
 token address is correct before continuing the process.
 
 #### Cancelable
@@ -286,7 +286,7 @@ Before interacting directly with the Sablier V2 [contracts](/contracts/v2/deploy
 
 ### Step 1: Go to token page
 
-Pick a token you want to stream, e.g. [DAI](https://etherscan.io/token/0x6b175474e89094c44da98b954eedeac495271d0f).
+Pick a token you want to stream, e.g. [DAI](https://etherscan.io/token/0x68194a729C2450ad26072b3D33ADaCbcef39D574).
 Using its address, visit the token page on Etherscan (in this example, we're using Ethereum):
 `https://etherscan.io/token/<INSERT-TOKEN-ADDRESS>`
 
@@ -304,7 +304,7 @@ dialog or find an existing stream with that token and click on the icon inside t
 Next, look for the "Contract" tab and the "Write Contract" sub-tab.
 
 You'll see a list of methods that can be called for that token. Pick the `approve` method (e.g.
-[DAI's approve](https://etherscan.io/token/0x6b175474e89094c44da98b954eedeac495271d0f#writeContract#F1)). Most ERC-20
+[DAI's approve](https://etherscan.io/token/0x68194a729C2450ad26072b3D33ADaCbcef39D574#writeContract#F1)). Most ERC-20
 approve methods will contain two fields:
 
 1. The spender
@@ -330,7 +330,7 @@ the stream.
 
 ```json
 {
-  "spender": "0xAFb979d9afAd1aD27C5eFf4E27226E3AB9e5dCC9",
+  "spender": "0x3E435560fd0a03ddF70694b35b673C25c65aBB6C",
   "amount": 100000000000000000000
 }
 ```
