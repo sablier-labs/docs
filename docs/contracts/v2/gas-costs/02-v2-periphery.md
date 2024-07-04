@@ -13,5 +13,5 @@ take them for granted.
 ## Batch Lockup
 
 ```md reference title=""
-https://github.com/sablier-labs/v2-periphery/blob/staging/benchmark/results/SablierV2BatchLockup.md
+https://github.com/sablier-labs/v2-periphery/blob/maing/benchmark/results/SablierV2BatchLockup.md
 ```

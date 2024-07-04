@@ -13,17 +13,17 @@ take them for granted.
 ## Lockup Linear
 
 ```md reference title=""
-https://github.com/sablier-labs/v2-core/blob/staging/benchmark/results/SablierV2LockupLinear.md
+https://github.com/sablier-labs/v2-core/blob/main/benchmark/results/SablierV2LockupLinear.md
 ```
 
 ## Lockup Dynamic
 
 ```md reference title=""
-https://github.com/sablier-labs/v2-core/blob/staging/benchmark/results/SablierV2LockupDynamic.md
+https://github.com/sablier-labs/v2-core/blob/main/benchmark/results/SablierV2LockupDynamic.md
 ```
 
 ## Lockup Linear
 
 ```md reference title=""
-https://github.com/sablier-labs/v2-core/blob/staging/benchmark/results/SablierV2LockupTranched.md
+https://github.com/sablier-labs/v2-core/blob/main/benchmark/results/SablierV2LockupTranched.md
 ```

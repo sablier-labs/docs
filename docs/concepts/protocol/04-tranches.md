@@ -36,6 +36,6 @@ Where:
   a block. You can fetch the limit using
   [MAX_TRANCHE_COUNT](/contracts/v2/reference/core/contract.SablierV2LockupTranched#max_tranche_count). Alternatively,
   you can find the limit for each chain
-  [here](https://github.com/sablier-labs/v2-core/blob/staging/script/Base.s.sol#L90-L131).
+  [here](https://github.com/sablier-labs/v2-core/blob/main/script/Base.s.sol#L90-L131).
 - The timestamps must be sorted in ascending order. It's not possible for the $(i-1)^{th}$ timestamp to be greater than
   $i^{th}$ timestamp (assuming we are dealing with increasing monotonic functions).
