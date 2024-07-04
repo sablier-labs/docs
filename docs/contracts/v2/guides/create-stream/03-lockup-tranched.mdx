@@ -42,10 +42,11 @@ pragma solidity >=0.8.22;
 Import the relevant symbols from `@sablier/v2-core`:
 
 ```solidity
+import { IERC20 } from "@openzeppelin/contracts/token/ERC20/IERC20.sol";
+import { ud60x18 } from "@prb/math/src/UD60x18.sol";
 import { ISablierV2LockupTranched } from "@sablier/v2-core/src/interfaces/ISablierV2LockupTranched.sol";
 import { Broker, LockupTranched } from "@sablier/v2-core/src/types/DataTypes.sol";
-import { ud60x18 } from "@sablier/v2-core/src/types/Math.sol";
-import { IERC20 } from "@sablier/v2-core/src/types/Tokens.sol";
+
 ```
 
 Create a contract called `LockupTranchedStreamCreator`, and declare a constant `DAI` of type `IERC20` and a constant
