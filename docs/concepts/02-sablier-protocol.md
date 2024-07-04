@@ -20,7 +20,7 @@ and without interruption, with a guarantee of 100% uptime.
 
 :::info
 
-Sablier is the first money streaming protocol ever built, tracing its roots back to 2019.
+Sablier is the first token streaming protocol ever built, tracing its roots back to 2019.
 
 :::
 
