@@ -11,8 +11,8 @@ an idea of how the storage layout looks like.
 
 :::note
 
-To see the full list of storage variables: [click here](/contracts/v2/reference/core/types/library.Lockup#stream). The
-common stream struct is shared across LockupLinear, LockcupDynamic and LockupTranched.
+To see the list of all common storage variables: [click here](/contracts/v2/reference/core/types/library.Lockup#stream).
+This struct is shared across LockupLinear, LockupDynamic and LockupTranched.
 
 :::
 

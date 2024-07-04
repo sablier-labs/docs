@@ -7,11 +7,7 @@ title: "Hooks"
 In Sablier, hooks are arbitrary functions that get automatically executed by the protocol in response to `cancel` and
 `withdraw` events.
 
-:::info
-
 Hooks in smart contracts are similar to callback functions in web2.
-
-:::
 
 Hooks are powerful feature that enable Sablier streams to interact with other DeFi protocols. Let's consider an example.
 You own a Sablier stream that expires in 2 years. You are interested into taking a loan against it with the intention to
@@ -21,7 +17,7 @@ ecosystem of varied use cases for Sablier streams. This can range from lending, 
 Currently, in order to hook to the Sablier Protocol, external DeFi protocols must be added to the allowlist by the
 protocol admin. In the future, we aim to decentralize it through governance.
 
-:::tip
+:::info
 
 [`allowToHook`](/contracts/v2/reference/core/interfaces/interface.ISablierV2Lockup#allowtohook) is an irreversible
 operation, i.e., once a contract has been added to the allowlist, it can never be removed. This is to ensure stronger
@@ -35,26 +31,22 @@ the allowlist.
 
 ## Visual representation
 
+:::note
+
 If the recipient contract is not on the allowlist, the hooks will not be executed.
+
+:::
 
 ```mermaid
 flowchart LR
   S((Sender))
+  A((Anyone))
   subgraph Core
-    LL[LockupLinear]
+    LL[SablierLockup]
   end
   R((Recipient))
   S -- "cancel" --> LL
   LL -- "onSablierLockupCancel" --> R
-```
-
-```mermaid
-flowchart LR
-  A((Anyone))
-  subgraph Core
-    LL[LockupLinear]
-  end
-  R((Recipient))
   A -- "withdraw" --> LL
   LL -- "onSablierLockupWithdraw" --> R
 ```

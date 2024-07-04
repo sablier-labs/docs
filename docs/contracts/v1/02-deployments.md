@@ -1,6 +1,6 @@
 ---
 id: "deployments"
-title: V1 Protocol
+title: V1 Overview
 sidebar_position: 1
 ---
 
