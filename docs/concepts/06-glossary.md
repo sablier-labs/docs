@@ -1,8 +1,12 @@
 ---
 id: "glossary"
-sidebar_position: 5
+sidebar_position: 6
 title: "Glossary"
 ---
+
+## Allow List
+
+A list of smart contract recipients that are permitted to be called by Sablier protocol upon withdraw and cancel.
 
 ## Asset
 

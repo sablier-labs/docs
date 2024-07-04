@@ -4,9 +4,8 @@ sidebar_position: 5
 title: "Access Control"
 ---
 
-With the exception of the [allow list](/contracts/v2/reference/core/abstracts/abstract.SablierV2Lockup#allowtohook), all
-functionalities in Sablier can only be triggered by the users. Sablier admin has no control over any stream or any part
-of the protocol.
+With the exception of the [admin functions](/docs/concepts/05-governance.md), all functionalities in Sablier can only be
+triggered by the users. Sablier admin has no control over any stream or any part of the protocol.
 
 This article will provide a comprehensive overview of the actions that can be performed on streams once they are
 created, as well as the corresponding user permissions for each action.
