@@ -45,14 +45,14 @@ import { BatchLockup } from "@sablier/v2-periphery/src/types/DataTypes.sol";
 ```
 
 Create a contract called `BatchLDStreamCreator`, and declare a constant `DAI` of type `IERC20`, a constant
-`LOCKUP_DYNAMIC` of type `ISablierV2LockupDynamic`, and a constant `BATCH` of type `ISablierV2BatchLockup`:
+`LOCKUP_DYNAMIC` of type `ISablierV2LockupDynamic`, and a constant `BATCH_LOCKUP` of type `ISablierV2BatchLockup`:
 
 ```solidity
 contract BatchLDStreamCreator {
     IERC20 public constant DAI = IERC20(0x6B175474E89094C44Da98b954EedeAC495271d0F);
     ISablierV2LockupDynamic public constant LOCKUP_DYNAMIC =
         ISablierV2LockupDynamic(0x7CC7e125d83A581ff438608490Cc0f7bDff79127);
-    ISablierV2BatchLockup public constant BATCH = ISablierV2BatchLockup(0xEa07DdBBeA804E7fe66b958329F8Fa5cDA95Bd55);
+    ISablierV2BatchLockup public constant BATCH_LOCKUP = ISablierV2BatchLockup(0xEa07DdBBeA804E7fe66b958329F8Fa5cDA95Bd55);
 }
 ```
 
@@ -143,7 +143,7 @@ With all parameters set, we can now call the `createWithTimestampsLD` function, 
 streams to the array:
 
 ```solidity
-streamIds = BATCH.createWithTimestampsLD(LOCKUP_DYNAMIC, DAI, batch);
+streamIds = BATCH_LOCKUP.createWithTimestampsLD(LOCKUP_DYNAMIC, DAI, batch);
 ```
 
 ## The complete Batch Lockup Dynamic stream creator contract
