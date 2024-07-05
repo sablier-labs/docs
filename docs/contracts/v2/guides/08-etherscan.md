@@ -94,16 +94,25 @@ provide it as the following:
 
 :::tip
 
-In case of inline input, ensure the following best practices:
+In case of tuple, ensure to follow the best practices:
 
-1. Wrap addresses in quotes
-2. Use square brakets
+1. Use square brackets
+2. Wrap addresses in double quotes
 3. Wrap large numbers in quotes
 
 Follow [this guide](https://info.etherscan.com/understanding-the-required-input-formats-for-read-write-contract-tab/)
 from Etherscan to learn how to correctly format input data for Write Contract tab.
 
 :::
+
+As an example, in the screenshot below, we are providing input parameters for
+[`createWithTimestampsLL`](/contracts/v2/reference/periphery/contract.SablierV2BatchLockup#createwithtimestampsll)
+function in
+[`SablierV2BatchLockup`](https://sepolia.etherscan.io/address/0x04A9c14b7a000640419aD5515Db4eF4172C00E31#writeContract)
+contract. As you can see, since `batch` requires a tuple and does not break it down into separate fields, we had to use
+the above method.
+
+![Etherscan 08](/img/etherscan-tutorial/08.png)
 
 #### Sender
 
@@ -159,13 +168,12 @@ should be UNIX timestamps (represented in **seconds**). You can find a Unix time
 [here](https://www.unixtimestamp.com/).
 
 If you prefer to not have a cliff, you can simply put the cliff time as 0 like in this example. If, however, you want to
-have a cliff, fill in the timestamp for the the cliff there. Make sure to not leave spaces between the values, including
-after the commas. Here is how it should look like `[<start timestamp>,<cliff timestamp>,<end timestamp>]`
+have a cliff, fill in the timestamp for the the cliff there.
 
-| Total Duration | Cliff Duration | [Start, Cliff, End]                  |
-| :------------- | :------------- | ------------------------------------ |
-| 1 year         | no cliff       | `[1704067200,0,1735689600]`          |
-| 1 year         | 1 day          | `[1704067200,1704153600,1735689600]` |
+| Total Duration | Cliff Duration | [Start, Cliff, End]                    |
+| :------------- | :------------- | -------------------------------------- |
+| 1 year         | no cliff       | `[1704067200, 0, 1735689600]`          |
+| 1 year         | 1 day          | `[1704067200, 1704153600, 1735689600]` |
 
 #### Broker
 
@@ -178,8 +186,8 @@ You can set the `broker` field to address zero and `zero` fees. Read more about 
 
 Inside tuples/arrays (the `[ ... ]` structures in the example) make sure that you:
 
-- don't leave empty spaces after `,` (e.g. `[a,b]` is fine, but `[a, b]` isn't)
-- wrap addresses between double quotes, i.e. `" "`
+- Use square brackets
+- Wrap addresses in double quotes, i.e. `" "`
 
 :::
 
@@ -200,10 +208,10 @@ the stream (in seconds) and the duration of the cliff (in seconds).
 }
 ```
 
-| Total Duration | Cliff Duration | [Cliff, Total]   |
-| :------------- | :------------- | ---------------- |
-| 10 days        | no cliff       | `[0,864000]`     |
-| 10 days        | 1 day          | `[86400,864000]` |
+| Total Duration | Cliff Duration | [Cliff, Total]    |
+| :------------- | :------------- | ----------------- |
+| 10 days        | no cliff       | `[0, 864000]`     |
+| 10 days        | 1 day          | `[86400, 864000]` |
 
 ## Withdrawing from a Stream
 
