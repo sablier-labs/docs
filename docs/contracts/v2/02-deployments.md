@@ -168,7 +168,7 @@ Or maybe you're looking for V1? [Click here](/contracts/v1/deployments).
 | Contract                     | Address                                                                                                                       | Deployment                                                                                    |
 | :--------------------------- | :---------------------------------------------------------------------------------------------------------------------------- | :-------------------------------------------------------------------------------------------- |
 | SablierV2BatchLockup         | [0x5C847244649BD74aB41f09C893aF792AD87D32aA](https://phoenix.lightlink.io/address/0x5C847244649BD74aB41f09C893aF792AD87D32aA) | [periphery-v1.2.0](https://github.com/sablier-labs/v2-deployments/tree/main/periphery/v1.2.0) |
-| SablierV2MerkleLockupFactory | [0x5f12318fc6cCa518A950e2Ee16063a6317C2a9Ef](https://phoenix.lightlink.io/address/0x5f12318fc6cCa518A950e2Ee16063a6317C2a9Ef) | [periphery-v1.2.0](https://github.com/sablier-labs/v2-deployments/tree/main/periphery/v1.2.0) |
+| SablierV2MerkleLockupFactory | [0x278AC15622846806BD46FBDbdB8dB8d09614173A](https://phoenix.lightlink.io/address/0x278AC15622846806BD46FBDbdB8dB8d09614173A) | [periphery-v1.2.0](https://github.com/sablier-labs/v2-deployments/tree/main/periphery/v1.2.0) |
 
 ## Optimism
 
