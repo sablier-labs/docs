@@ -11,6 +11,8 @@ overrides:
       - "*.md"
       - "*.mdx"
     parser: "eslint-mdx"
+    rules:
+      no-unused-expressions: "off"
   - files:
       - "*.ts"
       - "*.tsx"
