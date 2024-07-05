@@ -8,8 +8,8 @@ toc_max_heading_level: 2
 This document contains the deployment addresses for the V2.2 release of [@sablier/v2-core][v2-core] and
 [@sablier/v2-periphery][v2-periphery].
 
-[v2-core]: https://npmjs.com/package/@sablier/v2-core
-[v2-periphery]: https://npmjs.com/package/@sablier/v2-periphery
+[v2-core]: https://npmjs.com/package/@sablier/v2-core/v/1.2.0
+[v2-periphery]: https://npmjs.com/package/@sablier/v2-periphery/v/1.2.0
 
 A few noteworthy details about the deployments:
 
