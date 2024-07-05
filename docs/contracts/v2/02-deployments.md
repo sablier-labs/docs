@@ -14,7 +14,7 @@ This document contains the deployment addresses for the V2.2 release of [@sablie
 A few noteworthy details about the deployments:
 
 - The addresses are final
-- All LockupLinear, LockupDynamic and LockupTranched contracts are non-upgradeable
+- All LockupLinear, LockupDynamic, and LockupTranched contracts are non-upgradeable
 - The source code is verified on Etherscan across all chains
 
 :::info
@@ -25,6 +25,24 @@ Came here looking for the previous V2 deployments? [Click here](/contracts/v2/de
 Or maybe you're looking for V1? [Click here](/contracts/v1/deployments).
 
 :::
+
+## Mainnet
+
+### Core
+
+| Contract                | Address                                                                                                               | Deployment                                                                          |
+| :---------------------- | :-------------------------------------------------------------------------------------------------------------------- | :---------------------------------------------------------------------------------- |
+| SablierV2LockupLinear   | [0x3962f6585946823440d274aD7C719B02b49DE51E](https://etherscan.io/address/0x3962f6585946823440d274aD7C719B02b49DE51E) | [core-v1.2.0](https://github.com/sablier-labs/v2-deployments/tree/main/core/v1.2.0) |
+| SablierV2LockupDynamic  | [0x9DeaBf7815b42Bf4E9a03EEc35a486fF74ee7459](https://etherscan.io/address/0x9DeaBf7815b42Bf4E9a03EEc35a486fF74ee7459) | [core-v1.2.0](https://github.com/sablier-labs/v2-deployments/tree/main/core/v1.2.0) |
+| SablierV2LockupTranched | [0xf86B359035208e4529686A1825F2D5BeE38c28A8](https://etherscan.io/address/0xf86B359035208e4529686A1825F2D5BeE38c28A8) | [core-v1.2.0](https://github.com/sablier-labs/v2-deployments/tree/main/core/v1.0.0) |
+| SablierV2NFTDescriptor  | [0xAE32Ca14d85311A506Bb852D49bbfB315466bA26](https://etherscan.io/address/0xAE32Ca14d85311A506Bb852D49bbfB315466bA26) | [core-v1.2.0](https://github.com/sablier-labs/v2-deployments/tree/main/core/v1.2.0) |
+
+### Periphery
+
+| Contract                     | Address                                                                                                               | Deployment                                                                                    |
+| :--------------------------- | :-------------------------------------------------------------------------------------------------------------------- | :-------------------------------------------------------------------------------------------- |
+| SablierV2BatchLockup         | [0xB5Ec9706C3Be9d22326D208f491E5DEef7C8d9f0](https://etherscan.io/address/0xB5Ec9706C3Be9d22326D208f491E5DEef7C8d9f0) | [periphery-v1.2.0](https://github.com/sablier-labs/v2-deployments/tree/main/periphery/v1.2.0) |
+| SablierV2MerkleLockupFactory | [0xF35aB407CF28012Ba57CAF5ee2f6d6E4420253bc](https://etherscan.io/address/0xF35aB407CF28012Ba57CAF5ee2f6d6E4420253bc) | [periphery-v1.2.0](https://github.com/sablier-labs/v2-deployments/tree/main/periphery/v1.2.0) |
 
 ## Arbitrum One
 
