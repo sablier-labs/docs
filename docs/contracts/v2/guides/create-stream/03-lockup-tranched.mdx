@@ -17,8 +17,8 @@ import ParamTransferable from "@site/docs/snippets/ParamTransferable.mdx";
 
 # Create a Lockup Tranched stream
 
-Lockup Tranched are streams with token unlocks in tranches. In this guide, we will show you how to programmatically
-create a Lockup Tranched stream.
+Lockup Tranched are streams with discrete unlocks. In this guide, we will show you how to programmatically create a
+Lockup Tranched stream.
 
 This guide assumes that you have already gone through the [Protocol Concepts](/concepts/protocol/streaming) section.
 
@@ -131,7 +131,7 @@ Let's review each parameter in detail.
 Tranches are what the protocol uses to compose the Lockup Tranched stream. For a full exposition of tranches, see the
 [Tranches](/concepts/protocol/tranches) guide.
 
-Each tranche is characterized by a specific amount, and timestamp. Because we are using `createWithDurations` in this
+Each tranche is characterized by a specific amount and timestamp. Because we are using `createWithDurations` in this
 example, these tranches are supplied to the function in the form of an array containing
 [`LockupTranched.TrancheWithDuration`](/contracts/v2/reference/core/types/library.LockupTranched#tranchewithduration)
 structs.
@@ -152,14 +152,14 @@ params.tranches[1] = (
 );
 ```
 
-In this example, the first tranche (`amount0`) will unlock at the end of 4 weeks after the stream has been created and
+In this example, the first tranche (`amount0`) will unlock at the end of the 4 weeks after the stream was created and
 the second tranche (`amount1`) will unlock after further 6 weeks. Thus, the total amount will be unlocked in 10 weeks.
 
 <ParamBroker />
 
 ## Invoke the create function
 
-With all parameters set, we can now call the `createWithDurations` function, and assign the id of the newly created
+With all parameters set, we can now call the `createWithDurations` function, and assign the ID of the newly created
 stream to a variable:
 
 ```solidity

@@ -16,5 +16,5 @@ consider your project if you fill out this [form](https://forms.gle/9EaRarDie98F
 - Blockchain explorer
 - Documentation site
 - Bridge, with step-by-step instructions for how to bridge ETH and ERC-20 tokens to the target chain
-- GraphQL solution, e.g. a deployment of [The Graph](https://thegraph.com/)
+- GraphQL solution, e.g., a deployment of [The Graph](https://thegraph.com/)
 - Functional JSON-RPC endpoint, ideally listed on [ChainList](https://chainlist.org/)

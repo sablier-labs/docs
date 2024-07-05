@@ -8,11 +8,12 @@ title: "Segments"
 
 ## Definition
 
-A Lockup Dynamic stream can be composed of multiple segments, which are separate partitions with different streaming
-amount and rates. The protocol uses these segments to enable custom streaming curves, which power exponential streams,
-cliff streams, etc.
+A Lockup Dynamic stream is composed of multiple segments, which are separate partitions with different streaming amount
+and rates. The protocol uses these segments to enable custom streaming curves, which power exponential streams, cliff
+streams, etc.
 
-A segment is a [struct](/contracts/v2/reference/core/types/library.LockupDynamic#segment) with three fields:
+Technically, a segment is a [struct](/contracts/v2/reference/core/types/library.LockupDynamic#segment) with three
+fields:
 
 | Field     | Type      | Description                                                                                    |
 | :-------- | :-------- | :--------------------------------------------------------------------------------------------- |
@@ -26,7 +27,7 @@ $$
 f(x) = x^{exp} * csa
 $$
 
-Therefore, the streaming function of a dynamic stream becomes:
+Therefore, the distribution function of a dynamic stream becomes:
 
 $$
 f(x) = x^{exp} * csa + \Sigma(esa)
@@ -47,20 +48,19 @@ Segments can be used to represent any monotonic increasing function.
 
 :::caution
 
-Because x is a percentage, the streaming rate is inversely proportional to the exponent. For example, if the exponent is
-0.5, the rate is quadratically faster compared to the baseline when the exponent is 1. Conversely, if exponent is 2, the
-rate is quadratically slower compared to baseline.
+Because x is a percentage, the payment rate is inversely proportional to the exponent. For example, if the exponent is
+0.5, the rate is quadratically faster compared to the baseline when the exponent is 1.
+
+Conversely, if the exponent is 2, the rate is quadratically slower compared to baseline.
 
 :::
 
 ## Requirements
 
 - The sum of all segment amounts must equal the deposit amount.
-- There is a limit to how many segments there can be in a stream as enforced by the the block gas limit. If someone
-  creates a stream with an excessively large number of segments, the transaction would revert as it wouldn't fit within
-  a block. You can fetch the limit using
-  [MAX_SEGMENT_COUNT](/contracts/v2/reference/core/contract.SablierV2LockupDynamic#max_segment_count). Alternatively,
-  you can find the limit for each chain
-  [here](https://github.com/sablier-labs/v2-core/blob/main/script/Base.s.sol#L90-L131).
+- There is a limit to how many segments there can be in a stream as enforced by the the block gas limit.
+  - If someone creates a stream with an excessively large number of segments, the transaction would revert as it
+    wouldn't fit within a block. You can fetch the limit using you can find the limit for each chain
+    [here](https://github.com/sablier-labs/v2-core/blob/main/script/Base.s.sol#L90-L131).
 - The timestamps must be sorted in ascending order. It's not possible for the $(i-1)^{th}$ timestamp to be greater than
-  $i^{th}$ timestamp (assuming we are dealing with increasing monotonic functions).
+  $i^{th}$ timestamp (given that we're dealing with an increasing monotonic function).

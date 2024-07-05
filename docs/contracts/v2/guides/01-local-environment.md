@@ -4,7 +4,7 @@ sidebar_position: 1
 title: "Configure Your Local Environment"
 ---
 
-In this guide, we will go through the steps to set up a local development environment for building on-chain integrations
+In this guide, we will go through the steps to set up a local development environment for building onchain integrations
 with Sablier. We will use Foundry to install Sablier as a dependency, and run a few simple tests.
 
 At the end, you’ll have a development environment set up that you can use to build the rest of the examples under
@@ -96,7 +96,7 @@ $ echo "@openzeppelin/contracts/=node_modules/@openzeppelin/contracts/" >> remap
 $ echo "@prb/math/=node_modules/@prb/math/" >> remappings.txt
 ```
 
-That's it! You should now have a functional development environment to start building on-chain Sablier integrations.
+That's it! You should now have a functional development environment to start building onchain Sablier integrations.
 Let's run a quick test to confirm everything is set up properly.
 
 ## Sample contract
@@ -135,7 +135,7 @@ The minimum Solidity version supported by the Sablier contracts is v0.8.13.
 ## Run a fork test
 
 Foundry offers native support for running tests against a fork of Ethereum Mainnet, which is useful when building and
-testing integrations with on-chain protocols like Sablier. In practice, this enables you to access all Sablier contracts
+testing integrations with onchain protocols like Sablier. In practice, this enables you to access all Sablier contracts
 deployed on Ethereum, and use them for testing your integration.
 
 As a prerequisite, you will need an RPC that supports forking. A good solution for this is

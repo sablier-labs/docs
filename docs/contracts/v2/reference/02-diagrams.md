@@ -6,13 +6,13 @@ title: "Diagrams"
 
 ## Lockup Storage Layout
 
-Each Lockup contract is a singleton that stores all streams created by all users. The following diagrams will give you
-an idea of how the storage layout looks like.
+Each Lockup contract is a singleton that stores all streams created by that contract's users. The following diagrams
+provide insight into the storage layout.
 
 ### Shared Lockup
 
-To see the list of all common storage variables [click here](/contracts/v2/reference/core/types/library.Lockup#stream).
-This struct is shared across LockupLinear, LockupDynamic and LockupTranched.
+To see the list of all common storage variables, [click here](/contracts/v2/reference/core/types/library.Lockup#stream).
+This struct is shared across LockupLinear, LockupDynamic, and LockupTranched.
 
 ```mermaid
 classDiagram
@@ -164,9 +164,9 @@ flowchart LR
 ```
 
 For campaign admins, we offer `clawback` functionality which can be used to retrieve unclaimed funds after expiration.
-There is also a grace period which ends 7 days after the first claim is made. During grace period, admin can use
-`clawback` to return funds from the merkle lockup contract. This is useful in case there had been accidental transfer of
-funds.
+There is also a grace period that ends 7 days after the first claim is made. During the grace period, admin can
+`clawback` to return funds from the `MerkleLockup` contract. This is useful in case there had been an accidental
+transfer of funds.
 
 ```mermaid
 flowchart LR

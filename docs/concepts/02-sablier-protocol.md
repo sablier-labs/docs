@@ -15,8 +15,8 @@ under BUSL-1.1. Both protocol versions are open-source and can be accessed on Sa
 [GitHub page](https://github.com/sablier-labs). Detailed technical reference for each version can be found in the
 [Contracts](/contracts/v2/overview) section of this website.
 
-As long as the EVM blockchains continue to exist, every version of Sablier that gets deployed will operate continuously
-and without interruption, with a guarantee of 100% uptime.
+As long as Ethereum and the other EVM chains continue to exist, every version of Sablier that gets deployed will operate
+continuously and without interruption, with a guarantee of 100% uptime.
 
 :::info
 

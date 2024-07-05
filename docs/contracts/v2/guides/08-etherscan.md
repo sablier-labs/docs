@@ -12,7 +12,7 @@ Just like any other open protocol, Sablier V2 can be interacted with directly th
 Etherscan.
 
 In this guide, we will show you how to create a stream and withdraw from a stream by manually interacting with the
-Sablier V2 core contracts on Etherscan.
+Sablier V2 Core contracts on Etherscan.
 
 If you're interested in interacting with V1, please refer to this
 [article](https://blog.sablier.com/operating-the-sablier-v1-protocol-manually/).
@@ -27,7 +27,7 @@ allowance. See the [Allowances](#prerequisite-erc20-allowances) section below fo
 ### Step 1: Go to contract page
 
 Head over to our [deployments](/contracts/v2/deployments) list to pick the contract address you want to interact with.
-For each chain, that will be either `SablierV2LockupLinear` or `SablierV2LockupDynamic` or `SablierV2LockupTranched`. In
+For each chain, that will be either `SablierV2LockupLinear`, `SablierV2LockupDynamic`, or `SablierV2LockupTranched`. In
 this tutorial, we will create a **LockupLinear** stream on Sepolia.
 
 Once you find the right contract, click on the address to access its explorer's page. Click on the "Contract" tab, and
@@ -57,7 +57,7 @@ As the start and end date are fixed, we'll be using the
 [`createWithTimestamps`](/contracts/v2/reference/core/interfaces/interface.ISablierV2LockupLinear#createwithtimestamps)
 method. Please note that using
 [`createWithDurations`](/contracts/v2/reference/core/interfaces/interface.ISablierV2LockupLinear#createwithdurations) is
-possible too if you specify durations instead of the timestamps.
+also possible if you specify durations instead of the timestamps.
 
 Open the **"createWithTimestamps"** method, and start filling in the stream details:
 
@@ -76,8 +76,8 @@ Open the **"createWithTimestamps"** method, and start filling in the stream deta
 }
 ```
 
-If etherscan UI does not breakdown the input into separate fields (like in the above screenshot), you will have to
-provide it as the following:
+If the Etherscan UI does not break down the inputs into separate fields (like in the screenshot above), you will have to
+provide it like this:
 
 ```json
 [
@@ -94,7 +94,7 @@ provide it as the following:
 
 :::tip
 
-In case of tuple, ensure to follow the best practices:
+In case of a tuple, ensure to follow the best practices:
 
 1. Use square brackets
 2. Wrap addresses in double quotes
@@ -135,40 +135,40 @@ example, you will need to fill in `20000000000000000000000`.
 :::note
 
 The total amount will also include any [broker fee](/concepts/protocol/fees). While fees are kept at zero in Sablier UI,
-the total amount should be equal to the streamed amount plus the broker amount.
+the total amount should be equal to the streamed amount plus the broker fee amount.
 
 :::
 
 #### Asset
 
-The asset is the contract address of the ERC-20 token being streamed. You can get this from the
+The asset is the contract address of the ERC-20 token being streamed. You can obtain this from the
 [Sablier Interface](#step-1-go-to-token-page) or from any other
-[etherscan explorer](https://etherscan.io/token/0x68194a729C2450ad26072b3D33ADaCbcef39D574). Please double check the
-token address is correct before continuing the process.
+[Etherscan explorer](https://etherscan.io/token/0x68194a729C2450ad26072b3D33ADaCbcef39D574). Please double check the
+token address is correct before continuing.
 
 #### Cancelable
 
 This field indicates whether or not you want the stream to be cancelable. This can be set to either `true` or `false`.
 If set to true, the stream will be cancelable.
 
-You can make a cancelable stream non-cancelable after the stream has been created, but if its a non-cancelable stream,
+You can make a cancelable stream non-cancelable after the stream has been created, but if it's a non-cancelable stream,
 it cannot become cancelable post-creation.
 
 #### Transferable
 
-The `transferable` field indicates whether the NFT owner is allowed to transfer te NFT or not. THis can be set either to
+The `transferable` field indicates whether the NFT owner is allowed to transfer te NFT or not. This can be set to either
 `true` or `false`.
 
 This flag cannot be changed later.
 
 #### Timestamps
 
-The `timestamps` field contains the start time, cliff time and the end time of the stream, in this order. The values
+The `timestamps` field contains the start time, cliff time, and the end time of the stream, in this order. The values
 should be UNIX timestamps (represented in **seconds**). You can find a Unix timestamp converter
 [here](https://www.unixtimestamp.com/).
 
-If you prefer to not have a cliff, you can simply put the cliff time as 0 like in this example. If, however, you want to
-have a cliff, fill in the timestamp for the the cliff there.
+If you prefer to not have a cliff, you can simply set the cliff time to 0, like in this example. If, however, you want
+to have a cliff, fill in the timestamp for the the cliff there.
 
 | Total Duration | Cliff Duration | [Start, Cliff, End]                    |
 | :------------- | :------------- | -------------------------------------- |
@@ -226,9 +226,9 @@ Once found, you will see the stream ID between the two brackets. Note that strea
 
 :::info
 
-Anyone can withdraw on your behalf and they also pay the gas fee. However, the withdraw will only be allowed to your
-address. But if you are the recipient, you can choose to withdraw to any other address. You can read more about this
-advanced feature [here](/contracts/v2/reference/access-control#overview).
+Anyone can withdraw on your behalf if they pay the gas fee. When a third party withdraws, the recipient is the only
+allowed withdrawal address. However, if you withdraw yourself, you can choose to withdraw to any other address. You can
+read more about this advanced feature [here](/contracts/v2/reference/access-control#overview).
 
 :::
 
@@ -294,9 +294,9 @@ Before interacting directly with the Sablier V2 [contracts](/contracts/v2/deploy
 
 ### Step 1: Go to token page
 
-Pick a token you want to stream, e.g. [DAI](https://etherscan.io/token/0x68194a729C2450ad26072b3D33ADaCbcef39D574).
-Using its address, visit the token page on Etherscan (in this example, we're using Ethereum):
-`https://etherscan.io/token/<INSERT-TOKEN-ADDRESS>`
+Pick a token you want to stream, e.g.
+[DAI](https://sepolia.etherscan.io/token/0x68194a729C2450ad26072b3D33ADaCbcef39D574). Using its address, visit the token
+page on Etherscan (in this example, we're using Sepolia): `https://sepolia.etherscan.io/token/<INSERT-TOKEN-ADDRESS>`
 
 :::info
 
@@ -312,8 +312,8 @@ dialog or find an existing stream with that token and click on the icon inside t
 Next, look for the "Contract" tab and the "Write Contract" sub-tab.
 
 You'll see a list of methods that can be called for that token. Pick the `approve` method (e.g.
-[DAI's approve](https://etherscan.io/token/0x68194a729C2450ad26072b3D33ADaCbcef39D574#writeContract#F1)). Most ERC-20
-approve methods will contain two fields:
+[DAI's approve](https://sepolia.etherscan.io/token/0x68194a729C2450ad26072b3D33ADaCbcef39D574#writeContract#F1)). Most
+ERC-20 approve methods will contain two fields:
 
 1. The spender
 2. The amount
@@ -322,7 +322,7 @@ approve methods will contain two fields:
 
 Some tokens like [USDC](https://etherscan.io/token/0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48?a=#writeProxyContract) or
 [AAVE](https://etherscan.io/token/0x7fc66500c84a76ad7e9c93437bfc5ac33e2ddae9?a=#writeProxyContract) are upgradeable and
-use a proxy pattern. For these you have to search for the "Write as Proxy" tab.
+use a proxy pattern. For these, you have to use the "Write as Proxy" tab.
 
 :::
 

@@ -10,7 +10,7 @@ Welcome to the Sablier V2 Protocol documentation.
 
 This section contains detailed guides and technical references for the Sablier V2 Protocol, a suite of smart contracts
 running autonomously in the Ethereum ecosystem. These documents offer insight into the operational nuances of the
-contracts, providing a valuable resource for building on-chain integrations.
+contracts, providing a valuable resource for building onchain integrations.
 
 # Guides
 

@@ -1,7 +1,7 @@
 ---
-id: "batch-dynamic-streams"
+id: "batch-lockup-dynamic"
 sidebar_position: 2
-title: "Batch Dynamic Streams"
+title: "Batch Lockup Dynamic"
 ---
 
 import AdmonitionSimpleCode from "@site/docs/snippets/AdmonitionSimpleCode.mdx";
@@ -109,8 +109,8 @@ stream1.sender = address(0xABCD); // The sender to stream the assets, he will be
 stream1.recipient = address(0xBEEF); // The recipient of the streamed assets
 stream1.totalAmount = uint128(perStreamAmount); // The total amount of each stream, inclusive of all fees
 stream1.cancelable = false; // Whether the stream will be cancelable or not
-stream0.transferable = false; // Whether the recipient can transfer the NFT or not
-stream0.startTime = uint40(block.timestamp); // Set the start time to block timestamp
+stream1.transferable = false; // Whether the recipient can transfer the NFT or not
+stream1.startTime = uint40(block.timestamp); // Set the start time to block timestamp
 // Declare some dummy segments
 stream1.segments = new LockupDynamic.Segment[](2);
 stream1.segments[0] = LockupDynamic.Segment({

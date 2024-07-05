@@ -43,7 +43,7 @@ contract StreamManagement {
 
 Just like in the create stream guides, the next step requires you to head over to the
 [Deployment Addresses](/contracts/v2/deployments) page and copy the address of the Sablier contract you intend to use
-(either Lockup Linear, Lockup Dynamic or Lockup Tranched). Then, you can deploy the stream management contract:
+(either Lockup Linear, Lockup Dynamic, or Lockup Tranched). Then, you can deploy the stream management contract:
 
 ```solidity
 constructor(ISablierV2Lockup sablier_) {

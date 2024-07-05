@@ -1,10 +1,10 @@
 ---
 id: "deployments"
-title: V1 Overview
+title: Overview
 sidebar_position: 1
 ---
 
-# Overview
+# V1 Overview
 
 Depending on what [EVM](https://ethereum.org/en/developers/docs/evm/) chain you want to use Sablier on, you will need to
 use a different contract address. Sablier V1 runs on top of a singleton contract that manages all streams.

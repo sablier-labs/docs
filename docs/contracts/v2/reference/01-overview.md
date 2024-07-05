@@ -7,8 +7,8 @@ title: "Overview"
 Sablier V2 is a binary smart contract system comprised of many contracts, libraries, and types, which together make Core
 and Periphery.
 
-- **Core** provides the fundamental streaming logic of the Sablier V2 Protocol. It contains LockupLinear, LockupDynamic
-  and LockupTranched, which are the primary contracts that users will interact with.
+- **Core** provides the fundamental token distribution logic of the Sablier V2 Protocol. It contains LockupLinear,
+  LockupDynamic, and LockupTranched, the primary contracts that users will interact with.
 - **Periphery** contracts interact with one or more Core contracts but are not part of the Core. They are an abstraction
   layer that enhance the security and the extensibility of the protocol without introducing upgradeability. Periphery
   plays a key role in creating Airstream campaigns.
@@ -23,7 +23,7 @@ The design of the Sablier smart contracts draws inspiration from the architectur
 
 > [**Core Source Code**](https://github.com/sablier-labs/v2-core/tree/v1.2.0)
 
-Core consists of the streaming contracts (LockupLinear, LockupDynamic and LockupTranched), and an NFT descriptor.
+Core consists of the distribution contracts (LockupLinear, LockupDynamic and LockupTranched), and an NFT descriptor.
 
 ### LockupLinear
 

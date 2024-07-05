@@ -5,7 +5,7 @@ title: "Access Control"
 ---
 
 With the exception of the [admin functions](/docs/concepts/05-governance.md), all functionalities in Sablier can only be
-triggered by the users. Sablier admin has no control over any stream or any part of the protocol.
+triggered by users. The Protocol Admin has no control over any stream or any part of the protocol.
 
 This article will provide a comprehensive overview of the actions that can be performed on streams once they are
 created, as well as the corresponding user permissions for each action.
@@ -13,7 +13,7 @@ created, as well as the corresponding user permissions for each action.
 :::note
 
 Every stream has a sender and a recipient. Recipients can approve third parties to take actions on their behalf. An
-unknown caller is any address outside of sender and recipient.
+'unknown' caller is any address outside of sender and recipient.
 
 :::
 
@@ -98,45 +98,6 @@ flowchart LR;
     operator -- transfer -->nft;
 ```
 
-## Withdraw to recipient
-
-The assets in a stream can be withdrawn to the recipient by anyone including sender, recipient or an approved third
-party.
-
-```mermaid
-flowchart LR;
-    unknown((Unknown caller));
-    recipient((Recipient));
-    operator((Operator));
-    sender((Sender));
-    stream[(Stream)];
-    toAddress[Recipient address];
-
-    unknown -- withdraw ----> stream;
-    sender -- withdraw --->stream;
-    recipient -- withdraw -->stream;
-    recipient -- approve -->operator;
-    operator -- withdraw -->stream;
-    stream -- tokens --> toAddress;
-```
-
-## Withdraw to any address
-
-The assets in a stream can be withdrawn to any address only by the recipient and an approved third party.
-
-```mermaid
-flowchart LR;
-    recipient((Recipient));
-    operator((Operator));
-    stream[(Stream)];
-    toAddress[Any address];
-
-    recipient -- withdraw -->stream;
-    recipient -- approve -->operator;
-    operator -- withdraw -->stream;
-    stream -- tokens --> toAddress;
-```
-
 ## Withdraw Multiple
 
 Anybody can withdraw assets from multiple streams to the recipients of each stream.
@@ -156,4 +117,43 @@ flowchart LR;
     recipient -- approve -->operator;
     operator -- withdrawMultiple -->streams;
     streams -- tokens --> toAddress;
+```
+
+## Withdraw to Any Address
+
+The assets in a stream can be withdrawn to any address only by the recipient or an approved third party.
+
+```mermaid
+flowchart LR;
+    recipient((Recipient));
+    operator((Operator));
+    stream[(Stream)];
+    toAddress[Any address];
+
+    recipient -- withdraw -->stream;
+    recipient -- approve -->operator;
+    operator -- withdraw -->stream;
+    stream -- tokens --> toAddress;
+```
+
+## Withdraw to Recipient
+
+The assets in a stream can be withdrawn to the recipient by anyone including the sender, recipient, or an approved third
+party.
+
+```mermaid
+flowchart LR;
+    unknown((Unknown caller));
+    recipient((Recipient));
+    operator((Operator));
+    sender((Sender));
+    stream[(Stream)];
+    toAddress[Recipient address];
+
+    unknown -- withdraw ----> stream;
+    sender -- withdraw --->stream;
+    recipient -- withdraw -->stream;
+    recipient -- approve -->operator;
+    operator -- withdraw -->stream;
+    stream -- tokens --> toAddress;
 ```

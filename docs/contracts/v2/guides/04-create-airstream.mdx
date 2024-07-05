@@ -9,15 +9,15 @@ import ConstantsComment from "@site/docs/snippets/ConstantsComment.mdx";
 
 # Create an Airstream
 
-In this guide, we will show you how to programmatically create an airstream via the Sablier's
-[Merkle Factory](http://localhost:3000/contracts/v2/reference/periphery/contract.SablierV2MerkleLockupFactory) contract.
+In this guide, we will show you how to programmatically create an airstream via the
+[Merkle Factory](http://localhost:3000/contracts/v2/reference/periphery/contract.SablierV2MerkleLockupFactory).
 
 This guide assumes that you have already gone through the
 [Protocol Concepts](http://localhost:3000/concepts/protocol/airstreams) section.
 
 :::note
 
-This guide interacts with the Periphery contract.
+This guide interacts with the Periphery contracts.
 
 :::
 
@@ -61,16 +61,16 @@ contract AirstreamCreator {
 
 There are two Airstream create functions available through factory:
 
-- [`createMerkleLL`](/contracts/v2/reference/periphery/contract.SablierV2MerkleLockupFactory#createmerklell): This uses
-  Lockup Linear streams to create Airstream campaign.
-- [`createMerkleLT`](/contracts/v2/reference/periphery/contract.SablierV2MerkleLockupFactory#createmerklelt): This uses
-  Lockup Tranched streams to create Airstream campaign.
+- [`createMerkleLL`](/contracts/v2/reference/periphery/contract.SablierV2MerkleLockupFactory#createmerklell): uses
+  Lockup Linear streams.
+- [`createMerkleLT`](/contracts/v2/reference/periphery/contract.SablierV2MerkleLockupFactory#createmerklelt): uses
+  Lockup Tranched streams.
 
 Which one you choose depends upon your use case. In this guide, we will use `createMerkleLL`.
 
 ## Function definition
 
-Define a function called `createLLAirstream` that and returns the address of newly deployed Merkle Lockup contract.
+Define a function called `createLLAirstream` that returns the address of newly deployed Merkle Lockup contract.
 
 ```solidity
 function createLLAirstream() public returns (ISablierV2MerkleLL merkleLL) {
@@ -138,9 +138,9 @@ baseParams.ipfsCID = "QmT5NvUtoM5nWFfrQdVrFtvGfKFmG7AHE8P34isapyhCxX";
 
 ### Merkle Root
 
-Airstream campaign uses Merkle tree data structure to store airdrop data on-chain. As a result, you only pay the gas fee
-to create the contract and storing the Merkle root on the contract. Airdrop recipients can then call the contract on
-their own to claim their airdrop.
+Airstreams use a Merkle tree data structure to store the airdrop data onchain. As a result, you only pay the gas fee to
+create the contract and store the Merkle root onchain. Airdrop recipients can then call the contract on their own to
+claim their airdrop.
 
 If you want to create the Merkle root programatically, you can follow [our guide on Merkle API](/api/merkle-api/intro).
 
@@ -158,17 +158,18 @@ baseParams.name = "My First Campaign";
 
 ### Transferable
 
-Boolean that indicates whether the stream will be transferable or not.
+Boolean that indicates whether the stream will be transferable or not. This is the stream that users obtain when they
+claim their airstream.
 
 ```solidity
 baseParams.transferable = true;
 ```
 
-Now we have the `baseParams` ready, it's time to setup rest of the input parameters.
+Now that we have the `baseParams` ready, it's time to setup rest of the input parameters.
 
 ### Stream Duration
 
-For Lockup Linear, this is the struct containing (i) cliff period duration and (ii) total stream duration, both in
+For Lockup Linear, this is the struct containing (i) a cliff period duration and (ii) a total stream duration, both in
 seconds.
 
 ```solidity
@@ -180,13 +181,13 @@ streamDurations = LockupLinear.Durations({
 ```
 
 The stream duration applies only after the Airstream has been claimed by the recipient. Therefore, users claiming
-airstreams at different times will have their assets vested at different intervals. For example, user B claims 2 days
+airstreams at different times will have their assets vested at different intervals. For example, if user B claims 2 days
 after user A, then the stream for user B will end 2 days after the stream for user A ends.
 
 ### Aggregate Amount
 
 This is the total amount of assets you want to airdrop to your users, denoted in units of the asset's decimals. Let say
-you want to airdrop 100M tokens of DAI, then it would be $100M*10^{18}$.
+you want to airdrop 100M tokens of DAI. Then, the aggregate amount would be $100M*10^{18}$.
 
 ```solidity
 uint256 aggregateAmount = 100000000e18;
@@ -194,7 +195,7 @@ uint256 aggregateAmount = 100000000e18;
 
 ### Recipient Count
 
-The total number of addresses you want to airdrop your tokens too.
+The total number of recipient addresses.
 
 ```solidity
 uint256 recipientCount = 10000;
@@ -203,7 +204,7 @@ uint256 recipientCount = 10000;
 ## Invoke the create function
 
 With all parameters set, we can now call the `createMerkleLL` function, and assign the address of the newly created
-merkle lockkup campaign to a variable:
+campaign to a variable:
 
 ```solidity
 merkleLL = FACTORY.createMerkleLL(baseParams, LOCKUP_LINEAR, streamDurations, aggregateAmount, recipientCount);
@@ -212,7 +213,7 @@ merkleLL = FACTORY.createMerkleLL(baseParams, LOCKUP_LINEAR, streamDurations, ag
 ## The complete Airstream creator contract
 
 Below you can see the complete functioning code: a contract that creates an airstream campaign with Lockup Linear
-stream. You can access the code on GitHub through
+streams. You can access the code on GitHub through
 [this link](https://github.com/sablier-labs/examples/blob/main/v2/periphery/AirstreamCreator.sol).
 
 ```solidity reference title="Airstream Creator"

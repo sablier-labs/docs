@@ -9,9 +9,9 @@ design and testing of the protocol to guarantee its safety and reliability.
 
 ## Audits
 
-The codebase has undergone rigorous audits by leading security experts from [Cantina](https://cantina.xyz/) and
-[Codehawk](https://codehawks.cyfrin.io/), as well as independent auditors. For a comprehensive list of all audits
-conducted, please click [here](https://github.com/sablier-labs/audits).
+The codebase has undergone rigorous audits by leading security experts from [Cantina](https://cantina.xyz/),
+[CodeHawks](https://codehawks.cyfrin.io/), and many independent auditors. For a comprehensive list of all audits
+conducted, check out [this link](https://github.com/sablier-labs/audits).
 
 ## Bug Bounty
 

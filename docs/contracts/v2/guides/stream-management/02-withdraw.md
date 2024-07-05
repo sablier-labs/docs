@@ -27,7 +27,7 @@ There are four withdrawal functions:
 2. [`withdrawMax`](/contracts/v2/reference/core/abstracts/abstract.SablierV2Lockup#withdrawmax): withdraws the maximum
    withdrawable amount of assets.
 3. [`withdrawMaxAndTransfer`](/contracts/v2/reference/core/abstracts/abstract.SablierV2Lockup#withdrawmaxandtransfer):
-   withdraws the maximum withdrawable amount and transfer the NFT.
+   withdraws the maximum withdrawable amount and transfers the NFT.
 4. [`withdrawMultiple`](/contracts/v2/reference/core/abstracts/abstract.SablierV2Lockup#withdrawmultiple): withdraws
    specific amounts of assets from multiple streams at once.
 

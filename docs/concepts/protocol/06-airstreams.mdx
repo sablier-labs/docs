@@ -60,8 +60,8 @@ verifies the integrity of large sets of data.
 :::info
 
 The contracts that implements Airstream Campaigns are called `MerkleLL` and `MerkleLT`. For those interested in the
-technical part, [click here](/contracts/v2/reference/periphery/contract.SablierV2MerkleLL) to learn about Merkle Lockup
-Linear.
+technical part, [click here](/contracts/v2/reference/periphery/contract.SablierV2MerkleLL) to learn about MerkleKv
+Lockup Linear.
 
 :::
 
@@ -71,37 +71,37 @@ in to prove that they are eligible, and create a stream if they are. That's all 
 Additionally, you don't have to immediately fund the Airstream contract. You can just create the contract and at a later
 date fund it with the airdropped tokens.
 
-**This has four great implications:**
+**This has three great implications:**
 
-- **Recipients pay for the gas fees themselves to create the stream**, when they claim (the claim action creates the
-  stream). Creating a campaign with thousands of recipients would be incredibly costly if you had to pay for all the gas
-  fees.
-- **You don't have to fund the campaign from the get go**. You can deploy the campaign contract now, and fund it at a
-  later date when you feel comfortable doing so. There is no rush.
-- **You keep full control over unclaimed Airstreams**. If a recipient doesn't claim their Airstream, it's not created,
-  and you remain in full control over their allocation.
-  - This applies only if the campaign has an expiration date. If there is no expiration date, the recipients can claim
-    their Airstreams at any time in the future.
-- **You can retrieve your funds in case of misconfiguration**. There is a grace period during which you can retrieve
-  unclaimed funds. The grace period ends 7 days after the first claim is made. This is very useful in case where you
-  have incorrectly configured the Airstream campaign or deposited more tokens than required.
+1. **Recipients pay for the gas fees themselves to create the stream**, when they claim (the claim action creates the
+   stream). Creating a campaign with thousands of recipients would be incredibly costly if you had to pay for all the
+   gas fees.
+2. **You keep full control over unclaimed Airstreams**. If a recipient doesn't claim their Airstream, it's not created,
+   and you remain in full control over their allocation.
 
-Once the Airstream campaign is launched, recipients who have claimed can withdraw the tokens which have already been
-streamed at any time using our interface at [app.sablier.com](https://app.sablier.com).
+   - This applies only if the campaign has an expiration date. If there is no expiration date, the recipients can claim
+     their Airstreams at any time in the future.
+
+3. **You can retrieve your funds in case of misconfiguration**. There is a grace period during which you can retrieve
+   unclaimed funds. The grace period ends 7 days after the first claim is made. This is useful in case where you have
+   incorrectly configured the Airstream campaign or deposited more tokens than required.
+
+Once the Airstream campaign is launched, recipients can claim their airstream and withdraw the underlying tokens that
+have already been streamed at any time using the Sablier Interface at [app.sablier.com](https://app.sablier.com).
 
 ## Types of Airstreams
 
-There are two types of Airstream campaigns:
+Sablier supports two types of Airstream campaigns:
 
 1. **MerkleLL**: This uses Lockup Linear streams to create Airstream campaign. If you want your airdrop distribution to
    be linear, this is the one you should be using.
 
-2. **MerkleLT**: Similar to traditional vesting, you can use MerkleLT to create an Airstream campaign that releases
-   tokens in regular intervals. This is achieved using Lockup Tranched contract. You can set your release schedule to be
-   weekly, monthly or quarterly depending on your requirements.
+2. **MerkleLT**: Similar to traditional vesting, this enables Airstream campaigns that release tokens in regular
+   intervals. This is achieved using the Lockup Tranched contract. You can set your release schedule to be weekly,
+   monthly, or quarterly.
 
 ## Diagram
 
 Here's a diagram showing how an Airstream campaign works with Lockup Linear streams.
 
-![Diagram](/img/diagram-airstream-campaign.png)
+![Airstream Diagram](/img/diagram-airstream-campaign.png)

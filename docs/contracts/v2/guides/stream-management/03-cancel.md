@@ -18,8 +18,8 @@ streams.
 :::
 
 Canceling streams involves stopping the flow of assets before the stream's end time and refunding the remaining funds to
-the sender. However, the portion that has already been streamed is <ins>NOT</ins> transferred - the recipient will need
-to withdraw it.
+the sender. However, the portion that has already been streamed is <ins>NOT</ins> automatically transferred - the
+recipient will need to withdraw it.
 
 There are two functions that can be used to cancel streams:
 

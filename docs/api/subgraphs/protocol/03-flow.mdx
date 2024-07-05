@@ -9,7 +9,7 @@ title: "Data flow"
 In order to start indexing all whitelisted Lockup contracts we need a genesis event. With Sablier V2, there is no
 factory pattern so we couldn't rely on a
 [data source](https://thegraph.com/docs/en/developing/creating-a-subgraph/#data-source-templates) contract. The next
-best things for a "genesis" point was to rely on the first event triggered by the earliest registered on-chain contract
+best things for a "genesis" point was to rely on the first event triggered by the earliest registered onchain contract
 
 To reduce the number of dependencies required to kickstart a subgraph, we chose to rely on this approach instead of
 implementing a separate registry contract. Therefore, when setting up a deployment, you'll need to follow a few

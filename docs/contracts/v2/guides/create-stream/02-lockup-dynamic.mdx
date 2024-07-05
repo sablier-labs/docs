@@ -138,12 +138,12 @@ params.startTime = uint40(block.timestamp + 100 seconds);
 
 ### Segments
 
-Segments are what the protocol uses to compose the custom streaming curve of a Lockup Dynamic stream. For a full
+Segments are what the protocol uses to compose the custom distribution curve of a Lockup Dynamic stream. For a full
 exposition of segments, see the [Segments](/concepts/protocol/segments) guide.
 
-The term "segment" refers to the splitting of the stream into several distinct segments, with each segment characterized
-by a specific amount, exponent, and timestamp. These segments are supplied to the function in the form of an array
-containing [`LockupDynamic.Segment`](/contracts/v2/reference/core/types/library.LockupDynamic#segment) structs.
+The term "segment" refers to the splitting of the stream into separate partitions, with each segment characterized by a
+specific amount, exponent, and timestamp. These segments are supplied to the function in the form of an array containing
+[`LockupDynamic.Segment`](/contracts/v2/reference/core/types/library.LockupDynamic#segment) structs.
 
 Let's define two dummy segments:
 

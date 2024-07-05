@@ -6,7 +6,7 @@ title: "Glossary"
 
 ## Allow List
 
-A list of smart contract recipients that are permitted to be called by Sablier protocol upon withdraw and cancel.
+A list of smart contract recipients that are authorized to be run by the Sablier protocol upon withdraw and cancel.
 
 ## Asset
 
@@ -126,7 +126,7 @@ transactions.
 
 ## Segment
 
-A data object that encapsulates the following three properties:
+A data object that encapsulates these three properties:
 
 1. Amount
 2. Exponent
@@ -162,7 +162,7 @@ By-the-second payments.
 
 ## Tranche
 
-A data object that encapsulates the following two properties:
+A data object that encapsulates these two properties:
 
 1. Amount
 2. Timestamp

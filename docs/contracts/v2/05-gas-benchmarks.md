@@ -33,5 +33,5 @@ https://github.com/sablier-labs/v2-core/blob/main/benchmark/results/SablierV2Loc
 ### Batch Lockup
 
 ```md reference title=""
-https://github.com/sablier-labs/v2-periphery/blob/maing/benchmark/results/SablierV2BatchLockup.md
+https://github.com/sablier-labs/v2-periphery/blob/main/benchmark/results/SablierV2BatchLockup.md
 ```
