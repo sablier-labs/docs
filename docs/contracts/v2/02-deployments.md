@@ -98,6 +98,24 @@ Or maybe you're looking for V1? [Click here](/contracts/v1/deployments).
 | SablierV2BatchLockup         | [0xc1c548F980669615772dadcBfEBC29937c29481A](https://basescan.org/address/0xc1c548F980669615772dadcBfEBC29937c29481A) | [periphery-v1.2.0](https://github.com/sablier-labs/v2-deployments/tree/main/periphery/v1.2.0) |
 | SablierV2MerkleLockupFactory | [0x58A51E5382318EeA6065BB7721eecdF4331c0B90](https://basescan.org/address/0x58A51E5382318EeA6065BB7721eecdF4331c0B90) | [periphery-v1.2.0](https://github.com/sablier-labs/v2-deployments/tree/main/periphery/v1.2.0) |
 
+## Blast
+
+### Core
+
+| Contract                | Address                                                                                                               | Deployment                                                                          |
+| :---------------------- | :-------------------------------------------------------------------------------------------------------------------- | :---------------------------------------------------------------------------------- |
+| SablierV2LockupLinear   | [0x9b1468d29b4A5869f00c92517c57f8656E928B93](https://blastscan.io/address/0x9b1468d29b4A5869f00c92517c57f8656E928B93) | [core-v1.2.0](https://github.com/sablier-labs/v2-deployments/tree/main/core/v1.2.0) |
+| SablierV2LockupDynamic  | [0xA705DE617673e2Fe63a4Ea0E58c26897601D32A5](https://blastscan.io/address/0xA705DE617673e2Fe63a4Ea0E58c26897601D32A5) | [core-v1.2.0](https://github.com/sablier-labs/v2-deployments/tree/main/core/v1.2.0) |
+| SablierV2LockupTranched | [0x91FB72e5297e2728c10FDe73BdE74A4888A68570](https://blastscan.io/address/0x91FB72e5297e2728c10FDe73BdE74A4888A68570) | [core-v1.2.0](https://github.com/sablier-labs/v2-deployments/tree/main/core/v1.2.0) |
+| SablierV2NFTDescriptor  | [0x5f111b49f8f8bdb4A6001701E0D330fF52D6B370](https://blastscan.io/address/0x5f111b49f8f8bdb4A6001701E0D330fF52D6B370) | [core-v1.2.0](https://github.com/sablier-labs/v2-deployments/tree/main/core/v1.2.0) |
+
+### Periphery
+
+| Contract                     | Address                                                                                                               | Deployment                                                                                    |
+| :--------------------------- | :-------------------------------------------------------------------------------------------------------------------- | :-------------------------------------------------------------------------------------------- |
+| SablierV2BatchLockup         | [0xdc988d7AD6F186ea4a236f3E61A45a7851edF84E](https://blastscan.io/address/0xdc988d7AD6F186ea4a236f3E61A45a7851edF84E) | [periphery-v1.2.0](https://github.com/sablier-labs/v2-deployments/tree/main/periphery/v1.2.0) |
+| SablierV2MerkleLockupFactory | [0x3aBCDDa756d069Cf3c7a17410602343966EAFf27](https://blastscan.io/address/0x3aBCDDa756d069Cf3c7a17410602343966EAFf27) | [periphery-v1.2.0](https://github.com/sablier-labs/v2-deployments/tree/main/periphery/v1.2.0) |
+
 ## BNB Smart Chain
 
 ### Core
@@ -133,6 +151,24 @@ Or maybe you're looking for V1? [Click here](/contracts/v1/deployments).
 | :--------------------------- | :--------------------------------------------------------------------------------------------------------------------- | :-------------------------------------------------------------------------------------------- |
 | SablierV2BatchLockup         | [0x0F324E5CB01ac98b2883c8ac4231aCA7EfD3e750](https://gnosisscan.io/address/0x0F324E5CB01ac98b2883c8ac4231aCA7EfD3e750) | [periphery-v1.2.0](https://github.com/sablier-labs/v2-deployments/tree/main/periphery/v1.2.0) |
 | SablierV2MerkleLockupFactory | [0x5f12318fc6cCa518A950e2Ee16063a6317C2a9Ef](https://gnosisscan.io/address/0x5f12318fc6cCa518A950e2Ee16063a6317C2a9Ef) | [periphery-v1.2.0](https://github.com/sablier-labs/v2-deployments/tree/main/periphery/v1.2.0) |
+
+## LightLink
+
+### Core
+
+| Contract                | Address                                                                                                                       | Deployment                                                                          |
+| :---------------------- | :---------------------------------------------------------------------------------------------------------------------------- | :---------------------------------------------------------------------------------- |
+| SablierV2LockupDynamic  | [0xAa05E418Fb7851C211351C65435F1b17cbFa88Bf](https://phoenix.lightlink.io/address/0xAa05E418Fb7851C211351C65435F1b17cbFa88Bf) | [core-v1.2.0](https://github.com/sablier-labs/v2-deployments/tree/main/core/v1.2.0) |
+| SablierV2LockupLinear   | [0x6329591464FA6721c8E1c1271e4c6C41531Aea6b](https://phoenix.lightlink.io/address/0x6329591464FA6721c8E1c1271e4c6C41531Aea6b) | [core-v1.2.0](https://github.com/sablier-labs/v2-deployments/tree/main/core/v1.2.0) |
+| SablierV2LockupTranched | [0x83403c6426E6D044bF3B84EC1C007Db211AaA140](https://phoenix.lightlink.io/address/0x83403c6426E6D044bF3B84EC1C007Db211AaA140) | [core-v1.2.0](https://github.com/sablier-labs/v2-deployments/tree/main/core/v1.2.0) |
+| SablierV2NFTDescriptor  | [0x5881ef3c0D3eB21b1b40E13b4a69c50754bc77C7](https://phoenix.lightlink.io/address/0x5881ef3c0D3eB21b1b40E13b4a69c50754bc77C7) | [core-v1.2.0](https://github.com/sablier-labs/v2-deployments/tree/main/core/v1.2.0) |
+
+### Periphery
+
+| Contract                     | Address                                                                                                                       | Deployment                                                                                    |
+| :--------------------------- | :---------------------------------------------------------------------------------------------------------------------------- | :-------------------------------------------------------------------------------------------- |
+| SablierV2BatchLockup         | [0x5C847244649BD74aB41f09C893aF792AD87D32aA](https://phoenix.lightlink.io/address/0x5C847244649BD74aB41f09C893aF792AD87D32aA) | [periphery-v1.2.0](https://github.com/sablier-labs/v2-deployments/tree/main/periphery/v1.2.0) |
+| SablierV2MerkleLockupFactory | [0x5f12318fc6cCa518A950e2Ee16063a6317C2a9Ef](https://phoenix.lightlink.io/address/0x5f12318fc6cCa518A950e2Ee16063a6317C2a9Ef) | [periphery-v1.2.0](https://github.com/sablier-labs/v2-deployments/tree/main/periphery/v1.2.0) |
 
 ## Optimism
 
@@ -188,6 +224,29 @@ Or maybe you're looking for V1? [Click here](/contracts/v1/deployments).
 | SablierV2BatchLockup         | [0x4B8BF9cD3274517609e7Fe905740fa151C9aa711](https://scrollscan.com/address/0x4B8BF9cD3274517609e7Fe905740fa151C9aa711) | [periphery-v1.2.0](https://github.com/sablier-labs/v2-deployments/tree/main/periphery/v1.2.0) |
 | SablierV2MerkleLockupFactory | [0x344afe8ad5dBA3d55870dc398e0F53B635B2ed0d](https://scrollscan.com/address/0x344afe8ad5dBA3d55870dc398e0F53B635B2ed0d) | [periphery-v1.2.0](https://github.com/sablier-labs/v2-deployments/tree/main/periphery/v1.2.0) |
 
+## zkSync Era
+
+### Core
+
+| Contract                | Address                                                                                                                     | Deployment                                                                          |
+| :---------------------- | :-------------------------------------------------------------------------------------------------------------------------- | :---------------------------------------------------------------------------------- |
+| SablierV2LockupDynamic  | [0xf03f4Bf48b108360bAf1597Fb8053Ebe0F5245dA](https://explorer.zksync.io/address/0xf03f4Bf48b108360bAf1597Fb8053Ebe0F5245dA) | [core-v1.2.0](https://github.com/sablier-labs/v2-deployments/tree/main/core/v1.2.0) |
+| SablierV2LockupLinear   | [0x8cB69b514E97a904743922e1adf3D1627deeeE8D](https://explorer.zksync.io/address/0x8cB69b514E97a904743922e1adf3D1627deeeE8D) | [core-v1.2.0](https://github.com/sablier-labs/v2-deployments/tree/main/core/v1.2.0) |
+| SablierV2LockupTranched | [0x1fB145A47Eb9b8bf565273e137356376197b3559](https://explorer.zksync.io/address/0x1fB145A47Eb9b8bf565273e137356376197b3559) | [core-v1.2.0](https://github.com/sablier-labs/v2-deployments/tree/main/core/v1.2.0) |
+| SablierV2NFTDescriptor  | [0x99BA0D464942e7166dEBb8BAaAF1192F8d4117eb](https://explorer.zksync.io/address/0x99BA0D464942e7166dEBb8BAaAF1192F8d4117eb) | [core-v1.2.0](https://github.com/sablier-labs/v2-deployments/tree/main/core/v1.2.0) |
+| NFTSVG                  | [0xdCAaF1fC014BCdB5568Dc5CA8c22de4BE8829dCd](https://explorer.zksync.io/address/0xdCAaF1fC014BCdB5568Dc5CA8c22de4BE8829dCd) | [core-v1.2.0](https://github.com/sablier-labs/v2-deployments/tree/main/core/v1.2.0) |
+| SVGElements             | [0x500b6f2624662b1e2E0a144ceF24117B39F09DA5](https://explorer.zksync.io/address/0x500b6f2624662b1e2E0a144ceF24117B39F09DA5) | [core-v1.2.0](https://github.com/sablier-labs/v2-deployments/tree/main/core/v1.2.0) |
+
+zkSync requires to deploy the libraries as well, please refer to
+[their docs](https://docs.zksync.io/build/developer-reference/ethereum-differences/libraries).
+
+### Periphery
+
+| Contract                     | Address                                                                                                                     | Deployment                                                                                    |
+| :--------------------------- | :-------------------------------------------------------------------------------------------------------------------------- | :-------------------------------------------------------------------------------------------- |
+| SablierV2BatchLockup         | [0xAE1A55205A0499d6BBb0Cf0f1210641957e9cb7e](https://explorer.zksync.io/address/0xAE1A55205A0499d6BBb0Cf0f1210641957e9cb7e) | [periphery-v1.2.0](https://github.com/sablier-labs/v2-deployments/tree/main/periphery/v1.2.0) |
+| SablierV2MerkleLockupFactory | [0x8a84fCF962163A7E98Bf0daFD918973c846fa5C8](https://explorer.zksync.io/address/0x8a84fCF962163A7E98Bf0daFD918973c846fa5C8) | [periphery-v1.2.0](https://github.com/sablier-labs/v2-deployments/tree/main/periphery/v1.2.0) |
+
 ## Sepolia
 
 ### Core
@@ -205,3 +264,26 @@ Or maybe you're looking for V1? [Click here](/contracts/v1/deployments).
 | :--------------------------- | :---------------------------------------------------------------------------------------------------------------------------- | :-------------------------------------------------------------------------------------------- |
 | SablierV2BatchLockup         | [0x04A9c14b7a000640419aD5515Db4eF4172C00E31](https://sepolia.etherscan.io/address/0x04A9c14b7a000640419aD5515Db4eF4172C00E31) | [periphery-v1.2.0](https://github.com/sablier-labs/v2-deployments/tree/main/periphery/v1.2.0) |
 | SablierV2MerkleLockupFactory | [0x56E9180A8d2C35c99F2F8a1A5Ab8aBe79E876E8c](https://sepolia.etherscan.io/address/0x56E9180A8d2C35c99F2F8a1A5Ab8aBe79E876E8c) | [periphery-v1.2.0](https://github.com/sablier-labs/v2-deployments/tree/main/periphery/v1.2.0) |
+
+## zkSync Sepolia
+
+### Core
+
+| Contract                | Address                                                                                                                             | Deployment                                                                          |
+| :---------------------- | :---------------------------------------------------------------------------------------------------------------------------------- | :---------------------------------------------------------------------------------- |
+| SablierV2LockupDynamic  | [0xc4311a5913953162111bF75530f7BB14ec24e014](https://sepolia.explorer.zksync.io/address/0xc4311a5913953162111bF75530f7BB14ec24e014) | [core-v1.2.0](https://github.com/sablier-labs/v2-deployments/tree/main/core/v1.2.0) |
+| SablierV2LockupLinear   | [0x43864C567b89FA5fEE8010f92d4473Bf19169BBA](https://sepolia.explorer.zksync.io/address/0x43864C567b89FA5fEE8010f92d4473Bf19169BBA) | [core-v1.2.0](https://github.com/sablier-labs/v2-deployments/tree/main/core/v1.2.0) |
+| SablierV2LockupTranched | [0xF6e869b73E20b812dcf0E850AA8822F74f67f670](https://sepolia.explorer.zksync.io/address/0xF6e869b73E20b812dcf0E850AA8822F74f67f670) | [core-v1.2.0](https://github.com/sablier-labs/v2-deployments/tree/main/core/v1.2.0) |
+| SablierV2NFTDescriptor  | [0x477DDC91a7e13CBaC01c06737abF96d50ECa7961](https://sepolia.explorer.zksync.io/address/0x477DDC91a7e13CBaC01c06737abF96d50ECa7961) | [core-v1.2.0](https://github.com/sablier-labs/v2-deployments/tree/main/core/v1.2.0) |
+| NFTSVG                  | [0x622e3bfA60486Fc7319cA370BfB81E713fd10c0f](https://sepolia.explorer.zksync.io/address/0x622e3bfA60486Fc7319cA370BfB81E713fd10c0f) | [core-v1.2.0](https://github.com/sablier-labs/v2-deployments/tree/main/core/v1.2.0) |
+| SVGElements             | [0x41602e7D355A15b76D43F84183831836eC498678](https://sepolia.explorer.zksync.io/address/0x41602e7D355A15b76D43F84183831836eC498678) | [core-v1.2.0](https://github.com/sablier-labs/v2-deployments/tree/main/core/v1.2.0) |
+
+zkSync requires to deploy the libraries as well, please refer to
+[their docs](https://docs.zksync.io/build/developer-reference/ethereum-differences/libraries).
+
+### Periphery
+
+| Contract                     | Address                                                                                                                             | Deployment                                                                                    |
+| :--------------------------- | :---------------------------------------------------------------------------------------------------------------------------------- | :-------------------------------------------------------------------------------------------- |
+| SablierV2BatchLockup         | [0x1D68417ff71855Eb0237Ff03a8FfF02Ef67e4AFb](https://sepolia.explorer.zksync.io/address/0x1D68417ff71855Eb0237Ff03a8FfF02Ef67e4AFb) | [periphery-v1.2.0](https://github.com/sablier-labs/v2-deployments/tree/main/periphery/v1.2.0) |
+| SablierV2MerkleLockupFactory | [0x2CEf8C06dDF7a1440Ad2561c53821e43adDbfA31](https://sepolia.explorer.zksync.io/address/0x2CEf8C06dDF7a1440Ad2561c53821e43adDbfA31) | [periphery-v1.2.0](https://github.com/sablier-labs/v2-deployments/tree/main/periphery/v1.2.0) |
