@@ -4,7 +4,7 @@ sidebar_position: 2
 
 # SablierV2LockupDynamic
 
-[Git Source](https://github.com/sablier-labs/v2-core/blob/a4bf69cf7024006b9a324eef433f20b74597eaaf/src/SablierV2LockupDynamic.sol)
+[Git Source](https://github.com/sablier-labs/v2-core/blob/36b49d3bf2a396d19083d28247e8e03d7a3a2ee1/src/SablierV2LockupDynamic.sol)
 
 **Inherits:**
 [ISablierV2LockupDynamic](/docs/contracts/v2/reference/core/interfaces/interface.ISablierV2LockupDynamic.md),
@@ -25,12 +25,13 @@ _This is initialized at construction time and cannot be changed later._
 uint256 public immutable override MAX_SEGMENT_COUNT;
 ```
 
-### \_streams
+### \_segments
 
-_Sablier V2 Lockup Dynamic streams mapped by unsigned integer ids._
+_Stream segments mapped by stream IDs. This complements the `_streams` mapping in
+[SablierV2Lockup](docs/contracts/v2/reference/core/abstracts/abstract.SablierV2Lockup.md)._
 
 ```solidity
-mapping(uint256 id => LockupDynamic.Stream stream) private _streams;
+mapping(uint256 id => LockupDynamic.Segment[] segments) internal _segments;
 ```
 
 ## Functions
@@ -42,12 +43,11 @@ _Emits a {TransferAdmin} event._
 ```solidity
 constructor(
     address initialAdmin,
-    ISablierV2Comptroller initialComptroller,
     ISablierV2NFTDescriptor initialNFTDescriptor,
     uint256 maxSegmentCount
 )
     ERC721("Sablier V2 Lockup Dynamic NFT", "SAB-V2-LOCKUP-DYN")
-    SablierV2Lockup(initialAdmin, initialComptroller, initialNFTDescriptor);
+    SablierV2Lockup(initialAdmin, initialNFTDescriptor);
 ```
 
 **Parameters**
@@ -55,110 +55,12 @@ constructor(
 | Name                   | Type                      | Description                                         |
 | ---------------------- | ------------------------- | --------------------------------------------------- |
 | `initialAdmin`         | `address`                 | The address of the initial contract admin.          |
-| `initialComptroller`   | `ISablierV2Comptroller`   | The address of the initial comptroller.             |
 | `initialNFTDescriptor` | `ISablierV2NFTDescriptor` | The address of the NFT descriptor contract.         |
 | `maxSegmentCount`      | `uint256`                 | The maximum number of segments allowed in a stream. |
 
-### getAsset
-
-Retrieves the address of the ERC-20 asset used for streaming.
-
-_Reverts if `streamId` references a null stream._
-
-```solidity
-function getAsset(uint256 streamId) external view override notNull(streamId) returns (IERC20 asset);
-```
-
-**Parameters**
-
-| Name       | Type      | Description                  |
-| ---------- | --------- | ---------------------------- |
-| `streamId` | `uint256` | The stream id for the query. |
-
-### getDepositedAmount
-
-Retrieves the amount deposited in the stream, denoted in units of the asset's decimals.
-
-_Reverts if `streamId` references a null stream._
-
-```solidity
-function getDepositedAmount(uint256 streamId)
-    external
-    view
-    override
-    notNull(streamId)
-    returns (uint128 depositedAmount);
-```
-
-**Parameters**
-
-| Name       | Type      | Description                  |
-| ---------- | --------- | ---------------------------- |
-| `streamId` | `uint256` | The stream id for the query. |
-
-### getEndTime
-
-Retrieves the stream's end time, which is a Unix timestamp.
-
-_Reverts if `streamId` references a null stream._
-
-```solidity
-function getEndTime(uint256 streamId) external view override notNull(streamId) returns (uint40 endTime);
-```
-
-**Parameters**
-
-| Name       | Type      | Description                  |
-| ---------- | --------- | ---------------------------- |
-| `streamId` | `uint256` | The stream id for the query. |
-
-### getRange
-
-Retrieves the stream's range, which is a struct containing (i) the stream's start time and (ii) end time, both as Unix
-timestamps.
-
-_Reverts if `streamId` references a null stream._
-
-```solidity
-function getRange(uint256 streamId)
-    external
-    view
-    override
-    notNull(streamId)
-    returns (LockupDynamic.Range memory range);
-```
-
-**Parameters**
-
-| Name       | Type      | Description                  |
-| ---------- | --------- | ---------------------------- |
-| `streamId` | `uint256` | The stream id for the query. |
-
-### getRefundedAmount
-
-Retrieves the amount refunded to the sender after a cancellation, denoted in units of the asset's decimals. This amount
-is always zero unless the stream was canceled.
-
-_Reverts if `streamId` references a null stream._
-
-```solidity
-function getRefundedAmount(uint256 streamId)
-    external
-    view
-    override
-    notNull(streamId)
-    returns (uint128 refundedAmount);
-```
-
-**Parameters**
-
-| Name       | Type      | Description                  |
-| ---------- | --------- | ---------------------------- |
-| `streamId` | `uint256` | The stream id for the query. |
-
 ### getSegments
 
-Retrieves the segments the protocol uses to compose the custom streaming curve.
+Retrieves the segments used to compose the dynamic distribution function.
 
 _Reverts if `streamId` references a null stream._
 
@@ -175,43 +77,11 @@ function getSegments(uint256 streamId)
 
 | Name       | Type      | Description                  |
 | ---------- | --------- | ---------------------------- |
-| `streamId` | `uint256` | The stream id for the query. |
-
-### getSender
-
-Retrieves the stream's sender.
-
-_Reverts if `streamId` references a null stream._
-
-```solidity
-function getSender(uint256 streamId) external view override notNull(streamId) returns (address sender);
-```
-
-**Parameters**
-
-| Name       | Type      | Description                  |
-| ---------- | --------- | ---------------------------- |
-| `streamId` | `uint256` | The stream id for the query. |
-
-### getStartTime
-
-Retrieves the stream's start time, which is a Unix timestamp.
-
-_Reverts if `streamId` references a null stream._
-
-```solidity
-function getStartTime(uint256 streamId) external view override notNull(streamId) returns (uint40 startTime);
-```
-
-**Parameters**
-
-| Name       | Type      | Description                  |
-| ---------- | --------- | ---------------------------- |
-| `streamId` | `uint256` | The stream id for the query. |
+| `streamId` | `uint256` | The stream ID for the query. |
 
 ### getStream
 
-Retrieves the stream entity.
+Retrieves the full stream details.
 
 _Reverts if `streamId` references a null stream._
 
@@ -221,204 +91,60 @@ function getStream(uint256 streamId)
     view
     override
     notNull(streamId)
-    returns (LockupDynamic.Stream memory stream);
+    returns (LockupDynamic.StreamLD memory stream);
 ```
 
 **Parameters**
 
 | Name       | Type      | Description                  |
 | ---------- | --------- | ---------------------------- |
-| `streamId` | `uint256` | The stream id for the query. |
+| `streamId` | `uint256` | The stream ID for the query. |
 
-### getWithdrawnAmount
+**Returns**
 
-Retrieves the amount withdrawn from the stream, denoted in units of the asset's decimals.
+| Name     | Type                     | Description                           |
+| -------- | ------------------------ | ------------------------------------- |
+| `stream` | `LockupDynamic.StreamLD` | See the documentation in {DataTypes}. |
+
+### getTimestamps
+
+Retrieves the stream's start and end timestamps.
 
 _Reverts if `streamId` references a null stream._
 
 ```solidity
-function getWithdrawnAmount(uint256 streamId)
+function getTimestamps(uint256 streamId)
     external
     view
     override
     notNull(streamId)
-    returns (uint128 withdrawnAmount);
+    returns (LockupDynamic.Timestamps memory timestamps);
 ```
 
 **Parameters**
 
 | Name       | Type      | Description                  |
 | ---------- | --------- | ---------------------------- |
-| `streamId` | `uint256` | The stream id for the query. |
+| `streamId` | `uint256` | The stream ID for the query. |
 
-### isCancelable
+**Returns**
 
-Retrieves a flag indicating whether the stream can be canceled. When the stream is cold, this flag is always `false`.
+| Name         | Type                       | Description                           |
+| ------------ | -------------------------- | ------------------------------------- |
+| `timestamps` | `LockupDynamic.Timestamps` | See the documentation in {DataTypes}. |
 
-_Reverts if `streamId` references a null stream._
-
-```solidity
-function isCancelable(uint256 streamId) external view override notNull(streamId) returns (bool result);
-```
-
-**Parameters**
-
-| Name       | Type      | Description                  |
-| ---------- | --------- | ---------------------------- |
-| `streamId` | `uint256` | The stream id for the query. |
-
-### isTransferable
-
-```solidity
-function isTransferable(uint256 streamId)
-    public
-    view
-    override(ISablierV2Lockup, SablierV2Lockup)
-    notNull(streamId)
-    returns (bool result);
-```
-
-### isDepleted
-
-Retrieves a flag indicating whether the stream is depleted.
-
-_Reverts if `streamId` references a null stream._
-
-```solidity
-function isDepleted(uint256 streamId)
-    public
-    view
-    override(ISablierV2Lockup, SablierV2Lockup)
-    notNull(streamId)
-    returns (bool result);
-```
-
-**Parameters**
-
-| Name       | Type      | Description                  |
-| ---------- | --------- | ---------------------------- |
-| `streamId` | `uint256` | The stream id for the query. |
-
-### isStream
-
-Retrieves a flag indicating whether the stream exists.
-
-_Does not revert if `streamId` references a null stream._
-
-```solidity
-function isStream(uint256 streamId) public view override(ISablierV2Lockup, SablierV2Lockup) returns (bool result);
-```
-
-**Parameters**
-
-| Name       | Type      | Description                  |
-| ---------- | --------- | ---------------------------- |
-| `streamId` | `uint256` | The stream id for the query. |
-
-### refundableAmountOf
-
-Calculates the amount that the sender would be refunded if the stream were canceled, denoted in units of the asset's
-decimals.
-
-_Reverts if `streamId` references a null stream._
-
-```solidity
-function refundableAmountOf(uint256 streamId)
-    external
-    view
-    override
-    notNull(streamId)
-    returns (uint128 refundableAmount);
-```
-
-**Parameters**
-
-| Name       | Type      | Description                  |
-| ---------- | --------- | ---------------------------- |
-| `streamId` | `uint256` | The stream id for the query. |
-
-### statusOf
-
-Retrieves the stream's status.
-
-```solidity
-function statusOf(uint256 streamId) external view override notNull(streamId) returns (Lockup.Status status);
-```
-
-**Parameters**
-
-| Name       | Type      | Description                  |
-| ---------- | --------- | ---------------------------- |
-| `streamId` | `uint256` | The stream id for the query. |
-
-### streamedAmountOf
-
-Calculates the amount streamed to the recipient, denoted in units of the asset's decimals. When the stream is warm, the
-streaming function is:
-
-$$
-f(x) = x^{exp} * csa + \Sigma(esa)
-$$
-
-Where:
-
-- $x$ is the elapsed time divided by the total time in the current segment.
-- $exp$ is the current segment exponent.
-- $csa$ is the current segment amount.
-- $\Sigma(esa)$ is the sum of all elapsed segments' amounts. Upon cancellation of the stream, the amount streamed is
-  calculated as the difference between the deposited amount and the refunded amount. Ultimately, when the stream becomes
-  depleted, the streamed amount is equivalent to the total amount withdrawn.
-
-_Reverts if `streamId` references a null stream._
-
-```solidity
-function streamedAmountOf(uint256 streamId)
-    public
-    view
-    override(ISablierV2Lockup, ISablierV2LockupDynamic)
-    notNull(streamId)
-    returns (uint128 streamedAmount);
-```
-
-**Parameters**
-
-| Name       | Type      | Description                  |
-| ---------- | --------- | ---------------------------- |
-| `streamId` | `uint256` | The stream id for the query. |
-
-### wasCanceled
-
-Retrieves a flag indicating whether the stream was canceled.
-
-_Reverts if `streamId` references a null stream._
-
-```solidity
-function wasCanceled(uint256 streamId)
-    public
-    view
-    override(ISablierV2Lockup, SablierV2Lockup)
-    notNull(streamId)
-    returns (bool result);
-```
-
-**Parameters**
-
-| Name       | Type      | Description                  |
-| ---------- | --------- | ---------------------------- |
-| `streamId` | `uint256` | The stream id for the query. |
-
-### createWithDeltas
+### createWithDurations
 
 Creates a stream by setting the start time to `block.timestamp`, and the end time to the sum of `block.timestamp` and
-all specified time deltas. The segment milestones are derived from these deltas. The stream is funded by `msg.sender`
-and is wrapped in an ERC-721 NFT.
+all specified time durations. The segment timestamps are derived from these durations. The stream is funded by
+`msg.sender` and is wrapped in an ERC-721 NFT.
 
 Emits a {Transfer} and {CreateLockupDynamicStream} event. Requirements:
 
-- All requirements in {createWithMilestones} must be met for the calculated parameters.
+- All requirements in {createWithTimestamps} must be met for the calculated parameters.
 
 ```solidity
-function createWithDeltas(LockupDynamic.CreateWithDeltas calldata params)
+function createWithDurations(LockupDynamic.CreateWithDurations calldata params)
     external
     override
     noDelegateCall
@@ -427,38 +153,38 @@ function createWithDeltas(LockupDynamic.CreateWithDeltas calldata params)
 
 **Parameters**
 
-| Name     | Type                             | Description                                                                        |
-| -------- | -------------------------------- | ---------------------------------------------------------------------------------- |
-| `params` | `LockupDynamic.CreateWithDeltas` | Struct encapsulating the function parameters, which are documented in {DataTypes}. |
+| Name     | Type                                | Description                                                                        |
+| -------- | ----------------------------------- | ---------------------------------------------------------------------------------- |
+| `params` | `LockupDynamic.CreateWithDurations` | Struct encapsulating the function parameters, which are documented in {DataTypes}. |
 
 **Returns**
 
 | Name       | Type      | Description                         |
 | ---------- | --------- | ----------------------------------- |
-| `streamId` | `uint256` | The id of the newly created stream. |
+| `streamId` | `uint256` | The ID of the newly created stream. |
 
-### createWithMilestones
+### createWithTimestamps
 
-Creates a stream with the provided segment milestones, implying the end time from the last milestone. The stream is
+Creates a stream with the provided segment timestamps, implying the end time from the last timestamp. The stream is
 funded by `msg.sender` and is wrapped in an ERC-721 NFT.
 
 Emits a {Transfer} and {CreateLockupDynamicStream} event. Notes:
 
-- As long as the segment milestones are arranged in ascending order, it is not an error for some of them to be in the
+- As long as the segment timestamps are arranged in ascending order, it is not an error for some of them to be in the
   past. Requirements:
 - Must not be delegate called.
 - `params.totalAmount` must be greater than zero.
-- If set, `params.broker.fee` must not be greater than `MAX_FEE`.
+- If set, `params.broker.fee` must not be greater than `MAX_BROKER_FEE`.
+- `params.startTime` must be greater than zero and less than the first segment's timestamp.
 - `params.segments` must have at least one segment, but not more than `MAX_SEGMENT_COUNT`.
-- `params.startTime` must be less than the first segment's milestone.
-- The segment milestones must be arranged in ascending order.
-- The last segment milestone (i.e. the stream's end time) must be in the future.
+- The segment timestamps must be arranged in ascending order.
+- The last segment timestamp (i.e. the stream's end time) must be in the future.
 - The sum of the segment amounts must equal the deposit amount.
 - `params.recipient` must not be the zero address.
 - `msg.sender` must have allowed this contract to spend at least `params.totalAmount` assets.
 
 ```solidity
-function createWithMilestones(LockupDynamic.CreateWithMilestones calldata params)
+function createWithTimestamps(LockupDynamic.CreateWithTimestamps calldata params)
     external
     override
     noDelegateCall
@@ -469,20 +195,33 @@ function createWithMilestones(LockupDynamic.CreateWithMilestones calldata params
 
 | Name     | Type                                 | Description                                                                        |
 | -------- | ------------------------------------ | ---------------------------------------------------------------------------------- |
-| `params` | `LockupDynamic.CreateWithMilestones` | Struct encapsulating the function parameters, which are documented in {DataTypes}. |
+| `params` | `LockupDynamic.CreateWithTimestamps` | Struct encapsulating the function parameters, which are documented in {DataTypes}. |
 
 **Returns**
 
 | Name       | Type      | Description                         |
 | ---------- | --------- | ----------------------------------- |
-| `streamId` | `uint256` | The id of the newly created stream. |
+| `streamId` | `uint256` | The ID of the newly created stream. |
 
 ### \_calculateStreamedAmount
 
-_Calculates the streamed amount without looking up the stream's status._
+Calculates the streamed amount of the stream without looking up the stream's status.
+
+The distribution function is:
+
+$$
+f(x) = x^{exp} * csa + \Sigma(esa)
+$$
+
+Where:
+
+- $x$ is the elapsed time divided by the total duration of the current segment.
+- $exp$ is the current segment exponent.
+- $csa$ is the current segment amount.
+- $\Sigma(esa)$ is the sum of all vested segments' amounts.
 
 ```solidity
-function _calculateStreamedAmount(uint256 streamId) internal view returns (uint128);
+function _calculateStreamedAmount(uint256 streamId) internal view override returns (uint128);
 ```
 
 ### \_calculateStreamedAmountForMultipleSegments
@@ -500,79 +239,17 @@ function _calculateStreamedAmountForMultipleSegments(uint256 streamId) internal 
 
 ### \_calculateStreamedAmountForOneSegment
 
-_Calculates the streamed amount for a a stream with one segment. Normalization to 18 decimals is not needed because
-there is no mix of amounts with different decimals._
+_Calculates the streamed amount for a stream with one segment. Normalization to 18 decimals is not needed because there
+is no mix of amounts with different decimals._
 
 ```solidity
 function _calculateStreamedAmountForOneSegment(uint256 streamId) internal view returns (uint128);
 ```
 
-### \_isCallerStreamSender
-
-Checks whether `msg.sender` is the stream's sender.
-
-```solidity
-function _isCallerStreamSender(uint256 streamId) internal view override returns (bool);
-```
-
-**Parameters**
-
-| Name       | Type      | Description                  |
-| ---------- | --------- | ---------------------------- |
-| `streamId` | `uint256` | The stream id for the query. |
-
-### \_statusOf
-
-_Retrieves the stream's status without performing a null check._
-
-```solidity
-function _statusOf(uint256 streamId) internal view override returns (Lockup.Status);
-```
-
-### \_streamedAmountOf
+### \_create
 
 _See the documentation for the user-facing functions that call this internal function._
 
 ```solidity
-function _streamedAmountOf(uint256 streamId) internal view returns (uint128);
-```
-
-### \_withdrawableAmountOf
-
-_See the documentation for the user-facing functions that call this internal function._
-
-```solidity
-function _withdrawableAmountOf(uint256 streamId) internal view override returns (uint128);
-```
-
-### \_cancel
-
-_See the documentation for the user-facing functions that call this internal function._
-
-```solidity
-function _cancel(uint256 streamId) internal override;
-```
-
-### \_createWithMilestones
-
-_See the documentation for the user-facing functions that call this internal function._
-
-```solidity
-function _createWithMilestones(LockupDynamic.CreateWithMilestones memory params) internal returns (uint256 streamId);
-```
-
-### \_renounce
-
-_See the documentation for the user-facing functions that call this internal function._
-
-```solidity
-function _renounce(uint256 streamId) internal override;
-```
-
-### \_withdraw
-
-_See the documentation for the user-facing functions that call this internal function._
-
-```solidity
-function _withdraw(uint256 streamId, address to, uint128 amount) internal override;
+function _create(LockupDynamic.CreateWithTimestamps memory params) internal returns (uint256 streamId);
 ```

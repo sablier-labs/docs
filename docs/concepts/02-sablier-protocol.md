@@ -15,12 +15,12 @@ under BUSL-1.1. Both protocol versions are open-source and can be accessed on Sa
 [GitHub page](https://github.com/sablier-labs). Detailed technical reference for each version can be found in the
 [Contracts](/contracts/v2/overview) section of this website.
 
-As long as the Ethereum blockchain continues to exist, every version of Sablier that gets deployed will operate
+As long as Ethereum and the other EVM chains continue to exist, every version of Sablier that gets deployed will operate
 continuously and without interruption, with a guarantee of 100% uptime.
 
 :::info
 
-Sablier is the first asset streaming protocol ever built in crypto, tracing its roots back to 2019.
+Sablier is the first token streaming protocol ever built, tracing its roots back to 2019.
 
 :::
 

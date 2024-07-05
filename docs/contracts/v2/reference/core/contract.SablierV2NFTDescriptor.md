@@ -4,7 +4,7 @@ sidebar_position: 3
 
 # SablierV2NFTDescriptor
 
-[Git Source](https://github.com/sablier-labs/v2-core/blob/a4bf69cf7024006b9a324eef433f20b74597eaaf/src/SablierV2NFTDescriptor.sol)
+[Git Source](https://github.com/sablier-labs/v2-core/blob/36b49d3bf2a396d19083d28247e8e03d7a3a2ee1/src/SablierV2NFTDescriptor.sol)
 
 **Inherits:**
 [ISablierV2NFTDescriptor](/docs/contracts/v2/reference/core/interfaces/interface.ISablierV2NFTDescriptor.md)
@@ -29,7 +29,7 @@ function tokenURI(IERC721Metadata sablier, uint256 streamId) external view overr
 | Name       | Type              | Description                                                    |
 | ---------- | ----------------- | -------------------------------------------------------------- |
 | `sablier`  | `IERC721Metadata` | The address of the Sablier contract the stream was created in. |
-| `streamId` | `uint256`         | The id of the stream for which to produce a description.       |
+| `streamId` | `uint256`         | The ID of the stream for which to produce a description.       |
 
 **Returns**
 
@@ -117,11 +117,12 @@ Generates a string with the NFT's JSON metadata description, which provides a hi
 
 ```solidity
 function generateDescription(
-    string memory streamingModel,
+    string memory sablierModel,
     string memory assetSymbol,
+    string memory sablierStringified,
+    string memory assetAddress,
     string memory streamId,
-    string memory sablierAddress,
-    string memory assetAddress
+    bool isTransferable
 )
     internal
     pure
@@ -135,12 +136,22 @@ Generates a string with the NFT's JSON metadata name, which is unique for each s
 _The `streamId` is equivalent to the ERC-721 `tokenId`._
 
 ```solidity
-function generateName(string memory streamingModel, string memory streamId) internal pure returns (string memory);
+function generateName(string memory sablierModel, string memory streamId) internal pure returns (string memory);
+```
+
+### isAllowedCharacter
+
+Checks whether the provided string contains only alphanumeric characters, spaces, and dashes.
+
+_Note that this returns true for empty strings._
+
+```solidity
+function isAllowedCharacter(string memory str) internal pure returns (bool);
 ```
 
 ### mapSymbol
 
-Maps ERC-721 symbols to human-readable streaming models.
+Maps ERC-721 symbols to human-readable model names.
 
 _Reverts if the symbol is unknown._
 
@@ -216,12 +227,15 @@ struct TokenURIVars {
     address asset;
     string assetSymbol;
     uint128 depositedAmount;
+    bool isTransferable;
     string json;
+    bytes returnData;
     ISablierV2Lockup sablier;
-    string sablierAddress;
+    string sablierModel;
+    string sablierStringified;
     string status;
     string svg;
     uint256 streamedPercentage;
-    string streamingModel;
+    bool success;
 }
 ```

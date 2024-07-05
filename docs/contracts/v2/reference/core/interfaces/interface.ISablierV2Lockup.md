@@ -1,17 +1,17 @@
 # ISablierV2Lockup
 
-[Git Source](https://github.com/sablier-labs/v2-core/blob/a4bf69cf7024006b9a324eef433f20b74597eaaf/src/interfaces/ISablierV2Lockup.sol)
+[Git Source](https://github.com/sablier-labs/v2-core/blob/36b49d3bf2a396d19083d28247e8e03d7a3a2ee1/src/interfaces/ISablierV2Lockup.sol)
 
-**Inherits:** [ISablierV2Base](/docs/contracts/v2/reference/core/interfaces/interface.ISablierV2Base.md),
+**Inherits:** [IAdminable](/docs/contracts/v2/reference/core/interfaces/interface.IAdminable.md), IERC4906,
 IERC721Metadata
 
-Common logic between all Sablier V2 Lockup streaming contracts.
+Common logic between all Sablier V2 Lockup contracts.
 
 ## Functions
 
 ### getAsset
 
-Retrieves the address of the ERC-20 asset used for streaming.
+Retrieves the address of the ERC-20 asset to be distributed.
 
 _Reverts if `streamId` references a null stream._
 
@@ -23,7 +23,7 @@ function getAsset(uint256 streamId) external view returns (IERC20 asset);
 
 | Name       | Type      | Description                  |
 | ---------- | --------- | ---------------------------- |
-| `streamId` | `uint256` | The stream id for the query. |
+| `streamId` | `uint256` | The stream ID for the query. |
 
 ### getDepositedAmount
 
@@ -39,7 +39,7 @@ function getDepositedAmount(uint256 streamId) external view returns (uint128 dep
 
 | Name       | Type      | Description                  |
 | ---------- | --------- | ---------------------------- |
-| `streamId` | `uint256` | The stream id for the query. |
+| `streamId` | `uint256` | The stream ID for the query. |
 
 ### getEndTime
 
@@ -55,7 +55,7 @@ function getEndTime(uint256 streamId) external view returns (uint40 endTime);
 
 | Name       | Type      | Description                  |
 | ---------- | --------- | ---------------------------- |
-| `streamId` | `uint256` | The stream id for the query. |
+| `streamId` | `uint256` | The stream ID for the query. |
 
 ### getRecipient
 
@@ -71,7 +71,7 @@ function getRecipient(uint256 streamId) external view returns (address recipient
 
 | Name       | Type      | Description                  |
 | ---------- | --------- | ---------------------------- |
-| `streamId` | `uint256` | The stream id for the query. |
+| `streamId` | `uint256` | The stream ID for the query. |
 
 ### getRefundedAmount
 
@@ -88,7 +88,7 @@ function getRefundedAmount(uint256 streamId) external view returns (uint128 refu
 
 | Name       | Type      | Description                  |
 | ---------- | --------- | ---------------------------- |
-| `streamId` | `uint256` | The stream id for the query. |
+| `streamId` | `uint256` | The stream ID for the query. |
 
 ### getSender
 
@@ -104,7 +104,7 @@ function getSender(uint256 streamId) external view returns (address sender);
 
 | Name       | Type      | Description                  |
 | ---------- | --------- | ---------------------------- |
-| `streamId` | `uint256` | The stream id for the query. |
+| `streamId` | `uint256` | The stream ID for the query. |
 
 ### getStartTime
 
@@ -120,7 +120,7 @@ function getStartTime(uint256 streamId) external view returns (uint40 startTime)
 
 | Name       | Type      | Description                  |
 | ---------- | --------- | ---------------------------- |
-| `streamId` | `uint256` | The stream id for the query. |
+| `streamId` | `uint256` | The stream ID for the query. |
 
 ### getWithdrawnAmount
 
@@ -136,7 +136,19 @@ function getWithdrawnAmount(uint256 streamId) external view returns (uint128 wit
 
 | Name       | Type      | Description                  |
 | ---------- | --------- | ---------------------------- |
-| `streamId` | `uint256` | The stream id for the query. |
+| `streamId` | `uint256` | The stream ID for the query. |
+
+### isAllowedToHook
+
+Retrieves a flag indicating whether the provided address is a contract allowed to hook to Sablier when a stream is
+canceled or when assets are withdrawn.
+
+_See [ISablierLockupRecipient](/docs/contracts/v2/reference/core/interfaces/interface.ISablierLockupRecipient.md) for
+more information._
+
+```solidity
+function isAllowedToHook(address recipient) external view returns (bool result);
+```
 
 ### isCancelable
 
@@ -152,7 +164,7 @@ function isCancelable(uint256 streamId) external view returns (bool result);
 
 | Name       | Type      | Description                  |
 | ---------- | --------- | ---------------------------- |
-| `streamId` | `uint256` | The stream id for the query. |
+| `streamId` | `uint256` | The stream ID for the query. |
 
 ### isCold
 
@@ -168,7 +180,7 @@ function isCold(uint256 streamId) external view returns (bool result);
 
 | Name       | Type      | Description                  |
 | ---------- | --------- | ---------------------------- |
-| `streamId` | `uint256` | The stream id for the query. |
+| `streamId` | `uint256` | The stream ID for the query. |
 
 ### isDepleted
 
@@ -184,7 +196,7 @@ function isDepleted(uint256 streamId) external view returns (bool result);
 
 | Name       | Type      | Description                  |
 | ---------- | --------- | ---------------------------- |
-| `streamId` | `uint256` | The stream id for the query. |
+| `streamId` | `uint256` | The stream ID for the query. |
 
 ### isStream
 
@@ -200,7 +212,7 @@ function isStream(uint256 streamId) external view returns (bool result);
 
 | Name       | Type      | Description                  |
 | ---------- | --------- | ---------------------------- |
-| `streamId` | `uint256` | The stream id for the query. |
+| `streamId` | `uint256` | The stream ID for the query. |
 
 ### isTransferable
 
@@ -216,7 +228,7 @@ function isTransferable(uint256 streamId) external view returns (bool result);
 
 | Name       | Type      | Description                  |
 | ---------- | --------- | ---------------------------- |
-| `streamId` | `uint256` | The stream id for the query. |
+| `streamId` | `uint256` | The stream ID for the query. |
 
 ### isWarm
 
@@ -232,14 +244,32 @@ function isWarm(uint256 streamId) external view returns (bool result);
 
 | Name       | Type      | Description                  |
 | ---------- | --------- | ---------------------------- |
-| `streamId` | `uint256` | The stream id for the query. |
+| `streamId` | `uint256` | The stream ID for the query. |
+
+### MAX_BROKER_FEE
+
+Retrieves the maximum broker fee that can be charged by the broker, denoted as a fixed-point number where 1e18 is 100%.
+
+_This value is hard coded as a constant._
+
+```solidity
+function MAX_BROKER_FEE() external view returns (UD60x18);
+```
 
 ### nextStreamId
 
-Counter for stream ids, used in the create functions.
+Counter for stream IDs, used in the create functions.
 
 ```solidity
 function nextStreamId() external view returns (uint256);
+```
+
+### nftDescriptor
+
+Contract that generates the non-fungible token URI.
+
+```solidity
+function nftDescriptor() external view returns (ISablierV2NFTDescriptor);
 ```
 
 ### refundableAmountOf
@@ -257,11 +287,13 @@ function refundableAmountOf(uint256 streamId) external view returns (uint128 ref
 
 | Name       | Type      | Description                  |
 | ---------- | --------- | ---------------------------- |
-| `streamId` | `uint256` | The stream id for the query. |
+| `streamId` | `uint256` | The stream ID for the query. |
 
 ### statusOf
 
 Retrieves the stream's status.
+
+_Reverts if `streamId` references a null stream._
 
 ```solidity
 function statusOf(uint256 streamId) external view returns (Lockup.Status status);
@@ -271,13 +303,17 @@ function statusOf(uint256 streamId) external view returns (Lockup.Status status)
 
 | Name       | Type      | Description                  |
 | ---------- | --------- | ---------------------------- |
-| `streamId` | `uint256` | The stream id for the query. |
+| `streamId` | `uint256` | The stream ID for the query. |
 
 ### streamedAmountOf
 
 Calculates the amount streamed to the recipient, denoted in units of the asset's decimals.
 
-_Reverts if `streamId` references a null stream._
+Reverts if `streamId` references a null stream. Notes:
+
+- Upon cancellation of the stream, the amount streamed is calculated as the difference between the deposited amount and
+  the refunded amount. Ultimately, when the stream becomes depleted, the streamed amount is equivalent to the total
+  amount withdrawn.
 
 ```solidity
 function streamedAmountOf(uint256 streamId) external view returns (uint128 streamedAmount);
@@ -287,7 +323,7 @@ function streamedAmountOf(uint256 streamId) external view returns (uint128 strea
 
 | Name       | Type      | Description                  |
 | ---------- | --------- | ---------------------------- |
-| `streamId` | `uint256` | The stream id for the query. |
+| `streamId` | `uint256` | The stream ID for the query. |
 
 ### wasCanceled
 
@@ -303,7 +339,7 @@ function wasCanceled(uint256 streamId) external view returns (bool result);
 
 | Name       | Type      | Description                  |
 | ---------- | --------- | ---------------------------- |
-| `streamId` | `uint256` | The stream id for the query. |
+| `streamId` | `uint256` | The stream ID for the query. |
 
 ### withdrawableAmountOf
 
@@ -319,7 +355,32 @@ function withdrawableAmountOf(uint256 streamId) external view returns (uint128 w
 
 | Name       | Type      | Description                  |
 | ---------- | --------- | ---------------------------- |
-| `streamId` | `uint256` | The stream id for the query. |
+| `streamId` | `uint256` | The stream ID for the query. |
+
+### allowToHook
+
+Allows a recipient contract to hook to Sablier when a stream is canceled or when assets are withdrawn. Useful for
+implementing contracts that hold streams on behalf of users, such as vaults or staking contracts.
+
+Emits an [AllowToHook](/docs/contracts/v2/reference/core/interfaces/interface.ISablierV2Lockup.md#allowtohook) event.
+Notes:
+
+- Does not revert if the contract is already on the allowlist.
+- This is an irreversible operation. The contract cannot be removed from the allowlist. Requirements:
+- `msg.sender` must be the contract admin.
+- `recipient` must have a non-zero code size.
+- `recipient` must implement
+  [ISablierLockupRecipient](/docs/contracts/v2/reference/core/interfaces/interface.ISablierLockupRecipient.md).
+
+```solidity
+function allowToHook(address recipient) external;
+```
+
+**Parameters**
+
+| Name        | Type      | Description                                     |
+| ----------- | --------- | ----------------------------------------------- |
+| `recipient` | `address` | The address of the contract to allow for hooks. |
 
 ### burn
 
@@ -340,7 +401,7 @@ function burn(uint256 streamId) external;
 
 | Name       | Type      | Description                       |
 | ---------- | --------- | --------------------------------- |
-| `streamId` | `uint256` | The id of the stream NFT to burn. |
+| `streamId` | `uint256` | The ID of the stream NFT to burn. |
 
 ### cancel
 
@@ -363,7 +424,7 @@ function cancel(uint256 streamId) external;
 
 | Name       | Type      | Description                     |
 | ---------- | --------- | ------------------------------- |
-| `streamId` | `uint256` | The id of the stream to cancel. |
+| `streamId` | `uint256` | The ID of the stream to cancel. |
 
 ### cancelMultiple
 
@@ -382,7 +443,7 @@ function cancelMultiple(uint256[] calldata streamIds) external;
 
 | Name        | Type        | Description                       |
 | ----------- | ----------- | --------------------------------- |
-| `streamIds` | `uint256[]` | The ids of the streams to cancel. |
+| `streamIds` | `uint256[]` | The IDs of the streams to cancel. |
 
 ### renounce
 
@@ -392,9 +453,7 @@ Emits a
 [RenounceLockupStream](/docs/contracts/v2/reference/core/interfaces/interface.ISablierV2Lockup.md#renouncelockupstream)
 and {MetadataUpdate} event. Notes:
 
-- This is an irreversible operation.
-- This function attempts to invoke a hook on the stream's recipient, provided that the recipient is a contract.
-  Requirements:
+- This is an irreversible operation. Requirements:
 - Must not be delegate called.
 - `streamId` must reference a warm stream.
 - `msg.sender` must be the stream's sender.
@@ -408,7 +467,7 @@ function renounce(uint256 streamId) external;
 
 | Name       | Type      | Description                       |
 | ---------- | --------- | --------------------------------- |
-| `streamId` | `uint256` | The id of the stream to renounce. |
+| `streamId` | `uint256` | The ID of the stream to renounce. |
 
 ### setNFTDescriptor
 
@@ -436,14 +495,13 @@ Withdraws the provided amount of assets from the stream to the `to` address.
 
 Emits a {Transfer}, {WithdrawFromLockupStream}, and {MetadataUpdate} event. Notes:
 
-- This function attempts to invoke a hook on the stream's recipient, provided that the recipient is a contract and
-  `msg.sender` is either the sender or an approved operator. Requirements:
+- This function attempts to call a hook on the recipient of the stream, unless `msg.sender` is the recipient.
+  Requirements:
 - Must not be delegate called.
 - `streamId` must not reference a null or depleted stream.
-- `msg.sender` must be the stream's sender, the stream's recipient or an approved third party.
-- `to` must be the recipient if `msg.sender` is the stream's sender.
 - `to` must not be the zero address.
 - `amount` must be greater than zero and must not exceed the withdrawable amount.
+- `to` must be the recipient if `msg.sender` is not the stream's recipient or an approved third party.
 
 ```solidity
 function withdraw(uint256 streamId, address to, uint128 amount) external;
@@ -453,7 +511,7 @@ function withdraw(uint256 streamId, address to, uint128 amount) external;
 
 | Name       | Type      | Description                                                       |
 | ---------- | --------- | ----------------------------------------------------------------- |
-| `streamId` | `uint256` | The id of the stream to withdraw from.                            |
+| `streamId` | `uint256` | The ID of the stream to withdraw from.                            |
 | `to`       | `address` | The address receiving the withdrawn assets.                       |
 | `amount`   | `uint128` | The amount to withdraw, denoted in units of the asset's decimals. |
 
@@ -467,15 +525,21 @@ Emits a {Transfer}, {WithdrawFromLockupStream}, and {MetadataUpdate} event. Note
 - Refer to the requirements in {withdraw}.
 
 ```solidity
-function withdrawMax(uint256 streamId, address to) external;
+function withdrawMax(uint256 streamId, address to) external returns (uint128 withdrawnAmount);
 ```
 
 **Parameters**
 
 | Name       | Type      | Description                                 |
 | ---------- | --------- | ------------------------------------------- |
-| `streamId` | `uint256` | The id of the stream to withdraw from.      |
+| `streamId` | `uint256` | The ID of the stream to withdraw from.      |
 | `to`       | `address` | The address receiving the withdrawn assets. |
+
+**Returns**
+
+| Name              | Type      | Description                                                     |
+| ----------------- | --------- | --------------------------------------------------------------- |
+| `withdrawnAmount` | `uint128` | The amount withdrawn, denoted in units of the asset's decimals. |
 
 ### withdrawMaxAndTransfer
 
@@ -493,40 +557,62 @@ and a {Transfer} event. Notes:
 - Refer to the requirements in {IERC721.transferFrom}.
 
 ```solidity
-function withdrawMaxAndTransfer(uint256 streamId, address newRecipient) external;
+function withdrawMaxAndTransfer(uint256 streamId, address newRecipient) external returns (uint128 withdrawnAmount);
 ```
 
 **Parameters**
 
 | Name           | Type      | Description                                     |
 | -------------- | --------- | ----------------------------------------------- |
-| `streamId`     | `uint256` | The id of the stream NFT to transfer.           |
+| `streamId`     | `uint256` | The ID of the stream NFT to transfer.           |
 | `newRecipient` | `address` | The address of the new owner of the stream NFT. |
+
+**Returns**
+
+| Name              | Type      | Description                                                     |
+| ----------------- | --------- | --------------------------------------------------------------- |
+| `withdrawnAmount` | `uint128` | The amount withdrawn, denoted in units of the asset's decimals. |
 
 ### withdrawMultiple
 
-Withdraws assets from streams to the provided address `to`.
+Withdraws assets from streams to the recipient of each stream.
 
 Emits multiple {Transfer}, {WithdrawFromLockupStream}, and {MetadataUpdate} events. Notes:
 
 - This function attempts to call a hook on the recipient of each stream, unless `msg.sender` is the recipient.
   Requirements:
-- All requirements from {withdraw} must be met for each stream.
+- Must not be delegate called.
 - There must be an equal number of `streamIds` and `amounts`.
+- Each stream ID in the array must not reference a null or depleted stream.
+- Each amount in the array must be greater than zero and must not exceed the withdrawable amount.
 
 ```solidity
-function withdrawMultiple(uint256[] calldata streamIds, address to, uint128[] calldata amounts) external;
+function withdrawMultiple(uint256[] calldata streamIds, uint128[] calldata amounts) external;
 ```
 
 **Parameters**
 
 | Name        | Type        | Description                                                        |
 | ----------- | ----------- | ------------------------------------------------------------------ |
-| `streamIds` | `uint256[]` | The ids of the streams to withdraw from.                           |
-| `to`        | `address`   | The address receiving the withdrawn assets.                        |
+| `streamIds` | `uint256[]` | The IDs of the streams to withdraw from.                           |
 | `amounts`   | `uint128[]` | The amounts to withdraw, denoted in units of the asset's decimals. |
 
 ## Events
+
+### AllowToHook
+
+Emitted when the admin allows a new recipient contract to hook to Sablier.
+
+```solidity
+event AllowToHook(address indexed admin, address recipient);
+```
+
+**Parameters**
+
+| Name        | Type      | Description                                                 |
+| ----------- | --------- | ----------------------------------------------------------- |
+| `admin`     | `address` | The address of the current contract admin.                  |
+| `recipient` | `address` | The address of the recipient contract put on the allowlist. |
 
 ### CancelLockupStream
 
@@ -547,10 +633,10 @@ event CancelLockupStream(
 
 | Name              | Type      | Description                                                                                                 |
 | ----------------- | --------- | ----------------------------------------------------------------------------------------------------------- |
-| `streamId`        | `uint256` | The id of the stream.                                                                                       |
+| `streamId`        | `uint256` | The ID of the stream.                                                                                       |
 | `sender`          | `address` | The address of the stream's sender.                                                                         |
 | `recipient`       | `address` | The address of the stream's recipient.                                                                      |
-| `asset`           | `IERC20`  | The contract address of the ERC-20 asset used for streaming.                                                |
+| `asset`           | `IERC20`  | The contract address of the ERC-20 asset to be distributed.                                                 |
 | `senderAmount`    | `uint128` | The amount of assets refunded to the stream's sender, denoted in units of the asset's decimals.             |
 | `recipientAmount` | `uint128` | The amount of assets left for the stream's recipient to withdraw, denoted in units of the asset's decimals. |
 
@@ -566,7 +652,7 @@ event RenounceLockupStream(uint256 indexed streamId);
 
 | Name       | Type      | Description           |
 | ---------- | --------- | --------------------- |
-| `streamId` | `uint256` | The id of the stream. |
+| `streamId` | `uint256` | The ID of the stream. |
 
 ### SetNFTDescriptor
 
@@ -598,7 +684,7 @@ event WithdrawFromLockupStream(uint256 indexed streamId, address indexed to, IER
 
 | Name       | Type      | Description                                                               |
 | ---------- | --------- | ------------------------------------------------------------------------- |
-| `streamId` | `uint256` | The id of the stream.                                                     |
+| `streamId` | `uint256` | The ID of the stream.                                                     |
 | `to`       | `address` | The address that has received the withdrawn assets.                       |
-| `asset`    | `IERC20`  | The contract address of the ERC-20 asset used for streaming.              |
+| `asset`    | `IERC20`  | The contract address of the ERC-20 asset to be distributed.               |
 | `amount`   | `uint128` | The amount of assets withdrawn, denoted in units of the asset's decimals. |

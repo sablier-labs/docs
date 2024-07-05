@@ -46,11 +46,33 @@ html[data-theme="dark"] {
   --ifm-footer-background-color: var(--sablier-color-dark100);
   --ifm-navbar-background-color: var(--sablier-color-background);
   --ifm-toc-border-color: var(--sablier-color-border);
+  --ifm-alert-background-color: var(--sablier-color-dark100);
 
   background: var(--sablier-color-background);
 }
 html[data-theme="dark"] body > div > nav {
   border-bottom: 2px solid var(--sablier-color-border);
+}
+
+html[data-theme="dark"] .alert--secondary {
+  --ifm-alert-background-color: var(--sablier-color-dark200);
+}
+
+html[data-theme="dark"] .alert--success {
+  --ifm-alert-background-color: var(--sablier-color-green-dark);
+  --ifm-tabs-color-active-border: var(--sablier-color-green);
+  --ifm-alert-border-color: var(--sablier-color-green);
+}
+
+html[data-theme="dark"] .alert--warning {
+  --ifm-tabs-color-active-border: var(--sablier-color-yellow);
+  --ifm-alert-border-color: var(--sablier-color-yellow);
+}
+
+html[data-theme="dark"] .alert--info {
+  --ifm-alert-background-color: var(--sablier-color-dark300);
+  --ifm-tabs-color-active-border: var(--sablier-color-dark1000);
+  --ifm-alert-border-color: var(--sablier-color-dark1000);
 }
 
 [data-theme="dark"] .DocSearch {

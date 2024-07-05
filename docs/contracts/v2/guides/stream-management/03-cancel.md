@@ -18,13 +18,14 @@ streams.
 :::
 
 Canceling streams involves stopping the flow of assets before the stream's end time and refunding the remaining funds to
-the sender. However, the portion that has already been streamed is <ins>not</ins> automatically transferred - the
-recipient will need to withdraw it themselves later.
+the sender. However, the portion that has already been streamed is <ins>NOT</ins> automatically transferred - the
+recipient will need to withdraw it.
 
 There are two functions that can be used to cancel streams:
 
-1. `cancel`: cancels a single stream
-2. `cancelMultiple`: cancels multiple streams at once
+1. [`cancel`](/contracts/v2/reference/core/abstracts/abstract.SablierV2Lockup#cancel): cancels a single stream
+2. [`cancelMultiple`](/contracts/v2/reference/core/abstracts/abstract.SablierV2Lockup#cancelmultiple): cancels multiple
+   streams at once
 
 To call any of these functions, you need to have created a cancelable stream. If you don't have one yet, go back to the
 [previous guide](/contracts/v2/guides/create-stream/lockup-linear) and create a stream. Then, you can use the `cancel`

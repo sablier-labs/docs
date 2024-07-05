@@ -46,8 +46,8 @@ query getStreams($first: Int!, $subgraphId: numeric!) {
 
 ### Streams by sender (with support for the old V2.0)
 
-To support both [proxy senders](/api/subgraphs/protocol/structure#the-proxender) (case 3) and
-[native senders](/api/subgraphs/protocol/structure#the-proxender) (case 2) we query for:
+To support both [proxy senders](/api/subgraphs/protocol/structure) (case 3) and
+[native senders](/api/subgraphs/protocol/structure) (case 2) we query for:
 
 - streams where the connected account is the native sender
 - streams where the connected account is the proxender - the owner of the proxy labeled as a sender

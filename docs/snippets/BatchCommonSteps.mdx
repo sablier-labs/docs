@@ -32,7 +32,7 @@ after they are transferred from the calling address (you):
 DAI.transferFrom(msg.sender, address(this), transferAmount);
 
 // Approve the Batch contract to spend DAI
-DAI.approve(address(BATCH), transferAmount);
+DAI.approve(address(BATCH_LOCKUP), transferAmount);
 ```
 
 For more guidance on how to approve and transfer ERC-20 assets, see

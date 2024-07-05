@@ -4,7 +4,7 @@ sidebar_position: 2
 title: "Queries"
 ---
 
-Building on top of the [entity structure](/api/subgraphs/merkle/structure) defined earlier, here are some common GraphQL
+Building on top of the [entity structure](/api/subgraphs/merkle/entities) defined earlier, here are some common GraphQL
 queries for fetching data from the Sablier V2 subgraph.
 
 ### Recent streams

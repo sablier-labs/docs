@@ -4,6 +4,10 @@ sidebar_position: 6
 title: "Glossary"
 ---
 
+## Allow List
+
+A list of smart contract recipients that are authorized to be run by the Sablier protocol upon withdraw and cancel.
+
 ## Asset
 
 Digital assets can exist in various forms, but the Sablier Protocol exclusively supports the streaming of ERC-20 assets.
@@ -81,11 +85,14 @@ A Lockup stream with a payment rate per second that can vary over time.
 
 A Lockup stream with a constant payment rate per second.
 
-## Milestones
+## Lockup Tranched
 
-A milestone is the time component of a segment, which itself is a component of a Lockup Dynamic stream.
+A Lockup stream with payments in discrete tranches.
 
-Milestones play a crucial role in the calculation of the custom streaming curve.
+## Timestamp
+
+A timestamp is the time component of a stream. In Lockup Linear, it represents start time, cliff time and end time
+whereas in lockup dynamic and lockup tranched, it plays a crucial role in the calculation of streaming curves.
 
 ## Monotonicity
 
@@ -110,18 +117,6 @@ A renounced stream is a stream that cannot be canceled anymore.
 [PRBMath][prb-math] is fixed-point arithmetic library used by Sablier Core to compute percentage values and the
 exponents used in Lockup Dynamic.
 
-## Protocol fees
-
-Fees that are rewarded to the Sablier Protocol itself.
-
-## Range
-
-The range of a Lockup Linear stream consists of three components: (i) the start time, (ii) the cliff time, and (iii) the
-end time.
-
-The range of a Lockup Dynamic stream is determined by combining (i) the start time, (ii) the segment milestones, and
-(iii) the end time.
-
 ## Real-time finance
 
 A term coined by us in 2019 to emphasize the wide-ranging use cases for the Sablier Protocol.
@@ -131,11 +126,11 @@ transactions.
 
 ## Segment
 
-A data object that encapsulates three properties:
+A data object that encapsulates these three properties:
 
 1. Amount
 2. Exponent
-3. Milestone
+3. Timestamp
 
 Segments are an essential component of Lockup Dynamic, as they facilitate the calculation of the custom streaming curve.
 
@@ -145,12 +140,14 @@ The time when a stream is scheduled to start.
 
 ## Status
 
-A stream can have one out of four possible statuses:
+A stream can have one out of six possible statuses:
 
 1. Null
-2. Active
-3. Canceled
-4. Depleted
+2. Pending
+3. Streaming
+4. Settled
+5. Canceled
+6. Depleted
 
 ## Stream
 
@@ -162,6 +159,16 @@ up a specified amount of assets.
 ## Streaming
 
 By-the-second payments.
+
+## Tranche
+
+A data object that encapsulates these two properties:
+
+1. Amount
+2. Timestamp
+
+Tranches are an essential component of Lockup Tranched, as they facilitate the calculation of the custom streaming
+curve.
 
 ## Vesting
 
@@ -176,4 +183,3 @@ before being able to access tokens.
 [erc-721]: https://eips.ethereum.org/EIPS/eip-721
 [foundry]: https://github.com/foundry-rs/foundry
 [prb-math]: https://github.com/PaulRBerg/prb-math
-[prb-proxy]: https://github.com/PaulRBerg/prb-proxy

@@ -8,19 +8,26 @@ title: "Segments"
 
 ## Definition
 
-A Lockup Dynamic stream can be composed of multiple segments, which are separate partitions with different streaming
-amount and rates. The protocol uses these segments to enable custom streaming curves, which power exponential streams,
-cliff streams, etc.
+A Lockup Dynamic stream is composed of multiple segments, which are separate partitions with different streaming amount
+and rates. The protocol uses these segments to enable custom streaming curves, which power exponential streams, cliff
+streams, etc.
 
-A segment is a [struct](/contracts/v2/reference/core/types/library.LockupDynamic.md#segment) with three fields:
+Technically, a segment is a [struct](/contracts/v2/reference/core/types/library.LockupDynamic#segment) with three
+fields:
 
 | Field     | Type      | Description                                                                                    |
 | :-------- | :-------- | :--------------------------------------------------------------------------------------------- |
 | Amount    | `uint128` | The amount of assets to be streamed in this segment, denoted in units of the asset's decimals. |
 | Exponent  | `UD2x18`  | The exponent of this segment, denoted as a fixed-point number.                                 |
-| Milestone | `uint40`  | The Unix timestamp indicating this segment's end.                                              |
+| Timestamp | `uint40`  | The Unix timestamp indicating this segment's end.                                              |
 
 Each segment has its own streaming function:
+
+$$
+f(x) = x^{exp} * csa
+$$
+
+Therefore, the distribution function of a dynamic stream becomes:
 
 $$
 f(x) = x^{exp} * csa + \Sigma(esa)
@@ -41,17 +48,19 @@ Segments can be used to represent any monotonic increasing function.
 
 :::caution
 
-Because x is a percentage, the streaming rate is inversely proportional to the exponent. For example, if the exponent is
-0.5, the rate is quadratically faster compared to the baseline when the exponent is 1. Conversely, if exponent is 2, the
-rate is quadratically slower compared to baseline.
+Because x is a percentage, the payment rate is inversely proportional to the exponent. For example, if the exponent is
+0.5, the rate is quadratically faster compared to the baseline when the exponent is 1.
+
+Conversely, if the exponent is 2, the rate is quadratically slower compared to baseline.
 
 :::
 
 ## Requirements
 
 - The sum of all segment amounts must equal the deposit amount.
-- There is a limit to how many segments there can be in a stream, and that is 300 segments. This requirement is due to
-  the block gas limit. If it didn't exist and someone created a stream with an excessively large number of segments, the
-  transaction would revert as it wouldn't fit within a block.
-- The milestones must be sorted in ascending order. It's not possible for the `i-1`th milestone to be greater than `i`th
-  milestone (given we are dealing with increasing monotonic functions).
+- There is a limit to how many segments there can be in a stream as enforced by the the block gas limit.
+  - If someone creates a stream with an excessively large number of segments, the transaction would revert as it
+    wouldn't fit within a block. You can fetch the limit using you can find the limit for each chain
+    [here](https://github.com/sablier-labs/v2-core/blob/main/script/Base.s.sol#L90-L131).
+- The timestamps must be sorted in ascending order. It's not possible for the $(i-1)^{th}$ timestamp to be greater than
+  $i^{th}$ timestamp (given that we're dealing with an increasing monotonic function).

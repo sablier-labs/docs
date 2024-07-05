@@ -1,6 +1,6 @@
 # NFTSVG
 
-[Git Source](https://github.com/sablier-labs/v2-core/blob/a4bf69cf7024006b9a324eef433f20b74597eaaf/src/libraries/NFTSVG.sol)
+[Git Source](https://github.com/sablier-labs/v2-core/blob/36b49d3bf2a396d19083d28247e8e03d7a3a2ee1/src/libraries/NFTSVG.sol)
 
 ## State Variables
 
@@ -36,7 +36,7 @@ function generateDefs(
 ```solidity
 function generateFloatingText(
     string memory sablierAddress,
-    string memory streamingModel,
+    string memory sablierModel,
     string memory assetAddress,
     string memory assetSymbol
 )
@@ -73,8 +73,8 @@ struct SVGParams {
     string progress;
     uint256 progressNumerical;
     string sablierAddress;
+    string sablierModel;
     string status;
-    string streamingModel;
 }
 ```
 

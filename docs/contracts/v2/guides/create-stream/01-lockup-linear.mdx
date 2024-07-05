@@ -6,6 +6,7 @@ title: "Lockup Linear"
 
 import AdmonitionSimpleCode from "@site/docs/snippets/AdmonitionSimpleCode.mdx";
 import ConstantsComment from "@site/docs/snippets/ConstantsComment.mdx";
+import CreateFunctions from "@site/docs/snippets/CreateFunctions.mdx";
 import ParamAsset from "@site/docs/snippets/ParamAsset.mdx";
 import ParamBroker from "@site/docs/snippets/ParamBroker.mdx";
 import ParamCancelable from "@site/docs/snippets/ParamCancelable.mdx";
@@ -35,7 +36,7 @@ Declare the Solidity version used to compile the contract:
 
 ```solidity
 // SPDX-License-Identifier: GPL-3.0-or-later
-pragma solidity >=0.8.19;
+pragma solidity >=0.8.22;
 ```
 
 Import the relevant symbols from `@sablier/v2-core`:
@@ -52,22 +53,15 @@ Create a contract called `LockupLinearStreamCreator`, and declare a constant `DA
 
 ```solidity
 contract LockupLinearStreamCreator {
-    IERC20 public constant DAI = IERC20(0x6B175474E89094C44Da98b954EedeAC495271d0F);
+    IERC20 public constant DAI = IERC20(0x68194a729C2450ad26072b3D33ADaCbcef39D574);
     ISablierV2LockupLinear public constant LOCKUP_LINEAR =
-        ISablierV2LockupLinear(0xAFb979d9afAd1aD27C5eFf4E27226E3AB9e5dCC9);
+        ISablierV2LockupLinear(0x3E435560fd0a03ddF70694b35b673C25c65aBB6C);
 }
 ```
 
 <ConstantsComment />
 
-## Create functions
-
-There are two create functions in the Lockup Linear contract:
-
-- `createWithDurations`: sets the start time to
-  [`block.timestamp`](https://docs.soliditylang.org/en/v0.8.19/cheatsheet.html#global-variables), and calculates the end
-  time based on the provided durations
-- `createWithRange`: uses specific start and end times
+<CreateFunctions />
 
 Which one you choose depends upon your use case. In this guide, we will use `createWithDurations`.
 
@@ -123,8 +117,6 @@ Let's review each parameter in detail.
 
 <ParamTransferable />
 
-<ParamBroker />
-
 ### Durations
 
 Struct containing (i) cliff period duration and (ii) total stream duration, both in seconds.
@@ -135,6 +127,8 @@ params.durations = LockupLinear.Durations({
     total: 52 weeks
 });
 ```
+
+<ParamBroker />
 
 ## Invoke the create function
 

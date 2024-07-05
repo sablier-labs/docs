@@ -1,6 +1,6 @@
 # ISablierV2NFTDescriptor
 
-[Git Source](https://github.com/sablier-labs/v2-core/blob/a4bf69cf7024006b9a324eef433f20b74597eaaf/src/interfaces/ISablierV2NFTDescriptor.sol)
+[Git Source](https://github.com/sablier-labs/v2-core/blob/36b49d3bf2a396d19083d28247e8e03d7a3a2ee1/src/interfaces/ISablierV2NFTDescriptor.sol)
 
 This contract generates the URI describing the Sablier V2 stream NFTs.
 
@@ -23,7 +23,7 @@ function tokenURI(IERC721Metadata sablier, uint256 streamId) external view retur
 | Name       | Type              | Description                                                    |
 | ---------- | ----------------- | -------------------------------------------------------------- |
 | `sablier`  | `IERC721Metadata` | The address of the Sablier contract the stream was created in. |
-| `streamId` | `uint256`         | The id of the stream for which to produce a description.       |
+| `streamId` | `uint256`         | The ID of the stream for which to produce a description.       |
 
 **Returns**
 

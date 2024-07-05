@@ -13,8 +13,8 @@ amount of assets in a smart contract. All streams currently supported by Sablier
 
 :::note
 
-The gas estimation for the shapes can be found at
-[this branch](https://github.com/sablier-labs/examples/tree/shapes-benchmark).
+The code used to generate the gas benchmarks for the different stream types can be found
+[here](https://github.com/sablier-labs/examples/tree/shapes-benchmark).
 
 :::
 
@@ -31,7 +31,7 @@ intuitive it is. Imagine a diagonal line going up and to the right – that's ho
 
 :::info
 
-The gas cost for this shape is approximately _152,019_ on Mainnet. This may vary due to multiple factors.
+The gas cost to create this shape is approximately _150,000_ on Mainnet. This may vary due to multiple factors.
 
 :::
 
@@ -66,7 +66,7 @@ streamed.
 
 :::info
 
-The gas cost for this shape is approximately _152,019_ on Mainnet. This may vary due to multiple factors.
+The gas cost to create this shape is approximately _150,000_ on Mainnet. This may vary due to multiple factors.
 
 :::
 
@@ -79,9 +79,9 @@ On the Sablier Interface, we support only some distribution shapes (the ones enu
 innovation is limitless when you interact programmatically with the contracts. For example, one could design a
 logarithmic stream that emulates the $f(x) = log(x)$ function.
 
-These streams are powered by a number of user-provided "segments", which we will cover in the next article. What is
-important to note here is that with Lockup Dynamic, Sablier has evolved into a universal streaming engine, capable of
-supporting any custom streaming curve.
+These streams are powered by a number of user-provided [segments](/concepts/protocol/segments), which we will cover in
+the next article. What is important to note here is that with Lockup Dynamic, Sablier has evolved into a universal
+streaming engine, capable of supporting any custom streaming curve.
 
 :::note
 
@@ -103,13 +103,13 @@ linear fashion (Lockup Linear). This incentivizes long-term behavior and a const
 
 :::info
 
-The gas cost for this shape is approximately _213,610_ on Mainnet. This may vary due to multiple factors.
+The gas cost to create this shape is approximately _213,610_ on Mainnet. This may vary due to multiple factors.
 
 :::
 
-### Exponential Cliff
+### Cliff Exponential
 
-Another use case for Lockup Dynamic is a variation of the previous design: an Exponential Cliff.
+Another use case for Lockup Dynamic is a variation of the previous design: an Cliff Exponential.
 
 <FunctionPlot
   options={{
@@ -138,85 +138,7 @@ larger number of tokens.
 
 :::info
 
-The gas cost for this shape is approximately _264,854_ on Mainnet. This may vary due to multiple factors.
-
-:::
-
-### Unlock in Steps
-
-Because Lockup Dynamic is so flexible, it can even be used to create a traditional vesting contract with periodic
-unlocks. In this case, the "streaming" rate would not be by the second, but by the week, month, or year.
-
-<FunctionPlot
-  options={{
-    data: [
-      {
-        points: [
-          [0.01, 0.01],
-          [25, 0],
-          [25, 25],
-          [50, 25],
-          [50, 50],
-          [75, 50],
-          [75, 75],
-          [99.99, 75],
-          [99.99, 99.99],
-        ],
-        fnType: "points",
-        graphType: "polyline",
-        color: "#f77423",
-      },
-    ],
-  }}
-/>
-
-After each period, a specific amount becomes unlocked and available for the recipient to withdraw. Past unlocks
-accumulate, so if the recipient doesn't withdraw them, they will be able to withdraw them later.
-
-The advantage of using Unlock in Steps instead of a normal vesting contract is that Sablier automates the entire
-process. No more worries about setting up vesting contracts or creating a user interface for your employees to claim
-their tokens.
-
-:::info
-
-The gas cost for this shape is approximately _392,982_ on Mainnet for four unlocks. This may vary as there are multiple
-factors to consider.
-
-:::
-
-### Monthly Unlocks
-
-Monthly Unlocks is a special case of Unlock in Steps where assets are unlocked on the same day every month, e.g. the 1st
-of every month. This is suited for use cases like traditional monthly salaries or vesting plans.
-
-<FunctionPlot
-  options={{
-    xAxisLabel: "x - Months",
-    xDomainLimit: 12,
-    yDomainLimit: 120,
-    data: [
-      {
-        fnType: "points",
-        graphType: "polyline",
-        color: "#f77423",
-        points: Array.from({ length: 24 }, (_, i) => [
-          1 + Math.floor(i / 2),
-          10 * Math.floor(i / 2) + (i % 2 === 1 ? 10 : 0),
-        ]),
-      },
-    ],
-  }}
-/>
-
-Each month, on a particular day, a specific amount of tokens becomes unlocked and available for withdrawal. Like Unlock
-in Steps, unwithdrawn tokens will carry over to the next period, providing flexibility and control to the recipient.
-This shape is ideal for employers who wish to set up advanced payment schedules for their employees, offering them
-access to funds on a predictable, monthly basis.
-
-:::info
-
-The gas cost for this shape is approximately _803,150_ on Mainnet for a period of exactly **one year**. This may vary as
-there are multiple factors to consider.
+The gas cost to create this shape is approximately _264,854_ on Mainnet. This may vary due to multiple factors.
 
 :::
 
@@ -248,7 +170,7 @@ maintain their stake over a more extended period.
 
 :::info
 
-The gas cost for this shape is approximately _239,232_ on Mainnet. This may vary due to multiple factors.
+The gas cost to create this shape is approximately _239,232_ on Mainnet. This may vary due to multiple factors.
 
 :::
 
@@ -284,7 +206,7 @@ linear vesting plan.
 
 :::info
 
-The gas cost for this shape is approximately _239,232_ on Mainnet. This may vary due to multiple factors.
+The gas cost to create this shape is approximately _239,232_ on Mainnet. This may vary due to multiple factors.
 
 :::
 
@@ -318,6 +240,94 @@ the tokens are held during the cliff period until the moment of time set. The re
 
 :::info
 
-The gas cost for this shape is approximately _290,477_ on Mainnet. This may vary due to multiple factors.
+The gas cost to create this shape is approximately _290,477_ on Mainnet. This may vary due to multiple factors.
+
+:::
+
+## Lockup Tranched
+
+Lockup Tranched streams are, as the name says, streams that have token unlocks in tranches. Even though you can use
+Lockup Dynamic to create a traditional vesting structure with periodic unlocks, Lockup Tranched is specifically design
+for that use case. As a result, a stream with tranches created using Lockup Tranched is more gas efficient than the same
+stream created using Lockup Dynamic.
+
+These streams are powered by a number of user-provided [tranches](/concepts/protocol/tranches), which is covered in the
+tranches article.
+
+### Unlock in Steps
+
+You can use Lockup Tranched to create a traditional vesting contract with periodic unlocks. In this case, the
+"streaming" rate would not be by the second, but by the week, month, or year.
+
+<FunctionPlot
+  options={{
+    data: [
+      {
+        points: [
+          [0.01, 0.01],
+          [25, 0],
+          [25, 25],
+          [50, 25],
+          [50, 50],
+          [75, 50],
+          [75, 75],
+          [99.99, 75],
+          [99.99, 99.99],
+        ],
+        fnType: "points",
+        graphType: "polyline",
+        color: "#f77423",
+      },
+    ],
+  }}
+/>
+
+After each period, a specific amount becomes unlocked and available for the recipient to withdraw. Past unlocks
+accumulate, so if the recipient doesn't withdraw them, they will be able to withdraw them later.
+
+The advantage of using Unlock in Steps instead of a normal vesting contract is that Sablier automates the entire
+process. No more worries about setting up vesting contracts or creating a user interface for your investors to claim
+their tokens.
+
+:::info
+
+The gas cost to create this shape is approximately _392,982_ on Mainnet for four unlocks. This may vary as there are
+multiple factors to consider.
+
+:::
+
+### Unlock Monthly
+
+Unlock Monthly is a special case of Unlock in Steps where assets are unlocked on the same day every month, e.g. the 1st
+of every month. This is suited for use cases like traditional monthly salaries or ESOPs plans.
+
+<FunctionPlot
+  options={{
+    xAxisLabel: "x - Months",
+    xDomainLimit: 12,
+    yDomainLimit: 120,
+    data: [
+      {
+        fnType: "points",
+        graphType: "polyline",
+        color: "#f77423",
+        points: Array.from({ length: 24 }, (_, i) => [
+          1 + Math.floor(i / 2),
+          10 * Math.floor(i / 2) + (i % 2 === 1 ? 10 : 0),
+        ]),
+      },
+    ],
+  }}
+/>
+
+Each month, on a particular day, a specific amount of tokens becomes unlocked and available for withdrawal. Like Unlock
+in Steps, unwithdrawn tokens will carry over to the next period, providing flexibility and control to the recipient.
+This shape is ideal for employers who wish to set up advanced payment schedules for their employees, offering them
+access to funds on a predictable, monthly basis.
+
+:::info
+
+The gas cost to create this shape is approximately _803,150_ on Mainnet for a period of exactly **one year**. This may
+vary as there are multiple factors to consider.
 
 :::

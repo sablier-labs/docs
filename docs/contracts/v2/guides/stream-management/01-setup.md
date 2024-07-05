@@ -17,7 +17,7 @@ With that said, let's begin. First, declare the Solidity version used to compile
 
 ```solidity
 // SPDX-License-Identifier: GPL-3.0-or-later
-pragma solidity >=0.8.19;
+pragma solidity >=0.8.22;
 ```
 
 Import the relevant symbols from `@sablier/v2-core`:
@@ -28,8 +28,8 @@ import { ISablierV2Lockup } from "@sablier/v2-core/src/interfaces/ISablierV2Lock
 
 :::info
 
-`ISablierV2Lockup` is a shared interface between `ISablierV2LockupLinear` and `ISablierV2LockupDynamic`, allowing users
-to interact with either contract type using a single interface.
+`ISablierV2Lockup` is a shared interface between `ISablierV2LockupLinear`, `ISablierV2LockupDynamic` and
+`ISablierV2LockupTranched`, allowing users to interact with either contract type using a single interface.
 
 :::
 
@@ -43,7 +43,7 @@ contract StreamManagement {
 
 Just like in the create stream guides, the next step requires you to head over to the
 [Deployment Addresses](/contracts/v2/deployments) page and copy the address of the Sablier contract you intend to use
-(either Lockup Linear or Lockup Dynamic). Then, you can deploy the stream management contract:
+(either Lockup Linear, Lockup Dynamic, or Lockup Tranched). Then, you can deploy the stream management contract:
 
 ```solidity
 constructor(ISablierV2Lockup sablier_) {

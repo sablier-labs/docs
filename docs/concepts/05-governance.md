@@ -8,22 +8,10 @@ The Protocol Admin is an account with exclusive access to specific functions of 
 is a collection of multisig wallets currently in control of Sablier Labs, which have the following permissions on each
 chain where Sablier is deployed:
 
-| Permission                  | Function                | Contract(s)                                       |
-| --------------------------- | ----------------------- | ------------------------------------------------- |
-| Claim Protocol Revenues[^1] | `claimProtocolRevenues` | `SablierV2LockupLinear`, `SablierV2LockupDynamic` |
-| Set Comptroller             | `setComptroller`        | `SablierV2LockupLinear`, `SablierV2LockupDynamic` |
-| Set NFT Descriptor          | `setNFTDescriptor`      | `SablierV2LockupLinear`, `SablierV2LockupDynamic` |
-| Set Protocol Fee            | `setProtocolFee`        | `SablierV2Comptroller`                            |
-
-The Comptroller is a special contract that holds configuration parameters. To learn more about the Comptroller, see its
-[reference](/contracts/v2/reference/core/contract.SablierV2Comptroller).
-
-:::info
-
-While the Comptroller holds configuration parameters for fees, no Sablier contract charges users at the moment. You can
-read more about fees [here](/concepts/protocol/fee).
-
-:::
+| Permission         | Function           | Contract(s)                                                                  |
+| ------------------ | ------------------ | ---------------------------------------------------------------------------- |
+| Allow to Hook      | `allowToHook`      | `SablierV2LockupLinear`, `SablierV2LockupDynamic`, `SablierV2LockupTranched` |
+| Set NFT Descriptor | `setNFTDescriptor` | `SablierV2LockupLinear`, `SablierV2LockupDynamic`, `SablierV2LockupTranched` |
 
 ## Admins
 
@@ -36,6 +24,7 @@ wallets.
 | Arbitrum One    | [0xF34E41a6f6Ce5A45559B1D3Ee92E141a3De96376](https://arbiscan.io/address/0xF34E41a6f6Ce5A45559B1D3Ee92E141a3De96376)             |
 | Avalanche       | [0x4735517616373c5137dE8bcCDc887637B8ac85Ce](https://snowtrace.io/address/0x4735517616373c5137dE8bcCDc887637B8ac85Ce)            |
 | Base            | [0x83A6fA8c04420B3F9C7A4CF1c040b63Fbbc89B66](https://basescan.org/address/0x83A6fA8c04420B3F9C7A4CF1c040b63Fbbc89B66)            |
+| Blast           | [0xb1bEF51ebCA01EB12001a639bDBbFF6eEcA12B9F](https://blastscan.io/address/0xb1bEF51ebCA01EB12001a639bDBbFF6eEcA12B9F)            |
 | BNB Smart Chain | [0x6666cA940D2f4B65883b454b7Bc7EEB039f64fa3](https://bscscan.com/address/0x6666cA940D2f4B65883b454b7Bc7EEB039f64fa3)             |
 | Gnosis          | [0x72ACB57fa6a8fa768bE44Db453B1CDBa8B12A399](https://gnosisscan.io/address/0x72ACB57fa6a8fa768bE44Db453B1CDBa8B12A399)           |
 | LightLink       | [0xb1bEF51ebCA01EB12001a639bDBbFF6eEcA12B9F](https://phoenix.lightlink.io/address/0xb1bEF51ebCA01EB12001a639bDBbFF6eEcA12B9F)    |
@@ -59,9 +48,6 @@ Despite having an admin, the Sablier Protocol remains trustless. Here are the re
 The parameter changes that can be effected are NOT subject to a timelock. This means that the admin can execute any of
 the functions listed above at any time.
 
-However, you should note that the fees would only be charged on new streams. The admin cannot retroactively charge fees
-on existing streams. The streams you have already created will remain free of charge, forever.
-
 ## Governance
 
 As a startup, Sablier has to deal with uncertainty regarding:
@@ -74,5 +60,3 @@ initial priority.
 
 Nonetheless, we believe that progressive decentralization is the most effective approach to scaling a smart contract
 protocol. As the protocol matures, we will decentralize its governance incrementally.
-
-[^1]: The protocol fee is currently set to 0%. For more details, see the [Fees](/concepts/protocol/fees) guide.
