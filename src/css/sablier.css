@@ -33,6 +33,7 @@
   --sablier-color-gray400: #8792ab;
   --sablier-color-gray500: #6a7795;
   --sablier-color-green: #00d395;
+  --sablier-color-green-dark: #005033;
   --sablier-color-inputBorder: #30354a;
   --sablier-color-light: #ffffff;
   --sablier-color-modalBackground: #1e212f;
@@ -60,8 +61,6 @@
   --sablier-size-content: 960px;
   --sablier-size-edge: 16px;
   --sablier-size-light: 0.4;
-
-  --sablier-color-green-dark: #005033;
 }
 
 /* TODO:

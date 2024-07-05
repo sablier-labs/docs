@@ -87,11 +87,11 @@ A Lockup stream with a constant payment rate per second.
 
 ## Lockup Tranched
 
-A Lockup stream with a payments in tranches.
+A Lockup stream with payments in discrete tranches.
 
 ## Timestamp
 
-A timestamp is the time component of a stream. In lockup linear, it represents start time, cliff time and end time
+A timestamp is the time component of a stream. In Lockup Linear, it represents start time, cliff time and end time
 whereas in lockup dynamic and lockup tranched, it plays a crucial role in the calculation of streaming curves.
 
 ## Monotonicity
@@ -183,4 +183,3 @@ before being able to access tokens.
 [erc-721]: https://eips.ethereum.org/EIPS/eip-721
 [foundry]: https://github.com/foundry-rs/foundry
 [prb-math]: https://github.com/PaulRBerg/prb-math
-[prb-proxy]: https://github.com/PaulRBerg/prb-proxy
