@@ -226,6 +226,13 @@ Or maybe you're looking for V1? [Click here](/contracts/v1/deployments).
 
 ## zkSync Era
 
+:::note
+
+Unlike other EVM chains, zkSync requires the libraries to be deployed, too. Please refer to
+[their docs](https://docs.zksync.io/build/developer-reference/ethereum-differences/libraries).
+
+:::
+
 ### Core
 
 | Contract                | Address                                                                                                                     | Deployment                                                                          |
@@ -236,9 +243,6 @@ Or maybe you're looking for V1? [Click here](/contracts/v1/deployments).
 | SablierV2NFTDescriptor  | [0x99BA0D464942e7166dEBb8BAaAF1192F8d4117eb](https://explorer.zksync.io/address/0x99BA0D464942e7166dEBb8BAaAF1192F8d4117eb) | [core-v1.2.0](https://github.com/sablier-labs/v2-deployments/tree/main/core/v1.2.0) |
 | NFTSVG                  | [0xdCAaF1fC014BCdB5568Dc5CA8c22de4BE8829dCd](https://explorer.zksync.io/address/0xdCAaF1fC014BCdB5568Dc5CA8c22de4BE8829dCd) | [core-v1.2.0](https://github.com/sablier-labs/v2-deployments/tree/main/core/v1.2.0) |
 | SVGElements             | [0x500b6f2624662b1e2E0a144ceF24117B39F09DA5](https://explorer.zksync.io/address/0x500b6f2624662b1e2E0a144ceF24117B39F09DA5) | [core-v1.2.0](https://github.com/sablier-labs/v2-deployments/tree/main/core/v1.2.0) |
-
-zkSync requires to deploy the libraries as well, please refer to
-[their docs](https://docs.zksync.io/build/developer-reference/ethereum-differences/libraries).
 
 ### Periphery
 
@@ -267,6 +271,13 @@ zkSync requires to deploy the libraries as well, please refer to
 
 ## zkSync Sepolia
 
+:::note
+
+Unlike other EVM chains, zkSync requires the libraries to be deployed, too. Please refer to
+[their docs](https://docs.zksync.io/build/developer-reference/ethereum-differences/libraries).
+
+:::
+
 ### Core
 
 | Contract                | Address                                                                                                                             | Deployment                                                                          |
@@ -277,9 +288,6 @@ zkSync requires to deploy the libraries as well, please refer to
 | SablierV2NFTDescriptor  | [0x477DDC91a7e13CBaC01c06737abF96d50ECa7961](https://sepolia.explorer.zksync.io/address/0x477DDC91a7e13CBaC01c06737abF96d50ECa7961) | [core-v1.2.0](https://github.com/sablier-labs/v2-deployments/tree/main/core/v1.2.0) |
 | NFTSVG                  | [0x622e3bfA60486Fc7319cA370BfB81E713fd10c0f](https://sepolia.explorer.zksync.io/address/0x622e3bfA60486Fc7319cA370BfB81E713fd10c0f) | [core-v1.2.0](https://github.com/sablier-labs/v2-deployments/tree/main/core/v1.2.0) |
 | SVGElements             | [0x41602e7D355A15b76D43F84183831836eC498678](https://sepolia.explorer.zksync.io/address/0x41602e7D355A15b76D43F84183831836eC498678) | [core-v1.2.0](https://github.com/sablier-labs/v2-deployments/tree/main/core/v1.2.0) |
-
-zkSync requires to deploy the libraries as well, please refer to
-[their docs](https://docs.zksync.io/build/developer-reference/ethereum-differences/libraries).
 
 ### Periphery
 
