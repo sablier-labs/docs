@@ -73,21 +73,24 @@ the start of each method. It should only come into play within the create handle
 ### Versioning and Lockup Flavors
 
 While for The Graph's subgraphs we track flavor-first (see `subgraph.template.yaml` for the configuration of
-`SablierV2LockupLinear` and `SablierV2LockupDynamic`), for Envio's indexers we'll have a version-first approach.
+`SablierV2LockupLinear` and `..Dynamic` or `..Tranched`), for Envio's indexers we'll have a version-first approach.
 
-Therefore, `LockupLinear` and `LockupDynamic` will be bundled under the same `Lockup<Version>` contract tracker (see
-`./config.template.mustache`). Different versions of the protocol will be tracked separately, which is why we have
-`Lockup_V20` (v2.0) and `Lockup_V21` (v2.1) in our configuration. Later on, inside the handler logic, we'll separate
-contracts by flavor.
+Therefore, `LockupLinear`,`LockupDynamic` and `LockupTranched` will be bundled under the same `Lockup<Version>` contract
+tracker (see `./config.template.mustache`). Different versions of the protocol will be tracked separately, which is why
+we have `Lockup_V20` (v2.0) and `Lockup_V21` (v2.1) in our configuration. Later on, inside the handler logic, we'll
+separate contracts by flavor.
 
 ```tree title="Envio: Contract configuration tree (version-first)"
 └── contracts/
     ├── LockupV20/
     │   ├── event: CreateLockupDynamicStream
-    │   └── event: CreateLockupLinearStream
-    └── LockupV21/
-        ├── event: CreateLockupDynamicStream
-        └── event: CreateLockupLinearStream
+    │   ├── event: CreateLockupLinearStream
+    │   └── event: CreateLockupTrnchedStream
+    ├── LockupV21/
+    │   ├── event: CreateLockupDynamicStream
+    │   ├── event: CreateLockupLinearStream
+    │   └── event: CreateLockupTranchedStream
+    └── LockupV22/
 ```
 
 ```tree title="The Graph: Contract configuration tree (flavor-first)"
@@ -95,9 +98,12 @@ contracts by flavor.
     ├── LockupDynamic/
     │   ├── event: CreateLockupDynamicStreamV20
     │   └── event: CreateLockupDynamicStreamV21
-    └── LockupLinear/
-        ├── event: CreateLockupLinearStreamV20
-        └── event: CreateLockupLinearStreamV21
+    │   └── event: CreateLockupDynamicStreamV22
+    ├── LockupLinear/
+    │   ├── event: CreateLockupLinearStreamV20
+    │   └── event: CreateLockupLinearStreamV21
+    │   └── event: CreateLockupLinearStreamV22
+    └── LockupTranched/
 ```
 
 ## Contract Calls
@@ -113,15 +119,18 @@ Due to the cross-chain indexing aspect, entities in Envio will need to have a ch
 they're unique across the board. At the same time, there are some minor features missing, which will cause some
 differences listed below.
 
-- For Envio indexers, some entities will have different identifiers (from what The Graph's subgraph have):
+- For Envio indexers, entities will have fully specified identifiers (meaning chainId included)
   1.  `protocol-envio`: the `Action`, `Asset`, `Batch`, `Batcher`, `Contract` have a `-chainId` appended to the ID
   2.  `merkle-envio`: the `Action`, `Asset` and `Factory` have a `-chainId` appended to the ID
+
+While we've tried to refactor our The Graph entities to share similar identifiers, please double check in cases when you
+use both query resolves (The Graph and Envio) at the same time.
 
 :::tip
 
 To avoid writing separate systems when assigning variables to queries, you can use slightly different filters. For
-example, given the different `id`s of an `Asset` (`address` in The Graph and `address-chainId` in Envio) you can query
-for certain assets with:
+example, given a different `id` for an entity like `Asset` (`address` in The Graph and `address-chainId` in Envio) you
+can query for certain assets with:
 
 1. `asset(id: $assetId)` for The Graph
 2. `Asset(where: {id: {_iregex: $assetId}})`

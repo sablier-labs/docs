@@ -16,13 +16,14 @@ responsible of defining the following Sablier entities:
 
 ### Primary
 
-| Entity   | Description                                                                                |
-| -------- | ------------------------------------------------------------------------------------------ |
-| Contract | Instances of `SablierV2LockupLinear` or `SablierV2LockupDynamic`                           |
-| Action   | Emitted events transformed into historical entries (e.g. Create, Withdraw)                 |
-| Stream   | Primary entity tracking the up to date state of a stream                                   |
-| Asset    | The ERC20 asset that is being streamed                                                     |
-| Segment  | The function segment used to build the custom curve in cases of LockupDynamic streams care |
+| Entity   | Description                                                                            |
+| -------- | -------------------------------------------------------------------------------------- |
+| Contract | Instances of `SablierV2LockupLinear` or `..Dynamic` or `..Tranched`                    |
+| Action   | Emitted events transformed into historical entries (e.g. Create, Withdraw)             |
+| Stream   | Primary entity tracking the up to date state of a stream                               |
+| Asset    | The ERC20 asset that is being streamed                                                 |
+| Segment  | The function segment used to build the custom curve in cases of Lockup Dynamic streams |
+| Tranche  | The tranche/step used to build shapes powered by Lockup Tranched streams               |
 
 ### Secondary
 

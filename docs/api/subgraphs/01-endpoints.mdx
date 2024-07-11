@@ -11,18 +11,11 @@ import LinkPreview from "@site/src/components/LinkPreview";
 This subgraph tracks events mainly emitted by the [`@sablier/v2-core`](/contracts/v2/reference/overview#core) contracts.
 It deals with core protocol actions like creating, withdrawing or transferring streams.
 
-:::warning
+:::important
 
 Since The Graph is [sunsetting](https://thegraph.com/blog/sunsetting-hosted-service/) their Hosted Service we've
 transitioned our subgraphs to either the Studio or The Decentralized Network (see
-[supported networks](https://thegraph.com/docs/en/developing/supported-networks/)). For a while you may still be able to
-access the Hosted Service endpoints using
-
-```
-api.thegraph.com/subgraphs/name/sablier-labs/sablier-v2-<CHAIN>
-```
-
-... where `CHAIN` corresponds to the chain names used below.
+[supported networks](https://thegraph.com/docs/en/developing/supported-networks/) and our endpoints below).
 
 :::
 
@@ -294,10 +287,10 @@ NFTs as defined in the attached Merkle tree.
 ### Code
 
 <LinkPreview
-  href="https://github.com/sablier-labs/v2-subgraphs/tree/main/apps/protocol"
+  href="https://github.com/sablier-labs/v2-subgraphs/tree/main/apps/merkle"
   icon="github"
   subtitle="Github - sablier-labs/v2-subgraphs"
-  title="Sablier V2 protocol subgraph (The Graph)"
+  title="Sablier V2 merkle subgraph (The Graph)"
 />
 
 ## Sablier V1

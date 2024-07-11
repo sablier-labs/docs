@@ -50,7 +50,7 @@ To offer a backwards compatible subgraph (between Sablier Core/ Sablier Peripher
 the ABIs of the two versions. This will cause the configuration file to contain similar events between different
 versions of Lockup contract.
 
-Different from how we handle this for [subgraphs](/api/subgraphs/protocol/flow), `LockupLinear` and `LockupDynamic` will
-be bundled under the same `Lockup<Version>` contract tracker `config.yaml`. Versions of the protocol will be tracked
-separately, which is why we have `Lockup_V20` (v2.0) and `Lockup_V21` (v2.1) in our configuration. Later on, inside the
-handler logic, we'll separate contracts by flavor.
+Different from how we handle this for [subgraphs](/api/subgraphs/protocol/flow), `Lockup Linear`, `Lockup Dynamic` and
+`Lockup Tranched` will be bundled under the same `Lockup<Version>` contract tracker `config.yaml`. Versions of the
+protocol will be tracked separately, which is why we have `Lockup_V20` (v2.0) and `Lockup_V21` (v2.1) in our
+configuration. Later on, inside the handler logic, we'll separate contracts by flavor.

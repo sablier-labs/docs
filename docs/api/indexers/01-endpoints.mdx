@@ -25,7 +25,8 @@ creating, withdrawing, or transferring streams.
 | ---------------- | ----------------------------------------------------------------------- |
 | All-Networks[^1] | [https://indexer.bigdevenergy.link/[...]/v1/graphql][endpoint-protocol] |
 
-Use [Hasura's online explorer](https://cloud.hasura.io/public/graphiql?) to view the entities and query API.
+The endpoint is meant to be plugged into a query client. Use
+[Hasura's online explorer](https://cloud.hasura.io/public/graphiql?) to view the entities and query API.
 
 ### Code
 
@@ -51,7 +52,8 @@ streams as defined in the attached Merkle tree.
 | ------------ | --------------------------------------------------------------------- |
 | All-Networks | [https://indexer.bigdevenergy.link/[...]/v1/graphql][endpoint-merkle] |
 
-Use [Hasura's online explorer](https://cloud.hasura.io/public/graphiql?) to view the entities and query API.
+The endpoint is meant to be plugged into a query client. Use
+[Hasura's online explorer](https://cloud.hasura.io/public/graphiql?) to view the entities and query API.
 
 [endpoint-merkle]: https://indexer.bigdevenergy.link/508d217/v1/graphql
 
@@ -66,5 +68,6 @@ Use [Hasura's online explorer](https://cloud.hasura.io/public/graphiql?) to view
 
 [^1]:
     All-Networks = most of the networks supported by Sablier, e.g., Mainnet, Optimism, Polygon, Sepolia. The full list
-    can be found
-    [here](https://github.com/sablier-labs/v2-subgraphs/blob/main/apps/protocol-envio/src/constants/chains/index.ts).
+    can be found [here](https://github.com/sablier-labs/v2-subgraphs/tree/main/packages/constants/src). To add a new
+    chain to our Envio indexer, create a new list of contracts (`/addresses`) and import that configuration into our
+    bundles (see `/bundles`).

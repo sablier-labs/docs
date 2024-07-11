@@ -7,10 +7,10 @@ title: "Structure"
 We'll break down the [schema](https://github.com/sablier-labs/v2-subgraphs/blob/main/apps/core/schema.graphql) into
 primary and secondary entities.
 
-| Type      | Entities                                 |
-| --------- | ---------------------------------------- |
-| Primary   | Contract, Action, Stream, Asset, Segment |
-| Secondary | Batch, Batcher, Watcher                  |
+| Type      | Entities                                          |
+| --------- | ------------------------------------------------- |
+| Primary   | Contract, Action, Stream, Asset, Segment, Tranche |
+| Secondary | Batch, Batcher, Watcher                           |
 
 ## Contract
 
@@ -125,9 +125,10 @@ you don't need to worry about `proxenders` and `proxy` if you're not looking to 
 
 :::
 
-[In V2.0] While not mandatory for the core functionality, Sablier made use of [PRBProxy](https://github.com/paulrberg/prb-proxy)
-in its [periphery](https://github.com/sablier-labs/v2-periphery. The official client interfaces provided support for functionality
-exposed through both EOAs and this proxy integration, at the same time.
+[In V2.0] While not mandatory for the core functionality, Sablier made use of
+[PRBProxy](https://github.com/paulrberg/prb-proxy) in its [periphery](https://github.com/sablier-labs/v2-periphery. The
+official client interfaces provided support for functionality exposed through both EOAs and this proxy integration, at
+the same time.
 
 For streams created within this "extended" ecosystem, a few attributes and entities will change meaning as such:
 
@@ -169,9 +170,24 @@ implementation. For examples, see the asset "helper" files inside this subgraph'
 
 ## Segment
 
-The custom emission curve used by LockupDynamic streams will be defined as a sequence of
+The custom emission curve used by Lockup Dynamic streams will be defined as a sequence of
 [segments](/concepts/protocol/segments). This entity will store data regarding those segments, which will be later used
 to reconstruct the shape of the curve client side.
+
+---
+
+## Tranche
+
+The custom emission curve used by Lockup Tranched streams will be defined as a sequence of
+[tranches](/concepts/protocol/tranches). This entity will store data regarding those tranches, which will be later used
+to reconstruct the shape of the curve client side.
+
+:::tip
+
+Tranches can also be represented as a set of two segments (one horizontal, one vertical) so client apps may benefit from
+artificially creating segments from tranches.
+
+:::
 
 ---
 
