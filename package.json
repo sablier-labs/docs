@@ -84,7 +84,7 @@
     "deploy": "docusaurus deploy",
     "fix": "bun run prettier:write && bun run lint:fix",
     "lint:check": "bun eslint . --ext md,mdx,ts,tsx",
-    "lint:fix": "bun eslint . --ext md,mdx,ts,tsx --fix",
+    "lint:fix": "bun eslint . --ext md,mdx,ts,tsx --fix && bun formatter.js",
     "prettier:check": "prettier --check \"**/*.{json,md,mdx,ts,tsx,yml}\"",
     "prettier:write": "prettier --write \"**/*.{json,md,mdx,ts,tsx,yml}\"",
     "serve": "docusaurus serve",
