@@ -100,34 +100,37 @@ Bellow you can find a list with each possible column, a short description and an
 
 :::warning Date and time Caveats
 
-**Dates**: All the columns that use the "date" type should have the following format: "DD/MM/YYYY HH:mm".<br /><br/>
+**Dates**: All the columns that use the "date" type should have the following format: "YYYY-MM-DD HH:mm".
+
 **Durations**: All the columns that use the "duration" type should have the following format: "**x** years **y** days
-**z** hours". (Each particle is optional)<br /><br/> **Timezones**: The dates and times extracted from the CSV are
-processed using the same timezone as the locales of the client's device.
+**z** hours". Note that each particle is optional, e.g., you can skip the days.
+
+**Timezones**: The dates and times extracted from the CSV are processed using the same timezone as the locales of the
+client's device.
 
 :::
 
 :::info
 
-If editing the CSV in Google Spreadsheets or similar applications please make sure these formats are not overridden by
-the app itself. We suggest double-checking in the Sablier app that the dates have been interpreted as expected.
+If editing the CSV in Google Spreadsheets or similar applications, make sure that these formats are not overridden by
+the app itself. We suggest double-checking in the Sablier app that the dates have been parsed as expected.
 
 :::
 
-| Column         | Description                                                                                                     | Example                                           |
-| :------------- | :-------------------------------------------------------------------------------------------------------------- | :------------------------------------------------ |
-| address        | String - recipient's address                                                                                    | `0x12...AB`                                       |
-| amount         | Number - the amount that will be streamed                                                                       | `100`, `2500`, `42161` or any other valid amount. |
-| duration       | Duration type - string that expresses the duration of the stream (see format above)                             | `1 year 20 days`, `3 years 20 days 4 hours`       |
-| start          | Date type - string that expresses the start date of the stream (see format above)                               | `24/02/2024 16:15`, `14/02/2026 17:25`            |
-| end            | Date type - string that expresses the end date of the stream (see format above)                                 | `24/02/2024 16:15`, `14/02/2026 17:25`            |
-| cliffDuration  | Duration type - string that expresses the cliff duration of the stream (see format above)                       | `2 years 20 days`, `3 years 20 days 4 hours`      |
-| cliffEnd       | Date type - string that expresses the cliff end date of the stream (see format above)                           | `24/02/2024 16:15`, `14/02/2026 17:25`            |
-| months         | Number - the number of months for the unlock monthly                                                            | `4`, `5`, `12` or any other valid integer.        |
-| steps          | Number - the number of steps for the unlock in steps                                                            | `4`, `5`, `12` or any other valid integer.        |
-| unlockDuration | Duration type - string that expresses the cliff duration of the stream, for the unlock cliff (see format above) | `2 years 20 days`, `3 years 20 days 4 hours`      |
-| unlockEnd      | Date type - string that expresses the cliff end date of the stream, for the unlock cliff (see format above)     | `24/02/2024 16:15`, `14/02/2026 17:25`            |
-| unlock         | Number - the amount that will be initially unlocked                                                             | `100`, `2500`, `42161` or any other valid amount. |
+| Column         | Description                                                                                | Examples                                          |
+| :------------- | :----------------------------------------------------------------------------------------- | :------------------------------------------------ |
+| address        | String - recipient's address                                                               | `0x12...AB`                                       |
+| amount         | Number - the amount that will be streamed                                                  | `100`, `2500`, `42161` or any other valid amount. |
+| duration       | Duration type - string that denotes the duration of the stream                             | `1 year 20 days`, `3 years 20 days 4 hours`       |
+| start          | Date type - string that denotes the start date of the stream                               | `2024-02-24 16:15`, `2026-02-14 17:25`            |
+| end            | Date type - string that denotes the end date of the stream                                 | `2024-02-24 16:15`, `2026-02-14 17:25`            |
+| cliffDuration  | Duration type - string that denotes the cliff duration of the stream                       | `2 years 20 days`, `3 years 20 days 4 hours`      |
+| cliffEnd       | Date type - string that denotes the cliff end date of the stream                           | `2024-02-24 16:15`, `2026-02-14 17:25`            |
+| months         | Number - the number of months for the unlock monthly                                       | `4`, `5`, `12` or any other valid integer.        |
+| steps          | Number - the number of steps for the unlock in steps                                       | `4`, `5`, `12` or any other valid integer.        |
+| unlockDuration | Duration type - string that denotes the cliff duration of the stream, for the unlock cliff | `2 years 20 days`, `3 years 20 days 4 hours`      |
+| unlockEnd      | Date type - string that denotes the cliff end date of the stream, for the unlock cliff     | `2024-02-24 16:15`, `2026-02-14 17:25`            |
+| unlock         | Number - the amount that will be initially unlocked                                        | `100`, `2500`, `42161` or any other valid amount. |
 
 ## Airstreams: Create
 
