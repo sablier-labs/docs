@@ -359,6 +359,24 @@ Unlike other EVM chains, zkSync requires the libraries to be deployed, too. Plea
 | SablierV2BatchLockup         | [0xC1FD380b3B0fF989C259D0b45B97F9663B638aA4](https://sepolia-optimistic.etherscan.io/address/0xd9dD971D4800100aED0BfF3535aB116D4Be5c420) | [periphery-v1.2.0](https://github.com/sablier-labs/v2-deployments/tree/main/periphery/v1.2.0) |
 | SablierV2MerkleLockupFactory | [0xa11561F9e418f2C431B411E1CA22FD3F85D4c831](https://sepolia-optimistic.etherscan.io/address/0x6CBe6e298A9354306e6ee65f63FF85CFA7062a39) | [periphery-v1.2.0](https://github.com/sablier-labs/v2-deployments/tree/main/periphery/v1.2.0) |
 
+## Taiko Hekla
+
+### Core
+
+| Contract                | Address                                                                                                                           | Deployment                                                                          |
+| :---------------------- | :-------------------------------------------------------------------------------------------------------------------------------- | :---------------------------------------------------------------------------------- |
+| SablierV2LockupDynamic  | [0x01565a1298d631302c114E13C431c9345ae5532e](https://explorer.hekla.taiko.xyz/address/0x89EC3830040dec63E9dF0C904d649fda4d49DF16) | [core-v1.2.0](https://github.com/sablier-labs/v2-deployments/tree/main/core/v1.2.0) |
+| SablierV2LockupLinear   | [0x640376B26E5f57dCD385b394a24c91F4C60E4fAc](https://explorer.hekla.taiko.xyz/address/0x640376B26E5f57dCD385b394a24c91F4C60E4fAc) | [core-v1.2.0](https://github.com/sablier-labs/v2-deployments/tree/main/core/v1.2.0) |
+| SablierV2LockupTranched | [0xd040fa437021F771C307178F06183bffC36cb4A5](https://explorer.hekla.taiko.xyz/address/0xd040fa437021F771C307178F06183bffC36cb4A5) | [core-v1.2.0](https://github.com/sablier-labs/v2-deployments/tree/main/core/v1.2.0) |
+| SablierV2NFTDescriptor  | [0x49Fd46F7d897778205c00D5c1D943fCDc26Ed9E8](https://explorer.hekla.taiko.xyz/address/0x49Fd46F7d897778205c00D5c1D943fCDc26Ed9E8) | [core-v1.2.0](https://github.com/sablier-labs/v2-deployments/tree/main/core/v1.2.0) |
+
+### Periphery
+
+| Contract                     | Address                                                                                                                           | Deployment                                                                                    |
+| :--------------------------- | :-------------------------------------------------------------------------------------------------------------------------------- | :-------------------------------------------------------------------------------------------- |
+| SablierV2BatchLockup         | [0x6C6a4Ef6C0C1318C9FD60b5084B68E04FB5e9Db9](https://explorer.hekla.taiko.xyz/address/0x6C6a4Ef6C0C1318C9FD60b5084B68E04FB5e9Db9) | [periphery-v1.2.0](https://github.com/sablier-labs/v2-deployments/tree/main/periphery/v1.2.0) |
+| SablierV2MerkleLockupFactory | [0x4F0d64365EfA9D6D1B88FfC387Ce02e4A71d9f9f](https://explorer.hekla.taiko.xyz/address/0x4F0d64365EfA9D6D1B88FfC387Ce02e4A71d9f9f) | [periphery-v1.2.0](https://github.com/sablier-labs/v2-deployments/tree/main/periphery/v1.2.0) |
+
 ## zkSync Sepolia
 
 :::note
