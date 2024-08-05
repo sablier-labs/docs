@@ -359,6 +359,24 @@ Unlike other EVM chains, zkSync requires the libraries to be deployed, too. Plea
 | SablierV2BatchLockup         | [0x23d0B7691F4Ca0E5477132a7C7F54fdCEd1814B9](https://sepolia.basescan.org/address/0x23d0B7691F4Ca0E5477132a7C7F54fdCEd1814B9) | [periphery-v1.2.0](https://github.com/sablier-labs/v2-deployments/tree/main/periphery/v1.2.0) |
 | SablierV2MerkleLockupFactory | [0x899a05feb160fe912f621733A1d0b39C1446B3eB](https://sepolia.basescan.org/address/0x899a05feb160fe912f621733A1d0b39C1446B3eB) | [periphery-v1.2.0](https://github.com/sablier-labs/v2-deployments/tree/main/periphery/v1.2.0) |
 
+## Berachain Artio
+
+### Core
+
+| Contract                | Address                                                                                                                      | Deployment                                                                          |
+| :---------------------- | :--------------------------------------------------------------------------------------------------------------------------- | :---------------------------------------------------------------------------------- |
+| SablierV2LockupDynamic  | [0x1EA807A7CeAd9547d1dB14B4249b215C01c0B4D4](https://bartio.beratrail.io/address/0x1EA807A7CeAd9547d1dB14B4249b215C01c0B4D4) | [core-v1.2.0](https://github.com/sablier-labs/v2-deployments/tree/main/core/v1.2.0) |
+| SablierV2LockupLinear   | [0xfB603381EdfaF3A67e8332c14f9453E073A1BeF6](https://bartio.beratrail.io/address/0xfB603381EdfaF3A67e8332c14f9453E073A1BeF6) | [core-v1.2.0](https://github.com/sablier-labs/v2-deployments/tree/main/core/v1.2.0) |
+| SablierV2LockupTranched | [0xE92893Ee49b6Ae9e468B332cc5A3FdEA8cb7FEBf](https://bartio.beratrail.io/address/0xE92893Ee49b6Ae9e468B332cc5A3FdEA8cb7FEBf) | [core-v1.2.0](https://github.com/sablier-labs/v2-deployments/tree/main/core/v1.2.0) |
+| SablierV2NFTDescriptor  | [0x5A67965B0f8d8202121b965a4ad977706329e607](https://bartio.beratrail.io/address/0x5A67965B0f8d8202121b965a4ad977706329e607) | [core-v1.2.0](https://github.com/sablier-labs/v2-deployments/tree/main/core/v1.2.0) |
+
+### Periphery
+
+| Contract                     | Address                                                                                                                      | Deployment                                                                                    |
+| :--------------------------- | :--------------------------------------------------------------------------------------------------------------------------- | :-------------------------------------------------------------------------------------------- |
+| SablierV2BatchLockup         | [0xf43Df76b7533245da6F194a58Cb82533479b2100](https://bartio.beratrail.io/address/0xf43Df76b7533245da6F194a58Cb82533479b2100) | [periphery-v1.2.0](https://github.com/sablier-labs/v2-deployments/tree/main/periphery/v1.2.0) |
+| SablierV2MerkleLockupFactory | [0x5ED2465370adBC11D6e651002d70C476fd9106Cb](https://bartio.beratrail.io/address/0x5ED2465370adBC11D6e651002d70C476fd9106Cb) | [periphery-v1.2.0](https://github.com/sablier-labs/v2-deployments/tree/main/periphery/v1.2.0) |
+
 ## Blast Sepolia
 
 ### Core
