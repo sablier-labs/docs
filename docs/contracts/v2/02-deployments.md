@@ -278,6 +278,24 @@ Or maybe you're looking for V1? [Click here](/contracts/v1/deployments).
 | SablierV2BatchLockup         | [0x4B8BF9cD3274517609e7Fe905740fa151C9aa711](https://scrollscan.com/address/0x4B8BF9cD3274517609e7Fe905740fa151C9aa711) | [periphery-v1.2.0](https://github.com/sablier-labs/v2-deployments/tree/main/periphery/v1.2.0) |
 | SablierV2MerkleLockupFactory | [0x344afe8ad5dBA3d55870dc398e0F53B635B2ed0d](https://scrollscan.com/address/0x344afe8ad5dBA3d55870dc398e0F53B635B2ed0d) | [periphery-v1.2.0](https://github.com/sablier-labs/v2-deployments/tree/main/periphery/v1.2.0) |
 
+## Taiko Mainnet
+
+### Core
+
+| Contract                | Address                                                                                                               | Deployment                                                                          |
+| :---------------------- | :-------------------------------------------------------------------------------------------------------------------- | :---------------------------------------------------------------------------------- |
+| SablierV2LockupDynamic  | [0x238C830FA8E4ED0f0A4bc9C986BF338aEC9e38D1](https://taikoscan.io/address/0x238C830FA8E4ED0f0A4bc9C986BF338aEC9e38D1) | [core-v1.2.0](https://github.com/sablier-labs/v2-deployments/tree/main/core/v1.2.0) |
+| SablierV2LockupLinear   | [0x5Ec0a2e88dAd09ad940Be2639c9aDb24D186989E](https://taikoscan.io/address/0x5Ec0a2e88dAd09ad940Be2639c9aDb24D186989E) | [core-v1.2.0](https://github.com/sablier-labs/v2-deployments/tree/main/core/v1.2.0) |
+| SablierV2LockupTranched | [0x6a619d35972578E8458E33B7d1e07b155A51585E](https://taikoscan.io/address/0x6a619d35972578E8458E33B7d1e07b155A51585E) | [core-v1.2.0](https://github.com/sablier-labs/v2-deployments/tree/main/core/v1.2.0) |
+| SablierV2NFTDescriptor  | [0xBFD6048C80665792d949692CE77307e55dbb8986](https://taikoscan.io/address/0xBFD6048C80665792d949692CE77307e55dbb8986) | [core-v1.2.0](https://github.com/sablier-labs/v2-deployments/tree/main/core/v1.2.0) |
+
+### Periphery
+
+| Contract                     | Address                                                                                                               | Deployment                                                                                    |
+| :--------------------------- | :-------------------------------------------------------------------------------------------------------------------- | :-------------------------------------------------------------------------------------------- |
+| SablierV2BatchLockup         | [0x65E2C9990d4CAc5E54E65c1BD625CdcC9FDd1292](https://taikoscan.io/address/0x65E2C9990d4CAc5E54E65c1BD625CdcC9FDd1292) | [periphery-v1.2.0](https://github.com/sablier-labs/v2-deployments/tree/main/periphery/v1.2.0) |
+| SablierV2MerkleLockupFactory | [0xd7df0b795756b60ab51a37e26f1edb7ef9e78828](https://taikoscan.io/address/0xd7df0b795756b60ab51a37e26f1edb7ef9e78828) | [periphery-v1.2.0](https://github.com/sablier-labs/v2-deployments/tree/main/periphery/v1.2.0) |
+
 ## zkSync Era
 
 :::note
