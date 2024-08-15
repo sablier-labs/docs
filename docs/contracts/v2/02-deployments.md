@@ -19,11 +19,12 @@ A few noteworthy details about the deployments:
 
 ## Previous Versions
 
-Any updates or additional features will call for a new deployment of the protocol, due to its immutable nature. Came
-here looking for the previous V2 deployments? Click below to see other versions as well as in-app aliases assigned under
-our naming [convention](/api/subgraphs/protocol/structure#identifying).
+Any updates or additional features will call for a new deployment of the protocol, due to its immutable nature.
 
-| Version                                | Aliases                                                          |
+Came here looking for the previous V2 deployments? Click below to see other versions as well as the in-app aliases
+assigned under our [naming convention](/api/subgraphs/protocol/structure#identifying).
+
+| Version                                | UI Aliases                                                       |
 | -------------------------------------- | ---------------------------------------------------------------- |
 | v2.2 (current)                         | LD3 (Lockup Dynamic), LL3 (Lockup Linear), LT3 (Lockup Tranched) |
 | [v2.1](/contracts/v2/deployments/v2.1) | LD2 (Lockup Dynamic), LL2 (Lockup Linear)                        |
