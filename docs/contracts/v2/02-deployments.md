@@ -17,12 +17,24 @@ A few noteworthy details about the deployments:
 - All LockupLinear, LockupDynamic, and LockupTranched contracts are non-upgradeable
 - The source code is verified on Etherscan across all chains
 
-:::info
+## Previous Versions
 
-Came here looking for the previous V2 deployments? [Click here](/contracts/v2/deployments/v2.1) for V2.1 or
-[click here](/contracts/v2/deployments/v2.0) for V2.0.
+Any updates or additional features will call for a new deployment of the protocol, due to its immutable nature. Came
+here looking for the previous V2 deployments? Click below to see other versions as well as in-app aliases assigned under
+our naming [convention](/api/subgraphs/protocol/structure#identifying).
+
+| Version                                | Aliases                                                          |
+| -------------------------------------- | ---------------------------------------------------------------- |
+| v2.2 (current)                         | LD3 (Lockup Dynamic), LL3 (Lockup Linear), LT3 (Lockup Tranched) |
+| [v2.1](/contracts/v2/deployments/v2.1) | LD2 (Lockup Dynamic), LL2 (Lockup Linear)                        |
+| [v2.0](/contracts/v2/deployments/v2.0) | LD (Lockup Dynamic), LL (Lockup Linear)                          |
 
 Or maybe you're looking for V1? [Click here](/contracts/v1/deployments).
+
+:::info
+
+Stay up to date with any new releases by [subscribing](https://x.com/Sablier/status/1821220784661995627) to the official
+Sablier repositories on Github.
 
 :::
 
