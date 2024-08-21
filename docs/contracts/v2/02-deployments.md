@@ -462,6 +462,22 @@ Unlike other EVM chains, zkSync requires the libraries to be deployed, too. Plea
 | SablierV2BatchLockup         | [0xece83740834694A6E204825e5bcD8774F26a2665](https://sepolia.explorer.mode.network/address/0xece83740834694A6E204825e5bcD8774F26a2665) | [periphery-v1.2.0](https://github.com/sablier-labs/v2-deployments/tree/main/periphery/v1.2.0) |
 | SablierV2MerkleLockupFactory | [0x900de6cC1021afa13f41e1067bEE681BbD661C69](https://sepolia.explorer.mode.network/address/0x900de6cC1021afa13f41e1067bEE681BbD661C69) | [periphery-v1.2.0](https://github.com/sablier-labs/v2-deployments/tree/main/periphery/v1.2.0) |
 
+## Morph Holesky
+
+| Contract                | Address                                                                                                                              | Deployment                                                                          |
+| :---------------------- | :----------------------------------------------------------------------------------------------------------------------------------- | :---------------------------------------------------------------------------------- |
+| SablierV2LockupDynamic  | [0x36477f8FEf1fC3B0fe7F24b8F6d9561f0BeC30e7](https://explorer-holesky.morphl2.io/address/0x36477f8FEf1fC3B0fe7F24b8F6d9561f0BeC30e7) | [core-v1.2.0](https://github.com/sablier-labs/v2-deployments/tree/main/core/v1.2.0) |
+| SablierV2LockupLinear   | [0x4b4126036726085636BC2A4788a448d5C26705E4](https://explorer-holesky.morphl2.io/address/0x4b4126036726085636BC2A4788a448d5C26705E4) | [core-v1.2.0](https://github.com/sablier-labs/v2-deployments/tree/main/core/v1.2.0) |
+| SablierV2LockupTranched | [0x6AF155530D6360E789deD0CF88219f855CCb158F](https://explorer-holesky.morphl2.io/address/0x6AF155530D6360E789deD0CF88219f855CCb158F) | [core-v1.2.0](https://github.com/sablier-labs/v2-deployments/tree/main/core/v1.2.0) |
+| SablierV2NFTDescriptor  | [0x33BE6a7810B464B913052EC0436A067de25C164c](https://explorer-holesky.morphl2.io/address/0x33BE6a7810B464B913052EC0436A067de25C164c) | [core-v1.2.0](https://github.com/sablier-labs/v2-deployments/tree/main/core/v1.2.0) |
+
+### Periphery
+
+| Contract                     | Address                                                                                                                              | Deployment                                                                                    |
+| :--------------------------- | :----------------------------------------------------------------------------------------------------------------------------------- | :-------------------------------------------------------------------------------------------- |
+| SablierV2BatchLockup         | [0x728Ec8260Ea1115252D33c0D563d78CA18990dE4](https://explorer-holesky.morphl2.io/address/0x728Ec8260Ea1115252D33c0D563d78CA18990dE4) | [periphery-v1.2.0](https://github.com/sablier-labs/v2-deployments/tree/main/periphery/v1.2.0) |
+| SablierV2MerkleLockupFactory | [0x4B5F6B967dC61c2B39fa233092745B460eA1b433](https://explorer-holesky.morphl2.io/address/0x4B5F6B967dC61c2B39fa233092745B460eA1b433) | [periphery-v1.2.0](https://github.com/sablier-labs/v2-deployments/tree/main/periphery/v1.2.0) |
+
 ## Optimism Sepolia
 
 ### Core
