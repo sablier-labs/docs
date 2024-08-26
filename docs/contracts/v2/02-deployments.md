@@ -183,6 +183,24 @@ Sablier repositories on Github.
 | SablierV2BatchLockup         | [0x5C847244649BD74aB41f09C893aF792AD87D32aA](https://phoenix.lightlink.io/address/0x5C847244649BD74aB41f09C893aF792AD87D32aA) | [periphery-v1.2.0](https://github.com/sablier-labs/v2-deployments/tree/main/periphery/v1.2.0) |
 | SablierV2MerkleLockupFactory | [0x278AC15622846806BD46FBDbdB8dB8d09614173A](https://phoenix.lightlink.io/address/0x278AC15622846806BD46FBDbdB8dB8d09614173A) | [periphery-v1.2.0](https://github.com/sablier-labs/v2-deployments/tree/main/periphery/v1.2.0) |
 
+## IoTeX
+
+### Core
+
+| Contract                | Address                                                                                                               | Deployment                                                                          |
+| :---------------------- | :-------------------------------------------------------------------------------------------------------------------- | :---------------------------------------------------------------------------------- |
+| SablierV2LockupDynamic  | [0x6FcAB41e3b62d05aB4fC729586CB06Af2a2662D0](https://iotexscan.io/address/0x6FcAB41e3b62d05aB4fC729586CB06Af2a2662D0) | [core-v1.2.0](https://github.com/sablier-labs/v2-deployments/tree/main/core/v1.2.0) |
+| SablierV2LockupLinear   | [0x84f092cf4d7d36c2d4987f672df81a39200a7146](https://iotexscan.io/address/0x84f092cf4d7d36c2d4987f672df81a39200a7146) | [core-v1.2.0](https://github.com/sablier-labs/v2-deployments/tree/main/core/v1.2.0) |
+| SablierV2LockupTranched | [0x179536f3289fb50076968b339C7EF0Dc0B38E3AF](https://iotexscan.io/address/0x179536f3289fb50076968b339C7EF0Dc0B38E3AF) | [core-v1.2.0](https://github.com/sablier-labs/v2-deployments/tree/main/core/v1.2.0) |
+| SablierV2NFTDescriptor  | [0x28eAB88ee8a951F78e1028557D0C3fD97af61A33](https://iotexscan.io/address/0x28eAB88ee8a951F78e1028557D0C3fD97af61A33) | [core-v1.2.0](https://github.com/sablier-labs/v2-deployments/tree/main/core/v1.2.0) |
+
+### Periphery
+
+| Contract                     | Address                                                                                                               | Deployment                                                                                    |
+| :--------------------------- | :-------------------------------------------------------------------------------------------------------------------- | :-------------------------------------------------------------------------------------------- |
+| SablierV2BatchLockup         | [0x711900e5f55d427cd88e5E3FCAe54Ccf02De71F4](https://iotexscan.io/address/0x711900e5f55d427cd88e5E3FCAe54Ccf02De71F4) | [periphery-v1.2.0](https://github.com/sablier-labs/v2-deployments/tree/main/periphery/v1.2.0) |
+| SablierV2MerkleLockupFactory | [0xf978034bb3CAB5fe88d23DB5Cb38D510485DaB90](https://iotexscan.io/address/0xf978034bb3CAB5fe88d23DB5Cb38D510485DaB90) | [periphery-v1.2.0](https://github.com/sablier-labs/v2-deployments/tree/main/periphery/v1.2.0) |
+
 ## Linea
 
 ### Core
