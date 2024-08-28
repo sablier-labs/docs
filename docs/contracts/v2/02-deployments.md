@@ -216,8 +216,8 @@ Sablier repositories on Github.
 
 | Contract                     | Address                                                                                                                  | Deployment                                                                                    |
 | :--------------------------- | :----------------------------------------------------------------------------------------------------------------------- | :-------------------------------------------------------------------------------------------- |
-| SablierV2BatchLockup         | [0x6Afcdd8f6c7d6265F7Bc4dF7D12B8bE7c4158705](https://lineascan.build/address/0x6Afcdd8f6c7d6265F7Bc4dF7D12B8bE7c4158705) | [periphery-v1.2.0](https://github.com/sablier-labs/v2-deployments/tree/main/periphery/v1.2.0) |
-| SablierV2MerkleLockupFactory | [0x443ec48a3EeD6504015CCA3b09258bc0d2afdB96](https://lineascan.build/address/0x443ec48a3EeD6504015CCA3b09258bc0d2afdB96) | [periphery-v1.2.0](https://github.com/sablier-labs/v2-deployments/tree/main/periphery/v1.2.0) |
+| SablierV2BatchLockup         | [0x4259557F6665eCF5907c9019a30f3Cb009c20Ae7](https://lineascan.build/address/0x4259557F6665eCF5907c9019a30f3Cb009c20Ae7) | [periphery-v1.2.0](https://github.com/sablier-labs/v2-deployments/tree/main/periphery/v1.2.0) |
+| SablierV2MerkleLockupFactory | [0x35E9C3445A039B258Eb7112A5Eea259a825E8AC0](https://lineascan.build/address/0x35E9C3445A039B258Eb7112A5Eea259a825E8AC0) | [periphery-v1.2.0](https://github.com/sablier-labs/v2-deployments/tree/main/periphery/v1.2.0) |
 
 ## Meld
 
@@ -459,8 +459,8 @@ Unlike other EVM chains, zkSync requires the libraries to be deployed, too. Plea
 
 | Contract                     | Address                                                                                                                          | Deployment                                                                                    |
 | :--------------------------- | :------------------------------------------------------------------------------------------------------------------------------- | :-------------------------------------------------------------------------------------------- |
-| SablierV2BatchLockup         | [0xfA1eEc0DD01fFf4700d0565c181f22FDb72dE0B0](https://sepolia.lineascan.build/address/0xfA1eEc0DD01fFf4700d0565c181f22FDb72dE0B0) | [periphery-v1.2.0](https://github.com/sablier-labs/v2-deployments/tree/main/periphery/v1.2.0) |
-| SablierV2MerkleLockupFactory | [0xf4516C4Fab6491bDCBfd4F2EA15B81C9f88eb075](https://sepolia.lineascan.build/address/0xf4516C4Fab6491bDCBfd4F2EA15B81C9f88eb075) | [periphery-v1.2.0](https://github.com/sablier-labs/v2-deployments/tree/main/periphery/v1.2.0) |
+| SablierV2BatchLockup         | [0x8224eb5D7d76B2D7Df43b868D875E79B11500eA8](https://sepolia.lineascan.build/address/0x8224eb5D7d76B2D7Df43b868D875E79B11500eA8) | [periphery-v1.2.0](https://github.com/sablier-labs/v2-deployments/tree/main/periphery/v1.2.0) |
+| SablierV2MerkleLockupFactory | [0x83Dd52FCA44E069020b58155b761A590F12B59d3](https://sepolia.lineascan.build/address/0x83Dd52FCA44E069020b58155b761A590F12B59d3) | [periphery-v1.2.0](https://github.com/sablier-labs/v2-deployments/tree/main/periphery/v1.2.0) |
 
 ## Mode Sepolia
 
