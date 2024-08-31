@@ -85,6 +85,10 @@ const config: Config = {
             from: "/apps/csv-support",
             to: "/apps/guides/csv-support",
           },
+          {
+            from: "/csv",
+            to: "/apps/guides/csv-support",
+          },
         ],
       },
     ],
