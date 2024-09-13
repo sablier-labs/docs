@@ -9,7 +9,7 @@ import { links } from "@site/src/constants";
 
 :::info
 
-Due to limited bandwidth, we are not able to deploy the Sablier Protocol on every EVM chain. However, we are happy to
+Due to budget constraints, we are not able to deploy the Sablier Protocol on every EVM chain. However, we are happy to
 consider your project if you fill out this <Link href={links.forms.chain}>form</Link> and meet the requirements below.
 
 :::
@@ -21,3 +21,35 @@ consider your project if you fill out this <Link href={links.forms.chain}>form</
 - Bridge, with step-by-step instructions for how to bridge ETH and ERC-20 tokens to the target chain
 - GraphQL solution, e.g., a deployment of [The Graph](https://thegraph.com/)
 - Functional JSON-RPC endpoint, ideally listed on [ChainList](https://chainlist.org/)
+
+## Deployment Guide
+
+Have you been granted a [BUSL license](https://app.ens.domains/lockup-license-grants.sablier.eth?tab=records) to deploy
+the Sablier Protocol?
+
+This is a guide for how to deploy the Sablier Protocol.
+
+:::warning[Important]
+
+You must set the protocol admin to the Sablier-controlled address 0xD427d37B5F6d33f7D42C4125979361E011FFbfD9. Failure to
+do so will result in your deployment not being acknowledged as official.
+
+:::
+
+### Pre Requisities
+
+- Check if the deployment is already made on [your chain](/contracts/v2/deployments)
+- Follow the [contributing guide](https://github.com/sablier-labs/v2-core/blob/main/CONTRIBUTING.md)
+- JSON RPC, e.g., a paid Infura account
+- Enough ETH in your deployment account
+- Etherscan API key (for source code verification)
+
+### Steps
+
+TODO
+
+:::note
+
+You will need to repeat the steps above for both V2 Core and V2 Periphery.
+
+:::
