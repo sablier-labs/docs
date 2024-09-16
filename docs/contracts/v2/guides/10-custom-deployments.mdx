@@ -7,10 +7,11 @@ title: "Custom Deployments"
 import Link from "@docusaurus/Link";
 import { links } from "@site/src/constants";
 
-:::info
+:::info[Reach Out]
 
-Due to budget constraints, we are not able to deploy the Sablier Protocol on every EVM chain. However, we are happy to
-consider your project if you fill out this <Link href={links.forms.chains}>form</Link> and meet the requirements below.
+Due to budget constraints, we are not able to deploy the Sablier Protocol on every EVM chain. However, we would be happy
+to consider your project if you fill out this <Link href={links.forms.chains}>form</Link> and meet the requirements
+below.
 
 :::
 
@@ -24,7 +25,7 @@ consider your project if you fill out this <Link href={links.forms.chains}>form<
 
 ## Deployment Guide
 
-Following guidelines only apply to you if you have you been granted a
+The following guidelines apply to you only if you have you been granted a
 [BUSL license](https://app.ens.domains/lockup-license-grants.sablier.eth?tab=records) to deploy the Sablier Protocol.
 
 ### Pre Requisities
@@ -37,7 +38,9 @@ Following guidelines only apply to you if you have you been granted a
 
 ### Steps for deploying Core contracts
 
-#### Step 1: Clone the [v2-core repo](https://github.com/sablier-labs/v2-core) and checkout to the latest release.
+#### Step 1: Clone the [v2-core repo](https://github.com/sablier-labs/v2-core) and checkout to the latest release tag
+
+At the time of writing, the latest release tag is `v1.2.0`:
 
 ```bash
 git checkout v1.2.0
@@ -53,19 +56,19 @@ Add the following variables to `.env` file:
 
 ```
 EOA="DEPLOYER ADDRESS"
+ETHERSCAN_API_KEY="EXPLORER API KEY"
 PRIVATE_KEY="PRIVATE KEY OF DEPLOYER ADDRESS"
 RPC_URL="RPC ENDPOINT URL"
 VERIFIER_URL="EXPLORER VERIFICATION URL"
-ETHERSCAN_API_KEY="EXPLORER API KEY"
 ```
 
-Load the environment variables into shell:
+Load the environment variables into your shell:
 
 ```bash
 source .env
 ```
 
-#### Step 3: Run the following command to deploy all core contracts
+#### Step 3: Run the following deployment command
 
 :::warning[Important]
 
@@ -74,42 +77,44 @@ do so will result in your deployment not being acknowledged as official.
 
 :::
 
-For deterministic deployment:
+For **deterministic** deployment:
 
 ```bash
 FOUNDRY_PROFILE=optimized \
 forge script script/DeployDeterministicCore.s.sol \
---sig "run(address)" 0xD427d37B5F6d33f7D42C4125979361E011FFbfD9 \
---rpc-url $RPC_URL \
 --broadcast \
 --etherscan-api-key $ETHERSCAN_API_KEY \
+--rpc-url $RPC_URL \
+--private-key $PRIVATE_KEY \
+--sig "run(address)" 0xD427d37B5F6d33f7D42C4125979361E011FFbfD9 \
 --verifier-url $VERIFIER_URL \
 --verify \
---private-key $PRIVATE_KEY \
 -vvv
 ```
 
-For non-deterministic deployment:
+For **non-deterministic** deployment:
 
 ```bash
 FOUNDRY_PROFILE=optimized \
 forge script script/DeployCore.s.sol \
---sig "run(address)" 0xD427d37B5F6d33f7D42C4125979361E011FFbfD9 \
---rpc-url $RPC_URL \
 --broadcast \
 --etherscan-api-key $ETHERSCAN_API_KEY \
+--private-key $PRIVATE_KEY \
+--rpc-url $RPC_URL \
+--sig "run(address)" 0xD427d37B5F6d33f7D42C4125979361E011FFbfD9 \
 --verifier-url $VERIFIER_URL \
 --verify \
---private-key $PRIVATE_KEY \
 -vvv
 ```
 
-If you are using mnemonic or hardware device for your deployer address, refer to `forge-script` page from
+If you are using a mnemonic or a hardware device for your deployer address, refer to `forge-script` page from
 [foundry book](https://book.getfoundry.sh/reference/forge/forge-script#forge-script) for different wallet options.
 
 ### Steps for deploying Periphery contracts
 
-#### Step 1: Clone the [v2-periphery](https://github.com/sablier-labs/v2-periphery) and checkout to the latest release.
+#### Step 1: Clone the [v2-periphery](https://github.com/sablier-labs/v2-periphery) and checkout to the latest release tag
+
+At the time of writing, the latest release tag is `v1.2.0`:
 
 ```bash
 git checkout v1.2.0
@@ -125,10 +130,10 @@ Add the following variables to `.env` file:
 
 ```
 EOA="DEPLOYER ADDRESS"
+ETHERSCAN_API_KEY="EXPLORER API KEY"
 PRIVATE_KEY="PRIVATE KEY OF DEPLOYER ADDRESS"
 RPC_URL="RPC ENDPOINT URL"
 VERIFIER_URL="EXPLORER VERIFICATION URL"
-ETHERSCAN_API_KEY="EXPLORER API KEY"
 ```
 
 Load the environment variables into shell:
@@ -139,35 +144,35 @@ source .env
 
 #### Step 3: Run the following command to deploy all periphery contracts
 
-For deterministic deployment:
+For **deterministic** deployments, meaning that CREATE2 is used:
 
 ```bash
 FOUNDRY_PROFILE=optimized \
 forge script script/DeployDeterministicPeriphery.s.sol \
---sig "run()" \
---rpc-url $RPC_URL \
 --broadcast \
 --etherscan-api-key $ETHERSCAN_API_KEY \
+--private-key $PRIVATE_KEY \
+--rpc-url $RPC_URL \
+--sig "run()" \
 --verifier-url $VERIFIER_URL \
 --verify \
---private-key $PRIVATE_KEY \
 -vvv
 ```
 
-For non-deterministic deployment:
+For **non-deterministic** deployments:
 
 ```bash
 FOUNDRY_PROFILE=optimized \
 forge script script/DeployPeriphery.s.sol \
---sig "run()" \
---rpc-url $RPC_URL \
 --broadcast \
 --etherscan-api-key $ETHERSCAN_API_KEY \
+--private-key $PRIVATE_KEY \
+--rpc-url $RPC_URL \
+--sig "run()" \
 --verifier-url $VERIFIER_URL \
 --verify \
---private-key $PRIVATE_KEY \
 -vvv
 ```
 
-If you are using mnemonic or hardware device for your deployer address, refer to `forge-script` page from
-[foundry book](https://book.getfoundry.sh/reference/forge/forge-script#forge-script) for different wallet options.
+If you are using a mnemonic or a hardware device for your deployer address, refer to `forge-script` page from the
+[Foundry Book](https://book.getfoundry.sh/reference/forge/forge-script#forge-script) for different wallet options.
