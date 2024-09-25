@@ -243,7 +243,7 @@ const config: Config = {
         {
           label: "Discord",
           position: "right",
-          to: "http://discord.sablier.com",
+          to: "https://discord.sablier.com",
         },
         {
           label: "GitHub",
