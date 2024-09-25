@@ -140,15 +140,15 @@ const config: Config = {
             },
             {
               label: "Risk Notice",
-              href: "https://sablier.com/risk-notice",
+              href: "https://files.sablier.com/risk-notice.pdf",
             },
             {
               label: "Terms of Service",
-              href: "https://sablier.com/terms-of-service",
+              href: "https://files.sablier.com/terms-of-service.pdf",
             },
             {
               label: "Privacy Policy",
-              href: "https://docs.google.com/document/d/10OgbKJkoLnZ_pJtF6SAfcP7ufOC18K3N39MH538XeiI",
+              href: "https://files.sablier.com/privacy-policy.pdf",
             },
           ],
         },
