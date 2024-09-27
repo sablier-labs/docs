@@ -1,6 +1,6 @@
 export const links = {
   app: "https://app.sablier.com",
-  discord: "https://discord.gg/bSwRCwWRsT",
+  discord: "https://discord.sablier.com",
   example: "https://app.sablier.com/stream/LL2-11155111-3/",
   forms: {
     call: "https://forms.gle/6z3XyfSLXDoRghG99",

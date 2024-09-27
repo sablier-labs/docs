@@ -51,7 +51,7 @@ The complete interface for `ISablierLockupRecipient` can be found
 
 :::tip
 
-Looking to get on the allowlist? Reach out to us on [Discord](https://discord.gg/bSwRCwWRsT).
+Looking to get on the allowlist? Reach out to us on [Discord](https://discord.sablier.com).
 
 :::
 
