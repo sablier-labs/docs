@@ -16,7 +16,7 @@ const config: Config = {
   organizationName: "sablier-labs",
   projectName: "sablier-docs",
   tagline: "Documentation and guides for Sablier",
-  title: "Sablier Docs",
+  title: "Sablier Docs | Sablier",
   url: "https://docs.sablier.com",
   presets: [
     [
