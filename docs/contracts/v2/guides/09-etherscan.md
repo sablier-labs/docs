@@ -15,7 +15,7 @@ In this guide, we will show you how to create a stream and withdraw from a strea
 Sablier V2 Core contracts on Etherscan.
 
 If you're interested in interacting with V1, please refer to this
-[article](https://blog.sablier.com/operating-the-sablier-v1-protocol-manually/).
+[article](https://sablier.com/blog/operating-the-sablier-v1-protocol-manually/).
 
 ## Creating a Stream
 
