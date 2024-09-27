@@ -136,6 +136,6 @@ strings.
 
 The contract call could revert with [no reason](https://vmexceptionwhileprocessingtransactionrevert.com/) provided. In
 this case, you probably did not approve the Sablier contract to spend your token balance, although this is not
-necessarily the case. Ping us on [Discord](https://discord.gg/bSwRCwWRsT) if you get stuck.
+necessarily the case. Ping us on [Discord](https://discord.sablier.com) if you get stuck.
 
 :::

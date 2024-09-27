@@ -161,7 +161,7 @@ const config: Config = {
             },
             {
               label: "Discord",
-              href: "https://discord.gg/bSwRCwWRsT",
+              href: "https://discord.sablier.com",
             },
             {
               label: "Blog",
