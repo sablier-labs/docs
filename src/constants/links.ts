@@ -7,5 +7,5 @@ export const links = {
     chains: "https://forms.gle/9EaRarDie98Fw1mw6",
   },
   github: "https://github.com/sablier-labs",
-  medium: "https://blog.sablier.com",
+  medium: "https://sablier.com/blog",
 };
