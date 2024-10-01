@@ -165,7 +165,7 @@ const config: Config = {
             },
             {
               label: "Blog",
-              href: "https://sablier.com/blog",
+              href: "https://blog.sablier.com",
             },
             {
               label: "Branding",
