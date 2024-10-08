@@ -329,6 +329,24 @@ Sablier repositories on Github.
 | SablierV2BatchLockup         | [0x65E2C9990d4CAc5E54E65c1BD625CdcC9FDd1292](https://taikoscan.io/address/0x65E2C9990d4CAc5E54E65c1BD625CdcC9FDd1292) | [periphery-v1.2.0](https://github.com/sablier-labs/v2-deployments/tree/main/periphery/v1.2.0) |
 | SablierV2MerkleLockupFactory | [0xd7df0b795756b60ab51a37e26f1edb7ef9e78828](https://taikoscan.io/address/0xd7df0b795756b60ab51a37e26f1edb7ef9e78828) | [periphery-v1.2.0](https://github.com/sablier-labs/v2-deployments/tree/main/periphery/v1.2.0) |
 
+### Tangle
+
+#### Core
+
+| Contract                | Address                                                                                                                        | Deployment                                                                          |
+| :---------------------- | :----------------------------------------------------------------------------------------------------------------------------- | :---------------------------------------------------------------------------------- |
+| SablierV2LockupDynamic  | [0x946654AB30Dd6eD10236C89f2C8B2719df653691](https://explorer.tangle.tools/address/0x946654AB30Dd6eD10236C89f2C8B2719df653691) | [core-v1.2.0](https://github.com/sablier-labs/v2-deployments/tree/main/core/v1.2.0) |
+| SablierV2LockupLinear   | [0xAC19F4181E58efb7094e0cb4e1BB18c79F6AAdf4](https://explorer.tangle.tools/address/0xAC19F4181E58efb7094e0cb4e1BB18c79F6AAdf4) | [core-v1.2.0](https://github.com/sablier-labs/v2-deployments/tree/main/core/v1.2.0) |
+| SablierV2LockupTranched | [0x63B92F7E2f69877184C955E63B9D8Dff55e52e14](https://explorer.tangle.tools/address/0x63B92F7E2f69877184C955E63B9D8Dff55e52e14) | [core-v1.2.0](https://github.com/sablier-labs/v2-deployments/tree/main/core/v1.2.0) |
+| SablierV2NFTDescriptor  | [0xe785101Cb228693cc3EFdCd5d637fEf6A6Ff7259](https://explorer.tangle.tools/address/0xe785101Cb228693cc3EFdCd5d637fEf6A6Ff7259) | [core-v1.2.0](https://github.com/sablier-labs/v2-deployments/tree/main/core/v1.2.0) |
+
+#### Periphery
+
+| Contract                     | Address                                                                                                                        | Deployment                                                                                    |
+| :--------------------------- | :----------------------------------------------------------------------------------------------------------------------------- | :-------------------------------------------------------------------------------------------- |
+| SablierV2BatchLockup         | [0x28D116d7e917756310986C4207eA54183fcba06A](https://explorer.tangle.tools/address/0x28D116d7e917756310986C4207eA54183fcba06A) | [periphery-v1.2.0](https://github.com/sablier-labs/v2-deployments/tree/main/periphery/v1.2.0) |
+| SablierV2MerkleLockupFactory | [0x5e73bb96493C10919204045fCdb639D35ad859f8](https://explorer.tangle.tools/address/0x5e73bb96493C10919204045fCdb639D35ad859f8) | [periphery-v1.2.0](https://github.com/sablier-labs/v2-deployments/tree/main/periphery/v1.2.0) |
+
 ### zkSync Era
 
 :::note
