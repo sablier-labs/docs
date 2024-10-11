@@ -7,25 +7,88 @@ title: "What Is Sablier?"
 import Link from "@docusaurus/Link";
 import { links } from "@site/src/constants";
 
-## Protocol, Interface, Labs.
-
 Sablier is the powerhouse of token distribution protocols. We build decentralized applications to distribute your tokens
 from one account to another, in realtime.
 
-- **The Sablier Protocol**: A collection of persistent, non-upgradeable smart contracts that together create a protocol
-  which facilitates streaming of ERC-20 assets on Ethereum and other EVM blockchains.
-- **The Sablier Interface**: A web interface that allows for easy interaction with the Sablier Protocol. The interface
-  is only one of many ways to interact with the Sablier Protocol.
-- **Sablier Labs**: The company that develops the Sablier Protocol, the user interfaces associated with it, and the
-  documentation website you are reading right now.
+- **The Sablier Protocols**: A collection of persistent, non-upgradeable smart contracts to facilitate streaming of
+  ERC-20 assets on Ethereum and other EVM blockchains. The Sablier Protocols consist of Lockup and Flow.
+- **The Sablier Interface**: A web interface that allows for easy interaction with the Sablier Protocols. The interface
+  is only one of many ways to interact with the Sablier Protocols.
+- **The Sablier Labs**: The company that develops the Sablier Protocols, the Sablier Interface, and the documentation
+  website you are reading right now.
 
-### Release history
+:::info
 
-- **Sablier V2.2**: The latest version of **The Sablier Protocol**.
-- **Sablier V2.1**: Released in December 2023, it was a minor upgrade over the second version.
-- **Sablier V2.0**: The second big version of **The Sablier Protocol**, released in July 2023.
-- **Sablier V1.1**: Minor upgrade for V1, released in July 2021.
-- **Sablier V1.0**: The first big version of **The Sablier Protocol**, originally released in 2019.
+Fun fact: "sablier" means "hourglass" in French.
+
+:::
+
+## Sablier Protocols
+
+Sablier protocols are a collection of token distribution protocols developed with [Ethereum](https://ethereum.org/)
+smart contracts, designed to facilitate by-the-second payments for cryptocurrencies, specifically
+[ERC-20](https://ethereum.org/en/developers/docs/standards/tokens/erc-20/) assets. The protocols employ a set of
+persistent and non-upgradable smart contracts that prioritize security, censorship resistance, self-custody, and
+functionality without the need for trusted intermediaries who may selectively restrict access.
+
+Currently, it consists of two different protocols: **Lockup**, which facilitates vesting and airstreams, and **Flow**,
+which facilitates payroll, grants etc. Both of these are licensed under BUSL-1.1. Both Lockup and Flow are open-source
+and can be accessed on Sablier's [GitHub page](https://github.com/sablier-labs). Detailed technical reference for each
+protocol can be found in the [Technical References](/references/) section of this website.
+
+As long as Ethereum and the other EVM chains continue to exist, every version of Sablier protocols that gets deployed
+will operate continuously and without interruption, with a guarantee of 100% uptime.
+
+:::info
+
+Sablier Lockup is the first token streaming protocol ever built, tracing its roots back to 2019.
+
+:::
+
+## How does Sablier differ from traditional payment systems?
+
+To understand the unique characteristics of Sablier, it is helpful to examine two aspects: the concept of streaming as
+an alternative to conventional payment methods, and the permissionless nature of the protocol compared to traditional
+systems.
+
+### Streaming vs conventional payments
+
+Traditional payment systems generally involve lump-sum transfers, which rely on trust between parties, have slow
+processing times, and are prone to errors. In the context of bank transfers, payments are also subject to substantial
+fees and can face delays due to intermediaries.
+
+By contrast, Sablier introduces the concept of asset streaming, enabling users to make continuous, real-time payments on
+a per-second basis. This innovative approach enables seamless, frictionless transactions and promotes increased
+financial flexibility for users, businesses, and other entities. Sablier makes the passage of time itself the
+trust-binding mechanism, unlocking business opportunities that were previously unavailable.
+
+A good mental model to contrast streaming with conventional payment models is to view the former as "real-time finance"
+or "continuous finance", and the latter as of "discrete finance".
+
+### Permissionless systems
+
+Sablier is rooted in the essential ideas of open access and immutability, deriving inspiration from Ethereum's
+foundational principles and the core values of the DeFi[^1] movement. These concepts are crucial in shaping a future
+where financial services are accessible to everyone, irrespective of their geographical location or economic standing,
+without prejudice or exposure to counterparty risks.
+
+The permissionless design ensures that the protocol's services are open to the public, without any restrictions on who
+can use them. Users have the liberty to establish new streams with any ERC-20 asset, or interact with existing streams
+as they wish. This feature stands in sharp contrast to conventional financial services that frequently impose
+restrictions based on factors such as location, financial status, or age.
+
+As an immutable system, Sablier protocols are not upgradeable, meaning that no party can pause the contracts, reverse
+transactions, or alter the users' streams in any way. This ensures the system remains transparent, secure, and resistant
+to manipulation or abuse.
+
+It is worth noting that the Protocol Admin has the right (but not the obligation) to impose a fee on every stream
+created using specific ERC-20 assets. However, this capability is known to all participants in advance, and to avert
+misuse, the fee percentage is restricted to a range of 0% to 10%.
+
+## Where can I find more information?
+
+For more details on the Sablier Protocols, their features, and potential use cases, explore this documentation site and
+visit the official [Sablier website](https://sablier.com) as well.
 
 :::tip
 
@@ -33,3 +96,16 @@ If you have any questions along the way, please join the #dev channel in our <Li
 server</Link>. Our team and members of the community are looking forward to help you.‌
 
 :::
+
+## Release history
+
+- **Lockup V2.2**: The latest version of **The Lockup Protocol**.
+- **Lockup V2.1**: Released in December 2023, it was a minor upgrade over the second version.
+- **Lockup V2.0**: The second big version of **The Lockup Protocol**, released in July 2023.
+- **Lockup V1.1**: Minor upgrade for V1, released in July 2021.
+- **Lockup V1.0**: The first big version of **The Lockup Protocol**, originally released in 2019.
+
+[^1]:
+    Short for Decentralized Finance: an ecosystem of financial applications and services built on blockchain networks,
+    primarily Ethereum, that leverage smart contracts to enable trustless, permissionless, and transparent financial
+    transactions without relying on traditional intermediaries like banks or financial institutions.

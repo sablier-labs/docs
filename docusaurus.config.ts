@@ -47,11 +47,11 @@ const config: Config = {
           },
           {
             from: "/protocol/guides/getting-started",
-            to: "/contracts/v1/guides/getting-started",
+            to: "/reference/lockup/v1/guides/getting-started",
           },
           {
             from: "/protocol/guides/chains",
-            to: "/contracts/v1/deployments",
+            to: "/guides/lockup/versions/v1",
           },
           {
             from: "/protocol/introduction",
@@ -217,10 +217,16 @@ const config: Config = {
           activeBasePath: "/concepts",
         },
         {
-          label: "Contracts",
+          label: "Developer Guides",
           position: "left",
-          to: "/contracts/v2/overview",
-          activeBasePath: "/contracts",
+          to: "/guides/lockup/overview",
+          activeBasePath: "/guides",
+        },
+        {
+          label: "References",
+          position: "left",
+          to: "/reference/lockup/overview",
+          activeBasePath: "/reference",
         },
         {
           label: "Apps",
