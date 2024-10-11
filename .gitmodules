@@ -1,8 +1,12 @@
-[submodule "repos/v2-core"]
+[submodule "repos/lockup/v2-core"]
   branch = "release"
-  path = "repos/v2-core"
+  path = "repos/lockup/v2-core"
   url = "https://github.com/sablier-labs/v2-core"
-[submodule "repos/v2-periphery"]
+[submodule "repos/lockup/v2-periphery"]
   branch = "release"
-  path = "repos/v2-periphery"
+  path = "repos/lockup/v2-periphery"
   url = "https://github.com/sablier-labs/v2-periphery"
+[submodule "repos/flow"]
+  branch = "main"
+  path = "repos/flow"
+  url = "https://github.com/sablier-labs/flow"

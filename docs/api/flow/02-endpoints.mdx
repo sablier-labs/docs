@@ -1,0 +1,201 @@
+---
+id: "endpoints"
+sidebar_position: 2
+title: "Endpoints"
+---
+
+import LinkPreview from "@site/src/components/LinkPreview";
+
+# Lockup
+
+## The Graph
+
+This subgraph tracks events emitted by the `@sablier/flow` contracts. It deals with base protocol actions like creating,
+depositing or voiding flow streams.
+
+:::important
+
+Since The Graph has [sunset](https://thegraph.com/blog/sunsetting-hosted-service/) their Hosted Service we've
+transitioned our subgraphs to either the Studio or The Decentralized Network (see
+[supported networks](https://thegraph.com/docs/en/developing/supported-networks/) and our endpoints below).
+
+:::
+
+### Endpoints
+
+| Chain            | Explorer                                                              | Studio[^2]                                | Decentralized Network[^1]                       |
+| ---------------- | --------------------------------------------------------------------- | ----------------------------------------- | ----------------------------------------------- |
+| Ethereum         | [sablier-v2-flow][v2-flow-explorer-ethereum]                          | [Studio][v2-flow-studio-ethereum]         | [De. Network][v2-flow-network-ethereum]         |
+| Arbitrum         | [sablier-v2-flow-arbitrum][v2-flow-explorer-arbitrum]                 | [Studio][v2-flow-studio-arbitrum]         | [De. Network][v2-flow-network-arbitrum]         |
+| Arbitrum Sepolia | [sablier-v2-flow-arbitrum-sepolia][v2-flow-explorer-arbitrum-sepolia] | [Studio][v2-flow-studio-arbitrum-sepolia] | [De. Network][v2-flow-network-arbitrum-sepolia] |
+| Avalanche        | [sablier-v2-flow-avalanche][v2-flow-explorer-avalanche]               | [Studio][v2-flow-studio-avalanche]        | [De. Network][v2-flow-network-avalanche]        |
+| Base             | [sablier-v2-flow-base][v2-flow-explorer-base]                         | [Studio][v2-flow-studio-base]             | [De. Network][v2-flow-network-base]             |
+| Blast            | [sablier-v2-flow-blast][v2-flow-explorer-blast]                       | [Studio][v2-flow-studio-blast]            | [De. Network][v2-flow-network-blast]            |
+| BNB Chain        | [sablier-v2-flow-bsc][v2-flow-explorer-bsc]                           | [Studio][v2-flow-studio-bsc]              | [De. Network][v2-flow-network-bsc]              |
+| Gnosis           | [sablier-v2-flow-gnosis][v2-flow-explorer-gnosis]                     | [Studio][v2-flow-studio-gnosis]           | [De. Network][v2-flow-network-gnosis]           |
+| Lightlink        | [sablier-v2-flow-lightlink\*][v2-flow-explorer-lightlink]             | N/A                                       | [Lightlink Node\*][v2-flow-custom-lightlink]    |
+| Optimism         | [sablier-v2-flow-optimism][v2-flow-explorer-optimism]                 | [Studio][v2-flow-studio-optimism]         | [De. Network][v2-flow-network-optimism]         |
+| Optimism Sepolia | [sablier-v2-flow-optimism-sepolia][v2-flow-explorer-optimism-sepolia] | [Studio][v2-flow-studio-optimism-sepolia] | [De. Network][v2-flow-network-optimism-sepolia] |
+| Polygon          | [sablier-v2-flow-polygon][v2-flow-explorer-polygon]                   | [Studio][v2-flow-studio-polygon]          | [De. Network][v2-flow-network-polygon]          |
+| Scroll           | [sablier-v2-flow-scroll][v2-flow-explorer-scroll]                     | [Studio][v2-flow-studio-scroll]           | [De. Network][v2-flow-network-scroll]           |
+| Sepolia          | [sablier-v2-flow-sepolia][v2-flow-explorer-sepolia]                   | [Studio][v2-flow-studio-sepolia]          | [De. Network][v2-flow-network-sepolia]          |
+| zkSync           | [sablier-v2-flow-zksync][v2-flow-explorer-zksync]                     | [Studio][v2-flow-studio-zksync]           | [De. Network][v2-flow-network-zksync]           |
+
+### Code
+
+<LinkPreview
+  href="https://github.com/sablier-labs/subgraphs/tree/main/apps/flow"
+  icon="github"
+  subtitle="@sablier-labs/subgraphs - apps/flow"
+  title="Sablier Subgraphs - Flow - The Graph"
+/>
+
+## Envio
+
+:::tip Chains: Individual vs. Aggregated
+
+While subgraphs are chain-tethered (one subgraph endpoint per chain), Envio indexes all chains within the same
+deployment. The data from all of chains that Sablier is deployed on can be queried from the same place.
+
+:::
+
+The `flow-envio` indexer tracks events emitted by the the `@sablier/flow` contracts. It deals with core protocol actions
+like creating, depositing, or voiding flow streams.
+
+### Endpoints
+
+| Chain            | Endpoint (Hosted Network)                                           |
+| ---------------- | ------------------------------------------------------------------- |
+| All-Networks[^3] | [https://indexer.bigdevenergy.link/[...]/v1/graphql][endpoint-flow] |
+
+The endpoint is meant to be plugged into a query client. Use
+[Hasura's online explorer](https://cloud.hasura.io/public/graphiql?) to view the entities and query API.
+
+### Code
+
+<LinkPreview
+  href="https://github.com/sablier-labs/subgraphs/tree/main/apps/flow-envio"
+  icon="github"
+  subtitle="@sablier-labs/subgraphs - apps/flow-envio"
+  title="Sablier Subgraphs - Flow - Envio"
+/>
+
+{/* --------------------------------------------------------------------------------------------------------------------------------- */}
+{/* --------------------------------------------------------------------------------------------------------------------------------- */}
+{/* --------------------------------------------------------------------------------------------------------------------------------- */}
+
+{/* Chain: Arbitrum */}
+
+[v2-flow-network-arbitrum]: https://gateway-arbitrum.network.thegraph.com/api/API_KEY/subgraphs/id/__INSERT_ID__
+[v2-flow-explorer-arbitrum]: https://thegraph.com/explorer/subgraphs/__INSERT_ID__
+[v2-flow-studio-arbitrum]: https://api.studio.thegraph.com/query/57079/sablier-v2-flow-arbitrum/version/latest
+
+{/* Chain: Arbitrum Sepolia */}
+
+[v2-flow-network-arbitrum-sepolia]: https://gateway-arbitrum.network.thegraph.com/api/API_KEY/subgraphs/id/__INSERT_ID__
+[v2-flow-explorer-arbitrum-sepolia]: https://thegraph.com/explorer/subgraphs/__INSERT_ID__
+[v2-flow-studio-arbitrum-sepolia]:
+  https://api.studio.thegraph.com/query/57079/sablier-v2-flow-arbitrum-sepolia/version/latest
+
+{/* Chain: Avalanche */}
+
+[v2-flow-network-avalanche]: https://gateway-arbitrum.network.thegraph.com/api/API_KEY/subgraphs/id/__INSERT_ID__
+[v2-flow-explorer-avalanche]: https://thegraph.com/explorer/subgraphs/__INSERT_ID__
+[v2-flow-studio-avalanche]: https://api.studio.thegraph.com/query/57079/sablier-v2-flow-avalanche/version/latest
+
+{/* Chain: Base */}
+
+[v2-flow-network-base]: https://gateway-arbitrum.network.thegraph.com/api/API_KEY/subgraphs/id/__INSERT_ID__
+[v2-flow-explorer-base]: https://thegraph.com/explorer/subgraphs/__INSERT_ID__
+[v2-flow-studio-base]: https://api.studio.thegraph.com/query/57079/sablier-v2-flow-base/version/latest
+
+{/* Chain: Blast */}
+
+[v2-flow-network-blast]: https://gateway-arbitrum.network.thegraph.com/api/API_KEY/subgraphs/id/__INSERT_ID__
+[v2-flow-explorer-blast]: https://thegraph.com/explorer/subgraphs/__INSERT_ID__
+[v2-flow-studio-blast]: https://api.studio.thegraph.com/query/57079/sablier-v2-flow-blast/version/latest
+
+{/* Chain: BSC */}
+
+[v2-flow-network-bsc]: https://gateway-arbitrum.network.thegraph.com/api/API_KEY/subgraphs/id/__INSERT_ID__
+[v2-flow-explorer-bsc]: https://thegraph.com/explorer/subgraphs/__INSERT_ID__
+[v2-flow-studio-bsc]: https://api.studio.thegraph.com/query/57079/sablier-v2-flow-bsc/version/latest
+
+{/* Chain: Gnosis */}
+
+[v2-flow-network-gnosis]: https://gateway-arbitrum.network.thegraph.com/api/API_KEY/subgraphs/id/__INSERT_ID__
+[v2-flow-explorer-gnosis]: https://thegraph.com/explorer/subgraphs/__INSERT_ID__
+[v2-flow-studio-gnosis]: https://api.studio.thegraph.com/query/57079/sablier-v2-flow-gnosis/version/latest
+
+{/* Chain: Lightlink */}
+
+[v2-flow-explorer-lightlink]:
+  https://graph.phoenix.lightlink.io/query/subgraphs/name/lightlink/sablier-v2-flow-lightlink/graphql
+[v2-flow-custom-lightlink]: https://graph.phoenix.lightlink.io/query/subgraphs/name/lightlink/sablier-v2-flow-lightlink
+
+{/* Chain: Mainnet | Ethereum */}
+
+[v2-flow-explorer-ethereum]: https://thegraph.com/explorer/subgraphs/__INSERT_ID__
+[v2-flow-studio-ethereum]: https://api.studio.thegraph.com/query/57079/sablier-v2-flow/version/latest
+[v2-flow-network-ethereum]: https://gateway-arbitrum.network.thegraph.com/api/API_KEY/subgraphs/id/__INSERT_ID__
+
+{/* Chain: Optimism */}
+
+[v2-flow-network-optimism]: https://gateway-arbitrum.network.thegraph.com/api/API_KEY/subgraphs/id/__INSERT_ID__
+[v2-flow-explorer-optimism]: https://thegraph.com/explorer/subgraphs/__INSERT_ID__
+[v2-flow-studio-optimism]: https://api.studio.thegraph.com/query/57079/sablier-v2-flow-optimism/version/latest
+
+{/* Chain: Optimism Sepolia */}
+
+[v2-flow-network-optimism-sepolia]: https://gateway-arbitrum.network.thegraph.com/api/API_KEY/subgraphs/id/__INSERT_ID__
+[v2-flow-explorer-optimism-sepolia]: https://thegraph.com/explorer/subgraphs/__INSERT_ID__
+[v2-flow-studio-optimism-sepolia]:
+  https://api.studio.thegraph.com/query/57079/sablier-v2-flow-optimism-sepolia/version/latest
+
+{/* Chain: Polygon */}
+
+[v2-flow-network-polygon]: https://gateway-arbitrum.network.thegraph.com/api/API_KEY/subgraphs/id/__INSERT_ID__
+[v2-flow-explorer-polygon]: https://thegraph.com/explorer/subgraphs/__INSERT_ID__
+[v2-flow-studio-polygon]: https://api.studio.thegraph.com/query/57079/sablier-v2-flow-polygon/version/latest
+
+{/* Chain: Scroll */}
+
+[v2-flow-network-scroll]: https://gateway-arbitrum.network.thegraph.com/api/API_KEY/subgraphs/id/__INSERT_ID__
+[v2-flow-explorer-scroll]: https://thegraph.com/explorer/subgraphs/__INSERT_ID__
+[v2-flow-studio-scroll]: https://api.studio.thegraph.com/query/57079/sablier-v2-flow-scroll/version/latest
+
+{/* Chain: Sepolia */}
+
+[v2-flow-network-sepolia]: https://gateway-arbitrum.network.thegraph.com/api/API_KEY/subgraphs/id/__INSERT_ID__
+[v2-flow-explorer-sepolia]: https://thegraph.com/explorer/subgraphs/__INSERT_ID__
+[v2-flow-studio-sepolia]: https://api.studio.thegraph.com/query/57079/sablier-v2-flow-sepolia/version/latest
+
+{/* Chain: zkSync */}
+
+[v2-flow-network-zksync]: https://gateway-arbitrum.network.thegraph.com/api/API_KEY/subgraphs/id/__INSERT_ID__
+[v2-flow-explorer-zksync]: https://thegraph.com/explorer/subgraphs/__INSERT_ID__
+[v2-flow-studio-zksync]: https://api.studio.thegraph.com/query/57079/sablier-v2-flow-zksync/version/latest
+
+{/* --------------------------------------------------------------------------------------------------------------------------------- */}
+
+[endpoint-flow]: https://indexer.bigdevenergy.link/__INSERT_ID__/v1/graphql
+
+{/* --------------------------------------------------------------------------------------------------------------------------------- */}
+{/* --------------------------------------------------------------------------------------------------------------------------------- */}
+{/* --------------------------------------------------------------------------------------------------------------------------------- */}
+
+[^1]:
+    Endpoints could include the following types: (1) The Graph's Decentralized Network (paid) or (2) Custom Nodes (e.g.
+    Lightlink). Because the "Decentralized Network" subgraph flavors (e.g. V1 Ethereum) operate on The Graph Network,
+    you will need to substitute the `YOUR_API_KEY` placeholder in the
+    [Query URL](https://thegraph.com/docs/en/deploying/subgraph-studio-faqs/#6-how-do-i-find-query-urls-for-subgraphs-if-im-not-the-developer-of-the-subgraph-i-want-to-use)
+    with your own API key. If you require assistance with managing your API keys and configuring indexer preferences,
+    [this article](https://thegraph.com/docs/en/studio/managing-api-keys/) serves as an excellent guide
+
+[^2]: The Graph's Studio endpoints are considered for testing purposes and may be rate-limited
+
+[^3]:
+    All-Networks means most of the networks supported by Sablier, e.g., Mainnet, Optimism, Polygon, Sepolia. The full
+    list can be found [here](https://github.com/sablier-labs/subgraphs/tree/main/packages/constants/src). To add a new
+    chain to our Envio indexer, create a new list of contracts (`/addresses`) and import that configuration into our
+    bundles (see `/bundles`).
