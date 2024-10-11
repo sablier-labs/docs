@@ -1,0 +1,43 @@
+---
+id: "overview"
+sidebar_position: 1
+title: "Overview"
+---
+
+import LinkPreview from "@site/src/components/LinkPreview";
+
+## Overview
+
+Sablier's Drops rely on pre-configured merkle trees. This data structure contains the list of recipients as well as
+their individual claim details.
+
+### General data flow
+
+Trees allow us to store minimal data at the contract level, while being able to cryptographically prove someone is
+entitled to claim from the contract, using proofs generated with a separate off-chain dataset (and the onchain root).
+
+The root hash of the tree will be stored inside the deployed Airstream contract. The tree itself, as well as the initial
+list will be stored in an IPFS file.
+
+Any action such as checking for eligibility or requesting the claim details of a certain user will involve reading from
+the IPFS file, generating proofs based on the merkle tree and interacting with the contract using the data obtained
+previously.
+
+### Open-source solution
+
+To make this functionality available to both Sablier client interfaces and 3rd party integrators we've created a Rust
+backend service called `merkle-api`. Through a REST API, it provides access to creating, storing and reading from
+Airstream related Merkle trees.
+
+#### Integrations
+
+To integrate this API into your own applications, feel free to use the official endpoints or fork the repository and run
+the backend in your own environment. We're keen to improve and optimize this service, so any suggestions or issues can
+be flagged directly in the Github repository.
+
+<LinkPreview
+  href="https://github.com/sablier-labs/merkle-api"
+  icon="github"
+  subtitle="@sablier-labs/merkle-api"
+  title="Sablier SDK - Merkle API"
+/>

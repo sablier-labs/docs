@@ -1,0 +1,175 @@
+---
+id: "queries"
+sidebar_position: 4
+title: "Queries"
+---
+
+Building on top of the [entity structure](/api/lockup/the-graph/structure) defined earlier, here are some common GraphQL
+queries for fetching data from the Sablier subgraph.
+
+### Recent streams
+
+```graphql title="The 10 most recent streams"
+query getStreams {
+  stream(limit: 10, order_by: { subgraphId: desc }) {
+    id
+    alias
+    category
+    asset {
+      id
+      symbol
+    }
+  }
+}
+```
+
+### Paginated streams
+
+To query streams in sets/pages (and avoid edge cases where using timestamps may skip simultaneous batched streams), we
+can use the unique `subgraphId`.
+
+This query includes pagination.
+
+```graphql title="The next streams indexed before the last seen subgraphId"
+query getStreams($first: Int!, $subgraphId: numeric!) {
+  streams(
+    limit: $first
+    distinct_on: [subgraphId]
+    order_by: { subgraphId: desc }
+    where: { subgraphId: { _lt: $subgraphId } }
+  ) {
+    id
+    alias
+    category
+    asset {
+      id
+      symbol
+    }
+  }
+}
+```
+
+### Streams by sender (with support for the old V2.0)
+
+To support both [proxy senders](/api/lockup/the-graph/structure) (case 3) and
+[native senders](/api/lockup/the-graph/structure) (case 2) we query for:
+
+- streams where the connected account is the native sender
+- streams where the connected account is the proxender - the owner of the proxy labeled as a sender
+
+This query includes pagination.
+
+:::warning
+
+Some queries, especially those using `OR` will potentially yield duplicate results. To make sure we only retrieve unique
+streams/entities with a query, we make use of the `distinct_on` filter (and apply it on keys included in `order_by`).
+
+:::
+
+```graphql title="The next streams created by an address (natively or through a proxy)"
+Stream(
+  limit: $first
+  offset: $skip
+  distinct_on: [subgraphId]
+  order_by: { subgraphId: desc }
+  where: {
+    _or: [
+      { _and: [{ sender: {_eq: $sender} }, { subgraphId: {_lt: $subgraphId} }] }
+      { _and: [{ proxender: {_eq:  $sender} }, { subgraphId: {_lt:$subgraphId} }] }
+    ]
+  }
+) {
+  id
+  alias
+  category
+}
+```
+
+### Streams by sender or recipient
+
+To show all streams that have an address marked as a sender (all cases) or a recipient, extend the example above to
+account for the recipient aspect.
+
+This query includes pagination.
+
+```graphql title="The next streams related to an address, as a sender/proxender or recipient"
+Stream(
+  limit: $first
+  offset: $skip
+  distinct_on: [subgraphId]
+  order_by: { subgraphId: desc }
+  where: {
+    or: [
+      { _and: [{ sender: {_eq: $sender} }, { subgraphId: {_lt:  $subgraphId} }] }
+      { _and: [{ proxender: {_eq: $sender} }, { subgraphId: {_lt: $subgraphId} }] }
+      { _and: [{ proxender: {_eq: $recipient} }, { subgraphId: {_lt: $subgraphId} }] }
+    ]
+  }
+) {
+    id
+    alias
+    category
+  }
+```
+
+### Streams by filters
+
+The official V2 Interfaces will provide a search interface where one may query for a list of streams using the following
+filters (the conditions will be combined)
+
+- the sender address
+- the recipient address
+- a list of stream identifiers
+
+This query includes pagination.
+
+```graphql title="The 'where' clause for a complex paginated search filter"
+where: {
+    _or: [
+      {
+        _and: [
+          { chainId: { _eq: $chainId } }
+          { sender: { _eq: $sender } }
+          { subgraphId: { _lt: $subgraphId } }
+        ]
+      }
+      {
+        _and: [
+          { chainId: { _eq: $chainId } }
+          { proxender: { _eq: $sender } }
+          { subgraphId: { _lt: $subgraphId } }
+        ]
+      }
+      {
+        _and: [
+          { chainId: { _eq: $chainId } }
+          { recipient: { _eq: $recipient } }
+          { subgraphId: { _lt: $subgraphId } }
+        ]
+      }
+    ]
+  }
+```
+
+### Actions by stream
+
+:::tip
+
+To avoid writing the same entity definitions over and over again, check out Fragments.
+
+:::
+
+```graphql title="Most recent 100 stream actions such as withdrawals or transfers"
+Action(
+  limit: 100
+  distinct_on: [subgraphId]
+  order_by: { subgraphId: desc }
+  where: { stream: {_eq: $streamId} }
+) {
+  id
+  category
+  stream {
+    ...StreamFragment
+  }
+}
+```
