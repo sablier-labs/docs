@@ -1,0 +1,76 @@
+---
+id: "airstreams"
+sidebar_position: 3
+title: "Airstreams"
+---
+
+# Sablier Airstreams
+
+The Sablier Interface can handle more than native streams. We developed a solution for distributing token streams to
+millions of users called **Airstreams**. Start exploring at [app.sablier.com](https://app.sablier.com/airstreams/).
+
+## Easy 3-step process
+
+Create a campaign by following these three simple steps:
+
+1. Configure the initial details (e.g., token, cancelability)
+2. Upload the CSV containing a list of recipients
+3. Deploy and fund the Airstream campaign contract
+
+|                                              |                                                         |
+| -------------------------------------------- | ------------------------------------------------------- |
+| ![Step 1](/screenshots/airstream-create.png) | ![Step 2](/screenshots/airstream-create-recipients.png) |
+
+:::warning Timezone Caveat
+
+All the dates and times in the CSV are considered to be in the same timezone as the locales of the airstream creator's
+device.
+
+:::
+
+:::info
+
+With the official app, you can distribute up to 50k+ streams per campaign. If you'd like to support more, you can do so
+by using a self-hosted [Merkle service](/api/merkle-api/intro). Feel free to get in touch for more details or premium
+support.
+
+:::
+
+## Dashboard for Airstreams
+
+Enter the Dashboard and discover a detailed overview of the Airstreams you may be eligible for.
+
+Take advantage of the Search functionality to explore the chain and gain more insight into how others are using Sablier.
+
+|                                              |
+| -------------------------------------------- |
+| ![All](/screenshots/airstream-dashboard.png) |
+
+## Support for any ERC-20 token
+
+Stream your favorite token! Thanks to our integration of Token Lists, any ERC-20 token can be streamed on Sablier.
+
+|                                                |                                                         |
+| ---------------------------------------------- | ------------------------------------------------------- |
+| ![Token List](/screenshots/tokenlist-home.png) | ![Token List Search](/screenshots/tokenlist-search.png) |
+
+## Oversight
+
+Have a clear view of how your campaign is performing. Check eligibility or manage your own campaign from a dedicated
+interface.
+
+|                                            |
+| ------------------------------------------ |
+| ![All](/screenshots/airstream-profile.png) |
+
+:::info
+
+To integrate this functionality into your own products/apps, have a look at the [API guides](/api/overview), especially
+the [v2-merkle-api](/api/merkle-api/intro) and the merkle subgraphs.
+
+:::
+
+## Advanced Settings
+
+For campaign admins, the interface enables advanced settings like in-app visibility, in-app geographical restrictions,
+and campaign-specific items like an eligibility criteria link.

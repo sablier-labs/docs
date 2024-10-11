@@ -15,8 +15,8 @@ set -euo pipefail
 
 # Define the reference directories
 all=docs/contracts/v2/reference
-core=docs/contracts/v2/reference/core
-periphery=docs/contracts/v2/reference/periphery
+core=docs/reference/lockup/core
+periphery=docs/reference/lockup/periphery
 
 # Delete the current reference documentations
 find $core -type f -name "*.md" -delete
