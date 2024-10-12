@@ -6,17 +6,18 @@ title: "Glossary"
 
 ## Allow List
 
-A list of smart contract recipients that are authorized to be run by the Sablier protocol upon withdraw and cancel.
+A list of smart contract recipients that are authorized to be run by the Lockup protocol upon withdraw and cancel.
 
 ## Asset
 
-Digital assets can exist in various forms, but the Sablier Protocol exclusively supports the streaming of ERC-20 assets.
+Digital assets can exist in various forms, but the Sablier Protocols exclusively supports the streaming of ERC-20
+assets.
 
 The stream itself is represented as an NFT (ERC-721).
 
 ## Broker
 
-A third-party entity that interacts with the Sablier Protocol on behalf of its users, who may charge service fees for
+A third-party entity that interacts with the Sablier Protocols on behalf of its users, who may charge service fees for
 facilitating these interactions.
 
 ## Broker fees
@@ -27,12 +28,6 @@ The fees collected by the broker upon creating a stream for their users.
 
 The cut-off point for releasing assets. Prior to the cliff, the recipient cannot withdraw, though assets continue to
 accrue in the stream.
-
-## Core
-
-Sablier contracts that are considered foundational, and are essential for Sablier to exist. Upgrading to a new version
-of core would require deploying an entirely new set of smart contracts, and would be considered a new version of the
-Sablier Protocol.
 
 ## DeFi
 
@@ -64,7 +59,7 @@ The technical architecture of Ethereum, which many other blockchains have approp
 
 ## Foundry
 
-[Foundry][foundry] is the application development toolkit that has been used to develop the Sablier Protocol.
+[Foundry][foundry] is the application development toolkit that has been used to develop the Sablier Protocols.
 
 ## Gas Fee
 
@@ -76,6 +71,17 @@ Gas is paid only when streams are created, canceled, transferred, or withdrawn f
 ## Lockup
 
 A term coined by us to refer to the requirement of locking up assets in order to create a stream.
+
+## Lockup Core
+
+Smart contracts that are considered foundational, and are essential for Lockup to exist. Upgrading to a new version of
+lockup would require deploying an entirely new set of smart contracts, and would be considered a new version of the
+Lockup Protocol.
+
+## Lockup Periphery
+
+Sablier contracts that are useful, but not required for Lockup to exist. New periphery contracts can always be deployed
+without migrating streams.
 
 ## Lockup Dynamic
 
@@ -89,20 +95,10 @@ A Lockup stream with a constant payment rate per second.
 
 A Lockup stream with payments in discrete tranches.
 
-## Timestamp
-
-A timestamp is the time component of a stream. In Lockup Linear, it represents start time, cliff time and end time
-whereas in lockup dynamic and lockup tranched, it plays a crucial role in the calculation of streaming curves.
-
 ## Monotonicity
 
 A protocol invariant that states that the total amount of assets released by the stream can only increase over time and
 never decrease.
-
-## Periphery
-
-Sablier contracts that are useful, but not required for Sablier to exist. New periphery contracts can always be deployed
-without migrating streams.
 
 ## Protocol Admin
 
@@ -119,7 +115,7 @@ exponents used in Lockup Dynamic.
 
 ## Real-time finance
 
-A term coined by us in 2019 to emphasize the wide-ranging use cases for the Sablier Protocol.
+A term coined by us in 2019 to emphasize the wide-ranging use cases for the Sablier Protocols.
 
 Since the withdrawable amounts in streams are updated every second, they embody the concept of real-time financial
 transactions.
@@ -153,12 +149,17 @@ A stream can have one out of six possible statuses:
 
 A new financial primitive that permits by-the-second payments.
 
-Currently, the Sablier Protocol offers a single type of stream called a lockup stream, in which the creator has to lock
-up a specified amount of assets.
+Currently, the Sablier Protocols offer two types of stream called lockup and flow. In Lockup strean, creator has to lock
+up a specified amount of assets whereas in Flow streams, creator is not required to lock up any amount of assets.
 
 ## Streaming
 
 By-the-second payments.
+
+## Timestamp
+
+A timestamp is the time component of a stream. In Lockup Linear, it represents start time, cliff time and end time
+whereas in lockup dynamic and lockup tranched, it plays a crucial role in the calculation of streaming curves.
 
 ## Tranche
 

@@ -107,7 +107,7 @@ export default function Header() {
             to={"/concepts/what-is-sablier"}
           />
           <Feature
-            description={"Deployment addresses and setup guides"}
+            description={"Deployment addresses and integration guides"}
             Icon={DocumentTextIcon}
             title={"Developer Guides"}
             to={"/guides/lockup/overview"}
@@ -117,7 +117,7 @@ export default function Header() {
             description={"Deep dive into protocol specifications"}
             Icon={DocumentTextIcon}
             title={"Technical References"}
-            to={"/reference/lockup/overview"}
+            to={"/reference/overview"}
           />
 
           <Feature

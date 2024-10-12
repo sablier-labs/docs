@@ -4,7 +4,7 @@ title: Getting Started
 sidebar_position: 1
 ---
 
-This is a technical account on how to integrate Sablier into your own application. If you have any questions along the
+This is a technical account on how to integrate Lockup V1 into your own application. If you have any questions along the
 way, please join the #dev channel in the [Sablier Discord server](https://discord.sablier.com); our team, and members of
 the community, look forward to helping you.
 

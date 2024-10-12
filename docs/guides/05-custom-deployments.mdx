@@ -1,6 +1,6 @@
 ---
 id: "custom-deployments"
-sidebar_position: 10
+sidebar_position: 5
 title: "Custom Deployments"
 ---
 
@@ -9,9 +9,9 @@ import { links } from "@site/src/constants";
 
 :::info[Reach Out]
 
-Due to budget constraints, we are not able to deploy the Sablier Protocol on every EVM chain. However, we would be happy
-to consider your project if you fill out this <Link href={links.forms.chains}>form</Link> and meet the requirements
-below.
+Due to budget constraints, we are not able to deploy the Sablier Protocols on every EVM chain. However, we would be
+happy to consider your project if you fill out this <Link href={links.forms.chains}>form</Link> and meet the
+requirements below.
 
 :::
 
@@ -23,10 +23,10 @@ below.
 - GraphQL solution, e.g., a deployment of [The Graph](https://thegraph.com/)
 - Functional JSON-RPC endpoint, ideally listed on [ChainList](https://chainlist.org/)
 
-## Deployment Guide
+## Lockup Deployment Guide
 
 The following guidelines apply to you only if you have you been granted a
-[BUSL license](https://app.ens.domains/lockup-license-grants.sablier.eth?tab=records) to deploy the Sablier Protocol.
+[BUSL license](https://app.ens.domains/lockup-license-grants.sablier.eth?tab=records) to deploy the Lockup Protocol.
 
 ### Pre Requisities
 
@@ -72,7 +72,7 @@ source .env
 
 :::warning[Important]
 
-You must set the protocol admin to the Sablier-controlled address 0xD427d37B5F6d33f7D42C4125979361E011FFbfD9. Failure to
+You must set the protocol admin to the Sablier controlled address 0xD427d37B5F6d33f7D42C4125979361E011FFbfD9. Failure to
 do so will result in your deployment not being acknowledged as official.
 
 :::
@@ -179,7 +179,7 @@ If you are using a mnemonic or a hardware device for your deployer address, refe
 
 ### Steps for listing the deployments
 
-Once the contracts are deployed, the final step is to list the deployment addresses and artifacts in the Sablier docs:
+Once the contracts are deployed, the final step is to list the deployment addresses and artifacts in the Lockup docs:
 
 1. List the deployment addresses by opening a PR in the
    [docs repo](https://github.com/sablier-labs/docs/blob/main/docs/contracts/v2/02-deployments.md)
@@ -187,3 +187,7 @@ Once the contracts are deployed, the final step is to list the deployment addres
    [deployments repo](https://github.com/sablier-labs/v2-deployments)
    - Copy the generated artifact files (ABIs) from the `artifacts` directory.
    - Copy the latest broadcast file from the `broadcast` directory.
+
+## Flow Deployment Guide
+
+Coming soon.
