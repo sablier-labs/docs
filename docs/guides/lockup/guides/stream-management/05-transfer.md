@@ -6,13 +6,13 @@ title: "Transfer Ownership"
 
 :::note
 
-This section assumes that you have already gone through the [setup](/contracts/v2/guides/stream-management/setup) part.
+This section assumes that you have already gone through the [setup](/guides/lockup/guides/stream-management/setup) part.
 
 :::
 
 :::tip
 
-See the [Access Control](/contracts/v2/reference/access-control) guide for an overview of who is allowed to transfer
+See the [Access Control](/reference/lockup/access-control) guide for an overview of who is allowed to transfer
 ownership.
 
 :::
@@ -23,9 +23,8 @@ that the recipient of the stream has the ability to transfer the NFT to a differ
 streaming of assets to that new address.
 
 To transfer ownership of a stream, it is recommended to invoke the
-[`withdrawMaxAndTransfer`](/contracts/v2/reference/core/abstracts/abstract.SablierV2Lockup#withdrawmaxandtransfer)
-function, which withdraws all the unclaimed funds to the current recipient prior to transferring ownership to the new
-recipient:
+[`withdrawMaxAndTransfer`](/reference/lockup/core/abstracts/abstract.SablierV2Lockup#withdrawmaxandtransfer) function,
+which withdraws all the unclaimed funds to the current recipient prior to transferring ownership to the new recipient:
 
 ```solidity reference title="Stream Management: Withdraw and Transfer Ownership"
 https://github.com/sablier-labs/examples/blob/main/v2/core/StreamManagement.sol#L72-L74

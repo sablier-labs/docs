@@ -12,8 +12,7 @@ A Lockup Dynamic stream is composed of multiple segments, which are separate par
 and rates. The protocol uses these segments to enable custom streaming curves, which power exponential streams, cliff
 streams, etc.
 
-Technically, a segment is a [struct](/contracts/v2/reference/core/types/library.LockupDynamic#segment) with three
-fields:
+Technically, a segment is a [struct](/reference/lockup/core/types/library.LockupDynamic#segment) with three fields:
 
 | Field     | Type      | Description                                                                                    |
 | :-------- | :-------- | :--------------------------------------------------------------------------------------------- |

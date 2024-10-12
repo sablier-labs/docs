@@ -10,14 +10,14 @@ Lockup contract's admin.
 
 :::info
 
-[`allowToHook`](/contracts/v2/reference/core/interfaces/interface.ISablierV2Lockup#allowtohook) is an irreversible
-operation, i.e., once a contract has been added to the allowlist, it can never be removed. This is to ensure stronger
-immutability and decentralization guarantees. Once a recipient contract is allowlisted, integrators should NOT have to
-trust us to keep their contract on the allowlist.
+[`allowToHook`](/reference/lockup/core/interfaces/interface.ISablierV2Lockup#allowtohook) is an irreversible operation,
+i.e., once a contract has been added to the allowlist, it can never be removed. This is to ensure stronger immutability
+and decentralization guarantees. Once a recipient contract is allowlisted, integrators should NOT have to trust us to
+keep their contract on the allowlist.
 
 :::
 
-In this guide, we will explain how to implement [hooks](/concepts/protocol/hooks) in your smart contract to allow
+In this guide, we will explain how to implement [hooks](/concepts/lockup/hooks) in your smart contract to allow
 interacting with Sablier streams.
 
 ### Overview
@@ -47,7 +47,7 @@ These are the hooks that can be implemented by a recipient contract:
 | `onSablierLockupWithdraw` | `(streamId, caller, to, amount)`                    | function selector | Called when an amount is withdrawn from the stream. |
 
 The complete interface for `ISablierLockupRecipient` can be found
-[here](/contracts/v2/reference/core/interfaces/interface.ISablierLockupRecipient).
+[here](/reference/lockup/core/interfaces/interface.ISablierLockupRecipient).
 
 :::tip
 

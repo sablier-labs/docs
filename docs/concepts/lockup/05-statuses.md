@@ -66,6 +66,6 @@ you can't cancel it again. Or, if a stream is depleted, you know that you can't 
 
 ### Q: How can a stream enter the `SETTLED` status directly?
 
-A: This is a peculiarity of the [Lockup Dynamic](/concepts/protocol/stream-types#lockup-dynamic) type of stream. Segment
+A: This is a peculiarity of the [Lockup Dynamic](/concepts/lockup/stream-types#lockup-dynamic) type of stream. Segment
 amounts can be zero, and the segment milestones can be set in such a way that all non-zero segments are in the past.
 This will cause the stream to enter the `SETTLED` status directly.

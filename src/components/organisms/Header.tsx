@@ -107,10 +107,17 @@ export default function Header() {
             to={"/concepts/what-is-sablier"}
           />
           <Feature
-            description={"Deployment addresses, setup guides, and technical reference"}
+            description={"Deployment addresses and setup guides"}
             Icon={DocumentTextIcon}
             title={"Contracts"}
-            to={"/contracts/v2/overview"}
+            to={"/guides/lockup/overview"}
+          />
+
+          <Feature
+            description={"Technical References"}
+            Icon={DocumentTextIcon}
+            title={"Contracts"}
+            to={"/reference/lockup/overview"}
           />
 
           <Feature

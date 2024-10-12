@@ -8,8 +8,9 @@ import LinkPreview from "@site/src/components/LinkPreview";
 
 ## Sablier V2 - Protocol
 
-This subgraph tracks events mainly emitted by the [`@sablier/v2-core`](/contracts/v2/reference/overview#core) contracts.
-It deals with core protocol actions like creating, withdrawing or transferring streams.
+This subgraph tracks events mainly emitted by the
+[`@sablier/v2-core`](/reference/lockup/core/contract.SablierV2LockupLinear) contracts. It deals with core protocol
+actions like creating, withdrawing or transferring streams.
 
 :::important
 
@@ -153,10 +154,11 @@ transitioned our subgraphs to either the Studio or The Decentralized Network (se
 
 ## Sablier V2 - Airstreams
 
-This subgraph tracks the events emitted by the [`@sablier/v2-periphery`](/contracts/v2/reference/overview#periphery)
-contracts, specifically [`MerkleFactory`](/contracts/v2/reference/periphery/contract.SablierV2MerkleLockupFactory). It
-deals with airstream-specific actions like the factory creating a campaign, admin clawbacks, or users claiming stream
-NFTs as defined in the attached Merkle tree.
+This subgraph tracks the events emitted by the
+[`@sablier/v2-periphery`](/reference/lockup/periphery/contract.SablierV2BatchLockup) contracts, specifically
+[`MerkleFactory`](/reference/lockup/periphery/contract.SablierV2MerkleLockupFactory). It deals with airstream-specific
+actions like the factory creating a campaign, admin clawbacks, or users claiming stream NFTs as defined in the attached
+Merkle tree.
 
 ### Endpoints
 

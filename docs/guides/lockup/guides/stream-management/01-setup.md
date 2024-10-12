@@ -9,9 +9,9 @@ renounce, and transfer ownership of streams.
 
 Before diving in, please note the following:
 
-1. We assume you are already familiar with [creating streams](/contracts/v2/guides/create-stream/lockup-linear).
+1. We assume you are already familiar with [creating streams](/guides/lockup/guides/create-stream/lockup-linear).
 2. We also assume that the stream management contract is authorized to invoke each respective function. To learn more
-   about access control in Sablier, see the [Access Control](/contracts/v2/reference/access-control) guide.
+   about access control in Sablier, see the [Access Control](/reference/lockup/access-control) guide.
 
 With that said, let's begin. First, declare the Solidity version used to compile the contract:
 
@@ -42,7 +42,7 @@ contract StreamManagement {
 ```
 
 Just like in the create stream guides, the next step requires you to head over to the
-[Deployment Addresses](/contracts/v2/deployments) page and copy the address of the Sablier contract you intend to use
+[Deployment Addresses](/guides/lockup/deployments) page and copy the address of the Sablier contract you intend to use
 (either Lockup Linear, Lockup Dynamic, or Lockup Tranched). Then, you can deploy the stream management contract:
 
 ```solidity

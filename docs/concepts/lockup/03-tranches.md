@@ -11,7 +11,7 @@ title: "Tranches"
 Analogous to the segments in Lockup Dynamic, a Lockup Tranched stream is composed of multiple tranches with different
 amounts and durations. The protocol uses these tranches to enable traditional vesting curves with regular unlocks.
 
-Technically, a tranche is a [struct](/contracts/v2/reference/core/types/library.LockupTranched#tranche) with two fields:
+Technically, a tranche is a [struct](/reference/lockup/core/types/library.LockupTranched#tranche) with two fields:
 
 | Field     | Type      | Description                                                                                 |
 | :-------- | :-------- | :------------------------------------------------------------------------------------------ |
@@ -34,8 +34,8 @@ Where:
 - The block gas limit enforces a limit to how many tranches there can be in a stream.
   - If someone creates a stream with an excessively large number of tranches, the transaction would revert as it
     wouldn't fit within a block. You can fetch the limit using
-    [MAX_TRANCHE_COUNT](/contracts/v2/reference/core/contract.SablierV2LockupTranched#max_tranche_count). Alternatively,
-    you can find the limit for each chain
+    [MAX_TRANCHE_COUNT](/reference/lockup/core/contract.SablierV2LockupTranched#max_tranche_count). Alternatively, you
+    can find the limit for each chain
     [here](https://github.com/sablier-labs/v2-core/blob/main/script/Base.s.sol#L90-L131).
 - The timestamps must be sorted in ascending order. It's not possible for the $(i-1)^{th}$ timestamp to be greater than
   $i^{th}$ timestamp (given that we're dealing with an increasing monotonic function).

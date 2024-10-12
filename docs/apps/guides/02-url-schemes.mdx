@@ -61,14 +61,14 @@ level. For situations when an alias cannot be used, we fallback to the following
 The Sablier Interface comes with an advanced search view that can be accessed directly through URL parameters. If you
 want to use this feature, here is a table with all the available parameters:
 
-| Parameter | Type         | Description                                                                | Values                                                                   |
-| :-------- | :----------- | :------------------------------------------------------------------------- | ------------------------------------------------------------------------ |
-| t         | String       | The active tab in the dashboard. For global queries, use `search`.         | `search`, `sender`, or `recipient`                                       |
-| c         | Number       | The chain of the streams in the search result. This parameter is required. | `1`, `10`, `42161` or other [supported chain](/contracts/v2/deployments) |
-| s         | String       | The address of the stream sender by which to filter                        | `0x12...AB`, `vitalik.eth`                                               |
-| r         | String       | The address of the stream recipient by which to filter                     | `0x12...AB`, `vitalik.eth`                                               |
-| a         | String       | The address of the asset to filter for                                     | `0x12...CD` for DAI                                                      |
-| i         | String array | An array of IDs to look up                                                 | `LL-5-1`, `LD-5-14` etc.                                                 |
+| Parameter | Type         | Description                                                                | Values                                                                    |
+| :-------- | :----------- | :------------------------------------------------------------------------- | ------------------------------------------------------------------------- |
+| t         | String       | The active tab in the dashboard. For global queries, use `search`.         | `search`, `sender`, or `recipient`                                        |
+| c         | Number       | The chain of the streams in the search result. This parameter is required. | `1`, `10`, `42161` or other [supported chain](/guides/lockup/deployments) |
+| s         | String       | The address of the stream sender by which to filter                        | `0x12...AB`, `vitalik.eth`                                                |
+| r         | String       | The address of the stream recipient by which to filter                     | `0x12...AB`, `vitalik.eth`                                                |
+| a         | String       | The address of the asset to filter for                                     | `0x12...CD` for DAI                                                       |
+| i         | String array | An array of IDs to look up                                                 | `LL-5-1`, `LD-5-14` etc.                                                  |
 
 ### Building the URL
 
@@ -125,12 +125,12 @@ more about identifiers and aliases in our [subgraph documentation](/api/subgraph
 The Sablier Interface comes with an advanced search view that can be accessed directly through URL parameters. If you
 want to use this feature, here is a table with all the available parameters:
 
-| Parameter | Type   | Description                                                                   | Values                                                                   |
-| :-------- | :----- | :---------------------------------------------------------------------------- | ------------------------------------------------------------------------ |
-| t         | String | The active tab in the dashboard. For global queries, use `search`.            | `search`                                                                 |
-| c         | Number | The chain of the airstreams in the search result. This parameter is required. | `1`, `10`, `42161` or other [supported chain](/contracts/v2/deployments) |
-| m         | String | The address of the campaign admin by which to filter                          | `0x12...AB`, `vitalik.eth`                                               |
-| a         | String | The address of the asset to filter for                                        | `0x12...CD` for DAI                                                      |
+| Parameter | Type   | Description                                                                   | Values                                                                    |
+| :-------- | :----- | :---------------------------------------------------------------------------- | ------------------------------------------------------------------------- |
+| t         | String | The active tab in the dashboard. For global queries, use `search`.            | `search`                                                                  |
+| c         | Number | The chain of the airstreams in the search result. This parameter is required. | `1`, `10`, `42161` or other [supported chain](/guides/lockup/deployments) |
+| m         | String | The address of the campaign admin by which to filter                          | `0x12...AB`, `vitalik.eth`                                                |
+| a         | String | The address of the asset to filter for                                        | `0x12...CD` for DAI                                                       |
 
 ### Building the URL
 

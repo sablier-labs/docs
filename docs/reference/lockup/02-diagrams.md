@@ -11,8 +11,8 @@ provide insight into the storage layout.
 
 ### Shared Lockup
 
-To see the list of all common storage variables, [click here](/contracts/v2/reference/core/types/library.Lockup#stream).
-This struct is shared across LockupLinear, LockupDynamic, and LockupTranched.
+To see the list of all common storage variables, [click here](/reference/lockup/core/types/library.Lockup#stream). This
+struct is shared across LockupLinear, LockupDynamic, and LockupTranched.
 
 ```mermaid
 classDiagram
@@ -48,8 +48,8 @@ classDiagram
 ### Lockup Linear
 
 Apart from the shared lockup storage, Lockup Linear requires a
-[separate storage](/contracts/v2/reference/core/contract.SablierV2LockupLinear#_cliffs) to store cliff details for each
-stream ID.
+[separate storage](/reference/lockup/core/contract.SablierV2LockupLinear#_cliffs) to store cliff details for each stream
+ID.
 
 ```mermaid
 flowchart LR;
@@ -73,8 +73,8 @@ flowchart LR;
 ### Lockup Dynamic
 
 Similarly, Lockup Dynamic requires a
-[separate storage](/contracts/v2/reference/core/contract.SablierV2LockupDynamic#_segments) to store an array of
-[segments](/contracts/v2/reference/core/types/library.LockupDynamic#segment) for each stream ID.
+[separate storage](/reference/lockup/core/contract.SablierV2LockupDynamic#_segments) to store an array of
+[segments](/reference/lockup/core/types/library.LockupDynamic#segment) for each stream ID.
 
 ```mermaid
 flowchart LR;
@@ -107,8 +107,8 @@ flowchart LR;
 
 ### Lockup Tranched
 
-Lockup Tranched requires a [separate storage](/contracts/v2/reference/core/contract.SablierV2LockupTranched#_tranches)
-to store an array of [tranches](/contracts/v2/reference/core/types/library.LockupTranched#tranche) for each stream ID.
+Lockup Tranched requires a [separate storage](/reference/lockup/core/contract.SablierV2LockupTranched#_tranches) to
+store an array of [tranches](/reference/lockup/core/types/library.LockupTranched#tranche) for each stream ID.
 
 ```mermaid
 flowchart LR;

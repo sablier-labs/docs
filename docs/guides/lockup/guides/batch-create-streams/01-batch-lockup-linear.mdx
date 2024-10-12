@@ -11,9 +11,9 @@ import ConstantsComment from "@site/docs/snippets/ConstantsComment.mdx";
 # Create a Batch of Lockup Linear Streams
 
 In this guide, we will show you how to programmatically batch create linear streams via the Sablier's
-[Batch Lockup](/contracts/v2/reference/periphery/contract.SablierV2BatchLockup) contract.
+[Batch Lockup](/reference/lockup/periphery/contract.SablierV2BatchLockup) contract.
 
-This guide assumes that you have already gone through the [Protocol Concepts](/concepts/protocol/streaming) section.
+This guide assumes that you have already gone through the [Protocol Concepts](/concepts/streaming) section.
 
 :::note
 
@@ -61,8 +61,8 @@ contract BatchLLStreamCreator {
 
 There are two batch create functions for the Lockup Linear contract:
 
-- [`createWithDurationsLL`](/contracts/v2/reference/periphery/contract.SablierV2BatchLockup#createwithdurationsll)
-- [`createWithTimestampsLL`](/contracts/v2/reference/periphery/contract.SablierV2BatchLockup#createwithtimestampsll)
+- [`createWithDurationsLL`](/reference/lockup/periphery/contract.SablierV2BatchLockup#createwithdurationsll)
+- [`createWithTimestampsLL`](/reference/lockup/periphery/contract.SablierV2BatchLockup#createwithtimestampsll)
 
 Which one you choose depends upon your use case. In this guide, we will use `createWithDurationsLL`.
 
@@ -71,7 +71,7 @@ Which one you choose depends upon your use case. In this guide, we will use `cre
 ## Stream Parameters
 
 Given that we declared a `batchSize` of two, we need to define two
-[BatchLockup.CreateWithDurationsLL](/contracts/v2/reference/periphery/types/library.BatchLockup#createwithdurationsll)
+[BatchLockup.CreateWithDurationsLL](/reference/lockup/periphery/types/library.BatchLockup#createwithdurationsll)
 structs:
 
 ```solidity

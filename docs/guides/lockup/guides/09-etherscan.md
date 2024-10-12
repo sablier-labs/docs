@@ -26,7 +26,7 @@ allowance. See the [Allowances](#prerequisite-erc20-allowances) section below fo
 
 ### Step 1: Go to contract page
 
-Head over to our [deployments](/contracts/v2/deployments) list to pick the contract address you want to interact with.
+Head over to our [deployments](/guides/lockup/deployments) list to pick the contract address you want to interact with.
 For each chain, that will be either `SablierV2LockupLinear`, `SablierV2LockupDynamic`, or `SablierV2LockupTranched`. In
 this tutorial, we will create a **LockupLinear** stream on Sepolia.
 
@@ -54,10 +54,10 @@ We will now proceed to create our first stream. Let's go with the following para
 - and transferrable
 
 As the start and end date are fixed, we'll be using the
-[`createWithTimestamps`](/contracts/v2/reference/core/interfaces/interface.ISablierV2LockupLinear#createwithtimestamps)
+[`createWithTimestamps`](/reference/lockup/core/interfaces/interface.ISablierV2LockupLinear#createwithtimestamps)
 method. Please note that using
-[`createWithDurations`](/contracts/v2/reference/core/interfaces/interface.ISablierV2LockupLinear#createwithdurations) is
-also possible if you specify durations instead of the timestamps.
+[`createWithDurations`](/reference/lockup/core/interfaces/interface.ISablierV2LockupLinear#createwithdurations) is also
+possible if you specify durations instead of the timestamps.
 
 Open the **"createWithTimestamps"** method, and start filling in the stream details:
 
@@ -106,8 +106,7 @@ from Etherscan to learn how to correctly format input data for Write Contract ta
 :::
 
 As an example, in the screenshot below, we are providing input parameters for
-[`createWithTimestampsLL`](/contracts/v2/reference/periphery/contract.SablierV2BatchLockup#createwithtimestampsll)
-function in
+[`createWithTimestampsLL`](/reference/lockup/periphery/contract.SablierV2BatchLockup#createwithtimestampsll) function in
 [`SablierV2BatchLockup`](https://sepolia.etherscan.io/address/0x04A9c14b7a000640419aD5515Db4eF4172C00E31#writeContract)
 contract. As you can see, since `batch` requires a tuple and does not break it down into separate fields, we had to use
 the above method.
@@ -134,8 +133,8 @@ example, you will need to fill in `20000000000000000000000`.
 
 :::note
 
-The total amount will also include any [broker fee](/concepts/protocol/fees). While fees are kept at zero in Sablier UI,
-the total amount should be equal to the streamed amount plus the broker fee amount.
+The total amount will also include any [broker fee](/concepts/fees). While fees are kept at zero in Sablier UI, the
+total amount should be equal to the streamed amount plus the broker fee amount.
 
 :::
 
@@ -179,8 +178,7 @@ to have a cliff, fill in the timestamp for the the cliff there.
 
 An optional parameter that can be set in order to charge a fee as a percentage of `totalAmount`.
 
-You can set the `broker` field to address zero and `zero` fees. Read more about fees
-[here](/concepts/protocol/fees#broker-fees).
+You can set the `broker` field to address zero and `zero` fees. Read more about fees [here](/concepts/fees#broker-fees).
 
 :::caution
 
@@ -228,7 +226,7 @@ Once found, you will see the stream ID between the two brackets. Note that strea
 
 Anyone can withdraw on your behalf if they pay the gas fee. When a third party withdraws, the recipient is the only
 allowed withdrawal address. However, if you withdraw yourself, you can choose to withdraw to any other address. You can
-read more about this advanced feature [here](/contracts/v2/reference/access-control#overview).
+read more about this advanced feature [here](/reference/lockup/access-control#overview).
 
 :::
 
@@ -236,7 +234,7 @@ read more about this advanced feature [here](/contracts/v2/reference/access-cont
 
 ### Step 1: Go to contract page
 
-Head over to our [deployments](/contracts/v2/deployments) list and select the contract address you want to interact
+Head over to our [deployments](/guides/lockup/deployments) list and select the contract address you want to interact
 with.
 
 Once you find the right contract, click on the address to access its explorer's page. Click on the "Contract" tab, and
@@ -289,7 +287,7 @@ Apart from the main flows, you may be required to do some other actions, usually
 
 ## Prerequisite: ERC20 Allowances
 
-Before interacting directly with the Sablier V2 [contracts](/contracts/v2/deployments) to
+Before interacting directly with the Sablier V2 [contracts](/guides/lockup/deployments) to
 [create a stream](#creating-a-stream) you will need to manually grant proper ERC20 allowances.
 
 ### Step 1: Go to token page
@@ -329,7 +327,7 @@ use a proxy pattern. For these, you have to use the "Write as Proxy" tab.
 ### Step 3: Send transaction
 
 For the purpose of creating a **LockupLinear** stream with Sablier V2, the spender will be the
-[SablierV2LockupLinear](/contracts/v2/deployments) contract.
+[SablierV2LockupLinear](/guides/lockup/deployments) contract.
 
 As for the amount, you'll have to pad it with the right number of decimals. For DAI, that's 18 decimals, so a value of
 `100` will turn into `100 * 1e18` (100 followed by 18 zeroes). For USDC,that's 6 decimals, so a value of `100` will turn
