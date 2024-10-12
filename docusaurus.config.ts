@@ -71,7 +71,7 @@ const config: Config = {
           },
           {
             from: "/apps/features",
-            to: "/apps/features/streams",
+            to: "/apps/features/vesting",
           },
           {
             from: "/apps/url-schemes",

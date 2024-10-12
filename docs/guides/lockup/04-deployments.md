@@ -24,13 +24,13 @@ Any updates or additional features will call for a new deployment of the protoco
 Came here looking for the previous V2 deployments? Click below to see other versions as well as the in-app aliases
 assigned under our [naming convention](/api/subgraphs/protocol/structure#identifying).
 
-| Version                                | UI Aliases                                                       |
-| -------------------------------------- | ---------------------------------------------------------------- |
-| v2.2 (current)                         | LD3 (Lockup Dynamic), LL3 (Lockup Linear), LT3 (Lockup Tranched) |
-| [v2.1](/contracts/v2/deployments/v2.1) | LD2 (Lockup Dynamic), LL2 (Lockup Linear)                        |
-| [v2.0](/contracts/v2/deployments/v2.0) | LD (Lockup Dynamic), LL (Lockup Linear)                          |
+| Version                              | UI Aliases                                                       |
+| ------------------------------------ | ---------------------------------------------------------------- |
+| v2.2 (current)                       | LD3 (Lockup Dynamic), LL3 (Lockup Linear), LT3 (Lockup Tranched) |
+| [v2.1](/guides/lockup/versions/v2.1) | LD2 (Lockup Dynamic), LL2 (Lockup Linear)                        |
+| [v2.0](/guides/lockup/versions/v2.0) | LD (Lockup Dynamic), LL (Lockup Linear)                          |
 
-Or maybe you're looking for V1? [Click here](/contracts/v1/deployments).
+Or maybe you're looking for V1? [Click here](/guides/lockup/versions/v1).
 
 :::info
 

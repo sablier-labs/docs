@@ -6,14 +6,13 @@ title: "Cancel Streams"
 
 :::note
 
-This section assumes that you have already gone through the [setup](/contracts/v2/guides/stream-management/setup) part.
+This section assumes that you have already gone through the [setup](/guides/lockup/guides/stream-management/setup) part.
 
 :::
 
 :::tip
 
-See the [Access Control](/contracts/v2/reference/access-control) guide for an overview of who is allowed to cancel
-streams.
+See the [Access Control](/reference/lockup/access-control) guide for an overview of who is allowed to cancel streams.
 
 :::
 
@@ -23,12 +22,12 @@ recipient will need to withdraw it.
 
 There are two functions that can be used to cancel streams:
 
-1. [`cancel`](/contracts/v2/reference/core/abstracts/abstract.SablierV2Lockup#cancel): cancels a single stream
-2. [`cancelMultiple`](/contracts/v2/reference/core/abstracts/abstract.SablierV2Lockup#cancelmultiple): cancels multiple
+1. [`cancel`](/reference/lockup/core/abstracts/abstract.SablierV2Lockup#cancel): cancels a single stream
+2. [`cancelMultiple`](/reference/lockup/core/abstracts/abstract.SablierV2Lockup#cancelmultiple): cancels multiple
    streams at once
 
 To call any of these functions, you need to have created a cancelable stream. If you don't have one yet, go back to the
-[previous guide](/contracts/v2/guides/create-stream/lockup-linear) and create a stream. Then, you can use the `cancel`
+[previous guide](/guides/lockup/guides/create-stream/lockup-linear) and create a stream. Then, you can use the `cancel`
 function like this:
 
 ```solidity reference title="Stream Management: Cancel"

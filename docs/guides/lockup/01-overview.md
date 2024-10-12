@@ -21,7 +21,7 @@ You can then setup your [local environment](./guides/01-local-environment.md) an
 
 # Reference
 
-For a deeper dive, read through the [technical reference](./reference/overview).
+For a deeper dive, read through the [technical reference](/reference/lockup/overview).
 
 # Resources
 

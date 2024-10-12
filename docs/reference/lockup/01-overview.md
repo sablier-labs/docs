@@ -54,7 +54,7 @@ Generates the URI describing the Sablier V2 stream NFTs.
 > [**Periphery Source Code**](https://github.com/sablier-labs/v2-periphery/tree/v1.2.0)
 
 The Periphery is a collection of contracts meant to make the Lockup Protocol more modular while introducing
-functionalities such as [Airstreams](/concepts/protocol/airstreams). It consists of BatchLockup and Airstream related
+functionalities such as [Airstreams](/concepts/lockup/airstreams). It consists of BatchLockup and Airstream related
 contracts (such as MerkleLockupFactory, MerkleLL and MerkleLT).
 
 ### BatchLockup
