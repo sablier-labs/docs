@@ -97,7 +97,7 @@ export default function Header() {
           <Heading as="h1">Sablier Docs</Heading>
         </Title>
         <Subtitle>
-          <p>Documentation for the Sablier token distribution protocol</p>
+          <p>Documentation for Sablier Lockup and Sablier Flow</p>
         </Subtitle>
         <Collection>
           <Feature
@@ -109,14 +109,14 @@ export default function Header() {
           <Feature
             description={"Deployment addresses and setup guides"}
             Icon={DocumentTextIcon}
-            title={"Contracts"}
+            title={"Developer Guides"}
             to={"/guides/lockup/overview"}
           />
 
           <Feature
-            description={"Technical References"}
+            description={"Deep dive into protocol specifications"}
             Icon={DocumentTextIcon}
-            title={"Contracts"}
+            title={"Technical References"}
             to={"/reference/lockup/overview"}
           />
 

@@ -38,9 +38,9 @@ const config: Config = {
   plugins: [
     [
       "@docusaurus/plugin-client-redirects",
-      // V1 redirects
       {
         redirects: [
+          // V1 redirects
           {
             from: "/protocol/faq/basics",
             to: "/concepts/what-is-sablier",
@@ -89,7 +89,59 @@ const config: Config = {
             from: "/csv",
             to: "/apps/guides/csv-support",
           },
+          // V2 redirects from old docs to new docs
+          {
+            from: "/concepts/sablier-protocol",
+            to: "/concepts/what-is-sablier",
+          },
+          {
+            from: "/concepts/protocol/streaming",
+            to: "/concepts/streaming",
+          },
+          {
+            from: "/concepts/protocol/nft",
+            to: "/concepts/nft",
+          },
+          {
+            from: "/concepts/protocol/fees",
+            to: "/concepts/fees",
+          },
+          {
+            from: "/concepts/protocol/transferability",
+            to: "/concepts/transferability",
+          },
+          {
+            from: "/contracts/v2/security",
+            to: "/concepts/security",
+          },
+          {
+            from: "/contracts/v2/deployments/v2.1",
+            to: "/guides/lockup/versions/v2.1",
+          },
+          {
+            from: "/contracts/v2/deployments/v2.0",
+            to: "/guides/lockup/versions/v2.0",
+          },
+          {
+            from: "/contracts/v1/deployments",
+            to: "/guides/lockup/versions/v1",
+          },
+          {
+            from: "/apps/features/streams",
+            to: "/apps/features/vesting",
+          },
         ],
+        createRedirects(existingPath) {
+          if (existingPath.includes("/community")) {
+            return [
+              existingPath.replace("/concepts/protocol", "/concepts/lockup"),
+              existingPath.replace("/contracts/v2", "/guides/lockup"),
+              existingPath.replace("/contracts/v1", "/reference/lockup/v1"),
+              existingPath.replace("/contracts/v2/reference", "/reference/lockup"),
+            ];
+          }
+          return undefined; // Return a falsy value: no redirect created
+        },
       },
     ],
   ],
