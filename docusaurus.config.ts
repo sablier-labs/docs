@@ -23,7 +23,7 @@ const config: Config = {
       "classic",
       {
         docs: {
-          editUrl: "https://github.com/sablier-labs/v2-docs/tree/main/",
+          editUrl: "https://github.com/sablier-labs/docs/tree/main/",
           rehypePlugins: [rehypeKatex],
           routeBasePath: "/", // Serve the docs at the site's root
           remarkPlugins: [remarkMath],
@@ -89,7 +89,7 @@ const config: Config = {
             from: "/csv",
             to: "/apps/guides/csv-support",
           },
-          // V2 redirects from old docs to new docs
+          // Lockup redirects from old docs to new docs
           {
             from: "/concepts/sablier-protocol",
             to: "/concepts/what-is-sablier",
@@ -229,15 +229,15 @@ const config: Config = {
           title: "Developers",
           items: [
             {
-              label: "V2 Core",
+              label: "Lockup Core",
               href: "https://github.com/sablier-labs/v2-core",
             },
             {
-              label: "V2 Periphery",
+              label: "Lockup Periphery",
               href: "https://github.com/sablier-labs/v2-periphery",
             },
             {
-              label: "V2 Integration Template",
+              label: "Lockup Integration Template",
               href: "https://github.com/sablier-labs/sablier-v2-integration-template",
             },
             {
