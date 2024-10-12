@@ -4,18 +4,12 @@ sidebar_position: 8
 title: "Governance"
 ---
 
-The Protocol Admin is an account with exclusive access to specific functions of the protocol. More concretely, the Admin
-is a collection of multisig wallets currently in control of Sablier Labs, which have the following permissions on each
-chain where Sablier is deployed:
-
-| Permission         | Function           | Contract(s)                                                                  |
-| ------------------ | ------------------ | ---------------------------------------------------------------------------- |
-| Allow to Hook      | `allowToHook`      | `SablierV2LockupLinear`, `SablierV2LockupDynamic`, `SablierV2LockupTranched` |
-| Set NFT Descriptor | `setNFTDescriptor` | `SablierV2LockupLinear`, `SablierV2LockupDynamic`, `SablierV2LockupTranched` |
+The Protocol Admin is an account with exclusive access to specific functions of the protocols. More concretely, the
+Admin is a collection of multisig wallets currently in control of Sablier Labs.
 
 ## Admins
 
-Here are the addresses that are currently administering the Sablier Protocol. Most of them are Safe multi-signature
+Here are the addresses that are currently administering the Sablier Protocols. Most of them are Safe multi-signature
 wallets.
 
 | Chain           | Address                                                                                                                          |
@@ -33,12 +27,27 @@ wallets.
 | Scroll          | [0x0F7Ad835235Ede685180A5c611111610813457a9](https://scrollscan.com/address/0x0F7Ad835235Ede685180A5c611111610813457a9)          |
 | zkSync Era      | [0xaFeA787Ef04E280ad5Bb907363f214E4BAB9e288](https://era.zksync.network/address/0xaFeA787Ef04E280ad5Bb907363f214E4BAB9e288)      |
 
+## Lockup
+
+Admin has the following permissions on each chain where Lockup is deployed:
+
+| Permission         | Function           | Contract(s)                                                                  |
+| ------------------ | ------------------ | ---------------------------------------------------------------------------- |
+| Allow to Hook      | `allowToHook`      | `SablierV2LockupLinear`, `SablierV2LockupDynamic`, `SablierV2LockupTranched` |
+| Set NFT Descriptor | `setNFTDescriptor` | `SablierV2LockupLinear`, `SablierV2LockupDynamic`, `SablierV2LockupTranched` |
+
+## Flow
+
+Admin has the following permissions on each chain where Flow is deployed:
+
+Coming soon.
+
 ## Trustlessness
 
-Despite having an admin, the Sablier Protocol remains trustless. Here are the reasons why:
+Despite having an admin, the Sablier Protocols remain trustless. Here are the reasons why:
 
-1. The protocol is permissionless, i.e. it can be freely accessed by anyone with an Internet connection.
-2. The protocol is persistent, i.e. the admin cannot pause it.
+1. The protocols are permissionless, i.e. it can be freely accessed by anyone with an Internet connection.
+2. The protocols are persistent, i.e. the admin cannot pause it.
 3. The streaming logic is non-upgradeable, i.e. the admin cannot tamper with the streams created by users.
 4. There are no escape hatches that allow the admin to claim user funds.
 5. There is a hard-coded upper limit of 10% to the fees that the admin can charge.

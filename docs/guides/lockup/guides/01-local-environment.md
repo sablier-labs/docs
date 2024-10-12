@@ -5,7 +5,7 @@ title: "Configure Your Local Environment"
 ---
 
 In this guide, we will go through the steps to set up a local development environment for building onchain integrations
-with Sablier. We will use Foundry to install Sablier as a dependency, and run a few simple tests.
+with Lockup. We will use Foundry to install Lockup as a dependency, and run a few simple tests.
 
 At the end, you’ll have a development environment set up that you can use to build the rest of the examples under
 "Guides", or start your own integration project.
@@ -24,7 +24,7 @@ In addition, familiarity with [Ethereum](https://ethereum.org/) and [Solidity](h
 ## Quick start
 
 We put together a template repository that you can use to get started quickly. This repository features a basic project
-structure, pre-configured Sablier imports, and a selection of sample contracts and tests.
+structure, pre-configured Lockup imports, and a selection of sample contracts and tests.
 
 :::tip
 
@@ -45,7 +45,7 @@ Then, hop to the `Run a Fork Test` section to complete your set up and start dev
 
 ## Start from scratch
 
-Foundry is a popular development toolkit for Ethereum projects, which we have used to build the Sablier Protocol. For
+Foundry is a popular development toolkit for Ethereum projects, which we have used to build the Sablier Protocols. For
 the purposes of this guide, Foundry will provide us with the tooling needed to compile and test our contracts.
 
 Let's use this command to spin up a new Foundry project:
@@ -78,16 +78,16 @@ The folder structure should be intuitive:
 - `script` is where you'll write scripts to perform actions like deploying contracts (you guessed it, in Solidity)
 - `foundry.toml` is where you can configure your Foundry settings, which we will leave as is in this guide
 
-Let's install the Sablier Node.js packages using Bun:
+Let's install the Lockup Node.js packages using Bun:
 
 ```shell
 $ bun add @sablier/v2-core @sablier/v2-periphery
 ```
 
-Bun will download the Sablier contracts, along with their dependencies, and put them in the `node_modules` directory.
+Bun will download the Lockup contracts, along with their dependencies, and put them in the `node_modules` directory.
 
 Let's remap the package names to point to the installed contracts. This step is required so that the Solidity compiler
-can find the Sablier contracts when you import them:
+can find the Lockup contracts when you import them:
 
 ```shell
 $ echo "@sablier/v2-core=node_modules/@sablier/v2-core/" >> remappings.txt
@@ -96,8 +96,8 @@ $ echo "@openzeppelin/contracts/=node_modules/@openzeppelin/contracts/" >> remap
 $ echo "@prb/math/=node_modules/@prb/math/" >> remappings.txt
 ```
 
-That's it! You should now have a functional development environment to start building onchain Sablier integrations.
-Let's run a quick test to confirm everything is set up properly.
+That's it! You should now have a functional development environment to start building onchain Lockup integrations. Let's
+run a quick test to confirm everything is set up properly.
 
 ## Sample contract
 
@@ -128,7 +128,7 @@ Compiler run successful
 
 :::info
 
-The minimum Solidity version supported by the Sablier contracts is v0.8.13.
+The minimum Solidity version supported by the Lockup contracts is v0.8.13.
 
 :::
 
@@ -165,9 +165,9 @@ Suite result: ok. 2 passed; 0 failed; 0 skipped; finished in 6.34s (5.80s CPU ti
 ## Next steps
 
 Congratulations! Your environment is now configured, and you are prepared to start building. Explore the guides section
-to discover various Sablier features available for integration. Remember to include all contracts (`.sol` files) in the
+to discover various Lockup features available for integration. Remember to include all contracts (`.sol` files) in the
 `src` folder and their corresponding tests in the `test` folder.
 
 As far as Foundry is concerned, there is much more to uncover. If you want to learn more about it, check out the
 [Foundry Book](https://book.getfoundry.sh/), which contains numerous examples and tutorials. A deep understanding of
-Foundry will enable you to create more sophisticated integrations with Sablier.
+Foundry will enable you to create more sophisticated integrations with Lockup.

@@ -1,12 +1,12 @@
 ---
 id: "errors"
-sidebar_position: 6
+sidebar_position: 4
 title: "Errors"
 ---
 
 ## Background
 
-Sablier handles errors with the convenient and gas-efficient
+Sablier protocols handle errors with the convenient and gas-efficient
 [custom error syntax](https://blog.soliditylang.org/2021/04/21/custom-errors) introduced in Solidity v0.8.4.
 
 The error data encoding is identical to the ABI encoding used for functions, e.g.:
@@ -24,22 +24,26 @@ bytes4(keccak256(bytes("SablierV2Lockup_Unauthorized(address,uint256)")))
 
 ## Naming Pattern
 
-With the exception of a few generics, all errors in Sablier V2 adhere to the naming pattern
-`SablierV2<ContractName>_<ErrorName>`.
+With the exception of a few generics, all errors in Lockup protocols adhere to the naming pattern
+`SablierV2<ContractName>_<ErrorName>` whereas in Flow protocol, they adhere to `SablierFlow_<ErrorName>`.
 
 Incorporating the contract name as a prefix offers context, making it easier for end users to pinpoint the contract
 responsible for a reverted transaction. This approach is particularly helpful for complex transactions involving
 multiple contracts.
 
-## Error List
+## Lockup Error List
 
 ### Core
 
-[Click here](core/libraries/library.Errors) to see the full error list in V2 Core.
+[Click here](lockup/core/libraries/library.Errors) to see the full error list in Lockup Core.
 
 ### Periphery
 
-[Click here](periphery/libraries/library.Errors) to see the full error list in V2 Periphery.
+[Click here](lockup/periphery/libraries/library.Errors) to see the full error list in Lockup Periphery.
+
+## Flow Error List
+
+Coming soon.
 
 ## Resources
 

@@ -277,7 +277,7 @@ const config: Config = {
         {
           label: "References",
           position: "left",
-          to: "/reference/lockup/overview",
+          to: "/reference/overview",
           activeBasePath: "/reference",
         },
         {

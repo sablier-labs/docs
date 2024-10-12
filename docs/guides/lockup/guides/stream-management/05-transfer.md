@@ -17,7 +17,7 @@ ownership.
 
 :::
 
-You may remember from the [NFT](/concepts/nft) guide that every Sablier stream is wrapped in an
+You may remember from the [NFT](/concepts/nft) guide that every Lockup stream is wrapped in an
 [ERC-721](https://eips.ethereum.org/EIPS/eip-721) non-fungible token (NFT). One of the key benefits of this design is
 that the recipient of the stream has the ability to transfer the NFT to a different address, effectively redirecting the
 streaming of assets to that new address.

@@ -1,12 +1,12 @@
 ---
 draft: true
-sidebar_position: 7
+sidebar_position: 3
 id: "frontend"
 title: "Frontend Integrations"
 ---
 
-Throughout this series, we've been focusing on creating an onchain integration with Sablier. But maybe you're interested
-in developing a front-end app. No worries! In this guide, we'll provide some pointers on how to go about it.
+Throughout this series, we've been focusing on creating an onchain integration with Sablier protocols. But maybe you're
+interested in developing a front-end app. No worries! In this guide, we'll provide some pointers on how to go about it.
 
 ## Toolset
 

@@ -1,6 +1,6 @@
 ---
 id: "nft"
-sidebar_position: 7
+sidebar_position: 6
 title: "NFTs"
 ---
 
@@ -9,9 +9,9 @@ import { links } from "@site/src/constants";
 import NFTGalleryURL from "@site/static/img/nft-gallery.png";
 import NFTSVG from "@site/static/img/nft.svg";
 
-The Sablier Protocol wraps every stream in an ERC-721 non-fungible token (NFT), making the stream recipient the owner of
-the NFT. The recipient can transfer the NFT to another address, and this also transfers the right to withdraw funds from
-the stream, including any funds already streamed.
+Both Lockup and Flow Protocols wrap every stream in an ERC-721 non-fungible token (NFT), making the stream recipient the
+owner of the NFT. The recipient can transfer the NFT to another address, and this also transfers the right to withdraw
+funds from the stream, including any funds already streamed.
 
 ## Integrations
 
@@ -21,8 +21,8 @@ their future income). Or a decentralized exchange that allows users to trade str
 
 :::note
 
-Not all Sablier streams are transferable. The stream creator can choose to make the stream
-[non-transferable](/guides/lockup/guides/stream-management/transfer).
+Not all Sablier streams are transferable. The stream creator can choose to make the stream non-transferable. You can
+find more details on it in the [Lockup guide](/guides/lockup/guides/stream-management/transfer).
 
 :::
 
@@ -44,9 +44,7 @@ some of the marketplaces that support Sablier streams:
 - [SuperRare](https://superrare.com)
 - [LooksRare](https://looksrare.org)
 
-If you prefer the granularity of a blockchain explorer, you can also view the stream NFTs on
-[Etherscan](https://etherscan.io/token/0xB10daee1FCF62243aE27776D7a92D39dC8740f95). See the
-[Deployments](/guides/lockup/deployments) page for the full list of addresses.
+## Lockup NFT
 
 :::caution
 
@@ -60,7 +58,7 @@ returned to the sender.
 The SVG artwork is generated using certain real-time values, such as the current time on the blockchain. However, NFT
 marketplaces cache the NFT metadata, and this may cause the SVGs might not always be up to date.
 
-The Sablier Protocol triggers [ERC-4906](https://eips.ethereum.org/EIPS/eip-4906) events whenever there's an update in a
+The Lockup Protocol triggers [ERC-4906](https://eips.ethereum.org/EIPS/eip-4906) events whenever there's an update in a
 stream (for instance, when a withdrawal is made). However, it's worth noting that some streams might remain unchanged
 for an extended period.
 
@@ -77,3 +75,11 @@ based on user data. Here's an example for a stream that is 42.35% way through:
 ### Gallery of Multiple Sablier NFT SVGs
 
 <img src={NFTGalleryURL} height={500} width={500} />
+
+If you prefer the granularity of a blockchain explorer, you can also view the stream NFTs on
+[Etherscan](https://etherscan.io/token/0xB10daee1FCF62243aE27776D7a92D39dC8740f95). See the
+[Deployments](/guides/lockup/deployments) page for the full list of addresses.
+
+## Flow NFT
+
+Coming soon.

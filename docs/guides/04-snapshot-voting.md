@@ -1,21 +1,21 @@
 ---
 id: "snapshot-voting"
-sidebar_position: 8
+sidebar_position: 4
 title: "Snapshot Strategies"
 ---
 
 # Snapshot Voting Strategies
 
 To enable off-chain governance, we designed a collection of Snapshot Strategies that compute the voting power of assets
-stored in Sablier streams.
+stored in Lockup streams.
 
-## Sablier V2
+## Sablier Lockup
 
 - [Snapshot playground](https://snapshot.org/#/playground/sablier-v2) - test the strategies
 - [Snapshot code repository](https://github.com/snapshot-labs/snapshot-strategies/tree/master/src/strategies/sablier-v2) -
   see the implementation
 
-The following strategies will read the various amounts that can be found in Sablier V2 streams. The voting power will be
+The following strategies will read the various amounts that can be found in Lockup streams. The voting power will be
 calculated based on some sub-strategies called `policies`.
 
 | Snapshot Playground                                  |
@@ -63,7 +63,7 @@ These policies are designed to address specific edge cases. We strongly recommen
 ### Example
 
 ```text
-Sablier V2 Stream #000001
+Lockup Stream #000001
 ---
 Deposited: TKN 1000 for 30 days
 Withdrawn: TKN 450 before snapshot
@@ -165,18 +165,18 @@ The opposite of `streamed-recipient`, counting amounts that have not been stream
 available in the future). Subtracts the `streamed` amount from the initial `deposit`. For canceled streams, the
 unstreamed amount will be `0`.
 
-## Sablier V1
+## Sablier Lockup V1
 
 - [Snapshot playground](https://snapshot.org/#/playground/sablier-v1-deposit) - test the strategies
 - [Snapshot code repository](https://github.com/snapshot-labs/snapshot-strategies/tree/master/src/strategies/sablier-v1-deposit) -
   dive into the implementation
 
-The Sablier V1 strategy regards the stream recipient as the voter. It returns the voting power for any voter as the
-**sum of all deposits** made by a sender towards the recipient (the **voter**) for a specific ERC-20 token.
+The Lockup V1 strategy regards the stream recipient as the voter. It returns the voting power for any voter as the **sum
+of all deposits** made by a sender towards the recipient (the **voter**) for a specific ERC-20 token.
 
 :::caution Caveats
 
-- Similar to the Sablier V2 [`streamed-recipient`](#streamed-recipient) strategy, the voting power can be increased
+- Similar to the Sablier Lockup [`streamed-recipient`](#streamed-recipient) strategy, the voting power can be increased
   artificially.
 
 :::

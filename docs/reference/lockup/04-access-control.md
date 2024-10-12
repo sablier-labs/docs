@@ -1,10 +1,10 @@
 ---
 id: "access-control"
-sidebar_position: 5
+sidebar_position: 4
 title: "Access Control"
 ---
 
-With the exception of the [admin functions](/docs/concepts/08-governance.md), all functionalities in Sablier can only be
+With the exception of the [admin functions](/docs/concepts/08-governance.md), all functionalities in Lockup can only be
 triggered by users. The Protocol Admin has no control over any stream or any part of the protocol.
 
 This article will provide a comprehensive overview of the actions that can be performed on streams once they are

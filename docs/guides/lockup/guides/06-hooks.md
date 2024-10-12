@@ -5,7 +5,7 @@ title: "Implement Hooks"
 ---
 
 Hooks provide an interface for recipient contracts to react upon cancellations and withdrawals. In order to allow your
-contract to be able to hook into Sablier, you must implement this interface and it must have been allowlisted by the
+contract to be able to hook into Lockup, you must implement this interface and it must have been allowlisted by the
 Lockup contract's admin.
 
 :::info
@@ -18,7 +18,7 @@ keep their contract on the allowlist.
 :::
 
 In this guide, we will explain how to implement [hooks](/concepts/lockup/hooks) in your smart contract to allow
-interacting with Sablier streams.
+interacting with Lockup streams.
 
 ### Overview
 
@@ -59,6 +59,6 @@ Looking to get on the allowlist? Reach out to us on [Discord](https://discord.sa
 
 #### Recipient
 
-```solidity reference title="Sablier Recipient Hooks"
+```solidity reference title="Sablier Lockup Recipient Hooks"
 https://github.com/sablier-labs/examples/blob/main/v2/core/RecipientHooks.sol
 ```

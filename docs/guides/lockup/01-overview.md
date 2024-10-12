@@ -4,11 +4,11 @@ sidebar_position: 1
 title: "Overview"
 ---
 
-# Sablier V2 Protocol
+# Lockup Protocol
 
-Welcome to the Sablier V2 Protocol documentation.
+Welcome to the Lockup Protocol documentation.
 
-This section contains detailed guides and technical references for the Sablier V2 Protocol, a suite of smart contracts
+This section contains detailed guides and technical references for the Lockup Protocol, a suite of smart contracts
 running autonomously in the Ethereum ecosystem. These documents offer insight into the operational nuances of the
 contracts, providing a valuable resource for building onchain integrations.
 
@@ -21,12 +21,12 @@ You can then setup your [local environment](./guides/01-local-environment.md) an
 
 # Reference
 
-For a deeper dive, read through the [technical reference](/reference/lockup/overview).
+For a deeper dive into the protocol specifications, read through the [technical reference](/reference/overview).
 
 # Resources
 
-- [V2 Core](https://github.com/sablier-labs/v2-core/tree/release)
-- [V2 Periphery](https://github.com/sablier-labs/v2-periphery/tree/release)
-- [V2 Integration Template](https://github.com/sablier-labs/sablier-v2-integration-template)
-- [V2 Example Integrations](https://github.com/sablier-labs/examples)
+- [Lockup Core](https://github.com/sablier-labs/v2-core/tree/release)
+- [Lockup Periphery](https://github.com/sablier-labs/v2-periphery/tree/release)
+- [Lockup Integration Template](https://github.com/sablier-labs/sablier-v2-integration-template)
+- [Lockup Example Integrations](https://github.com/sablier-labs/examples)
 - [Foundry Book](https://book.getfoundry.sh/)

@@ -6,7 +6,7 @@ sidebar_position: 1
 
 ## Create stream
 
-The create stream function transfers the tokens into the Sablier smart contract, stamping the rules of the stream into
+The create stream function transfers the tokens into the Lockup smart contract, stamping the rules of the stream into
 the blockchain. As soon as the chain clock hits the start time of the stream, a small portion of tokens starts getting
 "transferred" from the sender to the recipient once every second.
 
@@ -29,7 +29,7 @@ function createStream(address recipient, uint256 deposit, address tokenAddress, 
 
 :::caution
 
-Before creating a stream, users must first [approve](https://eips.ethereum.org/EIPS/eip-20#approve) the Sablier contract
+Before creating a stream, users must first [approve](https://eips.ethereum.org/EIPS/eip-20#approve) the Lockup contract
 to access their token balance.
 
 :::

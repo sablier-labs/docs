@@ -79,14 +79,14 @@ function createStream(uint128 totalAmount) public returns (uint256 streamId) {
 ## ERC-20 steps
 
 To create a stream, the caller must approve the creator contract to pull the tokens from the calling address's account.
-Then, we have to also approve the Sablier contract to pull the assets that the creator contract will be in possession of
-after they are transferred from the calling address (you):
+Then, we have to also approve the Lockup linear contract to pull the assets that the creator contract will be in
+possession of after they are transferred from the calling address (you):
 
 ```solidity
 // Transfer the provided amount of DAI tokens to this contract
 DAI.transferFrom(msg.sender, address(this), totalAmount);
 
-// Approve the Sablier contract to spend DAI
+// Approve the Lockup linear contract to spend DAI
 DAI.approve(address(LOCKUP_LINEAR), totalAmount);
 ```
 
@@ -95,9 +95,10 @@ For more guidance on how to approve and transfer ERC-20 assets, see
 
 ## Parameters
 
-Sablier uses structs to encode the parameters of its create functions. The struct associated with `createWithDurations`
-is [`LockupLinear.CreateWithDurations`](/reference/lockup/core/types/library.LockupLinear#createwithdurations), and it
-can be initialized like this:
+Lockup linear uses structs to encode the parameters of its create functions. The struct associated with
+`createWithDurations` is
+[`LockupLinear.CreateWithDurations`](/reference/lockup/core/types/library.LockupLinear#createwithdurations), and it can
+be initialized like this:
 
 ```solidity
 LockupLinear.CreateWithDurations memory params;

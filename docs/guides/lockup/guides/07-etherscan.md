@@ -1,6 +1,6 @@
 ---
 id: "etherscan"
-sidebar_position: 9
+sidebar_position: 7
 title: "Etherscan"
 ---
 
@@ -8,11 +8,10 @@ title: "Etherscan"
 
 ## Introduction
 
-Just like any other open protocol, Sablier V2 can be interacted with directly through a blockchain explorer like
-Etherscan.
+Just like any other open protocol, Lockup can be interacted with directly through a blockchain explorer like Etherscan.
 
 In this guide, we will show you how to create a stream and withdraw from a stream by manually interacting with the
-Sablier V2 Core contracts on Etherscan.
+Lockup Core contracts on Etherscan.
 
 If you're interested in interacting with V1, please refer to this
 [article](https://blog.sablier.com/operating-the-sablier-v1-protocol-manually/).
@@ -21,7 +20,7 @@ If you're interested in interacting with V1, please refer to this
 
 ### Prerequisites
 
-Before being able to create a stream using the Sablier V2 Core contracts you need to have granted a sufficient token
+Before being able to create a stream using the Lockup Core contracts you need to have granted a sufficient token
 allowance. See the [Allowances](#prerequisite-erc20-allowances) section below for a guide on how to do that.
 
 ### Step 1: Go to contract page
@@ -287,7 +286,7 @@ Apart from the main flows, you may be required to do some other actions, usually
 
 ## Prerequisite: ERC20 Allowances
 
-Before interacting directly with the Sablier V2 [contracts](/guides/lockup/deployments) to
+Before interacting directly with the Lockup [contracts](/guides/lockup/deployments) to
 [create a stream](#creating-a-stream) you will need to manually grant proper ERC20 allowances.
 
 ### Step 1: Go to token page
@@ -326,7 +325,7 @@ use a proxy pattern. For these, you have to use the "Write as Proxy" tab.
 
 ### Step 3: Send transaction
 
-For the purpose of creating a **LockupLinear** stream with Sablier V2, the spender will be the
+For the purpose of creating a **LockupLinear** stream with Lockup, the spender will be the
 [SablierV2LockupLinear](/guides/lockup/deployments) contract.
 
 As for the amount, you'll have to pad it with the right number of decimals. For DAI, that's 18 decimals, so a value of

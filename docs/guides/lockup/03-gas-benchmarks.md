@@ -4,11 +4,11 @@ sidebar_position: 3
 title: "Gas Benchmarks"
 ---
 
-The gas usage of the Sablier Protocol is not deterministic and varies by user. Calls to third-party contracts, such as
+The gas usage of the Lockup Protocol is not deterministic and varies by user. Calls to third-party contracts, such as
 ERC-20 tokens, may use an arbitrary amount of gas. The values in the table below are rough estimations - you shouldn't
 take them for granted.
 
-## V2 Core
+## Lockup Core
 
 :::note
 
@@ -102,7 +102,7 @@ view the code that generates these benchmarks.
 | `withdraw` (100 tranches) (After End Time) (by Anyone)     | 46,644    |
 | `withdraw` (100 tranches) (Before End Time) (by Anyone)    | 73,887    |
 
-## V2 Periphery
+## Lockup Periphery
 
 :::note
 
