@@ -1,6 +1,6 @@
 # Lockup
 
-[Git Source](https://github.com/sablier-labs/v2-core/blob/36b49d3bf2a396d19083d28247e8e03d7a3a2ee1/src/types/DataTypes.sol)
+[Git Source](https://github.com/sablier-labs/v2-core/blob/73356945b53e8dd4112f34f3e2c63c278c4a5239/src/types/DataTypes.sol)
 
 Namespace for the structs used in both
 [SablierV2LockupLinear](docs/reference/lockup/core/contract.SablierV2LockupLinear.md) and
@@ -90,6 +90,18 @@ struct Stream {
 ### Status
 
 Enum representing the different statuses of a stream.
+
+**Notes:**
+
+- PENDING Stream created but not started; assets are in a pending state.
+
+- STREAMING Active stream where assets are currently being streamed.
+
+- SETTLED All assets have been streamed; recipient is due to withdraw them.
+
+- CANCELED Canceled stream; remaining assets await recipient's withdrawal.
+
+- DEPLETED Depleted stream; all assets have been withdrawn and/or refunded.
 
 ```solidity
 enum Status {

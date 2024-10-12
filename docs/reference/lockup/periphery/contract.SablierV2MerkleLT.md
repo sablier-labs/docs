@@ -4,7 +4,7 @@ sidebar_position: 3
 
 # SablierV2MerkleLT
 
-[Git Source](https://github.com/sablier-labs/v2-periphery/blob/c10978dd4cdb54301b9c2d63c7e0af41da9110f3/src/SablierV2MerkleLT.sol)
+[Git Source](https://github.com/sablier-labs/v2-periphery/blob/ed3be5dc823dd81219f8060a6e6b32ead6c8de84/src/SablierV2MerkleLT.sol)
 
 **Inherits:** [ISablierV2MerkleLT](/docs/reference/lockup/periphery/interfaces/interface.ISablierV2MerkleLT.md),
 [SablierV2MerkleLockup](/docs/reference/lockup/periphery/abstracts/abstract.SablierV2MerkleLockup.md)

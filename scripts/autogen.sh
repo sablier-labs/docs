@@ -14,7 +14,7 @@ set -euo pipefail
 # ---------------------------------------------------------------------------- #
 
 # Define the reference directories
-all=docs/contracts/v2/reference
+all=docs/reference/lockup
 core=docs/reference/lockup/core
 periphery=docs/reference/lockup/periphery
 
@@ -27,7 +27,7 @@ run() {
   repo=$1
 
   # cd into the repo
-  cd repos/v2-$repo
+  cd repos/lockup/v2-$repo
 
   # Delete the previously generated docs
   rm -rf ./docs
@@ -36,10 +36,10 @@ run() {
   forge doc
 
   # Go back to the root
-  cd ../../
+  cd ../../../
 
   # Define the reference directory
-  reference=docs/contracts/v2/reference/$repo
+  reference=docs/reference/lockup/$repo
 
   # Delete the current V2 reference
   find $reference -type f -name "*.md" -delete
@@ -48,7 +48,7 @@ run() {
   rsync --archive \
   --exclude "README.md" \
   --exclude "SUMMARY.md" \
-  repos/v2-$repo/docs/src/src/* \
+  repos/lockup/v2-$repo/docs/src/src/* \
   $reference
 
   # Move all Markdown files one level up
