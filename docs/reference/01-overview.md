@@ -50,7 +50,7 @@ Creates and manages Lockup streams with tranches.
 
 > [**NFTDescriptor Reference**](./lockup/core/contract.SablierV2NFTDescriptor)
 
-Generates the URI describing the Sablier V2 stream NFTs.
+Generates the URI describing the Sablier Lockup stream NFTs.
 
 ## Lockup Periphery
 

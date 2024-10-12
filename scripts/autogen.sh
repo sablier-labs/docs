@@ -32,7 +32,7 @@ run() {
   # Delete the previously generated docs
   rm -rf ./docs
 
-  # Auto-generate the V2 reference with Forge
+  # Auto-generate the Lockup reference with Forge
   forge doc
 
   # Go back to the root
@@ -41,7 +41,7 @@ run() {
   # Define the reference directory
   reference=docs/reference/lockup/$repo
 
-  # Delete the current V2 reference
+  # Delete the current Lockup reference
   find $reference -type f -name "*.md" -delete
 
   # Copy over the auto-generated files
@@ -72,7 +72,7 @@ run() {
 }
 
 # ---------------------------------------------------------------------------- #
-#                                    V2 Core                                   #
+#                                Lockup Core                                   #
 # ---------------------------------------------------------------------------- #
 
 # Generate the raw docs with Forge
@@ -98,7 +98,7 @@ contract=$core/contract.SablierV2NFTDescriptor.md
 echo "$(echo -en '---\nsidebar_position: 3\n---\n'; cat $contract)" > $contract
 
 # ---------------------------------------------------------------------------- #
-#                                 V2 Periphery                                 #
+#                             Lockup Periphery                                 #
 # ---------------------------------------------------------------------------- #
 
 # Generate the raw docs with Forge
