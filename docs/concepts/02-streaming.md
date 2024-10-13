@@ -7,16 +7,6 @@ title: "Streaming"
 Asset streaming means the ability to make continuous, real-time payments on a per-second basis. This novel approach to
 making payments is the core concept of Sablier.
 
-Let's take an example from Lockup. Imagine Alice wants to stream 3,000 DAI to Bob during the whole month of January.
-
-1. Alice deposits the 3,000 DAI in Lockup before Jan 1, setting the end time to Feb 1.
-2. Bob's allocation of the DAI deposit increases every second beginning Jan 1.
-3. On Jan 10, Bob will have earned approximately 1,000 DAI. He can send a transaction to Lockup to withdraw the tokens.
-4. If at any point during January Alice wishes to get back her tokens, she can cancel the stream and recover what has
-   not been streamed yet.
-
-This streaming model is especially useful for use cases like vesting, and airdrops.
-
 ## Brief history
 
 Andreas Antonopoulos introduced the concept of money streaming in his keynote talk
