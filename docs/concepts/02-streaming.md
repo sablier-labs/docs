@@ -49,6 +49,7 @@ recipient is willing to return it.
 ## Diversity of streams
 
 Over time, we have come to realize that there is no one-size-fits-all streaming model that can address the diverse range
-of use cases. In the upcoming section, we will explore the various types of streams supported by Lockup and Flow.
+of use cases. In the upcoming section, we will explore the various token distribution curves supported by Lockup and
+Flow.
 
 But first, let's dive into the use cases.

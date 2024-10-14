@@ -1,26 +1,26 @@
 ---
-id: "stream-types"
+id: "stream-shapes"
 sidebar_position: 2
-title: "Types of Streams"
+title: "Stream Shapes"
 ---
 
 import FunctionPlot from "@site/src/components/FunctionPlot";
 
 :::note
 
-The code used to generate the gas benchmarks for the different stream types can be found
+The code used to generate the gas benchmarks for the different stream curves can be found
 [here](https://github.com/sablier-labs/examples/tree/shapes-benchmark).
 
 :::
 
 ## Lockup Linear
 
-Lockup Linear streams are the simplest type of stream in Sablier. The streamed amount over time follows a straight line
-that goes up and to the right on a graph, which corresponds to the identity function $f(x) = x$:
+Lockup Linear streams are the simplest token distribution curve in Sablier. The streamed amount over time follows a
+straight line that goes up and to the right on a graph, which corresponds to the identity function $f(x) = x$:
 
 <FunctionPlot options={{ data: [{ fn: "x", color: "#f77423" }] }} />
 
-With this type of stream, the payment rate remains constant, meaning that the same fraction of the deposit amount is
+With this shape of stream, the payment rate remains constant, meaning that the same fraction of the deposit amount is
 streamed to the recipient every second. This provides greater predictability and is easy to understand because of how
 intuitive it is. Imagine a diagonal line going up and to the right – that's how simple it is.
 
@@ -67,8 +67,8 @@ The gas cost to create this shape is approximately _150,000_ on Mainnet. This ma
 
 ## Lockup Dynamic
 
-Lockup Dynamic streams are what makes Sablier so unique, since they enable the creation of any type of streaming curve,
-including non-linear ones.
+Lockup Dynamic streams are what makes Sablier so unique, since they enable the creation of an arbitrary streaming curve,
+including non-linear curves.
 
 On the Sablier Interface, we support only some distribution shapes (the ones enumerated below), but the potential for
 innovation is limitless when you interact programmatically with the contracts. For example, one could design a

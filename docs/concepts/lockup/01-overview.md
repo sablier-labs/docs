@@ -18,4 +18,4 @@ Let's discuss an example. Imagine Alice wants to stream 3,000 DAI to Bob during 
 This streaming model is especially useful for use cases like vesting and airdrops. If you are looking to create an
 indefinite stream of tokens, please refer to our [Flow](../flow/overview) protocol.
 
-There are multiple types of lockup streams which is discussed in the next section.
+Lockup enables multiple shapes of streams which is discussed in the next section.
