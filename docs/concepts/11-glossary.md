@@ -149,8 +149,8 @@ A stream can have one out of six possible statuses:
 
 A new financial primitive that permits by-the-second payments.
 
-Currently, the Sablier Protocols offer two types of stream called lockup and flow. In Lockup strean, creator has to lock
-up a specified amount of assets whereas in Flow streams, creator is not required to lock up any amount of assets.
+Currently, Sablier offers two streaming protocols called lockup and flow. In Lockup protocol, creator has to lock up a
+specified amount of assets whereas in Flow protocol, creator is not required to lock up any amount of assets.
 
 ## Streaming
 
