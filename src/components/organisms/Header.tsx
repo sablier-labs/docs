@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "@emotion/styled";
+import CodeBracketIcon from "@heroicons/react/24/outline/CodeBracketIcon";
 import ComputerDesktopIcon from "@heroicons/react/24/outline/ComputerDesktopIcon";
 import CubeIcon from "@heroicons/react/24/outline/CubeIcon";
 import DocumentTextIcon from "@heroicons/react/24/outline/DocumentTextIcon";
@@ -115,7 +116,7 @@ export default function Header() {
 
           <Feature
             description={"Deep dive into protocol specifications"}
-            Icon={DocumentTextIcon}
+            Icon={CodeBracketIcon}
             title={"Technical References"}
             to={"/reference/overview"}
           />
