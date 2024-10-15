@@ -7,14 +7,18 @@ title: "Use Cases"
 import Link from "@docusaurus/Link";
 import { links } from "@site/src/constants";
 
-While Sablier is a general-purpose protocol that can be used for a
+While Lockup and Flow both are general-purpose protocols that can be used for a
 [wide variety](https://twitter.com/Sablier/status/1205533344886411264) of applications, some use cases are more popular
-than others. In this article, we will cover the three primary reasons people are using Sablier at the moment: vesting,
-payroll, and airdrops.
+than others. In this article, we will cover the primary reasons people are using Sablier Lockup and Flow.
 
-## Vesting
+## Sablier Lockup
 
-### 1. Efficiency
+Sablier Lockup requires upfront deposit of the tokens into the streams. They have a start time, and an end time, and
+therefore are a great fit for Vesting and Airdrops.
+
+### Vesting
+
+#### 1. Efficiency
 
 Traditional vesting schemes require a lot of manual input. Payments must be processed manually over an extended period,
 demanding continuous dedication from the treasury management team. The treasury admin has to initiate numerous
@@ -35,7 +39,7 @@ of their allocated compensation. This model aligns with the incentives of both p
 spend time once, to create the streams, while recipients receive the funds gradually over time, allowing them to manage
 their finances as they wish.
 
-### 2. Schelling points
+#### 2. Schelling points
 
 :::info
 
@@ -51,7 +55,7 @@ receive them.
 By contrast, Sablier streams distribute a fraction of the total payment every second to recipients, enabling them to
 withdraw a portion of funds at any time. This effectively addresses the problem of coordinated dumping.
 
-### 3. Transparency
+#### 3. Transparency
 
 It's hard to aggregate discrete payments, which is why they typically lack transparency. Just by looking at a
 transaction on Etherscan, it's difficult to pin down to whom it was made, or for what purpose. This issue is
@@ -63,11 +67,11 @@ streams created by a particular address, as well as all transactions associated 
 
 To illustrate this, <Link href={links.example}>here</Link>'s an example of a stream as viewed on the Sablier Interface.
 
-## Airdrops
+### Airdrops
 
 This section explores why streaming provides a superior method of distributing tokens compared to simple airdrops.
 
-### 1. Flaws in simple airdrops
+#### 1. Flaws in simple airdrops
 
 [Retroactive airdrops](https://members.delphidigital.io/learn/retroactive-airdrops) have become a common practice in the
 cryptocurrency industry. They are often used to launch new tokens, and for good reason: it allows for the distribution
@@ -84,7 +88,7 @@ Fortunately, there is an elegant solution that encourages long-term thinking amo
 airdrop with Sablier, you can ensure that community members prioritize the project's future. This approach creates the
 right incentives for members to think about the project's long-term success.
 
-### 2. Streaming airdrops
+#### 2. Streaming airdrops
 
 Instead of airdropping the entirety of the token allocation all at once, airdrop recipients receive a fraction of the
 tokens every second through a Sablier stream.
@@ -105,16 +109,24 @@ which you can use to create an airdrop campaign using Merkle tree.
 
 :::
 
-## Payroll
+## Sablier Flow
+
+Unlike Lockup, Sablier Flow does not require upfront deposits, have no specific start and end time, and therefore offers
+more flexibility. This is best suited for payrolls and grant payments as described below.
+
+### Payroll
 
 We all receive our salaries at the end of every month. What if your salary can be streamed to you in real time? Why
 should you wait for a month when you can get it every second? You can ask your employer to pay you using Sablier.
 Streaming salaries through Sablier can significantly enhance employee satisfaction and retention.
 
+Your employer can create a Flow stream and keep funding it at the end of very month or in advance for you to withdraw
+your money.
+
 The benefits outlined in the "Efficiency" section earlier apply equally to this use case, since traditional payroll
 solutions, like vesting schemes, can be both labor-intensive and prone to errors.
 
-## Grants
+### Grants
 
 Grants are a powerful use case for Sablier, allowing for efficient, transparent, and flexible distribution of funds to
 grant recipients.
@@ -126,18 +138,18 @@ Uniswap Governance used Sablier to distribute grant to DeFi Education Fund. You 
 
 :::
 
-### 1. Transparency
+#### 1. Transparency
 
 Sablier enables real-time streaming of funds, ensuring transparency in how grants are distributed. Your stakeholders can
 monitor the flow of funds, providing assurance that the money is being used as intended.
 
-### 2. Pay as they deliver
+#### 2. Pay as they deliver
 
 Instead of lump-sum payments, you can use Sablier to stream funds continuously over a specified period. This ensures
 recipients have a steady cash flow and reduces the risk of mismanagement of funds. If grant recipient stops working on
 their project, you can cancel the stream and retrieve back the remaining funds.
 
-### 3. No Administrative Overhead
+#### 3. No Administrative Overhead
 
 All streamings through Sablier are automated, which means, you don't have to send funds manually at the end of every
 month.

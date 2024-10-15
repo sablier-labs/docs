@@ -14,9 +14,9 @@ set -euo pipefail
 # ---------------------------------------------------------------------------- #
 
 # Define the reference directories
-all=docs/contracts/v2/reference
-core=docs/contracts/v2/reference/core
-periphery=docs/contracts/v2/reference/periphery
+all=docs/reference/lockup
+core=docs/reference/lockup/core
+periphery=docs/reference/lockup/periphery
 
 # Delete the current reference documentations
 find $core -type f -name "*.md" -delete
@@ -27,28 +27,28 @@ run() {
   repo=$1
 
   # cd into the repo
-  cd repos/v2-$repo
+  cd repos/lockup/v2-$repo
 
   # Delete the previously generated docs
   rm -rf ./docs
 
-  # Auto-generate the V2 reference with Forge
+  # Auto-generate the Lockup reference with Forge
   forge doc
 
   # Go back to the root
-  cd ../../
+  cd ../../../
 
   # Define the reference directory
-  reference=docs/contracts/v2/reference/$repo
+  reference=docs/reference/lockup/$repo
 
-  # Delete the current V2 reference
+  # Delete the current Lockup reference
   find $reference -type f -name "*.md" -delete
 
   # Copy over the auto-generated files
   rsync --archive \
   --exclude "README.md" \
   --exclude "SUMMARY.md" \
-  repos/v2-$repo/docs/src/src/* \
+  repos/lockup/v2-$repo/docs/src/src/* \
   $reference
 
   # Move all Markdown files one level up
@@ -72,7 +72,7 @@ run() {
 }
 
 # ---------------------------------------------------------------------------- #
-#                                    V2 Core                                   #
+#                                Lockup Core                                   #
 # ---------------------------------------------------------------------------- #
 
 # Generate the raw docs with Forge
@@ -98,7 +98,7 @@ contract=$core/contract.SablierV2NFTDescriptor.md
 echo "$(echo -en '---\nsidebar_position: 3\n---\n'; cat $contract)" > $contract
 
 # ---------------------------------------------------------------------------- #
-#                                 V2 Periphery                                 #
+#                             Lockup Periphery                                 #
 # ---------------------------------------------------------------------------- #
 
 # Generate the raw docs with Forge

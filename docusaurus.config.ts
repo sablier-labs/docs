@@ -23,7 +23,7 @@ const config: Config = {
       "classic",
       {
         docs: {
-          editUrl: "https://github.com/sablier-labs/v2-docs/tree/main/",
+          editUrl: "https://github.com/sablier-labs/docs/tree/main/",
           rehypePlugins: [rehypeKatex],
           routeBasePath: "/", // Serve the docs at the site's root
           remarkPlugins: [remarkMath],
@@ -38,20 +38,20 @@ const config: Config = {
   plugins: [
     [
       "@docusaurus/plugin-client-redirects",
-      // V1 redirects
       {
         redirects: [
+          // V1 redirects
           {
             from: "/protocol/faq/basics",
             to: "/concepts/what-is-sablier",
           },
           {
             from: "/protocol/guides/getting-started",
-            to: "/contracts/v1/guides/getting-started",
+            to: "/reference/lockup/v1/guides/getting-started",
           },
           {
             from: "/protocol/guides/chains",
-            to: "/contracts/v1/deployments",
+            to: "/guides/lockup/versions/v1",
           },
           {
             from: "/protocol/introduction",
@@ -71,7 +71,7 @@ const config: Config = {
           },
           {
             from: "/apps/features",
-            to: "/apps/features/streams",
+            to: "/apps/features/vesting",
           },
           {
             from: "/apps/url-schemes",
@@ -89,7 +89,59 @@ const config: Config = {
             from: "/csv",
             to: "/apps/guides/csv-support",
           },
+          // Lockup redirects from old docs to new docs
+          {
+            from: "/concepts/sablier-protocol",
+            to: "/concepts/what-is-sablier",
+          },
+          {
+            from: "/concepts/protocol/streaming",
+            to: "/concepts/streaming",
+          },
+          {
+            from: "/concepts/protocol/nft",
+            to: "/concepts/nft",
+          },
+          {
+            from: "/concepts/protocol/fees",
+            to: "/concepts/fees",
+          },
+          {
+            from: "/concepts/protocol/transferability",
+            to: "/concepts/transferability",
+          },
+          {
+            from: "/contracts/v2/security",
+            to: "/concepts/security",
+          },
+          {
+            from: "/contracts/v2/deployments/v2.1",
+            to: "/guides/lockup/versions/v2.1",
+          },
+          {
+            from: "/contracts/v2/deployments/v2.0",
+            to: "/guides/lockup/versions/v2.0",
+          },
+          {
+            from: "/contracts/v1/deployments",
+            to: "/guides/lockup/versions/v1",
+          },
+          {
+            from: "/apps/features/streams",
+            to: "/apps/features/vesting",
+          },
         ],
+        createRedirects(existingPath) {
+          if (existingPath.includes("/community")) {
+            return [
+              existingPath.replace("/concepts/protocol", "/concepts/lockup"),
+              existingPath.replace("/contracts/v2", "/guides/lockup"),
+              existingPath.replace("/contracts/v1", "/reference/lockup/v1"),
+              existingPath.replace("/contracts/v2/reference", "/reference/lockup"),
+            ];
+          }
+          return undefined; // Return a falsy value: no redirect created
+        },
       },
     ],
   ],
@@ -177,15 +229,15 @@ const config: Config = {
           title: "Developers",
           items: [
             {
-              label: "V2 Core",
+              label: "Lockup Core",
               href: "https://github.com/sablier-labs/v2-core",
             },
             {
-              label: "V2 Periphery",
+              label: "Lockup Periphery",
               href: "https://github.com/sablier-labs/v2-periphery",
             },
             {
-              label: "V2 Integration Template",
+              label: "Lockup Integration Template",
               href: "https://github.com/sablier-labs/sablier-v2-integration-template",
             },
             {
@@ -217,10 +269,16 @@ const config: Config = {
           activeBasePath: "/concepts",
         },
         {
-          label: "Contracts",
+          label: "Developer Guides",
           position: "left",
-          to: "/contracts/v2/overview",
-          activeBasePath: "/contracts",
+          to: "/guides/lockup/overview",
+          activeBasePath: "/guides",
+        },
+        {
+          label: "References",
+          position: "left",
+          to: "/reference/overview",
+          activeBasePath: "/reference",
         },
         {
           label: "Apps",
