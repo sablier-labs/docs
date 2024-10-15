@@ -125,7 +125,7 @@ export default function Header() {
             description={"Official interfaces and brand guidelines"}
             Icon={ComputerDesktopIcon}
             title={"Apps"}
-            to={"/apps/overview"}
+            to={"/apps/features/overview"}
           />
           <Feature
             description={"Off-chain utilities such as the subgraph"}

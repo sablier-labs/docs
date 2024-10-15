@@ -74,6 +74,22 @@ const config: Config = {
             to: "/apps/features/vesting",
           },
           {
+            from: "/apps",
+            to: "/apps/features/overview",
+          },
+          {
+            from: "/apps/features/general",
+            to: "/apps/features/overview",
+          },
+          {
+            from: "/apps/overview",
+            to: "/apps/features/overview",
+          },
+          {
+            from: "/apps/features/airstreams",
+            to: "/apps/features/drops",
+          },
+          {
             from: "/apps/url-schemes",
             to: "/apps/guides/url-schemes",
           },
@@ -283,7 +299,7 @@ const config: Config = {
         {
           label: "Apps",
           position: "left",
-          to: "/apps/overview",
+          to: "/apps/features/overview",
           activeBasePath: "/apps",
         },
         {
