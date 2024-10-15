@@ -8,6 +8,11 @@ title: "Glossary"
 
 A list of smart contract recipients that are authorized to be run by the Sablier protocol upon withdraw and cancel.
 
+## Airstream
+
+A portmanteau of "airdrop" and "stream", it's a token distribution model where the tokens are vested over time, as
+opposed to airdropped at once.
+
 ## Asset
 
 Digital assets can exist in various forms, but the Sablier Protocol exclusively supports the streaming of ERC-20 assets.
@@ -75,7 +80,7 @@ Gas is paid only when streams are created, canceled, transferred, or withdrawn f
 
 ## Lockup
 
-A term coined by us to refer to the requirement of locking up assets in order to create a stream.
+A term that refers to the requirement of locking up assets in order to create a stream.
 
 ## Lockup Dynamic
 
