@@ -62,21 +62,46 @@ const config: Config = {
             to: "/api/overview",
           },
           {
+            from: "/api",
+            to: "/api/overview",
+          },
+          {
+            from: "/api/subgraphs/endpoints",
+            to: "/api/endpoints",
+          },
+          {
             from: "/api/subgraphs/overview",
             to: "/api/overview",
           },
           {
-            from: "/api",
-            to: "/api/overview",
+            from: "/api/subgraphs/protocol",
+            to: "/api/lockup/the-graph",
+          },
+          {
+            from: "/api/subgraphs/merkle",
+            to: "/api/drops/the-graph",
+          },
+          {
+            from: "/api/merkle-api",
+            to: "/api/drops/merkle-api",
+          },
+          {
+            from: "/api/indexers/protocol",
+            to: "/api/lockup/envio",
+          },
+          {
+            from: "/apps",
+            to: "/apps/features/overview",
           },
           {
             from: "/apps/features",
             to: "/apps/features/vesting",
           },
           {
-            from: "/apps",
-            to: "/apps/features/overview",
+            from: "/apps/features/streams",
+            to: "/apps/features/vesting",
           },
+
           {
             from: "/apps/features/general",
             to: "/apps/features/overview",
@@ -141,10 +166,6 @@ const config: Config = {
           {
             from: "/contracts/v1/deployments",
             to: "/guides/lockup/versions/v1",
-          },
-          {
-            from: "/apps/features/streams",
-            to: "/apps/features/vesting",
           },
         ],
         createRedirects(existingPath) {

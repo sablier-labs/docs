@@ -1,0 +1,226 @@
+---
+id: "development"
+sidebar_position: 5
+title: "Development"
+---
+
+import LinkPreview from "@site/src/components/LinkPreview";
+
+## The Graph
+
+### Integrate
+
+To integrate the Sablier subgraphs or indexers into your own product, start from the official `@sablier/subgraphs`
+repository. We recommend using:
+
+- [GraphQL Code Generator](https://the-guild.dev/graphql/codegen/docs/getting-started) to create types from your GraphQL
+  fragments and queries
+- [TanStack Query](https://tanstack.com/query) to fetch results from the exposed endpoints.
+
+<LinkPreview
+  href="https://github.com/sablier-labs/subgraphs"
+  icon="github"
+  subtitle="GitHub"
+  title="Github - sablier-labs/subgraphs: Sablier Subgraphs"
+/>
+
+### Contribute
+
+To contribute to the V2 subgraphs or deploy your own, head over to the GitHub
+[`subgraphs`](https://github.com/sablier-labs/subgraphs) repository. Get started by reviewing the `apps/lockup`
+directory.
+
+To bootstrap a subgraph project, run the following commands. They will install the requisite dependencies and generate
+the code for a Sepolia deployment.
+
+```bash
+cd ./packages/core
+yarn install
+yarn setup:sepolia
+```
+
+To deploy a new subgraph on Sepolia:
+
+1. Create a new item using The Graph's hosted network
+2. Add its name/endpoint under the `deploy:sepolia` script in `package.json`
+3. Add your own Sablier contract addresses in `../constants/chains/sepolia.ts`
+4. Make sure you're [authenticated][the-graph-auth] on your local machine
+5. Run `yarn deploy:sepolia`
+
+You can read more about how the The Graph works in their [official docs][the-graph-docs].
+
+To publish on the hosted service:
+
+1. [Authenticate](https://thegraph.com/docs/en/deploying/hosted-service/) with the hosted service credentials
+
+   ```
+   graph auth --product hosted-service <ACCESS_TOKEN>
+   ```
+
+2. Generate configuration
+
+   Run `yarn deploy:<chain_name>` to generate imports, configurations and deploy in the same script.
+
+[the-graph-auth]: https://thegraph.com/docs/en/deploying/deploying-a-subgraph-to-hosted/#store-the-access-token
+[the-graph-docs]: https://thegraph.com/docs/en/
+
+## Envio
+
+### Integrate
+
+To integrate the Sablier indexers into your own product, start from the official `@sablier/subgraphs` repository. We
+recommend using:
+
+- [GraphQL Code Generator](https://the-guild.dev/graphql/codegen/docs/getting-started) to create types from your GraphQL
+  fragments and queries
+- [TanStack Query](https://tanstack.com/query) to fetch results from the exposed endpoints.
+
+If you're integrated the Sablier subgraphs, we recommend using request and response wrappers/middleware to format
+results coming from Envio's indexer in the same shape as those from The Graph. Suggestions:
+
+1. Write queries in both systems (based on the [querying language specifics](differences#querying-language)) using the
+   same `operationName` and swap query strings between vendors based on it
+2. Write response middleware that converts results into similar shapes (see these [important notes](differences))
+
+<LinkPreview
+  href="https://github.com/sablier-labs/subgraphs"
+  icon="github"
+  subtitle="GitHub"
+  title="Github - sablier-labs/subgraphs: Sablier Indexers"
+/>
+
+### Test
+
+To ensure Envio indexers deliver the same data as The Graph's subgraphs, we've written differential tests over our
+indexer configurations.
+
+Check them out inside the `apps/[...]/test/` folders.
+
+<LinkPreview
+  href="https://github.com/sablier-labs/subgraphs"
+  icon="github"
+  subtitle="@sablier-labs/subgraphs"
+  title="Sablier Subgraphs"
+/>
+
+#### Run
+
+The differentials tests are powered by Jest. Inside `test/setup/constants.ts`, you will find the full configuration for
+these tests. This is where you'll also be able to toggle between using the local endpoint (see
+[development](/api/development) to bootstrap a project locally) and the hosted-service one, using the `REMOTE` flag.
+
+```bash
+pnpm run test
+```
+
+:::info
+
+As the set of streams or campaigns grows, the final tests (full coverage over the entire list of elements) may time out.
+We suggest either splitting them in chunks or setting a manual limit to the number of iterations the loop can cover at
+once. Alternatively, you could also try increasing the timeout of the tests.
+
+:::
+
+### Contribute
+
+To contribute to the V2 indexers (Envio x Sablier) or deploy your own, head over to the GitHub
+[`subgraphs`](https://github.com/sablier-labs/subgraphs) repository. Get started by reviewing the `apps/lockup-envio`
+directory.
+
+To bootstrap an indexer project, run the following commands. They will install the requisite dependencies and generate
+the code for a multi-chain deployment.
+
+```bash
+cd ./packages/core
+pnpm install
+pnpm run setup
+
+# OR
+
+pnpm dev
+```
+
+You'll find a local Hasura process at `http://localhost:8080` which also includes a `GraphQL` endpoint to query locally.
+To deploy without hosting yourself, have a look at the Envio
+[Hosted Service](https://docs.envio.dev/docs/hosted-service) docs.
+
+:::info
+
+Prior to starting the `Envio` process (`pnpm dev`) please make sure your Docker app is running. For installation see the
+official docs at https://docs.envio.dev/.
+
+:::
+
+## Sablier SDK: Merkle API
+
+### Integrate
+
+To integrate the Sablier Merkle API into your own product, start from the official `@sablier/merkle-api` repository. We
+recommend using:
+
+<LinkPreview
+  href="https://github.com/sablier-labs/merkle-api"
+  icon="github"
+  subtitle="GitHub"
+  title="Github - sablier-labs/merkle-api: Sablier Merkle API (Airstreams)"
+/>
+
+### Contribute
+
+To contribute to the V2 Merkle API or deploy your own, head over to the GitHub
+[`merkle-api`](https://github.com/sablier-labs/merkle-api) repository. Get started by reviewing the `controllers`
+directory.
+
+### Run an instance
+
+#### Locally
+
+In order to make the API work properly, you will need to create a `.env` file by following the `.env.example` file:
+
+```text
+PINATA_ACCESS_TOKEN=
+PINATA_API_KEY=
+PINATA_API_SERVER=
+PINATA_SECRET_API_KEY=
+IPFS_GATEWAY=
+```
+
+After a campaign is created via the API, we use Pinata to upload and pin the file to IPFS. In order to obtain the
+`PINATA_API_KEY`, `PINATA_SECRET_API_KEY` and `PINATA_ACCESS_TOKEN`, follow these steps:
+
+1. Sign up or log in on https://app.pinata.cloud/
+1. Select the API Keys tab
+1. Select New Key
+1. The key should have the permissions `pinFileToIPFS` and `pinJSONToIPFS`
+1. Set a name for the key
+1. Click Create Key
+1. From the popup, take the API Key and the API Secret and put them in the `.env` file. The `IPFS_GATEWAY` variable can
+   be any IPFS gateway but we recommend using a private one (Pinata offers this as well). For more details about the
+   interactions with IPFS, check
+   [`src/services/ipfs.rs`](https://github.com/sablier-labs/merkle-api/blob/main/src/services/ipfs.rs).
+1. Select the "Access Controls" tab
+1. Click on the "Request Token" button
+1. Copy the token and put in th `.env` file in the `PINATA_ACCESS_TOKEN` variable
+
+Simulate the cloud environment by finally running:
+
+```sh
+$ cargo run --bin sablier_merkle_api
+```
+
+This command will run a standard web API and expose it on port 3000 on localhost.
+
+### Vercel
+
+We use Vercel for hosting, and this is why we have separate binaries for each endpoint. For local development, use this
+command:
+
+```sh
+$ vercel dev
+```
+
+This command will run a standard web API and expose it on port 3000 on localhost.
+
+If you wish to deploy your backend to vercel, check the official
+[Github Actions](https://github.com/sablier-labs/merkle-api/blob/main/.github/workflows/deploy-merkle-api.yml) workflow
+for deploying. Rust is supported through Vercel's [`rust runtime`](https://github.com/vercel-community/rust).

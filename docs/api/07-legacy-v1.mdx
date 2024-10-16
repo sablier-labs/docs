@@ -1,0 +1,69 @@
+---
+id: "legacy-v1"
+sidebar_position: 7
+title: "Legacy V1"
+---
+
+import LinkPreview from "@site/src/components/LinkPreview";
+
+# Sablier Legacy V1
+
+For the [first version](/apps/v1) of Sablier ([v1-app](v1-app.sablier.com), [v1-pay](v1-pay.sablier.com)) here are the
+subgraphs powering those dashboards.
+
+## The Graph
+
+### Endpoints
+
+| Chain           | Id                | Studio                        | Decentralized Network [^1]          |
+| --------------- | ----------------- | ----------------------------- | ----------------------------------- |
+| Ethereum        | sablier           | [Studio][v1-studio-ethereum]  | [De. Network][v1-network-ethereum]  |
+| Arbitrum        | sablier-arbitrum  | [Studio][v1-studio-arbitrum]  | [De. Network][v1-network-arbitrum]  |
+| Optimism        | sablier-optimism  | [Studio][v1-studio-optimism]  | [De. Network][v1-network-optimism]  |
+| Polygon         | sablier-matic     | [Studio][v1-studio-polygon]   | [De. Network][v1-network-polygon]   |
+| Avalanche       | sablier-avalanche | [Studio][v1-studio-avalanche] | [De. Network][v1-network-avalanche] |
+| BNB Smart Chain | sablier-bsc       | [Studio][v1-studio-bsc]       | [De. Network][v1-network-bsc]       |
+
+### Code
+
+<LinkPreview
+  href="https://github.com/sablier-labs/v1-subgraph"
+  icon="github"
+  subtitle="@sablier-labs/v1-subgraph"
+  title="Sablier V1 Subgraph"
+/>
+
+{/* --------------------------------------------------------------------------------------------------------------------------------- */}
+{/* --------------------------------------------------------------------------------------------------------------------------------- */}
+{/* --------------------------------------------------------------------------------------------------------------------------------- */}
+
+[v1-network-ethereum]:
+  https://gateway-arbitrum.network.thegraph.com/api/API_KEY/subgraphs/id/DkSXWkgJD5qVqfsrfzkLC5WELVX3Dbj3ByWcYjDJieCh
+[v1-network-arbitrum]:
+  https://gateway-arbitrum.network.thegraph.com/api/API_KEY/subgraphs/id/94SP9QVcxmGV9e2fxuTxUGcZfcv4tjpPCGyyPVyMfLP
+[v1-network-optimism]:
+  https://gateway-arbitrum.network.thegraph.com/api/API_KEY/subgraphs/id/BEnQbvBdXnohC1DpM9rSb47C1FbowK39HfPNCEHjgrBt
+[v1-network-bsc]:
+  https://gateway-arbitrum.network.thegraph.com/api/API_KEY/subgraphs/id/3Gyy7of99oBRqHcCMGJXpHw2xxxZgXxVmFPFR1vL6YhT
+[v1-network-avalanche]:
+  https://gateway-arbitrum.network.thegraph.com/api/API_KEY/subgraphs/id/DK2gHCprwVaytwzwb5fUrkFS9xy7wh66NX6AFcDzMyF9
+[v1-network-polygon]:
+  https://gateway-arbitrum.network.thegraph.com/api/API_KEY/subgraphs/id/6UMNQfMeh3pV5Qmn2NDX2UKNeUk9kh4oZhzzzn5e8rSz
+[v1-studio-arbitrum]: https://api.studio.thegraph.com/query/57079/sablier-arbitrum/version/latest
+[v1-studio-avalanche]: https://api.studio.thegraph.com/query/57079/sablier-avalanche/version/latest
+[v1-studio-bsc]: https://api.studio.thegraph.com/query/57079/sablier-bsc/version/latest
+[v1-studio-ethereum]: https://api.studio.thegraph.com/proxy/30310/sablier/version/latest/
+[v1-studio-optimism]: https://api.studio.thegraph.com/query/57079/sablier-optimism/version/latest
+[v1-studio-polygon]: https://api.studio.thegraph.com/query/57079/sablier-polygon/version/latest
+
+{/* --------------------------------------------------------------------------------------------------------------------------------- */}
+{/* --------------------------------------------------------------------------------------------------------------------------------- */}
+{/* --------------------------------------------------------------------------------------------------------------------------------- */}
+
+[^1]:
+    Endpoints could include: The Graph's Decentralized Network (paid) or Custom Nodes (e.g. Lightlink). Because the
+    "Decentralized Network" subgraph flavors (e.g. V1 Ethereum) operate on The Graph Network, you will need to
+    substitute the `YOUR_API_KEY` placeholder in the
+    [Query URL](https://thegraph.com/docs/en/deploying/subgraph-studio-faqs/#6-how-do-i-find-query-urls-for-subgraphs-if-im-not-the-developer-of-the-subgraph-i-want-to-use)
+    with your own API key. If you require assistance with managing your API keys and configuring indexer preferences,
+    [this article](https://thegraph.com/docs/en/studio/managing-api-keys/) serves as an excellent guide

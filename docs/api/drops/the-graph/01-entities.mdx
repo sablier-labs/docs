@@ -1,0 +1,69 @@
+---
+id: "entities"
+sidebar_position: 1
+title: "Entities"
+---
+
+:::info
+
+For an introduction into the base Sablier primitives and some architectural choices, make sure to check out the
+[lockup subgraph](/api/lockup/the-graph/entities) before reading about the merkle subgraph.
+
+:::
+
+## Entity Architecture
+
+Inside the **merkle** subgraph, the
+[`schema.graphql`](https://github.com/sablier-labs/subgraphs/blob/main/apps/merkle/schema.graphql) file is responsible
+of defining the following Sablier entities:
+
+### Primary
+
+| Entity   | Description                                                                                                        |
+| -------- | ------------------------------------------------------------------------------------------------------------------ |
+| Factory  | Instances of `SablierV2MerkleLockupFactory`                                                                        |
+| Campaign | Instances of `SablierV2MerkleLL`, the primary entity tracking the up to date state of an Airstream/Merkle campaign |
+| Action   | Emitted events transformed into historical entries (e.g. Claim, Create, Clawback)                                  |
+| Activity | An entity tracking daily usage (one item per day) for each campaign (e.g. amount claimed per day)                  |
+| Asset    | The ERC20 asset that is being streamed                                                                             |
+
+### Secondary
+
+| Entity  | Description                                                                                   |
+| ------- | --------------------------------------------------------------------------------------------- |
+| Watcher | A singleton data store for subgraph-level unique indexes such as the campaign or action index |
+
+## Structure
+
+The structure of these entities is built on the same rules and mindset which was applied on the
+[lockup entities](/api/lockup/the-graph).
+
+### Identifying
+
+Airstreams will be assigned a unique `contract address` once they are deployed by the Merkle Factory. While this makes
+it easy to identify items at the contract level, we need to consider the following for both subgraphs and client
+interfaces:
+
+- items should be uniquely identifiable across multiple chains
+- items should be identifiable with short, easy to digest names (TBD)
+
+To address the first observation, the subgraph uses the following identifier for an Airstream.
+
+| Type           | Description                                                                                 | Example                         |
+| -------------- | ------------------------------------------------------------------------------------------- | ------------------------------- |
+| `Airstream.id` | A self-explanatory structure built using the following structure: `contractAddress-chainId` | <nobr>`0xAB..12-1115511`</nobr> |
+
+The example from the table above translates to: **_a stream on Sepolia (chain id `1115511`), with the contract address
+`0xAB..12`_**.
+
+:::info
+
+We've chosen not to apply aliases to Airstreams for now. In the future, we may ask the campaign creator to provide a
+name or an alias to be used in the URL.
+
+:::
+
+## Architecture and Data Flow
+
+The data flow applied to this subgraph is identical to the one used in the
+[lockup subgraph](/api/lockup/the-graph/architecture).
