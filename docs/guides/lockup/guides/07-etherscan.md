@@ -297,8 +297,8 @@ page on Etherscan (in this example, we're using Sepolia): `https://sepolia.ether
 
 :::info
 
-To get the address of an asset in the [Sablier Interface](/apps/overview), you can click on its name in the token list
-dialog or find an existing stream with that token and click on the icon inside the stream circle.
+To get the address of an asset in the [Sablier Interface](/apps/features/overview), you can click on its name in the
+token list dialog or find an existing stream with that token and click on the icon inside the stream circle.
 
 ![Etherscan 09](/img/etherscan-tutorial/09.png) ![Etherscan 10](/img/etherscan-tutorial/10.png)
 

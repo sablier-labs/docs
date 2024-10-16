@@ -22,7 +22,7 @@ A few noteworthy details about the deployments:
 Any updates or additional features will call for a new deployment of the protocol, due to its immutable nature.
 
 Came here looking for the previous Lockup deployments? Click below to see other versions as well as the in-app aliases
-assigned under our [naming convention](/api/subgraphs/protocol/structure#identifying).
+assigned under our [naming convention](/api/lockup/the-graph/structure#identifying).
 
 | Version                              | UI Aliases                                                       |
 | ------------------------------------ | ---------------------------------------------------------------- |

@@ -1,0 +1,41 @@
+---
+id: "overview"
+sidebar_position: 1
+title: "Overview"
+---
+
+import LinkPreview from "@site/src/components/LinkPreview";
+
+# Drops
+
+Sablier's [lockup](/concepts/lockup/overview) streams are used for the [vesting](/apps/features/vesting) and (part of)
+the [drops](/apps/features/drops) components of the Sablier Interfaces. The drops section, supported by our
+[merkle](/concepts/lockup/airstreams) utilities focuses on the functionality of the merkle factory peripheries.
+
+For the drops-native functionality, these sides are powered by:
+
+- The `@sablier/subgraphs/apps/merkle` subgraph
+- The `@sablier/subgraphs/apps/merkle-envio` indexer
+- The `@sablier/merkle-api` sdk
+
+For the lockup-native functionality, please check the dedicated [documentation](/api/lockup/overview).
+
+:::note
+
+[Airstreamed](/apps/features/drops) drops, will reward users a lockup stream once a claim is made.
+
+:::
+
+<LinkPreview
+  href="https://github.com/sablier-labs/subgraphs"
+  icon="github"
+  subtitle="@sablier-labs/subgraphs"
+  title="Sablier Subgraphs"
+/>
+
+<LinkPreview
+  href="https://github.com/sablier-labs/merkle-api"
+  icon="github"
+  subtitle="@sablier-labs/merkle-api"
+  title="Sablier SDK: Merkle API"
+/>

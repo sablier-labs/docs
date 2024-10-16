@@ -81,3 +81,25 @@ transfers all the remaining funds (if any) to the recipient.
 
 On Lockup, once a stream is created, it is set in stone on the Ethereum blockchain. Whereas on Flow, a stream rate per
 second can be modified anytime by the creator.
+
+### How are Drops (Airstreams) different than a group of normal streams?
+
+Creating streams through our forms (manual or CSV) will physically start those streams onchain, on the spot. This means
+you click to create a transaction, pay for the gas, and start all the streams for your recipients.
+
+Due to how block memory works (specifically the gas limit) you can only fit a limited number of streams (usually 60) in
+a single block before running out of space. This is great for small distributions like paying your contractors or a set
+of investors.
+
+Meanwhile, Drops (Instant or Airstreams) leverage a "lazy creation" of streams. You deploy a contract that stores a list
+of recipients and the streams they are entitles to claim. Every recipient will manually click to claim their allocation
+and create their stream **only in that moment**. This allows for millions of recipients to be defined at once, with them
+triggering the stream creation one after the other (as opposed to all at once).
+
+| Feature                        | Groups                     | Drops                        |
+| ------------------------------ | -------------------------- | ---------------------------- |
+| Number of streams              | ~60 (depends on gas limit) | Millions                     |
+| Gas to create streams          | Sender paying              | Recipient paying             |
+| Gas to deploy "Drops" contract | N/A                        | Sender paying                |
+| Streams show up onchain        | On the spot (all at once)  | Lazily (one after the other) |
+| Good for                       | Investors, Employees       | Airdrops                     |
