@@ -177,7 +177,7 @@ to have a cliff, fill in the timestamp for the the cliff there.
 
 An optional parameter that can be set in order to charge a fee as a percentage of `totalAmount`.
 
-You can set the `broker` field to address zero and `zero` fees. Read more about fees [here](/concepts/fees#broker-fees).
+You can set the `broker` field to address zero and `zero` fees. Read more about fees [here](/concepts/fees#broker-fee).
 
 :::caution
 

@@ -31,16 +31,21 @@ wallets.
 
 Admin has the following permissions on each chain where Lockup is deployed:
 
-| Permission         | Function           | Contract(s)                                                                  |
-| ------------------ | ------------------ | ---------------------------------------------------------------------------- |
-| Allow to Hook      | `allowToHook`      | `SablierV2LockupLinear`, `SablierV2LockupDynamic`, `SablierV2LockupTranched` |
-| Set NFT Descriptor | `setNFTDescriptor` | `SablierV2LockupLinear`, `SablierV2LockupDynamic`, `SablierV2LockupTranched` |
+| Permission         | Function                                                                                         |
+| ------------------ | ------------------------------------------------------------------------------------------------ |
+| Allow to Hook      | [allowToHook](../reference/lockup/core/abstracts/abstract.SablierV2Lockup#allowtohook)           |
+| Set NFT Descriptor | [setNFTDescriptor](../reference/lockup/core/abstracts/abstract.SablierV2Lockup#setnftdescriptor) |
 
 ## Flow
 
 Admin has the following permissions on each chain where Flow is deployed:
 
-Coming soon.
+| Permission               | Function                                                                                                        |
+| ------------------------ | --------------------------------------------------------------------------------------------------------------- |
+| Collect Protocol Revenue | [collectProtocolRevenue](../reference/flow/contracts/abstracts/abstract.SablierFlowBase#collectprotocolrevenue) |
+| Recover ERC20 token      | [recover](../reference/flow/contracts/abstracts/abstract.SablierFlowBase#recover)                               |
+| Set NFT Descriptor       | [setNFTDescriptor](../reference/flow/contracts/abstracts/abstract.SablierFlowBase#setnftdescriptor)             |
+| Set Protocol Fee         | [setProtocolFee](../reference/flow/contracts/abstracts/abstract.SablierFlowBase#setprotocolfee)                 |
 
 ## Trustlessness
 
