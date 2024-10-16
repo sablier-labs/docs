@@ -1,7 +1,7 @@
 ---
-id: "overview"
+id: "diagrams"
 sidebar_position: 1
-title: "Overview"
+title: "Diagrams"
 ---
 
 Coming soon.
