@@ -67,7 +67,7 @@ const config: Config = {
           },
           {
             from: "/api/subgraphs/endpoints",
-            to: "/api/endpoints",
+            to: "/api/lockup/endpoints",
           },
           {
             from: "/api/subgraphs/overview",
@@ -75,19 +75,27 @@ const config: Config = {
           },
           {
             from: "/api/subgraphs/protocol",
-            to: "/api/lockup/the-graph",
+            to: "/api/lockup/the-graph/entities",
+          },
+          {
+            from: "/api/drops/the-graph",
+            to: "/api/drops/the-graph/entities",
           },
           {
             from: "/api/subgraphs/merkle",
-            to: "/api/drops/the-graph",
+            to: "/api/drops/the-graph/entities",
           },
           {
             from: "/api/merkle-api",
-            to: "/api/drops/merkle-api",
+            to: "/api/drops/merkle-api/overview",
           },
           {
             from: "/api/indexers/protocol",
-            to: "/api/lockup/envio",
+            to: "/api/lockup/envio/similarities",
+          },
+          {
+            from: "/api/lockup/the-graph",
+            to: "/api/lockup/the-graph/entities",
           },
           {
             from: "/apps",
@@ -117,10 +125,6 @@ const config: Config = {
           {
             from: "/apps/url-schemes",
             to: "/apps/guides/url-schemes",
-          },
-          {
-            from: "/apps/guides/how-to",
-            to: "/support/how-to",
           },
           {
             from: "/apps/csv-support",
