@@ -7,24 +7,40 @@ title: "Fees"
 import Link from "@docusaurus/Link";
 import { links } from "@site/src/constants";
 
-## Lockup
+There are two types of fees in the Sablier ecosystem: **Protocol Fee** and **Broker Fee**.
 
-### Protocol fees
+## Protocol fee
 
-Lockup protocol is entirely free to use. There is no protocol fee. However, external integrators who manage their own UI
-may charge broker free in exchange for providing their services. Broker fees can only be charged when a stream is
-created, and is capped at 10%.
+This is a fee that can be charged at the protocol level, capped at 10%. Only the protocol admin has the authority to
+change it.
 
-### Broker fees
+### Lockup
 
-In the Sablier ecosystem, a "broker" is any third-party entity that interacts with the Sablier Protocol on behalf of
-other users. These brokers have the ability to charge service fees for facilitating such interactions.
+Currently, Lockup doesn't implement protocol fee that means it remains entirely free to use.
+
+### Flow
+
+While Flow has the ability to implement a protocol fee, no fee is set at the moment. If a protocol fee is introduced in
+the future, users will be notified in advance. When active, the fee will be deducted as a percentage from the withdrawn
+amount.
+
+## Broker fee
+
+A "broker" is any third-party entity that interacts with the Sablier Protocol on behalf of other users. These brokers
+have the ability to charge service fees for facilitating such interactions.
 
 Broker fees are particularly useful for front-end applications that integrate the Sablier Protocol. They enable
-front-end operators to levy a fee on each Sablier stream created through their platform.
+front-end operators to levy a fee on each interaction facilitated through their platform.
 
-The broker fee is a percentage of the streamed amount, and it cannot be higher than 10%. In the event of cancellation,
-broker fee is non-refundable.
+### Lockup
+
+The broker fee can be charged as a percentage of the streamed amount, and it cannot be higher than 10%. In the event of
+cancellation, broker fee is non-refundable.
+
+### Flow
+
+The broker fee can be charged as a percentage of the deposit amount, and it cannot be higher than 10%. In case of
+refund, broker fee is non-refundable.
 
 :::info
 
@@ -38,10 +54,6 @@ Interested in becoming a broker? Please fill out this <Link href={links.forms.ca
 soon as possible.
 
 :::
-
-## Flow
-
-Coming soon.
 
 ## Gas Fees
 
@@ -60,6 +72,7 @@ A: No. 100% of the gas fee goes to the blockchain validators, which are not affi
 
 :::tip
 
-To find how much each function costs, check out these [gas benchmark reports](/guides/lockup/gas-benchmarks).
+To find how much gas each function costs, check out these [gas benchmark reports](/guides/lockup/gas-benchmarks) for
+Lockup.
 
 :::
