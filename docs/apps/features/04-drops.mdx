@@ -4,57 +4,93 @@ sidebar_position: 4
 title: "Drops"
 ---
 
-# Airstreams
+# Drops
 
 The Sablier Interface can handle more than native streams. We developed a solution for distributing token streams to
-millions of users called **Airstreams**. Start exploring at [app.sablier.com](https://app.sablier.com/airstreams/).
+millions of users called **Drops**. Start exploring at [app.sablier.com](https://app.sablier.com/drops/) or read more
+about it on [sablier.com/drops](https://sablier.com/drops).
 
-## Easy 3-step process
+:::note
+
+Drops allow for millions of recipients to receive an allocation. To see how they differ from
+[group streams](/apps/features/vesting#create-in-batches) (~60 streams at once) read our [FAQ](/support/faq).
+
+:::
+
+## Airstreams
+
+![Banner Airstreams](/banner/docs-banner-drops-airstreams.png)
+
+**Airdrops should be vested!**
+
+Here at Sablier we believe in long-term distributions that align incentives. That's why we engineered Airstreams, a
+solution which allows you to airdrop streams to a very large number of recipients.
+
+Pick a vesting curve (e.g. linear or stepper), define the rules (e.g. duration, clawback window) and allow recipients to
+claim their allocations as streams.
+
+## Instant Drops (Coming Soon)
+
+![Banner Instant Drops](/banner/docs-banner-drops-instant.png)
+
+For communities that are still looking to distribute value quickly and efficiently, Sablier offers a one-time instant
+airdrop solution. This facilitates and easy onboarding of millions of users into the campaign creator's ecosystem, while
+exposing everyone to the amazing features our products can offer.
+
+## Features
+
+### Create from CSVs
+
+Pre-generate the list of recipients and drop the file right into our app. We sanitize, validate and triple-check the
+data to ensure everything is formatted correctly.
+
+:::caution Timezone Caveat
+
+All the dates and times in the CSV are considered to be in the same timezone as the locales of the airstream creator's
+device. Visit out [Guide for CSV Support](/apps/guides/csv-support) to read about timezones, date or amount formats and
+more.
+
+:::
+
+### Easy 3-step process
 
 Create a campaign by following these three simple steps:
 
 1. Configure the initial details (e.g., token, cancelability)
 2. Upload the CSV containing a list of recipients
-3. Deploy and fund the Airstream campaign contract
+3. Deploy and fund the Airstream campaign contract (can be funded later)
 
-|                                              |                                                         |
-| -------------------------------------------- | ------------------------------------------------------- |
-| ![Step 1](/screenshots/airstream-create.png) | ![Step 2](/screenshots/airstream-create-recipients.png) |
+|                                                         |
+| ------------------------------------------------------- |
+| ![Step 1](/screenshots/drops-form-1.png)                |
+| ![Step 2](/screenshots/airstream-create-recipients.png) |
 
-:::warning Timezone Caveat
+### Public source
 
-All the dates and times in the CSV are considered to be in the same timezone as the locales of the airstream creator's
-device.
+You can distribute a large number of streams per campaign through our app. If you'd like to support Drops in your own UI
+or have additional requirements, you can do so by using a self-hosted [Merkle service](/api/merkle-api/intro). Feel free
+to get in touch for more details or premium support.
 
-:::
+### Explore the dashboard
 
-:::info
-
-With the official app, you can distribute up to 50k+ streams per campaign. If you'd like to support more, you can do so
-by using a self-hosted [Merkle service](/api/merkle-api/intro). Feel free to get in touch for more details or premium
-support.
-
-:::
-
-## Dashboard for Airstreams
-
-Enter the Dashboard and discover a detailed overview of the Airstreams you may be eligible for.
+Enter the Dashboard and discover a detailed overview of the Drops you may be eligible for.
 
 Take advantage of the Search functionality to explore the chain and gain more insight into how others are using Sablier.
 
-|                                              |
-| -------------------------------------------- |
-| ![All](/screenshots/airstream-dashboard.png) |
+|                                       |
+| ------------------------------------- |
+| ![All](/screenshots/drops-search.png) |
 
-## Support for any ERC-20 token
+### Support for any ERC-20 token
 
-Stream your favorite token! Thanks to our integration of Token Lists, any ERC-20 token can be streamed on Sablier.
+Drop your own token! Thanks to our integration of Token Lists, any ERC-20 token can be airdropped on Sablier. Add your
+new token to the community sourced list for instant access, or test first using the token-address and onchain data.
 
-|                                                |                                                         |
-| ---------------------------------------------- | ------------------------------------------------------- |
-| ![Token List](/screenshots/tokenlist-home.png) | ![Token List Search](/screenshots/tokenlist-search.png) |
+|                                               |
+| --------------------------------------------- |
+| ![ChainList](/screenshots/general-chains.png) |
 
-## Oversight
+### Oversight
 
 Have a clear view of how your campaign is performing. Check eligibility or manage your own campaign from a dedicated
 interface.
@@ -70,7 +106,11 @@ the [v2-merkle-api](/api/merkle-api/intro) and the merkle subgraphs.
 
 :::
 
-## Advanced Settings
+### Advanced Settings
 
 For campaign admins, the interface enables advanced settings like in-app visibility, in-app geographical restrictions,
 and campaign-specific items like an eligibility criteria link.
+
+|                                         |
+| --------------------------------------- |
+| ![All](/screenshots/drops-settings.png) |

@@ -297,17 +297,18 @@ const config: Config = {
           activeBasePath: "/reference",
         },
         {
-          label: "Apps",
-          position: "left",
-          to: "/apps/features/overview",
-          activeBasePath: "/apps",
-        },
-        {
           label: "APIs",
           position: "left",
           to: "/api/overview",
           activeBasePath: "/api",
         },
+        {
+          label: "Apps",
+          position: "left",
+          to: "/apps/features/overview",
+          activeBasePath: "/apps",
+        },
+
         {
           label: "Support",
           position: "left",

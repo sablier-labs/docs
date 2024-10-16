@@ -8,14 +8,13 @@ title: "Vesting"
 
 import NFTSVG from "@site/static/img/nft.svg";
 
-The Sablier Interface will showcase [Lockup](/concepts/lockup/overview) streams under the Vesting tab.
+The Sablier Interface will showcase [Lockup](/concepts/lockup/overview) streams under the Vesting tab. These are token
+streams with a fixed duration, predefined amount and strict distribution curve.
 
-:::important
+![Banner Vesting](/banner/docs-banner-vesting.png)
 
-In Q4 2024 the app has undergone a redesign. For past users, all streams created before this update will show up in the
-Vesting page.
-
-:::
+In Q4 2024 the app has undergone a use-case centric redesign. For past users, all streams created before this update
+will show up in the Vesting page.
 
 | [Vesting streams](https://app.sablier.com/vesting/gallery)                              |
 | --------------------------------------------------------------------------------------- |
@@ -31,6 +30,7 @@ Almost any vesting schedule can be expressed as a stream. Sablier supports multi
 - Cliff-Linear
 - Unlock in Steps
 - Unlock Monthly
+- Backweighted
 - Timelock
 - Unlock-Linear
 - Unlock-Dynamic
@@ -39,16 +39,6 @@ Almost any vesting schedule can be expressed as a stream. Sablier supports multi
 
 But programmatically, you can create any schedule you want. See the [Stream Shapes](/concepts/lockup/stream-shapes) for
 more details on how we design these shapes.
-
-### NFT representation
-
-Each stream in wrapped in an ERC-721 non-fungible token (NFT), making the stream recipient the owner of the NFT.
-
-Thus streams can be transferred, traded, and used as collateral in NFT lending protocols.
-
-|                                     |
-| ----------------------------------- |
-| <NFTSVG height={500} width={500} /> |
 
 ### Explore the dashboard
 
@@ -61,9 +51,28 @@ for vesting.
 | ------------------------------------------ |
 | ![All](/screenshots/vesting-dashboard.png) |
 
+### Preview any stream
+
+Gain insight into any stream. Track progress using our very own stream circle. Share the unique URL with recipients or
+anyone really to increase transparency of your day to day token distribution.
+
+|                                          |
+| ---------------------------------------- |
+| ![All](/screenshots/vesting-profile.png) |
+
+### NFT representation
+
+Each stream in wrapped in an ERC-721 non-fungible token (NFT), making the stream recipient the owner of the NFT.
+
+Thus streams can be transferred, traded, and used as collateral in NFT lending protocols.
+
+|                                     |
+| ----------------------------------- |
+| <NFTSVG height={500} width={500} /> |
+
 ### Multi-chain experience
 
-Streaming, everywhere. We support 8+ EVM chains and testnets where you can stream or get paid using Sablier.
+Streaming, everywhere. We support 11+ EVM chains and testnets where you can stream or get paid using Sablier.
 
 |                                               |
 | --------------------------------------------- |
@@ -124,7 +133,7 @@ reference you as a key participant (e.g. sender, recipient) directly from the in
 
 | Feature                | Sender | Recipient | Public |
 | ---------------------- | :----: | :-------: | :----: |
-| Create Streams         |   ✅   |    ❌     |   -    |
+| Create Streams         |   ✅   |     -     |   -    |
 | Renounce Cancelability |   ✅   |    ❌     |   -    |
 | Cancel                 |   ✅   |    ❌     |   -    |
 | Cancel Multiple        |   ✅   |    ❌     |   -    |
@@ -133,7 +142,7 @@ reference you as a key participant (e.g. sender, recipient) directly from the in
 
 ### Safe multisig support
 
-Lockup is fully integrated with [Safe](https://safe.global). Start streaming from the safety and comfort of your
+Vesting is fully integrated with [Safe](https://safe.global). Start streaming from the safety and comfort of your
 multisig wallet.
 
 ### Mobile-ready layout
