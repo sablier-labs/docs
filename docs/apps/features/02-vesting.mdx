@@ -1,0 +1,150 @@
+---
+id: "vesting"
+sidebar_position: 2
+title: "Vesting"
+---
+
+# Vesting
+
+import NFTSVG from "@site/static/img/nft.svg";
+
+The Sablier Interface will showcase [Lockup](/concepts/lockup/overview) streams under the Vesting tab. These are token
+streams with a fixed duration, predefined amount and strict distribution curve.
+
+![Banner Vesting](/banner/docs-banner-vesting.png)
+
+In Q4 2024 the app has undergone a use-case centric redesign. For past users, all streams created before this update
+will show up in the Vesting page.
+
+| [Vesting streams](https://app.sablier.com/vesting/gallery)                              |
+| --------------------------------------------------------------------------------------- |
+| <img alt="Vesting stream profile" width="100%" src="/screenshots/vesting-gallery.png"/> |
+
+## Features
+
+### Flexible curves
+
+Almost any vesting schedule can be expressed as a stream. Sablier supports multiple options out of the box, including:
+
+- Linear
+- Cliff-Linear
+- Unlock in Steps
+- Unlock Monthly
+- Backweighted
+- Timelock
+- Unlock-Linear
+- Unlock-Dynamic
+- Exponential
+- Cliff-Exponential
+
+But programmatically, you can create any schedule you want. See the [Stream Shapes](/concepts/lockup/stream-shapes) for
+more details on how we design these shapes.
+
+### Explore the dashboard
+
+Enter the Dashboard and discover a detailed overview of your incoming and outgoing streams.
+
+Take advantage of the Search functionality to explore the chain and gain more insight into how others are using Lockup
+for vesting.
+
+|                                            |
+| ------------------------------------------ |
+| ![All](/screenshots/vesting-dashboard.png) |
+
+### Preview any stream
+
+Gain insight into any stream. Track progress using our very own stream circle. Share the unique URL with recipients or
+anyone really to increase transparency of your day to day token distribution.
+
+|                                          |
+| ---------------------------------------- |
+| ![All](/screenshots/vesting-profile.png) |
+
+### NFT representation
+
+Each stream in wrapped in an ERC-721 non-fungible token (NFT), making the stream recipient the owner of the NFT.
+
+Thus streams can be transferred, traded, and used as collateral in NFT lending protocols.
+
+|                                     |
+| ----------------------------------- |
+| <NFTSVG height={500} width={500} /> |
+
+### Multi-chain experience
+
+Streaming, everywhere. We support 11+ EVM chains and testnets where you can stream or get paid using Sablier.
+
+|                                               |
+| --------------------------------------------- |
+| ![ChainList](/screenshots/general-chains.png) |
+
+### Create in batches
+
+Save time by creating up to 60 streams in bulk for your employees, investors, or community members. Use the forms for a
+clean and straightforward UX.
+
+|                                           |
+| ----------------------------------------- |
+| ![Group](/screenshots/vesting-create.png) |
+
+### Create from CSVs
+
+Save even more time by using our CSV upload, dedicated to power-users. Under the hood, it works the same as the visual
+forms.
+
+|                                               |
+| --------------------------------------------- |
+| ![Group](/screenshots/vesting-create-csv.png) |
+
+### Simulations
+
+Eager to see what your chosen distribution will look like? Use our simulation tool right from the create-stream forms
+(or later on, from the stream profile).
+
+![Simulate](/screenshots/simulation.png)
+
+### Detailed panels
+
+Explore each available stream in detail. Simulate future payouts, understand historical events, or simply enjoy cool
+representations of a monetized passage of time (NFTs 🔥).
+
+### Granular management
+
+Manage your streams 24/7 as you see fit. The app will guide you through every supported process and help you keep an eye
+on your payouts. Remember, you can always be both a sender and a recipient.
+
+|                                              |                                          |
+| -------------------------------------------- | ---------------------------------------- |
+| ![Withdraw](/screenshots/cover-withdraw.png) | ![Cancel](/screenshots/cover-cancel.png) |
+
+### Any ERC-20 token
+
+Stream your favorite token! Thanks to our integration of Token Lists, any ERC-20 token can be streamed on Sablier
+Lockup.
+
+|                                                |                                                         |
+| ---------------------------------------------- | ------------------------------------------------------- |
+| ![Token List](/screenshots/tokenlist-home.png) | ![Token List Search](/screenshots/tokenlist-search.png) |
+
+### Permissions
+
+We've mapped the most important utilities from the Lockup contracts into in-app features. Interact with streams that
+reference you as a key participant (e.g. sender, recipient) directly from the interfaces.
+
+| Feature                | Sender | Recipient | Public |
+| ---------------------- | :----: | :-------: | :----: |
+| Create Streams         |   ✅   |     -     |   -    |
+| Renounce Cancelability |   ✅   |    ❌     |   -    |
+| Cancel                 |   ✅   |    ❌     |   -    |
+| Cancel Multiple        |   ✅   |    ❌     |   -    |
+| Transfer               |   ❌   |    ✅     |   -    |
+| Withdraw               |   ✅   |    ✅     |   ✅   |
+
+### Safe multisig support
+
+Vesting is fully integrated with [Safe](https://safe.global). Start streaming from the safety and comfort of your
+multisig wallet.
+
+### Mobile-ready layout
+
+Stream in style! Yes, the app works on mobile. And yes, we support dark mode by default (light mode coming soon).

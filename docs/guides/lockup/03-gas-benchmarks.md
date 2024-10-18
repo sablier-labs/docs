@@ -27,7 +27,7 @@ view the code that generates these benchmarks.
 | `renounce`                                                  | 19,381    |
 | `createWithDurations` (Broker fee set) (cliff not set)      | 129,276   |
 | `createWithDurations` (Broker fee not set) (cliff not set)  | 113,680   |
-| `createWithDurations` (Broker fee set) (cliff set)          | 138,071   |
+| `createWithDurations` (Broker fee set) (cliff set)          | 138,71   |
 | `createWithDurations` (Broker fee not set) (cliff set)      | 133,273   |
 | `createWithTimestamps` (Broker fee set) (cliff not set)     | 115,334   |
 | `createWithTimestamps` (Broker fee not set) (cliff not set) | 110,530   |
@@ -36,7 +36,7 @@ view the code that generates these benchmarks.
 | `withdraw` (After End Time) (by Recipient)                  | 29,701    |
 | `withdraw` (Before End Time) (by Recipient)                 | 19,104    |
 | `withdraw` (After End Time) (by Anyone)                     | 24,799    |
-| `withdraw` (Before End Time) (by Anyone)                    | 19,002    |
+| `withdraw` (Before End Time) (by Anyone)                    | 19,2    |
 
 ### Lockup Dynamic
 
@@ -44,16 +44,16 @@ view the code that generates these benchmarks.
 | ---------------------------------------------------------- | --------- |
 | `burn`                                                     | 15,716    |
 | `cancel`                                                   | 74,341    |
-| `renounce`                                                 | 39,007    |
+| `renounce`                                                 | 39,7    |
 | `createWithDurations` (2 segments) (Broker fee set)        | 200,602   |
-| `createWithDurations` (2 segments) (Broker fee not set)    | 185,037   |
+| `createWithDurations` (2 segments) (Broker fee not set)    | 185,37   |
 | `createWithTimestamps` (2 segments) (Broker fee set)       | 184,780   |
-| `createWithTimestamps` (2 segments) (Broker fee not set)   | 180,015   |
+| `createWithTimestamps` (2 segments) (Broker fee not set)   | 180,15   |
 | `withdraw` (2 segments) (After End Time) (by Recipient)    | 19,108    |
 | `withdraw` (2 segments) (Before End Time) (by Recipient)   | 27,554    |
 | `withdraw` (2 segments) (After End Time) (by Anyone)       | 14,239    |
 | `withdraw` (2 segments) (Before End Time) (by Anyone)      | 27,485    |
-| `createWithDurations` (10 segments) (Broker fee set)       | 395,084   |
+| `createWithDurations` (10 segments) (Broker fee set)       | 395,84   |
 | `createWithDurations` (10 segments) (Broker fee not set)   | 390,326   |
 | `createWithTimestamps` (10 segments) (Broker fee set)      | 385,125   |
 | `createWithTimestamps` (10 segments) (Broker fee not set)  | 380,375   |
@@ -116,7 +116,7 @@ to view the code that generates these benchmarks.
 
 | Function                 | Lockup Type     | Segments/Tranches | Batch Size | Gas Usage  |
 | ------------------------ | --------------- | ----------------- | ---------- | ---------- |
-| `createWithDurationsLL`  | Lockup Linear   | N/A               | 5          | 771,013    |
+| `createWithDurationsLL`  | Lockup Linear   | N/A               | 5          | 771,13    |
 | `createWithTimestampsLL` | Lockup Linear   | N/A               | 5          | 732,772    |
 | `createWithDurationsLD`  | Lockup Dynamic  | 24                | 5          | 3,951,599  |
 | `createWithTimestampsLD` | Lockup Dynamic  | 24                | 5          | 3,815,274  |
@@ -129,7 +129,7 @@ to view the code that generates these benchmarks.
 | `createWithDurationsLT`  | Lockup Tranched | 24                | 10         | 7,632,114  |
 | `createWithTimestampsLT` | Lockup Tranched | 24                | 10         | 7,444,115  |
 | `createWithDurationsLL`  | Lockup Linear   | N/A               | 20         | 2,783,510  |
-| `createWithTimestampsLL` | Lockup Linear   | N/A               | 20         | 2,779,081  |
+| `createWithTimestampsLL` | Lockup Linear   | N/A               | 20         | 2,779,81  |
 | `createWithDurationsLD`  | Lockup Dynamic  | 24                | 20         | 15,617,207 |
 | `createWithTimestampsLD` | Lockup Dynamic  | 24                | 20         | 15,131,248 |
 | `createWithDurationsLT`  | Lockup Tranched | 24                | 20         | 15,211,892 |
@@ -145,4 +145,4 @@ to view the code that generates these benchmarks.
 | `createWithDurationsLD`  | Lockup Dynamic  | 12                | 50         | 22,990,726 |
 | `createWithTimestampsLD` | Lockup Dynamic  | 12                | 50         | 22,355,943 |
 | `createWithDurationsLT`  | Lockup Tranched | 12                | 50         | 22,413,554 |
-| `createWithTimestampsLT` | Lockup Tranched | 12                | 50         | 22,006,169 |
+| `createWithTimestampsLT` | Lockup Tranched | 12                | 50         | 22,6,169 |
