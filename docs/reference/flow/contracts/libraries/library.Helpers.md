@@ -1,6 +1,6 @@
 # Helpers
 
-[Git Source](https://github.com/sablier-labs/flow/blob/04f3ed65b4c633d514ee64e2ec4022d821919382/src/libraries/Helpers.sol)
+[Git Source](https://github.com/sablier-labs/flow/blob/9bfe5d6fbfbd7dc60e142735dd3f492df756e0b9/src/libraries/Helpers.sol)
 
 Library with helper functions in [SablierFlow](/docs/reference/flow/contracts/contract.SablierFlow.md) contract.
 
@@ -33,4 +33,20 @@ function checkAndCalculateBrokerFee(
     internal
     pure
     returns (uint128 brokerFeeAmount, uint128 depositAmount);
+```
+
+### descaleAmount
+
+Descales the provided `amount` from 18 decimals fixed-point number to token's decimals number.
+
+```solidity
+function descaleAmount(uint256 amount, uint8 decimals) internal pure returns (uint256);
+```
+
+### scaleAmount
+
+Scales the provided `amount` from 18 decimals fixed-point number to token's decimals number.
+
+```solidity
+function scaleAmount(uint256 amount, uint8 decimals) internal pure returns (uint256);
 ```

@@ -1,6 +1,6 @@
 # SablierFlowBase
 
-[Git Source](https://github.com/sablier-labs/flow/blob/04f3ed65b4c633d514ee64e2ec4022d821919382/src/abstracts/SablierFlowBase.sol)
+[Git Source](https://github.com/sablier-labs/flow/blob/9bfe5d6fbfbd7dc60e142735dd3f492df756e0b9/src/abstracts/SablierFlowBase.sol)
 
 **Inherits:** [Adminable](/docs/reference/flow/contracts/abstracts/abstract.Adminable.md),
 [ISablierFlowBase](/docs/reference/flow/contracts/interfaces/interface.ISablierFlowBase.md), ERC721
@@ -72,7 +72,7 @@ mapping(uint256 id => Flow.Stream stream) internal _streams;
 
 ### constructor
 
-_Emits a {TransferAdmin} event._
+_Emits {TransferAdmin} event._
 
 ```solidity
 constructor(address initialAdmin, IFlowNFTDescriptor initialNFTDescriptor);
@@ -188,14 +188,19 @@ function getSender(uint256 streamId) external view override notNull(streamId) re
 | ---------- | --------- | ---------------------------- |
 | `streamId` | `uint256` | The stream ID for the query. |
 
-### getSnapshotDebt
+### getSnapshotDebtScaled
 
-Retrieves the snapshot debt of the stream, denoted in token's decimals.
+Retrieves the snapshot debt of the stream, denoted as a fixed-point number where 1e18 is 1 token.
 
 _Reverts if `streamId` references a null stream._
 
 ```solidity
-function getSnapshotDebt(uint256 streamId) external view override notNull(streamId) returns (uint256 snapshotDebt);
+function getSnapshotDebtScaled(uint256 streamId)
+    external
+    view
+    override
+    notNull(streamId)
+    returns (uint256 snapshotDebtScaled);
 ```
 
 **Parameters**
@@ -344,7 +349,7 @@ function tokenURI(uint256 streamId) public view override(IERC721Metadata, ERC721
 
 Collect the protocol revenue accrued for the provided ERC-20 token.
 
-Emits a {CollectProtocolRevenue} event. Requirements:
+Emits {CollectProtocolRevenue} event. Requirements:
 
 - `msg.sender` must be the contract admin.
 - The accrued protocol revenue must be greater than zero.
@@ -364,7 +369,7 @@ function collectProtocolRevenue(IERC20 token, address to) external override only
 
 Recover the surplus amount of tokens.
 
-Emits a {Recover} event. Notes:
+Emits {Recover} event. Notes:
 
 - The surplus amount is defined as the difference between the total balance of the contract for the provided ERC-20
   token and the sum of balances of all streams created using the same ERC-20 token. Requirements:
@@ -386,7 +391,7 @@ function recover(IERC20 token, address to) external override onlyAdmin;
 
 Sets a new NFT descriptor contract, which produces the URI describing the Sablier stream NFTs.
 
-Emits a {SetNFTDescriptor} and {BatchMetadataUpdate} event. Notes:
+Emits {SetNFTDescriptor} and {BatchMetadataUpdate} events. Notes:
 
 - Does not revert if the NFT descriptor is the same. Requirements:
 - `msg.sender` must be the contract admin.
@@ -405,7 +410,7 @@ function setNFTDescriptor(IFlowNFTDescriptor newNFTDescriptor) external override
 
 Sets a new protocol fee that will be charged on all the withdrawals from streams created with the provided ERC-20 token.
 
-Emits a {SetProtocolFee} event. Notes:
+Emits {SetProtocolFee} and {BatchMetadataUpdate} events. Notes:
 
 - Does not revert if the fee is the same.
 - It can be zero. Requirements:

@@ -4,7 +4,7 @@ sidebar_position: 1
 
 # SablierFlow
 
-[Git Source](https://github.com/sablier-labs/flow/blob/04f3ed65b4c633d514ee64e2ec4022d821919382/src/SablierFlow.sol)
+[Git Source](https://github.com/sablier-labs/flow/blob/9bfe5d6fbfbd7dc60e142735dd3f492df756e0b9/src/SablierFlow.sol)
 
 **Inherits:** [Batch](/docs/reference/flow/contracts/abstracts/abstract.Batch.md),
 [NoDelegateCall](/docs/reference/flow/contracts/abstracts/abstract.NoDelegateCall.md),
@@ -17,7 +17,7 @@ See the documentation in [ISablierFlow](/docs/reference/flow/contracts/interface
 
 ### constructor
 
-_Emits a {TransferAdmin} event._
+_Emits {TransferAdmin} event._
 
 ```solidity
 constructor(
@@ -53,8 +53,8 @@ function coveredDebtOf(uint256 streamId) external view override notNull(streamId
 
 ### depletionTimeOf
 
-Returns the time at which the stream will deplete its balance and start to accumulate uncovered debt. If there already
-is uncovered debt, it returns zero.
+Returns the time at which the total debt exceeds stream balance. If the total debt is less than or equal to stream
+balance, it returns 0.
 
 _Reverts if `streamId` references a paused or a null stream._
 
@@ -74,14 +74,20 @@ function depletionTimeOf(uint256 streamId)
 | ---------- | --------- | ---------------------------- |
 | `streamId` | `uint256` | The stream ID for the query. |
 
-### ongoingDebtOf
+### ongoingDebtScaledOf
 
-Returns the amount of debt accrued since the snapshot time until now, denoted in token's decimals.
+Returns the amount of debt accrued since the snapshot time until now, denoted as a fixed-point number where 1e18 is 1
+token.
 
 _Reverts if `streamId` references a null stream._
 
 ```solidity
-function ongoingDebtOf(uint256 streamId) external view override notNull(streamId) returns (uint256 ongoingDebt);
+function ongoingDebtScaledOf(uint256 streamId)
+    external
+    view
+    override
+    notNull(streamId)
+    returns (uint256 ongoingDebtScaled);
 ```
 
 **Parameters**
@@ -191,7 +197,7 @@ function withdrawableAmountOf(uint256 streamId)
 
 Changes the stream's rate per second.
 
-Emits an {AdjustFlowStream} and {MetadataUpdate} event. Notes:
+Emits {AdjustFlowStream} and {MetadataUpdate} events. Notes:
 
 - Performs a debt snapshot. Requirements:
 - Must not be delegate called.
@@ -225,7 +231,7 @@ function adjustRatePerSecond(
 Creates a new Flow stream by setting the snapshot time to `block.timestamp` and leaving the balance to zero. The stream
 is wrapped in an ERC-721 NFT.
 
-Emits a {CreateFlowStream} event. Requirements:
+Emits {CreateFlowStream} event. Requirements:
 
 - Must not be delegate called.
 - `sender` must not be the zero address.
@@ -267,7 +273,7 @@ function create(
 Creates a new Flow stream by setting the snapshot time to `block.timestamp` and the balance to `amount`. The stream is
 wrapped in an ERC-721 NFT.
 
-Emits a {Transfer}, {CreateFlowStream}, and {DepositFlowStream} event. Notes:
+Emits {Transfer}, {CreateFlowStream}, and {DepositFlowStream} events. Notes:
 
 - Refer to the notes in {deposit}. Requirements:
 - Refer to the requirements in {create} and {deposit}.
@@ -308,16 +314,19 @@ function createAndDeposit(
 
 Makes a deposit in a stream.
 
-Emits a {Transfer} and {DepositFlowStream} event. Requirements:
+Emits {Transfer} and {DepositFlowStream} events. Requirements:
 
 - Must not be delegate called.
 - `streamId` must not reference a null or a voided stream.
 - `amount` must be greater than zero.
+- `sender` and `recipient` must match the stream's sender and recipient addresses.
 
 ```solidity
 function deposit(
     uint256 streamId,
-    uint128 amount
+    uint128 amount,
+    address sender,
+    address recipient
 )
     external
     override
@@ -329,16 +338,18 @@ function deposit(
 
 **Parameters**
 
-| Name       | Type      | Description                                      |
-| ---------- | --------- | ------------------------------------------------ |
-| `streamId` | `uint256` | The ID of the stream to deposit to.              |
-| `amount`   | `uint128` | The deposit amount, denoted in token's decimals. |
+| Name        | Type      | Description                                      |
+| ----------- | --------- | ------------------------------------------------ |
+| `streamId`  | `uint256` | The ID of the stream to deposit to.              |
+| `amount`    | `uint128` | The deposit amount, denoted in token's decimals. |
+| `sender`    | `address` | The stream's sender address.                     |
+| `recipient` | `address` | The stream's recipient address.                  |
 
 ### depositAndPause
 
 Deposits tokens in a stream and pauses it.
 
-Emits a {Transfer}, {DepositFlowStream} and {PauseFlowStream} event. Notes:
+Emits {Transfer}, {DepositFlowStream} and {PauseFlowStream} events. Notes:
 
 - Refer to the notes in {deposit} and {pause}. Requirements:
 - Refer to the requirements in {deposit} and {pause}.
@@ -368,7 +379,7 @@ function depositAndPause(
 
 Deposits tokens in a stream.
 
-Emits a {Transfer} and {DepositFlowStream} event. Notes:
+Emits {Transfer} and {DepositFlowStream} events. Notes:
 
 - Refer to the notes in {deposit}. Requirements:
 - Must not be delegate called.
@@ -381,6 +392,8 @@ Emits a {Transfer} and {DepositFlowStream} event. Notes:
 function depositViaBroker(
     uint256 streamId,
     uint128 totalAmount,
+    address sender,
+    address recipient,
     Broker calldata broker
 )
     external
@@ -397,13 +410,15 @@ function depositViaBroker(
 | ------------- | --------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `streamId`    | `uint256` | The ID of the stream to deposit on.                                                                                                                                                          |
 | `totalAmount` | `uint128` | The total amount, including the deposit and any broker fee, denoted in token's decimals.                                                                                                     |
+| `sender`      | `address` | The stream's sender address.                                                                                                                                                                 |
+| `recipient`   | `address` | The stream's recipient address.                                                                                                                                                              |
 | `broker`      | `Broker`  | Struct encapsulating (i) the address of the broker assisting in creating the stream, and (ii) the percentage fee paid to the broker from `totalAmount`, denoted as a fixed-point percentage. |
 
 ### pause
 
 Pauses the stream.
 
-Emits a {PauseFlowStream} event. Notes:
+Emits {PauseFlowStream} event. Notes:
 
 - It does not set the snapshot time to the current block timestamp.
 - It updates the snapshot debt by adding up ongoing debt.
@@ -433,7 +448,7 @@ function pause(uint256 streamId)
 
 Refunds the provided amount of tokens from the stream to the sender's address.
 
-Emits a {Transfer} and {RefundFromFlowStream} event. Requirements:
+Emits {Transfer} and {RefundFromFlowStream} events. Requirements:
 
 - Must not be delegate called.
 - `streamId` must not reference a null stream.
@@ -464,7 +479,7 @@ function refund(
 
 Refunds the provided amount of tokens from the stream to the sender's address.
 
-Emits a {Transfer}, {RefundFromFlowStream} and {PauseFlowStream} event. Notes:
+Emits {Transfer}, {RefundFromFlowStream} and {PauseFlowStream} events. Notes:
 
 - Refer to the notes in {pause}. Requirements:
 - Refer to the requirements in {refund} and {pause}.
@@ -494,7 +509,7 @@ function refundAndPause(
 
 Restarts the stream with the provided rate per second.
 
-Emits a {RestartFlowStream} event.
+Emits {RestartFlowStream} event.
 
 - This function updates stream's `snapshotTime` to the current block timestamp. Notes:
 - It sets the snapshot time to the current block timestamp. Requirements:
@@ -528,7 +543,7 @@ function restart(
 
 Restarts the stream with the provided rate per second, and makes a deposit.
 
-Emits a {RestartFlowStream}, {Transfer}, and {DepositFlowStream} event. Notes:
+Emits {RestartFlowStream}, {Transfer}, and {DepositFlowStream} events. Notes:
 
 - Refer to the notes in {restart} and {deposit}. Requirements:
 - `amount` must be greater than zero.
@@ -561,7 +576,7 @@ function restartAndDeposit(
 
 Voids a stream.
 
-Emits a {VoidFlowStream} event. Notes:
+Emits {VoidFlowStream} event. Notes:
 
 - It sets snapshot time to the `block.timestamp`
 - Voiding an insolvent stream sets the snapshot debt to the stream's balance making the uncovered debt to become zero.
@@ -592,7 +607,7 @@ function void(uint256 streamId)
 
 Withdraws the provided `amount` minus the protocol fee to the provided `to` address.
 
-Emits a {Transfer} and {WithdrawFromFlowStream} event. Notes:
+Emits {Transfer} and {WithdrawFromFlowStream} events. Notes:
 
 - It sets the snapshot time to the `block.timestamp` if `amount` is greater than snapshot debt.
 - A protocol fee may be charged on the withdrawn amount if the protocol fee is enabled for the streaming token.
@@ -636,7 +651,7 @@ function withdraw(
 
 Withdraws the entire withdrawable amount minus the protocol fee to the provided `to` address.
 
-Emits a {Transfer} and {WithdrawFromFlowStream} event. Notes:
+Emits {Transfer} and {WithdrawFromFlowStream} events. Notes:
 
 - Refer to the notes in {withdraw}. Requirements:
 - Refer to the requirements in {withdraw}.
@@ -676,13 +691,13 @@ _Calculates the amount of covered debt by the stream balance._
 function _coveredDebtOf(uint256 streamId) internal view returns (uint128);
 ```
 
-### \_ongoingDebtOf
+### \_ongoingDebtScaledOf
 
-_Calculates the ongoing debt accrued since last snapshot. Return 0 if the stream is paused or `block.timestamp` is less
-than or equal to snapshot time._
+_Calculates the ongoing debt, as a 18-decimals fixed point number, accrued since last snapshot. Return 0 if the stream
+is paused or `block.timestamp` is less than or equal to snapshot time._
 
 ```solidity
-function _ongoingDebtOf(uint256 streamId) internal view returns (uint256 ongoingDebt);
+function _ongoingDebtScaledOf(uint256 streamId) internal view returns (uint256);
 ```
 
 ### \_refundableAmountOf
@@ -695,10 +710,8 @@ function _refundableAmountOf(uint256 streamId) internal view returns (uint128);
 
 ### \_totalDebtOf
 
-Calculates the total debt.
-
-_The total debt is the sum of the snapshot debt and the ongoing debt. This value is independent of the stream's
-balance._
+_The total debt is the sum of the snapshot debt and the ongoing debt descaled to token's decimal. This value is
+independent of the stream's balance._
 
 ```solidity
 function _totalDebtOf(uint256 streamId) internal view returns (uint256);
@@ -710,6 +723,14 @@ _Calculates the uncovered debt._
 
 ```solidity
 function _uncoveredDebtOf(uint256 streamId) internal view returns (uint256);
+```
+
+### \_verifyStreamSenderRecipient
+
+_Checks whether the provided addresses matches stream's sender and recipient._
+
+```solidity
+function _verifyStreamSenderRecipient(uint256 streamId, address sender, address recipient) internal view;
 ```
 
 ### \_adjustRatePerSecond

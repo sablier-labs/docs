@@ -1,6 +1,6 @@
 # Errors
 
-[Git Source](https://github.com/sablier-labs/flow/blob/04f3ed65b4c633d514ee64e2ec4022d821919382/src/libraries/Errors.sol)
+[Git Source](https://github.com/sablier-labs/flow/blob/9bfe5d6fbfbd7dc60e142735dd3f492df756e0b9/src/libraries/Errors.sol)
 
 Library with custom errors used across the Flow contract.
 
@@ -68,6 +68,22 @@ Thrown when an unexpected error occurs during the calculation of an amount.
 
 ```solidity
 error SablierFlow_InvalidCalculation(uint256 streamId, uint128 availableAmount, uint128 amount);
+```
+
+### SablierFlow_NotStreamRecipient
+
+Thrown when the recipient address does not match the stream's recipient.
+
+```solidity
+error SablierFlow_NotStreamRecipient(address recipient, address streamRecipient);
+```
+
+### SablierFlow_NotStreamSender
+
+Thrown when the sender address does not match the stream's sender.
+
+```solidity
+error SablierFlow_NotStreamSender(address sender, address streamSender);
 ```
 
 ### SablierFlow_Null
