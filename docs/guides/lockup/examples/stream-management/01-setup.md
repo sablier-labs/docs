@@ -9,7 +9,7 @@ renounce, and transfer ownership of streams.
 
 Before diving in, please note the following:
 
-1. We assume you are already familiar with [creating streams](/guides/lockup/guides/create-stream/lockup-linear).
+1. We assume you are already familiar with [creating streams](/guides/lockup/examples/create-stream/lockup-linear).
 2. We also assume that the stream management contract is authorized to invoke each respective function. To learn more
    about access control in Lockup, see the [Access Control](/reference/lockup/access-control) guide.
 

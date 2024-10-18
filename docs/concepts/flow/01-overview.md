@@ -27,3 +27,53 @@ premiums, loans interest, token ESOPs etc. If you are looking for vesting and ai
    debt. Either party can void a stream at any time.
 6. **Withdraw:** it is publicly callable as long as `to` is set to the recipient. However, a stream’s recipient is
    allowed to withdraw funds to any address.
+
+## Key Definitions
+
+The definitions below will help you understand some terms used in Sablier Flow:
+
+### Stream balance
+
+Stream balance is the token balance of a stream. It increases when funds are deposited into a stream, and decreases when
+the sender refunds from it or when a withdrawal happens.
+
+### Total debt
+
+Total debt is the amount of tokens owed to the recipient. This value is further divided into two sub-categories:
+
+- **Covered debt:** The part of the total debt that covered by the stream balance. This is the same as the
+  **withdrawable amount**, which is an alias.
+- **Uncovered debt:** The part of the total debt that is not covered by the stream balance. This is what the sender owes
+  to the stream.
+
+```math
+\text{total debt} = \text{covered debt} + \text{uncovered debt}
+```
+
+### Snapshot debt and Snapshot time
+
+A snapshot is an event during which snapshot debt and snapshot time of a Flow stream are updated. **Snapshot debt** is
+the debt accumulated since the previous snapshot. The UNIX timestamp at which snapshot debt is updated is called
+**Snapshot time**.
+
+At snapshot, the following calculations are taking place:
+
+```math
+\text{snapshot debt} = \text{previous snapshot debt} + \underbrace{
+rps \cdot (\text{block.timestamp} - \text{snapshot time})}_\text{ongoing debt}
+\text{snapshot time} = \text{block.timestamp}
+```
+
+Therefore, at any point in time, total debt can also be defined as:
+
+```math
+\text{total debt} = \text{snapshot debt} + \text{ongoing debt}
+```
+
+## Lifecycle
+
+1. A Flow stream is created with an `rps`, a `sender` and a `recipient` address.
+2. During the lifecycle of the stream, all the functions enclosed inside the dotted rectangle (diagram below) can be
+   called any number of times. There are some limitations though, such as `restart` can only be called if the stream is
+   `paused`.
+3. Any party can call `void` to terminate it. Only withdraw and refund are allowed on a voided stream.

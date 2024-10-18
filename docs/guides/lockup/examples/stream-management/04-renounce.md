@@ -6,7 +6,8 @@ title: "Renounce Streams"
 
 :::note
 
-This section assumes that you have already gone through the [setup](/guides/lockup/guides/stream-management/setup) part.
+This section assumes that you have already gone through the [setup](/guides/lockup/examples/stream-management/setup)
+part.
 
 :::
 

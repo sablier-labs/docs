@@ -6,7 +6,8 @@ title: "Cancel Streams"
 
 :::note
 
-This section assumes that you have already gone through the [setup](/guides/lockup/guides/stream-management/setup) part.
+This section assumes that you have already gone through the [setup](/guides/lockup/examples/stream-management/setup)
+part.
 
 :::
 
@@ -27,8 +28,8 @@ There are two functions that can be used to cancel streams:
    streams at once
 
 To call any of these functions, you need to have created a cancelable stream. If you don't have one yet, go back to the
-[previous guide](/guides/lockup/guides/create-stream/lockup-linear) and create a stream. Then, you can use the `cancel`
-function like this:
+[previous guide](/guides/lockup/examples/create-stream/lockup-linear) and create a stream. Then, you can use the
+`cancel` function like this:
 
 ```solidity reference title="Stream Management: Cancel"
 https://github.com/sablier-labs/examples/blob/main/v2/core/StreamManagement.sol#L39-L41
