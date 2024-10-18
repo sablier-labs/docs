@@ -62,24 +62,69 @@ const config: Config = {
             to: "/api/overview",
           },
           {
+            from: "/api",
+            to: "/api/overview",
+          },
+          {
+            from: "/api/subgraphs/endpoints",
+            to: "/api/lockup/endpoints",
+          },
+          {
             from: "/api/subgraphs/overview",
             to: "/api/overview",
           },
           {
-            from: "/api",
-            to: "/api/overview",
+            from: "/api/subgraphs/protocol",
+            to: "/api/lockup/the-graph/entities",
+          },
+          {
+            from: "/api/drops/the-graph",
+            to: "/api/drops/the-graph/entities",
+          },
+          {
+            from: "/api/subgraphs/merkle",
+            to: "/api/drops/the-graph/entities",
+          },
+          {
+            from: "/api/merkle-api",
+            to: "/api/drops/merkle-api/overview",
+          },
+          {
+            from: "/api/indexers/protocol",
+            to: "/api/lockup/envio/similarities",
+          },
+          {
+            from: "/api/lockup/the-graph",
+            to: "/api/lockup/the-graph/entities",
+          },
+          {
+            from: "/apps",
+            to: "/apps/features/overview",
           },
           {
             from: "/apps/features",
             to: "/apps/features/vesting",
           },
           {
-            from: "/apps/url-schemes",
-            to: "/apps/guides/url-schemes",
+            from: "/apps/features/streams",
+            to: "/apps/features/vesting",
+          },
+
+          {
+            from: "/apps/features/general",
+            to: "/apps/features/overview",
           },
           {
-            from: "/apps/guides/how-to",
-            to: "/support/how-to",
+            from: "/apps/overview",
+            to: "/apps/features/overview",
+          },
+          {
+            from: "/apps/features/airstreams",
+            to: "/apps/features/drops",
+          },
+          {
+            from: "/apps/url-schemes",
+            to: "/apps/guides/url-schemes",
           },
           {
             from: "/apps/csv-support",
@@ -125,10 +170,6 @@ const config: Config = {
           {
             from: "/contracts/v1/deployments",
             to: "/guides/lockup/versions/v1",
-          },
-          {
-            from: "/apps/features/streams",
-            to: "/apps/features/vesting",
           },
         ],
         createRedirects(existingPath) {
@@ -281,17 +322,18 @@ const config: Config = {
           activeBasePath: "/reference",
         },
         {
-          label: "Apps",
-          position: "left",
-          to: "/apps/overview",
-          activeBasePath: "/apps",
-        },
-        {
           label: "APIs",
           position: "left",
           to: "/api/overview",
           activeBasePath: "/api",
         },
+        {
+          label: "Apps",
+          position: "left",
+          to: "/apps/features/overview",
+          activeBasePath: "/apps",
+        },
+
         {
           label: "Support",
           position: "left",
