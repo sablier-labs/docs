@@ -1,6 +1,6 @@
 # Flow
 
-[Git Source](https://github.com/sablier-labs/flow/blob/04f3ed65b4c633d514ee64e2ec4022d821919382/src/types/DataTypes.sol)
+[Git Source](https://github.com/sablier-labs/flow/blob/9bfe5d6fbfbd7dc60e142735dd3f492df756e0b9/src/types/DataTypes.sol)
 
 ## Structs
 
@@ -21,24 +21,24 @@ struct Stream {
     bool isVoided;
     IERC20 token;
     uint8 tokenDecimals;
-    uint256 snapshotDebt;
+    uint256 snapshotDebtScaled;
 }
 ```
 
 **Properties**
 
-| Name             | Type      | Description                                                                                                                                                                                                             |
-| ---------------- | --------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `balance`        | `uint128` | The amount of tokens that are currently available in the stream, denoted in token's decimals. This is the sum of deposited amounts minus the sum of withdrawn amounts.                                                  |
-| `ratePerSecond`  | `UD21x18` | The payment rate per second, denoted as a fixed-point number where 1e18 is 1 token per second. For example, to stream 1000 tokens per week, this parameter would have the value $(1000 * 10^18) / (7 days in seconds)$. |
-| `sender`         | `address` | The address streaming the tokens, with the ability to pause the stream.                                                                                                                                                 |
-| `snapshotTime`   | `uint40`  | The Unix timestamp used for the ongoing debt calculation.                                                                                                                                                               |
-| `isStream`       | `bool`    | Boolean indicating if the struct entity exists.                                                                                                                                                                         |
-| `isTransferable` | `bool`    | Boolean indicating if the stream NFT is transferable.                                                                                                                                                                   |
-| `isVoided`       | `bool`    | Boolean indicating if the stream is voided. Voiding any stream is non-reversible and it cannot be restarted. Voiding an insolvent stream sets its uncovered debt to zero.                                               |
-| `token`          | `IERC20`  | The contract address of the ERC-20 token to stream.                                                                                                                                                                     |
-| `tokenDecimals`  | `uint8`   | The decimals of the ERC-20 token to stream.                                                                                                                                                                             |
-| `snapshotDebt`   | `uint256` | The amount of tokens that the sender owed to the recipient at snapshot time, denoted in token's decimals. This, along with the ongoing debt, can be used to calculate the total debt at any given point in time.        |
+| Name                 | Type      | Description                                                                                                                                                                                                                      |
+| -------------------- | --------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `balance`            | `uint128` | The amount of tokens that are currently available in the stream, denoted in token's decimals. This is the sum of deposited amounts minus the sum of withdrawn amounts.                                                           |
+| `ratePerSecond`      | `UD21x18` | The payment rate per second, denoted as a fixed-point number where 1e18 is 1 token per second. For example, to stream 1000 tokens per week, this parameter would have the value $(1000 * 10^18) / (7 days in seconds)$.          |
+| `sender`             | `address` | The address streaming the tokens, with the ability to pause the stream.                                                                                                                                                          |
+| `snapshotTime`       | `uint40`  | The Unix timestamp used for the ongoing debt calculation.                                                                                                                                                                        |
+| `isStream`           | `bool`    | Boolean indicating if the struct entity exists.                                                                                                                                                                                  |
+| `isTransferable`     | `bool`    | Boolean indicating if the stream NFT is transferable.                                                                                                                                                                            |
+| `isVoided`           | `bool`    | Boolean indicating if the stream is voided. Voiding any stream is non-reversible and it cannot be restarted. Voiding an insolvent stream sets its uncovered debt to zero.                                                        |
+| `token`              | `IERC20`  | The contract address of the ERC-20 token to stream.                                                                                                                                                                              |
+| `tokenDecimals`      | `uint8`   | The decimals of the ERC-20 token to stream.                                                                                                                                                                                      |
+| `snapshotDebtScaled` | `uint256` | The amount of tokens that the sender owed to the recipient at snapshot time, denoted as a 18-decimals fixed-point number. This, along with the ongoing debt, can be used to calculate the total debt at any given point in time. |
 
 ## Enums
 

@@ -2,19 +2,18 @@
 id: "deployments"
 sidebar_position: 4
 title: "Deployment Addresses"
-toc_max_heading_level: 3
 ---
 
-This document contains the deployment addresses for the V2.2 release of [@sablier/v2-core][v2-core] and
-[@sablier/v2-periphery][v2-periphery].
+This document contains the deployment addresses for the v1.2 release of [@sablier/lockup-core][lockup-core] and
+[@sablier/lockup-periphery][lockup-periphery].
 
-[v2-core]: https://npmjs.com/package/@sablier/v2-core/v/1.2.0
-[v2-periphery]: https://npmjs.com/package/@sablier/v2-periphery/v/1.2.0
+[lockup-core]: https://npmjs.com/package/@sablier/v2-core/v/1.2.0
+[lockup-periphery]: https://npmjs.com/package/@sablier/v2-periphery/v/1.2.0
 
 A few noteworthy details about the deployments:
 
 - The addresses are final
-- All LockupLinear, LockupDynamic, and LockupTranched contracts are non-upgradeable
+- All contracts are non-upgradeable
 - The source code is verified on Etherscan across all chains
 
 ## Previous Versions
@@ -26,11 +25,11 @@ assigned under our [naming convention](/api/lockup/the-graph/structure#identifyi
 
 | Version                              | UI Aliases                                                       |
 | ------------------------------------ | ---------------------------------------------------------------- |
-| v2.2 (current)                       | LD3 (Lockup Dynamic), LL3 (Lockup Linear), LT3 (Lockup Tranched) |
-| [v2.1](/guides/lockup/versions/v2.1) | LD2 (Lockup Dynamic), LL2 (Lockup Linear)                        |
-| [v2.0](/guides/lockup/versions/v2.0) | LD (Lockup Dynamic), LL (Lockup Linear)                          |
+| v1.2 (current)                       | LD3 (Lockup Dynamic), LL3 (Lockup Linear), LT3 (Lockup Tranched) |
+| [v1.1](/guides/lockup/versions/v1.1) | LD2 (Lockup Dynamic), LL2 (Lockup Linear)                        |
+| [v1.0](/guides/lockup/versions/v1.0) | LD (Lockup Dynamic), LL (Lockup Linear)                          |
 
-Or maybe you're looking for V1? [Click here](/guides/lockup/versions/v1).
+Or maybe you're looking for Legacy protocol? [Click here](/guides/lockup/versions/v1-legacy).
 
 :::info
 
