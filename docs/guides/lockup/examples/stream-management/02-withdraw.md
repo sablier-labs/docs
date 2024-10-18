@@ -6,7 +6,8 @@ title: "Withdraw from Streams"
 
 :::note
 
-This section assumes that you have already gone through the [setup](/guides/lockup/guides/stream-management/setup) part.
+This section assumes that you have already gone through the [setup](/guides/lockup/examples/stream-management/setup)
+part.
 
 :::
 
@@ -32,8 +33,8 @@ There are four withdrawal functions:
    amounts of assets from multiple streams at once.
 
 To call any of these functions, you need to have created a stream. If you don't have one yet, go back to the
-[previous guide](/guides/lockup/guides/create-stream/lockup-linear) and create a stream with a brief duration, assigning
-the `StreamManagement` contract as the recipient. Then, you can use the `withdraw` function like this:
+[previous guide](/guides/lockup/examples/create-stream/lockup-linear) and create a stream with a brief duration,
+assigning the `StreamManagement` contract as the recipient. Then, you can use the `withdraw` function like this:
 
 ```solidity reference title="Stream Management: Withdraw"
 https://github.com/sablier-labs/examples/blob/main/v2/core/StreamManagement.sol#L20-L22

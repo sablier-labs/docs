@@ -49,5 +49,5 @@ flowchart LR
 ## Next steps
 
 If you are interested into using Sablier hooks into your protocol, please check the
-[Hook guide](http://localhost:3000/guides/lockup/guides/hooks). if you looking to get on the allowlist, reach out to us
-on [Discord](https://discord.sablier.com).
+[Hook guide](/guides/lockup/examples/hooks). if you looking to get on the allowlist, reach out to us on
+[Discord](https://discord.sablier.com).
