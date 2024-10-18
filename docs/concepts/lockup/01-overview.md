@@ -5,7 +5,8 @@ title: "Overview"
 ---
 
 Lockup is a token streaming protocol that refers to the requirement that the creator of a stream must lock up a certain
-amount of assets in a smart contract.
+amount of assets in a smart contract. A lockup stream, therefore, is characterized by the start time, end time, amount
+of tokens to be streamed and a [stream shape](./02-stream-shapes.mdx).
 
 Let's discuss an example. Imagine Alice wants to stream 3,000 DAI to Bob during the whole month of January.
 

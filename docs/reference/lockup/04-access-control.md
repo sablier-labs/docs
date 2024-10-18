@@ -4,7 +4,7 @@ sidebar_position: 4
 title: "Access Control"
 ---
 
-With the exception of the [admin functions](/docs/concepts/08-governance.md), all functionalities in Lockup can only be
+With the exception of the [admin functions](/concepts/governance#lockup), all functionalities in Lockup can only be
 triggered by users. The Protocol Admin has no control over any stream or any part of the protocol.
 
 This article will provide a comprehensive overview of the actions that can be performed on streams once they are
@@ -28,8 +28,8 @@ The table below offers a quick overview of the access control for each action th
 | Cancel Multiple         |   ✅   |                ❌                |       ❌       |
 | Renounce                |   ✅   |                ❌                |       ❌       |
 | Transfer NFT            |   ❌   |                ✅                |       ❌       |
-| Withdraw to recipient   |   ✅   |                ✅                |       ✅       |
 | Withdraw to any address |   ❌   |                ✅                |       ❌       |
+| Withdraw to recipient   |   ✅   |                ✅                |       ✅       |
 | Withdraw Multiple       |   ✅   |                ✅                |       ✅       |
 
 ## Burn NFT

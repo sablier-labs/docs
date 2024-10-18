@@ -139,9 +139,9 @@ flowchart LR;
   C --> S1;
 ```
 
-## Airstream Flow
+## Airstream Campaign
 
-A typical campaign creation flow looks like the following:
+A typical Airstream campaign creation flow looks like the following:
 
 ```mermaid
 flowchart LR
