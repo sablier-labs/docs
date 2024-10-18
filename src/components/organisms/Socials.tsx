@@ -1,10 +1,10 @@
 import React from "react";
 import styled from "@emotion/styled";
 import Link from "@docusaurus/Link";
+import SablierIcon from "@site/static/img/logo.svg";
 import Heading from "@theme/Heading";
 import { links } from "../../constants";
 import GitHubIcon from "../../icons/GitHubIcon";
-import MediumIcon from "../../icons/MediumIcon";
 
 const Wrapper = styled.main`
   display: flex;
@@ -55,6 +55,11 @@ const Social = styled(Link)`
     width: 40px;
   }
 
+  svg,
+  img {
+    filter: grayscale(100) brightness(100);
+  }
+
   &:active,
   &:hover {
     border: 2px solid var(--ifm-color-emphasis-400);
@@ -79,11 +84,7 @@ const StyledGitHubIcon = styled.div`
   }
 `;
 
-const StyledMediumIcon = styled.div`
-  svg {
-    fill: var(--ifm-font-color-base);
-  }
-`;
+const StyledSablierIcon = styled.div``;
 
 function Socials() {
   return (
@@ -99,7 +100,7 @@ function Socials() {
 
         <Social href={links.github}>
           <StyledGitHubIcon>
-            <GitHubIcon size={48} />{" "}
+            <GitHubIcon size={48} />
           </StyledGitHubIcon>
           <div>
             <Heading as="h4">GitHub</Heading>
@@ -107,12 +108,12 @@ function Socials() {
           </div>
         </Social>
 
-        <Social href={links.medium}>
-          <StyledMediumIcon>
-            <MediumIcon size={48} />{" "}
-          </StyledMediumIcon>
+        <Social href={links.blog}>
+          <StyledSablierIcon>
+            <SablierIcon />
+          </StyledSablierIcon>
           <div>
-            <Heading as="h4">Medium</Heading>
+            <Heading as="h4">Blog</Heading>
             <p>Follow the announcements on our blog.</p>
           </div>
         </Social>

@@ -1,6 +1,6 @@
 {
-  "name": "@sablier/v2-docs",
-  "description": "Documentation and guides for Sablier",
+  "name": "@sablier/docs",
+  "description": "Documentation and guides for Sablier protocols",
   "author": {
     "name": "Sablier Labs Ltd",
     "url": "https://sablier.com"
@@ -18,7 +18,7 @@
     ]
   },
   "bugs": {
-    "url": "https://github.com/sablier-labs/v2-docs/issues"
+    "url": "https://github.com/sablier-labs/docs/issues"
   },
   "dependencies": {
     "@algolia/client-search": "^4.23.3",
@@ -29,7 +29,7 @@
     "@docusaurus/theme-mermaid": "^3.2.1",
     "@emotion/react": "^11.11.4",
     "@emotion/styled": "^11.11.5",
-    "@heroicons/react": "^2.1.3",
+    "@heroicons/react": "^2.1.5",
     "@mdx-js/react": "~3.0.1",
     "clsx": "^2.1.1",
     "docusaurus-theme-github-codeblock": "^2.0.2",
@@ -70,13 +70,15 @@
     "money-streaming",
     "real-time-finance",
     "sablier",
-    "sablier-v2",
+    "sablier-flow",
+    "sablier-lockup",
     "smart-contracts",
     "solidity",
-    "token-streaming"
+    "token-streaming",
+    "token-vesting"
   ],
   "private": true,
-  "repository": "github:sablier-labs/v2-docs",
+  "repository": "github:sablier-labs/docs",
   "scripts": {
     "build": "docusaurus build",
     "check": "bun run prettier:check && bun run lint:check",

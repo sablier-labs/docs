@@ -1,0 +1,201 @@
+---
+id: "lockup-dynamic"
+sidebar_position: 2
+title: "Lockup Dynamic"
+---
+
+import AdmonitionSimpleCode from "@site/docs/snippets/AdmonitionSimpleCode.mdx";
+import ConstantsComment from "@site/docs/snippets/ConstantsComment.mdx";
+import CreateFunctions from "@site/docs/snippets/CreateFunctions.mdx";
+import ParamAsset from "@site/docs/snippets/ParamAsset.mdx";
+import ParamBroker from "@site/docs/snippets/ParamBroker.mdx";
+import ParamCancelable from "@site/docs/snippets/ParamCancelable.mdx";
+import ParamRecipient from "@site/docs/snippets/ParamRecipient.mdx";
+import ParamSender from "@site/docs/snippets/ParamSender.mdx";
+import ParamTotalAmount from "@site/docs/snippets/ParamTotalAmount.mdx";
+import ParamTransferable from "@site/docs/snippets/ParamTransferable.mdx";
+
+# Create a Lockup Dynamic stream
+
+Lockup Dynamic are streams with custom streaming curves. In this guide, we will show you how to programmatically create
+a Lockup Dynamic stream.
+
+This guide assumes that you have already gone through the [Protocol Concepts](/concepts/streaming) section.
+
+:::note
+
+This guide interacts with the Core contracts directly.
+
+:::
+
+<AdmonitionSimpleCode />
+
+## Set up a contract
+
+Declare the Solidity version used to compile the contract:
+
+```solidity
+// SPDX-License-Identifier: GPL-3.0-or-later
+pragma solidity >=0.8.22;
+```
+
+Import the relevant symbols from `@sablier/v2-core`:
+
+```solidity
+import { IERC20 } from "@openzeppelin/contracts/token/ERC20/IERC20.sol";
+import { ud2x18 } from "@prb/math/src/UD2x18.sol";
+import { ud60x18 } from "@prb/math/src/UD60x18.sol";
+import { ISablierV2LockupDynamic } from "@sablier/v2-core/src/interfaces/ISablierV2LockupDynamic.sol";
+import { Broker, LockupDynamic } from "@sablier/v2-core/src/types/DataTypes.sol";
+```
+
+Create a contract called `LockupDynamicStreamCreator`, and declare a constant `DAI` of type `IERC20` and a constant
+`LOCKUP_DYNAMIC` of type `ISablierV2LockupDynamic`:
+
+```solidity
+contract LockupDynamicStreamCreator {
+    IERC20 public constant DAI = IERC20(0x68194a729C2450ad26072b3D33ADaCbcef39D574);
+    ISablierV2LockupDynamic public constant LOCKUP_DYNAMIC =
+        ISablierV2LockupDynamic(0x73BB6dD3f5828d60F8b3dBc8798EB10fbA2c5636);
+}
+```
+
+<ConstantsComment />
+
+<CreateFunctions />
+
+Which one you choose depends upon your use case. In this guide, we will use `createWithTimestamps`.
+
+## Function definition
+
+Define a function called `createStream` which takes two parameters, `amount0` and `amount1`, and which returns the id of
+the created stream:
+
+```solidity
+function createStream(uint128 amount0, uint128 amount1) public returns (uint256 streamId) {
+  // ...
+}
+```
+
+Next, sum up the `amount0` and `amount1` parameters to get the total amount of the stream, which will be needed in many
+of the steps below:
+
+```solidity
+uint256 totalAmount = amount0 + amount1;
+```
+
+## ERC-20 steps
+
+To create a stream, the caller must approve the creator contract to pull the tokens from the calling address's account.
+Then, we have to also approve the Lockup dynamic contract to pull the assets that the creator contract will be in
+possession of after they are transferred from the calling address (you):
+
+```solidity
+// Transfer the provided amount of DAI tokens to this contract
+DAI.transferFrom(msg.sender, address(this), totalAmount);
+
+// Approve the Lockup dynamic contract to spend DAI
+DAI.approve(address(LOCKUP_DYNAMIC), totalAmount);
+```
+
+For more guidance on how to approve and transfer ERC-20 assets, see
+[this article](https://ethereum.org/en/developers/docs/standards/tokens/erc-20/) on the Ethereum website.
+
+## Parameters
+
+Lockup dynamic uses structs to encode the parameters of its create functions. The struct associated with
+`createWithTimestamps` is
+[`LockupDynamic.CreateWithTimestamps`](/reference/lockup/core/types/library.LockupDynamic#createwithtimestamps), and it
+can be initialized like this:
+
+```solidity
+LockupDynamic.CreateWithTimestamps memory params;
+```
+
+Let's review each parameter in detail.
+
+<ParamSender />
+
+<ParamRecipient />
+
+<ParamTotalAmount />
+
+<ParamAsset />
+
+<ParamCancelable />
+
+<ParamTransferable />
+
+### Start time
+
+The Unix timestamp for when the stream will start.
+
+In this example, the start time is set to 100 seconds into the future:
+
+```solidity
+params.startTime = uint40(block.timestamp + 100 seconds);
+```
+
+### Segments
+
+Segments are what the protocol uses to compose the custom distribution curve of a Lockup Dynamic stream. For a full
+exposition of segments, see the [Segments](/concepts/lockup/segments) guide.
+
+The term "segment" refers to the splitting of the stream into separate partitions, with each segment characterized by a
+specific amount, exponent, and timestamp. These segments are supplied to the function in the form of an array containing
+[`LockupDynamic.Segment`](/reference/lockup/core/types/library.LockupDynamic#segment) structs.
+
+Let's define two dummy segments:
+
+```solidity
+params.segments = new LockupDynamic.Segment[](2);
+params.segments[0] = LockupDynamic.Segment({
+    amount: amount0,
+    exponent: ud2x18(1e18),
+    timestamp: uint40(block.timestamp + 4 weeks)
+});
+params.segments[1] = (
+    LockupDynamic.Segment({
+        amount: amount1,
+        exponent: ud2x18(3.14e18),
+        timestamp: uint40(block.timestamp + 52 weeks)
+    })
+);
+```
+
+In this example, the first segment (`amount0`) will stream much faster than the second segment (`amount1`), because the
+exponents are different. As a rule of thumb: the higher the exponent, the slower the stream.
+
+:::note
+
+The segment timestamp must be in ascending order.
+
+:::
+
+:::info
+
+The `ud2x18` function wraps a basic integer to the `UD2x18` value type, which is part of the
+[PRBMath](https://github.com/PaulRBerg/prb-math) library.
+
+:::
+
+<ParamBroker />
+
+## Invoke the create function
+
+With all parameters set, we can now call the `createWithTimestamps` function, and assign the id of the newly created
+stream to a variable:
+
+```solidity
+streamId = LOCKUP_DYNAMIC.createWithTimestamps(params);
+```
+
+## The complete Lockup Dynamic stream creator contract
+
+Below you can see the complete functioning code: a contract that creates a Lockup Dynamic stream. You can access the
+code on GitHub through
+[this link](https://github.com/sablier-labs/examples/blob/main/v2/core/LockupDynamicStreamCreator.sol).
+
+```solidity reference title="Lockup Dynamic Stream Creator"
+https://github.com/sablier-labs/examples/blob/main/v2/core/LockupDynamicStreamCreator.sol
+```
