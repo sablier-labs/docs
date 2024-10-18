@@ -28,7 +28,7 @@ requirements below.
 The following guidelines apply to you only if you have you been granted a
 [BUSL license](https://app.ens.domains/lockup-license-grants.sablier.eth?tab=records) to deploy the Lockup Protocol.
 
-### Pre Requisities
+### Prerequisites
 
 - Check if the deployment is not already made on [your chain](/guides/lockup/deployments)
 - Follow the [contributing guide](https://github.com/sablier-labs/v2-core/blob/main/CONTRIBUTING.md)
@@ -38,7 +38,7 @@ The following guidelines apply to you only if you have you been granted a
 
 ### Steps for deploying Core contracts
 
-#### Step 1: Clone the [v2-core repo](https://github.com/sablier-labs/v2-core) and checkout to the latest release tag
+#### Step 1: Clone the [Lockup core repo](https://github.com/sablier-labs/v2-core) and checkout to the latest release tag
 
 At the time of writing, the latest release tag is `v1.2.0`:
 
@@ -112,7 +112,7 @@ If you are using a mnemonic or a hardware device for your deployer address, refe
 
 ### Steps for deploying Periphery contracts
 
-#### Step 1: Clone the [v2-periphery](https://github.com/sablier-labs/v2-periphery) and checkout to the latest release tag
+#### Step 1: Clone the [Lockup periphery repo](https://github.com/sablier-labs/v2-periphery) and checkout to the latest release tag
 
 At the time of writing, the latest release tag is `v1.2.0`:
 
@@ -190,4 +190,87 @@ Once the contracts are deployed, the final step is to list the deployment addres
 
 ## Flow Deployment Guide
 
-Coming soon.
+The following guidelines apply to you only if you have you been granted a
+[BUSL license](https://app.ens.domains/flow-license-grants.sablier.eth?tab=records) to deploy the Flow Protocol.
+
+### Prerequisites
+
+- Check if the deployment is not already made on [your chain](/guides/flow/deployments)
+- Follow the [contributing guide](https://github.com/sablier-labs/flow/blob/main/CONTRIBUTING.md)
+- RPC endpoint, e.g., a paid Infura account
+- Enough ETH in your deployer account
+- Etherscan API key (for source code verification)
+
+### Steps for deploying Flow contracts
+
+#### Step 1: Clone the [Flow repo](https://github.com/sablier-labs/flow) and checkout to the latest release tag
+
+At the time of writing, the latest release tag is `v1.0.0`:
+
+```bash
+git checkout v1.0.0
+```
+
+#### Step 2: Create an `.env` file
+
+```bash
+touch .env
+```
+
+Add the following variables to `.env` file:
+
+```
+EOA="DEPLOYER ADDRESS"
+ETHERSCAN_API_KEY="EXPLORER API KEY"
+PRIVATE_KEY="PRIVATE KEY OF DEPLOYER ADDRESS"
+RPC_URL="RPC ENDPOINT URL"
+VERIFIER_URL="EXPLORER VERIFICATION URL"
+```
+
+Load the environment variables into your shell:
+
+```bash
+source .env
+```
+
+#### Step 3: Run the following deployment command
+
+:::warning[Important]
+
+You must set the protocol admin to the Sablier controlled address 0xD427d37B5F6d33f7D42C4125979361E011FFbfD9. Failure to
+do so will result in your deployment not being acknowledged as official.
+
+:::
+
+For **deterministic** deployment:
+
+```bash
+FOUNDRY_PROFILE=optimized \
+forge script script/DeployDeterministicFlow.s.sol \
+--broadcast \
+--etherscan-api-key $ETHERSCAN_API_KEY \
+--rpc-url $RPC_URL \
+--private-key $PRIVATE_KEY \
+--sig "run(address)" 0xD427d37B5F6d33f7D42C4125979361E011FFbfD9 \
+--verifier-url $VERIFIER_URL \
+--verify \
+-vvv
+```
+
+For **non-deterministic** deployment:
+
+```bash
+FOUNDRY_PROFILE=optimized \
+forge script script/DeployFlow.s.sol \
+--broadcast \
+--etherscan-api-key $ETHERSCAN_API_KEY \
+--private-key $PRIVATE_KEY \
+--rpc-url $RPC_URL \
+--sig "run(address)" 0xD427d37B5F6d33f7D42C4125979361E011FFbfD9 \
+--verifier-url $VERIFIER_URL \
+--verify \
+-vvv
+```
+
+If you are using a mnemonic or a hardware device for your deployer address, refer to `forge-script` page from
+[foundry book](https://book.getfoundry.sh/reference/forge/forge-script#forge-script) for different wallet options.
