@@ -8,19 +8,19 @@ import LinkPreview from "@site/src/components/LinkPreview";
 
 # Drops
 
-Sablier's [lockup](/concepts/lockup/overview) streams are used for the [vesting](/apps/features/vesting) and (part of)
-the [drops](/apps/features/drops) components of the Sablier Interfaces. The drops section, supported by our
-[merkle](/concepts/lockup/airstreams) utilities focuses on the functionality of the merkle factory peripheries.
+Sablier's [Lockup](/concepts/lockup/overview) streams are used for the [Vesting](/apps/features/vesting) and (part of)
+the [Drops](/apps/features/drops) components of the Sablier Interfaces. The Drops section, supported by our
+[Merkle](/concepts/lockup/airstreams) utilities focuses on the functionality of the Merkle Factory peripheries.
 
-For the drops-native functionality, these sides are powered by:
+Drops-native functionality is powered by:
 
 - The `@sablier/subgraphs/apps/merkle` subgraph
 - The `@sablier/subgraphs/apps/merkle-envio` indexer
 - The `@sablier/merkle-api` sdk
 
-For the lockup-native functionality, please check the dedicated [documentation](/api/lockup/overview).
+For the Lockup-native functionality, please check the dedicated [documentation](/api/lockup/overview).
 
-:::note
+:::tip
 
 [Airstreamed](/apps/features/drops) drops, will reward users a lockup stream once a claim is made.
 
@@ -39,3 +39,19 @@ For the lockup-native functionality, please check the dedicated [documentation](
   subtitle="@sablier-labs/merkle-api"
   title="Sablier SDK: Merkle API"
 />
+
+## What are Drops / Airstreams?
+
+**Drops** are large-scale campaigns developed to aid with token distribution towards millions of users. They rely on
+**merkle trees** to efficiently store eligibility details.
+
+Extending the classic instant airdrop, Sablier engineered Airstreams, a way to reward users with streams which vest
+rewards over time, instead of unlocking a lump-sum of assets.
+
+The first step before diving into this guide is to become familiar with the [concepts](/concepts/lockup/airstreams).
+
+#### Naming convention
+
+As per our endpoint [naming convention](api/overview#endpoints--slugs), subgraph deployments of Sablier Airstreams and
+Instant Drops will follow the `sablier-v2-ms-*` (short for "merkle subgraph") structure (e.g. `sablier-v2-ms` for
+Mainnet, `sablier-v2-ms-base` for Base).
