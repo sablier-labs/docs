@@ -4,7 +4,7 @@ sidebar_position: 1
 
 # SablierFlow
 
-[Git Source](https://github.com/sablier-labs/flow/blob/9bfe5d6fbfbd7dc60e142735dd3f492df756e0b9/src/SablierFlow.sol)
+[Git Source](https://github.com/sablier-labs/flow/blob/b01cc2daf6493ae792a858d6179facc6250403e2/src/SablierFlow.sol)
 
 **Inherits:** [Batch](/docs/reference/flow/contracts/abstracts/abstract.Batch.md),
 [NoDelegateCall](/docs/reference/flow/contracts/abstracts/abstract.NoDelegateCall.md),
