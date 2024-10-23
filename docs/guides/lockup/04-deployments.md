@@ -23,13 +23,13 @@ Any updates or additional features will call for a new deployment of the protoco
 Came here looking for the previous Lockup deployments? Click below to see other versions as well as the in-app aliases
 assigned under our [naming convention](/api/lockup/the-graph/structure#identifying).
 
-| Version                              | UI Aliases                                                       |
-| ------------------------------------ | ---------------------------------------------------------------- |
-| v1.2 (current)                       | LD3 (Lockup Dynamic), LL3 (Lockup Linear), LT3 (Lockup Tranched) |
-| [v1.1](/guides/lockup/versions/v1.1) | LD2 (Lockup Dynamic), LL2 (Lockup Linear)                        |
-| [v1.0](/guides/lockup/versions/v1.0) | LD (Lockup Dynamic), LL (Lockup Linear)                          |
+| Version                                          | UI Aliases                                                       |
+| ------------------------------------------------ | ---------------------------------------------------------------- |
+| v1.2 (current)                                   | LD3 (Lockup Dynamic), LL3 (Lockup Linear), LT3 (Lockup Tranched) |
+| [v1.1](/guides/lockup/previous-deployments/v1.1) | LD2 (Lockup Dynamic), LL2 (Lockup Linear)                        |
+| [v1.0](/guides/lockup/previous-deployments/v1.0) | LD (Lockup Dynamic), LL (Lockup Linear)                          |
 
-Or maybe you're looking for Legacy protocol? [Click here](/guides/lockup/versions/legacy).
+Or maybe you're looking for Legacy protocol? [Click here](/guides/lockup/previous-deployments/legacy).
 
 :::info
 

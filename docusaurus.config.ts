@@ -51,7 +51,7 @@ const config: Config = {
           },
           {
             from: "/protocol/guides/chains",
-            to: "/guides/lockup/versions/legacy",
+            to: "/guides/lockup/previous-deployments/legacy",
           },
           {
             from: "/protocol/introduction",
@@ -161,15 +161,15 @@ const config: Config = {
           },
           {
             from: "/contracts/v2/deployments/v1.1",
-            to: "/guides/lockup/versions/v1.1",
+            to: "/guides/lockup/previous-deployments/v1.1",
           },
           {
             from: "/contracts/v2/deployments/v1.0",
-            to: "/guides/lockup/versions/v1.0",
+            to: "/guides/lockup/previous-deployments/v1.0",
           },
           {
             from: "/contracts/v1/deployments",
-            to: "/guides/lockup/versions/legacy",
+            to: "/guides/lockup/previous-deployments/legacy",
           },
         ],
         createRedirects(existingPath) {
