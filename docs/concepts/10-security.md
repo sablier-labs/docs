@@ -7,15 +7,17 @@ title: "Security"
 Ensuring the security of the Sablier Protocols is our utmost priority. We have dedicated significant efforts towards the
 design and testing of the protocol to guarantee its safety and reliability.
 
+The Sablier contracts have undergone rigorous audits by leading security experts from [Cantina](https://cantina.xyz/),
+[CodeHawks](https://codehawks.cyfrin.io/), and many independent auditors. For a comprehensive list of all audits
+conducted, check out [the audit repo](https://github.com/sablier-labs/audits/)
+
 ## Lockup Audits
 
-The codebase has undergone rigorous audits by leading security experts from [Cantina](https://cantina.xyz/),
-[CodeHawks](https://codehawks.cyfrin.io/), and many independent auditors. For a comprehensive list of all audits
-conducted, check out [this link](https://github.com/sablier-labs/audits).
+All the audits of Lockup contracts can be found [here](https://github.com/sablier-labs/audits/tree/main/lockup).
 
 ## Flow Audits
 
-Coming soon.
+All the audits of Lockup contracts can be found [here](https://github.com/sablier-labs/audits/tree/main/flow).
 
 ## Bug Bounty
 

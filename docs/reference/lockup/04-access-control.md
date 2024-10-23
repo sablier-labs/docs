@@ -4,7 +4,7 @@ sidebar_position: 4
 title: "Access Control"
 ---
 
-With the exception of the [admin functions](/docs/concepts/08-governance.md), all functionalities in Lockup can only be
+With the exception of the [admin functions](/concepts/governance#lockup), all functionalities in Lockup can only be
 triggered by users. The Protocol Admin has no control over any stream or any part of the protocol.
 
 This article will provide a comprehensive overview of the actions that can be performed on streams once they are
@@ -13,7 +13,7 @@ created, as well as the corresponding user permissions for each action.
 :::note
 
 Every stream has a sender and a recipient. Recipients can approve third parties to take actions on their behalf. An
-'unknown' caller is any address outside of sender and recipient.
+'public' caller is any address outside of sender and recipient.
 
 :::
 
@@ -21,16 +21,16 @@ Every stream has a sender and a recipient. Recipients can approve third parties 
 
 The table below offers a quick overview of the access control for each action that can be performed on a stream.
 
-| Action                  | Sender | Recipient / Approved third party | Unknown Caller |
-| ----------------------- | :----: | :------------------------------: | :------------: |
-| Burn NFT                |   ❌   |                ✅                |       ❌       |
-| Cancel                  |   ✅   |                ❌                |       ❌       |
-| Cancel Multiple         |   ✅   |                ❌                |       ❌       |
-| Renounce                |   ✅   |                ❌                |       ❌       |
-| Transfer NFT            |   ❌   |                ✅                |       ❌       |
-| Withdraw to recipient   |   ✅   |                ✅                |       ✅       |
-| Withdraw to any address |   ❌   |                ✅                |       ❌       |
-| Withdraw Multiple       |   ✅   |                ✅                |       ✅       |
+| Action                  | Sender | Recipient / Approved third party | Public |
+| ----------------------- | :----: | :------------------------------: | :----: |
+| Burn NFT                |   ❌   |                ✅                |   ❌   |
+| Cancel                  |   ✅   |                ❌                |   ❌   |
+| Cancel Multiple         |   ✅   |                ❌                |   ❌   |
+| Renounce                |   ✅   |                ❌                |   ❌   |
+| Transfer NFT            |   ❌   |                ✅                |   ❌   |
+| Withdraw to any address |   ❌   |                ✅                |   ❌   |
+| Withdraw to recipient   |   ✅   |                ✅                |   ✅   |
+| Withdraw Multiple       |   ✅   |                ✅                |   ✅   |
 
 ## Burn NFT
 
@@ -104,14 +104,14 @@ Anybody can withdraw assets from multiple streams to the recipients of each stre
 
 ```mermaid
 flowchart LR;
-    unknown((Unknown caller));
+    public((Public));
     recipient((Recipient));
     operator((Operator));
     sender((Sender));
     streams[(Stream)];
     toAddress[Recipient address];
 
-    unknown -- withdrawMultiple --> streams;
+    public -- withdrawMultiple --> streams;
     sender -- withdrawMultiple --->streams;
     recipient -- withdrawMultiple --->streams
     recipient -- approve -->operator;
@@ -143,14 +143,14 @@ party.
 
 ```mermaid
 flowchart LR;
-    unknown((Unknown caller));
+    public((Public caller));
     recipient((Recipient));
     operator((Operator));
     sender((Sender));
     stream[(Stream)];
     toAddress[Recipient address];
 
-    unknown -- withdraw ----> stream;
+    public -- withdraw ----> stream;
     sender -- withdraw --->stream;
     recipient -- withdraw -->stream;
     recipient -- approve -->operator;

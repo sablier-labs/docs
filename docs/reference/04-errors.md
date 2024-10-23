@@ -24,8 +24,8 @@ bytes4(keccak256(bytes("SablierV2Lockup_Unauthorized(address,uint256)")))
 
 ## Naming Pattern
 
-With the exception of a few generics, all errors in Lockup protocols adhere to the naming pattern
-`SablierV2<ContractName>_<ErrorName>` whereas in Flow protocol, they adhere to `SablierFlow_<ErrorName>`.
+With the exception of a few generics, all errors in Sablier protocols adhere to the naming pattern
+`<ContractName>_<ErrorName>`.
 
 Incorporating the contract name as a prefix offers context, making it easier for end users to pinpoint the contract
 responsible for a reverted transaction. This approach is particularly helpful for complex transactions involving
@@ -43,7 +43,7 @@ multiple contracts.
 
 ## Flow Error List
 
-Coming soon.
+[Click here](flow/contracts/libraries/library.Errors) to see the full error list in Flow.
 
 ## Resources
 

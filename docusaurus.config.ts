@@ -47,11 +47,11 @@ const config: Config = {
           },
           {
             from: "/protocol/guides/getting-started",
-            to: "/reference/lockup/v1/guides/getting-started",
+            to: "/reference/lockup/legacy/guides/getting-started",
           },
           {
             from: "/protocol/guides/chains",
-            to: "/guides/lockup/versions/v1",
+            to: "/guides/lockup/previous-deployments/legacy",
           },
           {
             from: "/protocol/introduction",
@@ -160,16 +160,16 @@ const config: Config = {
             to: "/concepts/security",
           },
           {
-            from: "/contracts/v2/deployments/v2.1",
-            to: "/guides/lockup/versions/v2.1",
+            from: "/contracts/v2/deployments/v1.1",
+            to: "/guides/lockup/previous-deployments/v1.1",
           },
           {
-            from: "/contracts/v2/deployments/v2.0",
-            to: "/guides/lockup/versions/v2.0",
+            from: "/contracts/v2/deployments/v1.0",
+            to: "/guides/lockup/previous-deployments/v1.0",
           },
           {
             from: "/contracts/v1/deployments",
-            to: "/guides/lockup/versions/v1",
+            to: "/guides/lockup/previous-deployments/legacy",
           },
         ],
         createRedirects(existingPath) {
@@ -177,7 +177,7 @@ const config: Config = {
             return [
               existingPath.replace("/concepts/protocol", "/concepts/lockup"),
               existingPath.replace("/contracts/v2", "/guides/lockup"),
-              existingPath.replace("/contracts/v1", "/reference/lockup/v1"),
+              existingPath.replace("/contracts/v1", "/reference/lockup/legacy"),
               existingPath.replace("/contracts/v2/reference", "/reference/lockup"),
             ];
           }
