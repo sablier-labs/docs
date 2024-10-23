@@ -13,7 +13,7 @@ created, as well as the corresponding user permissions for each action.
 :::note
 
 Every stream has a sender and a recipient. Recipients can approve third parties to take actions on their behalf. An
-'unknown' caller is any address outside of sender and recipient.
+'public' caller is any address outside of sender and recipient.
 
 :::
 
@@ -21,16 +21,16 @@ Every stream has a sender and a recipient. Recipients can approve third parties 
 
 The table below offers a quick overview of the access control for each action that can be performed on a stream.
 
-| Action                  | Sender | Recipient / Approved third party | Unknown Caller |
-| ----------------------- | :----: | :------------------------------: | :------------: |
-| Burn NFT                |   ❌   |                ✅                |       ❌       |
-| Cancel                  |   ✅   |                ❌                |       ❌       |
-| Cancel Multiple         |   ✅   |                ❌                |       ❌       |
-| Renounce                |   ✅   |                ❌                |       ❌       |
-| Transfer NFT            |   ❌   |                ✅                |       ❌       |
-| Withdraw to any address |   ❌   |                ✅                |       ❌       |
-| Withdraw to recipient   |   ✅   |                ✅                |       ✅       |
-| Withdraw Multiple       |   ✅   |                ✅                |       ✅       |
+| Action                  | Sender | Recipient / Approved third party | Public |
+| ----------------------- | :----: | :------------------------------: | :----: |
+| Burn NFT                |   ❌   |                ✅                |   ❌   |
+| Cancel                  |   ✅   |                ❌                |   ❌   |
+| Cancel Multiple         |   ✅   |                ❌                |   ❌   |
+| Renounce                |   ✅   |                ❌                |   ❌   |
+| Transfer NFT            |   ❌   |                ✅                |   ❌   |
+| Withdraw to any address |   ❌   |                ✅                |   ❌   |
+| Withdraw to recipient   |   ✅   |                ✅                |   ✅   |
+| Withdraw Multiple       |   ✅   |                ✅                |   ✅   |
 
 ## Burn NFT
 
@@ -104,14 +104,14 @@ Anybody can withdraw assets from multiple streams to the recipients of each stre
 
 ```mermaid
 flowchart LR;
-    unknown((Unknown caller));
+    public((Public));
     recipient((Recipient));
     operator((Operator));
     sender((Sender));
     streams[(Stream)];
     toAddress[Recipient address];
 
-    unknown -- withdrawMultiple --> streams;
+    public -- withdrawMultiple --> streams;
     sender -- withdrawMultiple --->streams;
     recipient -- withdrawMultiple --->streams
     recipient -- approve -->operator;
@@ -143,14 +143,14 @@ party.
 
 ```mermaid
 flowchart LR;
-    unknown((Unknown caller));
+    public((Public caller));
     recipient((Recipient));
     operator((Operator));
     sender((Sender));
     stream[(Stream)];
     toAddress[Recipient address];
 
-    unknown -- withdraw ----> stream;
+    public -- withdraw ----> stream;
     sender -- withdraw --->stream;
     recipient -- withdraw -->stream;
     recipient -- approve -->operator;

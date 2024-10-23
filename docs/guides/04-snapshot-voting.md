@@ -165,7 +165,7 @@ The opposite of `streamed-recipient`, counting amounts that have not been stream
 available in the future). Subtracts the `streamed` amount from the initial `deposit`. For canceled streams, the
 unstreamed amount will be `0`.
 
-## Lockup v1 (Legacy)
+## Lockup Legacy V1
 
 - [Snapshot playground](https://snapshot.org/#/playground/sablier-v1-deposit) - test the strategies
 - [Snapshot code repository](https://github.com/snapshot-labs/snapshot-strategies/tree/master/src/strategies/sablier-v1-deposit) -

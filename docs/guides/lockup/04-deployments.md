@@ -29,7 +29,7 @@ assigned under our [naming convention](/api/lockup/the-graph/structure#identifyi
 | [v1.1](/guides/lockup/versions/v1.1) | LD2 (Lockup Dynamic), LL2 (Lockup Linear)                        |
 | [v1.0](/guides/lockup/versions/v1.0) | LD (Lockup Dynamic), LL (Lockup Linear)                          |
 
-Or maybe you're looking for Legacy protocol? [Click here](/guides/lockup/versions/v1-legacy).
+Or maybe you're looking for Legacy protocol? [Click here](/guides/lockup/versions/legacy).
 
 :::info
 

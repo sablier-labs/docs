@@ -4,7 +4,7 @@ title: Streams
 sidebar_position: 3
 ---
 
-Every interaction with the v1 (legacy) Protocol is in relation to a specific "token stream". This is how we refer to a
+Every interaction with the Legacy Protocol is in relation to a specific "token stream". This is how we refer to a
 real-time payment.
 
 A token stream has six properties:
