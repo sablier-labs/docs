@@ -185,12 +185,12 @@ const config: Config = {
               href: "https://github.com/sablier-labs/v2-periphery",
             },
             {
-              label: "V2 Integration Template",
-              href: "https://github.com/sablier-labs/sablier-v2-integration-template",
+              label: "Integration Template",
+              href: "https://github.com/sablier-labs/sablier-integration-template",
             },
             {
-              label: "Subgraph",
-              href: "https://github.com/sablier-labs/subgraph",
+              label: "Subgraphs",
+              href: "https://github.com/sablier-labs/subgraphs",
             },
           ],
         },

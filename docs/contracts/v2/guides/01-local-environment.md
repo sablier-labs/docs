@@ -35,9 +35,9 @@ Make sure you are using the latest version of Foundry by running `foundryup`.
 To install the template, simply execute the following commands:
 
 ```shell
-$ mkdir sablier-v2-integration-template
-$ cd sablier-v2-integration-template
-$ forge init --template sablier-labs/sablier-v2-integration-template
+$ mkdir sablier-integration-template
+$ cd sablier-integration-template
+$ forge init --template sablier-labs/sablier-integration-template
 $ bun install
 ```
 
