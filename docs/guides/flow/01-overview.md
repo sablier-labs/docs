@@ -4,7 +4,7 @@ sidebar_position: 1
 title: "Overview"
 ---
 
-# Flow Protocol
+# Sablier Flow Protocol
 
 Welcome to the Flow Protocol documentation.
 

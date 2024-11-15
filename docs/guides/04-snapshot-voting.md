@@ -1,7 +1,7 @@
 ---
 id: "snapshot-voting"
 sidebar_position: 4
-title: "Snapshot Strategies"
+title: "Snapshot Voting"
 ---
 
 # Snapshot Voting Strategies

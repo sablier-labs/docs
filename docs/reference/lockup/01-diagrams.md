@@ -47,7 +47,7 @@ classDiagram
 
 ### Lockup Linear
 
-Apart from the shared lockup storage, Lockup Linear requires a
+Apart from the shared Lockup storage, Lockup Linear requires a
 [separate storage](/reference/lockup/core/contract.SablierV2LockupLinear#_cliffs) to store cliff details for each stream
 ID.
 

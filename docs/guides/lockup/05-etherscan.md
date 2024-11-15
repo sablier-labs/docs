@@ -1,7 +1,7 @@
 ---
 id: "etherscan"
-sidebar_position: 7
-title: "Etherscan"
+sidebar_position: 5
+title: "Etherscan Operations"
 ---
 
 # Etherscan: Manual Operations

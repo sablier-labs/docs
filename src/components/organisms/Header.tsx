@@ -110,12 +110,12 @@ export default function Header() {
           <Feature
             description={"Deployment addresses and integration guides"}
             Icon={DocumentTextIcon}
-            title={"Developer Guides"}
+            title={"Guides"}
             to={"/guides/lockup/overview"}
           />
 
           <Feature
-            description={"Deep dive into protocol specifications"}
+            description={"Deep dive into the protocol specification"}
             Icon={CodeBracketIcon}
             title={"Technical References"}
             to={"/reference/overview"}

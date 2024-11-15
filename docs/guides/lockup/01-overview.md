@@ -4,7 +4,7 @@ sidebar_position: 1
 title: "Overview"
 ---
 
-# Lockup Protocol
+# Sablier Lockup Protocol
 
 Welcome to the Lockup Protocol documentation.
 

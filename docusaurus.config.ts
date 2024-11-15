@@ -310,7 +310,7 @@ const config: Config = {
           activeBasePath: "/concepts",
         },
         {
-          label: "Developer Guides",
+          label: "Guides",
           position: "left",
           to: "/guides/lockup/overview",
           activeBasePath: "/guides",

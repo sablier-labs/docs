@@ -149,7 +149,7 @@ A stream can have one out of six possible statuses:
 
 A new financial primitive that permits by-the-second payments.
 
-Currently, Sablier offers two streaming protocols called lockup and flow. In Lockup protocol, creator has to lock up a
+Currently, Sablier offers two streaming protocols called Lockup and Flow. In Lockup, the creator has to lock up a
 specified amount of assets whereas in Flow protocol, creator is not required to lock up any amount of assets.
 
 ## Streaming
@@ -159,7 +159,7 @@ By-the-second payments.
 ## Timestamp
 
 A timestamp is the time component of a stream. In Lockup Linear, it represents start time, cliff time and end time
-whereas in lockup dynamic and lockup tranched, it plays a crucial role in the calculation of streaming curves.
+whereas in Lockup Dynamic and Lockup Tranched, it plays a crucial role in the calculation of streaming curves.
 
 ## Tranche
 
