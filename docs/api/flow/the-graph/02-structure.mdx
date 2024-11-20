@@ -1,0 +1,138 @@
+---
+id: "structure"
+sidebar_position: 2
+title: "Structure"
+---
+
+We'll break down the [schema](https://github.com/sablier-labs/subgraphs/blob/main/apps/flow/schema.graphql) into primary
+and secondary entities.
+
+| Type      | Entities                        |
+| --------- | ------------------------------- |
+| Primary   | Contract, Action, Stream, Asset |
+| Secondary | Batch, Batcher, Watcher         |
+
+## Contract
+
+The subgraph is designed to track multiple deployments. Therefore, at any given time the indexer may listen for updates
+on many instances of `SablierFlow` contracts .
+
+A unique `alias` will be attributed to every contract, such that contracts (and later streams) will be identifiable
+through both a long form and a short form identifier. See the [Stream](#stream) for details.
+
+---
+
+## Action
+
+Events emitted by the Sablier Lockup contracts will:
+
+1. Be used to mutate the data stored in the individual `Stream` entities
+2. Be stored as historical logs (list of `Action`) to show the evolution of a related stream
+
+Based on the schema defined `ActionCategory`, the following actions will be tracked by the subgraph:
+
+| Action         | Contract Events        |
+| -------------- | ---------------------- |
+| Approval       | Approval               |
+| ApprovalForAll | ApprovalForAll         |
+| Adjust         | AdjustFlowStream       |
+| Create         | CreateFlowStream       |
+| Deposit        | DepositFlowStream      |
+| Pause          | PauseFlowStream        |
+| Refund         | RefundFromFlowStream   |
+| Restart        | RestartFlowStream      |
+| Transfer       | Transfer               |
+| Void           | VoidFlowStream         |
+| Withdraw       | WithdrawFromFlowStream |
+
+To keep all actions under the same umbrella, some details will be stored under general purpose attributes like
+`amountA`, `amountB`, `addressA`, `addressB` which based on the type of action can be resolved to context-specific
+values. Am example can be found
+[here](https://github.com/sablier-labs/subgraphs/blob/52f00f31a89c91dcf24480a5d7d8b25c84467f15/apps/flow/src/mappings/handle-stream.ts#L53-L56)
+for the Adjust event.
+
+---
+
+## Stream
+
+### Identifying
+
+Inside the contracts, streams will be assigned a unique `tokenId` (or `streamId`). While this makes it easy to identify
+items at the contract level, we need to consider the following for both subgraphs and client interfaces:
+
+- items should be uniquely recognizable across multiple contract instances
+- items should be uniquely identifiable across multiple chains
+- items should be identifiable with short, easy to digest names
+
+To address these observations, the subgraph uses two related identifiers for a Stream.
+
+| Type           | Description                                                                                         | Example                        |
+| -------------- | --------------------------------------------------------------------------------------------------- | ------------------------------ |
+| `Stream.id`    | A self-explanatory structure built using the following structure: `contractAddress-chainId-tokenId` | <nobr>`0xAB..12-137-21`</nobr> |
+| `Stream.alias` | A short version of the `id` where the contract is aliased: `contractAlias-chainId-tokenId`          | <nobr>`FL-137-21`</nobr>       |
+
+Both examples from the table above translate to: **_a stream on Polygon (chain id `137`), within the Flow contract at
+address `0xAB..12`, with the tokenId `21`_**.
+
+:::note
+
+The aliases defined in the subgraph will be used by client apps to resolve data about a stream. Make sure to keep them
+in sync, avoid conflicts and regard them as immutable (once decided, never change them).
+
+:::
+
+### Aliases
+
+To provide a simple visual structure, while also accounting for future stream curves (backwards compatibility) we use
+the following abbreviations as aliases:
+
+- FLOW V1.0 contracts become `FL`, e.g. `FL-137-1`
+
+### Relevant parties
+
+#### The recipient (gets paid\*)
+
+As funds are being streamed, they will slowly become eligible to withdraw and spend unlocked assets. The `recipient` is
+defined at the start of the stream but can change as a result of a transfer.
+
+On transfer, the old recipient moves the NFT (the stream itself) to another address, which becomes the new recipient.
+Rights to withdraw and claim future streamed funds are naturally transferred to this new address.
+
+#### The sender (will pay\*)
+
+They are an immutable party, defined at the start of the stream. Based on the configuration chosen for the stream, they
+will be entitled to later pause the stream, void it (stop and erased any accrued debt), withdraw on behalf of the
+recipient or refund any of the unstreamed assets.
+
+## Asset
+
+Tokens (ERC20) streamed through the protocol will be defined through an `Asset` entity.
+
+:::info
+
+As a development caveat, some ERC20 contracts are designed to store details (e.g. name, symbol) as `bytes32` and not
+`string`. Prior to deploying a subgraph, make sure you take into account these details as part of any Asset entity
+implementation. For examples, see the asset "helper" files inside this subgraph's repository code.
+
+:::
+
+---
+
+## Batch and Batcher
+
+The SablierFlow contracts through the implementation of the IBatch interface allow executing multiple actions in the
+same transaction. One of these functionalities will be **batch stream creation** (or **stream grouping**). Using the
+`batch` that receives the encoded data of multiple `create` function calls, a sender will be able to create multiple
+streams at once - considered part of the same batch. This is similar with the
+[lockup create multiple functions](/api/lockup/the-graph/structure#batch-and-batcher)
+
+To identify these relationships between stream items, the `Batch` entity will group items created in the same
+transaction, by finding events emitted with the same tx hash. The `Batcher` will then assign a user-specific unique
+index to every group.
+
+---
+
+## Watcher
+
+The Watcher (one for the entire subgraph) will provide specific utilities to the entire system, like global stream
+identifiers (a numeric id unique to a stream across all contract instances) and global action identifiers.

@@ -8,5 +8,5 @@ async function formatGasBenchmark(filePath) {
   await fs.writeFile(filePath, formattedContent);
 }
 
-formatGasBenchmark("docs/guides/lockup/03-gas-benchmarks.md");
-// formatGasBenchmark('docs/guides/flow/03-gas-benchmarks.md'); // TODO enable once flow benchmarks are added
+formatGasBenchmark("docs/guides/lockup/04-gas-benchmarks.md");
+formatGasBenchmark('docs/guides/flow/04-gas-benchmarks.md');
