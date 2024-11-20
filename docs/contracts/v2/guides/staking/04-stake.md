@@ -39,9 +39,9 @@ stakedUsers[streamId] = msg.sender;
 
 stakedStreams[msg.sender] = streamId;
 
-totalERC20StakedSupply += _getAmountInStream(tokenId);
+totalERC20StakedSupply += _getAmountInStream(streamId);
 
-sablierLockup.safeTransferFrom({ from: msg.sender, to: address(this), tokenId: tokenId });
+sablierLockup.safeTransferFrom({ from: msg.sender, to: address(this), tokenId: streamId });
 ```
 
 The `_getAmountInStream` function retrieves the amount of tokens being vested through the stream.
@@ -54,9 +54,9 @@ The implementation is as follows:
 
 ```solidity
 /// @dev The following function determines the amounts of tokens in a stream irrespective of its cancelable status.
-function _getAmountInStream(uint256 tokenId) private view returns (uint256 amount) {
+function _getAmountInStream(uint256 streamId) private view returns (uint256 amount) {
     // The tokens in the stream = amount deposited - amount withdrawn - amount refunded.
-    return sablierLockup.getDepositedAmount(tokenId) - sablierLockup.getWithdrawnAmount(tokenId)
-        - sablierLockup.getRefundedAmount(tokenId);
+    return sablierLockup.getDepositedAmount(streamId) - sablierLockup.getWithdrawnAmount(streamId)
+        - sablierLockup.getRefundedAmount(streamId);
 }
 ```
