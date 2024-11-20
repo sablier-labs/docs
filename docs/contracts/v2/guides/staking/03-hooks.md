@@ -1,26 +1,27 @@
 ---
-id: "hooks"
+id: "stake-hooks"
 sidebar_position: 3
 title: "Hooks"
 ---
 
-Hooks enable callbacks to the staking contract when the following conditions are met:
+Hooks enable callbacks to the staking contract in the following scenario:
 
 1. A call to `cancel` or `withdraw` function is made.
-2. Staking contract is the recipient of the Sablier stream.
+2. The staking contract is the recipient of the Sablier stream.
 
-Depending on your requirement, you can implement a custom logic to be executed when the sender cancels or a user
-withdraws from a staked stream. For example, you might want to automatically unstake the stream if `cancel` is called,
-or you might want to update the user's balance in your application if `withdraw` is called. Hooks make that happen.
+Depending on your requirement, you can implement custom logic to be executed when the sender cancels or a user withdraws
+from a staked stream. For example, you might want to automatically unstake the stream if `cancel` is called, or you
+might want to update the internal accounting if `withdraw` is called. Hooks make that happen.
 
 For this example, we will implement the following logic:
 
-1. Updates user's staked balance in the staking contract when a cancel is called.
-2. Updates user's staked balance in the staking contract and transfers the withdrawn amount to the user's address.
+1. When a stream is canceled, update the user's staked balance in the staking contract.
+2. When a withdrawal is made, update the user's staked balance in the staking contract and transfer the withdrawn amount
+   to the user's address.
 
 :::note
 
-A dedicated hook guide is available [here](/contracts/v2/guides/hooks).
+A dedicated guide for hooks is available [here](/contracts/v2/guides/hooks).
 
 :::
 
@@ -38,10 +39,10 @@ function onSablierLockupCancel(
     uint128 /* recipientAmount */
 )
     external
-    updateReward(stakedAssets[streamId])
+    updateReward(stakedUsers[streamId])
     returns (bytes4 selector)
 {
-    // Check: the caller is the lockup contract.
+    // Check: the caller is the Lockup contract.
     if (msg.sender != address(sablierLockup)) {
         revert UnauthorizedCaller(msg.sender, streamId);
     }
@@ -66,15 +67,15 @@ function onSablierLockupWithdraw(
     uint128 amount
 )
     external
-    updateReward(stakedAssets[streamId])
+    updateReward(stakedUsers[streamId])
     returns (bytes4 selector)
 {
-    // Check: the caller is the lockup contract
+    // Check: the caller is the Lockup contract
     if (msg.sender != address(sablierLockup)) {
         revert UnauthorizedCaller(msg.sender, streamId);
     }
 
-    address staker = stakedAssets[streamId];
+    address staker = stakedUsers[streamId];
 
     // Check: the staker is not the zero address.
     if (staker == address(0)) {
@@ -91,4 +92,4 @@ function onSablierLockupWithdraw(
 }
 ```
 
-The user's rewards are updated through `updateReward` modifier on which we will discuss in the next section.
+The user's rewards are updated through `updateReward` modifier, which we will discuss in the next section.
