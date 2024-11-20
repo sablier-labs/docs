@@ -4,8 +4,8 @@ sidebar_position: 4
 title: "Stake"
 ---
 
-The `stake` function takes `streamId` as input, and stakes the stream by transferring the Sablier NFT from the user's
-wallet to the staking contract.
+The `stake` function takes the `streamId` as the input, and stakes the stream by transferring the Sablier NFT from the
+user's wallet to the staking contract.
 
 ```solidity
 function stake(uint256 streamId) external {

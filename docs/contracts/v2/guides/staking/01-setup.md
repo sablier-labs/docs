@@ -4,6 +4,8 @@ sidebar_position: 1
 title: "Introduction"
 ---
 
+# Staking in Sablier
+
 Staking is a popular concept in DeFi. A major advantage of using Sablier is that you can set up staking of tokens being
 vested through Sablier streams. This is enabled by [hooks](/concepts/protocol/hooks), about which you can read more in
 the [hooks guide](/contracts/v2/guides/hooks).

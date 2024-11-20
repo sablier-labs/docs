@@ -4,7 +4,7 @@ sidebar_position: 3
 title: "Hooks"
 ---
 
-As can be seen in the [access control](/contracts/v2/reference/access-control#overview) section, the Sablier Protocol
+As explained in the [access control](/contracts/v2/reference/access-control#overview) section, the Sablier Protocol
 allows anyone to trigger withdrawals from a stream. For the staking contract, we want to make sure that any call to
 `withdraw` also updates the states of the staking contract. So in this section, we will discuss how we can create such
 control flows with Sablier hooks.
