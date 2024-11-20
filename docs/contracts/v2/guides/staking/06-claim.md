@@ -1,5 +1,5 @@
 ---
-id: "stake-claim"
+id: "claim"
 sidebar_position: 6
 title: "Claim Rewards"
 ---

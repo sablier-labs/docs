@@ -1,5 +1,5 @@
 ---
-id: "stake-full-code"
+id: "full-code"
 sidebar_position: 2
 title: "Full code"
 ---

@@ -1,5 +1,5 @@
 ---
-id: "stake-stake"
+id: "stake"
 sidebar_position: 4
 title: "Stake"
 ---

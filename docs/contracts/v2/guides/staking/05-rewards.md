@@ -1,5 +1,5 @@
 ---
-id: "stake-rewards"
+id: "rewards"
 sidebar_position: 5
 title: "Update rewards"
 ---

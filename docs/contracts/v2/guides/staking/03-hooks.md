@@ -1,5 +1,5 @@
 ---
-id: "stake-hooks"
+id: "hooks"
 sidebar_position: 3
 title: "Hooks"
 ---

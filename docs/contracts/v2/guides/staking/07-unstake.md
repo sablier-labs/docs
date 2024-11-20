@@ -1,5 +1,5 @@
 ---
-id: "stake-unstake"
+id: "unstake"
 sidebar_position: 7
 title: "Unstake"
 ---

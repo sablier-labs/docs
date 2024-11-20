@@ -1,5 +1,5 @@
 ---
-id: "stake-setup"
+id: "setup"
 sidebar_position: 1
 title: "Introduction"
 ---
