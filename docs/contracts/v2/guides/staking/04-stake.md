@@ -60,8 +60,3 @@ function _getAmountInStream(uint256 tokenId) private view returns (uint256 amoun
         - sablierLockup.getRefundedAmount(tokenId);
 }
 ```
-
-As can be seen in the [access control](/contracts/v2/reference/access-control#overview) section, the Sablier Protocol
-allows anyone to trigger withdrawals from a stream. For the staking contract, we want to make sure that any call to
-`withdraw` also updates the states of the staking contract. So in the next section, we will explore how we can create
-such control flows with Sablier hooks.

@@ -36,6 +36,3 @@ delete stakedStreams[account];
 
 sablierLockup.safeTransferFrom({ from: address(this), to: account, tokenId: streamId });
 ```
-
-As you can see, this function only unstakes the stream without transferring the rewards. The next and the final section
-will explain the rewards claim function.
