@@ -279,7 +279,7 @@ const config: Config = {
             },
             {
               label: "Lockup Integration Template",
-              href: "https://github.com/sablier-labs/sablier-integration-template",
+              href: "https://github.com/sablier-labs/lockup-integration-template",
             },
             {
               label: "Subgraphs",
