@@ -27,6 +27,6 @@ For a deeper dive into the protocol specifications, read through the [technical 
 
 - [Lockup Core](https://github.com/sablier-labs/v2-core/tree/release)
 - [Lockup Periphery](https://github.com/sablier-labs/v2-periphery/tree/release)
-- [Lockup Integration Templates](https://github.com/sablier-labs/sablier-v2-integration-template)
+- [Lockup Integration Templates](https://github.com/sablier-labs/lockup-integration-template)
 - [Lockup Integration Examples](https://github.com/sablier-labs/examples)
 - [Foundry Book](https://book.getfoundry.sh/)

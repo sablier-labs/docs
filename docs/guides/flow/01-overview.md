@@ -24,6 +24,6 @@ For a deeper dive into the protocol specifications, read through the [technical 
 # Resources
 
 - [Flow Contracts](https://github.com/sablier-labs/flow/tree/release)
-- [Flow Integration Templates](https://github.com/sablier-labs/sablier-integration-template)
+- [Flow Integration Templates](https://github.com/sablier-labs/flow-integration-template)
 - [Flow Integration Examples](https://github.com/sablier-labs/examples)
 - [Foundry Book](https://book.getfoundry.sh/)
