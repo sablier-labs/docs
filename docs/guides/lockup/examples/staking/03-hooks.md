@@ -4,10 +4,10 @@ sidebar_position: 3
 title: "Hooks"
 ---
 
-As explained in the [access control](/contracts/v2/reference/access-control#overview) section, the Sablier Protocol
-allows anyone to trigger withdrawals from a stream. For the staking contract, we want to make sure that any call to
-`withdraw` also updates the states of the staking contract. So in this section, we will discuss how we can create such
-control flows with Sablier hooks.
+As explained in the [access control](/reference/lockup/access-control) section, the Sablier Protocol allows anyone to
+trigger withdrawals from a stream. For the staking contract, we want to make sure that any call to `withdraw` also
+updates the states of the staking contract. So in this section, we will discuss how we can create such control flows
+with Sablier hooks.
 
 Hooks enable callbacks to the staking contract in the following scenario:
 
@@ -26,14 +26,14 @@ For this example, we will implement the following logic:
 
 :::note
 
-A dedicated guide for hooks is available [here](/contracts/v2/guides/hooks).
+A dedicated guide for hooks is available [here](/guides/lockup/examples/hooks).
 
 :::
 
 ### Cancel hook
 
 ```solidity
-/// @notice Implements the hook to handle cancelation events. This will be called by Sablier contract when a stream
+/// @notice Implements the hook to handle cancellation events. This will be called by Sablier contract when a stream
 /// is canceled by the sender.
 /// @dev This function subtracts the amount refunded to the sender from `totalERC20StakedSupply`.
 ///   - This function also updates the rewards for the staker.
