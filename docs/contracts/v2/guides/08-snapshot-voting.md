@@ -20,7 +20,7 @@ calculated based on some sub-strategies called `policies`.
 
 | Snapshot Playground                                  |
 | :--------------------------------------------------- |
-| ![Snapshot Playground](/img/snapshot/playground.png) |
+| ![Snapshot Playground](/img/snapshot/playground.webp) |
 
 ### Example Setup
 
