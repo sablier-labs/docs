@@ -18,8 +18,8 @@ stored in Sablier streams.
 The following strategies will read the various amounts that can be found in Sablier V2 streams. The voting power will be
 calculated based on some sub-strategies called `policies`.
 
-| Snapshot Playground                                  |
-| :--------------------------------------------------- |
+| Snapshot Playground                                   |
+| :---------------------------------------------------- |
 | ![Snapshot Playground](/img/snapshot/playground.webp) |
 
 ### Example Setup
