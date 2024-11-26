@@ -1,0 +1,3 @@
+# Allow everything to be crawled except Cloudflare's /cdn-cgi/
+User-agent: *
+Disallow: /cdn-cgi/
