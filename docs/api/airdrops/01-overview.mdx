@@ -1,0 +1,57 @@
+---
+id: "overview"
+sidebar_position: 1
+title: "Overview"
+---
+
+import LinkPreview from "@site/src/components/LinkPreview";
+
+# Sablier Airdrops
+
+Sablier's [Lockup](/concepts/lockup/overview) streams are used for the [Vesting](/apps/features/vesting) and (part of)
+the [Airdrops](/apps/features/airdrops) components of the Sablier Interfaces. The Airdrops component is supported by our
+[Merkle](/concepts/lockup/airstreams) utilities and focuses on the functionality of the Merkle Factory peripheries.
+
+Airdrops-native functionality is powered by:
+
+- The `@sablier/subgraphs/apps/merkle` subgraph
+- The `@sablier/subgraphs/apps/merkle-envio` indexer
+- The `@sablier/merkle-api` sdk
+
+For the Lockup-native functionality, please check the dedicated [documentation](/api/lockup/overview).
+
+:::info
+
+[Airstreamed](/apps/features/airdrops) airdrops will create a Lockup stream once a claim is made.
+
+:::
+
+<LinkPreview
+  href="https://github.com/sablier-labs/subgraphs"
+  icon="github"
+  subtitle="@sablier-labs/subgraphs"
+  title="Sablier Subgraphs"
+/>
+
+<LinkPreview
+  href="https://github.com/sablier-labs/merkle-api"
+  icon="github"
+  subtitle="@sablier-labs/merkle-api"
+  title="Sablier SDK: Merkle API"
+/>
+
+## What are Airdrops / Airstreams?
+
+**Airdrops** are large-scale campaigns developed to aid with token distribution towards millions of users. They rely on
+**merkle trees** to efficiently store eligibility details.
+
+Extending the classic instant airdrop, Sablier engineered Airstreams, a way to reward users with streams which vest
+rewards over time, instead of unlocking a lump-sum of assets.
+
+The first step before diving into this guide is to become familiar with the [concepts](/concepts/lockup/airstreams).
+
+#### Naming convention
+
+As per our endpoint [naming convention](/api/overview#endpoints--slugs), subgraph deployments of Sablier Airstreams and
+Instant Airdrops will follow the `sablier-v2-ms-*` (short for "merkle subgraph") structure (e.g. `sablier-v2-ms` for
+Mainnet, `sablier-v2-ms-base` for Base).
