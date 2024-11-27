@@ -197,7 +197,7 @@ const config: Config = {
       ],
       style: "dark",
     },
-    image: "img/open-graph.webp",
+    image: "img/open-graph.png",
     mermaid: {
       theme: { light: "neutral", dark: "dark" },
     },
