@@ -100,7 +100,7 @@ flowchart LR;
 
 ## Withdraw Multiple
 
-Anybody can withdraw assets from multiple streams to the recipients of each stream.
+Anybody can withdraw tokens from multiple streams to the recipients of each stream.
 
 ```mermaid
 flowchart LR;
@@ -121,7 +121,7 @@ flowchart LR;
 
 ## Withdraw to Any Address
 
-The assets in a stream can be withdrawn to any address only by the recipient or an approved third party.
+The tokens in a stream can be withdrawn to any address only by the recipient or an approved third party.
 
 ```mermaid
 flowchart LR;
@@ -138,7 +138,7 @@ flowchart LR;
 
 ## Withdraw to Recipient
 
-The assets in a stream can be withdrawn to the recipient by anyone including the sender, recipient, or an approved third
+The tokens in a stream can be withdrawn to the recipient by anyone including the sender, recipient, or an approved third
 party.
 
 ```mermaid
