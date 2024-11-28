@@ -56,11 +56,13 @@ A snapshot is an event during which snapshot debt and snapshot time of a Flow st
 the debt accumulated since the previous snapshot. The UNIX timestamp at which snapshot debt is updated is called
 **Snapshot time**.
 
-At snapshot, the following calculations are taking place:
+At snapshot, the following operations are taking place:
 
 ```math
 \text{snapshot debt} = \text{previous snapshot debt} + \underbrace{
 rps \cdot (\text{block.timestamp} - \text{snapshot time})}_\text{ongoing debt}
+\\
+\\
 \text{snapshot time} = \text{block.timestamp}
 ```
 

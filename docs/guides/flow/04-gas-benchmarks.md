@@ -4,7 +4,7 @@ sidebar_position: 4
 title: "Gas Benchmarks"
 ---
 
-The gas usage of the FLow Protocol is not deterministic and varies by user. Calls to third-party contracts, such as
+The gas usage of the Flow Protocol is not deterministic and varies by user. Calls to third-party contracts, such as
 ERC-20 tokens, may use an arbitrary amount of gas. The values in the table below are rough estimations - you shouldn't
 take them for granted.
 
