@@ -78,7 +78,7 @@ The folder structure should be intuitive:
 - `script` is where you'll write scripts to perform actions like deploying contracts (you guessed it, in Solidity)
 - `foundry.toml` is where you can configure your Foundry settings, which we will leave as is in this guide
 
-Let's install the FLow Node.js packages using Bun:
+Let's install the Flow Node.js packages using Bun:
 
 ```shell
 $ bun add @sablier/flow
@@ -126,7 +126,7 @@ Compiler run successful
 
 :::info
 
-The minimum Solidity version supported by the Flow contracts is v0.8.13.
+The minimum Solidity version supported by the Flow contracts is v0.8.22.
 
 :::
 

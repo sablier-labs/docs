@@ -51,7 +51,7 @@ di0{ }
 di1{ }
 res_00([0 ])
 res_01([0 ])
-res_rca(["rps * elt"])
+res_rca(["rps &sdot; elt"])
 
 rca --> di0
 di0 -- "rps > 0" --> di1
