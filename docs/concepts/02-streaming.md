@@ -4,7 +4,7 @@ sidebar_position: 2
 title: "Streaming"
 ---
 
-Asset streaming means the ability to make continuous, real-time payments on a per-second basis. This novel approach to
+Token streaming means the ability to make continuous, real-time payments on a per-second basis. This novel approach to
 making payments is the core concept of Sablier.
 
 ## Brief history
@@ -27,7 +27,7 @@ In 2024, Sablier protocol got renamed to Lockup when Flow was introduced.
 ## What are the benefits?
 
 Conventional lump-sum payments come with inherent challenges such as the need for trust between parties, slow processing
-times, and susceptibility to errors. Asset streaming, or continuous by-the-second payments, addresses these issues and
+times, and susceptibility to errors. Token streaming, or continuous by-the-second payments, addresses these issues and
 offers additional benefits (see [Use Cases](/concepts/use-cases)).
 
 First, streaming involves a significantly smaller degree of trust compared to lump-sum payments, as it eliminates the

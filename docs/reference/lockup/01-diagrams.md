@@ -24,7 +24,7 @@ classDiagram
     5. wasCanceled
   }
   class slot1 {
-    1. asset
+    1. token
     2. isDepleted
     3. isStream
     4. isTransferable
