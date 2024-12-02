@@ -19,15 +19,15 @@ The following gas benchmarks are generated using a 6-decimal token.
 
 | Function                      | Gas Usage |
 | ----------------------------- | --------- |
-| `adjustRatePerSecond`         | 44171     |
-| `create`                      | 113681    |
-| `deposit`                     | 32975     |
-| `depositViaBroker`            | 22732     |
-| `pause`                       | 7522      |
-| `refund`                      | 11939     |
-| `restart`                     | 7036      |
-| `void (solvent stream)`       | 10060     |
-| `void (insolvent stream)`     | 37460     |
-| `withdraw (insolvent stream)` | 57688     |
-| `withdraw (solvent stream)`   | 38156     |
-| `withdrawMax`                 | 51988     |
+| `adjustRatePerSecond`         | 44,171    |
+| `create`                      | 113,681   |
+| `deposit`                     | 32,975    |
+| `depositViaBroker`            | 22,732    |
+| `pause`                       | 7,522     |
+| `refund`                      | 11,939    |
+| `restart`                     | 7,036     |
+| `void (solvent stream)`       | 10,060    |
+| `void (insolvent stream)`     | 37,460    |
+| `withdraw (insolvent stream)` | 57,688    |
+| `withdraw (solvent stream)`   | 38,156    |
+| `withdrawMax`                 | 51,988    |

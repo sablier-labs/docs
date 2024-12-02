@@ -4,7 +4,7 @@ sidebar_position: 4
 title: "Queries"
 ---
 
-Building on top of the [entity structure](/api/lockup/the-graph/structure) defined earlier, here are some common GraphQL
+Building on top of the [entity structure](/api/flow/the-graph/structure) defined earlier, here are some common GraphQL
 queries for fetching data from the Sablier subgraph.
 
 ### Recent streams
@@ -44,27 +44,16 @@ query getStreams($first: Int!, $subgraphId: numeric!) {
 }
 ```
 
-### Streams by sender (with support for the old V2.0)
+### Streams by sender
 
-To support both [proxy senders](/api/lockup/the-graph/structure) (case 3) and
-[native senders](/api/lockup/the-graph/structure) (case 2) we query for:
-
-- streams where the connected account is the native sender
-- streams where the connected account is the proxender - the owner of the proxy labeled as a sender
-
-This query includes pagination.
-
-```graphql title="The next streams created by an address (natively or through a proxy)"
+```graphql title="The next streams created by an address"
 streams(
   first: $first
   skip: $skip
   orderBy: $subgraphId
   orderDirection: desc
   where: {
-    or: [
-      { and: [{ sender: $sender }, { subgraphId_lt: $subgraphId }] }
-      { and: [{ proxender: $sender }, { subgraphId_lt: $subgraphId }] }
-    ]
+    and: [{ sender: $sender }, { subgraphId_lt: $subgraphId }]
   }
 ) {
   id
@@ -75,12 +64,12 @@ streams(
 
 ### Streams by sender or recipient
 
-To show all streams that have an address marked as a sender (all cases) or a recipient, extend the example above to
-account for the recipient aspect.
+To show all streams that have an address marked as a sender or a recipient, extend the example above to account for the
+recipient aspect.
 
 This query includes pagination.
 
-```graphql title="The next streams related to an address, as a sender/proxender or recipient"
+```graphql title="The next streams related to an address, as a sender or recipient"
 streams(
   first: $first
   skip: $skip
@@ -89,7 +78,6 @@ streams(
   where: {
     or: [
       { and: [{ sender: $sender }, { subgraphId_lt: $subgraphId }] }
-      { and: [{ proxender: $sender }, { subgraphId_lt: $subgraphId }] }
       { and: [{ recipient: $recipient }, { subgraphId_lt: $subgraphId }] }
     ]
   }
@@ -117,13 +105,6 @@ where: {
     {
       and: [
         { sender: $sender }
-        { id_in: $streamIds }
-        { subgraphId_lt: $subgraphId }
-      ]
-    }
-    {
-      and: [
-        { proxender: $sender }
         { id_in: $streamIds }
         { subgraphId_lt: $subgraphId }
       ]
