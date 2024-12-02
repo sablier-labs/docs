@@ -11,7 +11,7 @@ queries for fetching data from the Sablier subgraph.
 
 ```graphql title="The 10 most recent streams"
 query getStreams {
-  stream(limit: 10, order_by: { subgraphId: desc }) {
+  Stream(limit: 10, distinct_on: [subgraphId], order_by: { subgraphId: desc }) {
     id
     alias
     category
@@ -32,7 +32,7 @@ This query includes pagination.
 
 ```graphql title="The next streams indexed before the last seen subgraphId"
 query getStreams($first: Int!, $subgraphId: numeric!) {
-  streams(
+  Stream(
     limit: $first
     distinct_on: [subgraphId]
     order_by: { subgraphId: desc }
@@ -164,7 +164,7 @@ Action(
   limit: 100
   distinct_on: [subgraphId]
   order_by: { subgraphId: desc }
-  where: { stream: {_eq: $streamId} }
+  where: { stream_id: {_eq: $streamId} }
 ) {
   id
   category

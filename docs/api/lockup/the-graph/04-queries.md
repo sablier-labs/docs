@@ -54,22 +54,6 @@ To support both [proxy senders](/api/lockup/the-graph/structure) (case 3) and
 
 This query includes pagination.
 
-```graphql title="The next streams indexed before the last seen subgraphId"
-query getStreams($first: Int!, $skip: Int!, $subgraphId: BigInt!) {
-  streams(
-    first: $first
-    skip: $skip
-    orderBy: $subgraphId
-    orderDirection: desc
-    where: { subgraphId_lt: $subgraphId }
-  ) {
-    id
-    alias
-    category
-  }
-}
-```
-
 ```graphql title="The next streams created by an address (natively or through a proxy)"
 streams(
   first: $first
