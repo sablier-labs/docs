@@ -25,10 +25,10 @@ For a deeper dive into the protocol specifications, read through the [technical 
 
 # Versioning
 
-Starting with version 2.0.0, the product now uses a unified versioning system across releases and npm packages. Prior to
-this change, product releases followed a separate versioning scheme (e.g. V2.0, V2.1, V2.2), while the npm package used
-a semantic versioning scheme (e.g. v1.0.2, v1.1.2, v1.2.0). From v2.0.0 onward, the versioning has been standardized to
-a single system for consistency across protocol releases and npm packages.
+The product now uses a unified versioning system across releases and npm packages. Prior to this change, product
+releases followed a separate versioning scheme (e.g. V2.0, V2.1, V2.2), while the npm package used a semantic versioning
+scheme (e.g. v1.0.2, v1.1.2, v1.2.0). From now onwards, the versioning has been standardized to a single system for
+consistency across protocol releases and npm packages.
 
 # Resources
 

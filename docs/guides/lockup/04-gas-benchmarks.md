@@ -5,8 +5,8 @@ title: "Gas Benchmarks"
 ---
 
 The gas usage of the Lockup Protocol is not deterministic and varies by user. Calls to third-party contracts, such as
-ERC-20 tokens, may use an arbitrary amount of gas. The values in the table below are rough estimations - you shouldn't
-take them for granted.
+ERC-20 tokens, may use an arbitrary amount of gas. The values in the table below are rough estimations on Ethereum
+mainnet - you shouldn't take them for granted. The gas usage may vary depending on the network.
 
 ## Lockup Core
 
