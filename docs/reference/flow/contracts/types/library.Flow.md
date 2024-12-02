@@ -1,6 +1,6 @@
 # Flow
 
-[Git Source](https://github.com/sablier-labs/flow/blob/b01cc2daf6493ae792a858d6179facc6250403e2/src/types/DataTypes.sol)
+[Git Source](https://github.com/sablier-labs/flow/blob/1090a29c0270daf46c6023cab5d4df76504abe34/src/types/DataTypes.sol)
 
 ## Structs
 
@@ -53,15 +53,15 @@ Explanations for the two types of streams:
 
 **Notes:**
 
-- STREAMING_SOLVENT Streaming stream when there is no uncovered debt.
+- value0: STREAMING_SOLVENT Streaming stream when there is no uncovered debt.
 
-- STREAMING_INSOLVENT Streaming stream when there is uncovered debt.
+- value1: STREAMING_INSOLVENT Streaming stream when there is uncovered debt.
 
-- PAUSED_SOLVENT Paused stream when there is no uncovered debt.
+- value2: PAUSED_SOLVENT Paused stream when there is no uncovered debt.
 
-- PAUSED_INSOLVENT Paused stream when there is uncovered debt.
+- value3: PAUSED_INSOLVENT Paused stream when there is uncovered debt.
 
-- VOIDED Paused stream with no uncovered debt and it cannot be restarted.
+- value4: VOIDED Paused stream with no uncovered debt and it cannot be restarted.
 
 ```solidity
 enum Status {

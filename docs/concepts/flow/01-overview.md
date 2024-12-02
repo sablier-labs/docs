@@ -61,8 +61,9 @@ At snapshot, the following operations are taking place:
 ```math
 \text{snapshot debt} = \text{previous snapshot debt} + \underbrace{
 rps \cdot (\text{block.timestamp} - \text{snapshot time})}_\text{ongoing debt}
-\\
-\\
+```
+
+```math
 \text{snapshot time} = \text{block.timestamp}
 ```
 

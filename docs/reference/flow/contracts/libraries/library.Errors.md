@@ -1,6 +1,6 @@
 # Errors
 
-[Git Source](https://github.com/sablier-labs/flow/blob/b01cc2daf6493ae792a858d6179facc6250403e2/src/libraries/Errors.sol)
+[Git Source](https://github.com/sablier-labs/flow/blob/1090a29c0270daf46c6023cab5d4df76504abe34/src/libraries/Errors.sol)
 
 Library with custom errors used across the Flow contract.
 
@@ -54,20 +54,20 @@ Thrown when trying to create a stream with a zero deposit amount.
 error SablierFlow_DepositAmountZero(uint256 streamId);
 ```
 
-### SablierFlow_InvalidTokenDecimals
-
-Thrown when trying to create a stream with an token with no decimals.
-
-```solidity
-error SablierFlow_InvalidTokenDecimals(address token);
-```
-
 ### SablierFlow_InvalidCalculation
 
 Thrown when an unexpected error occurs during the calculation of an amount.
 
 ```solidity
 error SablierFlow_InvalidCalculation(uint256 streamId, uint128 availableAmount, uint128 amount);
+```
+
+### SablierFlow_InvalidTokenDecimals
+
+Thrown when trying to create a stream with an token with no decimals.
+
+```solidity
+error SablierFlow_InvalidTokenDecimals(address token);
 ```
 
 ### SablierFlow_NotStreamRecipient
@@ -132,6 +132,14 @@ Thrown when trying to create a stream with the sender as the zero address.
 
 ```solidity
 error SablierFlow_SenderZeroAddress();
+```
+
+### SablierFlow_StreamBalanceZero
+
+Thrown when trying to get depletion time of a stream with zero balance.
+
+```solidity
+error SablierFlow_StreamBalanceZero(uint256 streamId);
 ```
 
 ### SablierFlow_StreamPaused

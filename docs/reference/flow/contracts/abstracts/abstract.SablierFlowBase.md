@@ -1,6 +1,6 @@
 # SablierFlowBase
 
-[Git Source](https://github.com/sablier-labs/flow/blob/b01cc2daf6493ae792a858d6179facc6250403e2/src/abstracts/SablierFlowBase.sol)
+[Git Source](https://github.com/sablier-labs/flow/blob/1090a29c0270daf46c6023cab5d4df76504abe34/src/abstracts/SablierFlowBase.sol)
 
 **Inherits:** [Adminable](/docs/reference/flow/contracts/abstracts/abstract.Adminable.md),
 [ISablierFlowBase](/docs/reference/flow/contracts/interfaces/interface.ISablierFlowBase.md), ERC721
@@ -102,6 +102,8 @@ modifier notPaused(uint256 streamId);
 ```
 
 ### notVoided
+
+_Checks that `streamId` does not reference a voided stream._
 
 ```solidity
 modifier notVoided(uint256 streamId);
@@ -427,6 +429,14 @@ function setProtocolFee(IERC20 token, UD60x18 newProtocolFee) external override 
 | ---------------- | --------- | ----------------------------------------------------------------------------- |
 | `token`          | `IERC20`  | The contract address of the ERC-20 token to update the fee for.               |
 | `newProtocolFee` | `UD60x18` | The new protocol fee, denoted as a fixed-point percentage where 1e18 is 100%. |
+
+### supportsInterface
+
+_See {IERC165-supportsInterface}._
+
+```solidity
+function supportsInterface(bytes4 interfaceId) public view override(IERC165, ERC721) returns (bool);
+```
 
 ### \_isCallerStreamRecipientOrApproved
 

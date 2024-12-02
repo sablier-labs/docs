@@ -4,7 +4,7 @@ sidebar_position: 1
 
 # SablierFlow
 
-[Git Source](https://github.com/sablier-labs/flow/blob/b01cc2daf6493ae792a858d6179facc6250403e2/src/SablierFlow.sol)
+[Git Source](https://github.com/sablier-labs/flow/blob/1090a29c0270daf46c6023cab5d4df76504abe34/src/SablierFlow.sol)
 
 **Inherits:** [Batch](/docs/reference/flow/contracts/abstracts/abstract.Batch.md),
 [NoDelegateCall](/docs/reference/flow/contracts/abstracts/abstract.NoDelegateCall.md),
@@ -56,7 +56,10 @@ function coveredDebtOf(uint256 streamId) external view override notNull(streamId
 Returns the time at which the total debt exceeds stream balance. If the total debt is less than or equal to stream
 balance, it returns 0.
 
-_Reverts if `streamId` references a paused or a null stream._
+Reverts on the following conditions:
+
+- If `streamId` references a paused or a null stream.
+- If stream balance is zero.
 
 ```solidity
 function depletionTimeOf(uint256 streamId)
@@ -199,7 +202,7 @@ Changes the stream's rate per second.
 
 Emits {AdjustFlowStream} and {MetadataUpdate} events. Notes:
 
-- Performs a debt snapshot. Requirements:
+- It updates snapshot debt and snapshot time. Requirements:
 - Must not be delegate called.
 - `streamId` must not reference a null or a paused stream.
 - `msg.sender` must be the stream's sender.
@@ -420,8 +423,7 @@ Pauses the stream.
 
 Emits {PauseFlowStream} event. Notes:
 
-- It does not set the snapshot time to the current block timestamp.
-- It updates the snapshot debt by adding up ongoing debt.
+- It updates snapshot debt and snapshot time.
 - It sets the rate per second to zero. Requirements:
 - Must not be delegate called.
 - `streamId` must not reference a null or an already paused stream.
@@ -505,14 +507,37 @@ function refundAndPause(
 | `streamId` | `uint256` | The ID of the stream to refund from and then pause. |
 | `amount`   | `uint128` | The amount to refund, denoted in token's decimals.  |
 
+### refundMax
+
+Refunds the entire refundable amount of tokens from the stream to the sender's address.
+
+Emits {Transfer} and {RefundFromFlowStream} events. Requirements:
+
+- Refer to the requirements in {refund}.
+
+```solidity
+function refundMax(uint256 streamId)
+    external
+    override
+    noDelegateCall
+    notNull(streamId)
+    onlySender(streamId)
+    updateMetadata(streamId);
+```
+
+**Parameters**
+
+| Name       | Type      | Description                          |
+| ---------- | --------- | ------------------------------------ |
+| `streamId` | `uint256` | The ID of the stream to refund from. |
+
 ### restart
 
 Restarts the stream with the provided rate per second.
 
-Emits {RestartFlowStream} event.
+Emits {RestartFlowStream} event. Notes:
 
-- This function updates stream's `snapshotTime` to the current block timestamp. Notes:
-- It sets the snapshot time to the current block timestamp. Requirements:
+- It updates snapshot debt and snapshot time. Requirements:
 - Must not be delegate called.
 - `streamId` must not reference a null, or a voided stream.
 - `msg.sender` must be the stream's sender.
