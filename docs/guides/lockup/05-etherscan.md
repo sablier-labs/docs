@@ -32,13 +32,13 @@ this tutorial, we will create a **LockupLinear** stream on Sepolia.
 Once you find the right contract, click on the address to access its explorer's page. Click on the "Contract" tab, and
 then on the "Write Contract" sub-tab.
 
-![Etherscan 01](/img/etherscan-tutorial/01.png)
+![Etherscan 01](/img/etherscan-tutorial/01.webp)
 
-![Etherscan 02](/img/etherscan-tutorial/02.png)
+![Etherscan 02](/img/etherscan-tutorial/02.webp)
 
 You can now connect your wallet to the interface by clicking on "Connect to Web3".
 
-![Etherscan 03](/img/etherscan-tutorial/03.png)
+![Etherscan 03](/img/etherscan-tutorial/03.webp)
 
 ### Step 2: Fill in parameters
 
@@ -60,7 +60,7 @@ possible if you specify durations instead of the timestamps.
 
 Open the **"createWithTimestamps"** method, and start filling in the stream details:
 
-![Etherscan 04](/img/etherscan-tutorial/04.png)
+![Etherscan 04](/img/etherscan-tutorial/04.webp)
 
 ```json
 {
@@ -110,7 +110,7 @@ As an example, in the screenshot below, we are providing input parameters for
 contract. As you can see, since `batch` requires a tuple and does not break it down into separate fields, we had to use
 the above method.
 
-![Etherscan 08](/img/etherscan-tutorial/08.png)
+![Etherscan 08](/img/etherscan-tutorial/08.webp)
 
 #### Sender
 
@@ -192,7 +192,7 @@ Once the data is filled, and after you double-checked, click on the "Write" butt
 wallet. That's all! You are done. You can now head over to the [Sablier Interface](https://app.sablier.com), connect
 your wallet, and your stream should appear like this:
 
-![Etherscan 05](/img/etherscan-tutorial/05.png)
+![Etherscan 05](/img/etherscan-tutorial/05.webp)
 
 #### How about `createWithDurations`?
 
@@ -229,7 +229,7 @@ read more about this advanced feature [here](/reference/lockup/access-control#ov
 
 :::
 
-![Etherscan 06](/img/etherscan-tutorial/06.png)
+![Etherscan 06](/img/etherscan-tutorial/06.webp)
 
 ### Step 1: Go to contract page
 
@@ -239,19 +239,19 @@ with.
 Once you find the right contract, click on the address to access its explorer's page. Click on the "Contract" tab, and
 then on the "Write Contract" sub-tab.
 
-![Etherscan 01](/img/etherscan-tutorial/01.png)
+![Etherscan 01](/img/etherscan-tutorial/01.webp)
 
-![Etherscan 02](/img/etherscan-tutorial/02.png)
+![Etherscan 02](/img/etherscan-tutorial/02.webp)
 
 You can now connect your wallet to the interface by clicking on "Connect to Web3".
 
-![Etherscan 03](/img/etherscan-tutorial/03.png)
+![Etherscan 03](/img/etherscan-tutorial/03.webp)
 
 ### Step 2: Fill in parameters
 
 Head over to the **`withdraw`** method, and fill in the data.
 
-![Etherscan 07](/img/etherscan-tutorial/07.png)
+![Etherscan 07](/img/etherscan-tutorial/07.webp)
 
 ```json
 {
@@ -300,7 +300,7 @@ page on Etherscan (in this example, we're using Sepolia): `https://sepolia.ether
 To get the address of an asset in the [Sablier Interface](/apps/features/overview), you can click on its name in the
 token list dialog or find an existing stream with that token and click on the icon inside the stream circle.
 
-![Etherscan 09](/img/etherscan-tutorial/09.png) ![Etherscan 10](/img/etherscan-tutorial/10.png)
+![Etherscan 09](/img/etherscan-tutorial/09.webp) ![Etherscan 10](/img/etherscan-tutorial/10.webp)
 
 :::
 
@@ -340,7 +340,7 @@ the stream.
 }
 ```
 
-![Etherscan 11](/img/etherscan-tutorial/11.png)
+![Etherscan 11](/img/etherscan-tutorial/11.webp)
 
 Before clicking on the "Write" button to submit your allowance update, make sure to connect your wallet to the interface
 by clicking on "Connect to Web3".

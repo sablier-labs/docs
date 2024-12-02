@@ -23,6 +23,7 @@ The table below offers a quick overview of the access control for each action th
 
 | Action                  | Sender | Recipient / Approved third party | Public |
 | ----------------------- | :----: | :------------------------------: | :----: |
+| AdjustRatePerSecond     |   ✅   |                ❌                |   ❌   |
 | Deposit                 |   ✅   |                ✅                |   ✅   |
 | Pause                   |   ✅   |                ❌                |   ❌   |
 | Refund                  |   ✅   |                ❌                |   ❌   |

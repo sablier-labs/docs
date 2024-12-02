@@ -18,9 +18,9 @@ stored in Lockup streams.
 The following strategies will read the various amounts that can be found in Lockup streams. The voting power will be
 calculated based on some sub-strategies called `policies`.
 
-| Snapshot Playground                                  |
-| :--------------------------------------------------- |
-| ![Snapshot Playground](/img/snapshot/playground.png) |
+| Snapshot Playground                                   |
+| :---------------------------------------------------- |
+| ![Snapshot Playground](/img/snapshot/playground.webp) |
 
 ### Example Setup
 

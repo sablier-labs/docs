@@ -279,18 +279,18 @@ const config: Config = {
             },
             {
               label: "Lockup Integration Template",
-              href: "https://github.com/sablier-labs/sablier-v2-integration-template",
+              href: "https://github.com/sablier-labs/lockup-integration-template",
             },
             {
-              label: "Subgraph",
-              href: "https://github.com/sablier-labs/subgraph",
+              label: "Subgraphs",
+              href: "https://github.com/sablier-labs/subgraphs",
             },
           ],
         },
       ],
       style: "dark",
     },
-    image: "img/open-graph.png",
+    image: "img/open-graph.webp",
     mermaid: {
       theme: { light: "neutral", dark: "dark" },
     },

@@ -148,6 +148,24 @@ Sablier repositories on Github.
 | SablierV2BatchLockup         | [0x70998557980CB6E8E63c46810081262B6c343051](https://bscscan.com/address/0x70998557980CB6E8E63c46810081262B6c343051) | [periphery-v1.2.0](https://github.com/sablier-labs/v2-deployments/tree/main/periphery/v1.2.0) |
 | SablierV2MerkleLockupFactory | [0x96Aa12809CAC29Bba4944fEca1dFDC8e1704e6c1](https://bscscan.com/address/0x96Aa12809CAC29Bba4944fEca1dFDC8e1704e6c1) | [periphery-v1.2.0](https://github.com/sablier-labs/v2-deployments/tree/main/periphery/v1.2.0) |
 
+### Core Dao
+
+#### Core
+
+| Contract                | Address                                                                                                                   | Deployment                                                                          |
+| :---------------------- | :------------------------------------------------------------------------------------------------------------------------ | :---------------------------------------------------------------------------------- |
+| SablierV2LockupDynamic  | [0xf0a7F2cCE911c298B5CB8106Db19EF1D00230710](https://scan.coredao.org/address/0xf0a7F2cCE911c298B5CB8106Db19EF1D00230710) | [core-v1.2.0](https://github.com/sablier-labs/v2-deployments/tree/main/core/v1.2.0) |
+| SablierV2LockupLinear   | [0x98Fe0d8b2c2c05d9C6a9e635f59474Aaa0000120](https://scan.coredao.org/address/0x98Fe0d8b2c2c05d9C6a9e635f59474Aaa0000120) | [core-v1.2.0](https://github.com/sablier-labs/v2-deployments/tree/main/core/v1.2.0) |
+| SablierV2LockupTranched | [0x9C99EF88399bC1c1188399B39E7Cc667D78210ea](https://scan.coredao.org/address/0x9C99EF88399bC1c1188399B39E7Cc667D78210ea) | [core-v1.2.0](https://github.com/sablier-labs/v2-deployments/tree/main/core/v1.2.0) |
+| SablierV2NFTDescriptor  | [0x64C734B2F1704822D8E69CAF230aE8d2eC18AA3e](https://scan.coredao.org/address/0x64C734B2F1704822D8E69CAF230aE8d2eC18AA3e) | [core-v1.2.0](https://github.com/sablier-labs/v2-deployments/tree/main/core/v1.2.0) |
+
+#### Periphery
+
+| Contract                     | Address                                                                                                                   | Deployment                                                                                    |
+| :--------------------------- | :------------------------------------------------------------------------------------------------------------------------ | :-------------------------------------------------------------------------------------------- |
+| SablierV2BatchLockup         | [0xdE21BBFf718723E9069d8528d6Bb26c2971D58a7](https://scan.coredao.org/address/0xdE21BBFf718723E9069d8528d6Bb26c2971D58a7) | [periphery-v1.2.0](https://github.com/sablier-labs/v2-deployments/tree/main/periphery/v1.2.0) |
+| SablierV2MerkleLockupFactory | [0x074CC814a8114126c505F5eecFC82A400B39cA03](https://scan.coredao.org/address/0x074CC814a8114126c505F5eecFC82A400B39cA03) | [periphery-v1.2.0](https://github.com/sablier-labs/v2-deployments/tree/main/periphery/v1.2.0) |
+
 ### Gnosis
 
 #### Core
@@ -327,6 +345,24 @@ Sablier repositories on Github.
 | :--------------------------- | :---------------------------------------------------------------------------------------------------------------------- | :-------------------------------------------------------------------------------------------- |
 | SablierV2BatchLockup         | [0x4B8BF9cD3274517609e7Fe905740fa151C9aa711](https://scrollscan.com/address/0x4B8BF9cD3274517609e7Fe905740fa151C9aa711) | [periphery-v1.2.0](https://github.com/sablier-labs/v2-deployments/tree/main/periphery/v1.2.0) |
 | SablierV2MerkleLockupFactory | [0x344afe8ad5dBA3d55870dc398e0F53B635B2ed0d](https://scrollscan.com/address/0x344afe8ad5dBA3d55870dc398e0F53B635B2ed0d) | [periphery-v1.2.0](https://github.com/sablier-labs/v2-deployments/tree/main/periphery/v1.2.0) |
+
+### Superseed
+
+#### Core
+
+| Contract                | Address                                                                                                                         | Deployment                                                                          |
+| :---------------------- | :------------------------------------------------------------------------------------------------------------------------------ | :---------------------------------------------------------------------------------- |
+| SablierV2LockupDynamic  | [0x1fA500262b352d821B4e1c933A20f2242B45383d](https://explorer.superseed.xyz/address/0x1fA500262b352d821B4e1c933A20f2242B45383d) | [core-v1.2.0](https://github.com/sablier-labs/v2-deployments/tree/main/core/v1.2.0) |
+| SablierV2LockupLinear   | [0x251FC799344151026d19b959B8f3667416d56B88](https://explorer.superseed.xyz/address/0x251FC799344151026d19b959B8f3667416d56B88) | [core-v1.2.0](https://github.com/sablier-labs/v2-deployments/tree/main/core/v1.2.0) |
+| SablierV2LockupTranched | [0x91211E1760280d3f7dF2182ce4D1Fd6A1735C202](https://explorer.superseed.xyz/address/0x91211E1760280d3f7dF2182ce4D1Fd6A1735C202) | [core-v1.2.0](https://github.com/sablier-labs/v2-deployments/tree/main/core/v1.2.0) |
+| SablierV2NFTDescriptor  | [0x0a6C2E6B61cf05800F9aA91494480440843d6c3c](https://explorer.superseed.xyz/address/0x0a6C2E6B61cf05800F9aA91494480440843d6c3c) | [core-v1.2.0](https://github.com/sablier-labs/v2-deployments/tree/main/core/v1.2.0) |
+
+#### Periphery
+
+| Contract                     | Address                                                                                                                         | Deployment                                                                                    |
+| :--------------------------- | :------------------------------------------------------------------------------------------------------------------------------ | :-------------------------------------------------------------------------------------------- |
+| SablierV2BatchLockup         | [0xc4DE6f667435d5Ce0150e08BcEc9722C9017e90b](https://explorer.superseed.xyz/address/0xc4DE6f667435d5Ce0150e08BcEc9722C9017e90b) | [periphery-v1.2.0](https://github.com/sablier-labs/v2-deployments/tree/main/periphery/v1.2.0) |
+| SablierV2MerkleLockupFactory | [0xF60bEADEfbeb98C927E13C4165BCa7D85Ba32cB2](https://explorer.superseed.xyz/address/0xF60bEADEfbeb98C927E13C4165BCa7D85Ba32cB2) | [periphery-v1.2.0](https://github.com/sablier-labs/v2-deployments/tree/main/periphery/v1.2.0) |
 
 ### Taiko Mainnet
 

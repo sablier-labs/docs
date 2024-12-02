@@ -9,4 +9,4 @@ async function formatGasBenchmark(filePath) {
 }
 
 formatGasBenchmark("docs/guides/lockup/04-gas-benchmarks.md");
-formatGasBenchmark('docs/guides/flow/04-gas-benchmarks.md');
+formatGasBenchmark("docs/guides/flow/04-gas-benchmarks.md");
