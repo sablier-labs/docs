@@ -16,7 +16,7 @@ Technically, a segment is a [struct](/reference/lockup/core/types/library.Lockup
 
 | Field     | Type      | Description                                                                                    |
 | :-------- | :-------- | :--------------------------------------------------------------------------------------------- |
-| Amount    | `uint128` | The amount of assets to be streamed in this segment, denoted in units of the asset's decimals. |
+| Amount    | `uint128` | The amount of tokens to be streamed in this segment, denoted in units of the token's decimals. |
 | Exponent  | `UD2x18`  | The exponent of this segment, denoted as a fixed-point number.                                 |
 | Timestamp | `uint40`  | The Unix timestamp indicating this segment's end.                                              |
 

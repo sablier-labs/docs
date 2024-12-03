@@ -10,11 +10,11 @@ A Lockup stream can have one of five distinct statuses:
 
 | Status    | Description                                                       |
 | --------- | ----------------------------------------------------------------- |
-| Pending   | Stream created but not started; assets are in a pending state.    |
-| Streaming | Active stream where assets are currently being streamed.          |
-| Settled   | All assets have been streamed; recipient is due to withdraw them. |
-| Canceled  | Canceled stream; remaining assets await recipient's withdrawal.   |
-| Depleted  | Depleted stream; all assets have been withdrawn and/or refunded.  |
+| Pending   | Stream created but not started; tokens are in a pending state.    |
+| Streaming | Active stream where tokens are currently being streamed.          |
+| Settled   | All tokens have been streamed; recipient is due to withdraw them. |
+| Canceled  | Canceled stream; remaining tokens await recipient's withdrawal.   |
+| Depleted  | Depleted stream; all tokens have been withdrawn and/or refunded.  |
 
 ## Temperature
 
@@ -62,7 +62,7 @@ A: An id that does not reference a created stream. Trying to interact with a nul
 ### Q: What to do with a stream status?
 
 A: Knowing the status of a stream can inform your decision making. For example, if a stream is canceled, you know that
-you can't cancel it again. Or, if a stream is depleted, you know that you can't withdraw any more assets from it.
+you can't cancel it again. Or, if a stream is depleted, you know that you can't withdraw any more tokens from it.
 
 ### Q: How can a stream enter the `SETTLED` status directly?
 

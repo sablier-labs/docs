@@ -37,7 +37,7 @@ promised. By streaming money to the worker instead, your potential loss is limit
 short term. If the remote worker disappears, you can simply cancel the stream and reclaim any unstreamed funds.
 
 Secondly, money streaming is substantially faster than lump-sum payments for evident reasons. Streaming transactions
-settle in real-time, with small amounts of assets being released from the sender to the recipient every second. This
+settle in real-time, with small amounts of tokens being released from the sender to the recipient every second. This
 automates the payment process and ensures a continuous flow of funds.
 
 Lastly, streaming is more secure than lump-sum payments, because it makes it possible to correct errors. Suppose you

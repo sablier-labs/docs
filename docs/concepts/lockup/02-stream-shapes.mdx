@@ -32,8 +32,8 @@ The gas cost to create this shape is approximately _150,000_ on Mainnet. This ma
 
 ### Cliffs
 
-It is possible to attach a "cliff" to a Lockup Linear stream, which sets a cut-off point for releasing assets. Prior to
-the cliff, the recipient cannot withdraw any assets, but the stream continues to accrue them. After the cliff, the
+It is possible to attach a "cliff" to a Lockup Linear stream, which sets a cut-off point for releasing tokens. Prior to
+the cliff, the recipient cannot withdraw any tokens, but the stream continues to accrue them. After the cliff, the
 constant payment rate per second kicks in.
 
 <FunctionPlot
@@ -56,7 +56,7 @@ constant payment rate per second kicks in.
 
 This feature is especially useful for vesting ERC-20 tokens as it allows you to have, for example, a 1-year cliff, and
 then 3 additional years of linear streaming. If the stream is for an employee, you can make it cancellable so that if
-the employee leaves your company during the stream, you can cancel it and recover the assets that have not yet been
+the employee leaves your company during the stream, you can cancel it and recover the tokens that have not yet been
 streamed.
 
 :::info
@@ -293,7 +293,7 @@ multiple factors to consider.
 
 ### Unlock Monthly
 
-Unlock Monthly is a special case of Unlock in Steps where assets are unlocked on the same day every month, e.g. the 1st
+Unlock Monthly is a special case of Unlock in Steps where tokens are unlocked on the same day every month, e.g. the 1st
 of every month. This is suited for use cases like traditional monthly salaries or ESOPs plans.
 
 <FunctionPlot

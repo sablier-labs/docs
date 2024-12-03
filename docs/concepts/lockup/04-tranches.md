@@ -15,7 +15,7 @@ Technically, a tranche is a [struct](/reference/lockup/core/types/library.Lockup
 
 | Field     | Type      | Description                                                                                 |
 | :-------- | :-------- | :------------------------------------------------------------------------------------------ |
-| Amount    | `uint128` | The amount of assets to be unlocked in a tranche, denoted in units of the asset's decimals. |
+| Amount    | `uint128` | The amount of tokens to be unlocked in a tranche, denoted in units of the token's decimals. |
 | Timestamp | `uint40`  | The Unix timestamp indicating the tranche's end.                                            |
 
 The distribution function of a Lockup tranched stream:

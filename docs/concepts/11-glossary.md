@@ -8,11 +8,6 @@ title: "Glossary"
 
 A list of smart contract recipients that are authorized to be run by the Lockup protocol upon withdraw and cancel.
 
-## Asset
-
-Digital assets can exist in various forms, but the Sablier Protocols exclusively supports the streaming of ERC-20
-assets.
-
 The stream itself is represented as an NFT (ERC-721).
 
 ## Broker
@@ -26,7 +21,7 @@ The fees collected by the broker upon creating a stream for their users.
 
 ## Cliff
 
-The cut-off point for releasing assets. Prior to the cliff, the recipient cannot withdraw, though assets continue to
+The cut-off point for releasing tokens. Prior to the cliff, the recipient cannot withdraw, though tokens continue to
 accrue in the stream.
 
 ## DeFi
@@ -70,7 +65,7 @@ Gas is paid only when streams are created, canceled, transferred, or withdrawn f
 
 ## Lockup
 
-A term coined by us to refer to the requirement of locking up assets in order to create a stream.
+A term coined by us to refer to the requirement of locking up tokens in order to create a stream.
 
 ## Lockup Core
 
@@ -97,7 +92,7 @@ A Lockup stream with payments in discrete tranches.
 
 ## Monotonicity
 
-A protocol invariant that states that the total amount of assets released by the stream can only increase over time and
+A protocol invariant that states that the total amount of tokens released by the stream can only increase over time and
 never decrease.
 
 ## Protocol Admin
@@ -150,7 +145,7 @@ A stream can have one out of six possible statuses:
 A new financial primitive that permits by-the-second payments.
 
 Currently, Sablier offers two streaming protocols called Lockup and Flow. In Lockup, the creator has to lock up a
-specified amount of assets whereas in Flow protocol, creator is not required to lock up any amount of assets.
+specified amount of tokens whereas in Flow protocol, creator is not required to lock up any amount of tokens.
 
 ## Streaming
 
@@ -160,6 +155,11 @@ By-the-second payments.
 
 A timestamp is the time component of a stream. In Lockup Linear, it represents start time, cliff time and end time
 whereas in Lockup Dynamic and Lockup Tranched, it plays a crucial role in the calculation of streaming curves.
+
+## Token
+
+Digital tokens can exist in various forms, but the Sablier Protocols exclusively supports the streaming of ERC-20
+tokens.
 
 ## Tranche
 
