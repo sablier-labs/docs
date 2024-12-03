@@ -24,21 +24,26 @@ flowchart LR
     storage --> st
 ```
 
-## Token Balance Actions
+## Token Flows
 
 ```mermaid
-flowchart LR
-    erc_transfers[(ERC20 Transfer Actions)]
-    dep([Deposit - add])
-    ref([Refund - remove])
-    wtd([Withdraw - remove])
+sequenceDiagram
+  actor Sender
 
-    erc_transfers --> dep
-    erc_transfers --> ref
-    erc_transfers --> wtd
+  Sender ->> Flow: deposit()
+  activate Flow
+  Sender -->> Flow: Transfer tokens
+  deactivate Flow
+  Sender ->> Flow: refund()
+  activate Flow
+  Flow -->> Sender: Transfer tokens
+  deactivate Flow
+  Sender ->> Flow: withdraw()
+  activate Flow
+  Create actor Recipient
+  Flow -->> Recipient: Transfer tokens
+  deactivate Flow
 ```
-
-$~$
 
 ## Debts
 
@@ -46,7 +51,7 @@ $~$
 
 ```mermaid
 flowchart TD
-rca([Ongoing Debt - od])
+rca([Ongoing Debt])
 di0{ }
 di1{ }
 res_00([0 ])
@@ -60,12 +65,21 @@ di1 -- "now <= st" --> res_01
 di1 -- "now > st" --> res_rca
 ```
 
+### Total Debt
+
+```mermaid
+flowchart TD
+rca([Total Debt])
+di0{ }
+res_00([sd ])
+res_01(["sd + od"])
+
+rca --> di0
+di0 -- "PAUSED" --> res_00
+di0 -- "STREAMING" --> res_01
+```
+
 ### Uncovered Debt
-
-**Notes:** A non-zero uncovered debt implies:
-
-1. `bal < sd` when the status is `PAUSED`
-2. `bal < sd + od` when the status is `STREAMING`
 
 ```mermaid
 flowchart TD
@@ -85,11 +99,9 @@ flowchart TD
 flowchart TD
     di0{ }:::blue0
     di1{ }:::blue0
-    di2{ }:::blue0
     cd([Covered Debt - cd])
     res_0([0 ])
     res_bal([bal])
-    res_sd([sd])
     res_sum([td])
 
 
@@ -97,9 +109,7 @@ flowchart TD
     di0 -- "bal = 0" --> res_0
     di0 -- "bal > 0" --> di1
     di1 -- "ud > 0" --> res_bal
-    di1 -- "ud = 0" --> di2
-    di2 -- "paused" --> res_sd
-    di2 -- "streaming" --> res_sum
+    di1 -- "ud = 0" --> res_sum
 ```
 
 ### Refundable Amount

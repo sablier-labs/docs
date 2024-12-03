@@ -32,18 +32,34 @@ If the recipient contract is not on the allowlist, the hooks will not be execute
 
 :::
 
+### Cancel hook
+
 ```mermaid
-flowchart LR
-  S((Sender))
-  A((Anyone))
-  subgraph Core
-    L[SablierLockup]
+sequenceDiagram
+  actor Sender
+
+  Sender ->> SablierLockup: cancel()
+  SablierLockup -->> Recipient: onSablierLockupCancel()
+  Recipient -->> SablierLockup: return selector
+  SablierLockup -->> Sender: transfer unstreamed tokens
+  break if hook reverts
+    Recipient -->> SablierLockup: ❌ tx fail
   end
-  R((Recipient))
-  S -- "cancel" --> L
-  L -- "onSablierLockupCancel" --> R
-  A -- "withdraw" --> L
-  L -- "onSablierLockupWithdraw" --> R
+```
+
+### Withdraw hook
+
+```mermaid
+sequenceDiagram
+  actor Anyone
+
+  Anyone ->> SablierLockup: withdraw()
+  SablierLockup -->> Recipient: onSablierLockupWithdraw()
+  Recipient -->> SablierLockup: return selector
+  SablierLockup -->> Recipient: transfer streamed tokens
+  break if hook reverts
+    Recipient -->> SablierLockup: ❌ tx fail
+  end
 ```
 
 ## Next steps
