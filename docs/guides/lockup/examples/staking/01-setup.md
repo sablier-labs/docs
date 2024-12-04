@@ -68,4 +68,4 @@ in the constructor. The rewards will also be distributed in the same token.
 To focus on specific functionalities that enable staking support for streams, obvious functions such as
 `startStakingPeriod` have been omitted from this guide. However, for completeness, the full code can be found on the
 next page as well as in the
-[examples repo](https://github.com/sablier-labs/examples/blob/main/v2/core/StakeSablierNFT.sol).
+[examples repo](https://github.com/sablier-labs/examples/blob/feat/flow/lockup/core/StakeSablierNFT.sol).

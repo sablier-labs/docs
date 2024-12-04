@@ -109,7 +109,7 @@ Paste the following code into `src/StreamCreator.sol` (a detailed explanation of
 [here](/guides/lockup/examples/create-stream/lockup-linear)):
 
 ```solidity reference title="Lockup Linear Stream Creator"
-https://github.com/sablier-labs/examples/blob/main/v2/core/LockupLinearStreamCreator.sol
+https://github.com/sablier-labs/examples/blob/feat/flow/lockup/core/LockupLinearStreamCreator.sol
 ```
 
 Let's use Forge to compile this contract:
@@ -145,7 +145,7 @@ As a prerequisite, you will need an RPC that supports forking. A good solution f
 Once you have obtained your RPC, you can proceed to run the following test:
 
 ```solidity reference title="Stream Creator Test"
-https://github.com/sablier-labs/examples/blob/main/v2/core/LockupStreamCreator.t.sol
+https://github.com/sablier-labs/examples/blob/feat/flow/lockup/core/LockupStreamCreator.t.sol
 ```
 
 You can run the test using Forge:

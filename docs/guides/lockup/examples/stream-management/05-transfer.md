@@ -28,7 +28,7 @@ To transfer ownership of a stream, it is recommended to invoke the
 which withdraws all the unclaimed funds to the current recipient prior to transferring ownership to the new recipient:
 
 ```solidity reference title="Stream Management: Withdraw and Transfer Ownership"
-https://github.com/sablier-labs/examples/blob/main/v2/core/StreamManagement.sol#L72-L74
+https://github.com/sablier-labs/examples/blob/feat/flow/lockup/core/StreamManagement.sol#L72-L74
 ```
 
 The withdrawal will be skipped if there are no unclaimed funds.
@@ -36,7 +36,7 @@ The withdrawal will be skipped if there are no unclaimed funds.
 If you want to transfer ownership without withdrawing the funds, you can use the `IERC721.transferFrom` function:
 
 ```solidity reference title="Stream Management: Transfer Ownership"
-https://github.com/sablier-labs/examples/blob/main/v2/core/StreamManagement.sol#L67-L69
+https://github.com/sablier-labs/examples/blob/feat/flow/lockup/core/StreamManagement.sol#L67-L69
 ```
 
 :::caution

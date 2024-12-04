@@ -37,7 +37,7 @@ To call any of these functions, you need to have created a stream. If you don't 
 assigning the `StreamManagement` contract as the recipient. Then, you can use the `withdraw` function like this:
 
 ```solidity reference title="Stream Management: Withdraw"
-https://github.com/sablier-labs/examples/blob/main/v2/core/StreamManagement.sol#L20-L22
+https://github.com/sablier-labs/examples/blob/feat/flow/lockup/core/StreamManagement.sol#L20-L22
 ```
 
 In this example, the withdrawal address and withdrawal amount are hard-coded for demonstration purposes. However, in a
@@ -49,7 +49,7 @@ In addition to the `withdraw` function, there is the `withdrawMax` function, whi
 withdrawable amount of assets at the time of invocation:
 
 ```solidity reference title="Stream Management: Withdraw Max"
-https://github.com/sablier-labs/examples/blob/main/v2/core/StreamManagement.sol#L25-L27
+https://github.com/sablier-labs/examples/blob/feat/flow/lockup/core/StreamManagement.sol#L25-L27
 ```
 
 What `withdrawMax` does is call the
@@ -62,5 +62,5 @@ same time, transfer the NFT to another address.
 Lastly, there is the `withdrawMultiple` function, with which you can use to withdraw from multiple streams at once:
 
 ```solidity reference title="Stream Management: Withdraw Multiple"
-https://github.com/sablier-labs/examples/blob/main/v2/core/StreamManagement.sol#L30-L32
+https://github.com/sablier-labs/examples/blob/feat/flow/lockup/core/StreamManagement.sol#L30-L32
 ```

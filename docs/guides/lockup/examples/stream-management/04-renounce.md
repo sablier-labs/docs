@@ -20,5 +20,5 @@ Before invoking this function, ensure that you have an active, cancelable stream
 `StreamManagement` contract. Once the stream is created, you can use the the `renounce` function like this:
 
 ```solidity reference title="Stream Management: Renounce"
-https://github.com/sablier-labs/examples/blob/main/v2/core/StreamManagement.sol#L53-L55
+https://github.com/sablier-labs/examples/blob/feat/flow/lockup/core/StreamManagement.sol#L53-L55
 ```

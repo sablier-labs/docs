@@ -60,5 +60,5 @@ Looking to get on the allowlist? Reach out to us on [Discord](https://discord.sa
 #### Recipient
 
 ```solidity reference title="Sablier Lockup Recipient Hooks"
-https://github.com/sablier-labs/examples/blob/main/v2/core/RecipientHooks.sol
+https://github.com/sablier-labs/examples/blob/feat/flow/lockup/core/RecipientHooks.sol
 ```
