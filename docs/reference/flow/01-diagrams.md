@@ -34,14 +34,72 @@ sequenceDiagram
   activate Flow
   Sender -->> Flow: Transfer tokens
   deactivate Flow
+
   Sender ->> Flow: refund()
   activate Flow
   Flow -->> Sender: Transfer tokens
   deactivate Flow
+
   Sender ->> Flow: withdraw()
   activate Flow
   Create actor Recipient
   Flow -->> Recipient: Transfer tokens
+  deactivate Flow
+```
+
+## Flow Actors with Actions
+
+```mermaid
+sequenceDiagram
+  actor Sender
+
+  Sender ->> Flow: create()
+  activate Flow
+  Create actor Recipient
+  Flow -->> Recipient: mint NFT
+  deactivate Flow
+
+  Sender ->> Flow: deposit(streamId)
+  activate Flow
+  Sender -->> Flow: Transfer tokens
+  deactivate Flow
+
+  Sender ->> Flow: pause(streamId)
+  activate Flow
+  Flow -->> Flow: set rps = 0
+  deactivate Flow
+
+  Sender ->> Flow: refund(streamId)
+  activate Flow
+  Flow -->> Sender: Transfer tokens
+  deactivate Flow
+
+  Sender ->> Flow: restart(streamId)
+  activate Flow
+  Flow -->> Flow: set rps > 0
+  deactivate Flow
+
+  Sender ->> Flow: void(streamId)
+  activate Flow
+  Flow -->> Flow: set rps = 0
+  Flow -->> Flow: set ud = 0
+  deactivate Flow
+
+  Recipient ->> Flow: void(streamId)
+  activate Flow
+  Flow -->> Flow: set rps = 0
+  Flow -->> Flow: set ud = 0
+  deactivate Flow
+
+  Sender ->> Flow: withdraw(streamId)
+  activate Flow
+  Flow -->> Recipient: Transfer tokens
+  deactivate Flow
+
+  Recipient ->> Flow: withdraw(streamId)
+  activate Flow
+  Create actor Any Address
+  Flow -->> Any Address : Transfer tokens
   deactivate Flow
 ```
 
