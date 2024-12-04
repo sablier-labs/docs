@@ -133,8 +133,8 @@ res_00([sd ])
 res_01(["sd + od"])
 
 rca --> di0
-di0 -- "PAUSED" --> res_00
-di0 -- "STREAMING" --> res_01
+di0 -- "rps == 0" --> res_00
+di0 -- "rps > 0" --> res_01
 ```
 
 ### Uncovered Debt
