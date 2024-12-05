@@ -25,7 +25,7 @@ A stream status can have one out of two "temperatures":
 | Warm        | Pending, Streaming          | The passage of time alone <ins>can</ins> change the status.                                    |
 | Cold        | Settled, Canceled, Depleted | The passage of time alone <ins>cannot</ins> change the status. Only a user action can do this. |
 
-## Diagram
+## State transitions
 
 The following diagram illustrates the statuses and the allowed transitions between them:
 
