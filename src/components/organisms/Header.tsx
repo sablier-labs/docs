@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "@emotion/styled";
+import CodeBracketIcon from "@heroicons/react/24/outline/CodeBracketIcon";
 import ComputerDesktopIcon from "@heroicons/react/24/outline/ComputerDesktopIcon";
 import CubeIcon from "@heroicons/react/24/outline/CubeIcon";
 import DocumentTextIcon from "@heroicons/react/24/outline/DocumentTextIcon";
@@ -97,7 +98,7 @@ export default function Header() {
           <Heading as="h1">Sablier Docs</Heading>
         </Title>
         <Subtitle>
-          <p>Documentation for the Sablier token distribution protocol</p>
+          <p>Documentation for Sablier Lockup and Sablier Flow</p>
         </Subtitle>
         <Collection>
           <Feature
@@ -107,17 +108,24 @@ export default function Header() {
             to={"/concepts/what-is-sablier"}
           />
           <Feature
-            description={"Deployment addresses, setup guides, and technical reference"}
+            description={"Deployment addresses and integration guides"}
             Icon={DocumentTextIcon}
-            title={"Contracts"}
-            to={"/contracts/v2/overview"}
+            title={"Guides"}
+            to={"/guides/lockup/overview"}
+          />
+
+          <Feature
+            description={"Deep dive into the protocol specification"}
+            Icon={CodeBracketIcon}
+            title={"Technical References"}
+            to={"/reference/overview"}
           />
 
           <Feature
             description={"Official interfaces and brand guidelines"}
             Icon={ComputerDesktopIcon}
             title={"Apps"}
-            to={"/apps/overview"}
+            to={"/apps/features/overview"}
           />
           <Feature
             description={"Off-chain utilities such as the subgraph"}

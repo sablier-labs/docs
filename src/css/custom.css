@@ -151,3 +151,7 @@ html[data-theme="dark"] .alert--info {
   margin-bottom: 6px;
   margin-top: 8px;
 }
+
+p > img {
+  border-radius: 4px;
+}
