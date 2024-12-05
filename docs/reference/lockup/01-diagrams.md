@@ -144,23 +144,22 @@ flowchart LR;
 A typical Airstream campaign creation flow looks like the following:
 
 ```mermaid
-flowchart LR
-  MSF[(MerkleLockupFactory Contract)]
-  MS[(MerkleLockup Contract)]
-  S[Campaign creator] -- "createMerkleLL" --> MSF
-  MSF -- "create2" --> MS
+sequenceDiagram
+  actor Campaign creator
+
+  Campaign creator ->> MerkleLockupFactory: createMerkleLL()
+  MerkleLockupFactory -->> MerkleLockup: Deploy a new contract
 ```
 
 And this is how the claim flow looks like for recipients:
 
 ```mermaid
-flowchart LR
-  R1[Recipient]
-  MS[(MerkleLockup Contract)]
-  LL[(LockupLinear Contract)]
-  R1 -- "claim" --> MS
-  MS -- "createWithDurations" --> LL
-  LL -- "Transfer NFT" --> R1
+sequenceDiagram
+  actor Airdrop recipient
+
+  Airdrop recipient ->> MerkleLockup: claim()
+  MerkleLockup -->> LockupLinear: Create vesting stream
+  LockupLinear -->> Airdrop recipient: Mint Stream NFT
 ```
 
 For campaign admins, we offer `clawback` functionality which can be used to retrieve unclaimed funds after expiration.
@@ -169,9 +168,9 @@ There is also a grace period that ends 7 days after the first claim is made. Dur
 transfer of funds.
 
 ```mermaid
-flowchart LR
-  A[Campaign Admin]
-  MS[(MerkleLockup Contract)]
-  A -- "clawback" --> MS
-  MS -- "unclaimed funds"  --> A
+sequenceDiagram
+  actor Campaign creator
+
+  Campaign creator ->> MerkleLockup: clawback()
+  MerkleLockup -->> Campaign creator: Transfer unclaimed tokens
 ```

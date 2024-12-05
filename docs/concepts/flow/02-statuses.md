@@ -27,37 +27,83 @@ A stream can have the following characteristics:
 | Solvent        | `STREAMING_SOLVENT`, `PAUSED_SOLVENT`, `VOIDED` | Total debt <ins>not exceeding</ins> the stream balance. |
 | Insolvent      | `STREAMING_INSOLVENT`, `PAUSED_INSOLVENT`       | Total debt <ins>exceeding</ins> the stream balance.     |
 
-## Diagram
+## State transitions
 
 The following diagram illustrates the statuses and the allowed transitions between them:
 
 ```mermaid
 flowchart LR
-  N[NULL]
-  V[VOIDED]
+  N(NULL)
+  V(VOIDED)
 
-  subgraph Paused
+  subgraph PAUSED
     direction RL
-    PS[PAUSED_SOLVENT]
-    PI[PAUSED_INSOLVENT]
+    PS(SOLVENT)
+    PI(INSOLVENT)
     PI -- "deposit" --> PS
   end
 
-  subgraph Streaming
+  subgraph STREAMING
     direction LR
-    SS[STREAMING_SOLVENT]
-    SI[STREAMING_INSOLVENT]
+    SS(SOLVENT)
+    SI(INSOLVENT)
     SI -- "deposit" --> SS
     SS -- "time" --> SI
   end
 
-  Streaming -- pause --> Paused
-  Streaming -- void --> V
-  Paused -- restart --> Streaming
-  Paused -- void --> V
+  STREAMING -- pause --> PAUSED
+  STREAMING -- void --> V
+  PAUSED -- restart --> STREAMING
+  PAUSED -- void --> V
 
-  N -- create (rps > 0) --> Streaming
-  N -- create (rps = 0) --> Paused
+  N -- create (rps > 0) --> STREAMING
+  N -- create (rps = 0) --> PAUSED
+```
+
+## Functions Statuses Interaction
+
+### NULL stream
+
+```mermaid
+flowchart LR
+    CR[CREATE] --> NULL((NULL))
+```
+
+### STREAMING stream
+
+```mermaid
+flowchart TD
+    STR((STREAMING))
+
+    ADJRPS[ADJUST_RPS] -->  STR
+    DP[DEPOSIT] --> STR
+    RFD[REFUND] --> STR
+    PS[PAUSE] --> STR
+    VD[VOID] --> STR
+    WTD[WITHDRAW] --> STR
+```
+
+### PAUSED stream
+
+```mermaid
+flowchart TD
+    PSED((PAUSED))
+
+    DP([DEPOSIT]) --> PSED
+    RFD([REFUND]) --> PSED
+    RST([RESTART]) --> PSED
+    VD([VOID]) --> PSED
+    WTD([WITHDRAW]) --> PSED
+```
+
+### VOIDED stream
+
+```mermaid
+flowchart LR
+    VOID((VOIDED))
+
+    RFD([REFUND]) --> VOID
+    WTD([WITHDRAW]) --> VOID
 ```
 
 ## Q&A
@@ -78,3 +124,7 @@ can pause it.
 A: Both sender and recipient can void the stream. This is especially useful when either party wants to stop the stream
 immediately. Once a stream is voided, it cannot be restarted. If there is uncovered debt, it will be reset to 0. So to
 ensure that your recipient does not lose on any streamed amount, you can deposit into the stream before voiding it.
+
+```
+
+```

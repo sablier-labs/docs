@@ -37,14 +37,23 @@ The table below offers a quick overview of the access control for each action th
 Either the recipient or an approved operator can burn the NFT associated with a stream.
 
 ```mermaid
-flowchart LR;
-    recipient((Recipient));
-    operator((Operator));
-    nft[(NFT)];
+sequenceDiagram
+  actor Recipient
 
-    recipient -- burn -->nft;
-    recipient -- approve -->operator;
-    operator -- burn -->nft;
+  Recipient ->> Lockup: burn()
+  Recipient -->> address(0): Transfer stream NFT
+```
+
+#### With Operator:
+
+```mermaid
+sequenceDiagram
+  actor Recipient
+  actor Operator
+
+  Recipient ->> Lockup: approve(operator)
+  Operator ->> Lockup: burn()
+  Recipient -->> address(0): Transfer stream NFT
 ```
 
 ## Cancel
@@ -52,10 +61,11 @@ flowchart LR;
 Only the sender can cancel a stream.
 
 ```mermaid
-flowchart LR;
-    sender((Sender));
-    stream[(Stream)];
-    sender -- cancel -->stream;
+sequenceDiagram
+  actor Sender
+
+  Sender ->> Lockup: cancel()
+  Lockup -->> Sender: Transfer unvested tokens
 ```
 
 ## Cancel Multiple
@@ -63,11 +73,11 @@ flowchart LR;
 Only the sender can cancel multiple streams.
 
 ```mermaid
-flowchart LR;
-  sender((Sender));
-  streams[(Multiple Streams)];
+sequenceDiagram
+  actor Sender
 
-  sender -- cancelMultiple -->streams;
+  Sender ->> Lockup: cancelMultiple()
+  Lockup -->> Sender: Transfer unvested tokens from multiple streams
 ```
 
 ## Renounce
@@ -75,10 +85,10 @@ flowchart LR;
 Only the sender can renounce a stream.
 
 ```mermaid
-flowchart LR;
-    sender((Sender));
-    stream[(Stream)];
-    sender -- renounce -->stream;
+sequenceDiagram
+  actor Sender
+
+  Sender ->> Lockup: renounce()
 ```
 
 ## Transfer NFT
@@ -88,14 +98,25 @@ Either the recipient or an approved operator can transfer the NFT associated wit
 - Only if the stream is transferable.
 
 ```mermaid
-flowchart LR;
-    recipient((Recipient));
-    operator((Operator));
-    nft[(NFT)];
+sequenceDiagram
+  actor Recipient
 
-    recipient -- transfer -->nft;
-    recipient -- approve -->operator;
-    operator -- transfer -->nft;
+  Recipient ->> Lockup: transfer(toAddress)
+  Create actor toAddress
+  Recipient -->> toAddress: Transfer NFT
+```
+
+#### With Operator:
+
+```mermaid
+sequenceDiagram
+  actor Recipient
+  actor Operator
+
+  Recipient ->> Lockup: approve(operator)
+  Operator ->> Lockup: transfer(toAddress)
+  Create actor toAddress
+  Recipient -->> toAddress: Transfer NFT
 ```
 
 ## Withdraw Multiple
@@ -103,20 +124,16 @@ flowchart LR;
 Anybody can withdraw tokens from multiple streams to the recipients of each stream.
 
 ```mermaid
-flowchart LR;
-    public((Public));
-    recipient((Recipient));
-    operator((Operator));
-    sender((Sender));
-    streams[(Stream)];
-    toAddress[Recipient address];
+sequenceDiagram
+  actor Anyone
 
-    public -- withdrawMultiple --> streams;
-    sender -- withdrawMultiple --->streams;
-    recipient -- withdrawMultiple --->streams
-    recipient -- approve -->operator;
-    operator -- withdrawMultiple -->streams;
-    streams -- tokens --> toAddress;
+  Anyone ->> Lockup: withdrawMultiple()
+  Create actor getRecipient(1)
+  Lockup -->> getRecipient(1): Transfer vested tokens from stream 1
+  Create actor getRecipient(2)
+  Lockup -->> getRecipient(2): Transfer vested tokens from stream 2
+  Create actor getRecipient(3)
+  Lockup -->> getRecipient(3): Transfer vested tokens from stream 3
 ```
 
 ## Withdraw to Any Address
@@ -124,16 +141,25 @@ flowchart LR;
 The tokens in a stream can be withdrawn to any address only by the recipient or an approved third party.
 
 ```mermaid
-flowchart LR;
-    recipient((Recipient));
-    operator((Operator));
-    stream[(Stream)];
-    toAddress[Any address];
+sequenceDiagram
+  actor Recipient
 
-    recipient -- withdraw -->stream;
-    recipient -- approve -->operator;
-    operator -- withdraw -->stream;
-    stream -- tokens --> toAddress;
+  Recipient ->> Lockup: withdraw(toAddress)
+  Create actor toAddress
+  Lockup -->> toAddress: Transfer vested tokens
+```
+
+#### With Operator:
+
+```mermaid
+sequenceDiagram
+  actor Recipient
+  actor Operator
+
+  Recipient ->> Lockup: approve(operator)
+  Operator ->> Lockup: withdraw(toAddress)
+  Create actor toAddress
+  Lockup -->> toAddress: Transfer vested tokens
 ```
 
 ## Withdraw to Recipient
@@ -142,18 +168,10 @@ The tokens in a stream can be withdrawn to the recipient by anyone including the
 party.
 
 ```mermaid
-flowchart LR;
-    public((Public caller));
-    recipient((Recipient));
-    operator((Operator));
-    sender((Sender));
-    stream[(Stream)];
-    toAddress[Recipient address];
+sequenceDiagram
+  actor Anyone
 
-    public -- withdraw ----> stream;
-    sender -- withdraw --->stream;
-    recipient -- withdraw -->stream;
-    recipient -- approve -->operator;
-    operator -- withdraw -->stream;
-    stream -- tokens --> toAddress;
+  Anyone ->> Lockup: withdraw(recipient)
+  Create actor Recipient
+  Lockup -->> Recipient: Transfer vested tokens
 ```
