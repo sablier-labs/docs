@@ -5,18 +5,18 @@ title: "Pull Vesting Data"
 ---
 
 This guide explains how you can pull vesting data from Sablier Lockup streams. This data can be useful for a variety of
-use cases, including but not limited to staking, explorers, and data dashboards:
+use cases, including but not limited to staking contracts, blockchain explorers, and data dashboards:
 
-1. **Staking**: Staking of Sablier streams require access to amount of tokens that are still held by the stream. You do
-   not want to distribute rewards for tokens that have been withdrawn by the user.
-2. **Explorers (Etherscan, Coingecko)**: One major feature of blockchain explorers is to show accurate circulating
-   supplies. When tokens are vesting through Sablier, you may want to exclude the amount of unvested tokens from the
+1. **Staking**: Staking of Sablier streams require access to the amount of tokens that are held by the stream. You do
+   not want to distribute rewards for tokens that have been withdrawn by users.
+2. **Explorers (e.g., Etherscan, CoinGecko)**: One major feature of blockchain explorers is to show accurate circulating
+   supplies. When tokens are vested through Sablier, you may want to exclude the amount of unvested tokens from the
    circulating supply. This is helpful to accurately calculate the market cap, which depends upon the amount of liquid
    tokens.
-3. **Data Dashboards (Tokenomist, Nansen, Dune)**: Investors and traders use data dashboards to make informed trading
-   decisions. When Sablier is used, you may want to show the amount of liquid (or vested) tokens and the amount of
-   illiquid (or unvested) tokens. This is helpful to understand the token distribution and the team's commitment to the
-   long-term success of the project.
+3. **Data Dashboards (e.g., Tokenomist, Nansen, Dune)**: Investors and traders use data dashboards to make informed
+   trading decisions. When Sablier is used, you may want to show the amount of liquid (or vested) tokens and the amount
+   of illiquid (or unvested) tokens. This is helpful to understand the token distribution and the team's commitment to
+   the long-term success of the project.
 
 :::note
 
@@ -30,21 +30,26 @@ The examples in this guide are written in Solidity, but you may want to interact
 your frontend application. A good starting point for this is the
 [Sablier Sandbox](https://github.com/sablier-labs/sandbox).
 
-For a comprehensive list of all the functions available in the Sablier Lockup contract, visit the
-[References](/reference/overview) section of this website.
+For a comprehensive list of all the functions available in Sablier Lockup, visit the [References](/reference/overview)
+section of this website.
 
 ## Actions
 
 ### Cancel on first withdraw
 
-If you want to cancel streams as soon as the user withdraws their tokens, you can track the withdrawn amount and check
-if its value is greater than 0. If it is, you can cancel the stream.
+To automatically cancel streams as soon as the user withdraws their tokens, you can use one of two methods: onchain or
+offchain.
+
+The onchain method is to track the withdrawn amount and check if its value is greater than 0:
 
 ```solidity
 if (lockup.getWithdrawnAmount(streamId) > 0) {
   lockup.cancel(streamId);
 }
 ```
+
+Offchain, you can monitor the [`WithdrawFromLockupStream`](reference/lockup/core/interfaces/interface.ISablierV2Lockup)
+events. As soon as a withdrawal event is detected, you can send a transaction to cancel the stream.
 
 ## Calculating Amounts
 
@@ -120,15 +125,18 @@ uint256 vestedAmount = lockup.streamedAmountOf(streamId) - lockup.getWithdrawnAm
 This may be useful for use cases in which you want to reward 'diamond hands', i.e., users who have not withdrawn their
 share of airdrops.
 
-## Unlock Events
+## Unlock Dates
 
-This section is useful if you are building a data dashboard where you want index token unlock events.
+This section is useful if you are building a data dashboard and want to index the dates when tokens will be unlocked in
+Sablier.
 
-To calculate the time at which a stream will be fully unlocked, you can use the following formula:
+To obtain the time at which a stream will be fully unlocked, you can use the following function:
 
 ```solidity
 uint256 unlockTime = lockup.getEndTime(streamId);
 ```
+
+Obtaining the earlier unlock times depends on the type of stream. Let's go through each stream type:
 
 ### Linear streams
 
@@ -169,5 +177,5 @@ for (uint i; i < tranches.length; ++i) {
 }
 ```
 
-I hope this guide was helpful to you. If you have a use case that is not covered here, please reach out to us on
-[Discord](https://discord.sablier.com) and we will be happy to help you with your requirements.
+We hope you have found this guide helpful. If you have a use case that is not covered here, please reach out to us on
+[Discord](https://discord.sablier.com), and we will assist you.
