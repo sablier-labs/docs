@@ -53,7 +53,7 @@ Total debt is the amount of tokens owed to the recipient. This value is further 
 ### Snapshot debt and Snapshot time
 
 A snapshot is an event during which snapshot debt and snapshot time of a Flow stream are updated. **Snapshot debt** is
-the debt accumulated since the previous snapshot. The UNIX timestamp at which snapshot debt is updated is called
+the debt accumulated until the previous snapshot. The UNIX timestamp at which snapshot debt is updated is called
 **Snapshot time**.
 
 At snapshot, the following operations are taking place:
@@ -65,6 +65,14 @@ rps \cdot (\text{block.timestamp} - \text{snapshot time})}_\text{ongoing debt}
 
 ```math
 \text{snapshot time} = \text{block.timestamp}
+```
+
+### Ongoing debt
+
+Ongoing debt is the debt accumulated since the previous snapshot. It is calculated as the following:
+
+```math
+\text{ongoing debt} = rps \cdot (\text{block.timestamp} - \text{snapshot time})
 ```
 
 Therefore, at any point in time, total debt can also be defined as:

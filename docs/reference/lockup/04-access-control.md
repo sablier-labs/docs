@@ -40,7 +40,7 @@ Either the recipient or an approved operator can burn the NFT associated with a 
 sequenceDiagram
   actor Recipient
 
-  Recipient ->> Lockup: burn(streamId)
+  Recipient ->> Lockup: burn()
   Recipient -->> address(0): Transfer stream NFT
 ```
 
@@ -51,8 +51,8 @@ sequenceDiagram
   actor Recipient
   actor Operator
 
-  Recipient ->> Lockup: approve(operator, streamId)
-  Operator ->> Lockup: burn(streamId)
+  Recipient ->> Lockup: approve(operator)
+  Operator ->> Lockup: burn()
   Recipient -->> address(0): Transfer stream NFT
 ```
 
@@ -64,7 +64,7 @@ Only the sender can cancel a stream.
 sequenceDiagram
   actor Sender
 
-  Sender ->> Lockup: cancel(streamId)
+  Sender ->> Lockup: cancel()
   Lockup -->> Sender: Transfer unvested tokens
 ```
 
@@ -76,10 +76,8 @@ Only the sender can cancel multiple streams.
 sequenceDiagram
   actor Sender
 
-  Sender ->> Lockup: cancelMultiple(stream1, stream2, stream3)
-  Lockup -->> Sender: Transfer unvested tokens from streams 1
-  Lockup -->> Sender: Transfer unvested tokens from streams 2
-  Lockup -->> Sender: Transfer unvested tokens from streams 3
+  Sender ->> Lockup: cancelMultiple()
+  Lockup -->> Sender: Transfer unvested tokens from multiple streams
 ```
 
 ## Renounce
@@ -90,7 +88,7 @@ Only the sender can renounce a stream.
 sequenceDiagram
   actor Sender
 
-  Sender ->> Lockup: renounce(streamId)
+  Sender ->> Lockup: renounce()
 ```
 
 ## Transfer NFT
@@ -103,7 +101,7 @@ Either the recipient or an approved operator can transfer the NFT associated wit
 sequenceDiagram
   actor Recipient
 
-  Recipient ->> Lockup: transfer(streamId, toAddress)
+  Recipient ->> Lockup: transfer(toAddress)
   Create actor toAddress
   Recipient -->> toAddress: Transfer NFT
 ```
@@ -115,8 +113,8 @@ sequenceDiagram
   actor Recipient
   actor Operator
 
-  Recipient ->> Lockup: approve(operator, streamId)
-  Operator ->> Lockup: transfer(streamId, toAddress)
+  Recipient ->> Lockup: approve(operator)
+  Operator ->> Lockup: transfer(toAddress)
   Create actor toAddress
   Recipient -->> toAddress: Transfer NFT
 ```
@@ -127,9 +125,9 @@ Anybody can withdraw tokens from multiple streams to the recipients of each stre
 
 ```mermaid
 sequenceDiagram
-  actor Public/Sender/Recipient
+  actor Anyone
 
-  Public/Sender/Recipient ->> Lockup: withdrawMultiple(stream1, stream2, stream3)
+  Anyone ->> Lockup: withdrawMultiple()
   Create actor getRecipient(1)
   Lockup -->> getRecipient(1): Transfer vested tokens from stream 1
   Create actor getRecipient(2)
@@ -146,7 +144,7 @@ The tokens in a stream can be withdrawn to any address only by the recipient or 
 sequenceDiagram
   actor Recipient
 
-  Recipient ->> Lockup: withdraw(streamId, toAddress)
+  Recipient ->> Lockup: withdraw(toAddress)
   Create actor toAddress
   Lockup -->> toAddress: Transfer vested tokens
 ```
@@ -158,8 +156,8 @@ sequenceDiagram
   actor Recipient
   actor Operator
 
-  Recipient ->> Lockup: approve(operator, streamId)
-  Operator ->> Lockup: withdraw(streamId, toAddress)
+  Recipient ->> Lockup: approve(operator)
+  Operator ->> Lockup: withdraw(toAddress)
   Create actor toAddress
   Lockup -->> toAddress: Transfer vested tokens
 ```
@@ -171,9 +169,9 @@ party.
 
 ```mermaid
 sequenceDiagram
-  actor Public/Sender/Recipient
+  actor Anyone
 
-  Public/Sender/Recipient ->> Lockup: withdraw(streamId, recipient)
+  Anyone ->> Lockup: withdraw(recipient)
   Create actor Recipient
   Lockup -->> Recipient: Transfer vested tokens
 ```
