@@ -48,7 +48,7 @@ if (lockup.getWithdrawnAmount(streamId) > 0) {
 }
 ```
 
-Offchain, you can monitor the [`WithdrawFromLockupStream`](reference/lockup/core/interfaces/interface.ISablierV2Lockup)
+Offchain, you can monitor the [`WithdrawFromLockupStream`](/reference/lockup/core/interfaces/interface.ISablierV2Lockup)
 events. As soon as a withdrawal event is detected, you can send a transaction to cancel the stream.
 
 ## Calculating Amounts
