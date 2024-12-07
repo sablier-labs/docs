@@ -1,8 +1,8 @@
 import React from "react";
 import styled from "@emotion/styled";
+import BoltIcon from "@heroicons/react/24/outline/BoltIcon";
 import CodeBracketIcon from "@heroicons/react/24/outline/CodeBracketIcon";
 import ComputerDesktopIcon from "@heroicons/react/24/outline/ComputerDesktopIcon";
-import CubeIcon from "@heroicons/react/24/outline/CubeIcon";
 import DocumentTextIcon from "@heroicons/react/24/outline/DocumentTextIcon";
 import LightBulbIcon from "@heroicons/react/24/outline/LightBulbIcon";
 import Heading from "@theme/Heading";
@@ -129,7 +129,7 @@ export default function Header() {
           />
           <Feature
             description={"Off-chain utilities such as the subgraph"}
-            Icon={CubeIcon}
+            Icon={BoltIcon}
             title={"APIs"}
             to={"/api/overview"}
           />

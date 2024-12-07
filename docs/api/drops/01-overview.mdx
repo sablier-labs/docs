@@ -6,13 +6,13 @@ title: "Overview"
 
 import LinkPreview from "@site/src/components/LinkPreview";
 
-# Sablier Drops
+# Sablier Airdrops
 
 Sablier's [Lockup](/concepts/lockup/overview) streams are used for the [Vesting](/apps/features/vesting) and (part of)
-the [Drops](/apps/features/drops) components of the Sablier Interfaces. The Drops section, supported by our
+the [Airdrops](/apps/features/drops) components of the Sablier Interfaces. The Airdrops section, supported by our
 [Merkle](/concepts/lockup/airstreams) utilities focuses on the functionality of the Merkle Factory peripheries.
 
-Drops-native functionality is powered by:
+Airdrops-native functionality is powered by:
 
 - The `@sablier/subgraphs/apps/merkle` subgraph
 - The `@sablier/subgraphs/apps/merkle-envio` indexer
@@ -22,7 +22,7 @@ For the Lockup-native functionality, please check the dedicated [documentation](
 
 :::info
 
-[Airstreamed](/apps/features/drops) drops will create a Lockup stream once a claim is made.
+[Airstreamed](/apps/features/airdrops) airdrops will create a Lockup stream once a claim is made.
 
 :::
 
@@ -40,9 +40,9 @@ For the Lockup-native functionality, please check the dedicated [documentation](
   title="Sablier SDK: Merkle API"
 />
 
-## What are Drops / Airstreams?
+## What are Airdrops / Airstreams?
 
-**Drops** are large-scale campaigns developed to aid with token distribution towards millions of users. They rely on
+**Airdrops** are large-scale campaigns developed to aid with token distribution towards millions of users. They rely on
 **merkle trees** to efficiently store eligibility details.
 
 Extending the classic instant airdrop, Sablier engineered Airstreams, a way to reward users with streams which vest
@@ -53,5 +53,5 @@ The first step before diving into this guide is to become familiar with the [con
 #### Naming convention
 
 As per our endpoint [naming convention](api/overview#endpoints--slugs), subgraph deployments of Sablier Airstreams and
-Instant Drops will follow the `sablier-v2-ms-*` (short for "merkle subgraph") structure (e.g. `sablier-v2-ms` for
+Instant Airdrops will follow the `sablier-v2-ms-*` (short for "merkle subgraph") structure (e.g. `sablier-v2-ms` for
 Mainnet, `sablier-v2-ms-base` for Base).

@@ -10,7 +10,8 @@ import Tabs from "@theme/Tabs";
 # Examples of common flows
 
 Here are some common architectural flows you may need to integrate into your application. These include ways to gather
-the prerequisite data necessary for each backend [functionality](/api/drops/merkle-api/functionality) described earlier.
+the prerequisite data necessary for each backend [functionality](/api/airdrops/merkle-api/functionality) described
+earlier.
 
 ## Get a campaign's CID
 
@@ -175,9 +176,10 @@ To check if a user has already claimed their stream from a campaign you can:
 For approach "A" you'll need to perform the following actions:
 
 1. Get a hold of the campaign's CID, Lockup contract address, and user address (for the first items, see the
-   [Get a campaign's CID](/api/drops/merkle-api/examples#get-a-campaigns-cid) example above)
-2. Check the eligibility of a user (see [Eligibility](/api/drops/merkle-api/examples#check-eligibility-for-an-address)
-   example above) and extract their `index`
+   [Get a campaign's CID](/api/airdrops/merkle-api/examples#get-a-campaigns-cid) example above)
+2. Check the eligibility of a user (see
+   [Eligibility](/api/airdrops/merkle-api/examples#check-eligibility-for-an-address) example above) and extract their
+   `index`
 3. Call the `hasClaimed` method inside the `lockup` contract using the `index` retrieved at step 2
 
 :::note
@@ -190,7 +192,7 @@ generate a proof in case the recipient is eligible and to register their claim d
 #### Approach B
 
 For approach "B", run the same query as in the
-[Get the tokenId after a claim](/api/drops/merkle-api/examples#get-the-tokenid-after-a-claim) example. If the query
+[Get the tokenId after a claim](/api/airdrops/merkle-api/examples#get-the-tokenid-after-a-claim) example. If the query
 yields any results, that means the user has claimed their stream.
 
 :::tip

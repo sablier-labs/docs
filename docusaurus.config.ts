@@ -78,16 +78,16 @@ const config: Config = {
             to: "/api/lockup/the-graph/entities",
           },
           {
-            from: "/api/drops/the-graph",
-            to: "/api/drops/the-graph/entities",
+            from: "/api/airdrops/the-graph",
+            to: "/api/airdrops/the-graph/entities",
           },
           {
             from: "/api/subgraphs/merkle",
-            to: "/api/drops/the-graph/entities",
+            to: "/api/airdrops/the-graph/entities",
           },
           {
             from: "/api/merkle-api",
-            to: "/api/drops/merkle-api/overview",
+            to: "/api/airdrops/merkle-api/overview",
           },
           {
             from: "/api/indexers/protocol",
@@ -120,7 +120,7 @@ const config: Config = {
           },
           {
             from: "/apps/features/airstreams",
-            to: "/apps/features/drops",
+            to: "/apps/features/airdrops",
           },
           {
             from: "/apps/url-schemes",
