@@ -1,10 +1,16 @@
 ---
-id: "legacy"
-sidebar_position: 3
-title: "Legacy V1"
+id: "deployments"
+sidebar_position: 2
+title: "Deployment Addresses"
 ---
 
-The deployments of the first version of Lockup are supported in the [v1-pay user interface](https://v1-pay.sablier.com).
+# Legacy Deployment Addresses
+
+This section contains deployment addresses for the Legacy V1. It has been deprecated in favour of
+[Lockup Protocol](/guides/lockup/overview) but can still be used by interacting with the smart contract.
+
+The deployments of the first version of Sablier are still supported in the
+[v1-pay user interface](https://v1-pay.sablier.com).
 
 ### Legacy V1.1
 

@@ -47,11 +47,11 @@ const config: Config = {
           },
           {
             from: "/protocol/guides/getting-started",
-            to: "/reference/lockup/legacy/guides/getting-started",
+            to: "/guides/legacy/overview",
           },
           {
             from: "/protocol/guides/chains",
-            to: "/guides/lockup/previous-deployments/legacy",
+            to: "/guides/legacy/overview",
           },
           {
             from: "/protocol/introduction",
@@ -169,7 +169,7 @@ const config: Config = {
           },
           {
             from: "/contracts/v1/deployments",
-            to: "/guides/lockup/previous-deployments/legacy",
+            to: "/guides/legacy/deployments",
           },
         ],
         createRedirects(existingPath) {
@@ -177,7 +177,7 @@ const config: Config = {
             return [
               existingPath.replace("/concepts/protocol", "/concepts/lockup"),
               existingPath.replace("/contracts/v2", "/guides/lockup"),
-              existingPath.replace("/contracts/v1", "/reference/lockup/legacy"),
+              existingPath.replace("/contracts/v1", "/guides/legacy/overview"),
               existingPath.replace("/contracts/v2/reference", "/reference/lockup"),
             ];
           }

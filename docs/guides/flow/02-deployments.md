@@ -4,6 +4,8 @@ sidebar_position: 2
 title: "Deployment Addresses"
 ---
 
+# Flow Deployment Addresses
+
 This document contains the deployment addresses for the v1.0.0 release of
 [@sablier/flow](https://npmjs.com/package/@sablier/flow/v/1.0.0).
 

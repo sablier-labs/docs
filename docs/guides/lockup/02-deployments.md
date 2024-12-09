@@ -4,6 +4,8 @@ sidebar_position: 2
 title: "Deployment Addresses"
 ---
 
+# Lockup Deployment Addresses
+
 This document contains the deployment addresses for the v1.2 release of [@sablier/lockup-core][lockup-core] and
 [@sablier/lockup-periphery][lockup-periphery].
 
@@ -29,7 +31,7 @@ assigned under our [naming convention](/api/lockup/the-graph/structure#identifyi
 | [v1.1](/guides/lockup/previous-deployments/v1.1) | LD2 (Lockup Dynamic), LL2 (Lockup Linear)                        |
 | [v1.0](/guides/lockup/previous-deployments/v1.0) | LD (Lockup Dynamic), LL (Lockup Linear)                          |
 
-Or maybe you're looking for Legacy protocol? [Click here](/guides/lockup/previous-deployments/legacy).
+Or maybe you're looking for Legacy V1? [Click here](/guides/legacy/deployments).
 
 :::info
 
