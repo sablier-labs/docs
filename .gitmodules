@@ -7,6 +7,6 @@
   path = "repos/lockup/v2-periphery"
   url = "https://github.com/sablier-labs/v2-periphery"
 [submodule "repos/flow"]
-  branch = "main"
+  branch = "release"
   path = "repos/flow"
   url = "https://github.com/sablier-labs/flow"
