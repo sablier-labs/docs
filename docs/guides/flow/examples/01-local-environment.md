@@ -41,7 +41,10 @@ $ forge init --template sablier-labs/flow-integration-template
 $ bun install
 ```
 
-## Set up using Foundry template
+Then, hop to the [Run a Fork Test](/guides/flow/examples/local-environment#run-a-fork-test) section to complete your set
+up and start developing.
+
+## Start from scratch
 
 Foundry is a popular development toolkit for Ethereum projects, which we have used to build the Sablier Protocols. For
 the purposes of this guide, Foundry will provide us with the tooling needed to compile and test our contracts.
@@ -129,6 +132,36 @@ Compiler run successful
 The minimum Solidity version supported by the Flow contracts is v0.8.22.
 
 :::
+
+## Run a fork test
+
+Foundry offers native support for running tests against a fork of Ethereum Mainnet, testnets and L2s, which is useful
+when building and testing integrations with onchain protocols like Sablier. In practice, this enables you to access all
+Sablier contracts deployed on Ethereum, and use them for testing your integration.
+
+As a prerequisite, you will need an RPC that supports forking. A good solution for this is
+[Alchemy](https://alchemy.com/), as it includes forking in its free tier plan.
+
+Once you have obtained your RPC, you can proceed to run the following test:
+
+```solidity reference title="Stream Creator Test"
+https://github.com/sablier-labs/lockup-integration-template/blob/main/test/LockupStreamCreator.t.sol
+```
+
+You can run the test using Forge:
+
+```shell
+$ forge test
+```
+
+If the test passed, you should see a message like this:
+
+```text
+Ran 2 tests for test/FlowStreamCreator.t.sol:FlowStreamCreatorTest
+[PASS] test_CreateFlowStream() (gas: 147915)
+[PASS] test_CreateFlowStreamAndDeposit() (gas: 224823)
+Suite result: ok. 2 passed; 0 failed; 0 skipped; finished in 986.20ms (4.16ms CPU time)
+```
 
 ## Next steps
 

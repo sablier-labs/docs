@@ -137,9 +137,9 @@ The minimum Solidity version supported by the Lockup contracts is v0.8.13.
 
 ## Run a fork test
 
-Foundry offers native support for running tests against a fork of Ethereum Mainnet, which is useful when building and
-testing integrations with onchain protocols like Sablier. In practice, this enables you to access all Sablier contracts
-deployed on Ethereum, and use them for testing your integration.
+Foundry offers native support for running tests against a fork of Ethereum Mainnet, testnets and L2s, which is useful
+when building and testing integrations with onchain protocols like Sablier. In practice, this enables you to access all
+Sablier contracts deployed on Ethereum, and use them for testing your integration.
 
 As a prerequisite, you will need an RPC that supports forking. A good solution for this is
 [Alchemy](https://alchemy.com/), as it includes forking in its free tier plan.
