@@ -21,7 +21,7 @@ You will need the following software on your machine:
 
 In addition, familiarity with [Ethereum](https://ethereum.org/) and [Solidity](https://soliditylang.org/) is requisite.
 
-## Set up from template
+## Set up using Lockup integration template
 
 We put together a template repository that you can use to get started quickly. This repository features a basic project
 structure, pre-configured Lockup imports, and a selection of sample contracts and tests.
@@ -44,7 +44,7 @@ $ bun install
 Then, hop to the [Run a Fork Test](/guides/lockup/examples/local-environment#run-a-fork-test) section to complete your
 set up and start developing.
 
-## Install npm packages for Lockup
+## Set up using Foundry template
 
 Foundry is a popular development toolkit for Ethereum projects, which we have used to build the Sablier Protocols. For
 the purposes of this guide, Foundry will provide us with the tooling needed to compile and test our contracts.
@@ -78,6 +78,8 @@ The folder structure should be intuitive:
 - `test` is where you'll write tests (also in Solidity)
 - `script` is where you'll write scripts to perform actions like deploying contracts (you guessed it, in Solidity)
 - `foundry.toml` is where you can configure your Foundry settings, which we will leave as is in this guide
+
+## Install Lockup npm packages
 
 Let's install the Lockup Node.js packages using Bun:
 
