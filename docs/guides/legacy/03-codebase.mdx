@@ -1,0 +1,41 @@
+---
+id: codebase
+title: Codebase
+sidebar_position: 5
+---
+
+import LinkPreview from "../../../src/components/LinkPreview";
+
+## Repository
+
+The Sablier Legacy code is hosted on GitHub and the source code for each contract is verified on Etherscan.
+
+<LinkPreview
+  href="https://github.com/sablier-labs/legacy"
+  icon="github"
+  subtitle="GitHub"
+  title="Github - sablier-labs/sablier: Sablier Legacy protocol"
+/>
+
+## ABIs
+
+Depending on the web3 library you're working with, you may need to get hold of the Lockup ABIs (application binary
+interfaces). The ABI acts as an interface between two program modules, one of which is the smart contract and the other
+the Ethereum virtual machine code.
+
+There are two ways to obtain it:
+
+1. Copy `Sablier.json` from [sablier-labs/legacy-abis](https://github.com/sablier-labs/legacy-abis).
+2. Clone [sablier-labs/legacy](https://github.com/sablier-labs/legacy) and compile the contract yourself.
+
+Here's an example for how to do step 2 with yarn and truffle:
+
+```bash
+$ git clone git@github.com/sablier-labs/legacy.git sablier-legacy
+$ cd ./sablier-legacy
+$ yarn bootstrap
+$ cd ./packages/protocol
+$ truffle compile
+
+The `Sablier.json` artifact should be generated in the relative `build/contracts` folder.
+```

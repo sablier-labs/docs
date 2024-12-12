@@ -2,7 +2,7 @@ import React, { useCallback } from "react";
 import styled from "@emotion/styled";
 import Link from "@docusaurus/Link";
 import SablierIcon from "@site/static/img/logo.svg";
-import GitHubIcon from "../icons/GitHubIcon";
+import GitHubIcon from "@site/static/img/social/github.svg";
 
 const Wrapper = styled(Link)`
   border: 1px solid var(--ifm-color-emphasis-200);
@@ -70,7 +70,7 @@ export default function LinkPreview(props: LinkPreviewProps) {
       case "github":
         return (
           <StyledGitHubIcon>
-            <GitHubIcon size={28} />
+            <GitHubIcon height={28} width={28} />
           </StyledGitHubIcon>
         );
       default:

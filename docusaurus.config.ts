@@ -23,7 +23,7 @@ const config: Config = {
       "classic",
       {
         docs: {
-          editUrl: "https://github.com/sablier-labs/v2-docs/tree/main/",
+          editUrl: "https://github.com/sablier-labs/docs/blob/main/",
           rehypePlugins: [rehypeKatex],
           routeBasePath: "/", // Serve the docs at the site's root
           remarkPlugins: [remarkMath],
@@ -38,20 +38,138 @@ const config: Config = {
   plugins: [
     [
       "@docusaurus/plugin-client-redirects",
-      // V1 redirects
+      // Note: these are ordered alphabetically, please keep them that way
       {
         redirects: [
+          {
+            from: "/api",
+            to: "/api/overview",
+          },
+          {
+            from: "/api/airdrops/the-graph",
+            to: "/api/airdrops/the-graph/entities",
+          },
+          {
+            from: "/api/indexers/protocol",
+            to: "/api/lockup/envio/similarities",
+          },
+          {
+            from: "/api/lockup/the-graph",
+            to: "/api/lockup/the-graph/entities",
+          },
+          {
+            from: "/api/merkle-api",
+            to: "/api/airdrops/merkle-api/overview",
+          },
+          {
+            from: "/api/subgraphs/endpoints",
+            to: "/api/lockup/endpoints",
+          },
+          {
+            from: "/api/subgraphs/merkle",
+            to: "/api/airdrops/the-graph/entities",
+          },
+          {
+            from: "/api/subgraphs/overview",
+            to: "/api/overview",
+          },
+          {
+            from: "/api/subgraphs/protocol",
+            to: "/api/lockup/the-graph/entities",
+          },
+          {
+            from: "/apps",
+            to: "/apps/features/overview",
+          },
+          {
+            from: "/apps/csv-support",
+            to: "/apps/guides/csv-support",
+          },
+          {
+            from: "/apps/features",
+            to: "/apps/features/vesting",
+          },
+          {
+            from: "/apps/features/airstreams",
+            to: "/apps/features/airdrops",
+          },
+          {
+            from: "/apps/features/general",
+            to: "/apps/features/overview",
+          },
+          {
+            from: "/apps/features/streams",
+            to: "/apps/features/vesting",
+          },
+          {
+            from: "/apps/overview",
+            to: "/apps/features/overview",
+          },
+          {
+            from: "/apps/url-schemes",
+            to: "/apps/guides/url-schemes",
+          },
+          // Lockup redirects from old docs (until Dec 2024)
+          {
+            from: "/concepts/protocol/fees",
+            to: "/concepts/fees",
+          },
+          {
+            from: "/concepts/protocol/nft",
+            to: "/concepts/nft",
+          },
+          {
+            from: "/concepts/protocol/stream-types",
+            to: "/concepts/lockup/stream-shapes",
+          },
+          {
+            from: "/concepts/protocol/streaming",
+            to: "/concepts/streaming",
+          },
+          {
+            from: "/concepts/protocol/transferability",
+            to: "/concepts/transferability",
+          },
+          {
+            from: "/concepts/sablier-protocol",
+            to: "/concepts/what-is-sablier",
+          },
+          {
+            from: "/contracts/v1/deployments",
+            to: "/guides/legacy/deployments",
+          },
+          {
+            from: "/contracts/v2/deployments/v1.0",
+            to: "/guides/lockup/previous-deployments/v1.0",
+          },
+          {
+            from: "/contracts/v2/deployments/v1.1",
+            to: "/guides/lockup/previous-deployments/v1.1",
+          },
+          {
+            from: "/contracts/v2/reference/overview",
+            to: "/reference/overview",
+          },
+          {
+            from: "/contracts/v2/security",
+            to: "/concepts/security",
+          },
+          {
+            from: "/csv",
+            to: "/apps/guides/csv-support",
+          },
+          // Legacy redirects
           {
             from: "/protocol/faq/basics",
             to: "/concepts/what-is-sablier",
           },
           {
-            from: "/protocol/guides/getting-started",
-            to: "/contracts/v1/guides/getting-started",
+            from: "/protocol/guides/chains",
+            to: "/guides/legacy/overview",
           },
           {
-            from: "/protocol/guides/chains",
-            to: "/contracts/v1/deployments",
+            from: "/protocol/guides/getting-started",
+            to: "/guides/legacy/overview",
           },
           {
             from: "/protocol/introduction",
@@ -62,34 +180,25 @@ const config: Config = {
             to: "/api/overview",
           },
           {
-            from: "/api/subgraphs/overview",
-            to: "/api/overview",
-          },
-          {
-            from: "/api",
-            to: "/api/overview",
-          },
-          {
-            from: "/apps/features",
-            to: "/apps/features/streams",
-          },
-          {
-            from: "/apps/url-schemes",
-            to: "/apps/guides/url-schemes",
-          },
-          {
-            from: "/apps/guides/how-to",
-            to: "/support/how-to",
-          },
-          {
-            from: "/apps/csv-support",
-            to: "/apps/guides/csv-support",
-          },
-          {
-            from: "/csv",
-            to: "/apps/guides/csv-support",
+            from: "/contracts/v1/guides/getting-started",
+            to: "/guides/legacy/overview",
           },
         ],
+        createRedirects(existingPath) {
+          const redirects = [];
+          if (existingPath.startsWith("/concepts/protocol")) {
+            redirects.push(existingPath.replace("/concepts/protocol", "/concepts/lockup"));
+          } else if (existingPath.startsWith("/contracts/v1/guides")) {
+            redirects.push(existingPath.replace("/contracts/v1/guides", "/guides/legacy"));
+          } else if (existingPath.startsWith("/contracts/v2/reference")) {
+            redirects.push(existingPath.replace("/contracts/v2/reference", "/reference/lockup"));
+          } else if (existingPath.startsWith("/contracts/v1")) {
+            redirects.push(existingPath.replace("/contracts/v1", "/reference/legacy"));
+          } else if (existingPath.startsWith("/contracts/v2")) {
+            redirects.push(existingPath.replace("/contracts/v2", "/guides/lockup"));
+          }
+          return Array.from(new Set(redirects));
+        },
       },
     ],
   ],
@@ -177,16 +286,16 @@ const config: Config = {
           title: "Developers",
           items: [
             {
-              label: "V2 Core",
+              label: "Lockup",
               href: "https://github.com/sablier-labs/v2-core",
             },
             {
-              label: "V2 Periphery",
-              href: "https://github.com/sablier-labs/v2-periphery",
+              label: "Flow",
+              href: "https://github.com/sablier-labs/flow",
             },
             {
               label: "Integration Template",
-              href: "https://github.com/sablier-labs/sablier-integration-template",
+              href: "https://github.com/sablier-labs/lockup-integration-template",
             },
             {
               label: "Subgraphs",
@@ -217,16 +326,16 @@ const config: Config = {
           activeBasePath: "/concepts",
         },
         {
-          label: "Contracts",
+          label: "Guides",
           position: "left",
-          to: "/contracts/v2/overview",
-          activeBasePath: "/contracts",
+          to: "/guides/lockup/overview",
+          activeBasePath: "/guides",
         },
         {
-          label: "Apps",
+          label: "References",
           position: "left",
-          to: "/apps/overview",
-          activeBasePath: "/apps",
+          to: "/reference/overview",
+          activeBasePath: "/reference",
         },
         {
           label: "APIs",
@@ -234,6 +343,13 @@ const config: Config = {
           to: "/api/overview",
           activeBasePath: "/api",
         },
+        {
+          label: "Apps",
+          position: "left",
+          to: "/apps/features/overview",
+          activeBasePath: "/apps",
+        },
+
         {
           label: "Support",
           position: "left",

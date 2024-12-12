@@ -1,0 +1,227 @@
+---
+id: "functionality"
+sidebar_position: 2
+title: "Functionality"
+---
+
+import LinkPreview from "@site/src/components/LinkPreview";
+
+## Architecture
+
+The backend is written in Rust. It can run locally (or in a self-hosted environment) with
+[`warp`](https://github.com/seanmonstar/warp) as well as using Vercel with its
+[`rust runtime`](https://github.com/vercel-community/rust).
+
+You can integrate the backend functionality using the official endpoints (below) but we recommend running it in a
+self-hosted environment for improved reliability (meaning you can fork and provide your own IPFS and Pinata access
+keys).
+
+Feel free to reach out for any guidance or feedback.
+
+The official endpoints can be seen in the [airdrops-endpoints](/api/airdrops/endpoints) registry.
+
+## Create: `/api/create`
+
+Call this route to create a new Merkle/Airstream campaign.
+
+### Prerequisites
+
+Before creating a new campaign, you'll need:
+
+- The `decimals` of the asset you're basing the campaign upon
+- A CSV file including a list of `[address, amount]` for every campaign recipient
+
+You can download a template for the CSV file from the link below or preview it
+[here](https://github.com/sablier-labs/sablier-labs.github.io/blob/1933e3b5176c93b236d9a483683dad3a282cc39a/templates/airstream-template.csv).
+
+<LinkPreview
+  href="https://files.sablier.com/templates/airstream-template.csv"
+  icon="github"
+  subtitle="airstream-template.csv"
+  title="Sablier Template for Airstreams (CSV)"
+/>
+
+:::tip
+
+The CSV will contain a header row, followed by pairs of addresses and amounts. The amounts will be in humanized form, as
+the API deals with the padding of each value (with the decimals of the token) on its own.
+
+:::
+
+### Description
+
+|                  |                                                                                                                          |
+| :--------------- | ------------------------------------------------------------------------------------------------------------------------ |
+| **Endpoint**     | `/api/create`                                                                                                            |
+| **Method**       | `POST`                                                                                                                   |
+| **Query Params** | `{decimals: number}`                                                                                                     |
+| **Body**         | `FormData` on `{data: File}`                                                                                             |
+| **Response**     | See in [Rust](https://github.com/sablier-labs/merkle-api/blob/main/src/data_objects/response.rs#L22) Overview TS (below) |
+
+```typescript
+type Response = {
+  /** IPFS content identifier for the uploaded file */
+  cid: string;
+  /** Expected number of recipients */
+  recipients: string;
+  /** HEX root fo the Merkle tree */
+  root: string;
+  /** Humanized status */
+  status: string;
+  /** Expected amount of assets required by the campaign */
+  total: string;
+};
+```
+
+### Functionality
+
+The `/api/create` route will perform the following actions:
+
+**1. Validation and processing**
+
+- Validate the CSV file and its contents
+- Add decimal padding to every amount
+- Build the Merkle tree and generate a root hash
+- Compute intermediary data (e.g. total expected amount, number of recipients)
+- Prepare an object containing the list, the tree and the data above
+
+**2. Upload to IPFS**
+
+- Upload the object in a JSON file on IPFS
+- Get a hold of the IPFS CID (unique identifier of the uploaded file)
+
+**3. Return data to client**
+
+- Return the root hash, IPFS CID and intermediary data points to the client
+- [Next] The client will use all these to call the factory and deploy a new campaign
+
+### Code
+
+For more insight, check out the implementation details.
+
+<LinkPreview
+  href="https://github.com/sablier-labs/merkle-api/blob/main/src/controller/create.rs"
+  icon="github"
+  subtitle="Github - sablier-labs/merkle-api"
+  title="create.rs"
+/>
+
+---
+
+## Eligibility: `/api/eligibility`
+
+Call this route to check if a recipient is eligible to claim a stream from the Merkle/Airstream campaign.
+
+:::info
+
+This endpoint uses an authentication scheme. Please reach out if you need to use our deployed endpoints in your app.
+
+:::
+
+### Prerequisites
+
+To check eligibility for an address, you'll be required to provide:
+
+- the address of the user
+- the CID of the IPFS file (see the [create](/api/airdrops/merkle-api/functionality#create-apicreate) flow above for
+  context) the campaign is linked to
+
+To get a hold of the second item you can see some options here in the
+[Common flows](/api/airdrops/merkle-api/examples#get-a-campaigns-cid) page.
+
+### Description
+
+|                  |                                                                                                                          |
+| :--------------- | ------------------------------------------------------------------------------------------------------------------------ |
+| **Endpoint**     | `/api/eligibility`                                                                                                       |
+| **Method**       | `GET`                                                                                                                    |
+| **Query Params** | `{address: string, cid: string}`                                                                                         |
+| **Response**     | See in [Rust](https://github.com/sablier-labs/merkle-api/blob/main/src/data_objects/response.rs#L32) Overview TS (below) |
+
+```typescript
+type Response = {
+  /** Address of the requested recipient */
+  address: IAddress;
+  /** Amount the recipient is eligible for */
+  amount: string;
+  /** Position of the recipient in the list */
+  index: 0;
+  /** Merkle proof */
+  proof: string[];
+};
+```
+
+### Functionality
+
+The `/api/eligibility` route will perform the following actions:
+
+1. Retrieve the campaign's IPFS file and extract the recipient's list and Merkle tree
+2. Search for the provided wallet address
+
+### Code
+
+For more insight, check out the implementation details.
+
+<LinkPreview
+  href="https://github.com/sablier-labs/merkle-api/blob/main/src/controller/eligibility.rs"
+  icon="github"
+  subtitle="Github - sablier-labs/merkle-api"
+  title="eligibility.rs"
+/>
+
+---
+
+## Eligibility: `/api/validity`
+
+Call this route to check if an IPFS CID links to a valid Merkle/Airstream campaign file. Given users may create
+campaigns by passing invalid IPFS CIDs (by mistake), we use this route to perform some minor sanity checks before
+allowing admins to pursue the creation of a campaign in the UI.
+
+### Prerequisites
+
+To check eligibility for an address, you'll be required to provide:
+
+- the CID of the IPFS file the campaign is linked to
+
+To get a hold of it you can see some options here in the
+[Common flows](/api/airdrops/merkle-api/examples#get-a-campaigns-cid) page.
+
+### Description
+
+|                  |                                                                                                                          |
+| :--------------- | ------------------------------------------------------------------------------------------------------------------------ |
+| **Endpoint**     | `/api/validity`                                                                                                          |
+| **Method**       | `GET`                                                                                                                    |
+| **Query Params** | `{cid: string}`                                                                                                          |
+| **Response**     | See in [Rust](https://github.com/sablier-labs/merkle-api/blob/main/src/data_objects/response.rs#L41) Overview TS (below) |
+
+```typescript
+type Response = {
+  /** IPFS content identifier for the uploaded file */
+  cid: string;
+  /** Expected number of recipients */
+  recipients: string;
+  /** HEX root fo the Merkle tree */
+  root: string;
+  /** Expected amount of assets required by the campaign */
+  total: string;
+};
+```
+
+### Functionality
+
+The `/api/validity` route will perform the following actions:
+
+1. Retrieve the campaign's IPFS file
+2. Run some sanity checks on the file contents
+
+### Code
+
+For more insight, check out the implementation details.
+
+<LinkPreview
+  href="https://github.com/sablier-labs/merkle-api/blob/main/src/controller/validity.rs"
+  icon="github"
+  subtitle="Github - sablier-labs/merkle-api"
+  title="validity.rs"
+/>

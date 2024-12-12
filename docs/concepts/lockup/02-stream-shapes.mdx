@@ -1,0 +1,328 @@
+---
+id: "stream-shapes"
+sidebar_position: 2
+title: "Stream Shapes"
+---
+
+import FunctionPlot from "@site/src/components/FunctionPlot";
+
+:::note
+
+The code used to generate the gas benchmarks for the different stream curves can be found
+[here](https://github.com/sablier-labs/examples/tree/shapes-benchmark).
+
+:::
+
+## Lockup Linear
+
+Lockup Linear streams are the simplest token distribution curve in Sablier. The streamed amount over time follows a
+straight line that goes up and to the right on a graph, which corresponds to the identity function $f(x) = x$:
+
+<FunctionPlot options={{ data: [{ fn: "x", color: "#f77423" }] }} />
+
+With this shape of stream, the payment rate remains constant, meaning that the same fraction of the deposit amount is
+streamed to the recipient every second. This provides greater predictability and is easy to understand because of how
+intuitive it is. Imagine a diagonal line going up and to the right – that's how simple it is.
+
+:::info
+
+The gas cost to create this shape is approximately _150,000_ on Mainnet. This may vary due to multiple factors.
+
+:::
+
+### Cliffs
+
+It is possible to attach a "cliff" to a Lockup Linear stream, which sets a cut-off point for releasing tokens. Prior to
+the cliff, the recipient cannot withdraw any tokens, but the stream continues to accrue them. After the cliff, the
+constant payment rate per second kicks in.
+
+<FunctionPlot
+  options={{
+    data: [
+      { fn: "0", range: [0, 25], color: "#f77423" },
+      { fn: "x", range: [25, 100], color: "#f77423" },
+      {
+        points: [
+          [25, 0],
+          [25, 25],
+        ],
+        fnType: "points",
+        graphType: "polyline",
+        color: "#f77423",
+      },
+    ],
+  }}
+/>
+
+This feature is especially useful for vesting ERC-20 tokens as it allows you to have, for example, a 1-year cliff, and
+then 3 additional years of linear streaming. If the stream is for an employee, you can make it cancellable so that if
+the employee leaves your company during the stream, you can cancel it and recover the tokens that have not yet been
+streamed.
+
+:::info
+
+The gas cost to create this shape is approximately _150,000_ on Mainnet. This may vary due to multiple factors.
+
+:::
+
+## Lockup Dynamic
+
+Lockup Dynamic streams are what makes Sablier so unique, since they enable the creation of an arbitrary streaming curve,
+including non-linear curves.
+
+On the Sablier Interface, we support only some distribution shapes (the ones enumerated below), but the potential for
+innovation is limitless when you interact programmatically with the contracts. For example, one could design a
+logarithmic stream that emulates the $f(x) = log(x)$ function.
+
+These streams are powered by a number of user-provided [segments](/concepts/lockup/segments), which we will cover in the
+next article. What is important to note here is that with Lockup Dynamic, Sablier has evolved into a universal streaming
+engine, capable of supporting any custom streaming curve.
+
+:::note
+
+If you are interested in learning how to programmatically create the curves shown below in Solidity, check out the
+[examples](https://github.com/sablier-labs/examples/blob/main/lockup/core/LockupDynamicCurvesCreator.sol) repository.
+
+:::
+
+### Exponential
+
+A fantastic use case for Lockup Dynamic is Exponential streams, a shape through which the recipient receives
+increasingly more tokens as time passes.
+
+<FunctionPlot options={{ data: [{ fn: "(x/70)^6 * 12", color: "#f77423" }] }} />
+
+Exponentials are a great fit if you are looking to airdrop tokens, because your community members will receive the
+majority of the tokens towards the end of the stream instead of receiving the tokens all at once (no streaming) or in a
+linear fashion (Lockup Linear). This incentivizes long-term behavior and a constructive attitude.
+
+:::info
+
+The gas cost to create this shape is approximately _213,610_ on Mainnet. This may vary due to multiple factors.
+
+:::
+
+### Cliff Exponential
+
+Another use case for Lockup Dynamic is a variation of the previous design: an Cliff Exponential.
+
+<FunctionPlot
+  options={{
+    data: [
+      { fn: "0", range: [0, 50], color: "#f77423" },
+      { fn: "(x/70)^6 * 9.6 + 18.672", color: "#f77423", range: [50, 100] },
+      {
+        points: [
+          [50, 0],
+          [50, 20],
+        ],
+        fnType: "points",
+        graphType: "polyline",
+        color: "#f77423",
+      },
+    ],
+  }}
+/>
+
+The stream starts with a cliff (which can be how long you want), a specific amount instantly unlocked when the cliff
+ends, and then the rest of the stream is exponentially streamed.
+
+This is an excellent distribution if you are a company looking to set up a token vesting plan for your employees. Your
+employees will have an incentive to remain with your company in the long run, as they will receive an increasingly
+larger number of tokens.
+
+:::info
+
+The gas cost to create this shape is approximately _264,854_ on Mainnet. This may vary due to multiple factors.
+
+:::
+
+### Timelock
+
+The Timelock shape locks all tokens for a specified period. Users cannot access the tokens until the set period elapses.
+
+<FunctionPlot
+  options={{
+    data: [
+      {
+        points: [
+          [0.01, 0.01],
+          [90, 0],
+          [90, 99.7],
+          [99.99, 99.99],
+        ],
+        fnType: "points",
+        graphType: "polyline",
+        color: "#f77423",
+      },
+    ],
+  }}
+/>
+
+Once the set period elapses, the full amount becomes accessible to the recipient. This setup is particularly
+advantageous for projects seeking to stabilize token pricing and minimize market volatility, encouraging investors to
+maintain their stake over a more extended period.
+
+:::info
+
+The gas cost to create this shape is approximately _239,232_ on Mainnet. This may vary due to multiple factors.
+
+:::
+
+### Unlock Linear
+
+The Unlock Linear shape combines an initial immediate release of tokens with a steady, linear payout over time. This
+shape is ideal for employment contracts that include a signing bonus along with a regular payout schedule.
+
+<FunctionPlot
+  options={{
+    data: [
+      { fn: "25", range: [0, 0.15], color: "#f77423" },
+      { fn: "(x-0.15)*0.75015 + 25", range: [0.15, 100], color: "#f77423" },
+      {
+        points: [
+          [0.15, 0],
+          [0.15, 25],
+        ],
+        fnType: "points",
+        graphType: "polyline",
+        color: "#f77423",
+      },
+    ],
+  }}
+/>
+
+At the beginning of the stream, a fixed amount of tokens is instantly available to the recipient — this is your "signing
+bonus". Following this, the remaining tokens begin to stream continuously at a consistent rate until the end of the
+contract term — this is your "salary".
+
+Another use case is a token distribution to investors where a particular amount gets unlocked immediately followed by a
+linear vesting plan.
+
+:::info
+
+The gas cost to create this shape is approximately _239,232_ on Mainnet. This may vary due to multiple factors.
+
+:::
+
+### Unlock Cliff
+
+This shape is useful for companies who want to distribute tokens to their investors using a cliff followed by linear
+vesting but also want to unlock some liquidity at the beginning to be able to allow investors to bootstrap AMM pools.
+
+<FunctionPlot
+  options={{
+    data: [
+      { fn: "0", range: [0, 50], color: "#f77423" },
+      { fn: "x", color: "#f77423", range: [50, 100] },
+      {
+        points: [
+          [0.15, 0],
+          [0.15, 25],
+          [50, 25],
+          [50, 50],
+        ],
+        fnType: "points",
+        graphType: "polyline",
+        color: "#f77423",
+      },
+    ],
+  }}
+/>
+
+Initially, a set amount of tokens are made available to the recipient as an upfront payment. After this initial unlock,
+the tokens are held during the cliff period until the moment of time set. The release resumes in a linearly post-cliff.
+
+:::info
+
+The gas cost to create this shape is approximately _290,477_ on Mainnet. This may vary due to multiple factors.
+
+:::
+
+## Lockup Tranched
+
+Lockup Tranched streams are, as the name says, streams that have token unlocks in tranches. Even though you can use
+Lockup Dynamic to create a traditional vesting structure with periodic unlocks, Lockup Tranched is specifically design
+for that use case. As a result, a stream with tranches created using Lockup Tranched is more gas efficient than the same
+stream created using Lockup Dynamic.
+
+These streams are powered by a number of user-provided [tranches](/concepts/lockup/tranches), which is covered in the
+tranches article.
+
+### Unlock in Steps
+
+You can use Lockup Tranched to create a traditional vesting contract with periodic unlocks. In this case, the
+"streaming" rate would not be by the second, but by the week, month, or year.
+
+<FunctionPlot
+  options={{
+    data: [
+      {
+        points: [
+          [0.01, 0.01],
+          [25, 0],
+          [25, 25],
+          [50, 25],
+          [50, 50],
+          [75, 50],
+          [75, 75],
+          [99.99, 75],
+          [99.99, 99.99],
+        ],
+        fnType: "points",
+        graphType: "polyline",
+        color: "#f77423",
+      },
+    ],
+  }}
+/>
+
+After each period, a specific amount becomes unlocked and available for the recipient to withdraw. Past unlocks
+accumulate, so if the recipient doesn't withdraw them, they will be able to withdraw them later.
+
+The advantage of using Unlock in Steps instead of a normal vesting contract is that Sablier automates the entire
+process. No more worries about setting up vesting contracts or creating a user interface for your investors to claim
+their tokens.
+
+:::info
+
+The gas cost to create this shape is approximately _392,982_ on Mainnet for four unlocks. This may vary as there are
+multiple factors to consider.
+
+:::
+
+### Unlock Monthly
+
+Unlock Monthly is a special case of Unlock in Steps where tokens are unlocked on the same day every month, e.g. the 1st
+of every month. This is suited for use cases like traditional monthly salaries or ESOPs plans.
+
+<FunctionPlot
+  options={{
+    xAxisLabel: "x - Months",
+    xDomainLimit: 12,
+    yDomainLimit: 120,
+    data: [
+      {
+        fnType: "points",
+        graphType: "polyline",
+        color: "#f77423",
+        points: Array.from({ length: 24 }, (_, i) => [
+          1 + Math.floor(i / 2),
+          10 * Math.floor(i / 2) + (i % 2 === 1 ? 10 : 0),
+        ]),
+      },
+    ],
+  }}
+/>
+
+Each month, on a particular day, a specific amount of tokens becomes unlocked and available for withdrawal. Like Unlock
+in Steps, unwithdrawn tokens will carry over to the next period, providing flexibility and control to the recipient.
+This shape is ideal for employers who wish to set up advanced payment schedules for their employees, offering them
+access to funds on a predictable, monthly basis.
+
+:::info
+
+The gas cost to create this shape is approximately _803,150_ on Mainnet for a period of exactly **one year**. This may
+vary as there are multiple factors to consider.
+
+:::
