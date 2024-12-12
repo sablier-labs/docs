@@ -57,7 +57,7 @@ const Social = styled(Link)`
 
   svg,
   img {
-    filter: grayscale(100) brightness(100);
+    filter: grayscale(100%) brightness(100%);
   }
 
   &:active,
