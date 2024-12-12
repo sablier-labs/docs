@@ -160,6 +160,10 @@ const config: Config = {
           },
           // Legacy redirects
           {
+            from: "/contracts/v1/guides/getting-started",
+            to: "/guides/legacy/overview",
+          },
+          {
             from: "/protocol/faq/basics",
             to: "/concepts/what-is-sablier",
           },
@@ -179,25 +183,20 @@ const config: Config = {
             from: "/protocol/subgraphs/endpoints",
             to: "/api/overview",
           },
-          {
-            from: "/contracts/v1/guides/getting-started",
-            to: "/guides/legacy/overview",
-          },
         ],
         createRedirects(existingPath) {
-          const redirects = [];
           if (existingPath.startsWith("/concepts/protocol")) {
-            redirects.push(existingPath.replace("/concepts/protocol", "/concepts/lockup"));
-          } else if (existingPath.startsWith("/contracts/v1/guides")) {
-            redirects.push(existingPath.replace("/contracts/v1/guides", "/guides/legacy"));
-          } else if (existingPath.startsWith("/contracts/v2/reference")) {
-            redirects.push(existingPath.replace("/contracts/v2/reference", "/reference/lockup"));
-          } else if (existingPath.startsWith("/contracts/v1")) {
-            redirects.push(existingPath.replace("/contracts/v1", "/reference/legacy"));
-          } else if (existingPath.startsWith("/contracts/v2")) {
-            redirects.push(existingPath.replace("/contracts/v2", "/guides/lockup"));
+            return [existingPath.replace("/concepts/protocol", "/concepts/lockup")];
+            // } else if (existingPath.startsWith("/contracts/v1/guides")) {
+            //   redirects.push(existingPath.replace("/contracts/v1/guides", "/guides/legacy"));
+            // } else if (existingPath.startsWith("/contracts/v2/reference")) {
+            //   redirects.push(existingPath.replace("/contracts/v2/reference", "/reference/lockup"));
+            // } else if (existingPath.startsWith("/contracts/v1")) {
+            //   redirects.push(existingPath.replace("/contracts/v1", "/reference/legacy"));
+            // } else if (existingPath.startsWith("/contracts/v2")) {
+            //   redirects.push(existingPath.replace("/contracts/v2", "/guides/lockup"));
           }
-          return Array.from(new Set(redirects));
+          return undefined;
         },
       },
     ],
