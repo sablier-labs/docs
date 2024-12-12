@@ -4,7 +4,7 @@ sidebar_position: 1
 title: "Overview"
 ---
 
-# Sablier Flow V1.0
+# Sablier Flow
 
 Welcome to the Sablier Flow protocol documentation.
 

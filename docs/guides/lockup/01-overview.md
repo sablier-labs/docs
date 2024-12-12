@@ -4,7 +4,7 @@ sidebar_position: 1
 title: "Overview"
 ---
 
-# Sablier Lockup V1.2
+# Sablier Lockup
 
 Welcome to the Sablier Lockup protocol documentation.
 
