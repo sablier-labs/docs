@@ -30,14 +30,15 @@ us to keep their contract on the allowlist.
 The requirements a hook contract must meet:
 
 1. The contract is not upgradeable.
-2. The contract implements `supportsInterface` and returns `true` for `0xf8ee98d3`, i.e.,
+2. The contract was audited by a third-party security researcher.
+3. The contract implements `supportsInterface` and returns `true` for `0xf8ee98d3`, i.e.,
    `type(ISablierLockupRecipient).interfaceId`.
-3. If it implements `onSablierLockupCancel`:
+4. If it implements `onSablierLockupCancel`:
    1. It returns `ISablierLockupRecipient.onSablierLockupCancel.selector`.
    1. It reverts if `msg.sender` is not the Lockup contract.
    1. It uses input parameters correctly: `streamId`, `sender`, `senderAmount`, `recipientAmount`.
    1. Be aware that if the call reverts, the entire `cancel` execution would revert too.
-4. If it implements `onSablierLockupWithdraw`:
+5. If it implements `onSablierLockupWithdraw`:
    1. It returns `ISablierLockupRecipient.onSablierLockupWithdraw.selector`.
    1. It reverts if `msg.sender` is not Lockup contract.
    1. It uses input parameters correctly: `streamId`, `caller`, `to`, `amount`.
