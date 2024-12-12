@@ -120,20 +120,19 @@ the app itself. We suggest double-checking in the Sablier app that the dates hav
 
 :::
 
-| Column         | Description                                                                                | Examples                                          |
-| :------------- | :----------------------------------------------------------------------------------------- | :------------------------------------------------ |
-| address        | String - recipient's address                                                               | `0x12...AB`                                       |
-| amount         | Number - the amount that will be streamed                                                  | `100`, `2500`, `42161` or any other valid amount. |
-| duration       | Duration type - string that denotes the duration of the stream                             | `1 year 20 days`, `3 years 20 days 4 hours`       |
-| start          | Date type - string that denotes the start date of the stream                               | `2024-02-24 16:15`, `2026-02-14 17:25`            |
-| end            | Date type - string that denotes the end date of the stream                                 | `2024-02-24 16:15`, `2026-02-14 17:25`            |
-| cliffDuration  | Duration type - string that denotes the cliff duration of the stream                       | `2 years 20 days`, `3 years 20 days 4 hours`      |
-| cliffEnd       | Date type - string that denotes the cliff end date of the stream                           | `2024-02-24 16:15`, `2026-02-14 17:25`            |
-| months         | Number - the number of months for the unlock monthly                                       | `4`, `5`, `12` or any other valid integer.        |
-| steps          | Number - the number of steps for the unlock in steps                                       | `4`, `5`, `12` or any other valid integer.        |
-| unlockDuration | Duration type - string that denotes the cliff duration of the stream, for the unlock cliff | `2 years 20 days`, `3 years 20 days 4 hours`      |
-| unlockEnd      | Date type - string that denotes the cliff end date of the stream, for the unlock cliff     | `2024-02-24 16:15`, `2026-02-14 17:25`            |
-| unlock         | Number - the amount that will be initially unlocked                                        | `100`, `2500`, `42161` or any other valid amount. |
+| Column         | Description                                                                                                          | Examples                                          |
+| :------------- | :------------------------------------------------------------------------------------------------------------------- | :------------------------------------------------ |
+| address        | String - recipient's address                                                                                         | `0x12...AB`                                       |
+| amount         | Number - the amount that will be streamed                                                                            | `100`, `2500`, `42161` or any other valid amount. |
+| duration       | Duration type - string that denotes the duration of the stream                                                       | `1 year 20 days`, `3 years 20 days 4 hours`       |
+| start          | Date type - string that denotes the start date of the stream                                                         | `2024-02-24 16:15`, `2026-02-14 17:25`            |
+| end            | Date type - string that denotes the end date of the stream                                                           | `2024-02-24 16:15`, `2026-02-14 17:25`            |
+| cliffDuration  | Duration type - string that denotes the cliff duration of the stream                                                 | `2 years 20 days`, `3 years 20 days 4 hours`      |
+| cliffEnd       | Date type - string that denotes the cliff end date of the stream                                                     | `2024-02-24 16:15`, `2026-02-14 17:25`            |
+| months         | Number - the number of months for the unlock monthly                                                                 | `4`, `5`, `12` or any other valid integer.        |
+| steps          | Number - the number of steps for the unlock in steps                                                                 | `4`, `5`, `12` or any other valid integer.        |
+| unlock         | Number - the amount that will be initially unlocked                                                                  | `100`, `2500`, `42161` or any other valid amount. |
+| initial        | Initial unlock type - wether the first unlock should occur at the stream start date or at the end of the first month | `at start` or `end of first month`                |
 
 ## Airstreams: Create
 
