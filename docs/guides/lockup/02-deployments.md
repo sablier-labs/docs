@@ -150,24 +150,6 @@ Sablier repositories on Github.
 | SablierV2BatchLockup         | [0x70998557980CB6E8E63c46810081262B6c343051](https://bscscan.com/address/0x70998557980CB6E8E63c46810081262B6c343051) | [periphery-v1.2.0](https://github.com/sablier-labs/deployments/blob/main/lockup/v1.2.0/periphery) |
 | SablierV2MerkleLockupFactory | [0x96Aa12809CAC29Bba4944fEca1dFDC8e1704e6c1](https://bscscan.com/address/0x96Aa12809CAC29Bba4944fEca1dFDC8e1704e6c1) | [periphery-v1.2.0](https://github.com/sablier-labs/deployments/blob/main/lockup/v1.2.0/periphery) |
 
-### Core Dao
-
-#### Core
-
-| Contract                | Address                                                                                                                   | Deployment                                                                              |
-| :---------------------- | :------------------------------------------------------------------------------------------------------------------------ | :-------------------------------------------------------------------------------------- |
-| SablierV2LockupDynamic  | [0xf0a7F2cCE911c298B5CB8106Db19EF1D00230710](https://scan.coredao.org/address/0xf0a7F2cCE911c298B5CB8106Db19EF1D00230710) | [core-v1.2.0](https://github.com/sablier-labs/deployments/blob/main/lockup/v1.2.0/core) |
-| SablierV2LockupLinear   | [0x98Fe0d8b2c2c05d9C6a9e635f59474Aaa0000120](https://scan.coredao.org/address/0x98Fe0d8b2c2c05d9C6a9e635f59474Aaa0000120) | [core-v1.2.0](https://github.com/sablier-labs/deployments/blob/main/lockup/v1.2.0/core) |
-| SablierV2LockupTranched | [0x9C99EF88399bC1c1188399B39E7Cc667D78210ea](https://scan.coredao.org/address/0x9C99EF88399bC1c1188399B39E7Cc667D78210ea) | [core-v1.2.0](https://github.com/sablier-labs/deployments/blob/main/lockup/v1.2.0/core) |
-| SablierV2NFTDescriptor  | [0x64C734B2F1704822D8E69CAF230aE8d2eC18AA3e](https://scan.coredao.org/address/0x64C734B2F1704822D8E69CAF230aE8d2eC18AA3e) | [core-v1.2.0](https://github.com/sablier-labs/deployments/blob/main/lockup/v1.2.0/core) |
-
-#### Periphery
-
-| Contract                     | Address                                                                                                                   | Deployment                                                                                        |
-| :--------------------------- | :------------------------------------------------------------------------------------------------------------------------ | :------------------------------------------------------------------------------------------------ |
-| SablierV2BatchLockup         | [0xdE21BBFf718723E9069d8528d6Bb26c2971D58a7](https://scan.coredao.org/address/0xdE21BBFf718723E9069d8528d6Bb26c2971D58a7) | [periphery-v1.2.0](https://github.com/sablier-labs/deployments/blob/main/lockup/v1.2.0/periphery) |
-| SablierV2MerkleLockupFactory | [0x074CC814a8114126c505F5eecFC82A400B39cA03](https://scan.coredao.org/address/0x074CC814a8114126c505F5eecFC82A400B39cA03) | [periphery-v1.2.0](https://github.com/sablier-labs/deployments/blob/main/lockup/v1.2.0/periphery) |
-
 ### Chiliz
 
 #### Core
@@ -185,6 +167,24 @@ Sablier repositories on Github.
 | :--------------------------- | :--------------------------------------------------------------------------------------------------------------------- | :------------------------------------------------------------------------------------------------ |
 | SablierV2BatchLockup         | [0x0eDA15D606733f6CDe9DB67263E546bfcDDe9264](https://chiliscan.com/address/0x0eDA15D606733f6CDe9DB67263E546bfcDDe9264) | [periphery-v1.2.0](https://github.com/sablier-labs/deployments/blob/main/lockup/v1.2.0/periphery) |
 | SablierV2MerkleLockupFactory | [0x92FC05e49c27884d554D98a5C01Ff0894a9DC29a](https://chiliscan.com/address/0x92FC05e49c27884d554D98a5C01Ff0894a9DC29a) | [periphery-v1.2.0](https://github.com/sablier-labs/deployments/blob/main/lockup/v1.2.0/periphery) |
+
+### Core Dao
+
+#### Core
+
+| Contract                | Address                                                                                                                   | Deployment                                                                              |
+| :---------------------- | :------------------------------------------------------------------------------------------------------------------------ | :-------------------------------------------------------------------------------------- |
+| SablierV2LockupDynamic  | [0xf0a7F2cCE911c298B5CB8106Db19EF1D00230710](https://scan.coredao.org/address/0xf0a7F2cCE911c298B5CB8106Db19EF1D00230710) | [core-v1.2.0](https://github.com/sablier-labs/deployments/blob/main/lockup/v1.2.0/core) |
+| SablierV2LockupLinear   | [0x98Fe0d8b2c2c05d9C6a9e635f59474Aaa0000120](https://scan.coredao.org/address/0x98Fe0d8b2c2c05d9C6a9e635f59474Aaa0000120) | [core-v1.2.0](https://github.com/sablier-labs/deployments/blob/main/lockup/v1.2.0/core) |
+| SablierV2LockupTranched | [0x9C99EF88399bC1c1188399B39E7Cc667D78210ea](https://scan.coredao.org/address/0x9C99EF88399bC1c1188399B39E7Cc667D78210ea) | [core-v1.2.0](https://github.com/sablier-labs/deployments/blob/main/lockup/v1.2.0/core) |
+| SablierV2NFTDescriptor  | [0x64C734B2F1704822D8E69CAF230aE8d2eC18AA3e](https://scan.coredao.org/address/0x64C734B2F1704822D8E69CAF230aE8d2eC18AA3e) | [core-v1.2.0](https://github.com/sablier-labs/deployments/blob/main/lockup/v1.2.0/core) |
+
+#### Periphery
+
+| Contract                     | Address                                                                                                                   | Deployment                                                                                        |
+| :--------------------------- | :------------------------------------------------------------------------------------------------------------------------ | :------------------------------------------------------------------------------------------------ |
+| SablierV2BatchLockup         | [0xdE21BBFf718723E9069d8528d6Bb26c2971D58a7](https://scan.coredao.org/address/0xdE21BBFf718723E9069d8528d6Bb26c2971D58a7) | [periphery-v1.2.0](https://github.com/sablier-labs/deployments/blob/main/lockup/v1.2.0/periphery) |
+| SablierV2MerkleLockupFactory | [0x074CC814a8114126c505F5eecFC82A400B39cA03](https://scan.coredao.org/address/0x074CC814a8114126c505F5eecFC82A400B39cA03) | [periphery-v1.2.0](https://github.com/sablier-labs/deployments/blob/main/lockup/v1.2.0/periphery) |
 
 ### Gnosis
 

@@ -66,19 +66,19 @@ Sablier repositories on Github.
 | SablierFlow       | [0xfce01f79247cf450062545e7155d7bd568551d0e](https://bscscan.com/address/0xfce01f79247cf450062545e7155d7bd568551d0e) | [v1.0.0](https://github.com/sablier-labs/deployments/blob/main/flow/v1.0.0) |
 | FlowNFTDescriptor | [0xbc6fdd3f59900b9fcd445f8df159e2e794f098ec](https://bscscan.com/address/0xbc6fdd3f59900b9fcd445f8df159e2e794f098ec) | [v1.0.0](https://github.com/sablier-labs/deployments/blob/main/flow/v1.0.0) |
 
-### Core Dao
-
-| Contract          | Address                                                                                                                   | Deployment                                                                  |
-| :---------------- | :------------------------------------------------------------------------------------------------------------------------ | :-------------------------------------------------------------------------- |
-| SablierFlow       | [0x447c6ea25540611541ff98fc677ca865f4e92450](https://scan.coredao.org/address/0x447c6ea25540611541ff98fc677ca865f4e92450) | [v1.0.0](https://github.com/sablier-labs/deployments/blob/main/flow/v1.0.0) |
-| FlowNFTDescriptor | [0xbfaa055ecfe503e1323dc9fc26b7d3aa3bf54364](https://scan.coredao.org/address/0xbfaa055ecfe503e1323dc9fc26b7d3aa3bf54364) | [v1.0.0](https://github.com/sablier-labs/deployments/blob/main/flow/v1.0.0) |
-
 ### Chiliz
 
 | Contract          | Address                                                                                                                | Deployment                                                                  |
 | :---------------- | :--------------------------------------------------------------------------------------------------------------------- | :-------------------------------------------------------------------------- |
 | SablierFlow       | [0x9EfC8663cAB0e2d97ad17C9fbfc8392445517E94](https://chiliscan.com/address/0x9EfC8663cAB0e2d97ad17C9fbfc8392445517E94) | [v1.0.0](https://github.com/sablier-labs/deployments/blob/main/flow/v1.0.0) |
 | FlowNFTDescriptor | [0x3D664B2Da905DDD0Db931982FD9a759ea950D6e1](https://chiliscan.com/address/0x3D664B2Da905DDD0Db931982FD9a759ea950D6e1) | [v1.0.0](https://github.com/sablier-labs/deployments/blob/main/flow/v1.0.0) |
+
+### Core Dao
+
+| Contract          | Address                                                                                                                   | Deployment                                                                  |
+| :---------------- | :------------------------------------------------------------------------------------------------------------------------ | :-------------------------------------------------------------------------- |
+| SablierFlow       | [0x447c6ea25540611541ff98fc677ca865f4e92450](https://scan.coredao.org/address/0x447c6ea25540611541ff98fc677ca865f4e92450) | [v1.0.0](https://github.com/sablier-labs/deployments/blob/main/flow/v1.0.0) |
+| FlowNFTDescriptor | [0xbfaa055ecfe503e1323dc9fc26b7d3aa3bf54364](https://scan.coredao.org/address/0xbfaa055ecfe503e1323dc9fc26b7d3aa3bf54364) | [v1.0.0](https://github.com/sablier-labs/deployments/blob/main/flow/v1.0.0) |
 
 ### Gnosis
 
