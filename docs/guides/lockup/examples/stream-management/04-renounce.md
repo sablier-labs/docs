@@ -17,7 +17,7 @@ sender wants to give up control of the stream.
 To renounce a stream, you can use [`renounce`](/reference/lockup/core/abstracts/abstract.SablierV2Lockup#renounce).
 
 Before invoking this function, ensure that you have an active, cancelable stream with the sender set to the
-`StreamManagement` contract. Once the stream is created, you can use the the `renounce` function like this:
+`StreamManagement` contract. Once the stream is created, you can use the `renounce` function like this:
 
 ```solidity reference title="Stream Management: Renounce"
 https://github.com/sablier-labs/examples/blob/main/lockup/core/StreamManagement.sol#L53-L55

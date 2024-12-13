@@ -12,7 +12,7 @@ title: "Diagrams"
 | cd           | Covered debt    | Portion of the total debt covered by the stream balance     |
 | elt          | Elapsed time    | Time elapsed in seconds since the last snapshot             |
 | od           | Ongoing debt    | Debt accumulated since the last snapshot                    |
-| now          | Current time    | Same as `block.timestamps`                                  |
+| now          | Current time    | Same as `block.timestamp`                                   |
 | rps          | Rate per second | Rate at which tokens are streamed per second                |
 | sd           | Snapshot debt   | Debt accumulated until the last snapshot                    |
 | st           | Snapshot time   | Time of the last snapshot                                   |

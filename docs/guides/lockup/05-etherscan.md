@@ -166,7 +166,7 @@ should be UNIX timestamps (represented in **seconds**). You can find a Unix time
 [here](https://www.unixtimestamp.com/).
 
 If you prefer to not have a cliff, you can simply set the cliff time to 0, like in this example. If, however, you want
-to have a cliff, fill in the timestamp for the the cliff there.
+to have a cliff, fill in the timestamp for the cliff there.
 
 | Total Duration | Cliff Duration | [Start, Cliff, End]                    |
 | :------------- | :------------- | -------------------------------------- |

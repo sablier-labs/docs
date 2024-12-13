@@ -4,6 +4,7 @@ sidebar_position: 2
 title: "Endpoints"
 ---
 
+import TheGraphSunset from "@site/docs/snippets/TheGraphSunset";
 import LinkPreview from "@site/src/components/LinkPreview";
 
 # Airdrops
@@ -17,13 +18,7 @@ or users claiming stream NFTs as defined in the attached Merkle tree.
 Airdrops work in tandem with [vesting](/apps/features/vesting) as Merkle distributions will produce new
 [lockup](/api/lockup/overview) streams. Be sure to check out that part of the docs too.
 
-:::important
-
-Since The Graph has [sunset](https://thegraph.com/blog/sunsetting-hosted-service/) their Hosted Service, we've
-transitioned our subgraphs to either the Studio or The Decentralized Network (see
-[supported networks](https://thegraph.com/docs/en/developing/supported-networks/) and our endpoints below).
-
-:::
+<TheGraphSunset />
 
 ### Endpoints
 
@@ -93,9 +88,9 @@ recipient's claims.
 
 ### Endpoints
 
-| Host    | Endpoint                       |
-| ------- | ------------------------------ |
-| Sablier | https://v2-services.vercel.app |
+| Host    | Endpoint                              |
+| ------- | ------------------------------------- |
+| Sablier | https://sablier-merkle-api.vercel.app |
 
 ### Code
 
