@@ -168,6 +168,24 @@ Sablier repositories on Github.
 | SablierV2BatchLockup         | [0xdE21BBFf718723E9069d8528d6Bb26c2971D58a7](https://scan.coredao.org/address/0xdE21BBFf718723E9069d8528d6Bb26c2971D58a7) | [periphery-v1.2.0](https://github.com/sablier-labs/deployments/blob/main/lockup/v1.2.0/periphery) |
 | SablierV2MerkleLockupFactory | [0x074CC814a8114126c505F5eecFC82A400B39cA03](https://scan.coredao.org/address/0x074CC814a8114126c505F5eecFC82A400B39cA03) | [periphery-v1.2.0](https://github.com/sablier-labs/deployments/blob/main/lockup/v1.2.0/periphery) |
 
+### Chiliz
+
+#### Core
+
+| Contract                | Address                                                                                                                | Deployment                                                                              |
+| :---------------------- | :--------------------------------------------------------------------------------------------------------------------- | :-------------------------------------------------------------------------------------- |
+| SablierV2LockupDynamic  | [0xCff4a803b0Bf55dD1BE38Fb96088478F3D2eeCF2](https://chiliscan.com/address/0xCff4a803b0Bf55dD1BE38Fb96088478F3D2eeCF2) | [core-v1.2.0](https://github.com/sablier-labs/deployments/blob/main/lockup/v1.2.0/core) |
+| SablierV2LockupLinear   | [0xDf578C2c70A86945999c65961417057363530a1c](https://chiliscan.com/address/0xDf578C2c70A86945999c65961417057363530a1c) | [core-v1.2.0](https://github.com/sablier-labs/deployments/blob/main/lockup/v1.2.0/core) |
+| SablierV2LockupTranched | [0xcb099EfC90e88690e287259410B9AE63e1658CC6](https://chiliscan.com/address/0xcb099EfC90e88690e287259410B9AE63e1658CC6) | [core-v1.2.0](https://github.com/sablier-labs/deployments/blob/main/lockup/v1.2.0/core) |
+| SablierV2NFTDescriptor  | [0x2De92156000269fa2fde7544F10f01E8cBC80fFa](https://chiliscan.com/address/0x2De92156000269fa2fde7544F10f01E8cBC80fFa) | [core-v1.2.0](https://github.com/sablier-labs/deployments/blob/main/lockup/v1.2.0/core) |
+
+#### Periphery
+
+| Contract                     | Address                                                                                                                | Deployment                                                                                        |
+| :--------------------------- | :--------------------------------------------------------------------------------------------------------------------- | :------------------------------------------------------------------------------------------------ |
+| SablierV2BatchLockup         | [0x0eDA15D606733f6CDe9DB67263E546bfcDDe9264](https://chiliscan.com/address/0x0eDA15D606733f6CDe9DB67263E546bfcDDe9264) | [periphery-v1.2.0](https://github.com/sablier-labs/deployments/blob/main/lockup/v1.2.0/periphery) |
+| SablierV2MerkleLockupFactory | [0x92FC05e49c27884d554D98a5C01Ff0894a9DC29a](https://chiliscan.com/address/0x92FC05e49c27884d554D98a5C01Ff0894a9DC29a) | [periphery-v1.2.0](https://github.com/sablier-labs/deployments/blob/main/lockup/v1.2.0/periphery) |
+
 ### Gnosis
 
 #### Core
