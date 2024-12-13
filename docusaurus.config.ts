@@ -139,11 +139,11 @@ const config: Config = {
             to: "/guides/legacy/deployments",
           },
           {
-            from: "/contracts/v2/deployments/v1.0",
+            from: "/contracts/v2/deployments/v2.0",
             to: "/guides/lockup/previous-deployments/v1.0",
           },
           {
-            from: "/contracts/v2/deployments/v1.1",
+            from: "/contracts/v2/deployments/v2.1",
             to: "/guides/lockup/previous-deployments/v1.1",
           },
           {
@@ -161,6 +161,10 @@ const config: Config = {
           // Legacy redirects
           {
             from: "/contracts/v1/guides/getting-started",
+            to: "/guides/legacy/overview",
+          },
+          {
+            from: "/contracts/v1/overview",
             to: "/guides/legacy/overview",
           },
           {
@@ -185,18 +189,19 @@ const config: Config = {
           },
         ],
         createRedirects(existingPath) {
-          if (existingPath.startsWith("/concepts/protocol")) {
-            return [existingPath.replace("/concepts/protocol", "/concepts/lockup")];
-            // } else if (existingPath.startsWith("/contracts/v1/guides")) {
-            //   redirects.push(existingPath.replace("/contracts/v1/guides", "/guides/legacy"));
-            // } else if (existingPath.startsWith("/contracts/v2/reference")) {
-            //   redirects.push(existingPath.replace("/contracts/v2/reference", "/reference/lockup"));
-            // } else if (existingPath.startsWith("/contracts/v1")) {
-            //   redirects.push(existingPath.replace("/contracts/v1", "/reference/legacy"));
-            // } else if (existingPath.startsWith("/contracts/v2")) {
-            //   redirects.push(existingPath.replace("/contracts/v2", "/guides/lockup"));
+          const redirects = [];
+          if (existingPath.startsWith("/concepts/lockup/")) {
+            redirects.push(existingPath.replace("/concepts/lockup/", "/concepts/protocol/"));
+          } else if (existingPath.startsWith("/guides/legacy/")) {
+            redirects.push(existingPath.replace("/guides/legacy/", "/contracts/v1/guides/"));
+          } else if (existingPath.startsWith("/reference/lockup/")) {
+            redirects.push(existingPath.replace("/reference/lockup/", "/contracts/v2/reference/"));
+          } else if (existingPath.startsWith("/reference/legacy/")) {
+            redirects.push(existingPath.replace("/reference/legacy/", "/contracts/v1/"));
+          } else if (existingPath.startsWith("/guides/lockup/examples/")) {
+            redirects.push(existingPath.replace("/guides/lockup/examples/", "/contracts/v2/guides/"));
           }
-          return undefined;
+          return redirects;
         },
       },
     ],
