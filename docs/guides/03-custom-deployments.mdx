@@ -16,7 +16,7 @@ you fill out this <Link href={links.forms.chains}>form</Link> and meet the requi
 
 ## Requirements
 
-- Blockchain explorer
+- Blockchain explorer with instructions for verifying contracts
 - Documentation site
 - Bridge, with instructions for how to obtain the native token (e.g., ETH) and ERC-20 tokens to the target chain
 - GraphQL solution, e.g., a deployment of [The Graph](https://thegraph.com/)
@@ -181,7 +181,7 @@ If you are using a mnemonic or a hardware device for your deployer address, refe
 Once the contracts are deployed, the final step is to list the deployment addresses and artifacts in the Lockup docs:
 
 1. List the deployment addresses by opening a PR in the
-   [docs repo](https://github.com/sablier-labs/docs/blob/main/docs/contracts/v2/02-deployments.md)
+   [docs repo](https://github.com/sablier-labs/docs/blob/main/docs/guides/lockup/02-deployments.md)
 2. List the deployment artifacts by opening a PR in the [deployments repo](https://github.com/sablier-labs/deployments)
    - Copy the generated artifact files (ABIs) from the `artifacts` directory.
    - Copy the latest broadcast file from the `broadcast` directory.
@@ -272,3 +272,13 @@ forge script script/DeployFlow.s.sol \
 
 If you are using a mnemonic or a hardware device for your deployer address, refer to `forge-script` page from
 [foundry book](https://book.getfoundry.sh/reference/forge/forge-script#forge-script) for different wallet options.
+
+### Steps for listing the deployments
+
+Once the contracts are deployed, the final step is to list the deployment addresses and artifacts in the Lockup docs:
+
+1. List the deployment addresses by opening a PR in the
+   [docs repo](https://github.com/sablier-labs/docs/blob/main/docs/guides/flow/02-deployments.md)
+2. List the deployment artifacts by opening a PR in the [deployments repo](https://github.com/sablier-labs/deployments)
+   - Copy the generated artifact files (ABIs) from the `artifacts` directory.
+   - Copy the latest broadcast file from the `broadcast` directory.

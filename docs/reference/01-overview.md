@@ -78,4 +78,18 @@ contracts (such as MerkleLockupFactory, MerkleLL and MerkleLT).
 
 ## Flow
 
-Coming soon.
+> [**Flow Source Code**](https://github.com/sablier-labs/flow/tree/v1.0.0)
+
+Flow consists of SablierFlow, and an NFT descriptor.
+
+### NFTDescriptor
+
+> [**FlowNFTDescriptor Reference**](./flow/contracts/contract.FlowNFTDescriptor)
+
+Generates the URI describing the Sablier Flow stream NFTs.
+
+### SablierFlow
+
+> [**SablierFlow Reference**](./flow/contracts/contract.SablierFlow)
+
+Creates and manages payment streams.
