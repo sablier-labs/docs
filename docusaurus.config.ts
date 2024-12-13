@@ -58,7 +58,7 @@ const config: Config = {
             to: "/api/lockup/the-graph/entities",
           },
           {
-            from: "/api/merkle-api",
+            from: "/api/merkle-api/intro",
             to: "/api/airdrops/merkle-api/overview",
           },
           {
