@@ -58,7 +58,7 @@ const config: Config = {
             to: "/api/lockup/the-graph/entities",
           },
           {
-            from: "/api/merkle-api",
+            from: "/api/merkle-api/intro",
             to: "/api/airdrops/merkle-api/overview",
           },
           {
@@ -139,11 +139,11 @@ const config: Config = {
             to: "/guides/legacy/deployments",
           },
           {
-            from: "/contracts/v2/deployments/v1.0",
+            from: "/contracts/v2/deployments/v2.0",
             to: "/guides/lockup/previous-deployments/v1.0",
           },
           {
-            from: "/contracts/v2/deployments/v1.1",
+            from: "/contracts/v2/deployments/v2.1",
             to: "/guides/lockup/previous-deployments/v1.1",
           },
           {
@@ -159,6 +159,14 @@ const config: Config = {
             to: "/apps/guides/csv-support",
           },
           // Legacy redirects
+          {
+            from: "/contracts/v1/guides/getting-started",
+            to: "/guides/legacy/overview",
+          },
+          {
+            from: "/contracts/v1/overview",
+            to: "/guides/legacy/overview",
+          },
           {
             from: "/protocol/faq/basics",
             to: "/concepts/what-is-sablier",
@@ -179,25 +187,26 @@ const config: Config = {
             from: "/protocol/subgraphs/endpoints",
             to: "/api/overview",
           },
-          {
-            from: "/contracts/v1/guides/getting-started",
-            to: "/guides/legacy/overview",
-          },
         ],
         createRedirects(existingPath) {
           const redirects = [];
-          if (existingPath.startsWith("/concepts/protocol")) {
-            redirects.push(existingPath.replace("/concepts/protocol", "/concepts/lockup"));
-          } else if (existingPath.startsWith("/contracts/v1/guides")) {
-            redirects.push(existingPath.replace("/contracts/v1/guides", "/guides/legacy"));
-          } else if (existingPath.startsWith("/contracts/v2/reference")) {
-            redirects.push(existingPath.replace("/contracts/v2/reference", "/reference/lockup"));
-          } else if (existingPath.startsWith("/contracts/v1")) {
-            redirects.push(existingPath.replace("/contracts/v1", "/reference/legacy"));
-          } else if (existingPath.startsWith("/contracts/v2")) {
-            redirects.push(existingPath.replace("/contracts/v2", "/guides/lockup"));
+          if (existingPath.startsWith("/concepts/lockup/")) {
+            // Redirect /concepts/protocol/** to /concepts/lockup/**
+            redirects.push(existingPath.replace("/concepts/lockup/", "/concepts/protocol/"));
+          } else if (existingPath.startsWith("/guides/legacy/")) {
+            // Redirect /contracts/v1/guides/** to /guides/legacy/**
+            redirects.push(existingPath.replace("/guides/legacy/", "/contracts/v1/guides/"));
+          } else if (existingPath.startsWith("/reference/lockup/")) {
+            // Redirect /contracts/v2/reference/** to /reference/lockup/**
+            redirects.push(existingPath.replace("/reference/lockup/", "/contracts/v2/reference/"));
+          } else if (existingPath.startsWith("/reference/legacy/")) {
+            // Redirect /contracts/v1/** to /reference/legacy/**
+            redirects.push(existingPath.replace("/reference/legacy/", "/contracts/v1/"));
+          } else if (existingPath.startsWith("/guides/lockup/examples/")) {
+            // Redirect /contracts/v2/guides/** to /guides/lockup/examples/**
+            redirects.push(existingPath.replace("/guides/lockup/examples/", "/contracts/v2/guides/"));
           }
-          return Array.from(new Set(redirects));
+          return redirects;
         },
       },
     ],
