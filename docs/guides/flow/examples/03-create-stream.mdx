@@ -67,7 +67,7 @@ function createStream_1K_PerMonth() external returns (uint256) {
 
 ### Rate Per Second
 
-Use the `FlowUtilities` library to calculate the rate per second for the desired amount:
+Use the [`FlowUtilities`](./02-calculate-rps.mdx) library to calculate the rate per second for the desired amount:
 
 ```solidity
 UD21x18 ratePerSecond = FlowUtilities.ratePerSecondWithDuration({ token: address(USDC), amount: 1000e6, duration: 30 days });
@@ -120,10 +120,10 @@ streamId = FLOW.create({
 });
 ```
 
-### The complete Flow stream creator contract
+## The complete Flow stream creator contract
 
 Below you can see the complete `FlowStreamCreator` contract:
 
 ```solidity reference title="Flow Stream Creator"
-https://github.com/sablier-labs/examples/blob/feat/flow/flow/FlowStreamCreator.sol
+https://github.com/sablier-labs/examples/blob/main/flow/FlowStreamCreator.sol
 ```

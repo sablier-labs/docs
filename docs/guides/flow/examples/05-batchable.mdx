@@ -1,0 +1,18 @@
+---
+id: "batchable"
+sidebar_position: 5
+title: "Flow Batchable"
+---
+
+A unique feature of the Sablier Flow contracts is their ability to batch multiple function calls into a single
+transaction. This functionality is made possible by the [`Batch`](/reference/flow/contracts/abstracts/abstract.Batch)
+contract, which is inherited by `SablierFlow`. By leveraging this capability, you can execute any combination of
+functions efficiently within a single transaction
+
+## The complete Flow batchable contract
+
+Below you can see the complete `FlowBatchable` contract:
+
+```solidity reference title="Flow Batchable"
+https://github.com/sablier-labs/examples/blob/main/flow/FlowBatchable.sol
+```
