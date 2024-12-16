@@ -26,7 +26,7 @@ The design of the Sablier smart contracts draws inspiration from the architectur
 
 > [**Core Source Code**](https://github.com/sablier-labs/v2-core/tree/v1.2.0)
 
-Core consists of the distribution contracts (LockupLinear, LockupDynamic and LockupTranched), and an NFT descriptor.
+The Core consists of the distribution contracts (LockupLinear, LockupDynamic and LockupTranched), and an NFT descriptor.
 
 ### LockupLinear
 
@@ -80,7 +80,7 @@ contracts (such as MerkleLockupFactory, MerkleLL and MerkleLT).
 
 > [**Flow Source Code**](https://github.com/sablier-labs/flow/tree/v1.0.0)
 
-Flow repo consists of Sablier Flow, and an NFT descriptor.
+The Flow repo consists of monolith Sablier Flow, and an NFT descriptor.
 
 ### NFTDescriptor
 
