@@ -4,6 +4,7 @@ sidebar_position: 2
 title: "Endpoints"
 ---
 
+import TheGraphSunset from "@site/docs/snippets/TheGraphSunset.mdx";
 import LinkPreview from "@site/src/components/LinkPreview";
 
 # Flow
@@ -13,13 +14,7 @@ import LinkPreview from "@site/src/components/LinkPreview";
 This subgraph tracks events emitted by the `@sablier/flow` contracts, and deals with protocol actions like creating,
 depositing or voiding flow streams.
 
-:::important
-
-Since The Graph has [sunset](https://thegraph.com/blog/sunsetting-hosted-service/) their Hosted Service we've
-transitioned our subgraphs to either the Studio or The Decentralized Network (see
-[supported networks](https://thegraph.com/docs/en/developing/supported-networks/) and our endpoints below).
-
-:::
+<TheGraphSunset />
 
 ### Endpoints
 
@@ -62,7 +57,7 @@ deployment. The data from all of chains that Sablier is deployed on can be queri
 
 :::
 
-The `flow-envio` indexer tracks events emitted by the the `@sablier/flow` contracts. It deals with core protocol actions
+The `flow-envio` indexer tracks events emitted by the `@sablier/flow` contracts. It deals with core protocol actions
 like creating, depositing, or voiding flow streams.
 
 ### Endpoints
