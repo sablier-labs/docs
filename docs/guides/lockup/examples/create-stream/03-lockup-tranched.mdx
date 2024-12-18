@@ -5,8 +5,8 @@ title: "Lockup Tranched"
 ---
 
 import AdmonitionSimpleCode from "@site/docs/snippets/AdmonitionSimpleCode.mdx";
-import ConstantsComment from "@site/docs/snippets/ConstantsComment.mdx";
 import CreateFunctions from "@site/docs/snippets/CreateFunctions.mdx";
+import LockupDeployment from "@site/docs/snippets/LockupDeployment.mdx";
 import ParamAsset from "@site/docs/snippets/ParamAsset.mdx";
 import ParamBroker from "@site/docs/snippets/ParamBroker.mdx";
 import ParamCancelable from "@site/docs/snippets/ParamCancelable.mdx";
@@ -17,8 +17,8 @@ import ParamTransferable from "@site/docs/snippets/ParamTransferable.mdx";
 
 # Create a Lockup Tranched stream
 
-Lockup Tranched are streams with discrete unlocks. In this guide, we will show you how to programmatically create a
-Lockup Tranched stream.
+Lockup Tranched are streams with discrete unlocks. In this guide, we will show you how to create a Lockup Tranched
+stream using Solidity.
 
 This guide assumes that you have already gone through the [Protocol Concepts](/concepts/streaming) section.
 
@@ -46,7 +46,6 @@ import { IERC20 } from "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 import { ud60x18 } from "@prb/math/src/UD60x18.sol";
 import { ISablierV2LockupTranched } from "@sablier/v2-core/src/interfaces/ISablierV2LockupTranched.sol";
 import { Broker, LockupTranched } from "@sablier/v2-core/src/types/DataTypes.sol";
-
 ```
 
 Create a contract called `LockupTranchedStreamCreator`, and declare a constant `DAI` of type `IERC20` and a constant
@@ -60,7 +59,7 @@ contract LockupTranchedStreamCreator {
 }
 ```
 
-<ConstantsComment />
+<LockupDeployment />
 
 <CreateFunctions />
 
@@ -165,7 +164,7 @@ stream to a variable:
 streamId = LOCKUP_TRANCHED.createWithDurations(params);
 ```
 
-## The complete Lockup Tranched stream creator contract
+## Full code
 
 Below you can see the complete functioning code: a contract that creates a Lockup Tranched stream. You can access the
 code on GitHub through

@@ -1,0 +1,116 @@
+---
+id: "batchable"
+sidebar_position: 5
+title: "Batching Functions"
+---
+
+import AdmonitionSimpleCode from "@site/docs/snippets/AdmonitionSimpleCode.mdx";
+import FlowDeployment from "@site/docs/snippets/FlowDeployment.mdx";
+
+A unique feature of the Sablier Flow contract is its ability to batch multiple function calls into a single transaction.
+This functionality is made possible by the [`Batch`](/reference/flow/contracts/abstracts/abstract.Batch) contract,
+inherited by `SablierFlow`. With this, you can efficiently execute multiple functions in a single transaction.
+
+<AdmonitionSimpleCode />
+
+## Set up a contract
+
+Declare the Solidity version used to compile the contract:
+
+```solidity
+pragma solidity >=0.8.22;
+```
+
+Import the relevant symbols:
+
+```solidity
+import { IERC20 } from "@openzeppelin/contracts/token/ERC20/IERC20.sol";
+import { ud21x18, UD21x18 } from "@prb/math/src/UD21x18.sol";
+import { ud60x18 } from "@prb/math/src/UD60x18.sol";
+import { Broker, ISablierFlow } from "@sablier/flow/src/interfaces/ISablierFlow.sol";
+```
+
+Create a contract called `FlowBatchable`, and declare a constant `USDC` of type `IERC20` and a constant `FLOW` of type
+`ISablierFlow`:
+
+```solidity
+contract FlowBatchable {
+    IERC20 public constant USDC = IERC20(0xf08A50178dfcDe18524640EA6618a1f965821715);
+    ISablierFlow public constant FLOW = ISablierFlow(0x3a1beA13A8C24c0EA2b8fAE91E4b2762A59D7aF5);
+}
+```
+
+<FlowDeployment />
+
+## Create Multiple Streams
+
+One of the most useful features achieved by `batch` is the ability to create multiple streams in a single transaction.
+Let's focus on it in this example.
+
+Define a function that would create multiple streams in a single transaction and returns their respective stream IDs:
+
+```solidity
+function createMultiple() external returns (uint256[] memory streamIds) {
+    // ...
+}
+```
+
+### Parameters
+
+We will create two streams with same stream parameters required by the `create` function.
+
+```solidity
+address sender = msg.sender;
+address firstRecipient = address(0xCAFE);
+address secondRecipient = address(0xBEEF);
+UD21x18 firstRatePerSecond = ud21x18(0.0001e18);
+UD21x18 secondRatePerSecond = ud21x18(0.0002e18);
+bool transferable = true;
+```
+
+Construct an array of `bytes` of length 2 to be passed into the `batch` function:
+
+```solidity
+bytes[] memory calls = new bytes[](2);
+calls[0] = abi.encodeCall(FLOW.create, (sender, firstRecipient, firstRatePerSecond, USDC, transferable));
+calls[1] = abi.encodeCall(FLOW.create, (sender, secondRecipient, secondRatePerSecond, USDC, transferable));
+```
+
+Since we are creating two streams, the function will return an array containing the two generated stream IDs:
+
+```solidity
+uint256 nextStreamId = FLOW.nextStreamId();
+streamIds = new uint256[](2);
+streamIds[0] = nextStreamId;
+streamIds[1] = nextStreamId + 1;
+```
+
+Execute the `batch`:
+
+```solidity
+FLOW.batch(calls);
+```
+
+## Homework
+
+Try to implement the following ideas using `batch` function:
+
+- Adjust Rate Per Second and Deposit
+- Pause and Withdraw Max
+- Void and Withdraw Max
+- Multiple Withdraw Max
+
+Below, you will find the full code for it.
+
+## Other ideas
+
+There are plenty of other possibilities as well! Feel free to experiment and come up with combinations that suit your
+system. 🚀
+
+## Full code
+
+Below you can see the complete `FlowBatchable` contract:
+
+```solidity reference title="Flow Batchable"
+https://github.com/sablier-labs/examples/blob/main/flow/FlowBatchable.sol
+```

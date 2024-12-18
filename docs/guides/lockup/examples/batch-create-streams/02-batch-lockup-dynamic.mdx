@@ -6,11 +6,11 @@ title: "Batch Lockup Dynamic"
 
 import AdmonitionSimpleCode from "@site/docs/snippets/AdmonitionSimpleCode.mdx";
 import BatchCommonSteps from "@site/docs/snippets/BatchCommonSteps.mdx";
-import ConstantsComment from "@site/docs/snippets/ConstantsComment.mdx";
+import LockupDeployment from "@site/docs/snippets/LockupDeployment.mdx";
 
 # Create a Batch of Lockup Dynamic Streams
 
-In this guide, we will show you how to programmatically batch create dynamic streams via the Lockup's
+In this guide, we will show you how you can use Solidity to batch create dynamic streams via the Lockup's
 [Batch](/reference/lockup/periphery/contract.SablierV2BatchLockup) contract.
 
 This guide assumes that you have already gone through the [Protocol Concepts](/concepts/streaming) section.
@@ -56,7 +56,7 @@ contract BatchLDStreamCreator {
 }
 ```
 
-<ConstantsComment />
+<LockupDeployment />
 
 ## Batch create functions
 
@@ -146,7 +146,7 @@ streams to the array:
 streamIds = BATCH_LOCKUP.createWithTimestampsLD(LOCKUP_DYNAMIC, DAI, batch);
 ```
 
-## The complete Batch Lockup Dynamic stream creator contract
+## Full code
 
 Below you can see the complete functioning code: a contract that batch creates Lockup Dynamic streams using Lockup's
 `Batch` that start at `block.timestamp`. You can access the code on GitHub through this

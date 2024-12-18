@@ -1,0 +1,159 @@
+---
+id: "flow-calculate-rps"
+sidebar_position: 2
+title: "Calculate Rate Per Second"
+---
+
+import AdmonitionSimpleCode from "@site/docs/snippets/AdmonitionSimpleCode.mdx";
+
+# Calculate Rate Per Second
+
+This guide explains how to calculate the value of rate per second to use in creating a Flow stream. It is the most
+important step in setting up a stream, since the rate per second is a key parameter in the protocol to track debt.
+
+It is assumed that you have already gone through the [Protocol Concepts](/concepts/streaming) and the
+[Flow Overview](/concepts/flow/overview) sections.
+
+<AdmonitionSimpleCode />
+
+The rate per second is the amount of tokens streamed in one second. It is represented as a fixed-point number with 18
+decimals, specifically as a type `UD21x18` from `PRBMath` library, which in Solidity is a type `uint128`.
+
+Depending on how you receive payments, you have to calculate the rate per second and scale its value to 18 decimals
+format as below:
+
+1. Based on a duration, e.g., 3 months
+2. Between two fixed points in time, e.g., January 1, 2025, to April 1, 2025
+
+The calculation method remains the same for both cases.
+
+## Set up a library
+
+Declare the Solidity version used to compile the library:
+
+```solidity
+pragma solidity >=0.8.22;
+```
+
+Import the relevant symbols:
+
+```solidity
+import { IERC20Metadata } from "@openzeppelin/contracts/token/ERC20/extensions/IERC20Metadata.sol";
+import { ud21x18, UD21x18 } from "@prb/math/src/UD21x18.sol";
+```
+
+Declare a library that can be used in other contracts:
+
+```solidity
+library FlowUtilities {}
+```
+
+## Calculate the Rate Per Second on a Duration
+
+Define a function called `ratePerSecondWithDuration` that takes the following parameters and the returned value:
+
+```solidity
+function ratePerSecondWithDuration(
+    address token,
+    uint128 amount,
+    uint40 duration
+)
+    internal
+    view
+    returns (UD21x18 ratePerSecond)
+{
+    // ...
+}
+```
+
+First, retrieve the token's decimals, as not all tokens use the 18-decimal standard:
+
+```solidity
+uint8 decimals = IERC20Metadata(token).decimals();
+```
+
+If the token uses 18 decimals, simply divide the amount by the duration:
+
+```solidity
+if (decimals == 18) {
+    return ud21x18(amount / duration);
+}
+```
+
+If the token has less than 18 decimals, calculate the scale factor from the token's decimals:
+
+```solidity
+uint128 scaleFactor = uint128(10 ** (18 - decimals));
+```
+
+Then, multiply the amount by the scale factor and divide it by the duration:
+
+```solidity
+return ud21x18((amount * scaleFactor) / duration);
+```
+
+## Calculate the Rate Per Second on Timestamps
+
+The difference here is that we will have two time parameters, a start and an end time, instead of a duration. Let's
+define the function:
+
+```solidity
+function ratePerSecondForTimestamps(
+    address token,
+    uint128 amount,
+    uint40 start,
+    uint40 end
+)
+    internal
+    view
+    returns (UD21x18 ratePerSecond)
+{
+    // ...
+}
+```
+
+The first step would be now to calculate the duration between the two timestamps:
+
+```solidity
+uint40 duration = end - start;
+```
+
+The remaining logic is identical to the duration-based calculation:
+
+```solidity
+uint8 decimals = IERC20Metadata(token).decimals();
+
+if (decimals == 18) {
+    return ud21x18(amount / duration);
+}
+
+uint128 scaleFactor = uint128(10 ** (18 - decimals));
+
+ratePerSecond = ud21x18((scaleFactor * amount) / duration);
+```
+
+## Additional Utilities
+
+To calculate earnings for specific durations from an existing stream, use the following functions:
+
+```solidity
+function calculateAmountStreamedPerWeek(UD21x18 ratePerSecond) internal pure returns (uint128 amountPerWeek) {
+    amountPerWeek = ratePerSecond.unwrap() * 1 weeks;
+}
+
+function calculateAmountStreamedPerMonth(UD21x18 ratePerSecond) internal pure returns (uint128 amountPerMonth) {
+    amountPerMonth = ratePerSecond.unwrap() * 30 days;
+}
+
+function calculateAmountStreamedPerYear(UD21x18 ratePerSecond) internal pure returns (uint128 amountPerYear) {
+    amountPerYear = ratePerSecond.unwrap() * 365 days;
+}
+```
+
+## Full code
+
+Below you can see the complete `FlowUtilities` library:
+
+```solidity reference title="Flow Utilities library"
+https://github.com/sablier-labs/examples/blob/main/flow/FlowUtilities.sol
+```

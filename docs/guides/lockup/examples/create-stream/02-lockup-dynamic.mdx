@@ -5,8 +5,8 @@ title: "Lockup Dynamic"
 ---
 
 import AdmonitionSimpleCode from "@site/docs/snippets/AdmonitionSimpleCode.mdx";
-import ConstantsComment from "@site/docs/snippets/ConstantsComment.mdx";
 import CreateFunctions from "@site/docs/snippets/CreateFunctions.mdx";
+import LockupDeployment from "@site/docs/snippets/LockupDeployment.mdx";
 import ParamAsset from "@site/docs/snippets/ParamAsset.mdx";
 import ParamBroker from "@site/docs/snippets/ParamBroker.mdx";
 import ParamCancelable from "@site/docs/snippets/ParamCancelable.mdx";
@@ -17,8 +17,8 @@ import ParamTransferable from "@site/docs/snippets/ParamTransferable.mdx";
 
 # Create a Lockup Dynamic stream
 
-Lockup Dynamic are streams with custom streaming curves. In this guide, we will show you how to programmatically create
-a Lockup Dynamic stream.
+Lockup Dynamic are streams with custom streaming curves. In this guide, we will show you how to create a Lockup Dynamic
+stream using Solidity.
 
 This guide assumes that you have already gone through the [Protocol Concepts](/concepts/streaming) section.
 
@@ -60,7 +60,7 @@ contract LockupDynamicStreamCreator {
 }
 ```
 
-<ConstantsComment />
+<LockupDeployment />
 
 <CreateFunctions />
 
@@ -190,7 +190,7 @@ stream to a variable:
 streamId = LOCKUP_DYNAMIC.createWithTimestamps(params);
 ```
 
-## The complete Lockup Dynamic stream creator contract
+## Full code
 
 Below you can see the complete functioning code: a contract that creates a Lockup Dynamic stream. You can access the
 code on GitHub through

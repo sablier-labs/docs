@@ -1,0 +1,125 @@
+---
+id: "create-stream"
+sidebar_position: 3
+title: "Create a Stream"
+---
+
+import AdmonitionSimpleCode from "@site/docs/snippets/AdmonitionSimpleCode.mdx";
+import FlowDeployment from "@site/docs/snippets/FlowDeployment.mdx";
+
+# Create a Flow stream
+
+A Flow stream has no end date, which means it will continue to accumulate debt even if no funds are deposited. In this
+guide, we will show you how you can create a Flow stream using Solidity.
+
+This guide assumes that you have already gone through the [Calculate Rate Per Second](./02-calculate-rps.mdx) section.
+
+<AdmonitionSimpleCode />
+
+## Set up a contract
+
+Declare the Solidity version used to compile the contract:
+
+```solidity
+pragma solidity >=0.8.22;
+```
+
+Import the relevant symbols from `@sablier/flow`, and the `FlowUtilities` library:
+
+```solidity
+import { IERC20 } from "@openzeppelin/contracts/token/ERC20/IERC20.sol";
+import { UD21x18 } from "@prb/math/src/UD21x18.sol";
+import { ISablierFlow } from "@sablier/flow/src/interfaces/ISablierFlow.sol";
+
+import { FlowUtilities } from "./FlowUtilities.sol";
+```
+
+Create a contract called `FlowStreamCreator`, and declare a constant `USDC` of type `IERC20` and a constant `FLOW` of
+type `ISablierFlow`:
+
+```solidity
+contract FlowStreamCreator {
+    IERC20 public constant USDC = IERC20(0xf08A50178dfcDe18524640EA6618a1f965821715);
+    ISablierFlow public constant FLOW = ISablierFlow(0x3a1beA13A8C24c0EA2b8fAE91E4b2762A59D7aF5);
+}
+```
+
+<FlowDeployment />
+
+We will declare two functions, based on the amount desired to stream over a period of time.
+
+## Define a function
+
+Define a function to stream a salary of 1,000 USDC per month, call it `createStream_1K_PerMonth` which returns the newly
+created stream ID:
+
+```solidity
+function createStream_1K_PerMonth() external returns (uint256) {
+    // ...
+}
+```
+
+## Input parameters
+
+### Rate Per Second
+
+Use the [`FlowUtilities`](./02-calculate-rps.mdx) library to calculate the rate per second for the desired amount:
+
+```solidity
+UD21x18 ratePerSecond = FlowUtilities.ratePerSecondWithDuration({ token: address(USDC), amount: 1000e6, duration: 30 days });
+```
+
+### Sender
+
+The address streaming the tokens, with the ability to `pause` the stream:
+
+```solidity
+sender = msg.sender
+```
+
+### Recipient
+
+The address receiving the tokens:
+
+```solidity
+recipient = address(0xCAFE);
+```
+
+### Token
+
+The contract address of the ERC-20 token used for streaming. In this example, we will stream `USDC`:
+
+```solidity
+token = USDC;
+```
+
+### Transferable
+
+Boolean that indicates whether the stream will be transferable or not.
+
+```solidity
+transferable = true;
+```
+
+### Invoke the create function
+
+With all the parameters, we can call the `create` function on the `FLOW` contract and assign the newly created stream to
+`streamId` variable:
+
+```solidity
+streamId = FLOW.create({
+    sender: msg.sender,
+    recipient: address(0xCAFE),
+    ratePerSecond: FlowUtilities.ratePerSecondWithDuration({ token: address(USDC), amount: 1000e6, duration: 30 days }),
+    token: USDC,
+    transferable: true
+});
+```
+
+## Full code
+
+Below you can see the complete `FlowStreamCreator` contract:
+
+```solidity reference title="Flow Stream Creator"
+https://github.com/sablier-labs/examples/blob/main/flow/FlowStreamCreator.sol
+```
