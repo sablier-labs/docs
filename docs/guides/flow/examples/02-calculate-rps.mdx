@@ -8,18 +8,19 @@ import AdmonitionSimpleCode from "@site/docs/snippets/AdmonitionSimpleCode.mdx";
 
 # Calculate Rate Per Second
 
-This guide explains how to calculate the rate per second for a Flow stream. This is the most important step in setting
-up a stream, as the rate per second determines the variable the protocol uses to monitor debt.
+This guide explains how to calculate the value of rate per second to use in creating a Flow stream. It is the most
+important step in setting up a stream, since the rate per second is a key parameter in the protocol to track debt.
 
-This guide assumes that you have already gone through the [Protocol Concepts](/concepts/streaming) and the
+It is assumed that you have already gone through the [Protocol Concepts](/concepts/streaming) and the
 [Flow Overview](/concepts/flow/overview) sections.
 
 <AdmonitionSimpleCode />
 
-The rate per second is the amount of funds that the stream will accrue every second. It is represented as a fixed-point
-number with 18 decimals, specifically as a `uint128` (`UD21x18` from `PRBMath`).
+The rate per second is the amount of tokens streamed in one second. It is represented as a fixed-point number with 18
+decimals, specifically as a type `UD21x18` from `PRBMath` library, which in solidity is a type `uint128`.
 
-Depending on how you receive payments, you can calculate the rate per second in the following scenarios:
+Depending on how you receive payments, you have to calculate the rate per second and scale its value to 18 decimals
+format as below:
 
 1. Based on a duration, e.g., 3 months
 2. Between two fixed points in time, e.g., January 1, 2025, to April 1, 2025
@@ -28,7 +29,7 @@ The calculation method remains the same for both cases.
 
 ## Set up a library
 
-Declare the Solidity version used to compile the contract:
+Declare the Solidity version used to compile the library:
 
 ```solidity
 pragma solidity >=0.8.22;
@@ -149,7 +150,7 @@ function calculateAmountStreamedPerYear(UD21x18 ratePerSecond) internal pure ret
 }
 ```
 
-## The complete Flow Utilities library
+## Full code
 
 Below you can see the complete `FlowUtilities` library:
 

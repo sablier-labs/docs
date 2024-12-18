@@ -124,7 +124,3 @@ can pause it.
 A: Both sender and recipient can void the stream. This is especially useful when either party wants to stop the stream
 immediately. Once a stream is voided, it cannot be restarted. If there is uncovered debt, it will be reset to 0. So to
 ensure that your recipient does not lose on any streamed amount, you can deposit into the stream before voiding it.
-
-```
-
-```

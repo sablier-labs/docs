@@ -5,11 +5,11 @@ title: "Create Airstream"
 ---
 
 import AdmonitionSimpleCode from "@site/docs/snippets/AdmonitionSimpleCode.mdx";
-import ConstantsComment from "@site/docs/snippets/ConstantsComment.mdx";
+import LockupDeployment from "@site/docs/snippets/LockupDeployment.mdx";
 
 # Create an Airstream
 
-In this guide, we will show you how to programmatically create an airstream via the
+In this guide, we will show you how you can use Solidity to create an airstream via the
 [Merkle Factory](/reference/lockup/periphery/contract.SablierV2MerkleLockupFactory).
 
 This guide assumes that you have already gone through the [Protocol Concepts](/concepts/lockup/airstreams) section.
@@ -54,7 +54,7 @@ contract AirstreamCreator {
 }
 ```
 
-<ConstantsComment />
+<LockupDeployment />
 
 ## Airstream create functions
 
@@ -210,7 +210,7 @@ campaign to a variable:
 merkleLL = FACTORY.createMerkleLL(baseParams, LOCKUP_LINEAR, streamDurations, aggregateAmount, recipientCount);
 ```
 
-## The complete Airstream creator contract
+## Full code
 
 Below you can see the complete functioning code: a contract that creates an airstream campaign with Lockup Linear
 streams. You can access the code on GitHub through

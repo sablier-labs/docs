@@ -44,7 +44,7 @@ $ bun install
 Then, hop to the [Run a Fork Test](/guides/flow/examples/local-environment#run-a-fork-test) section to complete your set
 up and start developing.
 
-## Start from scratch
+## Set up using Foundry template
 
 Foundry is a popular development toolkit for Ethereum projects, which we have used to build the Sablier Protocols. For
 the purposes of this guide, Foundry will provide us with the tooling needed to compile and test our contracts.
@@ -145,7 +145,7 @@ As a prerequisite, you will need an RPC that supports forking. A good solution f
 Once you have obtained your RPC, you can proceed to run the following test:
 
 ```solidity reference title="Stream Creator Test"
-https://github.com/sablier-labs/flow-integration-template/blob/main/test/FlowStreamC    reator.t.sol
+https://github.com/sablier-labs/flow-integration-template/blob/main/test/FlowStreamCreator.t.sol
 ```
 
 You can run the test using Forge:

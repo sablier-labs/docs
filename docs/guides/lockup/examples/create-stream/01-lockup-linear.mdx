@@ -5,8 +5,8 @@ title: "Lockup Linear"
 ---
 
 import AdmonitionSimpleCode from "@site/docs/snippets/AdmonitionSimpleCode.mdx";
-import ConstantsComment from "@site/docs/snippets/ConstantsComment.mdx";
 import CreateFunctions from "@site/docs/snippets/CreateFunctions.mdx";
+import LockupDeployment from "@site/docs/snippets/LockupDeployment.mdx";
 import ParamAsset from "@site/docs/snippets/ParamAsset.mdx";
 import ParamBroker from "@site/docs/snippets/ParamBroker.mdx";
 import ParamCancelable from "@site/docs/snippets/ParamCancelable.mdx";
@@ -17,8 +17,8 @@ import ParamTransferable from "@site/docs/snippets/ParamTransferable.mdx";
 
 # Create a Lockup Linear stream
 
-Lockup Linear are streams with a strictly linear streaming function. In this guide, we will show you how to
-programmatically create a Lockup Linear stream.
+Lockup Linear are streams with a strictly linear streaming function. In this guide, we will show you how to create a
+Lockup Linear stream using Solidity.
 
 This guide assumes that you have already gone through the [Protocol Concepts](/concepts/streaming) section.
 
@@ -59,7 +59,7 @@ contract LockupLinearStreamCreator {
 }
 ```
 
-<ConstantsComment />
+<LockupDeployment />
 
 <CreateFunctions />
 
@@ -140,7 +140,7 @@ stream to a variable:
 streamId = LOCKUP_LINEAR.createWithDurations(params);
 ```
 
-## The complete Lockup Linear stream creator contract
+## Full code
 
 Below you can see the complete functioning code: a contract that creates Lockup Linear streams that start at
 `block.timestamp`. You can access the code on GitHub through

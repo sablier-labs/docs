@@ -1,13 +1,14 @@
 ---
 id: "batchable"
 sidebar_position: 5
-title: "Flow Batchable"
+title: "Batching Functions"
 ---
 
-A unique feature of the Sablier Flow contracts is their ability to batch multiple function calls into a single
-transaction. This functionality is made possible by the [`Batch`](/reference/flow/contracts/abstracts/abstract.Batch)
-contract, which is inherited by `SablierFlow`. With this, you can efficiently execute multiple functions in a single
-transaction.
+import FlowDeployment from "@site/docs/snippets/FlowDeployment.mdx";
+
+A unique feature of the Sablier Flow contract is its ability to batch multiple function calls into a single transaction.
+This functionality is made possible by the [`Batch`](/reference/flow/contracts/abstracts/abstract.Batch) contract,
+inherited by `SablierFlow`. With this, you can efficiently execute multiple functions in a single transaction.
 
 ## Set up a contract
 
@@ -36,18 +37,14 @@ contract FlowBatchable {
 }
 ```
 
-In the code above, the contract addresses are hard-coded for demonstration purposes. However, in production, you would
-likely use input parameters to allow flexibility in changing the addresses.
+<FlowDeployment />
 
-Also, these addresses are deployed on Sepolia. If you need to work with a different chain, the Sablier addresses can be
-obtained from the [Deployment Addresses](/guides/flow/deployments) page.
-
-## Create Multiple
+## Create Multiple Streams
 
 One of the most useful features achieved by `batch` is the ability to create multiple streams in a single transaction.
-Let's focus on it for this example.
+Let's focus on it in this example.
 
-Define a function that creates multiple streams in a single transaction and returns their respective stream IDs:
+Define a function that would create multiple streams in a single transaction and returns their respective stream IDs:
 
 ```solidity
 function createMultiple() external returns (uint256[] memory streamIds) {
@@ -57,8 +54,7 @@ function createMultiple() external returns (uint256[] memory streamIds) {
 
 ### Parameters
 
-To create two streams, we need to define the relevant parameters required by the `create` function in the `Flow`
-contract.
+We will create two streams with same stream parameters required by the `create` function.
 
 ```solidity
 address sender = msg.sender;
@@ -69,7 +65,7 @@ UD21x18 secondRatePerSecond = ud21x18(0.0002e18);
 bool transferable = true;
 ```
 
-Construct an array of `bytes` to be passed into the `batch` function:
+Construct an array of `bytes` of length 2 to be passed into the `batch` function:
 
 ```solidity
 bytes[] memory calls = new bytes[](2);
@@ -92,21 +88,23 @@ Execute the `batch`:
 FLOW.batch(calls);
 ```
 
-### Other Ideas
+## Homework
 
-Here are a few examples of batch operations you can try:
+Try to implement the following ideas using `batch` function:
 
 - Adjust Rate Per Second and Deposit
 - Pause and Withdraw Max
 - Void and Withdraw Max
 - Multiple Withdraw Max
 
-These combinations are implemented below as examples.
+Below, you will find the full code for it.
+
+## Other ideas
 
 There are plenty of other possibilities as well! Feel free to experiment and come up with combinations that suit your
 system. 🚀
 
-## The complete Flow batchable contract
+## Full code
 
 Below you can see the complete `FlowBatchable` contract:
 

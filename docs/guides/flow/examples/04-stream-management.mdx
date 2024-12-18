@@ -4,12 +4,14 @@ sidebar_position: 4
 title: "Stream Management"
 ---
 
-The "Stream Management" series will guide you through interacting with Flow, showing how to deposit, withdraw, adjust
-rate per second, pause, restart, refund and void.
+import FlowDeployment from "@site/docs/snippets/FlowDeployment.mdx";
 
-Before diving in, please note the following:
+# Managing a Stream
 
-1. We assume you are already familiar with [creating streams](./03-create-stream.mdx).
+This section will guide you through different functions of Flow and how to interact with them. Before diving in, please
+note the following:
+
+1. We assume you are already familiar with [creating a stream](./03-create-stream.mdx).
 2. We also assume that the stream management contract is authorized to invoke each respective function. To learn more
    about access control in Flow, see the [Access Control](/reference/flow/access-control) guide.
 
@@ -30,7 +32,7 @@ import { ud60x18 } from "@prb/math/src/UD60x18.sol";
 import { Broker, ISablierFlow } from "@sablier/flow/src/interfaces/ISablierFlow.sol";
 ```
 
-Declare the contract and add the Flow contract as constant:
+Declare the contract and add Flow address as a constant:
 
 ```solidity
 contract FlowStreamManager {
@@ -38,24 +40,20 @@ contract FlowStreamManager {
 }
 ```
 
-In the code above, the contract address is hard-coded for demonstration purposes. However, in production, you would
-likely use input parameters to allow flexibility in changing the addresses.
-
-Also, this address is deployed on Sepolia. If you need to work with a different chain, the Sablier addresses can be
-obtained from the [Deployment Addresses](/guides/flow/deployments) page.
+<FlowDeployment />
 
 ## Deposit
 
-Deposit into streams means adding funds to the stream, which will be distributed to the recipient according to the rate
-per second.
+Deposit into streams means adding tokens to the stream, which will then be distributed to the recipient based on the
+value of rate per second.
 
 There are three deposit functions:
 
-1. [`deposit`](/reference/flow/contracts/contract.SablierFlow#deposit): deposits a specific amount of tokens.
-2. [`depositAndPause`](/reference/flow/contracts/contract.SablierFlow#depositandpause): deposits and amount of tokens
-   and pauses the stream.
+1. [`deposit`](/reference/flow/contracts/contract.SablierFlow#deposit): deposits an amount of tokens.
+2. [`depositAndPause`](/reference/flow/contracts/contract.SablierFlow#depositandpause): deposits an amount of tokens and
+   then pausing the stream.
 3. [`depositViaBroker`](/reference/flow/contracts/contract.SablierFlow#depositviabroker): deposits an amount of tokens
-   and also transfers a fee to a [broker](/concepts/fees#broker-fee).
+   and transfers a fee to the [broker](/concepts/fees#broker-fee) specified.
 
 ```solidity
 function deposit(uint256 streamId, uint256 amount) external {
@@ -81,14 +79,15 @@ function depositViaBroker(uint256 streamId) external {
 
 ## Withdraw
 
-Withdrawing from streams means claiming the tokens that have become due to the recipient, who has the option to direct
-the withdrawal to an alternative address of their choice.
+The recipient of a stream can withdraw any amount, not exceeding the withdrawable amount. The recipient also has the
+option to withdraw the tokens to an alternate address of his choice.
 
 There are two withdrawal functions:
 
-1. [`withdraw`](/reference/flow/contracts/contract.SablierFlow#withdraw): withdraws a specific amount of tokens.
-2. [`withdrawMax`](/reference/flow/contracts/contract.SablierFlow#withdrawmax): withdraws the maximum withdrawable
-   amount of tokens.
+1. [`withdraw`](/reference/flow/contracts/contract.SablierFlow#withdraw): withdraws an amount of tokens not exceeding
+   withdrawable amount.
+2. [`withdrawMax`](/reference/flow/contracts/contract.SablierFlow#withdrawmax): withdraws the entire withdrawable amount
+   of tokens.
 
 ```solidity
 function withdraw(uint256 streamId) external {
@@ -102,7 +101,7 @@ function withdrawMax(uint256 streamId) external {
 
 ## Adjust Rate Per Second
 
-Adjusting the rate per second means changing the amount of tokens that the stream will accrue every second.
+Adjusting the rate per second means changing the amount of tokens to be streamed each second.
 
 ```solidity
 function adjustRatePerSecond(uint256 streamId) external {
@@ -112,7 +111,7 @@ function adjustRatePerSecond(uint256 streamId) external {
 
 ## Pause
 
-Pausing a stream means stopping the accrual of funds to the recipient.
+Pausing a stream means setting the rate per second to zero, which means no more streaming
 
 ```solidity
 function pause(uint256 streamId) external {
@@ -125,8 +124,8 @@ function pause(uint256 streamId) external {
 There are two restart functions:
 
 1. [`restart`](/reference/flow/contracts/contract.SablierFlow#restart): restarts a stream.
-2. [`restartAndDeposit`](/reference/flow/contracts/contract.SablierFlow#restartanddeposit): restarts a stream and
-   deposits an amount of tokens.
+2. [`restartAndDeposit`](/reference/flow/contracts/contract.SablierFlow#restartanddeposit): restarts a stream followed
+   by depositing an amount of tokens into it.
 
 ```solidity
 function restart(uint256 streamId) external {
@@ -142,10 +141,11 @@ function restartAndDeposit(uint256 streamId) external {
 
 There are three refund functions:
 
-1. [`refund`](/reference/flow/contracts/contract.SablierFlow#refund): refunds a specific amount of tokens.
+1. [`refund`](/reference/flow/contracts/contract.SablierFlow#refund): refunds an amount of tokens not exceeding he
+   refundable amount.
 2. [`refundAndPause`](/reference/flow/contracts/contract.SablierFlow#refundandpause): refunds an amount of tokens and
-   pauses the stream.
-3. [`refundMax`](/reference/flow/contracts/contract.SablierFlow#refundmax): refunds the maximum refundable amount of
+   then pauses the stream.
+3. [`refundMax`](/reference/flow/contracts/contract.SablierFlow#refundmax): refunds the entire refundable amount of
    tokens.
 
 ```solidity
@@ -164,7 +164,8 @@ function refundMax(uint256 streamId) external {
 
 ## Void
 
-Voiding a stream means stopping it forever from accruing funds.
+Voiding a stream means stopping it forever from streaming any token. This is slightly different from pausing a stream
+because it also sets stream's uncovered debt to zero.
 
 ```solidity
 function void(uint256 streamId) external {
@@ -172,10 +173,10 @@ function void(uint256 streamId) external {
 }
 ```
 
-## The complete Flow stream manager contract
+## Full code
 
 Below you can see the complete `FlowStreamManager` contract:
 
-```solidity reference title="Flow Stream Creator"
+```solidity reference title="Flow Stream Manager"
 https://github.com/sablier-labs/examples/blob/main/flow/FlowStreamManager.sol
 ```
