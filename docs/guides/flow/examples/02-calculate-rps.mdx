@@ -17,7 +17,7 @@ It is assumed that you have already gone through the [Protocol Concepts](/concep
 <AdmonitionSimpleCode />
 
 The rate per second is the amount of tokens streamed in one second. It is represented as a fixed-point number with 18
-decimals, specifically as a type `UD21x18` from `PRBMath` library, which in solidity is a type `uint128`.
+decimals, specifically as a type `UD21x18` from `PRBMath` library, which in Solidity is a type `uint128`.
 
 Depending on how you receive payments, you have to calculate the rate per second and scale its value to 18 decimals
 format as below:

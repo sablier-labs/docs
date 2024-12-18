@@ -4,6 +4,7 @@ sidebar_position: 4
 title: "Stream Management"
 ---
 
+import AdmonitionSimpleCode from "@site/docs/snippets/AdmonitionSimpleCode.mdx";
 import FlowDeployment from "@site/docs/snippets/FlowDeployment.mdx";
 
 # Managing a Stream
@@ -14,6 +15,8 @@ note the following:
 1. We assume you are already familiar with [creating a stream](./03-create-stream.mdx).
 2. We also assume that the stream management contract is authorized to invoke each respective function. To learn more
    about access control in Flow, see the [Access Control](/reference/flow/access-control) guide.
+
+<AdmonitionSimpleCode />
 
 # Set up your contract
 
@@ -51,7 +54,7 @@ There are three deposit functions:
 
 1. [`deposit`](/reference/flow/contracts/contract.SablierFlow#deposit): deposits an amount of tokens.
 2. [`depositAndPause`](/reference/flow/contracts/contract.SablierFlow#depositandpause): deposits an amount of tokens and
-   then pausing the stream.
+   then pauses the stream.
 3. [`depositViaBroker`](/reference/flow/contracts/contract.SablierFlow#depositviabroker): deposits an amount of tokens
    and transfers a fee to the [broker](/concepts/fees#broker-fee) specified.
 
