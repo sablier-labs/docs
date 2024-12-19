@@ -80,7 +80,7 @@ contracts (such as MerkleLockupFactory, MerkleLL and MerkleLT).
 
 > [**Flow Source Code**](https://github.com/sablier-labs/flow/tree/v1.0.0)
 
-The Flow repo consists of monolith Sablier Flow, and an NFT descriptor.
+The Flow repo consists of the monolith Sablier Flow contract, and an NFT descriptor.
 
 ### NFTDescriptor
 
