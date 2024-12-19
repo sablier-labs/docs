@@ -243,6 +243,13 @@ Sablier repositories on Github.
 | SablierFlow       | [0x417db0f2bd020fc4d6bccea6b2bb6be0c541862e](https://sepolia-optimistic.etherscan.io/address/0x417db0f2bd020fc4d6bccea6b2bb6be0c541862e) | [v1.0.0](https://github.com/sablier-labs/deployments/blob/main/flow/v1.0.0) |
 | FlowNFTDescriptor | [0x28401987a23ed9b8926b07f3b6855222a70c2128](https://sepolia-optimistic.etherscan.io/address/0x28401987a23ed9b8926b07f3b6855222a70c2128) | [v1.0.0](https://github.com/sablier-labs/deployments/blob/main/flow/v1.0.0) |
 
+### SKALE Testnet
+
+| Contract          | Address                                                                                                                                                          | Deployment                                                                  |
+| :---------------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------- | :-------------------------------------------------------------------------- |
+| SablierFlow       | [0xC94473665f16AaB7015b0D61f7021AD552080c17](https://giant-half-dual-testnet.explorer.testnet.skalenodes.com/address/0xC94473665f16AaB7015b0D61f7021AD552080c17) | [v1.0.0](https://github.com/sablier-labs/deployments/blob/main/flow/v1.0.0) |
+| FlowNFTDescriptor | [0xaE9E039409D208C5dFe933A3cbc7Afe0eB731ba0](https://giant-half-dual-testnet.explorer.testnet.skalenodes.com/address/0xaE9E039409D208C5dFe933A3cbc7Afe0eB731ba0) | [v1.0.0](https://github.com/sablier-labs/deployments/blob/main/flow/v1.0.0) |
+
 ### Superseed Sepolia
 
 | Contract          | Address                                                                                                                                 | Deployment                                                                  |

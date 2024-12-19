@@ -611,6 +611,24 @@ Unlike other EVM chains, zkSync requires the libraries to be deployed, too. Plea
 | SablierV2BatchLockup         | [0xC1FD380b3B0fF989C259D0b45B97F9663B638aA4](https://sepolia-optimistic.etherscan.io/address/0xd9dD971D4800100aED0BfF3535aB116D4Be5c420) | [periphery-v1.2.0](https://github.com/sablier-labs/deployments/blob/main/lockup/v1.2.0/periphery) |
 | SablierV2MerkleLockupFactory | [0xa11561F9e418f2C431B411E1CA22FD3F85D4c831](https://sepolia-optimistic.etherscan.io/address/0x6CBe6e298A9354306e6ee65f63FF85CFA7062a39) | [periphery-v1.2.0](https://github.com/sablier-labs/deployments/blob/main/lockup/v1.2.0/periphery) |
 
+### SKALE Testnet
+
+#### Core
+
+| Contract                | Address                                                                                                                                                          | Deployment                                                                              |
+| :---------------------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------- | :-------------------------------------------------------------------------------------- |
+| SablierV2LockupDynamic  | [0xc6a9b1ac31ea28c02401314e4ecd953d93b5977e](https://giant-half-dual-testnet.explorer.testnet.skalenodes.com/address/0xc6a9b1ac31ea28c02401314e4ecd953d93b5977e) | [core-v1.2.0](https://github.com/sablier-labs/deployments/blob/main/lockup/v1.2.0/core) |
+| SablierV2LockupLinear   | [0xb5a5fdfe806faff23c9596a507b0f645fa70a860](https://giant-half-dual-testnet.explorer.testnet.skalenodes.com/address/0xb5a5fDfE806faFf23c9596a507b0f645fa70a860) | [core-v1.2.0](https://github.com/sablier-labs/deployments/blob/main/lockup/v1.2.0/core) |
+| SablierV2LockupTranched | [0x0ab60a33b84c89ed6bf86599d070edcced198892](https://giant-half-dual-testnet.explorer.testnet.skalenodes.com/address/0x0ab60A33B84C89ed6bF86599d070eDCceD198892) | [core-v1.2.0](https://github.com/sablier-labs/deployments/blob/main/lockup/v1.2.0/core) |
+| SablierV2NFTDescriptor  | [0x18880a232B54FFC4db3e692E579F2659fd1F40fd](https://giant-half-dual-testnet.explorer.testnet.skalenodes.com/address/0x18880a232B54FFC4db3e692E579F2659fd1F40fd) | [core-v1.2.0](https://github.com/sablier-labs/deployments/blob/main/lockup/v1.2.0/core) |
+
+#### Periphery
+
+| Contract                     | Address                                                                                                                                                          | Deployment                                                                                        |
+| :--------------------------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------- | :------------------------------------------------------------------------------------------------ |
+| SablierV2BatchLockup         | [0x00a7B4E4e9Fc0feb414173A12d023c909CedE703](https://giant-half-dual-testnet.explorer.testnet.skalenodes.com/address/0x00a7B4E4e9Fc0feb414173A12d023c909CedE703) | [periphery-v1.2.0](https://github.com/sablier-labs/deployments/blob/main/lockup/v1.2.0/periphery) |
+| SablierV2MerkleLockupFactory | [0x8A72F6203bEa9dfF4F817250E577cf722350D012](https://giant-half-dual-testnet.explorer.testnet.skalenodes.com/address/0x8A72F6203bEa9dfF4F817250E577cf722350D012) | [periphery-v1.2.0](https://github.com/sablier-labs/deployments/blob/main/lockup/v1.2.0/periphery) |
+
 ### Superseed Sepolia
 
 #### Core
