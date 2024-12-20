@@ -166,7 +166,8 @@ Suite result: ok. 2 passed; 0 failed; 0 skipped; finished in 986.20ms (4.16ms CP
 ## Next steps
 
 Congratulations! Your environment is now configured, and you are prepared to start building. Explore the guides section
-to discover various Flow features available for integration.
+to discover various Flow features available for integration. Remember to include all contracts (`.sol` files) in
+the`src` folder and their corresponding tests in the `test` folder.
 
 As far as Foundry is concerned, there is much more to uncover. If you want to learn more about it, check out the
 [Foundry Book](https://book.getfoundry.sh/), which contains numerous examples and tutorials. A deep understanding of

@@ -1,31 +1,30 @@
 ---
 id: "flow-calculate-rps"
 sidebar_position: 2
-title: "Calculate Rate Per Second"
+title: "Calculate Rate per Second"
 ---
 
 import AdmonitionSimpleCode from "@site/docs/snippets/AdmonitionSimpleCode.mdx";
 
-# Calculate Rate Per Second
+This guide explains how to calculate the rate per second when creating a Flow stream. It is the most important step in
+setting up a stream since the rate per second is a key parameter in the stream's configuration.
 
-This guide explains how to calculate the value of rate per second to use in creating a Flow stream. It is the most
-important step in setting up a stream, since the rate per second is a key parameter in the protocol to track debt.
-
-It is assumed that you have already gone through the [Protocol Concepts](/concepts/streaming) and the
+We assume that you have already gone through the [Protocol Concepts](/concepts/streaming) and the
 [Flow Overview](/concepts/flow/overview) sections.
 
 <AdmonitionSimpleCode />
 
 The rate per second is the amount of tokens streamed in one second. It is represented as a fixed-point number with 18
-decimals, specifically as a type `UD21x18` from `PRBMath` library, which in Solidity is a type `uint128`.
+decimals, specifically as a `UD21x18` type from the `PRBMath` library. The underlying native Solidity type associated
+with `UD21x18` is `uint128`.
 
 Depending on how you receive payments, you have to calculate the rate per second and scale its value to 18 decimals
 format as below:
 
 1. Based on a duration, e.g., 3 months
-2. Between two fixed points in time, e.g., January 1, 2025, to April 1, 2025
+2. Between two points in time, e.g., January 1, 2025 to April, 1 2025
 
-The calculation method remains the same for both cases.
+The calculation method is the same in either case.
 
 ## Set up a library
 
@@ -48,7 +47,7 @@ Declare a library that can be used in other contracts:
 library FlowUtilities {}
 ```
 
-## Calculate the Rate Per Second on a Duration
+## Calculate the rate per second on a duration
 
 Define a function called `ratePerSecondWithDuration` that takes the following parameters and the returned value:
 
@@ -66,7 +65,7 @@ function ratePerSecondWithDuration(
 }
 ```
 
-First, retrieve the token's decimals, as not all tokens use the 18-decimal standard:
+First, retrieve the token's decimals. Note that not all ERC-20 tokens use the 18-decimal standard.
 
 ```solidity
 uint8 decimals = IERC20Metadata(token).decimals();
@@ -92,10 +91,9 @@ Then, multiply the amount by the scale factor and divide it by the duration:
 return ud21x18((amount * scaleFactor) / duration);
 ```
 
-## Calculate the Rate Per Second on Timestamps
+## Calculate the rate per second on timestamps
 
-The difference here is that we will have two time parameters, a start and an end time, instead of a duration. Let's
-define the function:
+Here, there are two time parameters, a start and an end time, instead of a duration. Let's define the function:
 
 ```solidity
 function ratePerSecondForTimestamps(
@@ -112,7 +110,7 @@ function ratePerSecondForTimestamps(
 }
 ```
 
-The first step would be now to calculate the duration between the two timestamps:
+The first step is to calculate the duration between the two timestamps:
 
 ```solidity
 uint40 duration = end - start;
@@ -132,9 +130,9 @@ uint128 scaleFactor = uint128(10 ** (18 - decimals));
 ratePerSecond = ud21x18((scaleFactor * amount) / duration);
 ```
 
-## Additional Utilities
+## Additional utilities
 
-To calculate earnings for specific durations from an existing stream, use the following functions:
+To calculate earnings for specific durations from an existing stream, you can use the following functions:
 
 ```solidity
 function calculateAmountStreamedPerWeek(UD21x18 ratePerSecond) internal pure returns (uint128 amountPerWeek) {

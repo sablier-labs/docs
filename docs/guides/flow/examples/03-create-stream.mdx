@@ -9,10 +9,12 @@ import FlowDeployment from "@site/docs/snippets/FlowDeployment.mdx";
 
 # Create a Flow stream
 
-A Flow stream has no end date, which means it will continue to accumulate debt even if no funds are deposited. In this
-guide, we will show you how you can create a Flow stream using Solidity.
+In this guide, we will show you how you can create a Flow stream using Solidity.
 
-This guide assumes that you have already gone through the [Calculate Rate Per Second](./02-calculate-rps.mdx) section.
+It is important to note that A Flow stream has no end date, which means it will continue to accumulate debt even if no
+funds are deposited.
+
+This guide assumes that you have already gone through the [Calculate Rate per Second](./02-calculate-rps.mdx) section.
 
 <AdmonitionSimpleCode />
 
@@ -50,7 +52,7 @@ We will declare two functions, based on the amount desired to stream over a peri
 
 ## Define a function
 
-Define a function to stream a salary of 1,000 USDC per month, call it `createStream_1K_PerMonth` which returns the newly
+Define a function to stream a salary of 1000 USDC per month, call it `createStream_1K_PerMonth` which returns the newly
 created stream ID:
 
 ```solidity
