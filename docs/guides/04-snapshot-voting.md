@@ -6,10 +6,12 @@ title: "Snapshot Voting"
 
 # Snapshot Voting Strategies
 
-To enable off-chain governance, we designed a collection of Snapshot Strategies that compute the voting power of assets
+To enable off-chain governance, we created a collection of Snapshot Strategies that calculate the voting power of tokens
 stored in Lockup streams.
 
 ## Lockup
+
+If you started using Sablier in July 2023 or later, you should be using the Lockup strategies.
 
 - [Snapshot playground](https://snapshot.org/#/playground/sablier-v2) - test the strategies
 - [Snapshot code repository](https://github.com/snapshot-labs/snapshot-strategies/tree/master/src/strategies/sablier-v2) -
@@ -166,6 +168,8 @@ available in the future). Subtracts the `streamed` amount from the initial `depo
 unstreamed amount will be `0`.
 
 ## Legacy
+
+If you started using Sablier before July 2023, you should be using the Legacy strategies.
 
 - [Snapshot playground](https://snapshot.org/#/playground/sablier-v1-deposit) - test the strategies
 - [Snapshot code repository](https://github.com/snapshot-labs/snapshot-strategies/tree/master/src/strategies/sablier-v1-deposit) -
