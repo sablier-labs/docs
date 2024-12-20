@@ -9,10 +9,10 @@ import FlowDeployment from "@site/docs/snippets/FlowDeployment.mdx";
 
 # Managing a Stream
 
-This section will guide you through different functions of Flow and how to interact with them. Before diving in, please
-note the following:
+This section will guide you through the different functions of Flow and how to interact with them. Before diving in,
+please note the following:
 
-1. We assume you are already familiar with [creating a stream](./03-create-stream.mdx).
+1. We assume you are already familiar with [creating Flow streams](./03-create-stream.mdx).
 2. We also assume that the stream management contract is authorized to invoke each respective function. To learn more
    about access control in Flow, see the [Access Control](/reference/flow/access-control) guide.
 
@@ -35,7 +35,7 @@ import { ud60x18 } from "@prb/math/src/UD60x18.sol";
 import { Broker, ISablierFlow } from "@sablier/flow/src/interfaces/ISablierFlow.sol";
 ```
 
-Declare the contract and add Flow address as a constant:
+Declare the contract and add the Flow address as a constant:
 
 ```solidity
 contract FlowStreamManager {
@@ -47,8 +47,14 @@ contract FlowStreamManager {
 
 ## Deposit
 
-Deposit into streams means adding tokens to the stream, which will then be distributed to the recipient based on the
+Depositing into streams means adding tokens to the stream, which will then be distributed to the recipient based on the
 value of rate per second.
+
+:::info
+
+A deposit is also referred to as a top-up.
+
+:::
 
 There are three deposit functions:
 
@@ -83,12 +89,12 @@ function depositViaBroker(uint256 streamId) external {
 ## Withdraw
 
 The recipient of a stream can withdraw any amount, not exceeding the withdrawable amount. The recipient also has the
-option to withdraw the tokens to an alternate address of his choice.
+option to withdraw the tokens to an alternate address of their choice.
 
 There are two withdrawal functions:
 
 1. [`withdraw`](/reference/flow/contracts/contract.SablierFlow#withdraw): withdraws an amount of tokens not exceeding
-   withdrawable amount.
+   the withdrawable amount.
 2. [`withdrawMax`](/reference/flow/contracts/contract.SablierFlow#withdrawmax): withdraws the entire withdrawable amount
    of tokens.
 
@@ -102,9 +108,9 @@ function withdrawMax(uint256 streamId) external {
 }
 ```
 
-## Adjust Rate Per Second
+## Adjust Rate per Second
 
-Adjusting the rate per second means changing the amount of tokens to be streamed each second.
+Adjusting the rate per second means changing the amount of tokens that is streamed each second.
 
 ```solidity
 function adjustRatePerSecond(uint256 streamId) external {
@@ -114,7 +120,7 @@ function adjustRatePerSecond(uint256 streamId) external {
 
 ## Pause
 
-Pausing a stream means setting the rate per second to zero, which means no more streaming
+Pausing a stream means setting the rate per second to zero, which means no more streaming.
 
 ```solidity
 function pause(uint256 streamId) external {
@@ -144,9 +150,9 @@ function restartAndDeposit(uint256 streamId) external {
 
 There are three refund functions:
 
-1. [`refund`](/reference/flow/contracts/contract.SablierFlow#refund): refunds an amount of tokens not exceeding he
+1. [`refund`](/reference/flow/contracts/contract.SablierFlow#refund): refunds an amount of tokens not exceeding the
    refundable amount.
-2. [`refundAndPause`](/reference/flow/contracts/contract.SablierFlow#refundandpause): refunds an amount of tokens and
+2. [`refundAndPause`](/reference/flow/contracts/contract.SablierFlow#refundandpause): refunds an amount of tokens, and
    then pauses the stream.
 3. [`refundMax`](/reference/flow/contracts/contract.SablierFlow#refundmax): refunds the entire refundable amount of
    tokens.
@@ -167,8 +173,8 @@ function refundMax(uint256 streamId) external {
 
 ## Void
 
-Voiding a stream means stopping it forever from streaming any token. This is slightly different from pausing a stream
-because it also sets stream's uncovered debt to zero.
+Voiding a stream means permanently stopping it from streaming any tokens. This is slightly different from pausing a
+stream because it also sets the stream's uncovered debt to zero.
 
 ```solidity
 function void(uint256 streamId) external {

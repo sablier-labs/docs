@@ -7,9 +7,9 @@ title: "Batching Functions"
 import AdmonitionSimpleCode from "@site/docs/snippets/AdmonitionSimpleCode.mdx";
 import FlowDeployment from "@site/docs/snippets/FlowDeployment.mdx";
 
-A unique feature of the Sablier Flow contract is its ability to batch multiple function calls into a single transaction.
-This functionality is made possible by the [`Batch`](/reference/flow/contracts/abstracts/abstract.Batch) contract,
-inherited by `SablierFlow`. With this, you can efficiently execute multiple functions in a single transaction.
+A neat feature of Sablier Flow is the ability to batch multiple function calls into a single transaction. This is made
+possible by the [`Batch`](/reference/flow/contracts/abstracts/abstract.Batch) contract, which is inherited by
+`SablierFlow`. With this, you can efficiently batch multiple function calls in a single transaction.
 
 <AdmonitionSimpleCode />
 
@@ -42,12 +42,12 @@ contract FlowBatchable {
 
 <FlowDeployment />
 
-## Create Multiple Streams
+## Create multiple streams
 
 One of the most useful features achieved by `batch` is the ability to create multiple streams in a single transaction.
 Let's focus on it in this example.
 
-Define a function that would create multiple streams in a single transaction and returns their respective stream IDs:
+Define a function that creates multiple streams and returns their respective stream IDs:
 
 ```solidity
 function createMultiple() external returns (uint256[] memory streamIds) {
