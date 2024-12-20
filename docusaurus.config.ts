@@ -295,16 +295,20 @@ const config: Config = {
           title: "Developers",
           items: [
             {
-              label: "Lockup",
+              label: "Lockup Contracts",
               href: "https://github.com/sablier-labs/v2-core",
-            },
-            {
-              label: "Flow",
-              href: "https://github.com/sablier-labs/flow",
             },
             {
               label: "Integration Template",
               href: "https://github.com/sablier-labs/lockup-integration-template",
+            },
+            {
+              label: "Flow Contracts",
+              href: "https://github.com/sablier-labs/flow",
+            },
+            {
+              label: "Flow Integration Template",
+              href: "https://github.com/sablier-labs/flow-integration-template",
             },
             {
               label: "Subgraphs",
