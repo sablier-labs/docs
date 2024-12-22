@@ -54,6 +54,7 @@ ID.
 ```mermaid
 flowchart LR;
   C["LockupLinear\ncontract"];
+
   S0[(Stream LL-1-1)];
   P0([Shared Lockup]);
   P1([cliff]);
@@ -61,7 +62,6 @@ flowchart LR;
   S0 --> P1;
   C --> S0;
 
-  C["LockupLinear\ncontract"];
   S1[(Stream LL-1-2)];
   P2([Shared Lockup]);
   P3([cliff]);
@@ -79,6 +79,7 @@ Similarly, Lockup Dynamic requires a
 ```mermaid
 flowchart LR;
   C["LockupDynamic\ncontract"];
+
   S0[(Stream LD-1-1)];
   P0([Shared Lockup]);
   segments0(segment 1
@@ -91,7 +92,6 @@ flowchart LR;
   S0 --> segments0;
   C --> S0;
 
-  C["LockupDynamic\ncontract"];
   S1[(Stream LD-1-2)];
   P2([Shared Lockup]);
   segments1(segment 1
@@ -113,6 +113,7 @@ store an array of [tranches](/reference/lockup/core/types/library.LockupTranched
 ```mermaid
 flowchart LR;
   C["LockupTranched\ncontract"];
+
   S0[(Stream LT-1-1)];
   P0([Shared Lockup]);
   tranches0(tranche 1
@@ -125,7 +126,6 @@ flowchart LR;
   S0 --> tranches0;
   C --> S0;
 
-  C["LockupTranched\ncontract"];
   S1[(Stream LT-1-2)];
   P2([Shared Lockup]);
   tranches1(tranche 1
