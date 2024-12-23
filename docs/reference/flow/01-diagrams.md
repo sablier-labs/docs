@@ -21,22 +21,35 @@ title: "Diagrams"
 
 ## Flow Storage Layout
 
-Each Flow contract is a singleton that stores all streams created by that contract's users. The following diagrams
-provide insight into the storage layout. To see the list of all storage variables,
-[click here](/reference/flow/contracts/types/library.Flow#structs).
+Flow is a singleton contract that stores all streams created by that contract's users. The following diagrams provide
+insight into the storage layout of each stream. To see the full list of storage variables, check out
+[this reference](/reference/flow/contracts/types/library.Flow#structs).
 
 ```mermaid
-flowchart LR
-    storage[(Storage)]
-    bal([bal])
-    rps([rps])
-    sd([sd])
-    st([st])
+flowchart TD;
+  F["Flow contract"];
 
-    storage --> bal
-    storage --> rps
-    storage --> sd
-    storage --> st
+  S0[(Stream 1)];
+  b0([bal])
+  r0([rps])
+  sd0([sd])
+  st0([st])
+  F --> S0;
+  S0 --> b0;
+  S0 --> r0;
+  S0 --> sd0;
+  S0 --> st0;
+
+  S1[(Stream 2)];
+  b1([bal])
+  r1([rps])
+  sd1([sd])
+  st1([st])
+  F --> S1;
+  S1 --> b1;
+  S1 --> r1;
+  S1 --> sd1;
+  S1 --> st1;
 ```
 
 ## Token Flows

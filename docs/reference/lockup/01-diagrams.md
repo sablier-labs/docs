@@ -9,7 +9,7 @@ title: "Diagrams"
 Each Lockup contract is a singleton that stores all streams created by that contract's users. The following diagrams
 provide insight into the storage layout.
 
-### Shared Lockup
+### Lockup Base
 
 To see the list of all common storage variables, [click here](/reference/lockup/core/types/library.Lockup#stream). This
 struct is shared across LockupLinear, LockupDynamic, and LockupTranched.
@@ -34,15 +34,15 @@ classDiagram
     2. withdrawn amount
     3. refunded amount
   }
-  class `Shared Lockup` {
+  class `Lockup Base` {
     stream LL
     stream LD
     stream LT
   }
 
-  `Shared Lockup` --> slot0
-  `Shared Lockup` --> slot1
-  `Shared Lockup` --> slot2
+  `Lockup Base` --> slot0
+  `Lockup Base` --> slot1
+  `Lockup Base` --> slot2
 ```
 
 ### Lockup Linear
@@ -52,18 +52,18 @@ Apart from the shared Lockup storage, Lockup Linear requires a
 ID.
 
 ```mermaid
-flowchart LR;
+flowchart TD;
   C["LockupLinear\ncontract"];
+
   S0[(Stream LL-1-1)];
-  P0([Shared Lockup]);
+  P0([Lockup Base]);
   P1([cliff]);
   S0 --> P0;
   S0 --> P1;
   C --> S0;
 
-  C["LockupLinear\ncontract"];
   S1[(Stream LL-1-2)];
-  P2([Shared Lockup]);
+  P2([Lockup Base]);
   P3([cliff]);
   S1 --> P2;
   S1 --> P3;
@@ -77,10 +77,11 @@ Similarly, Lockup Dynamic requires a
 [segments](/reference/lockup/core/types/library.LockupDynamic#segment) for each stream ID.
 
 ```mermaid
-flowchart LR;
+flowchart TD;
   C["LockupDynamic\ncontract"];
+
   S0[(Stream LD-1-1)];
-  P0([Shared Lockup]);
+  P0([Lockup Base]);
   segments0(segment 1
             segment 2
             ..
@@ -91,9 +92,8 @@ flowchart LR;
   S0 --> segments0;
   C --> S0;
 
-  C["LockupDynamic\ncontract"];
   S1[(Stream LD-1-2)];
-  P2([Shared Lockup]);
+  P2([Lockup Base]);
   segments1(segment 1
             segment 2
             ..
@@ -111,10 +111,11 @@ Lockup Tranched requires a [separate storage](/reference/lockup/core/contract.Sa
 store an array of [tranches](/reference/lockup/core/types/library.LockupTranched#tranche) for each stream ID.
 
 ```mermaid
-flowchart LR;
+flowchart TD;
   C["LockupTranched\ncontract"];
+
   S0[(Stream LT-1-1)];
-  P0([Shared Lockup]);
+  P0([Lockup Base]);
   tranches0(tranche 1
             tranche 2
             ..
@@ -125,9 +126,8 @@ flowchart LR;
   S0 --> tranches0;
   C --> S0;
 
-  C["LockupTranched\ncontract"];
   S1[(Stream LT-1-2)];
-  P2([Shared Lockup]);
+  P2([Lockup Base]);
   tranches1(tranche 1
             tranche 2
             ..
