@@ -21,9 +21,9 @@ title: "Diagrams"
 
 ## Flow Storage Layout
 
-The Flow is a singleton contract that stores all streams created by that contract's users. The following diagrams
-provide insight into the storage layout of each stream. To see the full list of storage variables,
-[click here](/reference/flow/contracts/types/library.Flow#structs).
+Flow is a singleton contract that stores all streams created by that contract's users. The following diagrams provide
+insight into the storage layout of each stream. To see the full list of storage variables, check out
+[this reference](/reference/flow/contracts/types/library.Flow#structs).
 
 ```mermaid
 flowchart TD;
