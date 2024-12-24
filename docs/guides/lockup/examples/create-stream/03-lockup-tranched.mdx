@@ -7,13 +7,13 @@ title: "Lockup Tranched"
 import AdmonitionSimpleCode from "@site/docs/snippets/AdmonitionSimpleCode.mdx";
 import CreateFunctions from "@site/docs/snippets/CreateFunctions.mdx";
 import LockupDeployment from "@site/docs/snippets/LockupDeployment.mdx";
-import ParamAsset from "@site/docs/snippets/ParamAsset.mdx";
-import ParamBroker from "@site/docs/snippets/ParamBroker.mdx";
-import ParamCancelable from "@site/docs/snippets/ParamCancelable.mdx";
-import ParamRecipient from "@site/docs/snippets/ParamRecipient.mdx";
-import ParamSender from "@site/docs/snippets/ParamSender.mdx";
-import ParamTotalAmount from "@site/docs/snippets/ParamTotalAmount.mdx";
-import ParamTransferable from "@site/docs/snippets/ParamTransferable.mdx";
+import LockupParamAsset from "@site/docs/snippets/LockupParamAsset.mdx";
+import LockupParamBroker from "@site/docs/snippets/LockupParamBroker.mdx";
+import LockupParamCancelable from "@site/docs/snippets/LockupParamCancelable.mdx";
+import LockupParamRecipient from "@site/docs/snippets/LockupParamRecipient.mdx";
+import LockupParamSender from "@site/docs/snippets/LockupParamSender.mdx";
+import LockupParamTotalAmount from "@site/docs/snippets/LockupParamTotalAmount.mdx";
+import LockupParamTransferable from "@site/docs/snippets/LockupParamTransferable.mdx";
 
 # Create a Lockup Tranched stream
 
@@ -113,17 +113,17 @@ LockupTranched.CreateWithDurations memory params;
 
 Let's review each parameter in detail.
 
-<ParamSender />
+<LockupParamSender />
 
-<ParamRecipient />
+<LockupParamRecipient />
 
-<ParamTotalAmount />
+<LockupParamTotalAmount />
 
-<ParamAsset />
+<LockupParamAsset />
 
-<ParamCancelable />
+<LockupParamCancelable />
 
-<ParamTransferable />
+<LockupParamTransferable />
 
 ### Tranches With Duration
 
@@ -153,7 +153,7 @@ params.tranches[1] = (
 In this example, the first tranche (`amount0`) will unlock at the end of the 4 weeks after the stream was created and
 the second tranche (`amount1`) will unlock after further 6 weeks. Thus, the total amount will be unlocked in 10 weeks.
 
-<ParamBroker />
+<LockupParamBroker />
 
 ## Invoke the create function
 
