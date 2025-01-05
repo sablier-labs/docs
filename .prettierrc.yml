@@ -1,15 +1,14 @@
-bracketSpacing: true
 plugins: ["@trivago/prettier-plugin-sort-imports"]
 printWidth: 120
 proseWrap: "always"
 singleQuote: false
 tabWidth: 2
-trailingComma: "all"
 
 overrides:
   - files: ["*.ts", "*.tsx"]
     options:
-      importOrder: #https://github.com/trivago/prettier-plugin-sort-imports#importorder
+      # https://github.com/trivago/prettier-plugin-sort-imports#importorder
+      importOrder:
         - "^react"
         - "^@emotion"
         - "<THIRD_PARTY_MODULES>"
