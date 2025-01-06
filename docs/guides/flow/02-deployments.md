@@ -31,6 +31,13 @@ Sablier repositories on Github.
 | SablierFlow       | [0x2d9221a63e12aa796619cb381ec4a71b201281f5](https://etherscan.io/address/0x2d9221a63e12aa796619cb381ec4a71b201281f5) | [v1.0.0](https://github.com/sablier-labs/deployments/blob/main/flow/v1.0.0) |
 | FlowNFTDescriptor | [0xb69b27073fa0366cddf432f5976c34c9baf7eae6](https://etherscan.io/address/0xb69b27073fa0366cddf432f5976c34c9baf7eae6) | [v1.0.0](https://github.com/sablier-labs/deployments/blob/main/flow/v1.0.0) |
 
+### Abstract
+
+| Contract          | Address                                                                                                                     | Deployment                                                                  |
+| :---------------- | :-------------------------------------------------------------------------------------------------------------------------- | :-------------------------------------------------------------------------- |
+| SablierFlow       | [0x001F1408515Ccd5C1A19A682455ed4eFa39DadD6](https://wwstage.abscan.org/address/0x001F1408515Ccd5C1A19A682455ed4eFa39DadD6) | [v1.0.0](https://github.com/sablier-labs/deployments/blob/main/flow/v1.0.0) |
+| FlowNFTDescriptor | [0x20C9A3E27322Fc2b21Ced430D1B2e12d90804db6](https://wwstage.abscan.org/address/0x20C9A3E27322Fc2b21Ced430D1B2e12d90804db6) | [v1.0.0](https://github.com/sablier-labs/deployments/blob/main/flow/v1.0.0) |
+
 ### Arbitrum One
 
 | Contract          | Address                                                                                                              | Deployment                                                                  |

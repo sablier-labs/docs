@@ -60,6 +60,24 @@ Sablier repositories on Github.
 | SablierV2BatchLockup         | [0xB5Ec9706C3Be9d22326D208f491E5DEef7C8d9f0](https://etherscan.io/address/0xB5Ec9706C3Be9d22326D208f491E5DEef7C8d9f0) | [periphery-v1.2.0](https://github.com/sablier-labs/deployments/blob/main/lockup/v1.2.0/periphery) |
 | SablierV2MerkleLockupFactory | [0xF35aB407CF28012Ba57CAF5ee2f6d6E4420253bc](https://etherscan.io/address/0xF35aB407CF28012Ba57CAF5ee2f6d6E4420253bc) | [periphery-v1.2.0](https://github.com/sablier-labs/deployments/blob/main/lockup/v1.2.0/periphery) |
 
+### Abstract
+
+#### Core
+
+| Contract                | Address                                                                                                                     | Deployment                                                                              |
+| :---------------------- | :-------------------------------------------------------------------------------------------------------------------------- | :-------------------------------------------------------------------------------------- |
+| SablierV2LockupDynamic  | [0xc69c06c030E825EDE13F1486078Aa9a2E2AAffaf](https://wwstage.abscan.org/address/0xc69c06c030E825EDE13F1486078Aa9a2E2AAffaf) | [core-v1.2.0](https://github.com/sablier-labs/deployments/blob/main/lockup/v1.2.0/core) |
+| SablierV2LockupLinear   | [0x7282d83E49363f373102d195F66649eBD6C57B9B](https://wwstage.abscan.org/address/0x7282d83E49363f373102d195F66649eBD6C57B9B) | [core-v1.2.0](https://github.com/sablier-labs/deployments/blob/main/lockup/v1.2.0/core) |
+| SablierV2LockupTranched | [0x28fCAE6bda2546C93183EeC8638691B2EB184003](https://wwstage.abscan.org/address/0x28fCAE6bda2546C93183EeC8638691B2EB184003) | [core-v1.2.0](https://github.com/sablier-labs/deployments/blob/main/lockup/v1.2.0/core) |
+| SablierV2NFTDescriptor  | [0xAc2E42b520364940c90Ce164412Ca9BA212d014B](https://wwstage.abscan.org/address/0xAc2E42b520364940c90Ce164412Ca9BA212d014B) | [core-v1.2.0](https://github.com/sablier-labs/deployments/blob/main/lockup/v1.2.0/core) |
+
+#### Periphery
+
+| Contract                     | Address                                                                                                                     | Deployment                                                                                        |
+| :--------------------------- | :-------------------------------------------------------------------------------------------------------------------------- | :------------------------------------------------------------------------------------------------ |
+| SablierV2BatchLockup         | [0x2F1eB117A87217E8bE9AA96795F69c9e380686Db](https://wwstage.abscan.org/address/0x2F1eB117A87217E8bE9AA96795F69c9e380686Db) | [periphery-v1.2.0](https://github.com/sablier-labs/deployments/blob/main/lockup/v1.2.0/periphery) |
+| SablierV2MerkleLockupFactory | [0xe2C0C3e0ff10Df4485a2dcbbdd1D002a40446164](https://wwstage.abscan.org/address/0xe2C0C3e0ff10Df4485a2dcbbdd1D002a40446164) | [periphery-v1.2.0](https://github.com/sablier-labs/deployments/blob/main/lockup/v1.2.0/periphery) |
+
 ### Arbitrum One
 
 #### Core
