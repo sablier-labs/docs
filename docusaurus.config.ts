@@ -135,16 +135,16 @@ const config: Config = {
             to: "/concepts/what-is-sablier",
           },
           {
-            from: "/contracts/v1/deployments",
-            to: "/guides/legacy/deployments",
-          },
-          {
             from: "/contracts/v2/deployments/v2.0",
             to: "/guides/lockup/previous-deployments/v1.0",
           },
           {
             from: "/contracts/v2/deployments/v2.1",
             to: "/guides/lockup/previous-deployments/v1.1",
+          },
+          {
+            from: "/contracts/v2/guides",
+            to: "/guides/lockup/overview",
           },
           {
             from: "/contracts/v2/reference/overview",
@@ -159,14 +159,6 @@ const config: Config = {
             to: "/apps/guides/csv-support",
           },
           // Legacy redirects
-          {
-            from: "/contracts/v1/guides/getting-started",
-            to: "/guides/legacy/overview",
-          },
-          {
-            from: "/contracts/v1/overview",
-            to: "/guides/legacy/overview",
-          },
           {
             from: "/protocol/faq/basics",
             to: "/concepts/what-is-sablier",
@@ -186,6 +178,18 @@ const config: Config = {
           {
             from: "/protocol/subgraphs/endpoints",
             to: "/api/overview",
+          },
+          {
+            from: "/contracts/v1/deployments",
+            to: "/guides/legacy/deployments",
+          },
+          {
+            from: "/contracts/v1/guides/getting-started",
+            to: "/guides/legacy/overview",
+          },
+          {
+            from: "/contracts/v1/overview",
+            to: "/guides/legacy/overview",
           },
         ],
         createRedirects(existingPath) {
