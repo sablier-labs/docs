@@ -303,7 +303,7 @@ const config: Config = {
               href: "https://github.com/sablier-labs/v2-core",
             },
             {
-              label: "Integration Template",
+              label: "Lockup Integration Template",
               href: "https://github.com/sablier-labs/lockup-integration-template",
             },
             {
