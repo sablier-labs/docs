@@ -5,7 +5,7 @@ title: "Stream Management"
 ---
 
 import AdmonitionSimpleCode from "@site/docs/snippets/AdmonitionSimpleCode.mdx";
-import FlowDeployment from "@site/docs/snippets/FlowDeployment.mdx";
+import { Deployment } from "@site/docs/snippets/Deployment.mdx";
 
 # Managing a Stream
 
@@ -39,11 +39,11 @@ Declare the contract and add the Flow address as a constant:
 
 ```solidity
 contract FlowStreamManager {
-    ISablierFlow public constant FLOW = ISablierFlow(0x5Ae8c13f6Ae094887322012425b34b0919097d8A);
+    ISablierFlow public constant FLOW = ISablierFlow(0x52ab22e769E31564E17D524b683264B65662A014);
 }
 ```
 
-<FlowDeployment />
+<Deployment protocol="Flow" />
 
 ## Deposit
 

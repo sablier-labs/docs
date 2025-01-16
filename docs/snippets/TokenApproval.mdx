@@ -1,0 +1,16 @@
+## ERC-20 steps
+
+To create a stream, the caller must approve the creator contract to pull the tokens from the calling address's account.
+Then, we have to approve the Lockup contract to pull the tokens that the creator contract will be in possession of after
+they are transferred from the calling address (you):
+
+```solidity
+// Transfer the provided amount of DAI tokens to this contract
+DAI.transferFrom(msg.sender, address(this), totalAmount);
+
+// Approve the Sablier contract to spend DAI
+DAI.approve(address(LOCKUP), totalAmount);
+```
+
+For more guidance on how to approve and transfer ERC-20 tokens, see
+[this article](https://ethereum.org/en/developers/docs/standards/tokens/erc-20/) on the Ethereum website.

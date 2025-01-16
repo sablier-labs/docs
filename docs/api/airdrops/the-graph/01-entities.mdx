@@ -19,13 +19,13 @@ of defining the following Sablier entities:
 
 ### Primary
 
-| Entity   | Description                                                                                                        |
-| -------- | ------------------------------------------------------------------------------------------------------------------ |
-| Factory  | Instances of `SablierV2MerkleLockupFactory`                                                                        |
-| Campaign | Instances of `SablierV2MerkleLL`, the primary entity tracking the up to date state of an Airstream/Merkle campaign |
-| Action   | Emitted events transformed into historical entries (e.g. Claim, Create, Clawback)                                  |
-| Activity | An entity tracking daily usage (one item per day) for each campaign (e.g. amount claimed per day)                  |
-| Asset    | The ERC20 asset that is being streamed                                                                             |
+| Entity   | Description                                                                                                      |
+| -------- | ---------------------------------------------------------------------------------------------------------------- |
+| Factory  | Instances of `SablierV2MerkleLockupFactory`                                                                      |
+| Campaign | Instances of `SablierMerkleLL`, the primary entity tracking the up to date state of an Airstream/Merkle campaign |
+| Action   | Emitted events transformed into historical entries (e.g. Claim, Create, Clawback)                                |
+| Activity | An entity tracking daily usage (one item per day) for each campaign (e.g. amount claimed per day)                |
+| Asset    | The ERC20 asset that is being streamed                                                                           |
 
 ### Secondary
 

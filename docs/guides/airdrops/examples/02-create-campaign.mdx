@@ -1,0 +1,232 @@
+---
+id: "create-campaign"
+sidebar_position: 2
+title: "Create Campaigns"
+---
+
+import AdmonitionSimpleCode from "@site/docs/snippets/AdmonitionSimpleCode.mdx";
+import Deployment from "@site/docs/snippets/Deployment.mdx";
+
+# Create Airdrop Campaigns
+
+In this guide, we will show you how you can use Solidity to create a campaign via the
+[Merkle Factory](/reference/airdrops/contracts/contract.SablierMerkleFactory).
+
+This guide assumes that you have already gone through the [Protocol Concepts](/concepts/merkle-airdrops) section.
+
+<AdmonitionSimpleCode />
+
+## Set up a contract
+
+Declare the Solidity version used to compile the contract:
+
+```solidity
+// SPDX-License-Identifier: GPL-3.0-or-later
+pragma solidity >=0.8.22;
+```
+
+Now, import the relevant symbols from `@sablier/lockup` and `@sablier/airdrops`:
+
+```solidity
+import { IERC20 } from "@openzeppelin/contracts/token/ERC20/IERC20.sol";
+import { ud2x18 } from "@prb/math/src/UD2x18.sol";
+import { ISablierLockup } from "@sablier/lockup/src/interfaces/ISablierLockup.sol";
+import { ISablierMerkleInstant } from "@sablier/airdrops/src/interfaces/ISablierMerkleInstant.sol";
+import { ISablierMerkleLL } from "@sablier/airdrops/src/interfaces/ISablierMerkleLL.sol";
+import { ISablierMerkleLT } from "@sablier/airdrops/src/interfaces/ISablierMerkleLT.sol";
+import { ISablierMerkleFactory } from "@sablier/airdrops/src/interfaces/ISablierMerkleFactory.sol";
+import { MerkleBase, MerkleLL, MerkleLT } from "@sablier/airdrops/src/types/DataTypes.sol";
+```
+
+Create a contract called `MerkleCreator`, and declare a constant `DAI` of type `IERC20`, a constant `LOCKUP` of type
+`ISablierLockup` and a constant `FACTORY` of type `ISablierMerkleFactory`.
+
+```solidity
+contract MerkleCreator {
+    IERC20 public constant DAI = IERC20(0x68194a729C2450ad26072b3D33ADaCbcef39D574);
+    ISablierMerkleFactory public constant FACTORY = ISablierMerkleFactory(0x4ECd5A688b0365e61c1a764E8BF96A7C5dF5d35F);
+    ISablierLockup public constant LOCKUP = ISablierLockup(0xC2Da366fD67423b500cDF4712BdB41d0995b0794);
+}
+```
+
+<Deployment protocol="Lockup" />
+
+And, Factory address can be obtained from the [Merkle Airdrops Deployments](/guides/airdrops/deployments) page.
+
+## Create function
+
+There are three create functions available through factory:
+
+- [`createMerkleInstant`](/reference/airdrops/contracts/contract.SablierMerkleFactory#createmerkleinstant): creates
+  campaign for instant distribution of tokens.
+- [`createMerkleLL`](/reference/airdrops/contracts/contract.SablierMerkleFactory#createmerklell): creates campaign with
+  a Lockup Linear distribution.
+- [`createMerkleLT`](/reference/airdrops/contracts/contract.SablierMerkleFactory#createmerklelt): creates campaign with
+  a Lockup Tranched distribution.
+
+Which one you choose depends upon your use case. In this guide, we will use `createMerkleLL`.
+
+## Function definition
+
+Define a function called `createMerkleLL` that returns the address of newly deployed Merkle Lockup contract.
+
+```solidity
+function createMerkleLL() public returns (ISablierMerkleLL merkleLL) {
+  // ...
+}
+```
+
+## Parameters
+
+Merkle Factory uses
+[MerkleBase.ConstructorParams](/reference/airdrops/contracts/types/library.MerkleBase#constructorparams) as the shared
+struct among all the create functions.
+
+```solidity
+MerkleBase.ConstructorParams memory baseParams;
+```
+
+Let's review each parameter of the shared struct in detail.
+
+### Cancelable
+
+Boolean that indicates whether the stream will be cancelable or not after it has been claimed.
+
+```solidity
+baseParams.cancelable = false;
+```
+
+### Expiration
+
+The unix timestamp indicating the expiration of the campaign. Once this time has been passed, users will no longer be
+able to claim their airdrop. And you will be able to
+[clawback](/reference/airdrops/contracts/abstracts/abstract.SablierMerkleBase#clawback) any unclaimed tokens from the
+campaign.
+
+```solidity
+baseParams.expiration = uint40(block.timestamp + 12 weeks);
+```
+
+### Initial Admin
+
+This is the initial admin of the Airstream campaign. When a recipient claims his airdrop, a Lockup stream is created
+with this admin as the sender of the stream. Another role of admin is to clawback unclaimed tokens from the campaign
+post expiry and during grace period.
+
+```solidity
+baseParams.initialAdmin = address(0xBeeF);
+```
+
+### IPFS CID
+
+This is the content identifier (CID) for indexing the contract on IPFS. This is where we store addresses of the Airdrop
+recipients and their claim amount.
+
+```solidity
+baseParams.ipfsCID = "QmT5NvUtoM5nWFfrQdVrFtvGfKFmG7AHE8P34isapyhCxX";
+```
+
+### Merkle Root
+
+These campaigns use a Merkle tree data structure to store the airdrop data onchain. As a result, you only pay the gas
+fee to create the contract and store the Merkle root onchain. Airdrop recipients can then call the contract on their own
+to claim their airdrop.
+
+If you want to create the Merkle root programmatically, you can follow
+[our guide on Merkle API](/api/airdrops/merkle-api/overview).
+
+```solidity
+baseParams.merkleRoot = 0x4e07408562bedb8b60ce05c1decfe3ad16b722309875f562c03d02d7aaacb123;
+```
+
+### Name
+
+The name of the campaign.
+
+```solidity
+baseParams.name = "My First Campaign";
+```
+
+### Token
+
+The contract address of the ERC-20 token that you want to airdrop to your recipients. In this example, we will use DAI.
+
+```solidity
+baseParams.token = DAI;
+```
+
+### Transferable
+
+Boolean that indicates whether the stream will be transferable or not. This is the stream that users obtain when they
+claim their airstream.
+
+```solidity
+baseParams.transferable = true;
+```
+
+Now that we have the `baseParams` ready, it's time to setup rest of the input parameters.
+
+### Aggregate Amount
+
+This is the total amount of tokens you want to airdrop to your users, denoted in units of the asset's decimals. Let say
+you want to airdrop 100M tokens of DAI. Then, the aggregate amount would be $100M*10^{18}$.
+
+```solidity
+uint256 aggregateAmount = 100000000e18;
+```
+
+### Recipient Count
+
+The total number of recipient addresses.
+
+```solidity
+uint256 recipientCount = 10000;
+```
+
+### Schedule
+
+For the Lockup Linear campaign, a new struct named `Schedule` is needed. This structure enables the configuration of
+various requirements for the campaign creator. For this example, we will have the following configurations:
+
+1. `startTime`: sets the start time of vesting. If set to 0, the vesting will begin at the time of claim.
+2. `startPercentage`: We want to unlock 0.01% of the total amount at the start time.
+3. `cliffDuration`: We want a cliff duration of 30 days.
+4. `cliffPercentage`: We want to unlock another 0.01% after the cliff period ends.
+5. `totalDuration`: The total duration of vesting should be 90 days.
+
+```solidity
+MerkleLL.Schedule memory schedule = MerkleLL.Schedule({
+    startTime: 0,
+    startPercentage: ud2x18(0.01e18),
+    cliffDuration: 30 days,
+    cliffPercentage: ud2x18(0.01e18),
+    totalDuration: 90 days
+});
+```
+
+## Invoke the create function
+
+With all parameters set, we can now call the `createMerkleLL` function, and assign the address of the newly created
+campaign to a variable:
+
+```solidity
+merkleLL = FACTORY.createMerkleLL({
+  baseParams: baseParams,
+  lockup: LOCKUP,
+  cancelable: false,
+  transferable: true,
+  schedule: schedule,
+  aggregateAmount: aggregateAmount,
+  recipientCount: recipientCount
+});
+
+```
+
+## Full code
+
+Below you can see the full code. You can also access the code on GitHub through
+[this link](https://github.com/sablier-labs/examples/blob/main/airdrops/MerkleCreator.sol).
+
+```solidity reference title="Merkle Campaign Creator"
+https://github.com/sablier-labs/examples/blob/main/airdrops/MerkleCreator.sol
+```

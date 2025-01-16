@@ -1,0 +1,79 @@
+---
+id: "local-environment"
+sidebar_position: 1
+title: "Configure Your Local Environment"
+---
+
+import {
+  Introduction,
+  Prerequisite,
+  SetupWithTemplate,
+  SetupWithFoundry,
+  InstallNpm,
+  FirstContract1,
+  FirstContract2,
+  RunForkTest1,
+  RunForkTest2,
+  FinalSteps,
+} from "@site/docs/snippets/LocalEnvironment.mdx";
+
+<Introduction protocol="Flow" />
+
+## Pre-requisites
+
+<Prerequisite />
+
+## Set up using Flow integration template
+
+:::tip
+
+Make sure you are using the latest version of Foundry by running `foundryup`.
+
+:::
+
+<SetupWithTemplate protocol="Flow" />
+
+## Set up using Foundry template
+
+<SetupWithFoundry protocol="Flow" />
+
+:::note
+
+You might notice that the CLI is `forge` rather than `foundry`. This is because Foundry is a toolkit, and `forge` is
+just one of the tools that comes with it.
+
+:::
+
+## Install Flow npm package
+
+<InstallNpm protocol="Flow" />
+
+## Write your first contract
+
+<FirstContract1 />
+
+```solidity reference title="Flow Stream Creator"
+https://github.com/sablier-labs/flow-integration-template/blob/main/src/FlowStreamCreator.sol
+```
+
+<FirstContract2 />
+
+:::info
+
+The minimum Solidity version supported by the Flow contracts is v0.8.22.
+
+:::
+
+## Run a fork test
+
+<RunForkTest1 />
+
+```solidity reference title="Flow Stream Creator Test"
+https://github.com/sablier-labs/flow-integration-template/blob/main/test/FlowStreamCreator.t.sol
+```
+
+<RunForkTest2 protocol="Flow" />
+
+## Next steps
+
+<FinalSteps protocol="Flow" />

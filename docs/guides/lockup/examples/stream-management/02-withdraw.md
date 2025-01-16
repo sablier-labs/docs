@@ -23,38 +23,38 @@ the withdrawal to an alternative address of their choice.
 
 There are four withdrawal functions:
 
-1. [`withdraw`](/reference/lockup/core/abstracts/abstract.SablierV2Lockup#withdraw): withdraws a specific amount of
-   assets.
-2. [`withdrawMax`](/reference/lockup/core/abstracts/abstract.SablierV2Lockup#withdrawmax): withdraws the maximum
+1. [`withdraw`](/reference/lockup/contracts/abstracts/abstract.SablierLockupBase#withdraw): withdraws a specific amount
+   of assets.
+2. [`withdrawMax`](/reference/lockup/contracts/abstracts/abstract.SablierLockupBase#withdrawmax): withdraws the maximum
    withdrawable amount of assets.
-3. [`withdrawMaxAndTransfer`](/reference/lockup/core/abstracts/abstract.SablierV2Lockup#withdrawmaxandtransfer):
+3. [`withdrawMaxAndTransfer`](/reference/lockup/contracts/abstracts/abstract.SablierLockupBase#withdrawmaxandtransfer):
    withdraws the maximum withdrawable amount and transfers the NFT.
-4. [`withdrawMultiple`](/reference/lockup/core/abstracts/abstract.SablierV2Lockup#withdrawmultiple): withdraws specific
-   amounts of assets from multiple streams at once.
+4. [`withdrawMultiple`](/reference/lockup/contracts/abstracts/abstract.SablierLockupBase#withdrawmultiple): withdraws
+   specific amounts of assets from multiple streams at once.
 
 To call any of these functions, you need to have created a stream. If you don't have one yet, go back to the
 [previous guide](/guides/lockup/examples/create-stream/lockup-linear) and create a stream with a brief duration,
 assigning the `StreamManagement` contract as the recipient. Then, you can use the `withdraw` function like this:
 
 ```solidity reference title="Stream Management: Withdraw"
-https://github.com/sablier-labs/examples/blob/main/lockup/core/StreamManagement.sol#L20-L22
+https://github.com/sablier-labs/examples/blob/main/lockup/StreamManagement.sol#L20-L22
 ```
 
 In this example, the withdrawal address and withdrawal amount are hard-coded for demonstration purposes. However, in a
 production environment, these values would likely be adjustable parameters determined by the user. Alternatively, you
-can use [`withdrawableAmountOf`](/reference/lockup/core/abstracts/abstract.SablierV2Lockup#withdrawableamountof)
+can use [`withdrawableAmountOf`](/reference/lockup/contracts/abstracts/abstract.SablierLockupBase#withdrawableamountof)
 function to determine how much amount of assets is available to withdraw.
 
 In addition to the `withdraw` function, there is the `withdrawMax` function, which you can use to withdraw the maximum
 withdrawable amount of assets at the time of invocation:
 
 ```solidity reference title="Stream Management: Withdraw Max"
-https://github.com/sablier-labs/examples/blob/main/lockup/core/StreamManagement.sol#L25-L27
+https://github.com/sablier-labs/examples/blob/main/lockup/StreamManagement.sol#L25-L27
 ```
 
 What `withdrawMax` does is call the
-[`withdrawableAmountOf`](/reference/lockup/core/abstracts/abstract.SablierV2Lockup#withdrawableamountof) function and
-pass its value to `withdraw`.
+[`withdrawableAmountOf`](/reference/lockup/contracts/abstracts/abstract.SablierLockupBase#withdrawableamountof) function
+and pass its value to `withdraw`.
 
 Similar to `withdrawMax`, you can use `withdrawMaxAndTransfer` to withdraw the maximum withdrawable assets and at the
 same time, transfer the NFT to another address.
@@ -62,5 +62,5 @@ same time, transfer the NFT to another address.
 Lastly, there is the `withdrawMultiple` function, with which you can use to withdraw from multiple streams at once:
 
 ```solidity reference title="Stream Management: Withdraw Multiple"
-https://github.com/sablier-labs/examples/blob/main/lockup/core/StreamManagement.sol#L30-L32
+https://github.com/sablier-labs/examples/blob/main/lockup/StreamManagement.sol#L30-L32
 ```

@@ -5,28 +5,16 @@ title: "Lockup Dynamic"
 ---
 
 import AdmonitionSimpleCode from "@site/docs/snippets/AdmonitionSimpleCode.mdx";
-import CreateFunctions from "@site/docs/snippets/CreateFunctions.mdx";
-import LockupDeployment from "@site/docs/snippets/LockupDeployment.mdx";
-import LockupParamAsset from "@site/docs/snippets/LockupParamAsset.mdx";
-import LockupParamBroker from "@site/docs/snippets/LockupParamBroker.mdx";
-import LockupParamCancelable from "@site/docs/snippets/LockupParamCancelable.mdx";
-import LockupParamRecipient from "@site/docs/snippets/LockupParamRecipient.mdx";
-import LockupParamSender from "@site/docs/snippets/LockupParamSender.mdx";
-import LockupParamTotalAmount from "@site/docs/snippets/LockupParamTotalAmount.mdx";
-import LockupParamTransferable from "@site/docs/snippets/LockupParamTransferable.mdx";
+import { Deployment } from "@site/docs/snippets/Deployment.mdx";
+import LockupParam from "@site/docs/snippets/LockupParams.mdx";
+import TokenApproval from "@site/docs/snippets/TokenApproval.mdx";
 
-# Create a Lockup Dynamic stream
+# Create a Lockup Dynamic Stream
 
-Lockup Dynamic are streams with custom streaming curves. In this guide, we will show you how to create a Lockup Dynamic
-stream using Solidity.
+Dynamic streams are streams with custom streaming function. In this guide, we will show you how to create a Lockup
+Dynamic stream using Solidity.
 
 This guide assumes that you have already gone through the [Protocol Concepts](/concepts/streaming) section.
-
-:::note
-
-This guide interacts with the Core contracts directly.
-
-:::
 
 <AdmonitionSimpleCode />
 
@@ -39,32 +27,34 @@ Declare the Solidity version used to compile the contract:
 pragma solidity >=0.8.22;
 ```
 
-Import the relevant symbols from `@sablier/v2-core`:
+Import the relevant symbols from `@sablier/lockup`:
 
 ```solidity
 import { IERC20 } from "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 import { ud2x18 } from "@prb/math/src/UD2x18.sol";
 import { ud60x18 } from "@prb/math/src/UD60x18.sol";
-import { ISablierV2LockupDynamic } from "@sablier/v2-core/src/interfaces/ISablierV2LockupDynamic.sol";
-import { Broker, LockupDynamic } from "@sablier/v2-core/src/types/DataTypes.sol";
+import { ISablierLockup } from "@sablier/lockup/src/interfaces/ISablierLockup.sol";
+import { Broker, Lockup, LockupDynamic } from "@sablier/lockup/src/types/DataTypes.sol";
 ```
 
 Create a contract called `LockupDynamicStreamCreator`, and declare a constant `DAI` of type `IERC20` and a constant
-`LOCKUP_DYNAMIC` of type `ISablierV2LockupDynamic`:
+`LOCKUP` of type `ISablierLockup`:
 
 ```solidity
 contract LockupDynamicStreamCreator {
     IERC20 public constant DAI = IERC20(0x68194a729C2450ad26072b3D33ADaCbcef39D574);
-    ISablierV2LockupDynamic public constant LOCKUP_DYNAMIC =
-        ISablierV2LockupDynamic(0x73BB6dD3f5828d60F8b3dBc8798EB10fbA2c5636);
+    ISablierLockup public constant LOCKUP = ISablierLockup(0xC2Da366fD67423b500cDF4712BdB41d0995b0794);
 }
 ```
 
-<LockupDeployment />
+<Deployment protocol="Lockup" />
 
-<CreateFunctions />
+There are two create functions in the Lockup contract that can be used to create Dynamic streams:
 
-Which one you choose depends upon your use case. In this guide, we will use `createWithTimestamps`.
+- `createWithDurationsLD`: takes duration and calculates the segment timestamps based on the provided durations.
+- `createWithTimestampsLD`: takes UNIX timestamps for segment.
+
+Which one you choose depends upon your use case. In this guide, we will use `createWithTimestampsLD`.
 
 ## Function definition
 
@@ -84,77 +74,51 @@ of the steps below:
 uint256 totalAmount = amount0 + amount1;
 ```
 
-## ERC-20 steps
-
-To create a stream, the caller must approve the creator contract to pull the tokens from the calling address's account.
-Then, we have to also approve the Lockup dynamic contract to pull the assets that the creator contract will be in
-possession of after they are transferred from the calling address (you):
-
-```solidity
-// Transfer the provided amount of DAI tokens to this contract
-DAI.transferFrom(msg.sender, address(this), totalAmount);
-
-// Approve the Lockup dynamic contract to spend DAI
-DAI.approve(address(LOCKUP_DYNAMIC), totalAmount);
-```
-
-For more guidance on how to approve and transfer ERC-20 tokens, see
-[this article](https://ethereum.org/en/developers/docs/standards/tokens/erc-20/) on the Ethereum website.
+<TokenApproval />
 
 ## Parameters
 
-Lockup dynamic uses structs to encode the parameters of its create functions. The struct associated with
-`createWithTimestamps` is
-[`LockupDynamic.CreateWithTimestamps`](/reference/lockup/core/types/library.LockupDynamic#createwithtimestamps), and it
-can be initialized like this:
+The struct associated with `createWithTimestampsLD` are
+[`Lockup.CreateWithTimestamps`](/reference/lockup/contracts/types/library.Lockup#createwithtimestamps) (a shared struct
+across all the lockup streams) and
+[`LockupDynamic.Segment`](/reference/lockup/contracts/types/library.LockupDynamic#segment).
 
 ```solidity
 LockupDynamic.CreateWithTimestamps memory params;
+LockupDynamic.Segment[] memory segments = new LockupDynamic.Segment[](2);
 ```
 
 Let's review each parameter in detail.
 
-<LockupParamSender />
+<LockupParam />
 
-<LockupParamRecipient />
+### Start Time and End Time
 
-<LockupParamTotalAmount />
-
-<LockupParamAsset />
-
-<LockupParamCancelable />
-
-<LockupParamTransferable />
-
-### Start time
-
-The Unix timestamp for when the stream will start.
-
-In this example, the start time is set to 100 seconds into the future:
+The start and end timestamps for the stream. Note that the end timestamps much match the timestamp of the last segment.
 
 ```solidity
-params.startTime = uint40(block.timestamp + 100 seconds);
+params.timestamps.start = uint40(block.timestamp + 100 seconds);
+params.timestamps.end = uint40(block.timestamp + 52 weeks);
 ```
 
 ### Segments
 
-Segments are what the protocol uses to compose the custom distribution curve of a Lockup Dynamic stream. For a full
-exposition of segments, see the [Segments](/concepts/lockup/segments) guide.
+Segments are what the protocol uses to compose the custom distribution curve of a Dynamic stream. For a full exposition
+of segments, see the [Segments](/concepts/lockup/segments) guide.
 
 The term "segment" refers to the splitting of the stream into separate partitions, with each segment characterized by a
 specific amount, exponent, and timestamp. These segments are supplied to the function in the form of an array containing
-[`LockupDynamic.Segment`](/reference/lockup/core/types/library.LockupDynamic#segment) structs.
+[`LockupDynamic.Segment`](/reference/lockup/contracts/types/library.LockupDynamic#segment) structs.
 
 Let's define two dummy segments:
 
 ```solidity
-params.segments = new LockupDynamic.Segment[](2);
-params.segments[0] = LockupDynamic.Segment({
+segments[0] = LockupDynamic.Segment({
     amount: amount0,
     exponent: ud2x18(1e18),
     timestamp: uint40(block.timestamp + 4 weeks)
 });
-params.segments[1] = (
+segments[1] = (
     LockupDynamic.Segment({
         amount: amount1,
         exponent: ud2x18(3.14e18),
@@ -179,23 +143,20 @@ The `ud2x18` function wraps a basic integer to the `UD2x18` value type, which is
 
 :::
 
-<LockupParamBroker />
-
 ## Invoke the create function
 
-With all parameters set, we can now call the `createWithTimestamps` function, and assign the id of the newly created
+With all parameters set, we can now call the `createWithTimestampsLD` function, and assign the id of the newly created
 stream to a variable:
 
 ```solidity
-streamId = LOCKUP_DYNAMIC.createWithTimestamps(params);
+streamId = LOCKUP.createWithTimestampsLD(params, segments);
 ```
 
 ## Full code
 
-Below you can see the complete functioning code: a contract that creates a Lockup Dynamic stream. You can access the
-code on GitHub through
-[this link](https://github.com/sablier-labs/examples/blob/main/lockup/core/LockupDynamicStreamCreator.sol).
+Below you can see the full code. You can also access the code on GitHub through
+[this link](https://github.com/sablier-labs/examples/blob/main/lockup/LockupDynamicStreamCreator.sol).
 
 ```solidity reference title="Lockup Dynamic Stream Creator"
-https://github.com/sablier-labs/examples/blob/main/lockup/core/LockupDynamicStreamCreator.sol
+https://github.com/sablier-labs/examples/blob/main/lockup/LockupDynamicStreamCreator.sol
 ```

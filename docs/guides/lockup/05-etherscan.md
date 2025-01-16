@@ -53,9 +53,9 @@ We will now proceed to create our first stream. Let's go with the following para
 - and transferrable
 
 As the start and end date are fixed, we'll be using the
-[`createWithTimestamps`](/reference/lockup/core/interfaces/interface.ISablierV2LockupLinear#createwithtimestamps)
-method. Please note that using
-[`createWithDurations`](/reference/lockup/core/interfaces/interface.ISablierV2LockupLinear#createwithdurations) is also
+[`createWithTimestamps`](/reference/lockup/contracts/interfaces/interface.ISablierLockup#createwithtimestampsll) method.
+Please note that using
+[`createWithDurations`](/reference/lockup/contracts/interfaces/interface.ISablierLockup#createwithdurationsll) is also
 possible if you specify durations instead of the timestamps.
 
 Open the **"createWithTimestamps"** method, and start filling in the stream details:
@@ -105,7 +105,7 @@ from Etherscan to learn how to correctly format input data for Write Contract ta
 :::
 
 As an example, in the screenshot below, we are providing input parameters for
-[`createWithTimestampsLL`](/reference/lockup/periphery/contract.SablierV2BatchLockup#createwithtimestampsll) function in
+[`createWithTimestampsLL`](/reference/lockup/contracts/contract.SablierBatchLockup#createwithtimestampsll) function in
 [`SablierV2BatchLockup`](https://sepolia.etherscan.io/address/0x04A9c14b7a000640419aD5515Db4eF4172C00E31#writeContract)
 contract. As you can see, since `batch` requires a tuple and does not break it down into separate fields, we had to use
 the above method.

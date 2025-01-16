@@ -4,8 +4,8 @@ sidebar_position: 3
 title: "Access Control"
 ---
 
-With the exception of the [admin functions](/concepts/governance#flow), all functionalities in Flow can only be
-triggered by users. The Protocol Admin has no control over any stream or any part of the protocol.
+With the exception of the [admin functions](/concepts/governance#flow), all functions in Flow can only be triggered by
+users. The Protocol Admin has no control over any stream or any part of the protocol.
 
 This article will provide a comprehensive overview of the actions that can be performed on streams once they are
 created, as well as the corresponding user permissions for each action.

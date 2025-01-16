@@ -1,6 +1,6 @@
 # IFlowNFTDescriptor
 
-[Git Source](https://github.com/sablier-labs/flow/blob/ba8c67a35d9cfd4fe646c2ab7db2c40e93d7fd6f/src/interfaces/IFlowNFTDescriptor.sol)
+[Git Source](https://github.com/sablier-labs/flow/blob/32ac99c89393009166ca05e9a4e75ac34a442139/src/interfaces/IFlowNFTDescriptor.sol)
 
 This contract generates the URI describing the Sablier Flow stream NFTs.
 

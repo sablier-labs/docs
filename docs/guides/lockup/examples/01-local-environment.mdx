@@ -1,0 +1,79 @@
+---
+id: "local-environment"
+sidebar_position: 1
+title: "Configure Your Local Environment"
+---
+
+import {
+  Introduction,
+  Prerequisite,
+  SetupWithTemplate,
+  SetupWithFoundry,
+  InstallNpm,
+  FirstContract1,
+  FirstContract2,
+  RunForkTest1,
+  RunForkTest2,
+  FinalSteps,
+} from "@site/docs/snippets/LocalEnvironment.mdx";
+
+<Introduction protocol="Lockup" />
+
+## Pre-requisites
+
+<Prerequisite />
+
+## Set up using Lockup integration template
+
+:::tip
+
+Make sure you are using the latest version of Foundry by running `foundryup`.
+
+:::
+
+<SetupWithTemplate protocol="Lockup" />
+
+## Set up using Foundry template
+
+<SetupWithFoundry protocol="Lockup" />
+
+:::note
+
+You might notice that the CLI is `forge` rather than `foundry`. This is because Foundry is a toolkit, and `forge` is
+just one of the tools that comes with it.
+
+:::
+
+## Install Lockup npm packages
+
+<InstallNpm protocol="Lockup" />
+
+## Write your first contract
+
+<FirstContract1 />
+
+```solidity reference title="Lockup Stream Creator"
+https://github.com/sablier-labs/lockup-integration-template/blob/main/src/LockupStreamCreator.sol
+```
+
+<FirstContract2 />
+
+:::info
+
+The minimum Solidity version supported by the Lockup contracts is v0.8.22.
+
+:::
+
+## Run a fork test
+
+<RunForkTest1 />
+
+```solidity reference title="Lockup Stream Creator Test"
+https://github.com/sablier-labs/lockup-integration-template/blob/main/test/LockupStreamCreator.t.sol
+```
+
+<RunForkTest2 protocol="Lockup" />
+
+## Next steps
+
+<FinalSteps protocol="Lockup" />

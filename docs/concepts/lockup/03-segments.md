@@ -8,11 +8,11 @@ title: "Segments"
 
 ## Definition
 
-A Lockup Dynamic stream is composed of multiple segments, which are separate partitions with different streaming amount
-and rates. The protocol uses these segments to enable custom streaming curves, which power exponential streams, cliff
+A Dynamic stream is composed of multiple segments, which are separate partitions with different streaming amount and
+rates. The protocol uses these segments to enable custom streaming curves, which power exponential streams, cliff
 streams, etc.
 
-Technically, a segment is a [struct](/reference/lockup/core/types/library.LockupDynamic#segment) with three fields:
+Technically, a segment is a [struct](/reference/lockup/contracts/types/library.LockupDynamic#segment) with three fields:
 
 | Field     | Type      | Description                                                                                    |
 | :-------- | :-------- | :--------------------------------------------------------------------------------------------- |
@@ -60,6 +60,6 @@ Conversely, if the exponent is 2, the rate is quadratically slower compared to b
 - There is a limit to how many segments there can be in a stream as enforced by the block gas limit.
   - If someone creates a stream with an excessively large number of segments, the transaction would revert as it
     wouldn't fit within a block. You can fetch the limit using you can find the limit for each chain
-    [here](https://github.com/sablier-labs/v2-core/blob/main/script/Base.s.sol#L90-L131).
+    [here](https://github.com/sablier-labs/lockup/blob/main/script/Base.s.sol#L90-L131).
 - The timestamps must be sorted in ascending order. It's not possible for the $(i-1)^{th}$ timestamp to be greater than
   $i^{th}$ timestamp (given that we're dealing with an increasing monotonic function).

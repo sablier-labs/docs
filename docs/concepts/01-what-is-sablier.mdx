@@ -11,7 +11,8 @@ Sablier is the powerhouse of token distribution protocols. We build decentralize
 from one account to another, in realtime.
 
 - **The Sablier Protocols**: A collection of persistent, non-upgradeable smart contracts to facilitate streaming of
-  ERC-20 tokens on Ethereum and other EVM blockchains. The Sablier Protocols consist of Lockup and Flow.
+  ERC-20 tokens on Ethereum and other EVM blockchains. The Sablier Protocols consist of Lockup, Merkle Airdrops and
+  Flow.
 - **The Sablier Interface**: A web interface that allows for easy interaction with the Sablier Protocols. The interface
   is only one of many ways to interact with the Sablier Protocols.
 - **Sablier Labs**: The company that develops the Sablier Protocols, the Sablier Interface, and the documentation
@@ -31,10 +32,10 @@ smart contracts, designed to facilitate by-the-second payments for cryptocurrenc
 persistent and non-upgradable smart contracts that prioritize security, censorship resistance, self-custody, and
 functionality without the need for trusted intermediaries who may selectively restrict access.
 
-Currently, it consists of two different protocols: **Lockup**, which facilitates vesting and airstreams, and **Flow**,
-which facilitates payroll, grants etc. Both of these are licensed under BUSL-1.1. Both Lockup and Flow are open-source
-and can be accessed on Sablier's [GitHub page](https://github.com/sablier-labs). Detailed technical reference for each
-protocol can be found in the [Technical References](/reference/overview) section of this website.
+Currently, it consists of three protocols: **Lockup** to facilitates vesting and airstreams, **Merkle Airdrops** to
+enable on-chain airdrops and **Flow** for payroll, grants etc. All of these are licensed under BUSL-1.1, and are
+open-source and can be accessed on Sablier's [GitHub page](https://github.com/sablier-labs). Detailed technical
+reference for each protocol can be found in the [Technical References](/reference/overview) section of this website.
 
 As long as Ethereum and the other EVM chains continue to exist, every version of Sablier protocols that gets deployed
 will operate continuously and without interruption, with a guarantee of 100% uptime.
@@ -101,15 +102,24 @@ server</Link>. Our team and members of the community are looking forward to help
 
 ### Flow
 
-- **v1.0 (latest)**: The first version of Sablier Flow, released in December 2024.
+- **v1.1 (latest)**: Minor upgrade, released in February 2025.
+- **v1.0**: The first version of Sablier Flow, released in December 2024.
 
 ### Lockup
 
-- **v1.2 (latest)**: The third version of Sablier Lockup, released in July 2024.
+- **v2.0 (latest)**: The fouth version of Sablier Lockup, released in February 2025.
+- **v1.2**: The third version of Sablier Lockup, released in July 2024.
 - **v1.1**: The second version of Sablier Lockup which was a minor upgrade, released in December 2023.
 - **v1.0**: The first version of Sablier Lockup, released in July 2023.
 
-### Legacy
+### Merkle Airdrops
+
+- **v1.3 (latest)**: The latest version of Merkle Airdrops, released in February 2025.
+
+Before v1.3, Merkle Airdrops contracts were part of the Sablier Lockup
+[periphery repository](https://github.com/sablier-labs/v2-periphery).
+
+### Legacy (Deprecated)
 
 - **v1.1**: Minor upgrade, released in July 2021.
 - **v1.0**: The first version of Sablier, released in November 2019.
