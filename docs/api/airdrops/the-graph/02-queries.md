@@ -7,7 +7,9 @@ title: "Queries"
 Building on top of the [entity structure](/api/airdrops/the-graph/entities) defined earlier, here are some common
 GraphQL queries for fetching data from the Sablier subgraph.
 
-### Recent streams
+## Campaigns
+
+### Recent campaigns
 
 ```graphql title="The 10 most recent campaigns"
 campaigns(
@@ -52,7 +54,7 @@ a simple GraphQL description of what a certain entity (here the campaign) looks 
 :::
 
 ```graphql title="The next campaigns created by an address with a certain asset"
-query getAirstreams_ByAsset($first: Int!, $skip: Int!, $asset: String!, $subgraphId: BigInt!, $chainId: BigInt!) {
+query getCampaigns_ByAsset($first: Int!, $skip: Int!, $asset: String!, $subgraphId: BigInt!, $chainId: BigInt!) {
   campaigns(
     first: $first
     skip: $skip
@@ -101,13 +103,15 @@ const CampaignFragment = gql(/* GraphQL */ `
 
 ```
 
+## Actions (e.g. Claim)
+
 ### Claim actions of a user on a certain campaign
 
 To check if a user has claimed their share from a distribution campaign we can look for a "Claim" action performed by or
 on behalf of that user. If the query yields a result, it means the uses has already claimed from the Airstream.
 
-```graphql title="Claim action of a user on a certain campaign"
-query getClaim($campaignId: ID!, $user: String!) {
+```graphql title="Claim actions of a user on a certain campaign"
+query getClaim_ByUserByCampaign($campaignId: String!, $user: String!) {
   actions(where: { campaign: $campaignId, category: Claim, claimRecipient: $user }) {
     campaign {
       id
@@ -120,3 +124,45 @@ query getClaim($campaignId: ID!, $user: String!) {
   }
 }
 ```
+
+### Claim actions for campaigns with a certain asset
+
+This query yields all "Claim" actions for a given asset / token. These actions can be sourced from multiple airdrop
+campaigns, for all users.
+
+```graphql title="Claim actions for campaigns with a certain token"
+query getClaims_ByAsset($asset: String!) {
+  actions(where: { campaign_: { asset: $asset, category: "Claim" } }) {
+    campaign {
+      id
+      lockup
+    }
+    claimStreamId
+    claimTokenId
+    claimRecipient
+    category
+  }
+}
+```
+
+## Streams
+
+### Stream identifiers for a campaign's claims (airstream)
+
+This query yields all the IDs of the streams claimed as part of a certain campaign (airstream).
+
+```graphql title="Claim actions for campaigns with a certain token"
+query getStreamIds_ByCampaign($campaignId: String!) {
+  actions(where: { campaign: $campaignId, category: "Claim" }) {
+    claimStreamId
+  }
+}
+```
+
+:::tip
+
+To source more details regarding these streams you can head over to the `Lockup` subgraph and look for streams where the
+`stream.funder` is the address of your airdrop campaign.
+[Here's an example query](/api/lockup/the-graph/queries/#streams-by-campaign).
+
+:::
