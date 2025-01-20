@@ -8,13 +8,13 @@ title: "Statuses"
 
 A Lockup stream can have one of five distinct statuses:
 
-| Status    | Description                                                       |
-| --------- | ----------------------------------------------------------------- |
-| Pending   | Stream created but not started; tokens are in a pending state.    |
-| Streaming | Active stream where tokens are currently being streamed.          |
-| Settled   | All tokens have been streamed; recipient is due to withdraw them. |
-| Canceled  | Canceled stream; remaining tokens await recipient's withdrawal.   |
-| Depleted  | Depleted stream; all tokens have been withdrawn and/or refunded.  |
+| Status      | Description                                                       |
+| ----------- | ----------------------------------------------------------------- |
+| `PENDING`   | Stream created but not started; tokens are in a pending state.    |
+| `STREAMING` | Active stream where tokens are currently being streamed.          |
+| `SETTLED`   | All tokens have been streamed; recipient is due to withdraw them. |
+| `CANCELED`  | Canceled stream; remaining tokens await recipient's withdrawal.   |
+| `DEPLETED`  | Depleted stream; all tokens have been withdrawn and/or refunded.  |
 
 ## Temperature
 
