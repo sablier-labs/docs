@@ -36,4 +36,137 @@ Sablier repositories on Github.
 
 ## Mainnets
 
+### Arbitrum One
+
+| Contract          | Address                                                                                                              | Deployment                                                                  |
+| :---------------- | :------------------------------------------------------------------------------------------------------------------- | :-------------------------------------------------------------------------- |
+| SablierFlow       | [0x87CF87ec5de33DeB4a88787065373563Ba85Ee72](https://arbiscan.io/address/0x87CF87ec5de33DeB4a88787065373563Ba85Ee72) | [v1.1.0](https://github.com/sablier-labs/deployments/blob/main/flow/v1.1.0) |
+| FlowNFTDescriptor | [0x5F23eF12A7e861CB92c24B4314Af2A5F363CDD4F](https://arbiscan.io/address/0x5F23eF12A7e861CB92c24B4314Af2A5F363CDD4F) | [v1.1.0](https://github.com/sablier-labs/deployments/blob/main/flow/v1.1.0) |
+
+### Avalanche
+
+| Contract          | Address                                                                                                               | Deployment                                                                  |
+| :---------------- | :-------------------------------------------------------------------------------------------------------------------- | :-------------------------------------------------------------------------- |
+| SablierFlow       | [0xac7CB985d4022A5Ebd4a385374ac3d3B487b3C63](https://snowtrace.io/address/0xac7CB985d4022A5Ebd4a385374ac3d3B487b3C63) | [v1.1.0](https://github.com/sablier-labs/deployments/blob/main/flow/v1.1.0) |
+| FlowNFTDescriptor | [0xb09b714B0feC83675E09fc997B7D532cF6620326](https://snowtrace.io/address/0xb09b714B0feC83675E09fc997B7D532cF6620326) | [v1.1.0](https://github.com/sablier-labs/deployments/blob/main/flow/v1.1.0) |
+
+### Base
+
+| Contract          | Address                                                                                                               | Deployment                                                                  |
+| :---------------- | :-------------------------------------------------------------------------------------------------------------------- | :-------------------------------------------------------------------------- |
+| SablierFlow       | [0x6FE93c7f6cd1DC394e71591E3c42715Be7180A6A](https://basescan.org/address/0x6FE93c7f6cd1DC394e71591E3c42715Be7180A6A) | [v1.1.0](https://github.com/sablier-labs/deployments/blob/main/flow/v1.1.0) |
+| FlowNFTDescriptor | [0x5b5e742305Be3A484EacCB124C83456463c24E6a](https://basescan.org/address/0x5b5e742305Be3A484EacCB124C83456463c24E6a) | [v1.1.0](https://github.com/sablier-labs/deployments/blob/main/flow/v1.1.0) |
+
+### Blast
+
+| Contract          | Address                                                                                                               | Deployment                                                                  |
+| :---------------- | :-------------------------------------------------------------------------------------------------------------------- | :-------------------------------------------------------------------------- |
+| SablierFlow       | [0x16b50eb5eAeF0366f1A4da594e2A8c8943A297e0](https://blastscan.io/address/0x16b50eb5eAeF0366f1A4da594e2A8c8943A297e0) | [v1.1.0](https://github.com/sablier-labs/deployments/blob/main/flow/v1.1.0) |
+| FlowNFTDescriptor | [0x92f1dB592C771D9Ec7708abFEe79771AbC1b4fAd](https://blastscan.io/address/0x92f1dB592C771D9Ec7708abFEe79771AbC1b4fAd) | [v1.1.0](https://github.com/sablier-labs/deployments/blob/main/flow/v1.1.0) |
+
+### BNB Smart Chain
+
+| Contract          | Address                                                                                                              | Deployment                                                                  |
+| :---------------- | :------------------------------------------------------------------------------------------------------------------- | :-------------------------------------------------------------------------- |
+| SablierFlow       | [0x4C4610aF3f3861EC99b6F6F8066C03E4C3a0E023](https://bscscan.com/address/0x4C4610aF3f3861EC99b6F6F8066C03E4C3a0E023) | [v1.1.0](https://github.com/sablier-labs/deployments/blob/main/flow/v1.1.0) |
+| FlowNFTDescriptor | [0xAE557c04B46d47Ecac24edA63F22cabB4571Da61](https://bscscan.com/address/0xAE557c04B46d47Ecac24edA63F22cabB4571Da61) | [v1.1.0](https://github.com/sablier-labs/deployments/blob/main/flow/v1.1.0) |
+
+### Gnosis
+
+| Contract          | Address                                                                                                                | Deployment                                                                  |
+| :---------------- | :--------------------------------------------------------------------------------------------------------------------- | :-------------------------------------------------------------------------- |
+| SablierFlow       | [0x34Bc0C2BF1F2DA51c65cd821bA4133aFCacdb8f5](https://gnosisscan.io/address/0x34Bc0C2BF1F2DA51c65cd821bA4133aFCacdb8f5) | [v1.1.0](https://github.com/sablier-labs/deployments/blob/main/flow/v1.1.0) |
+| FlowNFTDescriptor | [0x5A47FC8732d399a2f3845c4FC91aB91bb97da31F](https://gnosisscan.io/address/0x5A47FC8732d399a2f3845c4FC91aB91bb97da31F) | [v1.1.0](https://github.com/sablier-labs/deployments/blob/main/flow/v1.1.0) |
+
+### Mode
+
+| Contract          | Address                                                                                                                        | Deployment                                                                  |
+| :---------------- | :----------------------------------------------------------------------------------------------------------------------------- | :-------------------------------------------------------------------------- |
+| SablierFlow       | [0xc968E8eEFe19BD6De8868df40D9740Be127a172a](https://explorer.mode.network/address/0xc968E8eEFe19BD6De8868df40D9740Be127a172a) | [v1.1.0](https://github.com/sablier-labs/deployments/blob/main/flow/v1.1.0) |
+| FlowNFTDescriptor | [0xD9E2822a33606741BeDbA31614E68A745e430102](https://explorer.mode.network/address/0xD9E2822a33606741BeDbA31614E68A745e430102) | [v1.1.0](https://github.com/sablier-labs/deployments/blob/main/flow/v1.1.0) |
+
+### Optimism
+
+| Contract          | Address                                                                                                                          | Deployment                                                                  |
+| :---------------- | :------------------------------------------------------------------------------------------------------------------------------- | :-------------------------------------------------------------------------- |
+| SablierFlow       | [0xC5612feA2D370127ac67048115bd6b1dF7b7F7C0](https://optimistic.etherscan.io/address/0xC5612feA2D370127ac67048115bd6b1dF7b7F7C0) | [v1.1.0](https://github.com/sablier-labs/deployments/blob/main/flow/v1.1.0) |
+| FlowNFTDescriptor | [0x7AD245b74bBC1B71Da1713D53238931F791b90A3](https://optimistic.etherscan.io/address/0x7AD245b74bBC1B71Da1713D53238931F791b90A3) | [v1.1.0](https://github.com/sablier-labs/deployments/blob/main/flow/v1.1.0) |
+
+### Polygon
+
+| Contract          | Address                                                                                                                  | Deployment                                                                  |
+| :---------------- | :----------------------------------------------------------------------------------------------------------------------- | :-------------------------------------------------------------------------- |
+| SablierFlow       | [0x3e5c4130Ea7cfbD364FA5f170289d697865cA94b](https://polygonscan.com/address/0x3e5c4130Ea7cfbD364FA5f170289d697865cA94b) | [v1.1.0](https://github.com/sablier-labs/deployments/blob/main/flow/v1.1.0) |
+| FlowNFTDescriptor | [0x87B836a9e26673feB3E409A0da2EAf99C79f26C3](https://polygonscan.com/address/0x87B836a9e26673feB3E409A0da2EAf99C79f26C3) | [v1.1.0](https://github.com/sablier-labs/deployments/blob/main/flow/v1.1.0) |
+
+### Scroll
+
+| Contract          | Address                                                                                                                 | Deployment                                                                  |
+| :---------------- | :---------------------------------------------------------------------------------------------------------------------- | :-------------------------------------------------------------------------- |
+| SablierFlow       | [0xC4F104cE12cb12484Ff67cF0C4Bd0561F0014ec2](https://scrollscan.com/address/0xC4F104cE12cb12484Ff67cF0C4Bd0561F0014ec2) | [v1.1.0](https://github.com/sablier-labs/deployments/blob/main/flow/v1.1.0) |
+| FlowNFTDescriptor | [0x797Fe78c41d9cbE81BBEA2f420101be5e47d2aFf](https://scrollscan.com/address/0x797Fe78c41d9cbE81BBEA2f420101be5e47d2aFf) | [v1.1.0](https://github.com/sablier-labs/deployments/blob/main/flow/v1.1.0) |
+
+### Superseed
+
+| Contract          | Address                                                                                                                         | Deployment                                                                  |
+| :---------------- | :------------------------------------------------------------------------------------------------------------------------------ | :-------------------------------------------------------------------------- |
+| SablierFlow       | [0x40E75bb2F2aA3507D3a332872829c71be19eF623](https://explorer.superseed.xyz/address/0x40E75bb2F2aA3507D3a332872829c71be19eF623) | [v1.1.0](https://github.com/sablier-labs/deployments/blob/main/flow/v1.1.0) |
+| FlowNFTDescriptor | [0xd932fDA016eE9d9F70f745544b4F56715b1E723b](https://explorer.superseed.xyz/address/0xd932fDA016eE9d9F70f745544b4F56715b1E723b) | [v1.1.0](https://github.com/sablier-labs/deployments/blob/main/flow/v1.1.0) |
+
+### Taiko Mainnet
+
+| Contract          | Address                                                                                                               | Deployment                                                                  |
+| :---------------- | :-------------------------------------------------------------------------------------------------------------------- | :-------------------------------------------------------------------------- |
+| SablierFlow       | [0x9d4bc7f013cCddAE1658dc28F981C2D424d7F0Dd](https://taikoscan.io/address/0x9d4bc7f013cCddAE1658dc28F981C2D424d7F0Dd) | [v1.1.0](https://github.com/sablier-labs/deployments/blob/main/flow/v1.1.0) |
+| FlowNFTDescriptor | [0x80Bde7C505eFE9960b673567CB25Cd8af85552BE](https://taikoscan.io/address/0x80Bde7C505eFE9960b673567CB25Cd8af85552BE) | [v1.1.0](https://github.com/sablier-labs/deployments/blob/main/flow/v1.1.0) |
+
 ## Testnets
+
+### Arbitrum Sepolia
+
+| Contract          | Address                                                                                                                      | Deployment                                                                  |
+| :---------------- | :--------------------------------------------------------------------------------------------------------------------------- | :-------------------------------------------------------------------------- |
+| SablierFlow       | [0xF9cbfFAe10010475A2800a5eFC11f4D4780cA48d](https://sepolia.arbiscan.io/address/0xF9cbfFAe10010475A2800a5eFC11f4D4780cA48d) | [v1.1.0](https://github.com/sablier-labs/deployments/blob/main/flow/v1.1.0) |
+| FlowNFTDescriptor | [0x3E64A31C3974b6ae9f09a8fbc784519bF551e795](https://sepolia.arbiscan.io/address/0x3E64A31C3974b6ae9f09a8fbc784519bF551e795) | [v1.1.0](https://github.com/sablier-labs/deployments/blob/main/flow/v1.1.0) |
+
+### Base Sepolia
+
+| Contract          | Address                                                                                                                       | Deployment                                                                  |
+| :---------------- | :---------------------------------------------------------------------------------------------------------------------------- | :-------------------------------------------------------------------------- |
+| SablierFlow       | [0xFB6B72a5988A7701a9090C56936269241693a9CC](https://sepolia.basescan.org/address/0xFB6B72a5988A7701a9090C56936269241693a9CC) | [v1.1.0](https://github.com/sablier-labs/deployments/blob/main/flow/v1.1.0) |
+| FlowNFTDescriptor | [0xcb5591F6d0e0fFC03037ef7b006D1361C6D33D25](https://sepolia.basescan.org/address/0xcb5591F6d0e0fFC03037ef7b006D1361C6D33D25) | [v1.1.0](https://github.com/sablier-labs/deployments/blob/main/flow/v1.1.0) |
+
+### Blast Sepolia
+
+| Contract          | Address                                                                                                                       | Deployment                                                                  |
+| :---------------- | :---------------------------------------------------------------------------------------------------------------------------- | :-------------------------------------------------------------------------- |
+| SablierFlow       | [0x027b55FD4b26A78a0463304C63f35e97A35246FD](https://sepolia.blastscan.io/address/0x027b55FD4b26A78a0463304C63f35e97A35246FD) | [v1.1.0](https://github.com/sablier-labs/deployments/blob/main/flow/v1.1.0) |
+| FlowNFTDescriptor | [0x42Abaf2c1E36624FD0084998A9BeA4a753A93e45](https://sepolia.blastscan.io/address/0x42Abaf2c1E36624FD0084998A9BeA4a753A93e45) | [v1.1.0](https://github.com/sablier-labs/deployments/blob/main/flow/v1.1.0) |
+
+### Mode Sepolia
+
+| Contract          | Address                                                                                                                       | Deployment                                                                  |
+| :---------------- | :---------------------------------------------------------------------------------------------------------------------------- | :-------------------------------------------------------------------------- |
+| SablierFlow       | [0x1063D400953441F1C6d8EF6406e1E6aa5684B82d](https://sepolia.mode.network/address/0x1063D400953441F1C6d8EF6406e1E6aa5684B82d) | [v1.1.0](https://github.com/sablier-labs/deployments/blob/main/flow/v1.1.0) |
+| FlowNFTDescriptor | [0xe1eDdA64eea2173a015A3738171C3a1C263324C7](https://sepolia.mode.network/address/0xe1eDdA64eea2173a015A3738171C3a1C263324C7) | [v1.1.0](https://github.com/sablier-labs/deployments/blob/main/flow/v1.1.0) |
+
+### Optimism Sepolia
+
+| Contract          | Address                                                                                                                                  | Deployment                                                                  |
+| :---------------- | :--------------------------------------------------------------------------------------------------------------------------------------- | :-------------------------------------------------------------------------- |
+| SablierFlow       | [0x77873085a88189c8B82B3a01BcbC294108D02805](https://sepolia.optimistic.etherscan.io/address/0x77873085a88189c8B82B3a01BcbC294108D02805) | [v1.1.0](https://github.com/sablier-labs/deployments/blob/main/flow/v1.1.0) |
+| FlowNFTDescriptor | [0x4739327acfb56E90177d44Cb0845e759276BCA88](https://sepolia.optimistic.etherscan.io/address/0x4739327acfb56E90177d44Cb0845e759276BCA88) | [v1.1.0](https://github.com/sablier-labs/deployments/blob/main/flow/v1.1.0) |
+
+### Sepolia
+
+| Contract          | Address                                                                                                                       | Deployment                                                                  |
+| :---------------- | :---------------------------------------------------------------------------------------------------------------------------- | :-------------------------------------------------------------------------- |
+| SablierFlow       | [0x93FE8f86e881a23e5A2FEB4B160514Fd332576A6](https://sepolia.etherscan.io/address/0x93FE8f86e881a23e5A2FEB4B160514Fd332576A6) | [v1.1.0](https://github.com/sablier-labs/deployments/blob/main/flow/v1.1.0) |
+| FlowNFTDescriptor | [0xc9dBf2D207D178875b698e5f7493ce2d8BA88994](https://sepolia.etherscan.io/address/0xc9dBf2D207D178875b698e5f7493ce2d8BA88994) | [v1.1.0](https://github.com/sablier-labs/deployments/blob/main/flow/v1.1.0) |
+
+### Taiko Hekla
+
+| Contract          | Address                                                                                                                       | Deployment                                                                  |
+| :---------------- | :---------------------------------------------------------------------------------------------------------------------------- | :-------------------------------------------------------------------------- |
+| SablierFlow       | [0xb528AF43fFEe6d4B702CF6235d2380e1828eD852](https://sepolia.taikoscan.io/address/0xb528AF43fFEe6d4B702CF6235d2380e1828eD852) | [v1.1.0](https://github.com/sablier-labs/deployments/blob/main/flow/v1.1.0) |
+| FlowNFTDescriptor | [0xB197D4142b9DBf34979588cf8BF1222Ea3907916](https://sepolia.taikoscan.io/address/0xB197D4142b9DBf34979588cf8BF1222Ea3907916) | [v1.1.0](https://github.com/sablier-labs/deployments/blob/main/flow/v1.1.0) |
