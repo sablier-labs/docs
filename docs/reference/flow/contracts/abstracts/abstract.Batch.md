@@ -1,6 +1,6 @@
 # Batch
 
-[Git Source](https://github.com/sablier-labs/flow/blob/32ac99c89393009166ca05e9a4e75ac34a442139/src/abstracts/Batch.sol)
+[Git Source](https://github.com/sablier-labs/flow/blob/a0fa33d2843af0817e34970cdc05822ead31daaa/src/abstracts/Batch.sol)
 
 **Inherits:** [IBatch](/docs/reference/flow/contracts/interfaces/interface.IBatch.md)
 

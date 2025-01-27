@@ -1,6 +1,6 @@
 # ISablierMerkleBase
 
-[Git Source](https://github.com/sablier-labs/airdrops/blob/1ad7325bc0401d0ea6d9f30917c49d5367a1180e/src/interfaces/ISablierMerkleBase.sol)
+[Git Source](https://github.com/sablier-labs/airdrops/blob/f9a358c0a5bccfec77601d4490ef9117e0488068/src/interfaces/ISablierMerkleBase.sol)
 
 **Inherits:** IAdminable
 

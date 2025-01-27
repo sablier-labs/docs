@@ -1,6 +1,6 @@
 # IBatch
 
-[Git Source](https://github.com/sablier-labs/flow/blob/32ac99c89393009166ca05e9a4e75ac34a442139/src/interfaces/IBatch.sol)
+[Git Source](https://github.com/sablier-labs/flow/blob/a0fa33d2843af0817e34970cdc05822ead31daaa/src/interfaces/IBatch.sol)
 
 This contract implements logic to batch call any function.
 

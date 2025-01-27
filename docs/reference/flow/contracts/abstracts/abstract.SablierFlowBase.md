@@ -1,6 +1,6 @@
 # SablierFlowBase
 
-[Git Source](https://github.com/sablier-labs/flow/blob/32ac99c89393009166ca05e9a4e75ac34a442139/src/abstracts/SablierFlowBase.sol)
+[Git Source](https://github.com/sablier-labs/flow/blob/a0fa33d2843af0817e34970cdc05822ead31daaa/src/abstracts/SablierFlowBase.sol)
 
 **Inherits:** [Adminable](/docs/reference/flow/contracts/abstracts/abstract.Adminable.md),
 [ISablierFlowBase](/docs/reference/flow/contracts/interfaces/interface.ISablierFlowBase.md), ERC721

@@ -4,7 +4,7 @@ sidebar_position: 2
 
 # FlowNFTDescriptor
 
-[Git Source](https://github.com/sablier-labs/flow/blob/32ac99c89393009166ca05e9a4e75ac34a442139/src/FlowNFTDescriptor.sol)
+[Git Source](https://github.com/sablier-labs/flow/blob/a0fa33d2843af0817e34970cdc05822ead31daaa/src/FlowNFTDescriptor.sol)
 
 **Inherits:** [IFlowNFTDescriptor](/docs/reference/flow/contracts/interfaces/interface.IFlowNFTDescriptor.md)
 

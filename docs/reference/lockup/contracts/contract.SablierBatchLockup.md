@@ -4,7 +4,7 @@ sidebar_position: 1
 
 # SablierBatchLockup
 
-[Git Source](https://github.com/sablier-labs/lockup/blob/076eba971fea7bb38fe75ee5108f0589c26152c0/src/SablierBatchLockup.sol)
+[Git Source](https://github.com/sablier-labs/lockup/blob/463278dbb461b1733d6424cf0aeee3b8d6bc036a/src/SablierBatchLockup.sol)
 
 **Inherits:** [ISablierBatchLockup](/docs/reference/lockup/contracts/interfaces/interface.ISablierBatchLockup.md)
 

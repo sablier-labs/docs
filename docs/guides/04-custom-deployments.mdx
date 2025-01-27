@@ -156,13 +156,6 @@ bun run build:optimized
 
 #### Step 4: Run the following command to deploy all merkle airdrop contracts
 
-:::warning[Important]
-
-You must set the protocol admin to the Sablier controlled address 0xb1bEF51ebCA01EB12001a639bDBbFF6eEcA12B9F. Failure to
-do so will result in your deployment not being acknowledged as official.
-
-:::
-
 For **deterministic** deployments, meaning that CREATE2 is used:
 
 ```bash
@@ -172,7 +165,7 @@ forge script script/DeployDeterministicMerkleFactory.s.sol \
 --etherscan-api-key $ETHERSCAN_API_KEY \
 --private-key $PRIVATE_KEY \
 --rpc-url $RPC_URL \
---sig "run(address)" 0xb1bEF51ebCA01EB12001a639bDBbFF6eEcA12B9F \
+--sig "run()" \
 --verifier-url $VERIFIER_URL \
 --verify \
 -vvv
@@ -187,7 +180,7 @@ forge script script/DeployMerkleFactory.s.sol \
 --etherscan-api-key $ETHERSCAN_API_KEY \
 --private-key $PRIVATE_KEY \
 --rpc-url $RPC_URL \
---sig "run(address)" 0xb1bEF51ebCA01EB12001a639bDBbFF6eEcA12B9F \
+--sig "run()" \
 --verifier-url $VERIFIER_URL \
 --verify \
 -vvv
@@ -238,13 +231,6 @@ bun run build:optimized
 
 #### Step 4: Run the following deployment command
 
-:::warning[Important]
-
-You must set the protocol admin to the Sablier controlled address 0xb1bEF51ebCA01EB12001a639bDBbFF6eEcA12B9F. Failure to
-do so will result in your deployment not being acknowledged as official.
-
-:::
-
 For **deterministic** deployment:
 
 ```bash
@@ -254,7 +240,7 @@ forge script script/DeployDeterministicFlow.s.sol \
 --etherscan-api-key $ETHERSCAN_API_KEY \
 --rpc-url $RPC_URL \
 --private-key $PRIVATE_KEY \
---sig "run(address)" 0xb1bEF51ebCA01EB12001a639bDBbFF6eEcA12B9F \
+--sig "run()" \
 --verifier-url $VERIFIER_URL \
 --verify \
 -vvv
@@ -269,7 +255,7 @@ forge script script/DeployFlow.s.sol \
 --etherscan-api-key $ETHERSCAN_API_KEY \
 --private-key $PRIVATE_KEY \
 --rpc-url $RPC_URL \
---sig "run(address)" 0xb1bEF51ebCA01EB12001a639bDBbFF6eEcA12B9F \
+--sig "run()" \
 --verifier-url $VERIFIER_URL \
 --verify \
 -vvv

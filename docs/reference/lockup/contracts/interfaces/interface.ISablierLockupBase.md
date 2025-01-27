@@ -1,6 +1,6 @@
 # ISablierLockupBase
 
-[Git Source](https://github.com/sablier-labs/lockup/blob/076eba971fea7bb38fe75ee5108f0589c26152c0/src/interfaces/ISablierLockupBase.sol)
+[Git Source](https://github.com/sablier-labs/lockup/blob/463278dbb461b1733d6424cf0aeee3b8d6bc036a/src/interfaces/ISablierLockupBase.sol)
 
 **Inherits:** [IAdminable](/docs/reference/lockup/contracts/interfaces/interface.IAdminable.md),
 [IBatch](/docs/reference/lockup/contracts/interfaces/interface.IBatch.md), IERC4906, IERC721Metadata

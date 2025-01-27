@@ -13,7 +13,10 @@ and Sablier Flow.
 
 ## Sablier Lockup
 
-Sablier Lockup requires fixed dates and fixed amounts. When creating a stream, the total amount of tokens to be distributed needs to be deposited into the stream and you cannot add funds to an existing stream. Lockup streams have a fixed start date and end date, and cannot be extended. These properties make for an excellent user experience for vesting, as the terms are clear, defined and transparent. 
+Sablier Lockup requires fixed dates and fixed amounts. When creating a stream, the total amount of tokens to be
+distributed needs to be deposited into the stream and you cannot add funds to an existing stream. Lockup streams have a
+fixed start date and end date, and cannot be extended. These properties make for an excellent user experience for
+vesting, as the terms are clear, defined and transparent.
 
 ### Vesting
 
@@ -72,18 +75,20 @@ This section explores the use cases enabled by Merkle Airdrops.
 
 ### Instant airdrops
 
-Instant airdrops is the traditional way of running airdrops where there's no vesting period and tokens can instantly be claimed by
-the recipients. Running an airdrop campaign can become very expensive if you are storing airdrop data on-chain, however.
+Instant airdrops is the traditional way of running airdrops where there's no vesting period and tokens can instantly be
+claimed by the recipients. Running an airdrop campaign can become very expensive if you are storing airdrop data
+on-chain, however.
 
 This is where Merkle Airdrops come into the picture. When you run a campaign with Sablier, the airdrop information is
 stored in a merkle tree, hosted on IPFS. The EVM storage only stores the root of the Merkle tree. At the time of claim,
 eligible users can provide a merkle proof of their claim which is verified on-chain.
 
-This not only reduces cost of running an airdrop campaing but also inherits the security of the Sablier protocol.
+This not only reduces cost of running an airdrop campaigns but also inherits the security of the Sablier protocol.
 
 ### Streaming airdrops
 
-With vested airdrops, also called Airstreams, instead of airdropping the entirety of the token allocation all at once, airdrop recipients receive a fraction of the tokens every second through a Sablier stream.
+With vested airdrops, also called Airstreams, instead of airdropping the entirety of the token allocation all at once,
+airdrop recipients receive a fraction of the tokens every second through a Sablier stream.
 
 A stream can have any duration you want. You can choose to vest your new token over a period of 6 months, 2 years, or
 any other duration you prefer. This way, airdrop recipients are forced to think about the project's long-term
@@ -102,11 +107,13 @@ If you are interested in airdropping your token, check out [Sablier website](htt
 
 ## Sablier Flow
 
-Unlike Lockup, Sablier Flow streams do not require upfront deposits, nor do they have fixed start and end dates. Flow is all about flexibility, making it ideal for use cases like payroll and grants.
+Unlike Lockup, Sablier Flow streams do not require upfront deposits, nor do they have fixed start and end dates. Flow is
+all about flexibility, making it ideal for use cases like payroll and grants.
 
 ### Payroll
 
-What if your salary could be streamed to you in real time? Why should you wait for two weeks or a month when you can get it every second? Streaming salaries through Sablier significantly enhances employee satisfaction and retention.
+What if your salary could be streamed to you in real time? Why should you wait for two weeks or a month when you can get
+it every second? Streaming salaries through Sablier significantly enhances employee satisfaction and retention.
 
 Your employer can create a Flow stream and keep funding it at the end of every month or in advance, for you to withdraw
 your money.
@@ -139,5 +146,4 @@ their project, you can cancel the stream and retrieve back the remaining funds.
 
 #### 3. No Administrative Overhead
 
-All streams through Sablier are automated, which means, you don't have to send funds manually at the end of every
-month.
+All streams through Sablier are automated, which means, you don't have to send funds manually at the end of every month.

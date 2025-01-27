@@ -1,3 +1,5 @@
+{/* eslint-disable react/prop-types */}
+
 import Link from "@docusaurus/Link";
 
 export const Introduction = ({ protocol }) => (
@@ -7,7 +9,7 @@ export const Introduction = ({ protocol }) => (
     <br />
     <br />
     At the end, you’ll have a development environment set up that you can use to build the rest of the examples under
-    "Guides", or start your own integration project.
+    &quot;Guides&quot;, or start your own integration project.
   </>
 );
 
@@ -78,7 +80,7 @@ the purposes of this guide, Foundry will provide us with the tooling needed to c
 <br />
 <br />
 
-Let's use this command to spin up a new Foundry project:
+Let&apos;s use this command to spin up a new Foundry project:
 
 <br />
 <br />
@@ -114,14 +116,14 @@ The folder structure should be intuitive:
 
 <ul>
   <li>
-    <code>src</code> is where you'll write Solidity contracts
+    <code>src</code> is where you&apos;ll write Solidity contracts
   </li>
   <li>
-    <code>test</code> is where you'll write tests (also in Solidity)
+    <code>test</code> is where you&apos;ll write tests (also in Solidity)
   </li>
   <li>
-    <code>script</code> is where you'll write scripts to perform actions like deploying contracts (you guessed it, in
-    Solidity)
+    <code>script</code> is where you&apos;ll write scripts to perform actions like deploying contracts (you guessed it,
+    in Solidity)
   </li>
   <li>
     <code>foundry.toml</code> is where you can configure your Foundry settings, which we will leave as is in this guide
@@ -134,7 +136,7 @@ The folder structure should be intuitive:
 export const InstallNpm = ({ protocol }) => (
   <>
 
-Let's install the {protocol} Node.js packages using Bun:
+Let&apos;s install the {protocol} Node.js packages using Bun:
 
 <br />
 <br />
@@ -153,22 +155,23 @@ and put them in the <code>node_modules</code> directory.
 <br />
 <br />
 
-Let's remap the package names to point to the installed contracts. This step is required so that the Solidity compiler
-can find the {protocol} contracts when you import them:
+Let&apos;s remap the package names to point to the installed contracts. This step is required so that the Solidity
+compiler can find the {protocol} contracts when you import them:
 
 <br />
 <br />
 
 <pre>
   <code>
-    $ echo "@sablier/{protocol.toLowerCase()}=node_modules/@sablier/{protocol.toLowerCase()}/" &gt;&gt; remappings.txt
-    <br />$ echo "@openzeppelin/contracts/=node_modules/@openzeppelin/contracts/" &gt;&gt; remappings.txt
-    <br />$ echo "@prb/math/=node_modules/@prb/math/" &gt;&gt; remappings.txt
+    $ echo &quot;@sablier/{protocol.toLowerCase()}=node_modules/@sablier/{protocol.toLowerCase()}/&quot; &gt;&gt;
+    remappings.txt
+    <br />$ echo &quot;@openzeppelin/contracts/=node_modules/@openzeppelin/contracts/&quot; &gt;&gt; remappings.txt
+    <br />$ echo &quot;@prb/math/=node_modules/@prb/math/&quot; &gt;&gt; remappings.txt
   </code>
 </pre>
 
-That's it! You should now have a functional development environment to start building onchain {protocol} integrations.
-Let's run a quick test to confirm everything is set up properly.
+That&apos;s it! You should now have a functional development environment to start building onchain {protocol}
+integrations. Let&apos;s run a quick test to confirm everything is set up properly.
 
       </>
 
@@ -194,7 +197,7 @@ Paste the following code into <code>src/StreamCreator.sol</code>:
 export const FirstContract2 = () => (
   <>
 
-Let's use Forge to compile this contract:
+Let&apos;s use Forge to compile this contract:
 
 <pre>
   <code>

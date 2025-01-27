@@ -4,7 +4,7 @@ sidebar_position: 3
 
 # SablierMerkleInstant
 
-[Git Source](https://github.com/sablier-labs/airdrops/blob/1ad7325bc0401d0ea6d9f30917c49d5367a1180e/src/SablierMerkleInstant.sol)
+[Git Source](https://github.com/sablier-labs/airdrops/blob/f9a358c0a5bccfec77601d4490ef9117e0488068/src/SablierMerkleInstant.sol)
 
 **Inherits:** [ISablierMerkleInstant](/docs/reference/airdrops/contracts/interfaces/interface.ISablierMerkleInstant.md),
 [SablierMerkleBase](/docs/reference/airdrops/contracts/abstracts/abstract.SablierMerkleBase.md)

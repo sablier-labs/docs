@@ -1,6 +1,6 @@
 # Adminable
 
-[Git Source](https://github.com/sablier-labs/lockup/blob/076eba971fea7bb38fe75ee5108f0589c26152c0/src/abstracts/Adminable.sol)
+[Git Source](https://github.com/sablier-labs/lockup/blob/463278dbb461b1733d6424cf0aeee3b8d6bc036a/src/abstracts/Adminable.sol)
 
 **Inherits:** [IAdminable](/docs/reference/lockup/contracts/interfaces/interface.IAdminable.md)
 

@@ -1,6 +1,6 @@
 # ILockupNFTDescriptor
 
-[Git Source](https://github.com/sablier-labs/lockup/blob/076eba971fea7bb38fe75ee5108f0589c26152c0/src/interfaces/ILockupNFTDescriptor.sol)
+[Git Source](https://github.com/sablier-labs/lockup/blob/463278dbb461b1733d6424cf0aeee3b8d6bc036a/src/interfaces/ILockupNFTDescriptor.sol)
 
 This contract generates the URI describing the Sablier stream NFTs.
 

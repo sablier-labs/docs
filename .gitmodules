@@ -1,12 +1,12 @@
 [submodule "repos/airdrops"]
-	branch = main
-	path = repos/airdrops
-	url = https://github.com/sablier-labs/airdrops
+	branch = "main"
+	path = "repos/airdrops"
+	url = "https://github.com/sablier-labs/airdrops"
 [submodule "repos/flow"]
-	branch = staging
-	path = repos/flow
-	url = https://github.com/sablier-labs/flow
+	branch = "main"
+	path = "repos/flow"
+	url = "https://github.com/sablier-labs/flow"
 [submodule "repos/lockup"]
-	branch = "staging"
+	branch = "main"
 	path = "repos/lockup"
 	url = "https://github.com/sablier-labs/lockup"

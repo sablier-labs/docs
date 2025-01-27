@@ -1,6 +1,6 @@
 # SablierLockupBase
 
-[Git Source](https://github.com/sablier-labs/lockup/blob/076eba971fea7bb38fe75ee5108f0589c26152c0/src/abstracts/SablierLockupBase.sol)
+[Git Source](https://github.com/sablier-labs/lockup/blob/463278dbb461b1733d6424cf0aeee3b8d6bc036a/src/abstracts/SablierLockupBase.sol)
 
 **Inherits:** [Batch](/docs/reference/lockup/contracts/abstracts/abstract.Batch.md),
 [NoDelegateCall](/docs/reference/lockup/contracts/abstracts/abstract.NoDelegateCall.md),

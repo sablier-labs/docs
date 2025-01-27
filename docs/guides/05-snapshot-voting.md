@@ -151,7 +151,7 @@ Aggregates historical amounts that have already been streamed to the recipient. 
 included.
 
 It relies on the `streamedAmountOf` method in the
-[SablierV2Lockup](/reference/lockup/contracts/abstracts/abstract.SablierLockupBase#streamedamountof) contract.
+[SablierLockupBase](/reference/lockup/contracts/abstracts/abstract.SablierLockupBase#streamedamountof) contract.
 
 :::caution Caveats
 
