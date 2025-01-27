@@ -46,7 +46,7 @@ Sablier repositories on Github.
 
 ## Mainnets
 
-### Mainnet
+### Ethereum Mainnet
 
 | Contract            | Address                                                                                                               | Deployment                                                                    |
 | :------------------ | :-------------------------------------------------------------------------------------------------------------------- | :---------------------------------------------------------------------------- |
@@ -106,6 +106,16 @@ Sablier repositories on Github.
 | Helpers             | [0xf8076E4Fb5cfE8be1C26E61222DC51828Db8C1dc](https://bscscan.com/address/0xf8076E4Fb5cfE8be1C26E61222DC51828Db8C1dc) | [v2.0.0](https://github.com/sablier-labs/deployments/blob/main/lockup/v2.0.0) |
 | VestingMath         | [0x5522CA06Ce080800AB59BA4C091e63f6f54C5E6d](https://bscscan.com/address/0x5522CA06Ce080800AB59BA4C091e63f6f54C5E6d) | [v2.0.0](https://github.com/sablier-labs/deployments/blob/main/lockup/v2.0.0) |
 
+### Chiliz
+
+| Contract            | Address                                                                                                                | Deployment                                                                    |
+| :------------------ | :--------------------------------------------------------------------------------------------------------------------- | :---------------------------------------------------------------------------- |
+| SablierBatchLockup  | [0x179536f3289fb50076968b339C7EF0Dc0B38E3AF](https://chiliscan.com/address/0x179536f3289fb50076968b339C7EF0Dc0B38E3AF) | [v2.0.0](https://github.com/sablier-labs/deployments/blob/main/lockup/v2.0.0) |
+| SablierLockup       | [0x711900e5f55d427cd88e5E3FCAe54Ccf02De71F4](https://chiliscan.com/address/0x711900e5f55d427cd88e5E3FCAe54Ccf02De71F4) | [v2.0.0](https://github.com/sablier-labs/deployments/blob/main/lockup/v2.0.0) |
+| LockupNFTDescriptor | [0x8A96f827082FB349B6e268baa0a7A5584c4Ccda6](https://chiliscan.com/address/0x8A96f827082FB349B6e268baa0a7A5584c4Ccda6) | [v2.0.0](https://github.com/sablier-labs/deployments/blob/main/lockup/v2.0.0) |
+| Helpers             | [0xf8076E4Fb5cfE8be1C26E61222DC51828Db8C1dc](https://chiliscan.com/address/0xf8076E4Fb5cfE8be1C26E61222DC51828Db8C1dc) | [v2.0.0](https://github.com/sablier-labs/deployments/blob/main/lockup/v2.0.0) |
+| VestingMath         | [0x5522CA06Ce080800AB59BA4C091e63f6f54C5E6d](https://chiliscan.com/address/0x5522CA06Ce080800AB59BA4C091e63f6f54C5E6d) | [v2.0.0](https://github.com/sablier-labs/deployments/blob/main/lockup/v2.0.0) |
+
 ### Gnosis
 
 | Contract            | Address                                                                                                                | Deployment                                                                    |
@@ -145,6 +155,16 @@ Sablier repositories on Github.
 | LockupNFTDescriptor | [0x64e7879558b6dfE2f510bd4b9Ad196ef0371EAA8](https://explorer.mode.network/address/0x64e7879558b6dfE2f510bd4b9Ad196ef0371EAA8) | [v2.0.0](https://github.com/sablier-labs/deployments/blob/main/lockup/v2.0.0) |
 | Helpers             | [0xf8076E4Fb5cfE8be1C26E61222DC51828Db8C1dc](https://explorer.mode.network/address/0xf8076E4Fb5cfE8be1C26E61222DC51828Db8C1dc) | [v2.0.0](https://github.com/sablier-labs/deployments/blob/main/lockup/v2.0.0) |
 | VestingMath         | [0x5522CA06Ce080800AB59BA4C091e63f6f54C5E6d](https://explorer.mode.network/address/0x5522CA06Ce080800AB59BA4C091e63f6f54C5E6d) | [v2.0.0](https://github.com/sablier-labs/deployments/blob/main/lockup/v2.0.0) |
+
+### Morph
+
+| Contract            | Address                                                                                                                      | Deployment                                                                    |
+| :------------------ | :--------------------------------------------------------------------------------------------------------------------------- | :---------------------------------------------------------------------------- |
+| SablierBatchLockup  | [0x081BBbd4861BaBACE3E7eDC8a45741129DfC02fE](https://explorer.morphl2.io/address/0x081BBbd4861BaBACE3E7eDC8a45741129DfC02fE) | [v2.0.0](https://github.com/sablier-labs/deployments/blob/main/lockup/v2.0.0) |
+| SablierLockup       | [0xF3cd08105b6745965149eF02b8aBdCEa0Ae51241](https://explorer.morphl2.io/address/0xF3cd08105b6745965149eF02b8aBdCEa0Ae51241) | [v2.0.0](https://github.com/sablier-labs/deployments/blob/main/lockup/v2.0.0) |
+| LockupNFTDescriptor | [0x660314f09ac3B65E216B6De288aAdc2599AF14e2](https://explorer.morphl2.io/address/0x660314f09ac3B65E216B6De288aAdc2599AF14e2) | [v2.0.0](https://github.com/sablier-labs/deployments/blob/main/lockup/v2.0.0) |
+| Helpers             | [0xf8076E4Fb5cfE8be1C26E61222DC51828Db8C1dc](https://explorer.morphl2.io/address/0xf8076E4Fb5cfE8be1C26E61222DC51828Db8C1dc) | [v2.0.0](https://github.com/sablier-labs/deployments/blob/main/lockup/v2.0.0) |
+| VestingMath         | [0x5522CA06Ce080800AB59BA4C091e63f6f54C5E6d](https://explorer.morphl2.io/address/0x5522CA06Ce080800AB59BA4C091e63f6f54C5E6d) | [v2.0.0](https://github.com/sablier-labs/deployments/blob/main/lockup/v2.0.0) |
 
 ### Optimism
 
