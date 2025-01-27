@@ -7,23 +7,23 @@ title: "Fees"
 import Link from "@docusaurus/Link";
 import { links } from "@site/src/constants";
 
-There are two types of fees in the Sablier ecosystem: **Protocol Fee** and **Broker Fee**.
+## Lockup
 
-## Protocol fee
+### Withdraw Fee
 
-This is a fee that can be charged at the protocol level, capped at 10%. Only the protocol admin has the authority to
-change it.
+The withdraw fee is the fee a stream recipient pays to the Sablier UI to withdraw from a Lockup stream. This fee is
+charged by the Sablier UI and is not enforced at the contract level.
 
-### Lockup
+:::tip[How much is the Withdraw Fee?]
 
-Lockup doesn't implement protocol fees.
+It is currently fixed at **$1 per withdrawal**, regardless of the withdrawal amount. The fee is paid in the native
+token, i.e. you would pay in POL for streams on Polygon network, and in ETH for streams on Ethereum network.
 
-### Flow
+:::
 
-While Flow has the ability to charge a protocol fee, no fee is set at the moment. If a fee is introduced in the future,
-users will be notified in advance. When active, the fee will be deducted as a percentage from the withdrawn amount.
+The withdraw fee applies only to Lockup v2.0. Streams created using earlier Lockup releases do not pay withdrawal fees.
 
-## Broker fee
+### Broker Fee
 
 A "broker" is any third-party entity that interacts with the Sablier Protocol on behalf of other users. These brokers
 have the ability to charge service fees for facilitating such interactions.
@@ -31,15 +31,8 @@ have the ability to charge service fees for facilitating such interactions.
 Broker fees are particularly useful for front-end applications that integrate the Sablier Protocol. They enable
 front-end operators to levy a fee on each interaction facilitated through their platform.
 
-### Lockup
-
 The broker fee can be charged as a percentage of the streamed amount, and it cannot be higher than 10%. In the event of
 cancellation, broker fee is non-refundable.
-
-### Flow
-
-The broker fee can be charged as a percentage of the deposit amount, and it cannot be higher than 10%. In case of
-refund, broker fee is non-refundable.
 
 :::info
 
@@ -54,7 +47,61 @@ soon as possible.
 
 :::
 
-## Gas Fees
+## Merkle Airdrops
+
+### Claim Fee
+
+The claim fee is the fee paid by eligible recipients to the Merkle Airdrop protocol to claim an airdrop. This fee can be
+enforced at the contract level and would require recipients to pay a minimum of fee set in order to claim. Only the
+protocol admin has the authority to change it.
+
+Similar to Lockup's withdraw fee, this fee is also paid in the native token, i.e. you would pay in POL for streams on
+Polygon network, and in ETH for streams on Ethereum network.
+
+:::tip[How much is the Claim Fee?]
+
+This fee is currently fixed at $3 per claim, irrespective of the claim amount. The fee is paid in the native token.
+
+:::
+
+The claim fee applies only to Merkle Airdrops v1.3. Campaigns created with earlier versions do not incur claim fee.
+
+## Flow
+
+### Withdraw Fee
+
+Similar to Lockup protocol, Flow protocol also has the withdraw fee i.e. the fee a stream recipient pays to the Sablier
+UI to withdraw from a Flow stream. This fee is charged by the Sablier UI and is not enforced at the contract level.
+
+:::tip[How much is the Withdraw Fee?]
+
+It is currently fixed at **$1 per withdrawal**, regardless of the withdrawal amount. The fee is paid in the native
+token, i.e. you would pay in POL for streams on Polygon network, and in ETH for streams on Ethereum network.
+
+:::
+
+The withdraw fee applies only to Flow v1.1. Streams created using earlier Flow releases do not pay withdrawal fees.
+
+### Protocol Fee
+
+This is a fee that can be charged at the protocol level, capped at 10%. Only the protocol admin has the authority to
+change it.
+
+While Flow has the ability to charge a protocol fee, no fee is set at the moment. If a fee is introduced in the future,
+users will be notified in advance. When active, the fee will be deducted as a percentage from the withdrawn amount.
+
+:::info
+
+There is NO protocol fee enabled at the moment.
+
+:::
+
+### Broker Fee
+
+Similar to Lockup Protocol, the official [Sablier Interface](https://app.sablier.com) does NOT currently charge any
+broker fees.
+
+## Gas Fee
 
 ### Q: What are gas fees?
 
@@ -71,7 +118,7 @@ A: No. 100% of the gas fee goes to the blockchain validators, which are not affi
 
 :::tip
 
-To find how much gas each function costs, check out these [gas benchmark reports](/guides/lockup/gas-benchmarks) for
-Lockup.
+To find out how much gas each function costs, you can see the gas benchmark reports of
+[Lockup](/guides/lockup/gas-benchmarks) and [Flow](/guides/flow/gas-benchmarks).
 
 :::
