@@ -198,6 +198,16 @@ Sablier repositories on Github.
 
 ## Testnets
 
+### Sepolia
+
+| Contract            | Address                                                                                                                       | Deployment                                                                    |
+| :------------------ | :---------------------------------------------------------------------------------------------------------------------------- | :---------------------------------------------------------------------------- |
+| SablierBatchLockup  | [0xB655ecD83D27f7c683A9605783bd2866a4dCEB04](https://sepolia.etherscan.io/address/0xB655ecD83D27f7c683A9605783bd2866a4dCEB04) | [v2.0.0](https://github.com/sablier-labs/deployments/blob/main/lockup/v2.0.0) |
+| SablierLockup       | [0xd116c275541cdBe7594A202bD6AE4DBca4578462](https://sepolia.etherscan.io/address/0xd116c275541cdBe7594A202bD6AE4DBca4578462) | [v2.0.0](https://github.com/sablier-labs/deployments/blob/main/lockup/v2.0.0) |
+| LockupNFTDescriptor | [0x08D3C81626d9Cb19760835e8730Ec0D3F1899976](https://sepolia.etherscan.io/address/0x08D3C81626d9Cb19760835e8730Ec0D3F1899976) | [v2.0.0](https://github.com/sablier-labs/deployments/blob/main/lockup/v2.0.0) |
+| Helpers             | [0xf8076E4Fb5cfE8be1C26E61222DC51828Db8C1dc](https://sepolia.etherscan.io/address/0xf8076E4Fb5cfE8be1C26E61222DC51828Db8C1dc) | [v2.0.0](https://github.com/sablier-labs/deployments/blob/main/lockup/v2.0.0) |
+| VestingMath         | [0x5522CA06Ce080800AB59BA4C091e63f6f54C5E6d](https://sepolia.etherscan.io/address/0x5522CA06Ce080800AB59BA4C091e63f6f54C5E6d) | [v2.0.0](https://github.com/sablier-labs/deployments/blob/main/lockup/v2.0.0) |
+
 ### Blast Sepolia
 
 | Contract            | Address                                                                                                                       | Deployment                                                                    |
