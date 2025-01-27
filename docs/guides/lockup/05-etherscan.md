@@ -126,7 +126,7 @@ The address you want to stream tokens to. The owner of this address is the strea
 
 #### Total Amount
 
-This is the total amount of assets available to be streamed, **DECIMALS INCLUDED**. If the asset has 18 decimals, for
+This is the total amount of tokens available to be streamed, **DECIMALS INCLUDED**. If the asset has 18 decimals, for
 example, you will need to add eighteen zeros after the amount. Let's say you want to stream 20,000 DAI like in this
 example, you will need to fill in `20000000000000000000000`.
 

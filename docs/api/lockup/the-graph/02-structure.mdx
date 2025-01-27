@@ -95,7 +95,7 @@ involved in a stream.
 
 #### The recipient (gets paid\*)
 
-As funds are being streamed, they will slowly become eligible to withdraw and spend unlocked assets. The `recipient` is
+As funds are being streamed, they will slowly become eligible to withdraw and spend unlocked tokens. The `recipient` is
 defined at the start of the stream but can change as a result of a transfer.
 
 On transfer, the old recipient moves the NFT (the stream itself) to another address, which becomes the new recipient.
@@ -106,11 +106,11 @@ Rights to withdraw and claim future streamed funds are naturally transferred to 
 They are an immutable party, defined at the start of the stream. Based on the configuration chosen for the stream, they
 will be entitled to later cancel the stream, renounce it (disable cancelability) or withdraw on behalf of the recipient.
 
-In case of a cancelation, the `sender` will receive any unstreamed assets as part of the refund.
+In case of a cancelation, the `sender` will receive any unstreamed tokens as part of the refund.
 
 #### The funder
 
-When the stream is created, they provide the assets to be gradually streamed to the recipient. Usually, they are the
+When the stream is created, they provide the tokens to be gradually streamed to the recipient. Usually, they are the
 same entity as the sender. However, there may be cases when someone wishes to create a stream on another user's behalf,
 while also marking them as the sender. In that case, this initial address will be accounted for as the stream's
 `funder`.

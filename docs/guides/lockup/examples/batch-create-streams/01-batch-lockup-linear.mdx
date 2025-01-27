@@ -70,8 +70,8 @@ structs:
 ```solidity
 // Declare the first stream in the batch
 BatchLockup.CreateWithDurationsLL memory stream0;
-stream0.sender = address(0xABCD); // The sender to stream the assets, he will be able to cancel the stream
-stream0.recipient = address(0xCAFE); // The recipient of the streamed assets
+stream0.sender = address(0xABCD); // The sender to stream the tokens, he will be able to cancel the stream
+stream0.recipient = address(0xCAFE); // The recipient of the streamed tokens
 stream0.totalAmount = perStreamAmount; // The total amount of each stream, inclusive of all fees
 stream0.cancelable = true; // Whether the stream will be cancelable or not
 stream0.transferable = false; // Whether the recipient can transfer the NFT or not
@@ -87,8 +87,8 @@ To add some variety, we will change the parameters of the second stream:
 ```solidity
 // Declare the second stream in the batch
 BatchLockup.CreateWithDurationsLL memory stream1;
-stream1.sender = address(0xABCD); // The sender to stream the assets, he will be able to cancel the stream
-stream1.recipient = address(0xBEEF); // The recipient of the streamed assets
+stream1.sender = address(0xABCD); // The sender to stream the tokens, he will be able to cancel the stream
+stream1.recipient = address(0xBEEF); // The recipient of the streamed tokens
 stream1.totalAmount = perStreamAmount; // The total amount of each stream, inclusive of all fees
 stream1.cancelable = false; // Whether the stream will be cancelable or not
 stream1.transferable = false; // Whether the recipient can transfer the NFT or not

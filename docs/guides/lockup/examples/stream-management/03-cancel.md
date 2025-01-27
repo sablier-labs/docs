@@ -17,7 +17,7 @@ See the [Access Control](/reference/lockup/access-control) guide for an overview
 
 :::
 
-Canceling streams involves stopping the flow of assets before the stream's end time and refunding the remaining funds to
+Canceling streams involves stopping the flow of tokens before the stream's end time and refunding the remaining funds to
 the sender. However, the portion that has already been streamed is <ins>NOT</ins> automatically transferred - the
 recipient will need to withdraw it.
 

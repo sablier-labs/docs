@@ -67,19 +67,21 @@ Gas is paid only when streams are created, canceled, transferred, or withdrawn f
 
 A term coined by us to refer to the requirement of locking up tokens in order to create a stream.
 
-Smart contracts that are considered foundational, and are essential for Lockup to exist. Upgrading to a new version of
-lockup would require deploying an entirely new set of smart contracts, and would be considered a new version of the
-Lockup protocol.
+## Lockup Protocol
 
-## Lockup Dynamic
+Smart contracts that are considered foundational, and are essential for Lockup streams to exist. Upgrading to a new
+version of lockup would require deploying an entirely new set of smart contracts, and would be considered a new version
+of the Lockup protocol.
+
+## Lockup Dynamic Stream
 
 A Lockup stream with a payment rate per second that can vary over time.
 
-## Lockup Linear
+## Lockup Linear Stream
 
 A Lockup stream with a constant payment rate per second.
 
-## Lockup Tranched
+## Lockup Tranched Stream
 
 A Lockup stream with payments in discrete tranches.
 
