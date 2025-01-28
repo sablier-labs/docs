@@ -29,6 +29,12 @@ discontinued. For previous deployments, please refer to the
 | :------------------- | :-------------------------------------------------------------------------------------------------------------------- | :------------------------------------------------------------------------------ |
 | SablierMerkleFactory | [0x71DD3Ca88E7564416E5C2E350090C12Bf8F6144a](https://etherscan.io/address/0x71DD3Ca88E7564416E5C2E350090C12Bf8F6144a) | [v1.3.0](https://github.com/sablier-labs/deployments/blob/main/airdrops/v1.3.0) |
 
+### Abstract
+
+| Contract             | Address                                                                                                             | Deployment                                                                      |
+| :------------------- | :------------------------------------------------------------------------------------------------------------------ | :------------------------------------------------------------------------------ |
+| SablierMerkleFactory | [0x0C72b957347B51285854f015e4D20641655B939A](https://abscan.org/address/0x0C72b957347B51285854f015e4D20641655B939A) | [v1.3.0](https://github.com/sablier-labs/deployments/blob/main/airdrops/v1.3.0) |
+
 ### Arbitrum One
 
 | Contract             | Address                                                                                                              | Deployment                                                                      |
@@ -125,6 +131,18 @@ discontinued. For previous deployments, please refer to the
 | :------------------- | :-------------------------------------------------------------------------------------------------------------------- | :------------------------------------------------------------------------------ |
 | SablierMerkleFactory | [0x39D4D8C60D3596B75bc09863605BBB4dcE8243F1](https://taikoscan.io/address/0x39D4D8C60D3596B75bc09863605BBB4dcE8243F1) | [v1.3.0](https://github.com/sablier-labs/deployments/blob/main/airdrops/v1.3.0) |
 
+### Tangle
+
+| Contract             | Address                                                                                                                       | Deployment                                                                      |
+| :------------------- | :---------------------------------------------------------------------------------------------------------------------------- | :------------------------------------------------------------------------------ |
+| SablierMerkleFactory | [0xd641a0E4509Cced67cC24E7BDcDe2a31b7F7cF77](http://explorer.tangle.tools/address/0xd641a0E4509Cced67cC24E7BDcDe2a31b7F7cF77) | [v1.3.0](https://github.com/sablier-labs/deployments/blob/main/airdrops/v1.3.0) |
+
+### zkSync Era
+
+| Contract             | Address                                                                                                                     | Deployment                                                                      |
+| :------------------- | :-------------------------------------------------------------------------------------------------------------------------- | :------------------------------------------------------------------------------ |
+| SablierMerkleFactory | [0x8E7E78799F8cC87d4816112A758281dabc158452](https://era.zksync.network/address/0x8E7E78799F8cC87d4816112A758281dabc158452) | [v1.3.0](https://github.com/sablier-labs/deployments/blob/main/airdrops/v1.3.0) |
+
 ## Testnets
 
 ### Arbitrum Sepolia
@@ -168,3 +186,9 @@ discontinued. For previous deployments, please refer to the
 | Contract             | Address                                                                                                                       | Deployment                                                                      |
 | :------------------- | :---------------------------------------------------------------------------------------------------------------------------- | :------------------------------------------------------------------------------ |
 | SablierMerkleFactory | [0xB5F4FB527568f88F8898Ce5F366f4d72e2C742BE](https://sepolia.taikoscan.io/address/0xB5F4FB527568f88F8898Ce5F366f4d72e2C742BE) | [v1.3.0](https://github.com/sablier-labs/deployments/blob/main/airdrops/v1.3.0) |
+
+### zkSync Sepolia
+
+| Contract             | Address                                                                                                                             | Deployment                                                                      |
+| :------------------- | :---------------------------------------------------------------------------------------------------------------------------------- | :------------------------------------------------------------------------------ |
+| SablierMerkleFactory | [0x6d71180edee488Ea25004Cb9df3867191248c51f](https://sepolia-era.zksync.network/address/0x6d71180edee488Ea25004Cb9df3867191248c51f) | [v1.3.0](https://github.com/sablier-labs/deployments/blob/main/airdrops/v1.3.0) |
