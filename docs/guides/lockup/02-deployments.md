@@ -116,6 +116,16 @@ Sablier repositories on Github.
 | Helpers             | [0xf8076E4Fb5cfE8be1C26E61222DC51828Db8C1dc](https://chiliscan.com/address/0xf8076E4Fb5cfE8be1C26E61222DC51828Db8C1dc) | [v2.0.0](https://github.com/sablier-labs/deployments/blob/main/lockup/v2.0.0) |
 | VestingMath         | [0x5522CA06Ce080800AB59BA4C091e63f6f54C5E6d](https://chiliscan.com/address/0x5522CA06Ce080800AB59BA4C091e63f6f54C5E6d) | [v2.0.0](https://github.com/sablier-labs/deployments/blob/main/lockup/v2.0.0) |
 
+### Core Dao
+
+| Contract            | Address                                                                                                                   | Deployment                                                                    |
+| :------------------ | :------------------------------------------------------------------------------------------------------------------------ | :---------------------------------------------------------------------------- |
+| SablierBatchLockup  | [0x96dadeeab25413de04a1b8e40c4de41bd9d7fd29](https://scan.coredao.org/address/0x96dadeeab25413de04a1b8e40c4de41bd9d7fd29) | [v2.0.0](https://github.com/sablier-labs/deployments/blob/main/lockup/v2.0.0) |
+| SablierLockup       | [0x4fff53bfe86a0bd59a81c89d8ba84c67cf947764](https://scan.coredao.org/address/0x4fff53bfe86a0bd59a81c89d8ba84c67cf947764) | [v2.0.0](https://github.com/sablier-labs/deployments/blob/main/lockup/v2.0.0) |
+| LockupNFTDescriptor | [0xac0cf0f2a96ed7ec3cfa4d0be621c67adc9dd903](https://scan.coredao.org/address/0xac0cf0f2a96ed7ec3cfa4d0be621c67adc9dd903) | [v2.0.0](https://github.com/sablier-labs/deployments/blob/main/lockup/v2.0.0) |
+| Helpers             | [0xf8076E4Fb5cfE8be1C26E61222DC51828Db8C1dc](https://scan.coredao.org/address/0xf8076E4Fb5cfE8be1C26E61222DC51828Db8C1dc) | [v2.0.0](https://github.com/sablier-labs/deployments/blob/main/lockup/v2.0.0) |
+| VestingMath         | [0x5522CA06Ce080800AB59BA4C091e63f6f54C5E6d](https://scan.coredao.org/address/0x5522CA06Ce080800AB59BA4C091e63f6f54C5E6d) | [v2.0.0](https://github.com/sablier-labs/deployments/blob/main/lockup/v2.0.0) |
+
 ### Gnosis
 
 | Contract            | Address                                                                                                                | Deployment                                                                    |
@@ -238,7 +248,7 @@ Sablier repositories on Github.
 | Helpers             | [0xf8076E4Fb5cfE8be1C26E61222DC51828Db8C1dc](https://sepolia.blastscan.io/address/0xf8076E4Fb5cfE8be1C26E61222DC51828Db8C1dc) | [v2.0.0](https://github.com/sablier-labs/deployments/blob/main/lockup/v2.0.0) |
 | VestingMath         | [0x5522CA06Ce080800AB59BA4C091e63f6f54C5E6d](https://sepolia.blastscan.io/address/0x5522CA06Ce080800AB59BA4C091e63f6f54C5E6d) | [v2.0.0](https://github.com/sablier-labs/deployments/blob/main/lockup/v2.0.0) |
 
-## Linea Sepolia
+### Linea Sepolia
 
 | Contract            | Address                                                                                                                          | Deployment                                                                    |
 | :------------------ | :------------------------------------------------------------------------------------------------------------------------------- | :---------------------------------------------------------------------------- |
