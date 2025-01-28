@@ -56,6 +56,16 @@ Sablier repositories on Github.
 | Helpers             | [0xf8076E4Fb5cfE8be1C26E61222DC51828Db8C1dc](https://etherscan.io/address/0xf8076E4Fb5cfE8be1C26E61222DC51828Db8C1dc) | [v2.0.0](https://github.com/sablier-labs/deployments/blob/main/lockup/v2.0.0) |
 | VestingMath         | [0x5522CA06Ce080800AB59BA4C091e63f6f54C5E6d](https://etherscan.io/address/0x5522CA06Ce080800AB59BA4C091e63f6f54C5E6d) | [v2.0.0](https://github.com/sablier-labs/deployments/blob/main/lockup/v2.0.0) |
 
+### Abstract
+
+| Contract            | Address                                                                                                             | Deployment                                                                    |
+| :------------------ | :------------------------------------------------------------------------------------------------------------------ | :---------------------------------------------------------------------------- |
+| SablierBatchLockup  | [0x3409308357BB704f79f70d748da502F363Dc2f1D](https://abscan.org/address/0x3409308357BB704f79f70d748da502F363Dc2f1D) | [v2.0.0](https://github.com/sablier-labs/deployments/blob/main/lockup/v2.0.0) |
+| SablierLockup       | [0x14Eb4AB47B2ec2a71763eaBa202a252E176FAE88](https://abscan.org/address/0x14Eb4AB47B2ec2a71763eaBa202a252E176FAE88) | [v2.0.0](https://github.com/sablier-labs/deployments/blob/main/lockup/v2.0.0) |
+| LockupNFTDescriptor | [0x63Ff2E370788C163D5a1909B5FCb299DB327AEF9](https://abscan.org/address/0x63Ff2E370788C163D5a1909B5FCb299DB327AEF9) | [v2.0.0](https://github.com/sablier-labs/deployments/blob/main/lockup/v2.0.0) |
+| Helpers             | [0x07c194dFE7DCe9Ae7Ffe4bF32683cf1F8CDD4aEa](https://abscan.org/address/0x07c194dFE7DCe9Ae7Ffe4bF32683cf1F8CDD4aEa) | [v2.0.0](https://github.com/sablier-labs/deployments/blob/main/lockup/v2.0.0) |
+| VestingMath         | [0xbB2e2884AE40003BB55fd3A85A9f8f7f72Aa441F](https://abscan.org/address/0xbB2e2884AE40003BB55fd3A85A9f8f7f72Aa441F) | [v2.0.0](https://github.com/sablier-labs/deployments/blob/main/lockup/v2.0.0) |
+
 ### Arbitrum One
 
 | Contract            | Address                                                                                                              | Deployment                                                                    |
@@ -135,6 +145,16 @@ Sablier repositories on Github.
 | LockupNFTDescriptor | [0x3140a6900AA2FF3186730741ad8255ee4e6d8Ff1](https://gnosisscan.io/address/0x3140a6900AA2FF3186730741ad8255ee4e6d8Ff1) | [v2.0.0](https://github.com/sablier-labs/deployments/blob/main/lockup/v2.0.0) |
 | Helpers             | [0xf8076E4Fb5cfE8be1C26E61222DC51828Db8C1dc](https://gnosisscan.io/address/0xf8076E4Fb5cfE8be1C26E61222DC51828Db8C1dc) | [v2.0.0](https://github.com/sablier-labs/deployments/blob/main/lockup/v2.0.0) |
 | VestingMath         | [0x5522CA06Ce080800AB59BA4C091e63f6f54C5E6d](https://gnosisscan.io/address/0x5522CA06Ce080800AB59BA4C091e63f6f54C5E6d) | [v2.0.0](https://github.com/sablier-labs/deployments/blob/main/lockup/v2.0.0) |
+
+### IoTex
+
+| Contract            | Address                                                                                                               | Deployment                                                                    |
+| :------------------ | :-------------------------------------------------------------------------------------------------------------------- | :---------------------------------------------------------------------------- |
+| SablierBatchLockup  | [0x88c94328D7EbDC0a5AC3d7EdbaEa02d10BA8b21E](https://iotexscan.io/address/0x88c94328D7EbDC0a5AC3d7EdbaEa02d10BA8b21E) | [v2.0.0](https://github.com/sablier-labs/deployments/blob/main/lockup/v2.0.0) |
+| SablierLockup       | [0xB1C3BAdbF77C404F8711817Ca99C859406B92727](https://iotexscan.io/address/0xB1C3BAdbF77C404F8711817Ca99C859406B92727) | [v2.0.0](https://github.com/sablier-labs/deployments/blob/main/lockup/v2.0.0) |
+| LockupNFTDescriptor | [0x32c690d02519551b1824323Fd52cbBa977DcD9Ea](https://iotexscan.io/address/0x32c690d02519551b1824323Fd52cbBa977DcD9Ea) | [v2.0.0](https://github.com/sablier-labs/deployments/blob/main/lockup/v2.0.0) |
+| Helpers             | [0xBF61475be0B4977b6c9dCDE41d34da161fFC91de](https://iotexscan.io/address/0xBF61475be0B4977b6c9dCDE41d34da161fFC91de) | [v2.0.0](https://github.com/sablier-labs/deployments/blob/main/lockup/v2.0.0) |
+| VestingMath         | [0x7EA197Bd29F381ab6520f1220fC7aE9a18b9aE26](https://iotexscan.io/address/0x7EA197Bd29F381ab6520f1220fC7aE9a18b9aE26) | [v2.0.0](https://github.com/sablier-labs/deployments/blob/main/lockup/v2.0.0) |
 
 ### LightLink
 
@@ -226,6 +246,28 @@ Sablier repositories on Github.
 | Helpers             | [0xf8076E4Fb5cfE8be1C26E61222DC51828Db8C1dc](https://taikoscan.io/address/0xf8076E4Fb5cfE8be1C26E61222DC51828Db8C1dc) | [v2.0.0](https://github.com/sablier-labs/deployments/blob/main/lockup/v2.0.0) |
 | VestingMath         | [0x5522CA06Ce080800AB59BA4C091e63f6f54C5E6d](https://taikoscan.io/address/0x5522CA06Ce080800AB59BA4C091e63f6f54C5E6d) | [v2.0.0](https://github.com/sablier-labs/deployments/blob/main/lockup/v2.0.0) |
 
+### Tangle
+
+| Contract            | Address                                                                                                                       | Deployment                                                                    |
+| :------------------ | :---------------------------------------------------------------------------------------------------------------------------- | :---------------------------------------------------------------------------- |
+| SablierBatchLockup  | [0xF5AC60870E1CCc4Bfce23cfbb7a796A0d8dBAf47](http://explorer.tangle.tools/address/0xF5AC60870E1CCc4Bfce23cfbb7a796A0d8dBAf47) | [v2.0.0](https://github.com/sablier-labs/deployments/blob/main/lockup/v2.0.0) |
+| SablierLockup       | [0xB1C3BAdbF77C404F8711817Ca99C859406B92727](http://explorer.tangle.tools/address/0xB1C3BAdbF77C404F8711817Ca99C859406B92727) | [v2.0.0](https://github.com/sablier-labs/deployments/blob/main/lockup/v2.0.0) |
+| LockupNFTDescriptor | [0x92FC05e49c27884d554D98a5C01Ff0894a9DC29a](http://explorer.tangle.tools/address/0x92FC05e49c27884d554D98a5C01Ff0894a9DC29a) | [v2.0.0](https://github.com/sablier-labs/deployments/blob/main/lockup/v2.0.0) |
+| Helpers             | [0x3D664B2Da905DDD0Db931982FD9a759ea950D6e1](http://explorer.tangle.tools/address/0x3D664B2Da905DDD0Db931982FD9a759ea950D6e1) | [v2.0.0](https://github.com/sablier-labs/deployments/blob/main/lockup/v2.0.0) |
+| VestingMath         | [0x9EfC8663cAB0e2d97ad17C9fbfc8392445517E94](http://explorer.tangle.tools/address/0x9EfC8663cAB0e2d97ad17C9fbfc8392445517E94) | [v2.0.0](https://github.com/sablier-labs/deployments/blob/main/lockup/v2.0.0) |
+
+### zkSync Era
+
+| Contract            | Address                                                                                                                     | Deployment                                                                    |
+| :------------------ | :-------------------------------------------------------------------------------------------------------------------------- | :---------------------------------------------------------------------------- |
+| SablierBatchLockup  | [0x655d08f9d3C46034F3C4e535551791ffAb5D0319](https://era.zksync.network/address/0x655d08f9d3C46034F3C4e535551791ffAb5D0319) | [v2.0.0](https://github.com/sablier-labs/deployments/blob/main/lockup/v2.0.0) |
+| SablierLockup       | [0xe18Cf135E1688402Fa9B752b2a07C27d48B705Bd](https://era.zksync.network/address/0xe18Cf135E1688402Fa9B752b2a07C27d48B705Bd) | [v2.0.0](https://github.com/sablier-labs/deployments/blob/main/lockup/v2.0.0) |
+| LockupNFTDescriptor | [0xAe7c42EE6B584a3E8B4ee769861dC91327BFc72d](https://era.zksync.network/address/0xAe7c42EE6B584a3E8B4ee769861dC91327BFc72d) | [v2.0.0](https://github.com/sablier-labs/deployments/blob/main/lockup/v2.0.0) |
+| Helpers             | [0x9697a091cEe846E7dd9cCB15f8a1e03f8150cE89](https://era.zksync.network/address/0x9697a091cEe846E7dd9cCB15f8a1e03f8150cE89) | [v2.0.0](https://github.com/sablier-labs/deployments/blob/main/lockup/v2.0.0) |
+| NFTSVG              | [0x08d31504C1f7d070c5C33ab30B9d177481ca8300](https://era.zksync.network/address/0x08d31504C1f7d070c5C33ab30B9d177481ca8300) | [v2.0.0](https://github.com/sablier-labs/deployments/blob/main/lockup/v2.0.0) |
+| SVGElements         | [0x3afD2dc812ffDD66B42a0dc3629A78D719502244](https://era.zksync.network/address/0x3afD2dc812ffDD66B42a0dc3629A78D719502244) | [v2.0.0](https://github.com/sablier-labs/deployments/blob/main/lockup/v2.0.0) |
+| VestingMath         | [0x020a61e468229499a2feBB2412E8f563B422C3dC](https://era.zksync.network/address/0x020a61e468229499a2feBB2412E8f563B422C3dC) | [v2.0.0](https://github.com/sablier-labs/deployments/blob/main/lockup/v2.0.0) |
+
 ## Testnets
 
 ### Sepolia
@@ -297,3 +339,15 @@ Sablier repositories on Github.
 | LockupNFTDescriptor | [0x4a92Ca0a777fd781B3aA1d7925Ad54B64C85eedE](https://sepolia.taikoscan.io/address/0x4a92Ca0a777fd781B3aA1d7925Ad54B64C85eedE) | [v2.0.0](https://github.com/sablier-labs/deployments/blob/main/lockup/v2.0.0) |
 | Helpers             | [0xf8076E4Fb5cfE8be1C26E61222DC51828Db8C1dc](https://sepolia.taikoscan.io/address/0xf8076E4Fb5cfE8be1C26E61222DC51828Db8C1dc) | [v2.0.0](https://github.com/sablier-labs/deployments/blob/main/lockup/v2.0.0) |
 | VestingMath         | [0x5522CA06Ce080800AB59BA4C091e63f6f54C5E6d](https://sepolia.taikoscan.io/address/0x5522CA06Ce080800AB59BA4C091e63f6f54C5E6d) | [v2.0.0](https://github.com/sablier-labs/deployments/blob/main/lockup/v2.0.0) |
+
+### zkSync Sepolia
+
+| Contract            | Address                                                                                                                             | Deployment                                                                    |
+| :------------------ | :---------------------------------------------------------------------------------------------------------------------------------- | :---------------------------------------------------------------------------- |
+| SablierBatchLockup  | [0xd5f24C5E4800dF47D99E8168B9eE611b8Ba70490](https://sepolia-era.zksync.network/address/0xd5f24C5E4800dF47D99E8168B9eE611b8Ba70490) | [v2.0.0](https://github.com/sablier-labs/deployments/blob/main/lockup/v2.0.0) |
+| SablierLockup       | [0x474087A8c30b0615713e9F0249529D6ff79cA992](https://sepolia-era.zksync.network/address/0x474087A8c30b0615713e9F0249529D6ff79cA992) | [v2.0.0](https://github.com/sablier-labs/deployments/blob/main/lockup/v2.0.0) |
+| LockupNFTDescriptor | [0xE34228B88BA2DC2EaeD2d4CB4CbBa874f1F4483c](https://sepolia-era.zksync.network/address/0xE34228B88BA2DC2EaeD2d4CB4CbBa874f1F4483c) | [v2.0.0](https://github.com/sablier-labs/deployments/blob/main/lockup/v2.0.0) |
+| Helpers             | [0x9697a091cEe846E7dd9cCB15f8a1e03f8150cE89](https://sepolia-era.zksync.network/address/0x9697a091cEe846E7dd9cCB15f8a1e03f8150cE89) | [v2.0.0](https://github.com/sablier-labs/deployments/blob/main/lockup/v2.0.0) |
+| NFTSVG              | [0x0Bfa8DE8146A1D285f2a840E1441E69888c738C4](https://sepolia-era.zksync.network/address/0x0Bfa8DE8146A1D285f2a840E1441E69888c738C4) | [v2.0.0](https://github.com/sablier-labs/deployments/blob/main/lockup/v2.0.0) |
+| SVGElements         | [0x3afD2dc812ffDD66B42a0dc3629A78D719502244](https://sepolia-era.zksync.network/address/0x3afD2dc812ffDD66B42a0dc3629A78D719502244) | [v2.0.0](https://github.com/sablier-labs/deployments/blob/main/lockup/v2.0.0) |
+| VestingMath         | [0x020a61e468229499a2feBB2412E8f563B422C3dC](https://sepolia-era.zksync.network/address/0x020a61e468229499a2feBB2412E8f563B422C3dC) | [v2.0.0](https://github.com/sablier-labs/deployments/blob/main/lockup/v2.0.0) |
