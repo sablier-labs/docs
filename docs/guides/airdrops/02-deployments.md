@@ -151,6 +151,12 @@ discontinued. For previous deployments, please refer to the
 | :------------------- | :--------------------------------------------------------------------------------------------------------------------------- | :------------------------------------------------------------------------------ |
 | SablierMerkleFactory | [0x465E9218C1A8d36169e0c40C01b856A83CE44153](https://sepolia.arbiscan.io/address/0x465E9218C1A8d36169e0c40C01b856A83CE44153) | [v1.3.0](https://github.com/sablier-labs/deployments/blob/main/airdrops/v1.3.0) |
 
+### Base Sepolia
+
+| Contract             | Address                                                                                                                       | Deployment                                                                      |
+| :------------------- | :---------------------------------------------------------------------------------------------------------------------------- | :------------------------------------------------------------------------------ |
+| SablierMerkleFactory | [0x6a3466398A66c7Ce801989B45C390cdC8717102D](https://sepolia.basescan.org/address/0x6a3466398A66c7Ce801989B45C390cdC8717102D) | [v1.3.0](https://github.com/sablier-labs/deployments/blob/main/airdrops/v1.3.0) |
+
 ### Blast Sepolia
 
 | Contract             | Address                                                                                                                       | Deployment                                                                      |
