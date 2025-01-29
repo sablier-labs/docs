@@ -145,6 +145,12 @@ discontinued. For previous deployments, please refer to the
 
 ## Testnets
 
+### Sepolia
+
+| Contract             | Address                                                                                                                       | Deployment                                                                      |
+| :------------------- | :---------------------------------------------------------------------------------------------------------------------------- | :------------------------------------------------------------------------------ |
+| SablierMerkleFactory | [0xf642751d1271c88bBb8786067de808B32a016Fd4](https://sepolia.etherscan.io/address/0xf642751d1271c88bBb8786067de808B32a016Fd4) | [v1.3.0](https://github.com/sablier-labs/deployments/blob/main/airdrops/v1.3.0) |
+
 ### Arbitrum Sepolia
 
 | Contract             | Address                                                                                                                      | Deployment                                                                      |
