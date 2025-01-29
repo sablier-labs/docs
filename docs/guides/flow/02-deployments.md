@@ -178,10 +178,10 @@ Sablier repositories on Github.
 
 ### Tangle
 
-| Contract          | Address                                                                                                                | Deployment                                                                  |
-| :---------------- | :--------------------------------------------------------------------------------------------------------------------- | :-------------------------------------------------------------------------- |
-| SablierFlow       | [0xcb099EfC90e88690e287259410B9AE63e1658CC6](https://explorer.tangle.tools/0xcb099EfC90e88690e287259410B9AE63e1658CC6) | [v1.1.0](https://github.com/sablier-labs/deployments/blob/main/flow/v1.1.0) |
-| FlowNFTDescriptor | [0xDf578C2c70A86945999c65961417057363530a1c](https://explorer.tangle.tools/0xDf578C2c70A86945999c65961417057363530a1c) | [v1.1.0](https://github.com/sablier-labs/deployments/blob/main/flow/v1.1.0) |
+| Contract          | Address                                                                                                                        | Deployment                                                                  |
+| :---------------- | :----------------------------------------------------------------------------------------------------------------------------- | :-------------------------------------------------------------------------- |
+| SablierFlow       | [0xcb099EfC90e88690e287259410B9AE63e1658CC6](https://explorer.tangle.tools/address/0xcb099EfC90e88690e287259410B9AE63e1658CC6) | [v1.1.0](https://github.com/sablier-labs/deployments/blob/main/flow/v1.1.0) |
+| FlowNFTDescriptor | [0xDf578C2c70A86945999c65961417057363530a1c](https://explorer.tangle.tools/address/0xDf578C2c70A86945999c65961417057363530a1c) | [v1.1.0](https://github.com/sablier-labs/deployments/blob/main/flow/v1.1.0) |
 
 ### zKSync Era
 
