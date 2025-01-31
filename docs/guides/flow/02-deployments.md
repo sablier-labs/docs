@@ -229,10 +229,10 @@ Sablier repositories on Github.
 
 ### Mode Sepolia
 
-| Contract          | Address                                                                                                                       | Deployment                                                                  |
-| :---------------- | :---------------------------------------------------------------------------------------------------------------------------- | :-------------------------------------------------------------------------- |
-| SablierFlow       | [0x1063D400953441F1C6d8EF6406e1E6aa5684B82d](https://sepolia.mode.network/address/0x1063D400953441F1C6d8EF6406e1E6aa5684B82d) | [v1.1.0](https://github.com/sablier-labs/deployments/blob/main/flow/v1.1.0) |
-| FlowNFTDescriptor | [0xe1eDdA64eea2173a015A3738171C3a1C263324C7](https://sepolia.mode.network/address/0xe1eDdA64eea2173a015A3738171C3a1C263324C7) | [v1.1.0](https://github.com/sablier-labs/deployments/blob/main/flow/v1.1.0) |
+| Contract          | Address                                                                                                                                | Deployment                                                                  |
+| :---------------- | :------------------------------------------------------------------------------------------------------------------------------------- | :-------------------------------------------------------------------------- |
+| SablierFlow       | [0x1063D400953441F1C6d8EF6406e1E6aa5684B82d](https://sepolia.explorer.mode.network/address/0x1063D400953441F1C6d8EF6406e1E6aa5684B82d) | [v1.1.0](https://github.com/sablier-labs/deployments/blob/main/flow/v1.1.0) |
+| FlowNFTDescriptor | [0xe1eDdA64eea2173a015A3738171C3a1C263324C7](https://sepolia.explorer.mode.network/address/0xe1eDdA64eea2173a015A3738171C3a1C263324C7) | [v1.1.0](https://github.com/sablier-labs/deployments/blob/main/flow/v1.1.0) |
 
 ### Optimism Sepolia
 

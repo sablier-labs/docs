@@ -183,9 +183,9 @@ discontinued. For previous deployments, please refer to the
 
 ### Mode Sepolia
 
-| Contract             | Address                                                                                                                       | Deployment                                                                      |
-| :------------------- | :---------------------------------------------------------------------------------------------------------------------------- | :------------------------------------------------------------------------------ |
-| SablierMerkleFactory | [0x659836D788cce324Ad8c445584b9c44c6a8c74b7](https://sepolia.mode.network/address/0x659836D788cce324Ad8c445584b9c44c6a8c74b7) | [v1.3.0](https://github.com/sablier-labs/deployments/blob/main/airdrops/v1.3.0) |
+| Contract             | Address                                                                                                                                | Deployment                                                                      |
+| :------------------- | :------------------------------------------------------------------------------------------------------------------------------------- | :------------------------------------------------------------------------------ |
+| SablierMerkleFactory | [0x659836D788cce324Ad8c445584b9c44c6a8c74b7](https://sepolia.explorer.mode.network/address/0x659836D788cce324Ad8c445584b9c44c6a8c74b7) | [v1.3.0](https://github.com/sablier-labs/deployments/blob/main/airdrops/v1.3.0) |
 
 ### Optimism Sepolia
 
