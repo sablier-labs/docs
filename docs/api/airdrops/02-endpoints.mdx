@@ -6,6 +6,7 @@ title: "Endpoints"
 
 import TheGraphSunset from "@site/docs/snippets/TheGraphSunset.mdx";
 import LinkPreview from "@site/src/components/LinkPreview";
+import DepricationWarning from "@site/docs/snippets/DepricationWarning.mdx";
 
 # Airdrops
 
@@ -19,27 +20,32 @@ Airdrops work in tandem with [vesting](/apps/features/vesting) as Merkle distrib
 [lockup](/api/lockup/overview) streams. Be sure to check out that part of the docs too.
 
 <TheGraphSunset />
+<DepricationWarning />
 
 ### Endpoints
 
-| Chain            | Explorer                                                          | Studio[^2]                              | Decentralized Network[^1]                     |
-| ---------------- | ----------------------------------------------------------------- | --------------------------------------- | --------------------------------------------- |
-| Ethereum         | [sablier-v2-ms][v2-explorer-ms-ethereum]                          | [Studio][v2-studio-ms-ethereum]         | [De. Network][v2-network-ms-ethereum]         |
-| Arbitrum         | [sablier-v2-ms-arbitrum][v2-explorer-ms-arbitrum]                 | [Studio][v2-studio-ms-arbitrum]         | [De. Network][v2-network-ms-arbitrum]         |
-| Arbitrum Sepolia | [sablier-v2-ms-arbitrum-sepolia][v2-explorer-ms-arbitrum-sepolia] | [Studio][v2-studio-ms-arbitrum-sepolia] | [De. Network][v2-network-ms-arbitrum-sepolia] |
-| Avalanche        | [sablier-v2-ms-avalanche][v2-explorer-ms-avalanche]               | [Studio][v2-studio-ms-avalanche]        | [De. Network][v2-network-ms-avalanche]        |
-| Base             | [sablier-v2-ms-base][v2-explorer-ms-base]                         | [Studio][v2-studio-ms-base]             | [De. Network][v2-network-ms-base]             |
-| Blast            | [sablier-v2-ms-blast][v2-explorer-ms-blast]                       | [Studio][v2-studio-ms-blast]            | [De. Network][v2-network-ms-blast]            |
-| BNB Chain        | [sablier-v2-ms-bsc][v2-explorer-ms-bsc]                           | [Studio][v2-studio-ms-bsc]              | [De. Network][v2-network-ms-bsc]              |
-| Chiliz Chain     | [sablier-v2-ms-chiliz][v2-explorer-ms-chiliz]                     | [Studio][v2-studio-ms-chiliz]           | [De. Network][v2-network-ms-chiliz]           |
-| Gnosis           | [sablier-v2-ms-gnosis][v2-explorer-ms-gnosis]                     | [Studio][v2-studio-ms-gnosis]           | [De. Network][v2-network-ms-gnosis]           |
-| Lightlink        | [sablier-v2-ms-lightlink\*][v2-explorer-ms-lightlink]             | N/A                                     | [Lightlink Node\*][v2-custom-ms-lightlink]    |
-| Optimism         | [sablier-v2-ms-optimism][v2-explorer-ms-optimism]                 | [Studio][v2-studio-ms-optimism]         | [De. Network][v2-network-ms-optimism]         |
-| Optimism Sepolia | [sablier-v2-ms-optimism-sepolia][v2-explorer-ms-optimism-sepolia] | [Studio][v2-studio-ms-optimism-sepolia] | [De. Network][v2-network-ms-optimism-sepolia] |
-| Polygon          | [sablier-v2-ms-polygon][v2-explorer-ms-polygon]                   | [Studio][v2-studio-ms-polygon]          | [De. Network][v2-network-ms-polygon]          |
-| Scroll           | [sablier-v2-ms-scroll][v2-explorer-ms-scroll]                     | [Studio][v2-studio-ms-scroll]           | [De. Network][v2-network-ms-scroll]           |
-| Sepolia          | [sablier-v2-ms-sepolia][v2-explorer-ms-sepolia]                   | [Studio][v2-studio-ms-sepolia]          | [De. Network][v2-network-ms-sepolia]          |
-| zkSync           | [sablier-v2-ms-zksync][v2-explorer-ms-zksync]                     | [Studio][v2-studio-ms-zksync]           | [De. Network][v2-network-ms-zksync]           |
+| Chain            | Explorer                                                                | Studio[^2]                                 | Decentralized Network[^1]                        |
+| ---------------- | ----------------------------------------------------------------------- | ------------------------------------------ | ------------------------------------------------ |
+| Ethereum         | [sablier-airdrops-ethereum][explorer-airdrops-ethereum]                 | [Studio][studio-airdrops-ethereum]         | [De. Network][network-airdrops-ethereum]         |
+| Abstract         | [sablier-airdrops-abstract][explorer-airdrops-abstract]                 | [Studio][studio-airdrops-abstract]         | [De. Network][network-airdrops-abstract]         |
+| Arbitrum         | [sablier-airdrops-arbitrum][explorer-airdrops-arbitrum]                 | [Studio][studio-airdrops-arbitrum]         | [De. Network][network-airdrops-arbitrum]         |
+| Arbitrum Sepolia | [sablier-airdrops-arbitrum-sepolia][explorer-airdrops-arbitrum-sepolia] | [Studio][studio-airdrops-arbitrum-sepolia] | [De. Network][network-airdrops-arbitrum-sepolia] |
+| Avalanche        | [sablier-airdrops-avalanche][explorer-airdrops-avalanche]               | [Studio][studio-airdrops-avalanche]        | [De. Network][network-airdrops-avalanche]        |
+| Base             | [sablier-airdrops-base][explorer-airdrops-base]                         | [Studio][studio-airdrops-base]             | [De. Network][network-airdrops-base]             |
+| Blast            | [sablier-airdrops-blast][explorer-airdrops-blast]                       | [Studio][studio-airdrops-blast]            | [De. Network][network-airdrops-blast]            |
+| BNB Chain        | [sablier-airdrops-bsc][explorer-airdrops-bsc]                           | [Studio][studio-airdrops-bsc]              | [De. Network][network-airdrops-bsc]              |
+| Chiliz Chain     | [sablier-airdrops-chiliz][explorer-airdrops-chiliz]                     | [Studio][studio-airdrops-chiliz]           | [De. Network][network-airdrops-chiliz]           |
+| Gnosis           | [sablier-airdrops-gnosis][explorer-airdrops-gnosis]                     | [Studio][studio-airdrops-gnosis]           | [De. Network][network-airdrops-gnosis]           |
+| IoTeX            | [sablier-airdrops-iotex][explorer-airdrops-iotex]                       | [Studio][studio-airdrops-iotex]            | [De. Network][network-airdrops-iotex]            |
+| Linea            | [sablier-airdrops-linea][explorer-airdrops-linea]                       | [Studio][studio-airdrops-linea]            | [De. Network][network-airdrops-linea]            |
+| Lightlink        | [sablier-airdrops-lightlink\*][explorer-airdrops-lightlink]             | N/A                                        | [Lightlink Node\*][custom-airdrops-lightlink]    |
+| Mode             | [sablier-airdrops-mode][explorer-airdrops-mode]                         | [Studio][studio-airdrops-mode]             | [De. Network][network-airdrops-mode]             |
+| Optimism         | [sablier-airdrops-optimism][explorer-airdrops-optimism]                 | [Studio][studio-airdrops-optimism]         | [De. Network][network-airdrops-optimism]         |
+| Optimism Sepolia | [sablier-airdrops-optimism-sepolia][explorer-airdrops-optimism-sepolia] | [Studio][studio-airdrops-optimism-sepolia] | [De. Network][network-airdrops-optimism-sepolia] |
+| Polygon          | [sablier-airdrops-polygon][explorer-airdrops-polygon]                   | [Studio][studio-airdrops-polygon]          | [De. Network][network-airdrops-polygon]          |
+| Scroll           | [sablier-airdrops-scroll][explorer-airdrops-scroll]                     | [Studio][studio-airdrops-scroll]           | [De. Network][network-airdrops-scroll]           |
+| Sepolia          | [sablier-airdrops-sepolia][explorer-airdrops-sepolia]                   | [Studio][studio-airdrops-sepolia]          | [De. Network][network-airdrops-sepolia]          |
+| zkSync           | [sablier-airdrops-zksync][explorer-airdrops-zksync]                     | [Studio][studio-airdrops-zksync]           | [De. Network][network-airdrops-zksync]           |
 
 ### Code
 
@@ -106,118 +112,148 @@ recipient's claims.
 {/* --------------------------------------------------------------------------------------------------------------------------------- */}
 {/* --------------------------------------------------------------------------------------------------------------------------------- */}
 
+{/* Chain: Abstract */}
+
+[network-airdrops-abstract]:
+  https://gateway.thegraph.com/api/API_KEY/subgraphs/id/DRrf6mYEhRt9QieKvTjDHnSWcBm3GW96hpedMKVxLABx
+[explorer-airdrops-abstract]: https://thegraph.com/explorer/subgraphs/DRrf6mYEhRt9QieKvTjDHnSWcBm3GW96hpedMKVxLABx
+[studio-airdrops-abstract]: https://api.studio.thegraph.com/query/57079/sablier-airdrops-abstract/version/latest
+
 {/* Chain: Arbitrum */}
 
-[v2-network-ms-arbitrum]:
-  https://gateway-arbitrum.network.thegraph.com/api/API_KEY/subgraphs/id/CPCMKbUFEM8CzVbfic1y34qKbTrKADX9Du9QxsAMAwqU
-[v2-explorer-ms-arbitrum]: https://thegraph.com/explorer/subgraphs/CPCMKbUFEM8CzVbfic1y34qKbTrKADX9Du9QxsAMAwqU
-[v2-studio-ms-arbitrum]: https://api.studio.thegraph.com/query/57079/sablier-v2-ms-arbitrum/version/latest
+[network-airdrops-arbitrum]:
+  https://gateway.thegraph.com/api/API_KEY/subgraphs/id/HkHDg6NVVVeobhpcU4pTPMktyC25zd6xAQBGpYrWDgRr
+[explorer-airdrops-arbitrum]: https://thegraph.com/explorer/subgraphs/HkHDg6NVVVeobhpcU4pTPMktyC25zd6xAQBGpYrWDgRr
+[studio-airdrops-arbitrum]: https://api.studio.thegraph.com/query/57079/sablier-airdrops-arbitrum/version/latest
 
 {/* Chain: Arbitrum Sepolia */}
 
-[v2-network-ms-arbitrum-sepolia]:
-  https://gateway-arbitrum.network.thegraph.com/api/API_KEY/subgraphs/id/BBJgy9RANbViGedeWTrVpH2bwm22E3niEzWcqHPMGtna
-[v2-explorer-ms-arbitrum-sepolia]: https://thegraph.com/explorer/subgraphs/BBJgy9RANbViGedeWTrVpH2bwm22E3niEzWcqHPMGtna
-[v2-studio-ms-arbitrum-sepolia]:
-  https://api.studio.thegraph.com/query/57079/sablier-v2-ms-arbitrum-sepolia/version/latest
+[network-airdrops-arbitrum-sepolia]:
+  https://gateway.thegraph.com/api/API_KEY/subgraphs/id/3S7v3VkDq8XMBd8EFVhKur2Vk44xScaW8a4BRjoPuYWk
+[explorer-airdrops-arbitrum-sepolia]:
+  https://thegraph.com/explorer/subgraphs/3S7v3VkDq8XMBd8EFVhKur2Vk44xScaW8a4BRjoPuYWk
+[studio-airdrops-arbitrum-sepolia]:
+  https://api.studio.thegraph.com/query/57079/sablier-airdrops-arbitrum-sepolia/version/latest
 
 {/* Chain: Avalanche */}
 
-[v2-network-ms-avalanche]:
-  https://gateway-arbitrum.network.thegraph.com/api/API_KEY/subgraphs/id/2beDuAvmwbyFzJ95HAwfqNjnYT6nEnzbEfSNhfWGMyhJ
-[v2-explorer-ms-avalanche]: https://thegraph.com/explorer/subgraphs/2beDuAvmwbyFzJ95HAwfqNjnYT6nEnzbEfSNhfWGMyhJ
-[v2-studio-ms-avalanche]: https://api.studio.thegraph.com/query/57079/sablier-v2-ms-avalanche/version/latest
+[network-airdrops-avalanche]:
+  https://gateway.thegraph.com/api/API_KEY/subgraphs/id/CpbN5Ps25UzqfdoqYdrjoSK4Him6nwDvdLK6a2sGS1PA
+[explorer-airdrops-avalanche]: https://thegraph.com/explorer/subgraphs/CpbN5Ps25UzqfdoqYdrjoSK4Him6nwDvdLK6a2sGS1PA
+[studio-airdrops-avalanche]: https://api.studio.thegraph.com/query/57079/sablier-airdrops-avalanche/version/latest
 
 {/* Chain: Base */}
 
-[v2-network-ms-base]:
-  https://gateway-arbitrum.network.thegraph.com/api/API_KEY/subgraphs/id/DrfN5cbvcCmpQUSc5RE9T1UxtcnMREi1Rd2PgLzDZCo3
-[v2-explorer-ms-base]: https://thegraph.com/explorer/subgraphs/DrfN5cbvcCmpQUSc5RE9T1UxtcnMREi1Rd2PgLzDZCo3
-[v2-studio-ms-base]: https://api.studio.thegraph.com/query/57079/sablier-v2-ms-base/version/latest
+[network-airdrops-base]:
+  https://gateway.thegraph.com/api/API_KEY/subgraphs/id/4SxPXkQNifgBYqje2C4yP5gz69erZwtD7GuLWgXHSLGe
+[explorer-airdrops-base]: https://thegraph.com/explorer/subgraphs/4SxPXkQNifgBYqje2C4yP5gz69erZwtD7GuLWgXHSLGe
+[studio-airdrops-base]: https://api.studio.thegraph.com/query/57079/sablier-airdrops-base/version/latest
 
 {/* Chain: Blast */}
 
-[v2-network-ms-blast]:
-  https://gateway-arbitrum.network.thegraph.com/api/API_KEY/subgraphs/id/HVqkPvCRAvbxjx6YVmkk6w6rHPrqqtiymcGiQiMKPw8f
-[v2-explorer-ms-blast]: https://thegraph.com/explorer/subgraphs/HVqkPvCRAvbxjx6YVmkk6w6rHPrqqtiymcGiQiMKPw8f
-[v2-studio-ms-blast]: https://api.studio.thegraph.com/query/57079/sablier-v2-ms-blast/version/latest
+[network-airdrops-blast]:
+  https://gateway.thegraph.com/api/API_KEY/subgraphs/id/657bogqYaDSSeqsoJcJ1kRqGnc3jC15UmcVLzsYxyxKK
+[explorer-airdrops-blast]: https://thegraph.com/explorer/subgraphs/657bogqYaDSSeqsoJcJ1kRqGnc3jC15UmcVLzsYxyxKK
+[studio-airdrops-blast]: https://api.studio.thegraph.com/query/57079/sablier-airdrops-blast/version/latest
 
 {/* Chain: BSC */}
 
-[v2-network-ms-bsc]:
-  https://gateway-arbitrum.network.thegraph.com/api/API_KEY/subgraphs/id/8uU9qAw9fSzdjqebymGRXWCjtZ5DQCmUA6QzRA14ARpz
-[v2-explorer-ms-bsc]: https://thegraph.com/explorer/subgraphs/8uU9qAw9fSzdjqebymGRXWCjtZ5DQCmUA6QzRA14ARpz
-[v2-studio-ms-bsc]: https://api.studio.thegraph.com/query/57079/sablier-v2-ms-bsc/version/latest
+[network-airdrops-bsc]:
+  https://gateway.thegraph.com/api/API_KEY/subgraphs/id/FXQT42kQPvpMJgsF5Bs6CqpxVvPP1LBqEhWThCCLMeGL
+[explorer-airdrops-bsc]: https://thegraph.com/explorer/subgraphs/FXQT42kQPvpMJgsF5Bs6CqpxVvPP1LBqEhWThCCLMeGL
+[studio-airdrops-bsc]: https://api.studio.thegraph.com/query/57079/sablier-airdrops-bsc/version/latest
 
 {/* Chain: Chiliz */}
 
-[v2-network-ms-chiliz]:
-  https://gateway-arbitrum.network.thegraph.com/api/API_KEY/subgraphs/id/DdhRyXwhvEmKyioCk41m6Xu9fyaprsnp4gMWZ3bHYZJd
-[v2-explorer-ms-chiliz]: https://thegraph.com/explorer/subgraphs/DdhRyXwhvEmKyioCk41m6Xu9fyaprsnp4gMWZ3bHYZJd
-[v2-studio-ms-chiliz]: https://api.studio.thegraph.com/query/57079/sablier-v2-ms-chiliz/version/latest
+[network-airdrops-chiliz]:
+  https://gateway.thegraph.com/api/API_KEY/subgraphs/id/6LK1aqrhzZCp6c88MEBDAR1VDLpZQiXpBKkceJ5Lu4LU
+[explorer-airdrops-chiliz]: https://thegraph.com/explorer/subgraphs/6LK1aqrhzZCp6c88MEBDAR1VDLpZQiXpBKkceJ5Lu4LU
+[studio-airdrops-chiliz]: https://api.studio.thegraph.com/query/57079/sablier-airdrops-chiliz/version/latest
 
 {/* Chain: Gnosis */}
 
-[v2-network-ms-gnosis]:
-  https://gateway-arbitrum.network.thegraph.com/api/API_KEY/subgraphs/id/FViBHgu2TtaZZXspDBzACjuPYKtqVDysmH35pk3W3zJJ
-[v2-explorer-ms-gnosis]: https://thegraph.com/explorer/subgraphs/FViBHgu2TtaZZXspDBzACjuPYKtqVDysmH35pk3W3zJJ
-[v2-studio-ms-gnosis]: https://api.studio.thegraph.com/query/57079/sablier-v2-ms-gnosis/version/latest
+[network-airdrops-gnosis]:
+  https://gateway.thegraph.com/api/API_KEY/subgraphs/id/kQEY5PYbjx4SMKyMUwqJHRLDzKH1aUqGsf1cnibU7Kn
+[explorer-airdrops-gnosis]: https://thegraph.com/explorer/subgraphs/kQEY5PYbjx4SMKyMUwqJHRLDzKH1aUqGsf1cnibU7Kn
+[studio-airdrops-gnosis]: https://api.studio.thegraph.com/query/57079/sablier-airdrops-gnosis/version/latest
+
+{/* Chain: Iotex */}
+
+[network-airdrops-iotex]:
+  https://gateway.thegraph.com/api/API_KEY/subgraphs/id/G39uCzr1FDY7pBFe8DwShAxhMeC6dbZetutVg6wjtks3
+[explorer-airdrops-iotex]: https://thegraph.com/explorer/subgraphs/G39uCzr1FDY7pBFe8DwShAxhMeC6dbZetutVg6wjtks3
+[studio-airdrops-iotex]: https://api.studio.thegraph.com/query/57079/sablier-airdrops-gnosis/version/latest
+
+{/* Chain: Linea */}
+
+[network-airdrops-linea]:
+  https://gateway.thegraph.com/api/API_KEY/subgraphs/id/6koYFSd8FQizdQWLTdRpL1yTmAbpMgN1vZN5W6ajZiTN
+[explorer-airdrops-linea]: https://thegraph.com/explorer/subgraphs/6koYFSd8FQizdQWLTdRpL1yTmAbpMgN1vZN5W6ajZiTN
+[studio-airdrops-linea]: https://api.studio.thegraph.com/query/57079/sablier-airdrops-linea/version/latest
 
 {/* Chain: Lightlink */}
 
-[v2-explorer-ms-lightlink]:
-  https://graph.phoenix.lightlink.io/query/subgraphs/name/lightlink/sablier-v2-ms-lightlink/graphql
-[v2-custom-ms-lightlink]: https://graph.phoenix.lightlink.io/query/subgraphs/name/lightlink/sablier-v2-ms-lightlink
+[explorer-airdrops-lightlink]:
+  https://graph.phoenix.lightlink.io/query/subgraphs/name/lightlink/sablier-airdrops-lightlink/graphql
+[custom-airdrops-lightlink]: https://graph.phoenix.lightlink.io/query/subgraphs/name/lightlink/sablier-airdrops-lightlink
 
 {/* Chain: Mainnet | Ethereum */}
 
-[v2-explorer-ms-ethereum]: https://thegraph.com/explorer/subgraphs/FigCYTmdPtXbf4tgNiy5ZrtnYefz92hsMcwM4f9N5ZeZ
-[v2-studio-ms-ethereum]: https://api.studio.thegraph.com/query/57079/sablier-v2-ms/version/latest
-[v2-network-ms-ethereum]:
-  https://gateway-arbitrum.network.thegraph.com/api/API_KEY/subgraphs/id/FigCYTmdPtXbf4tgNiy5ZrtnYefz92hsMcwM4f9N5ZeZ
+[explorer-airdrops-ethereum]: https://thegraph.com/explorer/subgraphs/DFD73EcSue44R7mpHvXeyvcgaT8tR1iKakZFjBsiFpjs
+[studio-airdrops-ethereum]: https://api.studio.thegraph.com/query/57079/sablier-airdrops-ethereum/version/latest
+[network-airdrops-ethereum]:
+  https://gateway.thegraph.com/api/API_KEY/subgraphs/id/DFD73EcSue44R7mpHvXeyvcgaT8tR1iKakZFjBsiFpjs
+
+{/* Chain: Mode */}
+
+[network-airdrops-mode]:
+  https://gateway.thegraph.com/api/API_KEY/subgraphs/id/HZMkVX5c2qf7BqbidwpcQMsHGWTDdEKwVjnwenzo9s6m
+[explorer-airdrops-mode]: https://thegraph.com/explorer/subgraphs/HZMkVX5c2qf7BqbidwpcQMsHGWTDdEKwVjnwenzo9s6m
+[studio-airdrops-mode]: https://api.studio.thegraph.com/query/57079/sablier-airdrops-mode/version/latest
 
 {/* Chain: Optimism */}
 
-[v2-network-ms-optimism]:
-  https://gateway-arbitrum.network.thegraph.com/api/API_KEY/subgraphs/id/7iSmF69W4mQqtx6EfWXXn5s27Hrdh72etsPKVC9iE62U
-[v2-explorer-ms-optimism]: https://thegraph.com/explorer/subgraphs/7iSmF69W4mQqtx6EfWXXn5s27Hrdh72etsPKVC9iE62U
-[v2-studio-ms-optimism]: https://api.studio.thegraph.com/query/57079/sablier-v2-ms-optimism/version/latest
+[network-airdrops-optimism]:
+  https://gateway.thegraph.com/api/API_KEY/subgraphs/id/CHJtCNDzPqngpa1YJoaVrjuufZL6k6VkEkG9ZFUMQzF7
+[explorer-airdrops-optimism]: https://thegraph.com/explorer/subgraphs/CHJtCNDzPqngpa1YJoaVrjuufZL6k6VkEkG9ZFUMQzF7
+[studio-airdrops-optimism]: https://api.studio.thegraph.com/query/57079/sablier-airdrops-optimism/version/latest
 
 {/* Chain: Optimism Sepolia */}
 
-[v2-network-ms-optimism-sepolia]:
-  https://gateway-arbitrum.network.thegraph.com/api/API_KEY/subgraphs/id/CG5QddHKoABuN6KHZHYTHL7upg2iPTMYxi35Ey7jspkX
-[v2-explorer-ms-optimism-sepolia]: https://thegraph.com/explorer/subgraphs/CG5QddHKoABuN6KHZHYTHL7upg2iPTMYxi35Ey7jspkX
-[v2-studio-ms-optimism-sepolia]:
-  https://api.studio.thegraph.com/query/57079/sablier-v2-ms-optimism-sepolia/version/latest
+[network-airdrops-optimism-sepolia]:
+  https://gateway.thegraph.com/api/API_KEY/subgraphs/id/3kp1eR2T1XpvvLkSZ7Wtt45DbDaiykTes478RZ7zwTz
+[explorer-airdrops-optimism-sepolia]:
+  https://thegraph.com/explorer/subgraphs/3kp1eR2T1XpvvLkSZ7Wtt45DbDaiykTes478RZ7zwTz
+[studio-airdrops-optimism-sepolia]:
+  https://api.studio.thegraph.com/query/57079/sablier-airdrops-optimism-sepolia/version/latest
 
 {/* Chain: Polygon */}
 
-[v2-network-ms-polygon]:
-  https://gateway-arbitrum.network.thegraph.com/api/API_KEY/subgraphs/id/4r2pC3iyLbzytNa5phat3SWdMEyXG8fmnf1K89D7zP2G
-[v2-explorer-ms-polygon]: https://thegraph.com/explorer/subgraphs/4r2pC3iyLbzytNa5phat3SWdMEyXG8fmnf1K89D7zP2G
-[v2-studio-ms-polygon]: https://api.studio.thegraph.com/query/57079/sablier-v2-ms-polygon/version/latest
+[network-airdrops-polygon]:
+  https://gateway.thegraph.com/api/API_KEY/subgraphs/id/FRbBKiDyM5YpFAqHLXRfQWwQdMGzFL82hqoPXPpXzAHE
+[explorer-airdrops-polygon]: https://thegraph.com/explorer/subgraphs/FRbBKiDyM5YpFAqHLXRfQWwQdMGzFL82hqoPXPpXzAHE
+[studio-airdrops-polygon]: https://api.studio.thegraph.com/query/57079/sablier-airdrops-polygon/version/latest
 
 {/* Chain: Scroll */}
 
-[v2-network-ms-scroll]:
-  https://gateway-arbitrum.network.thegraph.com/api/API_KEY/subgraphs/id/F1QnrgBpsVKtiVzkLisEC2PDo6cjzLoAy5HhPdFRdjW
-[v2-explorer-ms-scroll]: https://thegraph.com/explorer/subgraphs/F1QnrgBpsVKtiVzkLisEC2PDo6cjzLoAy5HhPdFRdjW
-[v2-studio-ms-scroll]: https://api.studio.thegraph.com/query/57079/sablier-v2-ms-scroll/version/latest
+[network-airdrops-scroll]:
+  https://gateway.thegraph.com/api/API_KEY/subgraphs/id/Ev4xS8VxuoUcpgqz5A2BkTgQxQeskm4Fg41XzVJ2DX9
+[explorer-airdrops-scroll]: https://thegraph.com/explorer/subgraphs/Ev4xS8VxuoUcpgqz5A2BkTgQxQeskm4Fg41XzVJ2DX9
+[studio-airdrops-scroll]: https://api.studio.thegraph.com/query/57079/sablier-airdrops-scroll/version/latest
 
 {/* Chain: Sepolia */}
 
-[v2-network-ms-sepolia]:
-  https://gateway-arbitrum.network.thegraph.com/api/API_KEY/subgraphs/id/8UVeHt7rHA27XZhViugaW4nStiN332dHTDWVTNBLCqPc
-[v2-explorer-ms-sepolia]: https://thegraph.com/explorer/subgraphs/8UVeHt7rHA27XZhViugaW4nStiN332dHTDWVTNBLCqPc
-[v2-studio-ms-sepolia]: https://api.studio.thegraph.com/query/57079/sablier-v2-ms-sepolia/version/latest
+[network-airdrops-sepolia]:
+  https://gateway.thegraph.com/api/API_KEY/subgraphs/id/8PLGDyXEsPgRTAnozL7MAjmTUFY4TBzs8i4F9Pq3wwSh
+[explorer-airdrops-sepolia]: https://thegraph.com/explorer/subgraphs/8PLGDyXEsPgRTAnozL7MAjmTUFY4TBzs8i4F9Pq3wwSh
+[studio-airdrops-sepolia]: https://api.studio.thegraph.com/query/57079/sablier-airdrops-sepolia/version/latest
 
 {/* Chain: zkSync */}
 
-[v2-network-ms-zksync]:
-  https://gateway-arbitrum.network.thegraph.com/api/API_KEY/subgraphs/id/BboiKY7JCdznoqurdXRizL9UYD1YdQKajaj4gvUrPPEA
-[v2-explorer-ms-zksync]: https://thegraph.com/explorer/subgraphs/BboiKY7JCdznoqurdXRizL9UYD1YdQKajaj4gvUrPPEA
-[v2-studio-ms-zksync]: https://api.studio.thegraph.com/query/57079/sablier-v2-ms-zksync/version/latest
+[network-airdrops-zksync]:
+  https://gateway.thegraph.com/api/API_KEY/subgraphs/id/64iDUwNVWKukw67nqTXif5taEfLug4Qf1c2suAv5hrqN
+[explorer-airdrops-zksync]: https://thegraph.com/explorer/subgraphs/64iDUwNVWKukw67nqTXif5taEfLug4Qf1c2suAv5hrqN
+[studio-airdrops-zksync]: https://api.studio.thegraph.com/query/57079/sablier-airdrops-zksync/version/latest
 
 {/* --------------------------------------------------------------------------------------------------------------------------------- */}
 
