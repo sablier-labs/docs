@@ -150,11 +150,11 @@ Sablier repositories on Github.
 
 | Contract            | Address                                                                                                               | Deployment                                                                    |
 | :------------------ | :-------------------------------------------------------------------------------------------------------------------- | :---------------------------------------------------------------------------- |
-| SablierBatchLockup  | [0x88c94328D7EbDC0a5AC3d7EdbaEa02d10BA8b21E](https://iotexscan.io/address/0x88c94328D7EbDC0a5AC3d7EdbaEa02d10BA8b21E) | [v2.0.0](https://github.com/sablier-labs/deployments/blob/main/lockup/v2.0.0) |
-| SablierLockup       | [0xB1C3BAdbF77C404F8711817Ca99C859406B92727](https://iotexscan.io/address/0xB1C3BAdbF77C404F8711817Ca99C859406B92727) | [v2.0.0](https://github.com/sablier-labs/deployments/blob/main/lockup/v2.0.0) |
-| LockupNFTDescriptor | [0x32c690d02519551b1824323Fd52cbBa977DcD9Ea](https://iotexscan.io/address/0x32c690d02519551b1824323Fd52cbBa977DcD9Ea) | [v2.0.0](https://github.com/sablier-labs/deployments/blob/main/lockup/v2.0.0) |
-| Helpers             | [0xBF61475be0B4977b6c9dCDE41d34da161fFC91de](https://iotexscan.io/address/0xBF61475be0B4977b6c9dCDE41d34da161fFC91de) | [v2.0.0](https://github.com/sablier-labs/deployments/blob/main/lockup/v2.0.0) |
-| VestingMath         | [0x7EA197Bd29F381ab6520f1220fC7aE9a18b9aE26](https://iotexscan.io/address/0x7EA197Bd29F381ab6520f1220fC7aE9a18b9aE26) | [v2.0.0](https://github.com/sablier-labs/deployments/blob/main/lockup/v2.0.0) |
+| SablierBatchLockup  | [0x5F448badebB50b9da6589C57B999725dc514B5D5](https://IoTeXscan.io/address/0x5F448badebB50b9da6589C57B999725dc514B5D5) | [v2.0.0](https://github.com/sablier-labs/deployments/blob/main/lockup/v2.0.0) |
+| SablierLockup       | [0xcaF51434a0af3c43Cd5569bC5eCc5aa21d28086E](https://IoTeXscan.io/address/0xcaF51434a0af3c43Cd5569bC5eCc5aa21d28086E) | [v2.0.0](https://github.com/sablier-labs/deployments/blob/main/lockup/v2.0.0) |
+| LockupNFTDescriptor | [0xf9920809bf97Fc038bdB8c5c2C2D100036d7cc8c](https://IoTeXscan.io/address/0xf9920809bf97Fc038bdB8c5c2C2D100036d7cc8c) | [v2.0.0](https://github.com/sablier-labs/deployments/blob/main/lockup/v2.0.0) |
+| Helpers             | [0xAe60adf8D373523076F68941A6C48dF4C18C68ef](https://IoTeXscan.io/address/0xAe60adf8D373523076F68941A6C48dF4C18C68ef) | [v2.0.0](https://github.com/sablier-labs/deployments/blob/main/lockup/v2.0.0) |
+| VestingMath         | [0xe3247c554200C2dFf6Ba3c2Ea5b2F5a50dbf6B32](https://IoTeXscan.io/address/0xe3247c554200C2dFf6Ba3c2Ea5b2F5a50dbf6B32) | [v2.0.0](https://github.com/sablier-labs/deployments/blob/main/lockup/v2.0.0) |
 
 ### LightLink
 
