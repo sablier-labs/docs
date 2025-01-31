@@ -28,12 +28,12 @@ Any updates or additional features will call for a new deployment of the protoco
 Came here looking for the previous Lockup deployments? Click below to see other versions as well as the in-app aliases
 assigned under our [naming convention](/api/lockup/the-graph/structure#identifying).
 
-| Version                                          | UI Aliases                                                       |
-| ------------------------------------------------ | ---------------------------------------------------------------- |
-| v2.0 (current)                                   | TBD                                                              |
-| [v1.2](/guides/lockup/previous-deployments/v1.2) | LD3 (Lockup Dynamic), LL3 (Lockup Linear), LT3 (Lockup Tranched) |
-| [v1.1](/guides/lockup/previous-deployments/v1.1) | LD2 (Lockup Dynamic), LL2 (Lockup Linear)                        |
-| [v1.0](/guides/lockup/previous-deployments/v1.0) | LD (Lockup Dynamic), LL (Lockup Linear)                          |
+| Version                                          | UI Aliases                                                                                                                            |
+| ------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------- |
+| v2.0 (current)                                   | LK (Lockup, given that all the functionalities are contain by a single contract this alias will be used for all the streaming shapes) |
+| [v1.2](/guides/lockup/previous-deployments/v1.2) | LD3 (Lockup Dynamic), LL3 (Lockup Linear), LT3 (Lockup Tranched)                                                                      |
+| [v1.1](/guides/lockup/previous-deployments/v1.1) | LD2 (Lockup Dynamic), LL2 (Lockup Linear)                                                                                             |
+| [v1.0](/guides/lockup/previous-deployments/v1.0) | LD (Lockup Dynamic), LL (Lockup Linear)                                                                                               |
 
 Or maybe you're looking for Legacy? [Click here](/guides/legacy/deployments).
 
