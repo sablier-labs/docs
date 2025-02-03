@@ -8,12 +8,17 @@ import FunctionPlot from "@site/src/components/FunctionPlot";
 
 :::note
 
-The code used to generate the gas benchmarks for the different stream curves can be found
-[here](https://github.com/sablier-labs/examples/tree/shapes-benchmark).
+- The code used to generate the gas benchmarks for the different stream curves can be found
+  [here](https://github.com/sablier-labs/examples/tree/shapes-benchmark).
+
+- If you are interested in learning how to programmatically create the curves shown below in Solidity, check out the
+  [examples](https://github.com/sablier-labs/examples/blob/main/lockup/) repository and the "CurvesCreator" files.
 
 :::
 
 ## Lockup Linear
+
+### Linear
 
 Lockup Linear streams are the simplest token distribution curve in Sablier. The streamed amount over time follows a
 straight line that goes up and to the right on a graph, which corresponds to the identity function $f(x) = x$:
@@ -26,11 +31,47 @@ intuitive it is. Imagine a diagonal line going up and to the right – that's ho
 
 :::info
 
-The gas cost to create this shape is approximately _150,000_ on Mainnet. This may vary due to multiple factors.
+The gas cost to create this shape is approximately _168,923_ on Mainnet. This may vary due to multiple factors.
 
 :::
 
-### Cliffs
+### Initial Unlock
+
+The Unlock Linear shape combines an initial immediate release of tokens with a steady, linear payout over time. This
+shape is ideal for employment contracts that include a signing bonus along with a regular payout schedule.
+
+<FunctionPlot
+  options={{
+    data: [
+      { fn: "25", range: [0, 0.15], color: "#f77423" },
+      { fn: "(x-0.15)*0.75015 + 25", range: [0.15, 100], color: "#f77423" },
+      {
+        points: [
+          [0.15, 0],
+          [0.15, 25],
+        ],
+        fnType: "points",
+        graphType: "polyline",
+        color: "#f77423",
+      },
+    ],
+  }}
+/>
+
+At the beginning of the stream, a fixed amount of tokens is instantly available to the recipient — this is your "signing
+bonus". Following this, the remaining tokens begin to stream continuously at a consistent rate until the end of the
+contract term — this is your "salary".
+
+Another use case is a token distribution to investors where a particular amount gets unlocked immediately followed by a
+linear vesting plan.
+
+:::info
+
+The gas cost to create this shape is approximately _191,182_ on Mainnet. This may vary due to multiple factors.
+
+:::
+
+### Cliff Unlock
 
 It is possible to attach a "cliff" to a Lockup Linear stream, which sets a cut-off point for releasing tokens. Prior to
 the cliff, the recipient cannot withdraw any tokens, but the stream continues to accrue them. After the cliff, the
@@ -61,7 +102,41 @@ streamed.
 
 :::info
 
-The gas cost to create this shape is approximately _150,000_ on Mainnet. This may vary due to multiple factors.
+The gas cost to create this shape is approximately _213,708_ on Mainnet. This may vary due to multiple factors.
+
+:::
+
+### Initial Cliff Unlock
+
+This shape is useful for companies who want to distribute tokens to their investors using a cliff followed by linear
+vesting but also want to unlock some liquidity at the beginning to be able to allow investors to bootstrap AMM pools.
+
+<FunctionPlot
+  options={{
+    data: [
+      { fn: "0", range: [0, 50], color: "#f77423" },
+      { fn: "x", color: "#f77423", range: [50, 100] },
+      {
+        points: [
+          [0.15, 0],
+          [0.15, 25],
+          [50, 25],
+          [50, 50],
+        ],
+        fnType: "points",
+        graphType: "polyline",
+        color: "#f77423",
+      },
+    ],
+  }}
+/>
+
+Initially, a set amount of tokens are made available to the recipient as an upfront payment. After this initial unlock,
+the tokens are held during the cliff period until the moment of time set. The release resumes in a linearly post-cliff.
+
+:::info
+
+The gas cost to create this shape is approximately _214,067_ on Mainnet. This may vary due to multiple factors.
 
 :::
 
@@ -78,13 +153,6 @@ These streams are powered by a number of user-provided [segments](/concepts/lock
 next article. What is important to note here is that with Lockup Dynamic, Sablier has evolved into a universal streaming
 engine, capable of supporting any custom streaming curve.
 
-:::note
-
-If you are interested in learning how to programmatically create the curves shown below in Solidity, check out the
-[examples](https://github.com/sablier-labs/examples/blob/main/lockup/LockupDynamicCurvesCreator.sol) repository.
-
-:::
-
 ### Exponential
 
 A fantastic use case for Lockup Dynamic is Exponential streams, a shape through which the recipient receives
@@ -98,7 +166,7 @@ linear fashion (Lockup Linear). This incentivizes long-term behavior and a const
 
 :::info
 
-The gas cost to create this shape is approximately _213,610_ on Mainnet. This may vary due to multiple factors.
+The gas cost to create this shape is approximately _219,629_ on Mainnet. This may vary due to multiple factors.
 
 :::
 
@@ -133,109 +201,7 @@ larger number of tokens.
 
 :::info
 
-The gas cost to create this shape is approximately _264,854_ on Mainnet. This may vary due to multiple factors.
-
-:::
-
-### Timelock
-
-The Timelock shape locks all tokens for a specified period. Users cannot access the tokens until the set period elapses.
-
-<FunctionPlot
-  options={{
-    data: [
-      {
-        points: [
-          [0.01, 0.01],
-          [90, 0],
-          [90, 99.7],
-          [99.99, 99.99],
-        ],
-        fnType: "points",
-        graphType: "polyline",
-        color: "#f77423",
-      },
-    ],
-  }}
-/>
-
-Once the set period elapses, the full amount becomes accessible to the recipient. This setup is particularly
-advantageous for projects seeking to stabilize token pricing and minimize market volatility, encouraging investors to
-maintain their stake over a more extended period.
-
-:::info
-
-The gas cost to create this shape is approximately _239,232_ on Mainnet. This may vary due to multiple factors.
-
-:::
-
-### Unlock Linear
-
-The Unlock Linear shape combines an initial immediate release of tokens with a steady, linear payout over time. This
-shape is ideal for employment contracts that include a signing bonus along with a regular payout schedule.
-
-<FunctionPlot
-  options={{
-    data: [
-      { fn: "25", range: [0, 0.15], color: "#f77423" },
-      { fn: "(x-0.15)*0.75015 + 25", range: [0.15, 100], color: "#f77423" },
-      {
-        points: [
-          [0.15, 0],
-          [0.15, 25],
-        ],
-        fnType: "points",
-        graphType: "polyline",
-        color: "#f77423",
-      },
-    ],
-  }}
-/>
-
-At the beginning of the stream, a fixed amount of tokens is instantly available to the recipient — this is your "signing
-bonus". Following this, the remaining tokens begin to stream continuously at a consistent rate until the end of the
-contract term — this is your "salary".
-
-Another use case is a token distribution to investors where a particular amount gets unlocked immediately followed by a
-linear vesting plan.
-
-:::info
-
-The gas cost to create this shape is approximately _239,232_ on Mainnet. This may vary due to multiple factors.
-
-:::
-
-### Unlock Cliff
-
-This shape is useful for companies who want to distribute tokens to their investors using a cliff followed by linear
-vesting but also want to unlock some liquidity at the beginning to be able to allow investors to bootstrap AMM pools.
-
-<FunctionPlot
-  options={{
-    data: [
-      { fn: "0", range: [0, 50], color: "#f77423" },
-      { fn: "x", color: "#f77423", range: [50, 100] },
-      {
-        points: [
-          [0.15, 0],
-          [0.15, 25],
-          [50, 25],
-          [50, 50],
-        ],
-        fnType: "points",
-        graphType: "polyline",
-        color: "#f77423",
-      },
-    ],
-  }}
-/>
-
-Initially, a set amount of tokens are made available to the recipient as an upfront payment. After this initial unlock,
-the tokens are held during the cliff period until the moment of time set. The release resumes in a linearly post-cliff.
-
-:::info
-
-The gas cost to create this shape is approximately _290,477_ on Mainnet. This may vary due to multiple factors.
+The gas cost to create this shape is approximately _274,420_ on Mainnet. This may vary due to multiple factors.
 
 :::
 
@@ -286,7 +252,7 @@ their tokens.
 
 :::info
 
-The gas cost to create this shape is approximately _392,982_ on Mainnet for four unlocks. This may vary as there are
+The gas cost to create this shape is approximately _299,268_ on Mainnet for four unlocks. This may vary as there are
 multiple factors to consider.
 
 :::
@@ -322,7 +288,39 @@ access to funds on a predictable, monthly basis.
 
 :::info
 
-The gas cost to create this shape is approximately _803,150_ on Mainnet for a period of exactly **one year**. This may
+The gas cost to create this shape is approximately _511,476_ on Mainnet for a period of exactly **one year**. This may
 vary as there are multiple factors to consider.
+
+:::
+
+### Timelock
+
+The Timelock shape locks all tokens for a specified period. Users cannot access the tokens until the set period elapses.
+
+<FunctionPlot
+  options={{
+    data: [
+      {
+        points: [
+          [0.01, 0.01],
+          [90, 0],
+          [90, 99.7],
+          [99.99, 99.99],
+        ],
+        fnType: "points",
+        graphType: "polyline",
+        color: "#f77423",
+      },
+    ],
+  }}
+/>
+
+Once the set period elapses, the full amount becomes accessible to the recipient. This setup is particularly
+advantageous for projects seeking to stabilize token pricing and minimize market volatility, encouraging investors to
+maintain their stake over a more extended period.
+
+:::info
+
+The gas cost to create this shape is approximately _219,700_ on Mainnet. This may vary due to multiple factors.
 
 :::
