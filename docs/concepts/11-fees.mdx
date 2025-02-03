@@ -4,102 +4,75 @@ sidebar_position: 11
 title: "Fees"
 ---
 
-import Link from "@docusaurus/Link";
-import { links } from "@site/src/constants";
+## UI Fee
 
-## Lockup
+UI fee is the fee charged by the Sablier interface when you do certain operations such as withdraw from streams or claim
+an airdrop.
 
-### Withdraw Fee
+### Streams
 
-The withdraw fee is the fee a stream recipient pays to the Sablier UI to withdraw from a Lockup stream. This fee is
-charged by the Sablier UI and is not enforced at the contract level.
+Sablier interface charges a fixed fee when you withdraw from a stream. This applies to both Lockup and Flow.
 
-:::tip[How much is the Withdraw Fee?]
+:::tip[What is the withdraw fee in UI?]
 
-It is currently fixed at **$1 per withdrawal**, regardless of the withdrawal amount. The fee is paid in the native
-token, i.e. you would pay in POL for streams on Polygon network, and in ETH for streams on Ethereum network.
-
-:::
-
-The withdraw fee applies only to Lockup v2.0. Streams created using earlier Lockup releases do not pay withdrawal fees.
-
-### Broker Fee
-
-A "broker" is any third-party entity that interacts with the Sablier Protocol on behalf of other users. These brokers
-have the ability to charge service fees for facilitating such interactions.
-
-Broker fees are particularly useful for front-end applications that integrate the Sablier Protocol. They enable
-front-end operators to levy a fee on each interaction facilitated through their platform.
-
-The broker fee can be charged as a percentage of the streamed amount, and it cannot be higher than 10%. In the event of
-cancellation, broker fee is non-refundable.
-
-:::info
-
-The official [Sablier Interface](https://app.sablier.com) does NOT currently charge any broker fees.
+It is currently fixed at **$1 per withdrawal**, regardless of the withdraw amount. The fee is paid in the native token,
+i.e. you would pay in POL for streams on Polygon network, and in ETH for streams on Ethereum network.
 
 :::
 
-:::note
+The UI fee applies only to Lockup v2.0 and Flow v1.1. You do not pay the UI fee for withdrawing from streams created
+using earlier releases.
 
-Interested in becoming a broker? Please fill out this <Link href={links.forms.call}>form</Link> and we will respond as
-soon as possible.
+### Airdrops
 
-:::
+Sablier interface charges a fixed fee when you claim from an airdrop campaign.
 
-## Merkle Airdrops
-
-### Claim Fee
-
-The claim fee is the fee paid by eligible recipients to the Merkle Airdrop protocol to claim an airdrop. This fee can be
-enforced at the contract level and would require recipients to pay a minimum of fee set in order to claim. Only the
-protocol admin has the authority to change it.
-
-Similar to Lockup's withdraw fee, this fee is also paid in the native token, i.e. you would pay in POL for streams on
-Polygon network, and in ETH for streams on Ethereum network.
-
-:::tip[How much is the Claim Fee?]
+:::tip[What is the Claim Fee in UI?]
 
 This fee is currently fixed at $3 per claim, irrespective of the claim amount. The fee is paid in the native token.
 
 :::
 
+The UI fee applies only to Merkle Airdrops v1.3. Campaigns created with earlier versions do not incur claim fee.
+
+## Contract Fee
+
+Contract fee is the fee charged by the smart contract to perform certain operations.
+
+### Merkle Airdrops
+
+Contract fee is ONLY implemented in the Merkle Airdrop contract for claiming an airdrop, however, its value is set to 0.
+
+Protocol admin has the ability to change this fee in the contract. Once set, this fee will only apply to the campaigns
+created after the fee change timestamp. Similar to the UI fees, this fee will also be paid in the native token, i.e. you
+would pay in POL for streams on Polygon network, and in ETH for streams on Ethereum network
+
+:::tip[What is the claim fee in Contract?]
+
+It is 0.
+
+:::
+
 The claim fee applies only to Merkle Airdrops v1.3. Campaigns created with earlier versions do not incur claim fee.
 
-## Flow
+## Fee Timeline
 
-### Withdraw Fee
+### UI Fee
 
-Similar to Lockup protocol, Flow protocol also has the withdraw fee i.e. the fee a stream recipient pays to the Sablier
-UI to withdraw from a Flow stream. This fee is charged by the Sablier UI and is not enforced at the contract level.
+| Protocol        | Timeline                   | Operation     | Fee |
+| --------------- | -------------------------- | ------------- | --- |
+| Flow Stream     | Feb 3, 2025 - present      | Withdraw      | $1  |
+| Lockup Stream   | Feb 3, 2025 - present      | Withdraw      | $1  |
+| Merkle Airdrops | Feb 3, 2025 - present      | Airdrop claim | $3  |
+| Lockup Stream   | July 3, 2023 - Feb 2, 2025 | Withdraw      | $0  |
+| Flow Stream     | Dec 4, 2024 - Feb 2, 2025  | Withdraw      | $0  |
+| Merkle Airdrops | Dec 18, 2023 - Feb 2, 2025 | Airdrop claim | $0  |
 
-:::tip[How much is the Withdraw Fee?]
+### Contract Fee
 
-It is currently fixed at **$1 per withdrawal**, regardless of the withdrawal amount. The fee is paid in the native
-token, i.e. you would pay in POL for streams on Polygon network, and in ETH for streams on Ethereum network.
-
-:::
-
-The withdraw fee applies only to Flow v1.1. Streams created using earlier Flow releases do not pay withdrawal fees.
-
-### Protocol Fee
-
-This is a fee that can be charged at the protocol level, capped at 10%. Only the protocol admin has the authority to
-change it.
-
-While Flow has the ability to charge a protocol fee, no fee is set at the moment. If a fee is introduced in the future,
-users will be notified in advance. When active, the fee will be deducted as a percentage from the withdrawn amount.
-
-:::info
-
-There is NO protocol fee enabled at the moment.
-
-:::
-
-### Broker Fee
-
-Similar to Lockup Protocol, the official [Sablier Interface](https://app.sablier.com) does NOT currently charge any
-broker fees.
+| Protocol        | Timeline               | Operation     | Fee |
+| --------------- | ---------------------- | ------------- | --- |
+| Merkle Airdrops | Dec 18, 2023 - present | Airdrop claim | $0  |
 
 ## Gas Fee
 
