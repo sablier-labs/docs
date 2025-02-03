@@ -4,26 +4,26 @@ sidebar_position: 2
 title: "Endpoints"
 ---
 
+import DeprecatedWarning from "@site/docs/snippets/DeprecatedWarning.mdx";
 import EnvioTip from "@site/docs/snippets/EnvioTip.mdx";
 import TheGraphSunset from "@site/docs/snippets/TheGraphSunset.mdx";
 import LinkPreview from "@site/src/components/LinkPreview";
-import DepricationWarning from "@site/docs/snippets/DepricationWarning.mdx";
 
 # Lockup
 
 ## The Graph
 
-This subgraph tracks events emitted by the `@sablier/v2-core` contracts. It deals with core protocol actions like
+This subgraph tracks events emitted by the `@sablier/lockup` contracts. It deals with core protocol actions like
 creating, withdrawing or transferring Lockup streams.
 
 <TheGraphSunset />
-<DepricationWarning />
+<DeprecatedWarning />
 
 ### Endpoints
 
 | Chain            | Explorer                                                            | Studio[^2]                               | Decentralized Network[^1]                      |
 | ---------------- | ------------------------------------------------------------------- | ---------------------------------------- | ---------------------------------------------- |
-| Ethereum         | [sablier-lockup-ethereum][explorer-lockup-ethereum]                          | [Studio][studio-lockup-ethereum]         | [De. Network][network-lockup-ethereum]         |
+| Ethereum         | [sablier-lockup-ethereum][explorer-lockup-ethereum]                 | [Studio][studio-lockup-ethereum]         | [De. Network][network-lockup-ethereum]         |
 | Abstract         | [sablier-lockup-abstract][explorer-lockup-abstract]                 | [Studio][studio-lockup-abstract]         | [De. Network][network-lockup-abstract]         |
 | Arbitrum         | [sablier-lockup-arbitrum][explorer-lockup-arbitrum]                 | [Studio][studio-lockup-arbitrum]         | [De. Network][network-lockup-arbitrum]         |
 | Arbitrum Sepolia | [sablier-lockup-arbitrum-sepolia][explorer-lockup-arbitrum-sepolia] | [Studio][studio-lockup-arbitrum-sepolia] | [De. Network][network-lockup-arbitrum-sepolia] |
@@ -57,8 +57,8 @@ creating, withdrawing or transferring Lockup streams.
 
 <EnvioTip />
 
-The `lockup-envio` indexer tracks events emitted by the `@sablier/v2-core` contracts. It deals with core protocol
-actions like creating, withdrawing, or transferring Lockup streams.
+The `lockup-envio` indexer tracks events emitted by the `@sablier/lockup` contracts. It deals with core protocol actions
+like creating, withdrawing, or transferring Lockup streams.
 
 ### Endpoints
 

@@ -4,15 +4,15 @@ sidebar_position: 2
 title: "Endpoints"
 ---
 
+import DeprecatedWarning from "@site/docs/snippets/DeprecatedWarning.mdx";
 import TheGraphSunset from "@site/docs/snippets/TheGraphSunset.mdx";
 import LinkPreview from "@site/src/components/LinkPreview";
-import DepricationWarning from "@site/docs/snippets/DepricationWarning.mdx";
 
 # Airdrops
 
 ## The Graph
 
-This subgraph tracks events emitted by the `@sablier/v2-periphery` contracts, specifically the ones in charge of merkle
+This subgraph tracks events emitted by the `@sablier/airdrops` contracts, specifically the ones in charge of merkle
 distributions. It deals with airdrops-specific actions like the factory creating an airstream campaign, admin clawbacks,
 or users claiming stream NFTs as defined in the attached Merkle tree.
 
@@ -20,7 +20,7 @@ Airdrops work in tandem with [vesting](/apps/features/vesting) as Merkle distrib
 [lockup](/api/lockup/overview) streams. Be sure to check out that part of the docs too.
 
 <TheGraphSunset />
-<DepricationWarning />
+<DeprecatedWarning />
 
 ### Endpoints
 
@@ -58,9 +58,9 @@ Airdrops work in tandem with [vesting](/apps/features/vesting) as Merkle distrib
 
 ## Envio
 
-This indexers tracks the events emitted by the `@sablier/v2-periphery` contracts, specifically the ones in charge of
-merkle distributions. It deals with airdrops-specific actions like the factory creating an airstream campaign, admin
-clawbacks, or users claiming stream NFTs as defined in the attached Merkle tree.
+This indexers tracks the events emitted by the `@sablier/airdrops` contracts, specifically the ones in charge of merkle
+distributions. It deals with airdrops-specific actions like the factory creating an airstream campaign, admin clawbacks,
+or users claiming stream NFTs as defined in the attached Merkle tree.
 
 :::tip Chains: Individual vs. Aggregated
 
@@ -195,7 +195,8 @@ recipient's claims.
 
 [explorer-airdrops-lightlink]:
   https://graph.phoenix.lightlink.io/query/subgraphs/name/lightlink/sablier-airdrops-lightlink/graphql
-[custom-airdrops-lightlink]: https://graph.phoenix.lightlink.io/query/subgraphs/name/lightlink/sablier-airdrops-lightlink
+[custom-airdrops-lightlink]:
+  https://graph.phoenix.lightlink.io/query/subgraphs/name/lightlink/sablier-airdrops-lightlink
 
 {/* Chain: Mainnet | Ethereum */}
 
