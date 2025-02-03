@@ -300,7 +300,7 @@ const config: Config = {
           items: [
             {
               label: "Lockup Contracts",
-              href: "https://github.com/sablier-labs/v2-core",
+              href: "https://github.com/sablier-labs/lockup",
             },
             {
               label: "Lockup Integration Template",

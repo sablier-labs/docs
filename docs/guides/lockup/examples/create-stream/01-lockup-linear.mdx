@@ -5,28 +5,16 @@ title: "Lockup Linear"
 ---
 
 import AdmonitionSimpleCode from "@site/docs/snippets/AdmonitionSimpleCode.mdx";
-import CreateFunctions from "@site/docs/snippets/CreateFunctions.mdx";
-import LockupDeployment from "@site/docs/snippets/LockupDeployment.mdx";
-import LockupParamAsset from "@site/docs/snippets/LockupParamAsset.mdx";
-import LockupParamBroker from "@site/docs/snippets/LockupParamBroker.mdx";
-import LockupParamCancelable from "@site/docs/snippets/LockupParamCancelable.mdx";
-import LockupParamRecipient from "@site/docs/snippets/LockupParamRecipient.mdx";
-import LockupParamSender from "@site/docs/snippets/LockupParamSender.mdx";
-import LockupParamTotalAmount from "@site/docs/snippets/LockupParamTotalAmount.mdx";
-import LockupParamTransferable from "@site/docs/snippets/LockupParamTransferable.mdx";
+import { Deployment } from "@site/docs/snippets/Deployment.mdx";
+import LockupParam from "@site/docs/snippets/LockupParams.mdx";
+import TokenApproval from "@site/docs/snippets/TokenApproval.mdx";
 
-# Create a Lockup Linear stream
+# Create a Lockup Linear Stream
 
-Lockup Linear are streams with a strictly linear streaming function. In this guide, we will show you how to create a
-Lockup Linear stream using Solidity.
+Linear streams are streams with linear streaming function. In this guide, we will show you how to create a Lockup Linear
+stream using Solidity.
 
 This guide assumes that you have already gone through the [Protocol Concepts](/concepts/streaming) section.
-
-:::note
-
-This guide interacts with the Core contracts directly.
-
-:::
 
 <AdmonitionSimpleCode />
 
@@ -39,31 +27,33 @@ Declare the Solidity version used to compile the contract:
 pragma solidity >=0.8.22;
 ```
 
-Import the relevant symbols from `@sablier/v2-core`:
+Import the relevant symbols from `@sablier/lockup`:
 
 ```solidity
 import { IERC20 } from "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 import { ud60x18 } from "@prb/math/src/UD60x18.sol";
-import { ISablierV2LockupLinear } from "@sablier/v2-core/src/interfaces/ISablierV2LockupLinear.sol";
-import { Broker, LockupLinear } from "@sablier/v2-core/src/types/DataTypes.sol";
+import { ISablierLockup } from "@sablier/lockup/src/interfaces/ISablierLockup.sol";
+import { Broker, Lockup, LockupLinear } from "@sablier/lockup/src/types/DataTypes.sol";
 ```
 
 Create a contract called `LockupLinearStreamCreator`, and declare a constant `DAI` of type `IERC20` and a constant
-`LOCKUP_LINEAR` of type `ISablierV2LockupLinear`:
+`LOCKUP` of type `ISablierLockup`:
 
 ```solidity
 contract LockupLinearStreamCreator {
     IERC20 public constant DAI = IERC20(0x68194a729C2450ad26072b3D33ADaCbcef39D574);
-    ISablierV2LockupLinear public constant LOCKUP_LINEAR =
-        ISablierV2LockupLinear(0x3E435560fd0a03ddF70694b35b673C25c65aBB6C);
+    ISablierLockup public constant LOCKUP = ISablierLockup(0xC2Da366fD67423b500cDF4712BdB41d0995b0794);
 }
 ```
 
-<LockupDeployment />
+<Deployment protocol="Lockup" />
 
-<CreateFunctions />
+There are two create functions in the Lockup contract that can be used to create Linear streams:
 
-Which one you choose depends upon your use case. In this guide, we will use `createWithDurations`.
+- `createWithDurationsLL`: takes duration and calculates the start and end timestamps based on the provided durations.
+- `createWithTimestampsLL`: takes start and end timestamps.
+
+Which one you choose depends upon your use case. In this guide, we will use `createWithDurationsLL`.
 
 ## Function definition
 
@@ -76,76 +66,59 @@ function createStream(uint128 totalAmount) public returns (uint256 streamId) {
 }
 ```
 
-## ERC-20 steps
-
-To create a stream, the caller must approve the creator contract to pull the tokens from the calling address's account.
-Then, we have to also approve the Lockup linear contract to pull the assets that the creator contract will be in
-possession of after they are transferred from the calling address (you):
-
-```solidity
-// Transfer the provided amount of DAI tokens to this contract
-DAI.transferFrom(msg.sender, address(this), totalAmount);
-
-// Approve the Lockup linear contract to spend DAI
-DAI.approve(address(LOCKUP_LINEAR), totalAmount);
-```
-
-For more guidance on how to approve and transfer ERC-20 tokens, see
-[this article](https://ethereum.org/en/developers/docs/standards/tokens/erc-20/) on the Ethereum website.
+<TokenApproval />
 
 ## Parameters
 
-Lockup linear uses structs to encode the parameters of its create functions. The struct associated with
-`createWithDurations` is
-[`LockupLinear.CreateWithDurations`](/reference/lockup/core/types/library.LockupLinear#createwithdurations), and it can
-be initialized like this:
+The struct associated with `createWithDurationsLL` are
+[`Lockup.CreateWithDurations`](/reference/lockup/contracts/types/library.Lockup#createwithdurations) (a shared struct
+across all the lockup streams),
+[`LockupLinear.durations`](/reference/lockup/contracts/types/library.LockupLinear#durations) and
+[`LockupLinear.unlockamounts`](/reference/lockup/contracts/types/library.LockupLinear#unlockamounts).
 
 ```solidity
-LockupLinear.CreateWithDurations memory params;
+Lockup.CreateWithDurations memory params;
+LockupLinear.UnlockAmounts memory unlockAmounts;
+LockupLinear.Durations memory durations;
 ```
 
 Let's review each parameter in detail.
 
-<LockupParamSender />
-
-<LockupParamRecipient />
-
-<LockupParamTotalAmount />
-
-<LockupParamAsset />
-
-<LockupParamCancelable />
-
-<LockupParamTransferable />
+<LockupParam />
 
 ### Durations
 
-Struct containing (i) cliff period duration and (ii) total stream duration, both in seconds.
+Struct containing (i) cliff duration and (ii) total stream duration, both denoted in seconds.
 
 ```solidity
-params.durations = LockupLinear.Durations({
-    cliff: 4 weeks,
+durations = LockupLinear.Durations({
+    cliff: 0,
     total: 52 weeks
 });
 ```
 
-<LockupParamBroker />
+### Unlock Amounts
+
+Struct containing details on unlock amounts at start time and at cliff time.
+
+```solidity
+unlockAmounts = LockupLinear.UnlockAmounts({ start: 0, cliff: 0 });
+```
 
 ## Invoke the create function
 
-With all parameters set, we can now call the `createWithDurations` function, and assign the id of the newly created
+With all parameters set, we can now call the `createWithDurationsLL` function, and assign the id of the newly created
 stream to a variable:
 
 ```solidity
-streamId = LOCKUP_LINEAR.createWithDurations(params);
+streamId = LOCKUP.createWithDurationsLL(params, unlockAmounts, durations);
 ```
 
 ## Full code
 
-Below you can see the complete functioning code: a contract that creates Lockup Linear streams that start at
-`block.timestamp`. You can access the code on GitHub through
-[this link](https://github.com/sablier-labs/examples/blob/main/lockup/core/LockupLinearStreamCreator.sol).
+Below you can see the full code. You can also access the code on GitHub through
+[this link](https://github.com/sablier-labs/examples/blob/main/lockup/LockupLinearStreamCreator.sol).
 
 ```solidity reference title="Lockup Linear Stream Creator"
-https://github.com/sablier-labs/examples/blob/main/lockup/core/LockupLinearStreamCreator.sol
+https://github.com/sablier-labs/examples/blob/main/lockup/LockupLinearStreamCreator.sol
 ```

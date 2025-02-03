@@ -6,20 +6,14 @@ title: "Batch Lockup Dynamic"
 
 import AdmonitionSimpleCode from "@site/docs/snippets/AdmonitionSimpleCode.mdx";
 import BatchCommonSteps from "@site/docs/snippets/BatchCommonSteps.mdx";
-import LockupDeployment from "@site/docs/snippets/LockupDeployment.mdx";
+import { Deployment } from "@site/docs/snippets/Deployment.mdx";
 
-# Create a Batch of Lockup Dynamic Streams
+# Create a Batch of Dynamic Streams
 
-In this guide, we will show you how you can use Solidity to batch create dynamic streams via the Lockup's
-[Batch](/reference/lockup/periphery/contract.SablierV2BatchLockup) contract.
+In this guide, we will show you how you can use Solidity to batch create dynamic streams via the
+[Batch Lockup](/reference/lockup/contracts/contract.SablierBatchLockup) contract.
 
 This guide assumes that you have already gone through the [Protocol Concepts](/concepts/streaming) section.
-
-:::note
-
-This guide interacts with the Periphery contract.
-
-:::
 
 <AdmonitionSimpleCode />
 
@@ -32,38 +26,36 @@ Declare the Solidity version used to compile the contract:
 pragma solidity >=0.8.22;
 ```
 
-Now, import the relevant symbols from `@sablier/v2-core` and `@sablier/v2-periphery`:
+Now, import the relevant symbols from `@sablier/lockup`:
 
 ```solidity
 import { IERC20 } from "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 import { ud2x18 } from "@prb/math/src/UD2x18.sol";
 import { ud60x18 } from "@prb/math/src/UD60x18.sol";
-import { ISablierV2LockupDynamic } from "@sablier/v2-core/src/interfaces/ISablierV2LockupDynamic.sol";
-import { Broker, LockupDynamic } from "@sablier/v2-core/src/types/DataTypes.sol";
-import { ISablierV2BatchLockup } from "@sablier/v2-periphery/src/interfaces/ISablierV2BatchLockup.sol";
-import { BatchLockup } from "@sablier/v2-periphery/src/types/DataTypes.sol";
+import { ISablierBatchLockup } from "@sablier/lockup/src/interfaces/ISablierBatchLockup.sol";
+import { ISablierLockup } from "@sablier/lockup/src/interfaces/ISablierLockup.sol";
+import { BatchLockup, Broker, LockupDynamic } from "@sablier/lockup/src/types/DataTypes.sol";
 ```
 
-Create a contract called `BatchLDStreamCreator`, and declare a constant `DAI` of type `IERC20`, a constant
-`LOCKUP_DYNAMIC` of type `ISablierV2LockupDynamic`, and a constant `BATCH_LOCKUP` of type `ISablierV2BatchLockup`:
+Create a contract called `BatchLDStreamCreator`, and declare a constant `DAI` of type `IERC20`, a constant `LOCKUP` of
+type `ISablierLockup`, and a constant `BATCH_LOCKUP` of type `ISablierBatchLockup`:
 
 ```solidity
 contract BatchLDStreamCreator {
     IERC20 public constant DAI = IERC20(0x68194a729C2450ad26072b3D33ADaCbcef39D574);
-    ISablierV2LockupDynamic public constant LOCKUP_DYNAMIC =
-        ISablierV2LockupDynamic(0x73BB6dD3f5828d60F8b3dBc8798EB10fbA2c5636);
-    ISablierV2BatchLockup public constant BATCH_LOCKUP = ISablierV2BatchLockup(0x04A9c14b7a000640419aD5515Db4eF4172C00E31);
+    ISablierLockup public constant LOCKUP = ISablierLockup(0xC2Da366fD67423b500cDF4712BdB41d0995b0794);
+    ISablierBatchLockup public constant BATCH_LOCKUP = ISablierBatchLockup(0xd4294579236eE290668c8FdaE9403c4F00D914f0);
 }
 ```
 
-<LockupDeployment />
+<Deployment protocol="Lockup" />
 
 ## Batch create functions
 
-There are two batch create functions for the Lockup Dynamic contract:
+There are two batch create functions for the Dynamic streams:
 
-- [`createWithDurationsLD`](/reference/lockup/periphery/contract.SablierV2BatchLockup#createwithdurationsld)
-- [`createWithTimestampsLD`](/reference/lockup/periphery/contract.SablierV2BatchLockup#createwithtimestampsld)
+- [`createWithDurationsLD`](/reference/lockup/contracts/contract.SablierBatchLockup#createwithdurationsld)
+- [`createWithTimestampsLD`](/reference/lockup/contracts/contract.SablierBatchLockup#createwithtimestampsld)
 
 Which one you choose depends upon your use case. In this guide, we will use `createWithTimestampsLD`.
 
@@ -72,14 +64,14 @@ Which one you choose depends upon your use case. In this guide, we will use `cre
 ## Stream Parameters
 
 Given that we declared a `batchSize` of two, we need to define two
-[BatchLockup.CreateWithTimestampsLD](/reference/lockup/periphery/types/library.BatchLockup#createwithtimestampsld)
+[BatchLockup.CreateWithTimestampsLD](/reference/lockup/contracts/types/library.BatchLockup#createwithtimestampsld)
 structs:
 
 ```solidity
 // Declare the first stream in the batch
 BatchLockup.CreateWithTimestampsLD memory stream0;
-stream0.sender = address(0xABCD); // The sender to stream the assets, he will be able to cancel the stream
-stream0.recipient = address(0xCAFE); // The recipient of the streamed assets
+stream0.sender = address(0xABCD); // The sender to stream the tokens, he will be able to cancel the stream
+stream0.recipient = address(0xCAFE); // The recipient of the streamed tokens
 stream0.totalAmount = perStreamAmount; // The total amount of each stream, inclusive of all fees
 stream0.cancelable = true; // Whether the stream will be cancelable or not
 stream0.transferable = false; // Whether the recipient can transfer the NFT or not
@@ -105,8 +97,8 @@ To add some variety, we will change the parameters of the second stream:
 
 ```solidity
 BatchLockup.CreateWithTimestampsLD memory stream1;
-stream1.sender = address(0xABCD); // The sender to stream the assets, he will be able to cancel the stream
-stream1.recipient = address(0xBEEF); // The recipient of the streamed assets
+stream1.sender = address(0xABCD); // The sender to stream the tokens, he will be able to cancel the stream
+stream1.recipient = address(0xBEEF); // The recipient of the streamed tokens
 stream1.totalAmount = uint128(perStreamAmount); // The total amount of each stream, inclusive of all fees
 stream1.cancelable = false; // Whether the stream will be cancelable or not
 stream1.transferable = false; // Whether the recipient can transfer the NFT or not
@@ -148,10 +140,9 @@ streamIds = BATCH_LOCKUP.createWithTimestampsLD(LOCKUP_DYNAMIC, DAI, batch);
 
 ## Full code
 
-Below you can see the complete functioning code: a contract that batch creates Lockup Dynamic streams using Lockup's
-`Batch` that start at `block.timestamp`. You can access the code on GitHub through this
-[link](https://github.com/sablier-labs/examples/blob/main/lockup/periphery/BatchLDStreamCreator.sol).
+Below you can see the full code. You can also access the code on GitHub through
+[this link](https://github.com/sablier-labs/examples/blob/main/lockup/BatchLDStreamCreator.sol).
 
 ```solidity reference title="Batch Lockup Dynamic stream creator"
-https://github.com/sablier-labs/examples/blob/main/lockup/periphery/BatchLDStreamCreator.sol
+https://github.com/sablier-labs/examples/blob/main/lockup/BatchLDStreamCreator.sol
 ```

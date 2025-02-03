@@ -5,28 +5,16 @@ title: "Lockup Tranched"
 ---
 
 import AdmonitionSimpleCode from "@site/docs/snippets/AdmonitionSimpleCode.mdx";
-import CreateFunctions from "@site/docs/snippets/CreateFunctions.mdx";
-import LockupDeployment from "@site/docs/snippets/LockupDeployment.mdx";
-import LockupParamAsset from "@site/docs/snippets/LockupParamAsset.mdx";
-import LockupParamBroker from "@site/docs/snippets/LockupParamBroker.mdx";
-import LockupParamCancelable from "@site/docs/snippets/LockupParamCancelable.mdx";
-import LockupParamRecipient from "@site/docs/snippets/LockupParamRecipient.mdx";
-import LockupParamSender from "@site/docs/snippets/LockupParamSender.mdx";
-import LockupParamTotalAmount from "@site/docs/snippets/LockupParamTotalAmount.mdx";
-import LockupParamTransferable from "@site/docs/snippets/LockupParamTransferable.mdx";
+import { Deployment } from "@site/docs/snippets/Deployment.mdx";
+import LockupParam from "@site/docs/snippets/LockupParams.mdx";
+import TokenApproval from "@site/docs/snippets/TokenApproval.mdx";
 
-# Create a Lockup Tranched stream
+# Create a Lockup Tranched Stream
 
 Lockup Tranched are streams with discrete unlocks. In this guide, we will show you how to create a Lockup Tranched
 stream using Solidity.
 
 This guide assumes that you have already gone through the [Protocol Concepts](/concepts/streaming) section.
-
-:::note
-
-This guide interacts with the Core contracts directly.
-
-:::
 
 <AdmonitionSimpleCode />
 
@@ -39,31 +27,33 @@ Declare the Solidity version used to compile the contract:
 pragma solidity >=0.8.22;
 ```
 
-Import the relevant symbols from `@sablier/v2-core`:
+Import the relevant symbols from `@sablier/lockup`:
 
 ```solidity
 import { IERC20 } from "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 import { ud60x18 } from "@prb/math/src/UD60x18.sol";
-import { ISablierV2LockupTranched } from "@sablier/v2-core/src/interfaces/ISablierV2LockupTranched.sol";
-import { Broker, LockupTranched } from "@sablier/v2-core/src/types/DataTypes.sol";
+import { ISablierLockup } from "@sablier/lockup/src/interfaces/ISablierLockup.sol";
+import { Broker, Lockup, LockupTranched } from "@sablier/lockup/src/types/DataTypes.sol";
 ```
 
 Create a contract called `LockupTranchedStreamCreator`, and declare a constant `DAI` of type `IERC20` and a constant
-`LOCKUP_TRANCHED` of type `ISablierV2LockupTranched`:
+`LOCKUP` of type `ISablierLockup`:
 
 ```solidity
 contract LockupTranchedStreamCreator {
     IERC20 public constant DAI = IERC20(0x68194a729C2450ad26072b3D33ADaCbcef39D574);
-    ISablierV2LockupTranched public constant LOCKUP_TRANCHED =
-        ISablierV2LockupTranched(0x3a1beA13A8C24c0EA2b8fAE91E4b2762A59D7aF5);
+    ISablierLockup public constant LOCKUP = ISablierLockup(0xC2Da366fD67423b500cDF4712BdB41d0995b0794);
 }
 ```
 
-<LockupDeployment />
+<Deployment protocol="Lockup" />
 
-<CreateFunctions />
+There are two create functions in the Lockup contract that can be used to create Tranched streams:
 
-Which one you choose depends upon your use case. In this guide, we will use `createWithDurations`.
+- `createWithDurationsLT`: takes duration and calculates the tranche timestamps based on the provided durations.
+- `createWithTimestampsLT`: takes UNIX timestamps for tranches.
+
+Which one you choose depends upon your use case. In this guide, we will use `createWithDurationsLT`.
 
 ## Function definition
 
@@ -83,61 +73,37 @@ of the steps below:
 uint256 totalAmount = amount0 + amount1;
 ```
 
-## ERC-20 steps
-
-To create a stream, the caller must approve the creator contract to pull the tokens from the calling address's account.
-Then, we have to also approve the Lockup tranched contract to pull the assets that the creator contract will be in
-possession of after they are transferred from the calling address (you):
-
-```solidity
-// Transfer the provided amount of DAI tokens to this contract
-DAI.transferFrom(msg.sender, address(this), totalAmount);
-
-// Approve the Lockup tranched contract to spend DAI
-DAI.approve(address(LOCKUP_TRANCHED), totalAmount);
-```
-
-For more guidance on how to approve and transfer ERC-20 tokens, see
-[this article](https://ethereum.org/en/developers/docs/standards/tokens/erc-20/) on the Ethereum website.
+<TokenApproval />
 
 ## Parameters
 
-Lockup tranched uses structs to encode the parameters of its create functions. The struct associated with
-`createWithDurations` is
-[`LockupTranched.CreateWithDurations`](/reference/lockup/core/types/library.LockupTranched#createwithdurations), and it
-can be initialized like this:
+The struct associated with `createWithDurationsLT` are
+[`Lockup.CreateWithDurations`](/reference/lockup/contracts/types/library.Lockup#createwithdurations) (a shared struct
+across all the lockup streams) and
+[`LockupTranched.TrancheWithDuration`](/reference/lockup/contracts/types/library.LockupTranched#tranchewithduration).
 
 ```solidity
-LockupTranched.CreateWithDurations memory params;
+Lockup.CreateWithDurations memory params;
+LockupTranched.TrancheWithDuration[] memory tranches = new LockupTranched.TrancheWithDuration[](2);
 ```
 
 Let's review each parameter in detail.
 
-<LockupParamSender />
-
-<LockupParamRecipient />
-
-<LockupParamTotalAmount />
-
-<LockupParamAsset />
-
-<LockupParamCancelable />
-
-<LockupParamTransferable />
+<LockupParam />
 
 ### Tranches With Duration
 
-Tranches are what the protocol uses to compose the Lockup Tranched stream. For a full exposition of tranches, see the
+Tranches are what the protocol uses to compose the discrete unlocks. For a full exposition of tranches, see the
 [Tranches](/concepts/lockup/tranches) guide.
 
-Each tranche is characterized by a specific amount and timestamp. Because we are using `createWithDurations` in this
+Each tranche is characterized by a specific amount and timestamp. Because we are using `createWithDurationsLT` in this
 example, these tranches are supplied to the function in the form of an array containing
-[`LockupTranched.TrancheWithDuration`](/reference/lockup/core/types/library.LockupTranched#tranchewithduration) structs.
+[`LockupTranched.TrancheWithDuration`](/reference/lockup/contracts/types/library.LockupTranched#tranchewithduration)
+structs.
 
 Let's define two dummy tranches:
 
 ```solidity
-params.tranches = new LockupTranched.TrancheWithDuration[](2);
 params.tranches[0] = LockupTranched.TrancheWithDuration({
     amount: amount0,
     duration: uint40(4 weeks)
@@ -153,23 +119,20 @@ params.tranches[1] = (
 In this example, the first tranche (`amount0`) will unlock at the end of the 4 weeks after the stream was created and
 the second tranche (`amount1`) will unlock after further 6 weeks. Thus, the total amount will be unlocked in 10 weeks.
 
-<LockupParamBroker />
-
 ## Invoke the create function
 
-With all parameters set, we can now call the `createWithDurations` function, and assign the ID of the newly created
+With all parameters set, we can now call the `createWithDurationsLT` function, and assign the ID of the newly created
 stream to a variable:
 
 ```solidity
-streamId = LOCKUP_TRANCHED.createWithDurations(params);
+streamId = LOCKUP.createWithDurationsLT(params, tranches);
 ```
 
 ## Full code
 
-Below you can see the complete functioning code: a contract that creates a Lockup Tranched stream. You can access the
-code on GitHub through
-[this link](https://github.com/sablier-labs/examples/blob/main/lockup/core/LockupTranchedStreamCreator.sol).
+Below you can see the full code. You can also access the code on GitHub through
+[this link](https://github.com/sablier-labs/examples/blob/main/lockup/LockupTranchedStreamCreator.sol).
 
 ```solidity reference title="Lockup Tranched Stream Creator"
-https://github.com/sablier-labs/examples/blob/main/lockup/core/LockupTranchedStreamCreator.sol
+https://github.com/sablier-labs/examples/blob/main/lockup/LockupTranchedStreamCreator.sol
 ```

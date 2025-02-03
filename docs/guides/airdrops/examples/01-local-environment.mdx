@@ -1,0 +1,52 @@
+---
+id: "local-environment"
+sidebar_position: 1
+title: "Configure Your Local Environment"
+---
+
+import {
+  Introduction,
+  Prerequisite,
+  SetupWithFoundry,
+  InstallNpm,
+  FinalSteps,
+} from "@site/docs/snippets/LocalEnvironment.mdx";
+
+<Introduction protocol="Airdrops" />
+
+## Pre-requisites
+
+<Prerequisite />
+
+## Set up using Foundry template
+
+:::tip
+
+Make sure you are using the latest version of Foundry by running `foundryup`.
+
+:::
+
+<SetupWithFoundry protocol="Airdrops" />
+
+:::note
+
+You might notice that the CLI is `forge` rather than `foundry`. This is because Foundry is a toolkit, and `forge` is
+just one of the tools that comes with it.
+
+:::
+
+## Install Merkle Airdrops npm packages
+
+:::tip
+
+If you are integrating with `MerkleLL` or `MerkleLT`, you will also have to install
+[Lockup npm package](/guides/lockup/examples/local-environment#install-lockup-npm-packages). Both `MerkleLL` and
+`MerkleLT` contracts interact with Lockup protocol to setup up vesting for airdropped tokens.
+
+:::
+
+<InstallNpm protocol="Airdrops" />
+
+## Next steps
+
+<FinalSteps protocol="Airdrops" />

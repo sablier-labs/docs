@@ -1,6 +1,6 @@
 # ISablierFlowBase
 
-[Git Source](https://github.com/sablier-labs/flow/blob/ba8c67a35d9cfd4fe646c2ab7db2c40e93d7fd6f/src/interfaces/ISablierFlowBase.sol)
+[Git Source](https://github.com/sablier-labs/flow/blob/a0fa33d2843af0817e34970cdc05822ead31daaa/src/interfaces/ISablierFlowBase.sol)
 
 **Inherits:** IERC4906, IERC721Metadata, [IAdminable](/docs/reference/flow/contracts/interfaces/interface.IAdminable.md)
 
@@ -284,11 +284,23 @@ Protocol revenue accrued for the provided ERC-20 token, denoted in token's decim
 function protocolRevenue(IERC20 token) external view returns (uint128);
 ```
 
+### collectFees
+
+Collects the accrued fees by transferring them to the contract admin.
+
+Emits a [CollectFees](/docs/reference/flow/contracts/interfaces/interface.ISablierFlowBase.md#collectfees) event. Notes:
+
+- If the admin is a contract, it must be able to receive native token payments, e.g., ETH for Ethereum Mainnet.
+
+```solidity
+function collectFees() external;
+```
+
 ### collectProtocolRevenue
 
 Collect the protocol revenue accrued for the provided ERC-20 token.
 
-Emits
+Emits a
 [CollectProtocolRevenue](/docs/reference/flow/contracts/interfaces/interface.ISablierFlowBase.md#collectprotocolrevenue)
 event. Requirements:
 
@@ -310,7 +322,7 @@ function collectProtocolRevenue(IERC20 token, address to) external;
 
 Recover the surplus amount of tokens.
 
-Emits [Recover](/docs/reference/flow/contracts/interfaces/interface.ISablierFlowBase.md#recover) event. Notes:
+Emits a [Recover](/docs/reference/flow/contracts/interfaces/interface.ISablierFlowBase.md#recover) event. Notes:
 
 - The surplus amount is defined as the difference between the total balance of the contract for the provided ERC-20
   token and the sum of balances of all streams created using the same ERC-20 token. Requirements:
@@ -332,8 +344,8 @@ function recover(IERC20 token, address to) external;
 
 Sets a new NFT descriptor contract, which produces the URI describing the Sablier stream NFTs.
 
-Emits [SetNFTDescriptor](/docs/reference/flow/contracts/interfaces/interface.ISablierFlowBase.md#setnftdescriptor) and
-{BatchMetadataUpdate} events. Notes:
+Emits a [SetNFTDescriptor](/docs/reference/flow/contracts/interfaces/interface.ISablierFlowBase.md#setnftdescriptor) and
+{BatchMetadataUpdate} event. Notes:
 
 - Does not revert if the NFT descriptor is the same. Requirements:
 - `msg.sender` must be the contract admin.
@@ -352,8 +364,8 @@ function setNFTDescriptor(IFlowNFTDescriptor newNFTDescriptor) external;
 
 Sets a new protocol fee that will be charged on all the withdrawals from streams created with the provided ERC-20 token.
 
-Emits [SetProtocolFee](/docs/reference/flow/contracts/interfaces/interface.ISablierFlowBase.md#setprotocolfee) and
-{BatchMetadataUpdate} events. Notes:
+Emits a [SetProtocolFee](/docs/reference/flow/contracts/interfaces/interface.ISablierFlowBase.md#setprotocolfee) and
+{BatchMetadataUpdate} event. Notes:
 
 - Does not revert if the fee is the same.
 - It can be zero. Requirements:
@@ -372,6 +384,21 @@ function setProtocolFee(IERC20 token, UD60x18 newProtocolFee) external;
 | `newProtocolFee` | `UD60x18` | The new protocol fee, denoted as a fixed-point percentage where 1e18 is 100%. |
 
 ## Events
+
+### CollectFees
+
+Emitted when the accrued fees are collected.
+
+```solidity
+event CollectFees(address indexed admin, uint256 indexed feeAmount);
+```
+
+**Parameters**
+
+| Name        | Type      | Description                                                             |
+| ----------- | --------- | ----------------------------------------------------------------------- |
+| `admin`     | `address` | The address of the current contract admin, which has received the fees. |
+| `feeAmount` | `uint256` | The amount of collected fees.                                           |
 
 ### CollectProtocolRevenue
 

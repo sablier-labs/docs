@@ -26,8 +26,7 @@ allowance. See the [Allowances](#prerequisite-erc20-allowances) section below fo
 ### Step 1: Go to contract page
 
 Head over to our [deployments](/guides/lockup/deployments) list to pick the contract address you want to interact with.
-For each chain, that will be either `SablierV2LockupLinear`, `SablierV2LockupDynamic`, or `SablierV2LockupTranched`. In
-this tutorial, we will create a **LockupLinear** stream on Sepolia.
+In this tutorial, we will create a Lockup stream on Sepolia.
 
 Once you find the right contract, click on the address to access its explorer's page. Click on the "Contract" tab, and
 then on the "Write Contract" sub-tab.
@@ -44,34 +43,45 @@ You can now connect your wallet to the interface by clicking on "Connect to Web3
 
 We will now proceed to create our first stream. Let's go with the following parameters:
 
-- a `LockupLinear` stream
-- and a deposit of 20,000 DAI
-- starting Jan 1, 2025
-- ending Jan 1, 2026
-- with no cliff
+- a Lockup Linear stream
+- and a deposit of 100 DAI
+- starting Jan 27, 2025
+- ending Jan 27, 2026
+- with cliff until Jan 30, 2025 and cliff amount of 2 DAI
+- no token unlock at start time
 - non-cancelable
 - and transferrable
 
 As the start and end date are fixed, we'll be using the
-[`createWithTimestamps`](/reference/lockup/core/interfaces/interface.ISablierV2LockupLinear#createwithtimestamps)
+[`createwithtimestampsLL`](/reference/lockup/contracts/interfaces/interface.ISablierLockup#createwithtimestampsll)
 method. Please note that using
-[`createWithDurations`](/reference/lockup/core/interfaces/interface.ISablierV2LockupLinear#createwithdurations) is also
+[`createwithdurationsLL`](/reference/lockup/contracts/interfaces/interface.ISablierLockup#createwithdurationsll) is also
 possible if you specify durations instead of the timestamps.
 
-Open the **"createWithTimestamps"** method, and start filling in the stream details:
+Open the **"createwithtimestampsLL"** method, and start filling in the stream details:
+
+:::note
+
+All functions are marked as `payable`, however, its entirely optional to attach any value (in native token) to the
+transaction. For this example, we will not be attaching any value and therefore `payableAmount(ether)` will be 0.
+
+:::
 
 ![Etherscan 04](/img/etherscan-tutorial/04.webp)
 
 ```json
 {
-  "sender": "0xe0ae83a6b9cc4f24d0638dc27179f311671e4e2a",
+  "sender": "0xf26994E6Af0b95cCa8DFA22A0BC25E1f38a54C42",
   "recipient": "0xb4bf8a8475d1e8e9a2088f118ad0e2cdc2896183",
-  "totalAmount": 20000000000000000000000,
-  "asset": "0x97cb342cf2f6ecf48c1285fb8668f5a4237bf862",
+  "totalAmount": 100000000000000000000,
+  "token": "0x3DcBc355c5B5FdF45D2d2ccc8890d76C5b30394A",
   "cancelable": false,
   "transferable": true,
-  "timestamps": [1704067200, 0, 1735689600],
-  "broker": ["0x0000000000000000000000000000000000000000", 0]
+  "timestamps": [1737936000, 1769472000],
+  "shape": "",
+  "broker": ["0x0000000000000000000000000000000000000000", 0],
+  "unlockAmounts": ["0", "2000000000000000000"],
+  "cliffTime": 1738195200
 }
 ```
 
@@ -80,14 +90,17 @@ provide it like this:
 
 ```json
 [
-  "0xe0ae83a6b9cc4f24d0638dc27179f311671e4e2a",
+  "0xf26994E6Af0b95cCa8DFA22A0BC25E1f38a54C42",
   "0xb4bf8a8475d1e8e9a2088f118ad0e2cdc2896183",
-  "20000000000000000000000",
-  "0x97cb342cf2f6ecf48c1285fb8668f5a4237bf862",
+  100000000000000000000,
+  "0x3DcBc355c5B5FdF45D2d2ccc8890d76C5b30394A",
   false,
   true,
-  [1704067200, 0, 1735689600],
-  ["0x0000000000000000000000000000000000000000", 0]
+  [1737936000, 1769472000],
+  "",
+  ["0x0000000000000000000000000000000000000000", 0],
+  ["0", "2000000000000000000"],
+  1738195200
 ]
 ```
 
@@ -105,8 +118,8 @@ from Etherscan to learn how to correctly format input data for Write Contract ta
 :::
 
 As an example, in the screenshot below, we are providing input parameters for
-[`createWithTimestampsLL`](/reference/lockup/periphery/contract.SablierV2BatchLockup#createwithtimestampsll) function in
-[`SablierV2BatchLockup`](https://sepolia.etherscan.io/address/0x04A9c14b7a000640419aD5515Db4eF4172C00E31#writeContract)
+[`createWithTimestampsLL`](/reference/lockup/contracts/contract.SablierBatchLockup#createwithtimestampsll) function in
+[`SablierBatchLockup`](https://sepolia.etherscan.io/address/0x04A9c14b7a000640419aD5515Db4eF4172C00E31#writeContract)
 contract. As you can see, since `batch` requires a tuple and does not break it down into separate fields, we had to use
 the above method.
 
@@ -126,7 +139,7 @@ The address you want to stream tokens to. The owner of this address is the strea
 
 #### Total Amount
 
-This is the total amount of assets available to be streamed, **DECIMALS INCLUDED**. If the asset has 18 decimals, for
+This is the total amount of tokens available to be streamed, **DECIMALS INCLUDED**. If the asset has 18 decimals, for
 example, you will need to add eighteen zeros after the amount. Let's say you want to stream 20,000 DAI like in this
 example, you will need to fill in `20000000000000000000000`.
 
@@ -137,12 +150,12 @@ total amount should be equal to the streamed amount plus the broker fee amount.
 
 :::
 
-#### Asset
+#### Token
 
-The asset is the contract address of the ERC-20 token being streamed. You can obtain this from the
-[Sablier Interface](#step-1-go-to-token-page) or from any other
-[Etherscan explorer](https://etherscan.io/token/0x68194a729C2450ad26072b3D33ADaCbcef39D574). Please double check the
-token address is correct before continuing.
+The token is the contract address of the ERC-20 token being streamed. You can obtain this from the
+[Sablier Interface](#step-1-go-to-token-page) or from
+[Etherscan explorer](https://sepolia.etherscan.io/token/0x776b6fc2ed15d6bb5fc32e0c89de68683118c62a). Please double check
+the token address is correct before continuing.
 
 #### Cancelable
 
@@ -161,23 +174,30 @@ This flag cannot be changed later.
 
 #### Timestamps
 
-The `timestamps` field contains the start time, cliff time, and the end time of the stream, in this order. The values
-should be UNIX timestamps (represented in **seconds**). You can find a Unix timestamp converter
-[here](https://www.unixtimestamp.com/).
+The `timestamps` field contains the start time, and the end time of the stream, in this order. The values should be UNIX
+timestamps (represented in **seconds**). You can find a Unix timestamp converter [here](https://www.unixtimestamp.com/).
 
-If you prefer to not have a cliff, you can simply set the cliff time to 0, like in this example. If, however, you want
-to have a cliff, fill in the timestamp for the cliff there.
+#### Shape
 
-| Total Duration | Cliff Duration | [Start, Cliff, End]                    |
-| :------------- | :------------- | -------------------------------------- |
-| 1 year         | no cliff       | `[1704067200, 0, 1735689600]`          |
-| 1 year         | 1 day          | `[1704067200, 1704153600, 1735689600]` |
+The shape field can be used to specify the shape of the stream that you want the User Interface to display. This is an
+optional field and can be left empty.
 
 #### Broker
 
 An optional parameter that can be set in order to charge a fee as a percentage of `totalAmount`.
 
 You can set the `broker` field to address zero and `zero` fees. Read more about fees [here](/concepts/fees#broker-fee).
+
+#### Unlock Amounts
+
+The `unlockAmounts` field contains the amount of tokens that will be unlocked at the start time and at the cliff time.
+For this example, we do not want to unlock any amount at the start time, however, we want to unlock 2 DAI at the cliff
+time.
+
+#### Cliff Time
+
+If you prefer to not have a cliff, you can simply set the cliff time to 0. If, however, you want to have a cliff, fill
+in the timestamp for the cliff there.
 
 :::caution
 
@@ -194,10 +214,10 @@ your wallet, and your stream should appear like this:
 
 ![Etherscan 05](/img/etherscan-tutorial/05.webp)
 
-#### How about `createWithDurations`?
+#### How about [`createWithDurationsLL`](/reference/lockup/contracts/contract.SablierLockup#createwithdurationsll)?
 
-For the durations version, we'll replace the `timestamps` parameter with `durations` to represent the total duration of
-the stream (in seconds) and the duration of the cliff (in seconds).
+For the durations version, we'll replace the `timestamps` and `cliffTime` parameters with a single `durations` parameter
+to represent the total duration of the stream (in seconds) and the duration of the cliff (in seconds).
 
 ```json
 {
@@ -216,7 +236,7 @@ the stream (in seconds) and the duration of the cliff (in seconds).
 
 To withdraw from a stream using Etherscan, you will need to obtain the stream's ID. To obtain this without the Sablier
 Interface, find the transaction which created the stream on Etherscan. Here's an
-[example](https://sepolia.etherscan.io/tx/0xe1beef35643bd40ca17e8bf8ced365fe1cace475dbbf4ce4c41e7f299b741dce) of what it
+[example](https://sepolia.etherscan.io/tx/0xf40e0a5ccf134aaa889f2e5d040f5f4fc3bc157298cdac7a2a620a3d784ebbd1) of what it
 should look like.
 
 Once found, you will see the stream ID between the two brackets. Note that stream ID and "Token ID" are the same thing.
@@ -255,8 +275,8 @@ Head over to the **`withdraw`** method, and fill in the data.
 
 ```json
 {
-  "streamId": 169,
-  "to": "0xb4bf8a8475d1e8e9a2088f118ad0e2cdc2896183",
+  "streamId": 1,
+  "to": "0xb1bEF51ebCA01EB12001a639bDBbFF6eEcA12B9F",
   "amount": 100000000000000000000
 }
 ```
@@ -326,7 +346,7 @@ use a proxy pattern. For these, you have to use the "Write as Proxy" tab.
 ### Step 3: Send transaction
 
 For the purpose of creating a **LockupLinear** stream with Lockup, the spender will be the
-[SablierV2LockupLinear](/guides/lockup/deployments) contract.
+[SablierLockup](/guides/lockup/deployments) contract.
 
 As for the amount, you'll have to pad it with the right number of decimals. For DAI, that's 18 decimals, so a value of
 `100` will turn into `100 * 1e18` (100 followed by 18 zeroes). For USDC,that's 6 decimals, so a value of `100` will turn
@@ -335,7 +355,7 @@ the stream.
 
 ```json
 {
-  "spender": "0x3E435560fd0a03ddF70694b35b673C25c65aBB6C",
+  "spender": "0xd116c275541cdBe7594A202bD6AE4DBca4578462",
   "amount": 100000000000000000000
 }
 ```

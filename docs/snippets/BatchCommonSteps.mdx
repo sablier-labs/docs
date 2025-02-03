@@ -17,14 +17,14 @@ Next, declare a batch size, which is needed to calculate the transfer amount:
 // Create a batch of two streams
 uint256 batchSize = 2;
 
-// Calculate the combined amount of DAI assets to transfer to this contract
+// Calculate the combined amount of DAI to transfer to this contract
 uint256 transferAmount = perStreamAmount * batchSize;
 ```
 
 ## ERC-20 steps
 
 To create a stream, the caller must approve the creator contract to pull the tokens from the calling address's account.
-Then, we have to also approve the `Batch` contract to pull the assets that the creator contract will be in possession of
+Then, we have to also approve the `Batch` contract to pull the tokens that the creator contract will be in possession of
 after they are transferred from the calling address (you):
 
 ```solidity

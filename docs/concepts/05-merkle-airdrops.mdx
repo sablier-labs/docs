@@ -1,0 +1,121 @@
+---
+id: "merkle-airdrops"
+sidebar_position: 5
+title: "Merkle Airdrops"
+---
+
+import Link from "@docusaurus/Link";
+import { links } from "@site/src/constants";
+
+:::note
+
+You can refer to the [airdrop section](/concepts/use-cases#merkle-airdrops) of our use-cases page to learn more about
+the benefits of streaming airdrops.
+
+:::
+
+There are three types of airdrop campaigns that you can setup using Sablier Merkle Airdrops.
+
+## Instant Airdrop
+
+Instant airdrops is the traditional way of running airdrops where there's no vesting period and tokens can instantly be
+claimed by the recipients.
+
+Eligible users receive airdrop tokens directly into their wallets at the claim time.
+
+## Airstreams
+
+Airstreams are vested airdrops in which instead of airdropping the entirety of the token allocation all at once, airdrop
+recipients receive a fraction of the tokens every second through a Sablier stream.
+
+The gist of Airstreams is that instead of airdropping the entirety of the tokens all at once, airdrop recipients receive
+a fraction of the tokens every second through a token stream.
+
+The beauty of it is that airdrop recipients are forced to think long-term and keep the project's future as their first
+and foremost priority. They are forced to, because instead of receiving all the tokens at once, they receive them over
+time in our user-friendly [Airstreams interface](https://app.sablier.com/airdrops).
+
+:::info
+
+An airdrop campaign can have a claim window of a few days, months, or even years. Alternatively, they can have no
+expiration. In case of Airstreams, you could, for example, configure the airdrop of your new token to vest over years,
+but the recipients get the streamed tokens only if a claim is made within that period of time.
+
+:::
+
+Airstreams not only create the right incentives for token holders, but also prevent them from dumping their tokens on
+day one, as has been the case for many airdrops in the past.
+
+There are two types of Airstream campaigns that you can create using Merkle Airdrop.
+
+### Ranged Airstreams
+
+This either uses Lockup Linear model or Lockup Tranched model depending on whether you use `MerkleLL` or `MerkleLT` to
+create the campaign. In Ranged Airstream campaigns, the vesting begins for all the recipients at the same time. This
+time had to be provided while creating the campaign.
+
+### Non-Ranged Airstreams
+
+In Non-Ranged Airstream campaigns, the vesting begins at the time of claiming. In this case, all recipients can have
+different start time for Vesting depending on when they claim.
+
+## White Label Solution
+
+Sablier Labs does not currently offer any white label solutions for Merkle Airdrops. This means that you cannot have
+your logo displayed in the claim page seen by the airstream recipients.
+
+However, we are actively exploring implementing this feature. Fill out <Link href={links.forms.call}>this form</Link>
+and we will respond as soon as possible.
+
+## How it Works
+
+Thanks to our battle-tested token distribution protocol, you can create Airdrop campaigns for thousands of recipients in
+a few clicks using our interface. Recipients and their airdropped allocations can be set by uploading a simple CSV
+spreadsheet in the [user interface](https://app.sablier.com/airdrops).
+
+The spreadsheet feature is the perfect fit for merkle airdrop campaigns: it allows you to upload a CSV file with tens of
+thousands of recipients and the interface will let each of these recipients claim with ease. You can download a tempalte
+of the CSV file [here](https://files.sablier.com/templates/airstream-template.csv).
+
+Another great advantage is that creating an airdrop campaign with thousands of recipients won't ruin you in terms of gas
+fees. When launching a campaign, a contract is deployed only storing the merkle root. Thus, users pay the gas fee to
+claim their airdrop. This is made possible by a data structure called Merkle Tree, which efficiently summarizes and
+verifies the integrity of large sets of data.
+
+:::info
+
+The contracts that implements Airstream Campaigns are called
+[`MerkleLL`](/reference/airdrops/contracts/contract.SablierMerkleLL) and
+[`MerkleLT`](/reference/airdrops/contracts/contract.SablierMerkleLT). If you are interested into Instant Airdrop
+Campaign, the contract code can be found [here](/reference/airdrops/contracts/contract.SablierMerkleInstant).
+
+:::
+
+When you create an Airdrop campaign, all you are doing is deploying a contract that allows for the recipients you put in
+to prove that they are eligible, and create a stream if they are. That's all it is.
+
+Additionally, you don't have to immediately fund the Campaign contract. You can just create the contract and at a later
+date fund it with the airdropped tokens.
+
+**This has three great implications:**
+
+1. **Recipients pay for the gas fees themselves to create the stream**, when they claim (the claim action creates the
+   stream). Creating a campaign with thousands of recipients would be incredibly costly if you had to pay for all the
+   gas fees.
+2. **You keep full control over unclaimed Tokens**. If a recipient doesn't claim their airdrop, it's not created, and
+   you remain in full control over their allocation.
+
+   - This applies only if the campaign has an expiration date. If there is no expiration date, you can only clawback
+     during the grace period, and the recipients can claim their airdrop at any time in the future.
+
+3. **You can retrieve your funds in case of misconfiguration**. There is a grace period during which you can retrieve
+   unclaimed funds. The grace period ends 7 days after the first claim is made. This is useful in case where you have
+   incorrectly configured the campaign or deposited more tokens than required.
+
+Once the campaign is launched, recipients can claim their airdrop and withdraw the underlying tokens that have already
+been streamed at any time using the Sablier Interface at [app.sablier.com](https://app.sablier.com).
+
+## Diagram
+
+If you want to have a detailed look into how these campaigns work at the contract level, you can head over to the
+[Diagrams page](/reference/airdrops/diagrams).

@@ -4,8 +4,8 @@ sidebar_position: 1
 title: "Set Up Your Contract"
 ---
 
-The "Stream Management" series will guide you through interacting with Lockup Core, showing how to withdraw, cancel,
-renounce, and transfer ownership of streams.
+The "Stream Management" series will guide you through how to withdraw, cancel, renounce, and transfer ownership of
+streams.
 
 Before diving in, please note the following:
 
@@ -20,33 +20,26 @@ With that said, let's begin. First, declare the Solidity version used to compile
 pragma solidity >=0.8.22;
 ```
 
-Import the relevant symbols from `@sablier/v2-core`:
+Import the relevant symbols from `@sablier/core`:
 
 ```solidity
-import { ISablierV2Lockup } from "@sablier/v2-core/src/interfaces/ISablierV2Lockup.sol";
+import { ISablierLockup } from "@sablier/lockup/src/interfaces/ISablierLockup.sol";
 ```
 
-:::info
-
-`ISablierV2Lockup` is a shared interface between `ISablierV2LockupLinear`, `ISablierV2LockupDynamic` and
-`ISablierV2LockupTranched`, allowing users to interact with either contract type using a single interface.
-
-:::
-
-Create a contract called `StreamManagement` and declare an immutable variable `sablier` of type `ISablierV2Lockup`:
+Create a contract called `StreamManagement` and declare an immutable variable `sablier` of type `ISablierLockup`:
 
 ```solidity
 contract StreamManagement {
-    ISablierV2Lockup public immutable sablier;
+    ISablierLockup public immutable sablier;
 }
 ```
 
 Just like in the create stream guides, the next step requires you to head over to the
-[Deployment Addresses](/guides/lockup/deployments) page and copy the address of the Lockup contract you intend to use
-(either Lockup Linear, Lockup Dynamic, or Lockup Tranched). Then, you can deploy the stream management contract:
+[Deployment Addresses](/guides/lockup/deployments) page and copy the address of the Lockup contract. Then, you can
+deploy the stream management contract:
 
 ```solidity
-constructor(ISablierV2Lockup sablier_) {
+constructor(ISablierLockup sablier_) {
     sablier = sablier_;
 }
 ```

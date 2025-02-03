@@ -1,6 +1,6 @@
 # SablierFlowBase
 
-[Git Source](https://github.com/sablier-labs/flow/blob/ba8c67a35d9cfd4fe646c2ab7db2c40e93d7fd6f/src/abstracts/SablierFlowBase.sol)
+[Git Source](https://github.com/sablier-labs/flow/blob/a0fa33d2843af0817e34970cdc05822ead31daaa/src/abstracts/SablierFlowBase.sol)
 
 **Inherits:** [Adminable](/docs/reference/flow/contracts/abstracts/abstract.Adminable.md),
 [ISablierFlowBase](/docs/reference/flow/contracts/interfaces/interface.ISablierFlowBase.md), ERC721
@@ -347,11 +347,23 @@ _See {IERC721Metadata-tokenURI}._
 function tokenURI(uint256 streamId) public view override(IERC721Metadata, ERC721) returns (string memory uri);
 ```
 
+### collectFees
+
+Collects the accrued fees by transferring them to the contract admin.
+
+Emits a {CollectFees} event. Notes:
+
+- If the admin is a contract, it must be able to receive native token payments, e.g., ETH for Ethereum Mainnet.
+
+```solidity
+function collectFees() external override;
+```
+
 ### collectProtocolRevenue
 
 Collect the protocol revenue accrued for the provided ERC-20 token.
 
-Emits {CollectProtocolRevenue} event. Requirements:
+Emits a {CollectProtocolRevenue} event. Requirements:
 
 - `msg.sender` must be the contract admin.
 - The accrued protocol revenue must be greater than zero.
@@ -371,7 +383,7 @@ function collectProtocolRevenue(IERC20 token, address to) external override only
 
 Recover the surplus amount of tokens.
 
-Emits {Recover} event. Notes:
+Emits a {Recover} event. Notes:
 
 - The surplus amount is defined as the difference between the total balance of the contract for the provided ERC-20
   token and the sum of balances of all streams created using the same ERC-20 token. Requirements:
@@ -393,7 +405,7 @@ function recover(IERC20 token, address to) external override onlyAdmin;
 
 Sets a new NFT descriptor contract, which produces the URI describing the Sablier stream NFTs.
 
-Emits {SetNFTDescriptor} and {BatchMetadataUpdate} events. Notes:
+Emits a {SetNFTDescriptor} and {BatchMetadataUpdate} event. Notes:
 
 - Does not revert if the NFT descriptor is the same. Requirements:
 - `msg.sender` must be the contract admin.
@@ -412,7 +424,7 @@ function setNFTDescriptor(IFlowNFTDescriptor newNFTDescriptor) external override
 
 Sets a new protocol fee that will be charged on all the withdrawals from streams created with the provided ERC-20 token.
 
-Emits {SetProtocolFee} and {BatchMetadataUpdate} events. Notes:
+Emits a {SetProtocolFee} and {BatchMetadataUpdate} event. Notes:
 
 - Does not revert if the fee is the same.
 - It can be zero. Requirements:

@@ -1,6 +1,6 @@
 # Broker
 
-[Git Source](https://github.com/sablier-labs/flow/blob/ba8c67a35d9cfd4fe646c2ab7db2c40e93d7fd6f/src/types/DataTypes.sol)
+[Git Source](https://github.com/sablier-labs/flow/blob/a0fa33d2843af0817e34970cdc05822ead31daaa/src/types/DataTypes.sol)
 
 Struct encapsulating the broker parameters.
 

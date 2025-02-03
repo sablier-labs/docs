@@ -5,7 +5,7 @@ title: "Batching Functions"
 ---
 
 import AdmonitionSimpleCode from "@site/docs/snippets/AdmonitionSimpleCode.mdx";
-import FlowDeployment from "@site/docs/snippets/FlowDeployment.mdx";
+import { Deployment } from "@site/docs/snippets/Deployment.mdx";
 
 A neat feature of Sablier Flow is the ability to batch multiple function calls into a single transaction. This is made
 possible by the [`Batch`](/reference/flow/contracts/abstracts/abstract.Batch) contract, which is inherited by
@@ -36,11 +36,11 @@ Create a contract called `FlowBatchable`, and declare a constant `USDC` of type 
 ```solidity
 contract FlowBatchable {
     IERC20 public constant USDC = IERC20(0xf08A50178dfcDe18524640EA6618a1f965821715);
-    ISablierFlow public constant FLOW = ISablierFlow(0x3a1beA13A8C24c0EA2b8fAE91E4b2762A59D7aF5);
+    ISablierFlow public constant FLOW = ISablierFlow(0x52ab22e769E31564E17D524b683264B65662A014);
 }
 ```
 
-<FlowDeployment />
+<Deployment protocol="Flow" />
 
 ## Create multiple streams
 

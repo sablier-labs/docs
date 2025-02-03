@@ -4,7 +4,7 @@ sidebar_position: 1
 
 # SablierFlow
 
-[Git Source](https://github.com/sablier-labs/flow/blob/ba8c67a35d9cfd4fe646c2ab7db2c40e93d7fd6f/src/SablierFlow.sol)
+[Git Source](https://github.com/sablier-labs/flow/blob/a0fa33d2843af0817e34970cdc05822ead31daaa/src/SablierFlow.sol)
 
 **Inherits:** [Batch](/docs/reference/flow/contracts/abstracts/abstract.Batch.md),
 [NoDelegateCall](/docs/reference/flow/contracts/abstracts/abstract.NoDelegateCall.md),
@@ -124,7 +124,8 @@ function refundableAmountOf(uint256 streamId)
 
 Returns the stream's status.
 
-_Reverts if `streamId` references a null stream._
+_Reverts if `streamId` references a null stream. Integrators should exercise caution when depending on the return value
+of this function as streams can be paused and resumed at any moment._
 
 ```solidity
 function statusOf(uint256 streamId) external view override notNull(streamId) returns (Flow.Status status);
@@ -200,7 +201,7 @@ function withdrawableAmountOf(uint256 streamId)
 
 Changes the stream's rate per second.
 
-Emits {AdjustFlowStream} and {MetadataUpdate} events. Notes:
+Emits a {AdjustFlowStream} and {MetadataUpdate} event. Notes:
 
 - It updates snapshot debt and snapshot time. Requirements:
 - Must not be delegate called.
@@ -214,6 +215,7 @@ function adjustRatePerSecond(
     UD21x18 newRatePerSecond
 )
     external
+    payable
     override
     noDelegateCall
     notNull(streamId)
@@ -250,6 +252,7 @@ function create(
     bool transferable
 )
     external
+    payable
     override
     noDelegateCall
     returns (uint256 streamId);
@@ -276,7 +279,7 @@ function create(
 Creates a new Flow stream by setting the snapshot time to `block.timestamp` and the balance to `amount`. The stream is
 wrapped in an ERC-721 NFT.
 
-Emits {Transfer}, {CreateFlowStream}, and {DepositFlowStream} events. Notes:
+Emits a {Transfer}, {CreateFlowStream}, and {DepositFlowStream} event. Notes:
 
 - Refer to the notes in {deposit}. Requirements:
 - Refer to the requirements in {create} and {deposit}.
@@ -291,6 +294,7 @@ function createAndDeposit(
     uint128 amount
 )
     external
+    payable
     override
     noDelegateCall
     returns (uint256 streamId);
@@ -317,7 +321,7 @@ function createAndDeposit(
 
 Makes a deposit in a stream.
 
-Emits {Transfer} and {DepositFlowStream} events. Requirements:
+Emits a {Transfer} and {DepositFlowStream} event. Requirements:
 
 - Must not be delegate called.
 - `streamId` must not reference a null or a voided stream.
@@ -332,6 +336,7 @@ function deposit(
     address recipient
 )
     external
+    payable
     override
     noDelegateCall
     notNull(streamId)
@@ -352,7 +357,7 @@ function deposit(
 
 Deposits tokens in a stream and pauses it.
 
-Emits {Transfer}, {DepositFlowStream} and {PauseFlowStream} events. Notes:
+Emits a {Transfer}, {DepositFlowStream} and {PauseFlowStream} event. Notes:
 
 - Refer to the notes in {deposit} and {pause}. Requirements:
 - Refer to the requirements in {deposit} and {pause}.
@@ -363,6 +368,7 @@ function depositAndPause(
     uint128 amount
 )
     external
+    payable
     override
     noDelegateCall
     notNull(streamId)
@@ -382,7 +388,7 @@ function depositAndPause(
 
 Deposits tokens in a stream.
 
-Emits {Transfer} and {DepositFlowStream} events. Notes:
+Emits a {Transfer} and {DepositFlowStream} event. Notes:
 
 - Refer to the notes in {deposit}. Requirements:
 - Must not be delegate called.
@@ -400,6 +406,7 @@ function depositViaBroker(
     Broker calldata broker
 )
     external
+    payable
     override
     noDelegateCall
     notNull(streamId)
@@ -432,6 +439,7 @@ Emits {PauseFlowStream} event. Notes:
 ```solidity
 function pause(uint256 streamId)
     external
+    payable
     override
     noDelegateCall
     notNull(streamId)
@@ -450,7 +458,7 @@ function pause(uint256 streamId)
 
 Refunds the provided amount of tokens from the stream to the sender's address.
 
-Emits {Transfer} and {RefundFromFlowStream} events. Requirements:
+Emits a {Transfer} and {RefundFromFlowStream} event. Requirements:
 
 - Must not be delegate called.
 - `streamId` must not reference a null stream.
@@ -463,6 +471,7 @@ function refund(
     uint128 amount
 )
     external
+    payable
     override
     noDelegateCall
     notNull(streamId)
@@ -481,7 +490,7 @@ function refund(
 
 Refunds the provided amount of tokens from the stream to the sender's address.
 
-Emits {Transfer}, {RefundFromFlowStream} and {PauseFlowStream} events. Notes:
+Emits a {Transfer}, {RefundFromFlowStream} and {PauseFlowStream} event. Notes:
 
 - Refer to the notes in {pause}. Requirements:
 - Refer to the requirements in {refund} and {pause}.
@@ -492,6 +501,7 @@ function refundAndPause(
     uint128 amount
 )
     external
+    payable
     override
     noDelegateCall
     notNull(streamId)
@@ -511,13 +521,14 @@ function refundAndPause(
 
 Refunds the entire refundable amount of tokens from the stream to the sender's address.
 
-Emits {Transfer} and {RefundFromFlowStream} events. Requirements:
+Emits a {Transfer} and {RefundFromFlowStream} event. Requirements:
 
 - Refer to the requirements in {refund}.
 
 ```solidity
 function refundMax(uint256 streamId)
     external
+    payable
     override
     noDelegateCall
     notNull(streamId)
@@ -549,6 +560,7 @@ function restart(
     UD21x18 ratePerSecond
 )
     external
+    payable
     override
     noDelegateCall
     notNull(streamId)
@@ -568,7 +580,7 @@ function restart(
 
 Restarts the stream with the provided rate per second, and makes a deposit.
 
-Emits {RestartFlowStream}, {Transfer}, and {DepositFlowStream} events. Notes:
+Emits a {RestartFlowStream}, {Transfer}, and {DepositFlowStream} event. Notes:
 
 - Refer to the notes in {restart} and {deposit}. Requirements:
 - `amount` must be greater than zero.
@@ -581,6 +593,7 @@ function restartAndDeposit(
     uint128 amount
 )
     external
+    payable
     override
     noDelegateCall
     notNull(streamId)
@@ -615,6 +628,7 @@ Emits {VoidFlowStream} event. Notes:
 ```solidity
 function void(uint256 streamId)
     external
+    payable
     override
     noDelegateCall
     notNull(streamId)
@@ -632,7 +646,7 @@ function void(uint256 streamId)
 
 Withdraws the provided `amount` minus the protocol fee to the provided `to` address.
 
-Emits {Transfer} and {WithdrawFromFlowStream} events. Notes:
+Emits a {Transfer} and {WithdrawFromFlowStream} event. Notes:
 
 - It sets the snapshot time to the `block.timestamp` if `amount` is greater than snapshot debt.
 - A protocol fee may be charged on the withdrawn amount if the protocol fee is enabled for the streaming token.
@@ -650,6 +664,7 @@ function withdraw(
     uint128 amount
 )
     external
+    payable
     override
     noDelegateCall
     notNull(streamId)
@@ -676,7 +691,7 @@ function withdraw(
 
 Withdraws the entire withdrawable amount minus the protocol fee to the provided `to` address.
 
-Emits {Transfer} and {WithdrawFromFlowStream} events. Notes:
+Emits a {Transfer} and {WithdrawFromFlowStream} event. Notes:
 
 - Refer to the notes in {withdraw}. Requirements:
 - Refer to the requirements in {withdraw}.
@@ -687,6 +702,7 @@ function withdrawMax(
     address to
 )
     external
+    payable
     override
     noDelegateCall
     notNull(streamId)

@@ -6,20 +6,14 @@ title: "Batch Lockup Linear"
 
 import AdmonitionSimpleCode from "@site/docs/snippets/AdmonitionSimpleCode.mdx";
 import BatchCommonSteps from "@site/docs/snippets/BatchCommonSteps.mdx";
-import LockupDeployment from "@site/docs/snippets/LockupDeployment.mdx";
+import { Deployment } from "@site/docs/snippets/Deployment.mdx";
 
-# Create a Batch of Lockup Linear Streams
+# Create a Batch of Linear Streams
 
-In this guide, we will show you how you can use Solidity to batch create linear streams via the Lockup's
-[Batch Lockup](/reference/lockup/periphery/contract.SablierV2BatchLockup) contract.
+In this guide, we will show you how you can use Solidity to batch create linear streams via the
+[Batch Lockup](/reference/lockup/contracts/contract.SablierBatchLockup) contract.
 
 This guide assumes that you have already gone through the [Protocol Concepts](/concepts/streaming) section.
-
-:::note
-
-This guide interacts with the Periphery contract.
-
-:::
 
 <AdmonitionSimpleCode />
 
@@ -32,37 +26,36 @@ Declare the Solidity version used to compile the contract:
 pragma solidity >=0.8.22;
 ```
 
-Now, import the relevant symbols from `@sablier/v2-core` and `@sablier/v2-periphery`:
+Now, import the relevant symbols from `@sablier/lockup`:
 
 ```solidity
 import { IERC20 } from "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 import { ud60x18 } from "@prb/math/src/UD60x18.sol";
-import { ISablierV2LockupLinear } from "@sablier/v2-core/src/interfaces/ISablierV2LockupLinear.sol";
-import { Broker, LockupLinear } from "@sablier/v2-core/src/types/DataTypes.sol";
-import { ISablierV2BatchLockup } from "@sablier/v2-periphery/src/interfaces/ISablierV2BatchLockup.sol";
-import { BatchLockup } from "@sablier/v2-periphery/src/types/DataTypes.sol";
+import { ISablierLockup } from "@sablier/lockup/src/interfaces/ISablierLockup.sol";
+import { Broker, LockupLinear } from "@sablier/lockup/src/types/DataTypes.sol";
+import { ISablierBatchLockup } from "@sablier/lockup/src/interfaces/ISablierBatchLockup.sol";
+import { BatchLockup } from "@sablier/lockup/src/types/DataTypes.sol";
 ```
 
-Create a contract called `BatchLLStreamCreator`, and declare a constant `DAI` of type `IERC20`, a constant
-`LOCKUP_LINEAR` of type `ISablierV2LockupLinear`, and a constant `BATCH_LOCKUP` of type `ISablierV2BatchLockup`:
+Create a contract called `BatchLLStreamCreator`, and declare a constant `DAI` of type `IERC20`, a constant `LOCKUP` of
+type `ISablierLockup`, and a constant `BATCH_LOCKUP` of type `ISablierBatchLockup`:
 
 ```solidity
 contract BatchLLStreamCreator {
     IERC20 public constant DAI = IERC20(0x68194a729C2450ad26072b3D33ADaCbcef39D574);
-    ISablierV2LockupLinear public constant LOCKUP_LINEAR =
-        ISablierV2LockupLinear(0x3E435560fd0a03ddF70694b35b673C25c65aBB6C);
-    ISablierV2BatchLockup public constant BATCH_LOCKUP = ISablierV2BatchLockup(0x04A9c14b7a000640419aD5515Db4eF4172C00E31);
+    ISablierLockup public constant LOCKUP = ISablierLockup(0xC2Da366fD67423b500cDF4712BdB41d0995b0794);
+    ISablierBatchLockup public constant BATCH_LOCKUP = ISablierBatchLockup(0xd4294579236eE290668c8FdaE9403c4F00D914f0);
 }
 ```
 
-<LockupDeployment />
+<Deployment protocol="Lockup" />
 
 ## Batch create functions
 
-There are two batch create functions for the Lockup Linear contract:
+There are two batch create functions for the Linear streams:
 
-- [`createWithDurationsLL`](/reference/lockup/periphery/contract.SablierV2BatchLockup#createwithdurationsll)
-- [`createWithTimestampsLL`](/reference/lockup/periphery/contract.SablierV2BatchLockup#createwithtimestampsll)
+- [`createWithDurationsLL`](/reference/lockup/contracts/contract.SablierBatchLockup#createwithdurationsll)
+- [`createWithTimestampsLL`](/reference/lockup/contracts/contract.SablierBatchLockup#createwithtimestampsll)
 
 Which one you choose depends upon your use case. In this guide, we will use `createWithDurationsLL`.
 
@@ -71,14 +64,14 @@ Which one you choose depends upon your use case. In this guide, we will use `cre
 ## Stream Parameters
 
 Given that we declared a `batchSize` of two, we need to define two
-[BatchLockup.CreateWithDurationsLL](/reference/lockup/periphery/types/library.BatchLockup#createwithdurationsll)
+[BatchLockup.CreateWithDurationsLL](/reference/lockup/contracts/types/library.BatchLockup#createwithdurationsll)
 structs:
 
 ```solidity
 // Declare the first stream in the batch
 BatchLockup.CreateWithDurationsLL memory stream0;
-stream0.sender = address(0xABCD); // The sender to stream the assets, he will be able to cancel the stream
-stream0.recipient = address(0xCAFE); // The recipient of the streamed assets
+stream0.sender = address(0xABCD); // The sender to stream the tokens, he will be able to cancel the stream
+stream0.recipient = address(0xCAFE); // The recipient of the streamed tokens
 stream0.totalAmount = perStreamAmount; // The total amount of each stream, inclusive of all fees
 stream0.cancelable = true; // Whether the stream will be cancelable or not
 stream0.transferable = false; // Whether the recipient can transfer the NFT or not
@@ -86,6 +79,10 @@ stream0.durations = LockupLinear.Durations({
     cliff: 4 weeks, // Assets will be unlocked only after 4 weeks
     total: 52 weeks // Setting a total duration of ~1 year
   });
+stream0.unlockAmounts = LockupLinear.UnlockAmounts({
+  start: 0, // Whether the stream will unlock a certain amount of tokens at the start time
+  cliff: 0 // Whether the stream will unlock a certain amount of tokens at the cliff time
+});
 stream0.broker = Broker(address(0), ud60x18(0)); // Optional parameter left undefined
 ```
 
@@ -94,14 +91,18 @@ To add some variety, we will change the parameters of the second stream:
 ```solidity
 // Declare the second stream in the batch
 BatchLockup.CreateWithDurationsLL memory stream1;
-stream1.sender = address(0xABCD); // The sender to stream the assets, he will be able to cancel the stream
-stream1.recipient = address(0xBEEF); // The recipient of the streamed assets
+stream1.sender = address(0xABCD); // The sender to stream the tokens, he will be able to cancel the stream
+stream1.recipient = address(0xBEEF); // The recipient of the streamed tokens
 stream1.totalAmount = perStreamAmount; // The total amount of each stream, inclusive of all fees
 stream1.cancelable = false; // Whether the stream will be cancelable or not
 stream1.transferable = false; // Whether the recipient can transfer the NFT or not
 stream1.durations = LockupLinear.Durations({
     cliff: 1 weeks, // Assets will be unlocked only after 1 week
     total: 26 weeks // Setting a total duration of ~6 months
+  });
+stream1.unlockAmounts = LockupLinear.UnlockAmounts({
+    start: 0, // Whether the stream will unlock a certain amount of tokens at the start time
+    cliff: 0 // Whether the stream will unlock a certain amount of tokens at the start time
   });
 stream1.broker = Broker(address(0), ud60x18(0)); // Optional parameter left undefined
 ```
@@ -126,10 +127,9 @@ streamIds = BATCH_LOCKUP.createWithDurationsLL(LOCKUP_LINEAR, DAI, batch);
 
 ## Full code
 
-Below you can see the complete functioning code: a contract that batch creates Lockup Linear streams using Lockup's
-`Batch` that start at `block.timestamp`. You can access the code on GitHub through this
-[link](https://github.com/sablier-labs/examples/blob/main/lockup/periphery/BatchLLStreamCreator.sol).
+Below you can see the full code. You can also access the code on GitHub through
+[this link](https://github.com/sablier-labs/examples/blob/main/lockup/BatchLLStreamCreator.sol).
 
 ```solidity reference title="Batch Lockup Linear stream creator"
-https://github.com/sablier-labs/examples/blob/main/lockup/periphery/BatchLLStreamCreator.sol
+https://github.com/sablier-labs/examples/blob/main/lockup/BatchLLStreamCreator.sol
 ```

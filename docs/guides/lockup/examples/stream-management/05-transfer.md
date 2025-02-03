@@ -21,14 +21,15 @@ ownership.
 You may remember from the [NFT](/concepts/nft) guide that every Lockup stream is wrapped in an
 [ERC-721](https://eips.ethereum.org/EIPS/eip-721) non-fungible token (NFT). One of the key benefits of this design is
 that the recipient of the stream has the ability to transfer the NFT to a different address, effectively redirecting the
-streaming of assets to that new address.
+streaming of tokens to that new address.
 
 To transfer ownership of a stream, it is recommended to invoke the
-[`withdrawMaxAndTransfer`](/reference/lockup/core/abstracts/abstract.SablierV2Lockup#withdrawmaxandtransfer) function,
-which withdraws all the unclaimed funds to the current recipient prior to transferring ownership to the new recipient:
+[`withdrawMaxAndTransfer`](/reference/lockup/contracts/abstracts/abstract.SablierLockupBase#withdrawmaxandtransfer)
+function, which withdraws all the unclaimed funds to the current recipient prior to transferring ownership to the new
+recipient:
 
 ```solidity reference title="Stream Management: Withdraw and Transfer Ownership"
-https://github.com/sablier-labs/examples/blob/main/lockup/core/StreamManagement.sol#L72-L74
+https://github.com/sablier-labs/examples/blob/main/lockup/StreamManagement.sol#L72-L74
 ```
 
 The withdrawal will be skipped if there are no unclaimed funds.
@@ -36,7 +37,7 @@ The withdrawal will be skipped if there are no unclaimed funds.
 If you want to transfer ownership without withdrawing the funds, you can use the `IERC721.transferFrom` function:
 
 ```solidity reference title="Stream Management: Transfer Ownership"
-https://github.com/sablier-labs/examples/blob/main/lockup/core/StreamManagement.sol#L67-L69
+https://github.com/sablier-labs/examples/blob/main/lockup/StreamManagement.sol#L67-L69
 ```
 
 :::caution

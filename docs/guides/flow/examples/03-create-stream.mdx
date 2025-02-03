@@ -5,7 +5,7 @@ title: "Create a Stream"
 ---
 
 import AdmonitionSimpleCode from "@site/docs/snippets/AdmonitionSimpleCode.mdx";
-import FlowDeployment from "@site/docs/snippets/FlowDeployment.mdx";
+import { Deployment } from "@site/docs/snippets/Deployment.mdx";
 
 # Create a Flow stream
 
@@ -42,11 +42,11 @@ type `ISablierFlow`:
 ```solidity
 contract FlowStreamCreator {
     IERC20 public constant USDC = IERC20(0xf08A50178dfcDe18524640EA6618a1f965821715);
-    ISablierFlow public constant FLOW = ISablierFlow(0x3a1beA13A8C24c0EA2b8fAE91E4b2762A59D7aF5);
+    ISablierFlow public constant FLOW = ISablierFlow(0x52ab22e769E31564E17D524b683264B65662A014);
 }
 ```
 
-<FlowDeployment />
+<Deployment protocol="Flow" />
 
 We will declare two functions, based on the amount desired to stream over a period of time.
 

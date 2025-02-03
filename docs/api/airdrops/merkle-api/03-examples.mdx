@@ -19,8 +19,8 @@ To get a hold of a campaign's IPFS CID, you can:
 
 <ol type="A">
   <li>
-    Check the [create](/reference/lockup/periphery/interfaces/interface.ISablierV2MerkleLockupFactory#events) events
-    emitted by the Merkle factory
+    Check the [create](/reference/airdrops/contracts/interfaces/interface.ISablierMerkleFactory#events) events emitted
+    by the Merkle factory
   </li>
   <li>Use the Sablier [subgraphs / indexers](/api/overview) to query for that particular piece of information.</li>
 </ol>
@@ -88,7 +88,7 @@ To get a hold of a `tokenId` linked to a claim you can:
 
 <ol type="A">
   <li>
-    Listen to the [claim](/reference/lockup/periphery/interfaces/interface.ISablierV2MerkleLL#claim) method and the
+    Listen to the [claim](/reference/airdrops/contracts/interfaces/interface.ISablierMerkleLL#claim) method and the
     Claim event emitted by the Merkle contract instance
   </li>
   <li>Use the Sablier [subgraphs / indexers](/api/overview) to query for that particular piece of information.</li>
@@ -139,8 +139,8 @@ For approach "B", run the following query against the official endpoints (make s
 
 To get the Stream NFT, using the same query as in option "B", retrieve the `lockup` contract (where the Stream NFT is
 issued) and its `tokenId`. With them you can call the
-[`tokenURI`](/reference/lockup/core/contract.SablierV2NFTDescriptor#tokenuri) method, which will return the SVG code of
-the onchain NFT.
+[`tokenURI`](/reference/lockup/contracts/contract.LockupNFTDescriptor#tokenuri) method, which will return the SVG code
+of the onchain NFT.
 
 :::note Extract the SVG tags
 
@@ -165,8 +165,8 @@ To check if a user has already claimed their stream from a campaign you can:
 
 <ol type="A">
   <li>
-    Call the [hasClaimed](/reference/lockup/periphery/interfaces/interface.ISablierV2MerkleLockup#hasclaimed) method
-    form the Merkle contract instance
+    Call the [hasClaimed](/reference/airdrops/contracts/interfaces/interface.ISablierMerkleBase#hasclaimed) method form
+    the Merkle contract instance
   </li>
   <li>Use the Sablier [subgraphs / indexers](/api/overview) to query for that particular piece of information.</li>
 </ol>

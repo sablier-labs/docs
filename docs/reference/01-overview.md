@@ -4,83 +4,84 @@ sidebar_position: 1
 title: "Overview"
 ---
 
-Both Lockup and Flow contracts are a binary smart contract system comprised of many contracts, libraries, and types.
-
-Although Flow is a separate protocol, it shares many similarities with Lockup. One key difference between the two is
-that Flow consists of a single contract whereas Lockup consists of multiple contracts. The Lockup contracts are divided
-into two categories:
-
-- **Lockup Core** provides the fundamental token distribution logic of the Lockup protocol. It contains LockupLinear,
-  LockupDynamic, and LockupTranched, the primary contracts that users will interact with.
-- **Lockup Periphery** contracts interact with one or more Lockup Core contracts but are not part of the Lockup Core.
-  They are an abstraction layer that enhance the security and the extensibility of the protocol without introducing
-  upgradeability. Lockup Periphery plays a key role in creating Airstream campaigns.
-
-Given the permissionless nature of the Lockup protocol, the Periphery has no special privileges and is only a fraction
-of possible periphery-like contracts. Users maintain the liberty to establish streams via the Core directly.
-
-The design of the Sablier smart contracts draws inspiration from the architectural principles of
+All Sablier protocols are a binary smart contract system comprised of many abstract contracts, libraries, and types. The
+design of the Sablier smart contracts draws inspiration from the architectural principles of
 [Uniswap](https://docs.uniswap.org/).
 
-## Lockup Core
+This section provides a detailed overview of the Sablier smart contracts, their designs, control flows and contract
+references.
 
-> [**Core Source Code**](https://github.com/sablier-labs/v2-core/tree/v1.2.0)
+## Lockup
 
-The Core consists of the distribution contracts (LockupLinear, LockupDynamic and LockupTranched), and an NFT descriptor.
+> [**Lockup Source Code**](https://github.com/sablier-labs/lockup/tree/release)
 
-### LockupLinear
-
-> [**LockupLinear Reference**](./lockup/core/contract.SablierV2LockupLinear)
-
-Creates and manages Lockup streams with a linear streaming function.
-
-### LockupDynamic
-
-> [**LockupDynamic Reference**](./lockup/core/contract.SablierV2LockupDynamic)
-
-Creates and manages Lockup streams with dynamic streaming functions.
-
-### LockupTranched
-
-> [**LockupTranched Reference**](./lockup/core/contract.SablierV2LockupTranched)
-
-Creates and manages Lockup streams with tranches.
-
-### NFTDescriptor
-
-> [**NFTDescriptor Reference**](./lockup/core/contract.SablierV2NFTDescriptor)
-
-Generates the URI describing the Sablier Lockup stream NFTs.
-
-## Lockup Periphery
-
-> [**Periphery Source Code**](https://github.com/sablier-labs/v2-periphery/tree/v1.2.0)
-
-The Periphery is a collection of contracts meant to make the Lockup protocol more modular while introducing
-functionalities such as [Airstreams](/concepts/lockup/airstreams). It consists of BatchLockup and Airstream related
-contracts (such as MerkleLockupFactory, MerkleLL and MerkleLT).
+The Lockup repo consists of the Sablier Lockup contract, public libraries, Batch Lockup contract and an NFT descriptor.
 
 ### BatchLockup
 
-> [**BatchLockup Reference**](./lockup/periphery/contract.SablierV2BatchLockup)
+> [**BatchLockup Reference**](./lockup/contracts/contract.SablierBatchLockup)
 
-### MerkleLockupFactory
+Creates multiple streams in a single transaction.
 
-> [**MerkleLockupFactory Reference**](./lockup/periphery/contract.SablierV2MerkleLockupFactory)
+### Libraries
 
-### MerkleLockupLL
+> [**Helpers Library**](./lockup/contracts/libraries/library.Helpers)
 
-> [**MerkleLockupLL Reference**](./lockup/periphery/contract.SablierV2MerkleLL)
+Library to validate input parameters across lockup streams.
 
-### MerkleLockupLT
+> [**VestingMath Library**](./lockup/contracts/libraries/library.VestingMath)
 
-> [**MerkleLockupLT Reference**](./lockup/periphery/contract.SablierV2MerkleLT)
+Library to calculate vested amount across lockup streams.
+
+### NFTDescriptor
+
+> [**NFTDescriptor Reference**](./lockup/contracts/contract.LockupNFTDescriptor)
+
+Generates the URI describing the Sablier Lockup stream NFTs.
+
+### SablierLockup
+
+> [**SablierLockup Reference**](./lockup/contracts/contract.SablierLockup)
+
+Creates and manages Lockup streams with three different streaming functions.
+
+## Merkle Airdrops
+
+> [**Merkle Airdrops Source Code**](https://github.com/sablier-labs/airdrops/tree/release)
+
+The Merkle Airdrops repo is a collection of contracts to create various kinds of airdrop campaigns. Some of these
+campaigns make use of the Lockup protocol to create what we call [Airstreams](/concepts/merkle-airdrops). This repo
+consists of airdrops related contracts such as MerkleFactory, MerkleInstant, MerkleLL, and MerkleLT.
+
+### MerkleFactory
+
+> [**MerkleFactory Reference**](./airdrops/contracts/contract.SablierMerkleFactory)
+
+Factory contract to deploy Merkle airdrop campaigns.
+
+### MerkleInstant
+
+> [**MerkleInstant Reference**](./airdrops/contracts/contract.SablierMerkleInstant)
+
+Enables airdrop distributions where the tokens are claimed directly to the users' wallets.
+
+### MerkleLL
+
+> [**MerkleLL Reference**](./airdrops/contracts/contract.SablierMerkleLL)
+
+Enables airdrops with a vesting period powered by the Lockup Linear distribution model.
+
+### MerkleLT
+
+> [**MerkleLT Reference**](./airdrops/contracts/contract.SablierMerkleLT)
+
+Enables airdrops with a vesting period powered by the Lockup Tranched distribution model.
 
 ## Flow
 
-> [**Flow Source Code**](https://github.com/sablier-labs/flow/tree/v1.0.0)
+> [**Flow Source Code**](https://github.com/sablier-labs/flow/tree/release)
 
-The Flow repo consists of the monolith Sablier Flow contract, and an NFT descriptor.
+The Flow repo consists of the Sablier Flow contract, and an NFT descriptor.
 
 ### NFTDescriptor
 

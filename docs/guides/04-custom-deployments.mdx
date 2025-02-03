@@ -1,0 +1,273 @@
+---
+id: "custom-deployments"
+sidebar_position: 4
+title: "Custom Deployments"
+---
+
+import Link from "@docusaurus/Link";
+import { links } from "@site/src/constants";
+
+:::info[Reach Out]
+
+We are unable to deploy the Sablier Protocols on every EVM chain. However, we would be happy to consider your project if
+you fill out this <Link href={links.forms.chains}>form</Link> and meet the requirements below.
+
+:::
+
+## Requirements
+
+- Blockchain explorer with instructions for verifying contracts
+- Documentation site
+- Bridge, with instructions for how to obtain the native token (e.g., ETH) and ERC-20 tokens to the target chain
+- GraphQL solution, e.g., a deployment of [The Graph](https://thegraph.com/)
+- Functional JSON-RPC endpoint, ideally listed on [ChainList](https://chainlist.org/)
+
+:::warning[LEGAL]
+
+The following guidelines apply to you ONLY IF you have you been granted a
+[BUSL license](https://app.ens.domains/license-grants.sablier.eth?tab=records) to deploy the protocols.
+
+:::
+
+## Prerequisites
+
+- Check if the deployment is not already made on [your chain](/guides/lockup/deployments)
+- Follow the contributing guides for [Lockup](https://github.com/sablier-labs/lockup/blob/main/CONTRIBUTING.md),
+  [Airdrops](https://github.com/sablier-labs/airdrops/blob/main/CONTRIBUTING.md) and
+  [Flow](https://github.com/sablier-labs/flow/blob/main/CONTRIBUTING.md).
+- RPC endpoint, e.g., a paid Infura account
+- Enough ETH in your deployer account
+- Etherscan API key (for source code verification)
+
+## Lockup Deployment Guide
+
+#### Step 1: Clone the [Lockup repo](https://github.com/sablier-labs/lockup) and switch to the release branch
+
+```bash
+git switch release
+```
+
+#### Step 2: Create an `.env` file
+
+```bash
+touch .env
+```
+
+Add the following variables to `.env` file:
+
+```
+EOA="DEPLOYER ADDRESS"
+ETHERSCAN_API_KEY="EXPLORER API KEY"
+PRIVATE_KEY="PRIVATE KEY OF DEPLOYER ADDRESS"
+RPC_URL="RPC ENDPOINT URL"
+VERIFIER_URL="EXPLORER VERIFICATION URL"
+```
+
+Load the environment variables into your shell:
+
+```bash
+source .env
+```
+
+#### Step 3: Build the contracts
+
+```bash
+bun install --frozen-lockfile
+```
+
+```bash
+bun run build:optimized
+```
+
+#### Step 4: Run the following deployment command
+
+For **deterministic** deployment:
+
+```bash
+FOUNDRY_PROFILE=optimized \
+forge script script/DeployDeterministicProtocol.s.sol \
+--broadcast \
+--etherscan-api-key $ETHERSCAN_API_KEY \
+--rpc-url $RPC_URL \
+--private-key $PRIVATE_KEY \
+--sig "run()" \
+--verifier-url $VERIFIER_URL \
+--verify \
+-vvv
+```
+
+For **non-deterministic** deployment:
+
+```bash
+FOUNDRY_PROFILE=optimized \
+forge script script/DeployProtocol.s.sol \
+--broadcast \
+--etherscan-api-key $ETHERSCAN_API_KEY \
+--private-key $PRIVATE_KEY \
+--rpc-url $RPC_URL \
+--sig "run()" \
+--verifier-url $VERIFIER_URL \
+--verify \
+-vvv
+```
+
+If you are using a mnemonic or a hardware device for your deployer address, refer to `forge-script` page from
+[foundry book](https://book.getfoundry.sh/reference/forge/forge-script#forge-script) for different wallet options.
+
+## Merkle Airdrops Deployment Guide
+
+#### Step 1: Clone the [Merkle Airdrops repo](https://github.com/sablier-labs/airdrops) and switch to the release branch
+
+```bash
+git switch release
+```
+
+#### Step 2: Create an `.env` file
+
+```bash
+touch .env
+```
+
+Add the following variables to `.env` file:
+
+```
+EOA="DEPLOYER ADDRESS"
+ETHERSCAN_API_KEY="EXPLORER API KEY"
+PRIVATE_KEY="PRIVATE KEY OF DEPLOYER ADDRESS"
+RPC_URL="RPC ENDPOINT URL"
+VERIFIER_URL="EXPLORER VERIFICATION URL"
+```
+
+Load the environment variables into shell:
+
+```bash
+source .env
+```
+
+#### Step 3: Build the contracts
+
+```bash
+bun install --frozen-lockfile
+```
+
+```bash
+bun run build:optimized
+```
+
+#### Step 4: Run the following command to deploy all merkle airdrop contracts
+
+For **deterministic** deployments, meaning that CREATE2 is used:
+
+```bash
+FOUNDRY_PROFILE=optimized \
+forge script script/DeployDeterministicMerkleFactory.s.sol \
+--broadcast \
+--etherscan-api-key $ETHERSCAN_API_KEY \
+--private-key $PRIVATE_KEY \
+--rpc-url $RPC_URL \
+--sig "run()" \
+--verifier-url $VERIFIER_URL \
+--verify \
+-vvv
+```
+
+For **non-deterministic** deployments:
+
+```bash
+FOUNDRY_PROFILE=optimized \
+forge script script/DeployMerkleFactory.s.sol \
+--broadcast \
+--etherscan-api-key $ETHERSCAN_API_KEY \
+--private-key $PRIVATE_KEY \
+--rpc-url $RPC_URL \
+--sig "run()" \
+--verifier-url $VERIFIER_URL \
+--verify \
+-vvv
+```
+
+If you are using a mnemonic or a hardware device for your deployer address, refer to `forge-script` page from the
+[Foundry Book](https://book.getfoundry.sh/reference/forge/forge-script#forge-script).
+
+## Flow Deployment Guide
+
+#### Step 1: Clone the [Flow repo](https://github.com/sablier-labs/flow) and switch to the release branch
+
+```bash
+git switch release
+```
+
+#### Step 2: Create an `.env` file
+
+```bash
+touch .env
+```
+
+Add the following variables to `.env` file:
+
+```
+EOA="DEPLOYER ADDRESS"
+ETHERSCAN_API_KEY="EXPLORER API KEY"
+PRIVATE_KEY="PRIVATE KEY OF DEPLOYER ADDRESS"
+RPC_URL="RPC ENDPOINT URL"
+VERIFIER_URL="EXPLORER VERIFICATION URL"
+```
+
+Load the environment variables into your shell:
+
+```bash
+source .env
+```
+
+#### Step 3: Build the contracts
+
+```bash
+bun install --frozen-lockfile
+```
+
+```bash
+bun run build:optimized
+```
+
+#### Step 4: Run the following deployment command
+
+For **deterministic** deployment:
+
+```bash
+FOUNDRY_PROFILE=optimized \
+forge script script/DeployDeterministicFlow.s.sol \
+--broadcast \
+--etherscan-api-key $ETHERSCAN_API_KEY \
+--rpc-url $RPC_URL \
+--private-key $PRIVATE_KEY \
+--sig "run()" \
+--verifier-url $VERIFIER_URL \
+--verify \
+-vvv
+```
+
+For **non-deterministic** deployment:
+
+```bash
+FOUNDRY_PROFILE=optimized \
+forge script script/DeployFlow.s.sol \
+--broadcast \
+--etherscan-api-key $ETHERSCAN_API_KEY \
+--private-key $PRIVATE_KEY \
+--rpc-url $RPC_URL \
+--sig "run()" \
+--verifier-url $VERIFIER_URL \
+--verify \
+-vvv
+```
+
+If you are using a mnemonic or a hardware device for your deployer address, refer to `forge-script` page from
+[foundry book](https://book.getfoundry.sh/reference/forge/forge-script#forge-script) for different wallet options.
+
+## Submit your deployment
+
+After the contracts are deployed, submit the deployment details:
+
+1. Open a PR in the [docs repo](https://github.com/sablier-labs/docs) to add the deployment addresses.
+2. Open a PR in the [deployments repo](https://github.com/sablier-labs/deployments) to add the broadcast file (JSON).
+   You can find it in the `broadcast` directory.

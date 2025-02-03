@@ -4,173 +4,141 @@ sidebar_position: 1
 title: "Diagrams"
 ---
 
-## Lockup Storage Layout
+## Common Storage Layout
 
-Each Lockup contract is a singleton that stores all streams created by that contract's users. The following diagrams
-provide insight into the storage layout.
-
-### Lockup Base
-
-To see the list of all common storage variables, [click here](/reference/lockup/core/types/library.Lockup#stream). This
-struct is shared across LockupLinear, LockupDynamic, and LockupTranched.
-
-```mermaid
-classDiagram
-  class slot0 {
-    1. sender
-    2. startTime
-    3. endTime
-    4. isCancelable
-    5. wasCanceled
-  }
-  class slot1 {
-    1. token
-    2. isDepleted
-    3. isStream
-    4. isTransferable
-  }
-  class slot2 {
-    1. deposited amount
-    2. withdrawn amount
-    3. refunded amount
-  }
-  class `Lockup Base` {
-    stream LL
-    stream LD
-    stream LT
-  }
-
-  `Lockup Base` --> slot0
-  `Lockup Base` --> slot1
-  `Lockup Base` --> slot2
-```
-
-### Lockup Linear
-
-Apart from the shared Lockup storage, Lockup Linear requires a
-[separate storage](/reference/lockup/core/contract.SablierV2LockupLinear#_cliffs) to store cliff details for each stream
-ID.
+Lockup is a singleton contract that stores all streams created by that contract's users. The following diagrams provide
+insight into the shared storage layout of each stream. To see the full list of storage variables, check out
+[this reference](/reference/lockup/contracts/types/library.Lockup#structs).
 
 ```mermaid
 flowchart TD;
-  C["LockupLinear\ncontract"];
+  L["Lockup contract"];
 
-  S0[(Stream LL-1-1)];
-  P0([Lockup Base]);
-  P1([cliff]);
-  S0 --> P0;
-  S0 --> P1;
-  C --> S0;
-
-  S1[(Stream LL-1-2)];
-  P2([Lockup Base]);
-  P3([cliff]);
-  S1 --> P2;
-  S1 --> P3;
-  C --> S1;
+  S0[(Stream 1)];
+  S01([amounts])
+  S02([isCancelable])
+  S03([isTransferable])
+  S04([endTime])
+  S05([lockupModel])
+  S06([sender])
+  S07([startTime])
+  S08([token])
+  L --> S0;
+  S0 --> S01;
+  S0 --> S02;
+  S0 --> S03;
+  S0 --> S04;
+  S0 --> S05;
+  S0 --> S06;
+  S0 --> S07;
+  S0 --> S08;
 ```
 
-### Lockup Dynamic
-
-Similarly, Lockup Dynamic requires a
-[separate storage](/reference/lockup/core/contract.SablierV2LockupDynamic#_segments) to store an array of
-[segments](/reference/lockup/core/types/library.LockupDynamic#segment) for each stream ID.
+Each [amounts storage](/reference/lockup/contracts/types/library.Lockup#amounts) is made of the following components:
 
 ```mermaid
 flowchart TD;
-  C["LockupDynamic\ncontract"];
+  S01([amounts])
 
-  S0[(Stream LD-1-1)];
-  P0([Lockup Base]);
-  segments0(segment 1
-            segment 2
-            ..
-            ..
-            segment n
-            );
-  S0 --> P0;
-  S0 --> segments0;
-  C --> S0;
-
-  S1[(Stream LD-1-2)];
-  P2([Lockup Base]);
-  segments1(segment 1
-            segment 2
-            ..
-            ..
-            segment n
-          );
-  S1 --> P2;
-  S1 --> segments1;
-  C --> S1;
+  A1([deposited])
+  A2([withdrawn])
+  A3([refunded])
+  S01 --> A1;
+  S01 --> A2;
+  S01 --> A3;
 ```
 
-### Lockup Tranched
+:::info
 
-Lockup Tranched requires a [separate storage](/reference/lockup/core/contract.SablierV2LockupTranched#_tranches) to
-store an array of [tranches](/reference/lockup/core/types/library.LockupTranched#tranche) for each stream ID.
+Each stream belongs to one of the three models: Linear, Dynamic and Tranched. Each of these model has its own storage as
+outlined below.
+
+:::
+
+## Linear Stream
+
+Apart from the above storage layout, Linear stream requires storing
+[unlock amounts](/reference/lockup/contracts/types/library.LockupLinear#unlockamounts) and cliff time.
 
 ```mermaid
 flowchart TD;
-  C["LockupTranched\ncontract"];
+  L[(Linear stream)];
 
-  S0[(Stream LT-1-1)];
-  P0([Lockup Base]);
-  tranches0(tranche 1
-            tranche 2
-            ..
-            ..
-            tranche n
-  );
-  S0 --> P0;
-  S0 --> tranches0;
-  C --> S0;
-
-  S1[(Stream LT-1-2)];
-  P2([Lockup Base]);
-  tranches1(tranche 1
-            tranche 2
-            ..
-            ..
-            tranche n
-  );
-  S1 --> P2;
-  S1 --> tranches1;
-  C --> S1;
+  S0([common storage])
+  S1([cliff])
+  S2([start amount])
+  S3([cliff amount])
+  L --> S0;
+  L --> S1;
+  L --> S2;
+  L --> S3;
 ```
 
-## Airstream Campaign
+## Dynamic Stream
 
-A typical Airstream campaign creation flow looks like the following:
+Similarly, Dynamic stream requires an array of
+[segments](/reference/lockup/contracts/types/library.LockupDynamic#segment).
 
 ```mermaid
-sequenceDiagram
-  actor Campaign creator
+flowchart TD;
+  L[(Dynamic stream)];
 
-  Campaign creator ->> MerkleLockupFactory: createMerkleLL()
-  MerkleLockupFactory -->> MerkleLockup: Deploy a new contract
+  S0([common storage])
+  S1([segment 1])
+  S2([segment 2])
+  S3([segment 3])
+  L --> S0;
+  L --> S1;
+  L --> S2;
+  L --> S3;
 ```
 
-And this is how the claim flow looks like for recipients:
+Where each segment is made of three components:
 
 ```mermaid
-sequenceDiagram
-  actor Airdrop recipient
+flowchart TD;
+  S1([segment 1])
 
-  Airdrop recipient ->> MerkleLockup: claim()
-  MerkleLockup -->> LockupLinear: Create vesting stream
-  LockupLinear -->> Airdrop recipient: Mint Stream NFT
+  S1 --> A01([amount])
+  S1 --> A02([exponent])
+  S1 --> A03([timestamp])
+
+  S2([segment 2])
+
+  S2 --> A11([amount])
+  S2 --> A12([exponent])
+  S2 --> A13([timestamp])
 ```
 
-For campaign admins, we offer `clawback` functionality which can be used to retrieve unclaimed funds after expiration.
-There is also a grace period that ends 7 days after the first claim is made. During the grace period, admin can
-`clawback` to return funds from the `MerkleLockup` contract. This is useful in case there had been an accidental
-transfer of funds.
+## Tranched Stream
+
+A Tranched stream requires an array of [tranches](/reference/lockup/contracts/types/library.LockupTranched#tranche).
 
 ```mermaid
-sequenceDiagram
-  actor Campaign creator
+flowchart TD;
+  L[(Tranched stream)];
 
-  Campaign creator ->> MerkleLockup: clawback()
-  MerkleLockup -->> Campaign creator: Transfer unclaimed tokens
+  S0([common storage])
+  S1([tranche 1])
+  S2([tranche 2])
+  S3([tranche 3])
+  L --> S0;
+  L --> S1;
+  L --> S2;
+  L --> S3;
+```
+
+Where each tranche is made of two components:
+
+```mermaid
+flowchart TD;
+  S1([tranche 1])
+
+  S1 --> A01([amount])
+  S1 --> A02([timestamp])
+
+  S2([tranche 2])
+
+  S2 --> A11([amount])
+  S2 --> A12([timestamp])
 ```

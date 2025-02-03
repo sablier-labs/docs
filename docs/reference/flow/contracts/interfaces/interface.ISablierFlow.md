@@ -1,6 +1,6 @@
 # ISablierFlow
 
-[Git Source](https://github.com/sablier-labs/flow/blob/ba8c67a35d9cfd4fe646c2ab7db2c40e93d7fd6f/src/interfaces/ISablierFlow.sol)
+[Git Source](https://github.com/sablier-labs/flow/blob/a0fa33d2843af0817e34970cdc05822ead31daaa/src/interfaces/ISablierFlow.sol)
 
 **Inherits:** [IBatch](/docs/reference/flow/contracts/interfaces/interface.IBatch.md),
 [ISablierFlowBase](/docs/reference/flow/contracts/interfaces/interface.ISablierFlowBase.md)
@@ -82,7 +82,8 @@ function refundableAmountOf(uint256 streamId) external view returns (uint128 ref
 
 Returns the stream's status.
 
-_Reverts if `streamId` references a null stream._
+_Reverts if `streamId` references a null stream. Integrators should exercise caution when depending on the return value
+of this function as streams can be paused and resumed at any moment._
 
 ```solidity
 function statusOf(uint256 streamId) external view returns (Flow.Status status);
@@ -153,8 +154,8 @@ function withdrawableAmountOf(uint256 streamId) external view returns (uint128 w
 
 Changes the stream's rate per second.
 
-Emits [AdjustFlowStream](/docs/reference/flow/contracts/interfaces/interface.ISablierFlow.md#adjustflowstream) and
-{MetadataUpdate} events. Notes:
+Emits a [AdjustFlowStream](/docs/reference/flow/contracts/interfaces/interface.ISablierFlow.md#adjustflowstream) and
+{MetadataUpdate} event. Notes:
 
 - It updates snapshot debt and snapshot time. Requirements:
 - Must not be delegate called.
@@ -163,7 +164,7 @@ Emits [AdjustFlowStream](/docs/reference/flow/contracts/interfaces/interface.ISa
 - `newRatePerSecond` must not equal to the current rate per second.
 
 ```solidity
-function adjustRatePerSecond(uint256 streamId, UD21x18 newRatePerSecond) external;
+function adjustRatePerSecond(uint256 streamId, UD21x18 newRatePerSecond) external payable;
 ```
 
 **Parameters**
@@ -195,6 +196,7 @@ function create(
     bool transferable
 )
     external
+    payable
     returns (uint256 streamId);
 ```
 
@@ -219,7 +221,7 @@ function create(
 Creates a new Flow stream by setting the snapshot time to `block.timestamp` and the balance to `amount`. The stream is
 wrapped in an ERC-721 NFT.
 
-Emits {Transfer}, {CreateFlowStream}, and {DepositFlowStream} events. Notes:
+Emits a {Transfer}, {CreateFlowStream}, and {DepositFlowStream} event. Notes:
 
 - Refer to the notes in {deposit}. Requirements:
 - Refer to the requirements in {create} and {deposit}.
@@ -234,6 +236,7 @@ function createAndDeposit(
     uint128 amount
 )
     external
+    payable
     returns (uint256 streamId);
 ```
 
@@ -258,7 +261,7 @@ function createAndDeposit(
 
 Makes a deposit in a stream.
 
-Emits {Transfer} and {DepositFlowStream} events. Requirements:
+Emits a {Transfer} and {DepositFlowStream} event. Requirements:
 
 - Must not be delegate called.
 - `streamId` must not reference a null or a voided stream.
@@ -266,7 +269,7 @@ Emits {Transfer} and {DepositFlowStream} events. Requirements:
 - `sender` and `recipient` must match the stream's sender and recipient addresses.
 
 ```solidity
-function deposit(uint256 streamId, uint128 amount, address sender, address recipient) external;
+function deposit(uint256 streamId, uint128 amount, address sender, address recipient) external payable;
 ```
 
 **Parameters**
@@ -282,13 +285,13 @@ function deposit(uint256 streamId, uint128 amount, address sender, address recip
 
 Deposits tokens in a stream and pauses it.
 
-Emits {Transfer}, {DepositFlowStream} and {PauseFlowStream} events. Notes:
+Emits a {Transfer}, {DepositFlowStream} and {PauseFlowStream} event. Notes:
 
 - Refer to the notes in {deposit} and {pause}. Requirements:
 - Refer to the requirements in {deposit} and {pause}.
 
 ```solidity
-function depositAndPause(uint256 streamId, uint128 amount) external;
+function depositAndPause(uint256 streamId, uint128 amount) external payable;
 ```
 
 **Parameters**
@@ -302,7 +305,7 @@ function depositAndPause(uint256 streamId, uint128 amount) external;
 
 Deposits tokens in a stream.
 
-Emits {Transfer} and {DepositFlowStream} events. Notes:
+Emits a {Transfer} and {DepositFlowStream} event. Notes:
 
 - Refer to the notes in {deposit}. Requirements:
 - Must not be delegate called.
@@ -319,7 +322,8 @@ function depositViaBroker(
     address recipient,
     Broker calldata broker
 )
-    external;
+    external
+    payable;
 ```
 
 **Parameters**
@@ -346,7 +350,7 @@ Notes:
 - `msg.sender` must be the stream's sender.
 
 ```solidity
-function pause(uint256 streamId) external;
+function pause(uint256 streamId) external payable;
 ```
 
 **Parameters**
@@ -359,7 +363,7 @@ function pause(uint256 streamId) external;
 
 Refunds the provided amount of tokens from the stream to the sender's address.
 
-Emits {Transfer} and {RefundFromFlowStream} events. Requirements:
+Emits a {Transfer} and {RefundFromFlowStream} event. Requirements:
 
 - Must not be delegate called.
 - `streamId` must not reference a null stream.
@@ -367,7 +371,7 @@ Emits {Transfer} and {RefundFromFlowStream} events. Requirements:
 - `amount` must be greater than zero and must not exceed the refundable amount.
 
 ```solidity
-function refund(uint256 streamId, uint128 amount) external;
+function refund(uint256 streamId, uint128 amount) external payable;
 ```
 
 **Parameters**
@@ -381,13 +385,13 @@ function refund(uint256 streamId, uint128 amount) external;
 
 Refunds the provided amount of tokens from the stream to the sender's address.
 
-Emits {Transfer}, {RefundFromFlowStream} and {PauseFlowStream} events. Notes:
+Emits a {Transfer}, {RefundFromFlowStream} and {PauseFlowStream} event. Notes:
 
 - Refer to the notes in {pause}. Requirements:
 - Refer to the requirements in {refund} and {pause}.
 
 ```solidity
-function refundAndPause(uint256 streamId, uint128 amount) external;
+function refundAndPause(uint256 streamId, uint128 amount) external payable;
 ```
 
 **Parameters**
@@ -401,12 +405,12 @@ function refundAndPause(uint256 streamId, uint128 amount) external;
 
 Refunds the entire refundable amount of tokens from the stream to the sender's address.
 
-Emits {Transfer} and {RefundFromFlowStream} events. Requirements:
+Emits a {Transfer} and {RefundFromFlowStream} event. Requirements:
 
 - Refer to the requirements in {refund}.
 
 ```solidity
-function refundMax(uint256 streamId) external;
+function refundMax(uint256 streamId) external payable;
 ```
 
 **Parameters**
@@ -429,7 +433,7 @@ Notes:
 - `ratePerSecond` must be greater than zero.
 
 ```solidity
-function restart(uint256 streamId, UD21x18 ratePerSecond) external;
+function restart(uint256 streamId, UD21x18 ratePerSecond) external payable;
 ```
 
 **Parameters**
@@ -443,15 +447,15 @@ function restart(uint256 streamId, UD21x18 ratePerSecond) external;
 
 Restarts the stream with the provided rate per second, and makes a deposit.
 
-Emits [RestartFlowStream](/docs/reference/flow/contracts/interfaces/interface.ISablierFlow.md#restartflowstream),
-{Transfer}, and {DepositFlowStream} events. Notes:
+Emits a [RestartFlowStream](/docs/reference/flow/contracts/interfaces/interface.ISablierFlow.md#restartflowstream),
+{Transfer}, and {DepositFlowStream} event. Notes:
 
 - Refer to the notes in {restart} and {deposit}. Requirements:
 - `amount` must be greater than zero.
 - Refer to the requirements in {restart}.
 
 ```solidity
-function restartAndDeposit(uint256 streamId, UD21x18 ratePerSecond, uint128 amount) external;
+function restartAndDeposit(uint256 streamId, UD21x18 ratePerSecond, uint128 amount) external payable;
 ```
 
 **Parameters**
@@ -478,7 +482,7 @@ Emits [VoidFlowStream](/docs/reference/flow/contracts/interfaces/interface.ISabl
 - `msg.sender` must either be the stream's sender, recipient or an approved third party.
 
 ```solidity
-function void(uint256 streamId) external;
+function void(uint256 streamId) external payable;
 ```
 
 **Parameters**
@@ -491,7 +495,7 @@ function void(uint256 streamId) external;
 
 Withdraws the provided `amount` minus the protocol fee to the provided `to` address.
 
-Emits {Transfer} and {WithdrawFromFlowStream} events. Notes:
+Emits a {Transfer} and {WithdrawFromFlowStream} event. Notes:
 
 - It sets the snapshot time to the `block.timestamp` if `amount` is greater than snapshot debt.
 - A protocol fee may be charged on the withdrawn amount if the protocol fee is enabled for the streaming token.
@@ -509,6 +513,7 @@ function withdraw(
     uint128 amount
 )
     external
+    payable
     returns (uint128 withdrawnAmount, uint128 protocolFeeAmount);
 ```
 
@@ -531,7 +536,7 @@ function withdraw(
 
 Withdraws the entire withdrawable amount minus the protocol fee to the provided `to` address.
 
-Emits {Transfer} and {WithdrawFromFlowStream} events. Notes:
+Emits a {Transfer} and {WithdrawFromFlowStream} event. Notes:
 
 - Refer to the notes in {withdraw}. Requirements:
 - Refer to the requirements in {withdraw}.
@@ -542,6 +547,7 @@ function withdrawMax(
     address to
 )
     external
+    payable
     returns (uint128 withdrawnAmount, uint128 protocolFeeAmount);
 ```
 

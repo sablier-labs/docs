@@ -1,0 +1,69 @@
+Let's review each parameter in detail.
+
+### Broker
+
+An optional parameter that can be set in order to charge a fee as a percentage of `totalAmount`.
+
+In the following example, we will leave this parameter uninitialized (i.e. set to zero), because it doesn't make sense
+to charge yourself a fee. In practice, this parameter will mostly be used by front-end applications.
+
+```solidity
+params.broker = Broker(address(0), ud60x18(0));
+```
+
+:::info
+
+Wondering what's up with that `ud60x18` function? It's a casting function that wraps a basic integer to the `UD60x18`
+value type. This type is part of the math library [PRBMath](https://github.com/PaulRBerg/prb-math), which is used in
+Sablier for fixed-point calculations.
+
+:::
+
+### Cancelable
+
+Boolean that indicates whether the stream will be cancelable or not.
+
+```solidity
+params.cancelable = true;
+```
+
+### Recipient
+
+The address receiving the tokens:
+
+```solidity
+params.recipient = address(0xCAFE);
+```
+
+### Sender
+
+The address streaming the tokens, with the ability to cancel the stream:
+
+```solidity
+params.sender = msg.sender;
+```
+
+### Token
+
+The contract address of the ERC-20 token used for streaming. In this example, we will stream DAI:
+
+```solidity
+params.token = DAI;
+```
+
+### Total amount
+
+The total amount of ERC-20 tokens to be paid, including the stream deposit and any potential [fees](/concepts/fees), all
+denoted in units of the asset's decimals.
+
+```solidity
+params.totalAmount = totalAmount;
+```
+
+### Transferable
+
+Boolean that indicates whether the stream will be transferable or not.
+
+```solidity
+params.transferable = true;
+```

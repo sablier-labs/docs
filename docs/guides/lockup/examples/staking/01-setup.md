@@ -27,8 +27,6 @@ express or implied. It is intended solely for demonstration purposes.
 
 Before diving in, please note that we will make the following assumptions:
 
-1. The guide demonstrates staking of only one type of stream at a time, either Lockup Dynamic or Lockup Linear. This is
-   because each type is a different contract. You can build your own contract to stake all types of streams.
 1. Since staking requires transferring the Sablier NFT from users' wallet to the staking contract, the Sablier stream
    must be transferable at the time of creation.
 1. The staking contract allows staking of one stream per user. So, if a user has already staked a stream, he will not be
@@ -47,7 +45,7 @@ contract StakeSablierNFT is
     ERC721Holder,
     ISablierLockupRecipient // Required to implement hooks
 {
-    constructor(address initialAdmin, IERC20 rewardERC20Token_, ISablierV2Lockup sablierLockup_) {
+    constructor(address initialAdmin, IERC20 rewardERC20Token_, ISablierLockup sablierLockup_) {
         admin = initialAdmin;
         rewardERC20Token = rewardERC20Token_;
         sablierLockup = sablierLockup_;
@@ -58,14 +56,7 @@ contract StakeSablierNFT is
 As mentioned above, a user will only be able to stake a stream that is vesting tokens specified by `rewardERC20Token_`
 in the constructor. The rewards will also be distributed in the same token.
 
-:::info
-
-`ISablierV2Lockup` is a shared interface between `ISablierV2LockupLinear`, `ISablierV2LockupDynamic` and
-`ISablierV2LockupTranched`, allowing users to interact with either contract type using a single interface.
-
-:::
-
 To focus on specific functionalities that enable staking support for streams, obvious functions such as
 `startStakingPeriod` have been omitted from this guide. However, for completeness, the full code can be found on the
 next page as well as in the
-[examples repo](https://github.com/sablier-labs/examples/blob/main/lockup/core/StakeSablierNFT.sol).
+[examples repo](https://github.com/sablier-labs/examples/blob/main/lockup/StakeSablierNFT.sol).

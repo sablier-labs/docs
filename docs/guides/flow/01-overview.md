@@ -23,7 +23,7 @@ For a deeper dive into the protocol specifications, read through the [technical 
 
 # Resources
 
-- [Flow Contracts](https://github.com/sablier-labs/flow/tree/release)
-- [Flow Integration Templates](https://github.com/sablier-labs/flow-integration-template)
-- [Flow Integration Examples](https://github.com/sablier-labs/examples)
+- [Source Code](https://github.com/sablier-labs/flow/tree/release)
+- [Integration Templates](https://github.com/sablier-labs/flow-integration-template)
+- [Examples](https://github.com/sablier-labs/examples/tree/main/flow/)
 - [Foundry Book](https://book.getfoundry.sh/)
