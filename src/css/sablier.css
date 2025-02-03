@@ -64,7 +64,7 @@
 }
 
 /* TODO:
- * Refactor explicitly used color "names" to "purpose" when the v2-interfaces will support light mode.
+ * Refactor explicitly used color "names" to "purpose" when the Sablier Interface will support light mode.
  * This will keep --sablier-color-<shade> raw and unchanged, while --sablier-color-<purpose> can adapt with the theme (light/dark).
  */
 
