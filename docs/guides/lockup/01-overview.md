@@ -6,7 +6,7 @@ title: "Overview"
 
 # Sablier Lockup
 
-Welcome to the Sablier Lockup protocol documentation.
+Welcome to the Sablier Lockup documentation.
 
 This section contains detailed guides and technical references for the Lockup protocol, a suite of smart contracts
 running autonomously in the Ethereum ecosystem. These documents offer insight into the operational nuances of the
@@ -25,10 +25,11 @@ For a deeper dive into the protocol specifications, read through the [technical 
 
 # Versioning
 
-The product uses a unified versioning system across releases and npm packages. Prior to v1.2, lockup releases followed a
-separate versioning scheme (e.g. V2.0, V2.1, V2.2), while the npm package used a semantic versioning scheme (e.g.
-v1.0.2, v1.1.2, v1.2.0). Since v1.2, the versioning has been standardized to a single system for consistency across
-protocol releases and npm packages.
+The product uses a unified versioning system across releases and NPM packages.
+
+Prior to Lockup v1.2, we used a different versioning scheme (V2.0, V2.1, V2.2), while the NPM package used a semantic
+versioning scheme (e.g., v1.0.2, v1.1.2). Since Lockup v1.2, the versioning has been unified into a single system for
+greater consistency across protocol releases and NPM packages.
 
 # Resources
 

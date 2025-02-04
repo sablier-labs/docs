@@ -6,7 +6,7 @@ title: "Overview"
 
 # Sablier Flow
 
-Welcome to the Sablier Flow protocol documentation.
+Welcome to the Sablier Flow documentation.
 
 This section contains detailed guides and technical references for the Flow protocol. These documents offer insight into
 the operational nuances of the contracts, providing a valuable resource for building onchain integrations.

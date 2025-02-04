@@ -17,15 +17,16 @@ cover a number of resource locators used by the apps, as well as dive into how y
 
 Every stream created through the Sablier Protocols is identified through three parameters:
 
-- a **chainId** (e.g. `1` for Ethereum, `10` for [Optimism](https://chainlist.org/) )
-- a **contract** address (e.g. `0x12..AB`) OR an **alias** (e.g. `LL`)
+- a **chainId** (e.g., `1` for Ethereum, `10` for [OP Mainnet](https://chainlist.org/) )
+- an **alias** (e.g., `LK`) OR a **contract** (e.g. `0x12..AB`)
 - a **streamId** (generated at stream creation)
 
 #### Contract Aliases
 
-Sablier Lockup supports multiple versions and variants of streaming contracts, e.g. `SablierV2LockupLinear` and
-`SablierV2LockupDynamic`. To provide a visual resolver, while also accounting for future stream curves (backwards
-compatibility), we alias the contract addresses with the following abbreviations:
+Sablier supports different token distribution products, e.g. `SablierLockup` and `SablierFlow`. To provide a visual
+resolver in the UI, we alias the contract addresses with the following abbreviations:
+
+In the past, the functionality of the `SablierLockup` contract used to be distributed among different contracts.
 
 - Lockup Linear V2.0 contracts become `LL`, e.g. `LL-137-1`
 - Lockup Linear V2.1 contracts become `LL2`, e.g. `LL2-137-1`
@@ -85,15 +86,15 @@ Here are some examples of URLs and the associated search modal for each:
 
 ---
 
-## Airstream Page
+## Airdrop Page
 
-|                                                           |
-| --------------------------------------------------------- |
-| ![Airstream profile](/screenshots/airstream-profile.webp) |
+|                                                       |
+| ----------------------------------------------------- |
+| ![Airdrop Profile](/screenshots/airdrop-profile.webp) |
 
 ### Elements
 
-Every airstream created through the Lockup protocol is identified through three parameters:
+Every airdrop created through the Lockup protocol is identified through three parameters:
 
 - a **chainId** (e.g. `1` for Ethereum, `10` for [Optimism](https://chainlist.org/) )
 - a **contract** address (e.g. `0x12..AB`)

@@ -11,7 +11,7 @@ import LockupNFTSVG from "@site/static/img/lockup-nft.svg";
 The Sablier Interface will showcase [Lockup](/concepts/lockup/overview) streams under the Vesting tab. These are token
 streams with a fixed duration, predefined amount and strict distribution curve.
 
-![Banner Vesting](/banner/docs-banner-vesting.webp)
+![Banner Vesting](/banners/docs-vesting.webp)
 
 In Q4 2024 the app has undergone a use-case centric redesign. For past users, all streams created before this update
 will show up in the Vesting page.
@@ -78,28 +78,27 @@ Streaming, everywhere. We support 11+ EVM chains and testnets where you can stre
 | ---------------------------------------------- |
 | ![ChainList](/screenshots/general-chains.webp) |
 
-### Create in batches
+### Create in bulk
 
-Save time by creating up to 60 streams in bulk for your employees, investors, or community members. Use the forms for a
+Save time by creating up to 280 streams in bulk for your employees, investors, or community members. Use the forms for a
 clean and straightforward UX.
 
-|                                            |
-| ------------------------------------------ |
-| ![Group](/screenshots/vesting-create.webp) |
+|                                                     |
+| --------------------------------------------------- |
+| ![Create in bulk](/screenshots/vesting-create.webp) |
 
-### Create from CSVs
+### Create with CSV
 
-Save even more time by using our CSV upload, dedicated to power-users. Under the hood, it works the same as the visual
-forms.
+As an alternative to manually filling out the form, you can upload a CSV file with your user data.
 
-|                                                |
-| ---------------------------------------------- |
-| ![Group](/screenshots/vesting-create-csv.webp) |
+|                                                          |
+| -------------------------------------------------------- |
+| ![Create with CSV](/screenshots/vesting-create-csv.webp) |
 
 ### Simulations
 
-Eager to see what your chosen distribution will look like? Use our simulation tool right from the create-stream forms
-(or later on, from the stream profile).
+Eager to see what your token distribution will look like? Use our simulation tool right from the stream creation forms
+(or later, from the stream profile).
 
 ![Simulate](/screenshots/simulation.webp)
 
@@ -119,12 +118,24 @@ on your payouts. Remember, you can always be both a sender and a recipient.
 
 ### Any ERC-20 token
 
-Stream your favorite token! Thanks to our integration of Token Lists, any ERC-20 token can be streamed on Sablier
-Lockup.
+Thanks to our integration of Token Lists, any ERC-20 token can be distributed via Sablier Lockup.
+
+:::warning
+
+The only exception is rebasing tokens like Aave's aTokens. Tokens that dynamically rebase their balance are not
+supported by Sablier.
+
+:::
 
 |                                                 |                                                          |
 | ----------------------------------------------- | -------------------------------------------------------- |
 | ![Token List](/screenshots/tokenlist-home.webp) | ![Token List Search](/screenshots/tokenlist-search.webp) |
+
+### Mobile-ready layout
+
+Token streams on the go!
+
+Yes, the Sablier app works on mobile. And yes, we support dark mode by default (light mode coming soon).
 
 ### Permissions
 
@@ -136,7 +147,6 @@ reference you as a key participant (e.g. sender, recipient) directly from the in
 | Create Streams         |   ✅   |     -     |   -    |
 | Renounce Cancelability |   ✅   |    ❌     |   -    |
 | Cancel                 |   ✅   |    ❌     |   -    |
-| Cancel Multiple        |   ✅   |    ❌     |   -    |
 | Transfer               |   ❌   |    ✅     |   -    |
 | Withdraw               |   ✅   |    ✅     |   ✅   |
 
@@ -144,7 +154,3 @@ reference you as a key participant (e.g. sender, recipient) directly from the in
 
 Vesting is fully integrated with [Safe](https://safe.global). Start streaming from the safety and comfort of your
 multisig wallet.
-
-### Mobile-ready layout
-
-Stream in style! Yes, the app works on mobile. And yes, we support dark mode by default (light mode coming soon).

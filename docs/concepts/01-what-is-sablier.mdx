@@ -5,7 +5,10 @@ title: "What Is Sablier?"
 ---
 
 import Link from "@docusaurus/Link";
-import { links } from "@site/src/constants";
+import ReleaseHistoryAirdrops from "@site/docs/snippets/ReleaseHistoryAirdrops.mdx";
+import ReleaseHistoryFlow from "@site/docs/snippets/ReleaseHistoryFlow.mdx";
+import ReleaseHistoryLegacy from "@site/docs/snippets/ReleaseHistoryLegacy.mdx";
+import ReleaseHistoryLockup from "@site/docs/snippets/ReleaseHistoryLockup.mdx";
 
 Sablier is the powerhouse of token distribution protocols. We build decentralized applications to distribute your tokens
 from one account to another, in realtime.
@@ -78,13 +81,9 @@ can use them. Users have the liberty to establish new streams with any ERC-20 to
 as they wish. This feature stands in sharp contrast to conventional financial services that frequently impose
 restrictions based on factors such as location, financial status, or age.
 
-As an immutable system, Sablier protocols are not upgradeable, meaning that no party can pause the contracts, reverse
+As an immutable system, the Sablier Protocol is non-upgradeable, meaning that no party can pause the contracts, reverse
 transactions, or alter the users' streams in any way. This ensures the system remains transparent, secure, and resistant
 to manipulation or abuse.
-
-It is worth noting that the Protocol Admin has the right (but not the obligation) to impose a fee on every stream
-created using specific ERC-20 tokens. However, this capability is known to all participants in advance, and to avert
-misuse, the fee percentage is restricted to a range of 0% to 10%.
 
 ## Where can I find more information?
 
@@ -93,36 +92,38 @@ visit the official [Sablier website](https://sablier.com) as well.
 
 :::tip
 
-If you have any questions along the way, please join the #dev channel in our <Link href={links.discord}>Discord
-server</Link>. Our team and members of the community are looking forward to help you.‌
+If you have any questions along the way, please join the #dev channel in our <Link
+href={"https://discord.sablier.com"}>Discord server</Link>. Our team and members of the community are looking forward to
+help you.‌
 
 :::
 
 ## Release history
 
-### Flow
-
-- **v1.1 (latest)**: Minor upgrade, released in February 2025.
-- **v1.0**: The first version of Sablier Flow, released in December 2024.
-
 ### Lockup
 
-- **v2.0 (latest)**: The fouth version of Sablier Lockup, released in February 2025.
-- **v1.2**: The third version of Sablier Lockup, released in July 2024.
-- **v1.1**: The second version of Sablier Lockup which was a minor upgrade, released in December 2023.
-- **v1.0**: The first version of Sablier Lockup, released in July 2023.
+For more details on the UI alias, see the guide on [URL schemes](/apps/guides/url-schemes).
+
+<ReleaseHistoryLockup />
 
 ### Merkle Airdrops
 
-- **v1.3 (latest)**: The latest version of Merkle Airdrops, released in February 2025.
+<ReleaseHistoryAirdrops />
 
 Before v1.3, Merkle Airdrops contracts were part of the Sablier Lockup
 [periphery repository](https://github.com/sablier-labs/v2-periphery).
 
+### Flow
+
+For more details on the UI alias, see the guide on [URL schemes](/apps/guides/url-schemes).
+
+<ReleaseHistoryFlow />
+
 ### Legacy (Deprecated)
 
-- **v1.1**: Minor upgrade, released in July 2021.
-- **v1.0**: The first version of Sablier, released in November 2019.
+The Legacy contracts have been superseded by Lockup.
+
+<ReleaseHistoryLegacy />
 
 [^1]:
     Short for Decentralized Finance: an ecosystem of financial applications and services built on blockchain networks,

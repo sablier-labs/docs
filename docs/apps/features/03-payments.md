@@ -4,10 +4,10 @@ sidebar_position: 3
 title: "Payments"
 ---
 
-The Sablier Interface will showcase [Flow](/concepts/flow/overview) streams under the Payments tab. These are token
-streams with a no end-date, an ever increasing amount (can be topped up) and a flexible rate per second.
+The Sablier Interface displays [Flow](/concepts/flow/overview) streams under the Payments tab. These are token streams
+with no end time, an ever-increasing amount (meaning the streams can be topped up), and a flexible rate per second.
 
-![Banner Vesting](/banner/docs-banner-payments.webp)
+![Banner Payments](/banners/docs-payments.webp)
 
 ## Features
 
@@ -51,24 +51,20 @@ Streaming, everywhere. We enable payments on 11+ EVM chains and testnets where y
 | ---------------------------------------------- |
 | ![ChainList](/screenshots/general-chains.webp) |
 
-### Create in batches
+### Create in bulk
 
-Save time by creating up to 60 streams in bulk for your employees, investors, or community members. Use the forms for a
+Save time by creating up to 280 streams in bulk for your employees, investors, or community members. Use the forms for a
 clean and straightforward UX.
 
-### Create from CSVs
+### Create with CSV
 
-Save even more time by using our CSV upload, dedicated to power-users. Under the hood, it works the same as the visual
-forms.
-
-### Safe multisig support
-
-Payments are fully integrated with [Safe](https://safe.global). Start streaming from the safety and comfort of your
-multisig wallet.
+As an alternative to manually filling out the form, you can upload a CSV file with your user data.
 
 ### Mobile-ready layout
 
-Stream in style! Yes, the app works on mobile. And yes, we support dark mode by default (light mode coming soon).
+Token streams on the go!
+
+Yes, the Sablier app works on mobile. And yes, we support dark mode by default (light mode coming soon).
 
 ### Permissions
 
@@ -86,3 +82,8 @@ reference you as a key participant (e.g. sender, recipient) directly from the in
 | Restart          |   ✅   |    ❌     |   -    |
 | Transfer         |   ❌   |    ✅     |   -    |
 | Withdraw         |   ✅   |    ✅     |   ✅   |
+
+### Safe multisig support
+
+Payments are fully integrated with [Safe](https://safe.global). Start streaming from the safety and comfort of your
+multisig wallet.
