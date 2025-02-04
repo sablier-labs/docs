@@ -4,94 +4,105 @@ sidebar_position: 11
 title: "Fees"
 ---
 
-## UI Fee
+## Interface Fees
 
-UI fee is the fee charged by the Sablier interface when you do certain operations such as withdraw from streams or claim
-an airdrop.
+The Sablier Interface charges a flat fee for certain operations. This fee is paid in the native gas token, i.e. in ETH
+for streams on Ethereum, and in POL for streams on Polygon.
 
-### Streams
+### Stream Withdrawals
 
-Sablier interface charges a fixed fee when you withdraw from a stream. This applies to both Lockup and Flow.
+The Sablier Interface charges a flat fee when you withdraw from a stream. This applies to both Lockup and Flow streams.
 
-:::tip[What is the withdraw fee in UI?]
+:::tip[What is the withdraw fee?]
 
-It is currently fixed at **$1 per withdrawal**, regardless of the withdraw amount. The fee is paid in the native token,
-i.e. you would pay in POL for streams on Polygon network, and in ETH for streams on Ethereum network.
-
-:::
-
-The UI fee applies only to Lockup v2.0 and Flow v1.1. You do not pay the UI fee for withdrawing from streams created
-using earlier releases.
-
-### Airdrops
-
-Sablier interface charges a fixed fee when you claim from an airdrop campaign.
-
-:::tip[What is the Claim Fee in UI?]
-
-This fee is currently fixed at $3 per claim, irrespective of the claim amount. The fee is paid in the native token.
+The fee is **$1** (in the gas token) regardless of the withdraw amount.
 
 :::
 
-The UI fee applies only to Merkle Airdrops v1.3. Campaigns created with earlier versions do not incur claim fee.
+The fee applies only to streams created via Lockup v2.0 (or later) and Flow v1.1 (or later). You do not pay this fee for
+withdrawing from streams created using earlier releases.
 
-## Contract Fee
+### Airdrop Claims
 
-Contract fee is the fee charged by the smart contract to perform certain operations.
+The Sablier Interface charges a flat fee when you claim an airdrop.
 
-### Merkle Airdrops
+:::tip[What is the claim fee?]
 
-Contract fee is ONLY implemented in the Merkle Airdrop contract for claiming an airdrop, however, its value is set to 0.
-
-Protocol admin has the ability to change this fee in the contract. Once set, this fee will only apply to the campaigns
-created after the fee change timestamp. Similar to the UI fees, this fee will also be paid in the native token, i.e. you
-would pay in POL for streams on Polygon network, and in ETH for streams on Ethereum network
-
-:::tip[What is the claim fee in Contract?]
-
-It is 0.
+The fee is **$3** (in the gas token) per claim, regardless of the airdrop amount.
 
 :::
 
-The claim fee applies only to Merkle Airdrops v1.3. Campaigns created with earlier versions do not incur claim fee.
+The fee applies only to airdrops created via Merkle Airdrops v1.3 (or later). Claims from airdrops created with earlier
+versions do not incur any claim fee.
+
+## Contract Fees
+
+As opposed to the Interface fees, the contract fees are charged by the Sablier contracts themselves. They would apply
+regardless of the interface used to interact with the Sablier Protocol.
+
+### MerkleFactory
+
+The ONLY contracts that can charge fees in Sablier are the `MerkleFactory` contract and the airdrop contracts it
+deploys.
+
+The [protocol admin](/concepts/governance/) can update the fee in the
+[`MerkleFactory`](/reference/airdrops/airdrops/contracts/contract.SablierMerkleFactory) contract. However, the new fee
+applies only to airdrops created after the update. The fee values in the individual airdrop contracts remain immutable
+once set.
+
+Like the Interface fee, this fee is paid in the native gas token, e.g., ETH on Ethereum, POL on Polygon.
+
+:::tip[What is the contract fee?]
+
+It is currently set to 0.
+
+:::
+
+The fee can only be applied to airdrops created with Merkle Airdrops v1.3 (or later). Airdrops created with earlier
+versions do not incur any claim fee.
 
 ## Fee Timeline
 
-### UI Fee
+### Interface Fees
 
-| Protocol        | Timeline                   | Operation     | Fee |
-| --------------- | -------------------------- | ------------- | --- |
-| Flow Stream     | Feb 3, 2025 - present      | Withdraw      | $1  |
-| Lockup Stream   | Feb 3, 2025 - present      | Withdraw      | $1  |
-| Merkle Airdrops | Feb 3, 2025 - present      | Airdrop claim | $3  |
-| Lockup Stream   | July 3, 2023 - Feb 2, 2025 | Withdraw      | $0  |
-| Flow Stream     | Dec 4, 2024 - Feb 2, 2025  | Withdraw      | $0  |
-| Merkle Airdrops | Dec 18, 2023 - Feb 2, 2025 | Airdrop claim | $0  |
+| Product  | Timeline                   | Operation     | Fee |
+| -------- | -------------------------- | ------------- | --- |
+| Airdrops | Feb 3, 2025 - present      | Airdrop claim | $3  |
+| Lockup   | Feb 3, 2025 - present      | Withdraw      | $1  |
+| Flow     | Feb 3, 2025 - present      | Withdraw      | $1  |
+| Airdrops | Dec 18, 2023 - Feb 2, 2025 | Airdrop claim | 0   |
+| Lockup   | Jul 3, 2023 - Feb 2, 2025  | Withdraw      | 0   |
+| Flow     | Dec 4, 2024 - Feb 2, 2025  | Withdraw      | 0   |
 
-### Contract Fee
+### Contract Fees
 
-| Protocol        | Timeline               | Operation     | Fee |
-| --------------- | ---------------------- | ------------- | --- |
-| Merkle Airdrops | Dec 18, 2023 - present | Airdrop claim | $0  |
+| Contract      | Timeline               | Operation     | Fee |
+| ------------- | ---------------------- | ------------- | --- |
+| MerkleFactory | Dec 18, 2023 - present | Airdrop claim | 0   |
 
 ## Gas Fee
 
+### Q: How are the Interface fees charged?
+
+A: They are added to the gas fee. For example, if the gas fee is \$10 and the Interface fee is \$1, you would pay \$11
+in total (the payment is taken in the gas token, e.g., ETH).
+
 ### Q: What are gas fees?
 
-A: [Gas fees](https://www.investopedia.com/terms/g/gas-ethereum.asp) are transaction fees paid to the blockchain
-validators in native tokens such as ETH. Sablier Labs does not take any cut from this.
+A: [Gas fees](https://investopedia.com/terms/g/gas-ethereum.asp) are transaction fees paid to the blockchain validators
+in the gas token of the network, e.g., ETH. Sablier Labs does not take any cut from this.
 
 ### Q: When are gas fees paid?
 
-A: Gas is paid only when streams are created, canceled, transferred, or withdrawn from. It does not accrue in real-time.
+A: Gas is paid only when streams are created, canceled, transferred, or withdrawn from. Gas is not accrued in real-time.
 
 ### Q: Does Sablier receive any portion of the gas fee?
 
-A: No. 100% of the gas fee goes to the blockchain validators, which are not affiliated with Sablier Labs.
+A: No. 100% of the gas fee goes to the blockchain network validators, which are not affiliated with Sablier Labs.
 
 :::tip
 
-To find out how much gas each function costs, you can see the gas benchmark reports of
-[Lockup](/guides/lockup/gas-benchmarks) and [Flow](/guides/flow/gas-benchmarks).
+We provide gas benchmarks for the [Lockup](/guides/lockup/gas-benchmarks) and [Flow](/guides/flow/gas-benchmarks)
+contracts.
 
 :::
