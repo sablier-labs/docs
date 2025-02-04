@@ -106,6 +106,10 @@ const config: Config = {
             to: "/apps/features/overview",
           },
           {
+            from: "/apps/support/how-to",
+            to: "/support/how-to",
+          },
+          {
             from: "/apps/url-schemes",
             to: "/apps/guides/url-schemes",
           },
