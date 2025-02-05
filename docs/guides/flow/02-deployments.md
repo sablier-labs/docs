@@ -7,7 +7,7 @@ title: "Deployment Addresses"
 # Flow Deployments
 
 This section contains the deployment addresses for the v1.1 release of
-[@sablier/flow](https://npmjs.com/package/@sablier/flow/v/1.1.0).
+[@sablier/flow](https://npmjs.com/package/@sablier/flow).
 
 A few noteworthy details about the deployments:
 
@@ -24,8 +24,8 @@ under our [naming convention](/api/flow/the-graph/structure#identifying).
 
 | Version                                        | Contract name Aliases |
 | ---------------------------------------------- | --------------------- |
-| v1.1 (current)                                 | TBD                   |
-| [v1.0](/guides/flow/previous-deployments/v1.0) | FL                    |
+| v1.1 (current)                                 | FL                    |
+| [v1.0](/guides/flow/previous-deployments/v1.0) | V10                   |
 
 :::info
 

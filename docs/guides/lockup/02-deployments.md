@@ -7,7 +7,7 @@ title: "Deployment Addresses"
 # Lockup Deployments
 
 This section contains the deployment addresses for the v2.0 release of
-[@sablier/lockup](https://npmjs.com/package/@sablier/lockup/v/2.0.0).
+[@sablier/lockup](https://www.npmjs.com/package/@sablier/lockup).
 
 A few noteworthy details about the deployments:
 
