@@ -18,7 +18,7 @@ Since the Sablier protocol can be used to stream any ERC-20 token, this check en
 accept unknown tokens.
 
 ```solidity
-if (sablierLockup.getAsset(streamId) != rewardERC20Token) {
+if (sablierLockup.getUnderlyingToken(streamId) != rewardERC20Token) {
     revert DifferentStreamingToken(streamId, rewardERC20Token);
 }
 ```

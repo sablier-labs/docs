@@ -7,7 +7,7 @@ title: "Deployment Addresses"
 # Merkle Airdrops Deployments
 
 This section contains the deployment addresses for the v1.3 release of
-[@sablier/airdrops](https://npmjs.com/package/@sablier/airdrops/v/1.3.0).
+[@sablier/airdrops](https://npmjs.com/package/@sablier/airdrops).
 
 A few noteworthy details about the deployments:
 
