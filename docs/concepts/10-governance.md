@@ -15,7 +15,7 @@ wallets.
 | Chain           | Address                                                                                                                          |
 | :-------------- | :------------------------------------------------------------------------------------------------------------------------------- |
 | Mainnet         | [0x79Fb3e81aAc012c08501f41296CCC145a1E15844](https://etherscan.io/address/0x79Fb3e81aAc012c08501f41296CCC145a1E15844)            |
-| Abstract        | [0xb1bEF51ebCA01EB12001a639bDBbFF6eEcA12B9F](https://abscan.org.io/address/0xb1bEF51ebCA01EB12001a639bDBbFF6eEcA12B9F)           |
+| Abstract        | [0xb1bEF51ebCA01EB12001a639bDBbFF6eEcA12B9F](https://abscan.org/address/0xb1bEF51ebCA01EB12001a639bDBbFF6eEcA12B9F)              |
 | Arbitrum One    | [0xF34E41a6f6Ce5A45559B1D3Ee92E141a3De96376](https://arbiscan.io/address/0xF34E41a6f6Ce5A45559B1D3Ee92E141a3De96376)             |
 | Avalanche       | [0x4735517616373c5137dE8bcCDc887637B8ac85Ce](https://snowtrace.io/address/0x4735517616373c5137dE8bcCDc887637B8ac85Ce)            |
 | Base            | [0x83A6fA8c04420B3F9C7A4CF1c040b63Fbbc89B66](https://basescan.org/address/0x83A6fA8c04420B3F9C7A4CF1c040b63Fbbc89B66)            |
