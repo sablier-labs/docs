@@ -5,26 +5,36 @@ title: "Governance"
 ---
 
 The Protocol Admin is an account with exclusive access to specific functions of the protocols. More concretely, the
-Admin is a collection of multisig wallets currently in control of Sablier Labs.
+Admin is a collection of multisig wallets and EOAs currently in control of Sablier Labs.
 
 ## Admins
 
-Here are the addresses that are currently administering the Sablier Protocols. Most of them are Safe multi-signature
+Here are the addresses that are the protocols admin for the Sablier Protocols. Most of them are Safe multi-signature
 wallets.
 
 | Chain           | Address                                                                                                                          |
 | :-------------- | :------------------------------------------------------------------------------------------------------------------------------- |
 | Mainnet         | [0x79Fb3e81aAc012c08501f41296CCC145a1E15844](https://etherscan.io/address/0x79Fb3e81aAc012c08501f41296CCC145a1E15844)            |
+| Abstract        | [0xb1bEF51ebCA01EB12001a639bDBbFF6eEcA12B9F](https://abscan.org.io/address/0xb1bEF51ebCA01EB12001a639bDBbFF6eEcA12B9F)           |
 | Arbitrum One    | [0xF34E41a6f6Ce5A45559B1D3Ee92E141a3De96376](https://arbiscan.io/address/0xF34E41a6f6Ce5A45559B1D3Ee92E141a3De96376)             |
 | Avalanche       | [0x4735517616373c5137dE8bcCDc887637B8ac85Ce](https://snowtrace.io/address/0x4735517616373c5137dE8bcCDc887637B8ac85Ce)            |
 | Base            | [0x83A6fA8c04420B3F9C7A4CF1c040b63Fbbc89B66](https://basescan.org/address/0x83A6fA8c04420B3F9C7A4CF1c040b63Fbbc89B66)            |
 | Blast           | [0xb1bEF51ebCA01EB12001a639bDBbFF6eEcA12B9F](https://blastscan.io/address/0xb1bEF51ebCA01EB12001a639bDBbFF6eEcA12B9F)            |
 | BNB Smart Chain | [0x6666cA940D2f4B65883b454b7Bc7EEB039f64fa3](https://bscscan.com/address/0x6666cA940D2f4B65883b454b7Bc7EEB039f64fa3)             |
+| Chiliz          | [0xb1bEF51ebCA01EB12001a639bDBbFF6eEcA12B9F](https://chiliscan.com/address/0xb1bEF51ebCA01EB12001a639bDBbFF6eEcA12B9F)           |
+| Core Dao        | [0xb1bEF51ebCA01EB12001a639bDBbFF6eEcA12B9F](https://scan.coredao.org/address/0xb1bEF51ebCA01EB12001a639bDBbFF6eEcA12B9F)        |
 | Gnosis          | [0x72ACB57fa6a8fa768bE44Db453B1CDBa8B12A399](https://gnosisscan.io/address/0x72ACB57fa6a8fa768bE44Db453B1CDBa8B12A399)           |
+| IoTeX           | [0xb1bEF51ebCA01EB12001a639bDBbFF6eEcA12B9F](https://iotexscan.io/address/0xb1bEF51ebCA01EB12001a639bDBbFF6eEcA12B9F)            |
 | LightLink       | [0xb1bEF51ebCA01EB12001a639bDBbFF6eEcA12B9F](https://phoenix.lightlink.io/address/0xb1bEF51ebCA01EB12001a639bDBbFF6eEcA12B9F)    |
+| Linea           | [0x72dCfa0483d5Ef91562817C6f20E8Ce07A81319D](https://lineascan.build/address/0x72dCfa0483d5Ef91562817C6f20E8Ce07A81319D)         |
+| Mode            | [0xb1bEF51ebCA01EB12001a639bDBbFF6eEcA12B9F](https://explorer.mode.network/address/0xb1bEF51ebCA01EB12001a639bDBbFF6eEcA12B9F)   |
+| Morph           | [0xb1bEF51ebCA01EB12001a639bDBbFF6eEcA12B9F](https://explorer.morphl2.io/address/0xb1bEF51ebCA01EB12001a639bDBbFF6eEcA12B9F)     |
 | Optimism        | [0x43c76FE8Aec91F63EbEfb4f5d2a4ba88ef880350](https://optimistic.etherscan.io/address/0x43c76FE8Aec91F63EbEfb4f5d2a4ba88ef880350) |
 | Polygon         | [0x40A518C5B9c1d3D6d62Ba789501CE4D526C9d9C6](https://polygonscan.com/address/0x40A518C5B9c1d3D6d62Ba789501CE4D526C9d9C6)         |
 | Scroll          | [0x0F7Ad835235Ede685180A5c611111610813457a9](https://scrollscan.com/address/0x0F7Ad835235Ede685180A5c611111610813457a9)          |
+| Superseed       | [0xb1bEF51ebCA01EB12001a639bDBbFF6eEcA12B9F](https://explorer.superseed.xyz/address/0xb1bEF51ebCA01EB12001a639bDBbFF6eEcA12B9F)  |
+| Taiko           | [0xb1bEF51ebCA01EB12001a639bDBbFF6eEcA12B9F](https://taikoscan.io/address/0xb1bEF51ebCA01EB12001a639bDBbFF6eEcA12B9F)            |
+| Tangle          | [0xb1bEF51ebCA01EB12001a639bDBbFF6eEcA12B9F](https://explorer.tangle.tools/address/0xb1bEF51ebCA01EB12001a639bDBbFF6eEcA12B9F)   |
 | zkSync Era      | [0xaFeA787Ef04E280ad5Bb907363f214E4BAB9e288](https://era.zksync.network/address/0xaFeA787Ef04E280ad5Bb907363f214E4BAB9e288)      |
 
 ## Lockup
