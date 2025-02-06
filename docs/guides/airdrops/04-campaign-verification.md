@@ -70,11 +70,11 @@ Click on the "Query" button and copy the output, which is also the constructor a
 ## Step 5: Build the contracts
 
 Clone the [sablier-labs/airdrops](https://github.com/sablier-labs/airdrops) repo, and build the contracts from the
-`release` branch. Note that you will need [Foundry](https://getfoundry.sh/) installed for this.
+`v1.3.0` tag. Note that you will need [Foundry](https://getfoundry.sh/) installed for this.
 
 ```bash
 git clone git@github.com:sablier-labs/airdrops.git
-git switch release
+git checkout v1.3.0
 bun install --frozen-lockfile
 bun run build:optimized
 ```
