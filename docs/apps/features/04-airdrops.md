@@ -57,7 +57,7 @@ Creating campaigns involves a simple 3-step process:
 | ![Airdrop Create: Step 1](/screenshots/airdrop-create-1.webp) |
 | ![Airdrop Create: Step 2](/screenshots/airdrop-create-2.webp) |
 
-### Public source
+### Open source
 
 If you'd like to support Airdrops in your UI or have additional requirements, you can do so by using a self-hosted
 [Merkle service](/api/airdrops/merkle-api/overview). Reach out to us on [Discord](https://discord.sablier.com) for more
@@ -117,4 +117,5 @@ As shown in the image above, you can specify a list of countries where access to
 Sablier Interface at [app.sablier.com](https://app.sablier.com). Note that this restriction does not apply to the
 Sablier Protocol, which runs permissionlessly on the blockchain.
 
-Additionally, some jurisdictions may already be restricted by our hosting provider or your ISP by default.
+Additionally, some jurisdictions may already be restricted by default — either by your ISP or Vercel, our hosting
+provider.
