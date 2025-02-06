@@ -1,15 +1,13 @@
 ---
-id: "generic"
+id: "other"
 sidebar_position: 5
-title: "Generic"
+title: "Other Features"
 ---
-
-# Generic features
 
 The Sablier Interface comes with many other smaller (but still cool) features, from aesthetic easter eggs to
 integrations with popular services.
 
-## Social Media Preview
+## Social Media Previews
 
 For the socialites among our users, we've added a feature that generates social media preview images based on your
 onchain activity in Sablier.
