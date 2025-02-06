@@ -57,7 +57,7 @@ discontinued. For previous deployments, please refer to the
 
 | Contract             | Address                                                                                                               | Deployment                                                                      |
 | :------------------- | :-------------------------------------------------------------------------------------------------------------------- | :------------------------------------------------------------------------------ |
-| SablierMerkleFactory | [0x7868Af143cc5e6Cd03f9B4f5cdD2832695A85d6B](https://berascan.org/address/0x7868Af143cc5e6Cd03f9B4f5cdD2832695A85d6B) | [v1.3.0](https://github.com/sablier-labs/deployments/blob/main/airdrops/v1.3.0) |
+| SablierMerkleFactory | [0x7868Af143cc5e6Cd03f9B4f5cdD2832695A85d6B](https://berascan.com/address/0x7868Af143cc5e6Cd03f9B4f5cdD2832695A85d6B) | [v1.3.0](https://github.com/sablier-labs/deployments/blob/main/airdrops/v1.3.0) |
 
 ### Blast
 
