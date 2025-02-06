@@ -39,16 +39,16 @@ wallets.
 
 ## Lockup
 
-Admin has the following permissions on each chain where Lockup is deployed:
+Admin has the following permissions on each chain where `Lockup` is deployed:
 
 | Permission         | Function                                                                                                |
 | ------------------ | ------------------------------------------------------------------------------------------------------- |
 | Allow to Hook      | [allowToHook](../reference/lockup/contracts/abstracts/abstract.SablierLockupBase#allowtohook)           |
 | Set NFT Descriptor | [setNFTDescriptor](../reference/lockup/contracts/abstracts/abstract.SablierLockupBase#setnftdescriptor) |
 
-## Merkle Airdrops
+## MerkleFactory
 
-Admin has the following permissions on each chain where Merkle Airdrops is deployed:
+Admin has the following permissions on each chain where `MerkleFactory` is deployed:
 
 | Permission       | Function                                                                                       |
 | ---------------- | ---------------------------------------------------------------------------------------------- |
@@ -58,7 +58,7 @@ Admin has the following permissions on each chain where Merkle Airdrops is deplo
 
 ## Flow
 
-Admin has the following permissions on each chain where Flow is deployed:
+Admin has the following permissions on each chain where `Flow` is deployed:
 
 | Permission               | Function                                                                                                        |
 | ------------------------ | --------------------------------------------------------------------------------------------------------------- |

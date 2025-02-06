@@ -59,7 +59,7 @@ const StyledGitHubIcon = styled.div`
 
 interface LinkPreviewProps {
   href: string;
-  icon: "github";
+  icon: string;
   subtitle: string;
   title: string;
 }
