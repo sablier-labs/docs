@@ -53,6 +53,12 @@ discontinued. For previous deployments, please refer to the
 | :------------------- | :-------------------------------------------------------------------------------------------------------------------- | :------------------------------------------------------------------------------ |
 | SablierMerkleFactory | [0xD9e108f26fe104CE1058D48070438deDB3aD826A](https://basescan.org/address/0xD9e108f26fe104CE1058D48070438deDB3aD826A) | [v1.3.0](https://github.com/sablier-labs/deployments/blob/main/airdrops/v1.3.0) |
 
+### Berachain
+
+| Contract             | Address                                                                                                               | Deployment                                                                      |
+| :------------------- | :-------------------------------------------------------------------------------------------------------------------- | :------------------------------------------------------------------------------ |
+| SablierMerkleFactory | [0x7868Af143cc5e6Cd03f9B4f5cdD2832695A85d6B](https://berascan.com/address/0x7868Af143cc5e6Cd03f9B4f5cdD2832695A85d6B) | [v1.3.0](https://github.com/sablier-labs/deployments/blob/main/airdrops/v1.3.0) |
+
 ### Blast
 
 | Contract             | Address                                                                                                               | Deployment                                                                      |
