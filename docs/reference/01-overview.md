@@ -4,11 +4,10 @@ sidebar_position: 1
 title: "Overview"
 ---
 
-All Sablier protocols are a binary smart contract system comprised of many abstract contracts, libraries, and types. The
-design of the Sablier smart contracts draws inspiration from the architectural principles of
-[Uniswap](https://docs.uniswap.org/).
+The Sablier Protocol is a smart contract system comprised of many abstract contracts, libraries, and types. The design
+of the smart contracts draws some inspiration from the architectural principles of [Uniswap](https://docs.uniswap.org).
 
-This section provides a detailed overview of the Sablier smart contracts, their designs, control flows and contract
+This section provides a detailed overview of the Sablier smart contracts, their designs, control flows, and contract
 references.
 
 ## Lockup

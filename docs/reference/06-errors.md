@@ -6,7 +6,7 @@ title: "Errors"
 
 ## Background
 
-Sablier protocols handle errors with the convenient and gas-efficient
+The Sablier Protocol handles errors with the convenient and gas-efficient
 [custom error syntax](https://blog.soliditylang.org/2021/04/21/custom-errors) introduced in Solidity v0.8.4.
 
 The error data encoding is identical to the ABI encoding used for functions, e.g.:
@@ -24,7 +24,7 @@ bytes4(keccak256(bytes("SablierLockupBase_WithdrawAmountZero(uint256)")))
 
 ## Naming Pattern
 
-With the exception of a few generics, all errors in Sablier protocols adhere to the naming pattern
+With the exception of a few generics, all errors in Sablier Protocol adhere to the naming pattern
 `<ContractName>_<ErrorName>`.
 
 Incorporating the contract name as a prefix offers context, making it easier for end users to pinpoint the contract

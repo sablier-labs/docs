@@ -9,8 +9,7 @@ Admin is a collection of multisig wallets and EOAs currently in control of Sabli
 
 ## Admins
 
-Here are the addresses that are the protocols admin for the Sablier Protocols. Most of them are Safe multi-signature
-wallets.
+Here's a table with the protocols admin of the Sablier Protocol. Most of them are Safe multi-signature wallets.
 
 | Chain           | Address                                                                                                                          |
 | :-------------- | :------------------------------------------------------------------------------------------------------------------------------- |
@@ -69,7 +68,7 @@ Admin has the following permissions on each chain where `Flow` is deployed:
 
 ## Trustlessness
 
-Despite having an admin, the Sablier Protocols remain trustless. Here are the reasons why:
+Despite having an admin, the Sablier Protocol remains trustless. Here's why:
 
 1. The protocols are permissionless, i.e. it can be freely accessed by anyone with an Internet connection.
 2. The protocols are persistent, i.e. the admin cannot pause it.

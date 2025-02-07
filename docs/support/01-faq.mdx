@@ -4,17 +4,13 @@ sidebar_position: 1
 title: "FAQ"
 ---
 
-### Where can I access the Sablier protocols?
+### Where can I access the Sablier Protocol?
 
 You can access Sablier through the following web interfaces:
 
 - [app.sablier.com](https://app.sablier.com)
-- [app.safe.global](https://app.safe.global) (if you are using a Safe multisig wallet)
-
-### What is real-time finance?
-
-A term coined by us to emphasize the wide-ranging use cases for the Sablier protocols. We like to think about work as an
-attempt to rethink the way trust is established in financial contracts.
+- [app.safe.global](https://app.safe.global/share/safe-app?appUrl=https%3A%2F%2Fapp.sablier.com%2F&chain=arb1) (if you
+  are using a Safe multisig wallet)
 
 ### What is token streaming?
 
@@ -31,6 +27,15 @@ Imagine Alice wants to stream 3000 DAI to Bob during the whole month of January.
 4. If at any point during January Alice wishes to get back her tokens, she can cancel the stream and recover what has
    not been streamed yet.
 
+### How does Lockup calculate the payment rate?
+
+Dividing the deposit amount by the difference between the stop time and the start time gives us a payment rate per
+second. Lockup uses this rate to transfer a small portion of tokens from the sender to the recipient once every second.
+
+For instance, if the payment rate was 0.01 DAI per second, the recipient would receive:
+
+$0.01 * 60 = 0.6$ DAI / minute, $0.01 * 60 * 60 = 36$ DAI / hour, $0.01 * 60 * 60 * 24 = 864$ DAI / day
+
 ### How does streaming work on Sablier Flow?
 
 Imagine Alice wants to stream 3000 DAI on a monthly basis to Bob.
@@ -44,22 +49,13 @@ Imagine Alice wants to stream 3000 DAI on a monthly basis to Bob.
 
 ### How can I create a stream?
 
-You will need an EVM wallet ([Metamask](https://metamask.io), [Rainbow](https://rainbow.me), etc.), some ETH (or the
-network's token to pay gas fees) and an ERC-20 token like DAI. Then, choose your favorite interface for accessing the
-Sablier protocols (such as [app.sablier.com](https://app.sablier.com)) and fill in the recipient's address, the deposit
-amount and the total duration.
+You will need an EVM wallet (e.g. [Metamask](https://metamask.io), [Rainbow](https://rainbow.me), etc.), some ETH (or
+the network's token to pay gas fees) and an ERC-20 token like DAI. Then, choose your favorite interface for accessing
+the Sablier Protocol (such as [app.sablier.com](https://app.sablier.com)) and fill in the recipient's address, the
+deposit amount and the total duration.
 
 Alternatively, you can see [here](/guides/lockup/etherscan) how to manually create a stream using
 [Etherscan](https://etherscan.io).
-
-### How does Lockup streaming work?
-
-Dividing the deposit amount by the difference between the stop time and the start time gives us a payment rate per
-second. Lockup uses this rate to transfer a small portion of tokens from the sender to the recipient once every second.
-
-For instance, if the payment rate was 0.01 DAI per second, the recipient would receive:
-
-$0.01 * 60 = 0.6$ DAI / minute, $0.01 * 60 * 60 = 36$ DAI / hour, $0.01 * 60 * 60 * 24 = 864$ DAI / day
 
 ### Where are the tokens held?
 
@@ -86,8 +82,8 @@ transfers all the remaining funds (if any) to the recipient.
 
 ### Can I modify the streaming rate?
 
-On Lockup, once a stream is created, it is set in stone on the Ethereum blockchain. Whereas on Flow, a stream rate per
-second can be modified anytime by the creator.
+On Lockup, once a stream is created, it is set in stone on the Ethereum blockchain. Whereas on Flow, the streaming rate
+per second can be adjusted anytime by the sender.
 
 ### How are vested airdrops different from a batch of normal streams?
 
@@ -104,8 +100,13 @@ one after the other (as opposed to all at once).
 
 | Feature                        | Groups                           | Airdrops              |
 | ------------------------------ | -------------------------------- | --------------------- |
-| Maximum number of streams      | ~60 (depends on block gas limit) | Millions              |
+| Maximum number of streams      | ~280 (different limit per chain) | Millions              |
 | Gas to create streams          | Sender paying                    | Each recipient paying |
 | Gas to deploy Airdrop contract | N/A                              | Sender paying         |
 | Streams show up onchain        | Immediately                      | Lazily                |
 | Good for                       | Investors, Employees             | Large communities     |
+
+### What is real-time finance?
+
+A term coined by us to emphasize the wide-ranging use cases for the Sablier Protocol. We like to think about work as an
+attempt to rethink the way trust is established in financial contracts.

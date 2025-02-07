@@ -4,7 +4,7 @@ sidebar_position: 12
 title: "Security"
 ---
 
-Ensuring the security of the Sablier Protocols is our utmost priority. We have dedicated significant efforts towards the
+Ensuring the security of the Sablier Protocol is our utmost priority. We have dedicated significant efforts towards the
 design and testing of the protocol to guarantee its safety and reliability.
 
 The Sablier contracts have undergone rigorous audits by leading security experts from [Cantina](https://cantina.xyz/),
@@ -26,7 +26,7 @@ All the audits of Lockup contracts can be found [here](https://github.com/sablie
 
 ## Bug Bounty
 
-The Sablier Protocols are subject to a bug bounty program per the terms outlined in `Security.md` of each protocol.
+The Sablier Protocol is subject to a bug bounty program per the terms outlined in `Security.md` of each protocol.
 
 - [Lockup Bug Bounty](https://github.com/sablier-labs/lockup/blob/main/SECURITY.md)
 - [Merkle Airdrops Bug Bounty](https://github.com/sablier-labs/airdrops/blob/main/SECURITY.md).
