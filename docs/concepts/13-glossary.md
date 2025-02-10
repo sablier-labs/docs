@@ -218,8 +218,8 @@ transactions.
 
 A new financial primitive that permits by-the-second payments.
 
-Currently, Sablier offers two streaming protocols called Lockup and Flow. In Lockup, the creator has to lock up a
-specified amount of tokens whereas in Flow protocol, creator is not required to lock up any amount of tokens.
+Currently, Sablier offers two distribution protocols called Lockup and Flow. In Lockup, the creator has to lock up a
+specified amount of tokens, whereas in Flow, creator is not required to lock up any amount of tokens.
 
 ## Streaming
 
