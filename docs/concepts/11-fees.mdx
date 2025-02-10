@@ -79,6 +79,37 @@ versions do not incur any claim fee.
 | ------------- | ---------------------- | ------------- | --- |
 | MerkleFactory | Dec 18, 2023 - present | Airdrop claim | 0   |
 
+## Default Claim Fee Across Chains
+
+A `defaultFee` is charged at the protocol regarding airdrop claims, in the
+[`MerkleFactory`](/reference/airdrops/contracts/contract.SablierMerkleFactory) contract. This default fee is currently
+set at $1 , charged in the chain's gas token.
+
+| Chain         | Gas token | Fee          | Fee (in Wei)        |
+| ------------- | --------- | ------------ | ------------------- |
+| Ethereum      | ETH       | 0.00036      | 360000000000000     |
+| Abstract      | ETH       | 0.00036      | 360000000000000     |
+| Arbitrum      | ETH       | 0.00036      | 360000000000000     |
+| Avalanche     | AVAX      | 0.038491147  | 38491147000000000   |
+| Base          | ETH       | 0.00036      | 360000000000000     |
+| Berachain     | BERA      | 0            | 0                   |
+| Blast         | ETH       | 0.00036      | 360000000000000     |
+| BNB Chain     | BNB       | 0.0017620835 | 1762083500000000    |
+| Chiliz        | CHZ       | 0            | 0                   |
+| Gnosis        | XDAI      | 0.0055435445 | 5543544500000000    |
+| IoTeX         | IOTX      | 0            | 0                   |
+| LightLink     | ETH       | 0            | 0                   |
+| Linea         | ETH       | 0.00036      | 360000000000000     |
+| Mode          | ETH       | 0.00036      | 360000000000000     |
+| Morph         | ETH       | 0.00036      | 360000000000000     |
+| Optimism      | ETH       | 0.00036      | 360000000000000     |
+| Polygon       | POL       | 3.1897926635 | 3189792663500000000 |
+| Scroll        | ETH       | 0.00036      | 360000000000000     |
+| Superseed     | ETH       | 0.00036      | 360000000000000     |
+| Taiko Mainnet | ETH       | 0.00036      | 360000000000000     |
+| Tangle        | /         | 0            | 0                   |
+| zkSync Era    | ETH       | 0.00036      | 360000000000000     |
+
 ## Gas Fee
 
 ### Q: How are the Interface fees charged?
