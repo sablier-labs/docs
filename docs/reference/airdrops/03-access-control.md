@@ -4,7 +4,7 @@ sidebar_position: 3
 title: "Access Control"
 ---
 
-With the exception of the [admin functions](/concepts/governance#merkle-airdrops), all functions in Merkle campaign can
+With the exception of the [admin functions](/concepts/governance#merklefactory), all functions in Merkle campaign can
 only be triggered either by the campaign creator or the airdrop recipients. The Protocol Admin has no control over any
 funds in the campaign contract.
 
