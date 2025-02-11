@@ -6,7 +6,7 @@ title: "Glossary"
 
 ## Broker
 
-A third-party entity that interacts with the Sablier Protocols on behalf of its users, who may charge service fees for
+A third-party entity that interacts with the Sablier Protocol on behalf of its users, who may charge service fees for
 facilitating these interactions.
 
 ## Broker Fee
@@ -78,7 +78,7 @@ The amount of tokens that sender owes to the stream.
 
 ## Foundry
 
-[Foundry][foundry] is the application development toolkit that has been used to develop the Sablier Protocols.
+[Foundry][foundry] is the application development toolkit that has been used to develop the Sablier Protocol.
 
 ## Gas Fee
 
@@ -201,7 +201,7 @@ Aa data structure used to store hashes of the recipients airdrop allocations in 
 
 ## PRBMath
 
-[PRBMath][prb-math] is fixed-point arithmetic library used by Sablier protocols.
+[PRBMath][prb-math] is fixed-point arithmetic library used by the Sablier Protocol for precise calculations.
 
 ## Protocol Admin
 
@@ -209,7 +209,7 @@ An entity with exclusive access to specific functions of the protocol.
 
 ## Real-time finance
 
-A term coined by us in 2019 to emphasize the wide-ranging use cases for the Sablier Protocols.
+A term coined by us in 2019 to emphasize the wide-ranging use cases for the Sablier Protocol.
 
 Since the withdrawable amounts in streams are updated every second, they embody the concept of real-time financial
 transactions.
@@ -218,8 +218,8 @@ transactions.
 
 A new financial primitive that permits by-the-second payments.
 
-Currently, Sablier offers two streaming protocols called Lockup and Flow. In Lockup, the creator has to lock up a
-specified amount of tokens whereas in Flow protocol, creator is not required to lock up any amount of tokens.
+Currently, Sablier offers two distribution protocols called Lockup and Flow. In Lockup, the creator has to lock up a
+specified amount of tokens, whereas in Flow, creator is not required to lock up any amount of tokens.
 
 ## Streaming
 
@@ -227,8 +227,7 @@ By-the-second payments.
 
 ## Token
 
-Digital tokens can exist in various forms, but the Sablier Protocols exclusively supports the streaming of ERC-20
-tokens.
+Digital tokens can exist in various forms, but the Sablier Protocol exclusively supports the streaming of ERC-20 tokens.
 
 ## Vesting
 
