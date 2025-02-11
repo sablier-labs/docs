@@ -9,6 +9,8 @@ title: "Fees"
 The Sablier Interface charges a flat fee for certain operations. This fee is paid in the native gas token, i.e. in ETH
 for streams on Ethereum, and in POL for streams on Polygon.
 
+The fee amount is calculated based on market prices. For example, when ETH is $4000, a $1 fee is 0.00025 ETH.
+
 ### Stream Withdrawals
 
 The Sablier Interface charges a flat fee when you withdraw from a stream. This applies to both Lockup and Flow streams.
@@ -35,34 +37,7 @@ The fee is **$3** (in the gas token) per claim, regardless of the airdrop amount
 The fee applies only to airdrops created via Merkle Airdrops v1.3 (or later). Claims from airdrops created with earlier
 versions do not incur any claim fee.
 
-## Contract Fees
-
-As opposed to the Interface fees, the contract fees are charged by the Sablier contracts themselves. They would apply
-regardless of the interface used to interact with the Sablier Protocol.
-
-### MerkleFactory
-
-The ONLY contracts that can charge fees in Sablier are the `MerkleFactory` contract and the airdrop contracts it
-deploys.
-
-The [protocol admin](/concepts/governance/) can update the fee in the
-[`MerkleFactory`](/reference/airdrops/contracts/contract.SablierMerkleFactory) contract. However, the new fee applies
-only to airdrops created after the update. The fee values in the individual airdrop contracts remain immutable once set.
-
-Like the Interface fee, this fee is paid in the native gas token, e.g., ETH on Ethereum, POL on Polygon.
-
-:::tip[What is the contract fee?]
-
-It is currently set to 0.
-
-:::
-
-The fee can only be applied to airdrops created with Merkle Airdrops v1.3 (or later). Airdrops created with earlier
-versions do not incur any claim fee.
-
-## Fee Timeline
-
-### Interface Fees
+## Timeline for Interface Fees
 
 | Product  | Timeline                   | Operation     | Fee |
 | -------- | -------------------------- | ------------- | --- |
@@ -73,49 +48,77 @@ versions do not incur any claim fee.
 | Lockup   | Jul 3, 2023 - Feb 2, 2025  | Withdraw      | 0   |
 | Flow     | Dec 4, 2024 - Feb 2, 2025  | Withdraw      | 0   |
 
-### Contract Fees
+## Contract Fees
 
-| Contract      | Timeline               | Operation     | Fee |
-| ------------- | ---------------------- | ------------- | --- |
-| MerkleFactory | Dec 18, 2023 - present | Airdrop claim | 0   |
+As opposed to the Interface fees, the contract fees are charged by the Sablier contracts themselves. They apply
+regardless of the interface used to interact with the Sablier Protocol.
 
-## Default Claim Fee Across Chains
+This fee is charged via the `msg.value` field. Basically, for the contract to accept a transaction, the `msg.value` must
+be greater than or equal to the fee.
 
-A `defaultFee` is charged at the protocol regarding airdrop claims, in the
-[`MerkleFactory`](/reference/airdrops/contracts/contract.SablierMerkleFactory) contract. This default fee is currently
-set at $1 , charged in the chain's gas token.
+:::warning Important
 
-| Chain         | Gas token | Fee          | Fee (in Wei)        |
-| ------------- | --------- | ------------ | ------------------- |
-| Ethereum      | ETH       | 0.00036      | 360000000000000     |
-| Abstract      | ETH       | 0.00036      | 360000000000000     |
-| Arbitrum      | ETH       | 0.00036      | 360000000000000     |
-| Avalanche     | AVAX      | 0.038491147  | 38491147000000000   |
-| Base          | ETH       | 0.00036      | 360000000000000     |
-| Berachain     | BERA      | 0            | 0                   |
-| Blast         | ETH       | 0.00036      | 360000000000000     |
-| BNB Chain     | BNB       | 0.0017620835 | 1762083500000000    |
-| Chiliz        | CHZ       | 0            | 0                   |
-| Gnosis        | XDAI      | 0.0055435445 | 5543544500000000    |
-| IoTeX         | IOTX      | 0            | 0                   |
-| LightLink     | ETH       | 0            | 0                   |
-| Linea         | ETH       | 0.00036      | 360000000000000     |
-| Mode          | ETH       | 0.00036      | 360000000000000     |
-| Morph         | ETH       | 0.00036      | 360000000000000     |
-| Optimism      | ETH       | 0.00036      | 360000000000000     |
-| Polygon       | POL       | 3.1897926635 | 3189792663500000000 |
-| Scroll        | ETH       | 0.00036      | 360000000000000     |
-| Superseed     | ETH       | 0.00036      | 360000000000000     |
-| Taiko Mainnet | ETH       | 0.00036      | 360000000000000     |
-| Tangle        | /         | 0            | 0                   |
-| zkSync Era    | ETH       | 0.00036      | 360000000000000     |
+The Contract Fee acts as a **minimum fee**, so it is NOT cumulative with the Interface Fee. You will pay the higher of
+the two fees.
+
+:::
+
+### MerkleFactory
+
+The ONLY contracts that can charge fees in Sablier are the `MerkleFactory` contract and the airdrop contracts it
+deploys.
+
+The [Protocol Admin](/concepts/governance/) can update the fee in the
+[`MerkleFactory`](/reference/airdrops/contracts/contract.SablierMerkleFactory) contract. However, the new fee applies
+only to airdrops created after the update. The fee values in the individual airdrop contracts remain immutable once set.
+
+Like the Interface fee, this fee is paid in the native gas token, e.g., ETH on Ethereum, POL on Polygon.
+
+:::tip[What is the fee?]
+
+The fee is **$1** (in the gas token) per claim, regardless of the airdrop amount.
+
+:::
+
+The fee can only be applied to airdrops created with Merkle Airdrops v1.3 (or later). Airdrops created with earlier
+versions do not incur any claim fee.
+
+| Chain         | Gas Token | Fee              | Fee in Wei          |
+| ------------- | --------- | ---------------- | ------------------- |
+| Ethereum      | ETH       | 0.00036 ETH      | 360000000000000     |
+| Abstract      | ETH       | 0.00036 ETH      | 360000000000000     |
+| Arbitrum      | ETH       | 0.00036 ETH      | 360000000000000     |
+| Avalanche     | AVAX      | 0.038491147 AVAX | 38491147000000000   |
+| Base          | ETH       | 0.00036 ETH      | 360000000000000     |
+| Berachain     | BERA      | 0 BERA           | 0                   |
+| Blast         | ETH       | 0.00036 ETH      | 360000000000000     |
+| BNB Chain     | BNB       | 0.0017620835 BNB | 1762083500000000    |
+| Chiliz        | CHZ       | 0 CHZ            | 0                   |
+| Gnosis        | XDAI      | 1 XDAI           | 1000000000000000000 |
+| IoTeX         | IOTX      | 0 IOTX           | 0                   |
+| LightLink     | ETH       | 0 ETH            | 0                   |
+| Linea         | ETH       | 0.00036 ETH      | 360000000000000     |
+| Mode          | ETH       | 0.00036 ETH      | 360000000000000     |
+| Morph         | ETH       | 0.00036 ETH      | 360000000000000     |
+| Optimism      | ETH       | 0.00036 ETH      | 360000000000000     |
+| Polygon       | POL       | 3.1897926635 POL | 3189792663500000000 |
+| Scroll        | ETH       | 0.00036 ETH      | 360000000000000     |
+| Superseed     | ETH       | 0.00036 ETH      | 360000000000000     |
+| Taiko Mainnet | ETH       | 0.00036 ETH      | 360000000000000     |
+| Tangle        | TNT       | 0 TNT            | 0                   |
+| zkSync Era    | ETH       | 0.00036 ETH      | 360000000000000     |
 
 ## Gas Fee
 
-### Q: How are the Interface fees charged?
+### Q: How are the Interface Fees charged?
 
-A: They are added to the gas fee. For example, if the gas fee is \$10 and the Interface fee is \$1, you would pay \$11
+A: They are added to the gas fee. For example, if the gas fee is \$10 and the Interface Fee is \$1, you would pay \$11
 in total (the payment is taken in the gas token, e.g., ETH).
+
+### Q: Are the Interface Fees and the Contract Fees cumulative?
+
+A: NO. The Contract Fee acts as a **minimum fee**, so it will not get added to the Interface Fee. You will pay the
+higher of the two fees.
 
 ### Q: What are gas fees?
 
