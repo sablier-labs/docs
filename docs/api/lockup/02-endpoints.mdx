@@ -4,20 +4,29 @@ sidebar_position: 2
 title: "Endpoints"
 ---
 
-import DeprecatedWarning from "@site/docs/snippets/DeprecatedWarning.mdx";
+import DeprecatedSubgraphs from "@site/docs/snippets/DeprecatedSubgraphs.mdx";
 import EnvioTip from "@site/docs/snippets/EnvioTip.mdx";
 import TheGraphSunset from "@site/docs/snippets/TheGraphSunset.mdx";
 import LinkPreview from "@site/src/components/LinkPreview";
 
-# Lockup
+# Lockup Endpoints
 
 ## The Graph
 
-This subgraph tracks events emitted by the `@sablier/lockup` contracts. It deals with core protocol actions like
-creating, withdrawing or transferring Lockup streams.
+This subgraph tracks events emitted by the Sablier Lockup contracts. It deals with core protocol actions like creating,
+withdrawing or transferring Lockup streams.
 
 <TheGraphSunset />
-<DeprecatedWarning />
+<DeprecatedSubgraphs protocol="lockup" />
+
+### Source Code
+
+<LinkPreview
+  href="https://github.com/sablier-labs/subgraphs/blob/main/apps/lockup"
+  icon="github"
+  subtitle="@sablier-labs/subgraphs - apps/lockup"
+  title="Sablier Subgraphs - Lockup - The Graph"
+/>
 
 ### Endpoints
 
@@ -44,21 +53,21 @@ creating, withdrawing or transferring Lockup streams.
 | Sepolia          | [sablier-lockup-sepolia][explorer-lockup-sepolia]                   | [Studio][studio-lockup-sepolia]          | [De. Network][network-lockup-sepolia]          |
 | zkSync           | [sablier-lockup-zksync][explorer-lockup-zksync]                     | [Studio][studio-lockup-zksync]           | [De. Network][network-lockup-zksync]           |
 
-### Code
-
-<LinkPreview
-  href="https://github.com/sablier-labs/subgraphs/blob/main/apps/lockup"
-  icon="github"
-  subtitle="@sablier-labs/subgraphs - apps/lockup"
-  title="Sablier Subgraphs - Lockup - The Graph"
-/>
-
 ## Envio
 
 <EnvioTip />
 
 The `lockup-envio` indexer tracks events emitted by the `@sablier/lockup` contracts. It deals with core protocol actions
 like creating, withdrawing, or transferring Lockup streams.
+
+### Source Code
+
+<LinkPreview
+  href="https://github.com/sablier-labs/subgraphs/blob/main/apps/lockup-envio"
+  icon="github"
+  subtitle="@sablier-labs/subgraphs - apps/lockup-envio"
+  title="Sablier Subgraphs - Lockup - Envio"
+/>
 
 ### Endpoints
 
@@ -68,15 +77,6 @@ like creating, withdrawing, or transferring Lockup streams.
 
 The endpoint is meant to be plugged into a query client. Use
 [Hasura's online explorer](https://cloud.hasura.io/public/graphiql?) to view the entities and query API.
-
-### Code
-
-<LinkPreview
-  href="https://github.com/sablier-labs/subgraphs/blob/main/apps/lockup-envio"
-  icon="github"
-  subtitle="@sablier-labs/subgraphs - apps/lockup-envio"
-  title="Sablier Subgraphs - Lockup - Envio"
-/>
 
 {/* --------------------------------------------------------------------------------------------------------------------------------- */}
 {/* --------------------------------------------------------------------------------------------------------------------------------- */}

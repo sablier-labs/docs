@@ -4,17 +4,29 @@ sidebar_position: 2
 title: "Endpoints"
 ---
 
+import DeprecatedSubgraphs from "@site/docs/snippets/DeprecatedSubgraphs.mdx";
+import EnvioTip from "@site/docs/snippets/EnvioTip.mdx";
 import TheGraphSunset from "@site/docs/snippets/TheGraphSunset.mdx";
 import LinkPreview from "@site/src/components/LinkPreview";
 
-# Flow
+# Flow Endpoints
 
 ## The Graph
 
-This subgraph tracks events emitted by the `@sablier/flow` contracts, and deals with protocol actions like creating,
+This subgraph tracks events emitted by the Sablier Flow contracts, and deals with protocol actions like creating,
 depositing or voiding flow streams.
 
 <TheGraphSunset />
+<DeprecatedSubgraphs protocol="flow" />
+
+### Source Code
+
+<LinkPreview
+  href="https://github.com/sablier-labs/subgraphs/blob/main/apps/flow"
+  icon="github"
+  subtitle="@sablier-labs/subgraphs - apps/flow"
+  title="Sablier Subgraphs - Flow - The Graph"
+/>
 
 ### Endpoints
 
@@ -40,26 +52,21 @@ depositing or voiding flow streams.
 | Sepolia          | [sablier-flow-sepolia][explorer-flow-sepolia]                   | [Studio][studio-flow-sepolia]          | [De. Network][network-flow-sepolia]          |
 | zkSync           | [sablier-flow-zksync][explorer-flow-zksync]                     | [Studio][studio-flow-zksync]           | [De. Network][network-flow-zksync]           |
 
-### Code
-
-<LinkPreview
-  href="https://github.com/sablier-labs/subgraphs/blob/main/apps/flow"
-  icon="github"
-  subtitle="@sablier-labs/subgraphs - apps/flow"
-  title="Sablier Subgraphs - Flow - The Graph"
-/>
-
 ## Envio
 
-:::tip Chains: Individual vs. Aggregated
-
-While subgraphs are chain-tethered (one subgraph endpoint per chain), Envio indexes all chains within the same
-deployment. The data from all of chains that Sablier is deployed on can be queried from the same place.
-
-:::
+<EnvioTip />
 
 The `flow-envio` indexer tracks events emitted by the `@sablier/flow` contracts. It deals with core protocol actions
 like creating, depositing, or voiding flow streams.
+
+### Source Code
+
+<LinkPreview
+  href="https://github.com/sablier-labs/subgraphs/blob/main/apps/flow-envio"
+  icon="github"
+  subtitle="@sablier-labs/subgraphs - apps/flow-envio"
+  title="Sablier Subgraphs - Flow - Envio"
+/>
 
 ### Endpoints
 
@@ -69,15 +76,6 @@ like creating, depositing, or voiding flow streams.
 
 The endpoint is meant to be plugged into a query client. Use
 [Hasura's online explorer](https://cloud.hasura.io/public/graphiql?) to view the entities and query API.
-
-### Code
-
-<LinkPreview
-  href="https://github.com/sablier-labs/subgraphs/blob/main/apps/flow-envio"
-  icon="github"
-  subtitle="@sablier-labs/subgraphs - apps/flow-envio"
-  title="Sablier Subgraphs - Flow - Envio"
-/>
 
 {/* --------------------------------------------------------------------------------------------------------------------------------- */}
 {/* --------------------------------------------------------------------------------------------------------------------------------- */}

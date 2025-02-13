@@ -4,23 +4,33 @@ sidebar_position: 2
 title: "Endpoints"
 ---
 
-import DeprecatedWarning from "@site/docs/snippets/DeprecatedWarning.mdx";
+import DeprecatedSubgraphs from "@site/docs/snippets/DeprecatedSubgraphs.mdx";
+import EnvioTip from "@site/docs/snippets/EnvioTip.mdx";
 import TheGraphSunset from "@site/docs/snippets/TheGraphSunset.mdx";
 import LinkPreview from "@site/src/components/LinkPreview";
 
-# Airdrops
+# Airdrops Endpoints
 
 ## The Graph
 
-This subgraph tracks events emitted by the `@sablier/airdrops` contracts, specifically the ones in charge of merkle
-distributions. It deals with airdrops-specific actions like the factory creating an airstream campaign, admin clawbacks,
-or users claiming stream NFTs as defined in the attached Merkle tree.
+This subgraph tracks events emitted by the Sablier Airdrops contracts, specifically the ones in charge of Merkle
+distributions. It deals with airdrop-specific actions like the factory deploying an airdrop campaign, admin clawbacks,
+and users claiming airdrops.
 
-Airdrops work in tandem with [vesting](/apps/features/vesting) as Merkle distributions will produce new
-[lockup](/api/lockup/overview) streams. Be sure to check out that part of the docs too.
+Airdrops work in tandem with our [Vesting](/apps/features/vesting) feature since some Merkle distributions will produce
+new [Lockup](/api/lockup/overview) streams.
 
 <TheGraphSunset />
-<DeprecatedWarning />
+<DeprecatedSubgraphs protocol="airdrops" />
+
+### Source Code
+
+<LinkPreview
+  href="https://github.com/sablier-labs/subgraphs/blob/main/apps/merkle"
+  icon="github"
+  subtitle="@sablier-labs/subgraphs - apps/merkle"
+  title="Sablier Subgraphs - Merkle - The Graph"
+/>
 
 ### Endpoints
 
@@ -47,27 +57,22 @@ Airdrops work in tandem with [vesting](/apps/features/vesting) as Merkle distrib
 | Sepolia          | [sablier-airdrops-sepolia][explorer-airdrops-sepolia]                   | [Studio][studio-airdrops-sepolia]          | [De. Network][network-airdrops-sepolia]          |
 | zkSync           | [sablier-airdrops-zksync][explorer-airdrops-zksync]                     | [Studio][studio-airdrops-zksync]           | [De. Network][network-airdrops-zksync]           |
 
-### Code
-
-<LinkPreview
-  href="https://github.com/sablier-labs/subgraphs/blob/main/apps/merkle"
-  icon="github"
-  subtitle="@sablier-labs/subgraphs - apps/merkle"
-  title="Sablier Subgraphs - Merkle - The Graph"
-/>
-
 ## Envio
+
+<EnvioTip />
 
 This indexers tracks the events emitted by the `@sablier/airdrops` contracts, specifically the ones in charge of merkle
 distributions. It deals with airdrops-specific actions like the factory creating an airstream campaign, admin clawbacks,
 or users claiming stream NFTs as defined in the attached Merkle tree.
 
-:::tip Chains: Individual vs. Aggregated
+### Source Code
 
-While subgraphs are chain-tethered (one subgraph endpoint per chain), Envio indexes all chains within the same
-deployment. The data from all of chains that Sablier is deployed on can be queried from a single endpoint.
-
-:::
+<LinkPreview
+  href="https://github.com/sablier-labs/subgraphs/blob/main/apps/merkle-envio"
+  icon="github"
+  subtitle="@sablier-labs/subgraphs - apps/merkle-envio"
+  title="Sablier Subgraphs - Merkle - Envio"
+/>
 
 ### Endpoints
 
@@ -78,28 +83,13 @@ deployment. The data from all of chains that Sablier is deployed on can be queri
 The endpoint is meant to be plugged into a query client. Use
 [Hasura's online explorer](https://cloud.hasura.io/public/graphiql?) to view the entities and query API.
 
-### Code
-
-<LinkPreview
-  href="https://github.com/sablier-labs/subgraphs/blob/main/apps/merkle-envio"
-  icon="github"
-  subtitle="@sablier-labs/subgraphs - apps/merkle-envio"
-  title="Sablier Subgraphs - Merkle - Envio"
-/>
-
 ## Sablier SDK: Merkle API
 
 Sablier's Airdrops rely on pre-configured Merkle trees. This data structure contains the list of recipients as well as
 their individual claim details. We use the following service to create the Merkle tree, as well as proofs for the
 recipient's claims.
 
-### Endpoints
-
-| Host    | Endpoint                              |
-| ------- | ------------------------------------- |
-| Sablier | https://sablier-merkle-api.vercel.app |
-
-### Code
+### Source Code
 
 <LinkPreview
   href="https://github.com/sablier-labs/merkle-api"
@@ -107,6 +97,12 @@ recipient's claims.
   subtitle="@sablier-labs/merkle-api"
   title="Sablier SDK - Merkle API"
 />
+
+### Endpoints
+
+| Host    | Endpoint                              |
+| ------- | ------------------------------------- |
+| Sablier | https://sablier-merkle-api.vercel.app |
 
 {/* --------------------------------------------------------------------------------------------------------------------------------- */}
 {/* --------------------------------------------------------------------------------------------------------------------------------- */}
