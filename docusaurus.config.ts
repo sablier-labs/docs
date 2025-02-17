@@ -218,6 +218,12 @@ const config: Config = {
         },
       },
     ],
+    [
+      "vercel-analytics",
+      {
+        mode: "auto",
+      },
+    ],
   ],
   scripts: [
     {
