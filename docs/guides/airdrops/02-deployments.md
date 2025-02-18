@@ -149,6 +149,12 @@ discontinued. For previous deployments, please refer to the
 | :------------------- | :---------------------------------------------------------------------------------------------------------------------------- | :------------------------------------------------------------------------------ |
 | SablierMerkleFactory | [0xd641a0E4509Cced67cC24E7BDcDe2a31b7F7cF77](http://explorer.tangle.tools/address/0xd641a0E4509Cced67cC24E7BDcDe2a31b7F7cF77) | [v1.3.0](https://github.com/sablier-labs/deployments/blob/main/airdrops/v1.3.0) |
 
+### XDC
+
+| Contract             | Address                                                                                                              | Deployment                                                                      |
+| :------------------- | :------------------------------------------------------------------------------------------------------------------- | :------------------------------------------------------------------------------ |
+| SablierMerkleFactory | [0xe41909f5623c3b78219D9a2Bb92bE95AEe5bbC30](https://xdcscan.com/address/0xe41909f5623c3b78219D9a2Bb92bE95AEe5bbC30) | [v1.3.0](https://github.com/sablier-labs/deployments/blob/main/airdrops/v1.3.0) |
+
 ### zkSync Era
 
 | Contract             | Address                                                                                                                     | Deployment                                                                      |
