@@ -77,6 +77,12 @@ discontinued. For previous deployments, please refer to the
 | :------------------- | :--------------------------------------------------------------------------------------------------------------------- | :------------------------------------------------------------------------------ |
 | SablierMerkleFactory | [0xf978034bb3CAB5fe88d23DB5Cb38D510485DaB90](https://chiliscan.com/address/0xf978034bb3CAB5fe88d23DB5Cb38D510485DaB90) | [v1.3.0](https://github.com/sablier-labs/deployments/blob/main/airdrops/v1.3.0) |
 
+### Form
+
+| Contract             | Address                                                                                                                        | Deployment                                                                      |
+| :------------------- | :----------------------------------------------------------------------------------------------------------------------------- | :------------------------------------------------------------------------------ |
+| SablierMerkleFactory | [0xA9264Ef7cB1516cc27FCD5149A2909Ace885Ffb6](https://explorer.form.network/address/0xA9264Ef7cB1516cc27FCD5149A2909Ace885Ffb6) | [v1.3.0](https://github.com/sablier-labs/deployments/blob/main/airdrops/v1.3.0) |
+
 ### IoTex
 
 | Contract             | Address                                                                                                               | Deployment                                                                      |
