@@ -26,7 +26,7 @@ allowance. See the [Allowances](#prerequisite-erc20-allowances) section below fo
 ### Step 1: Go to contract page
 
 Head over to our [deployments](/guides/lockup/deployments) list to pick the contract address you want to interact with.
-In this tutorial, we will create a Lockup stream on Sepolia.
+In this tutorial, we will create a Lockup stream on Ethereum Sepolia.
 
 Once you find the right contract, click on the address to access its explorer's page. Click on the "Contract" tab, and
 then on the "Write Contract" sub-tab.
