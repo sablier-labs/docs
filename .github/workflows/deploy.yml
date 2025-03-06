@@ -1,4 +1,4 @@
-name: "Deploy the website to Vercel"
+name: "Deploy to Vercel"
 
 on:
   workflow_dispatch:
@@ -16,7 +16,7 @@ jobs:
     runs-on: "ubuntu-latest"
     steps:
       - name: "Check out the repo"
-        uses: "actions/checkout@v3"
+        uses: "actions/checkout@v4"
 
       - name: "Install Bun"
         uses: "oven-sh/setup-bun@v1"
