@@ -13,6 +13,7 @@ env:
 
 jobs:
   cd:
+    environment: "Production"
     runs-on: "ubuntu-latest"
     steps:
       - name: "Check out the repo"
@@ -38,7 +39,7 @@ jobs:
           echo "## Build results" >> $GITHUB_STEP_SUMMARY
           echo "✅ Passed" >> $GITHUB_STEP_SUMMARY
 
-      - name: "Deploy the website to Vercel"
+      - name: "Deploy to Vercel"
         run: "bun vercel deploy --prebuilt --prod --token=$VERCEL_TOKEN"
 
       - name: "Add deploy summary"
