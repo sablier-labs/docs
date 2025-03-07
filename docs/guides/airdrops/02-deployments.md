@@ -205,6 +205,12 @@ discontinued. For previous deployments, please refer to the
 | :------------------- | :------------------------------------------------------------------------------------------------------------------------------------- | :------------------------------------------------------------------------------ |
 | SablierMerkleFactory | [0x659836D788cce324Ad8c445584b9c44c6a8c74b7](https://sepolia.explorer.mode.network/address/0x659836D788cce324Ad8c445584b9c44c6a8c74b7) | [v1.3.0](https://github.com/sablier-labs/deployments/blob/main/airdrops/v1.3.0) |
 
+### Monad Testnet
+
+| Contract             | Address                                                                                                                            | Deployment                                                                      |
+| :------------------- | :--------------------------------------------------------------------------------------------------------------------------------- | :------------------------------------------------------------------------------ |
+| SablierMerkleFactory | [0x99846E1379fEBC91FCeC641097f8191b51ef0d34](https://testnet.monadexplorer.com/address/0x99846E1379fEBC91FCeC641097f8191b51ef0d34) | [v1.3.0](https://github.com/sablier-labs/deployments/blob/main/airdrops/v1.3.0) |
+
 ### Optimism Sepolia
 
 | Contract             | Address                                                                                                                                  | Deployment                                                                      |
