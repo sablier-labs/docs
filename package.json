@@ -61,7 +61,7 @@
     "vercel": "^34.1.4"
   },
   "engines": {
-    "node": ">=18.0"
+    "node": ">=20.0"
   },
   "homepage": "https://docs.sablier.com",
   "keywords": [

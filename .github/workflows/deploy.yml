@@ -1,4 +1,4 @@
-name: "Deploy the website to Vercel"
+name: "Deploy to Vercel"
 
 on:
   workflow_dispatch:
@@ -13,10 +13,11 @@ env:
 
 jobs:
   cd:
+    environment: "Production"
     runs-on: "ubuntu-latest"
     steps:
       - name: "Check out the repo"
-        uses: "actions/checkout@v3"
+        uses: "actions/checkout@v4"
 
       - name: "Install Bun"
         uses: "oven-sh/setup-bun@v1"
@@ -38,7 +39,7 @@ jobs:
           echo "## Build results" >> $GITHUB_STEP_SUMMARY
           echo "✅ Passed" >> $GITHUB_STEP_SUMMARY
 
-      - name: "Deploy the website to Vercel"
+      - name: "Deploy to Vercel"
         run: "bun vercel deploy --prebuilt --prod --token=$VERCEL_TOKEN"
 
       - name: "Add deploy summary"
