@@ -39,14 +39,14 @@ By combining the elements described above, you can send users from your interfac
 the Sablier Interface. To build the link to a stream resource, you use a hyphen `-` to concatenate the uppercase
 contract `alias`, the `chainId`, and the `streamId`, and then you add them to the base URL `app.sablier.com/stream/`:
 
-| URL                                                                                                                     | Description                               |
-| :---------------------------------------------------------------------------------------------------------------------- | :---------------------------------------- |
-| [app.sablier.com/stream/LL2-137-29](https://app.sablier.com/stream/LL2-137-29)                                          | Lockup Linear V2.1 stream #29 on Polygon  |
-| [app.sablier.com/stream/LL-137-32](https://app.sablier.com/stream/LL-137-32)                                            | Lockup Linear V2.0 stream #32 on Polygon  |
-| [app.sablier.com/stream/LD-137-13](https://app.sablier.com/stream/LD-137-13)                                            | Lockup Dynamic V2.0 stream #13 on Polygon |
-| [app.sablier.com/stream/LL-1-6](https://app.sablier.com/stream/LL-1-6)                                                  | Lockup Linear V2.0 stream #6 on Ethereum  |
-| [app.sablier.com/stream/0xB10...f95-1-6](https://app.sablier.com/stream/0xB10daee1FCF62243aE27776D7a92D39dC8740f95-1-6) | Lockup Linear V2.0 stream #6 on Ethereum  |
-| [app.sablier.com/stream/LL2-11155111-40](https://app.sablier.com/stream/LL2-11155111-40)                                | Lockup Linear V2.1 stream #40 on Ethereum Sepolia  |
+| URL                                                                                                                     | Description                                       |
+| :---------------------------------------------------------------------------------------------------------------------- | :------------------------------------------------ |
+| [app.sablier.com/stream/LL2-137-29](https://app.sablier.com/stream/LL2-137-29)                                          | Lockup Linear V2.1 stream #29 on Polygon          |
+| [app.sablier.com/stream/LL-137-32](https://app.sablier.com/stream/LL-137-32)                                            | Lockup Linear V2.0 stream #32 on Polygon          |
+| [app.sablier.com/stream/LD-137-13](https://app.sablier.com/stream/LD-137-13)                                            | Lockup Dynamic V2.0 stream #13 on Polygon         |
+| [app.sablier.com/stream/LL-1-6](https://app.sablier.com/stream/LL-1-6)                                                  | Lockup Linear V2.0 stream #6 on Ethereum          |
+| [app.sablier.com/stream/0xB10...f95-1-6](https://app.sablier.com/stream/0xB10daee1FCF62243aE27776D7a92D39dC8740f95-1-6) | Lockup Linear V2.0 stream #6 on Ethereum          |
+| [app.sablier.com/stream/LL2-11155111-40](https://app.sablier.com/stream/LL2-11155111-40)                                | Lockup Linear V2.1 stream #40 on Ethereum Sepolia |
 
 As you can see, the main format is `contractA-chainId-streamId`. This is supported both at the app and the subgraph
 level. For situations when an alias cannot be used, we fallback to the following format:
@@ -112,8 +112,8 @@ By combining the elements described above, you can send users from your interfac
 the Sablier Interface. To build the link to a stream resource, you use a hyphen `-` to concatenate the uppercase
 contract `alias`, the `chainId`, and the `streamId`, and then you add them to the base URL `app.sablier.com/stream/`:
 
-| URL                                                                                                                                       | Description          |
-| :---------------------------------------------------------------------------------------------------------------------------------------- | :------------------- |
+| URL                                                                                                                                       | Description                   |
+| :---------------------------------------------------------------------------------------------------------------------------------------- | :---------------------------- |
 | [app.sablier.com/stream/0xe72[...]bbabc-11155111](https://app.sablier.com/airstream/0xe72175dd12ac7efca6b7d12dfc913a5f661bbabc-11155111/) | Airstream on Ethereum Sepolia |
 
 As you can see, the main format is `contractA-chainId`. This is supported both at the app and the subgraph level. Read
