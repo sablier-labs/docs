@@ -31,7 +31,7 @@ $ bun install
 Create a new branch and switch to it, this is where all development work should be done:
 
 ```shell
-$ git checkout -b <name-of-branch>
+$ git switch <name-of-branch>
 ```
 
 Now you can start making changes.
@@ -55,21 +55,16 @@ $ bun run
 - Make your changes in a new git branch.
 - Commit your changes. Your commit message should follow the
   [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/) specification
+- Make sure `bun run check` passes.
 - Open a pull request from your forked repository to the original repository.
 
 When making a pull request, ensure that:
 
-- All tests pass.
-- Code coverage remains the same or greater.
-- All new code adheres to the style guide:
-  - All lint checks pass.
-  - Code is thoroughly commented where relevant.
 - A descriptive summary of the PR has been provided.
 
 ## Integration with VSCode:
 
 Install the following VSCode extensions:
 
-- [esbenp.prettier-vscode](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)
-- [hardhat-solidity](https://marketplace.visualstudio.com/items?itemName=NomicFoundation.hardhat-solidity)
+- [code-spell-checker](https://marketplace.visualstudio.com/items?itemName=streetsidesoftware.code-spell-checker)
 - [vscode-tree-language](https://marketplace.visualstudio.com/items?itemName=CTC.vscode-tree-extension)
