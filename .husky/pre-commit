@@ -1,0 +1,13 @@
+#!/bin/sh
+
+# Run lint-staged
+bun lint-staged
+
+# Run linting
+bun run lint:check
+
+# Run tests
+# bun test
+
+# Exit with the status of the last command
+exit $?
