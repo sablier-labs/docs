@@ -43,6 +43,7 @@ depositing or voiding flow streams.
 | Blast            | [sablier-flow-blast][explorer-flow-blast]                       | [Studio][studio-flow-blast]            | [De. Network][network-flow-blast]            |
 | BNB Chain        | [sablier-flow-bsc][explorer-flow-bsc]                           | [Studio][studio-flow-bsc]              | [De. Network][network-flow-bsc]              |
 | Chiliz Chain     | [sablier-flow-chiliz][explorer-flow-chiliz]                     | [Studio][studio-flow-chiliz]           | [De. Network][network-flow-chiliz]           |
+| Ethereum Sepolia | [sablier-flow-sepolia][explorer-flow-sepolia]                   | [Studio][studio-flow-sepolia]          | [De. Network][network-flow-sepolia]          |
 | Gnosis           | [sablier-flow-gnosis][explorer-flow-gnosis]                     | [Studio][studio-flow-gnosis]           | [De. Network][network-flow-gnosis]           |
 | IoTeX            | [sablier-flow-iotex][explorer-flow-iotex]                       | [Studio][studio-flow-iotex]            | [De. Network][network-flow-iotex]            |
 | Linea            | [sablier-flow-linea][explorer-flow-linea]                       | [Studio][studio-flow-linea]            | [De. Network][network-flow-linea]            |
@@ -53,7 +54,6 @@ depositing or voiding flow streams.
 | Optimism Sepolia | [sablier-flow-optimism-sepolia][explorer-flow-optimism-sepolia] | [Studio][studio-flow-optimism-sepolia] | [De. Network][network-flow-optimism-sepolia] |
 | Polygon          | [sablier-flow-polygon][explorer-flow-polygon]                   | [Studio][studio-flow-polygon]          | [De. Network][network-flow-polygon]          |
 | Scroll           | [sablier-flow-scroll][explorer-flow-scroll]                     | [Studio][studio-flow-scroll]           | [De. Network][network-flow-scroll]           |
-| Sepolia          | [sablier-flow-sepolia][explorer-flow-sepolia]                   | [Studio][studio-flow-sepolia]          | [De. Network][network-flow-sepolia]          |
 | Superseed        | N/A [Envio]                                                     | N/A [Envio]                            | N/A [Envio]                                  |
 | Tangle           | N/A [Envio]                                                     | N/A [Envio]                            | N/A [Envio]                                  |
 | XDC              | [sablier-flow-xdc\*][explorer-flow-xdc]                         | N/A                                    | [XDC Node\*][custom-flow-xdc]                |
@@ -221,7 +221,7 @@ The endpoint is meant to be plugged into a query client. Use
 [explorer-flow-scroll]: https://thegraph.com/explorer/subgraphs/HFpTrPzJyrHKWZ9ebb4VFRQSxRwpepyfz5wd138daFkF
 [studio-flow-scroll]: https://api.studio.thegraph.com/query/57079/sablier-flow-scroll/version/latest
 
-{/* Chain: Sepolia */}
+{/* Chain: Ethereum Sepolia */}
 
 [network-flow-sepolia]:
   https://gateway.thegraph.com/api/API_KEY/subgraphs/id/EU9AWmJjrjMRkjxcdHfuWPZvPTNAL3hiXfNGN5MwUpvm
@@ -259,7 +259,7 @@ The endpoint is meant to be plugged into a query client. Use
 [^2]: The Graph's Studio endpoints are considered for testing purposes and may be rate-limited
 
 [^3]:
-    All-Networks means most of the networks supported by Sablier, e.g., Mainnet, Optimism, Polygon, Sepolia. The full
-    list can be found [here](https://github.com/sablier-labs/subgraphs/blob/main/packages/constants/src). To add a new
-    chain to our Envio indexer, create a new list of contracts (`/addresses`) and import that configuration into our
-    bundles (see `/bundles`).
+    All-Networks means most of the networks supported by Sablier, e.g., Mainnet, Optimism, Polygon, Ethereum Sepolia.
+    The full list can be found [here](https://github.com/sablier-labs/subgraphs/blob/main/packages/constants/src). To
+    add a new chain to our Envio indexer, create a new list of contracts (`/addresses`) and import that configuration
+    into our bundles (see `/bundles`).
