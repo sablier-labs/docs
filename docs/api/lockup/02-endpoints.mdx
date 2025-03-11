@@ -5,66 +5,16 @@ title: "Endpoints"
 ---
 
 import DeprecatedSubgraphs from "@site/docs/snippets/DeprecatedSubgraphs.mdx";
-import EnvioTip from "@site/docs/snippets/EnvioTip.mdx";
-import TheGraphSunset from "@site/docs/snippets/TheGraphSunset.mdx";
+import EnvioEndpoints from "@site/docs/snippets/EnvioEndpoints.mdx";
+import TheGraphEndpoints from "@site/docs/snippets/TheGraphEndpoints.mdx";
 import LinkPreview from "@site/src/components/LinkPreview";
 
 # Lockup Endpoints
 
-## The Graph
-
-This subgraph tracks events emitted by the Sablier Lockup contracts. It deals with core protocol actions like creating,
-withdrawing or transferring Lockup streams.
-
-<TheGraphSunset />
-<DeprecatedSubgraphs protocol="lockup" />
-
-### Source Code
-
-<LinkPreview
-  href="https://github.com/sablier-labs/subgraphs/blob/main/apps/lockup"
-  icon="github"
-  subtitle="@sablier-labs/subgraphs - apps/lockup"
-  title="Sablier Subgraphs - Lockup - The Graph"
-/>
-
-### Endpoints
-
-| Chain            | Explorer                                                            | Studio[^2]                               | Decentralized Network[^1]                      |
-| ---------------- | ------------------------------------------------------------------- | ---------------------------------------- | ---------------------------------------------- |
-| Ethereum         | [sablier-lockup-ethereum][explorer-lockup-ethereum]                 | [Studio][studio-lockup-ethereum]         | [De. Network][network-lockup-ethereum]         |
-| Abstract         | [sablier-lockup-abstract][explorer-lockup-abstract]                 | [Studio][studio-lockup-abstract]         | [De. Network][network-lockup-abstract]         |
-| Arbitrum         | [sablier-lockup-arbitrum][explorer-lockup-arbitrum]                 | [Studio][studio-lockup-arbitrum]         | [De. Network][network-lockup-arbitrum]         |
-| Arbitrum Sepolia | [sablier-lockup-arbitrum-sepolia][explorer-lockup-arbitrum-sepolia] | [Studio][studio-lockup-arbitrum-sepolia] | [De. Network][network-lockup-arbitrum-sepolia] |
-| Avalanche        | [sablier-lockup-avalanche][explorer-lockup-avalanche]               | [Studio][studio-lockup-avalanche]        | [De. Network][network-lockup-avalanche]        |
-| Base             | [sablier-lockup-base][explorer-lockup-base]                         | [Studio][studio-lockup-base]             | [De. Network][network-lockup-base]             |
-| Base Sepolia     | [sablier-lockup-base-sepolia][explorer-lockup-base-sepolia]         | [Studio][studio-lockup-base-sepolia]     | [De. Network][network-lockup-base-sepolia]     |
-| Berachain        | [sablier-lockup-berachain][explorer-lockup-berachain]               | [Studio][studio-lockup-berachain]        | [De. Network][network-lockup-berachain]        |
-| Blast            | [sablier-lockup-blast][explorer-lockup-blast]                       | [Studio][studio-lockup-blast]            | [De. Network][network-lockup-blast]            |
-| BNB Chain        | [sablier-lockup-bsc][explorer-lockup-bsc]                           | [Studio][studio-lockup-bsc]              | [De. Network][network-lockup-bsc]              |
-| Chiliz Chain     | [sablier-lockup-chiliz][explorer-lockup-chiliz]                     | [Studio][studio-lockup-chiliz]           | [De. Network][network-lockup-chiliz]           |
-| Gnosis           | [sablier-lockup-gnosis][explorer-lockup-gnosis]                     | [Studio][studio-lockup-gnosis]           | [De. Network][network-lockup-gnosis]           |
-| IoTeX            | [sablier-lockup-iotex][explorer-lockup-iotex]                       | [Studio][studio-lockup-iotex]            | [De. Network][network-lockup-iotex]            |
-| Linea            | [sablier-lockup-linea][explorer-lockup-linea]                       | [Studio][studio-lockup-linea]            | [De. Network][network-lockup-linea]            |
-| Lightlink        | [sablier-lockup-lightlink\*][explorer-lockup-lightlink]             | N/A                                      | [Lightlink Node\*][custom-lockup-lightlink]    |
-| Mode             | [sablier-lockup-mode][explorer-lockup-mode]                         | [Studio][studio-lockup-mode]             | [De. Network][network-lockup-mode]             |
-| Morph            | N/A [Envio]                                                         | N/A [Envio]                              | N/A [Envio]                                    |
-| Optimism         | [sablier-lockup-optimism][explorer-lockup-optimism]                 | [Studio][studio-lockup-optimism]         | [De. Network][network-lockup-optimism]         |
-| Optimism Sepolia | [sablier-lockup-optimism-sepolia][explorer-lockup-optimism-sepolia] | [Studio][studio-lockup-optimism-sepolia] | [De. Network][network-lockup-optimism-sepolia] |
-| Polygon          | [sablier-lockup-polygon][explorer-lockup-polygon]                   | [Studio][studio-lockup-polygon]          | [De. Network][network-lockup-polygon]          |
-| Scroll           | [sablier-lockup-scroll][explorer-lockup-scroll]                     | [Studio][studio-lockup-scroll]           | [De. Network][network-lockup-scroll]           |
-| Ethereum Sepolia | [sablier-lockup-sepolia][explorer-lockup-sepolia]                   | [Studio][studio-lockup-sepolia]          | [De. Network][network-lockup-sepolia]          |
-| Superseed        | N/A [Envio]                                                         | N/A [Envio]                              | N/A [Envio]                                    |
-| Tangle           | N/A [Envio]                                                         | N/A [Envio]                              | N/A [Envio]                                    |
-| XDC              | [sablier-lockup-xdc\*][explorer-lockup-xdc]                         | N/A                                      | [XDC Node\*][custom-lockup-xdc]                |
-| zkSync           | [sablier-lockup-zksync][explorer-lockup-zksync]                     | [Studio][studio-lockup-zksync]           | [De. Network][network-lockup-zksync]           |
+The following indexers (Envio, The Graph) track events emitted by the Sablier Lockup contracts, e.g., actions like
+creating, withdrawing, or transferring Lockup streams.
 
 ## Envio
-
-<EnvioTip />
-
-The `lockup-envio` indexer tracks events emitted by the `@sablier/lockup` contracts. It deals with core protocol actions
-like creating, withdrawing, or transferring Lockup streams.
 
 ### Source Code
 
@@ -77,16 +27,68 @@ like creating, withdrawing, or transferring Lockup streams.
 
 ### Endpoints
 
-| Chain            | Endpoint (Hosted Network)                                          |
-| ---------------- | ------------------------------------------------------------------ |
-| All-Networks[^3] | [https://indexer.hyperindex.xyz/[...]/v1/graphql][endpoint-lockup] |
+| Chain      | Endpoint                                          |
+| ---------- | ------------------------------------------------- |
+| All Chains | https://indexer.hyperindex.xyz/53b7e25/v1/graphql |
 
-The endpoint is meant to be plugged into a query client. Use
-[Hasura's online explorer](https://cloud.hasura.io/public/graphiql?) to view the entities and query API.
+<EnvioEndpoints />
+
+## The Graph
+
+### Source Code
+
+<LinkPreview
+  href="https://github.com/sablier-labs/subgraphs/blob/main/apps/lockup"
+  icon="github"
+  subtitle="@sablier-labs/subgraphs - apps/lockup"
+  title="Sablier Subgraphs - Lockup - The Graph"
+/>
+
+### Endpoints
+
+<TheGraphEndpoints />
+<DeprecatedSubgraphs protocol="lockup" />
+
+| Chain            | Explorer                                                            | Production Node                                      | Testing Node[^1]                         |
+| ---------------- | ------------------------------------------------------------------- | ---------------------------------------------------- | ---------------------------------------- |
+| Ethereum Mainnet | [sablier-lockup-ethereum-mainnet][explorer-lockup-ethereum-mainnet] | [The Graph Network][network-lockup-ethereum-mainnet] | [Studio][studio-lockup-ethereum-mainnet] |
+| Abstract         | [sablier-lockup-abstract][explorer-lockup-abstract]                 | [The Graph Network][network-lockup-abstract]         | [Studio][studio-lockup-abstract]         |
+| Arbitrum         | [sablier-lockup-arbitrum][explorer-lockup-arbitrum]                 | [The Graph Network][network-lockup-arbitrum]         | [Studio][studio-lockup-arbitrum]         |
+| Avalanche        | [sablier-lockup-avalanche][explorer-lockup-avalanche]               | [The Graph Network][network-lockup-avalanche]        | [Studio][studio-lockup-avalanche]        |
+| Base             | [sablier-lockup-base][explorer-lockup-base]                         | [The Graph Network][network-lockup-base]             | [Studio][studio-lockup-base]             |
+| Berachain        | [sablier-lockup-berachain][explorer-lockup-berachain]               | [The Graph Network][network-lockup-berachain]        | [Studio][studio-lockup-berachain]        |
+| Blast            | [sablier-lockup-blast][explorer-lockup-blast]                       | [The Graph Network][network-lockup-blast]            | [Studio][studio-lockup-blast]            |
+| BNB Chain        | [sablier-lockup-bsc][explorer-lockup-bsc]                           | [The Graph Network][network-lockup-bsc]              | [Studio][studio-lockup-bsc]              |
+| Chiliz Chain     | [sablier-lockup-chiliz][explorer-lockup-chiliz]                     | [The Graph Network][network-lockup-chiliz]           | [Studio][studio-lockup-chiliz]           |
+| Gnosis           | [sablier-lockup-gnosis][explorer-lockup-gnosis]                     | [The Graph Network][network-lockup-gnosis]           | [Studio][studio-lockup-gnosis]           |
+| IoTeX            | [sablier-lockup-iotex][explorer-lockup-iotex]                       | [The Graph Network][network-lockup-iotex]            | [Studio][studio-lockup-iotex]            |
+| Linea            | [sablier-lockup-linea][explorer-lockup-linea]                       | [The Graph Network][network-lockup-linea]            | [Studio][studio-lockup-linea]            |
+| Lightlink        | [sablier-lockup-lightlink][explorer-lockup-lightlink]               | [LightLink Node][custom-lockup-lightlink]            | N/A                                      |
+| Mode             | [sablier-lockup-mode][explorer-lockup-mode]                         | [The Graph Network][network-lockup-mode]             | [Studio][studio-lockup-mode]             |
+| Optimism         | [sablier-lockup-optimism][explorer-lockup-optimism]                 | [The Graph Network][network-lockup-optimism]         | [Studio][studio-lockup-optimism]         |
+| Polygon          | [sablier-lockup-polygon][explorer-lockup-polygon]                   | [The Graph Network][network-lockup-polygon]          | [Studio][studio-lockup-polygon]          |
+| Scroll           | [sablier-lockup-scroll][explorer-lockup-scroll]                     | [The Graph Network][network-lockup-scroll]           | [Studio][studio-lockup-scroll]           |
+| XDC              | [sablier-lockup-xdc][explorer-lockup-xdc]                           | [XDC Node][custom-lockup-xdc]                        | N/A                                      |
+| zkSync           | [sablier-lockup-zksync][explorer-lockup-zksync]                     | [The Graph Network][network-lockup-zksync]           | [Studio][studio-lockup-zksync]           |
+| Arbitrum Sepolia | [sablier-lockup-arbitrum-sepolia][explorer-lockup-arbitrum-sepolia] | [The Graph Network][network-lockup-arbitrum-sepolia] | [Studio][studio-lockup-arbitrum-sepolia] |
+| Base Sepolia     | [sablier-lockup-base-sepolia][explorer-lockup-base-sepolia]         | [The Graph Network][network-lockup-base-sepolia]     | [Studio][studio-lockup-base-sepolia]     |
+| Ethereum Sepolia | [sablier-lockup-ethereum-sepolia][explorer-lockup-ethereum-sepolia] | [The Graph Network][network-lockup-ethereum-sepolia] | [Studio][studio-lockup-ethereum-sepolia] |
+| Optimism Sepolia | [sablier-lockup-optimism-sepolia][explorer-lockup-optimism-sepolia] | [The Graph Network][network-lockup-optimism-sepolia] | [Studio][studio-lockup-optimism-sepolia] |
+
+[^1]: The testing nodes may be rate-limited.
 
 {/* --------------------------------------------------------------------------------------------------------------------------------- */}
 {/* --------------------------------------------------------------------------------------------------------------------------------- */}
 {/* --------------------------------------------------------------------------------------------------------------------------------- */}
+
+{/* MAINNETS */}
+
+{/* Chain: Ethereum Mainnet */}
+
+[explorer-lockup-ethereum-mainnet]: https://thegraph.com/explorer/subgraphs/AvDAMYYHGaEwn9F9585uqq6MM5CfvRtYcb7KjK7LKPCt
+[studio-lockup-ethereum-mainnet]: https://api.studio.thegraph.com/query/57079/sablier-lockup-ethereum/version/latest
+[network-lockup-ethereum-mainnet]:
+  https://gateway.thegraph.com/api/API_KEY/subgraphs/id/AvDAMYYHGaEwn9F9585uqq6MM5CfvRtYcb7KjK7LKPCt
 
 {/* Chain: Abstract */}
 
@@ -102,14 +104,6 @@ The endpoint is meant to be plugged into a query client. Use
 [explorer-lockup-arbitrum]: https://thegraph.com/explorer/subgraphs/yvDXXHSyv6rGPSzfpbBcbQmMFrECac3Q2zADkYsMxam
 [studio-lockup-arbitrum]: https://api.studio.thegraph.com/query/57079/sablier-lockup-arbitrum/version/latest
 
-{/* Chain: Arbitrum Sepolia */}
-
-[network-lockup-arbitrum-sepolia]:
-  https://gateway.thegraph.com/api/API_KEY/subgraphs/id/ApEFvaPGARHedGmFp6TRQu7DoDHQKwt1LPWi1ka6DFHT
-[explorer-lockup-arbitrum-sepolia]: https://thegraph.com/explorer/subgraphs/ApEFvaPGARHedGmFp6TRQu7DoDHQKwt1LPWi1ka6DFHT
-[studio-lockup-arbitrum-sepolia]:
-  https://api.studio.thegraph.com/query/57079/sablier-lockup-arbitrum-sepolia/version/latest
-
 {/* Chain: Avalanche */}
 
 [network-lockup-avalanche]:
@@ -123,13 +117,6 @@ The endpoint is meant to be plugged into a query client. Use
   https://gateway.thegraph.com/api/API_KEY/subgraphs/id/778GfecD9tsyB4xNnz4wfuAyfHU6rqGr79VCPZKu3t2F
 [explorer-lockup-base]: https://thegraph.com/explorer/subgraphs/778GfecD9tsyB4xNnz4wfuAyfHU6rqGr79VCPZKu3t2F
 [studio-lockup-base]: https://api.studio.thegraph.com/query/57079/sablier-lockup-base/version/latest
-
-{/* Chain: Base Sepolia */}
-
-[network-lockup-base-sepolia]:
-  https://gateway.thegraph.com/api/API_KEY/subgraphs/id/DdiYENuyh5ztSybRJnBnCZuUgESkFasjGFHZUbURpKHz
-[explorer-lockup-base-sepolia]: https://thegraph.com/explorer/subgraphs/DdiYENuyh5ztSybRJnBnCZuUgESkFasjGFHZUbURpKHz
-[studio-lockup-base-sepolia]: https://api.studio.thegraph.com/query/57079/sablier-lockup-base-sepolia/version/latest
 
 {/* Chain: Berachain */}
 
@@ -171,13 +158,6 @@ The endpoint is meant to be plugged into a query client. Use
   https://graph.phoenix.lightlink.io/query/subgraphs/name/lightlink/sablier-lockup-lightlink/graphql
 [custom-lockup-lightlink]: https://graph.phoenix.lightlink.io/query/subgraphs/name/lightlink/sablier-lockup-lightlink
 
-{/* Chain: Mainnet | Ethereum */}
-
-[explorer-lockup-ethereum]: https://thegraph.com/explorer/subgraphs/AvDAMYYHGaEwn9F9585uqq6MM5CfvRtYcb7KjK7LKPCt
-[studio-lockup-ethereum]: https://api.studio.thegraph.com/query/57079/sablier-lockup-ethereum/version/latest
-[network-lockup-ethereum]:
-  https://gateway.thegraph.com/api/API_KEY/subgraphs/id/AvDAMYYHGaEwn9F9585uqq6MM5CfvRtYcb7KjK7LKPCt
-
 {/* Chain: Iotex */}
 
 [network-lockup-iotex]:
@@ -205,14 +185,6 @@ The endpoint is meant to be plugged into a query client. Use
 [explorer-lockup-optimism]: https://thegraph.com/explorer/subgraphs/NZHzd2JNFKhHP5EWUiDxa5TaxGCFbSD4g6YnYr8JGi6
 [studio-lockup-optimism]: https://api.studio.thegraph.com/query/57079/sablier-lockup-optimism/version/latest
 
-{/* Chain: Optimism Sepolia */}
-
-[network-lockup-optimism-sepolia]:
-  https://gateway.thegraph.com/api/API_KEY/subgraphs/id/2LFYyhMVMUMYA2q7XMMnBvCs6v6awWxBeMuMk3tMtmiT
-[explorer-lockup-optimism-sepolia]: https://thegraph.com/explorer/subgraphs/2LFYyhMVMUMYA2q7XMMnBvCs6v6awWxBeMuMk3tMtmiT
-[studio-lockup-optimism-sepolia]:
-  https://api.studio.thegraph.com/query/57079/sablier-lockup-optimism-sepolia/version/latest
-
 {/* Chain: Polygon */}
 
 [network-lockup-polygon]:
@@ -227,13 +199,6 @@ The endpoint is meant to be plugged into a query client. Use
 [explorer-lockup-scroll]: https://thegraph.com/explorer/subgraphs/GycpYx8c9eRqxvEAfqnpNd1ZfXeuLzjRhnG7vvYaqEE1
 [studio-lockup-scroll]: https://api.studio.thegraph.com/query/57079/sablier-lockup-scroll/version/latest
 
-{/* Chain: Ethereum Sepolia */}
-
-[network-lockup-sepolia]:
-  https://gateway.thegraph.com/api/API_KEY/subgraphs/id/5yDtFSxyRuqyjvGJyyuQhMEW3Uah7Ddy2KFSKVhy9VMa
-[explorer-lockup-sepolia]: https://thegraph.com/explorer/subgraphs/5yDtFSxyRuqyjvGJyyuQhMEW3Uah7Ddy2KFSKVhy9VMa
-[studio-lockup-sepolia]: https://api.studio.thegraph.com/query/57079/sablier-lockup-sepolia/version/latest
-
 {/* Chain: XDC */}
 
 [explorer-lockup-xdc]: https://graphql.xinfin.network/subgraphs/name/xdc/sablier-lockup-xdc/graphql
@@ -247,25 +212,37 @@ The endpoint is meant to be plugged into a query client. Use
 [studio-lockup-zksync]: https://api.studio.thegraph.com/query/57079/sablier-lockup-zksync/version/latest
 
 {/* --------------------------------------------------------------------------------------------------------------------------------- */}
-
-[endpoint-lockup]: https://indexer.hyperindex.xyz/53b7e25/v1/graphql
-
-{/* --------------------------------------------------------------------------------------------------------------------------------- */}
 {/* --------------------------------------------------------------------------------------------------------------------------------- */}
 {/* --------------------------------------------------------------------------------------------------------------------------------- */}
 
-[^1]:
-    Endpoints could include the following types: (1) The Graph's Decentralized Network (paid) or (2) Custom Nodes (e.g.
-    Lightlink). Because the "Decentralized Network" subgraph flavors (e.g. V1 Ethereum) operate on The Graph Network,
-    you will need to substitute the `YOUR_API_KEY` placeholder in the
-    [Query URL](https://thegraph.com/docs/en/deploying/subgraph-studio-faqs/#6-how-do-i-find-query-urls-for-subgraphs-if-im-not-the-developer-of-the-subgraph-i-want-to-use)
-    with your own API key. If you require assistance with managing your API keys and configuring indexer preferences,
-    [this article](https://thegraph.com/docs/en/studio/managing-api-keys/) serves as an excellent guide
+{/* TESTNETS */}
 
-[^2]: The Graph's Studio endpoints are considered for testing purposes and may be rate-limited
+{/* Chain: Arbitrum Sepolia */}
 
-[^3]:
-    All-Networks means most of the networks supported by Sablier, e.g., Mainnet, Optimism, Polygon, Ethereum Sepolia.
-    The full list can be found [here](https://github.com/sablier-labs/subgraphs/blob/main/packages/constants/src). To
-    add a new chain to our Envio indexer, create a new list of contracts (`/addresses`) and import that configuration
-    into our bundles (see `/bundles`).
+[network-lockup-arbitrum-sepolia]:
+  https://gateway.thegraph.com/api/API_KEY/subgraphs/id/ApEFvaPGARHedGmFp6TRQu7DoDHQKwt1LPWi1ka6DFHT
+[explorer-lockup-arbitrum-sepolia]: https://thegraph.com/explorer/subgraphs/ApEFvaPGARHedGmFp6TRQu7DoDHQKwt1LPWi1ka6DFHT
+[studio-lockup-arbitrum-sepolia]:
+  https://api.studio.thegraph.com/query/57079/sablier-lockup-arbitrum-sepolia/version/latest
+
+{/* Chain: Base Sepolia */}
+
+[network-lockup-base-sepolia]:
+  https://gateway.thegraph.com/api/API_KEY/subgraphs/id/DdiYENuyh5ztSybRJnBnCZuUgESkFasjGFHZUbURpKHz
+[explorer-lockup-base-sepolia]: https://thegraph.com/explorer/subgraphs/DdiYENuyh5ztSybRJnBnCZuUgESkFasjGFHZUbURpKHz
+[studio-lockup-base-sepolia]: https://api.studio.thegraph.com/query/57079/sablier-lockup-base-sepolia/version/latest
+
+{/* Chain: Ethereum Sepolia */}
+
+[network-lockup-ethereum-sepolia]:
+  https://gateway.thegraph.com/api/API_KEY/subgraphs/id/5yDtFSxyRuqyjvGJyyuQhMEW3Uah7Ddy2KFSKVhy9VMa
+[explorer-lockup-ethereum-sepolia]: https://thegraph.com/explorer/subgraphs/5yDtFSxyRuqyjvGJyyuQhMEW3Uah7Ddy2KFSKVhy9VMa
+[studio-lockup-ethereum-sepolia]: https://api.studio.thegraph.com/query/57079/sablier-lockup-sepolia/version/latest
+
+{/* Chain: Optimism Sepolia */}
+
+[network-lockup-optimism-sepolia]:
+  https://gateway.thegraph.com/api/API_KEY/subgraphs/id/2LFYyhMVMUMYA2q7XMMnBvCs6v6awWxBeMuMk3tMtmiT
+[explorer-lockup-optimism-sepolia]: https://thegraph.com/explorer/subgraphs/2LFYyhMVMUMYA2q7XMMnBvCs6v6awWxBeMuMk3tMtmiT
+[studio-lockup-optimism-sepolia]:
+  https://api.studio.thegraph.com/query/57079/sablier-lockup-optimism-sepolia/version/latest
