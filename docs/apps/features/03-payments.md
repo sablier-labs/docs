@@ -37,6 +37,26 @@ anyone really to increase transparency of your day to day token distribution.
 | ------------------------------------------ |
 | ![All](/screenshots/payments-profile.webp) |
 
+### Top up multiple streams
+
+Select the streams you want to top up, set the amount needed for 30 days with simple clicks, and confirm with only one
+transaction.
+
+You can also specify custom amounts for each stream, or top up all streams with the same amount.
+
+|                                                                     |
+| ------------------------------------------------------------------- |
+| ![Top up multiple streams](/screenshots/topup-multiple-streams.gif) |
+
+### Save URL and top up later
+
+Create a unique URL to easily search the selected group of streams. Use this URL or share it with your partners to top
+up the streams at a later time.
+
+|                                                              |
+| ------------------------------------------------------------ |
+| ![URL for batch streams](/screenshots/batch-streams-url.gif) |
+
 ### NFT representation
 
 Each stream in wrapped in an ERC-721 non-fungible token (NFT), making the stream recipient the owner of the NFT.
