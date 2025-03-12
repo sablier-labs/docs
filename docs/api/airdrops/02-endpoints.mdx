@@ -5,71 +5,37 @@ title: "Endpoints"
 ---
 
 import DeprecatedSubgraphs from "@site/docs/snippets/DeprecatedSubgraphs.mdx";
-import EnvioTip from "@site/docs/snippets/EnvioTip.mdx";
-import TheGraphSunset from "@site/docs/snippets/TheGraphSunset.mdx";
+import EnvioEndpoints from "@site/docs/snippets/EnvioEndpoints.mdx";
+import TheGraphEndpoints from "@site/docs/snippets/TheGraphEndpoints.mdx";
 import LinkPreview from "@site/src/components/LinkPreview";
 
 # Airdrops Endpoints
 
-## The Graph
+## Merkle API
 
-This subgraph tracks events emitted by the Sablier Airdrops contracts, specifically the ones in charge of Merkle
-distributions. It deals with airdrop-specific actions like the factory deploying an airdrop campaign, admin clawbacks,
-and users claiming airdrops.
+Sablier Airdrops rely on pre-configured Merkle trees to hold the list of recipients and their individual claim details.
+To build the Merkle tree and generate recipient proofs, we use a web2 API.
+
+For full details about the Merkle API, check out the [next section](/api/airdrops/merkle-api/overview). You can also
+explore the source code on GitHub:
+
+<LinkPreview
+  href="https://github.com/sablier-labs/merkle-api"
+  icon="github"
+  subtitle="@sablier-labs/merkle-api"
+  title="Sablier Merkle API"
+/>
+
+## Indexers
+
+The following indexers (Envio, The Graph) track the events emitted by the Sablier Airdrops contracts, specifically the
+ones in charge of Merkle distributions. It deals with airdrops-specific actions like the factory creating an airstream
+campaign, admin clawbacks, or users claiming stream NFTs as defined in the attached Merkle tree.
 
 Airdrops work in tandem with our [Vesting](/apps/features/vesting) feature since some Merkle distributions will produce
 new [Lockup](/api/lockup/overview) streams.
 
-<TheGraphSunset />
-<DeprecatedSubgraphs protocol="airdrops" />
-
-### Source Code
-
-<LinkPreview
-  href="https://github.com/sablier-labs/subgraphs/blob/main/apps/merkle"
-  icon="github"
-  subtitle="@sablier-labs/subgraphs - apps/merkle"
-  title="Sablier Subgraphs - Merkle - The Graph"
-/>
-
-### Endpoints
-
-| Chain            | Explorer                                                                | Studio[^2]                                 | Decentralized Network[^1]                        |
-| ---------------- | ----------------------------------------------------------------------- | ------------------------------------------ | ------------------------------------------------ |
-| Ethereum         | [sablier-airdrops-ethereum][explorer-airdrops-ethereum]                 | [Studio][studio-airdrops-ethereum]         | [De. Network][network-airdrops-ethereum]         |
-| Abstract         | [sablier-airdrops-abstract][explorer-airdrops-abstract]                 | [Studio][studio-airdrops-abstract]         | [De. Network][network-airdrops-abstract]         |
-| Arbitrum         | [sablier-airdrops-arbitrum][explorer-airdrops-arbitrum]                 | [Studio][studio-airdrops-arbitrum]         | [De. Network][network-airdrops-arbitrum]         |
-| Arbitrum Sepolia | [sablier-airdrops-arbitrum-sepolia][explorer-airdrops-arbitrum-sepolia] | [Studio][studio-airdrops-arbitrum-sepolia] | [De. Network][network-airdrops-arbitrum-sepolia] |
-| Avalanche        | [sablier-airdrops-avalanche][explorer-airdrops-avalanche]               | [Studio][studio-airdrops-avalanche]        | [De. Network][network-airdrops-avalanche]        |
-| Base             | [sablier-airdrops-base][explorer-airdrops-base]                         | [Studio][studio-airdrops-base]             | [De. Network][network-airdrops-base]             |
-| Base Sepolia     | [sablier-airdrops-base-sepolia][explorer-airdrops-base-sepolia]         | [Studio][studio-airdrops-base-sepolia]     | [De. Network][network-airdrops-base-sepolia]     |
-| Berachain        | [sablier-airdrops-berachain][explorer-airdrops-berachain]               | [Studio][studio-airdrops-berachain]        | [De. Network][network-airdrops-berachain]        |
-| Blast            | [sablier-airdrops-blast][explorer-airdrops-blast]                       | [Studio][studio-airdrops-blast]            | [De. Network][network-airdrops-blast]            |
-| BNB Chain        | [sablier-airdrops-bsc][explorer-airdrops-bsc]                           | [Studio][studio-airdrops-bsc]              | [De. Network][network-airdrops-bsc]              |
-| Chiliz Chain     | [sablier-airdrops-chiliz][explorer-airdrops-chiliz]                     | [Studio][studio-airdrops-chiliz]           | [De. Network][network-airdrops-chiliz]           |
-| Ethereum Sepolia | [sablier-airdrops-sepolia][explorer-airdrops-sepolia]                   | [Studio][studio-airdrops-sepolia]          | [De. Network][network-airdrops-sepolia]          |
-| Gnosis           | [sablier-airdrops-gnosis][explorer-airdrops-gnosis]                     | [Studio][studio-airdrops-gnosis]           | [De. Network][network-airdrops-gnosis]           |
-| IoTeX            | [sablier-airdrops-iotex][explorer-airdrops-iotex]                       | [Studio][studio-airdrops-iotex]            | [De. Network][network-airdrops-iotex]            |
-| Linea            | [sablier-airdrops-linea][explorer-airdrops-linea]                       | [Studio][studio-airdrops-linea]            | [De. Network][network-airdrops-linea]            |
-| Lightlink        | [sablier-airdrops-lightlink\*][explorer-airdrops-lightlink]             | N/A                                        | [Lightlink Node\*][custom-airdrops-lightlink]    |
-| Mode             | [sablier-airdrops-mode][explorer-airdrops-mode]                         | [Studio][studio-airdrops-mode]             | [De. Network][network-airdrops-mode]             |
-| Morph            | N/A [Envio]                                                             | N/A [Envio]                                | N/A [Envio]                                      |
-| Optimism         | [sablier-airdrops-optimism][explorer-airdrops-optimism]                 | [Studio][studio-airdrops-optimism]         | [De. Network][network-airdrops-optimism]         |
-| Optimism Sepolia | [sablier-airdrops-optimism-sepolia][explorer-airdrops-optimism-sepolia] | [Studio][studio-airdrops-optimism-sepolia] | [De. Network][network-airdrops-optimism-sepolia] |
-| Polygon          | [sablier-airdrops-polygon][explorer-airdrops-polygon]                   | [Studio][studio-airdrops-polygon]          | [De. Network][network-airdrops-polygon]          |
-| Scroll           | [sablier-airdrops-scroll][explorer-airdrops-scroll]                     | [Studio][studio-airdrops-scroll]           | [De. Network][network-airdrops-scroll]           |
-| Superseed        | N/A [Envio]                                                             | N/A [Envio]                                | N/A [Envio]                                      |
-| Tangle           | N/A [Envio]                                                             | N/A [Envio]                                | N/A [Envio]                                      |
-| XDC              | [sablier-airdrops-xdc\*][explorer-airdrops-xdc]                         | N/A                                        | [XDC Node\*][custom-airdrops-xdc]                |
-| zkSync           | [sablier-airdrops-zksync][explorer-airdrops-zksync]                     | [Studio][studio-airdrops-zksync]           | [De. Network][network-airdrops-zksync]           |
-
 ## Envio
-
-<EnvioTip />
-
-This indexers tracks the events emitted by the `@sablier/airdrops` contracts, specifically the ones in charge of merkle
-distributions. It deals with airdrops-specific actions like the factory creating an airstream campaign, admin clawbacks,
-or users claiming stream NFTs as defined in the attached Merkle tree.
 
 ### Source Code
 
@@ -82,37 +48,69 @@ or users claiming stream NFTs as defined in the attached Merkle tree.
 
 ### Endpoints
 
-| Chain            | Endpoint on the Hosted Network                                     |
-| ---------------- | ------------------------------------------------------------------ |
-| All-Networks[^3] | [https://indexer.hyperindex.xyz/[...]/v1/graphql][endpoint-merkle] |
+| Chain      | Endpoint                                          |
+| ---------- | ------------------------------------------------- |
+| All Chains | https://indexer.hyperindex.xyz/508d217/v1/graphql |
 
-The endpoint is meant to be plugged into a query client. Use
-[Hasura's online explorer](https://cloud.hasura.io/public/graphiql?) to view the entities and query API.
+<EnvioEndpoints />
 
-## Sablier SDK: Merkle API
-
-Sablier's Airdrops rely on pre-configured Merkle trees. This data structure contains the list of recipients as well as
-their individual claim details. We use the following service to create the Merkle tree, as well as proofs for the
-recipient's claims.
+## The Graph
 
 ### Source Code
 
 <LinkPreview
-  href="https://github.com/sablier-labs/merkle-api"
+  href="https://github.com/sablier-labs/subgraphs/blob/main/apps/merkle"
   icon="github"
-  subtitle="@sablier-labs/merkle-api"
-  title="Sablier SDK - Merkle API"
+  subtitle="@sablier-labs/subgraphs - apps/merkle"
+  title="Sablier Subgraphs - Merkle - The Graph"
 />
 
 ### Endpoints
 
-| Host    | Endpoint                              |
-| ------- | ------------------------------------- |
-| Sablier | https://sablier-merkle-api.vercel.app |
+<TheGraphEndpoints />
+<DeprecatedSubgraphs protocol="airdrops" />
+
+| Chain            | Explorer                                                                | Production Node                                        | Testing Node                               |
+| ---------------- | ----------------------------------------------------------------------- | ------------------------------------------------------ | ------------------------------------------ |
+| Ethereum         | [sablier-airdrops-ethereum-mainnet][explorer-airdrops-ethereum-mainnet] | [The Graph Network][network-airdrops-ethereum-mainnet] | [Studio][studio-airdrops-ethereum-mainnet] |
+| Abstract         | [sablier-airdrops-abstract][explorer-airdrops-abstract]                 | [The Graph Network][network-airdrops-abstract]         | [Studio][studio-airdrops-abstract]         |
+| Arbitrum         | [sablier-airdrops-arbitrum][explorer-airdrops-arbitrum]                 | [The Graph Network][network-airdrops-arbitrum]         | [Studio][studio-airdrops-arbitrum]         |
+| Avalanche        | [sablier-airdrops-avalanche][explorer-airdrops-avalanche]               | [The Graph Network][network-airdrops-avalanche]        | [Studio][studio-airdrops-avalanche]        |
+| Base             | [sablier-airdrops-base][explorer-airdrops-base]                         | [The Graph Network][network-airdrops-base]             | [Studio][studio-airdrops-base]             |
+| Berachain        | [sablier-airdrops-berachain][explorer-airdrops-berachain]               | [The Graph Network][network-airdrops-berachain]        | [Studio][studio-airdrops-berachain]        |
+| Blast            | [sablier-airdrops-blast][explorer-airdrops-blast]                       | [The Graph Network][network-airdrops-blast]            | [Studio][studio-airdrops-blast]            |
+| BNB Chain        | [sablier-airdrops-bsc][explorer-airdrops-bsc]                           | [The Graph Network][network-airdrops-bsc]              | [Studio][studio-airdrops-bsc]              |
+| Chiliz Chain     | [sablier-airdrops-chiliz][explorer-airdrops-chiliz]                     | [The Graph Network][network-airdrops-chiliz]           | [Studio][studio-airdrops-chiliz]           |
+| Gnosis           | [sablier-airdrops-gnosis][explorer-airdrops-gnosis]                     | [The Graph Network][network-airdrops-gnosis]           | [Studio][studio-airdrops-gnosis]           |
+| IoTeX            | [sablier-airdrops-iotex][explorer-airdrops-iotex]                       | [The Graph Network][network-airdrops-iotex]            | [Studio][studio-airdrops-iotex]            |
+| Linea            | [sablier-airdrops-linea][explorer-airdrops-linea]                       | [The Graph Network][network-airdrops-linea]            | [Studio][studio-airdrops-linea]            |
+| Lightlink        | [sablier-airdrops-lightlink][explorer-airdrops-lightlink]               | [LightLink Node][custom-airdrops-lightlink]            | N/A                                        |
+| Mode             | [sablier-airdrops-mode][explorer-airdrops-mode]                         | [The Graph Network][network-airdrops-mode]             | [Studio][studio-airdrops-mode]             |
+| Optimism         | [sablier-airdrops-optimism][explorer-airdrops-optimism]                 | [The Graph Network][network-airdrops-optimism]         | [Studio][studio-airdrops-optimism]         |
+| Polygon          | [sablier-airdrops-polygon][explorer-airdrops-polygon]                   | [The Graph Network][network-airdrops-polygon]          | [Studio][studio-airdrops-polygon]          |
+| Scroll           | [sablier-airdrops-scroll][explorer-airdrops-scroll]                     | [The Graph Network][network-airdrops-scroll]           | [Studio][studio-airdrops-scroll]           |
+| XDC              | [sablier-airdrops-xdc][explorer-airdrops-xdc]                           | [XDC Node][custom-airdrops-xdc]                        | N/A                                        |
+| zkSync           | [sablier-airdrops-zksync][explorer-airdrops-zksync]                     | [The Graph Network][network-airdrops-zksync]           | [Studio][studio-airdrops-zksync]           |
+| Arbitrum Sepolia | [sablier-airdrops-arbitrum-sepolia][explorer-airdrops-arbitrum-sepolia] | [The Graph Network][network-airdrops-arbitrum-sepolia] | [Studio][studio-airdrops-arbitrum-sepolia] |
+| Base Sepolia     | [sablier-airdrops-base-sepolia][explorer-airdrops-base-sepolia]         | [The Graph Network][network-airdrops-base-sepolia]     | [Studio][studio-airdrops-base-sepolia]     |
+| Ethereum Sepolia | [sablier-airdrops-ethereum-sepolia][explorer-airdrops-ethereum-sepolia] | [The Graph Network][network-airdrops-ethereum-sepolia] | [Studio][studio-airdrops-ethereum-sepolia] |
+| Optimism Sepolia | [sablier-airdrops-optimism-sepolia][explorer-airdrops-optimism-sepolia] | [The Graph Network][network-airdrops-optimism-sepolia] | [Studio][studio-airdrops-optimism-sepolia] |
+
+[^1]: The testing nodes may be rate-limited.
 
 {/* --------------------------------------------------------------------------------------------------------------------------------- */}
 {/* --------------------------------------------------------------------------------------------------------------------------------- */}
 {/* --------------------------------------------------------------------------------------------------------------------------------- */}
+
+{/* MAINNETS */}
+
+{/* Chain: Ethereum Mainnet */}
+
+[explorer-airdrops-ethereum-mainnet]:
+  https://thegraph.com/explorer/subgraphs/DFD73EcSue44R7mpHvXeyvcgaT8tR1iKakZFjBsiFpjs
+[studio-airdrops-ethereum-mainnet]: https://api.studio.thegraph.com/query/57079/sablier-airdrops-ethereum/version/latest
+[network-airdrops-ethereum-mainnet]:
+  https://gateway.thegraph.com/api/API_KEY/subgraphs/id/DFD73EcSue44R7mpHvXeyvcgaT8tR1iKakZFjBsiFpjs
 
 {/* Chain: Abstract */}
 
@@ -128,15 +126,6 @@ recipient's claims.
 [explorer-airdrops-arbitrum]: https://thegraph.com/explorer/subgraphs/HkHDg6NVVVeobhpcU4pTPMktyC25zd6xAQBGpYrWDgRr
 [studio-airdrops-arbitrum]: https://api.studio.thegraph.com/query/57079/sablier-airdrops-arbitrum/version/latest
 
-{/* Chain: Arbitrum Sepolia */}
-
-[network-airdrops-arbitrum-sepolia]:
-  https://gateway.thegraph.com/api/API_KEY/subgraphs/id/3S7v3VkDq8XMBd8EFVhKur2Vk44xScaW8a4BRjoPuYWk
-[explorer-airdrops-arbitrum-sepolia]:
-  https://thegraph.com/explorer/subgraphs/3S7v3VkDq8XMBd8EFVhKur2Vk44xScaW8a4BRjoPuYWk
-[studio-airdrops-arbitrum-sepolia]:
-  https://api.studio.thegraph.com/query/57079/sablier-airdrops-arbitrum-sepolia/version/latest
-
 {/* Chain: Avalanche */}
 
 [network-airdrops-avalanche]:
@@ -150,13 +139,6 @@ recipient's claims.
   https://gateway.thegraph.com/api/API_KEY/subgraphs/id/4SxPXkQNifgBYqje2C4yP5gz69erZwtD7GuLWgXHSLGe
 [explorer-airdrops-base]: https://thegraph.com/explorer/subgraphs/4SxPXkQNifgBYqje2C4yP5gz69erZwtD7GuLWgXHSLGe
 [studio-airdrops-base]: https://api.studio.thegraph.com/query/57079/sablier-airdrops-base/version/latest
-
-{/* Chain: Base */}
-
-[network-airdrops-base-sepolia]:
-  https://gateway.thegraph.com/api/API_KEY/subgraphs/id/4R2hm27YJ7CVEJ97BbBJz2r4KTKYc8sTqqzrD8UzEfJt
-[explorer-airdrops-base-sepolia]: https://thegraph.com/explorer/subgraphs/4R2hm27YJ7CVEJ97BbBJz2r4KTKYc8sTqqzrD8UzEfJt
-[studio-airdrops-base-sepolia]: https://api.studio.thegraph.com/query/57079/sablier-airdrops-base-sepolia/version/latest
 
 {/* Chain: Berachain */}
 
@@ -186,13 +168,6 @@ recipient's claims.
 [explorer-airdrops-chiliz]: https://thegraph.com/explorer/subgraphs/6LK1aqrhzZCp6c88MEBDAR1VDLpZQiXpBKkceJ5Lu4LU
 [studio-airdrops-chiliz]: https://api.studio.thegraph.com/query/57079/sablier-airdrops-chiliz/version/latest
 
-{/* Chain: Ethereum Sepolia */}
-
-[network-airdrops-sepolia]:
-  https://gateway.thegraph.com/api/API_KEY/subgraphs/id/8PLGDyXEsPgRTAnozL7MAjmTUFY4TBzs8i4F9Pq3wwSh
-[explorer-airdrops-sepolia]: https://thegraph.com/explorer/subgraphs/8PLGDyXEsPgRTAnozL7MAjmTUFY4TBzs8i4F9Pq3wwSh
-[studio-airdrops-sepolia]: https://api.studio.thegraph.com/query/57079/sablier-airdrops-sepolia/version/latest
-
 {/* Chain: Gnosis */}
 
 [network-airdrops-gnosis]:
@@ -214,19 +189,12 @@ recipient's claims.
 [explorer-airdrops-linea]: https://thegraph.com/explorer/subgraphs/6koYFSd8FQizdQWLTdRpL1yTmAbpMgN1vZN5W6ajZiTN
 [studio-airdrops-linea]: https://api.studio.thegraph.com/query/57079/sablier-airdrops-linea/version/latest
 
-{/* Chain: Lightlink */}
+{/* Chain: LightLink */}
 
 [explorer-airdrops-lightlink]:
   https://graph.phoenix.lightlink.io/query/subgraphs/name/lightlink/sablier-airdrops-lightlink/graphql
 [custom-airdrops-lightlink]:
   https://graph.phoenix.lightlink.io/query/subgraphs/name/lightlink/sablier-airdrops-lightlink
-
-{/* Chain: Mainnet | Ethereum */}
-
-[explorer-airdrops-ethereum]: https://thegraph.com/explorer/subgraphs/DFD73EcSue44R7mpHvXeyvcgaT8tR1iKakZFjBsiFpjs
-[studio-airdrops-ethereum]: https://api.studio.thegraph.com/query/57079/sablier-airdrops-ethereum/version/latest
-[network-airdrops-ethereum]:
-  https://gateway.thegraph.com/api/API_KEY/subgraphs/id/DFD73EcSue44R7mpHvXeyvcgaT8tR1iKakZFjBsiFpjs
 
 {/* Chain: Mode */}
 
@@ -241,15 +209,6 @@ recipient's claims.
   https://gateway.thegraph.com/api/API_KEY/subgraphs/id/CHJtCNDzPqngpa1YJoaVrjuufZL6k6VkEkG9ZFUMQzF7
 [explorer-airdrops-optimism]: https://thegraph.com/explorer/subgraphs/CHJtCNDzPqngpa1YJoaVrjuufZL6k6VkEkG9ZFUMQzF7
 [studio-airdrops-optimism]: https://api.studio.thegraph.com/query/57079/sablier-airdrops-optimism/version/latest
-
-{/* Chain: Optimism Sepolia */}
-
-[network-airdrops-optimism-sepolia]:
-  https://gateway.thegraph.com/api/API_KEY/subgraphs/id/3kp1eR2T1XpvvLkSZ7Wtt45DbDaiykTes478RZ7zwTz
-[explorer-airdrops-optimism-sepolia]:
-  https://thegraph.com/explorer/subgraphs/3kp1eR2T1XpvvLkSZ7Wtt45DbDaiykTes478RZ7zwTz
-[studio-airdrops-optimism-sepolia]:
-  https://api.studio.thegraph.com/query/57079/sablier-airdrops-optimism-sepolia/version/latest
 
 {/* Chain: Polygon */}
 
@@ -277,26 +236,37 @@ recipient's claims.
 [explorer-airdrops-zksync]: https://thegraph.com/explorer/subgraphs/64iDUwNVWKukw67nqTXif5taEfLug4Qf1c2suAv5hrqN
 [studio-airdrops-zksync]: https://api.studio.thegraph.com/query/57079/sablier-airdrops-zksync/version/latest
 
-{/* --------------------------------------------------------------------------------------------------------------------------------- */}
+{/* TESTNETS */}
 
-[endpoint-merkle]: https://indexer.hyperindex.xyz/508d217/v1/graphql
+{/* Chain: Arbitrum Sepolia */}
 
-{/* --------------------------------------------------------------------------------------------------------------------------------- */}
-{/* --------------------------------------------------------------------------------------------------------------------------------- */}
-{/* --------------------------------------------------------------------------------------------------------------------------------- */}
+[network-airdrops-arbitrum-sepolia]:
+  https://gateway.thegraph.com/api/API_KEY/subgraphs/id/3S7v3VkDq8XMBd8EFVhKur2Vk44xScaW8a4BRjoPuYWk
+[explorer-airdrops-arbitrum-sepolia]:
+  https://thegraph.com/explorer/subgraphs/3S7v3VkDq8XMBd8EFVhKur2Vk44xScaW8a4BRjoPuYWk
+[studio-airdrops-arbitrum-sepolia]:
+  https://api.studio.thegraph.com/query/57079/sablier-airdrops-arbitrum-sepolia/version/latest
 
-[^1]:
-    Endpoints could include the following types: (1) The Graph's Decentralized Network (paid) or (2) Custom Nodes (e.g.
-    LightLink). Because the "Decentralized Network" subgraph flavors (e.g., Legacy Ethereum) operate on The Graph
-    Network, you will need to substitute the `YOUR_API_KEY` placeholder in the
-    [Query URL](https://thegraph.com/docs/en/deploying/subgraph-studio-faqs/#6-how-do-i-find-query-urls-for-subgraphs-if-im-not-the-developer-of-the-subgraph-i-want-to-use)
-    with your own API key. If you require assistance with managing your API keys and configuring indexer preferences,
-    [this article](https://thegraph.com/docs/en/studio/managing-api-keys/) serves as an excellent guide
+{/* Chain: Base Sepolia */}
 
-[^2]: The Graph's Studio endpoints are considered for testing purposes and may be rate-limited
+[network-airdrops-base-sepolia]:
+  https://gateway.thegraph.com/api/API_KEY/subgraphs/id/4R2hm27YJ7CVEJ97BbBJz2r4KTKYc8sTqqzrD8UzEfJt
+[explorer-airdrops-base-sepolia]: https://thegraph.com/explorer/subgraphs/4R2hm27YJ7CVEJ97BbBJz2r4KTKYc8sTqqzrD8UzEfJt
+[studio-airdrops-base-sepolia]: https://api.studio.thegraph.com/query/57079/sablier-airdrops-base-sepolia/version/latest
 
-[^3]:
-    All-Networks means most of the networks supported by Sablier, e.g., Mainnet, Optimism, Polygon, Ethereum Sepolia.
-    The full list can be found [here](https://github.com/sablier-labs/subgraphs/blob/main/packages/constants/src). To
-    add a new chain to our Envio indexer, create a new list of contracts (`/addresses`) and import that configuration
-    into our bundles (see `/bundles`).
+{/* Chain: Ethereum Sepolia */}
+
+[network-airdrops-ethereum-sepolia]:
+  https://gateway.thegraph.com/api/API_KEY/subgraphs/id/8PLGDyXEsPgRTAnozL7MAjmTUFY4TBzs8i4F9Pq3wwSh
+[explorer-airdrops-ethereum-sepolia]:
+  https://thegraph.com/explorer/subgraphs/8PLGDyXEsPgRTAnozL7MAjmTUFY4TBzs8i4F9Pq3wwSh
+[studio-airdrops-ethereum-sepolia]: https://api.studio.thegraph.com/query/57079/sablier-airdrops-sepolia/version/latest
+
+{/* Chain: Optimism Sepolia */}
+
+[network-airdrops-optimism-sepolia]:
+  https://gateway.thegraph.com/api/API_KEY/subgraphs/id/3kp1eR2T1XpvvLkSZ7Wtt45DbDaiykTes478RZ7zwTz
+[explorer-airdrops-optimism-sepolia]:
+  https://thegraph.com/explorer/subgraphs/3kp1eR2T1XpvvLkSZ7Wtt45DbDaiykTes478RZ7zwTz
+[studio-airdrops-optimism-sepolia]:
+  https://api.studio.thegraph.com/query/57079/sablier-airdrops-optimism-sepolia/version/latest
