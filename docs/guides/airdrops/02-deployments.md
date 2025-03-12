@@ -225,9 +225,9 @@ discontinued. For previous deployments, please refer to the
 
 ### Taiko Hekla
 
-| Contract             | Address                                                                                                                       | Deployment                                                                      |
-| :------------------- | :---------------------------------------------------------------------------------------------------------------------------- | :------------------------------------------------------------------------------ |
-| SablierMerkleFactory | [0xB5F4FB527568f88F8898Ce5F366f4d72e2C742BE](https://sepolia.taikoscan.io/address/0xB5F4FB527568f88F8898Ce5F366f4d72e2C742BE) | [v1.3.0](https://github.com/sablier-labs/deployments/blob/main/airdrops/v1.3.0) |
+| Contract             | Address                                                                                                                          | Deployment                                                                      |
+| :------------------- | :------------------------------------------------------------------------------------------------------------------------------- | :------------------------------------------------------------------------------ |
+| SablierMerkleFactory | [0xB5F4FB527568f88F8898Ce5F366f4d72e2C742BE](https://hekla.taikoexplorer.com/address/0xB5F4FB527568f88F8898Ce5F366f4d72e2C742BE) | [v1.3.0](https://github.com/sablier-labs/deployments/blob/main/airdrops/v1.3.0) |
 
 ### zkSync Sepolia
 
