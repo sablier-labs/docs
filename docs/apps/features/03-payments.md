@@ -28,6 +28,17 @@ continuous payments, grants, salaries and more.
 | -------------------------------------------------- |
 | ![All](/screenshots/payments-dashboard-split.webp) |
 
+### Top up multiple streams
+
+Select the streams you want to top up, provide the deposit amount for each stream, and confirm the batched top-up with
+only one transaction.
+
+You can specify custom amounts for each stream, or top up all streams with the same amount.
+
+|                                                                     |
+| ------------------------------------------------------------------- |
+| ![Top up multiple streams](/screenshots/topup-multiple-streams.gif) |
+
 ### Preview any stream
 
 Gain insight into any stream. Track progress using our very own stream circle. Share the unique URL with recipients or
@@ -36,17 +47,6 @@ anyone really to increase transparency of your day to day token distribution.
 |                                            |
 | ------------------------------------------ |
 | ![All](/screenshots/payments-profile.webp) |
-
-### Top up multiple streams
-
-Select the streams you want to top up, set the amount needed for 30 days with simple clicks, and confirm with only one
-transaction.
-
-You can also specify custom amounts for each stream, or top up all streams with the same amount.
-
-|                                                                     |
-| ------------------------------------------------------------------- |
-| ![Top up multiple streams](/screenshots/topup-multiple-streams.gif) |
 
 ### Save URL and top up later
 
