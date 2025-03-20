@@ -10,8 +10,8 @@ mainnet - you shouldn't take them for granted. The gas usage may vary depending 
 
 :::note
 
-Please refer to the [GitHub repository](https://github.com/sablier-labs/lockup/tree/release/benchmark) to view the code
-that generates these benchmarks.
+Please refer to the [GitHub repository](https://github.com/sablier-labs/benchmarks) to view the code that generates
+these benchmarks.
 
 :::
 
