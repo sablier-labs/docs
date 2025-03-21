@@ -155,6 +155,12 @@ discontinued. For previous deployments, please refer to the
 | :------------------- | :---------------------------------------------------------------------------------------------------------------------------- | :------------------------------------------------------------------------------ |
 | SablierMerkleFactory | [0xd641a0E4509Cced67cC24E7BDcDe2a31b7F7cF77](http://explorer.tangle.tools/address/0xd641a0E4509Cced67cC24E7BDcDe2a31b7F7cF77) | [v1.3.0](https://github.com/sablier-labs/deployments/blob/main/airdrops/v1.3.0) |
 
+### Ultra
+
+| Contract             | Address                                                                                                                       | Deployment                                                                      |
+| :------------------- | :---------------------------------------------------------------------------------------------------------------------------- | :------------------------------------------------------------------------------ |
+| SablierMerkleFactory | [0x5e73bb96493C10919204045fCdb639D35ad859f8](https://evmexplorer.ultra.io/address/0x5e73bb96493C10919204045fCdb639D35ad859f8) | [v1.3.0](https://github.com/sablier-labs/deployments/blob/main/airdrops/v1.3.0) |
+
 ### XDC
 
 | Contract             | Address                                                                                                              | Deployment                                                                      |
