@@ -17,17 +17,17 @@ that generates these benchmarks.
 
 The following gas benchmarks are generated using a 6-decimal token.
 
-| Function                      | Gas Usage |
-| ----------------------------- | --------- |
-| `adjustRatePerSecond`         | 44,171    |
-| `create`                      | 113,681   |
-| `deposit`                     | 32,975    |
-| `depositViaBroker`            | 22,732    |
-| `pause`                       | 7,522     |
-| `refund`                      | 11,939    |
-| `restart`                     | 7,036     |
-| `void (solvent stream)`       | 10,060    |
-| `void (insolvent stream)`     | 37,460    |
-| `withdraw (insolvent stream)` | 57,688    |
-| `withdraw (solvent stream)`   | 38,156    |
-| `withdrawMax`                 | 51,988    |
+| Function              | Stream Liquidity | Gas Usage |
+| --------------------- | ---------------- | --------- |
+| `adjustRatePerSecond` | N/A              | 44,171    |
+| `create`              | N/A              | 113,681   |
+| `deposit`             | N/A              | 32,975    |
+| `depositViaBroker`    | N/A              | 22,732    |
+| `pause`               | N/A              | 7,522     |
+| `refund`              | N/A              | 11,939    |
+| `restart`             | N/A              | 7,036     |
+| `void`                | Insolvent        | 37,460    |
+| `void`                | Solvent          | 10,060    |
+| `withdraw`            | Insolvent        | 57,688    |
+| `withdraw`            | Solvent          | 38,156    |
+| `withdrawMax`         | N/A              | 51,988    |
