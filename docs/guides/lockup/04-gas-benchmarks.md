@@ -52,7 +52,7 @@ that generates these benchmarks.
 
 ### Linear Stream
 
-| Function                 | Config                                       | Gas Usage |
+| Function                 | Configuration                                | Gas Usage |
 | ------------------------ | -------------------------------------------- | --------- |
 | `burn`                   | N/A                                          | 16,141    |
 | `cancel`                 | N/A                                          | 65,381    |
@@ -72,7 +72,7 @@ that generates these benchmarks.
 
 ### Dynamic Stream
 
-| Function                 | Segments | Config                                       | Gas Usage |
+| Function                 | Segments | Configuration                                | Gas Usage |
 | ------------------------ | -------- | -------------------------------------------- | --------- |
 | `burn`                   | N/A      | N/A                                          | 16,141    |
 | `cancel`                 | N/A      | N/A                                          | 65,381    |
@@ -104,7 +104,7 @@ that generates these benchmarks.
 
 ### Tranched Stream
 
-| Function                 | Tranches | Config                                       | Gas Usage |
+| Function                 | Tranches | Configuration                                | Gas Usage |
 | ------------------------ | -------- | -------------------------------------------- | --------- |
 | `burn`                   | N/A      | N/A                                          | 16,141    |
 | `cancel`                 | N/A      | N/A                                          | 65,381    |
