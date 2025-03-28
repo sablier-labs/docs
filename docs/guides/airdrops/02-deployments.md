@@ -139,9 +139,9 @@ discontinued. For previous deployments, please refer to the
 
 ### Sei Network
 
-| Contract             | Address                                                                                                               | Deployment                                                                      |
-| :------------------- | :-------------------------------------------------------------------------------------------------------------------- | :------------------------------------------------------------------------------ |
-| SablierMerkleFactory | [0x0171A06878F7ff81c9955DEB5641f64f520d45E5](https://seitrace.com/address/0x0171A06878F7ff81c9955DEB5641f64f520d45E5) | [v1.3.0](https://github.com/sablier-labs/deployments/blob/main/airdrops/v1.3.0) |
+| Contract             | Address                                                                                                               | Deployment                                                                               |
+| :------------------- | :-------------------------------------------------------------------------------------------------------------------- | :--------------------------------------------------------------------------------------- |
+| SablierMerkleFactory | [0x0171A06878F7ff81c9955DEB5641f64f520d45E5](https://seitrace.com/address/0x0171A06878F7ff81c9955DEB5641f64f520d45E5) | [airdrops-v1.3.0](https://github.com/sablier-labs/deployments/blob/main/airdrops/v1.3.0) |
 
 ### Superseed
 
