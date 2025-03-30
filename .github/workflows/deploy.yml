@@ -3,8 +3,7 @@ name: "Deploy to Vercel"
 on:
   workflow_dispatch:
   push:
-    branches:
-      - "main"
+    branches: ["main"]
 
 env:
   VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
@@ -13,7 +12,7 @@ env:
 
 jobs:
   cd:
-    environment: "Production"
+    environment: "production"
     runs-on: "ubuntu-latest"
     steps:
       - name: "Check out the repo"
