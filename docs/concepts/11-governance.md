@@ -20,7 +20,7 @@ Here's a table with the admins of the Sablier Protocol. Most of them are Safe mu
 | Base            | [0x83A6fA8c04420B3F9C7A4CF1c040b63Fbbc89B66](https://basescan.org/address/0x83A6fA8c04420B3F9C7A4CF1c040b63Fbbc89B66)            |
 | Blast           | [0xb1bEF51ebCA01EB12001a639bDBbFF6eEcA12B9F](https://blastscan.io/address/0xb1bEF51ebCA01EB12001a639bDBbFF6eEcA12B9F)            |
 | BNB Smart Chain | [0x6666cA940D2f4B65883b454b7Bc7EEB039f64fa3](https://bscscan.com/address/0x6666cA940D2f4B65883b454b7Bc7EEB039f64fa3)             |
-| Chiliz          | [0xb1bEF51ebCA01EB12001a639bDBbFF6eEcA12B9F](https://chiliscan.com/address/0xb1bEF51ebCA01EB12001a639bDBbFF6eEcA12B9F)           |
+| Chiliz          | [0x74A234DcAdFCB395b37C8c2B3Edf7A13Be78c935](https://chiliscan.com/address/0x74A234DcAdFCB395b37C8c2B3Edf7A13Be78c935)           |
 | Core Dao        | [0xb1bEF51ebCA01EB12001a639bDBbFF6eEcA12B9F](https://scan.coredao.org/address/0xb1bEF51ebCA01EB12001a639bDBbFF6eEcA12B9F)        |
 | Form            | [0xb1bEF51ebCA01EB12001a639bDBbFF6eEcA12B9F](https://explorer.form.network/address/0xb1bEF51ebCA01EB12001a639bDBbFF6eEcA12B9F)   |
 | Gnosis          | [0x72ACB57fa6a8fa768bE44Db453B1CDBa8B12A399](https://gnosisscan.io/address/0x72ACB57fa6a8fa768bE44Db453B1CDBa8B12A399)           |
