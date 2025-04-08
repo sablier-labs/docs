@@ -2,7 +2,6 @@
 .cache-loader
 .docusaurus
 build
-dist
 node_modules
 
 # files
@@ -10,6 +9,7 @@ node_modules
 *.log
 *.tsbuildinfo
 .DS_Store
+.eslintcache
 .pnp.*
 package-lock.json
 pnpm-lock.yaml

@@ -2,17 +2,10 @@
 .cache-loader
 .docusaurus
 build
-dist
 node_modules
 repos
 
 # files
-*.env
-*.log
-*.tsbuildinfo
-.DS_Store
 .pnp.*
-bun.lockb
 package-lock.json
 pnpm-lock.yaml
-yarn.lock
