@@ -1,10 +1,11 @@
-plugins: ["@trivago/prettier-plugin-sort-imports"]
 printWidth: 120
-proseWrap: "always"
-singleQuote: false
-tabWidth: 2
+plugins: ["@trivago/prettier-plugin-sort-imports"]
+trailingComma: "all"
 
 overrides:
+  - files: "*.md"
+    options:
+      proseWrap: "always"
   - files: ["*.ts", "*.tsx"]
     options:
       # https://github.com/trivago/prettier-plugin-sort-imports#importorder

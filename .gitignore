@@ -8,8 +8,8 @@ node_modules
 # files
 *.env
 *.log
-.DS_Store
 *.tsbuildinfo
+.DS_Store
 .pnp.*
 package-lock.json
 pnpm-lock.yaml

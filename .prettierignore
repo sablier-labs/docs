@@ -9,8 +9,8 @@ repos
 # files
 *.env
 *.log
-.DS_Store
 *.tsbuildinfo
+.DS_Store
 .pnp.*
 bun.lockb
 package-lock.json
