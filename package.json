@@ -84,6 +84,9 @@
   ],
   "private": true,
   "repository": "github:sablier-labs/docs",
+  "resolutions": {
+    "jackspeak": "2.1.1"
+  },
   "scripts": {
     "build": "docusaurus build",
     "check": "bun run prettier:check && bun run lint:check",
@@ -101,8 +104,5 @@
     "swizzle": "docusaurus swizzle",
     "typecheck": "tsc",
     "write-heading-ids": "docusaurus write-heading-ids"
-  },
-  "resolutions": {
-    "jackspeak": "2.1.1"
   }
 }
