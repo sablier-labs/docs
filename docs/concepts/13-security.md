@@ -26,14 +26,10 @@ All the audits of Lockup contracts can be found [here](https://github.com/sablie
 
 ## Bug Bounty
 
-The Sablier Protocol is subject to a bug bounty program per the terms outlined in `Security.md` of each protocol.
-
-- [Lockup Bug Bounty](https://github.com/sablier-labs/lockup/blob/main/SECURITY.md)
-- [Merkle Airdrops Bug Bounty](https://github.com/sablier-labs/airdrops/blob/main/SECURITY.md).
-- [Flow Bug Bounty](https://github.com/sablier-labs/flow/blob/main/SECURITY.md)
+The details of the bug bounty program can be found [here](https://sablier.notion.site/bug-bounty).
 
 :::info
 
-We are offering a bounty of up to $100,000 for reporting critical vulnerabilities.
+The bounty is up to $100,000 for reporting critical vulnerabilities.
 
 :::
