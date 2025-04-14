@@ -36,6 +36,7 @@ Here's a table with the admins of the Sablier Protocol. Most of them are Safe mu
 | Taiko           | [0xb1bEF51ebCA01EB12001a639bDBbFF6eEcA12B9F](https://taikoscan.io/address/0xb1bEF51ebCA01EB12001a639bDBbFF6eEcA12B9F)            |
 | Tangle          | [0xb1bEF51ebCA01EB12001a639bDBbFF6eEcA12B9F](https://explorer.tangle.tools/address/0xb1bEF51ebCA01EB12001a639bDBbFF6eEcA12B9F)   |
 | Ultra           | [0xb1bef51ebca01eb12001a639bdbbff6eeca12b9f](https://evmexplorer.ultra.io/address/0xb1bef51ebca01eb12001a639bdbbff6eeca12b9f)    |
+| Unichain        | [0xb1bef51ebca01eb12001a639bdbbff6eeca12b9f](https://uniscan.xyz/address/0xb1bef51ebca01eb12001a639bdbbff6eeca12b9f)             |
 | zkSync Era      | [0xaFeA787Ef04E280ad5Bb907363f214E4BAB9e288](https://era.zksync.network/address/0xaFeA787Ef04E280ad5Bb907363f214E4BAB9e288)      |
 
 ## Lockup

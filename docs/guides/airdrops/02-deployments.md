@@ -161,6 +161,12 @@ discontinued. For previous deployments, please refer to the
 | :------------------- | :---------------------------------------------------------------------------------------------------------------------------- | :--------------------------------------------------------------------------------------- |
 | SablierMerkleFactory | [0x5e73bb96493C10919204045fCdb639D35ad859f8](https://evmexplorer.ultra.io/address/0x5e73bb96493C10919204045fCdb639D35ad859f8) | [airdrops-v1.3.0](https://github.com/sablier-labs/deployments/blob/main/airdrops/v1.3.0) |
 
+### Unichain
+
+| Contract             | Address                                                                                                              | Deployment                                                                               |
+| :------------------- | :------------------------------------------------------------------------------------------------------------------- | :--------------------------------------------------------------------------------------- |
+| SablierMerkleFactory | [0xC6fC028E988D158C52Aa2e38CDd6f969AA14bdCd](https://uniscan.xyz/address/0xC6fC028E988D158C52Aa2e38CDd6f969AA14bdCd) | [airdrops-v1.3.0](https://github.com/sablier-labs/deployments/blob/main/airdrops/v1.3.0) |
+
 ### XDC
 
 | Contract             | Address                                                                                                              | Deployment                                                                               |
