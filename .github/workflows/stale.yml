@@ -1,4 +1,4 @@
-name: "Close stale issues and PRs"
+name: "Cron: Close Stale Issues and PRs"
 
 on:
   schedule:
@@ -6,6 +6,6 @@ on:
 
 jobs:
   stale:
-    uses: "sablier-labs/reusable-workflows/.github/workflows/stale.yml@main"
+    uses: "sablier-labs/gha-utils/.github/workflows/cron-stale.yml@main"
     with:
       days-before-issue-stale: 365
