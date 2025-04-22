@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import { memo, useEffect, useRef } from "react";
 import functionPlot, { FunctionPlotOptions } from "function-plot";
 
 export interface ExtendedFunctionPlotOptions extends FunctionPlotOptions {
@@ -12,7 +12,7 @@ export interface FunctionPlotProps {
 }
 
 // See https://github.com/mauriciopoppe/function-plot
-const FunctionPlot: React.FC<FunctionPlotProps> = React.memo(function ({ options }: FunctionPlotProps) {
+const FunctionPlot: React.FC<FunctionPlotProps> = memo(function ({ options }: FunctionPlotProps) {
   const rootEl = useRef(null);
 
   useEffect(() => {

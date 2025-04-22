@@ -2,6 +2,7 @@ import type * as Preset from "@docusaurus/preset-classic";
 import type { Config } from "@docusaurus/types";
 import { themes as prismThemes } from "prism-react-renderer";
 import rehypeKatex from "rehype-katex";
+import remarkGfm from "remark-gfm";
 import remarkMath from "remark-math";
 
 const config: Config = {
@@ -26,7 +27,7 @@ const config: Config = {
           editUrl: "https://github.com/sablier-labs/docs/blob/main/",
           rehypePlugins: [rehypeKatex],
           routeBasePath: "/", // Serve the docs at the site's root
-          remarkPlugins: [remarkMath],
+          remarkPlugins: [remarkGfm, remarkMath],
           sidebarPath: require.resolve("./sidebars.js"),
         },
         theme: {

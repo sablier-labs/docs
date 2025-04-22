@@ -1,4 +1,3 @@
-import React from "react";
 import styled from "@emotion/styled";
 import Layout from "@theme/Layout";
 import Header from "../components/organisms/Header";

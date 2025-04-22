@@ -35,6 +35,8 @@ parserOptions:
     jsx: true
   ecmaVersion: "latest"
 root: true
+rules:
+  "react/react-in-jsx-scope": "off"
 settings:
   react:
     version: "detect"

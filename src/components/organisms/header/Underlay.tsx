@@ -1,7 +1,6 @@
-import React from "react";
 import styled from "@emotion/styled";
 import useBaseUrl from "@docusaurus/useBaseUrl";
-import Background from "../../atoms/Background";
+import Background from "../Background";
 
 const Mesh = styled.div<{ image?: string }>`
   position: absolute;

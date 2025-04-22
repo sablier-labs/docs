@@ -2,7 +2,7 @@
 import styled from "@emotion/styled";
 import ArrowIcon from "@heroicons/react/24/outline/ArrowTopRightOnSquareIcon";
 import A from "@theme-original/MDXComponents/A";
-import React, { useMemo } from "react";
+import { useMemo } from "react";
 
 const Arrow = styled.span`
   display: inline-block;

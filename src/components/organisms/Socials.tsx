@@ -1,8 +1,7 @@
-import React from "react";
 import styled from "@emotion/styled";
 import Link from "@docusaurus/Link";
 import Heading from "@theme/Heading";
-import { links } from "../../constants";
+import { Links } from "../../constants";
 
 const Wrapper = styled.main`
   display: flex;
@@ -80,7 +79,7 @@ function Socials() {
   return (
     <Wrapper>
       <List>
-        <Social href={links.discord}>
+        <Social href={Links.DISCORD}>
           <img src="img/social/discord.svg" style={{ width: "48px", height: "48px" }} />
           <div>
             <Heading as="h4">Discord</Heading>
@@ -88,7 +87,7 @@ function Socials() {
           </div>
         </Social>
 
-        <Social href={links.github}>
+        <Social href={Links.GitHub.ORG}>
           <img src="img/social/github.svg" style={{ width: "44px", height: "44px" }} />
           <div>
             <Heading as="h4">GitHub</Heading>
@@ -96,7 +95,7 @@ function Socials() {
           </div>
         </Social>
 
-        <Social href={links.blog}>
+        <Social href={Links.BLOG}>
           <div>
             <img src="img/logo.svg" style={{ width: "48px", height: "48px" }} />
           </div>

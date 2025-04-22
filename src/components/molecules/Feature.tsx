@@ -1,4 +1,3 @@
-import React from "react";
 import styled from "@emotion/styled";
 import Link from "@docusaurus/Link";
 import ArrowRightIcon from "@heroicons/react/24/outline/ArrowRightIcon";

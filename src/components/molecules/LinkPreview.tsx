@@ -1,4 +1,4 @@
-import React, { useCallback } from "react";
+import { useCallback } from "react";
 import styled from "@emotion/styled";
 import Link from "@docusaurus/Link";
 import SablierIcon from "@site/static/img/logo.svg";

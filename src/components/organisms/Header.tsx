@@ -1,4 +1,3 @@
-import React from "react";
 import styled from "@emotion/styled";
 import BoltIcon from "@heroicons/react/24/outline/BoltIcon";
 import CodeBracketIcon from "@heroicons/react/24/outline/CodeBracketIcon";
@@ -7,7 +6,7 @@ import DocumentTextIcon from "@heroicons/react/24/outline/DocumentTextIcon";
 import LightBulbIcon from "@heroicons/react/24/outline/LightBulbIcon";
 import Heading from "@theme/Heading";
 import Feature from "../molecules/Feature";
-import Underlay from "./Header/Underlay";
+import Underlay from "./header/Underlay";
 
 const Wrapper = styled.header`
   width: 100%;
