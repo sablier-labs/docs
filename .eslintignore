@@ -1,8 +1,11 @@
 # directories
 .docusaurus
+build
 node_modules
 repos
+static
 
 # files
 babel.config.js
 docusaurus.config.ts
+sidebars.js

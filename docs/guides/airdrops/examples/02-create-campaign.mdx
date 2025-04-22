@@ -4,8 +4,8 @@ sidebar_position: 2
 title: "Create Campaigns"
 ---
 
-import AdmonitionSimpleCode from "@site/docs/snippets/AdmonitionSimpleCode.mdx";
-import Deployment from "@site/docs/snippets/Deployment.mdx";
+import HardcodedDemonstration from "@site/src/components/atoms/HardcodedDemonstration";
+import AdmonitionSimpleCode from "@site/src/snippets/AdmonitionSimpleCode.mdx";
 
 # Create Airdrop Campaigns
 
@@ -49,9 +49,9 @@ contract MerkleCreator {
 }
 ```
 
-<Deployment protocol="Lockup" />
+<HardcodedDemonstration protocol="Lockup" />
 
-And, Factory address can be obtained from the [Merkle Airdrops Deployments](/guides/airdrops/deployments) page.
+Factory address can be obtained from the [Merkle Airdrops Deployments](/guides/airdrops/deployments) page.
 
 ## Create function
 
@@ -169,7 +169,7 @@ Now that we have the `baseParams` ready, it's time to setup rest of the input pa
 ### Aggregate Amount
 
 This is the total amount of tokens you want to airdrop to your users, denoted in units of the asset's decimals. Let say
-you want to airdrop 100M tokens of DAI. Then, the aggregate amount would be $100M*10^{18}$.
+you want to airdrop 100M tokens of DAI. Then, the aggregate amount would be $100Mm*10^{18}$.
 
 ```solidity
 uint256 aggregateAmount = 100000000e18;
