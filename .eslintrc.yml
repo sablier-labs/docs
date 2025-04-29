@@ -3,22 +3,29 @@ env:
 extends:
   - "eslint:recommended"
   - "plugin:@docusaurus/recommended"
-  - "plugin:@typescript-eslint/recommended"
-  - "plugin:mdx/recommended"
-  - "plugin:react/recommended"
 overrides:
   - files:
       - "*.md"
       - "*.mdx"
+    extends:
+      - "plugin:mdx/recommended"
+      - "plugin:react/recommended"
     parser: "eslint-mdx"
     rules:
       no-unused-expressions: "off"
   - files:
       - "*.ts"
       - "*.tsx"
+    extends:
+      - "plugin:@typescript-eslint/recommended"
+      - "plugin:react/recommended"
     parser: "@typescript-eslint/parser"
     parserOptions:
+      ecmaFeatures:
+        jsx: true
+      ecmaVersion: "latest"
       project: "tsconfig.json"
+      sourceType: "module"
     plugins:
       - "@typescript-eslint"
     rules:
@@ -30,13 +37,8 @@ overrides:
         - error
         - argsIgnorePattern: ^_
           varsIgnorePattern: ^_
-parserOptions:
-  ecmaFeatures:
-    jsx: true
-  ecmaVersion: "latest"
+      "react/react-in-jsx-scope": "off"
 root: true
-rules:
-  "react/react-in-jsx-scope": "off"
 settings:
   react:
     version: "detect"
