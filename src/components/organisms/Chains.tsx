@@ -1,5 +1,5 @@
 import { useMemo } from "react";
-import { chains } from "@sablier/deployments";
+import { mainnets, testnets } from "@sablier/deployments";
 import GFMContent from "../atoms/GFMContent";
 
 export interface ChainProps {
@@ -12,7 +12,8 @@ export default function Chains({ type }: ChainProps) {
     content += `| Name | Chain ID | Native Token | Explorer |\n`;
     content += `| :--- | :------- | :----------- | :------- |\n`;
 
-    for (const chain of chains[type]) {
+    const chains = type === "mainnets" ? mainnets : testnets;
+    for (const chain of chains) {
       content += `| ${chain.name} | ${chain.id} | ${chain.nativeToken.symbol} | [Explorer](${chain.explorerURL}) |\n`;
     }
     return content;
