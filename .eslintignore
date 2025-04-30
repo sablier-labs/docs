@@ -3,6 +3,7 @@
 build
 node_modules
 repos
+src/autogen/**/*.mdx
 static
 
 # files

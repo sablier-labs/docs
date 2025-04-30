@@ -1,7 +1,7 @@
-import { type Sablier, getChain, getRelease, releases } from "@sablier/deployments";
-import fs from "node:fs";
+import { type Sablier, getChain, releases } from "@sablier/deployments";
 import path from "node:path";
 import { Links } from "../src/constants";
+import { log, writeFileWithOverride } from "./utils";
 
 function generateDeploymentTable(deployment: Sablier.Deployment, protocol: string, version: string): string {
   let table = `| Contract | Address | Deployment |\n`;
@@ -21,11 +21,7 @@ function generateDeploymentTable(deployment: Sablier.Deployment, protocol: strin
   return table;
 }
 
-function generateContent(protocol: Sablier.Protocol, version: Sablier.Version) {
-  const release = getRelease(protocol, version);
-  if (!release) {
-    return null;
-  }
+function generateTables(release: Sablier.Release) {
   const mainnetDeployments = release.deployments.filter((d) => {
     const chain = getChain(d.chainId);
     return !chain.isTestnet;
@@ -39,7 +35,7 @@ function generateContent(protocol: Sablier.Protocol, version: Sablier.Version) {
   for (const deployment of mainnetDeployments) {
     const chain = getChain(deployment.chainId);
     content += `### ${chain.name}\n\n`;
-    content += generateDeploymentTable(deployment, protocol, version);
+    content += generateDeploymentTable(deployment, release.protocol, release.version);
     content += "\n";
   }
 
@@ -47,30 +43,33 @@ function generateContent(protocol: Sablier.Protocol, version: Sablier.Version) {
   for (const deployment of testnetDeployments) {
     const chain = getChain(deployment.chainId);
     content += `### ${chain.name}\n\n`;
-    content += generateDeploymentTable(deployment, protocol, version);
+    content += generateDeploymentTable(deployment, release.protocol, release.version);
     content += "\n";
   }
 
   return content;
 }
 
-function main(): void {
+function autogenDeployments(): void {
   for (const release of releases) {
-    const content = generateContent(release.protocol, release.version);
-    if (!content) continue;
+    if (release.protocol === "legacy") continue;
 
-    // Generates a _deployments-v1.x.mdx file that is imported into the deployment page
+    const tables = generateTables(release);
+    if (!tables) continue;
+
     const filePath = path.join(
-      "docs",
-      "guides",
+      __dirname,
+      "..",
+      "src",
+      "autogen",
       release.protocol,
-      release.isLatest
-        ? `_deployments-${release.version}.mdx`
-        : `previous-deployments/_deployments-${release.version}.mdx`,
+      `deployments-${release.version}.mdx`,
     );
 
-    fs.writeFileSync(filePath, content);
+    if (writeFileWithOverride({ filePath, content: tables })) {
+      log(`✅ Generated table with deployments for ${release.protocol} ${release.version}`);
+    }
   }
 }
 
-main();
+autogenDeployments();
