@@ -5,10 +5,10 @@ sidebar_position: 7
 ---
 
 import Link from "@docusaurus/Link";
-import Chains from "@site/src/components/organisms/Chains";
+import { Chains, totalChains } from "@site/src/components/organisms/Chains";
 import { Links } from "@site/src/constants";
 
-Sablier Protocol is live on 25+ mainnets and 11+ testnets, although not all of these chains are supported by the
+Sablier Protocol is live on {totalChains("mainnets")} mainnets and {totalChains("testnets")} testnets, although not all of these chains are supported by the
 [Sablier Interface](https://app.sablier.com/). If you're interested in that, fill out <Link href={Links.Forms.CALL}>this form</Link>.
 
 ## Mainnets

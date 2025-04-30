@@ -6,7 +6,7 @@ export interface ChainProps {
   type: "mainnets" | "testnets";
 }
 
-export default function Chains({ type }: ChainProps) {
+export function Chains({ type }: ChainProps) {
   const content = useMemo(() => {
     let content: string = "";
     content += `| Name | Chain ID | Native Token | Explorer |\n`;
@@ -21,3 +21,10 @@ export default function Chains({ type }: ChainProps) {
 
   return <GFMContent content={content} />;
 }
+
+export function totalChains(type: "mainnets" | "testnets"): number {
+  const chains = type === "mainnets" ? mainnets : testnets;
+  return chains.length;
+}
+
+export default Chains;
