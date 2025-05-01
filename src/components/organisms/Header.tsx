@@ -127,7 +127,7 @@ export default function Header() {
             to={"/apps/features/overview"}
           />
           <Feature
-            description={"Off-chain utilities such as subgraphs and indexers"}
+            description={"Data indexers and other backend APIs"}
             Icon={BoltIcon}
             title={"APIs"}
             to={"/api/overview"}

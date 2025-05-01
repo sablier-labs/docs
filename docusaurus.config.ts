@@ -153,8 +153,8 @@ const config: Config = {
               href: "https://github.com/sablier-labs/flow-integration-template",
             },
             {
-              label: "Subgraphs",
-              href: "https://github.com/sablier-labs/subgraphs",
+              label: "Indexers",
+              href: "https://github.com/sablier-labs/indexers",
             },
           ],
         },

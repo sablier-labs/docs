@@ -1,7 +1,6 @@
 import { type Sablier, getChain, releases } from "@sablier/deployments";
-import path from "node:path";
-import { Links } from "../src/constants";
-import { log, writeFileWithOverride } from "./utils";
+import { Links } from "../../src/constants";
+import { autogenFileNames, getAutogenFilePath, log, writeFileWithOverride } from "./utils";
 
 function generateDeploymentTable(deployment: Sablier.Deployment, protocol: string, version: string): string {
   let table = `| Contract | Address | Deployment |\n`;
@@ -57,14 +56,8 @@ function autogenDeployments(): void {
     const tables = generateTables(release);
     if (!tables) continue;
 
-    const filePath = path.join(
-      __dirname,
-      "..",
-      "src",
-      "autogen",
-      release.protocol,
-      `deployments-${release.version}.mdx`,
-    );
+    const fileName = autogenFileNames.deployments(release.version);
+    const filePath = getAutogenFilePath(release.protocol, fileName);
 
     if (writeFileWithOverride({ filePath, content: tables })) {
       log(`✅ Generated table with deployments for ${release.protocol} ${release.version}`);

@@ -4,13 +4,12 @@ sidebar_position: 1
 title: "Overview"
 ---
 
-import LinkPreview from "@site/src/components/molecules/LinkPreview";
+import { LinkPreviewIndexers, LinkPreviewMerkleAPI } from "@site/src/components/molecules/link-previews";
 
 # The Sablier APIs
 
 Sablier relies on specific dependencies to source data and enable off-chain features. All of these are either public or
-open-source, so feel free to roam around and suggest improvements or optimizations.open-source, so feel free to roam
-around and suggest improvements or optimizations.
+open-source, so feel free to roam around and suggest improvements or optimizations.
 
 Below, we will cover:
 
@@ -22,15 +21,12 @@ Below, we will cover:
 
 ![Banner Sablier APIs](/banners/docs-apis.webp)
 
-As an alternative to reading data from the contracts or listening to onchain events, we use a collection of subgraphs
-and indexers. These service act as a middleware between the chain and our interfaces and allow for caching, formatting
-and querying data. For more advanced features like Merkle tree generation (used in Airdrops), we've written own SDKs and
-open-sourced some of them.
+As an alternative to reading data from the contracts or listening to onchain events, we use a collection of data indexing services. These services act as a middleware between the chain and our interfaces and allow for caching, aggregating, and querying data. For more advanced features like Merkle tree generation (used in Airdrops), we've written our own SDKs and open-sourced some of them.
 
 :::note Playground
 
-To preview the GraphQL APIs for subgraphs and indexers, you can plug them into
-[Hasura's](https://cloud.hasura.io/public/graphiql) online explorer.
+To preview the GraphQL APIs for the indexers, you can plug them into
+the [Hasura explorer](https://cloud.hasura.io/public/graphiql).
 [Here](https://cloud.hasura.io/public/graphiql?endpoint=https://api.studio.thegraph.com/query/57079/sablier-ethereum-lockup/version/latest)'s
 an example setup of a Mainnet subgraph for Sablier Lockup.
 
@@ -40,27 +36,20 @@ an example setup of a Mainnet subgraph for Sablier Lockup.
 
 ### The Graph
 
-[The Graph](https://thegraph.com/) has been the vendor of choice in the EVM space for the past few years. We've been
+[The Graph](https://thegraph.com/) has been the vendor of choice in the EVM space for some time. We've been
 using The Graph since we launched Sablier Legacy in 2019. For our current apps, we created a special set of
 feature-oriented subgraphs used internally and by third-party services (e.g., Snapshot) and integrators.
 
 These subgraphs are hosted on The Graph Network, as well as on the The Graph Hosted Service. They can be used to query
-Sablier data from the official [endpoints](/api/lockup/endpoints). Each network has its own subgraph endpoints.
+Sablier data from the official [indexers](/api/lockup/indexers). Each chain has its own subgraphs.
 
-- [Lockup endpoints](/api/lockup/endpoints)
-- [Lockup subgraph](https://github.com/sablier-labs/subgraphs/apps/lockup) (Vesting)
-- [Flow endpoints](/api/flow/endpoints)
-- [Flow subgraph](https://github.com/sablier-labs/subgraphs/apps/flow) (Payments)
-- [Airdrops endpoints](/api/airdrops/endpoints)
-- [Airdrops subgraph](https://github.com/sablier-labs/subgraphs/apps/merkle) (Airdrops, Airstreams)
+- [Caveats](/api/caveats) between subgraphs and indexers
+- [Lockup indexers](/api/lockup/indexers)
+- [Flow indexers](/api/lockup/indexers)
+- [Airdrops indexers](/api/airdrops/indexers)
 - [The Graph docs](https://thegraph.com/docs/en/quick-start/)
 
-<LinkPreview
-  href="https://github.com/sablier-labs/subgraphs"
-  icon="github"
-  subtitle="@sablier/subgraphs"
-  title="Sablier Subgraphs on Github"
-/>
+<LinkPreviewIndexers />
 
 #### Endpoints / Slugs
 
@@ -74,78 +63,63 @@ be found in the Studio Development Query URL. We use the following naming conven
 | `sablier-airdrops-*` | `sablier-airdrops-base`   | [Merkle](/concepts/merkle-airdrops) (Airdrops) |
 | `sablier-*`          | `sablier-optimism`        | [V1](/api/legacy) (Legacy)                     |
 
-In February 2025 we've deprecated the old lineup of `sablier-v2-*` subgraphs. They remain available (see `Deprecated`
-section under each subgraph documentation) but will not track the most recent deployments nor get future updates.
+In February 2025, we've deprecated the old line-up of `sablier-v2-*` subgraphs. They remain available (see `Deprecated`
+section under each subgraph documentation), but they will not track the most recent deployments nor get future updates.
 
 ### Envio
 
 [Envio](https://envio.dev/) offers a suite of fast and flexible tools to access onchain data. Their HyperIndex service
 provides a similar GraphQL-driven API to access cached data and serve it into our client interfaces.
 
-We created indexers that mimic the features and entities exposed by subgraphs and take advantage of the speed and
-optimized environment configured through HyperIndex.
+We wrote Envio indexers that mirror the features and entities exposed by The Graph subgraphs. This enables us to take advantage of the speed and
+optimized environment provided by HyperIndex.
 
-All networks share the same indexer endpoint (for one indexer type), as Envio promotes a cross-chain indexing
-architecture.
+All chains share the same endpoint (for each Sablier protocol, e.g. Lockup).
 
 - [Caveats](/api/caveats) between subgraphs and indexers
-- [Lockup endpoints](/api/lockup/endpoints)
-- [Lockup indexer](https://github.com/sablier-labs/subgraphs/apps/lockup-envio) (Vesting)
-- [Flow endpoints](/api/lockup/endpoints)
-- [Flow indexer](https://github.com/sablier-labs/subgraphs/apps/flow-envio) (Payments)
-- [Airdrops endpoints](/api/airdrops/endpoints)
-- [Airdrops indexer](https://github.com/sablier-labs/subgraphs/apps/merkle-envio) (Airdrops, Airstreams)
-- [The Graph docs](https://thegraph.com/docs/en/quick-start/)
+- [Lockup indexers](/api/lockup/indexers)
+- [Flow indexers](/api/lockup/indexers)
+- [Airdrops indexers](/api/airdrops/indexers)
+- [Envio docs](https://docs.envio.dev)
 
-<LinkPreview
-  href="https://github.com/sablier-labs/subgraphs"
-  icon="github"
-  subtitle="@sablier/subgraphs"
-  title="Sablier Indexers on Github"
-/>
+<LinkPreviewIndexers />
 
-## Sablier SDKs
+## Merkle API
 
-### Merkle API
-
-To support the Merkle distribution (see [Airdrops](/apps/features/airdrops)) system, we developed a backend service
+To support the Merkle distributions in [Airdrops](/apps/features/airdrops), we developed a backend service
 called `@sablier/merkle-api`. This API deals with the validation, creation, and management of Merkle trees, which are
 used to define eligibility and claiming rules for Sablier's Airstream campaigns.
 
 The service is open-source and can be used by integrators as a plug-n-play solution to support (and even deploy) similar
 campaigns. Read more on the dedicated page about the `merkle-api` service [here](/api/airdrops/merkle-api/overview).
 
-- [Endpoints](/api/airdrops/endpoints)
+- [Indexers](/api/airdrops/indexeres)
 
-<LinkPreview
-  href="https://github.com/sablier-labs/merkle-api"
-  icon="github"
-  subtitle="@sablier/merkle-api - Rust-based service for Merkle distributions"
-  title="Sablier Merkle API on Github"
-/>
+<LinkPreviewMerkleAPI />
 
-## Products
+## App Products
 
-### Lockup
+This is how the products available in the Sablier Interface are powered by the different APIs we provide.
 
-The [vesting](/apps/features/vesting) side of the application is powered by:
+### Vesting
 
-- The `@sablier/subgraphs/apps/lockup` subgraph
-- The `@sablier/subgraphs/apps/lockup-envio` indexer
+The [Vesting](/apps/features/vesting) side of the application is powered by:
 
-### Airdrops (Airstreams)
+- The Graph subgraph for Lockup
+- The Envio endpoint for Lockup
 
-The [airdrops](/apps/features/airdrops) side of the application is powered by:
+### Airdrops
 
-- The `@sablier/subgraphs/apps/merkle` subgraph
-- The `@sablier/subgraphs/apps/merkle-envio` indexer
-- The `@sablier/merkle-api` rust service for airdrops
+The [Airdrops](/apps/features/airdrops) side of the application is powered by:
 
-These will work for both Airstreams and Instant Airdrops.
+- The Graph subgraph for Airdrops
+- The Envio endpoint for Airdrops
 
-### Flow
+These handle both Airstreams and Instant Airdrops.
 
-The [payments](/apps/features/payments) side of the application is powered by:
+### Payments
 
-- The `@sablier/subgraphs/apps/flow` subgraph
-- The `@sablier/subgraphs/apps/flow-envio` indexer
+The [Payments](/apps/features/payments) side of the application is powered by:
+
+- The Graph subgraph for Flow
+- The Envio endpoint for Flow

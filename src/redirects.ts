@@ -1,6 +1,9 @@
 import { PluginOptions } from "@docusaurus/plugin-client-redirects";
 
 export const redirects: PluginOptions["redirects"] = [
+  // ────────────────────────────────────────────────────────────────────────────────
+  // API
+  // ────────────────────────────────────────────────────────────────────────────────
   {
     from: "/api",
     to: "/api/overview",
@@ -23,7 +26,7 @@ export const redirects: PluginOptions["redirects"] = [
   },
   {
     from: "/api/subgraphs/endpoints",
-    to: "/api/lockup/endpoints",
+    to: "/api/lockup/indexers",
   },
   {
     from: "/api/subgraphs/merkle",
@@ -37,6 +40,9 @@ export const redirects: PluginOptions["redirects"] = [
     from: "/api/subgraphs/protocol",
     to: "/api/lockup/the-graph/entities",
   },
+  // ────────────────────────────────────────────────────────────────────────────────
+  // Apps
+  // ────────────────────────────────────────────────────────────────────────────────
   {
     from: "/apps",
     to: "/apps/features/overview",
@@ -73,7 +79,24 @@ export const redirects: PluginOptions["redirects"] = [
     from: "/apps/url-schemes",
     to: "/apps/guides/url-schemes",
   },
-  // Lockup redirects from old docs (until Dec 2024)
+  // ────────────────────────────────────────────────────────────────────────────────
+  // Indexers
+  // ────────────────────────────────────────────────────────────────────────────────
+  {
+    from: "/api/airdrops/endpoints",
+    to: "/api/airdrops/indexers",
+  },
+  {
+    from: "/api/flow/endpoints",
+    to: "/api/flow/indexers",
+  },
+  {
+    from: "/api/lockup/endpoints",
+    to: "/api/lockup/indexers",
+  },
+  // ────────────────────────────────────────────────────────────────────────────────
+  // Lockup (Dec 2024 and earlier)
+  // ────────────────────────────────────────────────────────────────────────────────
   {
     from: "/concepts/protocol/fees",
     to: "/concepts/fees",
@@ -122,7 +145,9 @@ export const redirects: PluginOptions["redirects"] = [
     from: "/csv",
     to: "/apps/guides/csv-support",
   },
-  // Legacy redirects
+  // ────────────────────────────────────────────────────────────────────────────────
+  // Legacy
+  // ────────────────────────────────────────────────────────────────────────────────
   {
     from: "/protocol/faq/basics",
     to: "/concepts/what-is-sablier",
@@ -159,21 +184,26 @@ export const redirects: PluginOptions["redirects"] = [
 
 export function createRedirects(existingPath: string) {
   const redirects = [];
+  // Redirect /concepts/protocol/** to /concepts/lockup/**
   if (existingPath.startsWith("/concepts/lockup/")) {
-    // Redirect /concepts/protocol/** to /concepts/lockup/**
     redirects.push(existingPath.replace("/concepts/lockup/", "/concepts/protocol/"));
-  } else if (existingPath.startsWith("/guides/legacy/")) {
-    // Redirect /contracts/v1/guides/** to /guides/legacy/**
+  }
+  // Redirect /contracts/v1/guides/** to /guides/legacy/**
+  else if (existingPath.startsWith("/guides/legacy/")) {
     redirects.push(existingPath.replace("/guides/legacy/", "/contracts/v1/guides/"));
-  } else if (existingPath.startsWith("/reference/lockup/")) {
-    // Redirect /contracts/v2/reference/** to /reference/lockup/**
+  }
+  // Redirect /contracts/v2/reference/** to /reference/lockup/**
+  else if (existingPath.startsWith("/reference/lockup/")) {
     redirects.push(existingPath.replace("/reference/lockup/", "/contracts/v2/reference/"));
-  } else if (existingPath.startsWith("/reference/legacy/")) {
-    // Redirect /contracts/v1/** to /reference/legacy/**
+  }
+  // Redirect /contracts/v1/** to /reference/legacy/**
+  else if (existingPath.startsWith("/reference/legacy/")) {
     redirects.push(existingPath.replace("/reference/legacy/", "/contracts/v1/"));
-  } else if (existingPath.startsWith("/guides/lockup/examples/")) {
-    // Redirect /contracts/v2/guides/** to /guides/lockup/examples/**
+  }
+  // Redirect /contracts/v2/guides/** to /guides/lockup/examples/**
+  else if (existingPath.startsWith("/guides/lockup/examples/")) {
     redirects.push(existingPath.replace("/guides/lockup/examples/", "/contracts/v2/guides/"));
   }
+
   return redirects;
 }
