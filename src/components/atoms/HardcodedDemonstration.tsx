@@ -1,15 +1,12 @@
 import React from "react";
 import Link from "@docusaurus/Link";
+import type { Sablier } from "@sablier/deployments";
 
 interface DeploymentProps {
-  protocol?: string;
+  protocol: Sablier.Protocol;
 }
 
 export default function HardcodedDemonstration({ protocol }: DeploymentProps): JSX.Element | null {
-  if (!protocol) {
-    return null;
-  }
-
   return (
     <>
       In the code above, the contract addresses are hard-coded for demonstration purposes. However, in production, you
@@ -21,6 +18,7 @@ export default function HardcodedDemonstration({ protocol }: DeploymentProps): J
       }{" "}
       addresses can be obtained from the{" "}
       <Link href={`/guides/${protocol.toLowerCase()}/deployments`}>{protocol} Deployments</Link> page.
+      <br />
     </>
   );
 }
