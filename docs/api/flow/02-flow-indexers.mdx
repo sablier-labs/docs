@@ -1,0 +1,55 @@
+---
+id: "indexers"
+sidebar_position: 2
+title: "Indexers"
+---
+
+import TableEnvio from "@site/src/autogen/flow/TableEnvio.mdx";
+import TableTheGraph from "@site/src/autogen/flow/TableTheGraph.mdx";
+import DeprecatedTheGraph from "@site/src/components/atoms/DeprecatedTheGraph";
+import LinkPreview from "@site/src/components/molecules/LinkPreview";
+import ExplainerEnvio from "@site/src/snippets/ExplainerEnvio.mdx";
+import ExplainerTheGraph from "@site/src/snippets/ExplainerTheGraph.mdx";
+
+# Flow Indexers
+
+We use Envio and The Graph to index events emitted by the Sablier Flow contracts, e.g., actions like
+creating, depositing, or voiding Flow streams.
+
+## Envio
+
+### Source Code
+
+<LinkPreview
+  href="https://github.com/sablier-labs/indexers/blob/main/envio/flow"
+  icon="github"
+  subtitle="@sablier-labs/indexers-envio-flow"
+  title="Envio indexers for Sablier Flow"
+/>
+
+### Endpoints
+
+<ExplainerEnvio />
+
+<TableEnvio />
+
+## The Graph
+
+### Source Code
+
+<LinkPreview
+  href="https://github.com/sablier-labs/indexers/blob/main/the-graph/flow"
+  icon="github"
+  subtitle="@sablier-labs/indexers-graph-flow"
+  title="The Graph indexers for Sablier Flow"
+/>
+
+### The Graph Network
+
+<ExplainerTheGraph />
+
+### Subgraphs
+
+<DeprecatedTheGraph protocol="flow" />
+
+<TableTheGraph />

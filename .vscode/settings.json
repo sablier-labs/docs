@@ -4,6 +4,7 @@
   "prettier.documentSelectors": ["**/*.tsx"],
   "search.exclude": {
     "**/.docusaurus": true,
+    "**/build": true,
     "**/node_modules": true,
     "**/repos": true
   },

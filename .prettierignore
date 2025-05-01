@@ -1,11 +1,10 @@
 # directories
-.cache-loader
 .docusaurus
 build
 node_modules
 repos
+src/autogen/**/*.mdx
+static
 
 # files
-.pnp.*
 package-lock.json
-pnpm-lock.yaml
