@@ -22,6 +22,7 @@
   },
   "dependencies": {
     "@algolia/client-search": "^4.23.3",
+    "@cookbookdev/docsbot": "^4.25.10",
     "@docusaurus/core": "^3.7.0",
     "@docusaurus/plugin-client-redirects": "^3.7.0",
     "@docusaurus/plugin-vercel-analytics": "^3.7.0",
