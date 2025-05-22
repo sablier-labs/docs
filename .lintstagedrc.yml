@@ -1,1 +1,2 @@
-"*.{json,md,mdx,ts,tsx,yml}": "bun run fix"
+"*.{md,mdx,ts,tsx}": "bun run fix"
+"*.{json,yml}": "bun run prettier:write"

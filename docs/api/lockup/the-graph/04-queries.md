@@ -189,8 +189,8 @@ query getStreams(...){
 
 Since Sablier uses multiple immutable contract versions and deployments (e.g.
 [lockup's variants](/guides/lockup/deployments#versions)), if you're going to perform onchain actions on these streams
-(e.g. getting the `streamedAmountOf` for each one) make sure you call those methods on the right contract. For
-subgraphs/indexers, we store the source contract under `stream.contract.address`.
+(e.g. getting the `streamedAmountOf` for each one) make sure you call those methods on the right contract. For indexers,
+we store the source contract under `stream.contract.address`.
 
 :::
 

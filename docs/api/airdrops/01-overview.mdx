@@ -4,7 +4,7 @@ sidebar_position: 1
 title: "Overview"
 ---
 
-import LinkPreview from "@site/src/components/molecules/LinkPreview";
+import { LinkPreviewIndexers, LinkPreviewMerkleAPI } from "@site/src/components/molecules/link-previews";
 
 # Airdrops
 
@@ -14,11 +14,11 @@ by our [Merkle](/concepts/merkle-airdrops) utilities and focuses on the function
 
 Airdrops-native functionality is powered by:
 
-- The `@sablier/subgraphs/apps/merkle` subgraph
-- The `@sablier/subgraphs/apps/merkle-envio` indexer
-- The `@sablier/merkle-api` sdk
+- The Graph subgraph for Airdrops
+- The Envio endpoint for Airdrops
+- The Merkle API
 
-For the Lockup-native functionality, please check the dedicated [documentation](/api/lockup/overview).
+For the Lockup-native functionality, please check the dedicated [Lockup documentation](/api/lockup/overview).
 
 :::info
 
@@ -26,19 +26,9 @@ For the Lockup-native functionality, please check the dedicated [documentation](
 
 :::
 
-<LinkPreview
-  href="https://github.com/sablier-labs/subgraphs"
-  icon="github"
-  subtitle="@sablier-labs/subgraphs"
-  title="Sablier Subgraphs"
-/>
+<LinkPreviewIndexers />
 
-<LinkPreview
-  href="https://github.com/sablier-labs/merkle-api"
-  icon="github"
-  subtitle="@sablier-labs/merkle-api"
-  title="Sablier SDK: Merkle API"
-/>
+<LinkPreviewMerkleAPI />
 
 ## What are Airdrops / Airstreams?
 
