@@ -33,6 +33,7 @@ Here's a table with the admins of the Sablier Protocol. Most of them are Safe mu
 | Polygon         | [0x40A518C5B9c1d3D6d62Ba789501CE4D526C9d9C6](https://polygonscan.com/address/0x40A518C5B9c1d3D6d62Ba789501CE4D526C9d9C6)         |
 | Scroll          | [0x0F7Ad835235Ede685180A5c611111610813457a9](https://scrollscan.com/address/0x0F7Ad835235Ede685180A5c611111610813457a9)          |
 | Sei             | [0xb1bEF51ebCA01EB12001a639bDBbFF6eEcA12B9F](https://seitrace.com/address/0xb1bEF51ebCA01EB12001a639bDBbFF6eEcA12B9F)            |
+| Sophon          | [0xb1bEF51ebCA01EB12001a639bDBbFF6eEcA12B9F](https://sophscan.xyz/address/0xb1bEF51ebCA01EB12001a639bDBbFF6eEcA12B9F)            |
 | Superseed       | [0xb1bEF51ebCA01EB12001a639bDBbFF6eEcA12B9F](https://explorer.superseed.xyz/address/0xb1bEF51ebCA01EB12001a639bDBbFF6eEcA12B9F)  |
 | Taiko           | [0xb1bEF51ebCA01EB12001a639bDBbFF6eEcA12B9F](https://taikoscan.io/address/0xb1bEF51ebCA01EB12001a639bDBbFF6eEcA12B9F)            |
 | Tangle          | [0xb1bEF51ebCA01EB12001a639bDBbFF6eEcA12B9F](https://explorer.tangle.tools/address/0xb1bEF51ebCA01EB12001a639bDBbFF6eEcA12B9F)   |
