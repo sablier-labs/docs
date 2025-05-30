@@ -1,5 +1,6 @@
 import styled from "@emotion/styled";
 import Layout from "@theme/Layout";
+import { AskCookbook } from "../components/organisms/AskCookbook";
 import Header from "../components/organisms/Header";
 import Socials from "../components/organisms/Socials";
 
@@ -38,6 +39,7 @@ export default function Home() {
         <Divider />
         <Socials />
       </Wrapper>
+      <AskCookbook />
     </Layout>
   );
 }
