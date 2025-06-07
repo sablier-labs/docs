@@ -327,7 +327,7 @@ const config: Config = {
             },
             {
               label: "Subgraphs",
-              href: "https://github.com/sablier-labs/subgraphs",
+              href: "https://github.com/sablier-labs/indexers",
             },
           ],
         },
