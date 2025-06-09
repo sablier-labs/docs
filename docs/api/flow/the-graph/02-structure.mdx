@@ -4,7 +4,7 @@ sidebar_position: 2
 title: "Structure"
 ---
 
-We'll break down the [schema](https://github.com/sablier-labs/subgraphs/blob/main/apps/flow/schema.graphql) into primary
+We'll break down the [schema](https://github.com/sablier-labs/indexers/blob/main/apps/flow/schema.graphql) into primary
 and secondary entities.
 
 | Type      | Entities                        |
@@ -48,7 +48,7 @@ Based on the schema defined `ActionCategory`, the following actions will be trac
 To keep all actions under the same umbrella, some details will be stored under general purpose attributes like
 `amountA`, `amountB`, `addressA`, `addressB` which based on the type of action can be resolved to context-specific
 values. Am example can be found
-[here](https://github.com/sablier-labs/subgraphs/blob/52f00f31a89c91dcf24480a5d7d8b25c84467f15/apps/flow/src/mappings/handle-stream.ts#L53-L56)
+[here](https://github.com/sablier-labs/indexers/blob/52f00f31a89c91dcf24480a5d7d8b25c84467f15/apps/flow/src/mappings/handle-stream.ts#L53-L56)
 for the Adjust event.
 
 ---
