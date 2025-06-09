@@ -18,14 +18,6 @@ jobs:
       - name: "Check out the repo"
         uses: "actions/checkout@v4"
 
-      - name:
-          "Cache the node modules. If a match is found for the key, the cache is restored. Otherwise, a new cache will
-          be created."
-        uses: "actions/cache@v4"
-        with:
-          key: "node-modules-${{ github.sha }}"
-          path: node_modules
-
       - name: "Install Bun"
         uses: "oven-sh/setup-bun@v1"
 
