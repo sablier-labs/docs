@@ -10,22 +10,21 @@ title: "Caveats"
 
 :::warning
 
-If you're looking to support both subgraphs (The Graph) and indexers (Envio) into your apps, see the "Different Results
+If you're looking to support both The Graph and Envio in your apps, see the "Different Results
 (\*)" 📌 section below to understand how results from these two APIs may differ for the same entities.
 
 :::
 
 ## General
 
-In contrast to The Graph, Envio offers a slightly different Developer Experience (DX) in terms of indexer
-implementation. While the query specifics don't change a lot for consumers, here are a few items to consider before
-developing on top of the Sablier indexers/subgraphs:
+In contrast to The Graph, Envio offers a slightly different developer experience in terms of indexer implementation. While the query syntax isn't that different, there are a few items to consider before developing on top of the Sablier indexers:
 
-### Querying Language
+### Query Language
 
-Both solutions create a **GraphQL** API for consumers to read data from. The Graph uses a customized subset of GraphQL
-operations, which makes is impossible to use the same queries between both indexers and subgraphs, whereas Envio deploys
-a GraphQL API over a Postgres DB. Here are some examples:
+Both solutions provide a **GraphQL** API for consumers to read data from. The Graph uses a customized subset of GraphQL
+operations, whereas Envio deploys a GraphQL API over a Postgres DB. Unfortunately, this makes is impossible to use the exact same queries between the two services.
+
+Here are some examples:
 
 | Example              | The Graph                             | Envio                                      |
 | -------------------- | ------------------------------------- | ------------------------------------------ |
@@ -47,7 +46,7 @@ Notes:
 
 ### Handler Language
 
-- The Graph: uses Assembly Script
+- The Graph: Assembly Script
 - Envio: Sablier uses TypeScript by default, but you can also use JavaScript or Rescript
 
 With Envio, one important mental model is in the concept of loaders vs. handlers. To optimize querying speeds, Envio
@@ -88,7 +87,7 @@ contracts by flavor.
     ├── LockupV20/
     │   ├── event: CreateLockupDynamicStream
     │   ├── event: CreateLockupLinearStream
-    │   └── event: CreateLockupTrnchedStream
+    │   └── event: CreateLockupTranchedStream
     ├── LockupV21/
     │   ├── event: CreateLockupDynamicStream
     │   ├── event: CreateLockupLinearStream
@@ -123,9 +122,9 @@ Due to the cross-chain indexing aspect, entities in Envio will need to have a ch
 they're unique across the board. At the same time, there are some minor features missing, which will cause some
 differences listed below.
 
-- For Envio indexers, entities will have fully specified identifiers (meaning chainId included)
-  1.  `lockup-envio`: the `Action`, `Asset`, `Batch`, `Batcher`, `Contract` have a `-chainId` appended to the ID
-  2.  `merkle-envio`: the `Action`, `Asset` and `Factory` have a `-chainId` appended to the ID
+- For Envio indexers, entities will have fully specified identifiers (meaning, `chainId` is included)
+  1.  `lockup`: the `Action`, `Asset`, `Batch`, `Batcher`, `Contract` have a `-chainId` appended to the ID
+  2.  `merkle`: the `Action`, `Asset` and `Factory` have a `-chainId` appended to the ID
 
 While we've tried to refactor our The Graph entities to share similar identifiers, please double check in cases when you
 use both query resolves (The Graph and Envio) at the same time.

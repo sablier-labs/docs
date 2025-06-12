@@ -57,12 +57,12 @@ const StyledGitHubIcon = styled.div`
   }
 `;
 
-interface LinkPreviewProps {
+type LinkPreviewProps = {
   href: string;
   icon: string;
   subtitle: string;
   title: string;
-}
+};
 
 export default function LinkPreview(props: LinkPreviewProps) {
   const renderIcon = useCallback(() => {

@@ -1,11 +1,10 @@
-import React from "react";
 import Link from "@docusaurus/Link";
 
-interface Props {
+type EnvioEndpointTableProps = {
   protocolId: string;
-}
+};
 
-const EnvioEndpointTable: React.FC<Props> = ({ protocolId }) => {
+export default function EnvioEndpointTable({ protocolId }: EnvioEndpointTableProps) {
   // Generate the Envio endpoint URL
   const endpoint = `https://indexer.hyperindex.xyz/${protocolId}/v1/graphql`;
 
@@ -34,6 +33,4 @@ const EnvioEndpointTable: React.FC<Props> = ({ protocolId }) => {
       </tbody>
     </table>
   );
-};
-
-export default EnvioEndpointTable;
+}

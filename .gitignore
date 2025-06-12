@@ -3,6 +3,7 @@
 .docusaurus
 build
 node_modules
+src/autogen/**/*.mdx
 
 # files
 *.env
@@ -10,7 +11,4 @@ node_modules
 *.tsbuildinfo
 .DS_Store
 .eslintcache
-.pnp.*
 package-lock.json
-pnpm-lock.yaml
-yarn.lock

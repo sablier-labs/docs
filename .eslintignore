@@ -1,8 +1,12 @@
 # directories
 .docusaurus
+build
 node_modules
 repos
+src/autogen/**/*.mdx
+static
 
 # files
 babel.config.js
 docusaurus.config.ts
+sidebars.js

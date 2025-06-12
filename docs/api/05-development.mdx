@@ -4,21 +4,15 @@ sidebar_position: 5
 title: "Development"
 ---
 
-import LinkPreview from "@site/src/components/molecules/LinkPreview";
+import { LinkPreviewIndexers, LinkPreviewMerkleAPI } from "@site/src/components/molecules/link-previews";
 
 ## The Graph
 
 ### Integrate
 
-To integrate the Sablier subgraphs or indexers into your project, start from the official `@sablier/subgraphs`
-repository.
+To integrate the Sablier indexers into your project, start from the official Sablier Indexers repository.
 
-<LinkPreview
-  href="https://github.com/sablier-labs/indexers"
-  icon="github"
-  subtitle="GitHub"
-  title="Github - sablier-labs/indexers: Sablier Subgraphs"
-/>
+<LinkPreviewIndexers />
 
 We recommend using:
 
@@ -28,9 +22,8 @@ We recommend using:
 
 ### Contribute
 
-To contribute to the subgraphs or deploy your own, head over to the GitHub
-[`subgraphs`](https://github.com/sablier-labs/indexers) repository. Get started by reviewing the `apps/lockup`
-directory.
+To contribute to the indexers or deploy your own custom versions, head over to the GitHub
+[`indexers`](https://github.com/sablier-labs/indexers) repository.
 
 To bootstrap a subgraph project, run the following commands. They will install the requisite dependencies and generate
 the code for Ethereum Sepolia deployment.
@@ -70,40 +63,26 @@ To publish on the hosted service:
 
 ### Integrate
 
-To integrate the Sablier indexers into your own product, start from the official `@sablier/subgraphs` repository. We
+To integrate the Envio indexers into your own product, start from the official Sablier Indexers repository. We
 recommend using:
 
 - [GraphQL Code Generator](https://the-guild.dev/graphql/codegen/docs/getting-started) to create types from your GraphQL
   fragments and queries
 - [TanStack Query](https://tanstack.com/query) to fetch results from the exposed endpoints.
 
-If you're integrated the Sablier subgraphs, we recommend using request and response wrappers/middleware to format
+We recommend using request and response wrappers/middleware to format
 results coming from Envio's indexer in the same shape as those from The Graph. Suggestions:
 
 1. Write queries in both systems (based on the [querying language specifics](/api/caveats#querying-language)) using the
    same `operationName` and swap query strings between vendors based on it
 2. Write response middleware that converts results into similar shapes (see these [important notes](/api/caveats))
 
-<LinkPreview
-  href="https://github.com/sablier-labs/indexers"
-  icon="github"
-  subtitle="GitHub"
-  title="Github - sablier-labs/indexers: Sablier Subgraphs"
-/>
+<LinkPreviewIndexers />
 
-### Test
+### Testing
 
-To ensure Envio indexers deliver the same data as The Graph's subgraphs, we've written differential tests for our
-indexer configurations.
-
-Check them out inside the `apps/[...]/test/` folders.
-
-<LinkPreview
-  href="https://github.com/sablier-labs/indexers"
-  icon="github"
-  subtitle="@sablier-labs/indexers"
-  title="Github - sablier-labs/indexers: Sablier Subgraphs"
-/>
+To ensure Envio delivers the same data as The Graph's subgraphs, we've written differential tests. Check them
+out inside the `apps/[...]/test/` folders.
 
 #### Run
 
@@ -126,7 +105,7 @@ once. Alternatively, you could also try increasing the timeout of the tests.
 ### Contribute
 
 To contribute to the V2 indexers (Envio x Sablier) or deploy your own, head over to the GitHub
-[`subgraphs`](https://github.com/sablier-labs/indexers) repository. Get started by reviewing the `apps/lockup-envio`
+[`indexers`](https://github.com/sablier-labs/indexers) repository. Get started by reviewing the `apps/lockup-envio`
 directory.
 
 To bootstrap an indexer project, run the following commands. They will install the requisite dependencies and generate
@@ -160,12 +139,7 @@ official docs at https://docs.envio.dev/.
 To integrate the Sablier Merkle API into your own product, start from the official `@sablier/merkle-api` repository. We
 recommend using:
 
-<LinkPreview
-  href="https://github.com/sablier-labs/merkle-api"
-  icon="github"
-  subtitle="GitHub"
-  title="Github - sablier-labs/merkle-api: Sablier Merkle API (Airstreams)"
-/>
+<LinkPreviewMerkleAPI />
 
 ### Contribute
 
