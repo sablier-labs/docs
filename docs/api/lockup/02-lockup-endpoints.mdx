@@ -4,11 +4,11 @@ sidebar_position: 2
 title: "Endpoints"
 ---
 
-import DeprecatedSubgraphs from "@site/docs/snippets/DeprecatedSubgraphs.mdx";
-import EnvioEndpoints from "@site/docs/snippets/EnvioEndpoints.mdx";
-import TheGraphEndpoints from "@site/docs/snippets/TheGraphEndpoints.mdx";
 import EnvioEndpointTable from "@site/src/components/molecules/EnvioEndpointTable";
 import LinkPreview from "@site/src/components/molecules/LinkPreview";
+import DeprecatedIndexers from "@site/src/snippets/DeprecatedIndexers.mdx";
+import ExplainerEnvio from "@site/src/snippets/ExplainerEnvio.mdx";
+import ExplainerTheGraph from "@site/src/snippets/ExplainerTheGraph.mdx";
 
 # Lockup Endpoints
 
@@ -30,7 +30,7 @@ creating, withdrawing, or transferring Lockup streams.
 
 <EnvioEndpointTable protocolId="53b7e25" />
 
-<EnvioEndpoints />
+<ExplainerEnvio />
 
 ## The Graph
 
@@ -45,8 +45,8 @@ creating, withdrawing, or transferring Lockup streams.
 
 ### Endpoints
 
-<TheGraphEndpoints />
-<DeprecatedSubgraphs protocol="lockup" />
+<ExplainerTheGraph />
+<DeprecatedIndexers protocol="lockup" />
 
 | Chain            | Explorer                                                            | Production Node                                      | Testing Node[^1]                         |
 | ---------------- | ------------------------------------------------------------------- | ---------------------------------------------------- | ---------------------------------------- |

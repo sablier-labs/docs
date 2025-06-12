@@ -4,11 +4,11 @@ sidebar_position: 2
 title: "Endpoints"
 ---
 
-import DeprecatedSubgraphs from "@site/docs/snippets/DeprecatedSubgraphs.mdx";
-import EnvioEndpoints from "@site/docs/snippets/EnvioEndpoints.mdx";
-import TheGraphEndpoints from "@site/docs/snippets/TheGraphEndpoints.mdx";
 import EnvioEndpointTable from "@site/src/components/molecules/EnvioEndpointTable";
 import LinkPreview from "@site/src/components/molecules/LinkPreview";
+import DeprecatedIndexers from "@site/src/snippets/DeprecatedIndexers.mdx";
+import ExplainerEnvio from "@site/src/snippets/ExplainerEnvio.mdx";
+import ExplainerTheGraph from "@site/src/snippets/ExplainerTheGraph.mdx";
 
 # Flow Endpoints
 
@@ -20,33 +20,32 @@ creating, depositing, or voiding Flow streams.
 ### Source Code
 
 <LinkPreview
-  href="https://github.com/sablier-labs/indexers/blob/main/apps/flow-envio"
+  href="https://github.com/sablier-labs/indexers/blob/main/src/envio/flow"
   icon="github"
-  subtitle="@sablier-labs/indexers - apps/flow-envio"
+  subtitle="@sablier-labs/indexers - src/envio/flow"
   title="Sablier Subgraphs - Flow - Envio"
 />
 
 ### Endpoints
 
 <EnvioEndpointTable protocolId="3b4ea6b" />
-
-<EnvioEndpoints />
+<ExplainerEnvio />
 
 ## The Graph
 
 ### Source Code
 
 <LinkPreview
-  href="https://github.com/sablier-labs/indexers/blob/main/apps/flow"
+  href="https://github.com/sablier-labs/indexers/blob/main/src/thegraph/flow"
   icon="github"
-  subtitle="@sablier-labs/indexers - apps/flow"
+  subtitle="@sablier-labs/indexers - src/thegraph/flow"
   title="Sablier Subgraphs - Flow - The Graph"
 />
 
 ### Endpoints
 
-<TheGraphEndpoints />
-<DeprecatedSubgraphs protocol="flow" />
+<ExplainerTheGraph />
+<DeprecatedIndexers protocol="flow" />
 
 | Chain            | Explorer                                                        | Production Node                                    | Testing Node[^1]                       |
 | ---------------- | --------------------------------------------------------------- | -------------------------------------------------- | -------------------------------------- |

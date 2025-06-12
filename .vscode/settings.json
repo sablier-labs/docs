@@ -3,9 +3,13 @@
   "eslint.validate": ["markdown", "mdx", "javascript", "javascriptreact", "typescript", "typescriptreact"],
   "prettier.documentSelectors": ["**/*.tsx"],
   "search.exclude": {
-    "**/.docusaurus": true,
-    "**/node_modules": true,
-    "**/repos": true
+    ".docusaurus": true,
+    "build": true,
+    "node_modules": true,
+    "repos": true
   },
-  "typescript.tsdk": "node_modules/typescript/lib"
+  "typescript.tsdk": "node_modules/typescript/lib",
+  "[javascript][javascriptreact][typescript][typescriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  }
 }

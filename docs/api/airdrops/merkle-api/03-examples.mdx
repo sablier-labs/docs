@@ -22,7 +22,7 @@ To get a hold of a campaign's IPFS CID, you can:
     Check the [create](/reference/airdrops/contracts/interfaces/interface.ISablierMerkleFactory#events) events emitted
     by the Merkle factory
   </li>
-  <li>Use the Sablier [subgraphs / indexers](/api/overview) to query for that particular piece of information.</li>
+  <li>Use the Sablier [indexers](/api/overview) to query for that particular piece of information.</li>
 </ol>
 
 For approach "B", run the following query against the official endpoints:
@@ -91,7 +91,7 @@ To get a hold of a `tokenId` linked to a claim you can:
     Listen to the [claim](/reference/airdrops/contracts/interfaces/interface.ISablierMerkleLL#claim) method and the
     Claim event emitted by the Merkle contract instance
   </li>
-  <li>Use the Sablier [subgraphs / indexers](/api/overview) to query for that particular piece of information.</li>
+  <li>Use the [Sablier Indexers](/api/overview) to query for that particular piece of information.</li>
 </ol>
 
 For approach "B", run the following query against the official endpoints (make sure the address is lowercased):
@@ -165,10 +165,10 @@ To check if a user has already claimed their stream from a campaign you can:
 
 <ol type="A">
   <li>
-    Call the [hasClaimed](/reference/airdrops/contracts/interfaces/interface.ISablierMerkleBase#hasclaimed) method form
-    the Merkle contract instance
+    Call the [`hasClaimed`](/reference/airdrops/contracts/interfaces/interface.ISablierMerkleBase#hasclaimed) method
+    form the Merkle contract instance
   </li>
-  <li>Use the Sablier [subgraphs / indexers](/api/overview) to query for that particular piece of information.</li>
+  <li>Use the [Sablier Indexers](/api/overview) to query for that particular piece of information.</li>
 </ol>
 
 #### Approach A
