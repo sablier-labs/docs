@@ -45,8 +45,8 @@ const Light = styled.div<{ horizontal: "left" | "right"; vertical: string }>`
     filter: blur(60px);
   }
 
-  ${(props) => props.horizontal == "left" && `left: -50vw;`}
-  ${(props) => props.horizontal == "right" && `right: 0;`}
+  ${(props) => props.horizontal === "left" && `left: -50vw;`}
+  ${(props) => props.horizontal === "right" && `right: 0;`}
 `;
 
 type BackgroundProps = {

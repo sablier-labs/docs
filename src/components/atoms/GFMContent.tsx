@@ -1,6 +1,6 @@
+import { evaluateSync } from "@mdx-js/mdx";
 import { useMemo } from "react";
 import * as runtime from "react/jsx-runtime";
-import { evaluateSync } from "@mdx-js/mdx";
 import rehypeExternalLinks from "rehype-external-links";
 import remarkGfm from "remark-gfm";
 

@@ -8,22 +8,24 @@ Contributions to Sablier Docs are welcome by anyone interested in improving read
 ## Prerequisites
 
 - [Node.js](https://nodejs.org) (v20+)
+- [Just](https://github.com/casey/just) (command runner)
 - [Bun](https://bun.sh) (package manager)
+- [Ni](https://github.com/antfu-collective/ni) (package manager resolver)
 
 ### Setup
 
 ```bash
 git clone https://github.com/sablier-labs/docs.git sablier-docs
 cd sablier-docs
-bun install
+just install
 ```
 
 ### Available Commands
 
 ```bash
-bun run                     # Show all available commands
-bun run start               # Build the docs site locally on localhost:3000
-bun run check               # Run all code checks
+just --list                 # Show all available commands
+just start                  # Build the docs site locally on localhost:3000
+just full-check             # Run all code checks
 ```
 
 ### Development Workflow
@@ -31,5 +33,5 @@ bun run check               # Run all code checks
 1. Fork the repository
 2. Create a feature branch
 3. Make your changes
-4. Run `bun run check` to verify code quality
+4. Run `just full-check` to verify code quality
 5. Submit a pull request

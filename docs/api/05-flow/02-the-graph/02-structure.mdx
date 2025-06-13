@@ -114,8 +114,7 @@ implementation. For examples, see the asset "helper" files inside this subgraph'
 The SablierFlow contracts through the implementation of the IBatch interface allow executing multiple actions in the
 same transaction. One of these functionalities will be **batch stream creation** (or **stream grouping**). Using the
 `batch` that receives the encoded data of multiple `create` function calls, a sender will be able to create multiple
-streams at once - considered part of the same batch. This is similar with the
-[lockup create multiple functions](/api/lockup/the-graph/structure#batch-and-batcher)
+streams at once - considered part of the same batch.
 
 To identify these relationships between stream items, the `Batch` entity will group items created in the same
 transaction, by finding events emitted with the same tx hash. The `Batcher` will then assign a user-specific unique

@@ -1,9 +1,9 @@
+import type * as Preset from "@docusaurus/preset-classic";
+import type { Config } from "@docusaurus/types";
 import { themes as prismThemes } from "prism-react-renderer";
 import rehypeKatex from "rehype-katex";
 import remarkGfm from "remark-gfm";
 import remarkMath from "remark-math";
-import type * as Preset from "@docusaurus/preset-classic";
-import type { Config } from "@docusaurus/types";
 import { createRedirects, redirects } from "./src/redirects";
 
 const config: Config = {
@@ -16,10 +16,22 @@ const config: Config = {
   onBrokenLinks: "warn",
   onBrokenMarkdownLinks: "warn",
   organizationName: "sablier-labs",
-  projectName: "sablier-docs",
-  tagline: "Documentation and guides for Sablier",
-  title: "Sablier Docs | Sablier",
-  url: "https://docs.sablier.com",
+  plugins: [
+    [
+      "@docusaurus/plugin-client-redirects",
+      {
+        createRedirects,
+        id: "default",
+        redirects: redirects,
+      },
+    ],
+    [
+      "vercel-analytics",
+      {
+        mode: "auto",
+      },
+    ],
+  ],
   presets: [
     [
       "classic",
@@ -37,28 +49,14 @@ const config: Config = {
       } satisfies Preset.Options,
     ],
   ],
-  plugins: [
-    [
-      "@docusaurus/plugin-client-redirects",
-      {
-        id: "default",
-        redirects: redirects,
-        createRedirects,
-      },
-    ],
-    [
-      "vercel-analytics",
-      {
-        mode: "auto",
-      },
-    ],
-  ],
+  projectName: "sablier-docs",
   scripts: [
     {
       async: false,
       src: "/js/crisp-chat.js",
     },
   ],
+  staticDirectories: ["static"],
   stylesheets: [
     {
       crossorigin: "anonymous",
@@ -67,12 +65,11 @@ const config: Config = {
       type: "text/css",
     },
   ],
-  staticDirectories: ["static"],
-  themes: ["docusaurus-theme-github-codeblock", "@docusaurus/theme-mermaid"],
+  tagline: "Documentation and guides for Sablier",
   themeConfig: {
     algolia: {
-      appId: "9L7N2RKHWE",
       apiKey: "4fc960889335dad720b725a02667d46a",
+      appId: "9L7N2RKHWE",
       indexName: "sablierdocs",
     },
     codeblock: {
@@ -92,124 +89,124 @@ const config: Config = {
     footer: {
       links: [
         {
-          title: "Company",
           items: [
             {
-              label: "About",
               href: "https://sablierlabs.co.uk",
+              label: "About",
             },
             {
-              label: "Risk Notice",
               href: "https://files.sablier.com/risk-notice.pdf",
+              label: "Risk Notice",
             },
             {
-              label: "Terms of Service",
               href: "https://files.sablier.com/terms-of-service.pdf",
+              label: "Terms of Service",
             },
             {
-              label: "Privacy Policy",
               href: "https://files.sablier.com/privacy-policy.pdf",
+              label: "Privacy Policy",
             },
           ],
+          title: "Company",
         },
         {
-          title: "Community",
           items: [
             {
-              label: "Twitter",
               href: "https://twitter.com/Sablier",
+              label: "Twitter",
             },
             {
-              label: "Discord",
               href: "https://discord.sablier.com",
+              label: "Discord",
             },
             {
-              label: "Blog",
               href: "https://blog.sablier.com",
+              label: "Blog",
             },
             {
-              label: "Branding",
               href: "https://github.com/sablier-labs/branding",
+              label: "Branding",
             },
           ],
+          title: "Community",
         },
         {
-          title: "Developers",
           items: [
             {
-              label: "Lockup Contracts",
               href: "https://github.com/sablier-labs/lockup",
+              label: "Lockup Contracts",
             },
             {
-              label: "Lockup Integration Template",
               href: "https://github.com/sablier-labs/lockup-integration-template",
+              label: "Lockup Integration Template",
             },
             {
-              label: "Flow Contracts",
               href: "https://github.com/sablier-labs/flow",
+              label: "Flow Contracts",
             },
             {
-              label: "Flow Integration Template",
               href: "https://github.com/sablier-labs/flow-integration-template",
+              label: "Flow Integration Template",
             },
             {
-              label: "Indexers",
               href: "https://github.com/sablier-labs/indexers",
+              label: "Indexers",
             },
           ],
+          title: "Developers",
         },
       ],
       style: "dark",
     },
     image: "img/open-graph.png",
     mermaid: {
-      theme: { light: "neutral", dark: "dark" },
+      theme: { dark: "dark", light: "neutral" },
     },
     metadata: [
       {
-        name: "keywords",
         content:
           "blockchain, DAO, decentralized finance, defi, docs, Ethereum, foundry, money streaming, NFT, open source, payments, payroll, Sablier, Safe, smart contracts, solidity, token distribution, token streaming, vesting, web3",
+        name: "keywords",
       },
     ],
     navbar: {
       items: [
         {
+          activeBasePath: "/concepts",
           label: "Concepts",
           position: "left",
           to: "/concepts/what-is-sablier",
-          activeBasePath: "/concepts",
         },
         {
+          activeBasePath: "/guides",
           label: "Guides",
           position: "left",
           to: "/guides/lockup/overview",
-          activeBasePath: "/guides",
         },
         {
+          activeBasePath: "/reference",
           label: "References",
           position: "left",
           to: "/reference/overview",
-          activeBasePath: "/reference",
         },
         {
+          activeBasePath: "/api",
           label: "APIs",
           position: "left",
           to: "/api/overview",
-          activeBasePath: "/api",
         },
         {
+          activeBasePath: "/apps",
           label: "Apps",
           position: "left",
           to: "/apps/features/overview",
-          activeBasePath: "/apps",
         },
 
         {
+          activeBasePath: "/support",
           label: "Support",
           position: "left",
           to: "/support/faq",
-          activeBasePath: "/support",
         },
         {
           label: "Discord",
@@ -241,6 +238,9 @@ const config: Config = {
       theme: prismThemes.github,
     },
   } satisfies Preset.ThemeConfig,
+  themes: ["docusaurus-theme-github-codeblock", "@docusaurus/theme-mermaid"],
+  title: "Sablier Docs | Sablier",
+  url: "https://docs.sablier.com",
 };
 
 export default config;

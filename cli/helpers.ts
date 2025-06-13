@@ -1,8 +1,8 @@
-import _ from "lodash";
 import * as fs from "node:fs";
 import * as path from "node:path";
-import type { CliOptions } from "./types";
+import _ from "lodash";
 import type { Sablier } from "sablier";
+import type { CliOptions } from "./types";
 
 const ROOT_DIR = path.join(__dirname, "..");
 if (!fs.existsSync(path.join(ROOT_DIR, "package.json"))) {
@@ -12,8 +12,8 @@ if (!fs.existsSync(path.join(ROOT_DIR, "package.json"))) {
 export const autogenFilePaths = {
   deployments: (release: Sablier.Release) =>
     path.join(ROOT_DIR, "src", "autogen", release.protocol, `TableDeployments${_.capitalize(release.version)}.mdx`),
-  graph: (protocol: Sablier.Protocol) => path.join(ROOT_DIR, "src", "autogen", protocol, "TableTheGraph.mdx"),
   envio: (protocol: Sablier.Protocol) => path.join(ROOT_DIR, "src", "autogen", protocol, "TableEnvio.mdx"),
+  graph: (protocol: Sablier.Protocol) => path.join(ROOT_DIR, "src", "autogen", protocol, "TableTheGraph.mdx"),
 };
 
 type FileWriteParams = {

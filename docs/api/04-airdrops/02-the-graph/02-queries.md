@@ -5,8 +5,8 @@ sidebar_position: 2
 title: "Queries"
 ---
 
-Building on top of the [entity structure](/api/airdrops/the-graph/entities) defined earlier, here are some common
-GraphQL queries for fetching data from the Sablier subgraph.
+Building on top of the entity structure defined earlier, here are some common GraphQL queries for fetching data from the
+Sablier subgraph.
 
 ## Campaigns
 
@@ -164,6 +164,5 @@ query getStreamIds_ByCampaign($campaignId: String!) {
 
 To source more details regarding these streams you can head over to the `Lockup` subgraph and look for streams where the
 `stream.funder` is the address of your airdrop campaign.
-[Here's an example query](/api/lockup/the-graph/queries/#streams-by-campaign).
 
 :::

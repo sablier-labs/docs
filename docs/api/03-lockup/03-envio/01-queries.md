@@ -1,12 +1,12 @@
 ---
 draft: true
 id: "queries"
-sidebar_position: 2
+sidebar_position: 1
 title: "Queries"
 ---
 
-Building on top of the [entity structure](/api/flow/the-graph/structure) defined earlier, here are some common GraphQL
-queries for fetching data from the Sablier subgraph.
+Building on top of the entity structure defined earlier, here are some common GraphQL queries for fetching data from the
+Sablier subgraph.
 
 ### Recent streams
 
@@ -50,7 +50,13 @@ query getStreams($first: Int!, $subgraphId: numeric!) {
 }
 ```
 
-### Streams by sender
+### Streams by sender (with support for the old V2.0)
+
+To support both [proxy senders](/api/lockup/the-graph/structure) (case 3) and
+[native senders](/api/lockup/the-graph/structure) (case 2) we query for:
+
+- streams where the connected account is the native sender
+- streams where the connected account is the proxender - the owner of the proxy labeled as a sender
 
 This query includes pagination.
 
@@ -61,14 +67,17 @@ streams/entities with a query, we make use of the `distinct_on` filter (and appl
 
 :::
 
-```graphql title="The next streams created by an address"
+```graphql title="The next streams created by an address (natively or through a proxy)"
 Stream(
   limit: $first
   offset: $skip
   distinct_on: [subgraphId]
   order_by: { subgraphId: desc }
   where: {
-    _and: [{ sender: {_eq: $sender} }, { subgraphId: {_lt: $subgraphId} }]
+    _or: [
+      { _and: [{ sender: {_eq: $sender} }, { subgraphId: {_lt: $subgraphId} }] }
+      { _and: [{ proxender: {_eq:  $sender} }, { subgraphId: {_lt:$subgraphId} }] }
+    ]
   }
 ) {
   id
@@ -84,7 +93,7 @@ account for the recipient aspect.
 
 This query includes pagination.
 
-```graphql title="The next streams related to an address, as a sender or recipient"
+```graphql title="The next streams related to an address, as a sender/proxender or recipient"
 Stream(
   limit: $first
   offset: $skip
@@ -93,7 +102,8 @@ Stream(
   where: {
     or: [
       { _and: [{ sender: {_eq: $sender} }, { subgraphId: {_lt:  $subgraphId} }] }
-      { _and: [{ recipient: {_eq: $recipient} }, { subgraphId: {_lt: $subgraphId} }] }
+      { _and: [{ proxender: {_eq: $sender} }, { subgraphId: {_lt: $subgraphId} }] }
+      { _and: [{ proxender: {_eq: $recipient} }, { subgraphId: {_lt: $subgraphId} }] }
     ]
   }
 ) {
@@ -121,6 +131,13 @@ where: {
         _and: [
           { chainId: { _eq: $chainId } }
           { sender: { _eq: $sender } }
+          { subgraphId: { _lt: $subgraphId } }
+        ]
+      }
+      {
+        _and: [
+          { chainId: { _eq: $chainId } }
+          { proxender: { _eq: $sender } }
           { subgraphId: { _lt: $subgraphId } }
         ]
       }

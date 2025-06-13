@@ -3,8 +3,6 @@
 build
 node_modules
 repos
-src/autogen/**/*.mdx
-static
 
 # files
-package-lock.json
+src/autogen/**/*.mdx
