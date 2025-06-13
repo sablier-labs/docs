@@ -1,5 +1,5 @@
-import styled from "@emotion/styled";
 import useBaseUrl from "@docusaurus/useBaseUrl";
+import styled from "@emotion/styled";
 import Background from "../Background";
 
 const Mesh = styled.div<{ image?: string }>`

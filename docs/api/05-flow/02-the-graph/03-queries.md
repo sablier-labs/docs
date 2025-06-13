@@ -4,8 +4,8 @@ sidebar_position: 3
 title: "Queries"
 ---
 
-Building on top of the [entity structure](/api/flow/the-graph/structure) defined earlier, here are some common GraphQL
-queries for fetching data from the Sablier subgraph.
+Building on top of the entity structure defined earlier, here are some common GraphQL queries for fetching data from the
+Sablier subgraph.
 
 ### Recent streams
 

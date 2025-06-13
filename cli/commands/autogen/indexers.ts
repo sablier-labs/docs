@@ -2,8 +2,8 @@ import { type Indexer, indexers } from "@sablier/indexers";
 import { Command } from "commander";
 import _ from "lodash";
 import { sablier } from "sablier";
-import type { CliOptions } from "../../types";
 import { autogenFilePaths, getRelative, writeFileWithOverwrite } from "../../helpers";
+import type { CliOptions } from "../../types";
 
 export function createIndexersCommand(): Command {
   return new Command("indexers")
@@ -25,14 +25,14 @@ function generateTables(protocol: Indexer.Protocol, options: CliOptions): void {
   const envioTable = generateEnvioTable(indexers.envio[protocol]);
 
   const graphFilePath = autogenFilePaths.graph(protocol);
-  if (writeFileWithOverwrite({ filePath: graphFilePath, content: graphTable, options })) {
+  if (writeFileWithOverwrite({ content: graphTable, filePath: graphFilePath, options })) {
     console.log(
       `✔️  Generated ${_.capitalize(protocol)} endpoints table for The Graph at: ${getRelative(graphFilePath)}`,
     );
   }
 
   const envioFilePath = autogenFilePaths.envio(protocol);
-  if (writeFileWithOverwrite({ filePath: envioFilePath, content: envioTable, options })) {
+  if (writeFileWithOverwrite({ content: envioTable, filePath: envioFilePath, options })) {
     console.log(`✔️  Generated ${_.capitalize(protocol)} endpoints table for Envio at: ${getRelative(envioFilePath)}`);
   }
 }

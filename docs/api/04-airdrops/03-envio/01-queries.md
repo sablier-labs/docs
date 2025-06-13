@@ -1,12 +1,12 @@
 ---
 draft: true
 id: "queries"
-sidebar_position: 2
+sidebar_position: 1
 title: "Queries"
 ---
 
-Building on top of the [entity structure](/api/airdrops/the-graph/entities) defined earlier, here are some common
-GraphQL queries for fetching data from the Sablier subgraph.
+Building on top of the entity structure defined earlier, here are some common GraphQL queries for fetching data from the
+Sablier subgraph.
 
 ### Recent streams
 

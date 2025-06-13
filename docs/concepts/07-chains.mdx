@@ -7,23 +7,26 @@ sidebar_position: 7
 import Link from "@docusaurus/Link";
 import Chains from "@site/src/components/organisms/Chains";
 import { Links } from "@site/src/constants";
-import _ from "lodash";
+import { keys } from "lodash";
 import { mainnets, testnets } from "sablier";
 
-Sablier Protocol is live on {_.keys(mainnets).length} mainnets and {_.keys(testnets).length} testnets, although not all of these chains are supported by the
-[Sablier Interface](https://app.sablier.com/). If you're interested in having your chain listed in the Interface, fill out <Link href={Links.Forms.CALL}>this form</Link>.
+<>
+
+The Sablier Protocol is deployed on {keys(mainnets).length} mainnets and {keys(testnets).length} testnet EVM chains, although not all of these are supported by the
+[Sablier Interface](https://app.sablier.com/).
+
+</>
+
+:::tip Want to list your chain?
+
+If you're interested in having Sablier deployed on your chain, fill out <Link href={Links.Forms.CALL}>this form</Link> and our team will get back to you.
+
+:::
 
 ## Mainnets
 
-<Chains type="mainnets" />
+<Chains kind="mainnets" />
 
 ## Testnets
 
-<Chains type="testnets" />
-
-## Notes
-
-- For more information about these EVM chains, such as RPC URLs, check out [Chainlist](https://chainlist.org).
-- Do you want to get Sablier deployed on your chain? If you meet the [requirements](/guides/custom-deployments#requirements)
-  for custom deployment, fill out <Link href={Links.Forms.CHAINS}>this form</Link> and our team will get back to you.
-- Sablier does not support chains with native tokens that do not have 18 decimals.
+<Chains kind="testnets" />

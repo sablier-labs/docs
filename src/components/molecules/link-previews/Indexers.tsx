@@ -1,5 +1,5 @@
-import _ from "lodash";
 import type { Indexer } from "@sablier/indexers";
+import _ from "lodash";
 import { Links } from "../../../constants";
 import LinkPreview from "../LinkPreview";
 

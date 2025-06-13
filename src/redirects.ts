@@ -1,24 +1,31 @@
-import { PluginOptions } from "@docusaurus/plugin-client-redirects";
+import { type PluginOptions } from "@docusaurus/plugin-client-redirects";
 
 export const redirects: PluginOptions["redirects"] = [
-  // ────────────────────────────────────────────────────────────────────────────────
-  // API
-  // ────────────────────────────────────────────────────────────────────────────────
+  /* -------------------------------------------------------------------------- */
+  /*                                  AIRDROPS                                  */
+  /* -------------------------------------------------------------------------- */
+  {
+    from: "/concepts/merkle-airdrops",
+    to: "/concepts/airdrops",
+  },
+  /* -------------------------------------------------------------------------- */
+  /*                                     API                                    */
+  /* -------------------------------------------------------------------------- */
   {
     from: "/api",
     to: "/api/overview",
   },
   {
     from: "/api/airdrops/the-graph",
-    to: "/api/airdrops/the-graph/entities",
+    to: "/api/overview",
   },
   {
     from: "/api/indexers/protocol",
-    to: "/api/lockup/envio/similarities",
+    to: "/api/overview",
   },
   {
     from: "/api/lockup/the-graph",
-    to: "/api/lockup/the-graph/entities",
+    to: "/api/overview",
   },
   {
     from: "/api/merkle-api/intro",
@@ -30,7 +37,7 @@ export const redirects: PluginOptions["redirects"] = [
   },
   {
     from: "/api/subgraphs/merkle",
-    to: "/api/airdrops/the-graph/entities",
+    to: "/api/overview",
   },
   {
     from: "/api/subgraphs/overview",
@@ -38,11 +45,11 @@ export const redirects: PluginOptions["redirects"] = [
   },
   {
     from: "/api/subgraphs/protocol",
-    to: "/api/lockup/the-graph/entities",
+    to: "/api/overview",
   },
-  // ────────────────────────────────────────────────────────────────────────────────
-  // Apps
-  // ────────────────────────────────────────────────────────────────────────────────
+  /* -------------------------------------------------------------------------- */
+  /*                                    APPS                                    */
+  /* -------------------------------------------------------------------------- */
   {
     from: "/apps",
     to: "/apps/features/overview",
@@ -79,9 +86,9 @@ export const redirects: PluginOptions["redirects"] = [
     from: "/apps/url-schemes",
     to: "/apps/guides/url-schemes",
   },
-  // ────────────────────────────────────────────────────────────────────────────────
-  // Indexers
-  // ────────────────────────────────────────────────────────────────────────────────
+  /* -------------------------------------------------------------------------- */
+  /*                                  INDEXERS                                  */
+  /* -------------------------------------------------------------------------- */
   {
     from: "/api/airdrops/endpoints",
     to: "/api/airdrops/indexers",
@@ -94,9 +101,9 @@ export const redirects: PluginOptions["redirects"] = [
     from: "/api/lockup/endpoints",
     to: "/api/lockup/indexers",
   },
-  // ────────────────────────────────────────────────────────────────────────────────
-  // Lockup (Dec 2024 and earlier)
-  // ────────────────────────────────────────────────────────────────────────────────
+  /* -------------------------------------------------------------------------- */
+  /*                          LOCKUP: 2024 and Earlier                          */
+  /* -------------------------------------------------------------------------- */
   {
     from: "/concepts/protocol/fees",
     to: "/concepts/fees",
@@ -145,9 +152,9 @@ export const redirects: PluginOptions["redirects"] = [
     from: "/csv",
     to: "/apps/guides/csv-support",
   },
-  // ────────────────────────────────────────────────────────────────────────────────
-  // Legacy
-  // ────────────────────────────────────────────────────────────────────────────────
+  /* -------------------------------------------------------------------------- */
+  /*                                   LEGACY                                   */
+  /* -------------------------------------------------------------------------- */
   {
     from: "/protocol/faq/basics",
     to: "/concepts/what-is-sablier",

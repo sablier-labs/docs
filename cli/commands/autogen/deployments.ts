@@ -1,9 +1,9 @@
 import { Command } from "commander";
 import _ from "lodash";
 import { Protocol, type Sablier, sablier } from "sablier";
-import type { CliOptions } from "../../types";
 import { Links } from "../../../src/constants";
 import { autogenFilePaths, getRelative, writeFileWithOverwrite } from "../../helpers";
+import type { CliOptions } from "../../types";
 
 export function createDeploymentsCommand(): Command {
   return new Command("deployments")
@@ -27,7 +27,7 @@ export async function generateDeployments(options: CliOptions = {}): Promise<voi
 
     const filePath = autogenFilePaths.deployments(release);
 
-    if (writeFileWithOverwrite({ filePath, content: tables, options })) {
+    if (writeFileWithOverwrite({ content: tables, filePath, options })) {
       const protocol = _.capitalize(release.protocol);
       const version = _.capitalize(release.version);
       console.log(`✔️ Generated deployments table for ${protocol} ${version} at: ${getRelative(filePath)}`);
