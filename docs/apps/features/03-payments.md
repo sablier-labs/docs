@@ -7,7 +7,7 @@ title: "Payments"
 The Sablier Interface displays [Flow](/concepts/flow/overview) streams under the Payments tab. These are token streams
 with no end time, an ever-increasing amount (meaning the streams can be topped up), and a flexible rate per second.
 
-![Banner Payments](/banners/docs-payments.webp)
+![Banner Payments](/img/banners/docs-payments.webp)
 
 ## Features
 

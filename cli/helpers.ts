@@ -1,3 +1,4 @@
+import _ from "lodash";
 import * as fs from "node:fs";
 import * as path from "node:path";
 import type { CliOptions } from "./types";
@@ -8,35 +9,30 @@ if (!fs.existsSync(path.join(ROOT_DIR, "package.json"))) {
   throw new Error("ROOT_DIR is not set correctly");
 }
 
-export const autogenFileNames = {
-  deployments: (version: Sablier.Version) =>
-    `TableDeployments${version.charAt(0).toUpperCase() + version.slice(1)}.mdx`,
-  envio: "TableEnvio.mdx",
-  theGraph: "TableTheGraph.mdx",
+export const autogenFilePaths = {
+  deployments: (release: Sablier.Release) =>
+    path.join(ROOT_DIR, "src", "autogen", release.protocol, `TableDeployments${_.capitalize(release.version)}.mdx`),
+  graph: (protocol: Sablier.Protocol) => path.join(ROOT_DIR, "src", "autogen", protocol, "TableTheGraph.mdx"),
+  envio: (protocol: Sablier.Protocol) => path.join(ROOT_DIR, "src", "autogen", protocol, "TableEnvio.mdx"),
 };
-
-export function getAutogenFilePath(protocol: string, fileName: string): string {
-  return path.join(ROOT_DIR, "src", "autogen", protocol, fileName);
-}
-export function log(message: string, options: CliOptions): void {
-  if (options.verbose) {
-    console.log(message);
-  }
-}
 
 type FileWriteParams = {
-  filePath: string;
   content: string;
-  encoding?: BufferEncoding;
+  filePath: string;
   options: CliOptions;
+  encoding?: BufferEncoding;
 };
 
-export function writeFileWithOverride(params: FileWriteParams): boolean {
+export function getRelative(absolutePath: string): string {
+  return path.relative(process.cwd(), absolutePath);
+}
+
+export function writeFileWithOverwrite(params: FileWriteParams): boolean {
   const { filePath, content, encoding = "utf8", options } = params;
 
-  if (fs.existsSync(filePath) && !options.override) {
+  if (fs.existsSync(filePath) && !options.overwrite) {
     const relativePath = path.relative(process.cwd(), filePath);
-    log(`❌ File already exists: ${relativePath}. Use --override flag to override.`, options);
+    console.log(`⚠️  Deployment table already exists at: ${relativePath}. Use --overwrite flag to overwrite.`);
     return false;
   }
 

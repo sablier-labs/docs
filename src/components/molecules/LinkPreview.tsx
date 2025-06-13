@@ -59,8 +59,8 @@ const StyledGitHubIcon = styled.div`
 
 type LinkPreviewProps = {
   href: string;
-  icon: string;
-  subtitle: string;
+  icon?: string;
+  subtitle?: string;
   title: string;
 };
 
@@ -83,7 +83,7 @@ export default function LinkPreview(props: LinkPreviewProps) {
       <IconWrapper>{renderIcon()}</IconWrapper>
       <LabelWrapper>
         <Title>{props.title}</Title>
-        <Subtitle>{props.subtitle}</Subtitle>
+        {props.subtitle && <Subtitle>{props.subtitle}</Subtitle>}
       </LabelWrapper>
     </Wrapper>
   );

@@ -90,7 +90,7 @@ const CircleRightTop = styled(Circle)`
 function Underlay() {
   return (
     <Background>
-      <Mesh image={useBaseUrl("/decor/grid-pattern.svg")} />
+      <Mesh image={useBaseUrl("/img/decor/grid-pattern.svg")} />
       <FadeBottom />
       <Shapes>
         <CircleLeft />
