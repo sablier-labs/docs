@@ -7,34 +7,38 @@ async function main() {
   program.name("sablier-docs-cli").description("CLI tool for auto-generating Markdown content");
 
   // Global options
-  program.option("-o, --override", "override existing files", false);
-  program.option("-v, --verbose", "enable verbose logging", false);
+  program.option("-o, --overwrite", "overwrite existing files", false);
 
-  // Create deployment command
-  const { createDeploymentsCommand, generateDeployments } = await import("./commands/deployments.js");
-  program.addCommand(createDeploymentsCommand());
+  // Import and create subcommands
+  const { createDeploymentsCommand, generateDeployments } = await import("./commands/autogen/deployments.js");
+  const { createIndexersCommand, generateIndexers } = await import("./commands/autogen/indexers.js");
 
-  // // Create indexers command
-  const { createIndexersCommand, generateIndexers } = await import("./commands/indexers.js");
-  program.addCommand(createIndexersCommand());
-
-  // Add a generate command that runs all generators
-  program
-    .command("generate")
-    .description("generate all documentation tables")
+  // Create autogen parent command
+  const autogenCommand = new Command("autogen")
+    .description("Auto-generate documentation tables")
     .action(async (_options, command) => {
       const globalOptions = command.parent?.opts() || {};
 
-      console.log("🚀 Generating all documentation tables...");
+      console.log("🚀 Generating all documentation tables...\n");
 
       // Run deployments generation
       await generateDeployments(globalOptions);
 
+      console.log();
+
       // Run indexers generation
       await generateIndexers(globalOptions);
 
+      console.log();
       console.log("✅ All documentation tables generated successfully!");
     });
+
+  // Add subcommands to autogen
+  autogenCommand.addCommand(createDeploymentsCommand());
+  autogenCommand.addCommand(createIndexersCommand());
+
+  // Add the autogen command to the main program
+  program.addCommand(autogenCommand);
 
   program.parse();
 }

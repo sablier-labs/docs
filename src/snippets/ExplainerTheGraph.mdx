@@ -1,16 +1,44 @@
-The Decentralized Network subgraphs operate on The Graph Network, so the links in the table below contain a placeholder
-for an API key. Here's an example:
+import TabItem from "@theme/TabItem";
+import Tabs from "@theme/Tabs";
 
-```text
-https://gateway.thegraph.com/api/API_KEY/subgraphs/id/AvDAMYYHGaEwn9F9585uqq6MM5CfvRtYcb7KjK7LKPCt
+In the table below, you will see three URLs:
+
+- `Production URL`: requires a Studio API key for making queries.
+- `Testing URL`: doesn't require an API key but it's rate-limited to 3000 queries per day. Opening this URL in the browser opens a GraphiQL playground.
+- `Explorer URL`: The explorer URL for the indexer, if available.
+
+To learn how to create a Studio API key, check out [this guide](https://thegraph.com/docs/en/studio/managing-api-keys).
+
+The API key has to be provided via an `Authorization: Bearer <API_KEY>` header. Here are two examples in `curl` and JavaScript:
+
+<Tabs>
+<TabItem value="curl" label="curl">
+```bash
+curl -X POST \
+  -H "Authorization: Bearer <API_KEY>" \
+  -H "Content-Type: application/json" \
+  -d '{"query": "{ _meta: { block { number } } }"' \
+  <PRODUCTION_URL>
 ```
+</TabItem>
 
-You have to replace the `API_KEY` placeholder with your own API key. To create your API key, check out
-[this guide](https://thegraph.com/docs/en/studio/managing-api-keys/).
+<TabItem value="js" label="JavaScript">
+  ```javascript
+  import { GraphQLClient } from "graphql-request";
 
-:::info
+async function getBlockNumber() {
+const client = new GraphQLClient("<PRODUCTION_URL>", {
+headers: {
+Authorization: `Bearer <API_KEY>`,
+},
+});
 
-If you don't see your chain in this table, it means that there is no subgraph available for it. You can use the Envio
-indexer instead.
+const query = `query { _meta: { block { number } } }`;
+const result = await client.request(query);
+console.log(result);
+}
 
-:::
+```
+</TabItem>
+</Tabs>
+```

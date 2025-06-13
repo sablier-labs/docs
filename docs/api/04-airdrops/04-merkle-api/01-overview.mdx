@@ -1,0 +1,29 @@
+---
+id: "overview"
+sidebar_position: 1
+title: "Overview"
+---
+
+import LinkPreviewMerkleAPI from "@site/src/components/molecules/link-previews/MerkleAPI";
+
+Sablier Airdrops use pre-configured Merkle trees, a data structure that efficiently stores recipient lists and their individual claim details.
+
+## General data flow
+
+Merkle trees enable minimal onchain storage while maintaining cryptographic proof of eligibility. The system stores only the tree's root hash in the deployed Airstream contract, while the complete tree and recipient list reside in IPFS.
+
+Operations like eligibility checks or claim detail requests follow this process:
+
+1. Read data from the IPFS file
+2. Generate Merkle proofs from the tree
+3. Interact with the contract using the obtained data
+
+## Open-source solution
+
+We've built a Rust backend service that provides REST API access to Merkle tree functionality. This service handles tree creation, storage, and data retrieval for both the Sablier Interface and third-party applications.
+
+## Integrations
+
+Integrate this API using our official endpoints or fork the repository to run your own instance. We actively improve and optimize this service, so submit suggestions or issues directly on GitHub.
+
+<LinkPreviewMerkleAPI />

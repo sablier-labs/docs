@@ -1,4 +1,3 @@
 export type CliOptions = {
-  override?: boolean;
-  verbose?: boolean;
+  overwrite?: boolean;
 };

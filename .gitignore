@@ -3,6 +3,7 @@
 .docusaurus
 build
 node_modules
+repomix
 src/autogen/**/*.mdx
 
 # files

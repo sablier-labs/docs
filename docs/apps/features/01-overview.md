@@ -14,7 +14,7 @@ available features.
 
 ## Use-case centric
 
-![Banner App Navigation](/banners/docs-app-navigation.webp)
+![Banner App Navigation](/img/banners/docs-app-navigation.webp)
 
 The app is split among three use cases:
 

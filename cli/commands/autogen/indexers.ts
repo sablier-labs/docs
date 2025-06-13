@@ -1,0 +1,80 @@
+import { type Indexer, indexers } from "@sablier/indexers";
+import { Command } from "commander";
+import _ from "lodash";
+import { sablier } from "sablier";
+import type { CliOptions } from "../../types";
+import { autogenFilePaths, getRelative, writeFileWithOverwrite } from "../../helpers";
+
+export function createIndexersCommand(): Command {
+  return new Command("indexers")
+    .description("Generate indexer endpoint tables for all Sablier protocols")
+    .action(async (_options, command: Command) => {
+      const mergedOptions = command.optsWithGlobals();
+      await generateIndexers(mergedOptions);
+    });
+}
+
+export async function generateIndexers(options: CliOptions = {}): Promise<void> {
+  generateTables("airdrops", options);
+  generateTables("flow", options);
+  generateTables("lockup", options);
+}
+
+function generateTables(protocol: Indexer.Protocol, options: CliOptions): void {
+  const graphTable = generateGraphTable(indexers.graph[protocol]);
+  const envioTable = generateEnvioTable(indexers.envio[protocol]);
+
+  const graphFilePath = autogenFilePaths.graph(protocol);
+  if (writeFileWithOverwrite({ filePath: graphFilePath, content: graphTable, options })) {
+    console.log(
+      `✔️  Generated ${_.capitalize(protocol)} endpoints table for The Graph at: ${getRelative(graphFilePath)}`,
+    );
+  }
+
+  const envioFilePath = autogenFilePaths.envio(protocol);
+  if (writeFileWithOverwrite({ filePath: envioFilePath, content: envioTable, options })) {
+    console.log(`✔️  Generated ${_.capitalize(protocol)} endpoints table for Envio at: ${getRelative(envioFilePath)}`);
+  }
+}
+
+function generateGraphTable(indexers: Indexer[]): string {
+  let markdown = `| Chain | Production URL | Testing URL | Explorer URL |\n`;
+  markdown += `| -------- | -------------- | ----------- | ------------ |\n`;
+
+  for (const indexer of indexers) {
+    const chain = sablier.chains.getOrThrow(indexer.chainId);
+
+    const productionURL = indexer.endpoint.url;
+    const testingURL = indexer.playgroundURL;
+    const explorerURL = indexer.explorerURL;
+
+    const productionCell = `[${indexer.name}](${productionURL})`;
+    const testingCell = testingURL ? `[Testing](${testingURL})` : "N/A";
+    const explorerCell = explorerURL ? `[Explorer](${explorerURL})` : "N/A";
+
+    markdown += `| ${chain.name} | ${productionCell} | ${testingCell} | ${explorerCell} |\n`;
+  }
+
+  return markdown;
+}
+
+function generateEnvioTable(indexers: Indexer[]): string {
+  let markdown = `| Chain | Production URL | Testing URL |\n`;
+  markdown += `| -------- | -------------- | ----------- |\n`;
+
+  for (const indexer of indexers) {
+    const chain = sablier.chains.get(indexer.chainId);
+    if (!chain || !chain.name) {
+      continue;
+    }
+
+    const productionURL = indexer.endpoint.url;
+    const testingURL = `https://cloud.hasura.io/public/graphiql?endpoint=${encodeURIComponent(productionURL)}`;
+
+    const productionCell = `${productionURL}`;
+    const testingCell = `[Testing](${testingURL})`;
+    markdown += `| ${chain.name} | ${productionCell} | ${testingCell} |\n`;
+  }
+
+  return markdown;
+}

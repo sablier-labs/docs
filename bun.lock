@@ -18,7 +18,7 @@
         "@mdx-js/mdx": "~3.1",
         "@mdx-js/react": "~3.1",
         "@sablier/devkit": "github:sablier-labs/devkit#main",
-        "@sablier/indexers": "1.0.0-alpha.4",
+        "@sablier/indexers": "1.0.0-alpha.6",
         "@vercel/analytics": "^1.5",
         "axios": "^1.9",
         "clsx": "^2.1",
@@ -26,6 +26,7 @@
         "docusaurus-theme-github-codeblock": "^2.0",
         "function-plot": "^1.25",
         "hast-util-is-element": "3.0",
+        "lodash": "^4.17",
         "prism-react-renderer": "^2.4",
         "react": "18.2",
         "react-dom": "18.2",
@@ -50,7 +51,6 @@
         "eslint-plugin-react": "^7.37",
         "husky": "^9.1",
         "lint-staged": "^16.1",
-        "lodash": "^4.17",
         "prettier": "^3.5",
         "typescript": "5.8.3",
         "vercel": "^42.3",
@@ -748,7 +748,7 @@
 
     "@sablier/devkit": ["@sablier/devkit@github:sablier-labs/devkit#c12bc44", {}, "sablier-labs-devkit-c12bc44"],
 
-    "@sablier/indexers": ["@sablier/indexers@1.0.0-alpha.4", "", { "dependencies": { "lodash": "^4.17", "sablier": "1.0.0-beta.2" } }, "sha512-bW8vEMpfRPSC5IHAlzpCjqP29W5VfGQFK2FA3HMUs4bTRoVhkyf/P7nhxpkT8buT5P0oGk4J5J4CpuTZ6xFegw=="],
+    "@sablier/indexers": ["@sablier/indexers@1.0.0-alpha.6", "", { "dependencies": { "lodash": "^4.17", "sablier": "1.0.0-beta.2" } }, "sha512-2YpYCyyFJnuTrsPcY+v4CDW+R/e/+qzxzxIFZmNq2wjFA2l5EFBI+bgKSWzd/+P2lgMI2rAjaKe4GhxbGXjKXw=="],
 
     "@scure/base": ["@scure/base@1.1.9", "", {}, "sha512-8YKhl8GHiNI/pU2VMaofa2Tor7PJRAjwQLBBuilkJ9L5+13yVbC7JO/wS7piioAvPSwR3JKM1IJ/u4xQzbcXKg=="],
 
