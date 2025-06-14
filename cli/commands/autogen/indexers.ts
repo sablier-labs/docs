@@ -21,8 +21,13 @@ export async function generateIndexers(options: CliOptions = {}): Promise<void> 
 }
 
 function generateTables(protocol: Indexer.Protocol, options: CliOptions): void {
-  const graphTable = generateGraphTable(indexers.graph[protocol]);
   const envioTable = generateEnvioTable(indexers.envio[protocol]);
+  const graphTable = generateGraphTable(indexers.graph[protocol]);
+
+  const envioFilePath = autogenFilePaths.envio(protocol);
+  if (writeFileWithOverwrite({ content: envioTable, filePath: envioFilePath, options })) {
+    console.log(`✔️  Generated ${_.capitalize(protocol)} endpoints table for Envio at: ${getRelative(envioFilePath)}`);
+  }
 
   const graphFilePath = autogenFilePaths.graph(protocol);
   if (writeFileWithOverwrite({ content: graphTable, filePath: graphFilePath, options })) {
@@ -30,11 +35,30 @@ function generateTables(protocol: Indexer.Protocol, options: CliOptions): void {
       `✔️  Generated ${_.capitalize(protocol)} endpoints table for The Graph at: ${getRelative(graphFilePath)}`,
     );
   }
+}
 
-  const envioFilePath = autogenFilePaths.envio(protocol);
-  if (writeFileWithOverwrite({ content: envioTable, filePath: envioFilePath, options })) {
-    console.log(`✔️  Generated ${_.capitalize(protocol)} endpoints table for Envio at: ${getRelative(envioFilePath)}`);
+function generateEnvioTable(indexers: Indexer[]): string {
+  let markdown = `| Chain | Production URL | Playground URL | Explorer URL |\n`;
+  markdown += `| -------- | -------------- | ----------- | ------------ |\n`;
+
+  for (const indexer of indexers) {
+    const chain = sablier.chains.get(indexer.chainId);
+    if (!chain || !chain.name) {
+      continue;
+    }
+
+    const productionURL = indexer.endpoint.url;
+    const playgroundURL = indexer.testingURL;
+    const explorerURL = indexer.explorerURL;
+
+    const productionCell = `${productionURL}`;
+    const playgroundCell = playgroundURL ? `[Playground](${playgroundURL})` : "N/A";
+    const explorerCell = explorerURL ? `[Explorer](${explorerURL})` : "N/A";
+
+    markdown += `| ${chain.name} | ${productionCell} | ${playgroundCell} | ${explorerCell} |\n`;
   }
+
+  return markdown;
 }
 
 function generateGraphTable(indexers: Indexer[]): string {
@@ -50,30 +74,6 @@ function generateGraphTable(indexers: Indexer[]): string {
 
     const productionCell = `[${indexer.name}](${productionURL})`;
     const testingCell = testingURL ? `[Testing](${testingURL})` : "N/A";
-    const explorerCell = explorerURL ? `[Explorer](${explorerURL})` : "N/A";
-
-    markdown += `| ${chain.name} | ${productionCell} | ${testingCell} | ${explorerCell} |\n`;
-  }
-
-  return markdown;
-}
-
-function generateEnvioTable(indexers: Indexer[]): string {
-  let markdown = `| Chain | Production URL | Testing URL | Explorer URL |\n`;
-  markdown += `| -------- | -------------- | ----------- | ------------ |\n`;
-
-  for (const indexer of indexers) {
-    const chain = sablier.chains.get(indexer.chainId);
-    if (!chain || !chain.name) {
-      continue;
-    }
-
-    const productionURL = indexer.endpoint.url;
-    const testingURL = indexer.testingURL;
-    const explorerURL = indexer.explorerURL;
-
-    const productionCell = `${productionURL}`;
-    const testingCell = `[Testing](${testingURL})`;
     const explorerCell = explorerURL ? `[Explorer](${explorerURL})` : "N/A";
 
     markdown += `| ${chain.name} | ${productionCell} | ${testingCell} | ${explorerCell} |\n`;

@@ -26,38 +26,46 @@ To obtain a campaign's IPFS CID, you can:
 For approach "B", run the following query against the official endpoints:
 
 <Tabs>
-  <TabItem value="TheGraph" label="The Graph" default>
- ```GraphQL title:Example of a query for campaign data using The Graph's subgraphs
-  query getCampaignData($campaignId: String!){
-    campaign(id: $campaignId){
-      id
-      lockup
-      root
-      //highlight-start
-      ipfsCID
-      //highlight-end
-      aggregateAmount
-      totalRecipients
-    }
+
+<TabItem value="TheGraph" label="The Graph" default>
+
+```graphql
+query getCampaignData($campaignId: String!){
+  campaign(id: $campaignId){
+    id
+    lockup
+    root
+    //highlight-start
+    ipfsCID
+    //highlight-end
+    aggregateAmount
+    totalRecipients
   }
+}
 ```
-  </TabItem>
-  <TabItem value="Envio" label="Envio">
- ```GraphQL title:Example of a query for campaign data using Envio's indexers
-  query getCampaignData($campaignId: String!){
-    Campaign(where: {id: {_eq: $campaignId}} ){
-      id
-      lockup
-      root
-      //highlight-start
-      ipfsCID
-      //highlight-end
-      aggregateAmount
-      totalRecipients
-    }
+
+</TabItem>
+
+<TabItem value="Envio" label="Envio">
+
+```graphql
+query getCampaignData($campaignId: String!){
+  Campaign(where: {id: {_eq: $campaignId}} ){
+    id
+    lockup
+    root
+    //highlight-start
+    ipfsCID
+    //highlight-end
+    aggregateAmount
+    totalRecipients
   }
+}
+
 ```
-  </TabItem>
+
+</TabItem>
+
 </Tabs>
 
 ## Check eligibility for an address
@@ -73,7 +81,7 @@ Read more in the dedicated route documentation within the [/api/eligibility](fun
 
 Alternatively, you can check eligibility by searching for the address in the list stored within the IPFS file from step 1. You'll still need to download the file first using its CID.
 
-## Get the tokenId after a claim
+## Get the `tokenId` after a claim
 
 After someone claims, you may want to show them a preview of the stream or its NFT. To do this, you'll need the `tokenId` (or `streamId`) related to that user's claim.
 
@@ -92,32 +100,11 @@ For approach "B", run the following query against the official endpoints (ensure
 <Tabs>
 
 <TabItem value="TheGraph" label="The Graph" default>
-```GraphQL title:Example of a query for claim data using The Graph's subgraphs
-  query getClaimForRecipient($campaignId: String!, $recipient: String){
-    actions(where: {campaign: $campaignId, category: Claim, claimRecipient: $recipient }){
-      campaign{
-        id
-        lockup
-      }
-      claimTokenId
-      claimRecipient
-      claimIndex
-    }
-  }
-```
-</TabItem>
 
-<TabItem value="Envio" label="Envio">
-```GraphQL title:Example of a query for claim data using Envio's indexers
-  query getClaimForRecipient($campaignId: String!, $recipient: String){
-  Action(where: {
-    _and: [
-      {campaign: {_eq: $campaignId}}
-      {category: {_eq: Claim}}
-      {claimRecipient: {_eq: $recipient}}
-    ]
-  }){
-    campaignObject{
+```graphql
+query getClaimForRecipient($campaignId: String!, $recipient: String) {
+  actions(where: { campaign: $campaignId, category: Claim, claimRecipient: $recipient }) {
+    campaign {
       id
       lockup
     }
@@ -127,7 +114,31 @@ For approach "B", run the following query against the official endpoints (ensure
   }
 }
 ```
+
 </TabItem>
+
+<TabItem value="Envio" label="Envio">
+
+```graphql
+query getClaimForRecipient($campaignId: String!, $recipient: String) {
+  Action(
+    where: {
+      _and: [{ campaign: { _eq: $campaignId } }, { category: { _eq: Claim } }, { claimRecipient: { _eq: $recipient } }]
+    }
+  ) {
+    campaignObject {
+      id
+      lockup
+    }
+    claimTokenId
+    claimRecipient
+    claimIndex
+  }
+}
+```
+
+</TabItem>
+
 </Tabs>
 
 #### Bonus: Stream NFT

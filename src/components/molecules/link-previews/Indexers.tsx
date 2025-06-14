@@ -1,5 +1,5 @@
 import type { Indexer } from "@sablier/indexers";
-import _ from "lodash";
+import { capitalize } from "lodash";
 import { Links } from "../../../constants";
 import LinkPreview from "../LinkPreview";
 
@@ -25,7 +25,7 @@ export default function LinkPreviewIndexers({ vendor, protocol }: LinkPreviewInd
   } else {
     href = `${Links.GitHub.INDEXERS}/blob/main/src/${vendor}/${protocol}`;
     subtitle = `src/${vendor}/${protocol}`;
-    title = `${_.capitalize(vendor)} indexer for the Sablier ${_.capitalize(protocol)} protocol`;
+    title = `${capitalize(vendor)} indexer for the Sablier ${capitalize(protocol)} protocol`;
   }
 
   return <LinkPreview href={href} icon="github" subtitle={subtitle} title={title} />;

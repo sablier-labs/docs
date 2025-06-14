@@ -9,10 +9,12 @@ In the table below, you will see three URLs:
 
 To learn how to create a Studio API key, check out [this guide](https://thegraph.com/docs/en/studio/managing-api-keys).
 
-The API key has to be provided via an `Authorization: Bearer <API_KEY>` header. Here are two examples in `curl` and JavaScript:
+The API key has to be provided via an `Authorization: Bearer <API_KEY>` header. Here are two examples in curl and JavaScript:
 
 <Tabs>
+
 <TabItem value="curl" label="curl">
+
 ```bash
 curl -X POST \
   -H "Authorization: Bearer <API_KEY>" \
@@ -20,25 +22,27 @@ curl -X POST \
   -d '{"query": "{ _meta: { block { number } } }"' \
   <PRODUCTION_URL>
 ```
+
 </TabItem>
 
 <TabItem value="js" label="JavaScript">
-  ```javascript
-  import { GraphQLClient } from "graphql-request";
+
+```js
+import { GraphQLClient } from "graphql-request";
 
 async function getBlockNumber() {
-const client = new GraphQLClient("<PRODUCTION_URL>", {
-headers: {
-Authorization: `Bearer <API_KEY>`,
-},
-});
+  const client = new GraphQLClient("<PRODUCTION_URL>", {
+    headers: {
+      Authorization: `Bearer <API_KEY>`,
+    },
+  });
 
-const query = `query { _meta: { block { number } } }`;
-const result = await client.request(query);
-console.log(result);
+  const query = `query { _meta: { block { number } } }`;
+  const result = await client.request(query);
+  console.log(result);
 }
+```
 
-```
 </TabItem>
+
 </Tabs>
-```
