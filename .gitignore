@@ -1,9 +1,9 @@
 # directories
 .cache-loader
 .docusaurus
+.repomix
 build
 node_modules
-repomix
 src/autogen/**/*.mdx
 
 # files

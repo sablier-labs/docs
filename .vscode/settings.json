@@ -1,11 +1,11 @@
 {
   "biome.enabled": true,
+  "eslint.validate": ["md", "mdx"],
+  "typescript.tsdk": "node_modules/typescript/lib",
   "editor.codeActionsOnSave": {
     "source.fixAll.biome": "explicit",
     "source.organizeImports.biome": "explicit"
   },
-  "eslint.validate": ["md", "mdx"],
-  "typescript.tsdk": "node_modules/typescript/lib",
   "search.exclude": {
     ".docusaurus": true,
     "build": true,

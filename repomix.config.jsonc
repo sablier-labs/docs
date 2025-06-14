@@ -7,7 +7,7 @@
   },
   "include": ["./**/*.mdx"],
   "output": {
-    "filePath": "repomix/output.txt",
+    "filePath": ".repomix/output.txt",
     "style": "plain"
   }
 }
