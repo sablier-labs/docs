@@ -45,7 +45,7 @@ function generateGraphTable(indexers: Indexer[]): string {
     const chain = sablier.chains.getOrThrow(indexer.chainId);
 
     const productionURL = indexer.endpoint.url;
-    const testingURL = indexer.playgroundURL;
+    const testingURL = indexer.testingURL;
     const explorerURL = indexer.explorerURL;
 
     const productionCell = `[${indexer.name}](${productionURL})`;
@@ -59,8 +59,8 @@ function generateGraphTable(indexers: Indexer[]): string {
 }
 
 function generateEnvioTable(indexers: Indexer[]): string {
-  let markdown = `| Chain | Production URL | Testing URL |\n`;
-  markdown += `| -------- | -------------- | ----------- |\n`;
+  let markdown = `| Chain | Production URL | Testing URL | Explorer URL |\n`;
+  markdown += `| -------- | -------------- | ----------- | ------------ |\n`;
 
   for (const indexer of indexers) {
     const chain = sablier.chains.get(indexer.chainId);
@@ -69,11 +69,14 @@ function generateEnvioTable(indexers: Indexer[]): string {
     }
 
     const productionURL = indexer.endpoint.url;
-    const testingURL = `https://cloud.hasura.io/public/graphiql?endpoint=${encodeURIComponent(productionURL)}`;
+    const testingURL = indexer.testingURL;
+    const explorerURL = indexer.explorerURL;
 
     const productionCell = `${productionURL}`;
     const testingCell = `[Testing](${testingURL})`;
-    markdown += `| ${chain.name} | ${productionCell} | ${testingCell} |\n`;
+    const explorerCell = explorerURL ? `[Explorer](${explorerURL})` : "N/A";
+
+    markdown += `| ${chain.name} | ${productionCell} | ${testingCell} | ${explorerCell} |\n`;
   }
 
   return markdown;
