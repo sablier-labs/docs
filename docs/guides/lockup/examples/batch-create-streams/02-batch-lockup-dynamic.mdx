@@ -4,9 +4,9 @@ sidebar_position: 2
 title: "Batch Lockup Dynamic"
 ---
 
-import AdmonitionSimpleCode from "@site/docs/snippets/AdmonitionSimpleCode.mdx";
-import BatchCommonSteps from "@site/docs/snippets/BatchCommonSteps.mdx";
-import Deployment from "@site/docs/snippets/Deployment.mdx";
+import HardcodedDemonstration from "@site/src/components/atoms/HardcodedDemonstration";
+import BatchCommonSteps from "@site/src/snippets/BatchCommonSteps.mdx";
+import CautionNonProduction from "@site/src/snippets/CautionNonProduction.mdx";
 
 # Create a Batch of Dynamic Streams
 
@@ -15,7 +15,7 @@ In this guide, we will show you how you can use Solidity to batch create dynamic
 
 This guide assumes that you have already gone through the [Protocol Concepts](/concepts/streaming) section.
 
-<AdmonitionSimpleCode />
+<CautionNonProduction />
 
 ## Set up a contract
 
@@ -48,7 +48,7 @@ contract BatchLDStreamCreator {
 }
 ```
 
-<Deployment protocol="Lockup" />
+<HardcodedDemonstration protocol="Lockup" />
 
 ## Batch create functions
 

@@ -1,0 +1,21 @@
+import Link from "@docusaurus/Link";
+import type { Sablier } from "sablier";
+
+type DeploymentProps = {
+  protocol: Sablier.Protocol;
+};
+
+export default function HardcodedDemonstration({ protocol }: DeploymentProps) {
+  return (
+    <>
+      In the code above, the contract addresses are hard-coded for demonstration purposes. However, in production, you
+      would likely use input parameters to allow flexibility in changing the addresses.
+      <br />
+      <br />
+      Also, these addresses are deployed on Ethereum Sepolia. If you need to work with a different chain, {protocol}{" "}
+      addresses can be obtained from the{" "}
+      <Link href={`/guides/${protocol.toLowerCase()}/deployments`}>{protocol} Deployments</Link> page.
+      <br />
+    </>
+  );
+}

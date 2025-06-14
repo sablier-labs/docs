@@ -4,17 +4,17 @@ sidebar_position: 2
 title: "Create Campaigns"
 ---
 
-import AdmonitionSimpleCode from "@site/docs/snippets/AdmonitionSimpleCode.mdx";
-import Deployment from "@site/docs/snippets/Deployment.mdx";
+import HardcodedDemonstration from "@site/src/components/atoms/HardcodedDemonstration";
+import CautionNonProduction from "@site/src/snippets/CautionNonProduction.mdx";
 
 # Create Airdrop Campaigns
 
 In this guide, we will show you how you can use Solidity to create a campaign via the
 [Merkle Factory](/reference/airdrops/contracts/contract.SablierMerkleFactory).
 
-This guide assumes that you have already gone through the [Protocol Concepts](/concepts/merkle-airdrops) section.
+This guide assumes that you have already gone through the [Protocol Concepts](/concepts/airdrops) section.
 
-<AdmonitionSimpleCode />
+<CautionNonProduction />
 
 ## Set up a contract
 
@@ -49,9 +49,9 @@ contract MerkleCreator {
 }
 ```
 
-<Deployment protocol="Lockup" />
+<HardcodedDemonstration protocol="Lockup" />
 
-And, Factory address can be obtained from the [Merkle Airdrops Deployments](/guides/airdrops/deployments) page.
+Factory address can be obtained from the [Merkle Airdrops Deployments](/guides/airdrops/deployments) page.
 
 ## Create function
 
@@ -168,11 +168,11 @@ Now that we have the `baseParams` ready, it's time to setup rest of the input pa
 
 ### Aggregate Amount
 
-This is the total amount of tokens you want to airdrop to your users, denoted in units of the asset's decimals. Let say
-you want to airdrop 100M tokens of DAI. Then, the aggregate amount would be $100M*10^{18}$.
+This is the total amount of tokens you want to airdrop to your users, denoted in units of the asset's decimals. Let's say
+you want to airdrop 100M tokens of DAI. Then, the aggregate amount would be $100m\times 10^{18}$.
 
 ```solidity
-uint256 aggregateAmount = 100000000e18;
+uint256 aggregateAmount = 100_000_000e18;
 ```
 
 ### Recipient Count
@@ -180,7 +180,7 @@ uint256 aggregateAmount = 100000000e18;
 The total number of recipient addresses.
 
 ```solidity
-uint256 recipientCount = 10000;
+uint256 recipientCount = 10_000;
 ```
 
 ### Schedule

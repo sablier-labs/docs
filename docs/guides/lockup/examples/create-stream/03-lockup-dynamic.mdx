@@ -4,10 +4,10 @@ sidebar_position: 3
 title: "Lockup Dynamic"
 ---
 
-import AdmonitionSimpleCode from "@site/docs/snippets/AdmonitionSimpleCode.mdx";
-import Deployment from "@site/docs/snippets/Deployment.mdx";
-import LockupParam from "@site/docs/snippets/LockupParams.mdx";
-import TokenApproval from "@site/docs/snippets/TokenApproval.mdx";
+import HardcodedDemonstration from "@site/src/components/atoms/HardcodedDemonstration";
+import CautionNonProduction from "@site/src/snippets/CautionNonProduction.mdx";
+import LockupParam from "@site/src/snippets/LockupParams.mdx";
+import TokenApproval from "@site/src/snippets/TokenApproval.mdx";
 
 # Create a Lockup Dynamic Stream
 
@@ -16,7 +16,7 @@ Dynamic stream using Solidity.
 
 This guide assumes that you have already gone through the [Protocol Concepts](/concepts/streaming) section.
 
-<AdmonitionSimpleCode />
+<CautionNonProduction />
 
 ## Set up a contract
 
@@ -47,7 +47,7 @@ contract LockupDynamicStreamCreator {
 }
 ```
 
-<Deployment protocol="Lockup" />
+<HardcodedDemonstration protocol="Lockup" />
 
 There are two create functions in the Lockup contract that can be used to create Dynamic streams:
 
