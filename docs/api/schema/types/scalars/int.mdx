@@ -1,0 +1,67 @@
+---
+id: int
+title: Int
+---
+
+export const Bullet = () => (
+  <>
+    <span style={{ fontWeight: "normal", fontSize: ".5em", color: "var(--ifm-color-secondary-darkest)" }}>
+      &nbsp;●&nbsp;
+    </span>
+  </>
+);
+
+export const SpecifiedBy = (props) => (
+  <>
+    Specification
+    <a
+      className="link"
+      style={{ fontSize: "1.5em", paddingLeft: "4px" }}
+      target="\_blank"
+      href={props.url}
+      title={"Specified by " + props.url}
+    >
+      ⎘
+    </a>
+  </>
+);
+
+export const Badge = (props) => (
+  <>
+    <span className={props.class}>{props.text}</span>
+  </>
+);
+
+import { useState } from "react";
+
+export const Details = ({ dataOpen, dataClose, children, startOpen = false }) => {
+  const [open, setOpen] = useState(startOpen);
+  return (
+    <details
+      {...(open ? { open: true } : {})}
+      className="details"
+      style={{ border: "none", boxShadow: "none", background: "var(--ifm-background-color)" }}
+    >
+      <summary
+        onClick={(e) => {
+          e.preventDefault();
+          setOpen((open) => !open);
+        }}
+        style={{ listStyle: "none" }}
+      >
+        {open ? dataOpen : dataClose}
+      </summary>
+      {open && children}
+    </details>
+  );
+};
+
+The `Int` scalar type represents non-fractional signed whole numeric values. Int can represent values between -(2^31) and 2^31 - 1.
+
+```graphql
+scalar Int
+```
+
+### Member Of
+
+[`Action_stream`](/operations/subscriptions/action-stream.mdx) <Badge class="badge badge--secondary badge--relation" text="subscription"/><Bullet />[`Action`](/operations/queries/action.mdx) <Badge class="badge badge--secondary badge--relation" text="query"/><Bullet />[`Action`](/operations/subscriptions/action.mdx) <Badge class="badge badge--secondary badge--relation" text="subscription"/><Bullet />[`Asset_stream`](/operations/subscriptions/asset-stream.mdx) <Badge class="badge badge--secondary badge--relation" text="subscription"/><Bullet />[`Asset`](/operations/queries/asset.mdx) <Badge class="badge badge--secondary badge--relation" text="query"/><Bullet />[`Asset`](/operations/subscriptions/asset.mdx) <Badge class="badge badge--secondary badge--relation" text="subscription"/><Bullet />[`Batch_stream`](/operations/subscriptions/batch-stream.mdx) <Badge class="badge badge--secondary badge--relation" text="subscription"/><Bullet />[`Batch`](/operations/queries/batch.mdx) <Badge class="badge badge--secondary badge--relation" text="query"/><Bullet />[`Batch`](/operations/subscriptions/batch.mdx) <Badge class="badge badge--secondary badge--relation" text="subscription"/><Bullet />[`Batcher_stream`](/operations/subscriptions/batcher-stream.mdx) <Badge class="badge badge--secondary badge--relation" text="subscription"/><Bullet />[`Batcher`](/operations/queries/batcher.mdx) <Badge class="badge badge--secondary badge--relation" text="query"/><Bullet />[`Batcher`](/operations/subscriptions/batcher.mdx) <Badge class="badge badge--secondary badge--relation" text="subscription"/><Bullet />[`cached`](/operations/directives/cached.mdx) <Badge class="badge badge--secondary badge--relation" text="directive"/><Bullet />[`chain_metadata_by_pk`](/operations/queries/chain-metadata-by-pk.mdx) <Badge class="badge badge--secondary badge--relation" text="query"/><Bullet />[`chain_metadata_by_pk`](/operations/subscriptions/chain-metadata-by-pk.mdx) <Badge class="badge badge--secondary badge--relation" text="subscription"/><Bullet />[`chain_metadata_stream_cursor_value_input`](/types/inputs/chain-metadata-stream-cursor-value-input.mdx) <Badge class="badge badge--secondary badge--relation" text="input"/><Bullet />[`chain_metadata_stream`](/operations/subscriptions/chain-metadata-stream.mdx) <Badge class="badge badge--secondary badge--relation" text="subscription"/><Bullet />[`chain_metadata`](/operations/queries/chain-metadata.mdx) <Badge class="badge badge--secondary badge--relation" text="query"/><Bullet />[`chain_metadata`](/operations/subscriptions/chain-metadata.mdx) <Badge class="badge badge--secondary badge--relation" text="subscription"/><Bullet />[`chain_metadata`](/types/objects/chain-metadata.mdx) <Badge class="badge badge--secondary badge--relation" text="object"/><Bullet />[`Contract_stream`](/operations/subscriptions/contract-stream.mdx) <Badge class="badge badge--secondary badge--relation" text="subscription"/><Bullet />[`Contract`](/operations/queries/contract.mdx) <Badge class="badge badge--secondary badge--relation" text="query"/><Bullet />[`Contract`](/operations/subscriptions/contract.mdx) <Badge class="badge badge--secondary badge--relation" text="subscription"/><Bullet />[`dynamic_contract_registry_stream_cursor_value_input`](/types/inputs/dynamic-contract-registry-stream-cursor-value-input.mdx) <Badge class="badge badge--secondary badge--relation" text="input"/><Bullet />[`dynamic_contract_registry_stream`](/operations/subscriptions/dynamic-contract-registry-stream.mdx) <Badge class="badge badge--secondary badge--relation" text="subscription"/><Bullet />[`dynamic_contract_registry`](/operations/queries/dynamic-contract-registry.mdx) <Badge class="badge badge--secondary badge--relation" text="query"/><Bullet />[`dynamic_contract_registry`](/operations/subscriptions/dynamic-contract-registry.mdx) <Badge class="badge badge--secondary badge--relation" text="subscription"/><Bullet />[`dynamic_contract_registry`](/types/objects/dynamic-contract-registry.mdx) <Badge class="badge badge--secondary badge--relation" text="object"/><Bullet />[`end_of_block_range_scanned_data_by_pk`](/operations/queries/end-of-block-range-scanned-data-by-pk.mdx) <Badge class="badge badge--secondary badge--relation" text="query"/><Bullet />[`end_of_block_range_scanned_data_by_pk`](/operations/subscriptions/end-of-block-range-scanned-data-by-pk.mdx) <Badge class="badge badge--secondary badge--relation" text="subscription"/><Bullet />[`end_of_block_range_scanned_data_stream_cursor_value_input`](/types/inputs/end-of-block-range-scanned-data-stream-cursor-value-input.mdx) <Badge class="badge badge--secondary badge--relation" text="input"/><Bullet />[`end_of_block_range_scanned_data_stream`](/operations/subscriptions/end-of-block-range-scanned-data-stream.mdx) <Badge class="badge badge--secondary badge--relation" text="subscription"/><Bullet />[`end_of_block_range_scanned_data`](/operations/queries/end-of-block-range-scanned-data.mdx) <Badge class="badge badge--secondary badge--relation" text="query"/><Bullet />[`end_of_block_range_scanned_data`](/operations/subscriptions/end-of-block-range-scanned-data.mdx) <Badge class="badge badge--secondary badge--relation" text="subscription"/><Bullet />[`end_of_block_range_scanned_data`](/types/objects/end-of-block-range-scanned-data.mdx) <Badge class="badge badge--secondary badge--relation" text="object"/><Bullet />[`event_sync_state_by_pk`](/operations/queries/event-sync-state-by-pk.mdx) <Badge class="badge badge--secondary badge--relation" text="query"/><Bullet />[`event_sync_state_by_pk`](/operations/subscriptions/event-sync-state-by-pk.mdx) <Badge class="badge badge--secondary badge--relation" text="subscription"/><Bullet />[`event_sync_state_stream_cursor_value_input`](/types/inputs/event-sync-state-stream-cursor-value-input.mdx) <Badge class="badge badge--secondary badge--relation" text="input"/><Bullet />[`event_sync_state_stream`](/operations/subscriptions/event-sync-state-stream.mdx) <Badge class="badge badge--secondary badge--relation" text="subscription"/><Bullet />[`event_sync_state`](/operations/queries/event-sync-state.mdx) <Badge class="badge badge--secondary badge--relation" text="query"/><Bullet />[`event_sync_state`](/operations/subscriptions/event-sync-state.mdx) <Badge class="badge badge--secondary badge--relation" text="subscription"/><Bullet />[`event_sync_state`](/types/objects/event-sync-state.mdx) <Badge class="badge badge--secondary badge--relation" text="object"/><Bullet />[`Int_comparison_exp`](/types/inputs/int-comparison-exp.mdx) <Badge class="badge badge--secondary badge--relation" text="input"/><Bullet />[`persisted_state_by_pk`](/operations/queries/persisted-state-by-pk.mdx) <Badge class="badge badge--secondary badge--relation" text="query"/><Bullet />[`persisted_state_by_pk`](/operations/subscriptions/persisted-state-by-pk.mdx) <Badge class="badge badge--secondary badge--relation" text="subscription"/><Bullet />[`persisted_state_stream_cursor_value_input`](/types/inputs/persisted-state-stream-cursor-value-input.mdx) <Badge class="badge badge--secondary badge--relation" text="input"/><Bullet />[`persisted_state_stream`](/operations/subscriptions/persisted-state-stream.mdx) <Badge class="badge badge--secondary badge--relation" text="subscription"/><Bullet />[`persisted_state`](/operations/queries/persisted-state.mdx) <Badge class="badge badge--secondary badge--relation" text="query"/><Bullet />[`persisted_state`](/operations/subscriptions/persisted-state.mdx) <Badge class="badge badge--secondary badge--relation" text="subscription"/><Bullet />[`persisted_state`](/types/objects/persisted-state.mdx) <Badge class="badge badge--secondary badge--relation" text="object"/><Bullet />[`raw_events_by_pk`](/operations/queries/raw-events-by-pk.mdx) <Badge class="badge badge--secondary badge--relation" text="query"/><Bullet />[`raw_events_by_pk`](/operations/subscriptions/raw-events-by-pk.mdx) <Badge class="badge badge--secondary badge--relation" text="subscription"/><Bullet />[`raw_events_stream_cursor_value_input`](/types/inputs/raw-events-stream-cursor-value-input.mdx) <Badge class="badge badge--secondary badge--relation" text="input"/><Bullet />[`raw_events_stream`](/operations/subscriptions/raw-events-stream.mdx) <Badge class="badge badge--secondary badge--relation" text="subscription"/><Bullet />[`raw_events`](/operations/queries/raw-events.mdx) <Badge class="badge badge--secondary badge--relation" text="query"/><Bullet />[`raw_events`](/operations/subscriptions/raw-events.mdx) <Badge class="badge badge--secondary badge--relation" text="subscription"/><Bullet />[`raw_events`](/types/objects/raw-events.mdx) <Badge class="badge badge--secondary badge--relation" text="object"/><Bullet />[`Stream_stream`](/operations/subscriptions/stream-stream.mdx) <Badge class="badge badge--secondary badge--relation" text="subscription"/><Bullet />[`Stream`](/operations/queries/stream.mdx) <Badge class="badge badge--secondary badge--relation" text="query"/><Bullet />[`Stream`](/operations/subscriptions/stream.mdx) <Badge class="badge badge--secondary badge--relation" text="subscription"/><Bullet />[`Watcher_stream`](/operations/subscriptions/watcher-stream.mdx) <Badge class="badge badge--secondary badge--relation" text="subscription"/><Bullet />[`Watcher`](/operations/queries/watcher.mdx) <Badge class="badge badge--secondary badge--relation" text="query"/><Bullet />[`Watcher`](/operations/subscriptions/watcher.mdx) <Badge class="badge badge--secondary badge--relation" text="subscription"/>

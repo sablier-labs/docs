@@ -1,0 +1,87 @@
+---
+id: batch-stream
+title: Batch_stream
+---
+
+export const Bullet = () => (
+  <>
+    <span style={{ fontWeight: "normal", fontSize: ".5em", color: "var(--ifm-color-secondary-darkest)" }}>
+      &nbsp;●&nbsp;
+    </span>
+  </>
+);
+
+export const SpecifiedBy = (props) => (
+  <>
+    Specification
+    <a
+      className="link"
+      style={{ fontSize: "1.5em", paddingLeft: "4px" }}
+      target="\_blank"
+      href={props.url}
+      title={"Specified by " + props.url}
+    >
+      ⎘
+    </a>
+  </>
+);
+
+export const Badge = (props) => (
+  <>
+    <span className={props.class}>{props.text}</span>
+  </>
+);
+
+import { useState } from "react";
+
+export const Details = ({ dataOpen, dataClose, children, startOpen = false }) => {
+  const [open, setOpen] = useState(startOpen);
+  return (
+    <details
+      {...(open ? { open: true } : {})}
+      className="details"
+      style={{ border: "none", boxShadow: "none", background: "var(--ifm-background-color)" }}
+    >
+      <summary
+        onClick={(e) => {
+          e.preventDefault();
+          setOpen((open) => !open);
+        }}
+        style={{ listStyle: "none" }}
+      >
+        {open ? dataOpen : dataClose}
+      </summary>
+      {open && children}
+    </details>
+  );
+};
+
+fetch data from the table in a streaming manner: "Batch"
+
+```graphql
+Batch_stream(
+  batch_size: Int!
+  cursor: [Batch_stream_cursor_input]!
+  where: Batch_bool_exp
+): [Batch!]!
+```
+
+### Arguments
+
+#### [<code style={{ fontWeight: 'normal' }}>Batch_stream.<b>batch_size</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Int!</b></code>](/types/scalars/int.mdx) <Badge class="badge badge--secondary badge--non_null" text="non-null"/> <Badge class="badge badge--secondary " text="scalar"/>
+
+maximum number of rows returned in a single batch
+
+#### [<code style={{ fontWeight: 'normal' }}>Batch_stream.<b>cursor</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>[Batch_stream_cursor_input]!</b></code>](/types/inputs/batch-stream-cursor-input.mdx) <Badge class="badge badge--secondary badge--non_null" text="non-null"/> <Badge class="badge badge--secondary " text="input"/>
+
+cursor to stream the results returned by the query
+
+#### [<code style={{ fontWeight: 'normal' }}>Batch_stream.<b>where</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Batch_bool_exp</b></code>](/types/inputs/batch-bool-exp.mdx) <Badge class="badge badge--secondary " text="input"/>
+
+filter the rows returned
+
+### Type
+
+#### [<code style={{ fontWeight: 'normal' }}><b>Batch</b></code>](/types/objects/batch.mdx) <Badge class="badge badge--secondary " text="object"/>
+
+columns and relationships of "Batch"

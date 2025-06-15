@@ -1,0 +1,67 @@
+---
+id: numeric
+title: numeric
+---
+
+export const Bullet = () => (
+  <>
+    <span style={{ fontWeight: "normal", fontSize: ".5em", color: "var(--ifm-color-secondary-darkest)" }}>
+      &nbsp;●&nbsp;
+    </span>
+  </>
+);
+
+export const SpecifiedBy = (props) => (
+  <>
+    Specification
+    <a
+      className="link"
+      style={{ fontSize: "1.5em", paddingLeft: "4px" }}
+      target="\_blank"
+      href={props.url}
+      title={"Specified by " + props.url}
+    >
+      ⎘
+    </a>
+  </>
+);
+
+export const Badge = (props) => (
+  <>
+    <span className={props.class}>{props.text}</span>
+  </>
+);
+
+import { useState } from "react";
+
+export const Details = ({ dataOpen, dataClose, children, startOpen = false }) => {
+  const [open, setOpen] = useState(startOpen);
+  return (
+    <details
+      {...(open ? { open: true } : {})}
+      className="details"
+      style={{ border: "none", boxShadow: "none", background: "var(--ifm-background-color)" }}
+    >
+      <summary
+        onClick={(e) => {
+          e.preventDefault();
+          setOpen((open) => !open);
+        }}
+        style={{ listStyle: "none" }}
+      >
+        {open ? dataOpen : dataClose}
+      </summary>
+      {open && children}
+    </details>
+  );
+};
+
+No description
+
+```graphql
+scalar numeric
+```
+
+### Member Of
+
+[`Action_stream_cursor_value_input`](/types/inputs/action-stream-cursor-value-input.mdx) <Badge class="badge badge--secondary badge--relation" text="input"/><Bullet />[`Action`](/types/objects/action.mdx) <Badge class="badge badge--secondary badge--relation" text="object"/><Bullet />[`Asset_stream_cursor_value_input`](/types/inputs/asset-stream-cursor-value-input.mdx) <Badge class="badge badge--secondary badge--relation" text="input"/><Bullet />[`Asset`](/types/objects/asset.mdx) <Badge class="badge badge--secondary badge--relation" text="object"/><Bullet />[`Batch_stream_cursor_value_input`](/types/inputs/batch-stream-cursor-value-input.mdx) <Badge class="badge badge--secondary badge--relation" text="input"/><Bullet />[`Batch`](/types/objects/batch.mdx) <Badge class="badge badge--secondary badge--relation" text="object"/><Bullet />[`Batcher_stream_cursor_value_input`](/types/inputs/batcher-stream-cursor-value-input.mdx) <Badge class="badge badge--secondary badge--relation" text="input"/><Bullet />[`Batcher`](/types/objects/batcher.mdx) <Badge class="badge badge--secondary badge--relation" text="object"/><Bullet />[`numeric_comparison_exp`](/types/inputs/numeric-comparison-exp.mdx) <Badge class="badge badge--secondary badge--relation" text="input"/><Bullet />[`raw_events_stream_cursor_value_input`](/types/inputs/raw-events-stream-cursor-value-input.mdx) <Badge class="badge badge--secondary badge--relation" text="input"/><Bullet />[`raw_events`](/types/objects/raw-events.mdx) <Badge class="badge badge--secondary badge--relation" text="object"/><Bullet />[`Stream_stream_cursor_value_input`](/types/inputs/stream-stream-cursor-value-input.mdx) <Badge class="badge badge--secondary badge--relation" text="input"/><Bullet />[`Stream`](/types/objects/stream.mdx) <Badge class="badge badge--secondary badge--relation" text="object"/><Bullet />[`Watcher_stream_cursor_value_input`](/types/inputs/watcher-stream-cursor-value-input.mdx) <Badge class="badge badge--secondary badge--relation" text="input"/><Bullet />[`Watcher`](/types/objects/watcher.mdx) <Badge class="badge badge--secondary badge--relation" text="object"/>

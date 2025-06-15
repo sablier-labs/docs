@@ -4,8 +4,8 @@ sidebar_position: 4
 title: "Stream Management"
 ---
 
-import AdmonitionSimpleCode from "@site/docs/snippets/AdmonitionSimpleCode.mdx";
-import Deployment from "@site/docs/snippets/Deployment.mdx";
+import HardcodedDemonstration from "@site/src/components/atoms/HardcodedDemonstration";
+import CautionNonProduction from "@site/src/snippets/CautionNonProduction.mdx";
 
 # Managing a Stream
 
@@ -16,7 +16,7 @@ please note the following:
 2. We also assume that the stream management contract is authorized to invoke each respective function. To learn more
    about access control in Flow, see the [Access Control](/reference/flow/access-control) guide.
 
-<AdmonitionSimpleCode />
+<CautionNonProduction />
 
 # Set up your contract
 
@@ -43,7 +43,7 @@ contract FlowStreamManager {
 }
 ```
 
-<Deployment protocol="Flow" />
+<HardcodedDemonstration protocol="Flow" />
 
 ## Deposit
 

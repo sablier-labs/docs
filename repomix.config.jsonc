@@ -1,0 +1,13 @@
+{
+  "$schema": "https://repomix.com/schemas/latest/schema.json",
+  "ignore": {
+    "customPatterns": ["docs/reference", "repos"],
+    "useDefaultPatterns": true,
+    "useGitignore": true
+  },
+  "include": ["./**/*.mdx"],
+  "output": {
+    "filePath": ".repomix/output.txt",
+    "style": "plain"
+  }
+}

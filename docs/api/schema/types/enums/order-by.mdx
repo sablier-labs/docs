@@ -1,0 +1,100 @@
+---
+id: order-by
+title: order_by
+---
+
+export const Bullet = () => (
+  <>
+    <span style={{ fontWeight: "normal", fontSize: ".5em", color: "var(--ifm-color-secondary-darkest)" }}>
+      &nbsp;●&nbsp;
+    </span>
+  </>
+);
+
+export const SpecifiedBy = (props) => (
+  <>
+    Specification
+    <a
+      className="link"
+      style={{ fontSize: "1.5em", paddingLeft: "4px" }}
+      target="\_blank"
+      href={props.url}
+      title={"Specified by " + props.url}
+    >
+      ⎘
+    </a>
+  </>
+);
+
+export const Badge = (props) => (
+  <>
+    <span className={props.class}>{props.text}</span>
+  </>
+);
+
+import { useState } from "react";
+
+export const Details = ({ dataOpen, dataClose, children, startOpen = false }) => {
+  const [open, setOpen] = useState(startOpen);
+  return (
+    <details
+      {...(open ? { open: true } : {})}
+      className="details"
+      style={{ border: "none", boxShadow: "none", background: "var(--ifm-background-color)" }}
+    >
+      <summary
+        onClick={(e) => {
+          e.preventDefault();
+          setOpen((open) => !open);
+        }}
+        style={{ listStyle: "none" }}
+      >
+        {open ? dataOpen : dataClose}
+      </summary>
+      {open && children}
+    </details>
+  );
+};
+
+column ordering options
+
+```graphql
+enum order_by {
+  asc
+  asc_nulls_first
+  asc_nulls_last
+  desc
+  desc_nulls_first
+  desc_nulls_last
+}
+```
+
+### Values
+
+#### [<code style={{ fontWeight: 'normal' }}>order_by.<b>asc</b></code>](#)
+
+in ascending order, nulls last
+
+#### [<code style={{ fontWeight: 'normal' }}>order_by.<b>asc_nulls_first</b></code>](#)
+
+in ascending order, nulls first
+
+#### [<code style={{ fontWeight: 'normal' }}>order_by.<b>asc_nulls_last</b></code>](#)
+
+in ascending order, nulls last
+
+#### [<code style={{ fontWeight: 'normal' }}>order_by.<b>desc</b></code>](#)
+
+in descending order, nulls first
+
+#### [<code style={{ fontWeight: 'normal' }}>order_by.<b>desc_nulls_first</b></code>](#)
+
+in descending order, nulls first
+
+#### [<code style={{ fontWeight: 'normal' }}>order_by.<b>desc_nulls_last</b></code>](#)
+
+in descending order, nulls last
+
+### Member Of
+
+[`Action_aggregate_order_by`](/types/inputs/action-aggregate-order-by.mdx) <Badge class="badge badge--secondary badge--relation" text="input"/><Bullet />[`Action_avg_order_by`](/types/inputs/action-avg-order-by.mdx) <Badge class="badge badge--secondary badge--relation" text="input"/><Bullet />[`Action_max_order_by`](/types/inputs/action-max-order-by.mdx) <Badge class="badge badge--secondary badge--relation" text="input"/><Bullet />[`Action_min_order_by`](/types/inputs/action-min-order-by.mdx) <Badge class="badge badge--secondary badge--relation" text="input"/><Bullet />[`Action_order_by`](/types/inputs/action-order-by.mdx) <Badge class="badge badge--secondary badge--relation" text="input"/><Bullet />[`Action_stddev_order_by`](/types/inputs/action-stddev-order-by.mdx) <Badge class="badge badge--secondary badge--relation" text="input"/><Bullet />[`Action_stddev_pop_order_by`](/types/inputs/action-stddev-pop-order-by.mdx) <Badge class="badge badge--secondary badge--relation" text="input"/><Bullet />[`Action_stddev_samp_order_by`](/types/inputs/action-stddev-samp-order-by.mdx) <Badge class="badge badge--secondary badge--relation" text="input"/><Bullet />[`Action_sum_order_by`](/types/inputs/action-sum-order-by.mdx) <Badge class="badge badge--secondary badge--relation" text="input"/><Bullet />[`Action_var_pop_order_by`](/types/inputs/action-var-pop-order-by.mdx) <Badge class="badge badge--secondary badge--relation" text="input"/><Bullet />[`Action_var_samp_order_by`](/types/inputs/action-var-samp-order-by.mdx) <Badge class="badge badge--secondary badge--relation" text="input"/><Bullet />[`Action_variance_order_by`](/types/inputs/action-variance-order-by.mdx) <Badge class="badge badge--secondary badge--relation" text="input"/><Bullet />[`Asset_order_by`](/types/inputs/asset-order-by.mdx) <Badge class="badge badge--secondary badge--relation" text="input"/><Bullet />[`Batch_aggregate_order_by`](/types/inputs/batch-aggregate-order-by.mdx) <Badge class="badge badge--secondary badge--relation" text="input"/><Bullet />[`Batch_avg_order_by`](/types/inputs/batch-avg-order-by.mdx) <Badge class="badge badge--secondary badge--relation" text="input"/><Bullet />[`Batch_max_order_by`](/types/inputs/batch-max-order-by.mdx) <Badge class="badge badge--secondary badge--relation" text="input"/><Bullet />[`Batch_min_order_by`](/types/inputs/batch-min-order-by.mdx) <Badge class="badge badge--secondary badge--relation" text="input"/><Bullet />[`Batch_order_by`](/types/inputs/batch-order-by.mdx) <Badge class="badge badge--secondary badge--relation" text="input"/><Bullet />[`Batch_stddev_order_by`](/types/inputs/batch-stddev-order-by.mdx) <Badge class="badge badge--secondary badge--relation" text="input"/><Bullet />[`Batch_stddev_pop_order_by`](/types/inputs/batch-stddev-pop-order-by.mdx) <Badge class="badge badge--secondary badge--relation" text="input"/><Bullet />[`Batch_stddev_samp_order_by`](/types/inputs/batch-stddev-samp-order-by.mdx) <Badge class="badge badge--secondary badge--relation" text="input"/><Bullet />[`Batch_sum_order_by`](/types/inputs/batch-sum-order-by.mdx) <Badge class="badge badge--secondary badge--relation" text="input"/><Bullet />[`Batch_var_pop_order_by`](/types/inputs/batch-var-pop-order-by.mdx) <Badge class="badge badge--secondary badge--relation" text="input"/><Bullet />[`Batch_var_samp_order_by`](/types/inputs/batch-var-samp-order-by.mdx) <Badge class="badge badge--secondary badge--relation" text="input"/><Bullet />[`Batch_variance_order_by`](/types/inputs/batch-variance-order-by.mdx) <Badge class="badge badge--secondary badge--relation" text="input"/><Bullet />[`Batcher_order_by`](/types/inputs/batcher-order-by.mdx) <Badge class="badge badge--secondary badge--relation" text="input"/><Bullet />[`chain_metadata_order_by`](/types/inputs/chain-metadata-order-by.mdx) <Badge class="badge badge--secondary badge--relation" text="input"/><Bullet />[`Contract_order_by`](/types/inputs/contract-order-by.mdx) <Badge class="badge badge--secondary badge--relation" text="input"/><Bullet />[`dynamic_contract_registry_order_by`](/types/inputs/dynamic-contract-registry-order-by.mdx) <Badge class="badge badge--secondary badge--relation" text="input"/><Bullet />[`end_of_block_range_scanned_data_order_by`](/types/inputs/end-of-block-range-scanned-data-order-by.mdx) <Badge class="badge badge--secondary badge--relation" text="input"/><Bullet />[`event_sync_state_order_by`](/types/inputs/event-sync-state-order-by.mdx) <Badge class="badge badge--secondary badge--relation" text="input"/><Bullet />[`persisted_state_order_by`](/types/inputs/persisted-state-order-by.mdx) <Badge class="badge badge--secondary badge--relation" text="input"/><Bullet />[`raw_events_order_by`](/types/inputs/raw-events-order-by.mdx) <Badge class="badge badge--secondary badge--relation" text="input"/><Bullet />[`Stream_aggregate_order_by`](/types/inputs/stream-aggregate-order-by.mdx) <Badge class="badge badge--secondary badge--relation" text="input"/><Bullet />[`Stream_avg_order_by`](/types/inputs/stream-avg-order-by.mdx) <Badge class="badge badge--secondary badge--relation" text="input"/><Bullet />[`Stream_max_order_by`](/types/inputs/stream-max-order-by.mdx) <Badge class="badge badge--secondary badge--relation" text="input"/><Bullet />[`Stream_min_order_by`](/types/inputs/stream-min-order-by.mdx) <Badge class="badge badge--secondary badge--relation" text="input"/><Bullet />[`Stream_order_by`](/types/inputs/stream-order-by.mdx) <Badge class="badge badge--secondary badge--relation" text="input"/><Bullet />[`Stream_stddev_order_by`](/types/inputs/stream-stddev-order-by.mdx) <Badge class="badge badge--secondary badge--relation" text="input"/><Bullet />[`Stream_stddev_pop_order_by`](/types/inputs/stream-stddev-pop-order-by.mdx) <Badge class="badge badge--secondary badge--relation" text="input"/><Bullet />[`Stream_stddev_samp_order_by`](/types/inputs/stream-stddev-samp-order-by.mdx) <Badge class="badge badge--secondary badge--relation" text="input"/><Bullet />[`Stream_sum_order_by`](/types/inputs/stream-sum-order-by.mdx) <Badge class="badge badge--secondary badge--relation" text="input"/><Bullet />[`Stream_var_pop_order_by`](/types/inputs/stream-var-pop-order-by.mdx) <Badge class="badge badge--secondary badge--relation" text="input"/><Bullet />[`Stream_var_samp_order_by`](/types/inputs/stream-var-samp-order-by.mdx) <Badge class="badge badge--secondary badge--relation" text="input"/><Bullet />[`Stream_variance_order_by`](/types/inputs/stream-variance-order-by.mdx) <Badge class="badge badge--secondary badge--relation" text="input"/><Bullet />[`Watcher_order_by`](/types/inputs/watcher-order-by.mdx) <Badge class="badge badge--secondary badge--relation" text="input"/>
