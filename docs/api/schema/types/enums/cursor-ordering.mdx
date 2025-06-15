@@ -1,0 +1,80 @@
+---
+id: cursor-ordering
+title: cursor_ordering
+---
+
+export const Bullet = () => (
+  <>
+    <span style={{ fontWeight: "normal", fontSize: ".5em", color: "var(--ifm-color-secondary-darkest)" }}>
+      &nbsp;●&nbsp;
+    </span>
+  </>
+);
+
+export const SpecifiedBy = (props) => (
+  <>
+    Specification
+    <a
+      className="link"
+      style={{ fontSize: "1.5em", paddingLeft: "4px" }}
+      target="\_blank"
+      href={props.url}
+      title={"Specified by " + props.url}
+    >
+      ⎘
+    </a>
+  </>
+);
+
+export const Badge = (props) => (
+  <>
+    <span className={props.class}>{props.text}</span>
+  </>
+);
+
+import { useState } from "react";
+
+export const Details = ({ dataOpen, dataClose, children, startOpen = false }) => {
+  const [open, setOpen] = useState(startOpen);
+  return (
+    <details
+      {...(open ? { open: true } : {})}
+      className="details"
+      style={{ border: "none", boxShadow: "none", background: "var(--ifm-background-color)" }}
+    >
+      <summary
+        onClick={(e) => {
+          e.preventDefault();
+          setOpen((open) => !open);
+        }}
+        style={{ listStyle: "none" }}
+      >
+        {open ? dataOpen : dataClose}
+      </summary>
+      {open && children}
+    </details>
+  );
+};
+
+ordering argument of a cursor
+
+```graphql
+enum cursor_ordering {
+  ASC
+  DESC
+}
+```
+
+### Values
+
+#### [<code style={{ fontWeight: 'normal' }}>cursor_ordering.<b>ASC</b></code>](#)
+
+ascending ordering of the cursor
+
+#### [<code style={{ fontWeight: 'normal' }}>cursor_ordering.<b>DESC</b></code>](#)
+
+descending ordering of the cursor
+
+### Member Of
+
+[`Action_stream_cursor_input`](/types/inputs/action-stream-cursor-input.mdx) <Badge class="badge badge--secondary badge--relation" text="input"/><Bullet />[`Asset_stream_cursor_input`](/types/inputs/asset-stream-cursor-input.mdx) <Badge class="badge badge--secondary badge--relation" text="input"/><Bullet />[`Batch_stream_cursor_input`](/types/inputs/batch-stream-cursor-input.mdx) <Badge class="badge badge--secondary badge--relation" text="input"/><Bullet />[`Batcher_stream_cursor_input`](/types/inputs/batcher-stream-cursor-input.mdx) <Badge class="badge badge--secondary badge--relation" text="input"/><Bullet />[`chain_metadata_stream_cursor_input`](/types/inputs/chain-metadata-stream-cursor-input.mdx) <Badge class="badge badge--secondary badge--relation" text="input"/><Bullet />[`Contract_stream_cursor_input`](/types/inputs/contract-stream-cursor-input.mdx) <Badge class="badge badge--secondary badge--relation" text="input"/><Bullet />[`dynamic_contract_registry_stream_cursor_input`](/types/inputs/dynamic-contract-registry-stream-cursor-input.mdx) <Badge class="badge badge--secondary badge--relation" text="input"/><Bullet />[`end_of_block_range_scanned_data_stream_cursor_input`](/types/inputs/end-of-block-range-scanned-data-stream-cursor-input.mdx) <Badge class="badge badge--secondary badge--relation" text="input"/><Bullet />[`event_sync_state_stream_cursor_input`](/types/inputs/event-sync-state-stream-cursor-input.mdx) <Badge class="badge badge--secondary badge--relation" text="input"/><Bullet />[`persisted_state_stream_cursor_input`](/types/inputs/persisted-state-stream-cursor-input.mdx) <Badge class="badge badge--secondary badge--relation" text="input"/><Bullet />[`raw_events_stream_cursor_input`](/types/inputs/raw-events-stream-cursor-input.mdx) <Badge class="badge badge--secondary badge--relation" text="input"/><Bullet />[`Stream_stream_cursor_input`](/types/inputs/stream-stream-cursor-input.mdx) <Badge class="badge badge--secondary badge--relation" text="input"/><Bullet />[`Watcher_stream_cursor_input`](/types/inputs/watcher-stream-cursor-input.mdx) <Badge class="badge badge--secondary badge--relation" text="input"/>
