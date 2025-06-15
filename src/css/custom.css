@@ -110,6 +110,10 @@ html[data-theme="dark"] .alert--info {
   --ifm-hero-text-color: var(--ifm-font-color-base);
 }
 
+.hidden {
+  display: none !important;
+}
+
 .main-wrapper {
   display: flex;
 }

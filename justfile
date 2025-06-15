@@ -72,6 +72,11 @@ autogen:
 autogen-deployments:
     just cli deployments --overwrite
 
+# Generate GraphQL schema documentation
+[group("autogen")]
+@autogen-graphql vendor="all" protocol="all":
+    just cli autogen graphql --vendor {{ vendor }} --protocol {{ protocol }}
+
 # Generate indexer documentation
 [group("autogen")]
 autogen-indexers:
@@ -85,7 +90,6 @@ autogen-reference:
 # ---------------------------------------------------------------------------- #
 #                               RECIPES: HELPERS                               #
 # ---------------------------------------------------------------------------- #
-
 
 # Helper to run CLI commands through the main entry point
 [private]
