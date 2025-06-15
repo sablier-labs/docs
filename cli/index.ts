@@ -12,10 +12,11 @@ async function main() {
   // Import and create subcommands
   const { createDeploymentsCommand, generateDeployments } = await import("./commands/autogen/deployments.js");
   const { createIndexersCommand, generateIndexers } = await import("./commands/autogen/indexers.js");
+  const { createGraphQLCommand } = await import("./commands/autogen/graphql.js");
 
   // Create autogen parent command
   const autogenCommand = new Command("autogen")
-    .description("Auto-generate documentation tables")
+    .description("Auto-generate documentation and indexers tables")
     .action(async (_options, command) => {
       const globalOptions = command.parent?.opts() || {};
 
@@ -36,6 +37,7 @@ async function main() {
   // Add subcommands to autogen
   autogenCommand.addCommand(createDeploymentsCommand());
   autogenCommand.addCommand(createIndexersCommand());
+  autogenCommand.addCommand(createGraphQLCommand());
 
   // Add the autogen command to the main program
   program.addCommand(autogenCommand);

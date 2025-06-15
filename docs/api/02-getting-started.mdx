@@ -49,22 +49,6 @@ This approach provides a more decentralized way to interact with the blockchain 
 - **Historical Data**: Limited access to past events unless the app is set up to listen to web3 events via RPC.
 - **Pagination**: Not supported.
 
-## GraphQL Query Syntax
-
-If you decide to use both The Graph and Envio, be aware that their GraphQL query syntax differs. Here are some key differences:
-
-| Feature      | The Graph                             | Envio                                      |
-| ------------ | ------------------------------------- | ------------------------------------------ |
-| Pagination   | `first`, `skip`                       | `limit`, `offset`                          |
-| Filter by id | `stream(id)`                          | `Stream_by_pk(id: "...")`                  |
-| Multiple     | `streams{}`                           | `Stream(where...){}`                       |
-| Nested items | `campaigns{ id, asset: {id, symbol}}` | `Campaign{ asset_id, asset: {id, symbol}}` |
-
-### Notes
-
-- The Graph uses lowercase for single and multiple item queries, while Envio uses capitalized names.
-- Envio's indexers provide both the object name and its identifier, which is useful for filtering.
-
 ## Conclusion
 
 Choosing the right approach depends on your specific needs and the trade-offs you're willing to make. For most applications, using one of our GraphQL indexers will provide a more seamless and efficient experience. However, if decentralization is a priority, direct smart contract calls may be the way to go.
