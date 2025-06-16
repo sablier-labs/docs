@@ -14,18 +14,11 @@ export const redirects: RedirectOption[] = [
   /* -------------------------------------------------------------------------- */
   redirect("/concepts/merkle-airdrops", "/concepts/airdrops"),
   /* -------------------------------------------------------------------------- */
-  /*                                     API                                    */
+  /*                                    APIs                                    */
   /* -------------------------------------------------------------------------- */
-  redirect("/api", "/api/overview"),
-  // TODO: change this to the new GraphQL section
-  redirect("/api/airdrops/the-graph", "/api/overview"),
-  redirect("/api/indexers/protocol", "/api/overview"),
-  redirect("/api/lockup/the-graph", "/api/overview"),
-  redirect("/api/merkle-api/intro", "/api/airdrops/merkle-api/overview"),
-  redirect("/api/subgraphs/endpoints", "/api/lockup/indexers"),
-  redirect("/api/subgraphs/merkle", "/api/overview"),
-  redirect("/api/subgraphs/overview", "/api/overview"),
-  redirect("/api/subgraphs/protocol", "/api/overview"),
+  redirect("/api/airdrops/endpoints", "/api/airdrops/indexers"),
+  redirect("/api/flow/endpoints", "/api/flow/indexers"),
+  redirect("/api/lockup/endpoints", "/api/lockup/indexers"),
   /* -------------------------------------------------------------------------- */
   /*                                    APPS                                    */
   /* -------------------------------------------------------------------------- */
@@ -38,12 +31,6 @@ export const redirects: RedirectOption[] = [
   redirect("/apps/overview", "/apps/features/overview"),
   redirect("/apps/support/how-to", "/support/how-to"),
   redirect("/apps/url-schemes", "/apps/guides/url-schemes"),
-  /* -------------------------------------------------------------------------- */
-  /*                                  INDEXERS                                  */
-  /* -------------------------------------------------------------------------- */
-  redirect("/api/airdrops/endpoints", "/api/airdrops/indexers"),
-  redirect("/api/flow/endpoints", "/api/flow/indexers"),
-  redirect("/api/lockup/endpoints", "/api/lockup/indexers"),
   /* -------------------------------------------------------------------------- */
   /*                              LEGACY: 2019-2021                             */
   /* -------------------------------------------------------------------------- */
