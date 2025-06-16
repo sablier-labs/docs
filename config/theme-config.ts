@@ -97,16 +97,16 @@ const navbar: Preset.ThemeConfig["navbar"] = {
       to: "/guides/lockup/overview",
     },
     {
-      activeBasePath: "/reference",
-      label: "References",
-      position: "left",
-      to: "/reference/overview",
-    },
-    {
       activeBasePath: "/api",
       label: "APIs",
       position: "left",
       to: "/api/overview",
+    },
+    {
+      activeBasePath: "/reference",
+      label: "Reference",
+      position: "left",
+      to: "/reference/overview",
     },
     {
       activeBasePath: "/apps",
