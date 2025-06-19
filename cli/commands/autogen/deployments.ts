@@ -14,6 +14,8 @@ export function createDeploymentsCommand(): Command {
     });
 }
 
+export const deploymentsCmd = createDeploymentsCommand();
+
 export async function generateDeployments(options: CliOptions = {}): Promise<void> {
   for (const release of sablier.releases.getAll()) {
     if (release.protocol === Protocol.Legacy) {
