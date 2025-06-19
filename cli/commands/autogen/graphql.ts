@@ -2,7 +2,7 @@ import fs from "node:fs";
 import { join } from "node:path";
 import { getSablierIndexerEnvio, type Indexer } from "@sablier/indexers";
 import { Command } from "commander";
-import { $ } from "execa";
+import $ from "execa";
 import * as yaml from "js-yaml";
 import _ from "lodash";
 import type { CliOptions } from "../../types";
@@ -66,6 +66,7 @@ export async function generateGraphQL(options: GraphQLOptions): Promise<void> {
   }
 
   cleanupDocs(basePaths);
+  await runPrettier(basePaths);
 }
 
 /* -------------------------------------------------------------------------- */
@@ -114,27 +115,32 @@ function cleanupDocs(basePaths: string[]): void {
 }
 
 async function generateEnvio(protocol: Indexer.Protocol): Promise<string> {
-  const base = `./docs/api/${protocol}/graphql/envio`;
+  const basePath = `./docs/api/${protocol}/graphql/envio`;
   const schemaURL = getSablierIndexerEnvio({ chainId: CHAIN_ID_SEPOLIA, protocol }).endpoint.url;
 
-  await runCommand(base, schemaURL);
+  await runGenerator(basePath, schemaURL);
   console.log(`✔️ Generated GraphQL docs for Envio vendor and ${_.capitalize(protocol)} protocol\n`);
-  return base;
+  return basePath;
 }
 
 async function generateGraph(protocol: Indexer.Protocol): Promise<string> {
-  const base = `./docs/api/${protocol}/graphql/the-graph`;
+  const basePath = `./docs/api/${protocol}/graphql/the-graph`;
   const schemaURL = `https://api.studio.thegraph.com/query/112500/sablier-${protocol}-experimental/version/latest`;
 
-  await runCommand(base, schemaURL);
+  await runGenerator(basePath, schemaURL);
   console.log(`✔️ Generated GraphQL docs for The Graph vendor and ${_.capitalize(protocol)} protocol\n`);
-  return base;
+  return basePath;
 }
 
 /**
  * @see https://graphql-markdown.dev/docs/settings#baseurl
  * @see {@link file://./../../../config/plugins.ts}
  */
-async function runCommand(base: string, schema: string): Promise<void> {
-  await $({ stdio: "inherit" })`bun docusaurus graphql-to-doc --base ${base} --schema ${schema}`;
+async function runGenerator(base: string, schema: string): Promise<void> {
+  await $("bun", ["docusaurus", "graphql-to-doc", "--base", base, "--schema", schema], { stdio: "inherit" });
+}
+
+async function runPrettier(targetPaths: string[]): Promise<void> {
+  const patterns = targetPaths.map((path) => `${path}/**/*.{md,mdx,yml,yaml}`);
+  await $("bun", ["prettier", "--write", ...patterns]);
 }
