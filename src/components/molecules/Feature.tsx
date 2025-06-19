@@ -1,5 +1,5 @@
-import styled from "@emotion/styled";
 import Link from "@docusaurus/Link";
+import styled from "@emotion/styled";
 import ArrowRightIcon from "@heroicons/react/24/outline/ArrowRightIcon";
 import type UserCircleIcon from "@heroicons/react/24/outline/UserCircleIcon";
 import Heading from "@theme/Heading";

@@ -4,14 +4,14 @@ sidebar_position: 5
 title: "Batching Functions"
 ---
 
-import AdmonitionSimpleCode from "@site/docs/snippets/AdmonitionSimpleCode.mdx";
-import Deployment from "@site/docs/snippets/Deployment.mdx";
+import HardcodedDemonstration from "@site/src/components/atoms/HardcodedDemonstration";
+import CautionNonProduction from "@site/src/snippets/CautionNonProduction.mdx";
 
 A neat feature of Sablier Flow is the ability to batch multiple function calls into a single transaction. This is made
 possible by the [`Batch`](/reference/flow/contracts/abstracts/abstract.Batch) contract, which is inherited by
 `SablierFlow`. With this, you can efficiently batch multiple function calls in a single transaction.
 
-<AdmonitionSimpleCode />
+<CautionNonProduction />
 
 ## Set up a contract
 
@@ -40,7 +40,7 @@ contract FlowBatchable {
 }
 ```
 
-<Deployment protocol="Flow" />
+<HardcodedDemonstration protocol="Flow" />
 
 ## Create multiple streams
 

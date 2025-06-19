@@ -1,4 +1,3 @@
-/* eslint-disable react/prop-types */
 import styled from "@emotion/styled";
 import ArrowIcon from "@heroicons/react/24/outline/ArrowTopRightOnSquareIcon";
 import A from "@theme-original/MDXComponents/A";

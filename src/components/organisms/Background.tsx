@@ -1,5 +1,5 @@
-import type { PropsWithChildren } from "react";
 import styled from "@emotion/styled";
+import type { PropsWithChildren } from "react";
 
 const Wrapper = styled.div`
   position: absolute;
@@ -45,17 +45,17 @@ const Light = styled.div<{ horizontal: "left" | "right"; vertical: string }>`
     filter: blur(60px);
   }
 
-  ${(props) => props.horizontal == "left" && `left: -50vw;`}
-  ${(props) => props.horizontal == "right" && `right: 0;`}
+  ${(props) => props.horizontal === "left" && `left: -50vw;`}
+  ${(props) => props.horizontal === "right" && `right: 0;`}
 `;
 
-interface Props {
+type BackgroundProps = {
   className?: string;
   left?: "top" | "center" | "bottom" | "none";
   right?: "top" | "center" | "bottom" | "none";
-}
+};
 
-function Background({ children, className, left = "top", right = "top" }: PropsWithChildren<Props>) {
+function Background({ children, className, left = "top", right = "top" }: PropsWithChildren<BackgroundProps>) {
   return (
     <Wrapper className={className}>
       <Container>
