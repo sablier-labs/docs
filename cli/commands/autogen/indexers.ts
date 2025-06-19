@@ -14,6 +14,8 @@ export function createIndexersCommand(): Command {
     });
 }
 
+export const indexersCmd = createIndexersCommand();
+
 export async function generateIndexers(options: CliOptions = {}): Promise<void> {
   generateTables("airdrops", options);
   generateTables("flow", options);

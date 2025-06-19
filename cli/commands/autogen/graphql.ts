@@ -39,6 +39,8 @@ export function createGraphQLCommand(): Command {
     });
 }
 
+export const graphQLCmd = createGraphQLCommand();
+
 export async function generateGraphQL(options: GraphQLOptions): Promise<void> {
   const protocols: Indexer.Protocol[] = ["airdrops", "flow", "lockup"];
   const vendors = ["graph", "envio"];
@@ -55,18 +57,21 @@ export async function generateGraphQL(options: GraphQLOptions): Promise<void> {
     targetProtocols = _.filter(protocols, (p) => p === options.protocol);
   }
 
-  const basePaths: string[] = [];
+  const docsPaths: string[] = [];
   for (const p of targetProtocols) {
     if (options.vendor === "all" || options.vendor === "graph") {
-      basePaths.push(await generateGraph(p));
+      const docsPath = await generateGraph(p);
+      docsPaths.push(docsPath);
+      await runPrettier(docsPath);
     }
     if (options.vendor === "all" || options.vendor === "envio") {
-      basePaths.push(await generateEnvio(p));
+      const docsPath = await generateEnvio(p);
+      docsPaths.push(docsPath);
+      await runPrettier(docsPath);
     }
   }
 
-  cleanupDocs(basePaths);
-  await runPrettier(basePaths);
+  cleanupDocs(docsPaths);
 }
 
 /* -------------------------------------------------------------------------- */
@@ -86,50 +91,50 @@ const ENUMS_CATEGORY: Category = { ...COLLAPSED, className: "hidden", label: "En
 const INPUTS_CATEGORY: Category = { ...COLLAPSED, className: "hidden", label: "Inputs", position: 5 };
 const SCALARS_CATEGORY: Category = { ...COLLAPSED, className: "hidden", label: "Scalars", position: 6 };
 
-function cleanupDocs(basePaths: string[]): void {
-  for (const basePath of basePaths) {
-    fs.rmSync(join(basePath, "directives"), { force: true, recursive: true });
-    fs.rmSync(join(basePath, "subscriptions"), { force: true, recursive: true });
+function cleanupDocs(docsPaths: string[]): void {
+  for (const docsPath of docsPaths) {
+    fs.rmSync(join(docsPath, "directives"), { force: true, recursive: true });
+    fs.rmSync(join(docsPath, "subscriptions"), { force: true, recursive: true });
 
     // Delete all _category_.yml files
-    fs.unlinkSync(join(basePath, "queries", "_category_.yml"));
-    fs.unlinkSync(join(basePath, "enums", "_category_.yml"));
-    fs.unlinkSync(join(basePath, "inputs", "_category_.yml"));
-    fs.unlinkSync(join(basePath, "objects", "_category_.yml"));
-    fs.unlinkSync(join(basePath, "scalars", "_category_.yml"));
+    fs.unlinkSync(join(docsPath, "queries", "_category_.yml"));
+    fs.unlinkSync(join(docsPath, "enums", "_category_.yml"));
+    fs.unlinkSync(join(docsPath, "inputs", "_category_.yml"));
+    fs.unlinkSync(join(docsPath, "objects", "_category_.yml"));
+    fs.unlinkSync(join(docsPath, "scalars", "_category_.yml"));
 
     // Rewrite _category_.yml files
-    fs.writeFileSync(join(basePath, "queries", "_category_.yml"), yaml.dump(QUERIES_CATEGORY));
-    fs.writeFileSync(join(basePath, "objects", "_category_.yml"), yaml.dump(OBJECTS_CATEGORY));
-    fs.writeFileSync(join(basePath, "enums", "_category_.yml"), yaml.dump(ENUMS_CATEGORY));
-    fs.writeFileSync(join(basePath, "inputs", "_category_.yml"), yaml.dump(INPUTS_CATEGORY));
-    fs.writeFileSync(join(basePath, "scalars", "_category_.yml"), yaml.dump(SCALARS_CATEGORY));
+    fs.writeFileSync(join(docsPath, "queries", "_category_.yml"), yaml.dump(QUERIES_CATEGORY));
+    fs.writeFileSync(join(docsPath, "objects", "_category_.yml"), yaml.dump(OBJECTS_CATEGORY));
+    fs.writeFileSync(join(docsPath, "enums", "_category_.yml"), yaml.dump(ENUMS_CATEGORY));
+    fs.writeFileSync(join(docsPath, "inputs", "_category_.yml"), yaml.dump(INPUTS_CATEGORY));
+    fs.writeFileSync(join(docsPath, "scalars", "_category_.yml"), yaml.dump(SCALARS_CATEGORY));
 
     // Write vendor category file at base path
-    if (basePath.includes("envio")) {
-      fs.writeFileSync(join(basePath, "_category_.yml"), yaml.dump(ENVIO_CATEGORY));
-    } else if (basePath.includes("the-graph")) {
-      fs.writeFileSync(join(basePath, "_category_.yml"), yaml.dump(THE_GRAPH_CATEGORY));
+    if (docsPath.includes("envio")) {
+      fs.writeFileSync(join(docsPath, "_category_.yml"), yaml.dump(ENVIO_CATEGORY));
+    } else if (docsPath.includes("the-graph")) {
+      fs.writeFileSync(join(docsPath, "_category_.yml"), yaml.dump(THE_GRAPH_CATEGORY));
     }
   }
 }
 
 async function generateEnvio(protocol: Indexer.Protocol): Promise<string> {
-  const basePath = `./docs/api/${protocol}/graphql/envio`;
+  const docsPath = `./docs/api/${protocol}/graphql/envio`;
   const schemaURL = getSablierIndexerEnvio({ chainId: CHAIN_ID_SEPOLIA, protocol }).endpoint.url;
 
-  await runGenerator(basePath, schemaURL);
+  await runGenerator(docsPath, schemaURL);
   console.log(`✔️ Generated GraphQL docs for Envio vendor and ${_.capitalize(protocol)} protocol\n`);
-  return basePath;
+  return docsPath;
 }
 
 async function generateGraph(protocol: Indexer.Protocol): Promise<string> {
-  const basePath = `./docs/api/${protocol}/graphql/the-graph`;
+  const docsPath = `./docs/api/${protocol}/graphql/the-graph`;
   const schemaURL = `https://api.studio.thegraph.com/query/112500/sablier-${protocol}-experimental/version/latest`;
 
-  await runGenerator(basePath, schemaURL);
+  await runGenerator(docsPath, schemaURL);
   console.log(`✔️ Generated GraphQL docs for The Graph vendor and ${_.capitalize(protocol)} protocol\n`);
-  return basePath;
+  return docsPath;
 }
 
 /**
@@ -140,7 +145,6 @@ async function runGenerator(base: string, schema: string): Promise<void> {
   await $("bun", ["docusaurus", "graphql-to-doc", "--base", base, "--schema", schema], { stdio: "inherit" });
 }
 
-async function runPrettier(targetPaths: string[]): Promise<void> {
-  const patterns = targetPaths.map((path) => `${path}/**/*.{md,mdx,yml,yaml}`);
-  await $("bun", ["prettier", "--write", ...patterns]);
+async function runPrettier(targetPath: string): Promise<void> {
+  await $("bun", ["prettier", "--write", `${targetPath}/**/*.{md,mdx,yml,yaml}`]);
 }
