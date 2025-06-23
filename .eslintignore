@@ -1,8 +1,0 @@
-# directories
-.docusaurus
-node_modules
-repos
-
-# files
-babel.config.js
-docusaurus.config.ts

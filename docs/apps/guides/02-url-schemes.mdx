@@ -4,8 +4,8 @@ sidebar_position: 2
 title: "URL Schemes"
 ---
 
-The Sablier Interface makes it easy for integrators to direct their users to specific resources. In this guide, we will
-cover a number of resource locators used by the apps, as well as dive into how you can understand and re-create them.
+The Sablier Interface makes it easy for integrators to link to specific users or entities. In this guide, we will
+cover a number of resource locators used by the apps, and dive into how you can use them.
 
 ## Stream Page
 
@@ -17,7 +17,7 @@ cover a number of resource locators used by the apps, as well as dive into how y
 
 Every stream created through the Sablier Protocol is identified through three parameters:
 
-- a **chainId** (e.g., `1` for Ethereum, `10` for [OP Mainnet](https://chainlist.org/) )
+- a **chainId** (e.g., `1` for Ethereum, `10` for Optimism, etc. )
 - an **alias** (e.g., `LK`) OR a **contract** (e.g. `0x12..AB`)
 - a **streamId** (generated at stream creation)
 
@@ -51,7 +51,7 @@ contract `alias`, the `chainId`, and the `streamId`, and then you add them to th
 As you can see, the main format is `contractA-chainId-streamId`. This is supported both at the app and the subgraph
 level. For situations when an alias cannot be used, we fallback to the following format:
 `contractAddress-chainId-streamId`. Read more about identifiers and aliases in our
-[subgraph documentation](/api/lockup/the-graph/structure#identifying).
+[APIs docs](/api/ids).
 
 ---
 
@@ -62,20 +62,24 @@ level. For situations when an alias cannot be used, we fallback to the following
 The Sablier Interface comes with an advanced search view that can be accessed directly through URL parameters. If you
 want to use this feature, here is a table with all the available parameters:
 
-| Parameter | Type         | Description                                                                | Values                                                                    |
-| :-------- | :----------- | :------------------------------------------------------------------------- | ------------------------------------------------------------------------- |
-| t         | String       | The active tab in the dashboard. For global queries, use `search`.         | `search`, `sender`, or `recipient`                                        |
-| c         | Number       | The chain of the streams in the search result. This parameter is required. | `1`, `10`, `42161` or other [supported chain](/guides/lockup/deployments) |
-| s         | String       | The address of the stream sender by which to filter                        | `0x12...AB`, `vitalik.eth`                                                |
-| r         | String       | The address of the stream recipient by which to filter                     | `0x12...AB`, `vitalik.eth`                                                |
-| a         | String       | The address of the asset to filter for                                     | `0x12...CD` for DAI                                                       |
-| i         | String array | An array of IDs to look up                                                 | `LL-5-1`, `LD-5-14` etc.                                                  |
+| Parameter | Type         | Description                                                                | Values                                                          |
+| :-------- | :----------- | :------------------------------------------------------------------------- | --------------------------------------------------------------- |
+| a         | String       | The address of the asset to filter for                                     | `0x12...CD` for DAI                                             |
+| c         | Number       | The chain of the streams in the search result. This parameter is required. | `1`, `42161`, or another [chain ID](/guides/lockup/deployments) |
+| i         | String array | An array of IDs to look up                                                 | `LL-5-1`, `LD-5-14` etc.                                        |
+| r         | String       | The address of the stream recipient by which to filter                     | `0x12...AB`, `vitalik.eth`                                      |
+| s         | String       | The address of the stream sender by which to filter                        | `0x12...AB`, `vitalik.eth`                                      |
+| t         | String       | The active tab in the dashboard. For global queries, use `search`.         | `search`, `sender`, or `recipient`                              |
 
 ### Building the URL
 
 By combining the parameters described above, you can send users from your interface directly to the search view in the
 Sablier Interface. To build the link, you append all these elements to the base link `app.sablier.com/` as query
-parameters, e.g. `?t=search&c=1&s=0x..1&r=0x...2&i=LL-1-2,LL2-1-29`.
+parameters, e.g.:
+
+```text
+app.sablier.com/?t=search&c=1&s=0x..1&r=0x...2&i=LL-1-2,LL2-1-29
+```
 
 Here are some examples of URLs and the associated search modal for each:
 
@@ -112,12 +116,12 @@ By combining the elements described above, you can send users from your interfac
 the Sablier Interface. To build the link to a stream resource, you use a hyphen `-` to concatenate the uppercase
 contract `alias`, the `chainId`, and the `streamId`, and then you add them to the base URL `app.sablier.com/stream/`:
 
-| URL                                                                                                                                       | Description                   |
-| :---------------------------------------------------------------------------------------------------------------------------------------- | :---------------------------- |
-| [app.sablier.com/stream/0xe72[...]bbabc-11155111](https://app.sablier.com/airstream/0xe72175dd12ac7efca6b7d12dfc913a5f661bbabc-11155111/) | Airstream on Ethereum Sepolia |
+| URL                                                                                                                                      | Description                   |
+| :--------------------------------------------------------------------------------------------------------------------------------------- | :---------------------------- |
+| [app.sablier.com/stream/0xe72[...]bbabc-11155111](https://app.sablier.com/airstream/0xe72175dd12ac7efca6b7d12dfc913a5f661bbabc-11155111) | Airstream on Ethereum Sepolia |
 
 As you can see, the main format is `contractA-chainId`. This is supported both at the app and the subgraph level. Read
-more about identifiers and aliases in our [subgraph documentation](/api/airdrops/the-graph/entities#identifying).
+more about identifiers and aliases in our [APIs docs](/api/ids).
 
 ## Search Airstreams
 
@@ -128,13 +132,17 @@ want to use this feature, here is a table with all the available parameters:
 
 | Parameter | Type   | Description                                                                   | Values                                                                    |
 | :-------- | :----- | :---------------------------------------------------------------------------- | ------------------------------------------------------------------------- |
-| t         | String | The active tab in the dashboard. For global queries, use `search`.            | `search`                                                                  |
+| a         | String | The address of the asset to filter for                                        | `0x12...CD` for DAI                                                       |
 | c         | Number | The chain of the airstreams in the search result. This parameter is required. | `1`, `10`, `42161` or other [supported chain](/guides/lockup/deployments) |
 | m         | String | The address of the campaign admin by which to filter                          | `0x12...AB`, `vitalik.eth`                                                |
-| a         | String | The address of the asset to filter for                                        | `0x12...CD` for DAI                                                       |
+| t         | String | The active tab in the dashboard. For global queries, use `search`.            | `search`                                                                  |
 
 ### Building the URL
 
 By combining the parameters described above, you can send users from your interface directly to the search view in the
 Sablier Interface. To build the link, you append all these elements to the base link `app.sablier.com/airdrops` as query
-parameters, e.g. `?t=search&c=1&m=0x..1&a=0x`.
+parameters, e.g.:
+
+```text
+app.sablier.com/airdrops/?t=search&c=1&m=0x..1&a=0x
+```
