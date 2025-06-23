@@ -18,7 +18,7 @@ build: autogen
     bun docusaurus clear
     bunx del-cli src/autogen/**/*.mdx
 
-# Deploy website to VercelV
+# Deploy website to Vercel
 deploy:
     bun vercel pull --environment=production --token=$VERCEL_TOKEN --yes
     bun vercel build --prod --token=$VERCEL_TOKEN
@@ -49,8 +49,7 @@ setup:
     bun husky
 
 # Start development server with autogen
-start:
-    bun run autogen
+start: autogen
     bun docusaurus start
 
 # Run Jest tests

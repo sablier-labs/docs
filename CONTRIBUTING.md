@@ -17,7 +17,7 @@ Contributions to Sablier Docs are welcome by anyone interested in improving read
 ```bash
 git clone https://github.com/sablier-labs/docs.git sablier-docs
 cd sablier-docs
-just install
+bun install
 ```
 
 ### Available Commands
