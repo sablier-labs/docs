@@ -13,8 +13,7 @@ insight into the operational nuances of the contracts, providing a valuable reso
 
 # Guides
 
-If you are new to Merkle Airdrops, we recommend you start with the [Airstreams](/concepts/merkle-airdrops) section
-first.
+If you are new to Merkle Airdrops, we recommend you start with the [Airstreams](/concepts/airdrops) section first.
 
 If you want to setup your local environment, head over to [the guide](/guides/airdrops/examples/local-environment).
 

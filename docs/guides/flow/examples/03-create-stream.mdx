@@ -4,8 +4,8 @@ sidebar_position: 3
 title: "Create a Stream"
 ---
 
-import AdmonitionSimpleCode from "@site/docs/snippets/AdmonitionSimpleCode.mdx";
-import Deployment from "@site/docs/snippets/Deployment.mdx";
+import HardcodedDemonstration from "@site/src/components/atoms/HardcodedDemonstration";
+import CautionNonProduction from "@site/src/snippets/CautionNonProduction.mdx";
 
 # Create a Flow stream
 
@@ -16,7 +16,7 @@ funds are deposited.
 
 This guide assumes that you have already gone through the [Calculate Rate per Second](./02-calculate-rps.mdx) section.
 
-<AdmonitionSimpleCode />
+<CautionNonProduction />
 
 ## Set up a contract
 
@@ -46,7 +46,7 @@ contract FlowStreamCreator {
 }
 ```
 
-<Deployment protocol="Flow" />
+<HardcodedDemonstration protocol="Flow" />
 
 We will declare two functions, based on the amount desired to stream over a period of time.
 

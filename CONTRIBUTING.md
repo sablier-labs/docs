@@ -5,58 +5,33 @@ informal concerns or feedback, please join our [Discord server](https://discord.
 
 Contributions to Sablier Docs are welcome by anyone interested in improving readability, or adding new features.
 
-## Pre Requisites
+## Prerequisites
 
-You will need the following software on your machine:
+- [Node.js](https://nodejs.org) (v20+)
+- [Just](https://github.com/casey/just) (command runner)
+- [Bun](https://bun.sh) (package manager)
+- [Ni](https://github.com/antfu-collective/ni) (package manager resolver)
 
-- [Git] (https://git-scm.com/downloads)
-- [Node.Js] (https://nodejs.org/en/download/)
-- [Bun] (https://bun.sh/)
+### Setup
 
-### Set Up
-
-Clone this repository:
-
-```shell
-$ git clone git@github.com:sablier-labs/docs.git && cd docs
+```bash
+git clone https://github.com/sablier-labs/docs.git sablier-docs
+cd sablier-docs
+bun install
 ```
 
-Then, inside the project's directory, run this to install the Node.js dependencies:
+### Available Commands
 
-```shell
-$ bun install
+```bash
+just --list                 # Show all available commands
+just start                  # Build the docs site locally on localhost:3000
+just full-check             # Run all code checks
 ```
 
-Create a new branch and switch to it, this is where all development work should be done:
+### Development Workflow
 
-```shell
-$ git switch <branch-name>
-```
-
-Now you can start making changes.
-
-Run the following command to starts a local development server and opens up a browser window.
-
-```shell
-$ bun run start
-```
-
-To see a list of all available scripts:
-
-```shell
-$ bun run
-```
-
-## Pull Requests
-
-- Before you submit your Pull Request (PR), search the project for an open or closed PR related to your submission to
-  avoid duplicating effort.
-- Make your changes in a new git branch.
-- Commit your changes. Your commit message should follow the
-  [Conventional Commits](https://conventionalcommits.org/en/v1.0.0/) specification
-- Make sure `bun run check` passes.
-- Open a pull request from your forked repository to the original repository.
-
-When making a pull request, ensure that:
-
-- A descriptive summary of the PR has been provided.
+1. Fork the repository
+2. Create a feature branch
+3. Make your changes
+4. Run `just full-check` to verify code quality
+5. Submit a pull request

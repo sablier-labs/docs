@@ -1,0 +1,70 @@
+---
+id: "ids"
+sidebar_position: 3
+title: "Identifiers"
+---
+
+## Stream IDs
+
+### Contracts
+
+Onchain, each Lockup and Flow contract assigns a [`streamId`](/reference/lockup/contracts/abstracts/abstract.SablierLockupBase#nextstreamid) to each stream, which is the same as the ERC-721 [`tokenId`](https://docs.openzeppelin.com/contracts/5.x/api/token/erc721) (each stream is tokenized as an ERC-721).
+
+The `streamId`/ `tokenId` in the contract is a simple numerical value (a `uint256`). For example, number `42` is a valid `streamId`/ `tokenId`.
+
+You will always need this value when interacting with Sablier via a JSON-RPC endpoint because it is required by every contract method associated with a stream, e.g. [`streamedAmountOf`](/reference/lockup/contracts/interfaces/interface.ISablierLockupBase#streamedamountof).
+
+### Indexers
+
+Offchain, in the GraphQL schema, we need to be able to identify streams across different EVM chains and different contract versions. Additionally, it would be nice to have short, easily readable aliases. Thus, we have come up with the following identifiers:
+
+| Identifier   | Format                                  | Example                                                          |
+| ------------ | --------------------------------------- | ---------------------------------------------------------------- |
+| Stream ID    | `{contractAddress}-{chainId}-{tokenId}` | <nobr>`0xe0bfe071da104e571298f8b6e0fce44c512c1ff4-137-21`</nobr> |
+| Stream Alias | `{contractAlias}-{chainId}-{tokenId}`   | <nobr>`LK-137-21`</nobr>                                         |
+
+Both examples from the table above translate to: \*\*a stream on Polygon (chain ID `137`) created via the Lockup v2.0
+contract at address `0xe0bfe071da104e571298f8b6e0fce44c512c1ff4`, with the token ID `21`.
+
+#### Contract Aliases
+
+Here's a table with the full list of contract aliases.
+
+| Alias | Contract Name                  | Release       |
+| ----- | ------------------------------ | ------------- |
+| FL    | SablierFlow                    | Flow v1.0     |
+| FL2   | SablierFlow                    | Flow v1.1     |
+| LD    | SablierV2LockupDynamic         | Lockup v1.0   |
+| LD2   | SablierV2LockupDynamic         | Lockup v1.1   |
+| LD3   | SablierV2LockupDynamic         | Lockup v1.2   |
+| LK    | SablierLockup                  | Lockup v2.0   |
+| LL    | SablierV2LockupLinear          | Lockup v1.0   |
+| LL2   | SablierV2LockupLinear          | Lockup v1.1   |
+| LL3   | SablierV2LockupLinear          | Lockup v1.2   |
+| LT3   | SablierV2LockupTranched        | Lockup v1.2   |
+| MSF2  | SablierV2MerkleStreamerFactory | Airdrops v1.1 |
+| MSF3  | SablierV2MerkleLockupFactory   | Airdrops v1.2 |
+| MSF4  | SablierMerkleFactory           | Airdrops v1.3 |
+
+## Airdrop IDs
+
+### Contracts
+
+Airdrops do not have any onchain IDs because every airdrop is a separate contract deployed by one of the Merkle Factory contracts.
+
+### Indexers
+
+The ID for an airdrop is the chain ID concatenated with the contract address of the airdrop contract:
+
+| Identifier | Format                        | Example                                                       |
+| ---------- | ----------------------------- | ------------------------------------------------------------- |
+| Airdrop ID | `{contractAddress}-{chainId}` | <nobr>`0xf50760d8ead9ff322631a1f3ebf26cc7891b3708-137`</nobr> |
+
+The example from the table above translates to: **_an airdrop on Polygon (chain ID `137`), with the contract
+address `0xf50760d8ead9ff322631a1f3ebf26cc7891b3708`_**.
+
+:::info
+
+We have decided not to generate aliases for Airdrops, but this may change in the future.
+
+:::

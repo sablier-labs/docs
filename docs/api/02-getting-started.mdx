@@ -1,0 +1,60 @@
+---
+id: "getting-started"
+sidebar_position: 2
+title: "Getting Started"
+---
+
+import LinkPreview from "@site/src/components/molecules/LinkPreview";
+
+## Getting Started
+
+This document will help you understand how to read data from the Sablier smart contracts, either by using GraphQL indexers or by calling the smart contracts directly. Each method has its own advantages and limitations, which we will explore in detail.
+
+## Choosing Your Approach
+
+You have two options:
+
+1. **GraphQL Indexers**: Recommended for most use cases due to ease of use and comprehensive data access.
+2. **Direct Smart Contract Calls**: Offers a more decentralized approach but comes with limitations.
+
+### GraphQL Indexers
+
+This is the preferred method for accessing Sablier data. The recommended stack includes:
+
+- **[React](https://react.dev)**
+- **[GraphQL Code Generator](https://the-guild.dev/graphql/codegen/docs/getting-started)**: Automatically generates types from your GraphQL fragments and queries.
+- **[TanStack Query](https://tanstack.com/query)**: React hooks to fetch data from the GraphQL endpoints.
+
+#### Advantages
+
+- Simplifies data access with a unified API.
+- Provides caching and data unification.
+- Easy integration with modern frontend frameworks.
+
+#### Considerations
+
+- Understanding the GraphQL schema may require some initial effort.
+
+#### Frontend Sandbox
+
+To help you get started quickly, we offer a pre-configured frontend sandbox with the recommended stack:
+
+<LinkPreview href="https://github.com/sablier-labs/sandbox" icon="github" title="Sablier Frontend Sandbox" />
+
+### Direct Smart Contract Calls
+
+This approach provides a more decentralized way to interact with the blockchain but has several limitations:
+
+- **Data Retrieval**: Cannot retrieve a list of all streams for a user directly.
+- **Historical Data**: Limited access to past events unless the app is set up to listen to web3 events via RPC.
+- **Pagination**: Not supported.
+
+## Conclusion
+
+Choosing the right approach depends on your specific needs and the trade-offs you're willing to make. For most applications, using one of our GraphQL indexers will provide a more seamless and efficient experience. However, if decentralization is a priority, direct smart contract calls may be the way to go.
+
+For more detailed information, refer to the [Overview](/api/overview) document and explore the specific indexers available for the Sablier protocols:
+
+- [Lockup indexers](/api/lockup/indexers)
+- [Flow indexers](/api/lockup/indexers)
+- [Airdrops indexers](/api/airdrops/indexers)

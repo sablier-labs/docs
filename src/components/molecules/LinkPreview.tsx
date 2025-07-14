@@ -1,8 +1,8 @@
-import { useCallback } from "react";
-import styled from "@emotion/styled";
 import Link from "@docusaurus/Link";
+import styled from "@emotion/styled";
 import SablierIcon from "@site/static/img/logo.svg";
 import GitHubIcon from "@site/static/img/social/github.svg";
+import { useCallback } from "react";
 
 const Wrapper = styled(Link)`
   border: 1px solid var(--ifm-color-emphasis-200);
@@ -57,12 +57,12 @@ const StyledGitHubIcon = styled.div`
   }
 `;
 
-interface LinkPreviewProps {
+type LinkPreviewProps = {
   href: string;
-  icon: string;
-  subtitle: string;
+  icon?: string;
+  subtitle?: string;
   title: string;
-}
+};
 
 export default function LinkPreview(props: LinkPreviewProps) {
   const renderIcon = useCallback(() => {
@@ -83,7 +83,7 @@ export default function LinkPreview(props: LinkPreviewProps) {
       <IconWrapper>{renderIcon()}</IconWrapper>
       <LabelWrapper>
         <Title>{props.title}</Title>
-        <Subtitle>{props.subtitle}</Subtitle>
+        {props.subtitle && <Subtitle>{props.subtitle}</Subtitle>}
       </LabelWrapper>
     </Wrapper>
   );
