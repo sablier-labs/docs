@@ -1,6 +1,6 @@
 import fs from "node:fs";
 import { join } from "node:path";
-import { getSablierIndexerEnvio, type Indexer } from "@sablier/indexers";
+import { getIndexerEnvio, getIndexerGraph, type Indexer } from "@sablier/indexers";
 import { Command } from "commander";
 import $ from "execa";
 import * as yaml from "js-yaml";
@@ -121,7 +121,7 @@ function cleanupDocs(docsPaths: string[]): void {
 
 async function generateEnvio(protocol: Indexer.Protocol): Promise<string> {
   const docsPath = `./docs/api/${protocol}/graphql/envio`;
-  const schemaURL = getSablierIndexerEnvio({ chainId: CHAIN_ID_SEPOLIA, protocol }).endpoint.url;
+  const schemaURL = getIndexerEnvio({ chainId: CHAIN_ID_SEPOLIA, protocol }).endpoint.url;
 
   await runGenerator(docsPath, schemaURL);
   console.log(`✔️ Generated GraphQL docs for Envio vendor and ${_.capitalize(protocol)} protocol\n`);
@@ -130,7 +130,7 @@ async function generateEnvio(protocol: Indexer.Protocol): Promise<string> {
 
 async function generateGraph(protocol: Indexer.Protocol): Promise<string> {
   const docsPath = `./docs/api/${protocol}/graphql/the-graph`;
-  const schemaURL = `https://api.studio.thegraph.com/query/112500/sablier-${protocol}-experimental/version/latest`;
+  const schemaURL = getIndexerGraph({ chainId: CHAIN_ID_SEPOLIA, protocol }).endpoint.url;
 
   await runGenerator(docsPath, schemaURL);
   console.log(`✔️ Generated GraphQL docs for The Graph vendor and ${_.capitalize(protocol)} protocol\n`);

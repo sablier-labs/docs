@@ -35,7 +35,7 @@
     "@graphql-tools/graphql-file-loader": "^8.0.20",
     "@heroicons/react": "^2.2",
     "@mdx-js/mdx": "~3.1",
-    "@sablier/indexers": "1.0.0-alpha.8",
+    "@sablier/indexers": "1.0.0-beta.2",
     "@vercel/analytics": "^1.5",
     "axios": "^1.9",
     "docusaurus-theme-github-codeblock": "^2.0",
@@ -47,7 +47,7 @@
     "rehype-external-links": "^3.0",
     "rehype-katex": "7",
     "remark-math": "6",
-    "sablier": "1.0.0-beta.6"
+    "sablier": "1.0.0-beta.8"
   },
   "devDependencies": {
     "@biomejs/biome": "2.0.0-beta.5",

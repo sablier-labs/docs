@@ -12,7 +12,8 @@ export function Chains({ kind }: ChainProps) {
     content += `| Name | Chain ID | In UI? | Native Token | Explorer |\n`;
     content += `| :--- | :------- | :----- | :----------- | :------- |\n`;
 
-    for (const chain of sablier.chains.getAll(kind)) {
+    const getter = kind === "mainnets" ? sablier.chains.getMainnets : sablier.chains.getTestnets;
+    for (const chain of getter()) {
       const supportedCell = chain.isSupportedByUI ? "✅" : "❌";
       const symbolCell = chain.nativeCurrency.symbol;
       const explorerURL = chain.blockExplorers.default.url;
