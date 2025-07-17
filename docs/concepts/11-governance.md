@@ -24,6 +24,7 @@ Here's a table with the admins of the Sablier Protocol. Most of them are Safe mu
 | Core Dao        | [0xb1bEF51ebCA01EB12001a639bDBbFF6eEcA12B9F](https://scan.coredao.org/address/0xb1bEF51ebCA01EB12001a639bDBbFF6eEcA12B9F)        |
 | Form            | [0xb1bEF51ebCA01EB12001a639bDBbFF6eEcA12B9F](https://explorer.form.network/address/0xb1bEF51ebCA01EB12001a639bDBbFF6eEcA12B9F)   |
 | Gnosis          | [0x72ACB57fa6a8fa768bE44Db453B1CDBa8B12A399](https://gnosisscan.io/address/0x72ACB57fa6a8fa768bE44Db453B1CDBa8B12A399)           |
+| HyperEVM        | [0xb1bEF51ebCA01EB12001a639bDBbFF6eEcA12B9F](https://hyperevmscan.io/address/0xb1bEF51ebCA01EB12001a639bDBbFF6eEcA12B9F)         |
 | IoTeX           | [0xb1bEF51ebCA01EB12001a639bDBbFF6eEcA12B9F](https://iotexscan.io/address/0xb1bEF51ebCA01EB12001a639bDBbFF6eEcA12B9F)            |
 | LightLink       | [0xb1bEF51ebCA01EB12001a639bDBbFF6eEcA12B9F](https://phoenix.lightlink.io/address/0xb1bEF51ebCA01EB12001a639bDBbFF6eEcA12B9F)    |
 | Linea           | [0x72dCfa0483d5Ef91562817C6f20E8Ce07A81319D](https://lineascan.build/address/0x72dCfa0483d5Ef91562817C6f20E8Ce07A81319D)         |
