@@ -65,29 +65,31 @@ addresses, amounts, and other details.
 
 ### CSV Template
 
-Here's table with all the available CSV templates:
+Here's table with all the available CSV templates.
 
-| URL                                                                                                           | Description                                         |
-| :------------------------------------------------------------------------------------------------------------ | :-------------------------------------------------- |
-| [Flow](https://files.sablier.com/templates/flow-template.csv)                                                 | Open-ended streams that can be topped up.           |
-| [Linear with duration](https://files.sablier.com/templates/linear-duration-template.csv)                      | Linear streams with the duration timing.            |
-| [Linear with range](https://files.sablier.com/templates/linear-range-template.csv)                            | Linear streams with the range timing.               |
-| [Cliff with duration](https://files.sablier.com/templates/2025-02/cliff-duration-template.csv)                | Cliff streams with the duration timing.             |
-| [Cliff with range](https://files.sablier.com/templates/2025-02/cliff-range-template.csv)                      | Cliff streams with the range timing.                |
-| [Monthly with range](https://files.sablier.com/templates/monthly-range-template.csv)                          | Unlock Each Month streams with the range timing.    |
-| [Stepper with duration](https://files.sablier.com/templates/2025-02/unlockSteps-duration-template.csv)        | Unlock In Steps streams with the duration timing.   |
-| [Stepper with range](https://files.sablier.com/templates/2025-02/unlockSteps-range-template.csv)              | Unlock In Steps streams with the range timing.      |
-| [Timelock with duration](https://files.sablier.com/templates/timelock-duration-template.csv)                  | Timelock streams with the duration timing.          |
-| [Timelock with range](https://files.sablier.com/templates/timelock-range-template.csv)                        | Timelock streams with the range timing.             |
-| [BackWeighted with range](https://files.sablier.com/templates/backWeighted-range-template.csv)                | BackWeighted streams with the range timing.         |
-| [Unlock linear with duration](https://files.sablier.com/templates/unlockLinear-duration-template.csv)         | Unlock-Linear streams with the duration timing.     |
-| [Unlock linear with range](https://files.sablier.com/templates/unlockLinear-range-template.csv)               | Unlock-Liner streams with the range timing.         |
-| [Unlock cliff with duration](https://files.sablier.com/templates/2025-02/unlockCliff-duration-template.csv)   | Unlock-Cliff streams with the duration timing.      |
-| [Unlock cliff with range](https://files.sablier.com/templates/2025-02/unlockCliff-range-template.csv)         | Unlock-Cliff streams with the range timing.         |
-| [Exponential with duration](https://files.sablier.com/templates/exponential-duration-template.csv)            | Exponential streams with the duration timing.       |
-| [Exponential with range](https://files.sablier.com/templates/exponential-range-template.csv)                  | Exponential streams with the range timing.          |
-| [Cliff exponential with duration](https://files.sablier.com/templates/exponentialCliff-duration-template.csv) | Cliff-Exponential streams with the duration timing. |
-| [Cliff exponential with range](https://files.sablier.com/templates/exponentialCliff-range-template.csv)       | Cliff-Exponential streams with the range timing.    |
+[Sablier Flow](/concepts/use-cases#sablier-flow) (the first row in the below table) is a great fit for use cases like payroll, grants, and subscriptions. The other streaming curves in the table rely on [Sablier Lockup](/concepts/use-cases#sablier-lockup) and are a better fit for vesting and airdrops.
+
+| URL                                                                                                           | Description                                                                                             |
+| :------------------------------------------------------------------------------------------------------------ | :------------------------------------------------------------------------------------------------------ |
+| [Flow](https://files.sablier.com/templates/flow-template.csv)                                                 | [Open-ended streams](/concepts/flow/overview#total-debt) that can be topped up.                         |
+| [Linear with duration](https://files.sablier.com/templates/linear-duration-template.csv)                      | [Linear streams](/concepts/lockup/stream-shapes#linear) with the duration timing.                       |
+| [Linear with range](https://files.sablier.com/templates/linear-range-template.csv)                            | [Linear streams](/concepts/lockup/stream-shapes#linear) with the range timing.                          |
+| [Cliff with duration](https://files.sablier.com/templates/2025-02/cliff-duration-template.csv)                | [Cliff streams](/concepts/lockup/stream-shapes#cliff-unlock) with the duration timing.                  |
+| [Cliff with range](https://files.sablier.com/templates/2025-02/cliff-range-template.csv)                      | [Cliff streams](/concepts/lockup/stream-shapes#cliff-unlock) with the range timing.                     |
+| [Monthly with range](https://files.sablier.com/templates/monthly-range-template.csv)                          | [Unlock Each Month streams](/concepts/lockup/stream-shapes#unlock-monthly) with the range timing.       |
+| [Stepper with duration](https://files.sablier.com/templates/2025-02/unlockSteps-duration-template.csv)        | [Unlock In Steps streams](/concepts/lockup/stream-shapes#unlock-in-steps) with the duration timing.     |
+| [Stepper with range](https://files.sablier.com/templates/2025-02/unlockSteps-range-template.csv)              | [Unlock In Steps streams](/concepts/lockup/stream-shapes#unlock-in-steps) with the range timing.        |
+| [Timelock with duration](https://files.sablier.com/templates/timelock-duration-template.csv)                  | [Timelock streams](/concepts/lockup/stream-shapes#timelock) with the duration timing.                   |
+| [Timelock with range](https://files.sablier.com/templates/timelock-range-template.csv)                        | [Timelock streams](/concepts/lockup/stream-shapes#timelock) with the range timing.                      |
+| [BackWeighted with range](https://files.sablier.com/templates/backWeighted-range-template.csv)                | [BackWeighted streams](/concepts/lockup/stream-shapes) with the range timing.                           |
+| [Unlock linear with duration](https://files.sablier.com/templates/unlockLinear-duration-template.csv)         | [Unlock-Linear streams](/concepts/lockup/stream-shapes#initial-unlock) with the duration timing.        |
+| [Unlock linear with range](https://files.sablier.com/templates/unlockLinear-range-template.csv)               | [Unlock-Liner streams](/concepts/lockup/stream-shapes#initial-unlock) with the range timing.            |
+| [Unlock cliff with duration](https://files.sablier.com/templates/2025-02/unlockCliff-duration-template.csv)   | [Unlock-Cliff streams](/concepts/lockup/stream-shapes#cliff-unlock) with the duration timing.           |
+| [Unlock cliff with range](https://files.sablier.com/templates/2025-02/unlockCliff-range-template.csv)         | [Unlock-Cliff streams](/concepts/lockup/stream-shapes#cliff-unlock) with the range timing.              |
+| [Exponential with duration](https://files.sablier.com/templates/exponential-duration-template.csv)            | [Exponential streams](/concepts/lockup/stream-shapes#exponential) with the duration timing.             |
+| [Exponential with range](https://files.sablier.com/templates/exponential-range-template.csv)                  | [Exponential streams](/concepts/lockup/stream-shapes#exponential) with the range timing.                |
+| [Cliff exponential with duration](https://files.sablier.com/templates/exponentialCliff-duration-template.csv) | [Cliff-Exponential streams](/concepts/lockup/stream-shapes#cliff-exponential) with the duration timing. |
+| [Cliff exponential with range](https://files.sablier.com/templates/exponentialCliff-range-template.csv)       | [Cliff-Exponential streams](/concepts/lockup/stream-shapes#cliff-exponential) with the range timing.    |
 
 ### Navigation
 

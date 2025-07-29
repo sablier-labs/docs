@@ -293,6 +293,42 @@ vary as there are multiple factors to consider.
 
 :::
 
+### Backweighted
+
+Backweighted is a type of tranched vesting curve where the tokens are vested in a backweighted way, meaning little vests early on, and large chunks vest towards the end.
+
+Example for a 4-year vesting schedule:
+
+- Year 1: 10% vests
+- Year 2: 20% vests
+- Year 3: 30% vests
+- Year 4: 40% vests
+
+This makes it a particularly good fit for recipients that need to be particularly incentivized on a long-term perspective, as they receive progressively more and more tokens as the stream gets closer to its end date.
+
+<FunctionPlot
+  options={{
+    data: [
+      {
+        points: [
+          [0.01, 0.01],
+          [25, 0],
+          [25, 10],
+          [50, 10],
+          [50, 30],
+          [75, 30],
+          [75, 60],
+          [99.99, 60],
+          [99.99, 99.99],
+        ],
+        fnType: "points",
+        graphType: "polyline",
+        color: "#f77423",
+      },
+    ],
+  }}
+/>
+
 ### Timelock
 
 The Timelock shape locks all tokens for a specified period. Users cannot access the tokens until the set period elapses.

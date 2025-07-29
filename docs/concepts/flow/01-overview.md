@@ -12,7 +12,7 @@ linear and can be defined as:
 \text{amount owed} = rps \cdot \text{elapsed time}
 ```
 
-Flow protocol can be used in several areas of everyday finance, such as payroll, distributing grants, insurance
+The Flow protocol can be used in several areas of everyday finance, such as payroll, distributing grants, insurance
 premiums, loans interest, token ESOPs etc. If you are looking for vesting and airdrops, please refer to our
 [Lockup](../lockup/overview) protocol.
 
@@ -31,6 +31,19 @@ premiums, loans interest, token ESOPs etc. If you are looking for vesting and ai
 ## Key Definitions
 
 The definitions below will help you understand some terms used in Sablier Flow:
+
+## Open-Ended Streams
+
+Open-ended streams on Sablier are token streams without a predefined end date. They continue indefinitely until voided
+by the sender.
+
+Key traits:
+
+- No end time: the stream has a start date but no fixed stop.
+- Funds are streamed continuously at a fixed rate per second.
+- Stream must be topped up periodically to maintain solvency,
+  [debt is otherwise accumulated](/concepts/flow/overview#total-debt).
+- Useful for ongoing payments like salaries, grants, or subscriptions.
 
 ### Stream balance
 

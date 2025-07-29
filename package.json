@@ -34,6 +34,7 @@
     "@heroicons/react": "^2.2",
     "@mdx-js/react": "~3.0.1",
     "@vercel/analytics": "^1.5",
+    "ajv": "^8.17.1",
     "clsx": "^2.1",
     "docusaurus-theme-github-codeblock": "^2.0",
     "function-plot": "^1.25",
