@@ -21,6 +21,9 @@ jobs:
       - name: "Install Bun"
         uses: "oven-sh/setup-bun@v1"
 
+      - name: "Clear Bun cache"
+        run: "rm -rf ~/.bun/install/cache"
+
       - name: "Install the dependencies"
         run: "bun install --frozen-lockfile"
 
