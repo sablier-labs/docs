@@ -8,15 +8,15 @@ Lockup is a token streaming protocol that refers to the requirement that the cre
 amount of tokens in a smart contract. A Lockup stream, therefore, is characterized by the start time, end time, amount
 of tokens to be streamed and a [stream shape](./02-stream-shapes.mdx).
 
-Let's discuss an example. Imagine Alice wants to stream 3,000 DAI to Bob during the whole month of January.
+Let's take an example. Imagine Alice wants to stream 3000 DAI to Bob during the whole month of April.
 
-1. Alice deposits the 3,000 DAI in Lockup before Apr 1, setting the end time to May 1.
+1. Alice deposits the 3000 DAI in Lockup before Apr 1, setting the end time to May 1.
 2. Bob's allocation of the DAI deposit increases every second beginning Apr 1.
-3. On Apr 10, Bob will have earned approximately 1,000 DAI. He can send a transaction to Lockup to withdraw the tokens.
-4. If at any point during January Alice wishes to get back her tokens, she can cancel the stream and recover what has
-   not been streamed yet.
+3. On Apr 10, Bob will have earned approximately 1000 DAI. He can send a transaction to Lockup to withdraw the tokens.
+4. If at any point during April Alice wishes to get back her tokens, she can cancel the stream and recover what has not
+   been streamed yet.
 
 This streaming model is especially useful for use cases like vesting and airdrops. If you are looking to create an
 indefinite stream of tokens, please refer to our [Flow](../flow/overview) protocol.
 
-Lockup enables multiple shapes of streams which is discussed in the next section.
+Lockup enables multiple distribution models, a feature that is discussed in the next section.
