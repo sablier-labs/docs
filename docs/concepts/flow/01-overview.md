@@ -97,7 +97,35 @@ Therefore, at any point in time, total debt can also be defined as:
 ## Lifecycle
 
 1. A Flow stream is created with an `rps`, a `sender` and a `recipient` address.
-2. During the lifecycle of the stream, all the functions enclosed inside the dotted rectangle (diagram below) can be
-   called any number of times. There are some limitations though, such as `restart` can only be called if the stream is
-   `paused`.
+2. During the lifecycle of the stream, all the functions enclosed inside the rectangle (diagram below) can be called any
+   number of times. There are some limitations though, such as `restart` can only be called if the stream is `paused`.
 3. Any party can call `void` to terminate it. Only withdraw and refund are allowed on a voided stream.
+
+```mermaid
+flowchart TD
+  subgraph "Stream Lifecycle"
+    direction TB
+    NULL
+
+    subgraph ACTIVE
+      direction TB
+      adjustRatePerSecond
+      deposit
+      pause
+      refund
+      restart
+      void
+      withdraw
+
+      restart --> pause
+      pause --> restart
+    end
+
+    subgraph VOID
+        withdraw2(withdraw)
+        refund2(refund)
+    end
+  end
+
+  NULL -- create() --> ACTIVE
+```

@@ -57,6 +57,15 @@ deposit amount and the total duration.
 Alternatively, you can see [here](/guides/lockup/etherscan) how to manually create a stream using
 [Etherscan](https://etherscan.io).
 
+### Can I create a stream with non-transferable tokens?
+
+Yes, you can create a stream with non-transferable tokens. In order to do so, you will need to whitelist the following two contracts:
+
+1. `SablierLockup`
+2. `SablierBatchLockup`
+
+You can get the addresses of the above contracts on the [Lockup Deployments](/guides/lockup/deployments) page. Make sure to pick the correct chain on which your token is deployed. A token flow diagram can be found [here](/reference/lockup/diagrams).
+
 ### Where are the tokens held?
 
 In the Sablier smart contracts. You can verify this assertion by inspecting Etherscan or any other blockchain explorer.

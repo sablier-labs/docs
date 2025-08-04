@@ -6,7 +6,12 @@ title: "Diagrams"
 
 ## Token Flows
 
-The following three functions lead to tokens flow in and out of a stream:
+:::tip
+
+If you are interested into creating a stream with non-transferrable tokens, make sure to whitelist both `BatchLockup`
+and `Lockup` contracts.
+
+:::
 
 ### Creating a Single Stream
 
