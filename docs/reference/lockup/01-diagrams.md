@@ -4,7 +4,42 @@ sidebar_position: 1
 title: "Diagrams"
 ---
 
-## Common Storage Layout
+## Token Flows
+
+:::tip
+
+If you are interested into creating a stream with non-transferrable tokens, make sure to whitelist both `BatchLockup`
+and `Lockup` contracts.
+
+:::
+
+### Creating a Single Stream
+
+```mermaid
+sequenceDiagram
+  actor Sender
+
+  Sender ->> Lockup: createWithDurations()
+  Sender -->> Lockup: Transfer tokens
+  Lockup -->> Sender: Mint Stream NFT
+```
+
+### Creating a Batch of Streams
+
+```mermaid
+sequenceDiagram
+  actor Sender
+
+  Sender ->> BatchLockup: createWithDurations()
+  BatchLockup ->> Lockup: createWithDurations()
+  Sender -->> BatchLockup: Transfer tokens
+  BatchLockup -->> Lockup: Transfer tokens
+  Lockup -->> Sender: Mint Stream NFT
+```
+
+## Storage Layout
+
+### Common
 
 Lockup is a singleton contract that stores all streams created by that contract's users. The following diagrams provide
 insight into the shared storage layout of each stream. To see the full list of storage variables, check out
@@ -55,7 +90,7 @@ outlined below.
 
 :::
 
-## Linear Stream
+### Linear Stream
 
 Apart from the above storage layout, Linear stream requires storing
 [unlock amounts](/reference/lockup/contracts/types/library.LockupLinear#unlockamounts) and cliff time.
@@ -74,7 +109,7 @@ flowchart TD;
   L --> S3;
 ```
 
-## Dynamic Stream
+### Dynamic Stream
 
 Similarly, Dynamic stream requires an array of
 [segments](/reference/lockup/contracts/types/library.LockupDynamic#segment).
@@ -110,7 +145,7 @@ flowchart TD;
   S2 --> A13([timestamp])
 ```
 
-## Tranched Stream
+### Tranched Stream
 
 A Tranched stream requires an array of [tranches](/reference/lockup/contracts/types/library.LockupTranched#tranche).
 

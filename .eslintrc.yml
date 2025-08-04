@@ -12,7 +12,9 @@ overrides:
       - "plugin:react/recommended"
     parser: "eslint-mdx"
     rules:
+      no-undef: "off"
       no-unused-expressions: "off"
+      react/jsx-no-undef: "off"
   - files:
       - "*.ts"
       - "*.tsx"

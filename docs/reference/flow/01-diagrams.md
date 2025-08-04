@@ -4,54 +4,6 @@ sidebar_position: 1
 title: "Diagrams"
 ---
 
-## Abbreviations
-
-| Abbreviation | Full name       | Description                                                 |
-| ------------ | --------------- | ----------------------------------------------------------- |
-| bal          | Stream balance  | Balance of the stream                                       |
-| cd           | Covered debt    | Portion of the total debt covered by the stream balance     |
-| elt          | Elapsed time    | Time elapsed in seconds since the last snapshot             |
-| od           | Ongoing debt    | Debt accumulated since the last snapshot                    |
-| now          | Current time    | Same as `block.timestamp`                                   |
-| rps          | Rate per second | Rate at which tokens are streamed per second                |
-| sd           | Snapshot debt   | Debt accumulated until the last snapshot                    |
-| st           | Snapshot time   | Time of the last snapshot                                   |
-| td           | Total debt      | Sum of sd and od, also same as sum of cd and ud             |
-| ud           | Uncovered debt  | Portion of the total debt not covered by the stream balance |
-
-## Flow Storage Layout
-
-Flow is a singleton contract that stores all streams created by that contract's users. The following diagrams provide
-insight into the storage layout of each stream. To see the full list of storage variables, check out
-[this reference](/reference/flow/contracts/types/library.Flow#structs).
-
-```mermaid
-flowchart TD;
-  F["Flow contract"];
-
-  S0[(Stream 1)];
-  b0([bal])
-  r0([rps])
-  sd0([sd])
-  st0([st])
-  F --> S0;
-  S0 --> b0;
-  S0 --> r0;
-  S0 --> sd0;
-  S0 --> st0;
-
-  S1[(Stream 2)];
-  b1([bal])
-  r1([rps])
-  sd1([sd])
-  st1([st])
-  F --> S1;
-  S1 --> b1;
-  S1 --> r1;
-  S1 --> sd1;
-  S1 --> st1;
-```
-
 ## Token Flows
 
 The following three functions lead to tokens flow in and out of a stream:
@@ -100,6 +52,54 @@ sequenceDiagram
   Create actor toAddress
   Flow -->> toAddress: Transfer streamed tokens
   deactivate Flow
+```
+
+## Abbreviations
+
+| Abbreviation | Full name       | Description                                                 |
+| ------------ | --------------- | ----------------------------------------------------------- |
+| bal          | Stream balance  | Balance of the stream                                       |
+| cd           | Covered debt    | Portion of the total debt covered by the stream balance     |
+| elt          | Elapsed time    | Time elapsed in seconds since the last snapshot             |
+| od           | Ongoing debt    | Debt accumulated since the last snapshot                    |
+| now          | Current time    | Same as `block.timestamp`                                   |
+| rps          | Rate per second | Rate at which tokens are streamed per second                |
+| sd           | Snapshot debt   | Debt accumulated until the last snapshot                    |
+| st           | Snapshot time   | Time of the last snapshot                                   |
+| td           | Total debt      | Sum of sd and od, also same as sum of cd and ud             |
+| ud           | Uncovered debt  | Portion of the total debt not covered by the stream balance |
+
+## Storage Layout
+
+Flow is a singleton contract that stores all streams created by that contract's users. The following diagrams provide
+insight into the storage layout of each stream. To see the full list of storage variables, check out
+[this reference](/reference/flow/contracts/types/library.Flow#structs).
+
+```mermaid
+flowchart TD;
+  F["Flow contract"];
+
+  S0[(Stream 1)];
+  b0([bal])
+  r0([rps])
+  sd0([sd])
+  st0([st])
+  F --> S0;
+  S0 --> b0;
+  S0 --> r0;
+  S0 --> sd0;
+  S0 --> st0;
+
+  S1[(Stream 2)];
+  b1([bal])
+  r1([rps])
+  sd1([sd])
+  st1([st])
+  F --> S1;
+  S1 --> b1;
+  S1 --> r1;
+  S1 --> sd1;
+  S1 --> st1;
 ```
 
 ## Debts

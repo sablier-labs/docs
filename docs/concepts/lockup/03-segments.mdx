@@ -1,0 +1,201 @@
+---
+id: "segments"
+sidebar_position: 3
+title: "Segments"
+---
+
+# Segments
+
+## Definition
+
+A Dynamic stream is composed of multiple segments, which are separate partitions with different streaming amount and
+rates. The protocol uses these segments to enable custom streaming curves, which power exponential streams, cliff
+streams, etc.
+
+Technically, a segment is a [struct](/reference/lockup/contracts/types/library.LockupDynamic#segment) with three fields:
+
+| Field     | Type      | Description                                                                                    |
+| :-------- | :-------- | :--------------------------------------------------------------------------------------------- |
+| Amount    | `uint128` | The amount of tokens to be streamed in this segment, denoted in units of the token's decimals. |
+| Exponent  | `UD2x18`  | The exponent of this segment, denoted as a fixed-point number.                                 |
+| Timestamp | `uint40`  | The Unix timestamp indicating this segment's end.                                              |
+
+Each segment has its own streaming function:
+
+$$
+f(x) = x^{exp} * csa
+$$
+
+Therefore, the distribution function of a dynamic stream becomes:
+
+$$
+f(x) = x^{exp} * csa + \Sigma(esa)
+$$
+
+Where:
+
+- $x$ is the elapsed time divided by the total time in the current segment.
+- $exp$ is the current segment exponent.
+- $csa$ is the current segment amount.
+- $\Sigma(esa)$ is the sum of all elapsed segments' amounts.
+
+:::info
+
+Segments can be used to represent any monotonic increasing function.
+
+:::
+
+:::caution
+
+Because x is a percentage, the payment rate is inversely proportional to the exponent. For example, if the exponent is
+0.5, the rate is quadratically faster compared to the baseline when the exponent is 1.
+
+Conversely, if the exponent is 2, the rate is quadratically slower compared to baseline.
+
+:::
+
+## Requirements
+
+- The sum of all segment amounts must equal the deposit amount.
+- There is a limit to how many segments there can be in a stream as enforced by the block gas limit.
+  - If someone creates a stream with an excessively large number of segments, the transaction would revert as it
+    wouldn't fit within a block. You can fetch the limit using you can find the limit for each chain
+    [here](https://github.com/sablier-labs/lockup/blob/main/script/Base.s.sol#L90-L131).
+- The timestamps must be sorted in ascending order. It's not possible for the $(i-1)^{th}$ timestamp to be greater than
+  $i^{th}$ timestamp (given that we're dealing with an increasing monotonic function).
+
+## Examples
+
+A segment can be used to represent any monotonic increasing function. A few popular examples are highlighted below:
+
+### Constant Curve (exp = 0)
+
+A constant segment follows the function $f(x) = c$. This is achieved with an exponent of 0.
+
+```solidity
+LockupDynamic.Segment({
+  amount: amount,                // Total amount in this segment
+  exponent: ud2x18(0e18),        // Exponent = 0 (constant)
+  timestamp: endTime             // End time of the segment
+});
+```
+
+A constant curve can be used to unlock amount in tranches where the entire segment amount unlocks at the beginning or the end of the segment.
+
+<FunctionPlot
+  options={{
+    data: [
+      { fn: "25", range: [0, 25], color: "#f77423" },
+      { fn: "50", range: [25, 50], color: "#f77423" },
+      { fn: "75", range: [50, 75], color: "#f77423" },
+      { fn: "100", range: [75, 100], color: "#f77423" },
+      {
+        points: [
+          [0, 0],
+          [0, 25],
+          [25, 25],
+          [25, 50],
+          [50, 50],
+          [50, 75],
+          [75, 75],
+          [75, 100],
+        ],
+        fnType: "points",
+        graphType: "polyline",
+        color: "#f77423",
+      },
+    ],
+  }}
+/>
+
+### Linear Curve (exp = 1)
+
+A linear segment follows the function $f(x) = cx$. This is achieved with an exponent of 1.
+
+```solidity
+LockupDynamic.Segment({
+  amount: amount,                // Total amount in this segment
+  exponent: ud2x18(1e18),        // Exponent = 1 (linear)
+  timestamp: endTime             // End time of the segment
+});
+```
+
+A linear curve unlocks amount linearly over time.
+
+<FunctionPlot
+  options={{
+    data: [
+      {
+        points: [
+          [0, 0],
+          [25, 25],
+          [50, 50],
+          [75, 75],
+          [100, 100],
+        ],
+        fnType: "points",
+        graphType: "polyline",
+        color: "#f77423",
+      },
+    ],
+  }}
+/>
+
+### Accelerating Curve (exp > 1)
+
+A function $f(x) = cx^{exp} \mid exp > 1$ can be used to create a segment that unlocks slowly at the beginning and then quickly at the end.
+
+For example, an exponent of 2 unlocks 25% of the segment amount in the first 50% of the time and the remaining 75% in the last 50% of the time.
+
+```solidity
+segments[0] = LockupDynamic.Segment({
+    amount: totalAmount,           // Total amount in this segment
+    exponent: ud2x18(2e18),        // Exponent = 2 (Quadratic)
+    timestamp: endTime             // End time of the stream
+});
+```
+
+<FunctionPlot
+  options={{
+    data: [
+      { fn: "(x/100)^2 * 100", range: [0, 100], color: "#f77423" },
+      {
+        points: [],
+        fnType: "points",
+        graphType: "polyline",
+        color: "#f77423",
+      },
+    ],
+  }}
+/>
+
+As you may have realized, the higher the exponent, the steeper the curve gets at the end. For example, an exponent of 4
+unlocks 6% of the segment amount in the first 50% of the time and the remaining 94% in the last 50% of the time.
+
+### Decelerating Curve (exp < 1)
+
+A function $f(x) = cx^{exp} \mid 0 < exp < 1$ can be used to create a segment that unlocks quickly at the beginning and then slowly at the end.
+
+For example, an exponent of 0.2 unlocks 80% of the segment amount in the first 50% of the time and the remaining 20% in the last 50% of the time.
+
+```solidity
+segments[0] = LockupDynamic.Segment({
+    amount: totalAmount,           // Total amount in this segment
+    exponent: ud2x18(0.3e18),      // Exponent = 0.3
+    timestamp: endTime             // End time of the stream
+});
+```
+
+<FunctionPlot
+  options={{
+    data: [
+      { fn: "nthRoot(pow(x/100, 3), 10) * 100", range: [0, 100], color: "#f77423" },
+      {
+        points: [],
+        fnType: "points",
+        graphType: "polyline",
+        color: "#f77423",
+      },
+    ],
+  }}
+/>
