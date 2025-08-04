@@ -4,6 +4,8 @@ sidebar_position: 12
 title: "Fees"
 ---
 
+import { Links } from "@site/src/constants";
+
 During the course of using Sablier, you may encounter up to three different types of fees:
 [Interface Fees](#interface-fees), [Contract Fees](#contract-fees), and [Gas Fees](#gas-fees). Each of these fees may go
 to a different party. Below you can see a breakdown of how each fee is calculated and who receives it.
@@ -15,12 +17,20 @@ for streams on Ethereum, and in POL for streams on Polygon.
 
 The fee amount is calculated based on market prices. For example, when ETH is $4000, a $1 fee is 0.00025 ETH.
 
+:::tip[For Senders]
+
+Interface Fees can be subsidized - the person creating the stream or airdrop can choose to cover the fees that would normally be charged to recipients.
+
+If you're interested in subsiding fees for your users, please <Link href={Links.Forms.CALL}>contact us</Link> to discuss your specific requirements.
+
+:::
+
 ### Stream Withdrawals
 
 The Sablier Interface charges a flat fee each time you withdraw from a stream. This applies to both Lockup and Flow
 streams.
 
-:::tip[What is the withdraw fee?]
+:::info[What is the withdraw fee?]
 
 The fee is **$1** (in the gas token) regardless of the withdraw amount.
 
@@ -33,7 +43,7 @@ withdrawing from streams created using earlier releases.
 
 The Sablier Interface charges a flat fee when you claim an airdrop.
 
-:::tip[What is the claim fee?]
+:::info[What is the claim fee?]
 
 The fee is **$2** (in the gas token) per claim, regardless of the airdrop amount.
 
@@ -62,7 +72,7 @@ regardless of the interface used to interact with the Sablier Protocol.
 This fee is charged via the `msg.value` field. Basically, for the contract to accept a transaction, the `msg.value` must
 be greater than or equal to the fee.
 
-:::warning Important
+:::warning
 
 The Contract Fee acts as a **minimum fee**, so it is NOT cumulative with the Interface Fee. You will pay the higher of
 the two fees.
@@ -83,7 +93,7 @@ Like the Interface fee, this fee is paid in the native gas token, e.g., ETH on E
 The fee can only be applied to airdrops created with [Merkle Airdrops v1.3](/guides/airdrops/deployments) (or later).
 Airdrop campaigns created with earlier versions do not incur any claim fee.
 
-:::tip[What is the fee?]
+:::info[What is the fee?]
 
 The fee is ~**$1** (in the gas token) per claim, regardless of the airdrop amount.
 
