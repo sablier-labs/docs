@@ -25,6 +25,7 @@ sequenceDiagram
 
   Airdrop recipient ->> MerkleLL: claim()
   MerkleLL -->> SablierLockup: Create vesting stream
+  MerkleLL -->> SablierLockup: Transfer tokens
   SablierLockup -->> Airdrop recipient: Mint Stream NFT
 ```
 
