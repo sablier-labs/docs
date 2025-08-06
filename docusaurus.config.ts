@@ -19,6 +19,23 @@ const config: Config = {
   tagline: "Documentation and guides for Sablier",
   title: "Sablier Docs",
   url: "https://docs.sablier.com",
+  headTags: [
+    {
+      tagName: "link",
+      attributes: {
+        rel: "stylesheet",
+        href: "https://cdn.jsdelivr.net/npm/@docsearch/css@beta",
+      },
+    },
+    {
+      tagName: "link",
+      attributes: {
+        rel: "preconnect",
+        href: "https://9L7N2RKHWE-dsn.algolia.net",
+        crossorigin: "true",
+      },
+    },
+  ],
   presets: [
     [
       "classic",
@@ -243,11 +260,6 @@ const config: Config = {
   staticDirectories: ["static"],
   themes: ["@docusaurus/theme-mermaid", "docusaurus-theme-github-codeblock"],
   themeConfig: {
-    algolia: {
-      appId: "9L7N2RKHWE",
-      apiKey: "4fc960889335dad720b725a02667d46a",
-      indexName: "sablierdocs",
-    },
     codeblock: {
       showGithubLink: false,
     },
