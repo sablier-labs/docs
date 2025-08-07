@@ -8,7 +8,7 @@ export default function SearchBarWrapper() {
     <DocSearch
       appId={AlgoliaSearch.APP_ID}
       apiKey={AlgoliaSearch.SEARCH_API_KEY}
-      askAi={AlgoliaSearch.ALGOLIA_ASSISTANT_ID}
+      askAi={AlgoliaSearch.ASSISTANT_ID}
       indexName={AlgoliaSearch.INDEX_NAME}
     />
   );
