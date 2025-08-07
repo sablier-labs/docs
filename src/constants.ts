@@ -1,3 +1,11 @@
+// See https://dashboard.algolia.com/apps/9L7N2RKHWE/.
+export const AlgoliaSearch = {
+  ALGOLIA_ASSISTANT_ID: "vZ3Iz7SRYcv1",
+  APP_ID: "9L7N2RKHWE",
+  INDEX_NAME: "sablierdocs",
+  SEARCH_API_KEY: "4fc960889335dad720b725a02667d46a",
+};
+
 export const Links = {
   Forms: {
     CALL: "https://forms.gle/6z3XyfSLXDoRghG99",

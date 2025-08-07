@@ -4,6 +4,7 @@ import { themes as prismThemes } from "prism-react-renderer";
 import rehypeKatex from "rehype-katex";
 import remarkGfm from "remark-gfm";
 import remarkMath from "remark-math";
+import { AlgoliaSearch } from "./src/constants";
 
 const config: Config = {
   baseUrl: "/",
@@ -31,7 +32,7 @@ const config: Config = {
       tagName: "link",
       attributes: {
         rel: "preconnect",
-        href: "https://9L7N2RKHWE-dsn.algolia.net",
+        href: `https://${AlgoliaSearch.APP_ID}-dsn.algolia.net`,
         crossorigin: "true",
       },
     },
