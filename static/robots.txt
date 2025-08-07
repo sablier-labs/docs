@@ -1,3 +1,5 @@
-# Allow everything to be crawled except Cloudflare's /cdn-cgi/
+User-agent: Algolia Crawler
+Allow: /
+
 User-agent: *
 Disallow: /cdn-cgi/
