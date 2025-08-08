@@ -1,5 +1,5 @@
-// See https://dashboard.algolia.com/apps/9L7N2RKHWE/.
-export const AlgoliaSearch = {
+/** @see  https://dashboard.algolia.com/apps/9L7N2RKHWE */
+export const Algolia = {
   APP_ID: "9L7N2RKHWE",
   ASSISTANT_ID: "vZ3Iz7SRYcv1",
   INDEX_NAME: "sablierdocs",
