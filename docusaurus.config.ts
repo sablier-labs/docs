@@ -4,6 +4,7 @@ import { themes as prismThemes } from "prism-react-renderer";
 import rehypeKatex from "rehype-katex";
 import remarkGfm from "remark-gfm";
 import remarkMath from "remark-math";
+import { Algolia } from "./src/constants";
 
 const config: Config = {
   baseUrl: "/",
@@ -19,6 +20,23 @@ const config: Config = {
   tagline: "Documentation and guides for Sablier",
   title: "Sablier Docs",
   url: "https://docs.sablier.com",
+  headTags: [
+    {
+      tagName: "link",
+      attributes: {
+        rel: "stylesheet",
+        href: "https://cdn.jsdelivr.net/npm/@docsearch/css@beta",
+      },
+    },
+    {
+      tagName: "link",
+      attributes: {
+        rel: "preconnect",
+        href: `https://${Algolia.APP_ID}-dsn.algolia.net`,
+        crossorigin: "true",
+      },
+    },
+  ],
   presets: [
     [
       "classic",
@@ -243,11 +261,6 @@ const config: Config = {
   staticDirectories: ["static"],
   themes: ["@docusaurus/theme-mermaid", "docusaurus-theme-github-codeblock"],
   themeConfig: {
-    algolia: {
-      appId: "9L7N2RKHWE",
-      apiKey: "4fc960889335dad720b725a02667d46a",
-      indexName: "sablierdocs",
-    },
     codeblock: {
       showGithubLink: false,
     },

@@ -4,6 +4,8 @@
  * work well for content-centric websites.
  */
 
+@import "@docsearch/css";
+
 /* You can override the default Infima variables here. */
 :root {
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
@@ -20,8 +22,9 @@
 
   --ifm-container-width: var(--sablier-size-content);
   --ifm-footer-background-color: var(--sablier-color-dark100);
-  --ifm-font-family-base: "Urbanist", system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans,
-    sans-serif, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
+  --ifm-font-family-base:
+    "Urbanist", system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, sans-serif,
+    BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
     "Segoe UI Symbol";
   --ifm-navbar-background-color: var(--sablier-color-background);
 }
@@ -91,6 +94,25 @@ html[data-theme="dark"] .alert--info {
     var(--ifm-color-emphasis-200) 0%,
     var(--ifm-color-emphasis-100) 100%
   );
+}
+
+.DocSearch-Button {
+  width: 200px !important;
+  max-width: 200px !important;
+}
+
+@media (max-width: 768px) {
+  .DocSearch-Button {
+    width: 150px !important;
+    max-width: 150px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .DocSearch-Button {
+    width: 120px !important;
+    max-width: 120px !important;
+  }
 }
 
 .docusaurus-highlight-code-line {
