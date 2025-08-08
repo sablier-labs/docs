@@ -3,6 +3,7 @@ export const Algolia = {
   APP_ID: "9L7N2RKHWE",
   ASSISTANT_ID: "vZ3Iz7SRYcv1",
   INDEX_NAME: "sablierdocs",
+  MARKDOWN_INDEX_NAME: "sablierdocs-markdown",
   SEARCH_API_KEY: "4fc960889335dad720b725a02667d46a",
 };
 
