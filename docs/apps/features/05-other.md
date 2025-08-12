@@ -21,14 +21,17 @@ example:
 
 ![Farcaster Frame](/img/frame/farcaster.webp)
 
-We created our https://x.com/razgraf/status/1779208294264955316! You can share these in your favorite Farcaster client
-to interact directly with Sablier.
+You can share our [Frames](https://x.com/razgraf/status/1779208294264955316) to interact directly with Sablier from your
+favorite Farcaster client.
 
-| Latest                                                  | Stream by ID                                            |
-| ------------------------------------------------------- | ------------------------------------------------------- |
-| ![Farcaster Frame Latest](/img/frame/frame-latest.webp) | ![Farcaster Frame Stream](/img/frame/frame-stream.webp) |
-| Keep tabs on the latest streams                         | Share stream previews using their ID                    |
-| app.sablier.com/api/frame/latest/home                   | app.sablier.com/api/frame/stream/LL2-11155111-3         |
+| Latest                                                  | Stream by ID                                              |
+| ------------------------------------------------------- | --------------------------------------------------------- |
+| ![Farcaster Frame Latest](/img/frame/frame-latest.webp) | ![Farcaster Frame Stream](/img/frame/frame-stream.webp)   |
+| Keep tabs on the latest streams                         | Share stream previews using their ID                      |
+| [app.sablier.com/api/frame/latest/home][latest]         | [app.sablier.com/api/frame/stream/LL2-11155111-3][stream] |
+
+[latest]: https://app.sablier.com/api/frame/latest/home
+[stream]: https://app.sablier.com/api/frame/stream/LL2-11155111-3
 
 :::note
 
