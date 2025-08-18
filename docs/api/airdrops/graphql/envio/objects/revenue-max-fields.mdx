@@ -1,0 +1,92 @@
+---
+id: revenue-max-fields
+title: Revenue_max_fields
+---
+
+<head>
+  <meta content="noindex" name="robots" />
+  <meta charset="utf-8" />
+</head>
+
+export const Bullet = () => (
+  <>
+    <span style={{ fontWeight: "normal", fontSize: ".5em", color: "var(--ifm-color-secondary-darkest)" }}>
+      &nbsp;●&nbsp;
+    </span>
+  </>
+);
+
+export const SpecifiedBy = (props) => (
+  <>
+    Specification
+    <a
+      className="link"
+      style={{ fontSize: "1.5em", paddingLeft: "4px" }}
+      target="_blank"
+      href={props.url}
+      title={"Specified by " + props.url}
+    >
+      ⎘
+    </a>
+  </>
+);
+
+export const Badge = (props) => (
+  <>
+    <span className={props.class}>{props.text}</span>
+  </>
+);
+
+import { useState } from "react";
+
+export const Details = ({ dataOpen, dataClose, children, startOpen = false }) => {
+  const [open, setOpen] = useState(startOpen);
+  return (
+    <details
+      {...(open ? { open: true } : {})}
+      className="details"
+      style={{ border: "none", boxShadow: "none", background: "var(--ifm-background-color)" }}
+    >
+      <summary
+        onClick={(e) => {
+          e.preventDefault();
+          setOpen((open) => !open);
+        }}
+        style={{ listStyle: "none" }}
+      >
+        {open ? dataOpen : dataClose}
+      </summary>
+      {open && children}
+    </details>
+  );
+};
+
+aggregate max on columns
+
+```graphql
+type Revenue_max_fields {
+  amount: float8
+  chainId: numeric
+  currency: String
+  date: String
+  dateTimestamp: timestamptz
+  db_write_timestamp: timestamp
+  id: String
+}
+```
+
+### Fields
+
+#### [<code style={{ fontWeight: 'normal' }}>Revenue_max_fields.<b>amount</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>float8</b></code>](/docs/api/airdrops/graphql/envio/scalars/float-8.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Revenue_max_fields.<b>chainId</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>numeric</b></code>](/docs/api/airdrops/graphql/envio/scalars/numeric.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Revenue_max_fields.<b>currency</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String</b></code>](/docs/api/airdrops/graphql/envio/scalars/string.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Revenue_max_fields.<b>date</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String</b></code>](/docs/api/airdrops/graphql/envio/scalars/string.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Revenue_max_fields.<b>dateTimestamp</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>timestamptz</b></code>](/docs/api/airdrops/graphql/envio/scalars/timestamptz.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Revenue_max_fields.<b>db_write_timestamp</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>timestamp</b></code>](/docs/api/airdrops/graphql/envio/scalars/timestamp.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Revenue_max_fields.<b>id</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String</b></code>](/docs/api/airdrops/graphql/envio/scalars/string.mdx) <Badge class="badge badge--secondary " text="scalar"/>

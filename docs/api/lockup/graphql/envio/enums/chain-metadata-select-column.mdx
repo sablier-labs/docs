@@ -1,0 +1,126 @@
+---
+id: chain-metadata-select-column
+title: chain_metadata_select_column
+---
+
+<head>
+  <meta content="noindex" name="robots" />
+  <meta charset="utf-8" />
+</head>
+
+export const Bullet = () => (
+  <>
+    <span style={{ fontWeight: "normal", fontSize: ".5em", color: "var(--ifm-color-secondary-darkest)" }}>
+      &nbsp;●&nbsp;
+    </span>
+  </>
+);
+
+export const SpecifiedBy = (props) => (
+  <>
+    Specification
+    <a
+      className="link"
+      style={{ fontSize: "1.5em", paddingLeft: "4px" }}
+      target="_blank"
+      href={props.url}
+      title={"Specified by " + props.url}
+    >
+      ⎘
+    </a>
+  </>
+);
+
+export const Badge = (props) => (
+  <>
+    <span className={props.class}>{props.text}</span>
+  </>
+);
+
+import { useState } from "react";
+
+export const Details = ({ dataOpen, dataClose, children, startOpen = false }) => {
+  const [open, setOpen] = useState(startOpen);
+  return (
+    <details
+      {...(open ? { open: true } : {})}
+      className="details"
+      style={{ border: "none", boxShadow: "none", background: "var(--ifm-background-color)" }}
+    >
+      <summary
+        onClick={(e) => {
+          e.preventDefault();
+          setOpen((open) => !open);
+        }}
+        style={{ listStyle: "none" }}
+      >
+        {open ? dataOpen : dataClose}
+      </summary>
+      {open && children}
+    </details>
+  );
+};
+
+select columns of table "chain_metadata"
+
+```graphql
+enum chain_metadata_select_column {
+  block_height
+  chain_id
+  end_block
+  first_event_block_number
+  is_hyper_sync
+  latest_fetched_block_number
+  latest_processed_block
+  num_batches_fetched
+  num_events_processed
+  start_block
+  timestamp_caught_up_to_head_or_endblock
+}
+```
+
+### Values
+
+#### [<code style={{ fontWeight: 'normal' }}>chain_metadata_select_column.<b>block_height</b></code>](#)
+
+column name
+
+#### [<code style={{ fontWeight: 'normal' }}>chain_metadata_select_column.<b>chain_id</b></code>](#)
+
+column name
+
+#### [<code style={{ fontWeight: 'normal' }}>chain_metadata_select_column.<b>end_block</b></code>](#)
+
+column name
+
+#### [<code style={{ fontWeight: 'normal' }}>chain_metadata_select_column.<b>first_event_block_number</b></code>](#)
+
+column name
+
+#### [<code style={{ fontWeight: 'normal' }}>chain_metadata_select_column.<b>is_hyper_sync</b></code>](#)
+
+column name
+
+#### [<code style={{ fontWeight: 'normal' }}>chain_metadata_select_column.<b>latest_fetched_block_number</b></code>](#)
+
+column name
+
+#### [<code style={{ fontWeight: 'normal' }}>chain_metadata_select_column.<b>latest_processed_block</b></code>](#)
+
+column name
+
+#### [<code style={{ fontWeight: 'normal' }}>chain_metadata_select_column.<b>num_batches_fetched</b></code>](#)
+
+column name
+
+#### [<code style={{ fontWeight: 'normal' }}>chain_metadata_select_column.<b>num_events_processed</b></code>](#)
+
+column name
+
+#### [<code style={{ fontWeight: 'normal' }}>chain_metadata_select_column.<b>start_block</b></code>](#)
+
+column name
+
+#### [<code style={{ fontWeight: 'normal' }}>chain_metadata_select_column.<b>timestamp_caught_up_to_head_or_endblock</b></code>](#)
+
+column name

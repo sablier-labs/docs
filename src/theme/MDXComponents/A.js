@@ -1,4 +1,3 @@
-/* eslint-disable react/prop-types */
 import styled from "@emotion/styled";
 import ArrowIcon from "@heroicons/react/24/outline/ArrowTopRightOnSquareIcon";
 import A from "@theme-original/MDXComponents/A";
@@ -26,7 +25,7 @@ export default function AWrapper(props) {
     }
 
     if (typeof value === "string") {
-      if (!value.startsWith("0x") && Number.isInteger(parseInt(value))) {
+      if (!value.startsWith("0x") && Number.isInteger(parseInt(value, 10))) {
         return true;
       }
       if (value === "↩") {
@@ -38,15 +37,13 @@ export default function AWrapper(props) {
   }, [props]);
 
   return (
-    <>
-      <A {...props} style={{ display: "inline-flex" }}>
-        {props.children || null}
-        {!isIndependent && (
-          <Arrow>
-            <ArrowIcon />
-          </Arrow>
-        )}
-      </A>
-    </>
+    <A {...props} style={{ display: "inline-flex" }}>
+      {props.children || null}
+      {!isIndependent && (
+        <Arrow>
+          <ArrowIcon />
+        </Arrow>
+      )}
+    </A>
   );
 }

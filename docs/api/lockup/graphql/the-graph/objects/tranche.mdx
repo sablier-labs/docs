@@ -1,0 +1,112 @@
+---
+id: tranche
+title: Tranche
+---
+
+<head>
+  <meta content="noindex" name="robots" />
+  <meta charset="utf-8" />
+</head>
+
+export const Bullet = () => (
+  <>
+    <span style={{ fontWeight: "normal", fontSize: ".5em", color: "var(--ifm-color-secondary-darkest)" }}>
+      &nbsp;●&nbsp;
+    </span>
+  </>
+);
+
+export const SpecifiedBy = (props) => (
+  <>
+    Specification
+    <a
+      className="link"
+      style={{ fontSize: "1.5em", paddingLeft: "4px" }}
+      target="_blank"
+      href={props.url}
+      title={"Specified by " + props.url}
+    >
+      ⎘
+    </a>
+  </>
+);
+
+export const Badge = (props) => (
+  <>
+    <span className={props.class}>{props.text}</span>
+  </>
+);
+
+import { useState } from "react";
+
+export const Details = ({ dataOpen, dataClose, children, startOpen = false }) => {
+  const [open, setOpen] = useState(startOpen);
+  return (
+    <details
+      {...(open ? { open: true } : {})}
+      className="details"
+      style={{ border: "none", boxShadow: "none", background: "var(--ifm-background-color)" }}
+    >
+      <summary
+        onClick={(e) => {
+          e.preventDefault();
+          setOpen((open) => !open);
+        }}
+        style={{ listStyle: "none" }}
+      >
+        {open ? dataOpen : dataClose}
+      </summary>
+      {open && children}
+    </details>
+  );
+};
+
+See https://docs.sablier.com/concepts/lockup/tranches
+
+```graphql
+type Tranche {
+  id: String!
+  amount: BigInt!
+  endAmount: BigInt!
+  endTime: BigInt!
+  position: BigInt!
+  startAmount: BigInt!
+  startTime: BigInt!
+  stream: Stream!
+}
+```
+
+### Fields
+
+#### [<code style={{ fontWeight: 'normal' }}>Tranche.<b>id</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String!</b></code>](/docs/api/lockup/graphql/the-graph/scalars/string.mdx) <Badge class="badge badge--secondary badge--non_null" text="non-null"/> <Badge class="badge badge--secondary " text="scalar"/>
+
+Unique identifier: `tranche-{streamId}-{position}`
+
+#### [<code style={{ fontWeight: 'normal' }}>Tranche.<b>amount</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>BigInt!</b></code>](/docs/api/lockup/graphql/the-graph/scalars/big-int.mdx) <Badge class="badge badge--secondary badge--non_null" text="non-null"/> <Badge class="badge badge--secondary " text="scalar"/>
+
+Amount distributed by this tranche.
+
+#### [<code style={{ fontWeight: 'normal' }}>Tranche.<b>endAmount</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>BigInt!</b></code>](/docs/api/lockup/graphql/the-graph/scalars/big-int.mdx) <Badge class="badge badge--secondary badge--non_null" text="non-null"/> <Badge class="badge badge--secondary " text="scalar"/>
+
+Total amount distributed at `endTime`. This is the sum of this tranche's amount and all previous tranches' amounts.
+
+#### [<code style={{ fontWeight: 'normal' }}>Tranche.<b>endTime</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>BigInt!</b></code>](/docs/api/lockup/graphql/the-graph/scalars/big-int.mdx) <Badge class="badge badge--secondary badge--non_null" text="non-null"/> <Badge class="badge badge--secondary " text="scalar"/>
+
+Unix timestamp indicating the end of the tranche.
+
+#### [<code style={{ fontWeight: 'normal' }}>Tranche.<b>position</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>BigInt!</b></code>](/docs/api/lockup/graphql/the-graph/scalars/big-int.mdx) <Badge class="badge badge--secondary badge--non_null" text="non-null"/> <Badge class="badge badge--secondary " text="scalar"/>
+
+Position of the tranche inside the array.
+
+#### [<code style={{ fontWeight: 'normal' }}>Tranche.<b>startAmount</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>BigInt!</b></code>](/docs/api/lockup/graphql/the-graph/scalars/big-int.mdx) <Badge class="badge badge--secondary badge--non_null" text="non-null"/> <Badge class="badge badge--secondary " text="scalar"/>
+
+Total amount distributed by the stream at `startTime`. This is the sum of all previous tranches' amounts.
+
+#### [<code style={{ fontWeight: 'normal' }}>Tranche.<b>startTime</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>BigInt!</b></code>](/docs/api/lockup/graphql/the-graph/scalars/big-int.mdx) <Badge class="badge badge--secondary badge--non_null" text="non-null"/> <Badge class="badge badge--secondary " text="scalar"/>
+
+Unix timestamp indicating the start of the tranche.
+This is also the end time of the previous tranche or, if this is the first tranche, it is the start time of the stream.
+
+#### [<code style={{ fontWeight: 'normal' }}>Tranche.<b>stream</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Stream!</b></code>](/docs/api/lockup/graphql/the-graph/objects/stream.mdx) <Badge class="badge badge--secondary badge--non_null" text="non-null"/> <Badge class="badge badge--secondary " text="object"/>
+
+The stream in which this tranche was created.

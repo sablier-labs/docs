@@ -1,0 +1,104 @@
+---
+id: user-transaction-aggregate-bool-exp
+title: UserTransaction_aggregate_bool_exp
+---
+
+<head>
+  <meta content="noindex" name="robots" />
+  <meta charset="utf-8" />
+</head>
+
+export const Bullet = () => (
+  <>
+    <span style={{ fontWeight: "normal", fontSize: ".5em", color: "var(--ifm-color-secondary-darkest)" }}>
+      &nbsp;●&nbsp;
+    </span>
+  </>
+);
+
+export const SpecifiedBy = (props) => (
+  <>
+    Specification
+    <a
+      className="link"
+      style={{ fontSize: "1.5em", paddingLeft: "4px" }}
+      target="_blank"
+      href={props.url}
+      title={"Specified by " + props.url}
+    >
+      ⎘
+    </a>
+  </>
+);
+
+export const Badge = (props) => (
+  <>
+    <span className={props.class}>{props.text}</span>
+  </>
+);
+
+import { useState } from "react";
+
+export const Details = ({ dataOpen, dataClose, children, startOpen = false }) => {
+  const [open, setOpen] = useState(startOpen);
+  return (
+    <details
+      {...(open ? { open: true } : {})}
+      className="details"
+      style={{ border: "none", boxShadow: "none", background: "var(--ifm-background-color)" }}
+    >
+      <summary
+        onClick={(e) => {
+          e.preventDefault();
+          setOpen((open) => !open);
+        }}
+        style={{ listStyle: "none" }}
+      >
+        {open ? dataOpen : dataClose}
+      </summary>
+      {open && children}
+    </details>
+  );
+};
+
+No description
+
+```graphql
+input UserTransaction_aggregate_bool_exp {
+  avg: UserTransaction_aggregate_bool_exp_avg
+  bool_and: UserTransaction_aggregate_bool_exp_bool_and
+  bool_or: UserTransaction_aggregate_bool_exp_bool_or
+  corr: UserTransaction_aggregate_bool_exp_corr
+  count: UserTransaction_aggregate_bool_exp_count
+  covar_samp: UserTransaction_aggregate_bool_exp_covar_samp
+  max: UserTransaction_aggregate_bool_exp_max
+  min: UserTransaction_aggregate_bool_exp_min
+  stddev_samp: UserTransaction_aggregate_bool_exp_stddev_samp
+  sum: UserTransaction_aggregate_bool_exp_sum
+  var_samp: UserTransaction_aggregate_bool_exp_var_samp
+}
+```
+
+### Fields
+
+#### [<code style={{ fontWeight: 'normal' }}>UserTransaction_aggregate_bool_exp.<b>avg</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>UserTransaction_aggregate_bool_exp_avg</b></code>](/docs/api/lockup/graphql/envio/inputs/user-transaction-aggregate-bool-exp-avg.mdx) <Badge class="badge badge--secondary " text="input"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>UserTransaction_aggregate_bool_exp.<b>bool_and</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>UserTransaction_aggregate_bool_exp_bool_and</b></code>](/docs/api/lockup/graphql/envio/inputs/user-transaction-aggregate-bool-exp-bool-and.mdx) <Badge class="badge badge--secondary " text="input"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>UserTransaction_aggregate_bool_exp.<b>bool_or</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>UserTransaction_aggregate_bool_exp_bool_or</b></code>](/docs/api/lockup/graphql/envio/inputs/user-transaction-aggregate-bool-exp-bool-or.mdx) <Badge class="badge badge--secondary " text="input"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>UserTransaction_aggregate_bool_exp.<b>corr</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>UserTransaction_aggregate_bool_exp_corr</b></code>](/docs/api/lockup/graphql/envio/inputs/user-transaction-aggregate-bool-exp-corr.mdx) <Badge class="badge badge--secondary " text="input"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>UserTransaction_aggregate_bool_exp.<b>count</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>UserTransaction_aggregate_bool_exp_count</b></code>](/docs/api/lockup/graphql/envio/inputs/user-transaction-aggregate-bool-exp-count.mdx) <Badge class="badge badge--secondary " text="input"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>UserTransaction_aggregate_bool_exp.<b>covar_samp</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>UserTransaction_aggregate_bool_exp_covar_samp</b></code>](/docs/api/lockup/graphql/envio/inputs/user-transaction-aggregate-bool-exp-covar-samp.mdx) <Badge class="badge badge--secondary " text="input"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>UserTransaction_aggregate_bool_exp.<b>max</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>UserTransaction_aggregate_bool_exp_max</b></code>](/docs/api/lockup/graphql/envio/inputs/user-transaction-aggregate-bool-exp-max.mdx) <Badge class="badge badge--secondary " text="input"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>UserTransaction_aggregate_bool_exp.<b>min</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>UserTransaction_aggregate_bool_exp_min</b></code>](/docs/api/lockup/graphql/envio/inputs/user-transaction-aggregate-bool-exp-min.mdx) <Badge class="badge badge--secondary " text="input"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>UserTransaction_aggregate_bool_exp.<b>stddev_samp</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>UserTransaction_aggregate_bool_exp_stddev_samp</b></code>](/docs/api/lockup/graphql/envio/inputs/user-transaction-aggregate-bool-exp-stddev-samp.mdx) <Badge class="badge badge--secondary " text="input"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>UserTransaction_aggregate_bool_exp.<b>sum</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>UserTransaction_aggregate_bool_exp_sum</b></code>](/docs/api/lockup/graphql/envio/inputs/user-transaction-aggregate-bool-exp-sum.mdx) <Badge class="badge badge--secondary " text="input"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>UserTransaction_aggregate_bool_exp.<b>var_samp</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>UserTransaction_aggregate_bool_exp_var_samp</b></code>](/docs/api/lockup/graphql/envio/inputs/user-transaction-aggregate-bool-exp-var-samp.mdx) <Badge class="badge badge--secondary " text="input"/>

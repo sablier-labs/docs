@@ -1,0 +1,83 @@
+---
+id: user-transaction-aggregate-bool-exp-stddev-samp
+title: UserTransaction_aggregate_bool_exp_stddev_samp
+---
+
+<head>
+  <meta content="noindex" name="robots" />
+  <meta charset="utf-8" />
+</head>
+
+export const Bullet = () => (
+  <>
+    <span style={{ fontWeight: "normal", fontSize: ".5em", color: "var(--ifm-color-secondary-darkest)" }}>
+      &nbsp;●&nbsp;
+    </span>
+  </>
+);
+
+export const SpecifiedBy = (props) => (
+  <>
+    Specification
+    <a
+      className="link"
+      style={{ fontSize: "1.5em", paddingLeft: "4px" }}
+      target="_blank"
+      href={props.url}
+      title={"Specified by " + props.url}
+    >
+      ⎘
+    </a>
+  </>
+);
+
+export const Badge = (props) => (
+  <>
+    <span className={props.class}>{props.text}</span>
+  </>
+);
+
+import { useState } from "react";
+
+export const Details = ({ dataOpen, dataClose, children, startOpen = false }) => {
+  const [open, setOpen] = useState(startOpen);
+  return (
+    <details
+      {...(open ? { open: true } : {})}
+      className="details"
+      style={{ border: "none", boxShadow: "none", background: "var(--ifm-background-color)" }}
+    >
+      <summary
+        onClick={(e) => {
+          e.preventDefault();
+          setOpen((open) => !open);
+        }}
+        style={{ listStyle: "none" }}
+      >
+        {open ? dataOpen : dataClose}
+      </summary>
+      {open && children}
+    </details>
+  );
+};
+
+No description
+
+```graphql
+input UserTransaction_aggregate_bool_exp_stddev_samp {
+  arguments: UserTransaction_select_column_UserTransaction_aggregate_bool_exp_stddev_samp_arguments_columns!
+  distinct: Boolean
+  filter: UserTransaction_bool_exp
+  predicate: float8_comparison_exp!
+}
+```
+
+### Fields
+
+#### [<code style={{ fontWeight: 'normal' }}>UserTransaction_aggregate_bool_exp_stddev_samp.<b>arguments</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>UserTransaction_select_column_UserTransaction_aggregate_bool_exp_stddev_samp_arguments_columns!</b></code>](/docs/api/lockup/graphql/envio/enums/user-transaction-select-column-user-transaction-aggregate-bool-exp-stddev-samp-arguments-columns.mdx) <Badge class="badge badge--secondary badge--non_null" text="non-null"/> <Badge class="badge badge--secondary " text="enum"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>UserTransaction_aggregate_bool_exp_stddev_samp.<b>distinct</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Boolean</b></code>](/docs/api/lockup/graphql/envio/scalars/boolean.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>UserTransaction_aggregate_bool_exp_stddev_samp.<b>filter</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>UserTransaction_bool_exp</b></code>](/docs/api/lockup/graphql/envio/inputs/user-transaction-bool-exp.mdx) <Badge class="badge badge--secondary " text="input"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>UserTransaction_aggregate_bool_exp_stddev_samp.<b>predicate</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>float8_comparison_exp!</b></code>](/docs/api/lockup/graphql/envio/inputs/float-8-comparison-exp.mdx) <Badge class="badge badge--secondary badge--non_null" text="non-null"/> <Badge class="badge badge--secondary " text="input"/>

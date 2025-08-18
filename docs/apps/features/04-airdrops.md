@@ -13,7 +13,7 @@ distribute tokens to a large number of users in a fair and efficient manner. Sta
 
 ## Airstreams (Vested Airdrops)
 
-![Banner Airdrops Vesting](/banners/docs-airdrops-airstreams.webp)
+![Banner Airdrops Vesting](/img/banners/docs-airdrops-airstreams.webp)
 
 **Airdrops should be vested!**
 
@@ -25,7 +25,7 @@ their airdrops as vesting streams.
 
 ## Instant Airdrops
 
-![Banner Airdrops Instant](/banners/docs-airdrops-instant.webp)
+![Banner Airdrops Instant](/img/banners/docs-airdrops-instant.webp)
 
 Sablier also offers an instant airdrop solution, meaning the tokens are immediately released to the recipients upon
 claiming.

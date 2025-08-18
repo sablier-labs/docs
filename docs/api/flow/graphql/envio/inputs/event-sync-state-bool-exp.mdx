@@ -1,0 +1,95 @@
+---
+id: event-sync-state-bool-exp
+title: event_sync_state_bool_exp
+---
+
+<head>
+  <meta content="noindex" name="robots" />
+  <meta charset="utf-8" />
+</head>
+
+export const Bullet = () => (
+  <>
+    <span style={{ fontWeight: "normal", fontSize: ".5em", color: "var(--ifm-color-secondary-darkest)" }}>
+      &nbsp;●&nbsp;
+    </span>
+  </>
+);
+
+export const SpecifiedBy = (props) => (
+  <>
+    Specification
+    <a
+      className="link"
+      style={{ fontSize: "1.5em", paddingLeft: "4px" }}
+      target="_blank"
+      href={props.url}
+      title={"Specified by " + props.url}
+    >
+      ⎘
+    </a>
+  </>
+);
+
+export const Badge = (props) => (
+  <>
+    <span className={props.class}>{props.text}</span>
+  </>
+);
+
+import { useState } from "react";
+
+export const Details = ({ dataOpen, dataClose, children, startOpen = false }) => {
+  const [open, setOpen] = useState(startOpen);
+  return (
+    <details
+      {...(open ? { open: true } : {})}
+      className="details"
+      style={{ border: "none", boxShadow: "none", background: "var(--ifm-background-color)" }}
+    >
+      <summary
+        onClick={(e) => {
+          e.preventDefault();
+          setOpen((open) => !open);
+        }}
+        style={{ listStyle: "none" }}
+      >
+        {open ? dataOpen : dataClose}
+      </summary>
+      {open && children}
+    </details>
+  );
+};
+
+Boolean expression to filter rows from the table "event_sync_state". All fields are combined with a logical 'AND'.
+
+```graphql
+input event_sync_state_bool_exp {
+  _and: [event_sync_state_bool_exp!]
+  _not: event_sync_state_bool_exp
+  _or: [event_sync_state_bool_exp!]
+  block_number: Int_comparison_exp
+  block_timestamp: Int_comparison_exp
+  chain_id: Int_comparison_exp
+  is_pre_registering_dynamic_contracts: Boolean_comparison_exp
+  log_index: Int_comparison_exp
+}
+```
+
+### Fields
+
+#### [<code style={{ fontWeight: 'normal' }}>event_sync_state_bool_exp.<b>\_and</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>[event_sync_state_bool_exp!]</b></code>](/docs/api/flow/graphql/envio/inputs/event-sync-state-bool-exp.mdx) <Badge class="badge badge--secondary " text="list"/> <Badge class="badge badge--secondary " text="input"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>event_sync_state_bool_exp.<b>\_not</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>event_sync_state_bool_exp</b></code>](/docs/api/flow/graphql/envio/inputs/event-sync-state-bool-exp.mdx) <Badge class="badge badge--secondary " text="input"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>event_sync_state_bool_exp.<b>\_or</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>[event_sync_state_bool_exp!]</b></code>](/docs/api/flow/graphql/envio/inputs/event-sync-state-bool-exp.mdx) <Badge class="badge badge--secondary " text="list"/> <Badge class="badge badge--secondary " text="input"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>event_sync_state_bool_exp.<b>block_number</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Int_comparison_exp</b></code>](/docs/api/flow/graphql/envio/inputs/int-comparison-exp.mdx) <Badge class="badge badge--secondary " text="input"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>event_sync_state_bool_exp.<b>block_timestamp</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Int_comparison_exp</b></code>](/docs/api/flow/graphql/envio/inputs/int-comparison-exp.mdx) <Badge class="badge badge--secondary " text="input"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>event_sync_state_bool_exp.<b>chain_id</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Int_comparison_exp</b></code>](/docs/api/flow/graphql/envio/inputs/int-comparison-exp.mdx) <Badge class="badge badge--secondary " text="input"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>event_sync_state_bool_exp.<b>is_pre_registering_dynamic_contracts</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Boolean_comparison_exp</b></code>](/docs/api/flow/graphql/envio/inputs/boolean-comparison-exp.mdx) <Badge class="badge badge--secondary " text="input"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>event_sync_state_bool_exp.<b>log_index</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Int_comparison_exp</b></code>](/docs/api/flow/graphql/envio/inputs/int-comparison-exp.mdx) <Badge class="badge badge--secondary " text="input"/>

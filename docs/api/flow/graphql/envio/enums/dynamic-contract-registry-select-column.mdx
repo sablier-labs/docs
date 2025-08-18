@@ -1,0 +1,121 @@
+---
+id: dynamic-contract-registry-select-column
+title: dynamic_contract_registry_select_column
+---
+
+<head>
+  <meta content="noindex" name="robots" />
+  <meta charset="utf-8" />
+</head>
+
+export const Bullet = () => (
+  <>
+    <span style={{ fontWeight: "normal", fontSize: ".5em", color: "var(--ifm-color-secondary-darkest)" }}>
+      &nbsp;●&nbsp;
+    </span>
+  </>
+);
+
+export const SpecifiedBy = (props) => (
+  <>
+    Specification
+    <a
+      className="link"
+      style={{ fontSize: "1.5em", paddingLeft: "4px" }}
+      target="_blank"
+      href={props.url}
+      title={"Specified by " + props.url}
+    >
+      ⎘
+    </a>
+  </>
+);
+
+export const Badge = (props) => (
+  <>
+    <span className={props.class}>{props.text}</span>
+  </>
+);
+
+import { useState } from "react";
+
+export const Details = ({ dataOpen, dataClose, children, startOpen = false }) => {
+  const [open, setOpen] = useState(startOpen);
+  return (
+    <details
+      {...(open ? { open: true } : {})}
+      className="details"
+      style={{ border: "none", boxShadow: "none", background: "var(--ifm-background-color)" }}
+    >
+      <summary
+        onClick={(e) => {
+          e.preventDefault();
+          setOpen((open) => !open);
+        }}
+        style={{ listStyle: "none" }}
+      >
+        {open ? dataOpen : dataClose}
+      </summary>
+      {open && children}
+    </details>
+  );
+};
+
+select columns of table "dynamic_contract_registry"
+
+```graphql
+enum dynamic_contract_registry_select_column {
+  chain_id
+  contract_address
+  contract_type
+  id
+  registering_event_block_number
+  registering_event_block_timestamp
+  registering_event_contract_name
+  registering_event_log_index
+  registering_event_name
+  registering_event_src_address
+}
+```
+
+### Values
+
+#### [<code style={{ fontWeight: 'normal' }}>dynamic_contract_registry_select_column.<b>chain_id</b></code>](#)
+
+column name
+
+#### [<code style={{ fontWeight: 'normal' }}>dynamic_contract_registry_select_column.<b>contract_address</b></code>](#)
+
+column name
+
+#### [<code style={{ fontWeight: 'normal' }}>dynamic_contract_registry_select_column.<b>contract_type</b></code>](#)
+
+column name
+
+#### [<code style={{ fontWeight: 'normal' }}>dynamic_contract_registry_select_column.<b>id</b></code>](#)
+
+column name
+
+#### [<code style={{ fontWeight: 'normal' }}>dynamic_contract_registry_select_column.<b>registering_event_block_number</b></code>](#)
+
+column name
+
+#### [<code style={{ fontWeight: 'normal' }}>dynamic_contract_registry_select_column.<b>registering_event_block_timestamp</b></code>](#)
+
+column name
+
+#### [<code style={{ fontWeight: 'normal' }}>dynamic_contract_registry_select_column.<b>registering_event_contract_name</b></code>](#)
+
+column name
+
+#### [<code style={{ fontWeight: 'normal' }}>dynamic_contract_registry_select_column.<b>registering_event_log_index</b></code>](#)
+
+column name
+
+#### [<code style={{ fontWeight: 'normal' }}>dynamic_contract_registry_select_column.<b>registering_event_name</b></code>](#)
+
+column name
+
+#### [<code style={{ fontWeight: 'normal' }}>dynamic_contract_registry_select_column.<b>registering_event_src_address</b></code>](#)
+
+column name

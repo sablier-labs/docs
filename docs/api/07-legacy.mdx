@@ -4,73 +4,69 @@ sidebar_position: 7
 title: "Legacy"
 ---
 
+import ExplainerTheGraph from "@site/src/snippets/ExplainerTheGraph.mdx";
+
 # Sablier Legacy
 
-For the [first version](/apps/v1) of Sablier ([legacy-sender](https://legacy-sender.sablier.com), [legacy-recipient](https://legacy-recipient.sablier.com)), these are the subgraphs powering those dashboards.
+These are the indexers for the [legacy version](/apps/legacy) of Sablier (deployed between 2019-2021). Sablier Legacy is only indexed by The Graph.
 
-## The Graph
-
-### Endpoints
-
-| Chain           | Id                | Production Node [^1]            | Testing Node                  |
-| --------------- | ----------------- | ------------------------------- | ----------------------------- |
-| Ethereum        | sablier           | [Network][v1-network-ethereum]  | [Studio][v1-studio-ethereum]  |
-| Avalanche       | sablier-avalanche | [Network][v1-network-avalanche] | [Studio][v1-studio-avalanche] |
-| BNB Smart Chain | sablier-bsc       | [Network][v1-network-bsc]       | [Studio][v1-studio-bsc]       |
-| Arbitrum        | sablier-arbitrum  | [Network][v1-network-arbitrum]  | [Studio][v1-studio-arbitrum]  |
-| Optimism        | sablier-optimism  | [Network][v1-network-optimism]  | [Studio][v1-studio-optimism]  |
-| Polygon         | sablier-matic     | [Network][v1-network-polygon]   | [Studio][v1-studio-polygon]   |
-| Ronin           | sablier-ronin     | [Network][v1-network-ronin]     | N/A                           |
-
-### Code
+## Source Code
 
 <LinkPreview
   href="https://github.com/sablier-labs/legacy-subgraph"
   icon="github"
-  subtitle="@sablier-labs/legacy-subgraph"
+  subtitle="The Graph subgraph for the legacy Sablier protocol"
   title="Sablier Legacy Subgraph"
 />
 
+## Endpoints
+
+<ExplainerTheGraph />
+
+| Chain     | Production URL                            | Testing URL                  |
+| --------- | ----------------------------------------- | ---------------------------- |
+| Avalanche | [sablier-avalanche][production-avalanche] | [Testing][testing-avalanche] |
+| Arbitrum  | [sablier-arbitrum][production-arbitrum]   | [Testing][testing-arbitrum]  |
+| BSC       | [sablier-bsc][production-bsc]             | [Testing][testing-bsc]       |
+| Ethereum  | [sablier][production-ethereum]            | [Testing][testing-ethereum]  |
+| Optimism  | [sablier-optimism][production-optimism]   | [Testing][testing-optimism]  |
+| Polygon   | [sablier-matic][production-polygon]       | [Testing][testing-polygon]   |
+| Ronin     | [sablier-ronin][production-ronin]         | N/A                          |
+
 {/* Chain: Ethereum */}
 
-[v1-network-ethereum]: https://gateway-arbitrum.network.thegraph.com/api/API_KEY/subgraphs/id/DkSXWkgJD5qVqfsrfzkLC5WELVX3Dbj3ByWcYjDJieCh
-[v1-studio-ethereum]: https://api.studio.thegraph.com/query/112500/sablier/version/latest/
+[production-ethereum]: https://gateway-arbitrum.network.thegraph.com/api/API_KEY/subgraphs/id/DkSXWkgJD5qVqfsrfzkLC5WELVX3Dbj3ByWcYjDJieCh
+[testing-ethereum]: https://api.studio.thegraph.com/query/57079/sablier/version/latest/
 
 {/* Chain: Arbitrum */}
 
-[v1-network-arbitrum]: https://gateway-arbitrum.network.thegraph.com/api/API_KEY/subgraphs/id/94SP9QVcxmGV9e2fxuTxUGcZfcv4tjpPCGyyPVyMfLP
-[v1-studio-arbitrum]: https://api.studio.thegraph.com/query/112500/sablier-arbitrum/version/latest
+[production-arbitrum]: https://gateway-arbitrum.network.thegraph.com/api/API_KEY/subgraphs/id/94SP9QVcxmGV9e2fxuTxUGcZfcv4tjpPCGyyPVyMfLP
+[testing-arbitrum]: https://api.studio.thegraph.com/query/57079/sablier-arbitrum/version/latest
 
 {/* Chain: Avalanche */}
 
-[v1-network-avalanche]: https://gateway-arbitrum.network.thegraph.com/api/API_KEY/subgraphs/id/DK2gHCprwVaytwzwb5fUrkFS9xy7wh66NX6AFcDzMyF9
-[v1-studio-avalanche]: https://api.studio.thegraph.com/query/112500/sablier-avalanche/version/latest
+[production-avalanche]: https://gateway-arbitrum.network.thegraph.com/api/API_KEY/subgraphs/id/DK2gHCprwVaytwzwb5fUrkFS9xy7wh66NX6AFcDzMyF9
+[testing-avalanche]: https://api.studio.thegraph.com/query/57079/sablier-avalanche/version/latest
 
 {/* Chain: BSC */}
 
-[v1-network-bsc]: https://gateway-arbitrum.network.thegraph.com/api/API_KEY/subgraphs/id/3Gyy7of99oBRqHcCMGJXpHw2xxxZgXxVmFPFR1vL6YhT
-[v1-studio-bsc]: https://api.studio.thegraph.com/query/112500/sablier-bsc/version/latest
+[production-bsc]: https://gateway-arbitrum.network.thegraph.com/api/API_KEY/subgraphs/id/3Gyy7of99oBRqHcCMGJXpHw2xxxZgXxVmFPFR1vL6YhT
+[testing-bsc]: https://api.studio.thegraph.com/query/57079/sablier-bsc/version/latest
 
 {/* Chain: OP Mainnet */}
 
-[v1-network-optimism]: https://gateway-arbitrum.network.thegraph.com/api/API_KEY/subgraphs/id/BEnQbvBdXnohC1DpM9rSb47C1FbowK39HfPNCEHjgrBt
-[v1-studio-optimism]: https://api.studio.thegraph.com/query/112500/sablier-optimism/version/latest
+[production-optimism]: https://gateway-arbitrum.network.thegraph.com/api/API_KEY/subgraphs/id/BEnQbvBdXnohC1DpM9rSb47C1FbowK39HfPNCEHjgrBt
+[testing-optimism]: https://api.studio.thegraph.com/query/57079/sablier-optimism/version/latest
 
 {/* Chain: Ronin */}
 
-[v1-network-ronin]: https://subgraph.satsuma-prod.com/d8d041c49d56/sablierlabs/sablier-ronin/api
+[production-ronin]: https://subgraph.satsuma-prod.com/d8d041c49d56/sablierlabs/sablier-ronin/api
 
 {/* Chain: Polygon */}
 
-[v1-network-polygon]: https://gateway-arbitrum.network.thegraph.com/api/API_KEY/subgraphs/id/6UMNQfMeh3pV5Qmn2NDX2UKNeUk9kh4oZhzzzn5e8rSz
-[v1-studio-polygon]: https://api.studio.thegraph.com/query/112500/sablier-matic/version/latest
+[production-polygon]: https://gateway-arbitrum.network.thegraph.com/api/API_KEY/subgraphs/id/6UMNQfMeh3pV5Qmn2NDX2UKNeUk9kh4oZhzzzn5e8rSz
+[testing-polygon]: https://api.studio.thegraph.com/query/57079/sablier-matic/version/latest
 
 {/* Endpoints */}
 
 [^1]:
-    Endpoints could include: The Graph's Decentralized Network (paid) or Custom Nodes (e.g. Lightlink). Because the
-    "Decentralized Network" subgraph flavors (e.g. V1 Ethereum) operate on The Graph Network, you will need to
-    substitute the `YOUR_API_KEY` placeholder in the
-    [Query URL](https://thegraph.com/docs/en/deploying/subgraph-studio-faqs/#6-how-do-i-find-query-urls-for-subgraphs-if-im-not-the-developer-of-the-subgraph-i-want-to-use)
-    with your own API key. If you require assistance with managing your API keys and configuring indexer preferences,
-    [this article](https://thegraph.com/docs/en/studio/managing-api-keys/) serves as an excellent guide

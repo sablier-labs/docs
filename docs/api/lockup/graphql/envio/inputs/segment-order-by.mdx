@@ -1,0 +1,104 @@
+---
+id: segment-order-by
+title: Segment_order_by
+---
+
+<head>
+  <meta content="noindex" name="robots" />
+  <meta charset="utf-8" />
+</head>
+
+export const Bullet = () => (
+  <>
+    <span style={{ fontWeight: "normal", fontSize: ".5em", color: "var(--ifm-color-secondary-darkest)" }}>
+      &nbsp;●&nbsp;
+    </span>
+  </>
+);
+
+export const SpecifiedBy = (props) => (
+  <>
+    Specification
+    <a
+      className="link"
+      style={{ fontSize: "1.5em", paddingLeft: "4px" }}
+      target="_blank"
+      href={props.url}
+      title={"Specified by " + props.url}
+    >
+      ⎘
+    </a>
+  </>
+);
+
+export const Badge = (props) => (
+  <>
+    <span className={props.class}>{props.text}</span>
+  </>
+);
+
+import { useState } from "react";
+
+export const Details = ({ dataOpen, dataClose, children, startOpen = false }) => {
+  const [open, setOpen] = useState(startOpen);
+  return (
+    <details
+      {...(open ? { open: true } : {})}
+      className="details"
+      style={{ border: "none", boxShadow: "none", background: "var(--ifm-background-color)" }}
+    >
+      <summary
+        onClick={(e) => {
+          e.preventDefault();
+          setOpen((open) => !open);
+        }}
+        style={{ listStyle: "none" }}
+      >
+        {open ? dataOpen : dataClose}
+      </summary>
+      {open && children}
+    </details>
+  );
+};
+
+Ordering options when selecting data from "Segment".
+
+```graphql
+input Segment_order_by {
+  amount: order_by
+  db_write_timestamp: order_by
+  endAmount: order_by
+  endTime: order_by
+  exponent: order_by
+  id: order_by
+  position: order_by
+  startAmount: order_by
+  startTime: order_by
+  stream: Stream_order_by
+  stream_id: order_by
+}
+```
+
+### Fields
+
+#### [<code style={{ fontWeight: 'normal' }}>Segment_order_by.<b>amount</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>order_by</b></code>](/docs/api/lockup/graphql/envio/enums/order-by.mdx) <Badge class="badge badge--secondary " text="enum"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Segment_order_by.<b>db_write_timestamp</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>order_by</b></code>](/docs/api/lockup/graphql/envio/enums/order-by.mdx) <Badge class="badge badge--secondary " text="enum"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Segment_order_by.<b>endAmount</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>order_by</b></code>](/docs/api/lockup/graphql/envio/enums/order-by.mdx) <Badge class="badge badge--secondary " text="enum"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Segment_order_by.<b>endTime</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>order_by</b></code>](/docs/api/lockup/graphql/envio/enums/order-by.mdx) <Badge class="badge badge--secondary " text="enum"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Segment_order_by.<b>exponent</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>order_by</b></code>](/docs/api/lockup/graphql/envio/enums/order-by.mdx) <Badge class="badge badge--secondary " text="enum"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Segment_order_by.<b>id</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>order_by</b></code>](/docs/api/lockup/graphql/envio/enums/order-by.mdx) <Badge class="badge badge--secondary " text="enum"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Segment_order_by.<b>position</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>order_by</b></code>](/docs/api/lockup/graphql/envio/enums/order-by.mdx) <Badge class="badge badge--secondary " text="enum"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Segment_order_by.<b>startAmount</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>order_by</b></code>](/docs/api/lockup/graphql/envio/enums/order-by.mdx) <Badge class="badge badge--secondary " text="enum"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Segment_order_by.<b>startTime</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>order_by</b></code>](/docs/api/lockup/graphql/envio/enums/order-by.mdx) <Badge class="badge badge--secondary " text="enum"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Segment_order_by.<b>stream</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Stream_order_by</b></code>](/docs/api/lockup/graphql/envio/inputs/stream-order-by.mdx) <Badge class="badge badge--secondary " text="input"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Segment_order_by.<b>stream_id</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>order_by</b></code>](/docs/api/lockup/graphql/envio/enums/order-by.mdx) <Badge class="badge badge--secondary " text="enum"/>

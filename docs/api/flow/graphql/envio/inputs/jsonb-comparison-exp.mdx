@@ -1,0 +1,126 @@
+---
+id: jsonb-comparison-exp
+title: jsonb_comparison_exp
+---
+
+<head>
+  <meta content="noindex" name="robots" />
+  <meta charset="utf-8" />
+</head>
+
+export const Bullet = () => (
+  <>
+    <span style={{ fontWeight: "normal", fontSize: ".5em", color: "var(--ifm-color-secondary-darkest)" }}>
+      &nbsp;●&nbsp;
+    </span>
+  </>
+);
+
+export const SpecifiedBy = (props) => (
+  <>
+    Specification
+    <a
+      className="link"
+      style={{ fontSize: "1.5em", paddingLeft: "4px" }}
+      target="_blank"
+      href={props.url}
+      title={"Specified by " + props.url}
+    >
+      ⎘
+    </a>
+  </>
+);
+
+export const Badge = (props) => (
+  <>
+    <span className={props.class}>{props.text}</span>
+  </>
+);
+
+import { useState } from "react";
+
+export const Details = ({ dataOpen, dataClose, children, startOpen = false }) => {
+  const [open, setOpen] = useState(startOpen);
+  return (
+    <details
+      {...(open ? { open: true } : {})}
+      className="details"
+      style={{ border: "none", boxShadow: "none", background: "var(--ifm-background-color)" }}
+    >
+      <summary
+        onClick={(e) => {
+          e.preventDefault();
+          setOpen((open) => !open);
+        }}
+        style={{ listStyle: "none" }}
+      >
+        {open ? dataOpen : dataClose}
+      </summary>
+      {open && children}
+    </details>
+  );
+};
+
+Boolean expression to compare columns of type "jsonb". All fields are combined with logical 'AND'.
+
+```graphql
+input jsonb_comparison_exp {
+  _cast: jsonb_cast_exp
+  _contained_in: jsonb
+  _contains: jsonb
+  _eq: jsonb
+  _gt: jsonb
+  _gte: jsonb
+  _has_key: String
+  _has_keys_all: [String!]
+  _has_keys_any: [String!]
+  _in: [jsonb!]
+  _is_null: Boolean
+  _lt: jsonb
+  _lte: jsonb
+  _neq: jsonb
+  _nin: [jsonb!]
+}
+```
+
+### Fields
+
+#### [<code style={{ fontWeight: 'normal' }}>jsonb_comparison_exp.<b>\_cast</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>jsonb_cast_exp</b></code>](/docs/api/flow/graphql/envio/inputs/jsonb-cast-exp.mdx) <Badge class="badge badge--secondary " text="input"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>jsonb_comparison_exp.<b>\_contained_in</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>jsonb</b></code>](/docs/api/flow/graphql/envio/scalars/jsonb.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+is the column contained in the given json value
+
+#### [<code style={{ fontWeight: 'normal' }}>jsonb_comparison_exp.<b>\_contains</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>jsonb</b></code>](/docs/api/flow/graphql/envio/scalars/jsonb.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+does the column contain the given json value at the top level
+
+#### [<code style={{ fontWeight: 'normal' }}>jsonb_comparison_exp.<b>\_eq</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>jsonb</b></code>](/docs/api/flow/graphql/envio/scalars/jsonb.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>jsonb_comparison_exp.<b>\_gt</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>jsonb</b></code>](/docs/api/flow/graphql/envio/scalars/jsonb.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>jsonb_comparison_exp.<b>\_gte</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>jsonb</b></code>](/docs/api/flow/graphql/envio/scalars/jsonb.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>jsonb_comparison_exp.<b>\_has_key</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String</b></code>](/docs/api/flow/graphql/envio/scalars/string.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+does the string exist as a top-level key in the column
+
+#### [<code style={{ fontWeight: 'normal' }}>jsonb_comparison_exp.<b>\_has_keys_all</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>[String!]</b></code>](/docs/api/flow/graphql/envio/scalars/string.mdx) <Badge class="badge badge--secondary " text="list"/> <Badge class="badge badge--secondary " text="scalar"/>
+
+do all of these strings exist as top-level keys in the column
+
+#### [<code style={{ fontWeight: 'normal' }}>jsonb_comparison_exp.<b>\_has_keys_any</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>[String!]</b></code>](/docs/api/flow/graphql/envio/scalars/string.mdx) <Badge class="badge badge--secondary " text="list"/> <Badge class="badge badge--secondary " text="scalar"/>
+
+do any of these strings exist as top-level keys in the column
+
+#### [<code style={{ fontWeight: 'normal' }}>jsonb_comparison_exp.<b>\_in</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>[jsonb!]</b></code>](/docs/api/flow/graphql/envio/scalars/jsonb.mdx) <Badge class="badge badge--secondary " text="list"/> <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>jsonb_comparison_exp.<b>\_is_null</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Boolean</b></code>](/docs/api/flow/graphql/envio/scalars/boolean.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>jsonb_comparison_exp.<b>\_lt</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>jsonb</b></code>](/docs/api/flow/graphql/envio/scalars/jsonb.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>jsonb_comparison_exp.<b>\_lte</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>jsonb</b></code>](/docs/api/flow/graphql/envio/scalars/jsonb.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>jsonb_comparison_exp.<b>\_neq</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>jsonb</b></code>](/docs/api/flow/graphql/envio/scalars/jsonb.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>jsonb_comparison_exp.<b>\_nin</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>[jsonb!]</b></code>](/docs/api/flow/graphql/envio/scalars/jsonb.mdx) <Badge class="badge badge--secondary " text="list"/> <Badge class="badge badge--secondary " text="scalar"/>

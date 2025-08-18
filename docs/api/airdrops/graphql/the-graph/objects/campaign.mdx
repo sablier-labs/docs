@@ -1,0 +1,326 @@
+---
+id: campaign
+title: Campaign
+---
+
+<head>
+  <meta content="noindex" name="robots" />
+  <meta charset="utf-8" />
+</head>
+
+export const Bullet = () => (
+  <>
+    <span style={{ fontWeight: "normal", fontSize: ".5em", color: "var(--ifm-color-secondary-darkest)" }}>
+      &nbsp;●&nbsp;
+    </span>
+  </>
+);
+
+export const SpecifiedBy = (props) => (
+  <>
+    Specification
+    <a
+      className="link"
+      style={{ fontSize: "1.5em", paddingLeft: "4px" }}
+      target="_blank"
+      href={props.url}
+      title={"Specified by " + props.url}
+    >
+      ⎘
+    </a>
+  </>
+);
+
+export const Badge = (props) => (
+  <>
+    <span className={props.class}>{props.text}</span>
+  </>
+);
+
+import { useState } from "react";
+
+export const Details = ({ dataOpen, dataClose, children, startOpen = false }) => {
+  const [open, setOpen] = useState(startOpen);
+  return (
+    <details
+      {...(open ? { open: true } : {})}
+      className="details"
+      style={{ border: "none", boxShadow: "none", background: "var(--ifm-background-color)" }}
+    >
+      <summary
+        onClick={(e) => {
+          e.preventDefault();
+          setOpen((open) => !open);
+        }}
+        style={{ listStyle: "none" }}
+      >
+        {open ? dataOpen : dataClose}
+      </summary>
+      {open && children}
+    </details>
+  );
+};
+
+Entity for Merkle campaigns.
+
+```graphql
+type Campaign {
+  id: String!
+  chainId: BigInt!
+  subgraphId: BigInt!
+  hash: Bytes!
+  timestamp: BigInt!
+  actions(
+    skip: Int = 0
+    first: Int = 100
+    orderBy: Action_orderBy
+    orderDirection: OrderDirection
+    where: Action_filter
+  ): [Action!]!
+  clawbackAction: Action
+  category: CampaignCategory!
+  name: String
+  nickname: String!
+  activities(
+    skip: Int = 0
+    first: Int = 100
+    orderBy: Activity_orderBy
+    orderDirection: OrderDirection
+    where: Activity_filter
+  ): [Activity!]!
+  address: Bytes!
+  admin: Bytes!
+  aggregateAmount: BigInt!
+  asset: Asset!
+  claimedAmount: BigInt!
+  claimedCount: BigInt!
+  clawbackTime: BigInt
+  expiration: BigInt
+  expires: Boolean!
+  factory: Factory!
+  fee: BigInt
+  ipfsCID: String!
+  position: BigInt!
+  root: Bytes!
+  totalRecipients: BigInt!
+  version: String!
+  lockup: Bytes
+  streamCancelable: Boolean
+  streamCliff: Boolean
+  streamCliffDuration: BigInt
+  streamCliffPercentage: BigInt
+  streamInitial: Boolean
+  streamInitialPercentage: BigInt
+  streamShape: String
+  streamStart: Boolean
+  streamStartTime: BigInt
+  streamTotalDuration: BigInt
+  streamTranches(
+    skip: Int = 0
+    first: Int = 100
+    orderBy: Tranche_orderBy
+    orderDirection: OrderDirection
+    where: Tranche_filter
+  ): [Tranche!]!
+  streamTransferable: Boolean
+}
+```
+
+### Fields
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign.<b>id</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String!</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/string.mdx) <Badge class="badge badge--secondary badge--non_null" text="non-null"/> <Badge class="badge badge--secondary " text="scalar"/>
+
+Unique identifier: `{contractAddress}-{chainId}`
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign.<b>chainId</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>BigInt!</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/big-int.mdx) <Badge class="badge badge--secondary badge--non_null" text="non-null"/> <Badge class="badge badge--secondary " text="scalar"/>
+
+The chain ID where the campaign was created (e.g., 137 for Polygon).
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign.<b>subgraphId</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>BigInt!</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/big-int.mdx) <Badge class="badge badge--secondary badge--non_null" text="non-null"/> <Badge class="badge badge--secondary " text="scalar"/>
+
+Unique global id as tracked by the subgraph watcher.
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign.<b>hash</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Bytes!</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/bytes.mdx) <Badge class="badge badge--secondary badge--non_null" text="non-null"/> <Badge class="badge badge--secondary " text="scalar"/>
+
+Hash of the Ethereum transaction that created this campaign.
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign.<b>timestamp</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>BigInt!</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/big-int.mdx) <Badge class="badge badge--secondary badge--non_null" text="non-null"/> <Badge class="badge badge--secondary " text="scalar"/>
+
+Unix timestamp of the Ethereum transaction that created this campaign.
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign.<b>actions</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>[Action!]!</b></code>](/docs/api/airdrops/graphql/the-graph/objects/action.mdx) <Badge class="badge badge--secondary badge--non_null" text="non-null"/> <Badge class="badge badge--secondary " text="object"/>
+
+Actions triggered by this campaign.
+
+##### [<code style={{ fontWeight: 'normal' }}>Campaign.actions.<b>skip</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Int</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/int.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+##### [<code style={{ fontWeight: 'normal' }}>Campaign.actions.<b>first</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Int</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/int.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+##### [<code style={{ fontWeight: 'normal' }}>Campaign.actions.<b>orderBy</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Action_orderBy</b></code>](/docs/api/airdrops/graphql/the-graph/enums/action-order-by.mdx) <Badge class="badge badge--secondary " text="enum"/>
+
+##### [<code style={{ fontWeight: 'normal' }}>Campaign.actions.<b>orderDirection</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>OrderDirection</b></code>](/docs/api/airdrops/graphql/the-graph/enums/order-direction.mdx) <Badge class="badge badge--secondary " text="enum"/>
+
+##### [<code style={{ fontWeight: 'normal' }}>Campaign.actions.<b>where</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Action_filter</b></code>](/docs/api/airdrops/graphql/the-graph/inputs/action-filter.mdx) <Badge class="badge badge--secondary " text="input"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign.<b>clawbackAction</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Action</b></code>](/docs/api/airdrops/graphql/the-graph/objects/action.mdx) <Badge class="badge badge--secondary " text="object"/>
+
+Action in which the admin clawed back funds from the campaign.
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign.<b>category</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>CampaignCategory!</b></code>](/docs/api/airdrops/graphql/the-graph/enums/campaign-category.mdx) <Badge class="badge badge--secondary badge--non_null" text="non-null"/> <Badge class="badge badge--secondary " text="enum"/>
+
+Type of campaign, e.g. Instant.
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign.<b>name</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/string.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+User-provided name for the campaign, which is null in Airdrops v1.1.
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign.<b>nickname</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String!</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/string.mdx) <Badge class="badge badge--secondary badge--non_null" text="non-null"/> <Badge class="badge badge--secondary " text="scalar"/>
+
+Internal name generated by us, derived from `name` or generated from scratch in older versions.
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign.<b>activities</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>[Activity!]!</b></code>](/docs/api/airdrops/graphql/the-graph/objects/activity.mdx) <Badge class="badge badge--secondary badge--non_null" text="non-null"/> <Badge class="badge badge--secondary " text="object"/>
+
+List of daily activity snapshots for days in which at least one action was triggered.
+
+##### [<code style={{ fontWeight: 'normal' }}>Campaign.activities.<b>skip</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Int</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/int.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+##### [<code style={{ fontWeight: 'normal' }}>Campaign.activities.<b>first</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Int</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/int.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+##### [<code style={{ fontWeight: 'normal' }}>Campaign.activities.<b>orderBy</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Activity_orderBy</b></code>](/docs/api/airdrops/graphql/the-graph/enums/activity-order-by.mdx) <Badge class="badge badge--secondary " text="enum"/>
+
+##### [<code style={{ fontWeight: 'normal' }}>Campaign.activities.<b>orderDirection</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>OrderDirection</b></code>](/docs/api/airdrops/graphql/the-graph/enums/order-direction.mdx) <Badge class="badge badge--secondary " text="enum"/>
+
+##### [<code style={{ fontWeight: 'normal' }}>Campaign.activities.<b>where</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Activity_filter</b></code>](/docs/api/airdrops/graphql/the-graph/inputs/activity-filter.mdx) <Badge class="badge badge--secondary " text="input"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign.<b>address</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Bytes!</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/bytes.mdx) <Badge class="badge badge--secondary badge--non_null" text="non-null"/> <Badge class="badge badge--secondary " text="scalar"/>
+
+Address of the campaign contract.
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign.<b>admin</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Bytes!</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/bytes.mdx) <Badge class="badge badge--secondary badge--non_null" text="non-null"/> <Badge class="badge badge--secondary " text="scalar"/>
+
+Address of the campaign admin, with permission to clawback.
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign.<b>aggregateAmount</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>BigInt!</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/big-int.mdx) <Badge class="badge badge--secondary badge--non_null" text="non-null"/> <Badge class="badge badge--secondary " text="scalar"/>
+
+Total airdrop amount.
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign.<b>asset</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Asset!</b></code>](/docs/api/airdrops/graphql/the-graph/objects/asset.mdx) <Badge class="badge badge--secondary badge--non_null" text="non-null"/> <Badge class="badge badge--secondary " text="object"/>
+
+Underlying ERC-20 token distributed via the campaign.
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign.<b>claimedAmount</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>BigInt!</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/big-int.mdx) <Badge class="badge badge--secondary badge--non_null" text="non-null"/> <Badge class="badge badge--secondary " text="scalar"/>
+
+Total amount claimed so far.
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign.<b>claimedCount</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>BigInt!</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/big-int.mdx) <Badge class="badge badge--secondary badge--non_null" text="non-null"/> <Badge class="badge badge--secondary " text="scalar"/>
+
+Number of claims made so far.
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign.<b>clawbackTime</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>BigInt</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/big-int.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+Unix timestamp when the campaign underwent a clawback.
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign.<b>expiration</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>BigInt</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/big-int.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+Unix timestamp when the campaign expires and clawback becomes available (if `expires` is true).
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign.<b>expires</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Boolean!</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/boolean.mdx) <Badge class="badge badge--secondary badge--non_null" text="non-null"/> <Badge class="badge badge--secondary " text="scalar"/>
+
+Flag indicating if the campaign expires or is claimable indefinitely.
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign.<b>factory</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Factory!</b></code>](/docs/api/airdrops/graphql/the-graph/objects/factory.mdx) <Badge class="badge badge--secondary badge--non_null" text="non-null"/> <Badge class="badge badge--secondary " text="object"/>
+
+The factory contract that deployed this campaign.
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign.<b>fee</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>BigInt</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/big-int.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+Minimum fee charged by this campaign, denominated in the native token of the chain (e.g., ETH for Mainnet).
+Only available in v1.3 and later
+See https://docs.sablier.com/concepts/fees
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign.<b>ipfsCID</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String!</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/string.mdx) <Badge class="badge badge--secondary badge--non_null" text="non-null"/> <Badge class="badge badge--secondary " text="scalar"/>
+
+IPFS content identifier for the list of recipients and other static details.
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign.<b>position</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>BigInt!</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/big-int.mdx) <Badge class="badge badge--secondary badge--non_null" text="non-null"/> <Badge class="badge badge--secondary " text="scalar"/>
+
+Index of the campaign based on the `campaignCounter` in the `Factory` entity.
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign.<b>root</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Bytes!</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/bytes.mdx) <Badge class="badge badge--secondary badge--non_null" text="non-null"/> <Badge class="badge badge--secondary " text="scalar"/>
+
+Merkle root.
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign.<b>totalRecipients</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>BigInt!</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/big-int.mdx) <Badge class="badge badge--secondary badge--non_null" text="non-null"/> <Badge class="badge badge--secondary " text="scalar"/>
+
+Total number of recipients.
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign.<b>version</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String!</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/string.mdx) <Badge class="badge badge--secondary badge--non_null" text="non-null"/> <Badge class="badge badge--secondary " text="scalar"/>
+
+Version of the campaign contract, e.g., v1.3.
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign.<b>lockup</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Bytes</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/bytes.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+Address of the Lockup contract through which streams are created.
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign.<b>streamCancelable</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Boolean</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/boolean.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+Flag indicating whether the claimed streams will be cancelable initially.
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign.<b>streamCliff</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Boolean</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/boolean.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+Flag indicating whether the claimed streams will have a cliff.
+Only available for Linear streams.
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign.<b>streamCliffDuration</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>BigInt</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/big-int.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+The duration of the cliff that the stream will have, in seconds.
+Only available for Linear streams.
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign.<b>streamCliffPercentage</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>BigInt</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/big-int.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+The amount that will unlock at the cliff of the claimed stream, expressed as a percentage of the total amount.
+Only available for Linear streams.
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign.<b>streamInitial</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Boolean</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/boolean.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+Flag indicating whether the claimed stream will have an initial unlock.
+Only available for Linear streams.
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign.<b>streamInitialPercentage</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>BigInt</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/big-int.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+The initial unlock amount of the claimed stream, expressed as a percentage of the total.
+Only available for Linear streams.
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign.<b>streamShape</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/string.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+The shape of the distribution.
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign.<b>streamStart</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Boolean</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/boolean.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+Flag indicating if the claimed stream will have a preset start time or it will use the claim time as the start time.
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign.<b>streamStartTime</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>BigInt</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/big-int.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+Unix timestamp for the start time.
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign.<b>streamTotalDuration</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>BigInt</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/big-int.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+Snapshot of the duration in seconds for produced streams.
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign.<b>streamTranches</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>[Tranche!]!</b></code>](/docs/api/airdrops/graphql/the-graph/objects/tranche.mdx) <Badge class="badge badge--secondary badge--non_null" text="non-null"/> <Badge class="badge badge--secondary " text="object"/>
+
+Tranches of the claimed stream.
+
+##### [<code style={{ fontWeight: 'normal' }}>Campaign.streamTranches.<b>skip</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Int</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/int.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+##### [<code style={{ fontWeight: 'normal' }}>Campaign.streamTranches.<b>first</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Int</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/int.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+##### [<code style={{ fontWeight: 'normal' }}>Campaign.streamTranches.<b>orderBy</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Tranche_orderBy</b></code>](/docs/api/airdrops/graphql/the-graph/enums/tranche-order-by.mdx) <Badge class="badge badge--secondary " text="enum"/>
+
+##### [<code style={{ fontWeight: 'normal' }}>Campaign.streamTranches.<b>orderDirection</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>OrderDirection</b></code>](/docs/api/airdrops/graphql/the-graph/enums/order-direction.mdx) <Badge class="badge badge--secondary " text="enum"/>
+
+##### [<code style={{ fontWeight: 'normal' }}>Campaign.streamTranches.<b>where</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Tranche_filter</b></code>](/docs/api/airdrops/graphql/the-graph/inputs/tranche-filter.mdx) <Badge class="badge badge--secondary " text="input"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign.<b>streamTransferable</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Boolean</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/boolean.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+Flag indicating whether the claimed streams will be transferable.

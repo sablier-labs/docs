@@ -1,0 +1,89 @@
+---
+id: end-of-block-range-scanned-data-bool-exp
+title: end_of_block_range_scanned_data_bool_exp
+---
+
+<head>
+  <meta content="noindex" name="robots" />
+  <meta charset="utf-8" />
+</head>
+
+export const Bullet = () => (
+  <>
+    <span style={{ fontWeight: "normal", fontSize: ".5em", color: "var(--ifm-color-secondary-darkest)" }}>
+      &nbsp;●&nbsp;
+    </span>
+  </>
+);
+
+export const SpecifiedBy = (props) => (
+  <>
+    Specification
+    <a
+      className="link"
+      style={{ fontSize: "1.5em", paddingLeft: "4px" }}
+      target="_blank"
+      href={props.url}
+      title={"Specified by " + props.url}
+    >
+      ⎘
+    </a>
+  </>
+);
+
+export const Badge = (props) => (
+  <>
+    <span className={props.class}>{props.text}</span>
+  </>
+);
+
+import { useState } from "react";
+
+export const Details = ({ dataOpen, dataClose, children, startOpen = false }) => {
+  const [open, setOpen] = useState(startOpen);
+  return (
+    <details
+      {...(open ? { open: true } : {})}
+      className="details"
+      style={{ border: "none", boxShadow: "none", background: "var(--ifm-background-color)" }}
+    >
+      <summary
+        onClick={(e) => {
+          e.preventDefault();
+          setOpen((open) => !open);
+        }}
+        style={{ listStyle: "none" }}
+      >
+        {open ? dataOpen : dataClose}
+      </summary>
+      {open && children}
+    </details>
+  );
+};
+
+Boolean expression to filter rows from the table "end_of_block_range_scanned_data". All fields are combined with a logical 'AND'.
+
+```graphql
+input end_of_block_range_scanned_data_bool_exp {
+  _and: [end_of_block_range_scanned_data_bool_exp!]
+  _not: end_of_block_range_scanned_data_bool_exp
+  _or: [end_of_block_range_scanned_data_bool_exp!]
+  block_hash: String_comparison_exp
+  block_number: Int_comparison_exp
+  chain_id: Int_comparison_exp
+}
+```
+
+### Fields
+
+#### [<code style={{ fontWeight: 'normal' }}>end_of_block_range_scanned_data_bool_exp.<b>\_and</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>[end_of_block_range_scanned_data_bool_exp!]</b></code>](/docs/api/lockup/graphql/envio/inputs/end-of-block-range-scanned-data-bool-exp.mdx) <Badge class="badge badge--secondary " text="list"/> <Badge class="badge badge--secondary " text="input"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>end_of_block_range_scanned_data_bool_exp.<b>\_not</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>end_of_block_range_scanned_data_bool_exp</b></code>](/docs/api/lockup/graphql/envio/inputs/end-of-block-range-scanned-data-bool-exp.mdx) <Badge class="badge badge--secondary " text="input"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>end_of_block_range_scanned_data_bool_exp.<b>\_or</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>[end_of_block_range_scanned_data_bool_exp!]</b></code>](/docs/api/lockup/graphql/envio/inputs/end-of-block-range-scanned-data-bool-exp.mdx) <Badge class="badge badge--secondary " text="list"/> <Badge class="badge badge--secondary " text="input"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>end_of_block_range_scanned_data_bool_exp.<b>block_hash</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String_comparison_exp</b></code>](/docs/api/lockup/graphql/envio/inputs/string-comparison-exp.mdx) <Badge class="badge badge--secondary " text="input"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>end_of_block_range_scanned_data_bool_exp.<b>block_number</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Int_comparison_exp</b></code>](/docs/api/lockup/graphql/envio/inputs/int-comparison-exp.mdx) <Badge class="badge badge--secondary " text="input"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>end_of_block_range_scanned_data_bool_exp.<b>chain_id</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Int_comparison_exp</b></code>](/docs/api/lockup/graphql/envio/inputs/int-comparison-exp.mdx) <Badge class="badge badge--secondary " text="input"/>

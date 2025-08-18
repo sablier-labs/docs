@@ -1,11 +1,22 @@
 {
-  "editor.defaultFormatter": "esbenp.prettier-vscode",
-  "eslint.validate": ["markdown", "mdx", "javascript", "javascriptreact", "typescript", "typescriptreact"],
-  "prettier.documentSelectors": ["**/*.tsx"],
-  "search.exclude": {
-    "**/.docusaurus": true,
-    "**/node_modules": true,
-    "**/repos": true
+  "biome.enabled": true,
+  "eslint.validate": ["md", "mdx"],
+  "typescript.tsdk": "node_modules/typescript/lib",
+  "editor.codeActionsOnSave": {
+    "source.fixAll.biome": "explicit",
+    "source.organizeImports.biome": "explicit"
   },
-  "typescript.tsdk": "node_modules/typescript/lib"
+  "search.exclude": {
+    ".docusaurus": true,
+    "build": true,
+    "node_modules": true,
+    "repos": true,
+    "docs/api/**/graphql": true
+  },
+  "[css][javascript][javascriptreact][typescript][typescriptreact]": {
+    "editor.defaultFormatter": "biomejs.biome"
+  },
+  "[md][mdx][yaml]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  }
 }

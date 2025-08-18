@@ -1,0 +1,92 @@
+---
+id: tranche-stddev-samp-order-by
+title: Tranche_stddev_samp_order_by
+---
+
+<head>
+  <meta content="noindex" name="robots" />
+  <meta charset="utf-8" />
+</head>
+
+export const Bullet = () => (
+  <>
+    <span style={{ fontWeight: "normal", fontSize: ".5em", color: "var(--ifm-color-secondary-darkest)" }}>
+      &nbsp;●&nbsp;
+    </span>
+  </>
+);
+
+export const SpecifiedBy = (props) => (
+  <>
+    Specification
+    <a
+      className="link"
+      style={{ fontSize: "1.5em", paddingLeft: "4px" }}
+      target="_blank"
+      href={props.url}
+      title={"Specified by " + props.url}
+    >
+      ⎘
+    </a>
+  </>
+);
+
+export const Badge = (props) => (
+  <>
+    <span className={props.class}>{props.text}</span>
+  </>
+);
+
+import { useState } from "react";
+
+export const Details = ({ dataOpen, dataClose, children, startOpen = false }) => {
+  const [open, setOpen] = useState(startOpen);
+  return (
+    <details
+      {...(open ? { open: true } : {})}
+      className="details"
+      style={{ border: "none", boxShadow: "none", background: "var(--ifm-background-color)" }}
+    >
+      <summary
+        onClick={(e) => {
+          e.preventDefault();
+          setOpen((open) => !open);
+        }}
+        style={{ listStyle: "none" }}
+      >
+        {open ? dataOpen : dataClose}
+      </summary>
+      {open && children}
+    </details>
+  );
+};
+
+order by stddev_samp() on columns of table "Tranche"
+
+```graphql
+input Tranche_stddev_samp_order_by {
+  duration: order_by
+  endDuration: order_by
+  endPercentage: order_by
+  percentage: order_by
+  position: order_by
+  startDuration: order_by
+  startPercentage: order_by
+}
+```
+
+### Fields
+
+#### [<code style={{ fontWeight: 'normal' }}>Tranche_stddev_samp_order_by.<b>duration</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>order_by</b></code>](/docs/api/airdrops/graphql/envio/enums/order-by.mdx) <Badge class="badge badge--secondary " text="enum"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Tranche_stddev_samp_order_by.<b>endDuration</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>order_by</b></code>](/docs/api/airdrops/graphql/envio/enums/order-by.mdx) <Badge class="badge badge--secondary " text="enum"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Tranche_stddev_samp_order_by.<b>endPercentage</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>order_by</b></code>](/docs/api/airdrops/graphql/envio/enums/order-by.mdx) <Badge class="badge badge--secondary " text="enum"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Tranche_stddev_samp_order_by.<b>percentage</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>order_by</b></code>](/docs/api/airdrops/graphql/envio/enums/order-by.mdx) <Badge class="badge badge--secondary " text="enum"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Tranche_stddev_samp_order_by.<b>position</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>order_by</b></code>](/docs/api/airdrops/graphql/envio/enums/order-by.mdx) <Badge class="badge badge--secondary " text="enum"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Tranche_stddev_samp_order_by.<b>startDuration</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>order_by</b></code>](/docs/api/airdrops/graphql/envio/enums/order-by.mdx) <Badge class="badge badge--secondary " text="enum"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Tranche_stddev_samp_order_by.<b>startPercentage</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>order_by</b></code>](/docs/api/airdrops/graphql/envio/enums/order-by.mdx) <Badge class="badge badge--secondary " text="enum"/>

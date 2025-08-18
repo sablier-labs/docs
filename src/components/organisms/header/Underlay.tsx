@@ -1,5 +1,5 @@
-import styled from "@emotion/styled";
 import useBaseUrl from "@docusaurus/useBaseUrl";
+import styled from "@emotion/styled";
 import Background from "../Background";
 
 const Mesh = styled.div<{ image?: string }>`
@@ -90,7 +90,7 @@ const CircleRightTop = styled(Circle)`
 function Underlay() {
   return (
     <Background>
-      <Mesh image={useBaseUrl("/decor/grid-pattern.svg")} />
+      <Mesh image={useBaseUrl("/img/decor/grid-pattern.svg")} />
       <FadeBottom />
       <Shapes>
         <CircleLeft />

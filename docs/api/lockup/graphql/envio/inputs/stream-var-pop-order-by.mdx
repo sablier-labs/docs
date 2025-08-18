@@ -1,0 +1,122 @@
+---
+id: stream-var-pop-order-by
+title: Stream_var_pop_order_by
+---
+
+<head>
+  <meta content="noindex" name="robots" />
+  <meta charset="utf-8" />
+</head>
+
+export const Bullet = () => (
+  <>
+    <span style={{ fontWeight: "normal", fontSize: ".5em", color: "var(--ifm-color-secondary-darkest)" }}>
+      &nbsp;●&nbsp;
+    </span>
+  </>
+);
+
+export const SpecifiedBy = (props) => (
+  <>
+    Specification
+    <a
+      className="link"
+      style={{ fontSize: "1.5em", paddingLeft: "4px" }}
+      target="_blank"
+      href={props.url}
+      title={"Specified by " + props.url}
+    >
+      ⎘
+    </a>
+  </>
+);
+
+export const Badge = (props) => (
+  <>
+    <span className={props.class}>{props.text}</span>
+  </>
+);
+
+import { useState } from "react";
+
+export const Details = ({ dataOpen, dataClose, children, startOpen = false }) => {
+  const [open, setOpen] = useState(startOpen);
+  return (
+    <details
+      {...(open ? { open: true } : {})}
+      className="details"
+      style={{ border: "none", boxShadow: "none", background: "var(--ifm-background-color)" }}
+    >
+      <summary
+        onClick={(e) => {
+          e.preventDefault();
+          setOpen((open) => !open);
+        }}
+        style={{ listStyle: "none" }}
+      >
+        {open ? dataOpen : dataClose}
+      </summary>
+      {open && children}
+    </details>
+  );
+};
+
+order by var_pop() on columns of table "Stream"
+
+```graphql
+input Stream_var_pop_order_by {
+  assetDecimalsValue: order_by
+  canceledTime: order_by
+  chainId: order_by
+  cliffAmount: order_by
+  cliffTime: order_by
+  depositAmount: order_by
+  duration: order_by
+  endTime: order_by
+  initialAmount: order_by
+  intactAmount: order_by
+  position: order_by
+  renounceTime: order_by
+  startTime: order_by
+  subgraphId: order_by
+  timestamp: order_by
+  tokenId: order_by
+  withdrawnAmount: order_by
+}
+```
+
+### Fields
+
+#### [<code style={{ fontWeight: 'normal' }}>Stream_var_pop_order_by.<b>assetDecimalsValue</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>order_by</b></code>](/docs/api/lockup/graphql/envio/enums/order-by.mdx) <Badge class="badge badge--secondary " text="enum"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Stream_var_pop_order_by.<b>canceledTime</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>order_by</b></code>](/docs/api/lockup/graphql/envio/enums/order-by.mdx) <Badge class="badge badge--secondary " text="enum"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Stream_var_pop_order_by.<b>chainId</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>order_by</b></code>](/docs/api/lockup/graphql/envio/enums/order-by.mdx) <Badge class="badge badge--secondary " text="enum"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Stream_var_pop_order_by.<b>cliffAmount</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>order_by</b></code>](/docs/api/lockup/graphql/envio/enums/order-by.mdx) <Badge class="badge badge--secondary " text="enum"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Stream_var_pop_order_by.<b>cliffTime</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>order_by</b></code>](/docs/api/lockup/graphql/envio/enums/order-by.mdx) <Badge class="badge badge--secondary " text="enum"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Stream_var_pop_order_by.<b>depositAmount</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>order_by</b></code>](/docs/api/lockup/graphql/envio/enums/order-by.mdx) <Badge class="badge badge--secondary " text="enum"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Stream_var_pop_order_by.<b>duration</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>order_by</b></code>](/docs/api/lockup/graphql/envio/enums/order-by.mdx) <Badge class="badge badge--secondary " text="enum"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Stream_var_pop_order_by.<b>endTime</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>order_by</b></code>](/docs/api/lockup/graphql/envio/enums/order-by.mdx) <Badge class="badge badge--secondary " text="enum"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Stream_var_pop_order_by.<b>initialAmount</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>order_by</b></code>](/docs/api/lockup/graphql/envio/enums/order-by.mdx) <Badge class="badge badge--secondary " text="enum"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Stream_var_pop_order_by.<b>intactAmount</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>order_by</b></code>](/docs/api/lockup/graphql/envio/enums/order-by.mdx) <Badge class="badge badge--secondary " text="enum"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Stream_var_pop_order_by.<b>position</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>order_by</b></code>](/docs/api/lockup/graphql/envio/enums/order-by.mdx) <Badge class="badge badge--secondary " text="enum"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Stream_var_pop_order_by.<b>renounceTime</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>order_by</b></code>](/docs/api/lockup/graphql/envio/enums/order-by.mdx) <Badge class="badge badge--secondary " text="enum"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Stream_var_pop_order_by.<b>startTime</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>order_by</b></code>](/docs/api/lockup/graphql/envio/enums/order-by.mdx) <Badge class="badge badge--secondary " text="enum"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Stream_var_pop_order_by.<b>subgraphId</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>order_by</b></code>](/docs/api/lockup/graphql/envio/enums/order-by.mdx) <Badge class="badge badge--secondary " text="enum"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Stream_var_pop_order_by.<b>timestamp</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>order_by</b></code>](/docs/api/lockup/graphql/envio/enums/order-by.mdx) <Badge class="badge badge--secondary " text="enum"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Stream_var_pop_order_by.<b>tokenId</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>order_by</b></code>](/docs/api/lockup/graphql/envio/enums/order-by.mdx) <Badge class="badge badge--secondary " text="enum"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Stream_var_pop_order_by.<b>withdrawnAmount</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>order_by</b></code>](/docs/api/lockup/graphql/envio/enums/order-by.mdx) <Badge class="badge badge--secondary " text="enum"/>

@@ -1,0 +1,101 @@
+---
+id: tranche-stream-cursor-value-input
+title: Tranche_stream_cursor_value_input
+---
+
+<head>
+  <meta content="noindex" name="robots" />
+  <meta charset="utf-8" />
+</head>
+
+export const Bullet = () => (
+  <>
+    <span style={{ fontWeight: "normal", fontSize: ".5em", color: "var(--ifm-color-secondary-darkest)" }}>
+      &nbsp;●&nbsp;
+    </span>
+  </>
+);
+
+export const SpecifiedBy = (props) => (
+  <>
+    Specification
+    <a
+      className="link"
+      style={{ fontSize: "1.5em", paddingLeft: "4px" }}
+      target="_blank"
+      href={props.url}
+      title={"Specified by " + props.url}
+    >
+      ⎘
+    </a>
+  </>
+);
+
+export const Badge = (props) => (
+  <>
+    <span className={props.class}>{props.text}</span>
+  </>
+);
+
+import { useState } from "react";
+
+export const Details = ({ dataOpen, dataClose, children, startOpen = false }) => {
+  const [open, setOpen] = useState(startOpen);
+  return (
+    <details
+      {...(open ? { open: true } : {})}
+      className="details"
+      style={{ border: "none", boxShadow: "none", background: "var(--ifm-background-color)" }}
+    >
+      <summary
+        onClick={(e) => {
+          e.preventDefault();
+          setOpen((open) => !open);
+        }}
+        style={{ listStyle: "none" }}
+      >
+        {open ? dataOpen : dataClose}
+      </summary>
+      {open && children}
+    </details>
+  );
+};
+
+Initial value of the column from where the streaming should start
+
+```graphql
+input Tranche_stream_cursor_value_input {
+  campaign_id: String
+  db_write_timestamp: timestamp
+  duration: numeric
+  endDuration: numeric
+  endPercentage: numeric
+  id: String
+  percentage: numeric
+  position: numeric
+  startDuration: numeric
+  startPercentage: numeric
+}
+```
+
+### Fields
+
+#### [<code style={{ fontWeight: 'normal' }}>Tranche_stream_cursor_value_input.<b>campaign_id</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String</b></code>](/docs/api/airdrops/graphql/envio/scalars/string.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Tranche_stream_cursor_value_input.<b>db_write_timestamp</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>timestamp</b></code>](/docs/api/airdrops/graphql/envio/scalars/timestamp.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Tranche_stream_cursor_value_input.<b>duration</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>numeric</b></code>](/docs/api/airdrops/graphql/envio/scalars/numeric.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Tranche_stream_cursor_value_input.<b>endDuration</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>numeric</b></code>](/docs/api/airdrops/graphql/envio/scalars/numeric.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Tranche_stream_cursor_value_input.<b>endPercentage</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>numeric</b></code>](/docs/api/airdrops/graphql/envio/scalars/numeric.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Tranche_stream_cursor_value_input.<b>id</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String</b></code>](/docs/api/airdrops/graphql/envio/scalars/string.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Tranche_stream_cursor_value_input.<b>percentage</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>numeric</b></code>](/docs/api/airdrops/graphql/envio/scalars/numeric.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Tranche_stream_cursor_value_input.<b>position</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>numeric</b></code>](/docs/api/airdrops/graphql/envio/scalars/numeric.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Tranche_stream_cursor_value_input.<b>startDuration</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>numeric</b></code>](/docs/api/airdrops/graphql/envio/scalars/numeric.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Tranche_stream_cursor_value_input.<b>startPercentage</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>numeric</b></code>](/docs/api/airdrops/graphql/envio/scalars/numeric.mdx) <Badge class="badge badge--secondary " text="scalar"/>

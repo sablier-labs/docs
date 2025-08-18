@@ -1,0 +1,103 @@
+---
+id: tranche
+title: Tranche
+---
+
+<head>
+  <meta content="noindex" name="robots" />
+  <meta charset="utf-8" />
+</head>
+
+export const Bullet = () => (
+  <>
+    <span style={{ fontWeight: "normal", fontSize: ".5em", color: "var(--ifm-color-secondary-darkest)" }}>
+      &nbsp;●&nbsp;
+    </span>
+  </>
+);
+
+export const SpecifiedBy = (props) => (
+  <>
+    Specification
+    <a
+      className="link"
+      style={{ fontSize: "1.5em", paddingLeft: "4px" }}
+      target="_blank"
+      href={props.url}
+      title={"Specified by " + props.url}
+    >
+      ⎘
+    </a>
+  </>
+);
+
+export const Badge = (props) => (
+  <>
+    <span className={props.class}>{props.text}</span>
+  </>
+);
+
+import { useState } from "react";
+
+export const Details = ({ dataOpen, dataClose, children, startOpen = false }) => {
+  const [open, setOpen] = useState(startOpen);
+  return (
+    <details
+      {...(open ? { open: true } : {})}
+      className="details"
+      style={{ border: "none", boxShadow: "none", background: "var(--ifm-background-color)" }}
+    >
+      <summary
+        onClick={(e) => {
+          e.preventDefault();
+          setOpen((open) => !open);
+        }}
+        style={{ listStyle: "none" }}
+      >
+        {open ? dataOpen : dataClose}
+      </summary>
+      {open && children}
+    </details>
+  );
+};
+
+columns and relationships of "Tranche"
+
+```graphql
+type Tranche {
+  amount: numeric!
+  db_write_timestamp: timestamp
+  endAmount: numeric!
+  endTime: numeric!
+  id: String!
+  position: numeric!
+  startAmount: numeric!
+  startTime: numeric!
+  stream: Stream
+  stream_id: String!
+}
+```
+
+### Fields
+
+#### [<code style={{ fontWeight: 'normal' }}>Tranche.<b>amount</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>numeric!</b></code>](/docs/api/lockup/graphql/envio/scalars/numeric.mdx) <Badge class="badge badge--secondary badge--non_null" text="non-null"/> <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Tranche.<b>db_write_timestamp</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>timestamp</b></code>](/docs/api/lockup/graphql/envio/scalars/timestamp.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Tranche.<b>endAmount</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>numeric!</b></code>](/docs/api/lockup/graphql/envio/scalars/numeric.mdx) <Badge class="badge badge--secondary badge--non_null" text="non-null"/> <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Tranche.<b>endTime</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>numeric!</b></code>](/docs/api/lockup/graphql/envio/scalars/numeric.mdx) <Badge class="badge badge--secondary badge--non_null" text="non-null"/> <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Tranche.<b>id</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String!</b></code>](/docs/api/lockup/graphql/envio/scalars/string.mdx) <Badge class="badge badge--secondary badge--non_null" text="non-null"/> <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Tranche.<b>position</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>numeric!</b></code>](/docs/api/lockup/graphql/envio/scalars/numeric.mdx) <Badge class="badge badge--secondary badge--non_null" text="non-null"/> <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Tranche.<b>startAmount</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>numeric!</b></code>](/docs/api/lockup/graphql/envio/scalars/numeric.mdx) <Badge class="badge badge--secondary badge--non_null" text="non-null"/> <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Tranche.<b>startTime</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>numeric!</b></code>](/docs/api/lockup/graphql/envio/scalars/numeric.mdx) <Badge class="badge badge--secondary badge--non_null" text="non-null"/> <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Tranche.<b>stream</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Stream</b></code>](/docs/api/lockup/graphql/envio/objects/stream.mdx) <Badge class="badge badge--secondary " text="object"/>
+
+An object relationship
+
+#### [<code style={{ fontWeight: 'normal' }}>Tranche.<b>stream_id</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String!</b></code>](/docs/api/lockup/graphql/envio/scalars/string.mdx) <Badge class="badge badge--secondary badge--non_null" text="non-null"/> <Badge class="badge badge--secondary " text="scalar"/>

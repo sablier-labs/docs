@@ -1,0 +1,197 @@
+---
+id: tranche-order-by
+title: Tranche_orderBy
+---
+
+<head>
+  <meta content="noindex" name="robots" />
+  <meta charset="utf-8" />
+</head>
+
+export const Bullet = () => (
+  <>
+    <span style={{ fontWeight: "normal", fontSize: ".5em", color: "var(--ifm-color-secondary-darkest)" }}>
+      &nbsp;●&nbsp;
+    </span>
+  </>
+);
+
+export const SpecifiedBy = (props) => (
+  <>
+    Specification
+    <a
+      className="link"
+      style={{ fontSize: "1.5em", paddingLeft: "4px" }}
+      target="_blank"
+      href={props.url}
+      title={"Specified by " + props.url}
+    >
+      ⎘
+    </a>
+  </>
+);
+
+export const Badge = (props) => (
+  <>
+    <span className={props.class}>{props.text}</span>
+  </>
+);
+
+import { useState } from "react";
+
+export const Details = ({ dataOpen, dataClose, children, startOpen = false }) => {
+  const [open, setOpen] = useState(startOpen);
+  return (
+    <details
+      {...(open ? { open: true } : {})}
+      className="details"
+      style={{ border: "none", boxShadow: "none", background: "var(--ifm-background-color)" }}
+    >
+      <summary
+        onClick={(e) => {
+          e.preventDefault();
+          setOpen((open) => !open);
+        }}
+        style={{ listStyle: "none" }}
+      >
+        {open ? dataOpen : dataClose}
+      </summary>
+      {open && children}
+    </details>
+  );
+};
+
+No description
+
+```graphql
+enum Tranche_orderBy {
+  id
+  amount
+  endAmount
+  endTime
+  position
+  startAmount
+  startTime
+  stream
+  stream__id
+  stream__alias
+  stream__chainId
+  stream__subgraphId
+  stream__tokenId
+  stream__hash
+  stream__timestamp
+  stream__assetDecimalsValue
+  stream__category
+  stream__contract
+  stream__position
+  stream__recipient
+  stream__sender
+  stream__startTime
+  stream__transferable
+  stream__version
+  stream__withdrawnAmount
+  stream__cancelable
+  stream__canceled
+  stream__canceledTime
+  stream__depositAmount
+  stream__duration
+  stream__endTime
+  stream__funder
+  stream__intactAmount
+  stream__proxender
+  stream__proxied
+  stream__renounceTime
+  stream__shape
+  stream__cliff
+  stream__cliffAmount
+  stream__cliffTime
+  stream__initial
+  stream__initialAmount
+}
+```
+
+### Values
+
+#### [<code style={{ fontWeight: 'normal' }}>Tranche_orderBy.<b>id</b></code>](#)
+
+#### [<code style={{ fontWeight: 'normal' }}>Tranche_orderBy.<b>amount</b></code>](#)
+
+#### [<code style={{ fontWeight: 'normal' }}>Tranche_orderBy.<b>endAmount</b></code>](#)
+
+#### [<code style={{ fontWeight: 'normal' }}>Tranche_orderBy.<b>endTime</b></code>](#)
+
+#### [<code style={{ fontWeight: 'normal' }}>Tranche_orderBy.<b>position</b></code>](#)
+
+#### [<code style={{ fontWeight: 'normal' }}>Tranche_orderBy.<b>startAmount</b></code>](#)
+
+#### [<code style={{ fontWeight: 'normal' }}>Tranche_orderBy.<b>startTime</b></code>](#)
+
+#### [<code style={{ fontWeight: 'normal' }}>Tranche_orderBy.<b>stream</b></code>](#)
+
+#### [<code style={{ fontWeight: 'normal' }}>Tranche_orderBy.<b>stream\_\_id</b></code>](#)
+
+#### [<code style={{ fontWeight: 'normal' }}>Tranche_orderBy.<b>stream\_\_alias</b></code>](#)
+
+#### [<code style={{ fontWeight: 'normal' }}>Tranche_orderBy.<b>stream\_\_chainId</b></code>](#)
+
+#### [<code style={{ fontWeight: 'normal' }}>Tranche_orderBy.<b>stream\_\_subgraphId</b></code>](#)
+
+#### [<code style={{ fontWeight: 'normal' }}>Tranche_orderBy.<b>stream\_\_tokenId</b></code>](#)
+
+#### [<code style={{ fontWeight: 'normal' }}>Tranche_orderBy.<b>stream\_\_hash</b></code>](#)
+
+#### [<code style={{ fontWeight: 'normal' }}>Tranche_orderBy.<b>stream\_\_timestamp</b></code>](#)
+
+#### [<code style={{ fontWeight: 'normal' }}>Tranche_orderBy.<b>stream\_\_assetDecimalsValue</b></code>](#)
+
+#### [<code style={{ fontWeight: 'normal' }}>Tranche_orderBy.<b>stream\_\_category</b></code>](#)
+
+#### [<code style={{ fontWeight: 'normal' }}>Tranche_orderBy.<b>stream\_\_contract</b></code>](#)
+
+#### [<code style={{ fontWeight: 'normal' }}>Tranche_orderBy.<b>stream\_\_position</b></code>](#)
+
+#### [<code style={{ fontWeight: 'normal' }}>Tranche_orderBy.<b>stream\_\_recipient</b></code>](#)
+
+#### [<code style={{ fontWeight: 'normal' }}>Tranche_orderBy.<b>stream\_\_sender</b></code>](#)
+
+#### [<code style={{ fontWeight: 'normal' }}>Tranche_orderBy.<b>stream\_\_startTime</b></code>](#)
+
+#### [<code style={{ fontWeight: 'normal' }}>Tranche_orderBy.<b>stream\_\_transferable</b></code>](#)
+
+#### [<code style={{ fontWeight: 'normal' }}>Tranche_orderBy.<b>stream\_\_version</b></code>](#)
+
+#### [<code style={{ fontWeight: 'normal' }}>Tranche_orderBy.<b>stream\_\_withdrawnAmount</b></code>](#)
+
+#### [<code style={{ fontWeight: 'normal' }}>Tranche_orderBy.<b>stream\_\_cancelable</b></code>](#)
+
+#### [<code style={{ fontWeight: 'normal' }}>Tranche_orderBy.<b>stream\_\_canceled</b></code>](#)
+
+#### [<code style={{ fontWeight: 'normal' }}>Tranche_orderBy.<b>stream\_\_canceledTime</b></code>](#)
+
+#### [<code style={{ fontWeight: 'normal' }}>Tranche_orderBy.<b>stream\_\_depositAmount</b></code>](#)
+
+#### [<code style={{ fontWeight: 'normal' }}>Tranche_orderBy.<b>stream\_\_duration</b></code>](#)
+
+#### [<code style={{ fontWeight: 'normal' }}>Tranche_orderBy.<b>stream\_\_endTime</b></code>](#)
+
+#### [<code style={{ fontWeight: 'normal' }}>Tranche_orderBy.<b>stream\_\_funder</b></code>](#)
+
+#### [<code style={{ fontWeight: 'normal' }}>Tranche_orderBy.<b>stream\_\_intactAmount</b></code>](#)
+
+#### [<code style={{ fontWeight: 'normal' }}>Tranche_orderBy.<b>stream\_\_proxender</b></code>](#)
+
+#### [<code style={{ fontWeight: 'normal' }}>Tranche_orderBy.<b>stream\_\_proxied</b></code>](#)
+
+#### [<code style={{ fontWeight: 'normal' }}>Tranche_orderBy.<b>stream\_\_renounceTime</b></code>](#)
+
+#### [<code style={{ fontWeight: 'normal' }}>Tranche_orderBy.<b>stream\_\_shape</b></code>](#)
+
+#### [<code style={{ fontWeight: 'normal' }}>Tranche_orderBy.<b>stream\_\_cliff</b></code>](#)
+
+#### [<code style={{ fontWeight: 'normal' }}>Tranche_orderBy.<b>stream\_\_cliffAmount</b></code>](#)
+
+#### [<code style={{ fontWeight: 'normal' }}>Tranche_orderBy.<b>stream\_\_cliffTime</b></code>](#)
+
+#### [<code style={{ fontWeight: 'normal' }}>Tranche_orderBy.<b>stream\_\_initial</b></code>](#)
+
+#### [<code style={{ fontWeight: 'normal' }}>Tranche_orderBy.<b>stream\_\_initialAmount</b></code>](#)

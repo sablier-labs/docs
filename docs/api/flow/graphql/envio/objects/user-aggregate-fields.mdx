@@ -1,0 +1,108 @@
+---
+id: user-aggregate-fields
+title: User_aggregate_fields
+---
+
+<head>
+  <meta content="noindex" name="robots" />
+  <meta charset="utf-8" />
+</head>
+
+export const Bullet = () => (
+  <>
+    <span style={{ fontWeight: "normal", fontSize: ".5em", color: "var(--ifm-color-secondary-darkest)" }}>
+      &nbsp;●&nbsp;
+    </span>
+  </>
+);
+
+export const SpecifiedBy = (props) => (
+  <>
+    Specification
+    <a
+      className="link"
+      style={{ fontSize: "1.5em", paddingLeft: "4px" }}
+      target="_blank"
+      href={props.url}
+      title={"Specified by " + props.url}
+    >
+      ⎘
+    </a>
+  </>
+);
+
+export const Badge = (props) => (
+  <>
+    <span className={props.class}>{props.text}</span>
+  </>
+);
+
+import { useState } from "react";
+
+export const Details = ({ dataOpen, dataClose, children, startOpen = false }) => {
+  const [open, setOpen] = useState(startOpen);
+  return (
+    <details
+      {...(open ? { open: true } : {})}
+      className="details"
+      style={{ border: "none", boxShadow: "none", background: "var(--ifm-background-color)" }}
+    >
+      <summary
+        onClick={(e) => {
+          e.preventDefault();
+          setOpen((open) => !open);
+        }}
+        style={{ listStyle: "none" }}
+      >
+        {open ? dataOpen : dataClose}
+      </summary>
+      {open && children}
+    </details>
+  );
+};
+
+aggregate fields of "User"
+
+```graphql
+type User_aggregate_fields {
+  avg: User_avg_fields
+  count(columns: [User_select_column!], distinct: Boolean): Int!
+  max: User_max_fields
+  min: User_min_fields
+  stddev: User_stddev_fields
+  stddev_pop: User_stddev_pop_fields
+  stddev_samp: User_stddev_samp_fields
+  sum: User_sum_fields
+  var_pop: User_var_pop_fields
+  var_samp: User_var_samp_fields
+  variance: User_variance_fields
+}
+```
+
+### Fields
+
+#### [<code style={{ fontWeight: 'normal' }}>User_aggregate_fields.<b>avg</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>User_avg_fields</b></code>](/docs/api/flow/graphql/envio/objects/user-avg-fields.mdx) <Badge class="badge badge--secondary " text="object"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>User_aggregate_fields.<b>count</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Int!</b></code>](/docs/api/flow/graphql/envio/scalars/int.mdx) <Badge class="badge badge--secondary badge--non_null" text="non-null"/> <Badge class="badge badge--secondary " text="scalar"/>
+
+##### [<code style={{ fontWeight: 'normal' }}>User_aggregate_fields.count.<b>columns</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>[User_select_column!]</b></code>](/docs/api/flow/graphql/envio/enums/user-select-column.mdx) <Badge class="badge badge--secondary " text="list"/> <Badge class="badge badge--secondary " text="enum"/>
+
+##### [<code style={{ fontWeight: 'normal' }}>User_aggregate_fields.count.<b>distinct</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Boolean</b></code>](/docs/api/flow/graphql/envio/scalars/boolean.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>User_aggregate_fields.<b>max</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>User_max_fields</b></code>](/docs/api/flow/graphql/envio/objects/user-max-fields.mdx) <Badge class="badge badge--secondary " text="object"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>User_aggregate_fields.<b>min</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>User_min_fields</b></code>](/docs/api/flow/graphql/envio/objects/user-min-fields.mdx) <Badge class="badge badge--secondary " text="object"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>User_aggregate_fields.<b>stddev</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>User_stddev_fields</b></code>](/docs/api/flow/graphql/envio/objects/user-stddev-fields.mdx) <Badge class="badge badge--secondary " text="object"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>User_aggregate_fields.<b>stddev_pop</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>User_stddev_pop_fields</b></code>](/docs/api/flow/graphql/envio/objects/user-stddev-pop-fields.mdx) <Badge class="badge badge--secondary " text="object"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>User_aggregate_fields.<b>stddev_samp</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>User_stddev_samp_fields</b></code>](/docs/api/flow/graphql/envio/objects/user-stddev-samp-fields.mdx) <Badge class="badge badge--secondary " text="object"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>User_aggregate_fields.<b>sum</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>User_sum_fields</b></code>](/docs/api/flow/graphql/envio/objects/user-sum-fields.mdx) <Badge class="badge badge--secondary " text="object"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>User_aggregate_fields.<b>var_pop</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>User_var_pop_fields</b></code>](/docs/api/flow/graphql/envio/objects/user-var-pop-fields.mdx) <Badge class="badge badge--secondary " text="object"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>User_aggregate_fields.<b>var_samp</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>User_var_samp_fields</b></code>](/docs/api/flow/graphql/envio/objects/user-var-samp-fields.mdx) <Badge class="badge badge--secondary " text="object"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>User_aggregate_fields.<b>variance</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>User_variance_fields</b></code>](/docs/api/flow/graphql/envio/objects/user-variance-fields.mdx) <Badge class="badge badge--secondary " text="object"/>

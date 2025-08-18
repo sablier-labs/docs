@@ -1,0 +1,77 @@
+---
+id: revenue-transaction-aggregate-bool-exp-covar-samp-arguments
+title: RevenueTransaction_aggregate_bool_exp_covar_samp_arguments
+---
+
+<head>
+  <meta content="noindex" name="robots" />
+  <meta charset="utf-8" />
+</head>
+
+export const Bullet = () => (
+  <>
+    <span style={{ fontWeight: "normal", fontSize: ".5em", color: "var(--ifm-color-secondary-darkest)" }}>
+      &nbsp;●&nbsp;
+    </span>
+  </>
+);
+
+export const SpecifiedBy = (props) => (
+  <>
+    Specification
+    <a
+      className="link"
+      style={{ fontSize: "1.5em", paddingLeft: "4px" }}
+      target="_blank"
+      href={props.url}
+      title={"Specified by " + props.url}
+    >
+      ⎘
+    </a>
+  </>
+);
+
+export const Badge = (props) => (
+  <>
+    <span className={props.class}>{props.text}</span>
+  </>
+);
+
+import { useState } from "react";
+
+export const Details = ({ dataOpen, dataClose, children, startOpen = false }) => {
+  const [open, setOpen] = useState(startOpen);
+  return (
+    <details
+      {...(open ? { open: true } : {})}
+      className="details"
+      style={{ border: "none", boxShadow: "none", background: "var(--ifm-background-color)" }}
+    >
+      <summary
+        onClick={(e) => {
+          e.preventDefault();
+          setOpen((open) => !open);
+        }}
+        style={{ listStyle: "none" }}
+      >
+        {open ? dataOpen : dataClose}
+      </summary>
+      {open && children}
+    </details>
+  );
+};
+
+No description
+
+```graphql
+input RevenueTransaction_aggregate_bool_exp_covar_samp_arguments {
+  X: RevenueTransaction_select_column_RevenueTransaction_aggregate_bool_exp_covar_samp_arguments_columns!
+  Y: RevenueTransaction_select_column_RevenueTransaction_aggregate_bool_exp_covar_samp_arguments_columns!
+}
+```
+
+### Fields
+
+#### [<code style={{ fontWeight: 'normal' }}>RevenueTransaction_aggregate_bool_exp_covar_samp_arguments.<b>X</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>RevenueTransaction_select_column_RevenueTransaction_aggregate_bool_exp_covar_samp_arguments_columns!</b></code>](/docs/api/flow/graphql/envio/enums/revenue-transaction-select-column-revenue-transaction-aggregate-bool-exp-covar-samp-arguments-columns.mdx) <Badge class="badge badge--secondary badge--non_null" text="non-null"/> <Badge class="badge badge--secondary " text="enum"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>RevenueTransaction_aggregate_bool_exp_covar_samp_arguments.<b>Y</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>RevenueTransaction_select_column_RevenueTransaction_aggregate_bool_exp_covar_samp_arguments_columns!</b></code>](/docs/api/flow/graphql/envio/enums/revenue-transaction-select-column-revenue-transaction-aggregate-bool-exp-covar-samp-arguments-columns.mdx) <Badge class="badge badge--secondary badge--non_null" text="non-null"/> <Badge class="badge badge--secondary " text="enum"/>

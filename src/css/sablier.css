@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Urbanist:wght@200;300;400;500;600;700;800;900&display=swap");
+
 :root {
   --sablier-color-background: var(--sablier-color-dark000);
   --sablier-color-backgroundLights: #484f70;
@@ -64,9 +66,9 @@
 }
 
 /* TODO:
- * Refactor explicitly used color "names" to "purpose" when the Sablier Interface will support light mode.
- * This will keep --sablier-color-<shade> raw and unchanged, while --sablier-color-<purpose> can adapt with the theme (light/dark).
- */
+* Refactor explicitly used color "names" to "purpose" when the Sablier Interface will support light mode.
+* This will keep --sablier-color-<shade> raw and unchanged, while --sablier-color-<purpose> can adapt with the theme (light/dark).
+*/
 
 [data-theme="light"] {
   --sablier-color-white: #1a1d28;
@@ -86,5 +88,3 @@
   --sablier-color-border: #c3c9d5;
   --sablier-color-borderLanding: #e1e4ea;
 }
-
-@import url("https://fonts.googleapis.com/css2?family=Urbanist:wght@200;300;400;500;600;700;800;900&display=swap");

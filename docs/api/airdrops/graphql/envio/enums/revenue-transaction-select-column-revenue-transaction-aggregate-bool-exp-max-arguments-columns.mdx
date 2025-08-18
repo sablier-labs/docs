@@ -1,0 +1,76 @@
+---
+id: revenue-transaction-select-column-revenue-transaction-aggregate-bool-exp-max-arguments-columns
+title: RevenueTransaction_select_column_RevenueTransaction_aggregate_bool_exp_max_arguments_columns
+---
+
+<head>
+  <meta content="noindex" name="robots" />
+  <meta charset="utf-8" />
+</head>
+
+export const Bullet = () => (
+  <>
+    <span style={{ fontWeight: "normal", fontSize: ".5em", color: "var(--ifm-color-secondary-darkest)" }}>
+      &nbsp;●&nbsp;
+    </span>
+  </>
+);
+
+export const SpecifiedBy = (props) => (
+  <>
+    Specification
+    <a
+      className="link"
+      style={{ fontSize: "1.5em", paddingLeft: "4px" }}
+      target="_blank"
+      href={props.url}
+      title={"Specified by " + props.url}
+    >
+      ⎘
+    </a>
+  </>
+);
+
+export const Badge = (props) => (
+  <>
+    <span className={props.class}>{props.text}</span>
+  </>
+);
+
+import { useState } from "react";
+
+export const Details = ({ dataOpen, dataClose, children, startOpen = false }) => {
+  const [open, setOpen] = useState(startOpen);
+  return (
+    <details
+      {...(open ? { open: true } : {})}
+      className="details"
+      style={{ border: "none", boxShadow: "none", background: "var(--ifm-background-color)" }}
+    >
+      <summary
+        onClick={(e) => {
+          e.preventDefault();
+          setOpen((open) => !open);
+        }}
+        style={{ listStyle: "none" }}
+      >
+        {open ? dataOpen : dataClose}
+      </summary>
+      {open && children}
+    </details>
+  );
+};
+
+select "RevenueTransaction_aggregate_bool_exp_max_arguments_columns" columns of table "RevenueTransaction"
+
+```graphql
+enum RevenueTransaction_select_column_RevenueTransaction_aggregate_bool_exp_max_arguments_columns {
+  amount
+}
+```
+
+### Values
+
+#### [<code style={{ fontWeight: 'normal' }}>RevenueTransaction_select_column_RevenueTransaction_aggregate_bool_exp_max_arguments_columns.<b>amount</b></code>](#)
+
+column name

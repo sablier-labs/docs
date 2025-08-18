@@ -1,0 +1,108 @@
+---
+id: revenue-aggregate-fields
+title: Revenue_aggregate_fields
+---
+
+<head>
+  <meta content="noindex" name="robots" />
+  <meta charset="utf-8" />
+</head>
+
+export const Bullet = () => (
+  <>
+    <span style={{ fontWeight: "normal", fontSize: ".5em", color: "var(--ifm-color-secondary-darkest)" }}>
+      &nbsp;●&nbsp;
+    </span>
+  </>
+);
+
+export const SpecifiedBy = (props) => (
+  <>
+    Specification
+    <a
+      className="link"
+      style={{ fontSize: "1.5em", paddingLeft: "4px" }}
+      target="_blank"
+      href={props.url}
+      title={"Specified by " + props.url}
+    >
+      ⎘
+    </a>
+  </>
+);
+
+export const Badge = (props) => (
+  <>
+    <span className={props.class}>{props.text}</span>
+  </>
+);
+
+import { useState } from "react";
+
+export const Details = ({ dataOpen, dataClose, children, startOpen = false }) => {
+  const [open, setOpen] = useState(startOpen);
+  return (
+    <details
+      {...(open ? { open: true } : {})}
+      className="details"
+      style={{ border: "none", boxShadow: "none", background: "var(--ifm-background-color)" }}
+    >
+      <summary
+        onClick={(e) => {
+          e.preventDefault();
+          setOpen((open) => !open);
+        }}
+        style={{ listStyle: "none" }}
+      >
+        {open ? dataOpen : dataClose}
+      </summary>
+      {open && children}
+    </details>
+  );
+};
+
+aggregate fields of "Revenue"
+
+```graphql
+type Revenue_aggregate_fields {
+  avg: Revenue_avg_fields
+  count(columns: [Revenue_select_column!], distinct: Boolean): Int!
+  max: Revenue_max_fields
+  min: Revenue_min_fields
+  stddev: Revenue_stddev_fields
+  stddev_pop: Revenue_stddev_pop_fields
+  stddev_samp: Revenue_stddev_samp_fields
+  sum: Revenue_sum_fields
+  var_pop: Revenue_var_pop_fields
+  var_samp: Revenue_var_samp_fields
+  variance: Revenue_variance_fields
+}
+```
+
+### Fields
+
+#### [<code style={{ fontWeight: 'normal' }}>Revenue_aggregate_fields.<b>avg</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Revenue_avg_fields</b></code>](/docs/api/airdrops/graphql/envio/objects/revenue-avg-fields.mdx) <Badge class="badge badge--secondary " text="object"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Revenue_aggregate_fields.<b>count</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Int!</b></code>](/docs/api/airdrops/graphql/envio/scalars/int.mdx) <Badge class="badge badge--secondary badge--non_null" text="non-null"/> <Badge class="badge badge--secondary " text="scalar"/>
+
+##### [<code style={{ fontWeight: 'normal' }}>Revenue_aggregate_fields.count.<b>columns</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>[Revenue_select_column!]</b></code>](/docs/api/airdrops/graphql/envio/enums/revenue-select-column.mdx) <Badge class="badge badge--secondary " text="list"/> <Badge class="badge badge--secondary " text="enum"/>
+
+##### [<code style={{ fontWeight: 'normal' }}>Revenue_aggregate_fields.count.<b>distinct</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Boolean</b></code>](/docs/api/airdrops/graphql/envio/scalars/boolean.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Revenue_aggregate_fields.<b>max</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Revenue_max_fields</b></code>](/docs/api/airdrops/graphql/envio/objects/revenue-max-fields.mdx) <Badge class="badge badge--secondary " text="object"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Revenue_aggregate_fields.<b>min</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Revenue_min_fields</b></code>](/docs/api/airdrops/graphql/envio/objects/revenue-min-fields.mdx) <Badge class="badge badge--secondary " text="object"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Revenue_aggregate_fields.<b>stddev</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Revenue_stddev_fields</b></code>](/docs/api/airdrops/graphql/envio/objects/revenue-stddev-fields.mdx) <Badge class="badge badge--secondary " text="object"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Revenue_aggregate_fields.<b>stddev_pop</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Revenue_stddev_pop_fields</b></code>](/docs/api/airdrops/graphql/envio/objects/revenue-stddev-pop-fields.mdx) <Badge class="badge badge--secondary " text="object"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Revenue_aggregate_fields.<b>stddev_samp</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Revenue_stddev_samp_fields</b></code>](/docs/api/airdrops/graphql/envio/objects/revenue-stddev-samp-fields.mdx) <Badge class="badge badge--secondary " text="object"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Revenue_aggregate_fields.<b>sum</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Revenue_sum_fields</b></code>](/docs/api/airdrops/graphql/envio/objects/revenue-sum-fields.mdx) <Badge class="badge badge--secondary " text="object"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Revenue_aggregate_fields.<b>var_pop</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Revenue_var_pop_fields</b></code>](/docs/api/airdrops/graphql/envio/objects/revenue-var-pop-fields.mdx) <Badge class="badge badge--secondary " text="object"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Revenue_aggregate_fields.<b>var_samp</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Revenue_var_samp_fields</b></code>](/docs/api/airdrops/graphql/envio/objects/revenue-var-samp-fields.mdx) <Badge class="badge badge--secondary " text="object"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Revenue_aggregate_fields.<b>variance</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Revenue_variance_fields</b></code>](/docs/api/airdrops/graphql/envio/objects/revenue-variance-fields.mdx) <Badge class="badge badge--secondary " text="object"/>

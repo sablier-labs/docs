@@ -1,0 +1,108 @@
+---
+id: campaign-aggregate-fields
+title: Campaign_aggregate_fields
+---
+
+<head>
+  <meta content="noindex" name="robots" />
+  <meta charset="utf-8" />
+</head>
+
+export const Bullet = () => (
+  <>
+    <span style={{ fontWeight: "normal", fontSize: ".5em", color: "var(--ifm-color-secondary-darkest)" }}>
+      &nbsp;●&nbsp;
+    </span>
+  </>
+);
+
+export const SpecifiedBy = (props) => (
+  <>
+    Specification
+    <a
+      className="link"
+      style={{ fontSize: "1.5em", paddingLeft: "4px" }}
+      target="_blank"
+      href={props.url}
+      title={"Specified by " + props.url}
+    >
+      ⎘
+    </a>
+  </>
+);
+
+export const Badge = (props) => (
+  <>
+    <span className={props.class}>{props.text}</span>
+  </>
+);
+
+import { useState } from "react";
+
+export const Details = ({ dataOpen, dataClose, children, startOpen = false }) => {
+  const [open, setOpen] = useState(startOpen);
+  return (
+    <details
+      {...(open ? { open: true } : {})}
+      className="details"
+      style={{ border: "none", boxShadow: "none", background: "var(--ifm-background-color)" }}
+    >
+      <summary
+        onClick={(e) => {
+          e.preventDefault();
+          setOpen((open) => !open);
+        }}
+        style={{ listStyle: "none" }}
+      >
+        {open ? dataOpen : dataClose}
+      </summary>
+      {open && children}
+    </details>
+  );
+};
+
+aggregate fields of "Campaign"
+
+```graphql
+type Campaign_aggregate_fields {
+  avg: Campaign_avg_fields
+  count(columns: [Campaign_select_column!], distinct: Boolean): Int!
+  max: Campaign_max_fields
+  min: Campaign_min_fields
+  stddev: Campaign_stddev_fields
+  stddev_pop: Campaign_stddev_pop_fields
+  stddev_samp: Campaign_stddev_samp_fields
+  sum: Campaign_sum_fields
+  var_pop: Campaign_var_pop_fields
+  var_samp: Campaign_var_samp_fields
+  variance: Campaign_variance_fields
+}
+```
+
+### Fields
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_aggregate_fields.<b>avg</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Campaign_avg_fields</b></code>](/docs/api/airdrops/graphql/envio/objects/campaign-avg-fields.mdx) <Badge class="badge badge--secondary " text="object"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_aggregate_fields.<b>count</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Int!</b></code>](/docs/api/airdrops/graphql/envio/scalars/int.mdx) <Badge class="badge badge--secondary badge--non_null" text="non-null"/> <Badge class="badge badge--secondary " text="scalar"/>
+
+##### [<code style={{ fontWeight: 'normal' }}>Campaign_aggregate_fields.count.<b>columns</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>[Campaign_select_column!]</b></code>](/docs/api/airdrops/graphql/envio/enums/campaign-select-column.mdx) <Badge class="badge badge--secondary " text="list"/> <Badge class="badge badge--secondary " text="enum"/>
+
+##### [<code style={{ fontWeight: 'normal' }}>Campaign_aggregate_fields.count.<b>distinct</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Boolean</b></code>](/docs/api/airdrops/graphql/envio/scalars/boolean.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_aggregate_fields.<b>max</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Campaign_max_fields</b></code>](/docs/api/airdrops/graphql/envio/objects/campaign-max-fields.mdx) <Badge class="badge badge--secondary " text="object"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_aggregate_fields.<b>min</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Campaign_min_fields</b></code>](/docs/api/airdrops/graphql/envio/objects/campaign-min-fields.mdx) <Badge class="badge badge--secondary " text="object"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_aggregate_fields.<b>stddev</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Campaign_stddev_fields</b></code>](/docs/api/airdrops/graphql/envio/objects/campaign-stddev-fields.mdx) <Badge class="badge badge--secondary " text="object"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_aggregate_fields.<b>stddev_pop</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Campaign_stddev_pop_fields</b></code>](/docs/api/airdrops/graphql/envio/objects/campaign-stddev-pop-fields.mdx) <Badge class="badge badge--secondary " text="object"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_aggregate_fields.<b>stddev_samp</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Campaign_stddev_samp_fields</b></code>](/docs/api/airdrops/graphql/envio/objects/campaign-stddev-samp-fields.mdx) <Badge class="badge badge--secondary " text="object"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_aggregate_fields.<b>sum</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Campaign_sum_fields</b></code>](/docs/api/airdrops/graphql/envio/objects/campaign-sum-fields.mdx) <Badge class="badge badge--secondary " text="object"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_aggregate_fields.<b>var_pop</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Campaign_var_pop_fields</b></code>](/docs/api/airdrops/graphql/envio/objects/campaign-var-pop-fields.mdx) <Badge class="badge badge--secondary " text="object"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_aggregate_fields.<b>var_samp</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Campaign_var_samp_fields</b></code>](/docs/api/airdrops/graphql/envio/objects/campaign-var-samp-fields.mdx) <Badge class="badge badge--secondary " text="object"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_aggregate_fields.<b>variance</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Campaign_variance_fields</b></code>](/docs/api/airdrops/graphql/envio/objects/campaign-variance-fields.mdx) <Badge class="badge badge--secondary " text="object"/>

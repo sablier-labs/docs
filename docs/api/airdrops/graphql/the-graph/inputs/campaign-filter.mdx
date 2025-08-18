@@ -1,0 +1,1258 @@
+---
+id: campaign-filter
+title: Campaign_filter
+---
+
+<head>
+  <meta content="noindex" name="robots" />
+  <meta charset="utf-8" />
+</head>
+
+export const Bullet = () => (
+  <>
+    <span style={{ fontWeight: "normal", fontSize: ".5em", color: "var(--ifm-color-secondary-darkest)" }}>
+      &nbsp;●&nbsp;
+    </span>
+  </>
+);
+
+export const SpecifiedBy = (props) => (
+  <>
+    Specification
+    <a
+      className="link"
+      style={{ fontSize: "1.5em", paddingLeft: "4px" }}
+      target="_blank"
+      href={props.url}
+      title={"Specified by " + props.url}
+    >
+      ⎘
+    </a>
+  </>
+);
+
+export const Badge = (props) => (
+  <>
+    <span className={props.class}>{props.text}</span>
+  </>
+);
+
+import { useState } from "react";
+
+export const Details = ({ dataOpen, dataClose, children, startOpen = false }) => {
+  const [open, setOpen] = useState(startOpen);
+  return (
+    <details
+      {...(open ? { open: true } : {})}
+      className="details"
+      style={{ border: "none", boxShadow: "none", background: "var(--ifm-background-color)" }}
+    >
+      <summary
+        onClick={(e) => {
+          e.preventDefault();
+          setOpen((open) => !open);
+        }}
+        style={{ listStyle: "none" }}
+      >
+        {open ? dataOpen : dataClose}
+      </summary>
+      {open && children}
+    </details>
+  );
+};
+
+No description
+
+```graphql
+input Campaign_filter {
+  id: String
+  id_not: String
+  id_gt: String
+  id_lt: String
+  id_gte: String
+  id_lte: String
+  id_in: [String!]
+  id_not_in: [String!]
+  id_contains: String
+  id_contains_nocase: String
+  id_not_contains: String
+  id_not_contains_nocase: String
+  id_starts_with: String
+  id_starts_with_nocase: String
+  id_not_starts_with: String
+  id_not_starts_with_nocase: String
+  id_ends_with: String
+  id_ends_with_nocase: String
+  id_not_ends_with: String
+  id_not_ends_with_nocase: String
+  chainId: BigInt
+  chainId_not: BigInt
+  chainId_gt: BigInt
+  chainId_lt: BigInt
+  chainId_gte: BigInt
+  chainId_lte: BigInt
+  chainId_in: [BigInt!]
+  chainId_not_in: [BigInt!]
+  subgraphId: BigInt
+  subgraphId_not: BigInt
+  subgraphId_gt: BigInt
+  subgraphId_lt: BigInt
+  subgraphId_gte: BigInt
+  subgraphId_lte: BigInt
+  subgraphId_in: [BigInt!]
+  subgraphId_not_in: [BigInt!]
+  hash: Bytes
+  hash_not: Bytes
+  hash_gt: Bytes
+  hash_lt: Bytes
+  hash_gte: Bytes
+  hash_lte: Bytes
+  hash_in: [Bytes!]
+  hash_not_in: [Bytes!]
+  hash_contains: Bytes
+  hash_not_contains: Bytes
+  timestamp: BigInt
+  timestamp_not: BigInt
+  timestamp_gt: BigInt
+  timestamp_lt: BigInt
+  timestamp_gte: BigInt
+  timestamp_lte: BigInt
+  timestamp_in: [BigInt!]
+  timestamp_not_in: [BigInt!]
+  actions_: Action_filter
+  clawbackAction: String
+  clawbackAction_not: String
+  clawbackAction_gt: String
+  clawbackAction_lt: String
+  clawbackAction_gte: String
+  clawbackAction_lte: String
+  clawbackAction_in: [String!]
+  clawbackAction_not_in: [String!]
+  clawbackAction_contains: String
+  clawbackAction_contains_nocase: String
+  clawbackAction_not_contains: String
+  clawbackAction_not_contains_nocase: String
+  clawbackAction_starts_with: String
+  clawbackAction_starts_with_nocase: String
+  clawbackAction_not_starts_with: String
+  clawbackAction_not_starts_with_nocase: String
+  clawbackAction_ends_with: String
+  clawbackAction_ends_with_nocase: String
+  clawbackAction_not_ends_with: String
+  clawbackAction_not_ends_with_nocase: String
+  clawbackAction_: Action_filter
+  category: CampaignCategory
+  category_not: CampaignCategory
+  category_in: [CampaignCategory!]
+  category_not_in: [CampaignCategory!]
+  name: String
+  name_not: String
+  name_gt: String
+  name_lt: String
+  name_gte: String
+  name_lte: String
+  name_in: [String!]
+  name_not_in: [String!]
+  name_contains: String
+  name_contains_nocase: String
+  name_not_contains: String
+  name_not_contains_nocase: String
+  name_starts_with: String
+  name_starts_with_nocase: String
+  name_not_starts_with: String
+  name_not_starts_with_nocase: String
+  name_ends_with: String
+  name_ends_with_nocase: String
+  name_not_ends_with: String
+  name_not_ends_with_nocase: String
+  nickname: String
+  nickname_not: String
+  nickname_gt: String
+  nickname_lt: String
+  nickname_gte: String
+  nickname_lte: String
+  nickname_in: [String!]
+  nickname_not_in: [String!]
+  nickname_contains: String
+  nickname_contains_nocase: String
+  nickname_not_contains: String
+  nickname_not_contains_nocase: String
+  nickname_starts_with: String
+  nickname_starts_with_nocase: String
+  nickname_not_starts_with: String
+  nickname_not_starts_with_nocase: String
+  nickname_ends_with: String
+  nickname_ends_with_nocase: String
+  nickname_not_ends_with: String
+  nickname_not_ends_with_nocase: String
+  activities_: Activity_filter
+  address: Bytes
+  address_not: Bytes
+  address_gt: Bytes
+  address_lt: Bytes
+  address_gte: Bytes
+  address_lte: Bytes
+  address_in: [Bytes!]
+  address_not_in: [Bytes!]
+  address_contains: Bytes
+  address_not_contains: Bytes
+  admin: Bytes
+  admin_not: Bytes
+  admin_gt: Bytes
+  admin_lt: Bytes
+  admin_gte: Bytes
+  admin_lte: Bytes
+  admin_in: [Bytes!]
+  admin_not_in: [Bytes!]
+  admin_contains: Bytes
+  admin_not_contains: Bytes
+  aggregateAmount: BigInt
+  aggregateAmount_not: BigInt
+  aggregateAmount_gt: BigInt
+  aggregateAmount_lt: BigInt
+  aggregateAmount_gte: BigInt
+  aggregateAmount_lte: BigInt
+  aggregateAmount_in: [BigInt!]
+  aggregateAmount_not_in: [BigInt!]
+  asset: String
+  asset_not: String
+  asset_gt: String
+  asset_lt: String
+  asset_gte: String
+  asset_lte: String
+  asset_in: [String!]
+  asset_not_in: [String!]
+  asset_contains: String
+  asset_contains_nocase: String
+  asset_not_contains: String
+  asset_not_contains_nocase: String
+  asset_starts_with: String
+  asset_starts_with_nocase: String
+  asset_not_starts_with: String
+  asset_not_starts_with_nocase: String
+  asset_ends_with: String
+  asset_ends_with_nocase: String
+  asset_not_ends_with: String
+  asset_not_ends_with_nocase: String
+  asset_: Asset_filter
+  claimedAmount: BigInt
+  claimedAmount_not: BigInt
+  claimedAmount_gt: BigInt
+  claimedAmount_lt: BigInt
+  claimedAmount_gte: BigInt
+  claimedAmount_lte: BigInt
+  claimedAmount_in: [BigInt!]
+  claimedAmount_not_in: [BigInt!]
+  claimedCount: BigInt
+  claimedCount_not: BigInt
+  claimedCount_gt: BigInt
+  claimedCount_lt: BigInt
+  claimedCount_gte: BigInt
+  claimedCount_lte: BigInt
+  claimedCount_in: [BigInt!]
+  claimedCount_not_in: [BigInt!]
+  clawbackTime: BigInt
+  clawbackTime_not: BigInt
+  clawbackTime_gt: BigInt
+  clawbackTime_lt: BigInt
+  clawbackTime_gte: BigInt
+  clawbackTime_lte: BigInt
+  clawbackTime_in: [BigInt!]
+  clawbackTime_not_in: [BigInt!]
+  expiration: BigInt
+  expiration_not: BigInt
+  expiration_gt: BigInt
+  expiration_lt: BigInt
+  expiration_gte: BigInt
+  expiration_lte: BigInt
+  expiration_in: [BigInt!]
+  expiration_not_in: [BigInt!]
+  expires: Boolean
+  expires_not: Boolean
+  expires_in: [Boolean!]
+  expires_not_in: [Boolean!]
+  factory: String
+  factory_not: String
+  factory_gt: String
+  factory_lt: String
+  factory_gte: String
+  factory_lte: String
+  factory_in: [String!]
+  factory_not_in: [String!]
+  factory_contains: String
+  factory_contains_nocase: String
+  factory_not_contains: String
+  factory_not_contains_nocase: String
+  factory_starts_with: String
+  factory_starts_with_nocase: String
+  factory_not_starts_with: String
+  factory_not_starts_with_nocase: String
+  factory_ends_with: String
+  factory_ends_with_nocase: String
+  factory_not_ends_with: String
+  factory_not_ends_with_nocase: String
+  factory_: Factory_filter
+  fee: BigInt
+  fee_not: BigInt
+  fee_gt: BigInt
+  fee_lt: BigInt
+  fee_gte: BigInt
+  fee_lte: BigInt
+  fee_in: [BigInt!]
+  fee_not_in: [BigInt!]
+  ipfsCID: String
+  ipfsCID_not: String
+  ipfsCID_gt: String
+  ipfsCID_lt: String
+  ipfsCID_gte: String
+  ipfsCID_lte: String
+  ipfsCID_in: [String!]
+  ipfsCID_not_in: [String!]
+  ipfsCID_contains: String
+  ipfsCID_contains_nocase: String
+  ipfsCID_not_contains: String
+  ipfsCID_not_contains_nocase: String
+  ipfsCID_starts_with: String
+  ipfsCID_starts_with_nocase: String
+  ipfsCID_not_starts_with: String
+  ipfsCID_not_starts_with_nocase: String
+  ipfsCID_ends_with: String
+  ipfsCID_ends_with_nocase: String
+  ipfsCID_not_ends_with: String
+  ipfsCID_not_ends_with_nocase: String
+  position: BigInt
+  position_not: BigInt
+  position_gt: BigInt
+  position_lt: BigInt
+  position_gte: BigInt
+  position_lte: BigInt
+  position_in: [BigInt!]
+  position_not_in: [BigInt!]
+  root: Bytes
+  root_not: Bytes
+  root_gt: Bytes
+  root_lt: Bytes
+  root_gte: Bytes
+  root_lte: Bytes
+  root_in: [Bytes!]
+  root_not_in: [Bytes!]
+  root_contains: Bytes
+  root_not_contains: Bytes
+  totalRecipients: BigInt
+  totalRecipients_not: BigInt
+  totalRecipients_gt: BigInt
+  totalRecipients_lt: BigInt
+  totalRecipients_gte: BigInt
+  totalRecipients_lte: BigInt
+  totalRecipients_in: [BigInt!]
+  totalRecipients_not_in: [BigInt!]
+  version: String
+  version_not: String
+  version_gt: String
+  version_lt: String
+  version_gte: String
+  version_lte: String
+  version_in: [String!]
+  version_not_in: [String!]
+  version_contains: String
+  version_contains_nocase: String
+  version_not_contains: String
+  version_not_contains_nocase: String
+  version_starts_with: String
+  version_starts_with_nocase: String
+  version_not_starts_with: String
+  version_not_starts_with_nocase: String
+  version_ends_with: String
+  version_ends_with_nocase: String
+  version_not_ends_with: String
+  version_not_ends_with_nocase: String
+  lockup: Bytes
+  lockup_not: Bytes
+  lockup_gt: Bytes
+  lockup_lt: Bytes
+  lockup_gte: Bytes
+  lockup_lte: Bytes
+  lockup_in: [Bytes!]
+  lockup_not_in: [Bytes!]
+  lockup_contains: Bytes
+  lockup_not_contains: Bytes
+  streamCancelable: Boolean
+  streamCancelable_not: Boolean
+  streamCancelable_in: [Boolean!]
+  streamCancelable_not_in: [Boolean!]
+  streamCliff: Boolean
+  streamCliff_not: Boolean
+  streamCliff_in: [Boolean!]
+  streamCliff_not_in: [Boolean!]
+  streamCliffDuration: BigInt
+  streamCliffDuration_not: BigInt
+  streamCliffDuration_gt: BigInt
+  streamCliffDuration_lt: BigInt
+  streamCliffDuration_gte: BigInt
+  streamCliffDuration_lte: BigInt
+  streamCliffDuration_in: [BigInt!]
+  streamCliffDuration_not_in: [BigInt!]
+  streamCliffPercentage: BigInt
+  streamCliffPercentage_not: BigInt
+  streamCliffPercentage_gt: BigInt
+  streamCliffPercentage_lt: BigInt
+  streamCliffPercentage_gte: BigInt
+  streamCliffPercentage_lte: BigInt
+  streamCliffPercentage_in: [BigInt!]
+  streamCliffPercentage_not_in: [BigInt!]
+  streamInitial: Boolean
+  streamInitial_not: Boolean
+  streamInitial_in: [Boolean!]
+  streamInitial_not_in: [Boolean!]
+  streamInitialPercentage: BigInt
+  streamInitialPercentage_not: BigInt
+  streamInitialPercentage_gt: BigInt
+  streamInitialPercentage_lt: BigInt
+  streamInitialPercentage_gte: BigInt
+  streamInitialPercentage_lte: BigInt
+  streamInitialPercentage_in: [BigInt!]
+  streamInitialPercentage_not_in: [BigInt!]
+  streamShape: String
+  streamShape_not: String
+  streamShape_gt: String
+  streamShape_lt: String
+  streamShape_gte: String
+  streamShape_lte: String
+  streamShape_in: [String!]
+  streamShape_not_in: [String!]
+  streamShape_contains: String
+  streamShape_contains_nocase: String
+  streamShape_not_contains: String
+  streamShape_not_contains_nocase: String
+  streamShape_starts_with: String
+  streamShape_starts_with_nocase: String
+  streamShape_not_starts_with: String
+  streamShape_not_starts_with_nocase: String
+  streamShape_ends_with: String
+  streamShape_ends_with_nocase: String
+  streamShape_not_ends_with: String
+  streamShape_not_ends_with_nocase: String
+  streamStart: Boolean
+  streamStart_not: Boolean
+  streamStart_in: [Boolean!]
+  streamStart_not_in: [Boolean!]
+  streamStartTime: BigInt
+  streamStartTime_not: BigInt
+  streamStartTime_gt: BigInt
+  streamStartTime_lt: BigInt
+  streamStartTime_gte: BigInt
+  streamStartTime_lte: BigInt
+  streamStartTime_in: [BigInt!]
+  streamStartTime_not_in: [BigInt!]
+  streamTotalDuration: BigInt
+  streamTotalDuration_not: BigInt
+  streamTotalDuration_gt: BigInt
+  streamTotalDuration_lt: BigInt
+  streamTotalDuration_gte: BigInt
+  streamTotalDuration_lte: BigInt
+  streamTotalDuration_in: [BigInt!]
+  streamTotalDuration_not_in: [BigInt!]
+  streamTranches_: Tranche_filter
+  streamTransferable: Boolean
+  streamTransferable_not: Boolean
+  streamTransferable_in: [Boolean!]
+  streamTransferable_not_in: [Boolean!]
+  _change_block: BlockChangedFilter
+  and: [Campaign_filter]
+  or: [Campaign_filter]
+}
+```
+
+### Fields
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>id</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/string.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>id_not</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/string.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>id_gt</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/string.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>id_lt</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/string.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>id_gte</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/string.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>id_lte</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/string.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>id_in</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>[String!]</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/string.mdx) <Badge class="badge badge--secondary " text="list"/> <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>id_not_in</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>[String!]</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/string.mdx) <Badge class="badge badge--secondary " text="list"/> <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>id_contains</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/string.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>id_contains_nocase</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/string.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>id_not_contains</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/string.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>id_not_contains_nocase</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/string.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>id_starts_with</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/string.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>id_starts_with_nocase</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/string.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>id_not_starts_with</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/string.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>id_not_starts_with_nocase</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/string.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>id_ends_with</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/string.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>id_ends_with_nocase</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/string.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>id_not_ends_with</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/string.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>id_not_ends_with_nocase</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/string.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>chainId</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>BigInt</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/big-int.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>chainId_not</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>BigInt</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/big-int.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>chainId_gt</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>BigInt</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/big-int.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>chainId_lt</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>BigInt</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/big-int.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>chainId_gte</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>BigInt</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/big-int.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>chainId_lte</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>BigInt</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/big-int.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>chainId_in</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>[BigInt!]</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/big-int.mdx) <Badge class="badge badge--secondary " text="list"/> <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>chainId_not_in</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>[BigInt!]</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/big-int.mdx) <Badge class="badge badge--secondary " text="list"/> <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>subgraphId</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>BigInt</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/big-int.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>subgraphId_not</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>BigInt</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/big-int.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>subgraphId_gt</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>BigInt</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/big-int.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>subgraphId_lt</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>BigInt</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/big-int.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>subgraphId_gte</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>BigInt</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/big-int.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>subgraphId_lte</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>BigInt</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/big-int.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>subgraphId_in</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>[BigInt!]</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/big-int.mdx) <Badge class="badge badge--secondary " text="list"/> <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>subgraphId_not_in</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>[BigInt!]</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/big-int.mdx) <Badge class="badge badge--secondary " text="list"/> <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>hash</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Bytes</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/bytes.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>hash_not</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Bytes</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/bytes.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>hash_gt</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Bytes</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/bytes.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>hash_lt</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Bytes</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/bytes.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>hash_gte</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Bytes</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/bytes.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>hash_lte</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Bytes</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/bytes.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>hash_in</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>[Bytes!]</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/bytes.mdx) <Badge class="badge badge--secondary " text="list"/> <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>hash_not_in</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>[Bytes!]</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/bytes.mdx) <Badge class="badge badge--secondary " text="list"/> <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>hash_contains</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Bytes</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/bytes.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>hash_not_contains</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Bytes</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/bytes.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>timestamp</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>BigInt</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/big-int.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>timestamp_not</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>BigInt</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/big-int.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>timestamp_gt</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>BigInt</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/big-int.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>timestamp_lt</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>BigInt</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/big-int.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>timestamp_gte</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>BigInt</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/big-int.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>timestamp_lte</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>BigInt</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/big-int.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>timestamp_in</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>[BigInt!]</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/big-int.mdx) <Badge class="badge badge--secondary " text="list"/> <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>timestamp_not_in</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>[BigInt!]</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/big-int.mdx) <Badge class="badge badge--secondary " text="list"/> <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>actions\_</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Action_filter</b></code>](/docs/api/airdrops/graphql/the-graph/inputs/action-filter.mdx) <Badge class="badge badge--secondary " text="input"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>clawbackAction</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/string.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>clawbackAction_not</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/string.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>clawbackAction_gt</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/string.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>clawbackAction_lt</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/string.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>clawbackAction_gte</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/string.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>clawbackAction_lte</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/string.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>clawbackAction_in</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>[String!]</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/string.mdx) <Badge class="badge badge--secondary " text="list"/> <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>clawbackAction_not_in</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>[String!]</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/string.mdx) <Badge class="badge badge--secondary " text="list"/> <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>clawbackAction_contains</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/string.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>clawbackAction_contains_nocase</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/string.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>clawbackAction_not_contains</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/string.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>clawbackAction_not_contains_nocase</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/string.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>clawbackAction_starts_with</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/string.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>clawbackAction_starts_with_nocase</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/string.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>clawbackAction_not_starts_with</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/string.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>clawbackAction_not_starts_with_nocase</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/string.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>clawbackAction_ends_with</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/string.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>clawbackAction_ends_with_nocase</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/string.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>clawbackAction_not_ends_with</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/string.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>clawbackAction_not_ends_with_nocase</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/string.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>clawbackAction\_</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Action_filter</b></code>](/docs/api/airdrops/graphql/the-graph/inputs/action-filter.mdx) <Badge class="badge badge--secondary " text="input"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>category</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>CampaignCategory</b></code>](/docs/api/airdrops/graphql/the-graph/enums/campaign-category.mdx) <Badge class="badge badge--secondary " text="enum"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>category_not</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>CampaignCategory</b></code>](/docs/api/airdrops/graphql/the-graph/enums/campaign-category.mdx) <Badge class="badge badge--secondary " text="enum"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>category_in</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>[CampaignCategory!]</b></code>](/docs/api/airdrops/graphql/the-graph/enums/campaign-category.mdx) <Badge class="badge badge--secondary " text="list"/> <Badge class="badge badge--secondary " text="enum"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>category_not_in</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>[CampaignCategory!]</b></code>](/docs/api/airdrops/graphql/the-graph/enums/campaign-category.mdx) <Badge class="badge badge--secondary " text="list"/> <Badge class="badge badge--secondary " text="enum"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>name</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/string.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>name_not</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/string.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>name_gt</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/string.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>name_lt</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/string.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>name_gte</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/string.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>name_lte</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/string.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>name_in</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>[String!]</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/string.mdx) <Badge class="badge badge--secondary " text="list"/> <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>name_not_in</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>[String!]</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/string.mdx) <Badge class="badge badge--secondary " text="list"/> <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>name_contains</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/string.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>name_contains_nocase</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/string.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>name_not_contains</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/string.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>name_not_contains_nocase</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/string.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>name_starts_with</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/string.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>name_starts_with_nocase</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/string.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>name_not_starts_with</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/string.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>name_not_starts_with_nocase</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/string.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>name_ends_with</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/string.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>name_ends_with_nocase</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/string.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>name_not_ends_with</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/string.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>name_not_ends_with_nocase</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/string.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>nickname</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/string.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>nickname_not</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/string.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>nickname_gt</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/string.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>nickname_lt</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/string.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>nickname_gte</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/string.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>nickname_lte</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/string.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>nickname_in</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>[String!]</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/string.mdx) <Badge class="badge badge--secondary " text="list"/> <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>nickname_not_in</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>[String!]</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/string.mdx) <Badge class="badge badge--secondary " text="list"/> <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>nickname_contains</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/string.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>nickname_contains_nocase</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/string.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>nickname_not_contains</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/string.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>nickname_not_contains_nocase</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/string.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>nickname_starts_with</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/string.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>nickname_starts_with_nocase</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/string.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>nickname_not_starts_with</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/string.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>nickname_not_starts_with_nocase</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/string.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>nickname_ends_with</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/string.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>nickname_ends_with_nocase</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/string.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>nickname_not_ends_with</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/string.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>nickname_not_ends_with_nocase</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/string.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>activities\_</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Activity_filter</b></code>](/docs/api/airdrops/graphql/the-graph/inputs/activity-filter.mdx) <Badge class="badge badge--secondary " text="input"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>address</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Bytes</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/bytes.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>address_not</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Bytes</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/bytes.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>address_gt</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Bytes</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/bytes.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>address_lt</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Bytes</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/bytes.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>address_gte</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Bytes</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/bytes.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>address_lte</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Bytes</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/bytes.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>address_in</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>[Bytes!]</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/bytes.mdx) <Badge class="badge badge--secondary " text="list"/> <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>address_not_in</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>[Bytes!]</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/bytes.mdx) <Badge class="badge badge--secondary " text="list"/> <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>address_contains</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Bytes</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/bytes.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>address_not_contains</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Bytes</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/bytes.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>admin</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Bytes</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/bytes.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>admin_not</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Bytes</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/bytes.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>admin_gt</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Bytes</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/bytes.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>admin_lt</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Bytes</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/bytes.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>admin_gte</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Bytes</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/bytes.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>admin_lte</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Bytes</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/bytes.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>admin_in</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>[Bytes!]</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/bytes.mdx) <Badge class="badge badge--secondary " text="list"/> <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>admin_not_in</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>[Bytes!]</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/bytes.mdx) <Badge class="badge badge--secondary " text="list"/> <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>admin_contains</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Bytes</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/bytes.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>admin_not_contains</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Bytes</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/bytes.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>aggregateAmount</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>BigInt</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/big-int.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>aggregateAmount_not</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>BigInt</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/big-int.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>aggregateAmount_gt</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>BigInt</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/big-int.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>aggregateAmount_lt</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>BigInt</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/big-int.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>aggregateAmount_gte</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>BigInt</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/big-int.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>aggregateAmount_lte</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>BigInt</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/big-int.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>aggregateAmount_in</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>[BigInt!]</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/big-int.mdx) <Badge class="badge badge--secondary " text="list"/> <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>aggregateAmount_not_in</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>[BigInt!]</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/big-int.mdx) <Badge class="badge badge--secondary " text="list"/> <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>asset</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/string.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>asset_not</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/string.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>asset_gt</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/string.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>asset_lt</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/string.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>asset_gte</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/string.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>asset_lte</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/string.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>asset_in</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>[String!]</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/string.mdx) <Badge class="badge badge--secondary " text="list"/> <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>asset_not_in</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>[String!]</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/string.mdx) <Badge class="badge badge--secondary " text="list"/> <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>asset_contains</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/string.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>asset_contains_nocase</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/string.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>asset_not_contains</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/string.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>asset_not_contains_nocase</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/string.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>asset_starts_with</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/string.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>asset_starts_with_nocase</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/string.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>asset_not_starts_with</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/string.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>asset_not_starts_with_nocase</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/string.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>asset_ends_with</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/string.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>asset_ends_with_nocase</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/string.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>asset_not_ends_with</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/string.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>asset_not_ends_with_nocase</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/string.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>asset\_</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Asset_filter</b></code>](/docs/api/airdrops/graphql/the-graph/inputs/asset-filter.mdx) <Badge class="badge badge--secondary " text="input"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>claimedAmount</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>BigInt</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/big-int.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>claimedAmount_not</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>BigInt</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/big-int.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>claimedAmount_gt</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>BigInt</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/big-int.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>claimedAmount_lt</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>BigInt</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/big-int.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>claimedAmount_gte</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>BigInt</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/big-int.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>claimedAmount_lte</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>BigInt</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/big-int.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>claimedAmount_in</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>[BigInt!]</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/big-int.mdx) <Badge class="badge badge--secondary " text="list"/> <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>claimedAmount_not_in</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>[BigInt!]</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/big-int.mdx) <Badge class="badge badge--secondary " text="list"/> <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>claimedCount</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>BigInt</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/big-int.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>claimedCount_not</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>BigInt</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/big-int.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>claimedCount_gt</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>BigInt</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/big-int.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>claimedCount_lt</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>BigInt</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/big-int.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>claimedCount_gte</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>BigInt</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/big-int.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>claimedCount_lte</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>BigInt</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/big-int.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>claimedCount_in</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>[BigInt!]</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/big-int.mdx) <Badge class="badge badge--secondary " text="list"/> <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>claimedCount_not_in</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>[BigInt!]</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/big-int.mdx) <Badge class="badge badge--secondary " text="list"/> <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>clawbackTime</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>BigInt</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/big-int.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>clawbackTime_not</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>BigInt</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/big-int.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>clawbackTime_gt</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>BigInt</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/big-int.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>clawbackTime_lt</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>BigInt</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/big-int.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>clawbackTime_gte</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>BigInt</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/big-int.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>clawbackTime_lte</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>BigInt</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/big-int.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>clawbackTime_in</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>[BigInt!]</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/big-int.mdx) <Badge class="badge badge--secondary " text="list"/> <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>clawbackTime_not_in</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>[BigInt!]</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/big-int.mdx) <Badge class="badge badge--secondary " text="list"/> <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>expiration</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>BigInt</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/big-int.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>expiration_not</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>BigInt</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/big-int.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>expiration_gt</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>BigInt</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/big-int.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>expiration_lt</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>BigInt</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/big-int.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>expiration_gte</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>BigInt</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/big-int.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>expiration_lte</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>BigInt</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/big-int.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>expiration_in</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>[BigInt!]</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/big-int.mdx) <Badge class="badge badge--secondary " text="list"/> <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>expiration_not_in</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>[BigInt!]</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/big-int.mdx) <Badge class="badge badge--secondary " text="list"/> <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>expires</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Boolean</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/boolean.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>expires_not</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Boolean</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/boolean.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>expires_in</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>[Boolean!]</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/boolean.mdx) <Badge class="badge badge--secondary " text="list"/> <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>expires_not_in</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>[Boolean!]</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/boolean.mdx) <Badge class="badge badge--secondary " text="list"/> <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>factory</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/string.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>factory_not</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/string.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>factory_gt</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/string.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>factory_lt</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/string.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>factory_gte</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/string.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>factory_lte</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/string.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>factory_in</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>[String!]</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/string.mdx) <Badge class="badge badge--secondary " text="list"/> <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>factory_not_in</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>[String!]</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/string.mdx) <Badge class="badge badge--secondary " text="list"/> <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>factory_contains</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/string.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>factory_contains_nocase</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/string.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>factory_not_contains</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/string.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>factory_not_contains_nocase</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/string.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>factory_starts_with</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/string.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>factory_starts_with_nocase</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/string.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>factory_not_starts_with</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/string.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>factory_not_starts_with_nocase</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/string.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>factory_ends_with</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/string.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>factory_ends_with_nocase</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/string.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>factory_not_ends_with</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/string.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>factory_not_ends_with_nocase</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/string.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>factory\_</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Factory_filter</b></code>](/docs/api/airdrops/graphql/the-graph/inputs/factory-filter.mdx) <Badge class="badge badge--secondary " text="input"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>fee</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>BigInt</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/big-int.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>fee_not</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>BigInt</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/big-int.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>fee_gt</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>BigInt</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/big-int.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>fee_lt</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>BigInt</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/big-int.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>fee_gte</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>BigInt</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/big-int.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>fee_lte</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>BigInt</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/big-int.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>fee_in</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>[BigInt!]</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/big-int.mdx) <Badge class="badge badge--secondary " text="list"/> <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>fee_not_in</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>[BigInt!]</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/big-int.mdx) <Badge class="badge badge--secondary " text="list"/> <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>ipfsCID</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/string.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>ipfsCID_not</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/string.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>ipfsCID_gt</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/string.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>ipfsCID_lt</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/string.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>ipfsCID_gte</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/string.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>ipfsCID_lte</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/string.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>ipfsCID_in</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>[String!]</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/string.mdx) <Badge class="badge badge--secondary " text="list"/> <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>ipfsCID_not_in</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>[String!]</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/string.mdx) <Badge class="badge badge--secondary " text="list"/> <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>ipfsCID_contains</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/string.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>ipfsCID_contains_nocase</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/string.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>ipfsCID_not_contains</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/string.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>ipfsCID_not_contains_nocase</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/string.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>ipfsCID_starts_with</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/string.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>ipfsCID_starts_with_nocase</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/string.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>ipfsCID_not_starts_with</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/string.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>ipfsCID_not_starts_with_nocase</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/string.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>ipfsCID_ends_with</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/string.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>ipfsCID_ends_with_nocase</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/string.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>ipfsCID_not_ends_with</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/string.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>ipfsCID_not_ends_with_nocase</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/string.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>position</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>BigInt</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/big-int.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>position_not</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>BigInt</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/big-int.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>position_gt</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>BigInt</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/big-int.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>position_lt</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>BigInt</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/big-int.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>position_gte</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>BigInt</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/big-int.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>position_lte</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>BigInt</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/big-int.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>position_in</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>[BigInt!]</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/big-int.mdx) <Badge class="badge badge--secondary " text="list"/> <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>position_not_in</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>[BigInt!]</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/big-int.mdx) <Badge class="badge badge--secondary " text="list"/> <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>root</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Bytes</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/bytes.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>root_not</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Bytes</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/bytes.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>root_gt</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Bytes</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/bytes.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>root_lt</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Bytes</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/bytes.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>root_gte</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Bytes</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/bytes.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>root_lte</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Bytes</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/bytes.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>root_in</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>[Bytes!]</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/bytes.mdx) <Badge class="badge badge--secondary " text="list"/> <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>root_not_in</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>[Bytes!]</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/bytes.mdx) <Badge class="badge badge--secondary " text="list"/> <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>root_contains</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Bytes</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/bytes.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>root_not_contains</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Bytes</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/bytes.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>totalRecipients</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>BigInt</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/big-int.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>totalRecipients_not</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>BigInt</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/big-int.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>totalRecipients_gt</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>BigInt</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/big-int.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>totalRecipients_lt</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>BigInt</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/big-int.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>totalRecipients_gte</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>BigInt</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/big-int.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>totalRecipients_lte</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>BigInt</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/big-int.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>totalRecipients_in</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>[BigInt!]</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/big-int.mdx) <Badge class="badge badge--secondary " text="list"/> <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>totalRecipients_not_in</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>[BigInt!]</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/big-int.mdx) <Badge class="badge badge--secondary " text="list"/> <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>version</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/string.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>version_not</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/string.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>version_gt</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/string.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>version_lt</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/string.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>version_gte</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/string.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>version_lte</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/string.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>version_in</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>[String!]</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/string.mdx) <Badge class="badge badge--secondary " text="list"/> <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>version_not_in</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>[String!]</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/string.mdx) <Badge class="badge badge--secondary " text="list"/> <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>version_contains</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/string.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>version_contains_nocase</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/string.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>version_not_contains</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/string.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>version_not_contains_nocase</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/string.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>version_starts_with</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/string.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>version_starts_with_nocase</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/string.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>version_not_starts_with</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/string.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>version_not_starts_with_nocase</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/string.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>version_ends_with</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/string.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>version_ends_with_nocase</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/string.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>version_not_ends_with</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/string.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>version_not_ends_with_nocase</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/string.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>lockup</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Bytes</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/bytes.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>lockup_not</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Bytes</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/bytes.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>lockup_gt</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Bytes</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/bytes.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>lockup_lt</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Bytes</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/bytes.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>lockup_gte</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Bytes</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/bytes.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>lockup_lte</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Bytes</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/bytes.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>lockup_in</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>[Bytes!]</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/bytes.mdx) <Badge class="badge badge--secondary " text="list"/> <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>lockup_not_in</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>[Bytes!]</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/bytes.mdx) <Badge class="badge badge--secondary " text="list"/> <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>lockup_contains</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Bytes</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/bytes.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>lockup_not_contains</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Bytes</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/bytes.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>streamCancelable</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Boolean</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/boolean.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>streamCancelable_not</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Boolean</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/boolean.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>streamCancelable_in</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>[Boolean!]</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/boolean.mdx) <Badge class="badge badge--secondary " text="list"/> <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>streamCancelable_not_in</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>[Boolean!]</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/boolean.mdx) <Badge class="badge badge--secondary " text="list"/> <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>streamCliff</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Boolean</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/boolean.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>streamCliff_not</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Boolean</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/boolean.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>streamCliff_in</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>[Boolean!]</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/boolean.mdx) <Badge class="badge badge--secondary " text="list"/> <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>streamCliff_not_in</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>[Boolean!]</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/boolean.mdx) <Badge class="badge badge--secondary " text="list"/> <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>streamCliffDuration</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>BigInt</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/big-int.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>streamCliffDuration_not</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>BigInt</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/big-int.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>streamCliffDuration_gt</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>BigInt</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/big-int.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>streamCliffDuration_lt</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>BigInt</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/big-int.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>streamCliffDuration_gte</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>BigInt</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/big-int.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>streamCliffDuration_lte</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>BigInt</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/big-int.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>streamCliffDuration_in</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>[BigInt!]</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/big-int.mdx) <Badge class="badge badge--secondary " text="list"/> <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>streamCliffDuration_not_in</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>[BigInt!]</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/big-int.mdx) <Badge class="badge badge--secondary " text="list"/> <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>streamCliffPercentage</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>BigInt</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/big-int.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>streamCliffPercentage_not</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>BigInt</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/big-int.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>streamCliffPercentage_gt</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>BigInt</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/big-int.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>streamCliffPercentage_lt</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>BigInt</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/big-int.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>streamCliffPercentage_gte</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>BigInt</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/big-int.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>streamCliffPercentage_lte</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>BigInt</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/big-int.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>streamCliffPercentage_in</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>[BigInt!]</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/big-int.mdx) <Badge class="badge badge--secondary " text="list"/> <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>streamCliffPercentage_not_in</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>[BigInt!]</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/big-int.mdx) <Badge class="badge badge--secondary " text="list"/> <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>streamInitial</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Boolean</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/boolean.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>streamInitial_not</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Boolean</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/boolean.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>streamInitial_in</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>[Boolean!]</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/boolean.mdx) <Badge class="badge badge--secondary " text="list"/> <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>streamInitial_not_in</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>[Boolean!]</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/boolean.mdx) <Badge class="badge badge--secondary " text="list"/> <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>streamInitialPercentage</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>BigInt</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/big-int.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>streamInitialPercentage_not</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>BigInt</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/big-int.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>streamInitialPercentage_gt</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>BigInt</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/big-int.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>streamInitialPercentage_lt</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>BigInt</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/big-int.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>streamInitialPercentage_gte</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>BigInt</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/big-int.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>streamInitialPercentage_lte</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>BigInt</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/big-int.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>streamInitialPercentage_in</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>[BigInt!]</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/big-int.mdx) <Badge class="badge badge--secondary " text="list"/> <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>streamInitialPercentage_not_in</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>[BigInt!]</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/big-int.mdx) <Badge class="badge badge--secondary " text="list"/> <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>streamShape</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/string.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>streamShape_not</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/string.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>streamShape_gt</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/string.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>streamShape_lt</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/string.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>streamShape_gte</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/string.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>streamShape_lte</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/string.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>streamShape_in</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>[String!]</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/string.mdx) <Badge class="badge badge--secondary " text="list"/> <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>streamShape_not_in</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>[String!]</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/string.mdx) <Badge class="badge badge--secondary " text="list"/> <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>streamShape_contains</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/string.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>streamShape_contains_nocase</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/string.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>streamShape_not_contains</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/string.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>streamShape_not_contains_nocase</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/string.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>streamShape_starts_with</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/string.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>streamShape_starts_with_nocase</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/string.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>streamShape_not_starts_with</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/string.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>streamShape_not_starts_with_nocase</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/string.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>streamShape_ends_with</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/string.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>streamShape_ends_with_nocase</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/string.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>streamShape_not_ends_with</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/string.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>streamShape_not_ends_with_nocase</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/string.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>streamStart</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Boolean</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/boolean.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>streamStart_not</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Boolean</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/boolean.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>streamStart_in</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>[Boolean!]</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/boolean.mdx) <Badge class="badge badge--secondary " text="list"/> <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>streamStart_not_in</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>[Boolean!]</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/boolean.mdx) <Badge class="badge badge--secondary " text="list"/> <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>streamStartTime</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>BigInt</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/big-int.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>streamStartTime_not</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>BigInt</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/big-int.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>streamStartTime_gt</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>BigInt</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/big-int.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>streamStartTime_lt</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>BigInt</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/big-int.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>streamStartTime_gte</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>BigInt</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/big-int.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>streamStartTime_lte</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>BigInt</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/big-int.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>streamStartTime_in</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>[BigInt!]</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/big-int.mdx) <Badge class="badge badge--secondary " text="list"/> <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>streamStartTime_not_in</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>[BigInt!]</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/big-int.mdx) <Badge class="badge badge--secondary " text="list"/> <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>streamTotalDuration</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>BigInt</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/big-int.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>streamTotalDuration_not</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>BigInt</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/big-int.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>streamTotalDuration_gt</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>BigInt</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/big-int.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>streamTotalDuration_lt</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>BigInt</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/big-int.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>streamTotalDuration_gte</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>BigInt</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/big-int.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>streamTotalDuration_lte</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>BigInt</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/big-int.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>streamTotalDuration_in</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>[BigInt!]</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/big-int.mdx) <Badge class="badge badge--secondary " text="list"/> <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>streamTotalDuration_not_in</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>[BigInt!]</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/big-int.mdx) <Badge class="badge badge--secondary " text="list"/> <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>streamTranches\_</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Tranche_filter</b></code>](/docs/api/airdrops/graphql/the-graph/inputs/tranche-filter.mdx) <Badge class="badge badge--secondary " text="input"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>streamTransferable</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Boolean</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/boolean.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>streamTransferable_not</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Boolean</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/boolean.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>streamTransferable_in</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>[Boolean!]</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/boolean.mdx) <Badge class="badge badge--secondary " text="list"/> <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>streamTransferable_not_in</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>[Boolean!]</b></code>](/docs/api/airdrops/graphql/the-graph/scalars/boolean.mdx) <Badge class="badge badge--secondary " text="list"/> <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>\_change_block</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>BlockChangedFilter</b></code>](/docs/api/airdrops/graphql/the-graph/inputs/block-changed-filter.mdx) <Badge class="badge badge--secondary " text="input"/>
+
+Filter for the block changed event.
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>and</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>[Campaign_filter]</b></code>](/docs/api/airdrops/graphql/the-graph/inputs/campaign-filter.mdx) <Badge class="badge badge--secondary " text="list"/> <Badge class="badge badge--secondary " text="input"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_filter.<b>or</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>[Campaign_filter]</b></code>](/docs/api/airdrops/graphql/the-graph/inputs/campaign-filter.mdx) <Badge class="badge badge--secondary " text="list"/> <Badge class="badge badge--secondary " text="input"/>
