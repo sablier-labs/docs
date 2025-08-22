@@ -17,6 +17,12 @@ The fee collected, in streaming tokens, by the broker upon creating a stream for
 
 The minimum fee, in native tokens, required for claiming an airdrop from a Merkle Airdrop campaign.
 
+## Closed-Ended Stream
+
+Closed-ended streams have a fixed deposit amount and a fixed duration. Once the sender creates the stream, a specific
+start and end time are recorded on the blockchain. They contrast with
+[open-ended streams](/concepts/glossary#open-ended-stream).
+
 ## DeFi
 
 Short for Decentralized Finance: an ecosystem of financial applications and services built on blockchain networks,
@@ -197,7 +203,12 @@ An onchain distribution of tokens that employs a Merkle tree data structure to p
 
 ## Merkle Tree
 
-Aa data structure used to store hashes of the recipients airdrop allocations in Merkle Airdrop Campaigns.
+A data structure used to store hashes of the recipients airdrop allocations in Merkle Airdrop Campaigns.
+
+## Open-Ended Stream
+
+Open-ended streams are streams that don't have an end time and are not tethered to a specific deposit amount. They may
+also be called "indefinite streams". They contrast with [closed-ended streams](/concepts/glossary#closed-ended-stream).
 
 ## PRBMath
 
