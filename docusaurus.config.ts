@@ -238,6 +238,96 @@ const config: Config = {
       },
     ],
     [
+      // The plugin follows llmstxt.org standards and generates the following files during the build process:
+      // - llms.txt: Contains links to the markdown files of all sections.
+      // - llms-airdrops.txt: Contains full content relevant to the Merkle Airdrops protocol.
+      // - llms-flow.txt: Contains full content relevant to the Flow protocol.
+      // - llms-lockup.txt: Contains full content relevant to the Lockup protocol.
+      // - llms-training-data.txt: Contains full content of all markdown files.
+      "docusaurus-plugin-llms",
+      {
+        title: "Sablier Docs",
+        docsDir: "docs",
+        // Remove imports from mdx files.
+        excludeImports: true,
+        generateLLMsFullTxt: false,
+        // Generate index file linking to markdown files.
+        generateLLMsTxt: true,
+        // Generates individual markdown files and adds them to llms.txt.
+        generateMarkdownFiles: true,
+        // Ignore snippet files since they're already included via imports.
+        ignoreFiles: ["snippets/**/*"],
+        // Section ordering in the index file.
+        includeOrder: ["concepts/*", "guides/*", "reference/*", "api/*", "apps/*", "support/*"],
+        // Remove duplicate content matching headings.
+        removeDuplicateHeadings: true,
+        rootContent: `Sablier docs is optimized for LLMs and AI assistants. Navigation tips:
+        - For subgraph APIs or Merkle APIs, use the "API" section.
+        - For deployment addresses and examples on using the contracts, use the "Guides" section.
+        - For contracts specific information, use the "References" section.
+        - For FAQs, use the "Support" section.
+        `,
+        // Protocol specific LLM files.
+        customLLMFiles: [
+          {
+            filename: "llms-airdrops.txt",
+            title: "Sablier Merkle Airdrops Documentation",
+            description: "Merkle Airdrops is useful to distribute tokens to a large number of users efficiently.",
+            // Create a single markdown file with the full content of the section.
+            fullContent: true,
+            includePatterns: [
+              "**/airdrops/**/*.md",
+              "**/airdrops/**/*.mdx",
+              "apps/features/01-airdrops.mdx",
+              "apps/guides/*.md",
+              "apps/guides/*.mdx",
+              "concepts/05-merkle-airdrops.mdx",
+              "support/*.md",
+              "support/*.mdx",
+            ],
+          },
+          {
+            filename: "llms-flow.txt",
+            title: "Sablier Flow Documentation",
+            description: "Sablier Flow is useful for payroll, grants, insurance premiums, loans interest and ESOPs.",
+            // Create a single markdown file with the full content of the section.
+            fullContent: true,
+            includePatterns: [
+              "**/flow/**/*.md",
+              "**/flow/**/*.mdx",
+              "apps/features/03-payments.mdx",
+              "apps/guides/*.md",
+              "apps/guides/*.mdx",
+              "support/*.md",
+              "support/*.mdx",
+            ],
+          },
+          {
+            filename: "llms-lockup.txt",
+            title: "Sablier Lockup Documentation",
+            description: "Sablier Lockup is especially for use cases like vesting and airdrops.",
+            // Create a single markdown file with the full content of the section.
+            fullContent: true,
+            includePatterns: [
+              "**/lockup/**/*.md",
+              "**/lockup/**/*.mdx",
+              "apps/features/02-vesting.mdx",
+              "apps/guides/*.md",
+              "apps/guides/*.mdx",
+              "support/*.md",
+              "support/*.mdx",
+            ],
+          },
+          {
+            // Useful to train or fine-tune an LLM on Sablier docs.
+            filename: "llms-training-data.txt",
+            includePatterns: ["**/*.md", "**/*.mdx"],
+            fullContent: true,
+          },
+        ],
+      },
+    ],
+    [
       "vercel-analytics",
       {
         mode: "auto",
