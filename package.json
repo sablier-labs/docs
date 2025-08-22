@@ -55,6 +55,7 @@
     "@types/node": "^20.19",
     "@typescript-eslint/eslint-plugin": "^8.33",
     "@typescript-eslint/parser": "^8.33",
+    "docusaurus-plugin-llms": "^0.2",
     "eslint": "^8.57",
     "eslint-plugin-mdx": "^3.4",
     "eslint-plugin-react": "^7.37",
