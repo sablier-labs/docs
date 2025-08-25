@@ -11,9 +11,9 @@ if (!fs.existsSync(path.join(ROOT_DIR, "package.json"))) {
 
 export const autogenFilePaths = {
   deployments: (release: Sablier.Release) =>
-    path.join(ROOT_DIR, "src", "autogen", release.protocol, `TableDeployments${_.capitalize(release.version)}.mdx`),
-  envio: (protocol: Sablier.Protocol) => path.join(ROOT_DIR, "src", "autogen", protocol, "TableEnvio.mdx"),
-  graph: (protocol: Sablier.Protocol) => path.join(ROOT_DIR, "src", "autogen", protocol, "TableTheGraph.mdx"),
+    path.join(ROOT_DIR, "src", "autogen", release.protocol, `_table-deployments-${release.version}.mdx`),
+  envio: (protocol: Sablier.Protocol) => path.join(ROOT_DIR, "src", "autogen", protocol, "_table-envio.mdx"),
+  graph: (protocol: Sablier.Protocol) => path.join(ROOT_DIR, "src", "autogen", protocol, "_table-graph.mdx"),
 };
 
 type FileWriteParams = {
