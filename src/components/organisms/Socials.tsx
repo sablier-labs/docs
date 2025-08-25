@@ -1,5 +1,5 @@
-import styled from "@emotion/styled";
 import Link from "@docusaurus/Link";
+import styled from "@emotion/styled";
 import Heading from "@theme/Heading";
 import { Links } from "../../constants";
 
@@ -80,7 +80,7 @@ function Socials() {
     <Wrapper>
       <List>
         <Social href={Links.DISCORD}>
-          <img src="img/social/discord.svg" style={{ width: "48px", height: "48px" }} />
+          <img alt="Discord" src="img/social/discord.svg" style={{ height: "48px", width: "48px" }} />
           <div>
             <Heading as="h4">Discord</Heading>
             <p>Hop in to the #dev channel to get help.</p>
@@ -88,7 +88,7 @@ function Socials() {
         </Social>
 
         <Social href={Links.GitHub.ORG}>
-          <img src="img/social/github.svg" style={{ width: "44px", height: "44px" }} />
+          <img alt="GitHub" src="img/social/github.svg" style={{ height: "44px", width: "44px" }} />
           <div>
             <Heading as="h4">GitHub</Heading>
             <p>View all Sablier code repositories.</p>
@@ -97,7 +97,7 @@ function Socials() {
 
         <Social href={Links.BLOG}>
           <div>
-            <img src="img/logo.svg" style={{ width: "48px", height: "48px" }} />
+            <img alt="Blog" src="img/logo.svg" style={{ height: "48px", width: "48px" }} />
           </div>
           <div>
             <Heading as="h4">Blog</Heading>

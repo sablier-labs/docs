@@ -1,0 +1,261 @@
+---
+id: campaign-select-column
+title: Campaign_select_column
+---
+
+<head>
+  <meta content="noindex" name="robots" />
+  <meta charset="utf-8" />
+</head>
+
+export const Bullet = () => (
+  <>
+    <span style={{ fontWeight: "normal", fontSize: ".5em", color: "var(--ifm-color-secondary-darkest)" }}>
+      &nbsp;●&nbsp;
+    </span>
+  </>
+);
+
+export const SpecifiedBy = (props) => (
+  <>
+    Specification
+    <a
+      className="link"
+      style={{ fontSize: "1.5em", paddingLeft: "4px" }}
+      target="_blank"
+      href={props.url}
+      title={"Specified by " + props.url}
+    >
+      ⎘
+    </a>
+  </>
+);
+
+export const Badge = (props) => (
+  <>
+    <span className={props.class}>{props.text}</span>
+  </>
+);
+
+import { useState } from "react";
+
+export const Details = ({ dataOpen, dataClose, children, startOpen = false }) => {
+  const [open, setOpen] = useState(startOpen);
+  return (
+    <details
+      {...(open ? { open: true } : {})}
+      className="details"
+      style={{ border: "none", boxShadow: "none", background: "var(--ifm-background-color)" }}
+    >
+      <summary
+        onClick={(e) => {
+          e.preventDefault();
+          setOpen((open) => !open);
+        }}
+        style={{ listStyle: "none" }}
+      >
+        {open ? dataOpen : dataClose}
+      </summary>
+      {open && children}
+    </details>
+  );
+};
+
+select columns of table "Campaign"
+
+```graphql
+enum Campaign_select_column {
+  address
+  admin
+  aggregateAmount
+  asset_id
+  category
+  chainId
+  claimedAmount
+  claimedCount
+  clawbackAction_id
+  clawbackTime
+  db_write_timestamp
+  expiration
+  expires
+  factory_id
+  fee
+  hash
+  id
+  ipfsCID
+  lockup
+  name
+  nickname
+  position
+  root
+  streamCancelable
+  streamCliff
+  streamCliffDuration
+  streamCliffPercentage
+  streamInitial
+  streamInitialPercentage
+  streamShape
+  streamStart
+  streamStartTime
+  streamTotalDuration
+  streamTransferable
+  subgraphId
+  timestamp
+  totalRecipients
+  version
+}
+```
+
+### Values
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_select_column.<b>address</b></code>](#)
+
+column name
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_select_column.<b>admin</b></code>](#)
+
+column name
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_select_column.<b>aggregateAmount</b></code>](#)
+
+column name
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_select_column.<b>asset_id</b></code>](#)
+
+column name
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_select_column.<b>category</b></code>](#)
+
+column name
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_select_column.<b>chainId</b></code>](#)
+
+column name
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_select_column.<b>claimedAmount</b></code>](#)
+
+column name
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_select_column.<b>claimedCount</b></code>](#)
+
+column name
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_select_column.<b>clawbackAction_id</b></code>](#)
+
+column name
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_select_column.<b>clawbackTime</b></code>](#)
+
+column name
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_select_column.<b>db_write_timestamp</b></code>](#)
+
+column name
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_select_column.<b>expiration</b></code>](#)
+
+column name
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_select_column.<b>expires</b></code>](#)
+
+column name
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_select_column.<b>factory_id</b></code>](#)
+
+column name
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_select_column.<b>fee</b></code>](#)
+
+column name
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_select_column.<b>hash</b></code>](#)
+
+column name
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_select_column.<b>id</b></code>](#)
+
+column name
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_select_column.<b>ipfsCID</b></code>](#)
+
+column name
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_select_column.<b>lockup</b></code>](#)
+
+column name
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_select_column.<b>name</b></code>](#)
+
+column name
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_select_column.<b>nickname</b></code>](#)
+
+column name
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_select_column.<b>position</b></code>](#)
+
+column name
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_select_column.<b>root</b></code>](#)
+
+column name
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_select_column.<b>streamCancelable</b></code>](#)
+
+column name
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_select_column.<b>streamCliff</b></code>](#)
+
+column name
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_select_column.<b>streamCliffDuration</b></code>](#)
+
+column name
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_select_column.<b>streamCliffPercentage</b></code>](#)
+
+column name
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_select_column.<b>streamInitial</b></code>](#)
+
+column name
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_select_column.<b>streamInitialPercentage</b></code>](#)
+
+column name
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_select_column.<b>streamShape</b></code>](#)
+
+column name
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_select_column.<b>streamStart</b></code>](#)
+
+column name
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_select_column.<b>streamStartTime</b></code>](#)
+
+column name
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_select_column.<b>streamTotalDuration</b></code>](#)
+
+column name
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_select_column.<b>streamTransferable</b></code>](#)
+
+column name
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_select_column.<b>subgraphId</b></code>](#)
+
+column name
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_select_column.<b>timestamp</b></code>](#)
+
+column name
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_select_column.<b>totalRecipients</b></code>](#)
+
+column name
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_select_column.<b>version</b></code>](#)
+
+column name

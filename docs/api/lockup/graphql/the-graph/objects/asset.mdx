@@ -1,0 +1,122 @@
+---
+id: asset
+title: Asset
+---
+
+<head>
+  <meta content="noindex" name="robots" />
+  <meta charset="utf-8" />
+</head>
+
+export const Bullet = () => (
+  <>
+    <span style={{ fontWeight: "normal", fontSize: ".5em", color: "var(--ifm-color-secondary-darkest)" }}>
+      &nbsp;●&nbsp;
+    </span>
+  </>
+);
+
+export const SpecifiedBy = (props) => (
+  <>
+    Specification
+    <a
+      className="link"
+      style={{ fontSize: "1.5em", paddingLeft: "4px" }}
+      target="_blank"
+      href={props.url}
+      title={"Specified by " + props.url}
+    >
+      ⎘
+    </a>
+  </>
+);
+
+export const Badge = (props) => (
+  <>
+    <span className={props.class}>{props.text}</span>
+  </>
+);
+
+import { useState } from "react";
+
+export const Details = ({ dataOpen, dataClose, children, startOpen = false }) => {
+  const [open, setOpen] = useState(startOpen);
+  return (
+    <details
+      {...(open ? { open: true } : {})}
+      className="details"
+      style={{ border: "none", boxShadow: "none", background: "var(--ifm-background-color)" }}
+    >
+      <summary
+        onClick={(e) => {
+          e.preventDefault();
+          setOpen((open) => !open);
+        }}
+        style={{ listStyle: "none" }}
+      >
+        {open ? dataOpen : dataClose}
+      </summary>
+      {open && children}
+    </details>
+  );
+};
+
+ERC-20 asset
+
+```graphql
+type Asset {
+  id: String!
+  address: Bytes!
+  chainId: BigInt!
+  decimals: BigInt!
+  name: String!
+  symbol: String!
+  streams(
+    skip: Int = 0
+    first: Int = 100
+    orderBy: Stream_orderBy
+    orderDirection: OrderDirection
+    where: Stream_filter
+  ): [Stream!]!
+}
+```
+
+### Fields
+
+#### [<code style={{ fontWeight: 'normal' }}>Asset.<b>id</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String!</b></code>](/docs/api/lockup/graphql/the-graph/scalars/string.mdx) <Badge class="badge badge--secondary badge--non_null" text="non-null"/> <Badge class="badge badge--secondary " text="scalar"/>
+
+Unique identifier: `asset-{chainId}-{address}`
+
+#### [<code style={{ fontWeight: 'normal' }}>Asset.<b>address</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Bytes!</b></code>](/docs/api/lockup/graphql/the-graph/scalars/bytes.mdx) <Badge class="badge badge--secondary badge--non_null" text="non-null"/> <Badge class="badge badge--secondary " text="scalar"/>
+
+Address of the ERC-20 token.
+
+#### [<code style={{ fontWeight: 'normal' }}>Asset.<b>chainId</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>BigInt!</b></code>](/docs/api/lockup/graphql/the-graph/scalars/big-int.mdx) <Badge class="badge badge--secondary badge--non_null" text="non-null"/> <Badge class="badge badge--secondary " text="scalar"/>
+
+The chain ID where the asset exists (e.g., 137 for Polygon).
+
+#### [<code style={{ fontWeight: 'normal' }}>Asset.<b>decimals</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>BigInt!</b></code>](/docs/api/lockup/graphql/the-graph/scalars/big-int.mdx) <Badge class="badge badge--secondary badge--non_null" text="non-null"/> <Badge class="badge badge--secondary " text="scalar"/>
+
+Decimals of the ERC20 token.
+
+#### [<code style={{ fontWeight: 'normal' }}>Asset.<b>name</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String!</b></code>](/docs/api/lockup/graphql/the-graph/scalars/string.mdx) <Badge class="badge badge--secondary badge--non_null" text="non-null"/> <Badge class="badge badge--secondary " text="scalar"/>
+
+Name of the ERC20 token.
+
+#### [<code style={{ fontWeight: 'normal' }}>Asset.<b>symbol</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String!</b></code>](/docs/api/lockup/graphql/the-graph/scalars/string.mdx) <Badge class="badge badge--secondary badge--non_null" text="non-null"/> <Badge class="badge badge--secondary " text="scalar"/>
+
+Symbol of the ERC20 token.
+
+#### [<code style={{ fontWeight: 'normal' }}>Asset.<b>streams</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>[Stream!]!</b></code>](/docs/api/lockup/graphql/the-graph/objects/stream.mdx) <Badge class="badge badge--secondary badge--non_null" text="non-null"/> <Badge class="badge badge--secondary " text="object"/>
+
+Streams that rely on this token
+
+##### [<code style={{ fontWeight: 'normal' }}>Asset.streams.<b>skip</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Int</b></code>](/docs/api/lockup/graphql/the-graph/scalars/int.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+##### [<code style={{ fontWeight: 'normal' }}>Asset.streams.<b>first</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Int</b></code>](/docs/api/lockup/graphql/the-graph/scalars/int.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+##### [<code style={{ fontWeight: 'normal' }}>Asset.streams.<b>orderBy</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Stream_orderBy</b></code>](/docs/api/lockup/graphql/the-graph/enums/stream-order-by.mdx) <Badge class="badge badge--secondary " text="enum"/>
+
+##### [<code style={{ fontWeight: 'normal' }}>Asset.streams.<b>orderDirection</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>OrderDirection</b></code>](/docs/api/lockup/graphql/the-graph/enums/order-direction.mdx) <Badge class="badge badge--secondary " text="enum"/>
+
+##### [<code style={{ fontWeight: 'normal' }}>Asset.streams.<b>where</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Stream_filter</b></code>](/docs/api/lockup/graphql/the-graph/inputs/stream-filter.mdx) <Badge class="badge badge--secondary " text="input"/>

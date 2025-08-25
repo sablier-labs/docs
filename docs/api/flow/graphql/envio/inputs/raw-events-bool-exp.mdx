@@ -1,0 +1,122 @@
+---
+id: raw-events-bool-exp
+title: raw_events_bool_exp
+---
+
+<head>
+  <meta content="noindex" name="robots" />
+  <meta charset="utf-8" />
+</head>
+
+export const Bullet = () => (
+  <>
+    <span style={{ fontWeight: "normal", fontSize: ".5em", color: "var(--ifm-color-secondary-darkest)" }}>
+      &nbsp;●&nbsp;
+    </span>
+  </>
+);
+
+export const SpecifiedBy = (props) => (
+  <>
+    Specification
+    <a
+      className="link"
+      style={{ fontSize: "1.5em", paddingLeft: "4px" }}
+      target="_blank"
+      href={props.url}
+      title={"Specified by " + props.url}
+    >
+      ⎘
+    </a>
+  </>
+);
+
+export const Badge = (props) => (
+  <>
+    <span className={props.class}>{props.text}</span>
+  </>
+);
+
+import { useState } from "react";
+
+export const Details = ({ dataOpen, dataClose, children, startOpen = false }) => {
+  const [open, setOpen] = useState(startOpen);
+  return (
+    <details
+      {...(open ? { open: true } : {})}
+      className="details"
+      style={{ border: "none", boxShadow: "none", background: "var(--ifm-background-color)" }}
+    >
+      <summary
+        onClick={(e) => {
+          e.preventDefault();
+          setOpen((open) => !open);
+        }}
+        style={{ listStyle: "none" }}
+      >
+        {open ? dataOpen : dataClose}
+      </summary>
+      {open && children}
+    </details>
+  );
+};
+
+Boolean expression to filter rows from the table "raw_events". All fields are combined with a logical 'AND'.
+
+```graphql
+input raw_events_bool_exp {
+  _and: [raw_events_bool_exp!]
+  _not: raw_events_bool_exp
+  _or: [raw_events_bool_exp!]
+  block_fields: jsonb_comparison_exp
+  block_hash: String_comparison_exp
+  block_number: Int_comparison_exp
+  block_timestamp: Int_comparison_exp
+  chain_id: Int_comparison_exp
+  contract_name: String_comparison_exp
+  db_write_timestamp: timestamp_comparison_exp
+  event_id: numeric_comparison_exp
+  event_name: String_comparison_exp
+  log_index: Int_comparison_exp
+  params: jsonb_comparison_exp
+  serial: Int_comparison_exp
+  src_address: String_comparison_exp
+  transaction_fields: jsonb_comparison_exp
+}
+```
+
+### Fields
+
+#### [<code style={{ fontWeight: 'normal' }}>raw_events_bool_exp.<b>\_and</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>[raw_events_bool_exp!]</b></code>](/docs/api/flow/graphql/envio/inputs/raw-events-bool-exp.mdx) <Badge class="badge badge--secondary " text="list"/> <Badge class="badge badge--secondary " text="input"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>raw_events_bool_exp.<b>\_not</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>raw_events_bool_exp</b></code>](/docs/api/flow/graphql/envio/inputs/raw-events-bool-exp.mdx) <Badge class="badge badge--secondary " text="input"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>raw_events_bool_exp.<b>\_or</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>[raw_events_bool_exp!]</b></code>](/docs/api/flow/graphql/envio/inputs/raw-events-bool-exp.mdx) <Badge class="badge badge--secondary " text="list"/> <Badge class="badge badge--secondary " text="input"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>raw_events_bool_exp.<b>block_fields</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>jsonb_comparison_exp</b></code>](/docs/api/flow/graphql/envio/inputs/jsonb-comparison-exp.mdx) <Badge class="badge badge--secondary " text="input"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>raw_events_bool_exp.<b>block_hash</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String_comparison_exp</b></code>](/docs/api/flow/graphql/envio/inputs/string-comparison-exp.mdx) <Badge class="badge badge--secondary " text="input"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>raw_events_bool_exp.<b>block_number</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Int_comparison_exp</b></code>](/docs/api/flow/graphql/envio/inputs/int-comparison-exp.mdx) <Badge class="badge badge--secondary " text="input"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>raw_events_bool_exp.<b>block_timestamp</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Int_comparison_exp</b></code>](/docs/api/flow/graphql/envio/inputs/int-comparison-exp.mdx) <Badge class="badge badge--secondary " text="input"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>raw_events_bool_exp.<b>chain_id</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Int_comparison_exp</b></code>](/docs/api/flow/graphql/envio/inputs/int-comparison-exp.mdx) <Badge class="badge badge--secondary " text="input"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>raw_events_bool_exp.<b>contract_name</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String_comparison_exp</b></code>](/docs/api/flow/graphql/envio/inputs/string-comparison-exp.mdx) <Badge class="badge badge--secondary " text="input"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>raw_events_bool_exp.<b>db_write_timestamp</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>timestamp_comparison_exp</b></code>](/docs/api/flow/graphql/envio/inputs/timestamp-comparison-exp.mdx) <Badge class="badge badge--secondary " text="input"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>raw_events_bool_exp.<b>event_id</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>numeric_comparison_exp</b></code>](/docs/api/flow/graphql/envio/inputs/numeric-comparison-exp.mdx) <Badge class="badge badge--secondary " text="input"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>raw_events_bool_exp.<b>event_name</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String_comparison_exp</b></code>](/docs/api/flow/graphql/envio/inputs/string-comparison-exp.mdx) <Badge class="badge badge--secondary " text="input"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>raw_events_bool_exp.<b>log_index</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Int_comparison_exp</b></code>](/docs/api/flow/graphql/envio/inputs/int-comparison-exp.mdx) <Badge class="badge badge--secondary " text="input"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>raw_events_bool_exp.<b>params</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>jsonb_comparison_exp</b></code>](/docs/api/flow/graphql/envio/inputs/jsonb-comparison-exp.mdx) <Badge class="badge badge--secondary " text="input"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>raw_events_bool_exp.<b>serial</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Int_comparison_exp</b></code>](/docs/api/flow/graphql/envio/inputs/int-comparison-exp.mdx) <Badge class="badge badge--secondary " text="input"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>raw_events_bool_exp.<b>src_address</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String_comparison_exp</b></code>](/docs/api/flow/graphql/envio/inputs/string-comparison-exp.mdx) <Badge class="badge badge--secondary " text="input"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>raw_events_bool_exp.<b>transaction_fields</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>jsonb_comparison_exp</b></code>](/docs/api/flow/graphql/envio/inputs/jsonb-comparison-exp.mdx) <Badge class="badge badge--secondary " text="input"/>

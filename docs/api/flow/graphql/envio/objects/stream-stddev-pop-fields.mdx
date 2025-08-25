@@ -1,0 +1,125 @@
+---
+id: stream-stddev-pop-fields
+title: Stream_stddev_pop_fields
+---
+
+<head>
+  <meta content="noindex" name="robots" />
+  <meta charset="utf-8" />
+</head>
+
+export const Bullet = () => (
+  <>
+    <span style={{ fontWeight: "normal", fontSize: ".5em", color: "var(--ifm-color-secondary-darkest)" }}>
+      &nbsp;●&nbsp;
+    </span>
+  </>
+);
+
+export const SpecifiedBy = (props) => (
+  <>
+    Specification
+    <a
+      className="link"
+      style={{ fontSize: "1.5em", paddingLeft: "4px" }}
+      target="_blank"
+      href={props.url}
+      title={"Specified by " + props.url}
+    >
+      ⎘
+    </a>
+  </>
+);
+
+export const Badge = (props) => (
+  <>
+    <span className={props.class}>{props.text}</span>
+  </>
+);
+
+import { useState } from "react";
+
+export const Details = ({ dataOpen, dataClose, children, startOpen = false }) => {
+  const [open, setOpen] = useState(startOpen);
+  return (
+    <details
+      {...(open ? { open: true } : {})}
+      className="details"
+      style={{ border: "none", boxShadow: "none", background: "var(--ifm-background-color)" }}
+    >
+      <summary
+        onClick={(e) => {
+          e.preventDefault();
+          setOpen((open) => !open);
+        }}
+        style={{ listStyle: "none" }}
+      >
+        {open ? dataOpen : dataClose}
+      </summary>
+      {open && children}
+    </details>
+  );
+};
+
+aggregate stddev_pop on columns
+
+```graphql
+type Stream_stddev_pop_fields {
+  assetDecimalsValue: Float
+  availableAmount: Float
+  chainId: Float
+  depletionTime: Float
+  depositedAmount: Float
+  forgivenDebt: Float
+  lastAdjustmentTimestamp: Float
+  pausedTime: Float
+  position: Float
+  ratePerSecond: Float
+  refundedAmount: Float
+  snapshotAmount: Float
+  startTime: Float
+  subgraphId: Float
+  timestamp: Float
+  tokenId: Float
+  voidedTime: Float
+  withdrawnAmount: Float
+}
+```
+
+### Fields
+
+#### [<code style={{ fontWeight: 'normal' }}>Stream_stddev_pop_fields.<b>assetDecimalsValue</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Float</b></code>](/docs/api/flow/graphql/envio/scalars/float.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Stream_stddev_pop_fields.<b>availableAmount</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Float</b></code>](/docs/api/flow/graphql/envio/scalars/float.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Stream_stddev_pop_fields.<b>chainId</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Float</b></code>](/docs/api/flow/graphql/envio/scalars/float.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Stream_stddev_pop_fields.<b>depletionTime</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Float</b></code>](/docs/api/flow/graphql/envio/scalars/float.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Stream_stddev_pop_fields.<b>depositedAmount</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Float</b></code>](/docs/api/flow/graphql/envio/scalars/float.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Stream_stddev_pop_fields.<b>forgivenDebt</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Float</b></code>](/docs/api/flow/graphql/envio/scalars/float.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Stream_stddev_pop_fields.<b>lastAdjustmentTimestamp</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Float</b></code>](/docs/api/flow/graphql/envio/scalars/float.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Stream_stddev_pop_fields.<b>pausedTime</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Float</b></code>](/docs/api/flow/graphql/envio/scalars/float.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Stream_stddev_pop_fields.<b>position</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Float</b></code>](/docs/api/flow/graphql/envio/scalars/float.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Stream_stddev_pop_fields.<b>ratePerSecond</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Float</b></code>](/docs/api/flow/graphql/envio/scalars/float.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Stream_stddev_pop_fields.<b>refundedAmount</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Float</b></code>](/docs/api/flow/graphql/envio/scalars/float.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Stream_stddev_pop_fields.<b>snapshotAmount</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Float</b></code>](/docs/api/flow/graphql/envio/scalars/float.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Stream_stddev_pop_fields.<b>startTime</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Float</b></code>](/docs/api/flow/graphql/envio/scalars/float.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Stream_stddev_pop_fields.<b>subgraphId</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Float</b></code>](/docs/api/flow/graphql/envio/scalars/float.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Stream_stddev_pop_fields.<b>timestamp</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Float</b></code>](/docs/api/flow/graphql/envio/scalars/float.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Stream_stddev_pop_fields.<b>tokenId</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Float</b></code>](/docs/api/flow/graphql/envio/scalars/float.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Stream_stddev_pop_fields.<b>voidedTime</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Float</b></code>](/docs/api/flow/graphql/envio/scalars/float.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Stream_stddev_pop_fields.<b>withdrawnAmount</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Float</b></code>](/docs/api/flow/graphql/envio/scalars/float.mdx) <Badge class="badge badge--secondary " text="scalar"/>

@@ -1,0 +1,113 @@
+---
+id: chain-metadata-bool-exp
+title: chain_metadata_bool_exp
+---
+
+<head>
+  <meta content="noindex" name="robots" />
+  <meta charset="utf-8" />
+</head>
+
+export const Bullet = () => (
+  <>
+    <span style={{ fontWeight: "normal", fontSize: ".5em", color: "var(--ifm-color-secondary-darkest)" }}>
+      &nbsp;●&nbsp;
+    </span>
+  </>
+);
+
+export const SpecifiedBy = (props) => (
+  <>
+    Specification
+    <a
+      className="link"
+      style={{ fontSize: "1.5em", paddingLeft: "4px" }}
+      target="_blank"
+      href={props.url}
+      title={"Specified by " + props.url}
+    >
+      ⎘
+    </a>
+  </>
+);
+
+export const Badge = (props) => (
+  <>
+    <span className={props.class}>{props.text}</span>
+  </>
+);
+
+import { useState } from "react";
+
+export const Details = ({ dataOpen, dataClose, children, startOpen = false }) => {
+  const [open, setOpen] = useState(startOpen);
+  return (
+    <details
+      {...(open ? { open: true } : {})}
+      className="details"
+      style={{ border: "none", boxShadow: "none", background: "var(--ifm-background-color)" }}
+    >
+      <summary
+        onClick={(e) => {
+          e.preventDefault();
+          setOpen((open) => !open);
+        }}
+        style={{ listStyle: "none" }}
+      >
+        {open ? dataOpen : dataClose}
+      </summary>
+      {open && children}
+    </details>
+  );
+};
+
+Boolean expression to filter rows from the table "chain_metadata". All fields are combined with a logical 'AND'.
+
+```graphql
+input chain_metadata_bool_exp {
+  _and: [chain_metadata_bool_exp!]
+  _not: chain_metadata_bool_exp
+  _or: [chain_metadata_bool_exp!]
+  block_height: Int_comparison_exp
+  chain_id: Int_comparison_exp
+  end_block: Int_comparison_exp
+  first_event_block_number: Int_comparison_exp
+  is_hyper_sync: Boolean_comparison_exp
+  latest_fetched_block_number: Int_comparison_exp
+  latest_processed_block: Int_comparison_exp
+  num_batches_fetched: Int_comparison_exp
+  num_events_processed: Int_comparison_exp
+  start_block: Int_comparison_exp
+  timestamp_caught_up_to_head_or_endblock: timestamptz_comparison_exp
+}
+```
+
+### Fields
+
+#### [<code style={{ fontWeight: 'normal' }}>chain_metadata_bool_exp.<b>\_and</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>[chain_metadata_bool_exp!]</b></code>](/docs/api/airdrops/graphql/envio/inputs/chain-metadata-bool-exp.mdx) <Badge class="badge badge--secondary " text="list"/> <Badge class="badge badge--secondary " text="input"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>chain_metadata_bool_exp.<b>\_not</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>chain_metadata_bool_exp</b></code>](/docs/api/airdrops/graphql/envio/inputs/chain-metadata-bool-exp.mdx) <Badge class="badge badge--secondary " text="input"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>chain_metadata_bool_exp.<b>\_or</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>[chain_metadata_bool_exp!]</b></code>](/docs/api/airdrops/graphql/envio/inputs/chain-metadata-bool-exp.mdx) <Badge class="badge badge--secondary " text="list"/> <Badge class="badge badge--secondary " text="input"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>chain_metadata_bool_exp.<b>block_height</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Int_comparison_exp</b></code>](/docs/api/airdrops/graphql/envio/inputs/int-comparison-exp.mdx) <Badge class="badge badge--secondary " text="input"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>chain_metadata_bool_exp.<b>chain_id</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Int_comparison_exp</b></code>](/docs/api/airdrops/graphql/envio/inputs/int-comparison-exp.mdx) <Badge class="badge badge--secondary " text="input"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>chain_metadata_bool_exp.<b>end_block</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Int_comparison_exp</b></code>](/docs/api/airdrops/graphql/envio/inputs/int-comparison-exp.mdx) <Badge class="badge badge--secondary " text="input"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>chain_metadata_bool_exp.<b>first_event_block_number</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Int_comparison_exp</b></code>](/docs/api/airdrops/graphql/envio/inputs/int-comparison-exp.mdx) <Badge class="badge badge--secondary " text="input"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>chain_metadata_bool_exp.<b>is_hyper_sync</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Boolean_comparison_exp</b></code>](/docs/api/airdrops/graphql/envio/inputs/boolean-comparison-exp.mdx) <Badge class="badge badge--secondary " text="input"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>chain_metadata_bool_exp.<b>latest_fetched_block_number</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Int_comparison_exp</b></code>](/docs/api/airdrops/graphql/envio/inputs/int-comparison-exp.mdx) <Badge class="badge badge--secondary " text="input"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>chain_metadata_bool_exp.<b>latest_processed_block</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Int_comparison_exp</b></code>](/docs/api/airdrops/graphql/envio/inputs/int-comparison-exp.mdx) <Badge class="badge badge--secondary " text="input"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>chain_metadata_bool_exp.<b>num_batches_fetched</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Int_comparison_exp</b></code>](/docs/api/airdrops/graphql/envio/inputs/int-comparison-exp.mdx) <Badge class="badge badge--secondary " text="input"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>chain_metadata_bool_exp.<b>num_events_processed</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Int_comparison_exp</b></code>](/docs/api/airdrops/graphql/envio/inputs/int-comparison-exp.mdx) <Badge class="badge badge--secondary " text="input"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>chain_metadata_bool_exp.<b>start_block</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Int_comparison_exp</b></code>](/docs/api/airdrops/graphql/envio/inputs/int-comparison-exp.mdx) <Badge class="badge badge--secondary " text="input"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>chain_metadata_bool_exp.<b>timestamp_caught_up_to_head_or_endblock</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>timestamptz_comparison_exp</b></code>](/docs/api/airdrops/graphql/envio/inputs/timestamptz-comparison-exp.mdx) <Badge class="badge badge--secondary " text="input"/>

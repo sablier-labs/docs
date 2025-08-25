@@ -1,0 +1,104 @@
+---
+id: revenue-transaction-aggregate-order-by
+title: RevenueTransaction_aggregate_order_by
+---
+
+<head>
+  <meta content="noindex" name="robots" />
+  <meta charset="utf-8" />
+</head>
+
+export const Bullet = () => (
+  <>
+    <span style={{ fontWeight: "normal", fontSize: ".5em", color: "var(--ifm-color-secondary-darkest)" }}>
+      &nbsp;●&nbsp;
+    </span>
+  </>
+);
+
+export const SpecifiedBy = (props) => (
+  <>
+    Specification
+    <a
+      className="link"
+      style={{ fontSize: "1.5em", paddingLeft: "4px" }}
+      target="_blank"
+      href={props.url}
+      title={"Specified by " + props.url}
+    >
+      ⎘
+    </a>
+  </>
+);
+
+export const Badge = (props) => (
+  <>
+    <span className={props.class}>{props.text}</span>
+  </>
+);
+
+import { useState } from "react";
+
+export const Details = ({ dataOpen, dataClose, children, startOpen = false }) => {
+  const [open, setOpen] = useState(startOpen);
+  return (
+    <details
+      {...(open ? { open: true } : {})}
+      className="details"
+      style={{ border: "none", boxShadow: "none", background: "var(--ifm-background-color)" }}
+    >
+      <summary
+        onClick={(e) => {
+          e.preventDefault();
+          setOpen((open) => !open);
+        }}
+        style={{ listStyle: "none" }}
+      >
+        {open ? dataOpen : dataClose}
+      </summary>
+      {open && children}
+    </details>
+  );
+};
+
+order by aggregate values of table "RevenueTransaction"
+
+```graphql
+input RevenueTransaction_aggregate_order_by {
+  avg: RevenueTransaction_avg_order_by
+  count: order_by
+  max: RevenueTransaction_max_order_by
+  min: RevenueTransaction_min_order_by
+  stddev: RevenueTransaction_stddev_order_by
+  stddev_pop: RevenueTransaction_stddev_pop_order_by
+  stddev_samp: RevenueTransaction_stddev_samp_order_by
+  sum: RevenueTransaction_sum_order_by
+  var_pop: RevenueTransaction_var_pop_order_by
+  var_samp: RevenueTransaction_var_samp_order_by
+  variance: RevenueTransaction_variance_order_by
+}
+```
+
+### Fields
+
+#### [<code style={{ fontWeight: 'normal' }}>RevenueTransaction_aggregate_order_by.<b>avg</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>RevenueTransaction_avg_order_by</b></code>](/docs/api/lockup/graphql/envio/inputs/revenue-transaction-avg-order-by.mdx) <Badge class="badge badge--secondary " text="input"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>RevenueTransaction_aggregate_order_by.<b>count</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>order_by</b></code>](/docs/api/lockup/graphql/envio/enums/order-by.mdx) <Badge class="badge badge--secondary " text="enum"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>RevenueTransaction_aggregate_order_by.<b>max</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>RevenueTransaction_max_order_by</b></code>](/docs/api/lockup/graphql/envio/inputs/revenue-transaction-max-order-by.mdx) <Badge class="badge badge--secondary " text="input"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>RevenueTransaction_aggregate_order_by.<b>min</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>RevenueTransaction_min_order_by</b></code>](/docs/api/lockup/graphql/envio/inputs/revenue-transaction-min-order-by.mdx) <Badge class="badge badge--secondary " text="input"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>RevenueTransaction_aggregate_order_by.<b>stddev</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>RevenueTransaction_stddev_order_by</b></code>](/docs/api/lockup/graphql/envio/inputs/revenue-transaction-stddev-order-by.mdx) <Badge class="badge badge--secondary " text="input"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>RevenueTransaction_aggregate_order_by.<b>stddev_pop</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>RevenueTransaction_stddev_pop_order_by</b></code>](/docs/api/lockup/graphql/envio/inputs/revenue-transaction-stddev-pop-order-by.mdx) <Badge class="badge badge--secondary " text="input"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>RevenueTransaction_aggregate_order_by.<b>stddev_samp</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>RevenueTransaction_stddev_samp_order_by</b></code>](/docs/api/lockup/graphql/envio/inputs/revenue-transaction-stddev-samp-order-by.mdx) <Badge class="badge badge--secondary " text="input"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>RevenueTransaction_aggregate_order_by.<b>sum</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>RevenueTransaction_sum_order_by</b></code>](/docs/api/lockup/graphql/envio/inputs/revenue-transaction-sum-order-by.mdx) <Badge class="badge badge--secondary " text="input"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>RevenueTransaction_aggregate_order_by.<b>var_pop</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>RevenueTransaction_var_pop_order_by</b></code>](/docs/api/lockup/graphql/envio/inputs/revenue-transaction-var-pop-order-by.mdx) <Badge class="badge badge--secondary " text="input"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>RevenueTransaction_aggregate_order_by.<b>var_samp</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>RevenueTransaction_var_samp_order_by</b></code>](/docs/api/lockup/graphql/envio/inputs/revenue-transaction-var-samp-order-by.mdx) <Badge class="badge badge--secondary " text="input"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>RevenueTransaction_aggregate_order_by.<b>variance</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>RevenueTransaction_variance_order_by</b></code>](/docs/api/lockup/graphql/envio/inputs/revenue-transaction-variance-order-by.mdx) <Badge class="badge badge--secondary " text="input"/>

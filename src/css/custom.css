@@ -36,6 +36,12 @@ body .footer {
   padding-top: 60px;
 }
 
+@media (max-width: 960px) {
+  body .footer {
+    display: none;
+  }
+}
+
 html {
   -moz-osx-font-smoothing: grayscale;
   font-weight: 500;
@@ -127,6 +133,10 @@ html[data-theme="dark"] .alert--info {
   --ifm-hero-text-color: var(--ifm-font-color-base);
 }
 
+.hidden {
+  display: none !important;
+}
+
 .main-wrapper {
   display: flex;
 }
@@ -161,12 +171,6 @@ html[data-theme="dark"] .alert--info {
 
 .navbar__item.active {
   display: inline-block;
-}
-
-@media (max-width: 960px) {
-  .footer {
-    display: none;
-  }
 }
 
 .markdown li > p {

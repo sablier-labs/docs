@@ -1,0 +1,102 @@
+---
+id: revenue-transaction-aggregate
+title: RevenueTransaction_aggregate
+---
+
+<head>
+  <meta content="noindex" name="robots" />
+  <meta charset="utf-8" />
+</head>
+
+export const Bullet = () => (
+  <>
+    <span style={{ fontWeight: "normal", fontSize: ".5em", color: "var(--ifm-color-secondary-darkest)" }}>
+      &nbsp;●&nbsp;
+    </span>
+  </>
+);
+
+export const SpecifiedBy = (props) => (
+  <>
+    Specification
+    <a
+      className="link"
+      style={{ fontSize: "1.5em", paddingLeft: "4px" }}
+      target="_blank"
+      href={props.url}
+      title={"Specified by " + props.url}
+    >
+      ⎘
+    </a>
+  </>
+);
+
+export const Badge = (props) => (
+  <>
+    <span className={props.class}>{props.text}</span>
+  </>
+);
+
+import { useState } from "react";
+
+export const Details = ({ dataOpen, dataClose, children, startOpen = false }) => {
+  const [open, setOpen] = useState(startOpen);
+  return (
+    <details
+      {...(open ? { open: true } : {})}
+      className="details"
+      style={{ border: "none", boxShadow: "none", background: "var(--ifm-background-color)" }}
+    >
+      <summary
+        onClick={(e) => {
+          e.preventDefault();
+          setOpen((open) => !open);
+        }}
+        style={{ listStyle: "none" }}
+      >
+        {open ? dataOpen : dataClose}
+      </summary>
+      {open && children}
+    </details>
+  );
+};
+
+fetch aggregated fields from the table: "RevenueTransaction"
+
+```graphql
+RevenueTransaction_aggregate(
+  distinct_on: [RevenueTransaction_select_column!]
+  limit: Int
+  offset: Int
+  order_by: [RevenueTransaction_order_by!]
+  where: RevenueTransaction_bool_exp
+): RevenueTransaction_aggregate!
+```
+
+### Arguments
+
+#### [<code style={{ fontWeight: 'normal' }}>RevenueTransaction_aggregate.<b>distinct_on</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>[RevenueTransaction_select_column!]</b></code>](/docs/api/flow/graphql/envio/enums/revenue-transaction-select-column.mdx) <Badge class="badge badge--secondary " text="list"/> <Badge class="badge badge--secondary " text="enum"/>
+
+distinct select on columns
+
+#### [<code style={{ fontWeight: 'normal' }}>RevenueTransaction_aggregate.<b>limit</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Int</b></code>](/docs/api/flow/graphql/envio/scalars/int.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+limit the number of rows returned
+
+#### [<code style={{ fontWeight: 'normal' }}>RevenueTransaction_aggregate.<b>offset</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Int</b></code>](/docs/api/flow/graphql/envio/scalars/int.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+skip the first n rows. Use only with order_by
+
+#### [<code style={{ fontWeight: 'normal' }}>RevenueTransaction_aggregate.<b>order_by</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>[RevenueTransaction_order_by!]</b></code>](/docs/api/flow/graphql/envio/inputs/revenue-transaction-order-by.mdx) <Badge class="badge badge--secondary " text="list"/> <Badge class="badge badge--secondary " text="input"/>
+
+sort the rows by one or more columns
+
+#### [<code style={{ fontWeight: 'normal' }}>RevenueTransaction_aggregate.<b>where</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>RevenueTransaction_bool_exp</b></code>](/docs/api/flow/graphql/envio/inputs/revenue-transaction-bool-exp.mdx) <Badge class="badge badge--secondary " text="input"/>
+
+filter the rows returned
+
+### Type
+
+#### [<code style={{ fontWeight: 'normal' }}><b>RevenueTransaction_aggregate</b></code>](/docs/api/flow/graphql/envio/objects/revenue-transaction-aggregate.mdx) <Badge class="badge badge--secondary " text="object"/>
+
+aggregated selection of "RevenueTransaction"

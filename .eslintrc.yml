@@ -15,31 +15,6 @@ overrides:
       no-undef: "off"
       no-unused-expressions: "off"
       react/jsx-no-undef: "off"
-  - files:
-      - "*.ts"
-      - "*.tsx"
-    extends:
-      - "plugin:@typescript-eslint/recommended"
-      - "plugin:react/recommended"
-    parser: "@typescript-eslint/parser"
-    parserOptions:
-      ecmaFeatures:
-        jsx: true
-      ecmaVersion: "latest"
-      project: "tsconfig.json"
-      sourceType: "module"
-    plugins:
-      - "@typescript-eslint"
-    rules:
-      "@typescript-eslint/no-floating-promises":
-        - error
-        - ignoreIIFE: true
-          ignoreVoid: true
-      "@typescript-eslint/no-unused-vars":
-        - error
-        - argsIgnorePattern: ^_
-          varsIgnorePattern: ^_
-      "react/react-in-jsx-scope": "off"
 root: true
 settings:
   react:

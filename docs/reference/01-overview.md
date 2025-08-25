@@ -49,8 +49,8 @@ Creates and manages Lockup streams with three different streaming functions.
 > [**Merkle Airdrops Source Code**](https://github.com/sablier-labs/airdrops/tree/release)
 
 The Merkle Airdrops repo is a collection of contracts to create various kinds of airdrop campaigns. Some of these
-campaigns make use of the Lockup protocol to create what we call [Airstreams](/concepts/merkle-airdrops). This repo
-consists of airdrops related contracts such as MerkleFactory, MerkleInstant, MerkleLL, and MerkleLT.
+campaigns make use of the Lockup protocol to create what we call [Airstreams](/concepts/airdrops). This repo consists of
+airdrops related contracts such as MerkleFactory, MerkleInstant, MerkleLL, and MerkleLT.
 
 ### MerkleFactory
 

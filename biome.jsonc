@@ -1,0 +1,14 @@
+{
+  "$schema": "./node_modules/@biomejs/biome/configuration_schema.json",
+  "extends": ["@sablier/devkit/biome"],
+  "files": {
+    "includes": ["**/*.{css,js,json,jsonc,jsx,ts,tsx}", "!node_modules", "!repos", "!src/autogen", "!static"]
+  },
+  "linter": {
+    "rules": {
+      "complexity": {
+        "noImportantStyles": "off"
+      }
+    }
+  }
+}

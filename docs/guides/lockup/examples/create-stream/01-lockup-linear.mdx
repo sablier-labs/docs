@@ -4,10 +4,10 @@ sidebar_position: 1
 title: "Lockup Linear"
 ---
 
-import AdmonitionSimpleCode from "@site/docs/snippets/AdmonitionSimpleCode.mdx";
-import Deployment from "@site/docs/snippets/Deployment.mdx";
-import LockupParam from "@site/docs/snippets/LockupParams.mdx";
-import TokenApproval from "@site/docs/snippets/TokenApproval.mdx";
+import HardcodedDemonstration from "@site/src/components/atoms/HardcodedDemonstration";
+import CautionNonProduction from "@site/src/snippets/CautionNonProduction.mdx";
+import LockupParam from "@site/src/snippets/LockupParams.mdx";
+import TokenApproval from "@site/src/snippets/TokenApproval.mdx";
 
 # Create a Lockup Linear Stream
 
@@ -16,7 +16,7 @@ Linear stream using Solidity.
 
 This guide assumes that you have already gone through the [Protocol Concepts](/concepts/streaming) section.
 
-<AdmonitionSimpleCode />
+<CautionNonProduction />
 
 ## Set up a contract
 
@@ -46,7 +46,7 @@ contract LockupLinearStreamCreator {
 }
 ```
 
-<Deployment protocol="Lockup" />
+<HardcodedDemonstration protocol="Lockup" />
 
 There are two create functions in the Lockup contract that can be used to create Linear streams:
 

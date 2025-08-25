@@ -1,5 +1,5 @@
+import functionPlot, { type FunctionPlotOptions } from "function-plot";
 import { memo, useEffect, useRef } from "react";
-import functionPlot, { FunctionPlotOptions } from "function-plot";
 
 export interface ExtendedFunctionPlotOptions extends FunctionPlotOptions {
   xAxisLabel?: string;
@@ -12,7 +12,7 @@ export interface FunctionPlotProps {
 }
 
 // See https://github.com/mauriciopoppe/function-plot
-const FunctionPlot: React.FC<FunctionPlotProps> = memo(function ({ options }: FunctionPlotProps) {
+const FunctionPlot: React.FC<FunctionPlotProps> = memo(({ options }: FunctionPlotProps) => {
   const rootEl = useRef(null);
 
   useEffect(() => {
@@ -21,17 +21,17 @@ const FunctionPlot: React.FC<FunctionPlotProps> = memo(function ({ options }: Fu
         ...options,
         disableZoom: true,
         grid: true,
+        target: rootEl.current,
         xAxis: {
           domain: [0, options?.xDomainLimit || 100],
           label: options?.xAxisLabel || "x - time",
         },
         yAxis: { domain: [0, options?.yDomainLimit || 100], label: "y - earnings" },
-        target: rootEl.current,
       });
     } catch (err) {
       console.error("FunctionPlot error: ", err);
     }
-  }, [options, rootEl]);
+  }, [options]);
 
   return <div ref={rootEl} />;
 });

@@ -1,0 +1,170 @@
+---
+id: stream-max-fields
+title: Stream_max_fields
+---
+
+<head>
+  <meta content="noindex" name="robots" />
+  <meta charset="utf-8" />
+</head>
+
+export const Bullet = () => (
+  <>
+    <span style={{ fontWeight: "normal", fontSize: ".5em", color: "var(--ifm-color-secondary-darkest)" }}>
+      &nbsp;●&nbsp;
+    </span>
+  </>
+);
+
+export const SpecifiedBy = (props) => (
+  <>
+    Specification
+    <a
+      className="link"
+      style={{ fontSize: "1.5em", paddingLeft: "4px" }}
+      target="_blank"
+      href={props.url}
+      title={"Specified by " + props.url}
+    >
+      ⎘
+    </a>
+  </>
+);
+
+export const Badge = (props) => (
+  <>
+    <span className={props.class}>{props.text}</span>
+  </>
+);
+
+import { useState } from "react";
+
+export const Details = ({ dataOpen, dataClose, children, startOpen = false }) => {
+  const [open, setOpen] = useState(startOpen);
+  return (
+    <details
+      {...(open ? { open: true } : {})}
+      className="details"
+      style={{ border: "none", boxShadow: "none", background: "var(--ifm-background-color)" }}
+    >
+      <summary
+        onClick={(e) => {
+          e.preventDefault();
+          setOpen((open) => !open);
+        }}
+        style={{ listStyle: "none" }}
+      >
+        {open ? dataOpen : dataClose}
+      </summary>
+      {open && children}
+    </details>
+  );
+};
+
+aggregate max on columns
+
+```graphql
+type Stream_max_fields {
+  alias: String
+  assetDecimalsValue: numeric
+  asset_id: String
+  batch_id: String
+  canceledAction_id: String
+  canceledTime: numeric
+  category: streamcategory
+  chainId: numeric
+  cliffAmount: numeric
+  cliffTime: numeric
+  contract: String
+  db_write_timestamp: timestamp
+  depositAmount: numeric
+  duration: numeric
+  endTime: numeric
+  funder: String
+  hash: String
+  id: String
+  initialAmount: numeric
+  intactAmount: numeric
+  position: numeric
+  proxender: String
+  recipient: String
+  renounceAction_id: String
+  renounceTime: numeric
+  sender: String
+  shape: String
+  startTime: numeric
+  subgraphId: numeric
+  timestamp: numeric
+  tokenId: numeric
+  version: String
+  withdrawnAmount: numeric
+}
+```
+
+### Fields
+
+#### [<code style={{ fontWeight: 'normal' }}>Stream_max_fields.<b>alias</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String</b></code>](/docs/api/lockup/graphql/envio/scalars/string.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Stream_max_fields.<b>assetDecimalsValue</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>numeric</b></code>](/docs/api/lockup/graphql/envio/scalars/numeric.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Stream_max_fields.<b>asset_id</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String</b></code>](/docs/api/lockup/graphql/envio/scalars/string.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Stream_max_fields.<b>batch_id</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String</b></code>](/docs/api/lockup/graphql/envio/scalars/string.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Stream_max_fields.<b>canceledAction_id</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String</b></code>](/docs/api/lockup/graphql/envio/scalars/string.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Stream_max_fields.<b>canceledTime</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>numeric</b></code>](/docs/api/lockup/graphql/envio/scalars/numeric.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Stream_max_fields.<b>category</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>streamcategory</b></code>](/docs/api/lockup/graphql/envio/scalars/streamcategory.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Stream_max_fields.<b>chainId</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>numeric</b></code>](/docs/api/lockup/graphql/envio/scalars/numeric.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Stream_max_fields.<b>cliffAmount</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>numeric</b></code>](/docs/api/lockup/graphql/envio/scalars/numeric.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Stream_max_fields.<b>cliffTime</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>numeric</b></code>](/docs/api/lockup/graphql/envio/scalars/numeric.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Stream_max_fields.<b>contract</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String</b></code>](/docs/api/lockup/graphql/envio/scalars/string.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Stream_max_fields.<b>db_write_timestamp</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>timestamp</b></code>](/docs/api/lockup/graphql/envio/scalars/timestamp.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Stream_max_fields.<b>depositAmount</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>numeric</b></code>](/docs/api/lockup/graphql/envio/scalars/numeric.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Stream_max_fields.<b>duration</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>numeric</b></code>](/docs/api/lockup/graphql/envio/scalars/numeric.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Stream_max_fields.<b>endTime</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>numeric</b></code>](/docs/api/lockup/graphql/envio/scalars/numeric.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Stream_max_fields.<b>funder</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String</b></code>](/docs/api/lockup/graphql/envio/scalars/string.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Stream_max_fields.<b>hash</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String</b></code>](/docs/api/lockup/graphql/envio/scalars/string.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Stream_max_fields.<b>id</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String</b></code>](/docs/api/lockup/graphql/envio/scalars/string.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Stream_max_fields.<b>initialAmount</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>numeric</b></code>](/docs/api/lockup/graphql/envio/scalars/numeric.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Stream_max_fields.<b>intactAmount</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>numeric</b></code>](/docs/api/lockup/graphql/envio/scalars/numeric.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Stream_max_fields.<b>position</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>numeric</b></code>](/docs/api/lockup/graphql/envio/scalars/numeric.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Stream_max_fields.<b>proxender</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String</b></code>](/docs/api/lockup/graphql/envio/scalars/string.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Stream_max_fields.<b>recipient</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String</b></code>](/docs/api/lockup/graphql/envio/scalars/string.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Stream_max_fields.<b>renounceAction_id</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String</b></code>](/docs/api/lockup/graphql/envio/scalars/string.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Stream_max_fields.<b>renounceTime</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>numeric</b></code>](/docs/api/lockup/graphql/envio/scalars/numeric.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Stream_max_fields.<b>sender</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String</b></code>](/docs/api/lockup/graphql/envio/scalars/string.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Stream_max_fields.<b>shape</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String</b></code>](/docs/api/lockup/graphql/envio/scalars/string.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Stream_max_fields.<b>startTime</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>numeric</b></code>](/docs/api/lockup/graphql/envio/scalars/numeric.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Stream_max_fields.<b>subgraphId</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>numeric</b></code>](/docs/api/lockup/graphql/envio/scalars/numeric.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Stream_max_fields.<b>timestamp</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>numeric</b></code>](/docs/api/lockup/graphql/envio/scalars/numeric.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Stream_max_fields.<b>tokenId</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>numeric</b></code>](/docs/api/lockup/graphql/envio/scalars/numeric.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Stream_max_fields.<b>version</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String</b></code>](/docs/api/lockup/graphql/envio/scalars/string.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Stream_max_fields.<b>withdrawnAmount</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>numeric</b></code>](/docs/api/lockup/graphql/envio/scalars/numeric.mdx) <Badge class="badge badge--secondary " text="scalar"/>

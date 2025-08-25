@@ -1,0 +1,102 @@
+---
+id: dynamic-contract-registry
+title: dynamic_contract_registry
+---
+
+<head>
+  <meta content="noindex" name="robots" />
+  <meta charset="utf-8" />
+</head>
+
+export const Bullet = () => (
+  <>
+    <span style={{ fontWeight: "normal", fontSize: ".5em", color: "var(--ifm-color-secondary-darkest)" }}>
+      &nbsp;●&nbsp;
+    </span>
+  </>
+);
+
+export const SpecifiedBy = (props) => (
+  <>
+    Specification
+    <a
+      className="link"
+      style={{ fontSize: "1.5em", paddingLeft: "4px" }}
+      target="_blank"
+      href={props.url}
+      title={"Specified by " + props.url}
+    >
+      ⎘
+    </a>
+  </>
+);
+
+export const Badge = (props) => (
+  <>
+    <span className={props.class}>{props.text}</span>
+  </>
+);
+
+import { useState } from "react";
+
+export const Details = ({ dataOpen, dataClose, children, startOpen = false }) => {
+  const [open, setOpen] = useState(startOpen);
+  return (
+    <details
+      {...(open ? { open: true } : {})}
+      className="details"
+      style={{ border: "none", boxShadow: "none", background: "var(--ifm-background-color)" }}
+    >
+      <summary
+        onClick={(e) => {
+          e.preventDefault();
+          setOpen((open) => !open);
+        }}
+        style={{ listStyle: "none" }}
+      >
+        {open ? dataOpen : dataClose}
+      </summary>
+      {open && children}
+    </details>
+  );
+};
+
+fetch data from the table: "dynamic_contract_registry"
+
+```graphql
+dynamic_contract_registry(
+  distinct_on: [dynamic_contract_registry_select_column!]
+  limit: Int
+  offset: Int
+  order_by: [dynamic_contract_registry_order_by!]
+  where: dynamic_contract_registry_bool_exp
+): [dynamic_contract_registry!]!
+```
+
+### Arguments
+
+#### [<code style={{ fontWeight: 'normal' }}>dynamic_contract_registry.<b>distinct_on</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>[dynamic_contract_registry_select_column!]</b></code>](/docs/api/airdrops/graphql/envio/enums/dynamic-contract-registry-select-column.mdx) <Badge class="badge badge--secondary " text="list"/> <Badge class="badge badge--secondary " text="enum"/>
+
+distinct select on columns
+
+#### [<code style={{ fontWeight: 'normal' }}>dynamic_contract_registry.<b>limit</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Int</b></code>](/docs/api/airdrops/graphql/envio/scalars/int.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+limit the number of rows returned
+
+#### [<code style={{ fontWeight: 'normal' }}>dynamic_contract_registry.<b>offset</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Int</b></code>](/docs/api/airdrops/graphql/envio/scalars/int.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+skip the first n rows. Use only with order_by
+
+#### [<code style={{ fontWeight: 'normal' }}>dynamic_contract_registry.<b>order_by</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>[dynamic_contract_registry_order_by!]</b></code>](/docs/api/airdrops/graphql/envio/inputs/dynamic-contract-registry-order-by.mdx) <Badge class="badge badge--secondary " text="list"/> <Badge class="badge badge--secondary " text="input"/>
+
+sort the rows by one or more columns
+
+#### [<code style={{ fontWeight: 'normal' }}>dynamic_contract_registry.<b>where</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>dynamic_contract_registry_bool_exp</b></code>](/docs/api/airdrops/graphql/envio/inputs/dynamic-contract-registry-bool-exp.mdx) <Badge class="badge badge--secondary " text="input"/>
+
+filter the rows returned
+
+### Type
+
+#### [<code style={{ fontWeight: 'normal' }}><b>dynamic_contract_registry</b></code>](/docs/api/airdrops/graphql/envio/objects/dynamic-contract-registry.mdx) <Badge class="badge badge--secondary " text="object"/>
+
+columns and relationships of "dynamic_contract_registry"

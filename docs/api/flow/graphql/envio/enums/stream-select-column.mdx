@@ -1,0 +1,251 @@
+---
+id: stream-select-column
+title: Stream_select_column
+---
+
+<head>
+  <meta content="noindex" name="robots" />
+  <meta charset="utf-8" />
+</head>
+
+export const Bullet = () => (
+  <>
+    <span style={{ fontWeight: "normal", fontSize: ".5em", color: "var(--ifm-color-secondary-darkest)" }}>
+      &nbsp;●&nbsp;
+    </span>
+  </>
+);
+
+export const SpecifiedBy = (props) => (
+  <>
+    Specification
+    <a
+      className="link"
+      style={{ fontSize: "1.5em", paddingLeft: "4px" }}
+      target="_blank"
+      href={props.url}
+      title={"Specified by " + props.url}
+    >
+      ⎘
+    </a>
+  </>
+);
+
+export const Badge = (props) => (
+  <>
+    <span className={props.class}>{props.text}</span>
+  </>
+);
+
+import { useState } from "react";
+
+export const Details = ({ dataOpen, dataClose, children, startOpen = false }) => {
+  const [open, setOpen] = useState(startOpen);
+  return (
+    <details
+      {...(open ? { open: true } : {})}
+      className="details"
+      style={{ border: "none", boxShadow: "none", background: "var(--ifm-background-color)" }}
+    >
+      <summary
+        onClick={(e) => {
+          e.preventDefault();
+          setOpen((open) => !open);
+        }}
+        style={{ listStyle: "none" }}
+      >
+        {open ? dataOpen : dataClose}
+      </summary>
+      {open && children}
+    </details>
+  );
+};
+
+select columns of table "Stream"
+
+```graphql
+enum Stream_select_column {
+  alias
+  assetDecimalsValue
+  asset_id
+  availableAmount
+  batch_id
+  category
+  chainId
+  contract
+  creator
+  db_write_timestamp
+  depletionTime
+  depositedAmount
+  forgivenDebt
+  hash
+  id
+  lastAdjustmentAction_id
+  lastAdjustmentTimestamp
+  paused
+  pausedAction_id
+  pausedTime
+  position
+  ratePerSecond
+  recipient
+  refundedAmount
+  sender
+  snapshotAmount
+  startTime
+  subgraphId
+  timestamp
+  tokenId
+  transferable
+  version
+  voided
+  voidedAction_id
+  voidedTime
+  withdrawnAmount
+}
+```
+
+### Values
+
+#### [<code style={{ fontWeight: 'normal' }}>Stream_select_column.<b>alias</b></code>](#)
+
+column name
+
+#### [<code style={{ fontWeight: 'normal' }}>Stream_select_column.<b>assetDecimalsValue</b></code>](#)
+
+column name
+
+#### [<code style={{ fontWeight: 'normal' }}>Stream_select_column.<b>asset_id</b></code>](#)
+
+column name
+
+#### [<code style={{ fontWeight: 'normal' }}>Stream_select_column.<b>availableAmount</b></code>](#)
+
+column name
+
+#### [<code style={{ fontWeight: 'normal' }}>Stream_select_column.<b>batch_id</b></code>](#)
+
+column name
+
+#### [<code style={{ fontWeight: 'normal' }}>Stream_select_column.<b>category</b></code>](#)
+
+column name
+
+#### [<code style={{ fontWeight: 'normal' }}>Stream_select_column.<b>chainId</b></code>](#)
+
+column name
+
+#### [<code style={{ fontWeight: 'normal' }}>Stream_select_column.<b>contract</b></code>](#)
+
+column name
+
+#### [<code style={{ fontWeight: 'normal' }}>Stream_select_column.<b>creator</b></code>](#)
+
+column name
+
+#### [<code style={{ fontWeight: 'normal' }}>Stream_select_column.<b>db_write_timestamp</b></code>](#)
+
+column name
+
+#### [<code style={{ fontWeight: 'normal' }}>Stream_select_column.<b>depletionTime</b></code>](#)
+
+column name
+
+#### [<code style={{ fontWeight: 'normal' }}>Stream_select_column.<b>depositedAmount</b></code>](#)
+
+column name
+
+#### [<code style={{ fontWeight: 'normal' }}>Stream_select_column.<b>forgivenDebt</b></code>](#)
+
+column name
+
+#### [<code style={{ fontWeight: 'normal' }}>Stream_select_column.<b>hash</b></code>](#)
+
+column name
+
+#### [<code style={{ fontWeight: 'normal' }}>Stream_select_column.<b>id</b></code>](#)
+
+column name
+
+#### [<code style={{ fontWeight: 'normal' }}>Stream_select_column.<b>lastAdjustmentAction_id</b></code>](#)
+
+column name
+
+#### [<code style={{ fontWeight: 'normal' }}>Stream_select_column.<b>lastAdjustmentTimestamp</b></code>](#)
+
+column name
+
+#### [<code style={{ fontWeight: 'normal' }}>Stream_select_column.<b>paused</b></code>](#)
+
+column name
+
+#### [<code style={{ fontWeight: 'normal' }}>Stream_select_column.<b>pausedAction_id</b></code>](#)
+
+column name
+
+#### [<code style={{ fontWeight: 'normal' }}>Stream_select_column.<b>pausedTime</b></code>](#)
+
+column name
+
+#### [<code style={{ fontWeight: 'normal' }}>Stream_select_column.<b>position</b></code>](#)
+
+column name
+
+#### [<code style={{ fontWeight: 'normal' }}>Stream_select_column.<b>ratePerSecond</b></code>](#)
+
+column name
+
+#### [<code style={{ fontWeight: 'normal' }}>Stream_select_column.<b>recipient</b></code>](#)
+
+column name
+
+#### [<code style={{ fontWeight: 'normal' }}>Stream_select_column.<b>refundedAmount</b></code>](#)
+
+column name
+
+#### [<code style={{ fontWeight: 'normal' }}>Stream_select_column.<b>sender</b></code>](#)
+
+column name
+
+#### [<code style={{ fontWeight: 'normal' }}>Stream_select_column.<b>snapshotAmount</b></code>](#)
+
+column name
+
+#### [<code style={{ fontWeight: 'normal' }}>Stream_select_column.<b>startTime</b></code>](#)
+
+column name
+
+#### [<code style={{ fontWeight: 'normal' }}>Stream_select_column.<b>subgraphId</b></code>](#)
+
+column name
+
+#### [<code style={{ fontWeight: 'normal' }}>Stream_select_column.<b>timestamp</b></code>](#)
+
+column name
+
+#### [<code style={{ fontWeight: 'normal' }}>Stream_select_column.<b>tokenId</b></code>](#)
+
+column name
+
+#### [<code style={{ fontWeight: 'normal' }}>Stream_select_column.<b>transferable</b></code>](#)
+
+column name
+
+#### [<code style={{ fontWeight: 'normal' }}>Stream_select_column.<b>version</b></code>](#)
+
+column name
+
+#### [<code style={{ fontWeight: 'normal' }}>Stream_select_column.<b>voided</b></code>](#)
+
+column name
+
+#### [<code style={{ fontWeight: 'normal' }}>Stream_select_column.<b>voidedAction_id</b></code>](#)
+
+column name
+
+#### [<code style={{ fontWeight: 'normal' }}>Stream_select_column.<b>voidedTime</b></code>](#)
+
+column name
+
+#### [<code style={{ fontWeight: 'normal' }}>Stream_select_column.<b>withdrawnAmount</b></code>](#)
+
+column name

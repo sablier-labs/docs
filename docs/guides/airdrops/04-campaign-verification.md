@@ -39,11 +39,11 @@ In this case, the function name is `createMerkleLL`. Then, locate and note down 
 
 Click on the "View Input As" button, then change the view to "Original", and copy the input data.
 
-<img src="/img/campaign-verification/03_1.webp" alt="Campaign Verification 03_1" width="800">
+<img src="/img/campaign-verification/03-step-1.webp" alt="Campaign Verification 03-step-1" width="800">
 
 Copy the address of the campaign creator from the "From" field.
 
-<img src="/img/campaign-verification/03_2.webp" alt="Campaign Verification 03_2" width="800">
+<img src="/img/campaign-verification/03-step-2.webp" alt="Campaign Verification 03-step-2" width="800">
 
 ## Step 4: Get the constructor argument
 
@@ -76,7 +76,7 @@ Clone the [sablier-labs/airdrops](https://github.com/sablier-labs/airdrops) repo
 git clone git@github.com:sablier-labs/airdrops.git
 git checkout v1.3.0
 bun install --frozen-lockfile
-bun run build:optimized
+just build-optimized
 ```
 
 ## Step 6: Run the verification command

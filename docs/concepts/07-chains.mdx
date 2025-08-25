@@ -4,66 +4,28 @@ title: Supported Chains
 sidebar_position: 7
 ---
 
+import Chains from "@site/src/components/organisms/Chains";
 import { Links } from "@site/src/constants";
+import { keys } from "lodash";
+import { mainnets, testnets } from "sablier";
 
-Sablier Protocol is live on 25+ mainnets and 11+ testnets. However, not all of these chains may be supported by the
-[Sablier Interface](https://app.sablier.com/). If you're interested in that, fill out <Link href={Links.Forms.CALL}>this form</Link>.
+<>
+
+The Sablier Protocol is deployed on {keys(mainnets).length} mainnets and {keys(testnets).length} testnet EVM chains, although not all of these are supported by the
+[Sablier Interface](https://app.sablier.com/).
+
+</>
+
+:::tip Want to list your chain?
+
+If you're interested in having Sablier deployed on your chain, fill out <Link href={Links.Forms.CALL}>this form</Link> and our team will get back to you.
+
+:::
 
 ## Mainnets
 
-| Chain            | Chain ID | Gas Token | Block Explorer                               |
-| ---------------- | -------- | --------- | -------------------------------------------- |
-| Ethereum Mainnet | 1        | ETH       | [Explorer](https://etherscan.io)             |
-| Abstract         | 2741     | ETH       | [Explorer](https://abscan.org/)              |
-| Arbitrum         | 42161    | ETH       | [Explorer](https://arbiscan.io)              |
-| Avalanche        | 43114    | AVAX      | [Explorer](https://snowtrace.io)             |
-| Base             | 8453     | ETH       | [Explorer](https://basescan.org)             |
-| Berachain        | 80094    | BERA      | [Explorer](https://berascan.com/)            |
-| Blast            | 81457    | ETH       | [Explorer](https://blastscan.io)             |
-| BNB Smart Chain  | 56       | BNB       | [Explorer](https://bscscan.com)              |
-| Chiliz           | 88888    | CHZ       | [Explorer](https://chiliscan.com/)           |
-| Core DAO         | 1116     | CORE      | [Explorer](https://scan.coredao.org/)        |
-| Form             | 478      | ETH       | [Explorer](https://explorer.form.network/)   |
-| Gnosis           | 100      | xDAI      | [Explorer](https://gnosisscan.io)            |
-| HyperEVM         | 999      | HYPE      | [Explorer](https://hyperevmscan.io/)         |
-| IoTeX            | 4689     | IOTX      | [Explorer](https://iotexscan.io)             |
-| Lightlink        | 1890     | ETH       | [Explorer](https://phoenix.lightlink.io)     |
-| Linea            | 59144    | ETH       | [Explorer](https://lineascan.build)          |
-| Mode             | 34443    | ETH       | [Explorer](https://explorer.mode.network)    |
-| Morph            | 2818     | ETH       | [Explorer](https://explorer.morphl2.io)      |
-| Optimism         | 10       | ETH       | [Explorer](https://optimistic.etherscan.io/) |
-| Polygon          | 137      | POL       | [Explorer](https://polygonscan.com)          |
-| Scroll           | 534352   | ETH       | [Explorer](https://scrollscan.com)           |
-| Sei              | 1329     | SEI       | [Explorer](https://seitrace.com/)            |
-| Sonic            | 146      | S         | [Explorer](https://sonicscan.org/)           |
-| Sophon           | 50104    | SOPH      | [Explorer](https://sophscan.xyz/)            |
-| Superseed        | 5330     | ETH       | [Explorer](https://explorer.superseed.xyz/)  |
-| Taiko            | 167000   | ETH       | [Explorer](https://taikoscan.io/)            |
-| Tangle           | 5845     | TNT       | [Explorer](https://explorer.tangle.tools/)   |
-| Ultra            | 19991    | UOS       | [Explorer](https://evmexplorer.ultra.io/)    |
-| Unichain         | 130      | ETH       | [Explorer](https://uniscan.xyz)              |
-| XDC              | 50       | XDC       | [Explorer](https://xdcscan.com/)             |
-| zkSync Era       | 324      | ETH       | [Explorer](https://era.zksync.network/)      |
+<Chains kind="mainnets" />
 
 ## Testnets
 
-| Chain             | Chain ID  | Gas Token | Block Explorer                                      |
-| ----------------- | --------- | --------- | --------------------------------------------------- |
-| Ethereum Sepolia  | 11155111  | ETH       | [Explorer](https://sepolia.etherscan.io)            |
-| Arbitrum Sepolia  | 421614    | ETH       | [Explorer](https://sepolia.arbiscan.io)             |
-| Base Sepolia      | 84532     | ETH       | [Explorer](https://sepolia.basescan.org)            |
-| Blast Sepolia     | 168587773 | ETH       | [Explorer](https://sepolia.blastscan.io/)           |
-| Linea Sepolia     | 59141     | ETH       | [Explorer](https://sepolia.lineascan.build/)        |
-| Mode Sepolia      | 919       | ETH       | [Explorer](https://sepolia.explorer.mode.network/)  |
-| Monad Testnet     | 10143     | MON       | [Explorer](https://testnet.monadexplorer.com/)      |
-| Optimism Sepolia  | 11155420  | ETH       | [Explorer](https://sepolia-optimism.etherscan.io)   |
-| Superseed Sepolia | 53302     | ETH       | [Explorer](https://sepolia-explorer.superseed.xyz/) |
-| Taiko Hekla       | 167009    | ETH       | [Explorer](https://hekla.taikoexplorer.com/)        |
-| zkSync Sepolia    | 300       | ETH       | [Explorer](https://sepolia-era.zksync.network/)     |
-
-## Notes
-
-- For more information about these EVM chains, such as RPC URLs, check out [Chainlist](https://chainlist.org).
-- Do you want to get Sablier deployed on your chain? If you meet the [requirements](/guides/custom-deployments#requirements)
-  for custom deployment, fill out <Link href={Links.Forms.CHAINS}>this form</Link> and our team will get back to you.
-- Sablier does not support chains with native tokens that do not have 18 decimals.
+<Chains kind="testnets" />

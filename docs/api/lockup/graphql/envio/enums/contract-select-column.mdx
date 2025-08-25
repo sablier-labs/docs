@@ -1,0 +1,111 @@
+---
+id: contract-select-column
+title: Contract_select_column
+---
+
+<head>
+  <meta content="noindex" name="robots" />
+  <meta charset="utf-8" />
+</head>
+
+export const Bullet = () => (
+  <>
+    <span style={{ fontWeight: "normal", fontSize: ".5em", color: "var(--ifm-color-secondary-darkest)" }}>
+      &nbsp;●&nbsp;
+    </span>
+  </>
+);
+
+export const SpecifiedBy = (props) => (
+  <>
+    Specification
+    <a
+      className="link"
+      style={{ fontSize: "1.5em", paddingLeft: "4px" }}
+      target="\_blank"
+      href={props.url}
+      title={"Specified by " + props.url}
+    >
+      ⎘
+    </a>
+  </>
+);
+
+export const Badge = (props) => (
+  <>
+    <span className={props.class}>{props.text}</span>
+  </>
+);
+
+import { useState } from "react";
+
+export const Details = ({ dataOpen, dataClose, children, startOpen = false }) => {
+  const [open, setOpen] = useState(startOpen);
+  return (
+    <details
+      {...(open ? { open: true } : {})}
+      className="details"
+      style={{ border: "none", boxShadow: "none", background: "var(--ifm-background-color)" }}
+    >
+      <summary
+        onClick={(e) => {
+          e.preventDefault();
+          setOpen((open) => !open);
+        }}
+        style={{ listStyle: "none" }}
+      >
+        {open ? dataOpen : dataClose}
+      </summary>
+      {open && children}
+    </details>
+  );
+};
+
+select columns of table "Contract"
+
+```graphql
+enum Contract_select_column {
+  address
+  admin
+  alias
+  category
+  chainId
+  db_write_timestamp
+  id
+  version
+}
+```
+
+### Values
+
+#### [<code style={{ fontWeight: 'normal' }}>Contract_select_column.<b>address</b></code>](#)
+
+column name
+
+#### [<code style={{ fontWeight: 'normal' }}>Contract_select_column.<b>admin</b></code>](#)
+
+column name
+
+#### [<code style={{ fontWeight: 'normal' }}>Contract_select_column.<b>alias</b></code>](#)
+
+column name
+
+#### [<code style={{ fontWeight: 'normal' }}>Contract_select_column.<b>category</b></code>](#)
+
+column name
+
+#### [<code style={{ fontWeight: 'normal' }}>Contract_select_column.<b>chainId</b></code>](#)
+
+column name
+
+#### [<code style={{ fontWeight: 'normal' }}>Contract_select_column.<b>db_write_timestamp</b></code>](#)
+
+column name
+
+#### [<code style={{ fontWeight: 'normal' }}>Contract_select_column.<b>id</b></code>](#)
+
+column name
+
+#### [<code style={{ fontWeight: 'normal' }}>Contract_select_column.<b>version</b></code>](#)
+
+column name

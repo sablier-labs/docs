@@ -1,0 +1,126 @@
+---
+id: batch
+title: Batch
+---
+
+<head>
+  <meta content="noindex" name="robots" />
+  <meta charset="utf-8" />
+</head>
+
+export const Bullet = () => (
+  <>
+    <span style={{ fontWeight: "normal", fontSize: ".5em", color: "var(--ifm-color-secondary-darkest)" }}>
+      &nbsp;●&nbsp;
+    </span>
+  </>
+);
+
+export const SpecifiedBy = (props) => (
+  <>
+    Specification
+    <a
+      className="link"
+      style={{ fontSize: "1.5em", paddingLeft: "4px" }}
+      target="_blank"
+      href={props.url}
+      title={"Specified by " + props.url}
+    >
+      ⎘
+    </a>
+  </>
+);
+
+export const Badge = (props) => (
+  <>
+    <span className={props.class}>{props.text}</span>
+  </>
+);
+
+import { useState } from "react";
+
+export const Details = ({ dataOpen, dataClose, children, startOpen = false }) => {
+  const [open, setOpen] = useState(startOpen);
+  return (
+    <details
+      {...(open ? { open: true } : {})}
+      className="details"
+      style={{ border: "none", boxShadow: "none", background: "var(--ifm-background-color)" }}
+    >
+      <summary
+        onClick={(e) => {
+          e.preventDefault();
+          setOpen((open) => !open);
+        }}
+        style={{ listStyle: "none" }}
+      >
+        {open ? dataOpen : dataClose}
+      </summary>
+      {open && children}
+    </details>
+  );
+};
+
+Creating streams in bulk is possible using the SablierBatchLockup contract.
+See https://github.com/sablier-labs/lockup/blob/v2.0/src/SablierBatchLockup.sol
+
+Note: the entity can be immutable because a batch is only updated in the same block.
+See https://thegraph.com/docs/en/subgraphs/developing/creating/ql-schema/#defining-entities
+
+```graphql
+type Batch {
+  id: String!
+  hash: Bytes
+  timestamp: BigInt
+  batcher: Batcher
+  position: BigInt
+  size: BigInt!
+  streams(
+    skip: Int = 0
+    first: Int = 100
+    orderBy: Stream_orderBy
+    orderDirection: OrderDirection
+    where: Stream_filter
+  ): [Stream!]!
+}
+```
+
+### Fields
+
+#### [<code style={{ fontWeight: 'normal' }}>Batch.<b>id</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String!</b></code>](/docs/api/flow/graphql/the-graph/scalars/string.mdx) <Badge class="badge badge--secondary badge--non_null" text="non-null"/> <Badge class="badge badge--secondary " text="scalar"/>
+
+Unique identifier: `batch-{chainId}-{txHash}-{batcher}`
+
+#### [<code style={{ fontWeight: 'normal' }}>Batch.<b>hash</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Bytes</b></code>](/docs/api/flow/graphql/the-graph/scalars/bytes.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+Hash of the Ethereum transaction that created this batch.
+
+#### [<code style={{ fontWeight: 'normal' }}>Batch.<b>timestamp</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>BigInt</b></code>](/docs/api/flow/graphql/the-graph/scalars/big-int.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+Timestamp of the transaction that created this batch.
+
+#### [<code style={{ fontWeight: 'normal' }}>Batch.<b>batcher</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Batcher</b></code>](/docs/api/flow/graphql/the-graph/objects/batcher.mdx) <Badge class="badge badge--secondary " text="object"/>
+
+The sender address that created this batch.
+
+#### [<code style={{ fontWeight: 'normal' }}>Batch.<b>position</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>BigInt</b></code>](/docs/api/flow/graphql/the-graph/scalars/big-int.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+Index of the batch based on the `batchCounter` in the `Batcher` entity.
+
+#### [<code style={{ fontWeight: 'normal' }}>Batch.<b>size</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>BigInt!</b></code>](/docs/api/flow/graphql/the-graph/scalars/big-int.mdx) <Badge class="badge badge--secondary badge--non_null" text="non-null"/> <Badge class="badge badge--secondary " text="scalar"/>
+
+Number of streams part of this batch.
+
+#### [<code style={{ fontWeight: 'normal' }}>Batch.<b>streams</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>[Stream!]!</b></code>](/docs/api/flow/graphql/the-graph/objects/stream.mdx) <Badge class="badge badge--secondary badge--non_null" text="non-null"/> <Badge class="badge badge--secondary " text="object"/>
+
+Streams part of this batch.
+
+##### [<code style={{ fontWeight: 'normal' }}>Batch.streams.<b>skip</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Int</b></code>](/docs/api/flow/graphql/the-graph/scalars/int.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+##### [<code style={{ fontWeight: 'normal' }}>Batch.streams.<b>first</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Int</b></code>](/docs/api/flow/graphql/the-graph/scalars/int.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+##### [<code style={{ fontWeight: 'normal' }}>Batch.streams.<b>orderBy</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Stream_orderBy</b></code>](/docs/api/flow/graphql/the-graph/enums/stream-order-by.mdx) <Badge class="badge badge--secondary " text="enum"/>
+
+##### [<code style={{ fontWeight: 'normal' }}>Batch.streams.<b>orderDirection</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>OrderDirection</b></code>](/docs/api/flow/graphql/the-graph/enums/order-direction.mdx) <Badge class="badge badge--secondary " text="enum"/>
+
+##### [<code style={{ fontWeight: 'normal' }}>Batch.streams.<b>where</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Stream_filter</b></code>](/docs/api/flow/graphql/the-graph/inputs/stream-filter.mdx) <Badge class="badge badge--secondary " text="input"/>

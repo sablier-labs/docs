@@ -1,0 +1,108 @@
+---
+id: user-transaction-aggregate-fields
+title: UserTransaction_aggregate_fields
+---
+
+<head>
+  <meta content="noindex" name="robots" />
+  <meta charset="utf-8" />
+</head>
+
+export const Bullet = () => (
+  <>
+    <span style={{ fontWeight: "normal", fontSize: ".5em", color: "var(--ifm-color-secondary-darkest)" }}>
+      &nbsp;●&nbsp;
+    </span>
+  </>
+);
+
+export const SpecifiedBy = (props) => (
+  <>
+    Specification
+    <a
+      className="link"
+      style={{ fontSize: "1.5em", paddingLeft: "4px" }}
+      target="_blank"
+      href={props.url}
+      title={"Specified by " + props.url}
+    >
+      ⎘
+    </a>
+  </>
+);
+
+export const Badge = (props) => (
+  <>
+    <span className={props.class}>{props.text}</span>
+  </>
+);
+
+import { useState } from "react";
+
+export const Details = ({ dataOpen, dataClose, children, startOpen = false }) => {
+  const [open, setOpen] = useState(startOpen);
+  return (
+    <details
+      {...(open ? { open: true } : {})}
+      className="details"
+      style={{ border: "none", boxShadow: "none", background: "var(--ifm-background-color)" }}
+    >
+      <summary
+        onClick={(e) => {
+          e.preventDefault();
+          setOpen((open) => !open);
+        }}
+        style={{ listStyle: "none" }}
+      >
+        {open ? dataOpen : dataClose}
+      </summary>
+      {open && children}
+    </details>
+  );
+};
+
+aggregate fields of "UserTransaction"
+
+```graphql
+type UserTransaction_aggregate_fields {
+  avg: UserTransaction_avg_fields
+  count(columns: [UserTransaction_select_column!], distinct: Boolean): Int!
+  max: UserTransaction_max_fields
+  min: UserTransaction_min_fields
+  stddev: UserTransaction_stddev_fields
+  stddev_pop: UserTransaction_stddev_pop_fields
+  stddev_samp: UserTransaction_stddev_samp_fields
+  sum: UserTransaction_sum_fields
+  var_pop: UserTransaction_var_pop_fields
+  var_samp: UserTransaction_var_samp_fields
+  variance: UserTransaction_variance_fields
+}
+```
+
+### Fields
+
+#### [<code style={{ fontWeight: 'normal' }}>UserTransaction_aggregate_fields.<b>avg</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>UserTransaction_avg_fields</b></code>](/docs/api/lockup/graphql/envio/objects/user-transaction-avg-fields.mdx) <Badge class="badge badge--secondary " text="object"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>UserTransaction_aggregate_fields.<b>count</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Int!</b></code>](/docs/api/lockup/graphql/envio/scalars/int.mdx) <Badge class="badge badge--secondary badge--non_null" text="non-null"/> <Badge class="badge badge--secondary " text="scalar"/>
+
+##### [<code style={{ fontWeight: 'normal' }}>UserTransaction_aggregate_fields.count.<b>columns</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>[UserTransaction_select_column!]</b></code>](/docs/api/lockup/graphql/envio/enums/user-transaction-select-column.mdx) <Badge class="badge badge--secondary " text="list"/> <Badge class="badge badge--secondary " text="enum"/>
+
+##### [<code style={{ fontWeight: 'normal' }}>UserTransaction_aggregate_fields.count.<b>distinct</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Boolean</b></code>](/docs/api/lockup/graphql/envio/scalars/boolean.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>UserTransaction_aggregate_fields.<b>max</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>UserTransaction_max_fields</b></code>](/docs/api/lockup/graphql/envio/objects/user-transaction-max-fields.mdx) <Badge class="badge badge--secondary " text="object"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>UserTransaction_aggregate_fields.<b>min</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>UserTransaction_min_fields</b></code>](/docs/api/lockup/graphql/envio/objects/user-transaction-min-fields.mdx) <Badge class="badge badge--secondary " text="object"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>UserTransaction_aggregate_fields.<b>stddev</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>UserTransaction_stddev_fields</b></code>](/docs/api/lockup/graphql/envio/objects/user-transaction-stddev-fields.mdx) <Badge class="badge badge--secondary " text="object"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>UserTransaction_aggregate_fields.<b>stddev_pop</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>UserTransaction_stddev_pop_fields</b></code>](/docs/api/lockup/graphql/envio/objects/user-transaction-stddev-pop-fields.mdx) <Badge class="badge badge--secondary " text="object"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>UserTransaction_aggregate_fields.<b>stddev_samp</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>UserTransaction_stddev_samp_fields</b></code>](/docs/api/lockup/graphql/envio/objects/user-transaction-stddev-samp-fields.mdx) <Badge class="badge badge--secondary " text="object"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>UserTransaction_aggregate_fields.<b>sum</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>UserTransaction_sum_fields</b></code>](/docs/api/lockup/graphql/envio/objects/user-transaction-sum-fields.mdx) <Badge class="badge badge--secondary " text="object"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>UserTransaction_aggregate_fields.<b>var_pop</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>UserTransaction_var_pop_fields</b></code>](/docs/api/lockup/graphql/envio/objects/user-transaction-var-pop-fields.mdx) <Badge class="badge badge--secondary " text="object"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>UserTransaction_aggregate_fields.<b>var_samp</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>UserTransaction_var_samp_fields</b></code>](/docs/api/lockup/graphql/envio/objects/user-transaction-var-samp-fields.mdx) <Badge class="badge badge--secondary " text="object"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>UserTransaction_aggregate_fields.<b>variance</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>UserTransaction_variance_fields</b></code>](/docs/api/lockup/graphql/envio/objects/user-transaction-variance-fields.mdx) <Badge class="badge badge--secondary " text="object"/>

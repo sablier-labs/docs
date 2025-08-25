@@ -1,0 +1,154 @@
+---
+id: asset
+title: Asset
+---
+
+<head>
+  <meta content="noindex" name="robots" />
+  <meta charset="utf-8" />
+</head>
+
+export const Bullet = () => (
+  <>
+    <span style={{ fontWeight: "normal", fontSize: ".5em", color: "var(--ifm-color-secondary-darkest)" }}>
+      &nbsp;●&nbsp;
+    </span>
+  </>
+);
+
+export const SpecifiedBy = (props) => (
+  <>
+    Specification
+    <a
+      className="link"
+      style={{ fontSize: "1.5em", paddingLeft: "4px" }}
+      target="_blank"
+      href={props.url}
+      title={"Specified by " + props.url}
+    >
+      ⎘
+    </a>
+  </>
+);
+
+export const Badge = (props) => (
+  <>
+    <span className={props.class}>{props.text}</span>
+  </>
+);
+
+import { useState } from "react";
+
+export const Details = ({ dataOpen, dataClose, children, startOpen = false }) => {
+  const [open, setOpen] = useState(startOpen);
+  return (
+    <details
+      {...(open ? { open: true } : {})}
+      className="details"
+      style={{ border: "none", boxShadow: "none", background: "var(--ifm-background-color)" }}
+    >
+      <summary
+        onClick={(e) => {
+          e.preventDefault();
+          setOpen((open) => !open);
+        }}
+        style={{ listStyle: "none" }}
+      >
+        {open ? dataOpen : dataClose}
+      </summary>
+      {open && children}
+    </details>
+  );
+};
+
+columns and relationships of "Asset"
+
+```graphql
+type Asset {
+  address: String!
+  chainId: numeric!
+  db_write_timestamp: timestamp
+  decimals: numeric!
+  id: String!
+  name: String!
+  streams(
+    distinct_on: [Stream_select_column!]
+    limit: Int
+    offset: Int
+    order_by: [Stream_order_by!]
+    where: Stream_bool_exp
+  ): [Stream!]!
+  streams_aggregate(
+    distinct_on: [Stream_select_column!]
+    limit: Int
+    offset: Int
+    order_by: [Stream_order_by!]
+    where: Stream_bool_exp
+  ): Stream_aggregate!
+  symbol: String!
+}
+```
+
+### Fields
+
+#### [<code style={{ fontWeight: 'normal' }}>Asset.<b>address</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String!</b></code>](/docs/api/lockup/graphql/envio/scalars/string.mdx) <Badge class="badge badge--secondary badge--non_null" text="non-null"/> <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Asset.<b>chainId</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>numeric!</b></code>](/docs/api/lockup/graphql/envio/scalars/numeric.mdx) <Badge class="badge badge--secondary badge--non_null" text="non-null"/> <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Asset.<b>db_write_timestamp</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>timestamp</b></code>](/docs/api/lockup/graphql/envio/scalars/timestamp.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Asset.<b>decimals</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>numeric!</b></code>](/docs/api/lockup/graphql/envio/scalars/numeric.mdx) <Badge class="badge badge--secondary badge--non_null" text="non-null"/> <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Asset.<b>id</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String!</b></code>](/docs/api/lockup/graphql/envio/scalars/string.mdx) <Badge class="badge badge--secondary badge--non_null" text="non-null"/> <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Asset.<b>name</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String!</b></code>](/docs/api/lockup/graphql/envio/scalars/string.mdx) <Badge class="badge badge--secondary badge--non_null" text="non-null"/> <Badge class="badge badge--secondary " text="scalar"/>
+
+#### [<code style={{ fontWeight: 'normal' }}>Asset.<b>streams</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>[Stream!]!</b></code>](/docs/api/lockup/graphql/envio/objects/stream.mdx) <Badge class="badge badge--secondary badge--non_null" text="non-null"/> <Badge class="badge badge--secondary " text="object"/>
+
+An array relationship
+
+##### [<code style={{ fontWeight: 'normal' }}>Asset.streams.<b>distinct_on</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>[Stream_select_column!]</b></code>](/docs/api/lockup/graphql/envio/enums/stream-select-column.mdx) <Badge class="badge badge--secondary " text="list"/> <Badge class="badge badge--secondary " text="enum"/>
+
+distinct select on columns
+
+##### [<code style={{ fontWeight: 'normal' }}>Asset.streams.<b>limit</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Int</b></code>](/docs/api/lockup/graphql/envio/scalars/int.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+limit the number of rows returned
+
+##### [<code style={{ fontWeight: 'normal' }}>Asset.streams.<b>offset</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Int</b></code>](/docs/api/lockup/graphql/envio/scalars/int.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+skip the first n rows. Use only with order_by
+
+##### [<code style={{ fontWeight: 'normal' }}>Asset.streams.<b>order_by</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>[Stream_order_by!]</b></code>](/docs/api/lockup/graphql/envio/inputs/stream-order-by.mdx) <Badge class="badge badge--secondary " text="list"/> <Badge class="badge badge--secondary " text="input"/>
+
+sort the rows by one or more columns
+
+##### [<code style={{ fontWeight: 'normal' }}>Asset.streams.<b>where</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Stream_bool_exp</b></code>](/docs/api/lockup/graphql/envio/inputs/stream-bool-exp.mdx) <Badge class="badge badge--secondary " text="input"/>
+
+filter the rows returned
+
+#### [<code style={{ fontWeight: 'normal' }}>Asset.<b>streams_aggregate</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Stream_aggregate!</b></code>](/docs/api/lockup/graphql/envio/objects/stream-aggregate.mdx) <Badge class="badge badge--secondary badge--non_null" text="non-null"/> <Badge class="badge badge--secondary " text="object"/>
+
+An aggregate relationship
+
+##### [<code style={{ fontWeight: 'normal' }}>Asset.streams_aggregate.<b>distinct_on</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>[Stream_select_column!]</b></code>](/docs/api/lockup/graphql/envio/enums/stream-select-column.mdx) <Badge class="badge badge--secondary " text="list"/> <Badge class="badge badge--secondary " text="enum"/>
+
+distinct select on columns
+
+##### [<code style={{ fontWeight: 'normal' }}>Asset.streams_aggregate.<b>limit</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Int</b></code>](/docs/api/lockup/graphql/envio/scalars/int.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+limit the number of rows returned
+
+##### [<code style={{ fontWeight: 'normal' }}>Asset.streams_aggregate.<b>offset</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Int</b></code>](/docs/api/lockup/graphql/envio/scalars/int.mdx) <Badge class="badge badge--secondary " text="scalar"/>
+
+skip the first n rows. Use only with order_by
+
+##### [<code style={{ fontWeight: 'normal' }}>Asset.streams_aggregate.<b>order_by</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>[Stream_order_by!]</b></code>](/docs/api/lockup/graphql/envio/inputs/stream-order-by.mdx) <Badge class="badge badge--secondary " text="list"/> <Badge class="badge badge--secondary " text="input"/>
+
+sort the rows by one or more columns
+
+##### [<code style={{ fontWeight: 'normal' }}>Asset.streams_aggregate.<b>where</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Stream_bool_exp</b></code>](/docs/api/lockup/graphql/envio/inputs/stream-bool-exp.mdx) <Badge class="badge badge--secondary " text="input"/>
+
+filter the rows returned
+
+#### [<code style={{ fontWeight: 'normal' }}>Asset.<b>symbol</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String!</b></code>](/docs/api/lockup/graphql/envio/scalars/string.mdx) <Badge class="badge badge--secondary badge--non_null" text="non-null"/> <Badge class="badge badge--secondary " text="scalar"/>

@@ -1,3 +1,7 @@
+/**
+ * @file Note that the AI search won't work in a development or staging environment because the API only allows
+ * requests from the production environment.
+ */
 import { Algolia } from "../constants";
 import "@docsearch/css";
 import { DocSearch } from "@docsearch/react";

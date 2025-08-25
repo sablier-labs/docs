@@ -1,0 +1,338 @@
+---
+id: stream-order-by
+title: Stream_orderBy
+---
+
+<head>
+  <meta content="noindex" name="robots" />
+  <meta charset="utf-8" />
+</head>
+
+export const Bullet = () => (
+  <>
+    <span style={{ fontWeight: "normal", fontSize: ".5em", color: "var(--ifm-color-secondary-darkest)" }}>
+      &nbsp;●&nbsp;
+    </span>
+  </>
+);
+
+export const SpecifiedBy = (props) => (
+  <>
+    Specification
+    <a
+      className="link"
+      style={{ fontSize: "1.5em", paddingLeft: "4px" }}
+      target="_blank"
+      href={props.url}
+      title={"Specified by " + props.url}
+    >
+      ⎘
+    </a>
+  </>
+);
+
+export const Badge = (props) => (
+  <>
+    <span className={props.class}>{props.text}</span>
+  </>
+);
+
+import { useState } from "react";
+
+export const Details = ({ dataOpen, dataClose, children, startOpen = false }) => {
+  const [open, setOpen] = useState(startOpen);
+  return (
+    <details
+      {...(open ? { open: true } : {})}
+      className="details"
+      style={{ border: "none", boxShadow: "none", background: "var(--ifm-background-color)" }}
+    >
+      <summary
+        onClick={(e) => {
+          e.preventDefault();
+          setOpen((open) => !open);
+        }}
+        style={{ listStyle: "none" }}
+      >
+        {open ? dataOpen : dataClose}
+      </summary>
+      {open && children}
+    </details>
+  );
+};
+
+No description
+
+```graphql
+enum Stream_orderBy {
+  id
+  alias
+  chainId
+  subgraphId
+  tokenId
+  hash
+  timestamp
+  actions
+  asset
+  asset__id
+  asset__address
+  asset__chainId
+  asset__decimals
+  asset__name
+  asset__symbol
+  assetDecimalsValue
+  batch
+  batch__id
+  batch__hash
+  batch__timestamp
+  batch__position
+  batch__size
+  category
+  contract
+  position
+  recipient
+  sender
+  startTime
+  transferable
+  version
+  withdrawnAmount
+  availableAmount
+  creator
+  depletionTime
+  depositedAmount
+  forgivenDebt
+  lastAdjustmentAction
+  lastAdjustmentAction__id
+  lastAdjustmentAction__subgraphId
+  lastAdjustmentAction__block
+  lastAdjustmentAction__chainId
+  lastAdjustmentAction__from
+  lastAdjustmentAction__hash
+  lastAdjustmentAction__timestamp
+  lastAdjustmentAction__category
+  lastAdjustmentAction__contract
+  lastAdjustmentAction__fee
+  lastAdjustmentAction__addressA
+  lastAdjustmentAction__addressB
+  lastAdjustmentAction__amountA
+  lastAdjustmentAction__amountB
+  lastAdjustmentTimestamp
+  paused
+  pausedAction
+  pausedAction__id
+  pausedAction__subgraphId
+  pausedAction__block
+  pausedAction__chainId
+  pausedAction__from
+  pausedAction__hash
+  pausedAction__timestamp
+  pausedAction__category
+  pausedAction__contract
+  pausedAction__fee
+  pausedAction__addressA
+  pausedAction__addressB
+  pausedAction__amountA
+  pausedAction__amountB
+  pausedTime
+  ratePerSecond
+  refundedAmount
+  snapshotAmount
+  voided
+  voidedAction
+  voidedAction__id
+  voidedAction__subgraphId
+  voidedAction__block
+  voidedAction__chainId
+  voidedAction__from
+  voidedAction__hash
+  voidedAction__timestamp
+  voidedAction__category
+  voidedAction__contract
+  voidedAction__fee
+  voidedAction__addressA
+  voidedAction__addressB
+  voidedAction__amountA
+  voidedAction__amountB
+  voidedTime
+}
+```
+
+### Values
+
+#### [<code style={{ fontWeight: 'normal' }}>Stream_orderBy.<b>id</b></code>](#)
+
+#### [<code style={{ fontWeight: 'normal' }}>Stream_orderBy.<b>alias</b></code>](#)
+
+#### [<code style={{ fontWeight: 'normal' }}>Stream_orderBy.<b>chainId</b></code>](#)
+
+#### [<code style={{ fontWeight: 'normal' }}>Stream_orderBy.<b>subgraphId</b></code>](#)
+
+#### [<code style={{ fontWeight: 'normal' }}>Stream_orderBy.<b>tokenId</b></code>](#)
+
+#### [<code style={{ fontWeight: 'normal' }}>Stream_orderBy.<b>hash</b></code>](#)
+
+#### [<code style={{ fontWeight: 'normal' }}>Stream_orderBy.<b>timestamp</b></code>](#)
+
+#### [<code style={{ fontWeight: 'normal' }}>Stream_orderBy.<b>actions</b></code>](#)
+
+#### [<code style={{ fontWeight: 'normal' }}>Stream_orderBy.<b>asset</b></code>](#)
+
+#### [<code style={{ fontWeight: 'normal' }}>Stream_orderBy.<b>asset\_\_id</b></code>](#)
+
+#### [<code style={{ fontWeight: 'normal' }}>Stream_orderBy.<b>asset\_\_address</b></code>](#)
+
+#### [<code style={{ fontWeight: 'normal' }}>Stream_orderBy.<b>asset\_\_chainId</b></code>](#)
+
+#### [<code style={{ fontWeight: 'normal' }}>Stream_orderBy.<b>asset\_\_decimals</b></code>](#)
+
+#### [<code style={{ fontWeight: 'normal' }}>Stream_orderBy.<b>asset\_\_name</b></code>](#)
+
+#### [<code style={{ fontWeight: 'normal' }}>Stream_orderBy.<b>asset\_\_symbol</b></code>](#)
+
+#### [<code style={{ fontWeight: 'normal' }}>Stream_orderBy.<b>assetDecimalsValue</b></code>](#)
+
+#### [<code style={{ fontWeight: 'normal' }}>Stream_orderBy.<b>batch</b></code>](#)
+
+#### [<code style={{ fontWeight: 'normal' }}>Stream_orderBy.<b>batch\_\_id</b></code>](#)
+
+#### [<code style={{ fontWeight: 'normal' }}>Stream_orderBy.<b>batch\_\_hash</b></code>](#)
+
+#### [<code style={{ fontWeight: 'normal' }}>Stream_orderBy.<b>batch\_\_timestamp</b></code>](#)
+
+#### [<code style={{ fontWeight: 'normal' }}>Stream_orderBy.<b>batch\_\_position</b></code>](#)
+
+#### [<code style={{ fontWeight: 'normal' }}>Stream_orderBy.<b>batch\_\_size</b></code>](#)
+
+#### [<code style={{ fontWeight: 'normal' }}>Stream_orderBy.<b>category</b></code>](#)
+
+#### [<code style={{ fontWeight: 'normal' }}>Stream_orderBy.<b>contract</b></code>](#)
+
+#### [<code style={{ fontWeight: 'normal' }}>Stream_orderBy.<b>position</b></code>](#)
+
+#### [<code style={{ fontWeight: 'normal' }}>Stream_orderBy.<b>recipient</b></code>](#)
+
+#### [<code style={{ fontWeight: 'normal' }}>Stream_orderBy.<b>sender</b></code>](#)
+
+#### [<code style={{ fontWeight: 'normal' }}>Stream_orderBy.<b>startTime</b></code>](#)
+
+#### [<code style={{ fontWeight: 'normal' }}>Stream_orderBy.<b>transferable</b></code>](#)
+
+#### [<code style={{ fontWeight: 'normal' }}>Stream_orderBy.<b>version</b></code>](#)
+
+#### [<code style={{ fontWeight: 'normal' }}>Stream_orderBy.<b>withdrawnAmount</b></code>](#)
+
+#### [<code style={{ fontWeight: 'normal' }}>Stream_orderBy.<b>availableAmount</b></code>](#)
+
+#### [<code style={{ fontWeight: 'normal' }}>Stream_orderBy.<b>creator</b></code>](#)
+
+#### [<code style={{ fontWeight: 'normal' }}>Stream_orderBy.<b>depletionTime</b></code>](#)
+
+#### [<code style={{ fontWeight: 'normal' }}>Stream_orderBy.<b>depositedAmount</b></code>](#)
+
+#### [<code style={{ fontWeight: 'normal' }}>Stream_orderBy.<b>forgivenDebt</b></code>](#)
+
+#### [<code style={{ fontWeight: 'normal' }}>Stream_orderBy.<b>lastAdjustmentAction</b></code>](#)
+
+#### [<code style={{ fontWeight: 'normal' }}>Stream_orderBy.<b>lastAdjustmentAction\_\_id</b></code>](#)
+
+#### [<code style={{ fontWeight: 'normal' }}>Stream_orderBy.<b>lastAdjustmentAction\_\_subgraphId</b></code>](#)
+
+#### [<code style={{ fontWeight: 'normal' }}>Stream_orderBy.<b>lastAdjustmentAction\_\_block</b></code>](#)
+
+#### [<code style={{ fontWeight: 'normal' }}>Stream_orderBy.<b>lastAdjustmentAction\_\_chainId</b></code>](#)
+
+#### [<code style={{ fontWeight: 'normal' }}>Stream_orderBy.<b>lastAdjustmentAction\_\_from</b></code>](#)
+
+#### [<code style={{ fontWeight: 'normal' }}>Stream_orderBy.<b>lastAdjustmentAction\_\_hash</b></code>](#)
+
+#### [<code style={{ fontWeight: 'normal' }}>Stream_orderBy.<b>lastAdjustmentAction\_\_timestamp</b></code>](#)
+
+#### [<code style={{ fontWeight: 'normal' }}>Stream_orderBy.<b>lastAdjustmentAction\_\_category</b></code>](#)
+
+#### [<code style={{ fontWeight: 'normal' }}>Stream_orderBy.<b>lastAdjustmentAction\_\_contract</b></code>](#)
+
+#### [<code style={{ fontWeight: 'normal' }}>Stream_orderBy.<b>lastAdjustmentAction\_\_fee</b></code>](#)
+
+#### [<code style={{ fontWeight: 'normal' }}>Stream_orderBy.<b>lastAdjustmentAction\_\_addressA</b></code>](#)
+
+#### [<code style={{ fontWeight: 'normal' }}>Stream_orderBy.<b>lastAdjustmentAction\_\_addressB</b></code>](#)
+
+#### [<code style={{ fontWeight: 'normal' }}>Stream_orderBy.<b>lastAdjustmentAction\_\_amountA</b></code>](#)
+
+#### [<code style={{ fontWeight: 'normal' }}>Stream_orderBy.<b>lastAdjustmentAction\_\_amountB</b></code>](#)
+
+#### [<code style={{ fontWeight: 'normal' }}>Stream_orderBy.<b>lastAdjustmentTimestamp</b></code>](#)
+
+#### [<code style={{ fontWeight: 'normal' }}>Stream_orderBy.<b>paused</b></code>](#)
+
+#### [<code style={{ fontWeight: 'normal' }}>Stream_orderBy.<b>pausedAction</b></code>](#)
+
+#### [<code style={{ fontWeight: 'normal' }}>Stream_orderBy.<b>pausedAction\_\_id</b></code>](#)
+
+#### [<code style={{ fontWeight: 'normal' }}>Stream_orderBy.<b>pausedAction\_\_subgraphId</b></code>](#)
+
+#### [<code style={{ fontWeight: 'normal' }}>Stream_orderBy.<b>pausedAction\_\_block</b></code>](#)
+
+#### [<code style={{ fontWeight: 'normal' }}>Stream_orderBy.<b>pausedAction\_\_chainId</b></code>](#)
+
+#### [<code style={{ fontWeight: 'normal' }}>Stream_orderBy.<b>pausedAction\_\_from</b></code>](#)
+
+#### [<code style={{ fontWeight: 'normal' }}>Stream_orderBy.<b>pausedAction\_\_hash</b></code>](#)
+
+#### [<code style={{ fontWeight: 'normal' }}>Stream_orderBy.<b>pausedAction\_\_timestamp</b></code>](#)
+
+#### [<code style={{ fontWeight: 'normal' }}>Stream_orderBy.<b>pausedAction\_\_category</b></code>](#)
+
+#### [<code style={{ fontWeight: 'normal' }}>Stream_orderBy.<b>pausedAction\_\_contract</b></code>](#)
+
+#### [<code style={{ fontWeight: 'normal' }}>Stream_orderBy.<b>pausedAction\_\_fee</b></code>](#)
+
+#### [<code style={{ fontWeight: 'normal' }}>Stream_orderBy.<b>pausedAction\_\_addressA</b></code>](#)
+
+#### [<code style={{ fontWeight: 'normal' }}>Stream_orderBy.<b>pausedAction\_\_addressB</b></code>](#)
+
+#### [<code style={{ fontWeight: 'normal' }}>Stream_orderBy.<b>pausedAction\_\_amountA</b></code>](#)
+
+#### [<code style={{ fontWeight: 'normal' }}>Stream_orderBy.<b>pausedAction\_\_amountB</b></code>](#)
+
+#### [<code style={{ fontWeight: 'normal' }}>Stream_orderBy.<b>pausedTime</b></code>](#)
+
+#### [<code style={{ fontWeight: 'normal' }}>Stream_orderBy.<b>ratePerSecond</b></code>](#)
+
+#### [<code style={{ fontWeight: 'normal' }}>Stream_orderBy.<b>refundedAmount</b></code>](#)
+
+#### [<code style={{ fontWeight: 'normal' }}>Stream_orderBy.<b>snapshotAmount</b></code>](#)
+
+#### [<code style={{ fontWeight: 'normal' }}>Stream_orderBy.<b>voided</b></code>](#)
+
+#### [<code style={{ fontWeight: 'normal' }}>Stream_orderBy.<b>voidedAction</b></code>](#)
+
+#### [<code style={{ fontWeight: 'normal' }}>Stream_orderBy.<b>voidedAction\_\_id</b></code>](#)
+
+#### [<code style={{ fontWeight: 'normal' }}>Stream_orderBy.<b>voidedAction\_\_subgraphId</b></code>](#)
+
+#### [<code style={{ fontWeight: 'normal' }}>Stream_orderBy.<b>voidedAction\_\_block</b></code>](#)
+
+#### [<code style={{ fontWeight: 'normal' }}>Stream_orderBy.<b>voidedAction\_\_chainId</b></code>](#)
+
+#### [<code style={{ fontWeight: 'normal' }}>Stream_orderBy.<b>voidedAction\_\_from</b></code>](#)
+
+#### [<code style={{ fontWeight: 'normal' }}>Stream_orderBy.<b>voidedAction\_\_hash</b></code>](#)
+
+#### [<code style={{ fontWeight: 'normal' }}>Stream_orderBy.<b>voidedAction\_\_timestamp</b></code>](#)
+
+#### [<code style={{ fontWeight: 'normal' }}>Stream_orderBy.<b>voidedAction\_\_category</b></code>](#)
+
+#### [<code style={{ fontWeight: 'normal' }}>Stream_orderBy.<b>voidedAction\_\_contract</b></code>](#)
+
+#### [<code style={{ fontWeight: 'normal' }}>Stream_orderBy.<b>voidedAction\_\_fee</b></code>](#)
+
+#### [<code style={{ fontWeight: 'normal' }}>Stream_orderBy.<b>voidedAction\_\_addressA</b></code>](#)
+
+#### [<code style={{ fontWeight: 'normal' }}>Stream_orderBy.<b>voidedAction\_\_addressB</b></code>](#)
+
+#### [<code style={{ fontWeight: 'normal' }}>Stream_orderBy.<b>voidedAction\_\_amountA</b></code>](#)
+
+#### [<code style={{ fontWeight: 'normal' }}>Stream_orderBy.<b>voidedAction\_\_amountB</b></code>](#)
+
+#### [<code style={{ fontWeight: 'normal' }}>Stream_orderBy.<b>voidedTime</b></code>](#)

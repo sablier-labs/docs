@@ -1,0 +1,27 @@
+import { capitalize } from "lodash";
+import Link from "@docusaurus/Link";
+
+## Overview
+
+We provide auto-generated GraphQL schema documentation for both The Graph and Envio:
+
+- <Link to={`/api/${props.protocol}/graphql/the-graph/overview`}>The Graph schema docs</Link>
+- <Link to={`/api/${props.protocol}/graphql/envio/overview`}>Envio schema docs</Link>
+
+## Query Syntax Differences
+
+| Feature      | The Graph                                          | Envio                                                   |
+| ------------ | -------------------------------------------------- | ------------------------------------------------------- |
+| Pagination   | `first`                                            | `limit`                                                 |
+| Pagination   | `skip`                                             | `offset`                                                |
+| Get by ID    | `stream(id: "...")`                                | `Stream_by_pk(id: "...")`                               |
+| Get multiple | `streams{}`                                        | `Stream(where: {chainId: {_eq: ""}}){}`                 |
+| Nested items | <nobr>`campaigns{ id, asset: {id, symbol}}`</nobr> | <nobr>`Campaign{ asset_id, asset: {id, symbol}}`</nobr> |
+
+## Entities
+
+This is the raw GraphQL file that is used by both The Graph and Envio for generating the final schemas hosted on their services.
+
+The schema only contains entities:
+
+{/* Add the code block */}

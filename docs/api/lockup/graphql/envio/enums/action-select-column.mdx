@@ -1,0 +1,151 @@
+---
+id: action-select-column
+title: Action_select_column
+---
+
+<head>
+  <meta content="noindex" name="robots" />
+  <meta charset="utf-8" />
+</head>
+
+export const Bullet = () => (
+  <>
+    <span style={{ fontWeight: "normal", fontSize: ".5em", color: "var(--ifm-color-secondary-darkest)" }}>
+      &nbsp;●&nbsp;
+    </span>
+  </>
+);
+
+export const SpecifiedBy = (props) => (
+  <>
+    Specification
+    <a
+      className="link"
+      style={{ fontSize: "1.5em", paddingLeft: "4px" }}
+      target="_blank"
+      href={props.url}
+      title={"Specified by " + props.url}
+    >
+      ⎘
+    </a>
+  </>
+);
+
+export const Badge = (props) => (
+  <>
+    <span className={props.class}>{props.text}</span>
+  </>
+);
+
+import { useState } from "react";
+
+export const Details = ({ dataOpen, dataClose, children, startOpen = false }) => {
+  const [open, setOpen] = useState(startOpen);
+  return (
+    <details
+      {...(open ? { open: true } : {})}
+      className="details"
+      style={{ border: "none", boxShadow: "none", background: "var(--ifm-background-color)" }}
+    >
+      <summary
+        onClick={(e) => {
+          e.preventDefault();
+          setOpen((open) => !open);
+        }}
+        style={{ listStyle: "none" }}
+      >
+        {open ? dataOpen : dataClose}
+      </summary>
+      {open && children}
+    </details>
+  );
+};
+
+select columns of table "Action"
+
+```graphql
+enum Action_select_column {
+  addressA
+  addressB
+  amountA
+  amountB
+  block
+  category
+  chainId
+  contract
+  db_write_timestamp
+  fee
+  from
+  hash
+  id
+  stream_id
+  subgraphId
+  timestamp
+}
+```
+
+### Values
+
+#### [<code style={{ fontWeight: 'normal' }}>Action_select_column.<b>addressA</b></code>](#)
+
+column name
+
+#### [<code style={{ fontWeight: 'normal' }}>Action_select_column.<b>addressB</b></code>](#)
+
+column name
+
+#### [<code style={{ fontWeight: 'normal' }}>Action_select_column.<b>amountA</b></code>](#)
+
+column name
+
+#### [<code style={{ fontWeight: 'normal' }}>Action_select_column.<b>amountB</b></code>](#)
+
+column name
+
+#### [<code style={{ fontWeight: 'normal' }}>Action_select_column.<b>block</b></code>](#)
+
+column name
+
+#### [<code style={{ fontWeight: 'normal' }}>Action_select_column.<b>category</b></code>](#)
+
+column name
+
+#### [<code style={{ fontWeight: 'normal' }}>Action_select_column.<b>chainId</b></code>](#)
+
+column name
+
+#### [<code style={{ fontWeight: 'normal' }}>Action_select_column.<b>contract</b></code>](#)
+
+column name
+
+#### [<code style={{ fontWeight: 'normal' }}>Action_select_column.<b>db_write_timestamp</b></code>](#)
+
+column name
+
+#### [<code style={{ fontWeight: 'normal' }}>Action_select_column.<b>fee</b></code>](#)
+
+column name
+
+#### [<code style={{ fontWeight: 'normal' }}>Action_select_column.<b>from</b></code>](#)
+
+column name
+
+#### [<code style={{ fontWeight: 'normal' }}>Action_select_column.<b>hash</b></code>](#)
+
+column name
+
+#### [<code style={{ fontWeight: 'normal' }}>Action_select_column.<b>id</b></code>](#)
+
+column name
+
+#### [<code style={{ fontWeight: 'normal' }}>Action_select_column.<b>stream_id</b></code>](#)
+
+column name
+
+#### [<code style={{ fontWeight: 'normal' }}>Action_select_column.<b>subgraphId</b></code>](#)
+
+column name
+
+#### [<code style={{ fontWeight: 'normal' }}>Action_select_column.<b>timestamp</b></code>](#)
+
+column name

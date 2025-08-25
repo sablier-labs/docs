@@ -1,0 +1,101 @@
+---
+id: order-by
+title: order_by
+---
+
+<head>
+  <meta content="noindex" name="robots" />
+  <meta charset="utf-8" />
+</head>
+
+export const Bullet = () => (
+  <>
+    <span style={{ fontWeight: "normal", fontSize: ".5em", color: "var(--ifm-color-secondary-darkest)" }}>
+      &nbsp;●&nbsp;
+    </span>
+  </>
+);
+
+export const SpecifiedBy = (props) => (
+  <>
+    Specification
+    <a
+      className="link"
+      style={{ fontSize: "1.5em", paddingLeft: "4px" }}
+      target="_blank"
+      href={props.url}
+      title={"Specified by " + props.url}
+    >
+      ⎘
+    </a>
+  </>
+);
+
+export const Badge = (props) => (
+  <>
+    <span className={props.class}>{props.text}</span>
+  </>
+);
+
+import { useState } from "react";
+
+export const Details = ({ dataOpen, dataClose, children, startOpen = false }) => {
+  const [open, setOpen] = useState(startOpen);
+  return (
+    <details
+      {...(open ? { open: true } : {})}
+      className="details"
+      style={{ border: "none", boxShadow: "none", background: "var(--ifm-background-color)" }}
+    >
+      <summary
+        onClick={(e) => {
+          e.preventDefault();
+          setOpen((open) => !open);
+        }}
+        style={{ listStyle: "none" }}
+      >
+        {open ? dataOpen : dataClose}
+      </summary>
+      {open && children}
+    </details>
+  );
+};
+
+column ordering options
+
+```graphql
+enum order_by {
+  asc
+  asc_nulls_first
+  asc_nulls_last
+  desc
+  desc_nulls_first
+  desc_nulls_last
+}
+```
+
+### Values
+
+#### [<code style={{ fontWeight: 'normal' }}>order_by.<b>asc</b></code>](#)
+
+in ascending order, nulls last
+
+#### [<code style={{ fontWeight: 'normal' }}>order_by.<b>asc_nulls_first</b></code>](#)
+
+in ascending order, nulls first
+
+#### [<code style={{ fontWeight: 'normal' }}>order_by.<b>asc_nulls_last</b></code>](#)
+
+in ascending order, nulls last
+
+#### [<code style={{ fontWeight: 'normal' }}>order_by.<b>desc</b></code>](#)
+
+in descending order, nulls first
+
+#### [<code style={{ fontWeight: 'normal' }}>order_by.<b>desc_nulls_first</b></code>](#)
+
+in descending order, nulls first
+
+#### [<code style={{ fontWeight: 'normal' }}>order_by.<b>desc_nulls_last</b></code>](#)
+
+in descending order, nulls last
