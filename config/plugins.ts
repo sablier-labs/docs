@@ -52,16 +52,19 @@ const graphqlMarkdown: [string, GraphQLMarkdownOptions] = [
 /*                                 LLM PLUGIN                                 */
 /* -------------------------------------------------------------------------- */
 
-const llmPlugin: [string, LlmPluginOptions] = [
+/**
+ * The plugin follows llmstxt.org standards and generates the following files during the build process:
+ * - llms.txt: Contains links to the markdown files of all sections.
+ * - llms-airdrops.txt: Contains full content relevant to the Merkle Airdrops protocol.
+ * - llms-flow.txt: Contains full content relevant to the Flow protocol.
+ * - llms-lockup.txt: Contains full content relevant to the Lockup protocol.
+ * - llms-training-data.txt: Contains full content of all markdown files.
+ *
+ * @see https://llmstxt.org
+ * @see https://github.com/rachfop/docusaurus-plugin-llms
+ */
+const llmPlugin: [string, LlmPluginOptions & { [key: string]: unknown }] = [
   "docusaurus-plugin-llms",
-  /**
-   * The plugin follows llmstxt.org standards and generates the following files during the build process:
-   * - llms.txt: Contains links to the markdown files of all sections.
-   * - llms-airdrops.txt: Contains full content relevant to the Merkle Airdrops protocol.
-   * - llms-flow.txt: Contains full content relevant to the Flow protocol.
-   * - llms-lockup.txt: Contains full content relevant to the Lockup protocol.
-   * - llms-training-data.txt: Contains full content of all markdown files.
-   */
   {
     // Protocol specific LLM files.
     customLLMFiles: [
@@ -99,7 +102,7 @@ const llmPlugin: [string, LlmPluginOptions] = [
         title: "Sablier Flow Documentation",
       },
       {
-        description: "Sablier Lockup is especially for use cases like vesting and airdrops.",
+        description: "Sablier Lockup is useful for token vesting and airdrops.",
         filename: "llms-lockup.txt",
         // Create a single markdown file with the full content of the section.
         fullContent: true,
@@ -138,7 +141,7 @@ const llmPlugin: [string, LlmPluginOptions] = [
     rootContent: `Sablier docs is optimized for LLMs and AI assistants. Navigation tips:
       - For subgraph APIs or Merkle APIs, use the "API" section.
       - For deployment addresses and examples on using the contracts, use the "Guides" section.
-      - For contracts specific information, use the "References" section.
+      - For contracts, use the "References" section.
       - For FAQs, use the "Support" section.
       `,
     title: "Sablier Docs",
@@ -156,10 +159,4 @@ const vercelAnalytics: [string, VercelAnalyticsOptions] = [
   },
 ];
 
-export const plugins: DocusaurusConfig["plugins"] = [
-  clientRedirects,
-  graphqlMarkdown,
-  // biome-ignore lint/suspicious/noExplicitAny: required for llm plugin.
-  llmPlugin as any,
-  vercelAnalytics,
-];
+export const plugins: DocusaurusConfig["plugins"] = [clientRedirects, graphqlMarkdown, llmPlugin, vercelAnalytics];
