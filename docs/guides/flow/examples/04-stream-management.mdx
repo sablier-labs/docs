@@ -4,6 +4,7 @@ sidebar_position: 4
 title: "Stream Management"
 ---
 
+import CodeBlock from "@theme/CodeBlock";
 import HardcodedDemonstration from "../../../../src/snippets/_hardcoded-demonstration.mdx";
 import CautionNonProduction from "../../../../src/snippets/_caution-non-production.mdx";
 
@@ -186,6 +187,6 @@ function void(uint256 streamId) external {
 
 Below you can see the complete `FlowStreamManager` contract:
 
-```solidity reference title="Flow Stream Manager"
-https://github.com/sablier-labs/examples/blob/main/flow/FlowStreamManager.sol
-```
+<CodeBlock language="solidity" showLineNumbers metastring={`reference title="Flow Stream Manager"`}>
+  {`https://github.com/sablier-labs/examples/blob/main/flow/FlowStreamManager.sol`}
+</CodeBlock>

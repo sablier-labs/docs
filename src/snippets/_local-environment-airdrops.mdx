@@ -1,0 +1,97 @@
+import Link from "@docusaurus/Link";
+import CodeBlock from "@theme/CodeBlock";
+
+In this guide, we will go through the steps to set up a local development environment for building onchain
+integrations with {props.protocol}. We will use Foundry to install {props.protocol} as a dependency.
+
+At the end, you’ll have a development environment set up that you can use to build the rest of the examples under
+"Guides", or start your own integration project.
+
+## Pre-requisites
+
+You will need the following software on your machine:
+
+- <Link href="https://git-scm.com/downloads">Git</Link>
+- <Link href="https://github.com/foundry-rs/foundry">Foundry</Link>
+- <Link href="https://nodejs.org/en/download">Node.js</Link>
+- <Link href="https://bun.sh">Bun</Link>
+
+In addition, familiarity with <Link href="https://ethereum.org/">Ethereum</Link> and <Link href="https://soliditylang.org/">Solidity</Link> is
+requisite.
+
+## Set up using Foundry template
+
+:::tip
+
+Make sure you are using the latest version of Foundry by running `foundryup`.
+
+:::
+
+Foundry is a popular development toolkit for Ethereum projects, which we have used to build the {props.protocol} Protocol. For
+the purposes of this guide, Foundry will provide us with the tooling needed to compile and test our contracts.
+
+Let's use this command to spin up a new Foundry project:
+
+```bash
+$ forge init my-project
+$ cd my-project
+```
+
+Once the initialization completes, take a look around at what got set up:
+
+```bash
+├── foundry.toml
+├── script
+├── src
+└── test
+```
+
+The folder structure should be intuitive:
+
+- `src` is where you'll write Solidity contracts
+- `test` is where you'll write tests (also in Solidity)
+- `script` is where you'll write scripts to perform actions like deploying contracts (you guessed it, in Solidity)
+- `foundry.toml` is where you can configure your Foundry settings, which we will leave as is in this guide
+
+:::note
+
+You might notice that the CLI is `forge` rather than `foundry`. This is because Foundry is a toolkit, and `forge` is
+just one of the tools that comes with it.
+
+:::
+
+## Install via npm package
+
+:::tip
+
+If you are integrating with `MerkleLL` or `MerkleLT`, you will also have to install
+[Lockup npm package](/guides/lockup/examples/local-environment#install-via-npm-package). Both `MerkleLL` and
+`MerkleLT` contracts interact with Lockup protocol to setup up vesting for airdropped tokens.
+
+:::
+
+Let's install the {props.protocol} Node.js packages using Bun:
+
+<CodeBlock language="bash">{`$ bun add @sablier/${props.protocol.toLowerCase()}`}</CodeBlock>
+
+Bun will download the {props.protocol} contracts, along with their dependencies, and put them in the `node_modules` directory.
+
+Let's remap the package names to point to the installed contracts. This step is required so that the Solidity
+compiler can find the {props.protocol} contracts when you import them:
+
+<CodeBlock language="bash">
+  {`$ echo "@sablier/${props.protocol.toLowerCase()}=node_modules/@sablier/${props.protocol.toLowerCase()}/" >> remappings.txt
+  $ echo "@openzeppelin/contracts/=node_modules/@openzeppelin/contracts/" >> remappings.txt
+  $ echo "@prb/math/=node_modules/@prb/math/" >> remappings.txt`}
+</CodeBlock>
+
+That's it! You should now have a functional development environment to start building onchain {props.protocol}
+integrations.
+
+## Next steps
+
+Congratulations! Your environment is now configured, and you are prepared to start building. Explore the guides section
+to discover various features available for {props.protocol} integration. Remember to include all contracts (`.sol` files) in the `src` folder and their corresponding tests in the `test` folder.
+
+As far as Foundry is concerned, there is much more to uncover. If you want to learn more about it, check out the <Link href="https://book.getfoundry.sh/">Foundry Book</Link>, which contains numerous examples and
+tutorials. A deep understanding of Foundry will enable you to create more sophisticated integrations with {props.protocol} protocol.

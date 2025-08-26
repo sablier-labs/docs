@@ -4,6 +4,7 @@ sidebar_position: 3
 title: "Batch Lockup Tranched"
 ---
 
+import CodeBlock from "@theme/CodeBlock";
 import HardcodedDemonstration from "../../../../../src/snippets/_hardcoded-demonstration.mdx";
 import BatchCommonSteps from "../../../../../src/snippets/_batch-common-steps.mdx";
 import CautionNonProduction from "../../../../../src/snippets/_caution-non-production.mdx";
@@ -134,6 +135,6 @@ streamIds = BATCH_LOCKUP.createWithTimestampsLT(LOCKUP_TRANCHED, DAI, batch);
 Below you can see the full code. You can also access the code on GitHub through
 [this link](https://github.com/sablier-labs/examples/blob/main/lockup/BatchLTStreamCreator.sol).
 
-```solidity reference title="Batch Lockup Tranched stream creator"
-https://github.com/sablier-labs/examples/blob/main/lockup/BatchLTStreamCreator.sol
-```
+<CodeBlock language="solidity" showLineNumbers metastring={`reference title="Batch Lockup Tranched stream creator"`}>
+  {`https://github.com/sablier-labs/examples/blob/main/lockup/BatchLTStreamCreator.sol`}
+</CodeBlock>

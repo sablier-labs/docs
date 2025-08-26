@@ -1,6 +1,5 @@
 import * as fs from "node:fs";
 import * as path from "node:path";
-import _ from "lodash";
 import type { Sablier } from "sablier";
 import type { CliOptions } from "./types";
 
