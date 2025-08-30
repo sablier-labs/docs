@@ -4,9 +4,10 @@ sidebar_position: 2
 title: "Batch Lockup Dynamic"
 ---
 
-import HardcodedDemonstration from "@site/src/components/atoms/HardcodedDemonstration";
-import BatchCommonSteps from "@site/src/snippets/BatchCommonSteps.mdx";
-import CautionNonProduction from "@site/src/snippets/CautionNonProduction.mdx";
+import CodeBlock from "@theme/CodeBlock";
+import HardcodedDemonstration from "../../../../../src/snippets/_hardcoded-demonstration.mdx";
+import BatchCommonSteps from "../../../../../src/snippets/_batch-common-steps.mdx";
+import CautionNonProduction from "../../../../../src/snippets/_caution-non-production.mdx";
 
 # Create a Batch of Dynamic Streams
 
@@ -143,6 +144,6 @@ streamIds = BATCH_LOCKUP.createWithTimestampsLD(LOCKUP_DYNAMIC, DAI, batch);
 Below you can see the full code. You can also access the code on GitHub through
 [this link](https://github.com/sablier-labs/examples/blob/main/lockup/BatchLDStreamCreator.sol).
 
-```solidity reference title="Batch Lockup Dynamic stream creator"
-https://github.com/sablier-labs/examples/blob/main/lockup/BatchLDStreamCreator.sol
-```
+<CodeBlock language="solidity" showLineNumbers metastring={`reference title="Batch Lockup Dynamic stream creator"`}>
+  {`https://github.com/sablier-labs/examples/blob/main/lockup/BatchLDStreamCreator.sol`}
+</CodeBlock>

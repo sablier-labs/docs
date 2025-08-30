@@ -4,10 +4,11 @@ sidebar_position: 3
 title: "Lockup Dynamic"
 ---
 
-import HardcodedDemonstration from "@site/src/components/atoms/HardcodedDemonstration";
-import CautionNonProduction from "@site/src/snippets/CautionNonProduction.mdx";
-import LockupParam from "@site/src/snippets/LockupParams.mdx";
-import TokenApproval from "@site/src/snippets/TokenApproval.mdx";
+import CodeBlock from "@theme/CodeBlock";
+import HardcodedDemonstration from "../../../../../src/snippets/_hardcoded-demonstration.mdx";
+import CautionNonProduction from "../../../../../src/snippets/_caution-non-production.mdx";
+import LockupParam from "../../../../../src/snippets/_lockup-params.mdx";
+import TokenApproval from "../../../../../src/snippets/_token-approval.mdx";
 
 # Create a Lockup Dynamic Stream
 
@@ -157,6 +158,6 @@ streamId = LOCKUP.createWithTimestampsLD(params, segments);
 Below you can see the full code. You can also access the code on GitHub through
 [this link](https://github.com/sablier-labs/examples/blob/main/lockup/LockupDynamicStreamCreator.sol).
 
-```solidity reference title="Lockup Dynamic Stream Creator"
-https://github.com/sablier-labs/examples/blob/main/lockup/LockupDynamicStreamCreator.sol
-```
+<CodeBlock language="solidity" showLineNumbers metastring={`reference title="Lockup Dynamic Stream Creator"`}>
+  {`https://github.com/sablier-labs/examples/blob/main/lockup/LockupDynamicStreamCreator.sol`}
+</CodeBlock>

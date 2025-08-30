@@ -24,7 +24,6 @@
   },
   "dependencies": {
     "@algolia/client-search": "^5.35.0",
-    "@cookbookdev/docsbot": "^4.25.11",
     "@docsearch/react": "^4.0.0-beta.7",
     "@docusaurus/core": "^3.8.1",
     "@docusaurus/faster": "^3.8.1",
@@ -41,6 +40,7 @@
     "@sablier/indexers": "1.1.0",
     "@vercel/analytics": "^1.5.0",
     "axios": "^1.11.0",
+    "docusaurus-plugin-llms": "^0.2.0",
     "docusaurus-theme-github-codeblock": "^2.0.2",
     "function-plot": "^1.25.1",
     "lodash": "^4.17.21",

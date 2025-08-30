@@ -4,6 +4,8 @@ sidebar_position: 4
 title: "Renounce Streams"
 ---
 
+import CodeBlock from "@theme/CodeBlock";
+
 :::note
 
 This section assumes that you have already gone through the [setup](/guides/lockup/examples/stream-management/setup)
@@ -20,6 +22,6 @@ To renounce a stream, you can use
 Before invoking this function, ensure that you have an active, cancelable stream with the sender set to the
 `StreamManagement` contract. Once the stream is created, you can use the `renounce` function like this:
 
-```solidity reference title="Stream Management: Renounce"
-https://github.com/sablier-labs/examples/blob/main/lockup/StreamManagement.sol#L53-L55
-```
+<CodeBlock language="solidity" showLineNumbers metastring={`reference title="Stream Management: Renounce"`}>
+  {`https://github.com/sablier-labs/examples/blob/main/lockup/StreamManagement.sol#L53-L55`}
+</CodeBlock>

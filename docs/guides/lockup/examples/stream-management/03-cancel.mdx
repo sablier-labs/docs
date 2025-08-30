@@ -4,6 +4,8 @@ sidebar_position: 3
 title: "Cancel Streams"
 ---
 
+import CodeBlock from "@theme/CodeBlock";
+
 :::note
 
 This section assumes that you have already gone through the [setup](/guides/lockup/examples/stream-management/setup)
@@ -31,13 +33,13 @@ To call any of these functions, you need to have created a cancelable stream. If
 [previous guide](/guides/lockup/examples/create-stream/lockup-linear) and create a stream. Then, you can use the
 `cancel` function like this:
 
-```solidity reference title="Stream Management: Cancel"
-https://github.com/sablier-labs/examples/blob/main/lockup/StreamManagement.sol#L39-L41
-```
+<CodeBlock language="solidity" showLineNumbers metastring={`reference title="Stream Management: Cancel"`}>
+  {`https://github.com/sablier-labs/examples/blob/main/lockup/StreamManagement.sol#L39-L41`}
+</CodeBlock>
 
 In addition to the `cancel` function, there is the `cancelMultiple` function, which allows you to cancel several streams
 at once:
 
-```solidity reference title="Stream Management: Cancel Multiple"
-https://github.com/sablier-labs/examples/blob/main/lockup/StreamManagement.sol#L44-L46
-```
+<CodeBlock language="solidity" showLineNumbers metastring={`reference title="Stream Management: Cancel Multiple"`}>
+  {`https://github.com/sablier-labs/examples/blob/main/lockup/StreamManagement.sol#L44-L46`}
+</CodeBlock>

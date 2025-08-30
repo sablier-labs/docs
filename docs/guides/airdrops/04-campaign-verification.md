@@ -76,7 +76,7 @@ Clone the [sablier-labs/airdrops](https://github.com/sablier-labs/airdrops) repo
 git clone git@github.com:sablier-labs/airdrops.git
 git checkout v1.3.0
 bun install --frozen-lockfile
-just build-optimized
+bun run build-optimized
 ```
 
 ## Step 6: Run the verification command
