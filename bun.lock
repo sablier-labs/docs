@@ -18,7 +18,7 @@
         "@graphql-tools/graphql-file-loader": "^8.0.22",
         "@heroicons/react": "^2.2.0",
         "@mdx-js/mdx": "~3.1.0",
-        "@sablier/indexers": "1.1.0",
+        "@sablier/indexers": "1.1.1",
         "@vercel/analytics": "^1.5.0",
         "axios": "^1.11.0",
         "docusaurus-plugin-llms": "^0.2.0",
@@ -756,7 +756,7 @@
 
     "@sablier/devkit": ["@sablier/devkit@github:sablier-labs/devkit#45d25fd", {}, "sablier-labs-devkit-45d25fd"],
 
-    "@sablier/indexers": ["@sablier/indexers@1.1.0", "", { "dependencies": { "sablier": "^1.1.0" } }, "sha512-xCnVgTmclVf/PMB6blYIUFbsl0KNDay/9kvlAcX6fgwQfLVenwApv7sIH3jMFgOGEweQ2+viZbUZwbVdpvqmZQ=="],
+    "@sablier/indexers": ["@sablier/indexers@1.1.1", "", { "dependencies": { "sablier": "^1.1.0" } }, "sha512-b3ivkvqt+czTZEHLgAhRJPZvQmeM3W49etNP0YWKjSTLsbywBevEKSRWSQpDmJjrCsBwlTFczm1FTiMjLsfhEw=="],
 
     "@scure/base": ["@scure/base@1.2.6", "", {}, "sha512-g/nm5FgUa//MCj1gV09zTJTaM6KBAHqLN907YVQqf7zC49+DcO4B1so4ZX07Ef10Twr6nuqYEH9GEggFXA4Fmg=="],
 

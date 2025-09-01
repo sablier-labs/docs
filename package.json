@@ -37,7 +37,7 @@
     "@graphql-tools/graphql-file-loader": "^8.0.22",
     "@heroicons/react": "^2.2.0",
     "@mdx-js/mdx": "~3.1.0",
-    "@sablier/indexers": "1.1.0",
+    "@sablier/indexers": "1.1.1",
     "@vercel/analytics": "^1.5.0",
     "axios": "^1.11.0",
     "docusaurus-plugin-llms": "^0.2.0",
