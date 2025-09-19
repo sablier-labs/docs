@@ -21,7 +21,7 @@
         "@sablier/indexers": "1.1.1",
         "@vercel/analytics": "^1.5.0",
         "axios": "^1.11.0",
-        "docusaurus-plugin-llms": "^0.2.0",
+        "docusaurus-plugin-llms": "^0.2.2",
         "docusaurus-theme-github-codeblock": "^2.0.2",
         "function-plot": "^1.25.1",
         "lodash": "^4.17.21",
@@ -1540,7 +1540,7 @@
 
     "dns-packet": ["dns-packet@5.6.1", "", { "dependencies": { "@leichtgewicht/ip-codec": "^2.0.1" } }, ""],
 
-    "docusaurus-plugin-llms": ["docusaurus-plugin-llms@0.2.0", "", { "dependencies": { "gray-matter": "^4.0.3", "minimatch": "^9.0.3" }, "peerDependencies": { "@docusaurus/core": "^3.0.0" } }, "sha512-7z6pMWMcI+lQi8gjaXl3+aGSWCPcg29hJ0x7OABF43stN88McQQTVCpcqNVVZF2fTxg7gE1LEFoTQxcy8F5yvQ=="],
+    "docusaurus-plugin-llms": ["docusaurus-plugin-llms@0.2.2", "", { "dependencies": { "gray-matter": "^4.0.3", "minimatch": "^9.0.3", "yaml": "^2.8.1" }, "peerDependencies": { "@docusaurus/core": "^3.0.0" } }, "sha512-DZlZ6cv9p5poFE00Qg78aurBNWhLa4o0VhH4kI33DUT0y4ydlFEJJbf8Bks9BuuGPFbY/Guebn+hRc2QymMImg=="],
 
     "docusaurus-theme-github-codeblock": ["docusaurus-theme-github-codeblock@2.0.2", "", { "dependencies": { "@docusaurus/types": "^3.0.0" } }, ""],
 
