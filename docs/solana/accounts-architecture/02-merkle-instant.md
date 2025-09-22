@@ -4,7 +4,8 @@ sidebar_position: 2
 title: "Sablier Merkle Instant"
 ---
 
-This section focuses on the architecture of accounts created or used in the most important instructions of the Sablier Merkle Instant program.
+This section focuses on the architecture of accounts created or used in the most important instructions of the Sablier
+Merkle Instant program.
 
 ## Account architecture
 
@@ -83,11 +84,12 @@ flowchart TD
 
 The **Claim receipt** account serves as proof of claim for the given recipient.
 
-## Token flow
+## Airdrop Token flow
 
 ### `create_campaign` Instruction
 
-This instruction does not perform the airdrop token transfer, but the transfer is expected to be made as a separate transaction. Therefore, the campaign ATA is assumed to be funded.
+This instruction does not perform the airdrop token transfer, but the transfer is expected to be made as a separate
+transaction. Therefore, the campaign ATA is assumed to be funded.
 
 ### `claim` Instruction
 
