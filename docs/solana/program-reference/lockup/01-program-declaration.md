@@ -6,7 +6,7 @@ title: "Program Declaration"
 
 # `lib.rs`
 
-[Git Source](https://github.com/sablier-labs/solsab/blob/main/programs/lockup/src/lib.rs)
+[Git Source](https://github.com/sablier-labs/solsab/blob/e1085fe87ea3d02556156ee446e820d150af483e/programs/lockup/src/lib.rs)
 
 Sablier Lockup program for creating and managing token streams.
 

@@ -4,7 +4,7 @@ sidebar_position: 3
 title: "Errors"
 ---
 
-[Git Source](https://github.com/sablier-labs/solsab/blob/main/programs/merkle_instant/src/utils/errors.rs)
+[Git Source](https://github.com/sablier-labs/solsab/blob/e1085fe87ea3d02556156ee446e820d150af483e/programs/merkle_instant/src/utils/errors.rs)
 
 ### CampaignExpired
 

@@ -50,8 +50,9 @@ flowchart TD
 - **NFT collection master edition PDA**: created via Metaplex CPI
 - **NFT collection ATA**: associated token account owned by treasury to hold the collection NFT token
 
-The [Treasury PDA](https://github.com/sablier-labs/solsab/blob/main/programs/lockup/src/state/treasury.rs#L5-L10) stores
-this data:
+The
+[Treasury PDA](https://github.com/sablier-labs/solsab/blob/e1085fe87ea3d02556156ee446e820d150af483e/programs/lockup/src/state/treasury.rs#L5-L10)
+stores this data:
 
 ```mermaid
 flowchart TD
@@ -84,8 +85,9 @@ flowchart TD
 
 The **Stream NFT Mint** also serves as the "Stream ID" for the `cancel`, `renounce`, and `withdraw` instructions.
 
-Each [Stream Data](https://github.com/sablier-labs/solsab/blob/main/programs/lockup/src/state/lockup.rs#L14-L24) account
-stores the following parameters:
+Each
+[Stream Data](https://github.com/sablier-labs/solsab/blob/e1085fe87ea3d02556156ee446e820d150af483e/programs/lockup/src/state/lockup.rs#L14-L24)
+account stores the following parameters:
 
 ```mermaid
 flowchart TD
@@ -100,8 +102,9 @@ flowchart TD
     A --> A8([was_canceled])
 ```
 
-Each [amount](https://github.com/sablier-labs/solsab/blob/main/programs/lockup/src/state/lockup.rs#L4-L10) data
-structure consists of the following components:
+Each
+[amount](https://github.com/sablier-labs/solsab/blob/e1085fe87ea3d02556156ee446e820d150af483e/programs/lockup/src/state/lockup.rs#L4-L10)
+data structure consists of the following components:
 
 ```mermaid
 flowchart TD
@@ -111,8 +114,9 @@ flowchart TD
   A --> A3([refunded])
 ```
 
-Each [timestamps](https://github.com/sablier-labs/solsab/blob/main/programs/lockup/src/state/lockup.rs#L28-L32) data
-structure consists of the following components:
+Each
+[timestamps](https://github.com/sablier-labs/solsab/blob/e1085fe87ea3d02556156ee446e820d150af483e/programs/lockup/src/state/lockup.rs#L28-L32)
+data structure consists of the following components:
 
 ```mermaid
 flowchart TD

@@ -38,7 +38,7 @@ flowchart TD
 ```
 
 The
-[Treasury PDA](https://github.com/sablier-labs/solsab/blob/main/programs/merkle_instant/src/state/treasury.rs#L5-L10)
+[Treasury PDA](https://github.com/sablier-labs/solsab/blob/e1085fe87ea3d02556156ee446e820d150af483e/programs/merkle_instant/src/state/treasury.rs#L5-L10)
 stores this data:
 
 ```mermaid
@@ -59,7 +59,8 @@ flowchart TD
     D -.-> |for| D1((airdrop_token_mint))
 ```
 
-Each [Campaign](https://github.com/sablier-labs/solsab/blob/main/programs/merkle_instant/src/state/campaign.rs#L8-L20)
+Each
+[Campaign](https://github.com/sablier-labs/solsab/blob/e1085fe87ea3d02556156ee446e820d150af483e/programs/merkle_instant/src/state/campaign.rs#L8-L20)
 account stores the following parameters:
 
 ```mermaid
@@ -86,7 +87,7 @@ flowchart TD
 ```
 
 The
-[Claim receipt](https://github.com/sablier-labs/solsab/blob/main/programs/merkle_instant/src/state/claim_receipt.rs#L6)
+[Claim receipt](https://github.com/sablier-labs/solsab/blob/e1085fe87ea3d02556156ee446e820d150af483e/programs/merkle_instant/src/state/claim_receipt.rs#L6)
 account serves as proof of claim for the given recipient.
 
 ## Airdrop Token flow

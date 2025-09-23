@@ -6,7 +6,7 @@ title: "Program Declaration"
 
 # `lib.rs`
 
-[Git Source](https://github.com/sablier-labs/solsab/blob/main/programs/merkle-instant/src/lib.rs)
+[Git Source](https://github.com/sablier-labs/solsab/blob/e1085fe87ea3d02556156ee446e820d150af483e/programs/merkle-instant/src/lib.rs)
 
 Sablier Merkle Instant program for creating and managing Merkle tree-based airdrop campaigns.
 
