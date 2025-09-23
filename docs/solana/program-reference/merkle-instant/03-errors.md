@@ -4,8 +4,6 @@ sidebar_position: 3
 title: "Errors"
 ---
 
-## Errors
-
 ### CampaignExpired
 
 **Message log:** Campaign has expired!

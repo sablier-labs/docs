@@ -4,8 +4,6 @@ sidebar_position: 3
 title: "Errors"
 ---
 
-## Errors
-
 ### StreamDepleted
 
 **Message log:** Can't perform the action on a depleted stream!
