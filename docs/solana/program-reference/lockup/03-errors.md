@@ -4,6 +4,8 @@ sidebar_position: 3
 title: "Errors"
 ---
 
+[Git Source](https://github.com/sablier-labs/solsab/blob/main/programs/lockup/src/utils/errors.rs)
+
 ### StreamDepleted
 
 **Message log:** Can't perform the action on a depleted stream!

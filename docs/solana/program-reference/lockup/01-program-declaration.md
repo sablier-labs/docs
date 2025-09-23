@@ -28,7 +28,7 @@ Cancels the stream and refunds any remaining tokens to the sender ATA.
 - If there are any tokens left for the recipient to withdraw, the stream is marked as canceled. Otherwise, the stream is
   marked as depleted.
 - If the sender does not have an ATA for the deposited token, it is created.
-- Emits a [`crate::utils::events::CancelLockupStream`] event.
+- Emits a [CancelLockupStream](04-events.md#cancellockupstream) event.
 
 **Requirements**
 
@@ -53,7 +53,7 @@ Collects the fees accumulated in the treasury by transferring them to the fee re
 **Notes**
 
 - Leaves a buffer of 0.001 SOL to ensure the account remains rent-exempt after the fee collection.
-- Emits a [`crate::utils::events::FeesCollected`] event.
+- Emits a [FeesCollected](04-events.md#feescollected) event.
 
 **Requirements**
 
@@ -70,19 +70,19 @@ timestamp and the total duration The stream is funded by the signer and wrapped 
 
 **Accounts Expected**
 
-Refer to the accounts in [`fn@crate::sablier_lockup::create_with_timestamps_ll`].
+Refer to the accounts in [create_with_timestamps_ll](#create_with_timestamps_ll).
 
 **Parameters**
 
-Refer to the parameters in [`fn@crate::sablier_lockup::create_with_timestamps_ll`].
+Refer to the parameters in [create_with_timestamps_ll](#create_with_timestamps_ll).
 
 **Notes**
 
-Refer to the notes in [`fn@crate::sablier_lockup::create_with_timestamps_ll`].
+Refer to the notes in [create_with_timestamps_ll](#create_with_timestamps_ll).
 
 **Requirements**
 
-Refer to the requirements in [`fn@crate::sablier_lockup::create_with_timestamps_ll`].
+Refer to the requirements in [create_with_timestamps_ll](#create_with_timestamps_ll).
 
 ```rust
 pub fn create_with_durations_ll(
@@ -128,7 +128,7 @@ NFT.
 - A cliff time of zero means there is no cliff.
 - As long as the times are ordered, it is not an error for the start or the cliff time to be in the past.
 - The stream recipient is given solely by the ownership of the stream NFT, which is minted to the passed `recipient`.
-- Emits a [`crate::utils::events::CreateLockupLinearStream`] event.
+- Emits a [CreateLockupLinearStream](04-events.md#createlockuplinearstream) event.
 
 **Requirements**
 
@@ -187,7 +187,7 @@ Removes the right of the stream's sender to cancel the stream.
 
 **Notes**
 
-- Emits a [`crate::utils::events::RenounceLockupStream`] event.
+- Emits a [RenounceLockupStream](04-events.md#renouncelockupstream) event.
 
 ```rust
 pub fn renounce(ctx: Context<Renounce>) -> Result<()>
@@ -216,7 +216,7 @@ Withdraws the provided amount of tokens from the stream data ATA to the provided
 
 - If the withdrawal recipient does not have an ATA for the deposited token, one is created.
 - The instruction charges a fee in the native token (SOL), equivalent to $1 USD.
-- Emits [`crate::utils::events::WithdrawFromLockupStream`] event.
+- Emits [WithdrawFromLockupStream](04-events.md#withdrawfromlockupstream) event.
 
 **Requirements**
 

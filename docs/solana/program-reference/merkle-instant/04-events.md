@@ -4,25 +4,7 @@ sidebar_position: 4
 title: "Events"
 ---
 
-### CreateCampaign
-
-Emitted when a Merkle Instant campaign is created.
-
-```rust
-pub struct CreateCampaign {
-    pub aggregate_amount: u64,
-    pub campaign: Pubkey,
-    pub campaign_name: String,
-    pub campaign_start_time: u64,
-    pub creator: Pubkey,
-    pub expiration_time: u64,
-    pub ipfs_cid: String,
-    pub merkle_root: [u8; 32],
-    pub recipient_count: u32,
-    pub token_decimals: u8,
-    pub token_mint: Pubkey,
-}
-```
+[Git Source](https://github.com/sablier-labs/solsab/blob/main/programs/merkle_instant/src/utils/events.rs)
 
 ### Claim
 
@@ -50,6 +32,26 @@ pub struct Clawback {
     pub campaign: Pubkey,
     pub campaign_creator: Pubkey,
     pub clawback_recipient: Pubkey,
+}
+```
+
+### CreateCampaign
+
+Emitted when a Merkle Instant campaign is created.
+
+```rust
+pub struct CreateCampaign {
+    pub aggregate_amount: u64,
+    pub campaign: Pubkey,
+    pub campaign_name: String,
+    pub campaign_start_time: u64,
+    pub creator: Pubkey,
+    pub expiration_time: u64,
+    pub ipfs_cid: String,
+    pub merkle_root: [u8; 32],
+    pub recipient_count: u32,
+    pub token_decimals: u8,
+    pub token_mint: Pubkey,
 }
 ```
 

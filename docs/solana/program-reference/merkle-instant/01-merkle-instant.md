@@ -34,7 +34,7 @@ Claims airdrop on behalf of eligible recipient and transfers it to the recipient
 
 **Notes**
 
-- Emits a [`crate::utils::events::Claim`] event.
+- Emits a [Claim](04-events.md#claim) event.
 
 **Requirements**
 
@@ -65,7 +65,7 @@ Claws back the unclaimed tokens from the campaign.
 
 **Notes**
 
-- Emits a [`crate::utils::events::Clawback`] event.
+- Emits a [Clawback](04-events.md#clawback) event.
 
 **Requirements**
 
@@ -90,7 +90,7 @@ Collects the fees accumulated in the treasury by transferring them to the fee re
 
 - To calculate the "collectable amount", the rent-exempt minimum balance and a 0.001 SOL buffer are deducted from the
   treasury SOL balance.
-- Emits a [`crate::utils::events::FeesCollected`] event.
+- Emits a [FeesCollected](04-events.md#feescollected) event.
 
 **Requirements**
 
@@ -125,7 +125,7 @@ Creates a Merkle Instant airdrop campaign.
 
 **Notes**
 
-- Emits a [`crate::utils::events::CreateCampaign`] event.
+- Emits a [CreateCampaign](04-events.md#createcampaign) event.
 
 ```rust
 pub fn create_campaign(

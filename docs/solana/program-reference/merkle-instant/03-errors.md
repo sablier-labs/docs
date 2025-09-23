@@ -4,6 +4,8 @@ sidebar_position: 3
 title: "Errors"
 ---
 
+[Git Source](https://github.com/sablier-labs/solsab/blob/main/programs/merkle_instant/src/utils/errors.rs)
+
 ### CampaignExpired
 
 **Message log:** Campaign has expired!
