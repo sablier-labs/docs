@@ -55,7 +55,7 @@ flowchart TD
     A[Campaign Creator] --> |calls| B[create_campaign]
 
     B --> |creates| C((campaign))
-    C --> |creates| D((campaign_ata))
+    B --> |creates| D((campaign_ata))
     D -.-> |for| D1((airdrop_token_mint))
 ```
 
@@ -90,12 +90,12 @@ The
 [Claim receipt](https://github.com/sablier-labs/solsab/blob/e1085fe87ea3d02556156ee446e820d150af483e/programs/merkle_instant/src/state/claim_receipt.rs#L6)
 account serves as proof of claim for the given recipient.
 
-## Airdrop Token flow
+## The Flow of the Airdrop Token
 
 ### `create_campaign` Instruction
 
 This instruction does not perform the airdrop token transfer, but the transfer is expected to be made as a separate
-transaction. Therefore, the campaign ATA is assumed to be funded.
+transaction. Therefore, the campaign ATA is assumed to be funded after the campaign creation.
 
 ### `claim` Instruction
 
@@ -104,8 +104,8 @@ sequenceDiagram
     actor Claimer
 
     Claimer->>MerkleInstant: claim(recipient)
-    MerkleInstant -->> CampaignATA: Transfer tokens
-    CampaignATA -->> RecipientATA: Transfer tokens
+    MerkleInstant -->> CampaignATA: Transfer tokens From
+    CampaignATA -->> RecipientATA: Transfer tokens To
 ```
 
 ### `clawback` Instruction
@@ -115,6 +115,6 @@ sequenceDiagram
     actor CampaignCreator
 
     CampaignCreator->>MerkleInstant: clawback()
-    MerkleInstant -->> CampaignATA: Transfer tokens
-    CampaignATA -->> CampaignCreatorATA: Transfer tokens
+    MerkleInstant -->> CampaignATA: Transfer unclaimed tokens From
+    CampaignATA -->> CampaignCreatorATA: Transfer unclaimed tokens To
 ```

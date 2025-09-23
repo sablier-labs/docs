@@ -8,7 +8,7 @@ title: "Sablier on Solana"
 
 Welcome to the Sablier on Solana documentation.
 
-This section assumes you are familiar with the Sablier Protocol and its Ethereum implementation. Here, we focus on what's specific to the Solana blockchain and how it differs from Ethereum.
+This section assumes you are familiar with the Sablier Protocol and its Ethereum high level concepts. Here, we focus on what's specific to the Solana blockchain and how it differs from Ethereum.
 
 For more information on the original Sablier Protocol, refer to the [main documentation](../concepts/01-what-is-sablier.mdx).
 You can also find information about [Streaming](../concepts/02-streaming.md) and
@@ -40,12 +40,11 @@ a program. The program then progressively allocates the funds to the recipient, 
 available over time. The payment rate is influenced by various factors, including the start and end times, as well as
 the total amount of tokens deposited.
 
-#### Key differences from the [Ethereum Lockup protocol](../concepts/lockup/01-overview.md)
+#### Key differences from the Ethereum [Lockup](../concepts/lockup/01-overview.md) protocol
 
 - The Solana program includes only the Linear streaming model, not the Dynamic and Tranched models. See the available shapes for the Linear model
   [here](../concepts/lockup/02-stream-shapes.mdx#lockup-linear).
-- Due to limitations of the NFT protocols implemented in the Solana ecosystem ([Metaplex](https://developers.metaplex.com/)), we cannot have non-transferable NFTs. For
-  more information about NFTs, please see [here](../concepts/08-nft.mdx).
+- Due to the limitations of the [Token Metadata](https://developers.metaplex.com/token-metadata) NFT standard on Solana, we cannot have non-transferable NFTs.
 - Tokens transferred during stream creation are placed in a dedicated Stream ATA ([Associated Token Account](https://www.alchemy.com/overviews/associated-token-account)), instead of all tokens being held in the Lockup contract as on Ethereum.
 - We do not have hooks for the `cancel` and `withdraw` functionalities due to limitations in how Solana works.
 
@@ -59,7 +58,7 @@ The official deployment can be found at the address: `7XrxoQejBoGouW4V3aozTSwub7
 Merkle Instant is a program that enables the creation of token airdrop campaigns using Merkle trees, allowing users to
 instantly claim and receive their allocation through a single transaction.
 
-#### Key differences from Ethereum [Airdrops](../concepts/05-merkle-airdrops.mdx) protocols
+#### Key differences from the Ethereum [Airdrops](../concepts/05-merkle-airdrops.mdx) protocols
 
 - The Solana program includes only the Instant airdrop model, not the Vesting airdrop models.
-- Due to the nature of Solana's account architecture, there is a single program for both creating an airdrop and claiming it, unlike on Ethereum where we have a factory contract and its respective campaign contracts deployed.
+- Due to the nature of Solana's account architecture, we have a single program that handles both the creation and the claiming. In contrast to Ethereum, where we have a factory contract that deploys a stand-alone contract for each airdrop campaign.

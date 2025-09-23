@@ -236,15 +236,15 @@ Withdraws the maximum withdrawable amount from the stream data ATA to the provid
 
 **Accounts Expected**
 
-Refer to the accounts in [`fn@crate::sablier_lockup::withdraw`].
+Refer to the accounts in [withdraw`](#withdraw).
 
 **Notes**
 
-Refer to the notes in [`fn@crate::sablier_lockup::withdraw`].
+Refer to the notes in [withdraw`](#withdraw).
 
 **Requirements**
 
-Refer to the requirements in [`fn@crate::sablier_lockup::withdraw`].
+Refer to the requirements in [withdraw`](#withdraw).
 
 ```rust
 pub fn withdraw_max(ctx: Context<Withdraw>) -> Result<()>

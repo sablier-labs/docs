@@ -75,12 +75,12 @@ flowchart TD
     B --> |creates| C((stream_nft_mint))
     C0((nft_collection_mint)) -.-> |authority for| C
     B --> |creates| D((stream_data))
-    D --> |creates| H((stream_data_ata))
+    B --> |creates| H((stream_data_ata))
     H -.-> |for| H1((deposit_token_mint))
 
-    C --> |creates| C1((recipient_stream_nft_ata))
-    C --> |creates| C2((stream_nft_master_edition))
-    C --> |creates| C3((stream_nft_metadata))
+    B --> |creates| C1((recipient_stream_nft_ata))
+    B --> |creates| C2((stream_nft_master_edition))
+    B --> |creates| C3((stream_nft_metadata))
 ```
 
 The **Stream NFT Mint** also serves as the "Stream ID" for the `cancel`, `renounce`, and `withdraw` instructions.
@@ -126,7 +126,7 @@ flowchart TD
   A --> A3([start])
 ```
 
-## Deposit Token Flow
+## The Flow of the Deposit Token
 
 ### `create_with_timestamps_ll` Instruction
 
@@ -135,8 +135,8 @@ sequenceDiagram
     actor Sender
 
     Sender->>Lockup: create_with_timestamps_ll()
-    Lockup -->> SenderATA: Transfer Tokens
-    SenderATA -->> StreamDataATA: Transfer Tokens
+    Lockup -->> SenderATA: Transfer Tokens From
+    SenderATA -->> StreamDataATA: Transfer Tokens To
 ```
 
 ### `cancel` Instruction
@@ -148,8 +148,8 @@ sequenceDiagram
     actor Sender
 
     Sender->>Lockup: cancel()
-    Lockup -->> StreamDataATA: Transfer Unvested Tokens
-    StreamDataATA -->> SenderATA: Transfer Unvested Tokens
+    Lockup -->> StreamDataATA: Transfer Unvested Tokens From
+    StreamDataATA -->> SenderATA: Transfer Unvested Tokens To
 ```
 
 ### `withdraw` Instruction
@@ -159,6 +159,6 @@ sequenceDiagram
     actor Anyone
 
     Anyone->>Lockup: withdraw(withdrawal_recipient)
-    Lockup -->> StreamDataATA: Transfer Vested Tokens
-    StreamDataATA -->> WithdrawalRecipientATA: Transfer Vested Tokens
+    Lockup -->> StreamDataATA: Transfer Vested Tokens From
+    StreamDataATA -->> WithdrawalRecipientATA: Transfer Vested Tokens To
 ```
