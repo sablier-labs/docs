@@ -1,11 +1,11 @@
 ---
 id: "merkle-instant"
 sidebar_position: 2
-title: "Sablier Merkle Instant"
+title: "Merkle Instant"
 ---
 
-This section focuses on the architecture of accounts created or used in the most important instructions of the Sablier
-Merkle Instant program.
+This section focuses on the architecture of accounts created or used in the most important instructions of the Merkle
+Instant program.
 
 ## Account architecture
 

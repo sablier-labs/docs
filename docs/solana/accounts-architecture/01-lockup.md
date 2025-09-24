@@ -1,11 +1,11 @@
 ---
 id: "lockup"
 sidebar_position: 1
-title: "Sablier Lockup"
+title: "Lockup"
 ---
 
-This section focuses on the architecture of accounts created or used in the most important instructions of the Sablier
-Lockup program.
+This section focuses on the architecture of accounts created or used in the most important instructions of the Lockup
+program.
 
 ## Account architecture
 
