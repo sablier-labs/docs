@@ -102,10 +102,13 @@ transaction. Therefore, the campaign ATA is assumed to be funded after the campa
 ```mermaid
 sequenceDiagram
     actor Claimer
+    participant MerkleInstant
+    participant TokenProgram as Token Program
+    participant Accounts as Token Accounts<br/>Campaign ATA & Recipient ATA
 
     Claimer->>MerkleInstant: claim(recipient)
-    MerkleInstant -->> CampaignATA: Transfer tokens From
-    CampaignATA -->> RecipientATA: Transfer tokens To
+    MerkleInstant->>TokenProgram: CPI: transfer()
+    TokenProgram-->>Accounts: Move tokens<br/>Campaign ATA → Recipient ATA
 ```
 
 ### `clawback` Instruction
@@ -113,8 +116,11 @@ sequenceDiagram
 ```mermaid
 sequenceDiagram
     actor CampaignCreator
+    participant MerkleInstant
+    participant TokenProgram as Token Program
+    participant Accounts as Token Accounts<br/>Campaign ATA & CampaignCreator ATA
 
     CampaignCreator->>MerkleInstant: clawback()
-    MerkleInstant -->> CampaignATA: Transfer unclaimed tokens From
-    CampaignATA -->> CampaignCreatorATA: Transfer unclaimed tokens To
+    MerkleInstant->>TokenProgram: CPI: transfer()
+    TokenProgram-->>Accounts: Move tokens<br/>Campaign ATA → CampaignCreator ATA
 ```

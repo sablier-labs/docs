@@ -133,10 +133,13 @@ flowchart TD
 ```mermaid
 sequenceDiagram
     actor Sender
+    participant Lockup
+    participant TokenProgram as Token Program
+    participant Accounts as Token Accounts<br/>Sender ATA & StreamData ATA
 
     Sender->>Lockup: create_with_timestamps_ll()
-    Lockup -->> SenderATA: Transfer Tokens From
-    SenderATA -->> StreamDataATA: Transfer Tokens To
+    Lockup->>TokenProgram: CPI: transfer()
+    TokenProgram-->>Accounts: Move tokens<br/>Sender ATA → StreamData ATA
 ```
 
 ### `cancel` Instruction
@@ -146,19 +149,25 @@ Only the sender can cancel a stream.
 ```mermaid
 sequenceDiagram
     actor Sender
+    participant Lockup
+    participant TokenProgram as Token Program
+    participant Accounts as Token Accounts<br/> StreamData ATA & Sender ATA
 
     Sender->>Lockup: cancel()
-    Lockup -->> StreamDataATA: Transfer Unvested Tokens From
-    StreamDataATA -->> SenderATA: Transfer Unvested Tokens To
+    Lockup->>TokenProgram: CPI: transfer()
+    TokenProgram-->>Accounts: Move tokens<br/> StreamData ATA → Sender ATA
 ```
 
 ### `withdraw` Instruction
 
 ```mermaid
 sequenceDiagram
-    actor Anyone
+    actor Recipient
+    participant Lockup
+    participant TokenProgram as Token Program
+    participant Accounts as Token Accounts<br/> StreamData ATA & WithdrawalRecipient ATA
 
-    Anyone->>Lockup: withdraw(withdrawal_recipient)
-    Lockup -->> StreamDataATA: Transfer Vested Tokens From
-    StreamDataATA -->> WithdrawalRecipientATA: Transfer Vested Tokens To
+    Recipient->>Lockup: withdraw(withdrawal_recipient)
+    Lockup->>TokenProgram: CPI: transfer()
+    TokenProgram -->> Accounts: Move tokens<br/> StreamData ATA → WithdrawalRecipient ATA
 ```
