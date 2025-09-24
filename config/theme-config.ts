@@ -114,7 +114,12 @@ const navbar: Preset.ThemeConfig["navbar"] = {
       position: "left",
       to: "/apps/features/overview",
     },
-
+    {
+      activeBasePath: "/solana",
+      label: "Solana",
+      position: "left",
+      to: "/solana/sablier-on-solana",
+    },
     {
       activeBasePath: "/support",
       label: "Support",

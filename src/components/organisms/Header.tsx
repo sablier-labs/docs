@@ -132,6 +132,12 @@ export default function Header() {
             title={"APIs"}
             to={"/api/overview"}
           />
+          <Feature
+            description={"Sablier on Solana blockchain"}
+            Icon={DocumentTextIcon}
+            title={"Solana"}
+            to={"/solana/sablier-on-solana"}
+          />
         </Collection>
       </Content>
     </Wrapper>
