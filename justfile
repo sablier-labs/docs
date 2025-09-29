@@ -100,4 +100,4 @@ start: autogen
 # Helper to run CLI commands through the main entry point
 [private]
 @cli *args:
-    bun run cli/index.ts {{ args }}
+    bun cli/index.ts {{ args }}
