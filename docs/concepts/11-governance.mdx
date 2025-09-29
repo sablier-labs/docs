@@ -1,0 +1,74 @@
+---
+id: "governance"
+sidebar_position: 11
+title: "Governance"
+---
+
+import AdminsTable from "@site/src/components/organisms/AdminsTable";
+
+The Protocol Admin is an account with exclusive access to specific functions. More concretely, the Admin is a collection
+of multisig wallets and EOAs currently in control of Sablier Labs.
+
+## Admins
+
+Here's a table with the admins of the Sablier Protocol. Most of them are Safe multi-signature wallets.
+
+<AdminsTable />
+
+## Lockup
+
+Admin has the following permissions on each chain where `Lockup` is deployed:
+
+| Permission         | Function                                                                                                |
+| ------------------ | ------------------------------------------------------------------------------------------------------- |
+| Allow to Hook      | [allowToHook](../reference/lockup/contracts/abstracts/abstract.SablierLockupBase#allowtohook)           |
+| Set NFT Descriptor | [setNFTDescriptor](../reference/lockup/contracts/abstracts/abstract.SablierLockupBase#setnftdescriptor) |
+
+## MerkleFactory
+
+Admin has the following permissions on each chain where `MerkleFactory` is deployed:
+
+| Permission       | Function                                                                                       |
+| ---------------- | ---------------------------------------------------------------------------------------------- |
+| Reset Custom Fee | [resetCustomFee](../reference/airdrops/contracts/contract.SablierMerkleFactory#resetcustomfee) |
+| Set Custom Fee   | [setCustomFee](../reference/airdrops/contracts/contract.SablierMerkleFactory#setcustomfee)     |
+| Set Default Fee  | [setDefaultFee](../reference/airdrops/contracts/contract.SablierMerkleFactory#setdefaultfee)   |
+
+## Flow
+
+Admin has the following permissions on each chain where `Flow` is deployed:
+
+| Permission               | Function                                                                                                        |
+| ------------------------ | --------------------------------------------------------------------------------------------------------------- |
+| Collect Protocol Revenue | [collectProtocolRevenue](../reference/flow/contracts/abstracts/abstract.SablierFlowBase#collectprotocolrevenue) |
+| Recover ERC20 token      | [recover](../reference/flow/contracts/abstracts/abstract.SablierFlowBase#recover)                               |
+| Set NFT Descriptor       | [setNFTDescriptor](../reference/flow/contracts/abstracts/abstract.SablierFlowBase#setnftdescriptor)             |
+| Set Protocol Fee         | [setProtocolFee](../reference/flow/contracts/abstracts/abstract.SablierFlowBase#setprotocolfee)                 |
+
+## Trustlessness
+
+Despite having an admin, the Sablier Protocol remains trustless. Here's why:
+
+1. The protocol is permissionless, i.e. it can be freely accessed by anyone with an Internet connection.
+2. The protocol is persistent, i.e. the admin cannot pause it.
+3. The streaming logic is non-upgradeable, i.e. the admin cannot tamper with the streams created by users.
+4. There are no escape hatches that allow the admin to claim user funds.
+5. There is a hard-coded upper limit of 10% to the fees that the admin can charge.
+
+## Timelocks
+
+The parameter changes that can be effected are NOT subject to a timelock. This means that the admin can execute any of
+the functions listed above at any time.
+
+## Governance
+
+As a startup, Sablier has to deal with uncertainty regarding:
+
+1. Protocol-market fit
+2. Smart contract security
+
+Attaining success in these areas is no easy feat, and as such, decentralizing the protocol's governance will not be an
+initial priority.
+
+Nonetheless, we believe that progressive decentralization is the most effective approach to scaling a smart contract
+protocol. As the protocol matures, we will decentralize its governance incrementally.
