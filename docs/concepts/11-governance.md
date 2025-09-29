@@ -18,6 +18,7 @@ Here's a table with the admins of the Sablier Protocol. Most of them are Safe mu
 | Arbitrum One    | [0xF34E41a6f6Ce5A45559B1D3Ee92E141a3De96376](https://arbiscan.io/address/0xF34E41a6f6Ce5A45559B1D3Ee92E141a3De96376)             |
 | Avalanche       | [0x4735517616373c5137dE8bcCDc887637B8ac85Ce](https://snowtrace.io/address/0x4735517616373c5137dE8bcCDc887637B8ac85Ce)            |
 | Base            | [0x83A6fA8c04420B3F9C7A4CF1c040b63Fbbc89B66](https://basescan.org/address/0x83A6fA8c04420B3F9C7A4CF1c040b63Fbbc89B66)            |
+| Berachain       | [0xb1bEF51ebCA01EB12001a639bDBbFF6eEcA12B9F](https://berascan.com/address/0xb1bEF51ebCA01EB12001a639bDBbFF6eEcA12B9F)            |
 | Blast           | [0xb1bEF51ebCA01EB12001a639bDBbFF6eEcA12B9F](https://blastscan.io/address/0xb1bEF51ebCA01EB12001a639bDBbFF6eEcA12B9F)            |
 | BNB Smart Chain | [0x6666cA940D2f4B65883b454b7Bc7EEB039f64fa3](https://bscscan.com/address/0x6666cA940D2f4B65883b454b7Bc7EEB039f64fa3)             |
 | Chiliz          | [0x74A234DcAdFCB395b37C8c2B3Edf7A13Be78c935](https://chiliscan.com/address/0x74A234DcAdFCB395b37C8c2B3Edf7A13Be78c935)           |
@@ -25,7 +26,6 @@ Here's a table with the admins of the Sablier Protocol. Most of them are Safe mu
 | Form            | [0xb1bEF51ebCA01EB12001a639bDBbFF6eEcA12B9F](https://explorer.form.network/address/0xb1bEF51ebCA01EB12001a639bDBbFF6eEcA12B9F)   |
 | Gnosis          | [0x72ACB57fa6a8fa768bE44Db453B1CDBa8B12A399](https://gnosisscan.io/address/0x72ACB57fa6a8fa768bE44Db453B1CDBa8B12A399)           |
 | HyperEVM        | [0xb1bEF51ebCA01EB12001a639bDBbFF6eEcA12B9F](https://hyperevmscan.io/address/0xb1bEF51ebCA01EB12001a639bDBbFF6eEcA12B9F)         |
-| IoTeX           | [0xb1bEF51ebCA01EB12001a639bDBbFF6eEcA12B9F](https://iotexscan.io/address/0xb1bEF51ebCA01EB12001a639bDBbFF6eEcA12B9F)            |
 | LightLink       | [0xb1bEF51ebCA01EB12001a639bDBbFF6eEcA12B9F](https://phoenix.lightlink.io/address/0xb1bEF51ebCA01EB12001a639bDBbFF6eEcA12B9F)    |
 | Linea           | [0x72dCfa0483d5Ef91562817C6f20E8Ce07A81319D](https://lineascan.build/address/0x72dCfa0483d5Ef91562817C6f20E8Ce07A81319D)         |
 | Mode            | [0xb1bEF51ebCA01EB12001a639bDBbFF6eEcA12B9F](https://explorer.mode.network/address/0xb1bEF51ebCA01EB12001a639bDBbFF6eEcA12B9F)   |
@@ -39,8 +39,8 @@ Here's a table with the admins of the Sablier Protocol. Most of them are Safe mu
 | Superseed       | [0xb1bEF51ebCA01EB12001a639bDBbFF6eEcA12B9F](https://explorer.superseed.xyz/address/0xb1bEF51ebCA01EB12001a639bDBbFF6eEcA12B9F)  |
 | Taiko           | [0xb1bEF51ebCA01EB12001a639bDBbFF6eEcA12B9F](https://taikoscan.io/address/0xb1bEF51ebCA01EB12001a639bDBbFF6eEcA12B9F)            |
 | Tangle          | [0xb1bEF51ebCA01EB12001a639bDBbFF6eEcA12B9F](https://explorer.tangle.tools/address/0xb1bEF51ebCA01EB12001a639bDBbFF6eEcA12B9F)   |
-| Ultra           | [0xb1bef51ebca01eb12001a639bdbbff6eeca12b9f](https://evmexplorer.ultra.io/address/0xb1bef51ebca01eb12001a639bdbbff6eeca12b9f)    |
 | Unichain        | [0xb1bef51ebca01eb12001a639bdbbff6eeca12b9f](https://uniscan.xyz/address/0xb1bef51ebca01eb12001a639bdbbff6eeca12b9f)             |
+| XDC             | [0xb1bef51ebca01eb12001a639bdbbff6eeca12b9f](https://xdcscan.com/address/0xb1bef51ebca01eb12001a639bdbbff6eeca12b9f)             |
 | zkSync Era      | [0xaFeA787Ef04E280ad5Bb907363f214E4BAB9e288](https://era.zksync.network/address/0xaFeA787Ef04E280ad5Bb907363f214E4BAB9e288)      |
 
 ## Lockup
