@@ -28,18 +28,12 @@ flowchart TD
     A --> D[cancel]
     A --> E[withdraw]
     A --> F[renounce]
+    C --> G[create_with_timestamps_ll]
+    C --> H[create_with_durations_ll]
 ```
 
-The create stream feature has two possible implementations:
-
-```mermaid
-flowchart TD
-    A[create_stream] --> B[create_with_timestamps_ll]
-    A --> C[create_with_durations_ll]
-```
-
-The difference is that one uses timestamps, while the other uses duration inputs. Though, both implementations create
-the same accounts and save the same data on chain.
+The difference between the create stream implementations is that one uses timestamps, while the other uses duration
+inputs. Though, both create the same accounts and save the same data on chain.
 
 ### `initialize` Instruction
 
