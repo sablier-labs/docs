@@ -50,7 +50,8 @@
     "rehype-external-links": "^3.0.0",
     "rehype-katex": "7.0.1",
     "remark-math": "6.0.0",
-    "sablier": "1.1.0"
+    "sablier": "1.1.0",
+    "viem": "^2.37.9"
   },
   "devDependencies": {
     "@biomejs/biome": "^2.2.0",
