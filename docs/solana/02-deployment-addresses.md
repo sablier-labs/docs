@@ -4,8 +4,7 @@ sidebar_position: 2
 title: "Deployment Addresses"
 ---
 
-This page provides essential information about the Sablier Protocol deployment on Solana, including deployment
-addresses, fees, and governance model.
+This page contains the deployment addresses for the first SolSab release.
 
 :::important
 
