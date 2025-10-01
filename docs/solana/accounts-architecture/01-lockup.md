@@ -14,7 +14,7 @@ program.
 The `sablier_lockup` program implements these main functionalities:
 
 - `initialize`
-- `create_with_timestamps_ll`
+- `create_stream`
 - `cancel`
 - `withdraw`
 - `renounce`
@@ -24,11 +24,16 @@ We will go into the details and specifics of each one later. For now, we will fo
 ```mermaid
 flowchart TD
     A[Sablier Lockup Program] --> B[initialize]
-    A --> C[create_with_timestamps_ll]
+    A --> C[create_stream]
     A --> D[cancel]
     A --> E[withdraw]
     A --> F[renounce]
+    C --> G[create_with_timestamps_ll]
+    C --> H[create_with_durations_ll]
 ```
+
+The difference between the create stream implementations is that one uses timestamps, while the other uses duration
+inputs. Though, both create the same accounts and save the same data on chain.
 
 ### `initialize` Instruction
 
