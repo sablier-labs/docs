@@ -16,7 +16,6 @@ Unlike EVM, the programs here adhere to the best practices of Solana development
 
 All programs are deployed using
 [Anchor's verifiable builds](https://www.anchor-lang.com/docs/references/verifiable-builds) for deterministic bytecode.
-Anyone can verify the deployed programs match the source code.
 
 |  Chain  |   Protocol    |                                                               Program ID                                                               |
 | :-----: | :-----------: | :------------------------------------------------------------------------------------------------------------------------------------: |
@@ -24,3 +23,9 @@ Anyone can verify the deployed programs match the source code.
 | Mainnet | MerkleInstant |        [7XrxoQejBoGouW4V3aozTSwub7xSDjYqB4Go7YLjF9rV](https://solscan.io/account/7XrxoQejBoGouW4V3aozTSwub7xSDjYqB4Go7YLjF9rV)         |
 | Devnet  |    Lockup     | [4EauRKrNErKfsR4XetEZJNmvACGHbHnHV4R5dvJuqupC](https://solscan.io/account/4EauRKrNErKfsR4XetEZJNmvACGHbHnHV4R5dvJuqupC?cluster=devnet) |
 | Devnet  | MerkleInstant | [7XrxoQejBoGouW4V3aozTSwub7xSDjYqB4Go7YLjF9rV](https://solscan.io/account/7XrxoQejBoGouW4V3aozTSwub7xSDjYqB4Go7YLjF9rV?cluster=devnet) |
+
+The programs are verified using [Solana Verify CLI](https://github.com/Ellipsis-Labs/solana-verifiable-build/) and the
+verification status can be found on the Osec API:
+
+- [Lockup](https://verify.osec.io/status/4EauRKrNErKfsR4XetEZJNmvACGHbHnHV4R5dvJuqupC)
+- [MerkleInstant](https://verify.osec.io/status/7XrxoQejBoGouW4V3aozTSwub7xSDjYqB4Go7YLjF9rV)
