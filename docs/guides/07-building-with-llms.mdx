@@ -1,0 +1,37 @@
+---
+id: "building-with-llms"
+sidebar_position: 7
+title: "Building with LLMs"
+---
+
+# Sablier integrations using LLMs
+
+You can use large language models (LLMs) to assist in building Sablier integrations. We provide resources to help LLMs
+consume our documentation effectively.
+
+## Plain text markdown files
+
+You can access all documentation as plain text markdown files by adding `.md` to the end of any URL. For example, you can
+find the plain text version of this page at
+[https://docs.sablier.com/guides/building-with-llms.md](https://docs.sablier.com/guides/building-with-llms.md).
+
+This helps AI agents consume our content and allows you to copy and paste entire docs into an LLM. This format is
+preferable to scraping or copying from our documentation pages because:
+
+- Plain text contains fewer formatting tokens.
+- Content that isn't rendered in the default view (for example, hidden in a tab) is rendered in the plain text version.
+- LLMs can parse and understand markdown hierarchy.
+
+We also host an [/llms.txt file](https://docs.sablier.com/llms.txt) which contains URLs to the plain text versions of
+our pages. The `/llms.txt` file is an [emerging standard](https://llmstxt.org/) for making websites more accessible to LLMs.
+
+## Protocol-specific markdown files
+
+We provide specialized markdown files for each protocol:
+
+- **[llms-lockup.txt](https://docs.sablier.com/llms-lockup.txt)** - Complete markdown file for Lockup documentation
+- **[llms-flow.txt](https://docs.sablier.com/llms-flow.txt)** - Complete markdown file for Flow documentation
+- **[llms-airdrops.txt](https://docs.sablier.com/llms-airdrops.txt)** - Complete markdown file for Merkle Airdrops
+  documentation
+- **[llms-training-data.txt](https://docs.sablier.com/llms-training-data.txt)** - Full documentation content for training
+  custom models
