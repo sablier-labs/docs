@@ -45,6 +45,14 @@ but the recipients get the streamed tokens only if a claim is made within that p
 Vested airdrops not only create the right incentives for token holders, but also prevent them from dumping their tokens on
 day one, as has been the case for many airdrops in the past.
 
+```mermaid
+graph TD
+    A[Token Distributor / Project] -->|Instant Claim| B[Recipient Wallet - 100% tokens]
+    A -->|Vested Stream| C[Vesting Contract]
+    C -->|Streamed over time| D[Recipient Wallet - tokens per second]
+
+```
+
 There are two types of vested airdrop campaigns that you can create using Merkle Airdrop.
 
 ### Ranged
@@ -57,6 +65,25 @@ time had to be provided while creating the campaign.
 
 In non-ranged vested airdrop campaigns, the vesting begins at the time of claiming. In this case, all recipients can have
 different start time for vesting depending on when they claim.
+
+```mermaid
+gantt
+    dateFormat  YYYY-MM-DD
+    title Ranged vs Non-Ranged Vesting
+
+    section Ranged Vesting
+    Campaign Created :done, a1, 2025-01-01, 1d
+    Vesting Starts (same for all) :active, a2, 2025-01-05, 30d
+    Vesting Ends :a3, 2025-02-05, 1d
+
+    section Non-Ranged Vesting
+    Recipient 1 Claims :done, b1, 2025-01-05, 1d
+    Recipient 1 Vesting :active, b2, 2025-01-05, 30d
+    Recipient 2 Claims :done, b3, 2025-01-10, 1d
+    Recipient 2 Vesting :active, b4, 2025-01-10, 30d
+    Recipient 3 Claims :done, b5, 2025-01-15, 1d
+    Recipient 3 Vesting :active, b6, 2025-01-15, 30d
+```
 
 ## White Label Solution
 
@@ -112,6 +139,35 @@ date fund it with the airdropped tokens.
 
 Once the campaign is launched, recipients can claim their airdrop and withdraw the underlying tokens that have already
 been streamed at any time using the Sablier Interface at [app.sablier.com](https://app.sablier.com).
+
+```mermaid
+sequenceDiagram
+    actor Admin as Campaign Creator
+    participant Contract as Merkle Airdrop Contract
+    participant Recipient as User / Recipient
+
+    Admin->>Contract: Deploy MerkleLL / MerkleLT Contract
+    Admin->>Contract: Upload Merkle Root + Allocations
+    Admin->>Contract: (Optional) Fund Contract
+    Note right of Contract: Campaign is live\nClaim window may apply
+
+    Recipient->>Contract: Claim Airdrop (Merkle proof)
+    alt Instant Airdrop
+        Contract->>Recipient: Transfer tokens immediately
+    else Vested Airdrop
+        alt Ranged Vesting
+            Contract->>Recipient: Start stream (vesting starts at campaign start)
+        else Non-Ranged Vesting
+            Contract->>Recipient: Start stream (vesting starts at claim)
+        end
+        loop Vesting Duration
+            Contract-->>Recipient: Tokens flow gradually
+        end
+    end
+
+    Note over Admin, Contract: Grace period applies after first claim
+    Admin->>Contract: Clawback unclaimed funds (after grace period)
+```
 
 ## Diagram
 
