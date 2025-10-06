@@ -96,7 +96,8 @@ export function AdminsTable() {
     content += "| :---- | :------ |\n";
 
     for (const admin of admins) {
-      const addressLink = `[${admin.adminAddress}](${admin.explorerUrl}})`;
+      const explorerBaseUrl = admin.explorerUrl?.replace(/\/address\/.*$/, "") || "";
+      const addressLink = `[${admin.adminAddress}](${explorerBaseUrl}/address/${admin.adminAddress})`;
       content += `| ${admin.chainName} | ${addressLink} |\n`;
     }
 
