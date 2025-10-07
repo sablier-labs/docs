@@ -19,10 +19,15 @@ form</Link> and our team will get back to you.
 The Sablier Interface currently supports only The Graph and Envio indexer services. If you use a different indexer, you
 can schedule a call <Link href={Links.Forms.CALL}>here</Link> to discuss integration.
 
-- [x] Blockchain explorer with instructions for verifying contracts
-- [x] Functional JSON-RPC endpoint, preferably listed on [ChainList](https://chainlist.org)
-- [x] GraphQL indexer: specifically, either [The Graph](https://thegraph.com) or [Envio](https://envio.dev)
+- [x] GraphQL indexer: either [The Graph](https://thegraph.com) or [Envio](https://envio.dev)
+- [x] Blockchain explorer with instructions for verifying contracts, e.g., [Etherscan](https://etherscan.io)
+- [x] Functional JSON-RPC endpoint, ideally listed on [ChainList](https://chainlist.org)
 - [x] Bridge, and instructions for how to obtain gas tokens (e.g., ETH) and ERC-20 tokens to the target chain
+- [x] Support for [Shanghai](https://docs.soliditylang.org/en/latest/using-the-compiler.html#target-options) EVM version or later
+- [x] Support for Solidity v0.8.22 or later
+
+### Contracts
+
 - [x] Foundry's [Deterministic Deployer](https://github.com/Arachnid/deterministic-deployment-proxy) contract at
       [`0x4e59b44847b379578588920cA78FbF26c0B4956C`](https://etherscan.io/address/0x4e59b44847b379578588920cA78FbF26c0B4956C)
 - [x] [Multicall3](https://github.com/mds1/multicall) contract at
