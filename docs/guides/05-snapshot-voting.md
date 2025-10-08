@@ -155,7 +155,7 @@ It relies on the `streamedAmountOf` method in the
 
 :::caution Caveats
 
-- Using this policy alongside `erc20-balance-of` may double count tokens. In the example above, `TNK 500` was streamed,
+- Using this policy alongside `erc20-balance-of` may double count tokens. In the example above, `TKN 500` was streamed,
   but the recipient withdrew `TKN 450`, so the total voting power would be `TKN 950`.
 - If funds are recycled (streamed, withdrawn and streamed again) the voting power may be increased artificially.
 
