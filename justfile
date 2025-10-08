@@ -65,7 +65,7 @@ autogen-indexers:
 # Generate reference documentation
 [group("autogen")]
 autogen-reference:
-    bash cli/autogen-reference.sh
+    bun run cli/autogen-reference.ts
 
 # ---------------------------------------------------------------------------- #
 #                                  DOCUSAURUS                                  #
