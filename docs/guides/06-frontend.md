@@ -13,7 +13,7 @@ in developing a front-end app. No worries! In this guide, we'll provide some poi
 There's no one-size-fits-all toolset for building front-end integrations of Sablier, but we recommend using:
 
 - [Next.js](https://nextjs.org/)
-- [React](https://reactjs.org/)
+- [React](https://react.dev/)
 - [Wagmi](https://wagmi.sh/)
 
 ## Project setup
