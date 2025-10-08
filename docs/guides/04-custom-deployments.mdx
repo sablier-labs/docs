@@ -23,7 +23,8 @@ can schedule a call <Link href={Links.Forms.CALL}>here</Link> to discuss integra
 - [x] Blockchain explorer with instructions for verifying contracts, e.g., [Etherscan](https://etherscan.io)
 - [x] Functional JSON-RPC endpoint, ideally listed on [ChainList](https://chainlist.org)
 - [x] Bridge, and instructions for how to obtain gas tokens (e.g., ETH) and ERC-20 tokens to the target chain
-- [x] Support for [Shanghai](https://docs.soliditylang.org/en/latest/using-the-compiler.html#target-options) EVM version or later
+- [x] Support for [Shanghai](https://docs.soliditylang.org/en/latest/using-the-compiler.html#target-options) EVM version
+      or later
 - [x] Support for Solidity v0.8.22 or later
 
 ### Contracts
@@ -45,8 +46,11 @@ section is not relevant to you.
 
 ### Prerequisites
 
-- Check if the deployments are not already made: [Airdrops](/guides/airdrops/deployments), [Flow](/guides/flow/deployments), [Lockup](/guides/lockup/deployments)
-- Follow the contributing guides for <Link href={`${Links.GitHub.AIRDROPS}/blob/main/CONTRIBUTING.md`}>Airdrops</Link>, <Link href={`${Links.GitHub.FLOW}/blob/main/CONTRIBUTING.md`}>Flow</Link> and <Link href={`${Links.GitHub.LOCKUP}/blob/main/CONTRIBUTING.md`}>Lockup</Link>.
+- Check if the deployments are not already made: [Airdrops](/guides/airdrops/deployments),
+  [Flow](/guides/flow/deployments), [Lockup](/guides/lockup/deployments)
+- Follow the contributing guides for <Link href={`${Links.GitHub.AIRDROPS}/blob/main/CONTRIBUTING.md`}>Airdrops</Link>,
+  <Link href={`${Links.GitHub.FLOW}/blob/main/CONTRIBUTING.md`}>Flow</Link> and <Link
+  href={`${Links.GitHub.LOCKUP}/blob/main/CONTRIBUTING.md`}>Lockup</Link>.
 - RPC endpoint, e.g., a paid [Infura](https://www.infura.io/) or [Alchemy](https://www.alchemy.com/) account
 - Have enough gas tokens (e.g., ETH) in your deployer account
 - Have an Etherscan API key (for source code verification)
@@ -98,13 +102,18 @@ forge script scripts/solidity/DeployDeterministicComptrollerProxy.s.sol:DeployDe
   -vvv
 ```
 
-The above command works for etherscan equivalent explorers. If the chain uses a custom explorer,
-modify the verifier arguments according to [forge script documentation](https://getfoundry.sh/forge/reference/script/#forge-script). You should
-also refer to the forge script documentation for different wallet options such as mnemonic or hardware device.
+The above command works for etherscan equivalent explorers. If the chain uses a custom explorer, modify the verifier
+arguments according to [forge script documentation](https://getfoundry.sh/forge/reference/script/#forge-script). You
+should also refer to the forge script documentation for different wallet options such as mnemonic or hardware device.
 
 #### Step 4: Update the EVM Utils repository
 
-Add the chain ID of your newly deployed chain to the `ChainId` library in the [EVM Utils repo](https://github.com/sablier-labs/evm-utils/blob/d7d6c051a39cbacadef672e92ed9d57628c80dc4/src/tests/ChainId.sol). Then, bump the EVM Utils version in each protocol repository's `package.json` file (e.g., [Lockup](https://github.com/sablier-labs/lockup/blob/58eaac45c20c57a93b73d887c714e68f061ec3e6/package.json#L16), [Flow](https://github.com/sablier-labs/flow/blob/a4143de45478f508bca8305fec2bd81b7ad25fe9/package.json#L16), [Airdrops](https://github.com/sablier-labs/airdrops/blob/077c6b9766ef7693ba9e82a9e001dc0097709c01/package.json#L16)).
+Add the chain ID of your newly deployed chain to the `ChainId` library in the
+[EVM Utils repo](https://github.com/sablier-labs/evm-utils/blob/d7d6c051a39cbacadef672e92ed9d57628c80dc4/src/tests/ChainId.sol).
+Then, bump the EVM Utils version in each protocol repository's `package.json` file (e.g.,
+[Lockup](https://github.com/sablier-labs/lockup/blob/58eaac45c20c57a93b73d887c714e68f061ec3e6/package.json#L16),
+[Flow](https://github.com/sablier-labs/flow/blob/a4143de45478f508bca8305fec2bd81b7ad25fe9/package.json#L16),
+[Airdrops](https://github.com/sablier-labs/airdrops/blob/077c6b9766ef7693ba9e82a9e001dc0097709c01/package.json#L16)).
 
 ### Lockup Deployment
 
@@ -153,9 +162,9 @@ forge script scripts/solidity/DeployDeterministicProtocol.s.sol:DeployDeterminis
   -vvv
 ```
 
-The above command works for etherscan equivalent explorers. If the chain uses a custom explorer,
-modify the verifier arguments according to [forge script documentation](https://getfoundry.sh/forge/reference/script/#forge-script). You should
-also refer to the forge script documentation for different wallet options such as mnemonic or hardware device.
+The above command works for etherscan equivalent explorers. If the chain uses a custom explorer, modify the verifier
+arguments according to [forge script documentation](https://getfoundry.sh/forge/reference/script/#forge-script). You
+should also refer to the forge script documentation for different wallet options such as mnemonic or hardware device.
 
 ### Merkle Airdrops Deployment
 
@@ -204,9 +213,9 @@ forge script scripts/solidity/DeployDeterministicFactories.s.sol:DeployDetermini
   -vvv
 ```
 
-The above command works for etherscan equivalent explorers. If the chain uses a custom explorer,
-modify the verifier arguments according to [forge script documentation](https://getfoundry.sh/forge/reference/script/#forge-script). You should
-also refer to the forge script documentation for different wallet options such as mnemonic or hardware device.
+The above command works for etherscan equivalent explorers. If the chain uses a custom explorer, modify the verifier
+arguments according to [forge script documentation](https://getfoundry.sh/forge/reference/script/#forge-script). You
+should also refer to the forge script documentation for different wallet options such as mnemonic or hardware device.
 
 ### Flow Deployment
 
@@ -255,16 +264,17 @@ forge script scripts/solidity/DeployDeterministicProtocol.s.sol:DeployDeterminis
   -vvv
 ```
 
-The above command works for etherscan equivalent explorers. If the chain uses a custom explorer,
-modify the verifier arguments according to [forge script documentation](https://getfoundry.sh/forge/reference/script/#forge-script). You should
-also refer to the forge script documentation for different wallet options such as mnemonic or hardware device.
+The above command works for etherscan equivalent explorers. If the chain uses a custom explorer, modify the verifier
+arguments according to [forge script documentation](https://getfoundry.sh/forge/reference/script/#forge-script). You
+should also refer to the forge script documentation for different wallet options such as mnemonic or hardware device.
 
 ### List your deployments
 
-After the contracts are deployed, you can submit a PR in the <Link href={Links.GitHub.SDK}>SDK
-repo</Link> by including the following details:
+After the contracts are deployed, you can submit a PR in the <Link href={Links.GitHub.SDK}>SDK repo</Link> by including
+the following details:
 
-- Add the broadcast files (JSON) to <Link href={`${Links.GitHub.SDK}/tree/main/deployments`}>deployments</Link> directory.
+- Add the broadcast files (JSON) to <Link href={`${Links.GitHub.SDK}/tree/main/deployments`}>deployments</Link>
+  directory.
 - Add the deployment addresses to the following files:
   - <Link href={`${Links.GitHub.SDK}/blob/main/src/comptroller.ts`}>Comptroller Deployments</Link>
   - <Link href={`${Links.GitHub.SDK}/blob/main/src/releases/airdrops/v2.0/deployments.ts`}>Airdrops Deployments</Link>
