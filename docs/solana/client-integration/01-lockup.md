@@ -6,7 +6,10 @@ title: "Lockup"
 # Client Integration
 
 In this guide, we will go through the steps to set up a local development environment for building onchain integrations
-with Lockup using TypeScript and Anchor's [IDL](https://www.anchor-lang.com/docs/basics/idl).
+with Lockup using TypeScript and Anchor's [IDL](https://www.anchor-lang.com/docs/basics/idl). For more examples and
+advanced usage, refer to the SolSab repository
+[test](https://github.com/sablier-labs/solsab/blob/e1085fe87ea3d02556156ee446e820d150af483e/tests/lockup/) files and
+[scripts](https://github.com/sablier-labs/solsab/tree/e1085fe87ea3d02556156ee446e820d150af483e/scripts/ts).
 
 :::caution
 
@@ -55,7 +58,7 @@ Import the necessary modules and types:
 import * as anchor from "@coral-xyz/anchor";
 import { TOKEN_PROGRAM_ID } from "@solana/spl-token";
 import { ComputeBudgetProgram, PublicKey } from "@solana/web3.js";
-import { type SablierLockup } from "../target/types/sablier_lockup";
+import { type SablierLockup } from "<based_on_your_file_path>/target/types/sablier_lockup";
 import BN from "bn.js";
 ```
 
@@ -160,7 +163,7 @@ Execute the script using `bun`:
 ```shell
 ANCHOR_WALLET=~/.config/solana/id.json \ # or your wallet path
 ANCHOR_PROVIDER_URL="https://api.devnet.solana.com" \
-bun run <your_file>.ts
+bun run <your_file_path>.ts
 ```
 
 ## Withdrawing from a Stream
@@ -216,7 +219,7 @@ Execute the script using `bun`:
 ```shell
 ANCHOR_WALLET=~/.config/solana/id.json \ # or your wallet path
 ANCHOR_PROVIDER_URL="https://api.devnet.solana.com" \
-bun run <your_file>.ts
+bun run <your_file_path>.ts
 ```
 
 ### Using `withdrawMax`
@@ -269,7 +272,7 @@ Execute the script using `bun`:
 ```shell
 ANCHOR_WALLET=~/.config/solana/id.json \ # or your wallet path
 ANCHOR_PROVIDER_URL="https://api.devnet.solana.com" \
-bun run <your_file>.ts
+bun run <your_file_path>.ts
 ```
 
 ## Cancel a Stream
@@ -309,9 +312,5 @@ Execute the script using `bun`:
 ```shell
 ANCHOR_WALLET=~/.config/solana/id.json \ # or your wallet path
 ANCHOR_PROVIDER_URL="https://api.devnet.solana.com" \
-bun run <your_file>.ts
+bun run <your_file_path>.ts
 ```
-
-For more examples and advanced usage, refer to the SolSab repository
-[test](https://github.com/sablier-labs/solsab/blob/e1085fe87ea3d02556156ee446e820d150af483e/tests/lockup/) files and
-[scripts](https://github.com/sablier-labs/solsab/tree/e1085fe87ea3d02556156ee446e820d150af483e/scripts/ts).
