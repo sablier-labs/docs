@@ -19,10 +19,23 @@ provide guidance on how to interact with the Lockup program.
 
 ### Download Types
 
-First, download the TypeScript types for the Lockup program from the GitHub release:
+First, download the JSON object and the TypeScript types for the Lockup program from the GitHub release.
+
+:::important
+
+Make sure to place them under the `target` directory, as it's seen below, otherwise anchor would throw warnings.
+
+:::
 
 ```bash
-curl -L -o sablier_lockup.ts \
+curl -L -o target/idl/sablier_lockup.json \
+  https://github.com/sablier-labs/solsab/releases/download/v1.0.0/sablier_lockup.json
+```
+
+and:
+
+```bash
+curl -L -o target/types/sablier_lockup.ts \
   https://github.com/sablier-labs/solsab/releases/download/v1.0.0/sablier_lockup.ts
 ```
 
@@ -31,7 +44,7 @@ curl -L -o sablier_lockup.ts \
 Install the required Solana and Anchor packages:
 
 ```bash
-bun add @coral-xyz/anchor@0.31.1 @solana/web3.js@1.98.2 bn.js@5.2.2
+bun add @coral-xyz/anchor@0.31.1 @solana/web3.js@1.98.2 bn.js@5.2.2 @solana/spl-token@0.4.13
 ```
 
 ## Setup
@@ -40,50 +53,55 @@ Import the necessary modules and types:
 
 ```typescript
 import * as anchor from "@coral-xyz/anchor";
-import { Connection, PublicKey, Keypair } from "@solana/web3.js";
 import { TOKEN_PROGRAM_ID } from "@solana/spl-token";
-import { SablierLockup } from "./sablier_lockup"; // Path to your downloaded types
+import { ComputeBudgetProgram, PublicKey } from "@solana/web3.js";
+import { type SablierLockup } from "../target/types/sablier_lockup";
 import BN from "bn.js";
 ```
 
 Set up the Anchor provider and program instance:
 
 ```typescript
-// Create connection to Solana cluster
-const connection = new Connection("https://api.devnet.solana.com", "confirmed");
+let anchorProvider: anchor.AnchorProvider;
+let lockupProgram: anchor.Program<SablierLockup>;
+let signerKeys: anchor.web3.Keypair;
 
-// Set up wallet (example using a keypair)
-const wallet = new anchor.Wallet(yourKeypair);
+async function setUp() {
+  // Configure the Anchor provider
+  anchorProvider = anchor.AnchorProvider.env();
+  anchor.setProvider(anchorProvider);
 
-// Create provider
-const provider = new anchor.AnchorProvider(connection, wallet, {
-  commitment: "confirmed",
-});
+  // Declare the lockup program based on the IDL downloaded
+  lockupProgram = anchor.workspace.SablierLockup as anchor.Program<SablierLockup>;
 
-// Set the provider
-anchor.setProvider(provider);
-
-// Initialize the program (PROGRAM_ID is included in the types)
-const program = new anchor.Program<SablierLockup>(
-  idl as SablierLockup, // Your IDL object
-  provider,
-);
+  // Define the signer wallet
+  signerKeys = (anchorProvider.wallet as anchor.Wallet).payer;
+}
 ```
+
+:::note
+
+The examples in this guide use Devnet. Make sure your wallet has enough SOL and the appropriate SPL tokens for testing.
+
+:::
 
 ## Creating a Stream
 
-### Using `createWithTimestampsLL`
+### Using `createWithTimestampsLl`
 
 Create a linear lockup stream with specific timestamps:
 
 ```typescript
-async function createStream() {
-  // Using the current timestamp as the unique identifier
+async function createStreams() {
+  // Ensure the set up is done
+  await setUp();
+
+  // Using the current timestamp in milliseconds as the unique identifier
   const salt = new BN(Date.now());
   // 1000 tokens (assuming 6 decimals)
   const depositAmount = new BN(1000 * 10 ** 6);
-  // Current timestamp
-  const startTime = new BN(Math.floor(Date.now()));
+  // Current timestamp in seconds
+  const startTime = new BN(Math.floor(Date.now() / 1000));
   // No cliff
   const cliffTime = new BN(0);
   // 1 hour from start time
@@ -94,15 +112,17 @@ async function createStream() {
   const isCancelable = true;
 
   // Account addresses
-  const creator = provider.wallet.publicKey;
-  const recipient = new PublicKey("YOUR_RECIPIENT_HERE");
-  const sender = creator;
+  const creator = signerKeys.publicKey; // The signer is the creator
+  const recipient = new PublicKey("RECIPIENT_WALLET_ADDRESS_HERE");
+  const sender = creator; // Use the creator as the sender
   const depositTokenMint = new PublicKey("YOUR_TOKEN_MINT_HERE");
 
   // Set a higher compute unit limit so that the transaction doesn't fail
-  const increaseCULimitIx = ComputeBudgetProgram.setComputeUnitLimit({ units: 1_000_000 });
+  const increaseCULimitIx = ComputeBudgetProgram.setComputeUnitLimit({
+    units: 1_000_000,
+  });
 
-  const txSignature = await program.methods
+  const txSignature = await lockupProgram.methods
     .createWithTimestampsLl(
       salt,
       depositAmount,
@@ -115,20 +135,32 @@ async function createStream() {
     )
     .accounts({
       creator,
-      recipient,
-      sender,
       depositTokenMint,
       depositTokenProgram: TOKEN_PROGRAM_ID,
       nftTokenProgram: TOKEN_PROGRAM_ID,
+      recipient,
+      sender,
     })
     .preInstructions([increaseCULimitIx])
     .rpc();
 
   console.log("Stream created successfully!");
   console.log("Transaction signature:", txSignature);
-
-  return txSignature;
 }
+```
+
+Make sure to call the `createStreams` function to execute the stream creation:
+
+```typescript
+createStreams();
+```
+
+Execute the script using `bun`:
+
+```shell
+ANCHOR_WALLET=~/.config/solana/id.json \ # or your wallet path
+ANCHOR_PROVIDER_URL="https://api.devnet.solana.com" \
+bun run <your_file>.ts
 ```
 
 ## Withdrawing from a Stream
@@ -139,46 +171,11 @@ Withdraw tokens from an existing stream:
 
 ```typescript
 async function withdrawFromStream(streamNftMint: PublicKey, amount: BN) {
-  // Required account addresses
-  const signer = provider.wallet.publicKey;
-  const streamRecipient = signer; // The recipient of the stream
-  const withdrawalRecipient = signer; // Where to send withdrawn tokens
-  const depositedTokenMint = new PublicKey("YOUR_TOKEN_MINT_HERE");
+  // Ensure the set up is done
+  await setUp();
 
-  // Chainlink program and feed addresses
-  const chainlinkProgram = new PublicKey("HEvSKofvBgfaexv23kMabbYqxasxU3mQ4ibBMEmJWHny");
-  const chainlinkSolUsdFeed = new PublicKey("99B2bTijsU6f1GCT73HmdR7HCFFjGMBcPZY6jZ96ynrR");
-
-  const txSignature = await program.methods
-    .withdraw(amount)
-    .accounts({
-      chainlinkProgram,
-      chainlinkSolUsdFeed,
-      depositedTokenMint,
-      depositedTokenProgram,
-      nftTokenProgram: token.TOKEN_PROGRAM_ID,
-      signer: signer.publicKey,
-      streamNftMint,
-      streamRecipient,
-      withdrawalRecipient,
-    })
-    .rpc();
-
-  console.log("Withdrawal successful!");
-  console.log("Transaction signature:", txSignature);
-
-  return txSignature;
-}
-```
-
-### Using `withdrawMax`
-
-Withdraw the maximum available amount from a stream:
-
-```typescript
-async function withdrawMaxFromStream(streamNftMint: PublicKey) {
   // Same account setup as withdraw
-  const signer = provider.wallet.publicKey;
+  const signer = signerKeys.publicKey;
   const streamRecipient = signer;
   const withdrawalRecipient = signer;
   const depositedTokenMint = new PublicKey("YOUR_TOKEN_MINT_HERE");
@@ -187,39 +184,110 @@ async function withdrawMaxFromStream(streamNftMint: PublicKey) {
   const chainlinkProgram = new PublicKey("HEvSKofvBgfaexv23kMabbYqxasxU3mQ4ibBMEmJWHny");
   const chainlinkSolUsdFeed = new PublicKey("99B2bTijsU6f1GCT73HmdR7HCFFjGMBcPZY6jZ96ynrR");
 
-  const txSignature = await program.methods
-    .withdrawMax()
+  const txSignature = await lockupProgram.methods
+    .withdraw(amount)
     .accounts({
-      signer,
-      streamRecipient,
-      withdrawalRecipient,
-      depositedTokenMint,
-      streamNftMint,
-      depositedTokenProgram: TOKEN_PROGRAM_ID,
-      nftTokenProgram: TOKEN_PROGRAM_ID,
       chainlinkProgram,
       chainlinkSolUsdFeed,
+      depositedTokenMint,
+      depositedTokenProgram: TOKEN_PROGRAM_ID,
+      nftTokenProgram: TOKEN_PROGRAM_ID,
+      signer,
+      streamNftMint,
+      streamRecipient,
+      withdrawalRecipient,
+    })
+    .rpc();
+
+  console.log("Withdrawal successful!");
+  console.log("Transaction signature:", txSignature);
+}
+```
+
+Make sure to call the `withdrawFromStream` function to execute the withdrawal:
+
+```typescript
+// Withdraw 100 tokens (assuming 6 decimals)
+withdrawFromStream("YOUR_STREAM_NFT_MINT_HERE", new BN(100 * 10 ** 6));
+```
+
+Execute the script using `bun`:
+
+```shell
+ANCHOR_WALLET=~/.config/solana/id.json \ # or your wallet path
+ANCHOR_PROVIDER_URL="https://api.devnet.solana.com" \
+bun run <your_file>.ts
+```
+
+### Using `withdrawMax`
+
+Withdraw the maximum available amount from a stream:
+
+```typescript
+async function withdrawMaxFromStream(streamNftMint: PublicKey) {
+  // Ensure the set up is done
+  await setUp();
+
+  // Same account setup as withdraw
+  const signer = signerKeys.publicKey;
+  const streamRecipient = signer;
+  const withdrawalRecipient = signer;
+  const depositedTokenMint = new PublicKey("YOUR_TOKEN_MINT_HERE");
+
+  // Chainlink program and feed addresses
+  const chainlinkProgram = new PublicKey("HEvSKofvBgfaexv23kMabbYqxasxU3mQ4ibBMEmJWHny");
+  const chainlinkSolUsdFeed = new PublicKey("99B2bTijsU6f1GCT73HmdR7HCFFjGMBcPZY6jZ96ynrR");
+
+  const txSignature = await lockupProgram.methods
+    .withdrawMax()
+    .accounts({
+      chainlinkProgram,
+      chainlinkSolUsdFeed,
+      depositedTokenMint,
+      depositedTokenProgram: TOKEN_PROGRAM_ID,
+      nftTokenProgram: TOKEN_PROGRAM_ID,
+      signer,
+      streamNftMint,
+      streamRecipient,
+      withdrawalRecipient,
     })
     .rpc();
 
   console.log("Max withdrawal successful!");
   console.log("Transaction signature:", txSignature);
-
-  return txSignature;
 }
+```
+
+Make sure to call the `withdrawMaxFromStream` function to execute the withdrawal:
+
+```typescript
+withdrawMaxFromStream("YOUR_STREAM_NFT_MINT_HERE");
+```
+
+Execute the script using `bun`:
+
+```shell
+ANCHOR_WALLET=~/.config/solana/id.json \ # or your wallet path
+ANCHOR_PROVIDER_URL="https://api.devnet.solana.com" \
+bun run <your_file>.ts
 ```
 
 ## Cancel a Stream
 
 ```typescript
 async function cancelStream(streamNftMint: PublicKey) {
-  const sender = provider.wallet.publicKey; // The sender of the stream
+  // Ensure the set up is done
+  await setUp();
 
-  const txSignature = await this.lockup.methods
+  // The sender of the stream
+  const sender = signerKeys.publicKey;
+  const depositedTokenMint = new PublicKey("YOUR_TOKEN_MINT_HERE");
+
+  const txSignature = await lockupProgram.methods
     .cancel()
     .accounts({
       depositedTokenMint,
-      depositedTokenProgram,
+      depositedTokenProgram: TOKEN_PROGRAM_ID,
       sender,
       streamNftMint,
     })
@@ -228,6 +296,20 @@ async function cancelStream(streamNftMint: PublicKey) {
   console.log("Stream canceled successfully!");
   console.log("Transaction signature:", txSignature);
 }
+```
+
+Make sure to call the `cancelStream` function to execute the cancellation:
+
+```typescript
+cancelStream("YOUR_STREAM_NFT_MINT_HERE");
+```
+
+Execute the script using `bun`:
+
+```shell
+ANCHOR_WALLET=~/.config/solana/id.json \ # or your wallet path
+ANCHOR_PROVIDER_URL="https://api.devnet.solana.com" \
+bun run <your_file>.ts
 ```
 
 For more examples and advanced usage, refer to the SolSab repository
