@@ -22,7 +22,7 @@ provide guidance on how to interact with the Lockup program.
 
 ### Download Types
 
-First, download the JSON object and the TypeScript types for the Lockup program from the GitHub release.
+First, download the IDL and the TypeScript types for the Lockup program from the GitHub release.
 
 :::important
 
@@ -125,6 +125,7 @@ async function createStreams() {
     units: 1_000_000,
   });
 
+  // Call the `createWithTimestampsLl` instruction
   const txSignature = await lockupProgram.methods
     .createWithTimestampsLl(
       salt,
@@ -187,6 +188,7 @@ async function withdrawFromStream(streamNftMint: PublicKey, amount: BN) {
   const chainlinkProgram = new PublicKey("HEvSKofvBgfaexv23kMabbYqxasxU3mQ4ibBMEmJWHny");
   const chainlinkSolUsdFeed = new PublicKey("99B2bTijsU6f1GCT73HmdR7HCFFjGMBcPZY6jZ96ynrR");
 
+  // Call the `withdraw` instruction
   const txSignature = await lockupProgram.methods
     .withdraw(amount)
     .accounts({
@@ -241,6 +243,7 @@ async function withdrawMaxFromStream(streamNftMint: PublicKey) {
   const chainlinkProgram = new PublicKey("HEvSKofvBgfaexv23kMabbYqxasxU3mQ4ibBMEmJWHny");
   const chainlinkSolUsdFeed = new PublicKey("99B2bTijsU6f1GCT73HmdR7HCFFjGMBcPZY6jZ96ynrR");
 
+  // Call the `withdrawMax` instruction
   const txSignature = await lockupProgram.methods
     .withdrawMax()
     .accounts({
@@ -286,6 +289,7 @@ async function cancelStream(streamNftMint: PublicKey) {
   const sender = signerKeys.publicKey;
   const depositedTokenMint = new PublicKey("YOUR_TOKEN_MINT_HERE");
 
+  // Call the `cancel` instruction
   const txSignature = await lockupProgram.methods
     .cancel()
     .accounts({
