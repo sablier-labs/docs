@@ -5,45 +5,52 @@ title: "Governance"
 ---
 
 import AdminsTable from "@site/src/components/organisms/AdminsTable";
+import ComptrollersTable from "@site/src/components/organisms/ComptrollersTable";
 
-The Protocol Admin is an account with exclusive access to specific functions. More concretely, the Admin is a collection
-of multisig wallets and EOAs currently in control of Sablier Labs.
+## Comptroller
 
-## Admins
+The Sablier Protocol uses a Comptroller smart contract architecture for governance. The Comptroller acts as an
+intermediary that has exclusive access to specific protocol functions. This design provides a more flexible and
+centralized accross all protocols access control model while maintaining security.
 
-Here's a table with the admins of the Sablier Protocol. Most of them are Safe multi-signature wallets.
-
-<AdminsTable />
+<ComptrollersTable />
 
 ## Lockup
 
-Admin has the following permissions on each chain where `Lockup` is deployed:
+Comptroller has the following permissions on each chain where `Lockup` is deployed:
 
-| Permission         | Function                                                                                                |
-| ------------------ | ------------------------------------------------------------------------------------------------------- |
-| Allow to Hook      | [allowToHook](../reference/lockup/contracts/abstracts/abstract.SablierLockupBase#allowtohook)           |
-| Set NFT Descriptor | [setNFTDescriptor](../reference/lockup/contracts/abstracts/abstract.SablierLockupBase#setnftdescriptor) |
+| Permission         | Function                                                                         |
+| ------------------ | -------------------------------------------------------------------------------- |
+| Allow to Hook      | [allowToHook](../reference/lockup/contracts/SablierLockup#allowtohook)           |
+| Recover            | [recover](../reference/lockup/contracts/SablierLockup#recover)                   |
+| Set Native Token   | [setNativeToken](../reference/lockup/contracts/SablierLockup#setnativetoken)     |
+| Set NFT Descriptor | [setNFTDescriptor](../reference/lockup/contracts/SablierLockup#setnftdescriptor) |
 
 ## MerkleFactory
 
-Admin has the following permissions on each chain where `MerkleFactory` is deployed:
+Comptroller has the following permission on each chain where the factories are deployed:
 
-| Permission       | Function                                                                                       |
-| ---------------- | ---------------------------------------------------------------------------------------------- |
-| Reset Custom Fee | [resetCustomFee](../reference/airdrops/contracts/contract.SablierMerkleFactory#resetcustomfee) |
-| Set Custom Fee   | [setCustomFee](../reference/airdrops/contracts/contract.SablierMerkleFactory#setcustomfee)     |
-| Set Default Fee  | [setDefaultFee](../reference/airdrops/contracts/contract.SablierMerkleFactory#setdefaultfee)   |
+| Permission       | Function                                                                                                     |
+| ---------------- | ------------------------------------------------------------------------------------------------------------ |
+| Set Native Token | [setNativeToken](../reference/airdrops/contracts/abstracts/abstract.SablierFactoryMerkleBase#setNativeToken) |
 
 ## Flow
 
-Admin has the following permissions on each chain where `Flow` is deployed:
+Comptroller has the following permissions on each chain where `Flow` is deployed:
 
-| Permission               | Function                                                                                                        |
-| ------------------------ | --------------------------------------------------------------------------------------------------------------- |
-| Collect Protocol Revenue | [collectProtocolRevenue](../reference/flow/contracts/abstracts/abstract.SablierFlowBase#collectprotocolrevenue) |
-| Recover ERC20 token      | [recover](../reference/flow/contracts/abstracts/abstract.SablierFlowBase#recover)                               |
-| Set NFT Descriptor       | [setNFTDescriptor](../reference/flow/contracts/abstracts/abstract.SablierFlowBase#setnftdescriptor)             |
-| Set Protocol Fee         | [setProtocolFee](../reference/flow/contracts/abstracts/abstract.SablierFlowBase#setprotocolfee)                 |
+| Permission         | Function                                                                     |
+| ------------------ | ---------------------------------------------------------------------------- |
+| Recover            | [recover](../reference/flow/contracts/SablierFlow#recover)                   |
+| Set Native Token   | [setNativeToken](../reference/flow/contracts/SablierFlow#setnativetoken)     |
+| Set NFT Descriptor | [setNFTDescriptor](../reference/flow/contracts/SablierFlow#setnftdescriptor) |
+
+## Admin Addresses
+
+Before the introduction of the Comptroller architecture, we used a direct "Admin" role for
+governance. These admin accounts had the same authority as the current Comptroller contract, with direct access to
+specific protocol functions. More concretely, the Admin is a collection of multisig wallets and EOAs currently in control of Sablier Labs.
+
+<AdminsTable />
 
 ## Trustlessness
 
