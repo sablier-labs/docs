@@ -1,0 +1,20 @@
+{
+  "$schema": "https://context7.com/schema/context7.json",
+  "projectTitle": "Sablier Protocol Documentation",
+  "description": "Documentation for Sablier's token streaming, vesting, and airdrop protocols on Ethereum and Solana",
+  "branch": "main",
+  "folders": ["docs/", "src/snippets/"],
+  "rules": [
+    "Import Sablier contracts from @sablier/lockup, @sablier/flow, or @sablier/airdrops packages",
+    "Use PRB Math's UD60x18 for fixed-point arithmetic when working with rates and percentages",
+    "Prefer createWithDurations functions over createWithTimestamps for better UX unless timestamps are explicitly required",
+    "Always approve token spending before creating streams using IERC20.approve()",
+    "Stream IDs are returned as uint256 from all create functions - store these for stream management",
+    "For batch operations, use SablierBatchLockup contract",
+    "Query stream data via GraphQL indexers (Envio or The Graph) for better performance over direct contract calls",
+    "All streams are ERC-721 NFTs - use standard NFT transfer functions for ownership changes",
+    "When documenting contract addresses, reference the deployment pages",
+    "When Merkle airdrops create Lockup streams during claimed, document the connection between protocols",
+    "Hooks enable extensibility - implement ISablierLockupRecipient or ISablierLockupSender for custom logic"
+  ]
+}
