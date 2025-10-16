@@ -58,7 +58,7 @@ const graphqlMarkdown: [string, GraphQLMarkdownOptions] = [
  * - llms-airdrops.txt: Contains full content relevant to the Merkle Airdrops protocol.
  * - llms-flow.txt: Contains full content relevant to the Flow protocol.
  * - llms-lockup.txt: Contains full content relevant to the Lockup protocol.
- * - llms-training-data.txt: Contains full content of all markdown files.
+ * - llms-full.txt: Contains full content of all markdown files.
  *
  * @see https://llmstxt.org
  * @see https://github.com/rachfop/docusaurus-plugin-llms
@@ -119,7 +119,7 @@ const llmPlugin: [string, LlmPluginOptions & { [key: string]: unknown }] = [
       },
       {
         // Useful to train or fine-tune an LLM on Sablier docs.
-        filename: "llms-training-data.txt",
+        filename: "llms-full.txt",
         fullContent: true,
         includePatterns: ["**/*.md", "**/*.mdx"],
       },
