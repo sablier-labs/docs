@@ -134,6 +134,8 @@ const llmPlugin: [string, LlmPluginOptions & { [key: string]: unknown }] = [
     generateMarkdownFiles: true,
     // Ignore snippet files since they're already included via imports.
     ignoreFiles: ["snippets/**/*"],
+    // Ignore files with HTML tags in their descriptions.
+    ignoreHTML: true,
     // Section ordering in the index file.
     includeOrder: ["concepts/*", "guides/*", "reference/*", "api/*", "apps/*", "support/*"],
     // Remove duplicate content matching headings.
