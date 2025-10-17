@@ -23,9 +23,13 @@ export const Links = {
     CHAINS: "https://forms.gle/9EaRarDie98Fw1mw6",
   },
   GitHub: {
+    AIRDROPS: `https://github.com/${GITHUB_ORG}/airdrops`,
     BENCHMARKS: `https://github.com/${GITHUB_ORG}/benchmarks`,
     DEPLOYMENTS: `https://github.com/${GITHUB_ORG}/deployments`,
+    EVMUTILS: `https://github.com/${GITHUB_ORG}/evm-utils`,
+    FLOW: `https://github.com/${GITHUB_ORG}/flow`,
     INDEXERS: `https://github.com/${GITHUB_ORG}/indexers`,
+    LOCKUP: `https://github.com/${GITHUB_ORG}/lockup`,
     ORG: `https://github.com/${GITHUB_ORG}`,
     SDK: `https://github.com/${GITHUB_ORG}/sdk`,
   },
