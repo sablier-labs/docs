@@ -1,108 +1,65 @@
 import _ from "lodash";
-import { useEffect, useMemo, useState } from "react";
+import { useMemo } from "react";
 import { sablier } from "sablier";
-import type { Chain as ViemChain } from "viem";
-import { createPublicClient, http } from "viem";
 import GFMContent from "../atoms/GFMContent";
 
-interface AdminData {
-  adminAddress: string;
-  chainId: number;
-  chainName: string;
-  explorerUrl?: string;
+// Hardcoded admin addresses per chain
+const DEFAULT_SABLIER_ADMIN = "0xb1bEF51ebCA01EB12001a639bDBbFF6eEcA12B9F";
+
+const ADMIN_ADDRESSES: Record<number, string> = {
+  1: "0x79Fb3e81aAc012c08501f41296CCC145a1E15844", // Ethereum
+  10: "0x43c76FE8Aec91F63EbEfb4f5d2a4ba88ef880350", // Optimism
+  56: "0x6666cA940D2f4B65883b454b7Bc7EEB039f64fa3", // BSC
+  100: "0x72ACB57fa6a8fa768bE44Db453B1CDBa8B12A399", // Gnosis
+  137: "0x40A518C5B9c1d3D6d62Ba789501CE4D526C9d9C6", // Polygon
+  324: "0xaFeA787Ef04E280ad5Bb907363f214E4BAB9e288", // zkSync
+  8453: "0x83A6fA8c04420B3F9C7A4CF1c040b63Fbbc89B66", // Base
+  42161: "0xF34E41a6f6Ce5A45559B1D3Ee92E141a3De96376", // Arbitrum
+  43114: "0x4735517616373c5137dE8bcCDc887637B8ac85Ce", // Avalanche
+  59144: "0x72dCfa0483d5Ef91562817C6f20E8Ce07A81319D", // Linea
+  88888: "0x74A234DcAdFCB395b37C8c2B3Edf7A13Be78c935", // Chiliz
+  534352: "0x0F7Ad835235Ede685180A5c611111610813457a9", // Scroll
+};
+
+function getAdminAddress(chainId: number): string {
+  return ADMIN_ADDRESSES[chainId] ?? DEFAULT_SABLIER_ADMIN;
 }
 
 export function AdminsTable() {
-  const [admins, setAdmins] = useState<AdminData[]>([]);
-  const [loading, setLoading] = useState(true);
-
-  const mainnets = useMemo(() => {
-    return sablier.chains.getMainnets().filter((c) => c.isSupportedByUI);
-  }, []);
-
-  useEffect(() => {
-    async function fetchAdmins() {
-      const adminPromises = mainnets.map(async (chain): Promise<AdminData | undefined> => {
-        try {
-          const contracts = sablier.contracts.getAll({ chainId: chain.id, protocol: "lockup" });
-          if (_.isEmpty(contracts)) {
-            console.warn(`No SablierLockup contract found for ${chain.name}`);
-            return undefined;
-          }
-          const lockupContract = contracts
-            .filter((c) => c.name === "SablierLockup" || c.name === "SablierV2LockupLinear")
-            .sort((a, b) => b.version.localeCompare(a.version))[0]; // Get latest version
-
-          if (!lockupContract) {
-            console.warn(`No SablierLockup contract found for ${chain.name}`);
-            return undefined;
-          }
-
-          // Create viem client for this chain
-          const client = createPublicClient({
-            chain: chain as ViemChain,
-            transport: http(chain.rpc.defaults[0]),
-          });
-
-          // Define the ABI with proper const assertion
-          const adminAbi = [
-            {
-              inputs: [],
-              name: "admin",
-              outputs: [{ name: "", type: "address" }],
-              stateMutability: "view",
-              type: "function",
-            },
-          ] as const;
-
-          // Call the admin() function on the contract
-          const adminAddress = await client.readContract({
-            abi: adminAbi,
-            address: lockupContract.address as `0x${string}`,
-            authorizationList: undefined,
-            functionName: "admin",
-          });
-
-          return {
-            adminAddress: adminAddress as string,
-            chainId: chain.id,
-            chainName: chain.name,
-            explorerUrl: lockupContract.explorerURL ?? chain.blockExplorers.default.url,
-          };
-        } catch (error) {
-          const errorMessage = error instanceof Error ? error.message : "Unknown error";
-          console.warn(`Failed to fetch admin for ${chain.name}:`, errorMessage);
-        }
-      });
-
-      const results = (await Promise.all(adminPromises)).filter(Boolean);
-
-      // Sort by chain name for consistent ordering
-      results.sort((a, b) => a.chainName.localeCompare(b.chainName));
-
-      setAdmins(results);
-      setLoading(false);
-    }
-
-    void fetchAdmins();
-  }, [mainnets]);
-
   const content = useMemo(() => {
-    if (loading) {
-      return "| Chain | Address |\n| :---- | :------ |\n| Loading... | Loading... |";
-    }
+    // Get the v2.0 lockup release
+    const release = sablier.releases.get({
+      protocol: "lockup",
+      version: "v2.0",
+    });
+
+    // Get all chains that have v2.0 lockup contracts
+    const allContracts = sablier.contracts.getAll({
+      release: release,
+    });
+
+    // Get unique chains from the contracts
+    const chainIds = _.uniq(allContracts.map((c) => c.chainId));
+
+    // Get chain details and filter for mainnets supported by UI
+    const chains = chainIds
+      .map((chainId) => sablier.chains.get(chainId))
+      .filter((chain) => chain && !chain.isTestnet && chain.isSupportedByUI)
+      .sort((a, b) => a.name.localeCompare(b.name));
 
     let content = "| Chain | Address |\n";
     content += "| :---- | :------ |\n";
 
-    for (const admin of admins) {
-      const explorerBaseUrl = admin.explorerUrl?.replace(/\/address\/.*$/, "") || "";
-      const addressLink = `[${admin.adminAddress}](${explorerBaseUrl}/address/${admin.adminAddress})`;
-      content += `| ${admin.chainName} | ${addressLink} |\n`;
+    for (const chain of chains) {
+      const adminAddress = getAdminAddress(chain.id);
+
+      const explorerBaseUrl = chain.blockExplorers.default.url;
+      const addressLink = `[${adminAddress}](${explorerBaseUrl}/address/${adminAddress})`;
+      content += `| ${chain.name} | ${addressLink} |\n`;
     }
 
     return content;
-  }, [admins, loading]);
+  }, []);
 
   return <GFMContent content={content} />;
 }
