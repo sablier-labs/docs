@@ -15,10 +15,12 @@ const config: Config = {
   headTags,
   markdown: {
     format: "detect",
+    hooks: {
+      onBrokenMarkdownLinks: "throw",
+    },
     mermaid: true,
   },
   onBrokenLinks: "throw",
-  onBrokenMarkdownLinks: "throw",
   organizationName: "sablier-labs",
   plugins,
   presets,
