@@ -57,6 +57,8 @@ section is not relevant to you.
 
 ```bash
 git clone -b v1.0.0 git@github.com:sablier-labs/evm-utils.git
+cd evm-utils
+bun install --frozen-lockfile
 ```
 
 #### Step 2: Create an `.env` file
@@ -81,14 +83,7 @@ Load the environment variables into your shell:
 source .env
 ```
 
-#### Step 3: Build the contracts
-
-```bash
-bun install --frozen-lockfile
-FOUNDRY_PROFILE=optimized forge build
-```
-
-#### Step 4: Run the following deployment command
+#### Step 3: Run the following deployment command
 
 ```bash
 FOUNDRY_PROFILE=optimized \
@@ -113,6 +108,8 @@ also refer to the forge script documentation for different wallet options such a
 
 ```bash
 git clone -b v3.0.1 git@github.com:sablier-labs/lockup.git
+cd lockup
+bun install --frozen-lockfile
 ```
 
 #### Step 2: Create an `.env` file
@@ -137,14 +134,7 @@ Load the environment variables into your shell:
 source .env
 ```
 
-#### Step 3: Build the contracts
-
-```bash
-bun install --frozen-lockfile
-FOUNDRY_PROFILE=optimized forge build
-```
-
-#### Step 4: Run the following deployment command
+#### Step 3: Run the following deployment command
 
 ```bash
 FOUNDRY_PROFILE=optimized \
@@ -169,6 +159,8 @@ also refer to the forge script documentation for different wallet options such a
 
 ```bash
 git clone -b v2.0.1 git@github.com:sablier-labs/airdrops.git
+cd airdrops
+bun install --frozen-lockfile
 ```
 
 #### Step 2: Create an `.env` file
@@ -193,14 +185,7 @@ Load the environment variables into shell:
 source .env
 ```
 
-#### Step 3: Build the contracts
-
-```bash
-bun install --frozen-lockfile
-FOUNDRY_PROFILE=optimized forge build
-```
-
-#### Step 4: Run the following command to deploy all merkle airdrop contracts
+#### Step 3: Run the following command to deploy all merkle airdrop contracts
 
 ```bash
 FOUNDRY_PROFILE=optimized \
@@ -225,6 +210,8 @@ also refer to the forge script documentation for different wallet options such a
 
 ```bash
 git clone -b v2.0.0 git@github.com:sablier-labs/flow.git
+cd flow
+bun install --frozen-lockfile
 ```
 
 #### Step 2: Create an `.env` file
@@ -249,14 +236,7 @@ Load the environment variables into your shell:
 source .env
 ```
 
-#### Step 3: Build the contracts
-
-```bash
-bun install --frozen-lockfile
-FOUNDRY_PROFILE=optimized forge build
-```
-
-#### Step 4: Run the following deployment command
+#### Step 3: Run the following deployment command
 
 ```bash
 FOUNDRY_PROFILE=optimized \
