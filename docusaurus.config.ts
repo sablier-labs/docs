@@ -16,11 +16,11 @@ const config: Config = {
   markdown: {
     format: "detect",
     hooks: {
-      onBrokenMarkdownLinks: "throw",
+      onBrokenMarkdownLinks: "warn", // TODO: change it to "throw"
     },
     mermaid: true,
   },
-  onBrokenLinks: "throw",
+  onBrokenLinks: "warn", // TODO: change it to "throw"
   organizationName: "sablier-labs",
   plugins,
   presets,

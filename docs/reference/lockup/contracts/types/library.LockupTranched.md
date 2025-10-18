@@ -1,14 +1,14 @@
 # LockupTranched
 
-[Git Source](https://github.com/sablier-labs/lockup/blob/463278dbb461b1733d6424cf0aeee3b8d6bc036a/src/types/DataTypes.sol)
+[Git Source](https://github.com/sablier-labs/lockup/blob/58eaac45c20c57a93b73d887c714e68f061ec3e6/src/types/LockupTranched.sol)
 
-Namespace for the structs used only in Lockup Tranched model.
+Namespace for the structs used only in LT streams.
 
 ## Structs
 
 ### Tranche
 
-Tranche struct to be stored in the Lockup Tranched model.
+Tranche struct stored to represent LT streams.
 
 ```solidity
 struct Tranche {
@@ -26,7 +26,9 @@ struct Tranche {
 
 ### TrancheWithDuration
 
-Tranche struct used at runtime in {SablierLockup.createWithDurationsLT} function.
+Tranche struct used at runtime in
+[SablierLockupTranched.createWithDurationsLT](docs/reference/lockup/contracts/abstracts/abstract.SablierLockupTranched.md#createwithdurationslt)
+function.
 
 ```solidity
 struct TrancheWithDuration {

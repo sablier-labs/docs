@@ -28,7 +28,7 @@ Creates multiple streams in a single transaction.
 
 Library to validate input parameters across lockup streams.
 
-> [**VestingMath Library**](./lockup/contracts/libraries/library.VestingMath)
+> [**LockupMath Library**](./lockup/contracts/libraries/library.LockupMath)
 
 Library to calculate vested amount across lockup streams.
 
@@ -52,11 +52,14 @@ The Merkle Airdrops repo is a collection of contracts to create various kinds of
 campaigns make use of the Lockup protocol to create what we call [Airstreams](/concepts/airdrops). This repo consists of
 airdrops related contracts such as MerkleFactory, MerkleInstant, MerkleLL, and MerkleLT.
 
-### MerkleFactory
+### Factories
 
-> [**MerkleFactory Reference**](./airdrops/contracts/contract.SablierMerkleFactory)
+> [**MerkleInstant Reference**](./airdrops/contracts/contract.SablierFactoryMerkleInstant)
+> [**MerkleLL Reference**](./airdrops/contracts/contract.SablierFactoryMerkleLL)
+> [**MerkleLT Reference**](./airdrops/contracts/contract.SablierFactoryMerkleLT)
+> [**MerkleVCA Reference**](./airdrops/contracts/contract.SablierFactoryMerkleVCA)
 
-Factory contract to deploy Merkle airdrop campaigns.
+Factory contracts to deploy various Merkle campaigns.
 
 ### MerkleInstant
 
@@ -75,6 +78,13 @@ Enables airdrops with a vesting period powered by the Lockup Linear distribution
 > [**MerkleLT Reference**](./airdrops/contracts/contract.SablierMerkleLT)
 
 Enables airdrops with a vesting period powered by the Lockup Tranched distribution model.
+
+### MerkleVCA
+
+> [**MerkleVCA Reference**](./airdrops/contracts/contract.SablierMerkleVCA)
+
+Enables airdrops where the claim amount increases linearly until the airdrop period ends. Claiming early results in
+forgoing the remaining amount, whereas claiming after the period grants the full amount that was allocated.
 
 ## Flow
 

@@ -1,55 +1,15 @@
 # Errors
 
-[Git Source](https://github.com/sablier-labs/lockup/blob/463278dbb461b1733d6424cf0aeee3b8d6bc036a/src/libraries/Errors.sol)
+[Git Source](https://github.com/sablier-labs/lockup/blob/58eaac45c20c57a93b73d887c714e68f061ec3e6/src/libraries/Errors.sol)
 
 Library containing all custom errors the protocol may revert with.
 
 ## Errors
 
-### BatchError
-
-Thrown when an unexpected error occurs during a batch call.
-
-```solidity
-error BatchError(bytes errorData);
-```
-
-### CallerNotAdmin
-
-Thrown when `msg.sender` is not the admin.
-
-```solidity
-error CallerNotAdmin(address admin, address caller);
-```
-
-### DelegateCall
-
-Thrown when trying to delegate call to a function that disallows delegate calls.
-
-```solidity
-error DelegateCall();
-```
-
 ### SablierBatchLockup_BatchSizeZero
 
 ```solidity
 error SablierBatchLockup_BatchSizeZero();
-```
-
-### LockupNFTDescriptor_UnknownNFT
-
-Thrown when trying to generate the token URI for an unknown ERC-721 NFT contract.
-
-```solidity
-error LockupNFTDescriptor_UnknownNFT(IERC721Metadata nft, string symbol);
-```
-
-### SablierHelpers_BrokerFeeTooHigh
-
-Thrown when the broker fee exceeds the maximum allowed fee.
-
-```solidity
-error SablierHelpers_BrokerFeeTooHigh(UD60x18 brokerFee, UD60x18 maxBrokerFee);
 ```
 
 ### SablierHelpers_CliffTimeNotLessThanEndTime
@@ -66,6 +26,14 @@ Thrown when trying to create a stream with a non zero cliff unlock amount when t
 
 ```solidity
 error SablierHelpers_CliffTimeZeroUnlockAmountNotZero(uint128 cliffUnlockAmount);
+```
+
+### SablierHelpers_CreateNativeToken
+
+Thrown when trying to create a stream with the native token.
+
+```solidity
+error SablierHelpers_CreateNativeToken(address nativeToken);
 ```
 
 ### SablierHelpers_DepositAmountNotEqualToSegmentAmountsSum
@@ -106,14 +74,6 @@ Thrown when trying to create a tranched stream with end time not equal to the la
 
 ```solidity
 error SablierHelpers_EndTimeNotEqualToLastTrancheTimestamp(uint40 endTime, uint40 lastTrancheTimestamp);
-```
-
-### SablierHelpers_SegmentCountTooHigh
-
-Thrown when trying to create a dynamic stream with more segments than the maximum allowed.
-
-```solidity
-error SablierHelpers_SegmentCountTooHigh(uint256 count);
 ```
 
 ### SablierHelpers_SegmentCountZero
@@ -189,14 +149,6 @@ Thrown when trying to create a stream with a zero start time.
 error SablierHelpers_StartTimeZero();
 ```
 
-### SablierHelpers_TrancheCountTooHigh
-
-Thrown when trying to create a tranched stream with more tranches than the maximum allowed.
-
-```solidity
-error SablierHelpers_TrancheCountTooHigh(uint256 count);
-```
-
 ### SablierHelpers_TrancheCountZero
 
 Thrown when trying to create a tranched stream with no tranches.
@@ -223,147 +175,163 @@ error SablierHelpers_UnlockAmountsSumTooHigh(
 );
 ```
 
-### SablierLockupBase_AllowToHookUnsupportedInterface
+### SablierLockup_AllowToHookUnsupportedInterface
 
 Thrown when trying to allow to hook a contract that doesn't implement the interface correctly.
 
 ```solidity
-error SablierLockupBase_AllowToHookUnsupportedInterface(address recipient);
+error SablierLockup_AllowToHookUnsupportedInterface(address recipient);
 ```
 
-### SablierLockupBase_AllowToHookZeroCodeSize
+### SablierLockup_AllowToHookZeroCodeSize
 
 Thrown when trying to allow to hook an address with no code.
 
 ```solidity
-error SablierLockupBase_AllowToHookZeroCodeSize(address recipient);
+error SablierLockup_AllowToHookZeroCodeSize(address recipient);
 ```
 
-### SablierLockupBase_FeeTransferFail
+### SablierLockup_InsufficientFeePayment
+
+Thrown when trying to withdraw with a fee amount less than the minimum fee.
+
+```solidity
+error SablierLockup_InsufficientFeePayment(uint256 feePaid, uint256 minFeeWei);
+```
+
+### SablierLockup_FeeTransferFailed
 
 Thrown when the fee transfer fails.
 
 ```solidity
-error SablierLockupBase_FeeTransferFail(address admin, uint256 feeAmount);
+error SablierLockup_FeeTransferFailed(address comptroller, uint256 feeAmount);
 ```
 
-### SablierLockupBase_InvalidHookSelector
+### SablierLockup_InvalidHookSelector
 
 Thrown when the hook does not return the correct selector.
 
 ```solidity
-error SablierLockupBase_InvalidHookSelector(address recipient);
+error SablierLockup_InvalidHookSelector(address recipient);
 ```
 
-### SablierLockupBase_NotTransferable
+### SablierLockup_NativeTokenAlreadySet
+
+Thrown when trying to set the native token address when it is already set.
+
+```solidity
+error SablierLockup_NativeTokenAlreadySet(address nativeToken);
+```
+
+### SablierLockup_NotTransferable
 
 Thrown when trying to transfer Stream NFT when transferability is disabled.
 
 ```solidity
-error SablierLockupBase_NotTransferable(uint256 tokenId);
+error SablierLockup_NotTransferable(uint256 tokenId);
 ```
 
-### SablierLockupBase_Null
-
-Thrown when the ID references a null stream.
-
-```solidity
-error SablierLockupBase_Null(uint256 streamId);
-```
-
-### SablierLockupBase_Overdraw
+### SablierLockup_Overdraw
 
 Thrown when trying to withdraw an amount greater than the withdrawable amount.
 
 ```solidity
-error SablierLockupBase_Overdraw(uint256 streamId, uint128 amount, uint128 withdrawableAmount);
+error SablierLockup_Overdraw(uint256 streamId, uint128 amount, uint128 withdrawableAmount);
 ```
 
-### SablierLockupBase_StreamCanceled
+### SablierLockup_StreamCanceled
 
 Thrown when trying to cancel or renounce a canceled stream.
 
 ```solidity
-error SablierLockupBase_StreamCanceled(uint256 streamId);
+error SablierLockup_StreamCanceled(uint256 streamId);
 ```
 
-### SablierLockupBase_StreamDepleted
+### SablierLockup_StreamDepleted
 
 Thrown when trying to cancel, renounce, or withdraw from a depleted stream.
 
 ```solidity
-error SablierLockupBase_StreamDepleted(uint256 streamId);
+error SablierLockup_StreamDepleted(uint256 streamId);
 ```
 
-### SablierLockupBase_StreamNotCancelable
+### SablierLockup_StreamNotCancelable
 
 Thrown when trying to cancel or renounce a stream that is not cancelable.
 
 ```solidity
-error SablierLockupBase_StreamNotCancelable(uint256 streamId);
+error SablierLockup_StreamNotCancelable(uint256 streamId);
 ```
 
-### SablierLockupBase_StreamNotDepleted
+### SablierLockup_StreamNotDepleted
 
 Thrown when trying to burn a stream that is not depleted.
 
 ```solidity
-error SablierLockupBase_StreamNotDepleted(uint256 streamId);
+error SablierLockup_StreamNotDepleted(uint256 streamId);
 ```
 
-### SablierLockupBase_StreamSettled
+### SablierLockup_StreamSettled
 
 Thrown when trying to cancel or renounce a settled stream.
 
 ```solidity
-error SablierLockupBase_StreamSettled(uint256 streamId);
+error SablierLockup_StreamSettled(uint256 streamId);
 ```
 
-### SablierLockupBase_Unauthorized
+### SablierLockup_Unauthorized
 
 Thrown when `msg.sender` lacks authorization to perform an action.
 
 ```solidity
-error SablierLockupBase_Unauthorized(uint256 streamId, address caller);
+error SablierLockup_Unauthorized(uint256 streamId, address caller);
 ```
 
-### SablierLockupBase_WithdrawalAddressNotRecipient
+### SablierLockup_WithdrawalAddressNotRecipient
 
 Thrown when trying to withdraw to an address other than the recipient's.
 
 ```solidity
-error SablierLockupBase_WithdrawalAddressNotRecipient(uint256 streamId, address caller, address to);
+error SablierLockup_WithdrawalAddressNotRecipient(uint256 streamId, address caller, address to);
 ```
 
-### SablierLockupBase_WithdrawAmountZero
+### SablierLockup_WithdrawAmountZero
 
 Thrown when trying to withdraw zero tokens from a stream.
 
 ```solidity
-error SablierLockupBase_WithdrawAmountZero(uint256 streamId);
+error SablierLockup_WithdrawAmountZero(uint256 streamId);
 ```
 
-### SablierLockupBase_WithdrawArrayCountsNotEqual
+### SablierLockup_WithdrawArrayCountsNotEqual
 
 Thrown when trying to withdraw from multiple streams and the number of stream IDs does not match the number of withdraw
 amounts.
 
 ```solidity
-error SablierLockupBase_WithdrawArrayCountsNotEqual(uint256 streamIdsCount, uint256 amountsCount);
+error SablierLockup_WithdrawArrayCountsNotEqual(uint256 streamIdsCount, uint256 amountsCount);
 ```
 
-### SablierLockupBase_WithdrawToZeroAddress
+### SablierLockup_WithdrawToZeroAddress
 
 Thrown when trying to withdraw to the zero address.
 
 ```solidity
-error SablierLockupBase_WithdrawToZeroAddress(uint256 streamId);
+error SablierLockup_WithdrawToZeroAddress(uint256 streamId);
 ```
 
-### SablierLockup_NotExpectedModel
+### SablierLockupState_NotExpectedModel
 
 Thrown when a function is called on a stream that does not use the expected Lockup model.
 
 ```solidity
-error SablierLockup_NotExpectedModel(Lockup.Model actualLockupModel, Lockup.Model expectedLockupModel);
+error SablierLockupState_NotExpectedModel(Lockup.Model actualLockupModel, Lockup.Model expectedLockupModel);
+```
+
+### SablierLockupState_Null
+
+Thrown when the ID references a null stream.
+
+```solidity
+error SablierLockupState_Null(uint256 streamId);
 ```
