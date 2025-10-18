@@ -1,14 +1,14 @@
 # LockupDynamic
 
-[Git Source](https://github.com/sablier-labs/lockup/blob/463278dbb461b1733d6424cf0aeee3b8d6bc036a/src/types/DataTypes.sol)
+[Git Source](https://github.com/sablier-labs/lockup/blob/58eaac45c20c57a93b73d887c714e68f061ec3e6/src/types/LockupDynamic.sol)
 
-Namespace for the structs used only in Lockup Dynamic model.
+Namespace for the structs used only in LD streams.
 
 ## Structs
 
 ### Segment
 
-Segment struct to be stored in the Lockup Dynamic model.
+Segment struct stored to represent LD streams.
 
 ```solidity
 struct Segment {
@@ -28,7 +28,9 @@ struct Segment {
 
 ### SegmentWithDuration
 
-Segment struct used at runtime in {SablierLockup.createWithDurationsLD} function.
+Segment struct used at runtime in
+[SablierLockupDynamic.createWithDurationsLD](docs/reference/lockup/contracts/abstracts/abstract.SablierLockupDynamic.md#createwithdurationsld)
+function.
 
 ```solidity
 struct SegmentWithDuration {

@@ -33,8 +33,6 @@ Where:
 - The sum of all tranche amounts must equal the deposit amount.
 - The block gas limit enforces a limit to how many tranches there can be in a stream.
   - If someone creates a stream with an excessively large number of tranches, the transaction would revert as it
-    wouldn't fit within a block. You can fetch the limit using
-    [MAX_TRANCHE_COUNT](/reference/lockup/contracts/contract.SablierLockup#max_count). Alternatively, you can find the
-    limit for each chain [here](https://github.com/sablier-labs/lockup/blob/main/script/Base.s.sol#L90-L131).
+    wouldn't fit within a block. In such cases, make sure to simulate the transaction first.
 - The timestamps must be sorted in ascending order. It's not possible for the $(i-1)^{th}$ timestamp to be greater than
   $i^{th}$ timestamp (given that we're dealing with an increasing monotonic function).

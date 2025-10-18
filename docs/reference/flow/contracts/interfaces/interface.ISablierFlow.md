@@ -1,13 +1,29 @@
 # ISablierFlow
 
-[Git Source](https://github.com/sablier-labs/flow/blob/a0fa33d2843af0817e34970cdc05822ead31daaa/src/interfaces/ISablierFlow.sol)
+[Git Source](https://github.com/sablier-labs/flow/blob/a4143de45478f508bca8305fec2bd81b7ad25fe9/src/interfaces/ISablierFlow.sol)
 
-**Inherits:** [IBatch](/docs/reference/flow/contracts/interfaces/interface.IBatch.md),
-[ISablierFlowBase](/docs/reference/flow/contracts/interfaces/interface.ISablierFlowBase.md)
+**Inherits:** IBatch, IComptrollerable, IERC4906, IERC721Metadata,
+[ISablierFlowState](/docs/reference/flow/contracts/interfaces/interface.ISablierFlowState.md)
 
 Creates and manages Flow streams with linear streaming functions.
 
 ## Functions
+
+### calculateMinFeeWei
+
+Calculates the minimum fee in wei required to withdraw from the given stream ID.
+
+_Reverts if `streamId` references a null stream._
+
+```solidity
+function calculateMinFeeWei(uint256 streamId) external view returns (uint256 minFeeWei);
+```
+
+**Parameters**
+
+| Name       | Type      | Description                  |
+| ---------- | --------- | ---------------------------- |
+| `streamId` | `uint256` | The stream ID for the query. |
 
 ### coveredDebtOf
 
@@ -27,8 +43,8 @@ function coveredDebtOf(uint256 streamId) external view returns (uint128 coveredD
 
 ### depletionTimeOf
 
-Returns the time at which the total debt exceeds stream balance. If the total debt is less than or equal to stream
-balance, it returns 0.
+Returns the time at which the total debt exceeds stream balance. If the total debt exceeds the stream balance, it
+returns 0.
 
 Reverts on the following conditions:
 
@@ -45,10 +61,26 @@ function depletionTimeOf(uint256 streamId) external view returns (uint256 deplet
 | ---------- | --------- | ---------------------------- |
 | `streamId` | `uint256` | The stream ID for the query. |
 
+### getRecipient
+
+Retrieves the stream's recipient.
+
+_Reverts if `streamId` references a null stream._
+
+```solidity
+function getRecipient(uint256 streamId) external view returns (address recipient);
+```
+
+**Parameters**
+
+| Name       | Type      | Description                  |
+| ---------- | --------- | ---------------------------- |
+| `streamId` | `uint256` | The stream ID for the query. |
+
 ### ongoingDebtScaledOf
 
 Returns the amount of debt accrued since the snapshot time until now, denoted as a fixed-point number where 1e18 is 1
-token.
+token. If the stream is pending, it returns zero.
 
 _Reverts if `streamId` references a null stream._
 
@@ -157,11 +189,11 @@ Changes the stream's rate per second.
 Emits a [AdjustFlowStream](/docs/reference/flow/contracts/interfaces/interface.ISablierFlow.md#adjustflowstream) and
 {MetadataUpdate} event. Notes:
 
-- It updates snapshot debt and snapshot time. Requirements:
+- If the snapshot time is not in the future, it updates both the snapshot time and snapshot debt. Requirements:
 - Must not be delegate called.
-- `streamId` must not reference a null or a paused stream.
+- `streamId` must not reference a null, paused, or voided stream.
 - `msg.sender` must be the stream's sender.
-- `newRatePerSecond` must not equal to the current rate per second.
+- `newRatePerSecond` must be greater than zero and must be different from the current rate per second.
 
 ```solidity
 function adjustRatePerSecond(uint256 streamId, UD21x18 newRatePerSecond) external payable;
@@ -176,15 +208,17 @@ function adjustRatePerSecond(uint256 streamId, UD21x18 newRatePerSecond) externa
 
 ### create
 
-Creates a new Flow stream by setting the snapshot time to `block.timestamp` and leaving the balance to zero. The stream
-is wrapped in an ERC-721 NFT.
+Creates a new Flow stream by setting the snapshot time to `startTime` and leaving the balance to zero. The stream is
+wrapped in an ERC-721 NFT.
 
-Emits [CreateFlowStream](/docs/reference/flow/contracts/interfaces/interface.ISablierFlow.md#createflowstream) event.
-Requirements:
+Emits a [CreateFlowStream](/docs/reference/flow/contracts/interfaces/interface.ISablierFlow.md#createflowstream) and
+{MetadataUpdate} event. Requirements:
 
 - Must not be delegate called.
 - `sender` must not be the zero address.
 - `recipient` must not be the zero address.
+- If `startTime` is in the future, the `ratePerSecond` must be greater than zero.
+- The `token` must not be the native token.
 - The `token`'s decimals must be less than or equal to 18.
 
 ```solidity
@@ -192,6 +226,7 @@ function create(
     address sender,
     address recipient,
     UD21x18 ratePerSecond,
+    uint40 startTime,
     IERC20 token,
     bool transferable
 )
@@ -202,13 +237,14 @@ function create(
 
 **Parameters**
 
-| Name            | Type      | Description                                                                                                                     |
-| --------------- | --------- | ------------------------------------------------------------------------------------------------------------------------------- |
-| `sender`        | `address` | The address streaming the tokens, which is able to adjust and pause the stream. It doesn't have to be the same as `msg.sender`. |
-| `recipient`     | `address` | The address receiving the tokens.                                                                                               |
-| `ratePerSecond` | `UD21x18` | The amount by which the debt is increasing every second, denoted as a fixed-point number where 1e18 is 1 token per second.      |
-| `token`         | `IERC20`  | The contract address of the ERC-20 token to be streamed.                                                                        |
-| `transferable`  | `bool`    | Boolean indicating if the stream NFT is transferable.                                                                           |
+| Name            | Type      | Description                                                                                                                                  |
+| --------------- | --------- | -------------------------------------------------------------------------------------------------------------------------------------------- |
+| `sender`        | `address` | The address streaming the tokens, which is able to adjust and pause the stream. It doesn't have to be the same as `msg.sender`.              |
+| `recipient`     | `address` | The address receiving the tokens.                                                                                                            |
+| `ratePerSecond` | `UD21x18` | The amount by which the debt is increasing every second, denoted as a fixed-point number where 1e18 is 1 token per second.                   |
+| `startTime`     | `uint40`  | The timestamp when the stream starts. A sentinel value of zero means the stream will be created with the snapshot time as `block.timestamp`. |
+| `token`         | `IERC20`  | The contract address of the ERC-20 token to be streamed.                                                                                     |
+| `transferable`  | `bool`    | Boolean indicating if the stream NFT is transferable.                                                                                        |
 
 **Returns**
 
@@ -218,12 +254,12 @@ function create(
 
 ### createAndDeposit
 
-Creates a new Flow stream by setting the snapshot time to `block.timestamp` and the balance to `amount`. The stream is
-wrapped in an ERC-721 NFT.
+Creates a new Flow stream by setting the snapshot time to `startTime` and the balance to `amount`. The stream is wrapped
+in an ERC-721 NFT.
 
-Emits a {Transfer}, {CreateFlowStream}, and {DepositFlowStream} event. Notes:
+Emits a {Transfer}, {CreateFlowStream}, {DepositFlowStream} and {MetadataUpdate} event. Notes:
 
-- Refer to the notes in {deposit}. Requirements:
+- Refer to the notes in {create} and {deposit}. Requirements:
 - Refer to the requirements in {create} and {deposit}.
 
 ```solidity
@@ -231,6 +267,7 @@ function createAndDeposit(
     address sender,
     address recipient,
     UD21x18 ratePerSecond,
+    uint40 startTime,
     IERC20 token,
     bool transferable,
     uint128 amount
@@ -242,14 +279,15 @@ function createAndDeposit(
 
 **Parameters**
 
-| Name            | Type      | Description                                                                                                                |
-| --------------- | --------- | -------------------------------------------------------------------------------------------------------------------------- |
-| `sender`        | `address` | The address streaming the tokens. It doesn't have to be the same as `msg.sender`.                                          |
-| `recipient`     | `address` | The address receiving the tokens.                                                                                          |
-| `ratePerSecond` | `UD21x18` | The amount by which the debt is increasing every second, denoted as a fixed-point number where 1e18 is 1 token per second. |
-| `token`         | `IERC20`  | The contract address of the ERC-20 token to be streamed.                                                                   |
-| `transferable`  | `bool`    | Boolean indicating if the stream NFT is transferable.                                                                      |
-| `amount`        | `uint128` | The deposit amount, denoted in token's decimals.                                                                           |
+| Name            | Type      | Description                                                                                                                                  |
+| --------------- | --------- | -------------------------------------------------------------------------------------------------------------------------------------------- |
+| `sender`        | `address` | The address streaming the tokens. It doesn't have to be the same as `msg.sender`.                                                            |
+| `recipient`     | `address` | The address receiving the tokens.                                                                                                            |
+| `ratePerSecond` | `UD21x18` | The amount by which the debt is increasing every second, denoted as a fixed-point number where 1e18 is 1 token per second.                   |
+| `startTime`     | `uint40`  | The timestamp when the stream starts. A sentinel value of zero means the stream will be created with the snapshot time as `block.timestamp`. |
+| `token`         | `IERC20`  | The contract address of the ERC-20 token to be streamed.                                                                                     |
+| `transferable`  | `bool`    | Boolean indicating if the stream NFT is transferable.                                                                                        |
+| `amount`        | `uint128` | The deposit amount, denoted in token's decimals.                                                                                             |
 
 **Returns**
 
@@ -261,7 +299,7 @@ function createAndDeposit(
 
 Makes a deposit in a stream.
 
-Emits a {Transfer} and {DepositFlowStream} event. Requirements:
+Emits a {Transfer}, {DepositFlowStream} and {MetadataUpdate} event. Requirements:
 
 - Must not be delegate called.
 - `streamId` must not reference a null or a voided stream.
@@ -285,7 +323,7 @@ function deposit(uint256 streamId, uint128 amount, address sender, address recip
 
 Deposits tokens in a stream and pauses it.
 
-Emits a {Transfer}, {DepositFlowStream} and {PauseFlowStream} event. Notes:
+Emits a {Transfer}, {DepositFlowStream}, {PauseFlowStream} and {MetadataUpdate} event. Notes:
 
 - Refer to the notes in {deposit} and {pause}. Requirements:
 - Refer to the requirements in {deposit} and {pause}.
@@ -301,52 +339,17 @@ function depositAndPause(uint256 streamId, uint128 amount) external payable;
 | `streamId` | `uint256` | The ID of the stream to deposit to, and then pause. |
 | `amount`   | `uint128` | The deposit amount, denoted in token's decimals.    |
 
-### depositViaBroker
-
-Deposits tokens in a stream.
-
-Emits a {Transfer} and {DepositFlowStream} event. Notes:
-
-- Refer to the notes in {deposit}. Requirements:
-- Must not be delegate called.
-- `streamId` must not reference a null stream.
-- `totalAmount` must be greater than zero. Otherwise it will revert inside {deposit}.
-- `broker.account` must not be 0 address.
-- `broker.fee` must not be greater than `MAX_FEE`. It can be zero.
-
-```solidity
-function depositViaBroker(
-    uint256 streamId,
-    uint128 totalAmount,
-    address sender,
-    address recipient,
-    Broker calldata broker
-)
-    external
-    payable;
-```
-
-**Parameters**
-
-| Name          | Type      | Description                                                                                                                                                                                  |
-| ------------- | --------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `streamId`    | `uint256` | The ID of the stream to deposit on.                                                                                                                                                          |
-| `totalAmount` | `uint128` | The total amount, including the deposit and any broker fee, denoted in token's decimals.                                                                                                     |
-| `sender`      | `address` | The stream's sender address.                                                                                                                                                                 |
-| `recipient`   | `address` | The stream's recipient address.                                                                                                                                                              |
-| `broker`      | `Broker`  | Struct encapsulating (i) the address of the broker assisting in creating the stream, and (ii) the percentage fee paid to the broker from `totalAmount`, denoted as a fixed-point percentage. |
-
 ### pause
 
 Pauses the stream.
 
-Emits [PauseFlowStream](/docs/reference/flow/contracts/interfaces/interface.ISablierFlow.md#pauseflowstream) event.
-Notes:
+Emits a [PauseFlowStream](/docs/reference/flow/contracts/interfaces/interface.ISablierFlow.md#pauseflowstream) and
+{MetadataUpdate} event. Notes:
 
 - It updates snapshot debt and snapshot time.
 - It sets the rate per second to zero. Requirements:
 - Must not be delegate called.
-- `streamId` must not reference a null or an already paused stream.
+- `streamId` must not reference a null, pending or paused stream.
 - `msg.sender` must be the stream's sender.
 
 ```solidity
@@ -359,11 +362,33 @@ function pause(uint256 streamId) external payable;
 | ---------- | --------- | ------------------------------ |
 | `streamId` | `uint256` | The ID of the stream to pause. |
 
+### recover
+
+Recover the surplus amount of tokens.
+
+Emits a [Recover](/docs/reference/flow/contracts/interfaces/interface.ISablierFlow.md#recover) event. Notes:
+
+- The surplus amount is defined as the difference between the total balance of the contract for the provided ERC-20
+  token and the sum of balances of all streams created using the same ERC-20 token. Requirements:
+- `msg.sender` must be the comptroller contract.
+- The surplus amount must be greater than zero.
+
+```solidity
+function recover(IERC20 token, address to) external;
+```
+
+**Parameters**
+
+| Name    | Type      | Description                                              |
+| ------- | --------- | -------------------------------------------------------- |
+| `token` | `IERC20`  | The contract address of the ERC-20 token to recover for. |
+| `to`    | `address` | The address to send the surplus amount.                  |
+
 ### refund
 
 Refunds the provided amount of tokens from the stream to the sender's address.
 
-Emits a {Transfer} and {RefundFromFlowStream} event. Requirements:
+Emits a {Transfer}, {RefundFromFlowStream} and {MetadataUpdate} event. Requirements:
 
 - Must not be delegate called.
 - `streamId` must not reference a null stream.
@@ -385,7 +410,7 @@ function refund(uint256 streamId, uint128 amount) external payable;
 
 Refunds the provided amount of tokens from the stream to the sender's address.
 
-Emits a {Transfer}, {RefundFromFlowStream} and {PauseFlowStream} event. Notes:
+Emits a {Transfer}, {RefundFromFlowStream}, {PauseFlowStream} and {MetadataUpdate} event. Notes:
 
 - Refer to the notes in {pause}. Requirements:
 - Refer to the requirements in {refund} and {pause}.
@@ -405,12 +430,12 @@ function refundAndPause(uint256 streamId, uint128 amount) external payable;
 
 Refunds the entire refundable amount of tokens from the stream to the sender's address.
 
-Emits a {Transfer} and {RefundFromFlowStream} event. Requirements:
+Emits a {Transfer}, {RefundFromFlowStream} and {MetadataUpdate} event. Requirements:
 
 - Refer to the requirements in {refund}.
 
 ```solidity
-function refundMax(uint256 streamId) external payable;
+function refundMax(uint256 streamId) external payable returns (uint128 refundedAmount);
 ```
 
 **Parameters**
@@ -419,16 +444,22 @@ function refundMax(uint256 streamId) external payable;
 | ---------- | --------- | ------------------------------------ |
 | `streamId` | `uint256` | The ID of the stream to refund from. |
 
+**Returns**
+
+| Name             | Type      | Description                                                            |
+| ---------------- | --------- | ---------------------------------------------------------------------- |
+| `refundedAmount` | `uint128` | The amount refunded to the stream sender, denoted in token's decimals. |
+
 ### restart
 
 Restarts the stream with the provided rate per second.
 
-Emits [RestartFlowStream](/docs/reference/flow/contracts/interfaces/interface.ISablierFlow.md#restartflowstream) event.
-Notes:
+Emits a [RestartFlowStream](/docs/reference/flow/contracts/interfaces/interface.ISablierFlow.md#restartflowstream) and
+{MetadataUpdate} event. Notes:
 
 - It updates snapshot debt and snapshot time. Requirements:
 - Must not be delegate called.
-- `streamId` must not reference a null, or a voided stream.
+- `streamId` must not reference a null stream, must be paused, and must not be voided.
 - `msg.sender` must be the stream's sender.
 - `ratePerSecond` must be greater than zero.
 
@@ -448,7 +479,7 @@ function restart(uint256 streamId, UD21x18 ratePerSecond) external payable;
 Restarts the stream with the provided rate per second, and makes a deposit.
 
 Emits a [RestartFlowStream](/docs/reference/flow/contracts/interfaces/interface.ISablierFlow.md#restartflowstream),
-{Transfer}, and {DepositFlowStream} event. Notes:
+{Transfer}, {DepositFlowStream} and {MetadataUpdate} event. Notes:
 
 - Refer to the notes in {restart} and {deposit}. Requirements:
 - `amount` must be greater than zero.
@@ -466,13 +497,74 @@ function restartAndDeposit(uint256 streamId, UD21x18 ratePerSecond, uint128 amou
 | `ratePerSecond` | `UD21x18` | The amount by which the debt is increasing every second, denoted as a fixed-point number where 1e18 is 1 token per second. |
 | `amount`        | `uint128` | The deposit amount, denoted in token's decimals.                                                                           |
 
+### setNativeToken
+
+Sets the native token address. Once set, it cannot be changed.
+
+For more information, see the documentation for {nativeToken}. Emits a {SetNativeToken} event. Requirements:
+
+- `msg.sender` must be the comptroller contract.
+- `newNativeToken` must not be zero address.
+- The native token must not be already set.
+
+```solidity
+function setNativeToken(address newNativeToken) external;
+```
+
+**Parameters**
+
+| Name             | Type      | Description                      |
+| ---------------- | --------- | -------------------------------- |
+| `newNativeToken` | `address` | The address of the native token. |
+
+### setNFTDescriptor
+
+Sets a new NFT descriptor contract, which produces the URI describing the Sablier stream NFTs.
+
+Emits a [SetNFTDescriptor](/docs/reference/flow/contracts/interfaces/interface.ISablierFlow.md#setnftdescriptor) and
+{BatchMetadataUpdate} event. Notes:
+
+- Does not revert if the NFT descriptor is the same. Requirements:
+- `msg.sender` must be the comptroller contract.
+
+```solidity
+function setNFTDescriptor(IFlowNFTDescriptor newNFTDescriptor) external;
+```
+
+**Parameters**
+
+| Name               | Type                 | Description                                     |
+| ------------------ | -------------------- | ----------------------------------------------- |
+| `newNFTDescriptor` | `IFlowNFTDescriptor` | The address of the new NFT descriptor contract. |
+
+### transferTokens
+
+A helper to transfer ERC-20 tokens from the caller to the provided address. Useful for paying one-time bonuses.
+
+Emits a {Transfer} event. Requirements:
+
+- `msg.sender` must have approved this contract to spend at least `amount` tokens.
+
+```solidity
+function transferTokens(IERC20 token, address to, uint128 amount) external payable;
+```
+
+**Parameters**
+
+| Name     | Type      | Description                                                    |
+| -------- | --------- | -------------------------------------------------------------- |
+| `token`  | `IERC20`  | The contract address of the ERC-20 token to be transferred.    |
+| `to`     | `address` | The address receiving the tokens.                              |
+| `amount` | `uint128` | The amount of tokens to transfer, denoted in token's decimals. |
+
 ### void
 
 Voids a stream.
 
-Emits [VoidFlowStream](/docs/reference/flow/contracts/interfaces/interface.ISablierFlow.md#voidflowstream) event. Notes:
+Emits a [VoidFlowStream](/docs/reference/flow/contracts/interfaces/interface.ISablierFlow.md#voidflowstream) and
+{MetadataUpdate} event. Notes:
 
-- It sets snapshot time to the `block.timestamp`
+- It sets snapshot time to the `block.timestamp`.
 - Voiding an insolvent stream sets the snapshot debt to the stream's balance making the uncovered debt to become zero.
 - Voiding a solvent stream updates the snapshot debt by adding up ongoing debt.
 - It sets the rate per second to zero.
@@ -493,28 +585,19 @@ function void(uint256 streamId) external payable;
 
 ### withdraw
 
-Withdraws the provided `amount` minus the protocol fee to the provided `to` address.
+Withdraws the provided `amount` to the provided `to` address.
 
-Emits a {Transfer} and {WithdrawFromFlowStream} event. Notes:
+Emits a {Transfer}, {WithdrawFromFlowStream} and {MetadataUpdate} event. Notes:
 
-- It sets the snapshot time to the `block.timestamp` if `amount` is greater than snapshot debt.
-- A protocol fee may be charged on the withdrawn amount if the protocol fee is enabled for the streaming token.
-  Requirements:
+- It sets the snapshot time to the `block.timestamp` if `amount` is greater than snapshot debt. Requirements:
 - Must not be delegate called.
 - `streamId` must not reference a null stream.
 - `to` must not be the zero address.
-- `to` must be the recipient if `msg.sender` is not the stream's recipient.
+- `to` must be the recipient if `msg.sender` is not the stream's recipient or an approved third party.
 - `amount` must be greater than zero and must not exceed the withdrawable amount.
 
 ```solidity
-function withdraw(
-    uint256 streamId,
-    address to,
-    uint128 amount
-)
-    external
-    payable
-    returns (uint128 withdrawnAmount, uint128 protocolFeeAmount);
+function withdraw(uint256 streamId, address to, uint128 amount) external payable;
 ```
 
 **Parameters**
@@ -525,30 +608,17 @@ function withdraw(
 | `to`       | `address` | The address receiving the withdrawn tokens.          |
 | `amount`   | `uint128` | The amount to withdraw, denoted in token's decimals. |
 
-**Returns**
-
-| Name                | Type      | Description                                                                                                      |
-| ------------------- | --------- | ---------------------------------------------------------------------------------------------------------------- |
-| `withdrawnAmount`   | `uint128` | The amount withdrawn to the recipient, denoted in token's decimals. This is input amount minus the protocol fee. |
-| `protocolFeeAmount` | `uint128` | The protocol fee amount, denoted in the token's decimals.                                                        |
-
 ### withdrawMax
 
-Withdraws the entire withdrawable amount minus the protocol fee to the provided `to` address.
+Withdraws the entire withdrawable amount to the provided `to` address.
 
-Emits a {Transfer} and {WithdrawFromFlowStream} event. Notes:
+Emits a {Transfer}, {WithdrawFromFlowStream} and {MetadataUpdate} event. Notes:
 
 - Refer to the notes in {withdraw}. Requirements:
 - Refer to the requirements in {withdraw}.
 
 ```solidity
-function withdrawMax(
-    uint256 streamId,
-    address to
-)
-    external
-    payable
-    returns (uint128 withdrawnAmount, uint128 protocolFeeAmount);
+function withdrawMax(uint256 streamId, address to) external payable returns (uint128 withdrawnAmount);
 ```
 
 **Parameters**
@@ -560,10 +630,9 @@ function withdrawMax(
 
 **Returns**
 
-| Name                | Type      | Description                                                         |
-| ------------------- | --------- | ------------------------------------------------------------------- |
-| `withdrawnAmount`   | `uint128` | The amount withdrawn to the recipient, denoted in token's decimals. |
-| `protocolFeeAmount` | `uint128` | The protocol fee amount, denoted in the token's decimals.           |
+| Name              | Type      | Description                                                         |
+| ----------------- | --------- | ------------------------------------------------------------------- |
+| `withdrawnAmount` | `uint128` | The amount withdrawn to the recipient, denoted in token's decimals. |
 
 ## Events
 
@@ -591,9 +660,11 @@ Emitted when a Flow stream is created.
 ```solidity
 event CreateFlowStream(
     uint256 streamId,
+    address creator,
     address indexed sender,
     address indexed recipient,
     UD21x18 ratePerSecond,
+    uint40 snapshotTime,
     IERC20 indexed token,
     bool transferable
 );
@@ -604,9 +675,11 @@ event CreateFlowStream(
 | Name            | Type      | Description                                                                                                                |
 | --------------- | --------- | -------------------------------------------------------------------------------------------------------------------------- |
 | `streamId`      | `uint256` | The ID of the newly created stream.                                                                                        |
+| `creator`       | `address` | The address creating the stream.                                                                                           |
 | `sender`        | `address` | The address streaming the tokens, which is able to adjust and pause the stream.                                            |
 | `recipient`     | `address` | The address receiving the tokens, as well as the NFT owner.                                                                |
 | `ratePerSecond` | `UD21x18` | The amount by which the debt is increasing every second, denoted as a fixed-point number where 1e18 is 1 token per second. |
+| `snapshotTime`  | `uint40`  | The timestamp when the stream begins accumulating debt.                                                                    |
 | `token`         | `IERC20`  | The contract address of the ERC-20 token to be streamed.                                                                   |
 | `transferable`  | `bool`    | Boolean indicating whether the stream NFT is transferable or not.                                                          |
 
@@ -643,6 +716,23 @@ event PauseFlowStream(uint256 indexed streamId, address indexed sender, address 
 | `recipient` | `address` | The stream's recipient address.                                                        |
 | `totalDebt` | `uint256` | The amount of tokens owed by the sender to the recipient, denoted in token's decimals. |
 
+### Recover
+
+Emitted when the comptroller recovers the surplus amount of token.
+
+```solidity
+event Recover(ISablierComptroller indexed comptroller, IERC20 indexed token, address to, uint256 surplus);
+```
+
+**Parameters**
+
+| Name          | Type                  | Description                                                                |
+| ------------- | --------------------- | -------------------------------------------------------------------------- |
+| `comptroller` | `ISablierComptroller` | The address of the current comptroller.                                    |
+| `token`       | `IERC20`              | The address of the ERC-20 token the surplus amount has been recovered for. |
+| `to`          | `address`             | The address the surplus amount has been sent to.                           |
+| `surplus`     | `uint256`             | The amount of surplus tokens recovered.                                    |
+
 ### RefundFromFlowStream
 
 Emitted when a sender is refunded from a stream.
@@ -674,6 +764,32 @@ event RestartFlowStream(uint256 indexed streamId, address indexed sender, UD21x1
 | `streamId`      | `uint256` | The ID of the stream.                                                                                                      |
 | `sender`        | `address` | The stream's sender address.                                                                                               |
 | `ratePerSecond` | `UD21x18` | The amount by which the debt is increasing every second, denoted as a fixed-point number where 1e18 is 1 token per second. |
+
+### SetNativeToken
+
+Emitted when the native token address is set by the comptroller.
+
+```solidity
+event SetNativeToken(ISablierComptroller indexed comptroller, address nativeToken);
+```
+
+### SetNFTDescriptor
+
+Emitted when the comptroller sets a new NFT descriptor contract.
+
+```solidity
+event SetNFTDescriptor(
+    ISablierComptroller indexed comptroller, IFlowNFTDescriptor oldNFTDescriptor, IFlowNFTDescriptor newNFTDescriptor
+);
+```
+
+**Parameters**
+
+| Name               | Type                  | Description                                     |
+| ------------------ | --------------------- | ----------------------------------------------- |
+| `comptroller`      | `ISablierComptroller` | The address of the current comptroller.         |
+| `oldNFTDescriptor` | `IFlowNFTDescriptor`  | The address of the old NFT descriptor contract. |
+| `newNFTDescriptor` | `IFlowNFTDescriptor`  | The address of the new NFT descriptor contract. |
 
 ### VoidFlowStream
 
@@ -707,22 +823,16 @@ Emitted when tokens are withdrawn from a stream by a recipient or an approved op
 
 ```solidity
 event WithdrawFromFlowStream(
-    uint256 indexed streamId,
-    address indexed to,
-    IERC20 indexed token,
-    address caller,
-    uint128 withdrawAmount,
-    uint128 protocolFeeAmount
+    uint256 indexed streamId, address indexed to, IERC20 indexed token, address caller, uint128 withdrawAmount
 );
 ```
 
 **Parameters**
 
-| Name                | Type      | Description                                                                                            |
-| ------------------- | --------- | ------------------------------------------------------------------------------------------------------ |
-| `streamId`          | `uint256` | The ID of the stream.                                                                                  |
-| `to`                | `address` | The address that received the withdrawn tokens.                                                        |
-| `token`             | `IERC20`  | The contract address of the ERC-20 token that was withdrawn.                                           |
-| `caller`            | `address` | The address that performed the withdrawal, which can be the recipient or an approved operator.         |
-| `withdrawAmount`    | `uint128` | The amount withdrawn to the recipient after subtracting the protocol fee, denoted in token's decimals. |
-| `protocolFeeAmount` | `uint128` | The amount of protocol fee deducted from the withdrawn amount, denoted in token's decimals.            |
+| Name             | Type      | Description                                                                                    |
+| ---------------- | --------- | ---------------------------------------------------------------------------------------------- |
+| `streamId`       | `uint256` | The ID of the stream.                                                                          |
+| `to`             | `address` | The address that received the withdrawn tokens.                                                |
+| `token`          | `IERC20`  | The contract address of the ERC-20 token that was withdrawn.                                   |
+| `caller`         | `address` | The address that performed the withdrawal, which can be the recipient or an approved operator. |
+| `withdrawAmount` | `uint128` | The amount withdrawn to the recipient, denoted in token's decimals.                            |

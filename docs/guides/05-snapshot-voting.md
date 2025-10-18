@@ -107,8 +107,7 @@ For the best results, we recommend using the primary policies.
 The withdrawable amount counts tokens that have been streamed but not withdrawn yet by the recipient.
 
 This is provided using the
-[`withdrawableAmountOf`](/reference/lockup/contracts/abstracts/abstract.SablierLockupBase#withdrawableamountof) contract
-method.
+[`withdrawableAmountOf`](/reference/lockup/contracts/contract.SablierLockup#withdrawableamountof) contract method.
 
 Voting power: realized (present).
 
@@ -151,7 +150,7 @@ Aggregates historical amounts that have already been streamed to the recipient. 
 included.
 
 It relies on the `streamedAmountOf` method in the
-[SablierLockupBase](/reference/lockup/contracts/abstracts/abstract.SablierLockupBase#streamedamountof) contract.
+[SablierLockup](/reference/lockup/contracts/contract.SablierLockup#streamedamountof) contract.
 
 :::caution Caveats
 

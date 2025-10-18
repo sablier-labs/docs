@@ -1,14 +1,15 @@
 # LockupLinear
 
-[Git Source](https://github.com/sablier-labs/lockup/blob/463278dbb461b1733d6424cf0aeee3b8d6bc036a/src/types/DataTypes.sol)
+[Git Source](https://github.com/sablier-labs/lockup/blob/58eaac45c20c57a93b73d887c714e68f061ec3e6/src/types/LockupLinear.sol)
 
-Namespace for the structs used only in Lockup Linear model.
+Namespace for the structs used only in LL streams.
 
 ## Structs
 
 ### Durations
 
-Struct encapsulating the cliff duration and the total duration used at runtime in {SablierLockup.createWithDurationsLL}
+Struct encapsulating the cliff duration and the total duration used at runtime in
+[SablierLockupLinear.createWithDurationsLL](docs/reference/lockup/contracts/abstracts/abstract.SablierLockupLinear.md#createwithdurationsll)
 function.
 
 ```solidity

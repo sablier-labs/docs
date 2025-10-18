@@ -194,7 +194,7 @@ A data object that encapsulates amounts to be unlocked at the start of the strea
 
 ### Vesting Math
 
-[A public library](/reference/lockup/contracts/libraries/library.VestingMath) used by the Lockup protocol to calculate
+[A public library](/reference/lockup/contracts/libraries/library.LockupMath) used by the Lockup protocol to calculate
 the amount of vested tokens at any given time.
 
 ## Merkle Airdrop
