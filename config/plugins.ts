@@ -2,7 +2,7 @@ import type { Options as ClientRedirectsOptions } from "@docusaurus/plugin-clien
 import type { Options as VercelAnalyticsOptions } from "@docusaurus/plugin-vercel-analytics";
 import type { DocusaurusConfig, PluginOptions } from "@docusaurus/types";
 import type { ConfigOptions, GraphQLMarkdownCliOptions, LoaderOption } from "@graphql-markdown/types";
-import type { PluginOptions as LlmPluginOptions } from "unofficial-docusaurus-plugin-llms";
+import type { PluginOptions as LlmPluginOptions } from "@sablier/docusaurus-plugin-llms";
 import { createRedirects, redirects } from "./redirects";
 
 /* -------------------------------------------------------------------------- */
@@ -64,7 +64,7 @@ const graphqlMarkdown: [string, GraphQLMarkdownOptions] = [
  * @see https://github.com/rachfop/docusaurus-plugin-llms
  */
 const llmPlugin: [string, LlmPluginOptions & { [key: string]: unknown }] = [
-  "unofficial-docusaurus-plugin-llms",
+  "@sablier/docusaurus-plugin-llms",
   {
     // Protocol specific LLM files.
     customLLMFiles: [
