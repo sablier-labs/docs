@@ -23,7 +23,7 @@ A stream can have the following characteristics:
 
 | Characteristic | Statuses                                        | Description                                             |
 | :------------- | :---------------------------------------------- | :------------------------------------------------------ |
-| Pending        | `PENDING`                                       | Start time in future, and non-zero rps.                 |
+| Pending        | `PENDING`                                       | Snapshot time in future, and non-zero rps.              |
 | Streaming      | `STREAMING_SOLVENT`, `STREAMING_INSOLVENT`      | Non-zero rps.                                           |
 | Paused         | `PAUSED_SOLVENT`, `PAUSED_INSOLVENT`, `VOIDED`  | Zero rps.                                               |
 | Solvent        | `STREAMING_SOLVENT`, `PAUSED_SOLVENT`, `VOIDED` | Total debt <ins>not exceeding</ins> the stream balance. |
