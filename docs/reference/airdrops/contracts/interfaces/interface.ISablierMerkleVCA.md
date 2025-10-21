@@ -95,7 +95,7 @@ function totalForgoneAmount() external view returns (uint256);
 Claim airdrop. If the vesting end time is in the future, it calculates the claim amount to transfer to the `to` address,
 otherwise it transfers the full amount.
 
-It emits a [ClaimVCA](/docs/reference/airdrops/contracts/interfaces/interface.ISablierMerkleVCA.md#claimvca) event.
+\*It emits a [ClaimVCA](/docs/reference/airdrops/contracts/interfaces/interface.ISablierMerkleVCA.md#claimvca) event.
 Requirements:
 
 - The current time must be greater than or equal to the campaign start time.
@@ -105,7 +105,7 @@ Requirements:
 - The Merkle proof must be valid.
 - The claim amount must be greater than zero.
 - `msg.sender` must be the airdrop recipient.
-- The `to` must not be the zero address.
+- The `to` must not be the zero address.\*
 
 ```solidity
 function claimTo(uint256 index, address to, uint128 fullAmount, bytes32[] calldata merkleProof) external payable;
@@ -125,7 +125,7 @@ function claimTo(uint256 index, address to, uint128 fullAmount, bytes32[] callda
 Claim airdrop on behalf of eligible recipient using an EIP-712 or EIP-1271 signature. If the vesting end time is in the
 future, it calculates the claim amount to transfer to the `to` address, otherwise it transfers the full amount.
 
-It emits a [ClaimVCA](/docs/reference/airdrops/contracts/interfaces/interface.ISablierMerkleVCA.md#claimvca) event.
+\*It emits a [ClaimVCA](/docs/reference/airdrops/contracts/interfaces/interface.ISablierMerkleVCA.md#claimvca) event.
 Requirements:
 
 - If `recipient` is an EOA, it must match the recovered signer.
@@ -136,7 +136,7 @@ Requirements:
   typed data to be signed by the airdrop recipient, referenced from
   https://docs.metamask.io/wallet/how-to/sign-data/#example.
 
-````json
+```json
 types: {
 EIP712Domain: [
 { name: "name", type: "string" },
@@ -164,8 +164,7 @@ to: "0xTheAddressReceivingTheTokens", // The address where recipient wants to tr
 amount: "1000000000000000000000", // The amount of tokens allocated to the recipient
 validFrom: 1752425637 // The timestamp from which the claim signature is valid
 },
-```*
-
+```
 
 ```solidity
 function claimViaSig(
@@ -179,7 +178,7 @@ function claimViaSig(
 )
     external
     payable;
-````
+```
 
 **Parameters**
 

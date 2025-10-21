@@ -147,12 +147,12 @@ function minFeeUSD() external view returns (uint256);
 
 Claws back the unclaimed tokens.
 
-Emits a [Clawback](/docs/reference/airdrops/contracts/interfaces/interface.ISablierMerkleBase.md#clawback) event.
+\*Emits a [Clawback](/docs/reference/airdrops/contracts/interfaces/interface.ISablierMerkleBase.md#clawback) event.
 Requirements:
 
 - `msg.sender` must be the admin.
 - No claim must be made, OR The current timestamp must not exceed 7 days after the first claim, OR The campaign must be
-  expired.
+  expired.\*
 
 ```solidity
 function clawback(address to, uint128 amount) external;
@@ -169,11 +169,11 @@ function clawback(address to, uint128 amount) external;
 
 Lowers the min USD fee.
 
-Emits a [LowerMinFeeUSD](/docs/reference/airdrops/contracts/interfaces/interface.ISablierMerkleBase.md#lowerminfeeusd)
+\*Emits a [LowerMinFeeUSD](/docs/reference/airdrops/contracts/interfaces/interface.ISablierMerkleBase.md#lowerminfeeusd)
 event. Requirements:
 
 - `msg.sender` must be the comptroller.
-- The new fee must be less than the current {minFeeUSD}.
+- The new fee must be less than the current {minFeeUSD}.\*
 
 ```solidity
 function lowerMinFeeUSD(uint256 newMinFeeUSD) external;

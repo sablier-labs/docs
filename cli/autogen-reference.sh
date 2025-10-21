@@ -32,16 +32,17 @@ set_sidebar_position() {
 lint() {
   contracts=docs/reference/$1/contracts
 
-  # Format the docs with Prettier
-  bun prettier --log-level silent --write $contracts
-
   # Cache find result to avoid redundant filesystem scan
   all_md_files=$(find $contracts -type f -name "*.md")
 
-  # Remove the italic asterisks added by `forge doc`: https://github.com/foundry-rs/foundry/issues/4540
+  # Fix malformed code block endings with asterisks (e.g., ```* should be ```)
+  # This pattern appears in forge-generated docs and breaks markdown rendering
+  sd '```\*' '```' $all_md_files
+
+  # Remove remaining italic asterisks added by `forge doc`: https://github.com/foundry-rs/foundry/issues/4540
   sd --string-mode "\*" "" $all_md_files
 
-  # Re-format the docs with Prettier
+  # Format the docs with Prettier
   bun prettier --log-level silent --write $contracts
 }
 

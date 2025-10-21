@@ -192,10 +192,10 @@ enum Model {
 
 Enum representing the different statuses of a stream.
 
-The status can have a "temperature":
+\*The status can have a "temperature":
 
 1. Warm: Pending, Streaming. The passage of time alone can change the status.
-2. Cold: Settled, Canceled, Depleted. The passage of time alone cannot change the status.
+2. Cold: Settled, Canceled, Depleted. The passage of time alone cannot change the status.\*
 
 **Notes:**
 

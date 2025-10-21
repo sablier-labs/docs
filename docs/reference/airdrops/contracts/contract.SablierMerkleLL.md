@@ -90,14 +90,14 @@ constructor(
 Claim airdrop on behalf of eligible recipient. If the vesting end time is in the future, it creates a Lockup Linear
 stream, otherwise it transfers the tokens directly to the recipient address.
 
-It emits either {ClaimLLWithTransfer} or {ClaimLLWithVesting} event. Requirements:
+\*It emits either {ClaimLLWithTransfer} or {ClaimLLWithVesting} event. Requirements:
 
 - The current time must be greater than or equal to the campaign start time.
 - The campaign must not have expired.
 - `msg.value` must not be less than the value returned by {COMPTROLLER.calculateMinFeeWei}.
 - The `index` must not be claimed already.
 - The Merkle proof must be valid.
-- All requirements from {ISablierLockupLinear.createWithTimestampsLL} must be met.
+- All requirements from {ISablierLockupLinear.createWithTimestampsLL} must be met.\*
 
 ```solidity
 function claim(
@@ -125,11 +125,11 @@ function claim(
 Claim airdrop. If the vesting end time is in the future, it creates a Lockup Linear stream with `to` address as the
 stream recipient, otherwise it transfers the tokens directly to the `to` address.
 
-It emits either {ClaimLLWithTransfer} or {ClaimLLWithVesting} event. Requirements:
+\*It emits either {ClaimLLWithTransfer} or {ClaimLLWithVesting} event. Requirements:
 
 - `msg.sender` must be the airdrop recipient.
 - The `to` must not be the zero address.
-- Refer to the requirements in {claim}.
+- Refer to the requirements in {claim}.\*
 
 ```solidity
 function claimTo(
@@ -159,7 +159,7 @@ Claim airdrop on behalf of eligible recipient using an EIP-712 or EIP-1271 signa
 future, it creates a Lockup Linear stream with `to` address as the stream recipient, otherwise it transfers the tokens
 directly to the `to` address.
 
-It emits either {ClaimLLWithTransfer} or {ClaimLLWithVesting} event. Requirements:
+\*It emits either {ClaimLLWithTransfer} or {ClaimLLWithVesting} event. Requirements:
 
 - If `recipient` is an EOA, it must match the recovered signer.
 - If `recipient` is a contract, it must implement the IERC-1271 interface.
@@ -168,7 +168,7 @@ It emits either {ClaimLLWithTransfer} or {ClaimLLWithVesting} event. Requirement
 - Refer to the requirements in {claim}. Below is the example of typed data to be signed by the airdrop recipient,
   referenced from https://docs.metamask.io/wallet/how-to/sign-data/#example.
 
-````json
+```json
 types: {
 EIP712Domain: [
 { name: "name", type: "string" },
@@ -196,8 +196,7 @@ to: "0xTheAddressReceivingTheTokens", // The address where recipient wants to tr
 amount: "1000000000000000000000", // The amount of tokens allocated to the recipient
 validFrom: 1752425637 // The timestamp from which the claim signature is valid
 },
-```*
-
+```
 
 ```solidity
 function claimViaSig(
@@ -213,7 +212,7 @@ function claimViaSig(
     payable
     override
     notZeroAddress(to);
-````
+```
 
 **Parameters**
 

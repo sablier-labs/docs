@@ -11,7 +11,7 @@ Provides functions for calculating the streamed amounts in Lockup streams. Note 
 
 Calculates the streamed amount of LD streams.
 
-The LD streaming model uses the following distribution function:
+\*The LD streaming model uses the following distribution function:
 
 $$
 f(x) = x^{exp} * csa + \Sigma(esa)
@@ -31,7 +31,7 @@ Where:
 4. The sum of all segment amounts does not overflow uint128 and equals the deposited amount.
 5. The first segment's timestamp is greater than the start time.
 6. The last segment's timestamp equals the end time.
-7. The segment timestamps are arranged in ascending order.
+7. The segment timestamps are arranged in ascending order.\*
 
 ```solidity
 function calculateStreamedAmountLD(
@@ -50,7 +50,7 @@ function calculateStreamedAmountLD(
 
 Calculates the streamed amount of LL streams.
 
-The LL streaming model uses the following distribution function:
+\*The LL streaming model uses the following distribution function:
 
 $$
 ( x * sa + s, block timestamp < cliff time
@@ -68,7 +68,7 @@ Where:
 1. The sum of the unlock amounts (start and cliff) does not overflow uint128 and is less than or equal to the deposit
    amount.
 2. The start time is before the end time.
-3. If the cliff time is not zero, it is after the start time and before the end time.
+3. If the cliff time is not zero, it is after the start time and before the end time.\*
 
 ```solidity
 function calculateStreamedAmountLL(
@@ -88,7 +88,7 @@ function calculateStreamedAmountLL(
 
 Calculates the streamed amount of LT streams.
 
-The LT streaming model uses the following distribution function:
+\*The LT streaming model uses the following distribution function:
 
 $$
 f(x) = \Sigma(eta)
@@ -101,7 +101,7 @@ Where:
 1. The sum of all tranche amounts does not overflow uint128, and equals the deposited amount.
 2. The first tranche's timestamp is greater than the start time.
 3. The last tranche's timestamp equals the end time.
-4. The tranche timestamps are arranged in ascending order.
+4. The tranche timestamps are arranged in ascending order.\*
 
 ```solidity
 function calculateStreamedAmountLT(

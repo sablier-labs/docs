@@ -17,10 +17,10 @@ See the documentation in
 
 Creates a batch of LD streams using `createWithDurationsLD`.
 
-Requirements:
+\*Requirements:
 
 - There must be at least one element in `batch`.
-- All requirements from {ISablierLockupDynamic.createWithDurationsLD} must be met for each stream.
+- All requirements from {ISablierLockupDynamic.createWithDurationsLD} must be met for each stream.\*
 
 ```solidity
 function createWithDurationsLD(
@@ -51,10 +51,10 @@ function createWithDurationsLD(
 
 Creates a batch of LD streams using `createWithTimestampsLD`.
 
-Requirements:
+\*Requirements:
 
 - There must be at least one element in `batch`.
-- All requirements from {ISablierLockupDynamic.createWithTimestampsLD} must be met for each stream.
+- All requirements from {ISablierLockupDynamic.createWithTimestampsLD} must be met for each stream.\*
 
 ```solidity
 function createWithTimestampsLD(
@@ -85,10 +85,10 @@ function createWithTimestampsLD(
 
 Creates a batch of LL streams using `createWithDurationsLL`.
 
-Requirements:
+\*Requirements:
 
 - There must be at least one element in `batch`.
-- All requirements from {ISablierLockupLinear.createWithDurationsLL} must be met for each stream.
+- All requirements from {ISablierLockupLinear.createWithDurationsLL} must be met for each stream.\*
 
 ```solidity
 function createWithDurationsLL(
@@ -119,10 +119,10 @@ function createWithDurationsLL(
 
 Creates a batch of LL streams using `createWithTimestampsLL`.
 
-Requirements:
+\*Requirements:
 
 - There must be at least one element in `batch`.
-- All requirements from {ISablierLockupLinear.createWithTimestampsLL} must be met for each stream.
+- All requirements from {ISablierLockupLinear.createWithTimestampsLL} must be met for each stream.\*
 
 ```solidity
 function createWithTimestampsLL(
@@ -153,10 +153,10 @@ function createWithTimestampsLL(
 
 Creates a batch of LT streams using `createWithDurationsLT`.
 
-Requirements:
+\*Requirements:
 
 - There must be at least one element in `batch`.
-- All requirements from {ISablierLockupTranched.createWithDurationsLT} must be met for each stream.
+- All requirements from {ISablierLockupTranched.createWithDurationsLT} must be met for each stream.\*
 
 ```solidity
 function createWithDurationsLT(
@@ -187,10 +187,10 @@ function createWithDurationsLT(
 
 Creates a batch of LT streams using `createWithTimestampsLT`.
 
-Requirements:
+\*Requirements:
 
 - There must be at least one element in `batch`.
-- All requirements from {ISablierLockupTranched.createWithTimestampsLT} must be met for each stream.
+- All requirements from {ISablierLockupTranched.createWithTimestampsLT} must be met for each stream.\*
 
 ```solidity
 function createWithTimestampsLT(

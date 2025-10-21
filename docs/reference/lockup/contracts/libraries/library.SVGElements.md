@@ -159,12 +159,12 @@ function progressCircle(uint256 progressNumerical, string memory accentColor) in
 
 Calculates the pixel width of the provided string.
 
-Notes:
+\*Notes:
 
 - A factor of ~0.6 is applied to the two font sizes used in the SVG (26px and 22px) to approximate the average character
   width.
 - It is assumed that escaped characters are placed at the beginning of `text`.
-- It is further assumed that there is no other semicolon in `text`.
+- It is further assumed that there is no other semicolon in `text`.\*
 
 ```solidity
 function calculatePixelWidth(string memory text, bool largeFont) internal pure returns (uint256 width);

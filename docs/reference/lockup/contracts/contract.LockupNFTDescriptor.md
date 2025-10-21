@@ -40,12 +40,12 @@ function tokenURI(IERC721Metadata lockup, uint256 streamId) external view overri
 
 Creates an abbreviated representation of the provided amount, rounded down and prefixed with ">= ".
 
-The abbreviation uses these suffixes:
+\*The abbreviation uses these suffixes:
 
 - "K" for thousands
 - "M" for millions
 - "B" for billions
-- "T" for trillions For example, if the input is 1,234,567, the output is ">= 1.23M".
+- "T" for trillions For example, if the input is 1,234,567, the output is ">= 1.23M".\*
 
 ```solidity
 function abbreviateAmount(uint256 amount, uint256 decimals) internal pure returns (string memory);
