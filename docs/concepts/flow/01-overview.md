@@ -19,13 +19,14 @@ premiums, loans interest, token ESOPs etc. If you are looking for vesting and ai
 ## Features
 
 1. **Flexible deposit:** A stream can be funded with any amount, at any time, by anyone, in full or in parts.
-2. **Flexible duration:** A stream can be created with no specific start or end time. It can run indefinitely.
-3. **Pause:** A stream can be paused by the sender and can later be restarted without losing track of previously accrued
+2. **Flexible start time:** A stream can be created with a start time in past, present or in future.
+3. **Flexible end time:** A stream can be created without specifying any end time so that it can run indefinitely.
+4. **Pause:** A stream can be paused by the sender and can later be restarted without losing track of previously accrued
    debt.
-4. **Refund:** Unstreamed amount can be refunded back to the sender at any time.
-5. **Void:** Voiding a stream implies it cannot be restarted anymore. Voiding an insolvent stream forfeits the uncovered
+5. **Refund:** Unstreamed amount can be refunded back to the sender at any time.
+6. **Void:** Voiding a stream implies it cannot be restarted anymore. Voiding an insolvent stream forfeits the uncovered
    debt. Either party can void a stream at any time.
-6. **Withdraw:** it is publicly callable as long as `to` is set to the recipient. However, a stream’s recipient is
+7. **Withdraw:** it is publicly callable as long as `to` is set to the recipient. However, a stream’s recipient is
    allowed to withdraw funds to any address.
 
 ## Key Definitions
@@ -39,7 +40,7 @@ by the sender.
 
 Key traits:
 
-- No end time: the stream has a start date but no fixed stop.
+- No end time: the stream has a start time but no fixed end time.
 - Funds are streamed continuously at a fixed rate per second.
 - Stream must be topped up periodically to maintain solvency,
   [debt is otherwise accumulated](/concepts/flow/overview#total-debt).
@@ -92,40 +93,4 @@ Therefore, at any point in time, total debt can also be defined as:
 
 ```math
 \text{total debt} = \text{snapshot debt} + \text{ongoing debt}
-```
-
-## Lifecycle
-
-1. A Flow stream is created with an `rps`, a `sender` and a `recipient` address.
-2. During the lifecycle of the stream, all the functions enclosed inside the rectangle (diagram below) can be called any
-   number of times. There are some limitations though, such as `restart` can only be called if the stream is `paused`.
-3. Any party can call `void` to terminate it. Only withdraw and refund are allowed on a voided stream.
-
-```mermaid
-flowchart TD
-  subgraph "Stream Lifecycle"
-    direction TB
-    NULL
-
-    subgraph ACTIVE
-      direction TB
-      adjustRatePerSecond
-      deposit
-      pause
-      refund
-      restart
-      void
-      withdraw
-
-      restart --> pause
-      pause --> restart
-    end
-
-    subgraph VOID
-        withdraw2(withdraw)
-        refund2(refund)
-    end
-  end
-
-  NULL -- create() --> ACTIVE
 ```
