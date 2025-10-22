@@ -21,12 +21,12 @@ can call `claim` function on a campaign but the tokens will be transferred to th
 
 The table below offers a quick overview of the access control for each action that can be performed on a campaign.
 
-| Action      | Creator | Recipient | Public |
-| ----------- | :-----: | :-------: | :----: |
-| Claim       |   ✅    |    ✅     |   ✅   |
-| ClaimTo     |   ❌    |    ✅     |   ❌   |
-| ClaimViaSig |   ✅    |    ✅     |   ✅   |
-| Clawback    |   ✅    |    ❌     |   ❌   |
+| Action      | Creator | Recipient | Public | Compatibility                       |
+| ----------- | :-----: | :-------: | :----: | ----------------------------------- |
+| Claim       |   ✅    |    ✅     |   ✅   | Airstreams, Instant                 |
+| ClaimTo     |   ❌    |    ✅     |   ❌   | Airstreams, Instant, Variable Claim |
+| ClaimViaSig |   ✅    |    ✅     |   ✅   | Airstreams, Instant, Variable Claim |
+| Clawback    |   ✅    |    ❌     |   ❌   | Airstreams, Instant, Variable Claim |
 
 ## Claim
 
@@ -49,6 +49,13 @@ sequenceDiagram
   Create actor Recipient
   Campaign -->> Recipient: Transfer tokens/Create Stream
 ```
+
+:::important
+
+`claim` function is unavailable in a Variable Claim Airdrop Campaign. You can use either [`claimTo`](#claimto) or
+[`claimViaSig`](#claimviasig) to claim from it.
+
+:::
 
 ## ClaimTo
 

@@ -83,7 +83,7 @@ And this is how a typical claim flow looks like for recipients: Transfer
 sequenceDiagram
   actor Airdrop recipient
 
-  Airdrop recipient ->> MerkleVCA: claim()
+  Airdrop recipient ->> MerkleVCA: claimTo()
   MerkleVCA -->> Airdrop recipient: Transfer vested tokens
   MerkleVCA -->> MerkleVCA:  unvested tokens are kept for Campaign admin
 ```
