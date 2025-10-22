@@ -96,22 +96,29 @@ function createMerkleLL() public returns (ISablierMerkleLL merkleLL) {
 
 ## Parameters
 
-Merkle Factory uses
-[MerkleBase.ConstructorParams](/reference/airdrops/contracts/types/library.MerkleBase#constructorparams) as the shared
-struct among all the create functions.
+Merkle Factory uses [MerkleLL.ConstructorParams](/reference/airdrops/contracts/types/library.MerkleLL#constructorparams)
+as the struct for the `createMerkleLL` function.
 
 ```solidity
-MerkleBase.ConstructorParams memory baseParams;
+MerkleLL.ConstructorParams memory params;
 ```
 
-Let's review each parameter of the shared struct in detail.
+Let's review each parameter of the struct in detail.
 
-### Cancelable
+### Token
 
-Boolean that indicates whether the stream will be cancelable or not after it has been claimed.
+The contract address of the ERC-20 token that you want to airdrop to your recipients. In this example, we will use DAI.
 
 ```solidity
-baseParams.cancelable = false;
+params.token = DAI;
+```
+
+### Campaign Start Time
+
+The unix timestamp indicating when the campaign starts. Users will be able to claim their airdrop after this time.
+
+```solidity
+params.campaignStartTime = uint40(block.timestamp);
 ```
 
 ### Expiration
@@ -122,7 +129,7 @@ able to claim their airdrop. And you will be able to
 campaign.
 
 ```solidity
-baseParams.expiration = uint40(block.timestamp + 12 weeks);
+params.expiration = uint40(block.timestamp + 12 weeks);
 ```
 
 ### Initial Admin
@@ -132,7 +139,7 @@ with this admin as the sender of the stream. Another role of admin is to clawbac
 post expiry and during grace period.
 
 ```solidity
-baseParams.initialAdmin = address(0xBeeF);
+params.initialAdmin = address(0xBeeF);
 ```
 
 ### IPFS CID
@@ -141,7 +148,7 @@ This is the content identifier (CID) for indexing the contract on IPFS. This is 
 recipients and their claim amount.
 
 ```solidity
-baseParams.ipfsCID = "QmT5NvUtoM5nWFfrQdVrFtvGfKFmG7AHE8P34isapyhCxX";
+params.ipfsCID = "QmT5NvUtoM5nWFfrQdVrFtvGfKFmG7AHE8P34isapyhCxX";
 ```
 
 ### Merkle Root
@@ -154,23 +161,79 @@ If you want to create the Merkle root programmatically, you can follow
 [our guide on Merkle API](/api/airdrops/merkle-api/overview).
 
 ```solidity
-baseParams.merkleRoot = 0x4e07408562bedb8b60ce05c1decfe3ad16b722309875f562c03d02d7aaacb123;
+params.merkleRoot = 0x4e07408562bedb8b60ce05c1decfe3ad16b722309875f562c03d02d7aaacb123;
 ```
 
-### Name
+### Campaign Name
 
 The name of the campaign.
 
 ```solidity
-baseParams.name = "My First Campaign";
+params.campaignName = "My First Campaign";
 ```
 
-### Token
+### Shape
 
-The contract address of the ERC-20 token that you want to airdrop to your recipients. In this example, we will use DAI.
+A custom stream shape name for visualization in the UI. This helps users understand the vesting schedule visually.
 
 ```solidity
-baseParams.token = DAI;
+params.shape = "A custom stream shape";
+```
+
+### Lockup
+
+The address of the Sablier Lockup contract that will be used to create the streams when recipients claim their airdrop.
+
+```solidity
+params.lockup = LOCKUP;
+```
+
+### Vesting Start Time
+
+The unix timestamp indicating when the vesting starts. If set to 0, the vesting will begin at the time of claim.
+
+```solidity
+params.vestingStartTime = uint40(block.timestamp);
+```
+
+### Cliff Duration
+
+The duration of the cliff period in seconds. During this period, no tokens will be unlocked.
+
+```solidity
+params.cliffDuration = 30 days;
+```
+
+### Cliff Unlock Percentage
+
+The percentage of tokens to unlock after the cliff period ends. We want to unlock 0.01% after the cliff period.
+
+```solidity
+params.cliffUnlockPercentage = ud60x18(0.01e18);
+```
+
+### Start Unlock Percentage
+
+The percentage of tokens to unlock at the vesting start time. We want to unlock 0.01% at the start.
+
+```solidity
+params.startUnlockPercentage = ud60x18(0.01e18);
+```
+
+### Total Duration
+
+The total duration of vesting in seconds. This should be 90 days for this example.
+
+```solidity
+params.totalDuration = 90 days;
+```
+
+### Cancelable
+
+Boolean that indicates whether the stream will be cancelable or not after it has been claimed.
+
+```solidity
+params.cancelable = false;
 ```
 
 ### Transferable
@@ -179,10 +242,10 @@ Boolean that indicates whether the stream will be transferable or not. This is t
 claim their airstream.
 
 ```solidity
-baseParams.transferable = true;
+params.transferable = true;
 ```
 
-Now that we have the `baseParams` ready, it's time to setup rest of the input parameters.
+Now that we have the `params` ready, it's time to setup rest of the input parameters.
 
 ### Aggregate Amount
 
@@ -201,48 +264,22 @@ The total number of recipient addresses.
 uint256 recipientCount = 10_000;
 ```
 
-### Schedule
-
-For the Lockup Linear campaign, a new struct named `Schedule` is needed. This structure enables the configuration of
-various requirements for the campaign creator. For this example, we will have the following configurations:
-
-1. `startTime`: sets the start time of vesting. If set to 0, the vesting will begin at the time of claim.
-2. `startPercentage`: We want to unlock 0.01% of the total amount at the start time.
-3. `cliffDuration`: We want a cliff duration of 30 days.
-4. `cliffPercentage`: We want to unlock another 0.01% after the cliff period ends.
-5. `totalDuration`: The total duration of vesting should be 90 days.
-
-```solidity
-MerkleLL.Schedule memory schedule = MerkleLL.Schedule({
-    startTime: 0,
-    startPercentage: ud2x18(0.01e18),
-    cliffDuration: 30 days,
-    cliffPercentage: ud2x18(0.01e18),
-    totalDuration: 90 days
-});
-```
-
 ## Invoke the create function
 
 With all parameters set, we can now call the `createMerkleLL` function, and assign the address of the newly created
 campaign to a variable:
 
 ```solidity
-merkleLL = FACTORY.createMerkleLL({
-  baseParams: baseParams,
-  lockup: LOCKUP,
-  cancelable: false,
-  transferable: true,
-  schedule: schedule,
+merkleLL = LL_FACTORY.createMerkleLL({
+  params: params,
   aggregateAmount: aggregateAmount,
   recipientCount: recipientCount
 });
-
 ```
 
 ## Full code
 
-Below you can see the full code. You can also access the code on GitHub through
+Below you can see the full code, including the other factories. You can also access the code on GitHub through
 [this link](https://github.com/sablier-labs/evm-examples/blob/main/airdrops/MerkleCreator.sol).
 
 <CodeBlock language="solidity" showLineNumbers metastring={`reference title="Merkle Campaign Creator"`}>
