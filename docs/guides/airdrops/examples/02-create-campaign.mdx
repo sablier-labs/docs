@@ -10,8 +10,7 @@ import CautionNonProduction from "../../../../src/snippets/_caution-non-producti
 
 # Create Airdrop Campaigns
 
-In this guide, we will show you how you can use Solidity to create a campaign via the
-[Merkle Factory](/reference/airdrops/contracts/contract.SablierMerkleFactory).
+In this guide, we will show you how you can use Solidity to create a campaigns via the Merkle Factories.
 
 This guide assumes that you have already gone through the [Protocol Concepts](/concepts/airdrops) section.
 
@@ -31,21 +30,30 @@ Now, import the relevant symbols from `@sablier/lockup` and `@sablier/airdrops`:
 ```solidity
 import { IERC20 } from "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 import { ud2x18 } from "@prb/math/src/UD2x18.sol";
+import { ud60x18 } from "@prb/math/src/UD60x18.sol";
 import { ISablierLockup } from "@sablier/lockup/src/interfaces/ISablierLockup.sol";
 import { ISablierMerkleInstant } from "@sablier/airdrops/src/interfaces/ISablierMerkleInstant.sol";
 import { ISablierMerkleLL } from "@sablier/airdrops/src/interfaces/ISablierMerkleLL.sol";
 import { ISablierMerkleLT } from "@sablier/airdrops/src/interfaces/ISablierMerkleLT.sol";
-import { ISablierMerkleFactory } from "@sablier/airdrops/src/interfaces/ISablierMerkleFactory.sol";
-import { MerkleBase, MerkleLL, MerkleLT } from "@sablier/airdrops/src/types/DataTypes.sol";
+import { ISablierMerkleVCA } from "@sablier/airdrops/src/interfaces/ISablierMerkleVCA.sol";
+import { ISablierFactoryMerkleInstant } from "@sablier/airdrops/src/interfaces/ISablierFactoryMerkleInstant.sol";
+import { ISablierFactoryMerkleLL } from "@sablier/airdrops/src/interfaces/ISablierFactoryMerkleLL.sol";
+import { ISablierFactoryMerkleLT } from "@sablier/airdrops/src/interfaces/ISablierFactoryMerkleLT.sol";
+import { ISablierFactoryMerkleVCA } from "@sablier/airdrops/src/interfaces/ISablierFactoryMerkleVCA.sol";
+import { MerkleInstant, MerkleLL, MerkleLT, MerkleVCA } from "@sablier/airdrops/src/types/DataTypes.sol";
 ```
 
 Create a contract called `MerkleCreator`, and declare a constant `DAI` of type `IERC20`, a constant `LOCKUP` of type
-`ISablierLockup` and a constant `FACTORY` of type `ISablierMerkleFactory`.
+`ISablierLockup` and the factories constants of type `ISablierFactoryMerkleInstant`, `ISablierFactoryMerkleLL`,
+`ISablierFactoryMerkleLT` and `ISablierFactoryMerkleVCA`.
 
 ```solidity
 contract MerkleCreator {
-    IERC20 public constant DAI = IERC20(0x68194a729C2450ad26072b3D33ADaCbcef39D574);
-    ISablierMerkleFactory public constant FACTORY = ISablierMerkleFactory(0x4ECd5A688b0365e61c1a764E8BF96A7C5dF5d35F);
+    IERC20 public constant DAI = IERC20(0x6B175474E89094C44Da98b954EedeAC495271d0F);
+    ISablierFactoryMerkleInstant public constant INSTANT_FACTORY = ISablierFactoryMerkleInstant(0x7f70bA7C7373BaA4047cE450168cD24968321Bda);
+    ISablierFactoryMerkleLL public constant LL_FACTORY = ISablierFactoryMerkleLL(0x0781Ad660a5ED0041B45d44d45009a163CC0B578);
+    ISablierFactoryMerkleLT public constant LT_FACTORY = ISablierFactoryMerkleLT(0x336d464276e2c7C76927d975Ef866Df8a7Ecf8DD);
+    ISablierFactoryMerkleVCA public constant VCA_FACTORY = ISablierFactoryMerkleVCA(0x91FdBd7077d615f951a0defA81Ec30Bfd68dbd8D);
     ISablierLockup public constant LOCKUP = ISablierLockup(0xcF8ce57fa442ba50aCbC57147a62aD03873FfA73);
 }
 ```
@@ -56,7 +64,7 @@ Factory address can be obtained from the [Merkle Airdrops Deployments](/guides/a
 
 ## Create function
 
-There are three create functions available through factory:
+There are four create functions available through the factories:
 
 - [`createMerkleInstant`](/reference/airdrops/contracts/contract.SablierMerkleFactory#createmerkleinstant): creates
   campaign for instant distribution of tokens.
@@ -64,8 +72,17 @@ There are three create functions available through factory:
   a Lockup Linear distribution.
 - [`createMerkleLT`](/reference/airdrops/contracts/contract.SablierMerkleFactory#createmerklelt): creates campaign with
   a Lockup Tranched distribution.
+- `createMerkleVCA`
+
+TODO: update the reference links
 
 Which one you choose depends upon your use case. In this guide, we will use `createMerkleLL`.
+
+:::note
+
+Below we will focus only on the LL factory. The other factories follow the same pattern.
+
+:::
 
 ## Function definition
 
