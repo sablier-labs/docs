@@ -20,11 +20,7 @@ export function ComptrollersTable() {
 
     for (const chain of chains) {
       // Get comptroller address from sablier package
-      const comptrollerContract = comptroller.get(chain.id);
-      if (!comptrollerContract) {
-        continue;
-      }
-      const comptrollerAddress = comptrollerContract.address;
+      const comptrollerAddress = comptroller.get(chain.id).address;
 
       const explorerBaseUrl = chain.blockExplorers.default.url;
       const addressLink = `[${comptrollerAddress}](${explorerBaseUrl}/address/${comptrollerAddress})`;
