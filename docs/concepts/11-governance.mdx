@@ -9,9 +9,11 @@ import ComptrollersTable from "@site/src/components/organisms/ComptrollersTable"
 
 ## Comptroller
 
-The Sablier Protocol uses a Comptroller smart contract architecture for governance. The Comptroller acts as an
-intermediary that has exclusive access to specific protocol functions. This design provides a more flexible and
-centralized accross all protocols access control model while maintaining security.
+The Sablier Comptroller is a smart contract that acts as an intermediary between the protocols and the admin. It has
+exclusive access to specific protocol functions. This design provides a more flexible approach to access control across
+all protocols while maintaining security.
+
+Admin addresses that control the comptroller are listed in the [Admin Addresses](#admin-addresses) section.
 
 <ComptrollersTable />
 
@@ -28,9 +30,9 @@ Comptroller has the following permissions on each chain where `Lockup` is deploy
 
 TODO: Add links when reference pages are created
 
-## MerkleFactory
+## Merkle Factory
 
-Comptroller has the following permission on each chain where the factories are deployed:
+Comptroller has the following permission on each chain where the Merkle Factories are deployed:
 
 | Permission       | Function         |
 | ---------------- | ---------------- |
@@ -52,13 +54,12 @@ TODO: Add links when reference pages are created
 
 ## Admin Addresses
 
-Before the introduction of the Comptroller architecture, we used a direct "Admin" role for
-governance. These admin accounts had the same authority as the current Comptroller contract, with direct access to
-specific protocol functions. More concretely, the Admin is a collection of multisig wallets and EOAs currently in control of Sablier Labs.
+The comptroller is introduced in Lockup v3.0, Airdrops v2.0 and Flow v2.0. For earlier versions, we use a direct "Admin"
+role for governance. These admin accounts have the same authority as the current Comptroller contract, with direct
+access to specific protocol functions. More concretely, the Admin is a collection of multisig wallets and EOAs currently
+in control of Sablier Labs.
 
 <AdminsTable />
-
-**PR NOTE:** I didn't add functions for the previous versions, since we won't have contract references for them.
 
 ## Trustlessness
 
