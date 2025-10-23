@@ -42,11 +42,11 @@ constructor(address initialComptroller) [Comptrollerable](/docs/reference/airdro
 
 Sets the native token address. Once set, it cannot be changed.
 
-\*For more information, see the documentation for {nativeToken}. Emits a {SetNativeToken} event. Requirements:
+For more information, see the documentation for {nativeToken}. Emits a {SetNativeToken} event. Requirements:
 
 - `msg.sender` must be the comptroller.
 - `newNativeToken` must not be zero address.
-- The native token must not be already set.\*
+- The native token must not be already set.
 
 ```solidity
 function setNativeToken(address newNativeToken) external override onlyComptroller;

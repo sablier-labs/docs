@@ -49,12 +49,12 @@ function computeMerkleLL(
 
 Creates a new Merkle Lockup campaign with a Lockup Linear distribution.
 
-\*Emits a {CreateMerkleLL} event. Notes:
+Emits a {CreateMerkleLL} event. Notes:
 
 - The contract is created with CREATE2.
 - The campaign's fee will be set to the min USD fee unless a custom fee is set for `msg.sender`.
 - A value of zero for `params.expiration` means the campaign does not expire. Requirements:
-- `params.token` must not be the forbidden native token.\*
+- `params.token` must not be the forbidden native token.
 
 ```solidity
 function createMerkleLL(

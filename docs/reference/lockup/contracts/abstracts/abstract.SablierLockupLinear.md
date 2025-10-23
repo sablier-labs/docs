@@ -16,9 +16,9 @@ See the documentation in
 Creates a stream by setting the start time to `block.timestamp`, and the end time to the sum of `block.timestamp` and
 `durations.total`. The stream is funded by `msg.sender` and is wrapped in an ERC-721 NFT.
 
-\*Emits a {Transfer}, {CreateLockupLinearStream} and {MetadataUpdate} event. Requirements:
+Emits a {Transfer}, {CreateLockupLinearStream} and {MetadataUpdate} event. Requirements:
 
-- All requirements in {createWithTimestampsLL} must be met for the calculated parameters.\*
+- All requirements in {createWithTimestampsLL} must be met for the calculated parameters.
 
 ```solidity
 function createWithDurationsLL(
@@ -52,7 +52,7 @@ function createWithDurationsLL(
 Creates a stream with the provided start time and end time. The stream is funded by `msg.sender` and is wrapped in an
 ERC-721 NFT.
 
-\*Emits a {Transfer}, {CreateLockupLinearStream} and {MetadataUpdate} event. Notes:
+Emits a {Transfer}, {CreateLockupLinearStream} and {MetadataUpdate} event. Notes:
 
 - A cliff time of zero means there is no cliff.
 - As long as the times are ordered, it is not an error for the start or the cliff time to be in the past. Requirements:
@@ -66,7 +66,7 @@ ERC-721 NFT.
 - If `params.timestamps.cliff` not set, the `params.unlockAmounts.cliff` must be zero.
 - `msg.sender` must have allowed this contract to spend at least `params.depositAmount` tokens.
 - `params.token` must not be the native token.
-- `params.shape.length` must not be greater than 32 characters.\*
+- `params.shape.length` must not be greater than 32 characters.
 
 ```solidity
 function createWithTimestampsLL(

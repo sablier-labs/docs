@@ -12,15 +12,14 @@ MerkleInstant enables an airdrop model where eligible users receive the tokens a
 
 Claim airdrop on behalf of eligible recipient and transfer it to the recipient address.
 
-\*It emits a
-[ClaimInstant](/docs/reference/airdrops/contracts/interfaces/interface.ISablierMerkleInstant.md#claiminstant) event.
-Requirements:
+It emits a [ClaimInstant](/docs/reference/airdrops/contracts/interfaces/interface.ISablierMerkleInstant.md#claiminstant)
+event. Requirements:
 
 - The current time must be greater than or equal to the campaign start time.
 - The campaign must not have expired.
 - `msg.value` must not be less than the value returned by {COMPTROLLER.calculateMinFeeWei}.
 - The `index` must not be claimed already.
-- The Merkle proof must be valid.\*
+- The Merkle proof must be valid.
 
 ```solidity
 function claim(uint256 index, address recipient, uint128 amount, bytes32[] calldata merkleProof) external payable;
@@ -39,13 +38,12 @@ function claim(uint256 index, address recipient, uint128 amount, bytes32[] calld
 
 Claim airdrop and transfer the tokens to the `to` address.
 
-\*It emits a
-[ClaimInstant](/docs/reference/airdrops/contracts/interfaces/interface.ISablierMerkleInstant.md#claiminstant) event.
-Requirements:
+It emits a [ClaimInstant](/docs/reference/airdrops/contracts/interfaces/interface.ISablierMerkleInstant.md#claiminstant)
+event. Requirements:
 
 - `msg.sender` must be the airdrop recipient.
 - The `to` must not be the zero address.
-- Refer to the requirements in {claim}.\*
+- Refer to the requirements in {claim}.
 
 ```solidity
 function claimTo(uint256 index, address to, uint128 amount, bytes32[] calldata merkleProof) external payable;
@@ -65,9 +63,8 @@ function claimTo(uint256 index, address to, uint128 amount, bytes32[] calldata m
 Claim airdrop on behalf of eligible recipient using an EIP-712 or EIP-1271 signature, and transfer the tokens to the
 `to` address.
 
-\*It emits a
-[ClaimInstant](/docs/reference/airdrops/contracts/interfaces/interface.ISablierMerkleInstant.md#claiminstant) event.
-Requirements:
+It emits a [ClaimInstant](/docs/reference/airdrops/contracts/interfaces/interface.ISablierMerkleInstant.md#claiminstant)
+event. Requirements:
 
 - If `recipient` is an EOA, it must match the recovered signer.
 - If `recipient` is a contract, it must implement the IERC-1271 interface.

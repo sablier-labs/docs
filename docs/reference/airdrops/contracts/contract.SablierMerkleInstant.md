@@ -41,13 +41,13 @@ constructor(
 
 Claim airdrop on behalf of eligible recipient and transfer it to the recipient address.
 
-\*It emits a {ClaimInstant} event. Requirements:
+It emits a {ClaimInstant} event. Requirements:
 
 - The current time must be greater than or equal to the campaign start time.
 - The campaign must not have expired.
 - `msg.value` must not be less than the value returned by {COMPTROLLER.calculateMinFeeWei}.
 - The `index` must not be claimed already.
-- The Merkle proof must be valid.\*
+- The Merkle proof must be valid.
 
 ```solidity
 function claim(
@@ -74,11 +74,11 @@ function claim(
 
 Claim airdrop and transfer the tokens to the `to` address.
 
-\*It emits a {ClaimInstant} event. Requirements:
+It emits a {ClaimInstant} event. Requirements:
 
 - `msg.sender` must be the airdrop recipient.
 - The `to` must not be the zero address.
-- Refer to the requirements in {claim}.\*
+- Refer to the requirements in {claim}.
 
 ```solidity
 function claimTo(
@@ -107,7 +107,7 @@ function claimTo(
 Claim airdrop on behalf of eligible recipient using an EIP-712 or EIP-1271 signature, and transfer the tokens to the
 `to` address.
 
-\*It emits a {ClaimInstant} event. Requirements:
+It emits a {ClaimInstant} event. Requirements:
 
 - If `recipient` is an EOA, it must match the recovered signer.
 - If `recipient` is a contract, it must implement the IERC-1271 interface.

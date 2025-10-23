@@ -49,12 +49,12 @@ function computeMerkleInstant(
 
 Creates a new MerkleInstant campaign for instant distribution of tokens.
 
-\*Emits a {CreateMerkleInstant} event. Notes:
+Emits a {CreateMerkleInstant} event. Notes:
 
 - The contract is created with CREATE2.
 - The campaign's fee will be set to the min USD fee unless a custom fee is set for `msg.sender`.
 - A value of zero for `params.expiration` means the campaign does not expire. Requirements:
-- `params.token` must not be the forbidden native token.\*
+- `params.token` must not be the forbidden native token.
 
 ```solidity
 function createMerkleInstant(

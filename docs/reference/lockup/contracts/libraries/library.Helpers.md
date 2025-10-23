@@ -129,13 +129,13 @@ function _checkCreateStream(
 
 ### \_checkSegments
 
-\*Checks:
+Checks:
 
 1. The first timestamp is strictly greater than the start time.
 2. The timestamps are ordered chronologically.
 3. There are no duplicate timestamps.
 4. The deposit amount is equal to the sum of all segment amounts.
-5. The end time equals the last segment's timestamp.\*
+5. The end time equals the last segment's timestamp.
 
 ```solidity
 function _checkSegments(
@@ -149,13 +149,13 @@ function _checkSegments(
 
 ### \_checkTranches
 
-\*Checks:
+Checks:
 
 1. The first timestamp is strictly greater than the start time.
 2. The timestamps are ordered chronologically.
 3. There are no duplicate timestamps.
 4. The deposit amount is equal to the sum of all tranche amounts.
-5. The end time equals the last tranche's timestamp.\*
+5. The end time equals the last tranche's timestamp.
 
 ```solidity
 function _checkTranches(

@@ -49,7 +49,7 @@ function computeMerkleVCA(
 
 Creates a new MerkleVCA campaign for variable distribution of tokens.
 
-\*Emits a {CreateMerkleVCA} event. Notes:
+Emits a {CreateMerkleVCA} event. Notes:
 
 - The contract is created with CREATE2.
 - The campaign's fee will be set to the min USD fee unless a custom fee is set for `msg.sender`.
@@ -60,7 +60,7 @@ Creates a new MerkleVCA campaign for variable distribution of tokens.
 - `params.expiration` must be at least 1 week beyond the end time to ensure loyal recipients have enough time to claim.
 - `params.vestingEndTime` must be greater than `params.vestingStartTime`.
 - Both `params.vestingStartTime` and `params.vestingEndTime` must be greater than 0.
-- `params.unlockPercentage` must not be greater than 1e18, equivalent to 100%.\*
+- `params.unlockPercentage` must not be greater than 1e18, equivalent to 100%.
 
 ```solidity
 function createMerkleVCA(

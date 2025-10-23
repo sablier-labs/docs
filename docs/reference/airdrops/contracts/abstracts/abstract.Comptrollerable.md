@@ -42,7 +42,7 @@ constructor(address initialComptroller);
 
 Sets the comptroller to a new address.
 
-\*Emits a {SetComptroller} event. Requirements:
+Emits a {SetComptroller} event. Requirements:
 
 - `msg.sender` must be the current comptroller.
 - The new comptroller must return `true` from {supportsInterface} with the comptroller's minimal interface ID which is
@@ -51,7 +51,7 @@ Sets the comptroller to a new address.
 1. {calculateMinFeeWeiFor}
 2. {convertUSDFeeToWei}
 3. {execute}
-4. {getMinFeeUSDFor}\*
+4. {getMinFeeUSDFor}
 
 ```solidity
 function setComptroller(ISablierComptroller newComptroller) external override onlyComptroller;
