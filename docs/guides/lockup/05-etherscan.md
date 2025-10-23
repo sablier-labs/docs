@@ -13,7 +13,7 @@ Just like any other open protocol, Lockup can be interacted with directly throug
 In this guide, we will show you how to create a stream and withdraw from a stream by manually interacting with the
 Lockup Core contracts on Etherscan.
 
-If you're interested in interacting with V1, please refer to this
+If you're interested in interacting with Legacy contracts, please refer to this
 [article](https://blog.sablier.com/operating-the-sablier-v1-protocol-manually/).
 
 ## Creating a Stream
@@ -45,11 +45,11 @@ We will now proceed to create our first stream. Let's go with the following para
 
 - a Lockup Linear stream
 - and a deposit of 100 DAI
-- starting Jan 27, 2025
-- ending Jan 27, 2026
-- with cliff until Jan 30, 2025 and cliff amount of 2 DAI
+- starting Jan 1, 2026
+- ending Jan 1, 2027
+- with cliff until Jan 24, 2026 and cliff amount of 2 DAI
 - no token unlock at start time
-- non-cancelable
+- cancelable
 - and transferrable
 
 As the start and end date are fixed, we'll be using the
@@ -71,17 +71,16 @@ transaction. For this example, we will not be attaching any value and therefore 
 
 ```json
 {
-  "sender": "0xf26994E6Af0b95cCa8DFA22A0BC25E1f38a54C42",
-  "recipient": "0xb4bf8a8475d1e8e9a2088f118ad0e2cdc2896183",
-  "totalAmount": 100000000000000000000,
-  "token": "0x3DcBc355c5B5FdF45D2d2ccc8890d76C5b30394A",
-  "cancelable": false,
+  "sender": "0xb1bEF51ebCA01EB12001a639bDBbFF6eEcA12B9F",
+  "recipient": "0xf26994E6Af0b95cCa8DFA22A0BC25E1f38a54C42",
+  "depositAmount": 100000000000000000000,
+  "token": "0x776b6fC2eD15D6Bb5Fc32e0c89DE68683118c62A",
+  "cancelable": true,
   "transferable": true,
-  "timestamps": [1737936000, 1769472000],
+  "timestamps": [1767261600, 1798797600],
   "shape": "",
-  "broker": ["0x0000000000000000000000000000000000000000", 0],
   "unlockAmounts": ["0", "2000000000000000000"],
-  "cliffTime": 1738195200
+  "cliffTime": 1769261600
 }
 ```
 
@@ -90,10 +89,10 @@ provide it like this:
 
 ```json
 [
+  "0xb1bEF51ebCA01EB12001a639bDBbFF6eEcA12B9F",
   "0xf26994E6Af0b95cCa8DFA22A0BC25E1f38a54C42",
-  "0xb4bf8a8475d1e8e9a2088f118ad0e2cdc2896183",
   100000000000000000000,
-  "0x3DcBc355c5B5FdF45D2d2ccc8890d76C5b30394A",
+  "0x776b6fC2eD15D6Bb5Fc32e0c89DE68683118c62A",
   false,
   true,
   [1737936000, 1769472000],
@@ -119,11 +118,27 @@ from Etherscan to learn how to correctly format input data for Write Contract ta
 
 As an example, in the screenshot below, we are providing input parameters for
 [`createWithTimestampsLL`](/reference/lockup/contracts/contract.SablierBatchLockup#createwithtimestampsll) function in
-[`SablierBatchLockup`](https://sepolia.etherscan.io/address/0x04A9c14b7a000640419aD5515Db4eF4172C00E31#writeContract)
+[`SablierBatchLockup`](https://sepolia.etherscan.io/address/0x44Fd5d5854833975E5Fc80666a10cF3376C088E0#writeContract)
 contract. As you can see, since `batch` requires a tuple and does not break it down into separate fields, we had to use
 the above method.
 
 ![Etherscan 08](/img/etherscan-tutorial/08.webp)
+
+```json
+[
+  [
+    "0xb1bEF51ebCA01EB12001a639bDBbFF6eEcA12B9F",
+    "0xf26994E6Af0b95cCa8DFA22A0BC25E1f38a54C42",
+    "100000000000000000000",
+    true,
+    true,
+    [1767261600, 1798797600],
+    1769261600,
+    ["0", "2000000000000000000"],
+    ""
+  ]
+]
+```
 
 #### Sender
 
@@ -137,9 +152,9 @@ Most users will set their own wallet address as the sender.
 The address you want to stream tokens to. The owner of this address is the stream recipient and will receive tokens on
 [withdraw](#withdrawing-from-a-stream).
 
-#### Total Amount
+#### Deposit Amount
 
-This is the total amount of tokens available to be streamed, **DECIMALS INCLUDED**. If the asset has 18 decimals, for
+This is the deposit amount of tokens available to be streamed, **DECIMALS INCLUDED**. If the token has 18 decimals, for
 example, you will need to add eighteen zeros after the amount. Let's say you want to stream 20,000 DAI like in this
 example, you will need to fill in `20000000000000000000000`.
 
@@ -223,7 +238,7 @@ to represent the total duration of the stream (in seconds) and the duration of t
 
 To withdraw from a stream using Etherscan, you will need to obtain the stream's ID. To obtain this without the Sablier
 Interface, find the transaction which created the stream on Etherscan. Here's an
-[example](https://sepolia.etherscan.io/tx/0xf40e0a5ccf134aaa889f2e5d040f5f4fc3bc157298cdac7a2a620a3d784ebbd1) of what it
+[example](https://sepolia.etherscan.io/tx/0x1346d7bcb82b70f20e35ed2d404b0b65593344cf54b4b402af170434799e40cf) of what it
 should look like.
 
 Once found, you will see the stream ID between the two brackets. Note that stream ID and "Token ID" are the same thing.
@@ -338,12 +353,12 @@ For the purpose of creating a **LockupLinear** stream with Lockup, the spender w
 
 As for the amount, you'll have to pad it with the right number of decimals. For DAI, that's 18 decimals, so a value of
 `100` will turn into `100 * 1e18` (100 followed by 18 zeroes). For USDC,that's 6 decimals, so a value of `100` will turn
-into `100 * 1e8` (100 followed by 8 zeroes). The same logic applies to the [total amounts](#total-amount) when creating
-the stream.
+into `100 * 1e8` (100 followed by 8 zeroes). The same logic applies to the [deposit amounts](#deposit-amount) when
+creating the stream.
 
 ```json
 {
-  "spender": "0xd116c275541cdBe7594A202bD6AE4DBca4578462",
+  "spender": "0x6b0307b4338f2963A62106028E3B074C2c0510DA",
   "amount": 100000000000000000000
 }
 ```
