@@ -46,7 +46,7 @@ Create a contract called `MerkleCreator`, and declare a constant `DAI` of type `
 contract MerkleCreator {
     IERC20 public constant DAI = IERC20(0x68194a729C2450ad26072b3D33ADaCbcef39D574);
     ISablierMerkleFactory public constant FACTORY = ISablierMerkleFactory(0x4ECd5A688b0365e61c1a764E8BF96A7C5dF5d35F);
-    ISablierLockup public constant LOCKUP = ISablierLockup(0xC2Da366fD67423b500cDF4712BdB41d0995b0794);
+    ISablierLockup public constant LOCKUP = ISablierLockup(0xcF8ce57fa442ba50aCbC57147a62aD03873FfA73);
 }
 ```
 
@@ -169,8 +169,8 @@ Now that we have the `baseParams` ready, it's time to setup rest of the input pa
 
 ### Aggregate Amount
 
-This is the total amount of tokens you want to airdrop to your users, denoted in units of the asset's decimals. Let's say
-you want to airdrop 100M tokens of DAI. Then, the aggregate amount would be $100m\times 10^{18}$.
+This is the total amount of tokens you want to airdrop to your users, denoted in units of the asset's decimals. Let's
+say you want to airdrop 100M tokens of DAI. Then, the aggregate amount would be $100m\times 10^{18}$.
 
 ```solidity
 uint256 aggregateAmount = 100_000_000e18;
@@ -226,8 +226,8 @@ merkleLL = FACTORY.createMerkleLL({
 ## Full code
 
 Below you can see the full code. You can also access the code on GitHub through
-[this link](https://github.com/sablier-labs/examples/blob/main/airdrops/MerkleCreator.sol).
+[this link](https://github.com/sablier-labs/evm-examples/blob/main/airdrops/MerkleCreator.sol).
 
 <CodeBlock language="solidity" showLineNumbers metastring={`reference title="Merkle Campaign Creator"`}>
-  {`https://github.com/sablier-labs/examples/blob/main/airdrops/MerkleCreator.sol`}
+  {`https://github.com/sablier-labs/evm-examples/blob/main/airdrops/MerkleCreator.sol`}
 </CodeBlock>

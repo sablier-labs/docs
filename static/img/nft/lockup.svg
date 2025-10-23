@@ -77,10 +77,10 @@
   </defs>
   <text text-rendering="optimizeSpeed">
     <textPath startOffset="-100%" href="#FloatingText" fill="#fff" font-family="'Courier New',Arial,monospace" fill-opacity=".8" font-size="26px">
-      <animate additive="sum" attributeName="startOffset" begin="0s" dur="50s" from="0%" repeatCount="indefinite" to="100%" />0xc2da366fd67423b500cdf4712bdb41d0995b0794 • Sablier Lockup
+      <animate additive="sum" attributeName="startOffset" begin="0s" dur="50s" from="0%" repeatCount="indefinite" to="100%" />0xcF8ce57fa442ba50aCbC57147a62aD03873FfA73 • Sablier Lockup
     </textPath>
     <textPath startOffset="0%" href="#FloatingText" fill="#fff" font-family="'Courier New',Arial,monospace" fill-opacity=".8" font-size="26px">
-      <animate additive="sum" attributeName="startOffset" begin="0s" dur="50s" from="0%" repeatCount="indefinite" to="100%" />0xc2da366fd67423b500cdf4712bdb41d0995b0794 • Sablier Lockup
+      <animate additive="sum" attributeName="startOffset" begin="0s" dur="50s" from="0%" repeatCount="indefinite" to="100%" />0xcF8ce57fa442ba50aCbC57147a62aD03873FfA73 • Sablier Lockup
     </textPath>
     <textPath startOffset="-50%" href="#FloatingText" fill="#fff" font-family="'Courier New',Arial,monospace" fill-opacity=".8" font-size="26px">
       <animate additive="sum" attributeName="startOffset" begin="0s" dur="50s" from="0%" repeatCount="indefinite" to="100%" />0x3dcbc355c5b5fdf45d2d2ccc8890d76c5b30394a • Morph

@@ -10,7 +10,7 @@ title: "Stream Shapes"
   [here](https://github.com/sablier-labs/examples/tree/shapes-benchmark).
 
 - If you are interested in learning how to programmatically create the curves shown below in Solidity, check out the
-  [examples](https://github.com/sablier-labs/examples/blob/main/lockup/) repository and the "CurvesCreator" files.
+  [examples](https://github.com/sablier-labs/evm-examples/blob/main/lockup/) repository and the "CurvesCreator" files.
 
 :::
 
@@ -293,7 +293,8 @@ vary as there are multiple factors to consider.
 
 ### Backweighted
 
-Backweighted is a type of tranched vesting curve where the tokens are vested in a backweighted way, meaning little vests early on, and large chunks vest towards the end.
+Backweighted is a type of tranched vesting curve where the tokens are vested in a backweighted way, meaning little vests
+early on, and large chunks vest towards the end.
 
 Example for a 4-year vesting schedule:
 
@@ -302,7 +303,8 @@ Example for a 4-year vesting schedule:
 - Year 3: 30% vests
 - Year 4: 40% vests
 
-This makes it a particularly good fit for recipients that need to be particularly incentivized on a long-term perspective, as they receive progressively more and more tokens as the stream gets closer to its end date.
+This makes it a particularly good fit for recipients that need to be particularly incentivized on a long-term
+perspective, as they receive progressively more and more tokens as the stream gets closer to its end date.
 
 <FunctionPlot
   options={{

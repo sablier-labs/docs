@@ -32,10 +32,10 @@ Now, import the relevant symbols from `@sablier/lockup`:
 ```solidity
 import { IERC20 } from "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 import { ud2x18 } from "@prb/math/src/UD2x18.sol";
-import { ud60x18 } from "@prb/math/src/UD60x18.sol";
 import { ISablierBatchLockup } from "@sablier/lockup/src/interfaces/ISablierBatchLockup.sol";
 import { ISablierLockup } from "@sablier/lockup/src/interfaces/ISablierLockup.sol";
-import { BatchLockup, Broker, LockupDynamic } from "@sablier/lockup/src/types/DataTypes.sol";
+import { BatchLockup } from "@sablier/lockup/src/types/BatchLockup.sol";
+import { LockupDynamic } from "@sablier/lockup/src/types/LockupDynamic.sol";
 ```
 
 Create a contract called `BatchLDStreamCreator`, and declare a constant `DAI` of type `IERC20`, a constant `LOCKUP` of
@@ -44,8 +44,8 @@ type `ISablierLockup`, and a constant `BATCH_LOCKUP` of type `ISablierBatchLocku
 ```solidity
 contract BatchLDStreamCreator {
     IERC20 public constant DAI = IERC20(0x68194a729C2450ad26072b3D33ADaCbcef39D574);
-    ISablierLockup public constant LOCKUP = ISablierLockup(0xC2Da366fD67423b500cDF4712BdB41d0995b0794);
-    ISablierBatchLockup public constant BATCH_LOCKUP = ISablierBatchLockup(0xd4294579236eE290668c8FdaE9403c4F00D914f0);
+    ISablierLockup public constant LOCKUP = ISablierLockup(0xcF8ce57fa442ba50aCbC57147a62aD03873FfA73);
+    ISablierBatchLockup public constant BATCH_LOCKUP = ISablierBatchLockup(0x0636D83B184D65C242c43de6AAd10535BFb9D45a);
 }
 ```
 
@@ -73,7 +73,7 @@ structs:
 BatchLockup.CreateWithTimestampsLD memory stream0;
 stream0.sender = address(0xABCD); // The sender to stream the tokens, he will be able to cancel the stream
 stream0.recipient = address(0xCAFE); // The recipient of the streamed tokens
-stream0.totalAmount = perStreamAmount; // The total amount of each stream, inclusive of all fees
+stream0.depositAmount = perStreamAmount; // The deposit amount of each stream
 stream0.cancelable = true; // Whether the stream will be cancelable or not
 stream0.transferable = false; // Whether the recipient can transfer the NFT or not
 stream0.startTime = uint40(block.timestamp); // Set the start time to block timestamp
@@ -91,7 +91,6 @@ stream0.segments[1] = (
         timestamp: uint40(block.timestamp + 24 weeks)
     })
 );
-stream0.broker = Broker(address(0), ud60x18(0)); // Optional parameter left undefined
 ```
 
 To add some variety, we will change the parameters of the second stream:
@@ -100,7 +99,7 @@ To add some variety, we will change the parameters of the second stream:
 BatchLockup.CreateWithTimestampsLD memory stream1;
 stream1.sender = address(0xABCD); // The sender to stream the tokens, he will be able to cancel the stream
 stream1.recipient = address(0xBEEF); // The recipient of the streamed tokens
-stream1.totalAmount = uint128(perStreamAmount); // The total amount of each stream, inclusive of all fees
+stream1.depositAmount = uint128(perStreamAmount); // The deposit amount of each stream
 stream1.cancelable = false; // Whether the stream will be cancelable or not
 stream1.transferable = false; // Whether the recipient can transfer the NFT or not
 stream1.startTime = uint40(block.timestamp); // Set the start time to block timestamp
@@ -118,7 +117,6 @@ stream1.segments[1] = (
         timestamp: uint40(block.timestamp + 52 weeks)
     })
 );
-stream1.broker = Broker(address(0), ud60x18(0)); // Optional parameter left undefined
 ```
 
 Once both structs are declared, the batch array has to be filled:
@@ -142,8 +140,8 @@ streamIds = BATCH_LOCKUP.createWithTimestampsLD(LOCKUP_DYNAMIC, DAI, batch);
 ## Full code
 
 Below you can see the full code. You can also access the code on GitHub through
-[this link](https://github.com/sablier-labs/examples/blob/main/lockup/BatchLDStreamCreator.sol).
+[this link](https://github.com/sablier-labs/evm-examples/blob/main/lockup/BatchLDStreamCreator.sol).
 
 <CodeBlock language="solidity" showLineNumbers metastring={`reference title="Batch Lockup Dynamic stream creator"`}>
-  {`https://github.com/sablier-labs/examples/blob/main/lockup/BatchLDStreamCreator.sol`}
+  {`https://github.com/sablier-labs/evm-examples/blob/main/lockup/BatchLDStreamCreator.sol`}
 </CodeBlock>
