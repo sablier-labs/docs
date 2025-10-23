@@ -33,7 +33,8 @@ Import the relevant symbols from `@sablier/lockup`:
 ```solidity
 import { IERC20 } from "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 import { ISablierLockup } from "@sablier/lockup/src/interfaces/ISablierLockup.sol";
-import { Lockup, LockupLinear } from "@sablier/lockup/src/types/DataTypes.sol";
+import { Lockup } from "@sablier/lockup/src/types/Lockup.sol";
+import { LockupLinear } from "@sablier/lockup/src/types/LockupLinear.sol";
 ```
 
 Create a contract called `LockupLinearStreamCreator`, and declare a constant `DAI` of type `IERC20` and a constant
