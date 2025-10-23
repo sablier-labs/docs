@@ -1,5 +1,8 @@
 {
   "github": {
     "silent": true
-  }
+  },
+  "installCommand": "bun install --frozen-lockfile",
+  "buildCommand": "bun run build",
+  "framework": null
 }
