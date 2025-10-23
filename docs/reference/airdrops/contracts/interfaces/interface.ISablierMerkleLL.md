@@ -55,7 +55,7 @@ function VESTING_TOTAL_DURATION() external view returns (uint40);
 Claim airdrop on behalf of eligible recipient. If the vesting end time is in the future, it creates a Lockup Linear
 stream, otherwise it transfers the tokens directly to the recipient address.
 
-\*It emits either
+It emits either
 [ClaimLLWithTransfer](/docs/reference/airdrops/contracts/interfaces/interface.ISablierMerkleLL.md#claimllwithtransfer)
 or {ClaimLLWithVesting} event. Requirements:
 
@@ -64,7 +64,7 @@ or {ClaimLLWithVesting} event. Requirements:
 - `msg.value` must not be less than the value returned by {COMPTROLLER.calculateMinFeeWei}.
 - The `index` must not be claimed already.
 - The Merkle proof must be valid.
-- All requirements from {ISablierLockupLinear.createWithTimestampsLL} must be met.\*
+- All requirements from {ISablierLockupLinear.createWithTimestampsLL} must be met.
 
 ```solidity
 function claim(uint256 index, address recipient, uint128 amount, bytes32[] calldata merkleProof) external payable;
@@ -84,13 +84,13 @@ function claim(uint256 index, address recipient, uint128 amount, bytes32[] calld
 Claim airdrop. If the vesting end time is in the future, it creates a Lockup Linear stream with `to` address as the
 stream recipient, otherwise it transfers the tokens directly to the `to` address.
 
-\*It emits either
+It emits either
 [ClaimLLWithTransfer](/docs/reference/airdrops/contracts/interfaces/interface.ISablierMerkleLL.md#claimllwithtransfer)
 or {ClaimLLWithVesting} event. Requirements:
 
 - `msg.sender` must be the airdrop recipient.
 - The `to` must not be the zero address.
-- Refer to the requirements in {claim}.\*
+- Refer to the requirements in {claim}.
 
 ```solidity
 function claimTo(uint256 index, address to, uint128 amount, bytes32[] calldata merkleProof) external payable;
@@ -111,7 +111,7 @@ Claim airdrop on behalf of eligible recipient using an EIP-712 or EIP-1271 signa
 future, it creates a Lockup Linear stream with `to` address as the stream recipient, otherwise it transfers the tokens
 directly to the `to` address.
 
-\*It emits either
+It emits either
 [ClaimLLWithTransfer](/docs/reference/airdrops/contracts/interfaces/interface.ISablierMerkleLL.md#claimllwithtransfer)
 or {ClaimLLWithVesting} event. Requirements:
 

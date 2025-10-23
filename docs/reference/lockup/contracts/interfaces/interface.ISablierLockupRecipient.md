@@ -17,10 +17,10 @@ _See [IERC165-supportsInterface](https://eips.ethereum.org/EIPS/eip-165). The im
 
 Responds to cancellations.
 
-\*Notes:
+Notes:
 
 - The function MUST return the selector `ISablierLockupRecipient.onSablierLockupCancel.selector`.
-- If this function reverts, the execution in the Lockup contract will revert as well.\*
+- If this function reverts, the execution in the Lockup contract will revert as well.
 
 ```solidity
 function onSablierLockupCancel(
@@ -52,10 +52,10 @@ function onSablierLockupCancel(
 
 Responds to withdrawals triggered by any address except the contract implementing this interface.
 
-\*Notes:
+Notes:
 
 - The function MUST return the selector `ISablierLockupRecipient.onSablierLockupWithdraw.selector`.
-- If this function reverts, the execution in the Lockup contract will revert as well.\*
+- If this function reverts, the execution in the Lockup contract will revert as well.
 
 ```solidity
 function onSablierLockupWithdraw(

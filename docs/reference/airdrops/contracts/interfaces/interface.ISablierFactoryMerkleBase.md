@@ -26,13 +26,13 @@ function nativeToken() external view returns (address);
 
 Sets the native token address. Once set, it cannot be changed.
 
-\*For more information, see the documentation for
+For more information, see the documentation for
 [nativeToken](/docs/reference/airdrops/contracts/interfaces/interface.ISablierFactoryMerkleBase.md#nativetoken). Emits a
 {SetNativeToken} event. Requirements:
 
 - `msg.sender` must be the comptroller.
 - `newNativeToken` must not be zero address.
-- The native token must not be already set.\*
+- The native token must not be already set.
 
 ```solidity
 function setNativeToken(address newNativeToken) external;

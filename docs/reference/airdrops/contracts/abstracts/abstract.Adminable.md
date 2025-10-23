@@ -44,12 +44,12 @@ constructor(address initialAdmin);
 
 Transfers the contract admin to a new address.
 
-\*Notes:
+Notes:
 
 - Does not revert if the admin is the same.
 - This function can potentially leave the contract without an admin, thereby removing any functionality that is only
   available to the admin. Requirements:
-- `msg.sender` must be the contract admin.\*
+- `msg.sender` must be the contract admin.
 
 ```solidity
 function transferAdmin(address newAdmin) public virtual override onlyAdmin;

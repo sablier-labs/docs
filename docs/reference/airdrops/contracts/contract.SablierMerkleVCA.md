@@ -124,7 +124,7 @@ function calculateForgoneAmount(uint128 fullAmount, uint40 claimTime) external v
 Claim airdrop. If the vesting end time is in the future, it calculates the claim amount to transfer to the `to` address,
 otherwise it transfers the full amount.
 
-\*It emits a {ClaimVCA} event. Requirements:
+It emits a {ClaimVCA} event. Requirements:
 
 - The current time must be greater than or equal to the campaign start time.
 - The campaign must not have expired.
@@ -133,7 +133,7 @@ otherwise it transfers the full amount.
 - The Merkle proof must be valid.
 - The claim amount must be greater than zero.
 - `msg.sender` must be the airdrop recipient.
-- The `to` must not be the zero address.\*
+- The `to` must not be the zero address.
 
 ```solidity
 function claimTo(
@@ -162,7 +162,7 @@ function claimTo(
 Claim airdrop on behalf of eligible recipient using an EIP-712 or EIP-1271 signature. If the vesting end time is in the
 future, it calculates the claim amount to transfer to the `to` address, otherwise it transfers the full amount.
 
-\*It emits a {ClaimVCA} event. Requirements:
+It emits a {ClaimVCA} event. Requirements:
 
 - If `recipient` is an EOA, it must match the recovered signer.
 - If `recipient` is a contract, it must implement the IERC-1271 interface.

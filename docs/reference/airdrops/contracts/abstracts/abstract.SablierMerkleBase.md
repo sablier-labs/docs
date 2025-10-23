@@ -204,11 +204,11 @@ function hasExpired() public view override returns (bool);
 
 Claws back the unclaimed tokens.
 
-\*Emits a {Clawback} event. Requirements:
+Emits a {Clawback} event. Requirements:
 
 - `msg.sender` must be the admin.
 - No claim must be made, OR The current timestamp must not exceed 7 days after the first claim, OR The campaign must be
-  expired.\*
+  expired.
 
 ```solidity
 function clawback(address to, uint128 amount) external override onlyAdmin;
@@ -225,10 +225,10 @@ function clawback(address to, uint128 amount) external override onlyAdmin;
 
 Lowers the min USD fee.
 
-\*Emits a {LowerMinFeeUSD} event. Requirements:
+Emits a {LowerMinFeeUSD} event. Requirements:
 
 - `msg.sender` must be the comptroller.
-- The new fee must be less than the current {minFeeUSD}.\*
+- The new fee must be less than the current {minFeeUSD}.
 
 ```solidity
 function lowerMinFeeUSD(uint256 newMinFeeUSD) external override;

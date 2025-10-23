@@ -14,9 +14,9 @@ Creates a stream by setting the start time to `block.timestamp`, and the end tim
 all specified time durations. The segment timestamps are derived from these durations. The stream is funded by
 `msg.sender` and is wrapped in an ERC-721 NFT.
 
-\*Emits a {Transfer}, {CreateLockupDynamicStream} and {MetadataUpdate} event. Requirements:
+Emits a {Transfer}, {CreateLockupDynamicStream} and {MetadataUpdate} event. Requirements:
 
-- All requirements in {createWithTimestampsLD} must be met for the calculated parameters.\*
+- All requirements in {createWithTimestampsLD} must be met for the calculated parameters.
 
 ```solidity
 function createWithDurationsLD(
@@ -46,7 +46,7 @@ function createWithDurationsLD(
 Creates a stream with the provided segment timestamps, implying the end time from the last timestamp. The stream is
 funded by `msg.sender` and is wrapped in an ERC-721 NFT.
 
-\*Emits a {Transfer}, {CreateLockupDynamicStream} and {MetadataUpdate} event. Notes:
+Emits a {Transfer}, {CreateLockupDynamicStream} and {MetadataUpdate} event. Notes:
 
 - As long as the segment timestamps are arranged in ascending order, it is not an error for some of them to be in the
   past. Requirements:
@@ -61,7 +61,7 @@ funded by `msg.sender` and is wrapped in an ERC-721 NFT.
 - `params.sender` must not be the zero address.
 - `msg.sender` must have allowed this contract to spend at least `params.depositAmount` tokens.
 - `params.token` must not be the native token.
-- `params.shape.length` must not be greater than 32 characters.\*
+- `params.shape.length` must not be greater than 32 characters.
 
 ```solidity
 function createWithTimestampsLD(
