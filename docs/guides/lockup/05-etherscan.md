@@ -53,10 +53,10 @@ We will now proceed to create our first stream. Let's go with the following para
 - and transferrable
 
 As the start and end date are fixed, we'll be using the
-[`createwithtimestampsLL`](/reference/lockup/contracts/interfaces/interface.ISablierLockup#createwithtimestampsll)
+[`createwithtimestampsLL`](/reference/lockup/contracts/interfaces/interface.ISablierLockupLinear#createwithtimestampsll)
 method. Please note that using
-[`createwithdurationsLL`](/reference/lockup/contracts/interfaces/interface.ISablierLockup#createwithdurationsll) is also
-possible if you specify durations instead of the timestamps.
+[`createwithdurationsLL`](/reference/lockup/contracts/interfaces/interface.ISablierLockupLinear#createwithdurationsll)
+is also possible if you specify durations instead of the timestamps.
 
 Open the **"createwithtimestampsLL"** method, and start filling in the stream details:
 
@@ -143,13 +143,6 @@ This is the total amount of tokens available to be streamed, **DECIMALS INCLUDED
 example, you will need to add eighteen zeros after the amount. Let's say you want to stream 20,000 DAI like in this
 example, you will need to fill in `20000000000000000000000`.
 
-:::note
-
-The total amount will also include any [broker fee](/concepts/fees). While fees are kept at zero in Sablier UI, the
-total amount should be equal to the streamed amount plus the broker fee amount.
-
-:::
-
 #### Token
 
 The token is the contract address of the ERC-20 token being streamed. You can obtain this from the
@@ -182,13 +175,6 @@ timestamps (represented in **seconds**). You can find a Unix timestamp converter
 The shape field can be used to specify the shape of the stream that you want the User Interface to display. This is an
 optional field and can be left empty.
 
-#### Broker
-
-An optional parameter that can be set in order to charge a fee as a percentage of `totalAmount`.
-
-You can set the `broker` field to address zero and `zero` fees. Read more about fees
-[here](/concepts/glossary#broker-fee).
-
 #### Unlock Amounts
 
 The `unlockAmounts` field contains the amount of tokens that will be unlocked at the start time and at the cliff time.
@@ -215,7 +201,7 @@ your wallet, and your stream should appear like this:
 
 ![Etherscan 05](/img/etherscan-tutorial/05.webp)
 
-#### How about [`createWithDurationsLL`](/reference/lockup/contracts/contract.SablierLockup#createwithdurationsll)?
+#### How about [`createWithDurationsLL`](/reference/lockup/contracts/abstracts/abstract.SablierLockupLinear#createwithdurationsll)?
 
 For the durations version, we'll replace the `timestamps` and `cliffTime` parameters with a single `durations` parameter
 to represent the total duration of the stream (in seconds) and the duration of the cliff (in seconds).

@@ -4,15 +4,6 @@ sidebar_position: 14
 title: "Glossary"
 ---
 
-## Broker
-
-A third-party entity that interacts with the Sablier Protocol on behalf of its users, who may charge service fees for
-facilitating these interactions.
-
-## Broker Fee
-
-The fee collected, in streaming tokens, by the broker upon creating a stream for their users.
-
 ## Claim Fee
 
 The minimum fee, in native tokens, required for claiming an airdrop from a Merkle Airdrop campaign.
