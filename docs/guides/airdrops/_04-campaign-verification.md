@@ -1,7 +1,9 @@
 ---
 id: "verify-campaign"
-sidebar_position: 4
 title: "Campaign Verification"
+unlisted: true
+sidebar_custom_props:
+  exclude: true
 ---
 
 # Campaign Verification on Etherscan
