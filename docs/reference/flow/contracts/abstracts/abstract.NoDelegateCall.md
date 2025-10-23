@@ -1,6 +1,6 @@
 # NoDelegateCall
 
-[Git Source](https://github.com/sablier-labs/flow/blob/a0fa33d2843af0817e34970cdc05822ead31daaa/src/abstracts/NoDelegateCall.sol)
+[Git Source](https://github.com/sablier-labs/evm-utils/blob/0b3bc38ab8badd135fc178b757afaf6902f1f63c/src/NoDelegateCall.sol)
 
 This contract implements logic to prevent delegate calls.
 
@@ -16,14 +16,6 @@ address private immutable ORIGINAL;
 
 ## Functions
 
-### constructor
-
-_Sets the original contract address._
-
-```solidity
-constructor();
-```
-
 ### noDelegateCall
 
 Prevents delegate calls.
@@ -32,14 +24,22 @@ Prevents delegate calls.
 modifier noDelegateCall();
 ```
 
+### constructor
+
+_Sets the original contract address._
+
+```solidity
+constructor();
+```
+
 ### \_preventDelegateCall
 
-This function checks whether the current call is a delegate call, and reverts if it is.
+\*This function checks whether the current call is a delegate call, and reverts if it is.
 
 - A private function is used instead of inlining this logic in a modifier because Solidity copies modifiers into every
   function that uses them. The `ORIGINAL` address would get copied in every place the modifier is used, which would
   increase the contract size. By using a function instead, we can avoid this duplication of code and reduce the overall
-  size of the contract.
+  size of the contract.\*
 
 ```solidity
 function _preventDelegateCall() private view;

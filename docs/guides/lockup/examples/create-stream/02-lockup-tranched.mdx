@@ -32,9 +32,9 @@ Import the relevant symbols from `@sablier/lockup`:
 
 ```solidity
 import { IERC20 } from "@openzeppelin/contracts/token/ERC20/IERC20.sol";
-import { ud60x18 } from "@prb/math/src/UD60x18.sol";
 import { ISablierLockup } from "@sablier/lockup/src/interfaces/ISablierLockup.sol";
-import { Broker, Lockup, LockupTranched } from "@sablier/lockup/src/types/DataTypes.sol";
+import { Lockup } from "@sablier/lockup/src/types/Lockup.sol";
+import { LockupTranched } from "@sablier/lockup/src/types/LockupTranched.sol";
 ```
 
 Create a contract called `LockupTranchedStreamCreator`, and declare a constant `DAI` of type `IERC20` and a constant
@@ -43,7 +43,7 @@ Create a contract called `LockupTranchedStreamCreator`, and declare a constant `
 ```solidity
 contract LockupTranchedStreamCreator {
     IERC20 public constant DAI = IERC20(0x68194a729C2450ad26072b3D33ADaCbcef39D574);
-    ISablierLockup public constant LOCKUP = ISablierLockup(0xC2Da366fD67423b500cDF4712BdB41d0995b0794);
+    ISablierLockup public constant LOCKUP = ISablierLockup(0xcF8ce57fa442ba50aCbC57147a62aD03873FfA73);
 }
 ```
 
@@ -67,11 +67,11 @@ function createStream(uint128 amount0, uint128 amount1) public returns (uint256 
 }
 ```
 
-Next, sum up the `amount0` and `amount1` parameters to get the total amount of the stream, which will be needed in many
-of the steps below:
+Next, sum up the `amount0` and `amount1` parameters to get the deposit amount of the stream, which will be needed in
+many of the steps below:
 
 ```solidity
-uint256 totalAmount = amount0 + amount1;
+uint128 depositAmount = amount0 + amount1;
 ```
 
 <TokenApproval />
@@ -88,8 +88,6 @@ Lockup.CreateWithDurations memory params;
 LockupTranched.TrancheWithDuration[] memory tranches = new LockupTranched.TrancheWithDuration[](2);
 ```
 
-Let's review each parameter in detail.
-
 <LockupParam />
 
 ### Tranches With Duration
@@ -105,20 +103,12 @@ structs.
 Let's define two dummy tranches:
 
 ```solidity
-params.tranches[0] = LockupTranched.TrancheWithDuration({
-    amount: amount0,
-    duration: uint40(4 weeks)
-});
-params.tranches[1] = (
-    LockupTranched.TrancheWithDuration({
-        amount: amount1,
-        duration: uint40(6 weeks)
-    })
-);
+tranches[0] = LockupTranched.TrancheWithDuration({ amount: amount0, duration: uint40(4 weeks) });
+tranches[1] = (LockupTranched.TrancheWithDuration({ amount: amount1, duration: uint40(6 weeks) }));
 ```
 
 In this example, the first tranche (`amount0`) will unlock at the end of the 4 weeks after the stream was created and
-the second tranche (`amount1`) will unlock after further 6 weeks. Thus, the total amount will be unlocked in 10 weeks.
+the second tranche (`amount1`) will unlock after further 6 weeks. Thus, the deposit amount will be unlocked in 10 weeks.
 
 ## Invoke the create function
 
@@ -132,8 +122,8 @@ streamId = LOCKUP.createWithDurationsLT(params, tranches);
 ## Full code
 
 Below you can see the full code. You can also access the code on GitHub through
-[this link](https://github.com/sablier-labs/examples/blob/main/lockup/LockupTranchedStreamCreator.sol).
+[this link](https://github.com/sablier-labs/evm-examples/blob/main/lockup/LockupTranchedStreamCreator.sol).
 
 <CodeBlock language="solidity" showLineNumbers metastring={`reference title="Lockup Tranched Stream Creator"`}>
-  {`https://github.com/sablier-labs/examples/blob/main/lockup/LockupTranchedStreamCreator.sol`}
+  {`https://github.com/sablier-labs/evm-examples/blob/main/lockup/LockupTranchedStreamCreator.sol`}
 </CodeBlock>

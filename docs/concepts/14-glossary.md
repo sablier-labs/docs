@@ -4,15 +4,6 @@ sidebar_position: 14
 title: "Glossary"
 ---
 
-## Broker
-
-A third-party entity that interacts with the Sablier Protocol on behalf of its users, who may charge service fees for
-facilitating these interactions.
-
-## Broker Fee
-
-The fee collected, in streaming tokens, by the broker upon creating a stream for their users.
-
 ## Claim Fee
 
 The minimum fee, in native tokens, required for claiming an airdrop from a Merkle Airdrop campaign.
@@ -194,7 +185,7 @@ A data object that encapsulates amounts to be unlocked at the start of the strea
 
 ### Vesting Math
 
-[A public library](/reference/lockup/contracts/libraries/library.VestingMath) used by the Lockup protocol to calculate
+[A public library](/reference/lockup/contracts/libraries/library.LockupMath) used by the Lockup protocol to calculate
 the amount of vested tokens at any given time.
 
 ## Merkle Airdrop

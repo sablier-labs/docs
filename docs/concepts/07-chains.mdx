@@ -4,21 +4,20 @@ title: Supported Chains
 sidebar_position: 7
 ---
 
-import Chains from "@site/src/components/organisms/Chains";
+import Chains, { getChainCount } from "@site/src/components/organisms/Chains";
 import { Links } from "@site/src/constants";
-import { keys } from "lodash";
-import { sablier } from "sablier";
 
 <>
 
-The Sablier Protocol is deployed on {sablier.chains.getMainnets().length} mainnets and {sablier.chains.getTestnets().length} testnet EVM chains, although not all of these are supported by the
-[Sablier Interface](https://app.sablier.com/).
+The Sablier Protocol is deployed on {getChainCount("mainnets")} mainnets and {getChainCount("testnets")} testnet EVM
+chains, although not all of these are supported by the [Sablier Interface](https://app.sablier.com/).
 
 </>
 
 :::tip Want to list your chain?
 
-If you're interested in having Sablier deployed on your chain, fill out <Link href={Links.Forms.CALL}>this form</Link> and our team will get back to you.
+If you're interested in having Sablier deployed on your chain, fill out <Link href={Links.Forms.CALL}>this form</Link>
+and our team will get back to you.
 
 :::
 

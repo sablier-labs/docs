@@ -6,10 +6,10 @@ they are transferred from the calling address (you):
 
 ```solidity
 // Transfer the provided amount of DAI tokens to this contract
-DAI.transferFrom(msg.sender, address(this), totalAmount);
+DAI.transferFrom(msg.sender, address(this), depositAmount);
 
 // Approve the Sablier contract to spend DAI
-DAI.approve(address(LOCKUP), totalAmount);
+DAI.approve(address(LOCKUP), depositAmount);
 ```
 
 For more guidance on how to approve and transfer ERC-20 tokens, see

@@ -4,7 +4,7 @@ sidebar_position: 3
 
 # LockupNFTDescriptor
 
-[Git Source](https://github.com/sablier-labs/lockup/blob/463278dbb461b1733d6424cf0aeee3b8d6bc036a/src/LockupNFTDescriptor.sol)
+[Git Source](https://github.com/sablier-labs/lockup/blob/58eaac45c20c57a93b73d887c714e68f061ec3e6/src/LockupNFTDescriptor.sol)
 
 **Inherits:** [ILockupNFTDescriptor](/docs/reference/lockup/contracts/interfaces/interface.ILockupNFTDescriptor.md)
 
@@ -40,12 +40,12 @@ function tokenURI(IERC721Metadata lockup, uint256 streamId) external view overri
 
 Creates an abbreviated representation of the provided amount, rounded down and prefixed with ">= ".
 
-The abbreviation uses these suffixes:
+\*The abbreviation uses these suffixes:
 
 - "K" for thousands
 - "M" for millions
 - "B" for billions
-- "T" for trillions For example, if the input is 1,234,567, the output is ">= 1.23M".
+- "T" for trillions For example, if the input is 1,234,567, the output is ">= 1.23M".\*
 
 ```solidity
 function abbreviateAmount(uint256 amount, uint256 decimals) internal pure returns (string memory);

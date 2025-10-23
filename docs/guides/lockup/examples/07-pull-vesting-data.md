@@ -73,12 +73,6 @@ uint256 amountInStream = sablierLockup.getDepositedAmount(streamId)
                        - sablierLockup.getWithdrawnAmount(streamId);
 ```
 
-:::info
-
-If you want to build a Staking contract for Sablier streams, check out the [staking guide](./staking/setup).
-
-:::
-
 ### Locked amount
 
 This is the amount of tokens that are locked in the stream and are effectively illiquid. This is particularly relevant

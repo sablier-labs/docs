@@ -143,8 +143,8 @@ The chain ID where the stream was created (e.g., 137 for Polygon).
 
 #### [<code style={{ fontWeight: 'normal' }}>Stream.<b>subgraphId</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>BigInt!</b></code>](/docs/api/lockup/graphql/the-graph/scalars/big-int.mdx) <Badge class="badge badge--secondary badge--non_null" text="non-null"/> <Badge class="badge badge--secondary " text="scalar"/>
 
-Unique global id as tracked by the `Watcher` entity.
-ኆ80 This may change if new data sources are added and the chronological order of streams changes.
+Unique global id as tracked by the `Watcher` entity. ኆ80 This may change if new data sources are added and the
+chronological order of streams changes.
 
 #### [<code style={{ fontWeight: 'normal' }}>Stream.<b>tokenId</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>BigInt!</b></code>](/docs/api/lockup/graphql/the-graph/scalars/big-int.mdx) <Badge class="badge badge--secondary badge--non_null" text="non-null"/> <Badge class="badge badge--secondary " text="scalar"/>
 
@@ -178,13 +178,12 @@ ERC-20 token distributed via this stream.
 
 #### [<code style={{ fontWeight: 'normal' }}>Stream.<b>assetDecimalsValue</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>BigInt!</b></code>](/docs/api/lockup/graphql/the-graph/scalars/big-int.mdx) <Badge class="badge badge--secondary badge--non_null" text="non-null"/> <Badge class="badge badge--secondary " text="scalar"/>
 
-ERC-20 token decimals. Stored here to avoid loading the asset entity on each stream.
-Note: the "Value" suffix is added because of a bug in GraphQL Code Generator.
+ERC-20 token decimals. Stored here to avoid loading the asset entity on each stream. Note: the "Value" suffix is added
+because of a bug in GraphQL Code Generator.
 
 #### [<code style={{ fontWeight: 'normal' }}>Stream.<b>batch</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Batch!</b></code>](/docs/api/lockup/graphql/the-graph/objects/batch.mdx) <Badge class="badge badge--secondary badge--non_null" text="non-null"/> <Badge class="badge badge--secondary " text="object"/>
 
-The batch the stream may be part of.
-Note: this is available only when created within a batch create transaction.
+The batch the stream may be part of. Note: this is available only when created within a batch create transaction.
 
 #### [<code style={{ fontWeight: 'normal' }}>Stream.<b>category</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>StreamCategory!</b></code>](/docs/api/lockup/graphql/the-graph/enums/stream-category.mdx) <Badge class="badge badge--secondary badge--non_null" text="non-null"/> <Badge class="badge badge--secondary " text="enum"/>
 
@@ -200,8 +199,8 @@ Position in the batch, if available.
 
 #### [<code style={{ fontWeight: 'normal' }}>Stream.<b>recipient</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Bytes!</b></code>](/docs/api/lockup/graphql/the-graph/scalars/bytes.mdx) <Badge class="badge badge--secondary badge--non_null" text="non-null"/> <Badge class="badge badge--secondary " text="scalar"/>
 
-Current recipient of the stream, with permission to withdraw funds to any third-party address.
-Note: the recipient can change on NFT transfer.
+Current recipient of the stream, with permission to withdraw funds to any third-party address. Note: the recipient can
+change on NFT transfer.
 
 #### [<code style={{ fontWeight: 'normal' }}>Stream.<b>sender</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Bytes!</b></code>](/docs/api/lockup/graphql/the-graph/scalars/bytes.mdx) <Badge class="badge badge--secondary badge--non_null" text="non-null"/> <Badge class="badge badge--secondary " text="scalar"/>
 
@@ -213,8 +212,7 @@ Unix timestamp for the start of the stream.
 
 #### [<code style={{ fontWeight: 'normal' }}>Stream.<b>transferable</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Boolean!</b></code>](/docs/api/lockup/graphql/the-graph/scalars/boolean.mdx) <Badge class="badge badge--secondary badge--non_null" text="non-null"/> <Badge class="badge badge--secondary " text="scalar"/>
 
-Flag indicating the transferability of the stream. This is set when the stream is created, and cannot
-be changed later.
+Flag indicating the transferability of the stream. This is set when the stream is created, and cannot be changed later.
 
 #### [<code style={{ fontWeight: 'normal' }}>Stream.<b>version</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String!</b></code>](/docs/api/lockup/graphql/the-graph/scalars/string.mdx) <Badge class="badge badge--secondary badge--non_null" text="non-null"/> <Badge class="badge badge--secondary " text="scalar"/>
 
@@ -230,8 +228,8 @@ Action in which the stream was canceled.
 
 #### [<code style={{ fontWeight: 'normal' }}>Stream.<b>renounceAction</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Action</b></code>](/docs/api/lockup/graphql/the-graph/objects/action.mdx) <Badge class="badge badge--secondary " text="object"/>
 
-Action in which the stream was made non-cancelable.
-Note: if the stream was made non-cancelable from the get-go, this is the same as the Create action.
+Action in which the stream was made non-cancelable. Note: if the stream was made non-cancelable from the get-go, this is
+the same as the Create action.
 
 #### [<code style={{ fontWeight: 'normal' }}>Stream.<b>cancelable</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Boolean!</b></code>](/docs/api/lockup/graphql/the-graph/scalars/boolean.mdx) <Badge class="badge badge--secondary badge--non_null" text="non-null"/> <Badge class="badge badge--secondary " text="scalar"/>
 
@@ -263,13 +261,13 @@ The account that funded the stream, which can be different from the sender.
 
 #### [<code style={{ fontWeight: 'normal' }}>Stream.<b>intactAmount</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>BigInt!</b></code>](/docs/api/lockup/graphql/the-graph/scalars/big-int.mdx) <Badge class="badge badge--secondary badge--non_null" text="non-null"/> <Badge class="badge badge--secondary " text="scalar"/>
 
-The amount that is still held by the stream regardless of whether if was fully vested or not.
-This is the difference between the deposit amount and all withdrawn amounts.
+The amount that is still held by the stream regardless of whether if was fully vested or not. This is the difference
+between the deposit amount and all withdrawn amounts.
 
 #### [<code style={{ fontWeight: 'normal' }}>Stream.<b>proxender</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Bytes</b></code>](/docs/api/lockup/graphql/the-graph/scalars/bytes.mdx) <Badge class="badge badge--secondary " text="scalar"/>
 
-Owner of the proxy when the stream is created through a PRBProxy (https://github.com/PaulRBerg/prb-proxy)
-Note that proxy = stream sender, and proxender = owner of proxy
+Owner of the proxy when the stream is created through a PRBProxy (https://github.com/PaulRBerg/prb-proxy) Note that
+proxy = stream sender, and proxender = owner of proxy
 
 #### [<code style={{ fontWeight: 'normal' }}>Stream.<b>proxied</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Boolean!</b></code>](/docs/api/lockup/graphql/the-graph/scalars/boolean.mdx) <Badge class="badge badge--secondary badge--non_null" text="non-null"/> <Badge class="badge badge--secondary " text="scalar"/>
 
@@ -281,8 +279,7 @@ Unix timestamp for when the stream was made non-cancelable. This can coincide wi
 
 #### [<code style={{ fontWeight: 'normal' }}>Stream.<b>shape</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String</b></code>](/docs/api/lockup/graphql/the-graph/scalars/string.mdx) <Badge class="badge badge--secondary " text="scalar"/>
 
-An optional parameter to specify the shape of the distribution.
-Available since Lockup v2.0.
+An optional parameter to specify the shape of the distribution. Available since Lockup v2.0.
 
 #### [<code style={{ fontWeight: 'normal' }}>Stream.<b>cliff</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Boolean</b></code>](/docs/api/lockup/graphql/the-graph/scalars/boolean.mdx) <Badge class="badge badge--secondary " text="scalar"/>
 
@@ -298,13 +295,11 @@ Unix timestamp for the start of the cliff.
 
 #### [<code style={{ fontWeight: 'normal' }}>Stream.<b>initial</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Boolean</b></code>](/docs/api/lockup/graphql/the-graph/scalars/boolean.mdx) <Badge class="badge badge--secondary " text="scalar"/>
 
-Flag for Linear stream with an initial unlock.
-Available since Lockup v2.0.
+Flag for Linear stream with an initial unlock. Available since Lockup v2.0.
 
 #### [<code style={{ fontWeight: 'normal' }}>Stream.<b>initialAmount</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>BigInt</b></code>](/docs/api/lockup/graphql/the-graph/scalars/big-int.mdx) <Badge class="badge badge--secondary " text="scalar"/>
 
-The initial unlock amount of a Linear stream.
-Available since Lockup v2.0.
+The initial unlock amount of a Linear stream. Available since Lockup v2.0.
 
 #### [<code style={{ fontWeight: 'normal' }}>Stream.<b>segments</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>[Segment!]!</b></code>](/docs/api/lockup/graphql/the-graph/objects/segment.mdx) <Badge class="badge badge--secondary badge--non_null" text="non-null"/> <Badge class="badge badge--secondary " text="object"/>
 

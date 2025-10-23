@@ -32,15 +32,14 @@ Import the relevant symbols from `@sablier/flow` and `@prb/math`:
 
 ```solidity
 import { ud21x18 } from "@prb/math/src/UD21x18.sol";
-import { ud60x18 } from "@prb/math/src/UD60x18.sol";
-import { Broker, ISablierFlow } from "@sablier/flow/src/interfaces/ISablierFlow.sol";
+import { ISablierFlow } from "@sablier/flow/src/interfaces/ISablierFlow.sol";
 ```
 
 Declare the contract and add the Flow address as a constant:
 
 ```solidity
 contract FlowStreamManager {
-    ISablierFlow public constant FLOW = ISablierFlow(0x52ab22e769E31564E17D524b683264B65662A014);
+    ISablierFlow public constant FLOW = ISablierFlow(0x7a86d3e6894f9c5B5f25FFBDAaE658CFc7569623);
 }
 ```
 
@@ -62,8 +61,6 @@ There are three deposit functions:
 1. [`deposit`](/reference/flow/contracts/contract.SablierFlow#deposit): deposits an amount of tokens.
 2. [`depositAndPause`](/reference/flow/contracts/contract.SablierFlow#depositandpause): deposits an amount of tokens and
    then pauses the stream.
-3. [`depositViaBroker`](/reference/flow/contracts/contract.SablierFlow#depositviabroker): deposits an amount of tokens
-   and transfers a fee to the [broker](/concepts/glossary#broker-fee) specified.
 
 ```solidity
 function deposit(uint256 streamId, uint256 amount) external {
@@ -72,18 +69,6 @@ function deposit(uint256 streamId, uint256 amount) external {
 
 function depositAndPause(uint256 streamId) external {
     FLOW.depositAndPause(streamId, 3.14159e18);
-}
-
-function depositViaBroker(uint256 streamId) external {
-    Broker memory broker = Broker({ account: address(0xDEAD), fee: ud60x18(0.0001e18) });
-
-    FLOW.depositViaBroker({
-        streamId: streamId,
-        totalAmount: 3.14159e18,
-        sender: msg.sender,
-        recipient: address(0xCAFE),
-        broker: broker
-    });
 }
 ```
 
@@ -188,5 +173,5 @@ function void(uint256 streamId) external {
 Below you can see the complete `FlowStreamManager` contract:
 
 <CodeBlock language="solidity" showLineNumbers metastring={`reference title="Flow Stream Manager"`}>
-  {`https://github.com/sablier-labs/examples/blob/main/flow/FlowStreamManager.sol`}
+  {`https://github.com/sablier-labs/evm-examples/blob/main/flow/FlowStreamManager.sol`}
 </CodeBlock>

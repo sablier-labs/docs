@@ -1,21 +1,49 @@
 # SablierMerkleBase
 
-[Git Source](https://github.com/sablier-labs/airdrops/blob/f9a358c0a5bccfec77601d4490ef9117e0488068/src/abstracts/SablierMerkleBase.sol)
+[Git Source](https://github.com/sablier-labs/airdrops/blob/077c6b9766ef7693ba9e82a9e001dc0097709c01/src/abstracts/SablierMerkleBase.sol)
 
 **Inherits:** [ISablierMerkleBase](/docs/reference/airdrops/contracts/interfaces/interface.ISablierMerkleBase.md),
-Adminable
+[Adminable](/docs/reference/airdrops/contracts/abstracts/abstract.Adminable.md)
 
 See the documentation in
 [ISablierMerkleBase](/docs/reference/airdrops/contracts/interfaces/interface.ISablierMerkleBase.md).
 
 ## State Variables
 
-### CAMPAIGN_NAME
+### \_CACHED_CHAIN_ID
 
-_The name of the campaign stored as bytes32._
+_Cache the chain ID in order to invalidate the cached domain separator if the chain ID changes in case of a chain
+split._
 
 ```solidity
-bytes32 internal immutable CAMPAIGN_NAME;
+uint256 private immutable _CACHED_CHAIN_ID;
+```
+
+### \_CACHED_DOMAIN_SEPARATOR
+
+_The domain separator, as required by EIP-712 and EIP-1271, used for signing claim to prevent replay attacks across
+different campaigns._
+
+```solidity
+bytes32 private immutable _CACHED_DOMAIN_SEPARATOR;
+```
+
+### CAMPAIGN_START_TIME
+
+The timestamp at which campaign starts and claim begins.
+
+_This is an immutable state variable._
+
+```solidity
+uint40 public immutable override CAMPAIGN_START_TIME;
+```
+
+### COMPTROLLER
+
+Retrieves the address of the comptroller contract.
+
+```solidity
+address public immutable override COMPTROLLER;
 ```
 
 ### EXPIRATION
@@ -28,21 +56,14 @@ _This is an immutable state variable._
 uint40 public immutable override EXPIRATION;
 ```
 
-### FACTORY
+### IS_SABLIER_MERKLE
 
-Retrieves the address of the factory contract.
+Returns `true` indicating that this campaign contract is deployed using the Sablier Factory.
 
-```solidity
-address public immutable override FACTORY;
-```
-
-### FEE
-
-Retrieves the minimum fee required to claim the airdrop, which is paid in the native token of the chain, e.g. ETH for
-Ethereum Mainnet.
+_This is a constant state variable._
 
 ```solidity
-uint256 public immutable override FEE;
+bool public constant override IS_SABLIER_MERKLE = true;
 ```
 
 ### MERKLE_ROOT
@@ -55,14 +76,6 @@ _This is an immutable state variable._
 bytes32 public immutable override MERKLE_ROOT;
 ```
 
-### SHAPE
-
-_The shape of Lockup stream stored as bytes32._
-
-```solidity
-bytes32 internal immutable SHAPE;
-```
-
 ### TOKEN
 
 The ERC-20 token to distribute.
@@ -73,12 +86,40 @@ _This is an immutable state variable._
 IERC20 public immutable override TOKEN;
 ```
 
+### campaignName
+
+Retrieves the name of the campaign.
+
+```solidity
+string public override campaignName;
+```
+
+### firstClaimTime
+
+Retrieves the timestamp when the first claim is made, and zero if no claim was made yet.
+
+```solidity
+uint40 public override firstClaimTime;
+```
+
 ### ipfsCID
 
 The content identifier for indexing the campaign on IPFS.
 
+_An empty value may break certain UI features that depend upon the IPFS CID._
+
 ```solidity
 string public override ipfsCID;
+```
+
+### minFeeUSD
+
+Retrieves the min USD fee required to claim the airdrop, denominated in 8 decimals.
+
+_The denomination is based on Chainlink's 8-decimal format for USD prices, where 1e8 is $1._
+
+```solidity
+uint256 public override minFeeUSD;
 ```
 
 ### \_claimedBitMap
@@ -89,38 +130,50 @@ _Packed booleans that record the history of claims._
 BitMaps.BitMap internal _claimedBitMap;
 ```
 
-### \_firstClaimTime
+## Functions
 
-_The timestamp when the first claim is made._
+### notZeroAddress
+
+_Modifier to check that `to` is not zero address._
 
 ```solidity
-uint40 internal _firstClaimTime;
+modifier notZeroAddress(address to);
 ```
-
-## Functions
 
 ### constructor
 
 Constructs the contract by initializing the immutable state variables.
 
 ```solidity
-constructor(MerkleBase.ConstructorParams memory params, address campaignCreator) Adminable(params.initialAdmin);
+constructor(
+    address campaignCreator,
+    string memory campaignName_,
+    uint40 campaignStartTime,
+    address comptroller,
+    uint40 expiration,
+    address initialAdmin,
+    string memory ipfsCID_,
+    bytes32 merkleRoot,
+    IERC20 token
+)
+    [Adminable](/docs/reference/airdrops/contracts/abstracts/abstract.Adminable.md)(initialAdmin);
 ```
 
-### campaignName
+### calculateMinFeeWei
 
-Retrieves the name of the campaign.
+Calculates the minimum fee in wei required to claim the airdrop.
 
 ```solidity
-function campaignName() external view override returns (string memory);
+function calculateMinFeeWei() external view override returns (uint256);
 ```
 
-### getFirstClaimTime
+### domainSeparator
 
-Returns the timestamp when the first claim is made.
+The domain separator, as required by EIP-712 and EIP-1271, used for signing claim to prevent replay attacks across
+different campaigns.
 
 ```solidity
-function getFirstClaimTime() external view override returns (uint40);
+function domainSeparator() external view override returns (bytes32);
 ```
 
 ### hasClaimed
@@ -147,56 +200,15 @@ Returns a flag indicating whether the campaign has expired.
 function hasExpired() public view override returns (bool);
 ```
 
-### shape
-
-Retrieves the shape of the lockup stream that the campaign produces upon claiming.
-
-```solidity
-function shape() external view override returns (string memory);
-```
-
-### claim
-
-Makes the claim.
-
-Depending on the Merkle campaign, it either transfers tokens to the recipient or creates a Lockup stream with an NFT
-minted to the recipient. Requirements:
-
-- The campaign must not have expired.
-- The stream must not have been claimed already.
-- The Merkle proof must be valid.
-- The `msg.value` must not be less than `FEE`.
-
-```solidity
-function claim(
-    uint256 index,
-    address recipient,
-    uint128 amount,
-    bytes32[] calldata merkleProof
-)
-    external
-    payable
-    override;
-```
-
-**Parameters**
-
-| Name          | Type        | Description                                                     |
-| ------------- | ----------- | --------------------------------------------------------------- |
-| `index`       | `uint256`   | The index of the recipient in the Merkle tree.                  |
-| `recipient`   | `address`   | The address of the airdrop recipient.                           |
-| `amount`      | `uint128`   | The amount of ERC-20 tokens to be transferred to the recipient. |
-| `merkleProof` | `bytes32[]` | The proof of inclusion in the Merkle tree.                      |
-
 ### clawback
 
-Claws back the unclaimed tokens from the campaign.
+Claws back the unclaimed tokens.
 
-Emits a {Clawback} event. Requirements:
+\*Emits a {Clawback} event. Requirements:
 
 - `msg.sender` must be the admin.
 - No claim must be made, OR The current timestamp must not exceed 7 days after the first claim, OR The campaign must be
-  expired.
+  expired.\*
 
 ```solidity
 function clawback(address to, uint128 amount) external override onlyAdmin;
@@ -209,27 +221,49 @@ function clawback(address to, uint128 amount) external override onlyAdmin;
 | `to`     | `address` | The address to receive the tokens. |
 | `amount` | `uint128` | The amount of tokens to claw back. |
 
-### collectFees
+### lowerMinFeeUSD
 
-Collects the accrued fees by transferring them to `FACTORY` admin. Requirements:
+Lowers the min USD fee.
 
-- `msg.sender` must be the `FACTORY` contract.
+\*Emits a {LowerMinFeeUSD} event. Requirements:
+
+- `msg.sender` must be the comptroller.
+- The new fee must be less than the current {minFeeUSD}.\*
 
 ```solidity
-function collectFees(address factoryAdmin) external override returns (uint256 feeAmount);
+function lowerMinFeeUSD(uint256 newMinFeeUSD) external override;
 ```
 
 **Parameters**
 
-| Name           | Type      | Description                         |
-| -------------- | --------- | ----------------------------------- |
-| `factoryAdmin` | `address` | The address of the `FACTORY` admin. |
+| Name           | Type      | Description                                            |
+| -------------- | --------- | ------------------------------------------------------ |
+| `newMinFeeUSD` | `uint256` | The new min USD fee to set, denominated in 8 decimals. |
 
-**Returns**
+### \_checkSignature
 
-| Name        | Type      | Description                                                |
-| ----------- | --------- | ---------------------------------------------------------- |
-| `feeAmount` | `uint256` | The amount of native tokens (e.g., ETH) collected as fees. |
+_Verifies the signature against the provided parameters. It supports both EIP-712 and EIP-1271 signatures._
+
+```solidity
+function _checkSignature(
+    uint256 index,
+    address recipient,
+    address to,
+    uint128 amount,
+    uint40 validFrom,
+    bytes calldata signature
+)
+    internal
+    view;
+```
+
+### \_domainSeparator
+
+_Returns the domain separator for the current chain._
+
+```solidity
+function _domainSeparator() private view returns (bytes32);
+```
 
 ### \_hasGracePeriodPassed
 
@@ -238,13 +272,21 @@ Returns a flag indicating whether the grace period has passed.
 _The grace period is 7 days after the first claim._
 
 ```solidity
-function _hasGracePeriodPassed() internal view returns (bool);
+function _hasGracePeriodPassed() private view returns (bool);
 ```
 
-### \_claim
+### \_revertIfToZeroAddress
 
-_This function is implemented by child contracts, so the logic varies depending on the model._
+_This function checks if `to` is zero address._
 
 ```solidity
-function _claim(uint256 index, address recipient, uint128 amount) internal virtual;
+function _revertIfToZeroAddress(address to) private pure;
+```
+
+### \_preProcessClaim
+
+_See the documentation for the user-facing functions that call this internal function._
+
+```solidity
+function _preProcessClaim(uint256 index, address recipient, uint128 amount, bytes32[] calldata merkleProof) internal;
 ```

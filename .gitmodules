@@ -2,6 +2,10 @@
 	branch = "main"
 	path = "repos/airdrops"
 	url = "https://github.com/sablier-labs/airdrops"
+[submodule "repos/evm-utils"]
+	branch = main
+	path = repos/evm-utils
+	url = https://github.com/sablier-labs/evm-utils
 [submodule "repos/flow"]
 	branch = "main"
 	path = "repos/flow"

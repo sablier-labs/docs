@@ -6,9 +6,12 @@ title: "Functionality"
 
 ## Architecture
 
-The backend is written in Rust and can run locally or in self-hosted environments using [`warp`](https://github.com/seanmonstar/warp), as well as on Vercel with its [`rust runtime`](https://github.com/vercel-community/rust).
+The backend is written in Rust and can run locally or in self-hosted environments using
+[`warp`](https://github.com/seanmonstar/warp), as well as on Vercel with its
+[`rust runtime`](https://github.com/vercel-community/rust).
 
-You can integrate the backend functionality using our official endpoints (below), but we recommend self-hosting for improved reliability. This allows you to fork the repository and provide your own IPFS and Pinata access keys.
+You can integrate the backend functionality using our official endpoints (below), but we recommend self-hosting for
+improved reliability. This allows you to fork the repository and provide your own IPFS and Pinata access keys.
 
 Feel free to reach out for guidance or feedback.
 
@@ -25,7 +28,8 @@ Before creating a campaign, you'll need:
 - The `decimals` of the token you're basing the campaign on
 - A CSV file containing `[address, amount]` pairs for every campaign recipient
 
-Download a template CSV file from the link below or preview it [here](https://github.com/sablier-labs/sablier-labs.github.io/blob/1933e3b5176c93b236d9a483683dad3a282cc39a/templates/airstream-template.csv).
+Download a template CSV file from the link below or preview it
+[here](https://github.com/sablier-labs/sablier-labs.github.io/blob/1933e3b5176c93b236d9a483683dad3a282cc39a/templates/airstream-template.csv).
 
 <LinkPreview
   href="https://files.sablier.com/templates/airstream-template.csv"
@@ -36,7 +40,8 @@ Download a template CSV file from the link below or preview it [here](https://gi
 
 :::tip
 
-The CSV contains a header row, followed by address and amount pairs. Amounts should be in human-readable form—the API handles decimal padding automatically.
+The CSV contains a header row, followed by address and amount pairs. Amounts should be in human-readable form—the API
+handles decimal padding automatically.
 
 :::
 
@@ -109,7 +114,8 @@ Call this route to check if a recipient is eligible to claim a stream from the M
 To check eligibility for an address, you'll need:
 
 - The recipient's address
-- The CID of the IPFS file (see the [create](/api/airdrops/merkle-api/functionality#create-apicreate) flow above) linked to the campaign
+- The CID of the IPFS file (see the [create](/api/airdrops/merkle-api/functionality#create-apicreate) flow above) linked
+  to the campaign
 
 For obtaining the CID, see options in the [Common flows](/api/airdrops/merkle-api/examples#get-a-campaigns-cid) page.
 
@@ -157,7 +163,9 @@ For implementation details, check out the source code:
 
 ## Validity: `/api/validity`
 
-Call this route to check if an IPFS CID links to a valid Merkle airdrop campaign file. Since users may accidentally provide invalid IPFS CIDs, we use this route to perform sanity checks before allowing admins to create campaigns in the UI.
+Call this route to check if an IPFS CID links to a valid Merkle airdrop campaign file. Since users may accidentally
+provide invalid IPFS CIDs, we use this route to perform sanity checks before allowing admins to create campaigns in the
+UI.
 
 ### Prerequisites
 

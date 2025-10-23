@@ -10,6 +10,7 @@ A Flow stream can have one of five distinct statuses:
 
 | Status                | Description                                                                         |
 | --------------------- | ----------------------------------------------------------------------------------- |
+| `PENDING`             | Stream created but not started.                                                     |
 | `STREAMING_SOLVENT`   | Active stream with total debt <ins>not exceeding</ins> stream balance.              |
 | `STREAMING_INSOLVENT` | Active stream with total debt <ins>exceeding</ins> stream balance.                  |
 | `PAUSED_SOLVENT`      | Paused stream with total debt <ins>not exceeding</ins> stream balance.              |
@@ -22,6 +23,7 @@ A stream can have the following characteristics:
 
 | Characteristic | Statuses                                        | Description                                             |
 | :------------- | :---------------------------------------------- | :------------------------------------------------------ |
+| Pending        | `PENDING`                                       | Snapshot time in future, and non-zero rps.              |
 | Streaming      | `STREAMING_SOLVENT`, `STREAMING_INSOLVENT`      | Non-zero rps.                                           |
 | Paused         | `PAUSED_SOLVENT`, `PAUSED_INSOLVENT`, `VOIDED`  | Zero rps.                                               |
 | Solvent        | `STREAMING_SOLVENT`, `PAUSED_SOLVENT`, `VOIDED` | Total debt <ins>not exceeding</ins> the stream balance. |
@@ -33,9 +35,6 @@ The following diagram illustrates the statuses and the allowed transitions betwe
 
 ```mermaid
 flowchart LR
-  N(NULL)
-  V(VOIDED)
-
   subgraph PAUSED
     direction RL
     PS(SOLVENT)
@@ -51,13 +50,16 @@ flowchart LR
     SS -- "time" --> SI
   end
 
+  PENDING -- "time" --> STREAMING
   STREAMING -- pause --> PAUSED
-  STREAMING -- void --> V
+  STREAMING -- void --> VOIDED
   PAUSED -- restart --> STREAMING
-  PAUSED -- void --> V
+  PAUSED -- void --> VOIDED
+  PENDING -- void --> VOIDED
 
-  N -- create (rps > 0) --> STREAMING
-  N -- create (rps = 0) --> PAUSED
+  NULL -- create (rps > 0, startTime > blockTime) --> PENDING
+  NULL -- create (rps > 0, startTime <= blockTime) --> STREAMING
+  NULL -- create (rps = 0, startTime <= blockTime) --> PAUSED
 ```
 
 ## Functions Statuses Interaction
@@ -66,7 +68,19 @@ flowchart LR
 
 ```mermaid
 flowchart LR
-    CR[CREATE] --> NULL((NULL))
+    CR([CREATE]) --> NULL((NULL))
+```
+
+### PENDING stream
+
+```mermaid
+flowchart TD
+  P((PENDING))
+
+  ADJRPS([ADJUST_RPS]) -->  P
+  DP([DEPOSIT]) --> P
+  RFD([REFUND]) --> P
+  VD([VOID]) --> P
 ```
 
 ### STREAMING stream
@@ -75,12 +89,12 @@ flowchart LR
 flowchart TD
     STR((STREAMING))
 
-    ADJRPS[ADJUST_RPS] -->  STR
-    DP[DEPOSIT] --> STR
-    RFD[REFUND] --> STR
-    PS[PAUSE] --> STR
-    VD[VOID] --> STR
-    WTD[WITHDRAW] --> STR
+    ADJRPS([ADJUST_RPS]) -->  STR
+    DP([DEPOSIT]) --> STR
+    RFD([REFUND]) --> STR
+    PS([PAUSE]) --> STR
+    VD([VOID]) --> STR
+    WTD([WITHDRAW]) --> STR
 ```
 
 ### PAUSED stream

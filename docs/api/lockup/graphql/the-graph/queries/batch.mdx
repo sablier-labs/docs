@@ -77,7 +77,10 @@ batch(
 
 #### [<code style={{ fontWeight: 'normal' }}>batch.<b>block</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Block_height</b></code>](/docs/api/lockup/graphql/the-graph/inputs/block-height.mdx) <Badge class="badge badge--secondary " text="input"/>
 
-The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
+The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a
+`{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the
+case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the
+minimum block number. Defaults to the latest block when omitted.
 
 #### [<code style={{ fontWeight: 'normal' }}>batch.<b>subgraphError</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>\_SubgraphErrorPolicy\_!</b></code>](/docs/api/lockup/graphql/the-graph/enums/subgraph-error-policy.mdx) <Badge class="badge badge--secondary badge--non_null" text="non-null"/> <Badge class="badge badge--secondary " text="enum"/>
 
@@ -87,8 +90,8 @@ Set to `allow` to receive data even if the subgraph has skipped over errors whil
 
 #### [<code style={{ fontWeight: 'normal' }}><b>Batch</b></code>](/docs/api/lockup/graphql/the-graph/objects/batch.mdx) <Badge class="badge badge--secondary " text="object"/>
 
-Creating streams in bulk is possible using the SablierBatchLockup contract.
-See https://github.com/sablier-labs/lockup/blob/v2.0/src/SablierBatchLockup.sol
+Creating streams in bulk is possible using the SablierBatchLockup contract. See
+https://github.com/sablier-labs/lockup/blob/v2.0/src/SablierBatchLockup.sol
 
-Note: the entity can be immutable because a batch is only updated in the same block.
-See https://thegraph.com/docs/en/subgraphs/developing/creating/ql-schema/#defining-entities
+Note: the entity can be immutable because a batch is only updated in the same block. See
+https://thegraph.com/docs/en/subgraphs/developing/creating/ql-schema/#defining-entities
