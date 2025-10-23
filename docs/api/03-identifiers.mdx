@@ -8,15 +8,23 @@ title: "Identifiers"
 
 ### Contracts
 
-Onchain, each Lockup and Flow contract assigns a [`streamId`](/reference/lockup/contracts/abstracts/abstract.SablierLockupState#nextstreamid) to each stream, which is the same as the ERC-721 [`tokenId`](https://docs.openzeppelin.com/contracts/5.x/api/token/erc721) (each stream is tokenized as an ERC-721).
+Onchain, each Lockup and Flow contract assigns a
+[`streamId`](/reference/lockup/contracts/abstracts/abstract.SablierLockupState#nextstreamid) to each stream, which is
+the same as the ERC-721 [`tokenId`](https://docs.openzeppelin.com/contracts/5.x/api/token/erc721) (each stream is
+tokenized as an ERC-721).
 
-The `streamId`/ `tokenId` in the contract is a simple numerical value (a `uint256`). For example, number `42` is a valid `streamId`/ `tokenId`.
+The `streamId`/ `tokenId` in the contract is a simple numerical value (a `uint256`). For example, number `42` is a valid
+`streamId`/ `tokenId`.
 
-You will always need this value when interacting with Sablier via a JSON-RPC endpoint because it is required by every contract method associated with a stream, e.g. [`streamedAmountOf`](/reference/lockup/contracts/interfaces/interface.ISablierLockup#streamedamountof).
+You will always need this value when interacting with Sablier via a JSON-RPC endpoint because it is required by every
+contract method associated with a stream, e.g.
+[`streamedAmountOf`](/reference/lockup/contracts/interfaces/interface.ISablierLockup#streamedamountof).
 
 ### Indexers
 
-Offchain, in the GraphQL schema, we need to be able to identify streams across different EVM chains and different contract versions. Additionally, it would be nice to have short, easily readable aliases. Thus, we have come up with the following identifiers:
+Offchain, in the GraphQL schema, we need to be able to identify streams across different EVM chains and different
+contract versions. Additionally, it would be nice to have short, easily readable aliases. Thus, we have come up with the
+following identifiers:
 
 | Identifier   | Format                                  | Example                                                          |
 | ------------ | --------------------------------------- | ---------------------------------------------------------------- |
@@ -50,7 +58,8 @@ Here's a table with the full list of contract aliases.
 
 ### Contracts
 
-Airdrops do not have any onchain IDs because every airdrop is a separate contract deployed by one of the Merkle Factory contracts.
+Airdrops do not have any onchain IDs because every airdrop is a separate contract deployed by one of the Merkle Factory
+contracts.
 
 ### Indexers
 
@@ -60,8 +69,8 @@ The ID for an airdrop is the chain ID concatenated with the contract address of 
 | ---------- | ----------------------------- | ------------------------------------------------------------- |
 | Airdrop ID | `{contractAddress}-{chainId}` | <nobr>`0xf50760d8ead9ff322631a1f3ebf26cc7891b3708-137`</nobr> |
 
-The example from the table above translates to: **_an airdrop on Polygon (chain ID `137`), with the contract
-address `0xf50760d8ead9ff322631a1f3ebf26cc7891b3708`_**.
+The example from the table above translates to: **_an airdrop on Polygon (chain ID `137`), with the contract address
+`0xf50760d8ead9ff322631a1f3ebf26cc7891b3708`_**.
 
 :::info
 

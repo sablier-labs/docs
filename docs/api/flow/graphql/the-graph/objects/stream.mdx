@@ -126,8 +126,8 @@ The chain ID where the stream was created (e.g., 137 for Polygon).
 
 #### [<code style={{ fontWeight: 'normal' }}>Stream.<b>subgraphId</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>BigInt!</b></code>](/docs/api/flow/graphql/the-graph/scalars/big-int.mdx) <Badge class="badge badge--secondary badge--non_null" text="non-null"/> <Badge class="badge badge--secondary " text="scalar"/>
 
-Unique global id as tracked by the `Watcher` entity.
-ኆ80 This may change if new data sources are added and the chronological order of streams changes.
+Unique global id as tracked by the `Watcher` entity. ኆ80 This may change if new data sources are added and the
+chronological order of streams changes.
 
 #### [<code style={{ fontWeight: 'normal' }}>Stream.<b>tokenId</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>BigInt!</b></code>](/docs/api/flow/graphql/the-graph/scalars/big-int.mdx) <Badge class="badge badge--secondary badge--non_null" text="non-null"/> <Badge class="badge badge--secondary " text="scalar"/>
 
@@ -161,13 +161,12 @@ ERC-20 token distributed via this stream.
 
 #### [<code style={{ fontWeight: 'normal' }}>Stream.<b>assetDecimalsValue</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>BigInt!</b></code>](/docs/api/flow/graphql/the-graph/scalars/big-int.mdx) <Badge class="badge badge--secondary badge--non_null" text="non-null"/> <Badge class="badge badge--secondary " text="scalar"/>
 
-ERC-20 token decimals. Stored here to avoid loading the asset entity on each stream.
-Note: the "Value" suffix is added because of a bug in GraphQL Code Generator.
+ERC-20 token decimals. Stored here to avoid loading the asset entity on each stream. Note: the "Value" suffix is added
+because of a bug in GraphQL Code Generator.
 
 #### [<code style={{ fontWeight: 'normal' }}>Stream.<b>batch</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Batch!</b></code>](/docs/api/flow/graphql/the-graph/objects/batch.mdx) <Badge class="badge badge--secondary badge--non_null" text="non-null"/> <Badge class="badge badge--secondary " text="object"/>
 
-The batch the stream may be part of.
-Note: this is available only when created within a batch create transaction.
+The batch the stream may be part of. Note: this is available only when created within a batch create transaction.
 
 #### [<code style={{ fontWeight: 'normal' }}>Stream.<b>category</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>StreamCategory!</b></code>](/docs/api/flow/graphql/the-graph/enums/stream-category.mdx) <Badge class="badge badge--secondary badge--non_null" text="non-null"/> <Badge class="badge badge--secondary " text="enum"/>
 
@@ -183,8 +182,8 @@ Position in the batch, if available.
 
 #### [<code style={{ fontWeight: 'normal' }}>Stream.<b>recipient</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Bytes!</b></code>](/docs/api/flow/graphql/the-graph/scalars/bytes.mdx) <Badge class="badge badge--secondary badge--non_null" text="non-null"/> <Badge class="badge badge--secondary " text="scalar"/>
 
-Current recipient of the stream, with permission to withdraw funds to any third-party address.
-Note: the recipient can change on NFT transfer.
+Current recipient of the stream, with permission to withdraw funds to any third-party address. Note: the recipient can
+change on NFT transfer.
 
 #### [<code style={{ fontWeight: 'normal' }}>Stream.<b>sender</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Bytes!</b></code>](/docs/api/flow/graphql/the-graph/scalars/bytes.mdx) <Badge class="badge badge--secondary badge--non_null" text="non-null"/> <Badge class="badge badge--secondary " text="scalar"/>
 
@@ -196,8 +195,7 @@ Unix timestamp for the start of the stream.
 
 #### [<code style={{ fontWeight: 'normal' }}>Stream.<b>transferable</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Boolean!</b></code>](/docs/api/flow/graphql/the-graph/scalars/boolean.mdx) <Badge class="badge badge--secondary badge--non_null" text="non-null"/> <Badge class="badge badge--secondary " text="scalar"/>
 
-Flag indicating the transferability of the stream. This is set when the stream is created, and cannot
-be changed later.
+Flag indicating the transferability of the stream. This is set when the stream is created, and cannot be changed later.
 
 #### [<code style={{ fontWeight: 'normal' }}>Stream.<b>version</b></code>](#)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String!</b></code>](/docs/api/flow/graphql/the-graph/scalars/string.mdx) <Badge class="badge badge--secondary badge--non_null" text="non-null"/> <Badge class="badge badge--secondary " text="scalar"/>
 

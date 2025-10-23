@@ -1,4 +1,3 @@
-import _ from "lodash";
 import { useMemo } from "react";
 import { comptroller, sablier } from "sablier";
 import { getLatestLockupChainIds } from "../../helpers";

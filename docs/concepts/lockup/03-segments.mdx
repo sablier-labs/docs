@@ -80,7 +80,8 @@ LockupDynamic.Segment({
 });
 ```
 
-A constant curve can be used to unlock amount in tranches where the entire segment amount unlocks at the beginning or the end of the segment.
+A constant curve can be used to unlock amount in tranches where the entire segment amount unlocks at the beginning or
+the end of the segment.
 
 <FunctionPlot
   options={{
@@ -143,9 +144,11 @@ A linear curve unlocks amount linearly over time.
 
 ### Accelerating Curve (exp > 1)
 
-A function $f(x) = cx^{exp} \mid exp > 1$ can be used to create a segment that unlocks slowly at the beginning and then quickly at the end.
+A function $f(x) = cx^{exp} \mid exp > 1$ can be used to create a segment that unlocks slowly at the beginning and then
+quickly at the end.
 
-For example, an exponent of 2 unlocks 25% of the segment amount in the first 50% of the time and the remaining 75% in the last 50% of the time.
+For example, an exponent of 2 unlocks 25% of the segment amount in the first 50% of the time and the remaining 75% in
+the last 50% of the time.
 
 ```solidity
 segments[0] = LockupDynamic.Segment({
@@ -174,9 +177,11 @@ unlocks 6% of the segment amount in the first 50% of the time and the remaining 
 
 ### Decelerating Curve (exp < 1)
 
-A function $f(x) = cx^{exp} \mid 0 < exp < 1$ can be used to create a segment that unlocks quickly at the beginning and then slowly at the end.
+A function $f(x) = cx^{exp} \mid 0 < exp < 1$ can be used to create a segment that unlocks quickly at the beginning and
+then slowly at the end.
 
-For example, an exponent of 0.2 unlocks 80% of the segment amount in the first 50% of the time and the remaining 20% in the last 50% of the time.
+For example, an exponent of 0.2 unlocks 80% of the segment amount in the first 50% of the time and the remaining 20% in
+the last 50% of the time.
 
 ```solidity
 segments[0] = LockupDynamic.Segment({

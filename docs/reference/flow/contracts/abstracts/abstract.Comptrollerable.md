@@ -1,6 +1,6 @@
 # Comptrollerable
 
-[Git Source](https://github.com/sablier-labs/evm-utils/blob/d7d6c051a39cbacadef672e92ed9d57628c80dc4/src/Comptrollerable.sol)
+[Git Source](https://github.com/sablier-labs/evm-utils/blob/0b3bc38ab8badd135fc178b757afaf6902f1f63c/src/Comptrollerable.sol)
 
 **Inherits:** IComptrollerable
 
