@@ -10,7 +10,7 @@ export const Algolia = {
 /**
  * @see https://github.com/sablier-labs/benchmarks
  */
-export const BENCHMARKS_COMMIT = "cbbb3d1";
+export const BENCHMARKS_COMMIT = "3ceee94";
 export const GITHUB_ORG = "sablier-labs";
 
 export const Links = {

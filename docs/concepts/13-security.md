@@ -11,6 +11,11 @@ The Sablier contracts have undergone rigorous audits by leading security experts
 [CodeHawks](https://codehawks.cyfrin.io/), and many independent auditors. For a comprehensive list of all audits
 conducted, check out [the audit repo](https://github.com/sablier-labs/audits/).
 
+## Comptroller and Utility Contracts Audits
+
+All the audits of Comptroller and other utility contracts can be found
+[here](https://github.com/sablier-labs/audits/blob/main/evm-utils).
+
 ## Lockup Audits
 
 All the audits of Lockup contracts can be found [here](https://github.com/sablier-labs/audits/blob/main/lockup).
