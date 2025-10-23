@@ -27,8 +27,8 @@ Eligible users receive airdrop tokens directly into their wallets at the claim t
 Vested airdrops are campaigns in which instead of airdropping the entirety of the token allocation all at once, airdrop
 recipients receive a fraction of the tokens every second through a Sablier stream.
 
-The gist of vested airdrops is that instead of airdropping the entirety of the tokens all at once, airdrop recipients receive
-a fraction of the tokens every second through a token stream.
+The gist of vested airdrops is that instead of airdropping the entirety of the tokens all at once, airdrop recipients
+receive a fraction of the tokens every second through a token stream.
 
 The beauty of it is that airdrop recipients are forced to think long-term and keep the project's future as their first
 and foremost priority. They are forced to, because instead of receiving all the tokens at once, they receive them over
@@ -37,33 +37,47 @@ time in our user-friendly [vested airdrop interface](https://app.sablier.com/air
 :::info
 
 An airdrop campaign can have a claim window of a few days, months, or even years. Alternatively, they can have no
-expiration. In case of vested airdrops, you could, for example, configure the airdrop of your new token to vest over years,
-but the recipients get the streamed tokens only if a claim is made within that period of time.
+expiration. In case of vested airdrops, you could, for example, configure the airdrop of your new token to vest over
+years, but the recipients get the streamed tokens only if a claim is made within that period of time.
 
 :::
 
-Vested airdrops not only create the right incentives for token holders, but also prevent them from dumping their tokens on
-day one, as has been the case for many airdrops in the past.
+Vested airdrops not only create the right incentives for token holders, but also prevent them from dumping their tokens
+on day one, as has been the case for many airdrops in the past.
 
 There are two types of vested airdrop campaigns that you can create using Merkle Airdrop.
 
 ### Ranged
 
 This either uses Lockup Linear model or Lockup Tranched model depending on whether you use `MerkleLL` or `MerkleLT` to
-create the campaign. In ranged vested airdrop campaigns, the vesting begins for all the recipients at the same time. This
-time had to be provided while creating the campaign.
+create the campaign. In ranged vested airdrop campaigns, the vesting begins for all the recipients at the same time.
+This time had to be provided while creating the campaign.
 
 ### Non-Ranged
 
-In non-ranged vested airdrop campaigns, the vesting begins at the time of claiming. In this case, all recipients can have
-different start time for vesting depending on when they claim.
+In non-ranged vested airdrop campaigns, the vesting begins at the time of claiming. In this case, all recipients can
+have different start time for vesting depending on when they claim.
+
+## Variable Claim Airdrops
+
+This is a special type of vested airdrop in which user can choose to forfeit the unvested tokens back to the campaign,
+by claiming early. Campaign admin can then clawback the forfeited tokens after the campaign expires. A typical variable
+claim airdrop, created to vest tokens over 1 year, may look like the following:
+
+- A user claims after 3 months and receive 25% of his total allocation. 75% of the tokens are then forfeited and
+  returned to the campaign.
+- Another user claims after 6 months and receive 50% of his total allocation. 50% of the tokens are then forfeited and
+  returned to the campaign.
+- A third user claims after 12 months and receive 100% of his total allocation.
+
+This type of airdrop is particularly useful for campaigns that want to reward users for their patience and loyalty.
 
 ## White Label Solution
 
 Sablier Labs does not currently offer any white label solutions for Merkle Airdrops. This means that you cannot have
 your logo displayed in the claim page seen by the airstream recipients.
 
-However, we are actively exploring implementing this feature. Fill out <Link href={Links.Forms.call}>this form</Link>
+However, we are actively exploring implementing this feature. Fill out <Link href={Links.Forms.CALL}>this form</Link>
 and we will respond as soon as possible.
 
 ## How it Works
