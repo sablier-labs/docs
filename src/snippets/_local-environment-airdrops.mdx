@@ -17,6 +17,7 @@ You will need the following software on your machine:
 - <Link href="https://bun.sh">Bun</Link>
 
 In addition, familiarity with <Link href="https://ethereum.org/">Ethereum</Link> and
+
 <Link href="https://soliditylang.org/">Solidity</Link> is requisite.
 
 ## Set up using Foundry template
@@ -63,16 +64,6 @@ just one of the tools that comes with it.
 
 ## Install via npm package
 
-PR NOTE: do we really need this tip as airdops package would donwloand the lockup package dep anyway?
-
-:::tip
-
-If you are integrating with `MerkleLL` or `MerkleLT`, you will also have to install
-[Lockup npm package](/guides/lockup/examples/local-environment#install-via-npm-package). Both `MerkleLL` and `MerkleLT`
-contracts interact with Lockup protocol to setup up vesting for airdropped tokens.
-
-:::
-
 Let's install the {props.protocol} Node.js packages using Bun:
 
 <CodeBlock language="bash">{`$ bun add @sablier/${props.protocol.toLowerCase()}`}</CodeBlock>
@@ -90,5 +81,6 @@ to discover various features available for {props.protocol} integration. Remembe
 files) in the `src` folder and their corresponding tests in the `test` folder.
 
 As far as Foundry is concerned, there is much more to uncover. If you want to learn more about it, check out the
+
 <Link href="https://book.getfoundry.sh/">Foundry Book</Link>, which contains numerous examples and tutorials. A deep
 understanding of Foundry will enable you to create more sophisticated integrations with {props.protocol} protocol.
