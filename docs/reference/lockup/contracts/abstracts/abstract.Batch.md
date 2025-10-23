@@ -1,10 +1,10 @@
 # Batch
 
-[Git Source](https://github.com/sablier-labs/lockup/blob/463278dbb461b1733d6424cf0aeee3b8d6bc036a/src/abstracts/Batch.sol)
+[Git Source](https://github.com/sablier-labs/evm-utils/blob/d7d6c051a39cbacadef672e92ed9d57628c80dc4/src/Batch.sol)
 
-**Inherits:** [IBatch](/docs/reference/lockup/contracts/interfaces/interface.IBatch.md)
+**Inherits:** IBatch
 
-See the documentation in [IBatch](/docs/reference/lockup/contracts/interfaces/interface.IBatch.md).
+See the documentation in {IBatch}.
 
 ## Functions
 
@@ -16,7 +16,7 @@ _Since `msg.value` can be reused across calls, be VERY CAREFUL when using it. Re
 https://paradigm.xyz/2021/08/two-rights-might-make-a-wrong for more information._
 
 ```solidity
-function batch(bytes[] calldata calls) external payable override returns (bytes[] memory results);
+function batch(bytes[] calldata calls) external payable virtual override returns (bytes[] memory results);
 ```
 
 **Parameters**

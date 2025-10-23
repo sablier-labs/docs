@@ -1,49 +1,25 @@
 # Errors
 
-[Git Source](https://github.com/sablier-labs/flow/blob/a0fa33d2843af0817e34970cdc05822ead31daaa/src/libraries/Errors.sol)
+[Git Source](https://github.com/sablier-labs/flow/blob/a4143de45478f508bca8305fec2bd81b7ad25fe9/src/libraries/Errors.sol)
 
 Library with custom errors used across the Flow contract.
 
 ## Errors
 
-### BatchError
+### SablierFlow_CreateNativeToken
 
-Thrown when an unexpected error occurs during a batch call.
+Thrown when trying to create a stream with the native token.
 
 ```solidity
-error BatchError(bytes errorData);
+error SablierFlow_CreateNativeToken(address nativeToken);
 ```
 
-### CallerNotAdmin
+### SablierFlow_CreateRatePerSecondZero
 
-Thrown when `msg.sender` is not the admin.
-
-```solidity
-error CallerNotAdmin(address admin, address caller);
-```
-
-### DelegateCall
-
-Thrown when trying to delegate call to a function that disallows delegate calls.
+Thrown when trying to create a pending stream with zero rate per second.
 
 ```solidity
-error DelegateCall();
-```
-
-### SablierFlow_BrokerAddressZero
-
-Thrown when trying to create a stream with a broker recipient address as zero.
-
-```solidity
-error SablierFlow_BrokerAddressZero();
-```
-
-### SablierFlow_BrokerFeeTooHigh
-
-Thrown when trying to create a stream with a broker fee more than the allowed.
-
-```solidity
-error SablierFlow_BrokerFeeTooHigh(UD60x18 brokerFee, UD60x18 maxFee);
+error SablierFlow_CreateRatePerSecondZero();
 ```
 
 ### SablierFlow_DepositAmountZero
@@ -52,6 +28,14 @@ Thrown when trying to create a stream with a zero deposit amount.
 
 ```solidity
 error SablierFlow_DepositAmountZero(uint256 streamId);
+```
+
+### SablierFlow_InsufficientFeePayment
+
+Thrown when trying to withdraw with a fee amount less than the minimum fee.
+
+```solidity
+error SablierFlow_InsufficientFeePayment(uint256 feePaid, uint256 minFeeWei);
 ```
 
 ### SablierFlow_InvalidCalculation
@@ -64,10 +48,34 @@ error SablierFlow_InvalidCalculation(uint256 streamId, uint128 availableAmount, 
 
 ### SablierFlow_InvalidTokenDecimals
 
-Thrown when trying to create a stream with an token with no decimals.
+Thrown when trying to create a stream with a token with decimals greater than 18.
 
 ```solidity
 error SablierFlow_InvalidTokenDecimals(address token);
+```
+
+### SablierFlow_NativeTokenAlreadySet
+
+Thrown when trying to set the native token address when it is already set.
+
+```solidity
+error SablierFlow_NativeTokenAlreadySet(address nativeToken);
+```
+
+### SablierFlow_NativeTokenZeroAddress
+
+Thrown when trying to set zero address as native token.
+
+```solidity
+error SablierFlow_NativeTokenZeroAddress();
+```
+
+### SablierFlow_NewRatePerSecondZero
+
+Thrown when trying to adjust the rate per second to zero.
+
+```solidity
+error SablierFlow_NewRatePerSecondZero(uint256 streamId);
 ```
 
 ### SablierFlow_NotStreamRecipient
@@ -86,12 +94,12 @@ Thrown when the sender address does not match the stream's sender.
 error SablierFlow_NotStreamSender(address sender, address streamSender);
 ```
 
-### SablierFlow_Null
+### SablierFlow_NotTransferable
 
-Thrown when the ID references a null stream.
+Thrown when trying to transfer Stream NFT when transferability is disabled.
 
 ```solidity
-error SablierFlow_Null(uint256 streamId);
+error SablierFlow_NotTransferable(uint256 streamId);
 ```
 
 ### SablierFlow_Overdraw
@@ -142,28 +150,28 @@ Thrown when trying to get depletion time of a stream with zero balance.
 error SablierFlow_StreamBalanceZero(uint256 streamId);
 ```
 
-### SablierFlow_StreamPaused
-
-Thrown when trying to perform an action with a paused stream.
-
-```solidity
-error SablierFlow_StreamPaused(uint256 streamId);
-```
-
 ### SablierFlow_StreamNotPaused
 
-Thrown when trying to restart a stream that is not paused.
+Thrown when trying to perform a disallowed action on a non-paused stream.
 
 ```solidity
 error SablierFlow_StreamNotPaused(uint256 streamId);
 ```
 
-### SablierFlow_StreamVoided
+### SablierFlow_StreamPending
 
-Thrown when trying to perform an action with a voided stream.
+Thrown when trying to perform a disallowed action on a pending stream.
 
 ```solidity
-error SablierFlow_StreamVoided(uint256 streamId);
+error SablierFlow_StreamPending(uint256 streamId, uint40 snapshotTime);
+```
+
+### SablierFlow_SurplusZero
+
+Thrown when trying to recover for a token with zero surplus.
+
+```solidity
+error SablierFlow_SurplusZero(address token);
 ```
 
 ### SablierFlow_Unauthorized
@@ -198,42 +206,34 @@ Thrown when trying to withdraw to the zero address.
 error SablierFlow_WithdrawToZeroAddress(uint256 streamId);
 ```
 
-### SablierFlowBase_FeeTransferFail
+### SablierFlowState_Null
 
-Thrown when the fee transfer fails.
+Thrown when the ID references a null stream.
 
 ```solidity
-error SablierFlowBase_FeeTransferFail(address admin, uint256 feeAmount);
+error SablierFlowState_Null(uint256 streamId);
 ```
 
-### SablierFlowBase_NoProtocolRevenue
+### SablierFlowState_StreamPaused
 
-Thrown when trying to claim protocol revenue when the accrued amount is zero.
+Thrown when trying to perform a disallowed action on a paused stream.
 
 ```solidity
-error SablierFlowBase_NoProtocolRevenue(address token);
+error SablierFlowState_StreamPaused(uint256 streamId);
 ```
 
-### SablierFlowBase_NotTransferable
+### SablierFlowState_StreamVoided
 
-Thrown when trying to transfer Stream NFT when transferability is disabled.
+Thrown when trying to perform a disallowed action on a voided stream.
 
 ```solidity
-error SablierFlowBase_NotTransferable(uint256 streamId);
+error SablierFlowState_StreamVoided(uint256 streamId);
 ```
 
-### SablierFlowBase_ProtocolFeeTooHigh
+### SablierFlowState_Unauthorized
 
-Thrown when trying to set protocol fee more than the allowed.
-
-```solidity
-error SablierFlowBase_ProtocolFeeTooHigh(UD60x18 newProtocolFee, UD60x18 maxFee);
-```
-
-### SablierFlowBase_SurplusZero
-
-Thrown when trying to recover for a token with zero surplus.
+Thrown when `msg.sender` lacks authorization to perform an action.
 
 ```solidity
-error SablierFlowBase_SurplusZero(address token);
+error SablierFlowState_Unauthorized(uint256 streamId, address caller);
 ```

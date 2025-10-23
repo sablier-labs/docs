@@ -4,7 +4,7 @@ sidebar_position: 1
 
 # SablierBatchLockup
 
-[Git Source](https://github.com/sablier-labs/lockup/blob/463278dbb461b1733d6424cf0aeee3b8d6bc036a/src/SablierBatchLockup.sol)
+[Git Source](https://github.com/sablier-labs/lockup/blob/58eaac45c20c57a93b73d887c714e68f061ec3e6/src/SablierBatchLockup.sol)
 
 **Inherits:** [ISablierBatchLockup](/docs/reference/lockup/contracts/interfaces/interface.ISablierBatchLockup.md)
 
@@ -15,12 +15,12 @@ See the documentation in
 
 ### createWithDurationsLD
 
-Creates a batch of Lockup Dynamic streams using `createWithDurationsLD`.
+Creates a batch of LD streams using `createWithDurationsLD`.
 
-Requirements:
+\*Requirements:
 
 - There must be at least one element in `batch`.
-- All requirements from {ISablierLockup.createWithDurationsLD} must be met for each stream.
+- All requirements from {ISablierLockupDynamic.createWithDurationsLD} must be met for each stream.\*
 
 ```solidity
 function createWithDurationsLD(
@@ -35,11 +35,11 @@ function createWithDurationsLD(
 
 **Parameters**
 
-| Name     | Type                                  | Description                                                                                                  |
-| -------- | ------------------------------------- | ------------------------------------------------------------------------------------------------------------ |
-| `lockup` | `ISablierLockup`                      | The address of the [SablierLockup](/docs/reference/lockup/contracts/contract.SablierLockup.md) contract.     |
-| `token`  | `IERC20`                              | The contract address of the ERC-20 token to be distributed.                                                  |
-| `batch`  | `BatchLockup.CreateWithDurationsLD[]` | An array of structs, each encapsulating a subset of the parameters of {SablierLockup.createWithDurationsLD}. |
+| Name     | Type                                  | Description                                                                                                          |
+| -------- | ------------------------------------- | -------------------------------------------------------------------------------------------------------------------- |
+| `lockup` | `ISablierLockup`                      | The address of the [SablierLockup](/docs/reference/lockup/contracts/contract.SablierLockup.md) contract.             |
+| `token`  | `IERC20`                              | The contract address of the ERC-20 token to be distributed.                                                          |
+| `batch`  | `BatchLockup.CreateWithDurationsLD[]` | An array of structs, each encapsulating a subset of the parameters of {ISablierLockupDynamic.createWithDurationsLD}. |
 
 **Returns**
 
@@ -49,12 +49,12 @@ function createWithDurationsLD(
 
 ### createWithTimestampsLD
 
-Creates a batch of Lockup Dynamic streams using `createWithTimestampsLD`.
+Creates a batch of LD streams using `createWithTimestampsLD`.
 
-Requirements:
+\*Requirements:
 
 - There must be at least one element in `batch`.
-- All requirements from {ISablierLockup.createWithTimestampsLD} must be met for each stream.
+- All requirements from {ISablierLockupDynamic.createWithTimestampsLD} must be met for each stream.\*
 
 ```solidity
 function createWithTimestampsLD(
@@ -69,11 +69,11 @@ function createWithTimestampsLD(
 
 **Parameters**
 
-| Name     | Type                                   | Description                                                                                                   |
-| -------- | -------------------------------------- | ------------------------------------------------------------------------------------------------------------- |
-| `lockup` | `ISablierLockup`                       | The address of the [SablierLockup](/docs/reference/lockup/contracts/contract.SablierLockup.md) contract.      |
-| `token`  | `IERC20`                               | The contract address of the ERC-20 token to be distributed.                                                   |
-| `batch`  | `BatchLockup.CreateWithTimestampsLD[]` | An array of structs, each encapsulating a subset of the parameters of {SablierLockup.createWithTimestampsLD}. |
+| Name     | Type                                   | Description                                                                                                           |
+| -------- | -------------------------------------- | --------------------------------------------------------------------------------------------------------------------- |
+| `lockup` | `ISablierLockup`                       | The address of the [SablierLockup](/docs/reference/lockup/contracts/contract.SablierLockup.md) contract.              |
+| `token`  | `IERC20`                               | The contract address of the ERC-20 token to be distributed.                                                           |
+| `batch`  | `BatchLockup.CreateWithTimestampsLD[]` | An array of structs, each encapsulating a subset of the parameters of {ISablierLockupDynamic.createWithTimestampsLD}. |
 
 **Returns**
 
@@ -83,12 +83,12 @@ function createWithTimestampsLD(
 
 ### createWithDurationsLL
 
-Creates a batch of Lockup Linear streams using `createWithDurationsLL`.
+Creates a batch of LL streams using `createWithDurationsLL`.
 
-Requirements:
+\*Requirements:
 
 - There must be at least one element in `batch`.
-- All requirements from {ISablierLockup.createWithDurationsLL} must be met for each stream.
+- All requirements from {ISablierLockupLinear.createWithDurationsLL} must be met for each stream.\*
 
 ```solidity
 function createWithDurationsLL(
@@ -103,11 +103,11 @@ function createWithDurationsLL(
 
 **Parameters**
 
-| Name     | Type                                  | Description                                                                                                  |
-| -------- | ------------------------------------- | ------------------------------------------------------------------------------------------------------------ |
-| `lockup` | `ISablierLockup`                      | The address of the [SablierLockup](/docs/reference/lockup/contracts/contract.SablierLockup.md) contract.     |
-| `token`  | `IERC20`                              | The contract address of the ERC-20 token to be distributed.                                                  |
-| `batch`  | `BatchLockup.CreateWithDurationsLL[]` | An array of structs, each encapsulating a subset of the parameters of {SablierLockup.createWithDurationsLL}. |
+| Name     | Type                                  | Description                                                                                                         |
+| -------- | ------------------------------------- | ------------------------------------------------------------------------------------------------------------------- |
+| `lockup` | `ISablierLockup`                      | The address of the [SablierLockup](/docs/reference/lockup/contracts/contract.SablierLockup.md) contract.            |
+| `token`  | `IERC20`                              | The contract address of the ERC-20 token to be distributed.                                                         |
+| `batch`  | `BatchLockup.CreateWithDurationsLL[]` | An array of structs, each encapsulating a subset of the parameters of {ISablierLockupLinear.createWithDurationsLL}. |
 
 **Returns**
 
@@ -117,12 +117,12 @@ function createWithDurationsLL(
 
 ### createWithTimestampsLL
 
-Creates a batch of Lockup Linear streams using `createWithTimestampsLL`.
+Creates a batch of LL streams using `createWithTimestampsLL`.
 
-Requirements:
+\*Requirements:
 
 - There must be at least one element in `batch`.
-- All requirements from {ISablierLockup.createWithTimestampsLL} must be met for each stream.
+- All requirements from {ISablierLockupLinear.createWithTimestampsLL} must be met for each stream.\*
 
 ```solidity
 function createWithTimestampsLL(
@@ -137,11 +137,11 @@ function createWithTimestampsLL(
 
 **Parameters**
 
-| Name     | Type                                   | Description                                                                                                   |
-| -------- | -------------------------------------- | ------------------------------------------------------------------------------------------------------------- |
-| `lockup` | `ISablierLockup`                       | The address of the [SablierLockup](/docs/reference/lockup/contracts/contract.SablierLockup.md) contract.      |
-| `token`  | `IERC20`                               | The contract address of the ERC-20 token to be distributed.                                                   |
-| `batch`  | `BatchLockup.CreateWithTimestampsLL[]` | An array of structs, each encapsulating a subset of the parameters of {SablierLockup.createWithTimestampsLL}. |
+| Name     | Type                                   | Description                                                                                                          |
+| -------- | -------------------------------------- | -------------------------------------------------------------------------------------------------------------------- |
+| `lockup` | `ISablierLockup`                       | The address of the [SablierLockup](/docs/reference/lockup/contracts/contract.SablierLockup.md) contract.             |
+| `token`  | `IERC20`                               | The contract address of the ERC-20 token to be distributed.                                                          |
+| `batch`  | `BatchLockup.CreateWithTimestampsLL[]` | An array of structs, each encapsulating a subset of the parameters of {ISablierLockupLinear.createWithTimestampsLL}. |
 
 **Returns**
 
@@ -151,12 +151,12 @@ function createWithTimestampsLL(
 
 ### createWithDurationsLT
 
-Creates a batch of Lockup Tranched streams using `createWithDurationsLT`.
+Creates a batch of LT streams using `createWithDurationsLT`.
 
-Requirements:
+\*Requirements:
 
 - There must be at least one element in `batch`.
-- All requirements from {ISablierLockup.createWithDurationsLT} must be met for each stream.
+- All requirements from {ISablierLockupTranched.createWithDurationsLT} must be met for each stream.\*
 
 ```solidity
 function createWithDurationsLT(
@@ -171,11 +171,11 @@ function createWithDurationsLT(
 
 **Parameters**
 
-| Name     | Type                                  | Description                                                                                                  |
-| -------- | ------------------------------------- | ------------------------------------------------------------------------------------------------------------ |
-| `lockup` | `ISablierLockup`                      | The address of the [SablierLockup](/docs/reference/lockup/contracts/contract.SablierLockup.md) contract.     |
-| `token`  | `IERC20`                              | The contract address of the ERC-20 token to be distributed.                                                  |
-| `batch`  | `BatchLockup.CreateWithDurationsLT[]` | An array of structs, each encapsulating a subset of the parameters of {SablierLockup.createWithDurationsLT}. |
+| Name     | Type                                  | Description                                                                                                           |
+| -------- | ------------------------------------- | --------------------------------------------------------------------------------------------------------------------- |
+| `lockup` | `ISablierLockup`                      | The address of the [SablierLockup](/docs/reference/lockup/contracts/contract.SablierLockup.md) contract.              |
+| `token`  | `IERC20`                              | The contract address of the ERC-20 token to be distributed.                                                           |
+| `batch`  | `BatchLockup.CreateWithDurationsLT[]` | An array of structs, each encapsulating a subset of the parameters of {ISablierLockupTranched.createWithDurationsLT}. |
 
 **Returns**
 
@@ -185,12 +185,12 @@ function createWithDurationsLT(
 
 ### createWithTimestampsLT
 
-Creates a batch of Lockup Tranched streams using `createWithTimestampsLT`.
+Creates a batch of LT streams using `createWithTimestampsLT`.
 
-Requirements:
+\*Requirements:
 
 - There must be at least one element in `batch`.
-- All requirements from {ISablierLockup.createWithTimestampsLT} must be met for each stream.
+- All requirements from {ISablierLockupTranched.createWithTimestampsLT} must be met for each stream.\*
 
 ```solidity
 function createWithTimestampsLT(
@@ -205,11 +205,11 @@ function createWithTimestampsLT(
 
 **Parameters**
 
-| Name     | Type                                   | Description                                                                                                   |
-| -------- | -------------------------------------- | ------------------------------------------------------------------------------------------------------------- |
-| `lockup` | `ISablierLockup`                       | The address of the [SablierLockup](/docs/reference/lockup/contracts/contract.SablierLockup.md) contract.      |
-| `token`  | `IERC20`                               | The contract address of the ERC-20 token to be distributed.                                                   |
-| `batch`  | `BatchLockup.CreateWithTimestampsLT[]` | An array of structs, each encapsulating a subset of the parameters of {SablierLockup.createWithTimestampsLT}. |
+| Name     | Type                                   | Description                                                                                                            |
+| -------- | -------------------------------------- | ---------------------------------------------------------------------------------------------------------------------- |
+| `lockup` | `ISablierLockup`                       | The address of the [SablierLockup](/docs/reference/lockup/contracts/contract.SablierLockup.md) contract.               |
+| `token`  | `IERC20`                               | The contract address of the ERC-20 token to be distributed.                                                            |
+| `batch`  | `BatchLockup.CreateWithTimestampsLT[]` | An array of structs, each encapsulating a subset of the parameters of {ISablierLockupTranched.createWithTimestampsLT}. |
 
 **Returns**
 

@@ -1,6 +1,6 @@
 # Flow
 
-[Git Source](https://github.com/sablier-labs/flow/blob/a0fa33d2843af0817e34970cdc05822ead31daaa/src/types/DataTypes.sol)
+[Git Source](https://github.com/sablier-labs/flow/blob/a4143de45478f508bca8305fec2bd81b7ad25fe9/src/types/DataTypes.sol)
 
 ## Structs
 
@@ -29,8 +29,8 @@ struct Stream {
 
 | Name                 | Type      | Description                                                                                                                                                                                                                      |
 | -------------------- | --------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `balance`            | `uint128` | The amount of tokens that are currently available in the stream, denoted in token's decimals. This is the sum of deposited amounts minus the sum of withdrawn amounts.                                                           |
-| `ratePerSecond`      | `UD21x18` | The payment rate per second, denoted as a fixed-point number where 1e18 is 1 token per second. For example, to stream 1000 tokens per week, this parameter would have the value $(1000 * 10^{18}) / (7 days in seconds)$.        |
+| `balance`            | `uint128` | The amount of tokens that are currently available in the stream, denoted in the token's decimals. This is the sum of deposited amounts minus the sum of withdrawn amounts.                                                       |
+| `ratePerSecond`      | `UD21x18` | The payment rate per second, denoted as a fixed-point number where 1e18 is 1 token per second. For example, to stream 1000 tokens per week, this parameter would have the value $(1000 * 10^18) / (7 days in seconds)$.          |
 | `sender`             | `address` | The address streaming the tokens, with the ability to pause the stream.                                                                                                                                                          |
 | `snapshotTime`       | `uint40`  | The Unix timestamp used for the ongoing debt calculation.                                                                                                                                                                        |
 | `isStream`           | `bool`    | Boolean indicating if the struct entity exists.                                                                                                                                                                                  |
@@ -46,25 +46,23 @@ struct Stream {
 
 Enum representing the different statuses of a stream.
 
-Explanations for the two types of streams:
-
-1. Streaming: when the total debt is increasing.
-2. Paused: when the total debt is not increasing.
-
 **Notes:**
 
-- value0: STREAMING_SOLVENT Streaming stream when there is no uncovered debt.
+- value0: PENDING Stream scheduled to start in the future.
 
-- value1: STREAMING_INSOLVENT Streaming stream when there is uncovered debt.
+- value1: STREAMING_SOLVENT Streaming stream with no uncovered debt.
 
-- value2: PAUSED_SOLVENT Paused stream when there is no uncovered debt.
+- value2: STREAMING_INSOLVENT Streaming stream with uncovered debt.
 
-- value3: PAUSED_INSOLVENT Paused stream when there is uncovered debt.
+- value3: PAUSED_SOLVENT Paused stream with no uncovered debt.
 
-- value4: VOIDED Paused stream with no uncovered debt and it cannot be restarted.
+- value4: PAUSED_INSOLVENT Paused stream with uncovered debt.
+
+- value5: VOIDED Paused stream with no uncovered debt, which cannot be restarted.
 
 ```solidity
 enum Status {
+    PENDING,
     STREAMING_SOLVENT,
     STREAMING_INSOLVENT,
     PAUSED_SOLVENT,

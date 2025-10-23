@@ -1,8 +1,8 @@
 # Helpers
 
-[Git Source](https://github.com/sablier-labs/lockup/blob/463278dbb461b1733d6424cf0aeee3b8d6bc036a/src/libraries/Helpers.sol)
+[Git Source](https://github.com/sablier-labs/lockup/blob/58eaac45c20c57a93b73d887c714e68f061ec3e6/src/libraries/Helpers.sol)
 
-Library with functions needed to validate input parameters across lockup streams.
+Library with functions needed to validate input parameters across Lockup streams.
 
 ## Functions
 
@@ -34,85 +34,70 @@ function calculateTrancheTimestamps(
     returns (LockupTranched.Tranche[] memory tranchesWithTimestamps);
 ```
 
-### checkCreateLockupDynamic
+### checkCreateLD
 
-_Checks the parameters of the {SablierLockup-\_createLD} function._
+_Checks the parameters of the
+[SablierLockup-\_createLD](/docs/reference/lockup/contracts/abstracts/abstract.SablierLockupDynamic.md#_createld)
+function._
 
 ```solidity
-function checkCreateLockupDynamic(
+function checkCreateLD(
     address sender,
     Lockup.Timestamps memory timestamps,
-    uint128 totalAmount,
+    uint128 depositAmount,
     LockupDynamic.Segment[] memory segments,
-    uint256 maxCount,
-    UD60x18 brokerFee,
-    string memory shape,
-    UD60x18 maxBrokerFee
+    address token,
+    address nativeToken,
+    string memory shape
 )
     public
-    pure
-    returns (Lockup.CreateAmounts memory createAmounts);
+    pure;
 ```
 
-### checkCreateLockupLinear
+### checkCreateLL
 
-_Checks the parameters of the {SablierLockup-\_createLL} function._
+_Checks the parameters of the
+[SablierLockup-\_createLL](/docs/reference/lockup/contracts/abstracts/abstract.SablierLockupLinear.md#_createll)
+function._
 
 ```solidity
-function checkCreateLockupLinear(
+function checkCreateLL(
     address sender,
     Lockup.Timestamps memory timestamps,
     uint40 cliffTime,
-    uint128 totalAmount,
+    uint128 depositAmount,
     LockupLinear.UnlockAmounts memory unlockAmounts,
-    UD60x18 brokerFee,
-    string memory shape,
-    UD60x18 maxBrokerFee
+    address token,
+    address nativeToken,
+    string memory shape
 )
     public
-    pure
-    returns (Lockup.CreateAmounts memory createAmounts);
+    pure;
 ```
 
-### checkCreateLockupTranched
+### checkCreateLT
 
-_Checks the parameters of the {SablierLockup-\_createLT} function._
+_Checks the parameters of the
+[SablierLockup-\_createLT](/docs/reference/lockup/contracts/abstracts/abstract.SablierLockupTranched.md#_createlt)
+function._
 
 ```solidity
-function checkCreateLockupTranched(
+function checkCreateLT(
     address sender,
     Lockup.Timestamps memory timestamps,
-    uint128 totalAmount,
+    uint128 depositAmount,
     LockupTranched.Tranche[] memory tranches,
-    uint256 maxCount,
-    UD60x18 brokerFee,
-    string memory shape,
-    UD60x18 maxBrokerFee
+    address token,
+    address nativeToken,
+    string memory shape
 )
     public
-    pure
-    returns (Lockup.CreateAmounts memory createAmounts);
-```
-
-### \_checkAndCalculateBrokerFee
-
-_Checks the broker fee is not greater than `maxBrokerFee`, and then calculates the broker fee amount and the deposit
-amount from the total amount._
-
-```solidity
-function _checkAndCalculateBrokerFee(
-    uint128 totalAmount,
-    UD60x18 brokerFee,
-    UD60x18 maxBrokerFee
-)
-    private
-    pure
-    returns (Lockup.CreateAmounts memory amounts);
+    pure;
 ```
 
 ### \_checkTimestampsAndUnlockAmounts
 
-_Checks the user-provided cliff, end times and unlock amounts of a lockup linear stream._
+_Checks the user-provided cliff, end times, and unlock amounts of an LL stream._
 
 ```solidity
 function _checkTimestampsAndUnlockAmounts(
@@ -127,13 +112,15 @@ function _checkTimestampsAndUnlockAmounts(
 
 ### \_checkCreateStream
 
-_Checks the user-provided common parameters across lockup streams._
+_Checks the user-provided common parameters across Lockup streams._
 
 ```solidity
 function _checkCreateStream(
     address sender,
     uint128 depositAmount,
     uint40 startTime,
+    address token,
+    address nativeToken,
     string memory shape
 )
     private
@@ -142,20 +129,19 @@ function _checkCreateStream(
 
 ### \_checkSegments
 
-Checks:
+\*Checks:
 
 1. The first timestamp is strictly greater than the start time.
 2. The timestamps are ordered chronologically.
 3. There are no duplicate timestamps.
 4. The deposit amount is equal to the sum of all segment amounts.
-5. The end time equals the last segment's timestamp.
+5. The end time equals the last segment's timestamp.\*
 
 ```solidity
 function _checkSegments(
     LockupDynamic.Segment[] memory segments,
     uint128 depositAmount,
-    Lockup.Timestamps memory timestamps,
-    uint256 maxSegmentCount
+    Lockup.Timestamps memory timestamps
 )
     private
     pure;
@@ -163,20 +149,19 @@ function _checkSegments(
 
 ### \_checkTranches
 
-Checks:
+\*Checks:
 
 1. The first timestamp is strictly greater than the start time.
 2. The timestamps are ordered chronologically.
 3. There are no duplicate timestamps.
 4. The deposit amount is equal to the sum of all tranche amounts.
-5. The end time equals the last tranche's timestamp.
+5. The end time equals the last tranche's timestamp.\*
 
 ```solidity
 function _checkTranches(
     LockupTranched.Tranche[] memory tranches,
     uint128 depositAmount,
-    Lockup.Timestamps memory timestamps,
-    uint256 maxTrancheCount
+    Lockup.Timestamps memory timestamps
 )
     private
     pure;

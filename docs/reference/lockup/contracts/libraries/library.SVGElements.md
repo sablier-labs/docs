@@ -1,6 +1,6 @@
 # SVGElements
 
-[Git Source](https://github.com/sablier-labs/lockup/blob/463278dbb461b1733d6424cf0aeee3b8d6bc036a/src/libraries/SVGElements.sol)
+[Git Source](https://github.com/sablier-labs/lockup/blob/58eaac45c20c57a93b73d887c714e68f061ec3e6/src/libraries/SVGElements.sol)
 
 ## State Variables
 
@@ -159,12 +159,12 @@ function progressCircle(uint256 progressNumerical, string memory accentColor) in
 
 Calculates the pixel width of the provided string.
 
-Notes:
+\*Notes:
 
 - A factor of ~0.6 is applied to the two font sizes used in the SVG (26px and 22px) to approximate the average character
   width.
 - It is assumed that escaped characters are placed at the beginning of `text`.
-- It is further assumed that there is no other semicolon in `text`.
+- It is further assumed that there is no other semicolon in `text`.\*
 
 ```solidity
 function calculatePixelWidth(string memory text, bool largeFont) internal pure returns (uint256 width);
