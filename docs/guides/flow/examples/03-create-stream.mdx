@@ -42,8 +42,8 @@ type `ISablierFlow`:
 
 ```solidity
 contract FlowStreamCreator {
-    IERC20 public constant USDC = IERC20(0xf08A50178dfcDe18524640EA6618a1f965821715);
-    ISablierFlow public constant FLOW = ISablierFlow(0x52ab22e769E31564E17D524b683264B65662A014);
+    IERC20 public constant USDC = IERC20(0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48);
+    ISablierFlow public constant FLOW = ISablierFlow(0x7a86d3e6894f9c5B5f25FFBDAaE658CFc7569623);
 }
 ```
 
@@ -88,6 +88,14 @@ The address receiving the tokens:
 recipient = address(0xCAFE);
 ```
 
+### Start time
+
+The timestamp when the stream starts.
+
+```solidity
+startTime = uint40(block.timestamp);
+```
+
 ### Token
 
 The contract address of the ERC-20 token used for streaming. In this example, we will stream `USDC`:
@@ -114,6 +122,7 @@ streamId = FLOW.create({
     sender: msg.sender,
     recipient: address(0xCAFE),
     ratePerSecond: FlowUtilities.ratePerSecondWithDuration({ token: address(USDC), amount: 1000e6, duration: 30 days }),
+    startTime: uint40(block.timestamp),
     token: USDC,
     transferable: true
 });
