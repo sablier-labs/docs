@@ -9,7 +9,7 @@ Hooks are arbitrary third-party functions that get automatically executed by the
 
 :::info Important
 
-Hooks have to be allowlisted before they can be run. Currently, only the [Protocol Admin](/concepts/governance) has
+Hooks have to be allowlisted before they can be run. Currently, only the [Comptroller](/concepts/governance) has
 permission to do this. In the future, we may decentralize this process through governance.
 
 :::

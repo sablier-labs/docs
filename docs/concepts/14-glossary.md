@@ -14,6 +14,10 @@ Closed-ended streams have a fixed deposit amount and a fixed duration. Once the 
 start and end time are recorded on the blockchain. They contrast with
 [open-ended streams](/concepts/glossary#open-ended-stream).
 
+## Comptroller
+
+A smart contract with exclusive access to specific functions of the protocol.
+
 ## DeFi
 
 Short for Decentralized Finance: an ecosystem of financial applications and services built on blockchain networks,
@@ -63,6 +67,7 @@ The amount of tokens that are streamed per second in a Flow stream.
 A Flow stream can have one out of six possible statuses:
 
 1. NULL
+1. PENDING
 1. PAUSED_INSOLVENT
 1. PAUSED_SOLVENT
 1. STREAMING_INSOLVENT
@@ -119,6 +124,11 @@ The time when a stream is scheduled to end.
 ### Linear Model
 
 A Lockup [distribution model](#distribution-model) with a constant streaming rate per second.
+
+### Lockup Math
+
+[A public library](/reference/lockup/contracts/libraries/library.LockupMath) used by the Lockup protocol to calculate
+the amount of vested tokens at any given time.
 
 ### Lockup Protocol
 
@@ -183,11 +193,6 @@ A Lockup [distribution model](#distribution-model) with a streaming in discrete 
 
 A data object that encapsulates amounts to be unlocked at the start of the stream and at the cliff of the stream.
 
-### Vesting Math
-
-[A public library](/reference/lockup/contracts/libraries/library.LockupMath) used by the Lockup protocol to calculate
-the amount of vested tokens at any given time.
-
 ## Merkle Airdrop
 
 An onchain distribution of tokens that employs a Merkle tree data structure to perform airdrop eligibility checks.
@@ -204,10 +209,6 @@ also be called "indefinite streams". They contrast with [closed-ended streams](/
 ## PRBMath
 
 [PRBMath][prb-math] is fixed-point arithmetic library used by the Sablier Protocol for precise calculations.
-
-## Protocol Admin
-
-An entity with exclusive access to specific functions of the protocol.
 
 ## Real-time finance
 
