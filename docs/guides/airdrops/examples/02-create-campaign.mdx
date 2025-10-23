@@ -66,13 +66,13 @@ Factory address can be obtained from the [Merkle Airdrops Deployments](/guides/a
 
 There are four create functions available through the factories:
 
-- [`createMerkleInstant`](/reference/airdrops/contracts/contract.SablierMerkleFactory#createmerkleinstant): creates
-  campaign for instant distribution of tokens.
-- [`createMerkleLL`](/reference/airdrops/contracts/contract.SablierMerkleFactory#createmerklell): creates campaign with
-  a Lockup Linear distribution.
-- [`createMerkleLT`](/reference/airdrops/contracts/contract.SablierMerkleFactory#createmerklelt): creates campaign with
-  a Lockup Tranched distribution.
-- [`createMerkleVCA`](/reference/airdrops/contracts/contract.SablierMerkleFactory#createmerklevca): creates campaign
+- [`createMerkleInstant`](/reference/airdrops/contracts/contract.SablierFactoryMerkleInstant#createmerkleinstant):
+  creates campaign for instant distribution of tokens.
+- [`createMerkleLL`](/reference/airdrops/contracts/contract.SablierFactoryMerkleLL#createmerklell): creates campaign
+  with a Lockup Linear distribution.
+- [`createMerkleLT`](/reference/airdrops/contracts/contract.SablierFactoryMerkleLT#createmerklelt): creates campaign
+  with a Lockup Tranched distribution.
+- [`createMerkleVCA`](/reference/airdrops/contracts/contract.SablierFactoryMerkleVCA#createmerklevca): creates campaign
   with a Variable Claim Amount distribution.
 
 Which one you choose depends upon your use case. In this guide, we will use `createMerkleLL`.
