@@ -71,8 +71,13 @@ versions do not incur any claim fee.
 As opposed to the Interface fees, the contract fees are charged by the Sablier contracts themselves. They apply
 regardless of the interface used to interact with the Sablier Protocol.
 
-This fee is charged via the `msg.value` field. Basically, for the contract to accept a transaction, the `msg.value` must
-be greater than or equal to the fee.
+The contract fee is specified in USD however it is charged via the `msg.value` field in a transaction. Because the price
+of native token can vary over time, we use [Chainlink oracles](https://chain.link/education/blockchain-oracles) to
+calculate real time fee so that you only pay the amount equivalent to the USD value. For the contract to accept a
+transaction, the `msg.value` must be greater than or equal to the fee amount returned by `calculateMinFeeWei` function.
+This function is available in [Lockup](/reference/lockup/contracts/contract.SablierLockup.md#calculateminfeewei),
+[Flow](/reference/flow/contracts/contract.SablierFlow.md#calculateminfeewei) and
+[Airdrops](/reference/airdrops/contracts/abstracts/abstract.SablierMerkleBase.md#calculateminfeewei)
 
 :::warning
 
@@ -80,10 +85,6 @@ The Contract Fee acts as a **minimum fee**, so it is NOT cumulative with the Int
 the two fees.
 
 :::
-
-The exact value in _Wei_ for a given chain is calculated using
-[Chainlink oracles](https://chain.link/education/blockchain-oracles) to obtain the USD price of the gas token at the
-time of the transaction.
 
 Like the Interface fee, this fee is paid in the native gas token, e.g., ETH on Ethereum, POL on Polygon.
 
@@ -132,14 +133,18 @@ The withdrawal fee can only be applied to streams created with [Lockup v3.0](/gu
 
 The [Comptroller](/concepts/governance/#comptroller) can update the fee in the Merkle Factories contracts. However, the
 new fee applies only to airdrops created after the update, unlike the Lockup and Flow contracts where fee updates apply
-retroactively. The fee values in individual airdrop contracts remain immutable once set.
+retroactively. The fee values in individual airdrop contracts remain the same or they can be only LOWERED.
 
 The claim fee can only be applied to airdrops created with [Merkle Airdrops v1.3](/guides/airdrops/deployments) (or
 later). Airdrop campaigns created with earlier versions do not incur any claim fee.
 
-In the first version of the Merkle Factories (v1.3), oracles were not used to calculate the fee in the gas token, so the
-fees are fixed in Wei. Therefore, the [table above](#contract-fees-table) is applicable only to v2.0 and later. For
-v1.3, the fees are as follows:
+:::note
+
+In the first version of the **Merkle Factories** ([v1.3](/guides/airdrops/deployments#versions)), oracles were not used
+to calculate the fee in the gas token, so the fees are fixed in Wei. Therefore, the [table above](#contract-fees-table)
+is applicable only to v2.0 and later. For v1.3, the fees are as follows:
+
+:::
 
 | Chain      | Gas Token | Fee              | Fee in Wei          |
 | ---------- | --------- | ---------------- | ------------------- |
