@@ -7,8 +7,8 @@ title: "Fees"
 import { Links } from "@site/src/constants";
 
 During the course of using Sablier, you may encounter up to three different types of fees:
-[Interface Fees](#interface-fees), [Contract Fees](#contract-fees), and [Gas Fees](#gas-fees). Each of these fees may go
-to a different party. Below you can see a breakdown of how each fee is calculated and who receives it.
+[Interface Fees](#interface-fees), [Contract Fees](#contract-fees), and [Gas Fees](#gas-fees). Below you can see a
+breakdown of how each fee is calculated and who receives it.
 
 ## Interface Fees
 
@@ -71,8 +71,13 @@ versions do not incur any claim fee.
 As opposed to the Interface fees, the contract fees are charged by the Sablier contracts themselves. They apply
 regardless of the interface used to interact with the Sablier Protocol.
 
-This fee is charged via the `msg.value` field. Basically, for the contract to accept a transaction, the `msg.value` must
-be greater than or equal to the fee.
+The contract fee is specified in USD however it is charged via the `msg.value` field in a transaction. Because the price
+of native token can vary over time, we use [Chainlink oracles](https://chain.link/education/blockchain-oracles) to
+calculate real time fee so that you only pay the amount equivalent to the USD value. For the contract to accept a
+transaction, the `msg.value` must be greater than or equal to the fee amount returned by `calculateMinFeeWei` function.
+This function is available in [Lockup](/reference/lockup/contracts/contract.SablierLockup.md#calculateminfeewei),
+[Flow](/reference/flow/contracts/contract.SablierFlow.md#calculateminfeewei) and
+[Airdrops](/reference/airdrops/contracts/abstracts/abstract.SablierMerkleBase.md#calculateminfeewei)
 
 :::warning
 
@@ -81,56 +86,72 @@ the two fees.
 
 :::
 
-### MerkleFactory
-
-The ONLY contracts that can charge fees in Sablier are the `MerkleFactory` contract and the airdrop contracts it
-deploys.
-
-The [Protocol Admin](/concepts/governance/) can update the fee in the Merkle Factories contract. However, the new fee
-applies only to airdrops created after the update. The fee values in the individual airdrop contracts remain immutable
-once set.
-
 Like the Interface fee, this fee is paid in the native gas token, e.g., ETH on Ethereum, POL on Polygon.
 
-The fee can only be applied to airdrops created with [Merkle Airdrops v1.3](/guides/airdrops/deployments) (or later).
-Airdrop campaigns created with earlier versions do not incur any claim fee.
+The fee is **$0.9** (in the gas token) per withdrawal and claim, for these chains:
 
-:::info[What is the fee?]
+<span id="contract-fees-table"></span>
 
-The fee is ~**$1** (in the gas token) per claim, regardless of the airdrop amount.
+| Chain      | Gas Token | Fee  |
+| ---------- | --------- | ---- |
+| Ethereum   | ETH       | $0.9 |
+| Arbitrum   | ETH       | $0.9 |
+| Avalanche  | AVAX      | $0.9 |
+| Base       | ETH       | $0.9 |
+| BNB Chain  | BNB       | $0.9 |
+| Gnosis     | XDAI      | $0.9 |
+| Linea      | ETH       | $0.9 |
+| Optimism   | ETH       | $0.9 |
+| Polygon    | POL       | $0.9 |
+| Scroll     | ETH       | $0.9 |
+| Sonic      | S         | $0.9 |
+| zkSync Era | ETH       | $0.9 |
+
+### Lockup and Flow
+
+The [Comptroller](/concepts/governance/#comptroller) can update the fee in the Lockup and Flow contracts, and the new
+fee applies to all streams created before and after the update.
+
+The withdrawal fee can only be applied to streams created with [Lockup v3.0](/guides/lockup/deployments) (or later) and
+[Flow v2.0](/guides/flow/deployments) (or later).
+
+### Merkle Factories
+
+The [Comptroller](/concepts/governance/#comptroller) can update the fee in the Merkle Factories contracts. However, the
+new fee applies only to airdrops created after the update, unlike the Lockup and Flow contracts where fee updates apply
+retroactively. The fee values in individual airdrop contracts remain the same or they can be only LOWERED.
+
+The claim fee can only be applied to airdrops created with [Merkle Airdrops v1.3](/guides/airdrops/deployments) (or
+later). Airdrop campaigns created with earlier versions do not incur any claim fee.
+
+:::note
+
+In the first version of the **Merkle Factories** ([v1.3](/guides/airdrops/deployments#versions)), oracles were not used
+to calculate the fee in the gas token, so the fees are fixed in Wei. Therefore, the [table above](#contract-fees-table)
+is applicable only to v2.0 and later. For v1.3, the fees are as follows:
 
 :::
 
-| Chain         | Gas Token | Fee              | Fee in Wei          |
-| ------------- | --------- | ---------------- | ------------------- |
-| Ethereum      | ETH       | 0.00036 ETH      | 360000000000000     |
-| Abstract      | ETH       | 0.00036 ETH      | 360000000000000     |
-| Arbitrum      | ETH       | 0.00036 ETH      | 360000000000000     |
-| Avalanche     | AVAX      | 0.038491147 AVAX | 38491147000000000   |
-| Base          | ETH       | 0.00036 ETH      | 360000000000000     |
-| Berachain     | BERA      | 0.15385 BERA     | 153850000000000000  |
-| Blast         | ETH       | 0.00036 ETH      | 360000000000000     |
-| BNB Chain     | BNB       | 0.0017620835 BNB | 1762083500000000    |
-| Chiliz        | CHZ       | 9.29 CHZ         | 9290000000000000000 |
-| Form          | ETH       | 0 ETH            | 0                   |
-| Gnosis        | XDAI      | 1 XDAI           | 1000000000000000000 |
-| IoTeX         | IOTX      | 0 IOTX           | 0                   |
-| LightLink     | ETH       | 0 ETH            | 0                   |
-| Linea         | ETH       | 0.00036 ETH      | 360000000000000     |
-| Mode          | ETH       | 0.00036 ETH      | 360000000000000     |
-| Morph         | ETH       | 0.00036 ETH      | 360000000000000     |
-| Optimism      | ETH       | 0.00036 ETH      | 360000000000000     |
-| Polygon       | POL       | 3.1897926635 POL | 3189792663500000000 |
-| Scroll        | ETH       | 0.00036 ETH      | 360000000000000     |
-| Sei           | SEI       | 0 SEI            | 0                   |
-| Sonic         | S         | 0 S              | 0                   |
-| Sophon        | SOPH      | 0 SOPH           | 0                   |
-| Superseed     | ETH       | 0.00036 ETH      | 360000000000000     |
-| Taiko Mainnet | ETH       | 0.00036 ETH      | 360000000000000     |
-| Tangle        | TNT       | 0 TNT            | 0                   |
-| Ultra         | UOS       | 0 UOS            | 0                   |
-| Unichain      | ETH       | 0 ETH            | 0                   |
-| zkSync Era    | ETH       | 0.00036 ETH      | 360000000000000     |
+| Chain      | Gas Token | Fee              | Fee in Wei          |
+| ---------- | --------- | ---------------- | ------------------- |
+| Ethereum   | ETH       | 0.00036 ETH      | 360000000000000     |
+| Abstract   | ETH       | 0.00036 ETH      | 360000000000000     |
+| Arbitrum   | ETH       | 0.00036 ETH      | 360000000000000     |
+| Avalanche  | AVAX      | 0.038491147 AVAX | 38491147000000000   |
+| Base       | ETH       | 0.00036 ETH      | 360000000000000     |
+| Berachain  | BERA      | 0.15385 BERA     | 153850000000000000  |
+| Blast      | ETH       | 0.00036 ETH      | 360000000000000     |
+| BNB Chain  | BNB       | 0.0017620835 BNB | 1762083500000000    |
+| Chiliz     | CHZ       | 9.29 CHZ         | 9290000000000000000 |
+| Gnosis     | XDAI      | 1 XDAI           | 1000000000000000000 |
+| Linea      | ETH       | 0.00036 ETH      | 360000000000000     |
+| Mode       | ETH       | 0.00036 ETH      | 360000000000000     |
+| Morph      | ETH       | 0.00036 ETH      | 360000000000000     |
+| Optimism   | ETH       | 0.00036 ETH      | 360000000000000     |
+| Polygon    | POL       | 3.1897926635 POL | 3189792663500000000 |
+| Scroll     | ETH       | 0.00036 ETH      | 360000000000000     |
+| Superseed  | ETH       | 0.00036 ETH      | 360000000000000     |
+| zkSync Era | ETH       | 0.00036 ETH      | 360000000000000     |
 
 ## Gas Fees
 
@@ -156,22 +177,22 @@ discuss your specific requirements.
 
 ### Q: How are the Interface Fees charged?
 
-A: They are added to the gas fee. For example, if the gas fee is \$10 and the Interface Fee is \$1, you would pay \$11
-in total (the payment is taken in the gas token, e.g., ETH).
+**A:** They are added to the gas fee. For example, if the gas fee is \$10 and the Interface Fee is \$1, you would pay
+\$11 in total (the payment is taken in the gas token, e.g., ETH).
 
 ### Q: Are the Interface Fees and the Contract Fees cumulative?
 
-A: No. The Contract Fee acts as a **minimum fee**, so it will not get added to the Interface Fee. You will pay the
+**A:** No. The Contract Fee acts as a **minimum fee**, so it will not get added to the Interface Fee. You will pay the
 higher of the two fees.
 
 ### Q: Does the Stream Withdrawal Fee apply to each withdrawal?
 
-A: Yes, unless they are subsidized by the sender. The fee is charged each time you withdraw from a stream. For example,
-if you withdraw from a stream 10 times, you will pay $10 in fees.
+**A:** Yes, unless they are subsidized by the sender. The fee is charged each time you withdraw from a stream. For
+example, if you withdraw from a stream 10 times, you will pay $10 in fees.
 
 ### Q: Can the Interface Fees and the Contract Fees be subsidized?
 
-A: Yes, they can be subsidized by the stream sender or the airdrop creator. Please
+**A:** Yes, they can be subsidized by the stream sender or the airdrop creator. Please
 [contact us](https://docs.google.com/forms/d/e/1FAIpQLSdqkcRjXl3urdE_yiT55itkcEX5LC4CM4HsNhjJbXB_CNMMjg/viewform) to
 discuss your specific requirements.
 
