@@ -1,5 +1,6 @@
 ---
 id: "merkle-instant"
+sidebar_position: 2
 title: "Merkle Instant"
 ---
 

@@ -1,5 +1,6 @@
 ---
 id: "lockup"
+sidebar_position: 1
 title: "Lockup"
 ---
 
