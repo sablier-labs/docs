@@ -4,7 +4,7 @@ sidebar_position: 2
 title: "Merkle Instant"
 ---
 
-# Client Integration
+# Client Integration with Merkle Instant
 
 In this guide, we will go through the steps to set up a local development environment for building onchain integrations
 with Merkle Instant using TypeScript and Anchor's [IDL](https://www.anchor-lang.com/docs/basics/idl). For more examples

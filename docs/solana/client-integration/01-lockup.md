@@ -4,7 +4,7 @@ sidebar_position: 1
 title: "Lockup"
 ---
 
-# Client Integration
+# Client Integration with Lockup
 
 In this guide, we will go through the steps to set up a local development environment for building onchain integrations
 with Lockup using TypeScript and Anchor's [IDL](https://www.anchor-lang.com/docs/basics/idl). For more examples and
@@ -19,33 +19,36 @@ provide guidance on how to interact with the Lockup program.
 
 :::
 
+:::important
+
+The examples in this guide use Devnet. Make sure your wallet has enough SOL and the appropriate SPL tokens for testing.
+
+:::
+
 ## Dependencies
 
 ### Download Types
 
-First, download the IDL and the TypeScript types for the Lockup program from the GitHub release.
-
-:::important
-
-Make sure to place them under the `target` directory, as it's seen below, otherwise anchor would throw warnings.
-
-:::
+First, download the IDL and the TypeScript types for the Lockup program from the GitHub release. For this example, we
+will place the types under the `target` directory.
 
 ```bash
-curl -L -o target/idl/sablier_lockup.json \
-  https://github.com/sablier-labs/solsab/releases/download/v1.0.0/sablier_lockup.json
+# Create target directories
+mkdir target/idl
+mkdir target/types
 ```
 
-and:
-
 ```bash
+# Download types to the target directories
+curl -L -o target/idl/sablier_lockup.json \
+  https://github.com/sablier-labs/solsab/releases/download/v1.0.0/sablier_lockup.json
 curl -L -o target/types/sablier_lockup.ts \
   https://github.com/sablier-labs/solsab/releases/download/v1.0.0/sablier_lockup.ts
 ```
 
 ### Install NPM Packages
 
-Install the required Solana and Anchor packages:
+Next, install the required Solana and Anchor packages:
 
 ```bash
 bun add @coral-xyz/anchor@0.31.1 @solana/web3.js@1.98.2 bn.js@5.2.2 @solana/spl-token@0.4.13
@@ -53,7 +56,13 @@ bun add @coral-xyz/anchor@0.31.1 @solana/web3.js@1.98.2 bn.js@5.2.2 @solana/spl-
 
 ## Setup
 
-Import the necessary modules and types:
+Create a file:
+
+```bash
+touch stream_management.ts
+```
+
+Then, import the necessary modules and types into it.
 
 ```typescript
 import * as anchor from "@coral-xyz/anchor";
@@ -83,17 +92,9 @@ async function setUp() {
 }
 ```
 
-:::note
-
-The examples in this guide use Devnet. Make sure your wallet has enough SOL and the appropriate SPL tokens for testing.
-
-:::
-
 ## Creating a Stream
 
-### Using `createWithTimestampsLl`
-
-Create a linear lockup stream with specific timestamps:
+For this example, we will use `createWithTimestampsLl` to create a lockup linear stream.
 
 ```typescript
 async function createStreams() {
@@ -113,13 +114,14 @@ async function createStreams() {
   // No unlock amounts
   const startUnlockAmount = new BN(0);
   const cliffUnlockAmount = new BN(0);
+  // Allow cancelling the stream
   const isCancelable = true;
 
   // Account addresses
   const creator = signerKeys.publicKey; // The signer is the creator
   const recipient = new PublicKey("RECIPIENT_WALLET_ADDRESS_HERE");
   const sender = creator; // Use the creator as the sender
-  const depositTokenMint = new PublicKey("YOUR_TOKEN_MINT_HERE");
+  const depositTokenMint = new PublicKey("DEPOSIT_TOKEN_MINT_HERE");
 
   // Set a higher compute unit limit so that the transaction doesn't fail
   const increaseCULimitIx = ComputeBudgetProgram.setComputeUnitLimit({
@@ -154,7 +156,7 @@ async function createStreams() {
 }
 ```
 
-Make sure to call the `createStreams` function to execute the stream creation:
+To create a stream, you can now call `createStreams` function.
 
 ```typescript
 createStreams();
@@ -163,16 +165,16 @@ createStreams();
 Execute the script using `bun`:
 
 ```shell
-ANCHOR_WALLET=~/.config/solana/id.json \ # or your wallet path
+ANCHOR_WALLET=~/.config/solana/id.json
 ANCHOR_PROVIDER_URL="https://api.devnet.solana.com" \
-bun run <your_file_path>.ts
+bun run stream_management.ts
 ```
 
 ## Withdrawing from a Stream
 
-### Using `withdraw`
+### Using `withdraw` function
 
-Withdraw tokens from an existing stream:
+The following code withdraws tokens from an existing stream:
 
 ```typescript
 async function withdrawFromStream(streamNftMint: PublicKey, amount: BN) {
@@ -183,7 +185,7 @@ async function withdrawFromStream(streamNftMint: PublicKey, amount: BN) {
   const signer = signerKeys.publicKey;
   const streamRecipient = signer;
   const withdrawalRecipient = signer;
-  const depositedTokenMint = new PublicKey("YOUR_TOKEN_MINT_HERE");
+  const withdrawTokenMint = new PublicKey("WITHDRAW_TOKEN_MINT_HERE");
 
   // Chainlink program and feed addresses
   const chainlinkProgram = new PublicKey("HEvSKofvBgfaexv23kMabbYqxasxU3mQ4ibBMEmJWHny");
@@ -195,8 +197,8 @@ async function withdrawFromStream(streamNftMint: PublicKey, amount: BN) {
     .accounts({
       chainlinkProgram,
       chainlinkSolUsdFeed,
-      depositedTokenMint,
-      depositedTokenProgram: TOKEN_PROGRAM_ID,
+      withdrawTokenMint,
+      withdrawTokenProgram: TOKEN_PROGRAM_ID,
       nftTokenProgram: TOKEN_PROGRAM_ID,
       signer,
       streamNftMint,
@@ -210,24 +212,25 @@ async function withdrawFromStream(streamNftMint: PublicKey, amount: BN) {
 }
 ```
 
-Make sure to call the `withdrawFromStream` function to execute the withdrawal:
+To withdraw from the stream, you can now call the `withdrawFromStream` function.
 
 ```typescript
 // Withdraw 100 tokens (assuming 6 decimals)
-withdrawFromStream("YOUR_STREAM_NFT_MINT_HERE", new BN(100 * 10 ** 6));
+const amountToWithdraw = new BN(100 * 10 ** 6);
+withdrawFromStream("YOUR_STREAM_NFT_MINT_HERE", amountToWithdraw);
 ```
 
 Execute the script using `bun`:
 
 ```shell
-ANCHOR_WALLET=~/.config/solana/id.json \ # or your wallet path
+ANCHOR_WALLET=~/.config/solana/id.json \
 ANCHOR_PROVIDER_URL="https://api.devnet.solana.com" \
-bun run <your_file_path>.ts
+bun run stream_management.ts
 ```
 
-### Using `withdrawMax`
+### Using `withdrawMax` function
 
-Withdraw the maximum available amount from a stream:
+The following code withdraws the maximum available amount from a stream:
 
 ```typescript
 async function withdrawMaxFromStream(streamNftMint: PublicKey) {
@@ -238,7 +241,7 @@ async function withdrawMaxFromStream(streamNftMint: PublicKey) {
   const signer = signerKeys.publicKey;
   const streamRecipient = signer;
   const withdrawalRecipient = signer;
-  const depositedTokenMint = new PublicKey("YOUR_TOKEN_MINT_HERE");
+  const withdrawTokenMint = new PublicKey("WITHDRAW_TOKEN_MINT_HERE");
 
   // Chainlink program and feed addresses
   const chainlinkProgram = new PublicKey("HEvSKofvBgfaexv23kMabbYqxasxU3mQ4ibBMEmJWHny");
@@ -250,8 +253,8 @@ async function withdrawMaxFromStream(streamNftMint: PublicKey) {
     .accounts({
       chainlinkProgram,
       chainlinkSolUsdFeed,
-      depositedTokenMint,
-      depositedTokenProgram: TOKEN_PROGRAM_ID,
+      withdrawTokenMint,
+      withdrawTokenProgram: TOKEN_PROGRAM_ID,
       nftTokenProgram: TOKEN_PROGRAM_ID,
       signer,
       streamNftMint,
@@ -265,7 +268,7 @@ async function withdrawMaxFromStream(streamNftMint: PublicKey) {
 }
 ```
 
-Make sure to call the `withdrawMaxFromStream` function to execute the withdrawal:
+To withdraw from the stream, you can now call the `withdrawMaxFromStream` function.
 
 ```typescript
 withdrawMaxFromStream("YOUR_STREAM_NFT_MINT_HERE");
@@ -274,12 +277,14 @@ withdrawMaxFromStream("YOUR_STREAM_NFT_MINT_HERE");
 Execute the script using `bun`:
 
 ```shell
-ANCHOR_WALLET=~/.config/solana/id.json \ # or your wallet path
+ANCHOR_WALLET=~/.config/solana/id.json \
 ANCHOR_PROVIDER_URL="https://api.devnet.solana.com" \
-bun run <your_file_path>.ts
+bun run stream_management.ts
 ```
 
-## Cancel a Stream
+## Canceling a Stream
+
+The following code cancels an existing stream:
 
 ```typescript
 async function cancelStream(streamNftMint: PublicKey) {
@@ -288,7 +293,7 @@ async function cancelStream(streamNftMint: PublicKey) {
 
   // The sender of the stream
   const sender = signerKeys.publicKey;
-  const depositedTokenMint = new PublicKey("YOUR_TOKEN_MINT_HERE");
+  const depositedTokenMint = new PublicKey("DEPOSIT_TOKEN_MINT_HERE");
 
   // Call the `cancel` instruction
   const txSignature = await lockupProgram.methods
@@ -306,7 +311,7 @@ async function cancelStream(streamNftMint: PublicKey) {
 }
 ```
 
-Make sure to call the `cancelStream` function to execute the cancellation:
+To cancel the stream, you can now call the `cancelStream` function.
 
 ```typescript
 cancelStream("YOUR_STREAM_NFT_MINT_HERE");
@@ -315,7 +320,7 @@ cancelStream("YOUR_STREAM_NFT_MINT_HERE");
 Execute the script using `bun`:
 
 ```shell
-ANCHOR_WALLET=~/.config/solana/id.json \ # or your wallet path
+ANCHOR_WALLET=~/.config/solana/id.json
 ANCHOR_PROVIDER_URL="https://api.devnet.solana.com" \
-bun run <your_file_path>.ts
+bun run stream_management.ts
 ```
