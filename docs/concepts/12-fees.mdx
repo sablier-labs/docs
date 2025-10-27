@@ -69,14 +69,14 @@ Claims from airdrops created with earlier versions do not incur any claim fee.
 
 ## Contract Fees
 
-As opposed to the Interface fees, the contract fees are charged by the Sablier contracts themselves. They apply
+As opposed to the Interface Fees, the Contract Fees are charged by the Sablier contracts themselves. They apply
 regardless of the interface used to interact with the Sablier Protocol.
 
 This fee is also charged in USD but paid in the native gas token via the
 [`msg.value`](https://docs.soliditylang.org/en/v0.8.30/units-and-global-variables.html#block-and-transaction-properties)
-field of the transaction. During a transaction, [Chainlink oracle](https://chain.link/education/blockchain-oracles) is
-used to convert the fee from USD to the native gas token. The transaction succeeds only if the `msg.value` is greater
-than or equal to the fee amount returned by `calculateMinFeeWei` function which is available in
+field of the transaction. During a transaction, [Chainlink](https://chain.link/education/blockchain-oracles) is used to
+convert the fee from USD to the native gas token. The transaction succeeds only if the `msg.value` is greater than or
+equal to the fee amount returned by `calculateMinFeeWei` function which is available in
 [Lockup](/reference/lockup/contracts/contract.SablierLockup.md#calculateminfeewei),
 [Flow](/reference/flow/contracts/contract.SablierFlow.md#calculateminfeewei) and
 [Airdrops](/reference/airdrops/contracts/abstracts/abstract.SablierMerkleBase.md#calculateminfeewei) contracts.
@@ -91,9 +91,9 @@ your specific requirements.
 
 :::
 
-The [Comptroller](/concepts/governance/#comptroller) can update the contract fees.
+The [Comptroller](/concepts/governance/#comptroller) can update the Contract Fees.
 
-- In case of Lockup and Flow, the new fee would apply to all the new streams created after the update as well as the
+- In case of Lockup and Flow, the new fee would apply to all the new streams created after the update, as well as the
   existing streams.
 - In case of Airdrops, the new fee would apply to all the new airdrops campaigns created after the update. The fee on
   the existing airdrops campaigns remains the same or can be LOWERED if subsidized by the campaign owners.
@@ -101,8 +101,8 @@ The [Comptroller](/concepts/governance/#comptroller) can update the contract fee
 :::warning
 
 The Contract Fee acts as a **minimum fee**, so it is NOT cumulative with the Interface Fee. When you interact with the
-contracts via Sablier interface, you only pay the interface fee. On the other hand, if you interact with the contract
-directly, you will only pay the contract fee.
+contracts via Sablier interface, you only pay the Interface Fee. On the other hand, if you interact with the contract
+directly, you will only pay the Contract Fee.
 
 :::
 
@@ -155,14 +155,14 @@ On the chains listed below, the fee is **$0.9** (in the gas token). For the chai
 | Sonic      | S         | $0.9 |
 | zkSync Era | ETH       | $0.9 |
 
-The contract fee applies only to airdrop campaigns created with
+The Contract Fee applies only to airdrop campaigns created with
 [Merkle Airdrops v2.0 (or later)](/guides/airdrops/deployments#versions).
 
 #### Merkle Airdrops v1.3
 
 In [Merkle Airdrops v1.3](/guides/airdrops/previous-deployments/v1.3), oracles were not used. As a result, the fees in
-v1.3 are specified in native token. Therefore, the fees in the table above are applicable only to v2.0 and later. For
-v1.3, the fees are as follows:
+v1.3 are specified in the native token. Therefore, the fees in the table above are applicable only to v2.0 and later.
+For v1.3, the fees are as follows:
 
 | Chain      | Gas Token | Fee              | Fee in Wei          |
 | ---------- | --------- | ---------------- | ------------------- |
@@ -197,7 +197,7 @@ validators, which are not affiliated with Sablier Labs.
 
 ## Fee Subsidization
 
-Interface and contract fees can be subsidized, partially or fully, by the sender in certain cases. This means that the
+Interface and Contract Fees can be subsidized, partially or fully, by the sender in certain cases. This means that the
 person creating the stream or airdrop can choose to cover the fees that would normally be charged to the recipient. Note
 that the gas fees cannot be subsidized as they are paid to the blockchain network validators on every transaction.
 
