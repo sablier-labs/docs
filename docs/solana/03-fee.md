@@ -19,7 +19,7 @@ Fees are calculated based on market prices. For example, when SOL is \$200, a \$
 | Withdraw from a stream | **$1** |
 | Claim an airdrop       | **$2** |
 
-These are interface fees, not program-level fees. The Solana programs themselves don't charge these fees.
+These are Interface Fees, not program-level fees. The Solana programs themselves don't charge these fees.
 
 ### Transaction Fees
 
