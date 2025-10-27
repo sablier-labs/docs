@@ -2,7 +2,7 @@
 
 [Git Source](https://github.com/sablier-labs/evm-utils/blob/0b3bc38ab8badd135fc178b757afaf6902f1f63c/src/Adminable.sol)
 
-**Inherits:** IAdminable
+**Inherits:** [IAdminable](/reference/airdrops/contracts/interfaces/interface.IAdminable.md)
 
 See the documentation in {IAdminable}.
 

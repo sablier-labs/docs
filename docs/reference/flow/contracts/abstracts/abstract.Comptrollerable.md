@@ -2,9 +2,9 @@
 
 [Git Source](https://github.com/sablier-labs/evm-utils/blob/0b3bc38ab8badd135fc178b757afaf6902f1f63c/src/Comptrollerable.sol)
 
-**Inherits:** IComptrollerable
+**Inherits:** [IComptrollerable](/reference/flow/contracts/interfaces/interface.IComptrollerable.md)
 
-See the documentation in {IComptrollerable}.
+See the documentation in [IComptrollerable](/reference/flow/contracts/interfaces/interface.IComptrollerable.md).
 
 ## State Variables
 

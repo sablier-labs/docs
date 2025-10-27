@@ -225,10 +225,28 @@ cp $evmutils_temp/Batch.sol/abstract.Batch.md $flow/abstracts/ 2>/dev/null || tr
 cp $evmutils_temp/Comptrollerable.sol/abstract.Comptrollerable.md $flow/abstracts/ 2>/dev/null || true
 cp $evmutils_temp/NoDelegateCall.sol/abstract.NoDelegateCall.md $flow/abstracts/ 2>/dev/null || true
 
+# Copy relevant evm-utils interfaces
+# Airdrops: IAdminable, IComptrollerable
+cp $evmutils_temp/interfaces/IAdminable.sol/interface.IAdminable.md $airdrops/interfaces/ 2>/dev/null || true
+cp $evmutils_temp/interfaces/IComptrollerable.sol/interface.IComptrollerable.md $airdrops/interfaces/ 2>/dev/null || true
+
+# Lockup: IBatch, IComptrollerable
+cp $evmutils_temp/interfaces/IBatch.sol/interface.IBatch.md $lockup/interfaces/ 2>/dev/null || true
+cp $evmutils_temp/interfaces/IComptrollerable.sol/interface.IComptrollerable.md $lockup/interfaces/ 2>/dev/null || true
+
+# Flow: IBatch, IComptrollerable
+cp $evmutils_temp/interfaces/IBatch.sol/interface.IBatch.md $flow/interfaces/ 2>/dev/null || true
+cp $evmutils_temp/interfaces/IComptrollerable.sol/interface.IComptrollerable.md $flow/interfaces/ 2>/dev/null || true
+
+# Fix interface links in copied evm-utils abstracts to use correct docs paths
+sd "\[IAdminable\]\(/src/interfaces/IAdminable\.sol/interface\.IAdminable\.md\)" "[IAdminable](/reference/airdrops/contracts/interfaces/interface.IAdminable.md)" $airdrops/abstracts/abstract.Adminable.md
+sd "\[IComptrollerable\]\(/src/interfaces/IComptrollerable\.sol/interface\.IComptrollerable\.md\)" "[IComptrollerable](/reference/airdrops/contracts/interfaces/interface.IComptrollerable.md)" $airdrops/abstracts/abstract.Comptrollerable.md
+sd "\[IComptrollerable\]\(/src/interfaces/IComptrollerable\.sol/interface\.IComptrollerable\.md\)" "[IComptrollerable](/reference/lockup/contracts/interfaces/interface.IComptrollerable.md)" $lockup/abstracts/abstract.Comptrollerable.md
+sd "\[IComptrollerable\]\(/src/interfaces/IComptrollerable\.sol/interface\.IComptrollerable\.md\)" "[IComptrollerable](/reference/flow/contracts/interfaces/interface.IComptrollerable.md)" $flow/abstracts/abstract.Comptrollerable.md
+sd "\[IBatch\]\(/src/interfaces/IBatch\.sol/interface\.IBatch\.md\)" "[IBatch](/reference/lockup/contracts/interfaces/interface.IBatch.md)" $lockup/abstracts/abstract.Batch.md
+sd "\[IBatch\]\(/src/interfaces/IBatch\.sol/interface\.IBatch\.md\)" "[IBatch](/reference/flow/contracts/interfaces/interface.IBatch.md)" $flow/abstracts/abstract.Batch.md
+
 # Fix broken links in copied evm-utils abstracts (remove interface links that don't exist)
-sd "\[IAdminable\]\(/src/interfaces/IAdminable\.sol/interface\.IAdminable\.md\)" "IAdminable" $airdrops/abstracts/abstract.Adminable.md
-sd "\[IComptrollerable\]\(/src/interfaces/IComptrollerable\.sol/interface\.IComptrollerable\.md\)" "IComptrollerable" $airdrops/abstracts/abstract.Comptrollerable.md $lockup/abstracts/abstract.Comptrollerable.md $flow/abstracts/abstract.Comptrollerable.md
-sd "\[IBatch\]\(/src/interfaces/IBatch\.sol/interface\.IBatch\.md\)" "IBatch" $lockup/abstracts/abstract.Batch.md $flow/abstracts/abstract.Batch.md
 sd "\[INoDelegateCall\]\(/src/interfaces/INoDelegateCall\.sol/interface\.INoDelegateCall\.md\)" "INoDelegateCall" $lockup/abstracts/abstract.NoDelegateCall.md $flow/abstracts/abstract.NoDelegateCall.md
 
 # Clean up the evm-utils temp docs (we don't need to keep them)

@@ -26,7 +26,7 @@ Creates multiple streams in a single transaction.
 
 > [**Helpers Library**](./lockup/contracts/libraries/library.Helpers)
 
-Library to validate input parameters across lockup streams.
+Library to validate input parameters when creating lockup streams.
 
 > [**LockupMath Library**](./lockup/contracts/libraries/library.LockupMath)
 
@@ -50,7 +50,7 @@ Creates and manages Lockup streams with three different streaming functions.
 
 The Merkle Airdrops repo is a collection of contracts to create various kinds of airdrop campaigns. Some of these
 campaigns make use of the Lockup protocol to create what we call [Airstreams](/concepts/airdrops). This repo consists of
-airdrops related contracts such as MerkleFactory, MerkleInstant, MerkleLL, and MerkleLT.
+airdrops related contracts such as Merkle Factories, MerkleInstant, MerkleLL, MerkleLT and MerkleVCA.
 
 ### Factories
 
@@ -59,7 +59,7 @@ airdrops related contracts such as MerkleFactory, MerkleInstant, MerkleLL, and M
 > [**MerkleLT Reference**](./airdrops/contracts/contract.SablierFactoryMerkleLT)
 > [**MerkleVCA Reference**](./airdrops/contracts/contract.SablierFactoryMerkleVCA)
 
-Factory contracts to deploy various Merkle campaigns.
+Factory contracts to deploy the Merkle campaigns.
 
 ### MerkleInstant
 
