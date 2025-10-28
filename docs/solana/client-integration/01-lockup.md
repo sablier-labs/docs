@@ -19,7 +19,7 @@ provide guidance on how to interact with the Lockup program.
 
 :::
 
-:::important
+:::note
 
 The examples in this guide use Devnet. Make sure your wallet has enough SOL and the appropriate SPL tokens for testing.
 
@@ -34,8 +34,8 @@ will place the types under the `target` directory.
 
 ```bash
 # Create target directories
-mkdir target/idl
-mkdir target/types
+mkdir -p target/idl
+mkdir -p target/types
 ```
 
 ```bash
@@ -59,7 +59,7 @@ bun add @coral-xyz/anchor@0.31.1 @solana/web3.js@1.98.2 bn.js@5.2.2 @solana/spl-
 Create a file:
 
 ```bash
-touch stream_management.ts
+touch stream-management.ts
 ```
 
 Then, import the necessary modules and types into it.
@@ -68,7 +68,7 @@ Then, import the necessary modules and types into it.
 import * as anchor from "@coral-xyz/anchor";
 import { TOKEN_PROGRAM_ID } from "@solana/spl-token";
 import { ComputeBudgetProgram, PublicKey } from "@solana/web3.js";
-import { type SablierLockup } from "<based_on_your_file_path>/target/types/sablier_lockup";
+import { type SablierLockup } from "./target/types/sablier_lockup";
 import BN from "bn.js";
 ```
 
@@ -92,12 +92,14 @@ async function setUp() {
 }
 ```
 
-## Creating a Stream
+## Create a Stream
 
-For this example, we will use `createWithTimestampsLl` to create a lockup linear stream.
+### Using `createWithTimestampsLl` function
+
+Create a linear lockup stream with specific timestamps:
 
 ```typescript
-async function createStreams() {
+async function createStream() {
   // Ensure the set up is done
   await setUp();
 
@@ -156,36 +158,124 @@ async function createStreams() {
 }
 ```
 
-To create a stream, you can now call `createStreams` function.
+Make sure to call `createStream` function to execute it on-chain.
 
 ```typescript
-createStreams();
+createStream();
 ```
 
 Execute the script using `bun`:
 
 ```shell
-ANCHOR_WALLET=~/.config/solana/id.json
+ANCHOR_WALLET=~/.config/solana/id.json \
 ANCHOR_PROVIDER_URL="https://api.devnet.solana.com" \
-bun run stream_management.ts
+bun run stream-management.ts
 ```
 
-## Withdrawing from a Stream
+:::note
+
+The default path for the Solana wallet is `~/.config/solana/id.json`. If you have your wallet configured in other path,
+make sure to edit the this accordingly.
+
+:::
+
+### Using `createWithDurationsLl` function
+
+Create a linear lockup stream with durations:
+
+```typescript
+async function createStream() {
+  // Ensure the set up is done
+  await setUp();
+
+  // Using the current timestamp in milliseconds as the unique identifier
+  const salt = new BN(Date.now());
+  // 1000 tokens (assuming 6 decimals)
+  const depositAmount = new BN(1000 * 10 ** 6);
+  // No cliff
+  const cliffDuration = new BN(0);
+  // 1 hour stream
+  const totalDuration = new BN(3600);
+  // No unlock amounts
+  const startUnlockAmount = new BN(0);
+  const cliffUnlockAmount = new BN(0);
+  // Allow cancelling the stream
+  const isCancelable = true;
+
+  // Account addresses
+  const creator = signerKeys.publicKey; // The signer is the creator
+  const recipient = new PublicKey("RECIPIENT_WALLET_ADDRESS_HERE");
+  const sender = creator; // Use the creator as the sender
+  const depositTokenMint = new PublicKey("DEPOSIT_TOKEN_MINT_HERE");
+
+  // Set a higher compute unit limit so that the transaction doesn't fail
+  const increaseCULimitIx = ComputeBudgetProgram.setComputeUnitLimit({
+    units: 1_000_000,
+  });
+
+  // Call the `createWithDurationsLl` instruction
+  const txSignature = await lockupProgram.methods
+    .createWithDurationsLl(
+      salt,
+      depositAmount,
+      cliffDuration,
+      totalDuration,
+      startUnlockAmount,
+      cliffUnlockAmount,
+      isCancelable,
+    )
+    .accounts({
+      creator,
+      depositTokenMint,
+      depositTokenProgram: TOKEN_PROGRAM_ID,
+      nftTokenProgram: TOKEN_PROGRAM_ID,
+      recipient,
+      sender,
+    })
+    .preInstructions([increaseCULimitIx])
+    .rpc();
+
+  console.log("Stream created successfully!");
+  console.log("Transaction signature:", txSignature);
+}
+```
+
+Make sure to call `createStream` function to execute it on-chain.
+
+```typescript
+createStream();
+```
+
+Execute the script using `bun`:
+
+```shell
+ANCHOR_WALLET=~/.config/solana/id.json \
+ANCHOR_PROVIDER_URL="https://api.devnet.solana.com" \
+bun run stream-management.ts
+```
+
+:::note
+
+The default path for the Solana wallet is `~/.config/solana/id.json`. If you have your wallet configured in other path,
+make sure to edit the this accordingly.
+
+:::
+
+## Withdraw from a Stream
 
 ### Using `withdraw` function
 
-The following code withdraws tokens from an existing stream:
+The following code calls withdraw function on the lockup program:
 
 ```typescript
 async function withdrawFromStream(streamNftMint: PublicKey, amount: BN) {
   // Ensure the set up is done
   await setUp();
 
-  // Same account setup as withdraw
   const signer = signerKeys.publicKey;
   const streamRecipient = signer;
   const withdrawalRecipient = signer;
-  const withdrawTokenMint = new PublicKey("WITHDRAW_TOKEN_MINT_HERE");
+  const depositedTokenMint = new PublicKey("DEPOSITED_TOKEN_MINT_HERE");
 
   // Chainlink program and feed addresses
   const chainlinkProgram = new PublicKey("HEvSKofvBgfaexv23kMabbYqxasxU3mQ4ibBMEmJWHny");
@@ -197,8 +287,8 @@ async function withdrawFromStream(streamNftMint: PublicKey, amount: BN) {
     .accounts({
       chainlinkProgram,
       chainlinkSolUsdFeed,
-      withdrawTokenMint,
-      withdrawTokenProgram: TOKEN_PROGRAM_ID,
+      depositedTokenMint,
+      depositedTokenProgram: TOKEN_PROGRAM_ID,
       nftTokenProgram: TOKEN_PROGRAM_ID,
       signer,
       streamNftMint,
@@ -212,7 +302,7 @@ async function withdrawFromStream(streamNftMint: PublicKey, amount: BN) {
 }
 ```
 
-To withdraw from the stream, you can now call the `withdrawFromStream` function.
+Make sure to call the `withdrawFromStream` function to execute the withdrawal on-chain.
 
 ```typescript
 // Withdraw 100 tokens (assuming 6 decimals)
@@ -225,8 +315,15 @@ Execute the script using `bun`:
 ```shell
 ANCHOR_WALLET=~/.config/solana/id.json \
 ANCHOR_PROVIDER_URL="https://api.devnet.solana.com" \
-bun run stream_management.ts
+bun run stream-management.ts
 ```
+
+:::note
+
+The default path for the Solana wallet is `~/.config/solana/id.json`. If you have your wallet configured in other path,
+make sure to edit the this accordingly.
+
+:::
 
 ### Using `withdrawMax` function
 
@@ -237,11 +334,10 @@ async function withdrawMaxFromStream(streamNftMint: PublicKey) {
   // Ensure the set up is done
   await setUp();
 
-  // Same account setup as withdraw
   const signer = signerKeys.publicKey;
   const streamRecipient = signer;
   const withdrawalRecipient = signer;
-  const withdrawTokenMint = new PublicKey("WITHDRAW_TOKEN_MINT_HERE");
+  const depositedTokenMint = new PublicKey("DEPOSITED_TOKEN_MINT_HERE");
 
   // Chainlink program and feed addresses
   const chainlinkProgram = new PublicKey("HEvSKofvBgfaexv23kMabbYqxasxU3mQ4ibBMEmJWHny");
@@ -253,8 +349,8 @@ async function withdrawMaxFromStream(streamNftMint: PublicKey) {
     .accounts({
       chainlinkProgram,
       chainlinkSolUsdFeed,
-      withdrawTokenMint,
-      withdrawTokenProgram: TOKEN_PROGRAM_ID,
+      depositedTokenMint,
+      depositedTokenProgram: TOKEN_PROGRAM_ID,
       nftTokenProgram: TOKEN_PROGRAM_ID,
       signer,
       streamNftMint,
@@ -268,7 +364,7 @@ async function withdrawMaxFromStream(streamNftMint: PublicKey) {
 }
 ```
 
-To withdraw from the stream, you can now call the `withdrawMaxFromStream` function.
+Make sure to call the `withdrawMaxFromStream` function to execute the withdrawal on-chain.
 
 ```typescript
 withdrawMaxFromStream("YOUR_STREAM_NFT_MINT_HERE");
@@ -279,10 +375,17 @@ Execute the script using `bun`:
 ```shell
 ANCHOR_WALLET=~/.config/solana/id.json \
 ANCHOR_PROVIDER_URL="https://api.devnet.solana.com" \
-bun run stream_management.ts
+bun run stream-management.ts
 ```
 
-## Canceling a Stream
+:::note
+
+The default path for the Solana wallet is `~/.config/solana/id.json`. If you have your wallet configured in other path,
+make sure to edit the this accordingly.
+
+:::
+
+## Cancel a Stream
 
 The following code cancels an existing stream:
 
@@ -311,7 +414,7 @@ async function cancelStream(streamNftMint: PublicKey) {
 }
 ```
 
-To cancel the stream, you can now call the `cancelStream` function.
+Make sure to call the `cancelStream` function to execute the cancellation on-chain:
 
 ```typescript
 cancelStream("YOUR_STREAM_NFT_MINT_HERE");
@@ -320,7 +423,14 @@ cancelStream("YOUR_STREAM_NFT_MINT_HERE");
 Execute the script using `bun`:
 
 ```shell
-ANCHOR_WALLET=~/.config/solana/id.json
+ANCHOR_WALLET=~/.config/solana/id.json \
 ANCHOR_PROVIDER_URL="https://api.devnet.solana.com" \
-bun run stream_management.ts
+bun run stream-management.ts
 ```
+
+:::note
+
+The default path for the Solana wallet is `~/.config/solana/id.json`. If you have your wallet configured in other path,
+make sure to edit the this accordingly.
+
+:::
