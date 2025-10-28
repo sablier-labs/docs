@@ -36,7 +36,7 @@ function computeMerkleVCA(
 Creates a new MerkleVCA campaign for variable distribution of tokens.
 
 Emits a
-[CreateMerkleVCA](/docs/reference/airdrops/contracts/interfaces/interface.ISablierFactoryMerkleVCA.md#createmerklevca)
+[CreateMerkleVCA](/docs/reference/airdrops/contracts/interfaces/interface.ISablierFactoryMerkleVCA.md#createmerklevca-1)
 event. Notes:
 
 - The contract is created with CREATE2.
@@ -62,11 +62,11 @@ function createMerkleVCA(
 
 **Parameters**
 
-| Name              | Type                          | Description                                                                                                                                                   |
-| ----------------- | ----------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `params`          | `MerkleVCA.ConstructorParams` | Struct encapsulating the [SablierMerkleVCA](/docs/reference/airdrops/contracts/contract.SablierMerkleVCA.md) parameters, which are documented in {DataTypes}. |
-| `aggregateAmount` | `uint256`                     | The total amount of ERC-20 tokens to be distributed to all recipients.                                                                                        |
-| `recipientCount`  | `uint256`                     | The total number of recipient addresses eligible for the airdrop.                                                                                             |
+| Name              | Type                          | Description                                                                                                                                    |
+| ----------------- | ----------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------- |
+| `params`          | `MerkleVCA.ConstructorParams` | Struct encapsulating the input parameters, which are documented in [DataTypes](/docs/reference/airdrops/contracts/types/library.MerkleVCA.md). |
+| `aggregateAmount` | `uint256`                     | The total amount of ERC-20 tokens to be distributed to all recipients.                                                                         |
+| `recipientCount`  | `uint256`                     | The total number of recipient addresses eligible for the airdrop.                                                                              |
 
 **Returns**
 

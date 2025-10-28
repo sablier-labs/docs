@@ -521,7 +521,7 @@ function setNativeToken(address newNativeToken) external;
 
 Sets a new NFT descriptor contract, which produces the URI describing the Sablier stream NFTs.
 
-Emits a [SetNFTDescriptor](/docs/reference/flow/contracts/interfaces/interface.ISablierFlow.md#setnftdescriptor) and
+Emits a [SetNFTDescriptor](/docs/reference/flow/contracts/interfaces/interface.ISablierFlow.md#setnftdescriptor-1) and
 {BatchMetadataUpdate} event. Notes:
 
 - Does not revert if the NFT descriptor is the same. Requirements:

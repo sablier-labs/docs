@@ -155,8 +155,7 @@ constructor(
     string memory ipfsCID_,
     bytes32 merkleRoot,
     IERC20 token
-)
-    [Adminable](/docs/reference/airdrops/contracts/abstracts/abstract.Adminable.md)(initialAdmin);
+) Adminable(initialAdmin)
 ```
 
 ### calculateMinFeeWei

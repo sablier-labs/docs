@@ -147,7 +147,7 @@ function minFeeUSD() external view returns (uint256);
 
 Claws back the unclaimed tokens.
 
-Emits a [Clawback](/docs/reference/airdrops/contracts/interfaces/interface.ISablierMerkleBase.md#clawback) event.
+Emits a [Clawback](/docs/reference/airdrops/contracts/interfaces/interface.ISablierMerkleBase.md#clawback-1) event.
 Requirements:
 
 - `msg.sender` must be the admin.
@@ -169,7 +169,7 @@ function clawback(address to, uint128 amount) external;
 
 Lowers the min USD fee.
 
-Emits a [LowerMinFeeUSD](/docs/reference/airdrops/contracts/interfaces/interface.ISablierMerkleBase.md#lowerminfeeusd)
+Emits a [LowerMinFeeUSD](/docs/reference/airdrops/contracts/interfaces/interface.ISablierMerkleBase.md#lowerminfeeusd-1)
 event. Requirements:
 
 - `msg.sender` must be the comptroller.

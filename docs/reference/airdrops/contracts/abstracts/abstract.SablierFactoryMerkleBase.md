@@ -29,7 +29,7 @@ address public override nativeToken;
 ### constructor
 
 ```solidity
-constructor(address initialComptroller) [Comptrollerable](/docs/reference/airdrops/contracts/abstracts/abstract.Comptrollerable.md)(initialComptroller);
+constructor(address initialComptroller) Comptrollerable(initialComptroller);
 ```
 
 **Parameters**

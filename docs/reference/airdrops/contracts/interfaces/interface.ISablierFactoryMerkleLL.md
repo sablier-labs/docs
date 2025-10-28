@@ -36,7 +36,7 @@ function computeMerkleLL(
 Creates a new Merkle Lockup campaign with a Lockup Linear distribution.
 
 Emits a
-[CreateMerkleLL](/docs/reference/airdrops/contracts/interfaces/interface.ISablierFactoryMerkleLL.md#createmerklell)
+[CreateMerkleLL](/docs/reference/airdrops/contracts/interfaces/interface.ISablierFactoryMerkleLL.md#createmerklell-1)
 event. Notes:
 
 - The contract is created with CREATE2.
@@ -56,11 +56,11 @@ function createMerkleLL(
 
 **Parameters**
 
-| Name              | Type                         | Description                                                                     |
-| ----------------- | ---------------------------- | ------------------------------------------------------------------------------- |
-| `params`          | `MerkleLL.ConstructorParams` | Struct encapsulating the input parameters, which are documented in {DataTypes}. |
-| `aggregateAmount` | `uint256`                    | The total amount of ERC-20 tokens to be distributed to all recipients.          |
-| `recipientCount`  | `uint256`                    | The total number of recipient addresses eligible for the airdrop.               |
+| Name              | Type                         | Description                                                                                                                                   |
+| ----------------- | ---------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------- |
+| `params`          | `MerkleLL.ConstructorParams` | Struct encapsulating the input parameters, which are documented in [DataTypes](/docs/reference/airdrops/contracts/types/library.MerkleLL.md). |
+| `aggregateAmount` | `uint256`                    | The total amount of ERC-20 tokens to be distributed to all recipients.                                                                        |
+| `recipientCount`  | `uint256`                    | The total number of recipient addresses eligible for the airdrop.                                                                             |
 
 **Returns**
 
