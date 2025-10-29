@@ -39,11 +39,11 @@ lint() {
   # This pattern appears in forge-generated docs and breaks markdown rendering
   sd '```\*' '```' $all_md_files
 
-  # Remove remaining italic asterisks added by `forge doc`: https://github.com/foundry-rs/foundry/issues/4540
-  sd --string-mode "\*" "" $all_md_files
-
   # Format the docs with Prettier
   bun prettier --log-level silent --write $contracts
+
+  # Remove remaining italic asterisks added by `forge doc`: https://github.com/foundry-rs/foundry/issues/4540
+  sd --string-mode "\*" "" $all_md_files
 }
 
 run() {
@@ -113,7 +113,7 @@ run() {
 
     # Fix some invalid references in Lockup
     sd "InvalidWithdrawalInWithdrawMultiple.md" "ISablierLockup.md#invalidwithdrawalinwithdrawmultiple" $all_md_files
-    sd "/docs/reference/lockup/contracts/interfaces/interface.InvalidStreamInCancelMultiple.md" "/docs/reference/lockup/contracts/interfaces/interface.ISablierLockup.md#invalidstreamincancelmultiple" $all_md_files
+    sd "/$lockup/interfaces/interface.InvalidStreamInCancelMultiple.md" "/$lockup/interfaces/interface.ISablierLockup.md#invalidstreamincancelmultiple" $all_md_files
     sd "/node_modules/forge-std/src/mocks/MockERC721.sol/contract.MockERC721.md" "https://eips.ethereum.org/EIPS/eip-165" $all_md_files
     sd "/node_modules/@arbitrum/token-bridge-contracts/contracts/tokenbridge/libraries/ERC165.sol/abstract.ERC165.md#supportsinterface" "https://eips.ethereum.org/EIPS/eip-165" $all_md_files
   fi
@@ -141,14 +141,14 @@ run() {
 
   # Fix external contract references that don't have docs
   if [ "$repo" = "lockup" ]; then
-    sd "\[SablierComptroller\]\(/docs/reference/lockup/contracts/contract\.SablierComptroller\.md\)" "**SablierComptroller**" $all_md_files
+    sd "\[SablierComptroller\]\(/$lockup/contract\.SablierComptroller\.md\)" "**SablierComptroller**" $all_md_files
   fi
 
   # Update the hyperlinks to use the directory structure of the docs website
-  # We need the capturing group to avoid replacing the "Git Source" URLs
+  # Match paths with leading slash (forge generates /src/...)
   sd "src/abstracts/\w+\.sol/([\w.]+)" $contracts'/abstracts/$1' $all_md_files
   sd "src/interfaces/\w+\.sol/([\w.]+)" $contracts'/interfaces/$1' $all_md_files
-  sd "src/\w+\.sol/([\w.]+)" $contracts/'$1' $all_md_files
+  sd "src/\w+\.sol/([\w.]+)" $contracts'/$1' $all_md_files
 }
 
 # ---------------------------------------------------------------------------- #
@@ -162,8 +162,6 @@ run "lockup"
 set_sidebar_position $lockup/contract.SablierLockup.md 1
 set_sidebar_position $lockup/contract.SablierBatchLockup.md 1
 set_sidebar_position $lockup/contract.LockupNFTDescriptor.md 3
-
-lint "lockup"
 
 # ---------------------------------------------------------------------------- #
 #                                   Airdrops                                   #
@@ -182,8 +180,6 @@ set_sidebar_position $airdrops/contract.SablierMerkleLL.md 3
 set_sidebar_position $airdrops/contract.SablierMerkleLT.md 3
 set_sidebar_position $airdrops/contract.SablierMerkleVCA.md 3
 
-lint "airdrops"
-
 # ---------------------------------------------------------------------------- #
 #                                      Flow                                    #
 # ---------------------------------------------------------------------------- #
@@ -194,8 +190,6 @@ run "flow"
 # Reorder the contracts in the sidebar
 set_sidebar_position $flow/contract.SablierFlow.md 1
 set_sidebar_position $flow/contract.FlowNFTDescriptor.md 2
-
-lint "flow"
 
 # ---------------------------------------------------------------------------- #
 #                                   EVM Utils                                  #
@@ -210,44 +204,53 @@ cd ../../
 # Define evm-utils contracts directory (temporary)
 evmutils_temp=repos/evm-utils/docs/src/src
 
-# Copy relevant evm-utils abstracts to each repo
+# Copy relevant evm-utils files to each repo
 # Airdrops: Adminable, Comptrollerable
 cp $evmutils_temp/Adminable.sol/abstract.Adminable.md $airdrops/abstracts/ 2>/dev/null || true
 cp $evmutils_temp/Comptrollerable.sol/abstract.Comptrollerable.md $airdrops/abstracts/ 2>/dev/null || true
-
-# Lockup: Batch, Comptrollerable, NoDelegateCall
-cp $evmutils_temp/Batch.sol/abstract.Batch.md $lockup/abstracts/ 2>/dev/null || true
-cp $evmutils_temp/Comptrollerable.sol/abstract.Comptrollerable.md $lockup/abstracts/ 2>/dev/null || true
-cp $evmutils_temp/NoDelegateCall.sol/abstract.NoDelegateCall.md $lockup/abstracts/ 2>/dev/null || true
-
-# Flow: Batch, Comptrollerable, NoDelegateCall
-cp $evmutils_temp/Batch.sol/abstract.Batch.md $flow/abstracts/ 2>/dev/null || true
-cp $evmutils_temp/Comptrollerable.sol/abstract.Comptrollerable.md $flow/abstracts/ 2>/dev/null || true
-cp $evmutils_temp/NoDelegateCall.sol/abstract.NoDelegateCall.md $flow/abstracts/ 2>/dev/null || true
-
-# Copy relevant evm-utils interfaces
-# Airdrops: IAdminable, IComptrollerable
 cp $evmutils_temp/interfaces/IAdminable.sol/interface.IAdminable.md $airdrops/interfaces/ 2>/dev/null || true
 cp $evmutils_temp/interfaces/IComptrollerable.sol/interface.IComptrollerable.md $airdrops/interfaces/ 2>/dev/null || true
 
-# Lockup: IBatch, IComptrollerable
-cp $evmutils_temp/interfaces/IBatch.sol/interface.IBatch.md $lockup/interfaces/ 2>/dev/null || true
-cp $evmutils_temp/interfaces/IComptrollerable.sol/interface.IComptrollerable.md $lockup/interfaces/ 2>/dev/null || true
+# Lockup & Flow: Batch, Comptrollerable, NoDelegateCall
+for repo_dir in $lockup $flow; do
+  cp $evmutils_temp/Batch.sol/abstract.Batch.md $repo_dir/abstracts/ 2>/dev/null || true
+  cp $evmutils_temp/Comptrollerable.sol/abstract.Comptrollerable.md $repo_dir/abstracts/ 2>/dev/null || true
+  cp $evmutils_temp/NoDelegateCall.sol/abstract.NoDelegateCall.md $repo_dir/abstracts/ 2>/dev/null || true
+  cp $evmutils_temp/interfaces/IBatch.sol/interface.IBatch.md $repo_dir/interfaces/ 2>/dev/null || true
+  cp $evmutils_temp/interfaces/IComptrollerable.sol/interface.IComptrollerable.md $repo_dir/interfaces/ 2>/dev/null || true
+done
 
-# Flow: IBatch, IComptrollerable
-cp $evmutils_temp/interfaces/IBatch.sol/interface.IBatch.md $flow/interfaces/ 2>/dev/null || true
-cp $evmutils_temp/interfaces/IComptrollerable.sol/interface.IComptrollerable.md $flow/interfaces/ 2>/dev/null || true
+# Fix evm-utils files: self-referencing links, interface links, and convert curly braces
+# Airdrops-specific (IAdminable)
+sd "\(/src/interfaces/IAdminable\.sol/interface\.IAdminable\.md#" "(#" $airdrops/interfaces/interface.IAdminable.md
+sd "\[IAdminable\]\(/src/interfaces/IAdminable\.sol/interface\.IAdminable\.md\)" "[IAdminable](/$airdrops/interfaces/interface.IAdminable.md)" $airdrops/abstracts/abstract.Adminable.md
+sd "\{IAdminable\}" "[IAdminable](/$airdrops/interfaces/interface.IAdminable.md)" $airdrops/abstracts/abstract.Adminable.md
 
-# Fix interface links in copied evm-utils abstracts to use correct docs paths
-sd "\[IAdminable\]\(/src/interfaces/IAdminable\.sol/interface\.IAdminable\.md\)" "[IAdminable](/reference/airdrops/contracts/interfaces/interface.IAdminable.md)" $airdrops/abstracts/abstract.Adminable.md
-sd "\[IComptrollerable\]\(/src/interfaces/IComptrollerable\.sol/interface\.IComptrollerable\.md\)" "[IComptrollerable](/reference/airdrops/contracts/interfaces/interface.IComptrollerable.md)" $airdrops/abstracts/abstract.Comptrollerable.md
-sd "\[IComptrollerable\]\(/src/interfaces/IComptrollerable\.sol/interface\.IComptrollerable\.md\)" "[IComptrollerable](/reference/lockup/contracts/interfaces/interface.IComptrollerable.md)" $lockup/abstracts/abstract.Comptrollerable.md
-sd "\[IComptrollerable\]\(/src/interfaces/IComptrollerable\.sol/interface\.IComptrollerable\.md\)" "[IComptrollerable](/reference/flow/contracts/interfaces/interface.IComptrollerable.md)" $flow/abstracts/abstract.Comptrollerable.md
-sd "\[IBatch\]\(/src/interfaces/IBatch\.sol/interface\.IBatch\.md\)" "[IBatch](/reference/lockup/contracts/interfaces/interface.IBatch.md)" $lockup/abstracts/abstract.Batch.md
-sd "\[IBatch\]\(/src/interfaces/IBatch\.sol/interface\.IBatch\.md\)" "[IBatch](/reference/flow/contracts/interfaces/interface.IBatch.md)" $flow/abstracts/abstract.Batch.md
+# Fix IComptrollerable for all three repos
+for repo in airdrops lockup flow; do
+  repo_dir=$(eval echo \$$repo)
+  sd "\(/src/interfaces/IComptrollerable\.sol/interface\.IComptrollerable\.md#" "(#" $repo_dir/interfaces/interface.IComptrollerable.md
+  sd "\[IComptrollerable\]\(/src/interfaces/IComptrollerable\.sol/interface\.IComptrollerable\.md\)" "[IComptrollerable](/$repo_dir/interfaces/interface.IComptrollerable.md)" $repo_dir/abstracts/abstract.Comptrollerable.md
+  sd "\{IComptrollerable\}" "[IComptrollerable](/$repo_dir/interfaces/interface.IComptrollerable.md)" $repo_dir/abstracts/abstract.Comptrollerable.md
+done
 
-# Fix broken links in copied evm-utils abstracts (remove interface links that don't exist)
-sd "\[INoDelegateCall\]\(/src/interfaces/INoDelegateCall\.sol/interface\.INoDelegateCall\.md\)" "INoDelegateCall" $lockup/abstracts/abstract.NoDelegateCall.md $flow/abstracts/abstract.NoDelegateCall.md
+# Fix IBatch and NoDelegateCall for lockup and flow
+for repo in lockup flow; do
+  repo_dir=$(eval echo \$$repo)
+  sd "\(/src/interfaces/IBatch\.sol/interface\.IBatch\.md#" "(#" $repo_dir/interfaces/interface.IBatch.md
+  sd "\[IBatch\]\(/src/interfaces/IBatch\.sol/interface\.IBatch\.md\)" "[IBatch](/$repo_dir/interfaces/interface.IBatch.md)" $repo_dir/abstracts/abstract.Batch.md
+  sd "\{IBatch\}" "[IBatch](/$repo_dir/interfaces/interface.IBatch.md)" $repo_dir/abstracts/abstract.Batch.md
+  sd "\[INoDelegateCall\]\(/src/interfaces/INoDelegateCall\.sol/interface\.INoDelegateCall\.md\)" "INoDelegateCall" $repo_dir/abstracts/abstract.NoDelegateCall.md
+done
 
 # Clean up the evm-utils temp docs (we don't need to keep them)
 rm -rf repos/evm-utils/docs
+
+# ---------------------------------------------------------------------------- #
+#                                    Linting                                   #
+# ---------------------------------------------------------------------------- #
+
+# Run lint on all repos.
+lint "lockup"
+lint "airdrops"
+lint "flow"
