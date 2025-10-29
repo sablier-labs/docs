@@ -64,7 +64,7 @@ function createMerkleVCA(
 
 | Name              | Type                          | Description                                                                                                                                    |
 | ----------------- | ----------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------- |
-| `params`          | `MerkleVCA.ConstructorParams` | Struct encapsulating the input parameters, which are documented in [DataTypes](/docs/reference/airdrops/contracts/types/library.MerkleVCA.md). |
+| `params`          | `MerkleVCA.ConstructorParams` | Struct encapsulating the input parameters, which are documented in [MerkleVCA](/docs/reference/airdrops/contracts/types/library.MerkleVCA.md). |
 | `aggregateAmount` | `uint256`                     | The total amount of ERC-20 tokens to be distributed to all recipients.                                                                         |
 | `recipientCount`  | `uint256`                     | The total number of recipient addresses eligible for the airdrop.                                                                              |
 

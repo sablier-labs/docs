@@ -4,7 +4,7 @@
 
 **Inherits:** [IBatch](/reference/flow/contracts/interfaces/interface.IBatch.md)
 
-See the documentation in {IBatch}.
+See the documentation in [IBatch](/reference/flow/contracts/interfaces/interface.IBatch.md).
 
 ## Functions
 

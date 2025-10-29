@@ -56,11 +56,11 @@ function createMerkleLL(
 
 **Parameters**
 
-| Name              | Type                         | Description                                                                                                                                   |
-| ----------------- | ---------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------- |
-| `params`          | `MerkleLL.ConstructorParams` | Struct encapsulating the input parameters, which are documented in [DataTypes](/docs/reference/airdrops/contracts/types/library.MerkleLL.md). |
-| `aggregateAmount` | `uint256`                    | The total amount of ERC-20 tokens to be distributed to all recipients.                                                                        |
-| `recipientCount`  | `uint256`                    | The total number of recipient addresses eligible for the airdrop.                                                                             |
+| Name              | Type                         | Description                                                                                                                                  |
+| ----------------- | ---------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------- |
+| `params`          | `MerkleLL.ConstructorParams` | Struct encapsulating the input parameters, which are documented in [MerkleLL](/docs/reference/airdrops/contracts/types/library.MerkleLL.md). |
+| `aggregateAmount` | `uint256`                    | The total amount of ERC-20 tokens to be distributed to all recipients.                                                                       |
+| `recipientCount`  | `uint256`                    | The total number of recipient addresses eligible for the airdrop.                                                                            |
 
 **Returns**
 

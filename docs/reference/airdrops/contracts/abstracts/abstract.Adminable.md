@@ -4,7 +4,7 @@
 
 **Inherits:** [IAdminable](/reference/airdrops/contracts/interfaces/interface.IAdminable.md)
 
-See the documentation in {IAdminable}.
+See the documentation in [IAdminable](/reference/airdrops/contracts/interfaces/interface.IAdminable.md).
 
 ## State Variables
 
@@ -28,7 +28,7 @@ modifier onlyAdmin();
 
 ### constructor
 
-_Emits a {TransferAdmin} event._
+Emits a {TransferAdmin} event.
 
 ```solidity
 constructor(address initialAdmin);

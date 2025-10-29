@@ -18,7 +18,7 @@ function comptroller() external view returns (ISablierComptroller);
 
 Sets the comptroller to a new address.
 
-_Emits a {SetComptroller} event. Requirements:_
+Emits a [SetComptroller](#setcomptroller-1) event. Requirements:
 
 - `msg.sender` must be the current comptroller.
 - The new comptroller must return `true` from {supportsInterface} with the comptroller's minimal interface ID which is
@@ -43,7 +43,7 @@ function setComptroller(ISablierComptroller newComptroller) external;
 
 Transfers the fees to the comptroller contract.
 
-_Emits a {TransferFeesToComptroller} event._
+Emits a [TransferFeesToComptroller](#transferfeestocomptroller-1) event.
 
 ```solidity
 function transferFeesToComptroller() external;
