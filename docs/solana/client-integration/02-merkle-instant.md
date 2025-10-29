@@ -9,7 +9,7 @@ title: "Merkle Instant"
 In this guide, we will go through the steps to set up a local development environment for building onchain integrations
 with Merkle Instant using TypeScript and Anchor's [IDL](https://www.anchor-lang.com/docs/basics/idl). For more examples
 and advanced usage, refer to the SolSab repository
-[test](https://github.com/sablier-labs/solsab/tree/e1085fe87ea3d02556156ee446e820d150af483e/tests/merkle-instant) files
+[tests](https://github.com/sablier-labs/solsab/tree/e1085fe87ea3d02556156ee446e820d150af483e/tests/merkle-instant) files
 and [scripts](https://github.com/sablier-labs/solsab/tree/e1085fe87ea3d02556156ee446e820d150af483e/scripts/ts).
 
 :::caution
@@ -19,19 +19,27 @@ provide guidance on how to interact with the Merkle Instant program.
 
 :::
 
+:::note
+
+The examples in this guide use Devnet. Make sure your wallet has enough SOL for testing.
+
+:::
+
 ## Dependencies
 
 ### Download Types
 
-First, download the IDL and the TypeScript types for the Merkle Instant program from the GitHub release.
-
-:::important
-
-Make sure to place them under the `target` directory, as it's seen below, otherwise anchor would throw warnings.
-
-:::
+First, download the IDL and the TypeScript types for the Lockup program from the GitHub release. For this example, we
+will place the types under the `target` directory.
 
 ```bash
+# Create target directories
+mkdir -p target/idl
+mkdir -p target/types
+```
+
+```bash
+# Download the IDL to the target directory
 curl -L -o target/idl/sablier_merkle_instant.json \
   https://github.com/sablier-labs/solsab/releases/download/v1.0.0/sablier_merkle_instant.json
 ```
@@ -39,6 +47,7 @@ curl -L -o target/idl/sablier_merkle_instant.json \
 and:
 
 ```bash
+# Download the types to the target directory
 curl -L -o target/types/sablier_merkle_instant.ts \
   https://github.com/sablier-labs/solsab/releases/download/v1.0.0/sablier_merkle_instant.ts
 ```
@@ -53,13 +62,19 @@ bun add @coral-xyz/anchor@0.31.1 @solana/web3.js@1.98.2 bn.js@5.2.2 @solana/spl-
 
 ## Setup
 
-Import the necessary modules and types:
+Create a file:
+
+```bash
+touch merkle-instant-example.ts
+```
+
+Then, import the necessary modules and types into it.
 
 ```typescript
 import * as anchor from "@coral-xyz/anchor";
 import { TOKEN_PROGRAM_ID } from "@solana/spl-token";
 import { ComputeBudgetProgram, PublicKey } from "@solana/web3.js";
-import { type SablierMerkleInstant } from "<based_on_your_file_path>/target/types/sablier_merkle_instant";
+import { type SablierMerkleInstant } from "./target/types/sablier_merkle_instant";
 import BN from "bn.js";
 ```
 
@@ -83,15 +98,7 @@ async function setUp() {
 }
 ```
 
-:::note
-
-The examples in this guide use Devnet. Make sure your wallet has enough SOL and the appropriate SPL tokens for testing.
-
-:::
-
-## Creating an Airdrop Campaign
-
-### Using `createCampaign`
+## Create an Airdrop Campaign
 
 Create a new airdrop campaign with merkle tree distribution:
 
@@ -112,7 +119,7 @@ async function createAirdropCampaign(merkleRoot: number[], ipfsCid: string) {
   // Distribution parameters
   const aggregateAmount = new BN(10000 * 10 ** 6); // 10,000 tokens (assuming 6 decimals)
   const recipientCount = 10;
-  const airdropTokenMint = new PublicKey("YOUR_TOKEN_MINT_HERE");
+  const airdropTokenMint = new PublicKey("AIRDROP_TOKEN_MINT");
 
   // Set a higher compute unit limit so that the transaction doesn't fail
   const increaseCULimitIx = ComputeBudgetProgram.setComputeUnitLimit({
@@ -135,7 +142,7 @@ async function createAirdropCampaign(merkleRoot: number[], ipfsCid: string) {
 }
 ```
 
-Make sure to call the `createAirdropCampaign` function to execute the campaign creation:
+Make sure to call the `createAirdropCampaign` function to execute it on-chain:
 
 ```typescript
 // Some dummy values for demonstration
@@ -147,14 +154,19 @@ createAirdropCampaign(merkleRoot, ipfsCid);
 Execute the script using `bun`:
 
 ```shell
-ANCHOR_WALLET=~/.config/solana/id.json \ # or your wallet path
+ANCHOR_WALLET=~/.config/solana/id.json \
 ANCHOR_PROVIDER_URL="https://api.devnet.solana.com" \
-bun run <your_file_path>.ts
+bun run merkle-instant-example.ts
 ```
 
-## Claiming from an Airdrop Campaign
+:::note
 
-### Using `claim`
+The default path for the Solana wallet is `~/.config/solana/id.json`. If you have your wallet configured in other path,
+make sure to edit the this accordingly.
+
+:::
+
+## Claim from an Airdrop Campaign
 
 Claim tokens from an existing airdrop campaign:
 
@@ -175,7 +187,7 @@ async function claimFromAirdropCampaign(campaign: PublicKey, merkleProof: number
   const chainlinkProgram = new PublicKey("HEvSKofvBgfaexv23kMabbYqxasxU3mQ4ibBMEmJWHny");
   const chainlinkSolUsdFeed = new PublicKey("99B2bTijsU6f1GCT73HmdR7HCFFjGMBcPZY6jZ96ynrR");
 
-  const airdropTokenMint = new PublicKey("YOUR_TOKEN_MINT_HERE");
+  const airdropTokenMint = new PublicKey("AIRDROP_TOKEN_MINT");
 
   // Call the `claim` instruction
   const txSignature = await merkleInstantProgram.methods
@@ -196,7 +208,7 @@ async function claimFromAirdropCampaign(campaign: PublicKey, merkleProof: number
 }
 ```
 
-Make sure to call the `claimFromAirdropCampaign` function to execute the claim:
+Make sure to call the `claimFromAirdropCampaign` function to execute it on-chain:
 
 ```typescript
 // Example merkle proof (you need to generate this based on your merkle tree)
@@ -211,7 +223,14 @@ claimFromAirdropCampaign(new PublicKey("YOUR_CAMPAIGN_ADDRESS_HERE"), merkleProo
 Execute the script using `bun`:
 
 ```shell
-ANCHOR_WALLET=~/.config/solana/id.json \ # or your wallet path
+ANCHOR_WALLET=~/.config/solana/id.json \
 ANCHOR_PROVIDER_URL="https://api.devnet.solana.com" \
-bun run <your_file_path>.ts
+bun run merkle-instant-example.ts
 ```
+
+:::note
+
+The default path for the Solana wallet is `~/.config/solana/id.json`. If you have your wallet configured in other path,
+make sure to edit the this accordingly.
+
+:::

@@ -39,9 +39,15 @@ mkdir -p target/types
 ```
 
 ```bash
-# Download types to the target directories
+# Download the IDL to the target directory
 curl -L -o target/idl/sablier_lockup.json \
   https://github.com/sablier-labs/solsab/releases/download/v1.0.0/sablier_lockup.json
+```
+
+and:
+
+```bash
+# Download the types to the target directory
 curl -L -o target/types/sablier_lockup.ts \
   https://github.com/sablier-labs/solsab/releases/download/v1.0.0/sablier_lockup.ts
 ```
