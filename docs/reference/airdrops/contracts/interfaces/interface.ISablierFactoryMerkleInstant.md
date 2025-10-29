@@ -36,7 +36,7 @@ function computeMerkleInstant(
 Creates a new MerkleInstant campaign for instant distribution of tokens.
 
 Emits a
-[CreateMerkleInstant](/docs/reference/airdrops/contracts/interfaces/interface.ISablierFactoryMerkleInstant.md#createmerkleinstant)
+[CreateMerkleInstant](/docs/reference/airdrops/contracts/interfaces/interface.ISablierFactoryMerkleInstant.md#createmerkleinstant-1)
 event. Notes:
 
 - The contract is created with CREATE2.
@@ -56,11 +56,11 @@ function createMerkleInstant(
 
 **Parameters**
 
-| Name              | Type                              | Description                                                                     |
-| ----------------- | --------------------------------- | ------------------------------------------------------------------------------- |
-| `params`          | `MerkleInstant.ConstructorParams` | Struct encapsulating the input parameters, which are documented in {DataTypes}. |
-| `aggregateAmount` | `uint256`                         | The total amount of ERC-20 tokens to be distributed to all recipients.          |
-| `recipientCount`  | `uint256`                         | The total number of recipient addresses eligible for the airdrop.               |
+| Name              | Type                              | Description                                                                                                                                        |
+| ----------------- | --------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `params`          | `MerkleInstant.ConstructorParams` | Struct encapsulating the input parameters, which are documented in [DataTypes](/docs/reference/airdrops/contracts/types/library.MerkleInstant.md). |
+| `aggregateAmount` | `uint256`                         | The total amount of ERC-20 tokens to be distributed to all recipients.                                                                             |
+| `recipientCount`  | `uint256`                         | The total number of recipient addresses eligible for the airdrop.                                                                                  |
 
 **Returns**
 

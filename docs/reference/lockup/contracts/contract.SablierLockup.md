@@ -24,7 +24,7 @@ constructor(
     address initialComptroller,
     address initialNFTDescriptor
 )
-    [Comptrollerable](/docs/reference/lockup/contracts/abstracts/abstract.Comptrollerable.md)(initialComptroller)
+    Comptrollerable(initialComptroller)
     ERC721("Sablier Lockup NFT", "SAB-LOCKUP")
     SablierLockupState(initialNFTDescriptor);
 ```

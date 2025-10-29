@@ -37,7 +37,7 @@ constructor(
 
 ### updateMetadata
 
-_Emits an ERC-4906 event to trigger an update of the NFT metadata._
+Emits an ERC-4906 event to trigger an update of the NFT metadata.
 
 ```solidity
 modifier updateMetadata(uint256 streamId);

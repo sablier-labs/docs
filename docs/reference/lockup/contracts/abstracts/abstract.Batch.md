@@ -4,7 +4,7 @@
 
 **Inherits:** [IBatch](/reference/lockup/contracts/interfaces/interface.IBatch.md)
 
-See the documentation in {IBatch}.
+See the documentation in [IBatch](/reference/lockup/contracts/interfaces/interface.IBatch.md).
 
 ## Functions
 

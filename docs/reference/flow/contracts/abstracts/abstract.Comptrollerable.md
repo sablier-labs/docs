@@ -67,7 +67,7 @@ function setComptroller(ISablierComptroller newComptroller) external override on
 
 Transfers the fees to the comptroller contract.
 
-_Emits a {TransferFeesToComptroller} event._
+Emits a {TransferFeesToComptroller} event.
 
 ```solidity
 function transferFeesToComptroller() external override;

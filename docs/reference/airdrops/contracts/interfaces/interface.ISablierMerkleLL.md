@@ -123,33 +123,35 @@ or {ClaimLLWithVesting} event. Requirements:
   referenced from https://docs.metamask.io/wallet/how-to/sign-data/#example.
 
 ```json
-types: {
-EIP712Domain: [
-{ name: "name", type: "string" },
-{ name: "chainId", type: "uint256" },
-{ name: "verifyingContract", type: "address" },
-],
-Claim: [
-{ name: "index", type: "uint256" },
-{ name: "recipient", type: "address" },
-{ name: "to", type: "address" },
-{ name: "amount", type: "uint128" },
-{ name: "validFrom", type: "uint40" },
-],
-},
-domain: {
-name: "Sablier Airdrops Protocol",
-chainId: 1, // Chain on which the contract is deployed
-verifyingContract: "0xTheAddressOfThisContract", // The address of this contract
-},
-primaryType: "Claim",
-message: {
-index: 2, // The index of the signer in the Merkle tree
-recipient: "0xTheAddressOfTheRecipient", // The address of the airdrop recipient
-to: "0xTheAddressReceivingTheTokens", // The address where recipient wants to transfer the tokens
-amount: "1000000000000000000000", // The amount of tokens allocated to the recipient
-validFrom: 1752425637 // The timestamp from which the claim signature is valid
-},
+{
+  "types": {
+    "EIP712Domain": [
+      { "name": "name", "type": "string" },
+      { "name": "chainId", "type": "uint256" },
+      { "name": "verifyingContract", "type": "address" }
+    ],
+    "Claim": [
+      { "name": "index", "type": "uint256" },
+      { "name": "recipient", "type": "address" },
+      { "name": "to", "type": "address" },
+      { "name": "amount", "type": "uint128" },
+      { "name": "validFrom", "type": "uint40" }
+    ]
+  },
+  "domain": {
+    "name": "Sablier Airdrops Protocol",
+    "chainId": 1,
+    "verifyingContract": "0xTheAddressOfThisContract"
+  },
+  "primaryType": "Claim",
+  "message": {
+    "index": 2,
+    "recipient": "0xTheAddressOfTheRecipient",
+    "to": "0xTheAddressReceivingTheTokens",
+    "amount": "1000000000000000000000",
+    "validFrom": 1752425637
+  }
+}
 ```
 
 ```solidity
