@@ -28,14 +28,15 @@ type GraphQLOptions = CliOptions & {
 /*                                   COMMAND                                  */
 /* -------------------------------------------------------------------------- */
 
-export function createGraphQLCommand(): Command {
+export function createGraphQLCommand() {
   return new Command("graphql")
     .description("Generate GraphQL schema documentation")
     .requiredOption("-p, --protocol <protocol>", "generate for specific protocol")
     .requiredOption("-v, --vendor <vendor>", "generate for specific vendor")
-    .action(async (options, command: Command) => {
-      const globalOptions = command.parent?.opts() || {};
-      const mergedOptions: GraphQLOptions = { ...globalOptions, ...options };
+    .action(async function () {
+      const parentOptions = this.parent ? this.parent.opts() : {};
+      const commandOptions = this.opts();
+      const mergedOptions: GraphQLOptions = { ...parentOptions, ...commandOptions };
       await generateGraphQL(mergedOptions);
     });
 }
