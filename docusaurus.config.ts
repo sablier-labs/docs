@@ -9,7 +9,7 @@ const config: Config = {
   favicon: "img/favicon.ico",
   /** Future flags, @see https://docusaurus.io/docs/api/docusaurus-config#future */
   future: {
-    experimental_faster: true,
+    experimental_faster: false,
     v4: true, // Improve compatibility with the upcoming Docusaurus v4
   },
   headTags,
