@@ -6,12 +6,12 @@ import { sablier } from "sablier";
 import { autogenFilePaths, getRelative, writeFileWithOverwrite } from "../../helpers";
 import type { CliOptions } from "../../types";
 
-export function createIndexersCommand(): Command {
+export function createIndexersCommand() {
   return new Command("indexers")
     .description("Generate indexer endpoint tables for all Sablier protocols")
-    .action(async (_options, command: Command) => {
-      const mergedOptions = command.optsWithGlobals();
-      await generateIndexers(mergedOptions);
+    .action(async function () {
+      const options = this.parent ? this.parent.opts() : {};
+      await generateIndexers(options);
     });
 }
 

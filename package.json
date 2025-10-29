@@ -42,7 +42,7 @@
     "@sablier/indexers": "1.1.1",
     "@vercel/analytics": "^1.5.0",
     "axios": "^1.11.0",
-    "commander": "^14.0.0",
+    "commander": "^5.1.0",
     "docusaurus-theme-github-codeblock": "^2.0.2",
     "function-plot": "^1.25.1",
     "lodash": "^4.17.21",

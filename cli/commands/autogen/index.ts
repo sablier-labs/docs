@@ -3,11 +3,11 @@ import { deploymentsCmd, generateDeployments } from "./deployments";
 import { graphQLCmd } from "./graphql";
 import { generateIndexers, indexersCmd } from "./indexers";
 
-export function createAutogenCommand(): Command {
+export function createAutogenCommand() {
   const autogenCommand = new Command("autogen")
     .description("Auto-generate documentation and indexers tables")
-    .action(async (_options, command) => {
-      const globalOptions = command.parent?.opts() || {};
+    .action(async function () {
+      const globalOptions = this.parent ? this.parent.opts() : {};
 
       console.log("🚀 Generating all documentation tables...\n");
 

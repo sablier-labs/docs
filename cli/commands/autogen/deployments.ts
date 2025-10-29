@@ -6,12 +6,12 @@ import { Links } from "../../../src/constants";
 import { autogenFilePaths, getRelative, writeFileWithOverwrite } from "../../helpers";
 import type { CliOptions } from "../../types";
 
-export function createDeploymentsCommand(): Command {
+export function createDeploymentsCommand() {
   return new Command("deployments")
     .description("Generate deployment tables for all Sablier releases")
-    .action(async (_options, command: Command) => {
-      const mergedOptions = command.optsWithGlobals();
-      await generateDeployments(mergedOptions);
+    .action(async function () {
+      const options = this.parent ? this.parent.opts() : {};
+      await generateDeployments(options);
     });
 }
 
