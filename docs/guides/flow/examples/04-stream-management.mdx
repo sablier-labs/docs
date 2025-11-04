@@ -84,13 +84,21 @@ There are two withdrawal functions:
 2. [`withdrawMax`](/reference/flow/contracts/contract.SablierFlow#withdrawmax): withdraws the entire withdrawable amount
    of tokens.
 
+:::note
+
+The `withdraw` functions requires a fee. Make sure to send the correct amount in `msg.value`, as shown below.
+
+:::
+
 ```solidity
-function withdraw(uint256 streamId) external {
-    FLOW.withdraw({ streamId: streamId, to: address(0xCAFE), amount: 2.71828e18 });
+function withdraw(uint256 streamId) external payable {
+    uint256 fee = FLOW.calculateMinFeeWei(streamId);
+    FLOW.withdraw{ value: fee }({ streamId: streamId, to: address(0xCAFE), amount: 2.71828e18 });
 }
 
-function withdrawMax(uint256 streamId) external {
-    FLOW.withdrawMax({ streamId: streamId, to: address(0xCAFE) });
+function withdrawMax(uint256 streamId) external payable {
+    uint256 fee = FLOW.calculateMinFeeWei(streamId);
+    FLOW.withdrawMax{ value: fee }({ streamId: streamId, to: address(0xCAFE) });
 }
 ```
 
