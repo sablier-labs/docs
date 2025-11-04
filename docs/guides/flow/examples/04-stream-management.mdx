@@ -23,25 +23,21 @@ please note the following:
 
 Declare the Solidity version used to compile the contract:
 
-```solidity
-// SPDX-License-Identifier: GPL-3.0-or-later
-pragma solidity >=0.8.22;
-```
+<CodeBlock language="solidity" metastring={`reference title=""`}>
+  {`https://github.com/sablier-labs/evm-examples/blob/main/flow/FlowStreamManager.sol#L1-L2`}
+</CodeBlock>
 
 Import the relevant symbols from `@sablier/flow` and `@prb/math`:
 
-```solidity
-import { ud21x18 } from "@prb/math/src/UD21x18.sol";
-import { ISablierFlow } from "@sablier/flow/src/interfaces/ISablierFlow.sol";
-```
+<CodeBlock language="solidity" metastring={`reference title=""`}>
+  {`https://github.com/sablier-labs/evm-examples/blob/main/flow/FlowStreamManager.sol#L4-L5`}
+</CodeBlock>
 
 Declare the contract and add the Flow address as a constant:
 
-```solidity
-contract FlowStreamManager {
-    ISablierFlow public constant FLOW = ISablierFlow(0x7a86d3e6894f9c5B5f25FFBDAaE658CFc7569623);
-}
-```
+<CodeBlock language="solidity" metastring={`reference title=""`}>
+  {`https://github.com/sablier-labs/evm-examples/blob/main/flow/FlowStreamManager.sol#L7-L9`}
+</CodeBlock>
 
 <HardcodedDemonstration protocol="Flow" />
 
@@ -62,15 +58,9 @@ There are three deposit functions:
 2. [`depositAndPause`](/reference/flow/contracts/contract.SablierFlow#depositandpause): deposits an amount of tokens and
    then pauses the stream.
 
-```solidity
-function deposit(uint256 streamId, uint256 amount) external {
-    FLOW.deposit(streamId, amount);
-}
-
-function depositAndPause(uint256 streamId) external {
-    FLOW.depositAndPause(streamId, 3.14159e18);
-}
-```
+<CodeBlock language="solidity" metastring={`reference title=""`}>
+  {`https://github.com/sablier-labs/evm-examples/blob/main/flow/FlowStreamManager.sol#L15-L21`}
+</CodeBlock>
 
 ## Withdraw
 
@@ -90,37 +80,25 @@ The `withdraw` functions requires a fee. Make sure to send the correct amount in
 
 :::
 
-```solidity
-function withdraw(uint256 streamId) external payable {
-    uint256 fee = FLOW.calculateMinFeeWei(streamId);
-    FLOW.withdraw{ value: fee }({ streamId: streamId, to: address(0xCAFE), amount: 2.71828e18 });
-}
-
-function withdrawMax(uint256 streamId) external payable {
-    uint256 fee = FLOW.calculateMinFeeWei(streamId);
-    FLOW.withdrawMax{ value: fee }({ streamId: streamId, to: address(0xCAFE) });
-}
-```
+<CodeBlock language="solidity" metastring={`reference title=""`}>
+  {`https://github.com/sablier-labs/evm-examples/blob/main/flow/FlowStreamManager.sol#L51-L59`}
+</CodeBlock>
 
 ## Adjust Rate per Second
 
 Adjusting the rate per second means changing the amount of tokens that is streamed each second.
 
-```solidity
-function adjustRatePerSecond(uint256 streamId) external {
-    FLOW.adjustRatePerSecond({ streamId: streamId, newRatePerSecond: ud21x18(0.0001e18) });
-}
-```
+<CodeBlock language="solidity" metastring={`reference title=""`}>
+  {`https://github.com/sablier-labs/evm-examples/blob/main/flow/FlowStreamManager.sol#L11-L13`}
+</CodeBlock>
 
 ## Pause
 
 Pausing a stream means setting the rate per second to zero, which means no more streaming.
 
-```solidity
-function pause(uint256 streamId) external {
-    FLOW.pause(streamId);
-}
-```
+<CodeBlock language="solidity" metastring={`reference title=""`}>
+  {`https://github.com/sablier-labs/evm-examples/blob/main/flow/FlowStreamManager.sol#L23-L25`}
+</CodeBlock>
 
 ## Restart
 
@@ -130,15 +108,9 @@ There are two restart functions:
 2. [`restartAndDeposit`](/reference/flow/contracts/contract.SablierFlow#restartanddeposit): restarts a stream followed
    by depositing an amount of tokens into it.
 
-```solidity
-function restart(uint256 streamId) external {
-    FLOW.restart({ streamId: streamId, ratePerSecond: ud21x18(0.0001e18) });
-}
-
-function restartAndDeposit(uint256 streamId) external {
-    FLOW.restartAndDeposit({ streamId: streamId, ratePerSecond: ud21x18(0.0001e18), amount: 2.71828e18 });
-}
-```
+<CodeBlock language="solidity" metastring={`reference title=""`}>
+  {`https://github.com/sablier-labs/evm-examples/blob/main/flow/FlowStreamManager.sol#L39-L45`}
+</CodeBlock>
 
 ## Refund
 
@@ -151,35 +123,23 @@ There are three refund functions:
 3. [`refundMax`](/reference/flow/contracts/contract.SablierFlow#refundmax): refunds the entire refundable amount of
    tokens.
 
-```solidity
-function refund(uint256 streamId) external {
-    FLOW.refund({ streamId: streamId, amount: 1.61803e18 });
-}
-
-function refundAndPause(uint256 streamId) external {
-    FLOW.refundAndPause({ streamId: streamId, amount: 1.61803e18 });
-}
-
-function refundMax(uint256 streamId) external {
-    FLOW.refundMax(streamId);
-}
-```
+<CodeBlock language="solidity" metastring={`reference title=""`}>
+  {`https://github.com/sablier-labs/evm-examples/blob/main/flow/FlowStreamManager.sol#L27-L37`}
+</CodeBlock>
 
 ## Void
 
 Voiding a stream means permanently stopping it from streaming any tokens. This is slightly different from pausing a
 stream because it also sets the stream's uncovered debt to zero.
 
-```solidity
-function void(uint256 streamId) external {
-    FLOW.void(streamId);
-}
-```
+<CodeBlock language="solidity" metastring={`reference title=""`}>
+  {`https://github.com/sablier-labs/evm-examples/blob/main/flow/FlowStreamManager.sol#L47-L49`}
+</CodeBlock>
 
 ## Full code
 
 Below you can see the complete `FlowStreamManager` contract:
 
-<CodeBlock language="solidity" showLineNumbers metastring={`reference title="Flow Stream Manager"`}>
+<CodeBlock language="solidity" showLineNumbers metastring={`reference title="Full code"`}>
   {`https://github.com/sablier-labs/evm-examples/blob/main/flow/FlowStreamManager.sol`}
 </CodeBlock>
