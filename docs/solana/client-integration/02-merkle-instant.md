@@ -57,7 +57,7 @@ curl -L -o target/types/sablier_merkle_instant.ts \
 Install the required Solana and Anchor packages:
 
 ```bash
-bun add @coral-xyz/anchor@0.31.1 @solana/web3.js@1.98.2 bn.js@5.2.2 @solana/spl-token@0.4.13
+bun add @coral-xyz/anchor@0.31.1 @solana/web3.js@1.98.2 @solana/spl-token@0.4.13
 ```
 
 ## Setup
@@ -71,11 +71,11 @@ touch merkle-instant-example.ts
 Then, import the necessary modules and types into it.
 
 ```typescript
+import { BN } from "@coral-xyz/anchor";
 import * as anchor from "@coral-xyz/anchor";
 import { TOKEN_PROGRAM_ID } from "@solana/spl-token";
 import { ComputeBudgetProgram, PublicKey } from "@solana/web3.js";
 import { type SablierMerkleInstant } from "./target/types/sablier_merkle_instant";
-import BN from "bn.js";
 ```
 
 Set up the Anchor provider and program instance:
