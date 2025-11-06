@@ -29,20 +29,16 @@ To transfer ownership of a stream, it is recommended to invoke the
 [`withdrawMaxAndTransfer`](/reference/lockup/contracts/contract.SablierLockup#withdrawmaxandtransfer) function, which
 withdraws all the unclaimed funds to the current recipient prior to transferring ownership to the new recipient:
 
-<CodeBlock
-  language="solidity"
-  showLineNumbers
-  metastring={`reference title="Stream Management: Withdraw and Transfer Ownership"`}
->
-  {`https://github.com/sablier-labs/evm-examples/blob/main/lockup/StreamManagement.sol#L72-L74`}
+<CodeBlock language="solidity" metastring={`reference title=""`}>
+  {`https://github.com/sablier-labs/evm-examples/blob/main/lockup/StreamManagement.sol#L84-L89`}
 </CodeBlock>
 
 The withdrawal will be skipped if there are no unclaimed funds.
 
 If you want to transfer ownership without withdrawing the funds, you can use the `IERC721.transferFrom` function:
 
-<CodeBlock language="solidity" showLineNumbers metastring={`reference title="Stream Management: Transfer Ownership"`}>
-  {`https://github.com/sablier-labs/evm-examples/blob/main/lockup/StreamManagement.sol#L67-L69`}
+<CodeBlock language="solidity" metastring={`reference title=""`}>
+  {`https://github.com/sablier-labs/evm-examples/blob/main/lockup/StreamManagement.sol#L79-L81`}
 </CodeBlock>
 
 :::caution

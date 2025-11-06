@@ -18,28 +18,22 @@ possible by the [`Batch`](/reference/flow/contracts/abstracts/abstract.Batch) co
 
 Declare the Solidity version used to compile the contract:
 
-```solidity
-pragma solidity >=0.8.22;
-```
+<CodeBlock language="solidity" metastring={`reference title=""`}>
+  {`https://github.com/sablier-labs/evm-examples/blob/main/flow/FlowBatchable.sol#L1-L2`}
+</CodeBlock>
 
 Import the relevant symbols:
 
-```solidity
-import { IERC20 } from "@openzeppelin/contracts/token/ERC20/IERC20.sol";
-import { ud21x18, UD21x18 } from "@prb/math/src/UD21x18.sol";
-import { ud60x18 } from "@prb/math/src/UD60x18.sol";
-import { ISablierFlow } from "@sablier/flow/src/interfaces/ISablierFlow.sol";
-```
+<CodeBlock language="solidity" metastring={`reference title=""`}>
+  {`https://github.com/sablier-labs/evm-examples/blob/main/flow/FlowBatchable.sol#L4-L6`}
+</CodeBlock>
 
 Create a contract called `FlowBatchable`, and declare a constant `USDC` of type `IERC20` and a constant `FLOW` of type
 `ISablierFlow`:
 
-```solidity
-contract FlowBatchable {
-    IERC20 public constant USDC = IERC20(0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48);
-    ISablierFlow public constant FLOW = ISablierFlow(0x7a86d3e6894f9c5B5f25FFBDAaE658CFc7569623);
-}
-```
+<CodeBlock language="solidity" metastring={`reference title=""`}>
+  {`https://github.com/sablier-labs/evm-examples/blob/main/flow/FlowBatchable.sol#L12-L14`}
+</CodeBlock>
 
 <HardcodedDemonstration protocol="Flow" />
 
@@ -50,47 +44,35 @@ Let's focus on it in this example.
 
 Define a function that creates multiple streams and returns their respective stream IDs:
 
-```solidity
-function createMultiple() external returns (uint256[] memory streamIds) {
-    // ...
-}
-```
+<CodeBlock language="solidity" metastring={`reference title=""`}>
+  {`https://github.com/sablier-labs/evm-examples/blob/main/flow/FlowBatchable.sol#L66-L66`}
+</CodeBlock>
 
 ### Parameters
 
 We will create two streams with same stream parameters required by the `create` function.
 
-```solidity
-address sender = msg.sender;
-address firstRecipient = address(0xCAFE);
-address secondRecipient = address(0xBEEF);
-UD21x18 firstRatePerSecond = ud21x18(0.0001e18);
-UD21x18 secondRatePerSecond = ud21x18(0.0002e18);
-bool transferable = true;
-```
+<CodeBlock language="solidity" metastring={`reference title=""`}>
+  {`https://github.com/sablier-labs/evm-examples/blob/main/flow/FlowBatchable.sol#L67-L72`}
+</CodeBlock>
 
 Construct an array of `bytes` of length 2 to be passed into the `batch` function:
 
-```solidity
-bytes[] memory calls = new bytes[](2);
-calls[0] = abi.encodeCall(FLOW.create, (sender, firstRecipient, firstRatePerSecond, USDC, transferable));
-calls[1] = abi.encodeCall(FLOW.create, (sender, secondRecipient, secondRatePerSecond, USDC, transferable));
-```
+<CodeBlock language="solidity" metastring={`reference title=""`}>
+  {`https://github.com/sablier-labs/evm-examples/blob/main/flow/FlowBatchable.sol#L75-L81`}
+</CodeBlock>
 
 Since we are creating two streams, the function will return an array containing the two generated stream IDs:
 
-```solidity
-uint256 nextStreamId = FLOW.nextStreamId();
-streamIds = new uint256[](2);
-streamIds[0] = nextStreamId;
-streamIds[1] = nextStreamId + 1;
-```
+<CodeBlock language="solidity" metastring={`reference title=""`}>
+  {`https://github.com/sablier-labs/evm-examples/blob/main/flow/FlowBatchable.sol#L84-L87`}
+</CodeBlock>
 
 Execute the `batch`:
 
-```solidity
-FLOW.batch(calls);
-```
+<CodeBlock language="solidity" metastring={`reference title=""`}>
+  {`https://github.com/sablier-labs/evm-examples/blob/main/flow/FlowBatchable.sol#L90-L90`}
+</CodeBlock>
 
 ## Homework
 

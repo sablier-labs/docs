@@ -31,123 +31,81 @@ The calculation method is the same in either case.
 
 Declare the Solidity version used to compile the library:
 
-```solidity
-pragma solidity >=0.8.22;
-```
+<CodeBlock language="solidity" metastring={`reference title=""`}>
+  {`https://github.com/sablier-labs/evm-examples/blob/main/flow/FlowUtilities.sol#L2`}
+</CodeBlock>
 
 Import the relevant symbols:
 
-```solidity
-import { IERC20Metadata } from "@openzeppelin/contracts/token/ERC20/extensions/IERC20Metadata.sol";
-import { ud21x18, UD21x18 } from "@prb/math/src/UD21x18.sol";
-```
+<CodeBlock language="solidity" metastring={`reference title=""`}>
+  {`https://github.com/sablier-labs/evm-examples/blob/main/flow/FlowUtilities.sol#L4-L5`}
+</CodeBlock>
 
 Declare a library that can be used in other contracts:
 
-```solidity
-library FlowUtilities {}
-```
+<CodeBlock language="solidity" metastring={`reference title=""`}>
+  {`https://github.com/sablier-labs/evm-examples/blob/main/flow/FlowUtilities.sol#L8`}
+</CodeBlock>
 
 ## Calculate the rate per second on a duration
 
 Define a function called `ratePerSecondWithDuration` that takes the following parameters and the returned value:
 
-```solidity
-function ratePerSecondWithDuration(
-    address token,
-    uint128 amount,
-    uint40 duration
-)
-    internal
-    view
-    returns (UD21x18 ratePerSecond)
-{
-    // ...
-}
-```
+<CodeBlock language="solidity" metastring={`reference title=""`}>
+  {`https://github.com/sablier-labs/evm-examples/blob/main/flow/FlowUtilities.sol#L15-L22`}
+</CodeBlock>
 
 First, retrieve the token's decimals. Note that not all ERC-20 tokens use the 18-decimal standard.
 
-```solidity
-uint8 decimals = IERC20Metadata(token).decimals();
-```
+<CodeBlock language="solidity" metastring={`reference title=""`}>
+  {`https://github.com/sablier-labs/evm-examples/blob/main/flow/FlowUtilities.sol#L25`}
+</CodeBlock>
 
 If the token uses 18 decimals, simply divide the amount by the duration:
 
-```solidity
-if (decimals == 18) {
-    return ud21x18(amount / duration);
-}
-```
+<CodeBlock language="solidity" metastring={`reference title=""`}>
+  {`https://github.com/sablier-labs/evm-examples/blob/main/flow/FlowUtilities.sol#L29-L31`}
+</CodeBlock>
 
 If the token has less than 18 decimals, calculate the scale factor from the token's decimals:
 
-```solidity
-uint128 scaleFactor = uint128(10 ** (18 - decimals));
-```
+<CodeBlock language="solidity" metastring={`reference title=""`}>
+  {`https://github.com/sablier-labs/evm-examples/blob/main/flow/FlowUtilities.sol#L34`}
+</CodeBlock>
 
 Then, multiply the amount by the scale factor and divide it by the duration:
 
-```solidity
-return ud21x18((amount * scaleFactor) / duration);
-```
+<CodeBlock language="solidity" metastring={`reference title=""`}>
+  {`https://github.com/sablier-labs/evm-examples/blob/main/flow/FlowUtilities.sol#L37`}
+</CodeBlock>
 
 ## Calculate the rate per second on timestamps
 
 Here, there are two time parameters, a start and an end time, instead of a duration. Let's define the function:
 
-```solidity
-function ratePerSecondForTimestamps(
-    address token,
-    uint128 amount,
-    uint40 start,
-    uint40 end
-)
-    internal
-    view
-    returns (UD21x18 ratePerSecond)
-{
-    // ...
-}
-```
+<CodeBlock language="solidity" metastring={`reference title=""`}>
+  {`https://github.com/sablier-labs/evm-examples/blob/main/flow/FlowUtilities.sol#L47-L55`}
+</CodeBlock>
 
 The first step is to calculate the duration between the two timestamps:
 
-```solidity
-uint40 duration = end - start;
-```
+<CodeBlock language="solidity" metastring={`reference title=""`}>
+  {`https://github.com/sablier-labs/evm-examples/blob/main/flow/FlowUtilities.sol#L58`}
+</CodeBlock>
 
 The remaining logic is identical to the duration-based calculation:
 
-```solidity
-uint8 decimals = IERC20Metadata(token).decimals();
-
-if (decimals == 18) {
-    return ud21x18(amount / duration);
-}
-
-uint128 scaleFactor = uint128(10 ** (18 - decimals));
-
-ratePerSecond = ud21x18((scaleFactor * amount) / duration);
-```
+<CodeBlock language="solidity" metastring={`reference title=""`}>
+  {`https://github.com/sablier-labs/evm-examples/blob/main/flow/FlowUtilities.sol#L61-L71`}
+</CodeBlock>
 
 ## Additional utilities
 
 To calculate earnings for specific durations from an existing stream, you can use the following functions:
 
-```solidity
-function calculateAmountStreamedPerWeek(UD21x18 ratePerSecond) internal pure returns (uint128 amountPerWeek) {
-    amountPerWeek = ratePerSecond.unwrap() * 1 weeks;
-}
-
-function calculateAmountStreamedPerMonth(UD21x18 ratePerSecond) internal pure returns (uint128 amountPerMonth) {
-    amountPerMonth = ratePerSecond.unwrap() * 30 days;
-}
-
-function calculateAmountStreamedPerYear(UD21x18 ratePerSecond) internal pure returns (uint128 amountPerYear) {
-    amountPerYear = ratePerSecond.unwrap() * 365 days;
-}
-```
+<CodeBlock language="solidity" metastring={`reference title=""`}>
+  {`https://github.com/sablier-labs/evm-examples/blob/main/flow/FlowUtilities.sol#L77-L95`}
+</CodeBlock>
 
 ## Full code
 

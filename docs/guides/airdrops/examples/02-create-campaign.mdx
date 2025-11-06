@@ -20,43 +20,23 @@ This guide assumes that you have already gone through the [Protocol Concepts](/c
 
 Declare the Solidity version used to compile the contract:
 
-```solidity
-// SPDX-License-Identifier: GPL-3.0-or-later
-pragma solidity >=0.8.22;
-```
+<CodeBlock language="solidity" metastring={`reference title=""`}>
+  {`https://github.com/sablier-labs/evm-examples/blob/main/airdrops/MerkleCreator.sol#L1-L2`}
+</CodeBlock>
 
 Now, import the relevant symbols from `@sablier/lockup` and `@sablier/airdrops`:
 
-```solidity
-import { IERC20 } from "@openzeppelin/contracts/token/ERC20/IERC20.sol";
-import { ud2x18 } from "@prb/math/src/UD2x18.sol";
-import { ud60x18 } from "@prb/math/src/UD60x18.sol";
-import { ISablierLockup } from "@sablier/lockup/src/interfaces/ISablierLockup.sol";
-import { ISablierMerkleInstant } from "@sablier/airdrops/src/interfaces/ISablierMerkleInstant.sol";
-import { ISablierMerkleLL } from "@sablier/airdrops/src/interfaces/ISablierMerkleLL.sol";
-import { ISablierMerkleLT } from "@sablier/airdrops/src/interfaces/ISablierMerkleLT.sol";
-import { ISablierMerkleVCA } from "@sablier/airdrops/src/interfaces/ISablierMerkleVCA.sol";
-import { ISablierFactoryMerkleInstant } from "@sablier/airdrops/src/interfaces/ISablierFactoryMerkleInstant.sol";
-import { ISablierFactoryMerkleLL } from "@sablier/airdrops/src/interfaces/ISablierFactoryMerkleLL.sol";
-import { ISablierFactoryMerkleLT } from "@sablier/airdrops/src/interfaces/ISablierFactoryMerkleLT.sol";
-import { ISablierFactoryMerkleVCA } from "@sablier/airdrops/src/interfaces/ISablierFactoryMerkleVCA.sol";
-import { MerkleInstant, MerkleLL, MerkleLT, MerkleVCA } from "@sablier/airdrops/src/types/DataTypes.sol";
-```
+<CodeBlock language="solidity" metastring={`reference title=""`}>
+  {`https://github.com/sablier-labs/evm-examples/blob/main/airdrops/MerkleCreator.sol#L4-L16`}
+</CodeBlock>
 
 Create a contract called `MerkleCreator`, and declare a constant `DAI` of type `IERC20`, a constant `LOCKUP` of type
 `ISablierLockup` and the factories constants of type `ISablierFactoryMerkleInstant`, `ISablierFactoryMerkleLL`,
 `ISablierFactoryMerkleLT` and `ISablierFactoryMerkleVCA`.
 
-```solidity
-contract MerkleCreator {
-    IERC20 public constant DAI = IERC20(0x6B175474E89094C44Da98b954EedeAC495271d0F);
-    ISablierFactoryMerkleInstant public constant INSTANT_FACTORY = ISablierFactoryMerkleInstant(0x7f70bA7C7373BaA4047cE450168cD24968321Bda);
-    ISablierFactoryMerkleLL public constant LL_FACTORY = ISablierFactoryMerkleLL(0x0781Ad660a5ED0041B45d44d45009a163CC0B578);
-    ISablierFactoryMerkleLT public constant LT_FACTORY = ISablierFactoryMerkleLT(0x336d464276e2c7C76927d975Ef866Df8a7Ecf8DD);
-    ISablierFactoryMerkleVCA public constant VCA_FACTORY = ISablierFactoryMerkleVCA(0x91FdBd7077d615f951a0defA81Ec30Bfd68dbd8D);
-    ISablierLockup public constant LOCKUP = ISablierLockup(0xcF8ce57fa442ba50aCbC57147a62aD03873FfA73);
-}
-```
+<CodeBlock language="solidity" metastring={`reference title=""`}>
+  {`https://github.com/sablier-labs/evm-examples/blob/main/airdrops/MerkleCreator.sol#L21-L33`}
+</CodeBlock>
 
 <HardcodedDemonstration protocol="Lockup" />
 
@@ -87,20 +67,18 @@ Below we will focus only on the LL factory. The other factories follow the same 
 
 Define a function called `createMerkleLL` that returns the address of newly deployed Merkle Lockup contract.
 
-```solidity
-function createMerkleLL() public returns (ISablierMerkleLL merkleLL) {
-  // ...
-}
-```
+<CodeBlock language="solidity" metastring={`reference title=""`}>
+  {`https://github.com/sablier-labs/evm-examples/blob/main/airdrops/MerkleCreator.sol#L59`}
+</CodeBlock>
 
 ## Parameters
 
 Merkle Factory uses [MerkleLL.ConstructorParams](/reference/airdrops/contracts/types/library.MerkleLL#constructorparams)
 as the struct for the `createMerkleLL` function.
 
-```solidity
-MerkleLL.ConstructorParams memory params;
-```
+<CodeBlock language="solidity" metastring={`reference title=""`}>
+  {`https://github.com/sablier-labs/evm-examples/blob/main/airdrops/MerkleCreator.sol#L61`}
+</CodeBlock>
 
 Let's review each parameter of the struct in detail.
 
@@ -108,17 +86,17 @@ Let's review each parameter of the struct in detail.
 
 The contract address of the ERC-20 token that you want to airdrop to your recipients. In this example, we will use DAI.
 
-```solidity
-params.token = DAI;
-```
+<CodeBlock language="solidity" metastring={`reference title=""`}>
+  {`https://github.com/sablier-labs/evm-examples/blob/main/airdrops/MerkleCreator.sol#L64`}
+</CodeBlock>
 
 ### Campaign Start Time
 
 The unix timestamp indicating when the campaign starts. Users will be able to claim their airdrop after this time.
 
-```solidity
-params.campaignStartTime = uint40(block.timestamp);
-```
+<CodeBlock language="solidity" metastring={`reference title=""`}>
+  {`https://github.com/sablier-labs/evm-examples/blob/main/airdrops/MerkleCreator.sol#L65`}
+</CodeBlock>
 
 ### Expiration
 
@@ -127,9 +105,9 @@ able to claim their airdrop. And you will be able to
 [clawback](/reference/airdrops/contracts/abstracts/abstract.SablierMerkleBase#clawback) any unclaimed tokens from the
 campaign.
 
-```solidity
-params.expiration = uint40(block.timestamp + 12 weeks);
-```
+<CodeBlock language="solidity" metastring={`reference title=""`}>
+  {`https://github.com/sablier-labs/evm-examples/blob/main/airdrops/MerkleCreator.sol#L66`}
+</CodeBlock>
 
 ### Initial Admin
 
@@ -137,18 +115,18 @@ This is the initial admin of the Airstream campaign. When a recipient claims his
 with this admin as the sender of the stream. Another role of admin is to clawback unclaimed tokens from the campaign
 post expiry and during grace period.
 
-```solidity
-params.initialAdmin = address(0xBeeF);
-```
+<CodeBlock language="solidity" metastring={`reference title=""`}>
+  {`https://github.com/sablier-labs/evm-examples/blob/main/airdrops/MerkleCreator.sol#L67`}
+</CodeBlock>
 
 ### IPFS CID
 
 This is the content identifier (CID) for indexing the contract on IPFS. This is where we store addresses of the Airdrop
 recipients and their claim amount.
 
-```solidity
-params.ipfsCID = "QmT5NvUtoM5nWFfrQdVrFtvGfKFmG7AHE8P34isapyhCxX";
-```
+<CodeBlock language="solidity" metastring={`reference title=""`}>
+  {`https://github.com/sablier-labs/evm-examples/blob/main/airdrops/MerkleCreator.sol#L68`}
+</CodeBlock>
 
 ### Merkle Root
 
@@ -159,90 +137,90 @@ to claim their airdrop.
 If you want to create the Merkle root programmatically, you can follow
 [our guide on Merkle API](/api/airdrops/merkle-api/overview).
 
-```solidity
-params.merkleRoot = 0x4e07408562bedb8b60ce05c1decfe3ad16b722309875f562c03d02d7aaacb123;
-```
+<CodeBlock language="solidity" metastring={`reference title=""`}>
+  {`https://github.com/sablier-labs/evm-examples/blob/main/airdrops/MerkleCreator.sol#L69`}
+</CodeBlock>
 
 ### Campaign Name
 
 The name of the campaign.
 
-```solidity
-params.campaignName = "My First Campaign";
-```
+<CodeBlock language="solidity" metastring={`reference title=""`}>
+  {`https://github.com/sablier-labs/evm-examples/blob/main/airdrops/MerkleCreator.sol#L70`}
+</CodeBlock>
 
 ### Shape
 
 A custom stream shape name for visualization in the UI. This helps users understand the vesting schedule visually.
 
-```solidity
-params.shape = "A custom stream shape";
-```
+<CodeBlock language="solidity" metastring={`reference title=""`}>
+  {`https://github.com/sablier-labs/evm-examples/blob/main/airdrops/MerkleCreator.sol#L71`}
+</CodeBlock>
 
 ### Lockup
 
 The address of the Sablier Lockup contract that will be used to create the streams when recipients claim their airdrop.
 
-```solidity
-params.lockup = LOCKUP;
-```
+<CodeBlock language="solidity" metastring={`reference title=""`}>
+  {`https://github.com/sablier-labs/evm-examples/blob/main/airdrops/MerkleCreator.sol#L72`}
+</CodeBlock>
 
 ### Vesting Start Time
 
 The unix timestamp indicating when the vesting starts. If set to 0, the vesting will begin at the time of claim.
 
-```solidity
-params.vestingStartTime = uint40(block.timestamp);
-```
+<CodeBlock language="solidity" metastring={`reference title=""`}>
+  {`https://github.com/sablier-labs/evm-examples/blob/main/airdrops/MerkleCreator.sol#L73`}
+</CodeBlock>
 
 ### Cliff Duration
 
 The duration of the cliff period in seconds. During this period, no tokens will be unlocked.
 
-```solidity
-params.cliffDuration = 30 days;
-```
+<CodeBlock language="solidity" metastring={`reference title=""`}>
+  {`https://github.com/sablier-labs/evm-examples/blob/main/airdrops/MerkleCreator.sol#L74`}
+</CodeBlock>
 
 ### Cliff Unlock Percentage
 
 The percentage of tokens to unlock after the cliff period ends. We want to unlock 0.01% after the cliff period.
 
-```solidity
-params.cliffUnlockPercentage = ud60x18(0.01e18);
-```
+<CodeBlock language="solidity" metastring={`reference title=""`}>
+  {`https://github.com/sablier-labs/evm-examples/blob/main/airdrops/MerkleCreator.sol#L75`}
+</CodeBlock>
 
 ### Start Unlock Percentage
 
 The percentage of tokens to unlock at the vesting start time. We want to unlock 0.01% at the start.
 
-```solidity
-params.startUnlockPercentage = ud60x18(0.01e18);
-```
+<CodeBlock language="solidity" metastring={`reference title=""`}>
+  {`https://github.com/sablier-labs/evm-examples/blob/main/airdrops/MerkleCreator.sol#L76`}
+</CodeBlock>
 
 ### Total Duration
 
 The total duration of vesting in seconds. This should be 90 days for this example.
 
-```solidity
-params.totalDuration = 90 days;
-```
+<CodeBlock language="solidity" metastring={`reference title=""`}>
+  {`https://github.com/sablier-labs/evm-examples/blob/main/airdrops/MerkleCreator.sol#L77`}
+</CodeBlock>
 
 ### Cancelable
 
 Boolean that indicates whether the stream will be cancelable or not after it has been claimed.
 
-```solidity
-params.cancelable = false;
-```
+<CodeBlock language="solidity" metastring={`reference title=""`}>
+  {`https://github.com/sablier-labs/evm-examples/blob/main/airdrops/MerkleCreator.sol#L78`}
+</CodeBlock>
 
 ### Transferable
 
 Boolean that indicates whether the stream will be transferable or not. This is the stream that users obtain when they
 claim their airstream.
 
-```solidity
-params.transferable = true;
-```
+<CodeBlock language="solidity" metastring={`reference title=""`}>
+  {`https://github.com/sablier-labs/evm-examples/blob/main/airdrops/MerkleCreator.sol#L79`}
+</CodeBlock>
 
 Now that we have the `params` ready, it's time to setup rest of the input parameters.
 
@@ -251,30 +229,26 @@ Now that we have the `params` ready, it's time to setup rest of the input parame
 This is the total amount of tokens you want to airdrop to your users, denoted in units of the asset's decimals. Let's
 say you want to airdrop 100M tokens of DAI. Then, the aggregate amount would be $100m\times 10^{18}$.
 
-```solidity
-uint256 aggregateAmount = 100_000_000e18;
-```
+<CodeBlock language="solidity" metastring={`reference title=""`}>
+  {`https://github.com/sablier-labs/evm-examples/blob/main/airdrops/MerkleCreator.sol#L82`}
+</CodeBlock>
 
 ### Recipient Count
 
 The total number of recipient addresses.
 
-```solidity
-uint256 recipientCount = 10_000;
-```
+<CodeBlock language="solidity" metastring={`reference title=""`}>
+  {`https://github.com/sablier-labs/evm-examples/blob/main/airdrops/MerkleCreator.sol#L85`}
+</CodeBlock>
 
 ## Invoke the create function
 
 With all parameters set, we can now call the `createMerkleLL` function, and assign the address of the newly created
 campaign to a variable:
 
-```solidity
-merkleLL = LL_FACTORY.createMerkleLL({
-  params: params,
-  aggregateAmount: aggregateAmount,
-  recipientCount: recipientCount
-});
-```
+<CodeBlock language="solidity" metastring={`reference title=""`}>
+  {`https://github.com/sablier-labs/evm-examples/blob/main/airdrops/MerkleCreator.sol#L89-L93`}
+</CodeBlock>
 
 ## Full code
 

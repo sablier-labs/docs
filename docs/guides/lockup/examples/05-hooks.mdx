@@ -29,11 +29,9 @@ interacting with Lockup streams.
 The recipient contract should implement the `{IERC165-supportsInterface}` method, which MUST return `true` when called
 with `0xf8ee98d3`, which is the interface ID for `ISablierLockupRecipient`.
 
-```solidity
-function supportsInterface(bytes4 interfaceId) public view override(IERC165, ERC165) returns (bool) {
-    return interfaceId == 0xf8ee98d3;
-}
-```
+<CodeBlock language="solidity" metastring={`reference title=""`}>
+  {`https://github.com/sablier-labs/evm-examples/blob/main/lockup/RecipientHooks.sol#L22-L24`}
+</CodeBlock>
 
 ### Hook Functions
 

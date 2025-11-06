@@ -4,6 +4,8 @@ sidebar_position: 1
 title: "Set Up Your Contract"
 ---
 
+import CodeBlock from "@theme/CodeBlock";
+
 The "Stream Management" series will guide you through how to withdraw, cancel, renounce, and transfer ownership of
 streams.
 
@@ -15,33 +17,28 @@ Before diving in, please note the following:
 
 With that said, let's begin. First, declare the Solidity version used to compile the contract:
 
-```solidity
-// SPDX-License-Identifier: GPL-3.0-or-later
-pragma solidity >=0.8.22;
-```
+<CodeBlock language="solidity" metastring={`reference title=""`}>
+  {`https://github.com/sablier-labs/evm-examples/blob/main/lockup/StreamManagement.sol#L1-L2`}
+</CodeBlock>
 
 Import the relevant symbols from `@sablier/core`:
 
-```solidity
-import { ISablierLockup } from "@sablier/lockup/src/interfaces/ISablierLockup.sol";
-```
+<CodeBlock language="solidity" metastring={`reference title=""`}>
+  {`https://github.com/sablier-labs/evm-examples/blob/main/lockup/StreamManagement.sol#L4`}
+</CodeBlock>
 
 Create a contract called `StreamManagement` and declare an immutable variable `sablier` of type `ISablierLockup`:
 
-```solidity
-contract StreamManagement {
-    ISablierLockup public immutable sablier;
-}
-```
+<CodeBlock language="solidity" metastring={`reference title=""`}>
+  {`https://github.com/sablier-labs/evm-examples/blob/main/lockup/StreamManagement.sol#L9`}
+</CodeBlock>
 
 Just like in the create stream guides, the next step requires you to head over to the
 [Deployment Addresses](/guides/lockup/deployments) page and copy the address of the Lockup contract. Then, you can
 deploy the stream management contract:
 
-```solidity
-constructor(ISablierLockup sablier_) {
-    sablier = sablier_;
-}
-```
+<CodeBlock language="solidity" metastring={`reference title=""`}>
+  {`https://github.com/sablier-labs/evm-examples/blob/main/lockup/StreamManagement.sol#L11-L13`}
+</CodeBlock>
 
 You're all set! You can now move on to the next page, which will teach you how to withdraw from a stream.

@@ -1,49 +1,49 @@
-Let's review each parameter in detail.
+import CodeBlock from "@theme/CodeBlock";
 
-### Sender
+#### Sender
 
 The address streaming the tokens, with the ability to cancel the stream:
 
-```solidity
-params.sender = msg.sender;
-```
+<CodeBlock language="solidity" metastring={`reference title=""`}>
+  {`https://github.com/sablier-labs/evm-examples/blob/main/lockup/LockupLinearStreamCreator.sol#L29`}
+</CodeBlock>
 
-### Recipient
+#### Recipient
 
 The address receiving the tokens:
 
-```solidity
-params.recipient = address(0xCAFE);
-```
+<CodeBlock language="solidity" metastring={`reference title=""`}>
+  {`https://github.com/sablier-labs/evm-examples/blob/main/lockup/LockupLinearStreamCreator.sol#L30`}
+</CodeBlock>
 
-### Deposit amount
+#### Deposit amount
 
 The deposit amount of ERC-20 tokens to be paid, denoted in units of the token's decimals.
 
-```solidity
-params.depositAmount = depositAmount;
-```
+<CodeBlock language="solidity" metastring={`reference title=""`}>
+  {`https://github.com/sablier-labs/evm-examples/blob/main/lockup/LockupLinearStreamCreator.sol#L31`}
+</CodeBlock>
 
-### Token
+#### Token
 
 The contract address of the ERC-20 token used for streaming. In this example, we will stream DAI:
 
-```solidity
-params.token = DAI;
-```
+<CodeBlock language="solidity" metastring={`reference title=""`}>
+  {`https://github.com/sablier-labs/evm-examples/blob/main/lockup/LockupLinearStreamCreator.sol#L32`}
+</CodeBlock>
 
-### Cancelable
+#### Cancelable
 
 Boolean that indicates whether the stream will be cancelable or not.
 
-```solidity
-params.cancelable = true;
-```
+<CodeBlock language="solidity" metastring={`reference title=""`}>
+  {`https://github.com/sablier-labs/evm-examples/blob/main/lockup/LockupLinearStreamCreator.sol#L33`}
+</CodeBlock>
 
-### Transferable
+#### Transferable
 
 Boolean that indicates whether the stream will be transferable or not.
 
-```solidity
-params.transferable = true;
-```
+<CodeBlock language="solidity" metastring={`reference title=""`}>
+  {`https://github.com/sablier-labs/evm-examples/blob/main/lockup/LockupLinearStreamCreator.sol#L34`}
+</CodeBlock>

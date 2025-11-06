@@ -22,32 +22,22 @@ This guide assumes that you have already gone through the [Protocol Concepts](/c
 
 Declare the Solidity version used to compile the contract:
 
-```solidity
-// SPDX-License-Identifier: GPL-3.0-or-later
-pragma solidity >=0.8.22;
-```
+<CodeBlock language="solidity" metastring={`reference title=""`}>
+  {`https://github.com/sablier-labs/evm-examples/blob/main/lockup/BatchLDStreamCreator.sol#L1-L2`}
+</CodeBlock>
 
 Now, import the relevant symbols from `@sablier/lockup`:
 
-```solidity
-import { IERC20 } from "@openzeppelin/contracts/token/ERC20/IERC20.sol";
-import { ud2x18 } from "@prb/math/src/UD2x18.sol";
-import { ISablierBatchLockup } from "@sablier/lockup/src/interfaces/ISablierBatchLockup.sol";
-import { ISablierLockup } from "@sablier/lockup/src/interfaces/ISablierLockup.sol";
-import { BatchLockup } from "@sablier/lockup/src/types/BatchLockup.sol";
-import { LockupDynamic } from "@sablier/lockup/src/types/LockupDynamic.sol";
-```
+<CodeBlock language="solidity" metastring={`reference title=""`}>
+  {`https://github.com/sablier-labs/evm-examples/blob/main/lockup/BatchLDStreamCreator.sol#L4-L9`}
+</CodeBlock>
 
 Create a contract called `BatchLDStreamCreator`, and declare a constant `DAI` of type `IERC20`, a constant `LOCKUP` of
 type `ISablierLockup`, and a constant `BATCH_LOCKUP` of type `ISablierBatchLockup`:
 
-```solidity
-contract BatchLDStreamCreator {
-    IERC20 public constant DAI = IERC20(0x68194a729C2450ad26072b3D33ADaCbcef39D574);
-    ISablierLockup public constant LOCKUP = ISablierLockup(0xcF8ce57fa442ba50aCbC57147a62aD03873FfA73);
-    ISablierBatchLockup public constant BATCH_LOCKUP = ISablierBatchLockup(0x0636D83B184D65C242c43de6AAd10535BFb9D45a);
-}
-```
+<CodeBlock language="solidity" metastring={`reference title=""`}>
+  {`https://github.com/sablier-labs/evm-examples/blob/main/lockup/BatchLDStreamCreator.sol#L12-L16`}
+</CodeBlock>
 
 <HardcodedDemonstration protocol="Lockup" />
 
@@ -68,74 +58,30 @@ Given that we declared a `batchSize` of two, we need to define two
 [BatchLockup.CreateWithTimestampsLD](/reference/lockup/contracts/types/library.BatchLockup#createwithtimestampsld)
 structs:
 
-```solidity
-// Declare the first stream in the batch
-BatchLockup.CreateWithTimestampsLD memory stream0;
-stream0.sender = address(0xABCD); // The sender to stream the tokens, he will be able to cancel the stream
-stream0.recipient = address(0xCAFE); // The recipient of the streamed tokens
-stream0.depositAmount = perStreamAmount; // The deposit amount of each stream
-stream0.cancelable = true; // Whether the stream will be cancelable or not
-stream0.transferable = false; // Whether the recipient can transfer the NFT or not
-stream0.startTime = uint40(block.timestamp); // Set the start time to block timestamp
-// Declare some dummy segments
-stream0.segments = new LockupDynamic.Segment[](2);
-stream0.segments[0] = LockupDynamic.Segment({
-    amount: uint128(perStreamAmount / 2),
-    exponent: ud2x18(0.25e18),
-    timestamp: uint40(block.timestamp + 1 weeks)
-});
-stream0.segments[1] = (
-    LockupDynamic.Segment({
-        amount: uint128(perStreamAmount - stream0.segments[0].amount),
-        exponent: ud2x18(2.71e18),
-        timestamp: uint40(block.timestamp + 24 weeks)
-    })
-);
-```
+<CodeBlock language="solidity" metastring={`reference title=""`}>
+  {`https://github.com/sablier-labs/evm-examples/blob/main/lockup/BatchLDStreamCreator.sol#L33-L54`}
+</CodeBlock>
 
 To add some variety, we will change the parameters of the second stream:
 
-```solidity
-BatchLockup.CreateWithTimestampsLD memory stream1;
-stream1.sender = address(0xABCD); // The sender to stream the tokens, he will be able to cancel the stream
-stream1.recipient = address(0xBEEF); // The recipient of the streamed tokens
-stream1.depositAmount = uint128(perStreamAmount); // The deposit amount of each stream
-stream1.cancelable = false; // Whether the stream will be cancelable or not
-stream1.transferable = false; // Whether the recipient can transfer the NFT or not
-stream1.startTime = uint40(block.timestamp); // Set the start time to block timestamp
-// Declare some dummy segments
-stream1.segments = new LockupDynamic.Segment[](2);
-stream1.segments[0] = LockupDynamic.Segment({
-    amount: uint128(perStreamAmount / 4),
-    exponent: ud2x18(1e18),
-    timestamp: uint40(block.timestamp + 4 weeks)
-});
-stream1.segments[1] = (
-    LockupDynamic.Segment({
-        amount: uint128(perStreamAmount - stream1.segments[0].amount),
-        exponent: ud2x18(3.14e18),
-        timestamp: uint40(block.timestamp + 52 weeks)
-    })
-);
-```
+<CodeBlock language="solidity" metastring={`reference title=""`}>
+  {`https://github.com/sablier-labs/evm-examples/blob/main/lockup/BatchLDStreamCreator.sol#L57-L78`}
+</CodeBlock>
 
 Once both structs are declared, the batch array has to be filled:
 
-```solidity
-// Fill the batch array
-BatchLockup.CreateWithTimestampsLD[] memory batch = new BatchLockup.CreateWithTimestampsLD[](batchSize);
-batch[0] = stream0;
-batch[1] = stream1;
-```
+<CodeBlock language="solidity" metastring={`reference title=""`}>
+  {`https://github.com/sablier-labs/evm-examples/blob/main/lockup/BatchLDStreamCreator.sol#L81-L83`}
+</CodeBlock>
 
 ## Invoke the batch create function
 
 With all parameters set, we can now call the `createWithTimestampsLD` function, and assign the ids of the newly created
 streams to the array:
 
-```solidity
-streamIds = BATCH_LOCKUP.createWithTimestampsLD(LOCKUP_DYNAMIC, DAI, batch);
-```
+<CodeBlock language="solidity" metastring={`reference title=""`}>
+  {`https://github.com/sablier-labs/evm-examples/blob/main/lockup/BatchLDStreamCreator.sol#L85`}
+</CodeBlock>
 
 ## Full code
 
