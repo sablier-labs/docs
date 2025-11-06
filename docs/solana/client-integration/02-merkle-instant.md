@@ -41,7 +41,7 @@ mkdir -p target/types
 ```bash
 # Download the IDL to the target directory
 curl -L -o target/idl/sablier_merkle_instant.json \
-  https://github.com/sablier-labs/solsab/releases/download/v1.0.0/sablier_merkle_instant.json
+  https://github.com/sablier-labs/solsab/releases/download/v0.1/sablier_merkle_instant.json
 ```
 
 and:
@@ -49,7 +49,7 @@ and:
 ```bash
 # Download the types to the target directory
 curl -L -o target/types/sablier_merkle_instant.ts \
-  https://github.com/sablier-labs/solsab/releases/download/v1.0.0/sablier_merkle_instant.ts
+  https://github.com/sablier-labs/solsab/releases/download/v0.1/sablier_merkle_instant.ts
 ```
 
 ### Install NPM Packages

@@ -41,7 +41,7 @@ mkdir -p target/types
 ```bash
 # Download the IDL to the target directory
 curl -L -o target/idl/sablier_lockup.json \
-  https://github.com/sablier-labs/solsab/releases/download/v1.0.0/sablier_lockup.json
+  https://github.com/sablier-labs/solsab/releases/download/v0.1/sablier_lockup.json
 ```
 
 and:
@@ -49,7 +49,7 @@ and:
 ```bash
 # Download the types to the target directory
 curl -L -o target/types/sablier_lockup.ts \
-  https://github.com/sablier-labs/solsab/releases/download/v1.0.0/sablier_lockup.ts
+  https://github.com/sablier-labs/solsab/releases/download/v0.1/sablier_lockup.ts
 ```
 
 ### Install NPM Packages
