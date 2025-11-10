@@ -4,12 +4,10 @@ sidebar_position: 1
 title: "Lockup"
 ---
 
-This section focuses on the architecture of accounts created or used in the most important instructions of the Lockup
-program.
+This section covers the program architecture, as well as the account structure and the token flow for the most important
+instructions of the Lockup program.
 
-## Account architecture
-
-### Sablier Lockup program
+## Program Architecture
 
 The `sablier_lockup` program implements these main functionalities:
 
@@ -19,7 +17,9 @@ The `sablier_lockup` program implements these main functionalities:
 - `withdraw`
 - `renounce`
 
-We will go into the details and specifics of each one later. For now, we will focus only on the accounts being created.
+The `create_stream` functionality is represented by the `create_with_timestamps_ll` and `create_with_durations_ll`
+instructions. The difference between them is the different kind of inputs required from the ix caller to create the
+stream. However, both of them create the same accounts and store the same data on-chain.
 
 ```mermaid
 flowchart TD
@@ -32,8 +32,9 @@ flowchart TD
     C --> H[create_with_durations_ll]
 ```
 
-The difference between the create stream implementations is that one uses timestamps, while the other uses duration
-inputs. Though, both create the same accounts and save the same data on chain.
+## Ix Account Architecture
+
+The following sections detail the accounts created by each instruction.
 
 ### `initialize` Instruction
 
@@ -131,9 +132,16 @@ flowchart TD
   A --> A3([start])
 ```
 
-## The Flow of the Deposit Token
+## Deposit Token Flow
+
+At stream creation, the deposit token is transferred from the sender to the stream's token account. Then, as it's being
+streamed, it can be withdrawn by the recipient. If the stream is canceled, the unstreamed token amount is refunded to
+the sender. The following diagrams illustrate how tokens move between accounts when each instruction is executed.
 
 ### `create_with_timestamps_ll` Instruction
+
+At stream creation, the deposit tokens are transferred from the sender's associated token account (ATA) to the stream
+data's ATA, where they are stored until withdrawn or refunded.
 
 ```mermaid
 sequenceDiagram
@@ -149,7 +157,8 @@ sequenceDiagram
 
 ### `cancel` Instruction
 
-Only the sender can cancel a stream.
+Only the sender can cancel a stream. When canceled, any remaining/unstreamed tokens are refunded from the stream data's
+ATA to the sender's ATA.
 
 ```mermaid
 sequenceDiagram
@@ -164,6 +173,10 @@ sequenceDiagram
 ```
 
 ### `withdraw` Instruction
+
+The recipient can withdraw their available/streamed tokens at any time. The tokens are transferred from the stream
+data's ATA to the specified withdrawal recipient's ATA (which may be the recipient themselves or another account,
+depending on the authority of the tx signer).
 
 ```mermaid
 sequenceDiagram

@@ -6,11 +6,13 @@ title: "Fees"
 
 ### Interface Fees
 
-The Sablier Interface charges a flat fee for certain operations. This fee is paid in the native gas token, i.e. in SOL.
+The Sablier Interface charges a flat USD fee for certain operations. This fee is paid in the native gas token of the
+network (i.e. SOL).
 
 :::info
 
-Fees are calculated based on market prices. For example, when SOL is \$200, a \$1 fee equals 0.005 SOL.
+Fees are calculated based on the SOL price at the moment of the tx. For example, if SOL is \$200, a \$1 fee equals 0.005
+SOL.
 
 :::
 
@@ -19,18 +21,38 @@ Fees are calculated based on market prices. For example, when SOL is \$200, a \$
 | Withdraw from a stream | **$1** |
 | Claim an airdrop       | **$2** |
 
-These are Interface Fees, not program-level fees. The Solana programs themselves don't charge these fees.
+These are Interface (and not program-level) fees. The Solana programs themselves don't charge any fees.
 
-### Transaction Fees
+### Metaplex Fees
 
-Each operation on the blockchain also has a gas fee, which is independent of the Sablier fee, this is for network and
-rent of the accounts created. For more information, refer to [Solana docs](https://solana.com/docs/core/fees).
+Each of our Lockup streams has an NFT representation, in the form of a
+[Metaplex Token Metadata](https://developers.metaplex.com/token-metadata) NFT. Metaplex
+[charges](https://developers.metaplex.com/protocol-fees) a fixed fee, in SOL, for a number of operations with its
+protocol. Because of the latter, interacting with SolSab also involves the following fees (that go directly to
+Metaplex):
 
-These fees are an approximation, as each transaction might have a different cost.
+| Operation       | Fee          |
+| --------------- | ------------ |
+| Create a stream | **0.01 SOL** |
 
-| Operation                  | Fee         |
-| -------------------------- | ----------- |
-| Create a stream            | **~$5**     |
-| Withdraw from a stream     | **~$0.004** |
-| Create an airdrop campaign | **~$0.1**   |
-| Claim an airdrop           | **~$0.2**   |
+### Transaction/Network Fees
+
+When transacting on the Solana blockchain, you're also required to pay one or more of the following
+[network fees](https://solana.com/learn/understanding-solana-transaction-fees#solanas-fee-structure) (depending on what
+exactly your tx does):
+
+- Base Fee
+- Priority Fee
+- Storage Rent
+
+These fees are independent of the Sablier fees - and are used by the Solana network, e.g., to compensate the validators
+for processing your tx.
+
+Here are the estimated network fees for some of our program instructions:
+
+| Operation                  | Fee              |
+| -------------------------- | ---------------- |
+| Create a stream            | **~0.0137 SOL**  |
+| Withdraw from a stream     | **~0.00009 SOL** |
+| Create an airdrop campaign | **~0.0045 SOL**  |
+| Claim an airdrop           | **~0.00003 SOL** |

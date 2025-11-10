@@ -21,13 +21,13 @@ provide guidance on how to interact with the Merkle Instant program.
 
 :::note
 
-The examples in this guide use Devnet. Make sure your wallet has enough SOL for testing.
+Make sure your wallet has enough SOL and SPL tokens on Devnet (used by the examples in this guide).
 
 :::
 
 ## Dependencies
 
-### Download Types
+### Download the Merkle Instant IDL & Types
 
 First, download the IDL and the TypeScript types for the Lockup program from the GitHub release. For this example, we
 will place the types under the `target` directory.
@@ -90,7 +90,7 @@ async function setUp() {
   anchorProvider = anchor.AnchorProvider.env();
   anchor.setProvider(anchorProvider);
 
-  // Declare the merkle instant program based on the IDL downloaded
+  // Declare the merkle instant program based on the downloaded IDL
   merkleInstantProgram = anchor.workspace.SablierMerkleInstant as anchor.Program<SablierMerkleInstant>;
 
   // Define the signer wallet
@@ -145,26 +145,19 @@ async function createAirdropCampaign(merkleRoot: number[], ipfsCid: string) {
 Make sure to call the `createAirdropCampaign` function to execute it on-chain:
 
 ```typescript
-// Some dummy values for demonstration
+// Some dummy values for demonstration purposes
 const merkleRoot = Array.from(Buffer.from("d52549cb072a1fcd052412fc80f678effe92aeeedccd1cae632c5c6e1de89379", "hex"));
 const ipfsCid = "bafkreiecpwdhvkmw4y6iihfndk7jhwjas3m5htm7nczovt6m37mucwgsrq";
 createAirdropCampaign(merkleRoot, ipfsCid);
 ```
 
-Execute the script using `bun`:
+Execute the script via `bun` (adapting the `ANCHOR_WALLET` if your wallet config doesn't reside at the default path):
 
 ```shell
 ANCHOR_WALLET=~/.config/solana/id.json \
 ANCHOR_PROVIDER_URL="https://api.devnet.solana.com" \
 bun run merkle-instant-example.ts
 ```
-
-:::note
-
-The default path for the Solana wallet is `~/.config/solana/id.json`. If you have your wallet configured in other path,
-make sure to edit the this accordingly.
-
-:::
 
 ## Claim from an Airdrop Campaign
 
@@ -220,17 +213,10 @@ const merkleProof = [
 claimFromAirdropCampaign(new PublicKey("YOUR_CAMPAIGN_ADDRESS_HERE"), merkleProof);
 ```
 
-Execute the script using `bun`:
+Execute the script via `bun` (adapting the `ANCHOR_WALLET` if your wallet config doesn't reside at the default path):
 
 ```shell
 ANCHOR_WALLET=~/.config/solana/id.json \
 ANCHOR_PROVIDER_URL="https://api.devnet.solana.com" \
 bun run merkle-instant-example.ts
 ```
-
-:::note
-
-The default path for the Solana wallet is `~/.config/solana/id.json`. If you have your wallet configured in other path,
-make sure to edit the this accordingly.
-
-:::

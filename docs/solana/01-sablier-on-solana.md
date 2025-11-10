@@ -29,39 +29,44 @@ available features on Solana.
 
 ## SolSab
 
-[SolSab](https://github.com/sablier-labs/solsab) is a collection of protocols featuring two main Solana programs:
-**Sablier Lockup** and **Sablier Merkle Instant**. While not all protocols available for Ethereum are currently
-available for Solana, we aim to bring the same protocols to Solana in future iterations.
+[SolSab](https://github.com/sablier-labs/solsab) is a collection of Solana protocols currently featuring two programs:
+**Sablier Lockup** and **Sablier Merkle Instant**. While not all of our Ethereum protocols are also available on Solana,
+we aim to bridge this gap in the future.
 
 ### Lockup
 
 Sablier Lockup is a token distribution protocol that enables onchain vesting and payments. Our flagship model is the
 linear stream, which distributes tokens on a continuous, by-the-second basis.
 
-The way it works is that the creator of a payment stream first deposits a specific amount of SPL or Token2022 tokens.
-The program then progressively allocates the funds to the recipient, who can access them as they become available over
-time. The payment rate is influenced by various factors, including the start and end times, as well as the total amount
-of tokens deposited.
+The way it works is that the stream creator first deposits a specific amount of SPL/Token2022 tokens. The program, then,
+progressively transfers the ownership of the funds to the recipient (who can withdraw them as they're streamed). The
+streaming rate is influenced by various factors, such as the start and end times, the total amount of tokens deposited,
+etc.
 
 #### Key differences from the Ethereum [Lockup](../concepts/lockup/01-overview.md) protocol
 
-- The Solana program includes only the Linear streaming model, not the Dynamic and Tranched models. See the available
-  shapes for the Linear model [here](../concepts/lockup/02-stream-shapes.mdx#lockup-linear).
-- Due to the limitations of the [Token Metadata](https://developers.metaplex.com/token-metadata) NFT standard on Solana,
-  we cannot have non-transferable NFTs.
-- Tokens transferred during stream creation are placed in a dedicated Stream ATA
-  ([Associated Token Account](https://www.alchemy.com/overviews/associated-token-account)), instead of all tokens being
-  held in the Lockup contract as on Ethereum.
-- We do not have hooks for the `cancel` and `withdraw` functionalities due to limitations in how Solana works.
+- On Solana, we only supports the following streaming shapes for now:
+  [Linear](../concepts/lockup/02-stream-shapes.mdx#linear),
+  [Unlock Linear](../concepts/lockup/02-stream-shapes.mdx#unlock-linear),
+  [Cliff](../concepts/lockup/02-stream-shapes.mdx#cliff),
+  [Unlock Cliff](../concepts/lockup/02-stream-shapes.mdx#unlock-cliff) and
+  [Timelock](../concepts/lockup/02-stream-shapes.mdx#timelock).
+- Due to the limitations of the [Token Metadata](https://developers.metaplex.com/token-metadata) NFT standard, we don't
+  support non-transferable Streams on Solana.
+- Instead of the tokens from all of the active streams being stored at a single address, on Solana, they're kept in a
+  dedicated, per-stream ATA ([Associated Token Account](https://www.alchemy.com/overviews/associated-token-account)).
+- Due to how Solana's VM functions, we do not support hooks for `cancel` and `withdraw` instructions.
 
 ### Merkle Instant
 
-Merkle Instant is a program that enables the creation of token airdrop campaigns using Merkle trees, allowing users to
-instantly claim and receive their allocation through a single transaction.
+Our Merkle Instant program enables the creation of Merkle Tree-based token airdrop campaigns that allow users to claim
+their entire allocation, at once, once the campaign starts.
 
 #### Key differences from the Ethereum [Airdrops](../concepts/05-merkle-airdrops.mdx) protocols
 
-- The Solana program includes only the Instant airdrop model, not the Vesting airdrop models.
-- Due to the nature of Solana's account architecture, we have a single program that handles both the creation and the
-  claiming. In contrast to Ethereum, where we have a factory contract that deploys a stand-alone contract for each
-  airdrop campaign.
+- The Solana protocol only includes the Instant airdrop model, for now. The Vesting airdrop models are coming in the
+  future.
+- Instead of following the factory pattern (i.e. one contract per campaign), our Solana protocol stores the business
+  logic (e.g. creation & claiming) of all of the campaigns at a single program address. However, similar to the Ethereum
+  protocol, the campaign tokens are stored separately, in the per-campaign ATA
+  ([Associated Token Account](https://www.alchemy.com/overviews/associated-token-account)).
