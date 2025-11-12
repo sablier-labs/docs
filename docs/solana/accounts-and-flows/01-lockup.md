@@ -18,8 +18,8 @@ The `sablier_lockup` program implements these main functionalities:
 - `renounce`
 
 The `create_stream` functionality is represented by the `create_with_timestamps_ll` and `create_with_durations_ll`
-instructions. The difference between them is the different kind of inputs required from the ix caller to create the
-stream. However, both of them create the same accounts and store the same data on-chain.
+instructions. The difference between the 2 is the kind of inputs required from the stream creator. However, both of them
+create the same accounts and store the same data on-chain.
 
 ```mermaid
 flowchart TD
@@ -54,7 +54,7 @@ flowchart TD
 - **NFT collection mint PDA**: serves as the master mint authority for all stream NFTs
 - **NFT collection metadata PDA**: created via Metaplex CPI
 - **NFT collection master edition PDA**: created via Metaplex CPI
-- **NFT collection ATA**: associated token account owned by treasury to hold the collection NFT token
+- **NFT collection ATA**: the treasury-owned associated token account holding the collection NFT
 
 The
 [Treasury PDA](https://github.com/sablier-labs/solsab/blob/e1085fe87ea3d02556156ee446e820d150af483e/programs/lockup/src/state/treasury.rs#L5-L10)
@@ -140,8 +140,8 @@ the sender. The following diagrams illustrate how tokens move between accounts w
 
 ### `create_with_timestamps_ll` Instruction
 
-At stream creation, the deposit tokens are transferred from the sender's associated token account (ATA) to the stream
-data's ATA, where they are stored until withdrawn or refunded.
+At stream creation, the deposit tokens are transferred from the sender's ATA to the stream data's ATA, where they are
+stored until withdrawn or refunded.
 
 ```mermaid
 sequenceDiagram

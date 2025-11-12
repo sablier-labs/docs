@@ -92,16 +92,15 @@ account serves as proof of claim for the given recipient.
 
 ## Airdrop Token Flow
 
-The airdrop token flow begins when the campaign creator funds the campaign's associated token account. Once funded and
-the campaign has started, eligible recipients can claim their tokens. The campaign creator can clawback any remaining
-tokens after the campaign expires. The following diagrams illustrate how tokens move between accounts when each
-instruction is executed.
+The airdrop token flow begins when the campaign creator funds the campaign's ATA. Once funded and the campaign has
+started, eligible recipients can claim their tokens. The campaign creator can clawback any remaining tokens after the
+campaign expires. The following diagrams illustrate how tokens move between accounts when each instruction is executed.
 
 ### `create_campaign` Instruction
 
-This instruction creates the campaign account and its associated token account (ATA), but does not perform the airdrop
-token transfer. The campaign creator must fund the campaign ATA in a separate transaction after campaign creation. After
-that, the campaign ATA will hold all tokens available for distribution to eligible recipients.
+This instruction creates the campaign account and its ATA, but does not perform the airdrop token transfer. The campaign
+creator must fund the campaign ATA in a separate transaction after campaign creation. After that, the campaign ATA will
+hold all tokens available for distribution to eligible recipients.
 
 ### `claim` Instruction
 

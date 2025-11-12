@@ -27,7 +27,7 @@ Make sure your wallet has enough SOL and SPL tokens on Devnet (used by the examp
 
 ## Dependencies
 
-### Download the Lockup IDL & Types
+### Download the program IDL & Types
 
 First, download the IDL and the TypeScript types for the Lockup program from the GitHub release. For this example, we
 will place the types under the `target` directory.

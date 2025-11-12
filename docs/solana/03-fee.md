@@ -21,7 +21,7 @@ SOL.
 | Withdraw from a stream | **$1** |
 | Claim an airdrop       | **$2** |
 
-These are Interface (and not program-level) fees. The Solana programs themselves don't charge any fees.
+These are Interface (and not program-level) fees. The SolSab programs themselves don't charge any fees.
 
 ### Metaplex Fees
 

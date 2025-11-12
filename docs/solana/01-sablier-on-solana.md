@@ -55,12 +55,12 @@ etc.
   support non-transferable Streams on Solana.
 - Instead of the tokens from all of the active streams being stored at a single address, on Solana, they're kept in a
   dedicated, per-stream ATA ([Associated Token Account](https://www.alchemy.com/overviews/associated-token-account)).
-- Due to how Solana's VM functions, we do not support hooks for `cancel` and `withdraw` instructions.
+- Due to how Solana's VM works, we do not support hooks for the `cancel` and `withdraw` functionalities.
 
 ### Merkle Instant
 
-Our Merkle Instant program enables the creation of Merkle Tree-based token airdrop campaigns that allow users to claim
-their entire allocation, at once, once the campaign starts.
+The Merkle Instant program enables the creation of Merkle Tree-based token airdrop campaigns that allow users to claim
+their entire allocation at once after the campaign starts.
 
 #### Key differences from the Ethereum [Airdrops](../concepts/05-merkle-airdrops.mdx) protocols
 
@@ -68,5 +68,4 @@ their entire allocation, at once, once the campaign starts.
   future.
 - Instead of following the factory pattern (i.e. one contract per campaign), our Solana protocol stores the business
   logic (e.g. creation & claiming) of all of the campaigns at a single program address. However, similar to the Ethereum
-  protocol, the campaign tokens are stored separately, in the per-campaign ATA
-  ([Associated Token Account](https://www.alchemy.com/overviews/associated-token-account)).
+  protocol, the campaign tokens are stored separately, on a per-campaign basis.
