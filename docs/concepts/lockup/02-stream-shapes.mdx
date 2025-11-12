@@ -33,7 +33,7 @@ The gas cost to create this shape is approximately _168,923_ on Mainnet. This ma
 
 :::
 
-### Initial Unlock
+### Unlock Linear
 
 The Unlock Linear shape combines an initial immediate release of tokens with a steady, linear payout over time. This
 shape is ideal for employment contracts that include a signing bonus along with a regular payout schedule.
@@ -69,7 +69,7 @@ The gas cost to create this shape is approximately _191,182_ on Mainnet. This ma
 
 :::
 
-### Cliff Unlock
+### Cliff
 
 It is possible to attach a "cliff" to a Lockup Linear stream, which sets a cut-off point for releasing tokens. Prior to
 the cliff, the recipient cannot withdraw any tokens, but the stream continues to accrue them. After the cliff, the
@@ -104,7 +104,7 @@ The gas cost to create this shape is approximately _213,708_ on Mainnet. This ma
 
 :::
 
-### Initial Cliff Unlock
+### Unlock Cliff
 
 This shape is useful for companies who want to distribute tokens to their investors using a cliff followed by linear
 vesting but also want to unlock some liquidity at the beginning to be able to allow investors to bootstrap AMM pools.
@@ -206,7 +206,7 @@ The gas cost to create this shape is approximately _274,420_ on Mainnet. This ma
 ## Lockup Tranched
 
 Lockup Tranched streams are, as the name says, streams that have token unlocks in tranches. Even though you can use
-Lockup Dynamic to create a traditional vesting structure with periodic unlocks, Lockup Tranched is specifically design
+Lockup Dynamic to create a traditional vesting structure with periodic unlocks, Lockup Tranched is specifically designed
 for that use case. As a result, a stream with tranches created using Lockup Tranched is more gas efficient than the same
 stream created using Lockup Dynamic.
 
