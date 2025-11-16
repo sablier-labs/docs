@@ -30,7 +30,7 @@ export function AdminsTable() {
     // Get the v2.0 lockup release
     const release = sablier.releases.get({
       protocol: "lockup",
-      version: "v2.0",
+      version: "v3.0",
     });
 
     // Get all chains that have v2.0 lockup contracts
