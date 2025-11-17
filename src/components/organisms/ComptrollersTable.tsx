@@ -1,5 +1,6 @@
 import { useMemo } from "react";
-import { comptroller, sablier } from "sablier";
+import { sablier } from "sablier";
+import { comptroller } from "sablier/evm";
 import { getLatestLockupChainIds } from "../../helpers";
 import GFMContent from "../atoms/GFMContent";
 
