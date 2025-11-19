@@ -18,8 +18,8 @@ The `sablier_lockup` program implements these main functionalities:
 - `renounce`
 
 The `create_stream` functionality is represented by the `create_with_timestamps_ll` and `create_with_durations_ll`
-instructions. The difference between the 2 is the kind of inputs required from the stream creator. However, both of them
-create the same accounts and store the same data on-chain.
+instructions. The difference between the two is the kind of inputs required from the stream creator. However, both of
+them create the same accounts and store the same data on-chain.
 
 ```mermaid
 flowchart TD
