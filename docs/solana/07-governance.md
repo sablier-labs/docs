@@ -7,7 +7,7 @@ title: "Governance"
 SolSab program governance comprises two key functions:
 
 - Collecting accumulated protocol fees from the Treasury account and
-- Upgrading the protocol (as the "upgrade authority")
+- Upgrading the protocol (as the "upgrade authority").
 
 Both functions are exclusively controlled by the Protocol Admin account, a multisig wallet managed by Sablier Labs.
 
