@@ -35,11 +35,11 @@ Metaplex):
 | --------------- | ------------ |
 | Create a stream | **0.01 SOL** |
 
-### Transaction/Network Fees
+### Transaction Fees
 
 When transacting on the Solana blockchain, you're also required to pay one or more of the following
-[network fees](https://solana.com/learn/understanding-solana-transaction-fees#solanas-fee-structure) (depending on what
-exactly your tx does):
+[transaction fees](https://solana.com/learn/understanding-solana-transaction-fees#solanas-fee-structure) (depending on
+what exactly your tx does):
 
 - Base Fee
 - Priority Fee
@@ -48,7 +48,7 @@ exactly your tx does):
 These fees are independent of the Sablier fees - and are used by the Solana network, e.g., to compensate the validators
 for processing your tx.
 
-Here are the estimated network fees for some of our program instructions:
+Here are the estimated transaction fees for some of our program instructions:
 
 | Operation                  | Fee              |
 | -------------------------- | ---------------- |
