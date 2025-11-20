@@ -1,8 +1,7 @@
 import { Command } from "commander";
 import _ from "lodash";
 import type { Sablier } from "sablier";
-import { sablier } from "sablier";
-import { Protocol } from "sablier/evm";
+import { Protocol, sablier } from "sablier";
 import { Links } from "../../../src/constants";
 import { autogenFilePaths, getRelative, writeFileWithOverwrite } from "../../helpers";
 import type { CliOptions } from "../../types";
