@@ -151,7 +151,7 @@ const ipfsCid = "bafkreiecpwdhvkmw4y6iihfndk7jhwjas3m5htm7nczovt6m37mucwgsrq";
 createAirdropCampaign(merkleRoot, ipfsCid);
 ```
 
-Execute the script via `bun` (adapting the `ANCHOR_WALLET` if your wallet config doesn't reside at the default path):
+Execute the below command (change `ANCHOR_WALLET` if your wallet config is located at a different path):
 
 ```shell
 ANCHOR_WALLET=~/.config/solana/id.json \
@@ -213,7 +213,7 @@ const merkleProof = [
 claimFromAirdropCampaign(new PublicKey("YOUR_CAMPAIGN_ADDRESS_HERE"), merkleProof);
 ```
 
-Execute the script via `bun` (adapting the `ANCHOR_WALLET` if your wallet config doesn't reside at the default path):
+Execute the below command (change `ANCHOR_WALLET` if your wallet config is located at a different path):
 
 ```shell
 ANCHOR_WALLET=~/.config/solana/id.json \

@@ -170,7 +170,7 @@ Make sure to call the `createStream` function to execute it on-chain:
 createStream();
 ```
 
-Execute the script via `bun` (adapting the `ANCHOR_WALLET` if your wallet config doesn't reside at the default path):
+Execute the below command (change `ANCHOR_WALLET` if your wallet config is located at a different path):
 
 ```shell
 ANCHOR_WALLET=~/.config/solana/id.json \
@@ -245,7 +245,7 @@ Make sure to call the `createStream` function to execute it on-chain:
 createStream();
 ```
 
-Execute the script via `bun` (adapting the `ANCHOR_WALLET` if your wallet config doesn't reside at the default path):
+Execute the below command (change `ANCHOR_WALLET` if your wallet config is located at a different path):
 
 ```shell
 ANCHOR_WALLET=~/.config/solana/id.json \
@@ -302,7 +302,7 @@ const amountToWithdraw = new BN(100 * 10 ** 6);
 withdrawFromStream("YOUR_STREAM_NFT_MINT_HERE", amountToWithdraw);
 ```
 
-Execute the script via `bun` (adapting the `ANCHOR_WALLET` if your wallet config doesn't reside at the default path):
+Execute the below command (change `ANCHOR_WALLET` if your wallet config is located at a different path):
 
 ```shell
 ANCHOR_WALLET=~/.config/solana/id.json \
@@ -355,7 +355,7 @@ Make sure to call the `withdrawMaxFromStream` function to execute the withdrawal
 withdrawMaxFromStream("YOUR_STREAM_NFT_MINT_HERE");
 ```
 
-Execute the script via `bun` (adapting the `ANCHOR_WALLET` if your wallet config doesn't reside at the default path):
+Execute the below command (change `ANCHOR_WALLET` if your wallet config is located at a different path):
 
 ```shell
 ANCHOR_WALLET=~/.config/solana/id.json \
@@ -398,7 +398,7 @@ Make sure to call the `cancelStream` function to execute the cancellation on-cha
 cancelStream("YOUR_STREAM_NFT_MINT_HERE");
 ```
 
-Execute the script via `bun` (adapting the `ANCHOR_WALLET` if your wallet config doesn't reside at the default path):
+Execute the below command (change `ANCHOR_WALLET` if your wallet config is located at a different path):
 
 ```shell
 ANCHOR_WALLET=~/.config/solana/id.json \
