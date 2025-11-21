@@ -4,8 +4,14 @@ sidebar_position: 7
 title: "Governance"
 ---
 
-The Protocol Admin is an account with exclusive access to collecting the fee from the treasury account, and also has the
-"upgrade authority". More concretely, the Admin is a multisig wallet and currently in control of Sablier Labs.
+SolSab program governance comprises two key functions:
+
+- Collecting accumulated protocol fees from the Treasury account
+- Upgrading the protocol (as the "upgrade authority")
+
+Both functions are exclusively controlled by the Protocol Admin account, a multisig wallet managed by Sablier Labs.
+
+The following table lists the Treasury and Protocol Admin account addresses:
 
 | Chain   | Protocol      | Role     | Address                                                                                                                                |
 | :------ | :------------ | :------- | :------------------------------------------------------------------------------------------------------------------------------------- |
