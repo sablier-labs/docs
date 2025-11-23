@@ -28,12 +28,8 @@ These are Interface (and not program-level) fees. The SolSab programs themselves
 Each of our Lockup streams has an NFT representation, in the form of a
 [Metaplex Token Metadata](https://developers.metaplex.com/token-metadata) NFT. Metaplex
 [charges](https://developers.metaplex.com/protocol-fees) a fixed fee, in SOL, for a number of operations with its
-protocol. Because of the latter, interacting with SolSab also involves the following fees (that go directly to
-Metaplex):
-
-| Operation       | Fee          |
-| --------------- | ------------ |
-| Create a stream | **0.01 SOL** |
+protocol. Because of the latter, creating a Lockup stream also involves a **0.01 SOL** fee that goes directly to
+Metaplex.
 
 ### Transaction Fees
 
