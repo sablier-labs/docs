@@ -45,12 +45,9 @@ etc.
 
 #### Key differences from the Ethereum [Lockup](../concepts/lockup/01-overview.md) protocol
 
-- On Solana, we only supports the following streaming shapes for now:
-  [Linear](../concepts/lockup/02-stream-shapes.mdx#linear),
-  [Unlock Linear](../concepts/lockup/02-stream-shapes.mdx#unlock-linear),
-  [Cliff](../concepts/lockup/02-stream-shapes.mdx#cliff),
-  [Unlock Cliff](../concepts/lockup/02-stream-shapes.mdx#unlock-cliff) and
-  [Timelock](../concepts/lockup/02-stream-shapes.mdx#timelock).
+- On Solana, we currently support all shapes from the
+  [Lockup Linear](../concepts/lockup/02-stream-shapes.mdx#lockup-linear) category, as well as the
+  [Timelock](../concepts/lockup/02-stream-shapes.mdx#timelock) shape (also implemented via the Linear program).
 - Due to the limitations of the [Token Metadata](https://developers.metaplex.com/token-metadata) NFT standard, we don't
   support non-transferable Streams on Solana.
 - Instead of the tokens from all of the active streams being stored at a single address, on Solana, they're kept in a
