@@ -21,13 +21,13 @@ provide guidance on how to interact with the Lockup program.
 
 :::note
 
-The examples in this guide use Devnet. Make sure your wallet has enough SOL and the appropriate SPL tokens for testing.
+Make sure your wallet has enough SOL and SPL tokens on Devnet (used by the examples in this guide).
 
 :::
 
 ## Dependencies
 
-### Download Types
+### Download the program IDL & Types
 
 First, download the IDL and the TypeScript types for the Lockup program from the GitHub release. For this example, we
 will place the types under the `target` directory.
@@ -90,7 +90,7 @@ async function setUp() {
   anchorProvider = anchor.AnchorProvider.env();
   anchor.setProvider(anchorProvider);
 
-  // Declare the lockup program based on the IDL downloaded
+  // Declare the lockup program based on the downloaded IDL
   lockupProgram = anchor.workspace.SablierLockup as anchor.Program<SablierLockup>;
 
   // Define the signer wallet
@@ -100,7 +100,7 @@ async function setUp() {
 
 ## Create a Stream
 
-### Using `createWithTimestampsLl` function
+### Using `createWithTimestampsLl`
 
 Create a linear lockup stream with specific timestamps:
 
@@ -164,13 +164,13 @@ async function createStream() {
 }
 ```
 
-Make sure to call `createStream` function to execute it on-chain.
+Make sure to call the `createStream` function to execute it on-chain:
 
 ```typescript
 createStream();
 ```
 
-Execute the script using `bun`:
+Execute the below command (change `ANCHOR_WALLET` if your wallet config is located at a different path):
 
 ```shell
 ANCHOR_WALLET=~/.config/solana/id.json \
@@ -178,14 +178,7 @@ ANCHOR_PROVIDER_URL="https://api.devnet.solana.com" \
 bun run stream-management.ts
 ```
 
-:::note
-
-The default path for the Solana wallet is `~/.config/solana/id.json`. If you have your wallet configured in other path,
-make sure to edit the this accordingly.
-
-:::
-
-### Using `createWithDurationsLl` function
+### Using `createWithDurationsLl`
 
 Create a linear lockup stream with durations:
 
@@ -246,13 +239,13 @@ async function createStream() {
 }
 ```
 
-Make sure to call `createStream` function to execute it on-chain.
+Make sure to call the `createStream` function to execute it on-chain:
 
 ```typescript
 createStream();
 ```
 
-Execute the script using `bun`:
+Execute the below command (change `ANCHOR_WALLET` if your wallet config is located at a different path):
 
 ```shell
 ANCHOR_WALLET=~/.config/solana/id.json \
@@ -260,18 +253,11 @@ ANCHOR_PROVIDER_URL="https://api.devnet.solana.com" \
 bun run stream-management.ts
 ```
 
-:::note
-
-The default path for the Solana wallet is `~/.config/solana/id.json`. If you have your wallet configured in other path,
-make sure to edit the this accordingly.
-
-:::
-
 ## Withdraw from a Stream
 
-### Using `withdraw` function
+### Using `withdraw`
 
-The following code calls withdraw function on the lockup program:
+The following code calls the `withdraw` instruction from the lockup program:
 
 ```typescript
 async function withdrawFromStream(streamNftMint: PublicKey, amount: BN) {
@@ -308,7 +294,7 @@ async function withdrawFromStream(streamNftMint: PublicKey, amount: BN) {
 }
 ```
 
-Make sure to call the `withdrawFromStream` function to execute the withdrawal on-chain.
+Make sure to call the `withdrawFromStream` function to execute the withdrawal on-chain:
 
 ```typescript
 // Withdraw 100 tokens (assuming 6 decimals)
@@ -316,7 +302,7 @@ const amountToWithdraw = new BN(100 * 10 ** 6);
 withdrawFromStream("YOUR_STREAM_NFT_MINT_HERE", amountToWithdraw);
 ```
 
-Execute the script using `bun`:
+Execute the below command (change `ANCHOR_WALLET` if your wallet config is located at a different path):
 
 ```shell
 ANCHOR_WALLET=~/.config/solana/id.json \
@@ -324,14 +310,7 @@ ANCHOR_PROVIDER_URL="https://api.devnet.solana.com" \
 bun run stream-management.ts
 ```
 
-:::note
-
-The default path for the Solana wallet is `~/.config/solana/id.json`. If you have your wallet configured in other path,
-make sure to edit the this accordingly.
-
-:::
-
-### Using `withdrawMax` function
+### Using `withdrawMax`
 
 The following code withdraws the maximum available amount from a stream:
 
@@ -370,26 +349,19 @@ async function withdrawMaxFromStream(streamNftMint: PublicKey) {
 }
 ```
 
-Make sure to call the `withdrawMaxFromStream` function to execute the withdrawal on-chain.
+Make sure to call the `withdrawMaxFromStream` function to execute the withdrawal on-chain:
 
 ```typescript
 withdrawMaxFromStream("YOUR_STREAM_NFT_MINT_HERE");
 ```
 
-Execute the script using `bun`:
+Execute the below command (change `ANCHOR_WALLET` if your wallet config is located at a different path):
 
 ```shell
 ANCHOR_WALLET=~/.config/solana/id.json \
 ANCHOR_PROVIDER_URL="https://api.devnet.solana.com" \
 bun run stream-management.ts
 ```
-
-:::note
-
-The default path for the Solana wallet is `~/.config/solana/id.json`. If you have your wallet configured in other path,
-make sure to edit the this accordingly.
-
-:::
 
 ## Cancel a Stream
 
@@ -426,17 +398,10 @@ Make sure to call the `cancelStream` function to execute the cancellation on-cha
 cancelStream("YOUR_STREAM_NFT_MINT_HERE");
 ```
 
-Execute the script using `bun`:
+Execute the below command (change `ANCHOR_WALLET` if your wallet config is located at a different path):
 
 ```shell
 ANCHOR_WALLET=~/.config/solana/id.json \
 ANCHOR_PROVIDER_URL="https://api.devnet.solana.com" \
 bun run stream-management.ts
 ```
-
-:::note
-
-The default path for the Solana wallet is `~/.config/solana/id.json`. If you have your wallet configured in other path,
-make sure to edit the this accordingly.
-
-:::

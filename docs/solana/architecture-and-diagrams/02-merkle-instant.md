@@ -4,12 +4,10 @@ sidebar_position: 2
 title: "Merkle Instant"
 ---
 
-This section focuses on the architecture of accounts created or used in the most important instructions of the Merkle
-Instant program.
+This section covers the program architecture, as well as the account structure and the token flow for the most important
+instructions of the Merkle Instant program.
 
-## Account architecture
-
-### Sablier Merkle Instant program
+## Program Architecture
 
 The `sablier_merkle_instant` program implements the following main functionalities:
 
@@ -18,8 +16,6 @@ The `sablier_merkle_instant` program implements the following main functionaliti
 - `claim`
 - `clawback`
 
-We will go into the details and specifics of each one later. For now, we will focus only on the accounts being created.
-
 ```mermaid
 flowchart TD
     A[Sablier Merkle Instant Program] --> B[initialize]
@@ -27,6 +23,10 @@ flowchart TD
     A --> D[claim]
     A --> E[clawback]
 ```
+
+## Ix Account Architecture
+
+The following sections detail the accounts created by each instruction.
 
 ### `initialize` Instruction
 
@@ -90,14 +90,22 @@ The
 [Claim receipt](https://github.com/sablier-labs/solsab/blob/e1085fe87ea3d02556156ee446e820d150af483e/programs/merkle_instant/src/state/claim_receipt.rs#L6)
 account serves as proof of claim for the given recipient.
 
-## The Flow of the Airdrop Token
+## Airdrop Token Flow
+
+The airdrop token flow begins when the campaign creator funds the campaign's ATA. Once funded and the campaign has
+started, eligible recipients can claim their tokens. The campaign creator can clawback any remaining tokens after the
+campaign expires. The following diagrams illustrate how tokens move between accounts when each instruction is executed.
 
 ### `create_campaign` Instruction
 
-This instruction does not perform the airdrop token transfer, but the transfer is expected to be made as a separate
-transaction. Therefore, the campaign ATA is assumed to be funded after the campaign creation.
+This instruction creates the campaign account and its ATA, but does not perform the airdrop token transfer. The campaign
+creator must fund the campaign ATA in a separate transaction after campaign creation. After that, the campaign ATA will
+hold all tokens available for distribution to eligible recipients.
 
 ### `claim` Instruction
+
+Eligible recipients can claim their airdrop tokens by providing a valid Merkle proof. When claimed, tokens are
+transferred from the campaign ATA to the recipient's ATA.
 
 ```mermaid
 sequenceDiagram
@@ -112,6 +120,9 @@ sequenceDiagram
 ```
 
 ### `clawback` Instruction
+
+After the campaign expiration time, the campaign creator can clawback any remaining/unclaimed tokens. These tokens are
+transferred from the campaign ATA back to the campaign creator's ATA.
 
 ```mermaid
 sequenceDiagram
