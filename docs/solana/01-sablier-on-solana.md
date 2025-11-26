@@ -50,8 +50,8 @@ etc.
   [Timelock](../concepts/lockup/02-stream-shapes.mdx#timelock) shape (also implemented via the Linear program).
 - Due to the limitations of the [Token Metadata](https://developers.metaplex.com/token-metadata) NFT standard, we don't
   support non-transferable Streams on Solana.
-- Instead of the tokens from all of the active streams being stored at a single address, on Solana, they're kept in a
-  dedicated, per-stream ATA ([Associated Token Account](https://www.alchemy.com/overviews/associated-token-account)).
+- Instead of the tokens from all of the streams being stored at a single address, on Solana, they're kept in dedicated
+  stream ATAs ([Associated Token Account](https://www.alchemy.com/overviews/associated-token-account)).
 - Due to how Solana's VM works, we do not support hooks for the `cancel` and `withdraw` functionalities.
 
 ### Merkle Instant
@@ -63,6 +63,6 @@ their entire allocation at once after the campaign starts.
 
 - The Solana protocol only includes the Instant airdrop model, for now. The Vesting airdrop models are coming in the
   future.
-- Instead of following the factory pattern (i.e. one contract per campaign), our Solana protocol stores the business
-  logic (e.g. creation & claiming) of all of the campaigns at a single program address. However, similar to the Ethereum
-  protocol, the campaign tokens are stored separately, on a per-campaign basis.
+- Due to Solana’s account architecture, a single program handles both creation and claiming. In contrast to Ethereum,
+  where a factory contract deploys a stand-alone contract for each airdrop campaign, and claiming is performed on that
+  contract.
