@@ -30,6 +30,17 @@ transactions without relying on traditional intermediaries like banks or financi
 those with the
 [missing return value bug](https://medium.com/coinmonks/missing-return-value-bug-at-least-130-tokens-affected-d67bf08521ca).
 
+:::important
+
+If your ERC-20 token does not follow the standard implementation, it may be supported as long as the `transfer` and
+`transferFrom` methods strictly reduce the sender's balance by the transfer amount and increase the recipient's balance
+by the same amount.
+
+That means tokens that charge fees (or tax) on transfer, rebase tokens, interest-bearing tokens, and permissioned tokens
+where the admin can arbitrarily change balances are not supported.
+
+:::
+
 ## ERC-721
 
 [ERC-721][erc-721] tokens are non-fungible tokens ("NFTs") on Ethereum. Both Lockup and Flow streams are represented as
