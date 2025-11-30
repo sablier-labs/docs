@@ -27,18 +27,25 @@ browser.
 With Sablier, you can create airdrop campaigns with up to a million recipients. To do so, you must upload a CSV file
 containing all recipient addresses and the airdrop amounts.
 
-Use the provided template and fill in the rows with recipient addresses and airdrop amounts.
+Use the provided templates and fill in the rows with recipient addresses, airdrop amounts, and other details depending on the airdrop type.
 
-### CSV Template
+### CSV Templates
 
-For your convenience, here's a download link for the CSV template:
+Here's a table with all the available airdrop CSV templates:
 
-<LinkPreview
-  href="https://files.sablier.com/templates/airdrop-template.csv"
-  icon="sablier"
-  subtitle="CSV template for creating airdrops on Sablier"
-  title="Sablier - Airdrop CSV Template"
-/>
+| URL                                                                                                           | Description                                                                                      |
+| :------------------------------------------------------------------------------------------------------------ | :----------------------------------------------------------------------------------------------- |
+| [Instant](https://files.sablier.com/templates/airdrop-instant-template.csv)                                   | Instant airdrops with immediate token distribution.                                              |
+| [Linear with duration](https://files.sablier.com/templates/airdrop-linear-duration-template.csv)              | [Linear streams](/concepts/lockup/stream-shapes#linear) with the duration timing.                |
+| [Linear with range](https://files.sablier.com/templates/airdrop-linear-range-template.csv)                    | [Linear streams](/concepts/lockup/stream-shapes#linear) with the range timing.                   |
+| [Cliff with duration](https://files.sablier.com/templates/airdrop-cliff-duration-template.csv)                | [Cliff streams](/concepts/lockup/stream-shapes#cliff-unlock) with the duration timing.           |
+| [Cliff with range](https://files.sablier.com/templates/airdrop-cliff-range-template.csv)                      | [Cliff streams](/concepts/lockup/stream-shapes#cliff-unlock) with the range timing.              |
+| [Timelock with duration](https://files.sablier.com/templates/airdrop-timelock-duration-template.csv)          | [Timelock streams](/concepts/lockup/stream-shapes#timelock) with the duration timing.            |
+| [Timelock with range](https://files.sablier.com/templates/airdrop-timelock-range-template.csv)                | [Timelock streams](/concepts/lockup/stream-shapes#timelock) with the range timing.               |
+| [Unlock linear with duration](https://files.sablier.com/templates/airdrop-unlockLinear-duration-template.csv) | [Unlock-Linear streams](/concepts/lockup/stream-shapes#initial-unlock) with the duration timing. |
+| [Unlock linear with range](https://files.sablier.com/templates/airdrop-unlockLinear-range-template.csv)       | [Unlock-Linear streams](/concepts/lockup/stream-shapes#initial-unlock) with the range timing.    |
+| [Unlock cliff with duration](https://files.sablier.com/templates/airdrop-unlockCliff-duration-template.csv)   | [Unlock-Cliff streams](/concepts/lockup/stream-shapes#cliff-unlock) with the duration timing.    |
+| [Unlock cliff with range](https://files.sablier.com/templates/airdrop-unlockCliff-range-template.csv)         | [Unlock-Cliff streams](/concepts/lockup/stream-shapes#cliff-unlock) with the range timing.       |
 
 ### Navigation
 
@@ -61,9 +68,9 @@ To use this feature:
 Using a CSV, you can deploy up to 280 streams all at once. Start from the suggested template, and fill in the rows with
 addresses, amounts, and other details.
 
-### CSV Template
+### CSV Templates
 
-Here's table with all the available CSV templates.
+Here's a table with all the available CSV templates.
 
 [Sablier Flow](/concepts/use-cases#sablier-flow) (the first row in the below table) is a great fit for use cases like
 payroll, grants, and subscriptions. The other streaming curves in the table rely on
@@ -83,7 +90,7 @@ payroll, grants, and subscriptions. The other streaming curves in the table rely
 | [Timelock with range](https://files.sablier.com/templates/timelock-range-template.csv)                        | [Timelock streams](/concepts/lockup/stream-shapes#timelock) with the range timing.                      |
 | [BackWeighted with range](https://files.sablier.com/templates/backWeighted-range-template.csv)                | [BackWeighted streams](/concepts/lockup/stream-shapes) with the range timing.                           |
 | [Unlock linear with duration](https://files.sablier.com/templates/unlockLinear-duration-template.csv)         | [Unlock-Linear streams](/concepts/lockup/stream-shapes#initial-unlock) with the duration timing.        |
-| [Unlock linear with range](https://files.sablier.com/templates/unlockLinear-range-template.csv)               | [Unlock-Liner streams](/concepts/lockup/stream-shapes#initial-unlock) with the range timing.            |
+| [Unlock linear with range](https://files.sablier.com/templates/unlockLinear-range-template.csv)               | [Unlock-Linear streams](/concepts/lockup/stream-shapes#initial-unlock) with the range timing.           |
 | [Unlock cliff with duration](https://files.sablier.com/templates/2025-02/unlockCliff-duration-template.csv)   | [Unlock-Cliff streams](/concepts/lockup/stream-shapes#cliff-unlock) with the duration timing.           |
 | [Unlock cliff with range](https://files.sablier.com/templates/2025-02/unlockCliff-range-template.csv)         | [Unlock-Cliff streams](/concepts/lockup/stream-shapes#cliff-unlock) with the range timing.              |
 | [Exponential with duration](https://files.sablier.com/templates/exponential-duration-template.csv)            | [Exponential streams](/concepts/lockup/stream-shapes#exponential) with the duration timing.             |
@@ -105,7 +112,7 @@ To use this feature:
 
 ### Column Formats
 
-To use the CSV feature, the data you provide must be formatted correctly. Bellow is a list with the format expected for
+To use the CSV feature, the data you provide must be formatted correctly. Below is a list with the format expected for
 all column types supported by Sablier.
 
 :::warning
