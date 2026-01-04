@@ -51,7 +51,9 @@ function generateTables(release: Sablier.Release) {
   let content = "## Mainnets\n\n";
   for (const deployment of mainnetDeployments) {
     const chain = sablier.chains.get(deployment.chainId);
+    const uiIndicator = chain.isSupportedByUI ? "✅ Supported in Sablier UI" : "❌ Not supported in Sablier UI";
     content += `### ${chain.name}\n\n`;
+    content += `${uiIndicator}\n\n`;
     content += generateDeploymentTable(deployment, release);
     content += "\n";
   }
@@ -59,7 +61,9 @@ function generateTables(release: Sablier.Release) {
   content += "## Testnets\n\n";
   for (const deployment of testnetDeployments) {
     const chain = sablier.chains.get(deployment.chainId);
+    const uiIndicator = chain.isSupportedByUI ? "✅ Supported in Sablier UI" : "❌ Not supported in Sablier UI";
     content += `### ${chain.name}\n\n`;
+    content += `${uiIndicator}\n\n`;
     content += generateDeploymentTable(deployment, release);
     content += "\n";
   }
