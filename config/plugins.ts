@@ -3,6 +3,7 @@ import type { Options as VercelAnalyticsOptions } from "@docusaurus/plugin-verce
 import type { DocusaurusConfig, PluginOptions } from "@docusaurus/types";
 import type { ConfigOptions, GraphQLMarkdownCliOptions, LoaderOption } from "@graphql-markdown/types";
 import type { PluginOptions as LlmPluginOptions } from "@sablier/docusaurus-plugin-llms";
+import type { PluginOptions as OpenApiPluginOptions } from "docusaurus-plugin-openapi-docs";
 import { createRedirects, redirects } from "./redirects";
 
 /* -------------------------------------------------------------------------- */
@@ -161,4 +162,32 @@ const vercelAnalytics: [string, VercelAnalyticsOptions] = [
   },
 ];
 
-export const plugins: DocusaurusConfig["plugins"] = [clientRedirects, graphqlMarkdown, llmPlugin, vercelAnalytics];
+/* -------------------------------------------------------------------------- */
+/*                              OPENAPI PLUGIN                                */
+/* -------------------------------------------------------------------------- */
+
+const openApiPlugin: [string, OpenApiPluginOptions] = [
+  "docusaurus-plugin-openapi-docs",
+  {
+    id: "openapi",
+    docsPluginId: "classic",
+    config: {
+      "merkle-api": {
+        specPath: "specs/merkle-api.yaml",
+        outputDir: "docs/api/airdrops/merkle-api",
+        sidebarOptions: {
+          groupPathsBy: "tag",
+          categoryLinkSource: "tag",
+        },
+      },
+    },
+  },
+];
+
+export const plugins: DocusaurusConfig["plugins"] = [
+  clientRedirects,
+  graphqlMarkdown,
+  llmPlugin,
+  vercelAnalytics,
+  openApiPlugin,
+];

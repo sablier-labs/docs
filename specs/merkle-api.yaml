@@ -1,0 +1,308 @@
+openapi: 3.0.3
+info:
+  title: Sablier Merkle API
+  description: |
+    REST API for generating and verifying Merkle trees used in Sablier airdrops.
+
+    This service handles tree creation, storage, and data retrieval for both the Sablier Interface and third-party applications.
+
+    ## Architecture
+
+    The backend is written in Rust and can run locally or in self-hosted environments using warp, as well as on Vercel with its rust runtime.
+
+    You can integrate the backend functionality using our official endpoints, but we recommend self-hosting for improved reliability.
+  version: 1.0.0
+  contact:
+    name: Sablier Labs
+    url: https://sablier.com
+  license:
+    name: GPL-3.0-or-later
+    url: https://github.com/sablier-labs/merkle-api/blob/main/LICENSE
+
+servers:
+  - url: https://merkle.sablier.com
+    description: Official Sablier Merkle API
+
+tags:
+  - name: Campaign
+    description: Create and manage Merkle airdrop campaigns
+  - name: Verification
+    description: Verify eligibility and validate campaigns
+
+paths:
+  /api/create:
+    post:
+      tags:
+        - Campaign
+      summary: Create a new Merkle airdrop campaign
+      description: |
+        Creates a new Merkle airdrop campaign by:
+        1. Validating the CSV file and its contents
+        2. Adding decimal padding to every amount
+        3. Building the Merkle tree and generating a root hash
+        4. Computing intermediary data (total expected amount, number of recipients)
+        5. Uploading the data as a JSON file to IPFS
+        6. Returning the root hash, IPFS CID, and intermediary data
+
+        ## Prerequisites
+
+        Before creating a campaign, you'll need:
+        - The decimals of the token you're basing the campaign on
+        - A CSV file containing [address, amount] pairs for every campaign recipient
+
+        The CSV should contain a header row, followed by address and amount pairs. Amounts should be in human-readable form—the API handles decimal padding automatically.
+      operationId: createCampaign
+      parameters:
+        - name: decimals
+          in: query
+          required: true
+          description: The number of decimals for the token
+          schema:
+            type: integer
+            minimum: 0
+            maximum: 77
+            example: 18
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              required:
+                - data
+              properties:
+                data:
+                  type: string
+                  format: binary
+                  description: CSV file containing [address, amount] pairs
+      responses:
+        '200':
+          description: Campaign created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreateResponse'
+        '400':
+          description: Invalid request (e.g., invalid CSV format, invalid decimals)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+  /api/eligibility:
+    get:
+      tags:
+        - Verification
+      summary: Check recipient eligibility
+      description: |
+        Checks if a recipient is eligible to claim a stream from the Merkle airdrop campaign.
+
+        This endpoint:
+        1. Retrieves the campaign's IPFS file
+        2. Extracts the recipient list and Merkle tree
+        3. Searches for the provided wallet address
+        4. Returns the recipient's claim details and Merkle proof
+
+        ## Prerequisites
+
+        To check eligibility for an address, you'll need:
+        - The recipient's address
+        - The CID of the IPFS file linked to the campaign
+      operationId: checkEligibility
+      parameters:
+        - name: address
+          in: query
+          required: true
+          description: The Ethereum address of the recipient
+          schema:
+            type: string
+            pattern: '^0x[a-fA-F0-9]{40}$'
+            example: '0x1234567890123456789012345678901234567890'
+        - name: cid
+          in: query
+          required: true
+          description: IPFS content identifier for the campaign file
+          schema:
+            type: string
+            example: 'QmYwAPJzv5CZsnA625s3Xf2nemtYgPpHdWEz79ojWnPbdG'
+      responses:
+        '200':
+          description: Eligibility information retrieved successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EligibilityResponse'
+        '400':
+          description: Invalid request (e.g., invalid address format, invalid CID)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Address not found in the campaign
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+  /api/validity:
+    get:
+      tags:
+        - Verification
+      summary: Validate campaign IPFS CID
+      description: |
+        Checks if an IPFS CID links to a valid Merkle airdrop campaign file.
+
+        This endpoint:
+        1. Retrieves the campaign's IPFS file
+        2. Runs sanity checks on the file contents
+        3. Returns campaign metadata if valid
+
+        This route is used to perform sanity checks before allowing admins to create campaigns in the UI, since users may accidentally provide invalid IPFS CIDs.
+      operationId: validateCampaign
+      parameters:
+        - name: cid
+          in: query
+          required: true
+          description: IPFS content identifier to validate
+          schema:
+            type: string
+            example: 'QmYwAPJzv5CZsnA625s3Xf2nemtYgPpHdWEz79ojWnPbdG'
+      responses:
+        '200':
+          description: CID is valid and links to a valid campaign file
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidityResponse'
+        '400':
+          description: Invalid request (e.g., invalid CID format)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: CID not found or file is not a valid campaign
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+components:
+  schemas:
+    CreateResponse:
+      type: object
+      required:
+        - cid
+        - recipients
+        - root
+        - status
+        - total
+      properties:
+        cid:
+          type: string
+          description: IPFS content identifier for the uploaded file
+          example: 'QmYwAPJzv5CZsnA625s3Xf2nemtYgPpHdWEz79ojWnPbdG'
+        recipients:
+          type: string
+          description: Expected number of recipients
+          example: '1000'
+        root:
+          type: string
+          description: HEX root of the Merkle tree
+          pattern: '^0x[a-fA-F0-9]{64}$'
+          example: '0x1234567890abcdef1234567890abcdef1234567890abcdef1234567890abcdef'
+        status:
+          type: string
+          description: Humanized status
+          example: 'success'
+        total:
+          type: string
+          description: Expected amount of assets required by the campaign
+          example: '1000000000000000000000'
+
+    EligibilityResponse:
+      type: object
+      required:
+        - address
+        - amount
+        - index
+        - proof
+      properties:
+        address:
+          type: string
+          description: Address of the requested recipient
+          pattern: '^0x[a-fA-F0-9]{40}$'
+          example: '0x1234567890123456789012345678901234567890'
+        amount:
+          type: string
+          description: Amount the recipient is eligible for
+          example: '1000000000000000000'
+        index:
+          type: integer
+          description: Position of the recipient in the list
+          minimum: 0
+          example: 42
+        proof:
+          type: array
+          description: Merkle proof (array of hashes)
+          items:
+            type: string
+            pattern: '^0x[a-fA-F0-9]{64}$'
+          example:
+            - '0xabcdef1234567890abcdef1234567890abcdef1234567890abcdef1234567890'
+            - '0x1234567890abcdef1234567890abcdef1234567890abcdef1234567890abcdef'
+
+    ValidityResponse:
+      type: object
+      required:
+        - cid
+        - recipients
+        - root
+        - total
+      properties:
+        cid:
+          type: string
+          description: IPFS content identifier for the uploaded file
+          example: 'QmYwAPJzv5CZsnA625s3Xf2nemtYgPpHdWEz79ojWnPbdG'
+        recipients:
+          type: string
+          description: Expected number of recipients
+          example: '1000'
+        root:
+          type: string
+          description: HEX root of the Merkle tree
+          pattern: '^0x[a-fA-F0-9]{64}$'
+          example: '0x1234567890abcdef1234567890abcdef1234567890abcdef1234567890abcdef'
+        total:
+          type: string
+          description: Expected amount of assets required by the campaign
+          example: '1000000000000000000000'
+
+    Error:
+      type: object
+      required:
+        - error
+      properties:
+        error:
+          type: string
+          description: Error message describing what went wrong
+          example: 'Invalid address format'

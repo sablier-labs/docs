@@ -1,0 +1,146 @@
+---
+id: validate-campaign
+title: "Validate campaign IPFS CID"
+description: "Checks if an IPFS CID links to a valid Merkle airdrop campaign file."
+sidebar_label: "Validate campaign IPFS CID"
+hide_title: true
+hide_table_of_contents: true
+api: eJztV21v2zYQ/isHdsBaQH7JW7v6W5C6rYduy5I2bZdkwIk6WWwoUiUpO67h/z4cJb8HaDcM+9L5iyGJvHvu7uFzx7kIOPZicC2uyKlcSQzKGnGbiIy8dKqKjwNxVpC886ByQAOj85eXcDZ6AVqZOw/BAsIEtcrgF3J3mgCVy5ytQGJZoRobyJWm7o25MW8L5YFMVlllwuDGHHThgoJTNCEPoaDVlh9944Z33pjDLlzUxoNHo8IMZIPGmriFl4C0JpAJ/sYcRZO1M37tv6SAGQbkACLSFRZn60CgPNSeMg6lIpdbV+64Sim3jgC1tlNlxoBZqUwMXTrCsMbtQTWo3o0S8MpIYsvOQ4kzQClVRiag1jOonJ2ojECZJnfLrPrujRGJsBW5WIxRJgYiLsFAZ60bkYgKHZYUyHH55sJgSWIgpMpEIhTX7HNNbiYS4ehzrRxlYhBcTbuVjW7b7EFEp3JFjkNbOhWJ8LKgEsVgLsKsYj8+OGXGIhF0j2Wl+dXv5cfp6fnPXyYnZ394c/r08MQffcgPDZXh4/i8ep29H3559tx+em/O0+yVWCxuGZuvrPHk2fRhv89/O8wbveDyNDlCk+2TbotlIhFtMGwKq0q3nO598mxvvh+KTT+RDFuJum7z6EiqSjGv+MFaXhVsQM0npHJco6Aa8LzhgfR8W7Jz6yJp6kpbzChbhvLPk7uF/au4hvcVyUAZmLpMyYHNYSv0NY6Dfr8frXMyvmr39fAD8Eo2yPG1+hAcUWRwCOR43Z/9+2vs5Kedl/3O89v50+PFD1te+/cHh0fHJ0+f/fS8j6nMKP+7z4y5qdy3JwNLW5uIHb2n4GFJEEhnW2K1l6H9n1gwABXikivmrQqzi5b9YrHgz8cP8X/UygP7Jh/gMXXH3WSlGnw8WK8wPPm3qE/OWbdP8Ob117PHy6Ak73FM0HxLWTKnBQaYMvGnzu5IxzJIzDJH3rcRbeUs2l0l6vhhoTA2QG5rk4F1TV9QPr7c1YrvJ1cnD5OKDx5q8OQm5KDB+53kZJGIkkJhua+OKTRCVIiB6GGlepP2bHLTi8lp2mvttBiIIoTKD3q9MupY12OqFbmutOVeHL/luZIKNVw2i5bad3o+Etz5lMltzEaL74FluyYvhpdv+UNsF2MycUDgYcRkMOHxbcZPGxrbTjXKrEC0k5lfD2McpJIEBZpM8xDmiJqhRlmTgA/W4ZiS6CSOUK6Z11BHGKkNRdTCpYdIrRwlxR2hUC7rVOjCDDYY1fh/9AhOnSxUIBlqRw0kghTlHZmMj+7UqRDIcAQXtQ/RpEQDrjagrYxzlHX82ZPOO4X1rNtkJspZU3LzgtpH8qCrEkAPU9Ka/62BK3KSNExVKECxurMHV5ugymZY/Wjr6E2ZQGPHU17YgJfXRnIsqHlObNzYmntnW/jlmOsTSGumLvdUW5a8eQWXd3EeVcnzILHOa4WpYqPNIMgUbOp/0O13++0pRRlPaTv1LZP/BlNu19tk3WTpIhFaSeKes9796vxN56jb71jX0RjI7VkYq1DUKRtYGutoTH17DDp8bFJt016JyvTejM6Gv14O4+GrrA8lmg1fV+1MuZ7alnPvLt3nazX6//rxn18/WpEOdB96lUZlmDqRFfNWLq8FVor5uRTM20Qwo/nLfJ6ip3dOLxb8urmJsIxmignEfSJH7XcvI5slf3zRtpQn8G1XlAcR39FsdSmaoK55RZTfCTrFSMTg+naRiIIwIxchNltOpaQqbOza64dsZdVHXg3fisXiL5GvUEQ=
+sidebar_class_name: "get api-method"
+info_path: api/airdrops/merkle-api/sablier-merkle-api
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading as={"h1"} className={"openapi__heading"} children={"Validate campaign IPFS CID"}></Heading>
+
+<MethodEndpoint method={"get"} path={"/api/validity"} context={"endpoint"}></MethodEndpoint>
+
+Checks if an IPFS CID links to a valid Merkle airdrop campaign file.
+
+This endpoint:
+
+1. Retrieves the campaign's IPFS file
+2. Runs sanity checks on the file contents
+3. Returns campaign metadata if valid
+
+This route is used to perform sanity checks before allowing admins to create campaigns in the UI, since users may
+accidentally provide invalid IPFS CIDs.
+
+<Heading id={"request"} as={"h2"} className={"openapi-tabs__heading"} children={"Request"}></Heading>
+
+<ParamsDetails
+  parameters={[
+    {
+      name: "cid",
+      in: "query",
+      required: true,
+      description: "IPFS content identifier to validate",
+      schema: { type: "string", example: "QmYwAPJzv5CZsnA625s3Xf2nemtYgPpHdWEz79ojWnPbdG" },
+    },
+  ]}
+></ParamsDetails>
+
+<RequestSchema title={"Body"} body={undefined}></RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{
+    "200": {
+      description: "CID is valid and links to a valid campaign file",
+      content: {
+        "application/json": {
+          schema: {
+            type: "object",
+            required: ["cid", "recipients", "root", "total"],
+            properties: {
+              cid: {
+                type: "string",
+                description: "IPFS content identifier for the uploaded file",
+                example: "QmYwAPJzv5CZsnA625s3Xf2nemtYgPpHdWEz79ojWnPbdG",
+              },
+              recipients: { type: "string", description: "Expected number of recipients", example: "1000" },
+              root: {
+                type: "string",
+                description: "HEX root of the Merkle tree",
+                pattern: "^0x[a-fA-F0-9]{64}$",
+                example: "0x1234567890abcdef1234567890abcdef1234567890abcdef1234567890abcdef",
+              },
+              total: {
+                type: "string",
+                description: "Expected amount of assets required by the campaign",
+                example: "1000000000000000000000",
+              },
+            },
+            title: "ValidityResponse",
+          },
+        },
+      },
+    },
+    "400": {
+      description: "Invalid request (e.g., invalid CID format)",
+      content: {
+        "application/json": {
+          schema: {
+            type: "object",
+            required: ["error"],
+            properties: {
+              error: {
+                type: "string",
+                description: "Error message describing what went wrong",
+                example: "Invalid address format",
+              },
+            },
+            title: "Error",
+          },
+        },
+      },
+    },
+    "404": {
+      description: "CID not found or file is not a valid campaign",
+      content: {
+        "application/json": {
+          schema: {
+            type: "object",
+            required: ["error"],
+            properties: {
+              error: {
+                type: "string",
+                description: "Error message describing what went wrong",
+                example: "Invalid address format",
+              },
+            },
+            title: "Error",
+          },
+        },
+      },
+    },
+    "500": {
+      description: "Internal server error",
+      content: {
+        "application/json": {
+          schema: {
+            type: "object",
+            required: ["error"],
+            properties: {
+              error: {
+                type: "string",
+                description: "Error message describing what went wrong",
+                example: "Invalid address format",
+              },
+            },
+            title: "Error",
+          },
+        },
+      },
+    },
+  }}
+></StatusCodes>
