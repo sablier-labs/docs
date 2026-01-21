@@ -43,7 +43,7 @@ const config: Config = {
   ],
   tagline: "Documentation and guides for Sablier",
   themeConfig,
-  themes: ["@docusaurus/theme-mermaid", "docusaurus-theme-github-codeblock"],
+  themes: ["@docusaurus/theme-mermaid", "docusaurus-theme-github-codeblock", "docusaurus-theme-openapi-docs"],
   title: "Sablier Docs",
   url: "https://docs.sablier.com",
 };

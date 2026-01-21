@@ -1,0 +1,162 @@
+---
+id: check-eligibility
+title: "Check recipient eligibility"
+description: "Checks if a recipient is eligible to claim a stream from the Merkle airdrop campaign."
+sidebar_label: "Check recipient eligibility"
+hide_title: true
+hide_table_of_contents: true
+api: eJztV21v2zYQ/isHpkBbQH5JmrSrvwWp23noNi/J2nVxBtDSyWJDkeqRcuIa+u/DUZJfs3Yttg9Dly+OJPLuubvn3pbCy5kTgyvxBkmlKpZeWSOuI5Ggi0kV4XEgzjKMbxyoFCQQxqpQaDwoB6jVTE01grcQa6lykOA8ocwhJZuDzxB+RLrRCFJRQraAWOaFVDPTnZiJucxYiEkKq4wfTMxhF87Rk8I5unC5Pf3QwWj88gJSpXFijrowvPMkY1+fWmPSynmQJmm1ekKcmCdduEBJcYYOUkvhTkF2rhJM4FZqjR5kkhA6NzHHAUNJZkf2Q9eYmKCXSrtNNQVZm7JBBwcwJiT8UCqnPLpgpIWYHdh4S2nlFwGGNK3WCBa2fKg1GMRkMDEduNxRvYJXfzobvQCbBoArv4BW5gYTjsWm6yZGRMIWSCG4o0QMRIAzXKMRkSgkyRw9EtNhKYzMUQxEo1VEQjEPPpRIfDjYR5iIgacSd9nC+IY+Q8Iyb3G3YFcmiUi4OMNcisFS+EXB2pwnZWYBjPdILOuP/t2V7KSnnZf9zvPr5XG/eiAigXcyLzRf6d8dHj05Pnn67Lvn/U//J6oqWtkVq+TLbApOjq3xgfgJGq9ShbRiU+vsEIhP2rbG/kv+7vZ0/MPH+cnZ786cPj06cU9+S48M5v7dbFx8n7wdfnz23L5/a8bT5JWoqmtG6QprHDoWfdTv88820o2wgjKppTzEHajJqwRcGcfoXFpqzYY3VrEkWRS6KQK9947FLfctsdP3GPstj11tEEXmtgzhVSbBOw4m5wbXlIKYhV7V4Nsb97ho26DTXQZ9KNF5TLa49O8wZmXN50GGczvFaLNAppa2YBz29/5YX+20tTplPM6Q9vSNrVMhrLt5BcqEF1wIRSRyZVRe5mLQ31B+fFS1YVlrkkRysadns77Bo3CGVWbSZegec5Q95vcG8S8j8vS4esCmruBcif6dnMYJpmvff+mziLYC+3XixHVVRcIrHyK0kUjnTdaJquITx/fl3cjMpVZJy094hN1ZNwLVvG7rYJ2Q6/dnoxeP/6kkRCJL+5lWv/4shYd8DHJ0Ts4Q6m9TZWZwm0kPt8ytW7I7NWx0r3liy49Bfeu5433PtQlurIfUliZpOdwW1W/HPyf3M4sTSWpwSHMkqPF+Iz6pIpGjzyyPLTNsSn0mBqInC9XDrRmm9k89wJSkxUBk3hdu0OvloYx1nZxqhdSNbb5nys9pqmIlNVzUh9rR7nQ8Etx5uZcGhzQQ7zm2K/J8eHHJH8KUMEMTRjAzC4PjnAfuBT9tTKoOSoeB/q30Zmp262mZjVQxQiZNonlKJkSICUPwI3DekpxhFJQk0su28UsdYEytz0JytRoCu1IZY7jhM0VJp5DkF7BBqlr/wQGcUpwpj7EvCWtICFMZ3yBnrYNbUt6jYQvOy2YSj6UBKg1oG0utF2CJPzvUaSezoZGjmSuyJkfj2QOBP5KKCKSDW9Saf62BN0gxarhVPgPlHRBroNJ4lWPA986WQVtomiQ9BkNbeGlpYrZFhtGoVmNLAtsGvt1DXATTktnLXdXmOV9eweVb7EeV8wIRphCtZE3Bbhi1mYJ1/A+7/W6/SVQZh0Rt5s/W+a/llGembbJusrSKhFYxcu9Z3341ft150u13LHW09GE62JYwUz4rpyygFdbRcuqaNOhw5ky1nfZyqUzv9ehs+NPFMORfYZ3PpdnQFVa/jfFiO+O2+L5cV6T/N8b//MbYFH6Pd75XaKkMczHQbNmU4CshC8WVfYMS15HgLOGPy+VUOvyVdFXx63rP4tKcKCYlt59Uare7am2y6NF506kew99dKu+FfYOLrWV2LnXJpwSvhF8F50v3wU/AqnfRNaRrfiDFmMTg6rqKRIYyQQq+q6+cxjEWfuPWXv9nKau++Wp4KarqT/1hK8w=
+sidebar_class_name: "get api-method"
+info_path: api/airdrops/merkle-api/sablier-merkle-api
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading as={"h1"} className={"openapi__heading"} children={"Check recipient eligibility"}></Heading>
+
+<MethodEndpoint method={"get"} path={"/api/eligibility"} context={"endpoint"}></MethodEndpoint>
+
+Checks if a recipient is eligible to claim a stream from the Merkle airdrop campaign.
+
+This endpoint:
+
+1. Retrieves the campaign's IPFS file
+2. Extracts the recipient list and Merkle tree
+3. Searches for the provided wallet address
+4. Returns the recipient's claim details and Merkle proof
+
+## Prerequisites
+
+To check eligibility for an address, you'll need:
+
+- The recipient's address
+- The CID of the IPFS file linked to the campaign
+
+<Heading id={"request"} as={"h2"} className={"openapi-tabs__heading"} children={"Request"}></Heading>
+
+<ParamsDetails
+  parameters={[
+    {
+      name: "address",
+      in: "query",
+      required: true,
+      description: "The Ethereum address of the recipient",
+      schema: { type: "string", pattern: "^0x[a-fA-F0-9]{40}$", example: "0x1234567890123456789012345678901234567890" },
+    },
+    {
+      name: "cid",
+      in: "query",
+      required: true,
+      description: "IPFS content identifier for the campaign file",
+      schema: { type: "string", example: "QmYwAPJzv5CZsnA625s3Xf2nemtYgPpHdWEz79ojWnPbdG" },
+    },
+  ]}
+></ParamsDetails>
+
+<RequestSchema title={"Body"} body={undefined}></RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{
+    "200": {
+      description: "Eligibility information retrieved successfully",
+      content: {
+        "application/json": {
+          schema: {
+            type: "object",
+            required: ["address", "amount", "index", "proof"],
+            properties: {
+              address: {
+                type: "string",
+                description: "Address of the requested recipient",
+                pattern: "^0x[a-fA-F0-9]{40}$",
+                example: "0x1234567890123456789012345678901234567890",
+              },
+              amount: {
+                type: "string",
+                description: "Amount the recipient is eligible for",
+                example: "1000000000000000000",
+              },
+              index: { type: "integer", description: "Position of the recipient in the list", minimum: 0, example: 42 },
+              proof: {
+                type: "array",
+                description: "Merkle proof (array of hashes)",
+                items: { type: "string", pattern: "^0x[a-fA-F0-9]{64}$" },
+                example: [
+                  "0xabcdef1234567890abcdef1234567890abcdef1234567890abcdef1234567890",
+                  "0x1234567890abcdef1234567890abcdef1234567890abcdef1234567890abcdef",
+                ],
+              },
+            },
+            title: "EligibilityResponse",
+          },
+        },
+      },
+    },
+    "400": {
+      description: "Invalid request (e.g., invalid address format, invalid CID)",
+      content: {
+        "application/json": {
+          schema: {
+            type: "object",
+            required: ["error"],
+            properties: {
+              error: {
+                type: "string",
+                description: "Error message describing what went wrong",
+                example: "Invalid address format",
+              },
+            },
+            title: "Error",
+          },
+        },
+      },
+    },
+    "404": {
+      description: "Address not found in the campaign",
+      content: {
+        "application/json": {
+          schema: {
+            type: "object",
+            required: ["error"],
+            properties: {
+              error: {
+                type: "string",
+                description: "Error message describing what went wrong",
+                example: "Invalid address format",
+              },
+            },
+            title: "Error",
+          },
+        },
+      },
+    },
+    "500": {
+      description: "Internal server error",
+      content: {
+        "application/json": {
+          schema: {
+            type: "object",
+            required: ["error"],
+            properties: {
+              error: {
+                type: "string",
+                description: "Error message describing what went wrong",
+                example: "Invalid address format",
+              },
+            },
+            title: "Error",
+          },
+        },
+      },
+    },
+  }}
+></StatusCodes>

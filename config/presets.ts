@@ -8,6 +8,7 @@ const classic: [string, Preset.Options] = [
   "classic",
   {
     docs: {
+      docItemComponent: "@theme/ApiItem", // Required for OpenAPI docs theme
       editUrl: "https://github.com/sablier-labs/docs/blob/main/",
       rehypePlugins: [rehypeKatex],
       remarkPlugins: [remarkGfm, remarkMath],

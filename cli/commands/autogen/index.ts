@@ -2,6 +2,7 @@ import { Command } from "commander";
 import { deploymentsCmd, generateDeployments } from "./deployments";
 import { graphQLCmd } from "./graphql";
 import { generateIndexers, indexersCmd } from "./indexers";
+import { generateMerkle, merkleCmd } from "./merkle";
 
 export function createAutogenCommand() {
   const autogenCommand = new Command("autogen")
@@ -20,6 +21,11 @@ export function createAutogenCommand() {
       await generateIndexers(globalOptions);
 
       console.log();
+
+      // Run Merkle API generation
+      await generateMerkle(globalOptions);
+
+      console.log();
       console.log("✅ All documentation tables generated successfully!");
     });
 
@@ -27,6 +33,7 @@ export function createAutogenCommand() {
   autogenCommand.addCommand(deploymentsCmd);
   autogenCommand.addCommand(indexersCmd);
   autogenCommand.addCommand(graphQLCmd);
+  autogenCommand.addCommand(merkleCmd);
 
   return autogenCommand;
 }
