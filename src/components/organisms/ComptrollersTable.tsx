@@ -1,5 +1,5 @@
 import { useMemo } from "react";
-import { comptroller, sablier } from "sablier";
+import { sablier } from "sablier";
 import { getLatestLockupChainIds } from "../../helpers";
 import GFMContent from "../atoms/GFMContent";
 
@@ -19,7 +19,7 @@ export function ComptrollersTable() {
 
     for (const chain of chains) {
       // Get comptroller address from sablier package
-      const comptrollerAddress = comptroller.get(chain.id).address;
+      const comptrollerAddress = sablier.comptroller.get(chain.id).address;
 
       const explorerBaseUrl = chain.blockExplorers.default.url;
       const addressLink = `[${comptrollerAddress}](${explorerBaseUrl}/address/${comptrollerAddress})`;

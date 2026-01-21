@@ -81,7 +81,33 @@ function generateDeploymentTable(deployment: Sablier.Deployment, release: Sablie
   let table = "| Contract | Address | Deployment |\n";
   table += "| :-------- | :-------- | :--------- |\n";
 
+  const priorityNames = ["SablierLockup", "SablierBatchLockup", "SablierFlow"];
+  const priorityBuckets = new Map<string, Sablier.Deployment["contracts"]>();
+  const otherContracts: Sablier.Deployment["contracts"] = [];
+
   for (const contract of deployment.contracts) {
+    if (priorityNames.includes(contract.name)) {
+      const bucket = priorityBuckets.get(contract.name);
+      if (bucket) {
+        bucket.push(contract);
+      } else {
+        priorityBuckets.set(contract.name, [contract]);
+      }
+    } else {
+      otherContracts.push(contract);
+    }
+  }
+
+  const orderedContracts: Sablier.Deployment["contracts"] = [];
+  for (const name of priorityNames) {
+    const bucket = priorityBuckets.get(name);
+    if (bucket) {
+      orderedContracts.push(...bucket);
+    }
+  }
+  orderedContracts.push(...otherContracts);
+
+  for (const contract of orderedContracts) {
     let addressCell: string;
     if (contract.explorerURL) {
       addressCell = `[\`${contract.address}\`](${contract.explorerURL})`;
