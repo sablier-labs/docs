@@ -35,7 +35,7 @@ export function AdminsTable() {
 
     // Get all chains that have v2.0 lockup contracts
     const allContracts = sablier.contracts.getAll({
-      release: release,
+      release,
     });
 
     // Get unique chains from the contracts

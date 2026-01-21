@@ -1,8 +1,14 @@
 {
   "$schema": "./node_modules/@biomejs/biome/configuration_schema.json",
-  "extends": ["@sablier/devkit/biome"],
+  "extends": ["ultracite/core", "@sablier/devkit/biome/base"],
   "files": {
-    "includes": ["**/*.{css,js,json,jsonc,jsx,ts,tsx}", "!node_modules", "!repos", "!src/autogen", "!static"]
+    "includes": [
+      "**/*.{css,js,json,jsonc,jsx,ts,tsx}",
+      "!node_modules",
+      "!repos",
+      "!src/autogen",
+      "!static"
+    ]
   },
   "linter": {
     "rules": {

@@ -1,4 +1,4 @@
-import LinkPreview from "../LinkPreview";
+import LinkPreview from "./LinkPreview";
 
 export default function LinkPreviewMerkleAPI() {
   return (

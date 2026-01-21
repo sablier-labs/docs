@@ -60,7 +60,7 @@ export const redirects: RedirectOption[] = [
 ];
 
 export function createRedirects(existingPath: string) {
-  const redirects = [];
+  const redirects: string[] = [];
   // Redirect /concepts/protocol/** to /concepts/lockup/**
   if (existingPath.startsWith("/concepts/lockup/")) {
     redirects.push(existingPath.replace("/concepts/lockup/", "/concepts/protocol/"));

@@ -80,7 +80,7 @@ function Socials() {
     <Wrapper>
       <List>
         <Social href={Links.DISCORD}>
-          <img alt="Discord" src="img/social/discord.svg" style={{ height: "48px", width: "48px" }} />
+          <img alt="Discord" height="48px" src="img/social/discord.svg" width="48px" />
           <div>
             <Heading as="h4">Discord</Heading>
             <p>Hop in to the #dev channel to get help.</p>
@@ -88,7 +88,7 @@ function Socials() {
         </Social>
 
         <Social href={Links.GitHub.ORG}>
-          <img alt="GitHub" src="img/social/github.svg" style={{ height: "44px", width: "44px" }} />
+          <img alt="GitHub" height="44px" src="img/social/github.svg" width="44px" />
           <div>
             <Heading as="h4">GitHub</Heading>
             <p>View all Sablier code repositories.</p>
@@ -97,7 +97,7 @@ function Socials() {
 
         <Social href={Links.BLOG}>
           <div>
-            <img alt="Blog" src="img/logo.svg" style={{ height: "48px", width: "48px" }} />
+            <img alt="Blog" height="48px" src="img/logo.svg" width="48px" />
           </div>
           <div>
             <Heading as="h4">Blog</Heading>

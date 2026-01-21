@@ -3,7 +3,7 @@ import { Command } from "commander";
 
 import { autogenCmd } from "./commands/autogen";
 
-async function main() {
+async function main(): Promise<void> {
   const program = new Command();
 
   program.name("sablier-docs-cli").description("CLI tool for auto-generating Markdown content");
@@ -14,7 +14,7 @@ async function main() {
   // Add the autogen command to the main program
   program.addCommand(autogenCmd);
 
-  program.parse();
+  await program.parseAsync();
 }
 
 main().catch(console.error);

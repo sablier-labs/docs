@@ -1,7 +1,11 @@
 import type { Options as ClientRedirectsOptions } from "@docusaurus/plugin-client-redirects";
 import type { Options as VercelAnalyticsOptions } from "@docusaurus/plugin-vercel-analytics";
 import type { DocusaurusConfig, PluginOptions } from "@docusaurus/types";
-import type { ConfigOptions, GraphQLMarkdownCliOptions, LoaderOption } from "@graphql-markdown/types";
+import type {
+  ConfigOptions,
+  GraphQLMarkdownCliOptions,
+  LoaderOption,
+} from "@graphql-markdown/types";
 import type { PluginOptions as LlmPluginOptions } from "@sablier/docusaurus-plugin-llms";
 import { createRedirects, redirects } from "./redirects";
 
@@ -14,7 +18,7 @@ const clientRedirects: [string, ClientRedirectsOptions] = [
   {
     createRedirects,
     id: "default",
-    redirects: redirects,
+    redirects,
   },
 ];
 
@@ -69,7 +73,8 @@ const llmPlugin: [string, LlmPluginOptions & { [key: string]: unknown }] = [
     // Protocol specific LLM files.
     customLLMFiles: [
       {
-        description: "Merkle Airdrops is useful to distribute tokens to a large number of users efficiently.",
+        description:
+          "Merkle Airdrops is useful to distribute tokens to a large number of users efficiently.",
         filename: "llms-airdrops.txt",
         // Create a single markdown file with the full content of the section.
         fullContent: true,
@@ -86,7 +91,8 @@ const llmPlugin: [string, LlmPluginOptions & { [key: string]: unknown }] = [
         title: "Sablier Merkle Airdrops Documentation",
       },
       {
-        description: "Sablier Flow is useful for payroll, grants, insurance premiums, loans interest and ESOPs.",
+        description:
+          "Sablier Flow is useful for payroll, grants, insurance premiums, loans interest and ESOPs.",
         filename: "llms-flow.txt",
         // Create a single markdown file with the full content of the section.
         fullContent: true,
@@ -161,4 +167,9 @@ const vercelAnalytics: [string, VercelAnalyticsOptions] = [
   },
 ];
 
-export const plugins: DocusaurusConfig["plugins"] = [clientRedirects, graphqlMarkdown, llmPlugin, vercelAnalytics];
+export const plugins: DocusaurusConfig["plugins"] = [
+  clientRedirects,
+  graphqlMarkdown,
+  llmPlugin,
+  vercelAnalytics,
+];

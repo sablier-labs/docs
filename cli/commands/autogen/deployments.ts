@@ -17,7 +17,7 @@ export function createDeploymentsCommand() {
 
 export const deploymentsCmd = createDeploymentsCommand();
 
-export async function generateDeployments(options: CliOptions = {}): Promise<void> {
+export function generateDeployments(options: CliOptions = {}): void {
   for (const release of sablier.releases.getAll()) {
     if (release.protocol === Protocol.Legacy) {
       continue;
@@ -33,7 +33,9 @@ export async function generateDeployments(options: CliOptions = {}): Promise<voi
     if (writeFileWithOverwrite({ content: tables, filePath, options })) {
       const protocol = _.capitalize(release.protocol);
       const version = _.capitalize(release.version);
-      console.log(`✔️  Generated deployments table for ${protocol} ${version} at: ${getRelative(filePath)}`);
+      console.log(
+        `✔️  Generated deployments table for ${protocol} ${version} at: ${getRelative(filePath)}`
+      );
     }
   }
 }
@@ -51,7 +53,9 @@ function generateTables(release: Sablier.Release) {
   let content = "## Mainnets\n\n";
   for (const deployment of mainnetDeployments) {
     const chain = sablier.chains.get(deployment.chainId);
-    const uiIndicator = chain.isSupportedByUI ? "✅ Supported in Sablier UI" : "❌ Not supported in Sablier UI";
+    const uiIndicator = chain.isSupportedByUI
+      ? "✅ Supported in Sablier UI"
+      : "❌ Not supported in Sablier UI";
     content += `### ${chain.name}\n\n`;
     content += `${uiIndicator}\n\n`;
     content += generateDeploymentTable(deployment, release);
@@ -61,7 +65,9 @@ function generateTables(release: Sablier.Release) {
   content += "## Testnets\n\n";
   for (const deployment of testnetDeployments) {
     const chain = sablier.chains.get(deployment.chainId);
-    const uiIndicator = chain.isSupportedByUI ? "✅ Supported in Sablier UI" : "❌ Not supported in Sablier UI";
+    const uiIndicator = chain.isSupportedByUI
+      ? "✅ Supported in Sablier UI"
+      : "❌ Not supported in Sablier UI";
     content += `### ${chain.name}\n\n`;
     content += `${uiIndicator}\n\n`;
     content += generateDeploymentTable(deployment, release);
@@ -72,8 +78,8 @@ function generateTables(release: Sablier.Release) {
 }
 
 function generateDeploymentTable(deployment: Sablier.Deployment, release: Sablier.Release): string {
-  let table = `| Contract | Address | Deployment |\n`;
-  table += `| :-------- | :-------- | :--------- |\n`;
+  let table = "| Contract | Address | Deployment |\n";
+  table += "| :-------- | :-------- | :--------- |\n";
 
   for (const contract of deployment.contracts) {
     let addressCell: string;

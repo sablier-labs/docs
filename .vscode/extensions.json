@@ -1,3 +1,8 @@
 {
-  "recommendations": ["biomejs.biome", "dbaeumer.vscode-eslint", "esbenp.prettier-vscode", "nefrob.vscode-just-syntax"]
+  "recommendations": [
+    "biomejs.biome",
+    "dbaeumer.vscode-eslint",
+    "esbenp.prettier-vscode",
+    "nefrob.vscode-just-syntax"
+  ]
 }

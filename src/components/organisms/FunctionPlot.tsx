@@ -1,19 +1,19 @@
 import functionPlot, { type FunctionPlotOptions } from "function-plot";
 import { memo, useEffect, useRef } from "react";
 
-export interface ExtendedFunctionPlotOptions extends FunctionPlotOptions {
+export type ExtendedFunctionPlotOptions = FunctionPlotOptions & {
   xAxisLabel?: string;
   xDomainLimit?: number;
   yDomainLimit?: number;
-}
+};
 
-export interface FunctionPlotProps {
+export type FunctionPlotProps = {
   options?: ExtendedFunctionPlotOptions;
-}
+};
 
 // See https://github.com/mauriciopoppe/function-plot
-const FunctionPlot: React.FC<FunctionPlotProps> = memo(({ options }: FunctionPlotProps) => {
-  const rootEl = useRef(null);
+const FunctionPlot = memo(({ options }: FunctionPlotProps) => {
+  const rootEl = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     try {

@@ -1,3 +1,4 @@
+/** biome-ignore-all lint/style/useFilenamingConvention: this is a convention for Docusaurus */
 /* eslint-disable react/prop-types */
 import Link from "@docusaurus/Link";
 import LinkPreview from "@site/src/components/molecules/LinkPreview";

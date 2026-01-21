@@ -15,23 +15,30 @@ default:
     bunx del-cli src/autogen/**/*.mdx
 
 # Check code with ESLint
-eslint-check:
+@eslint-check:
     bun eslint --cache .
 alias ec := eslint-check
 
 # Fix code with ESLint
-eslint-write:
+@eslint-write:
     bun eslint --cache --fix .
 alias ew := eslint-write
 
 # Run all code checks
-full-check: biome-check prettier-check eslint-check tsc-check
+@full-check:
+    just rws biome-check
+    just rws prettier-check
+    just rws eslint-check
+    just rws tsc-check
 
 # Run all code fixes
-full-write: biome-write prettier-write eslint-write
+@full-write:
+    just rws biome-write
+    just rws prettier-write
+    just rws eslint-write
 
 # Run Jest tests
-test:
+@test:
     bun jest
 alias t := test
 
@@ -41,12 +48,12 @@ alias t := test
 
 # Run all autogen commands with overwrite
 [group("autogen")]
-autogen:
+@autogen:
     just cli autogen --overwrite
 
 # Generate deployment documentation
 [group("autogen")]
-autogen-deployments:
+@autogen-deployments:
     just cli autogen deployments --overwrite
 
 # Generate GraphQL schema documentation
@@ -59,12 +66,12 @@ autogen-deployments:
 
 # Generate indexer documentation
 [group("autogen")]
-autogen-indexers:
+@autogen-indexers:
     just cli autogen indexers --overwrite
 
 # Generate reference documentation
 [group("autogen")]
-autogen-reference:
+@autogen-reference:
     bash cli/autogen-reference.sh
 
 # ---------------------------------------------------------------------------- #

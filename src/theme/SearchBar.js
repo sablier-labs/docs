@@ -9,8 +9,8 @@ import { DocSearch } from "@docsearch/react";
 export default function SearchBarWrapper() {
   return (
     <DocSearch
-      appId={Algolia.APP_ID}
       apiKey={Algolia.SEARCH_API_KEY}
+      appId={Algolia.APP_ID}
       askAi={{
         apiKey: Algolia.SEARCH_API_KEY,
         appId: Algolia.APP_ID,

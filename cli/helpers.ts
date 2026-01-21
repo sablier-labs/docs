@@ -10,9 +10,17 @@ if (!fs.existsSync(path.join(ROOT_DIR, "package.json"))) {
 
 export const autogenFilePaths = {
   deployments: (release: Sablier.Release) =>
-    path.join(ROOT_DIR, "src", "autogen", release.protocol, `_table-deployments-${release.version}.mdx`),
-  envio: (protocol: Sablier.Protocol) => path.join(ROOT_DIR, "src", "autogen", protocol, "_table-envio.mdx"),
-  graph: (protocol: Sablier.Protocol) => path.join(ROOT_DIR, "src", "autogen", protocol, "_table-graph.mdx"),
+    path.join(
+      ROOT_DIR,
+      "src",
+      "autogen",
+      release.protocol,
+      `_table-deployments-${release.version}.mdx`
+    ),
+  envio: (protocol: Sablier.Protocol) =>
+    path.join(ROOT_DIR, "src", "autogen", protocol, "_table-envio.mdx"),
+  graph: (protocol: Sablier.Protocol) =>
+    path.join(ROOT_DIR, "src", "autogen", protocol, "_table-graph.mdx"),
 };
 
 type FileWriteParams = {
@@ -31,7 +39,9 @@ export function writeFileWithOverwrite(params: FileWriteParams): boolean {
 
   if (fs.existsSync(filePath) && !options.overwrite) {
     const relativePath = path.relative(process.cwd(), filePath);
-    console.log(`⚠️  Deployment table already exists at: ${relativePath}. Use --overwrite flag to overwrite.`);
+    console.log(
+      `⚠️  Deployment table already exists at: ${relativePath}. Use --overwrite flag to overwrite.`
+    );
     return false;
   }
 

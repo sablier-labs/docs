@@ -3,17 +3,17 @@ import { sablier } from "sablier";
 import { getLatestLockupChainIds } from "../../helpers";
 import GFMContent from "../atoms/GFMContent";
 
-export interface ChainProps {
+export type ChainProps = {
   kind: "mainnets" | "testnets";
-}
+};
 
 export function Chains({ kind }: ChainProps) {
   const content = useMemo(() => {
     const latestLockupChainIds = new Set(getLatestLockupChainIds());
 
-    let content: string = "";
-    content += `| Name | Chain ID | In UI? | Native Token | Explorer |\n`;
-    content += `| :--- | :------- | :----- | :----------- | :------- |\n`;
+    let content = "";
+    content += "| Name | Chain ID | In UI? | Native Token | Explorer |\n";
+    content += "| :--- | :------- | :----- | :----------- | :------- |\n";
 
     const getter = kind === "mainnets" ? sablier.chains.getMainnets : sablier.chains.getTestnets;
 

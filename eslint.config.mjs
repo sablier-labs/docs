@@ -7,7 +7,12 @@ const gitignorePath = fileURLToPath(new URL(".gitignore", import.meta.url));
 
 /** @type { import("eslint").Linter.Config[] } */
 export default defineConfig([
-  globalIgnores(["**/*.{js,jsx,ts,tsx}", "**/graphql/envio/**/*.mdx", "**/graphql/the-graph/**/*.mdx", "repos/**"]),
+  globalIgnores([
+    "**/*.{js,jsx,ts,tsx}",
+    "**/graphql/envio/**/*.mdx",
+    "**/graphql/the-graph/**/*.mdx",
+    "repos/**",
+  ]),
   includeIgnoreFile(gitignorePath, "Imported .gitignore patterns"),
   {
     ...mdx.flat,
@@ -17,6 +22,6 @@ export default defineConfig([
     }),
     rules: {
       "no-unused-expressions": "off",
-    }
+    },
   },
 ]);

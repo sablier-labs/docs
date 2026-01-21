@@ -1,7 +1,7 @@
 import type { Indexer } from "@sablier/indexers";
 import { capitalize } from "lodash";
-import { Links } from "../../../constants";
-import LinkPreview from "../LinkPreview";
+import { Links } from "../../constants";
+import LinkPreview from "./LinkPreview";
 
 type LinkPreviewIndexersProps =
   | {

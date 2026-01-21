@@ -1,7 +1,6 @@
 import Link from "@docusaurus/Link";
 import styled from "@emotion/styled";
 import ArrowRightIcon from "@heroicons/react/24/outline/ArrowRightIcon";
-import type UserCircleIcon from "@heroicons/react/24/outline/UserCircleIcon";
 import Heading from "@theme/Heading";
 
 const WrapperPartial = styled(Link)`
@@ -112,14 +111,14 @@ const Wrapper = styled(WrapperPartial)`
   }
 `;
 
-export interface Props {
+export type Props = {
   description: string;
-  Icon: typeof UserCircleIcon;
+  Icon: React.ComponentType<React.SVGProps<SVGSVGElement>>;
   title: string;
   to: string;
-}
+};
 
-function Feature({ description, Icon, title, to }: Props) {
+function Feature({ description, Icon, title, to }: Props): React.ReactElement {
   return (
     <Wrapper to={to}>
       <Box>

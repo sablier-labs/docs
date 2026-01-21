@@ -17,7 +17,7 @@ export function createIndexersCommand() {
 
 export const indexersCmd = createIndexersCommand();
 
-export async function generateIndexers(options: CliOptions = {}): Promise<void> {
+export function generateIndexers(options: CliOptions = {}): void {
   generateTables("airdrops", options);
   generateTables("flow", options);
   generateTables("lockup", options);
@@ -29,20 +29,22 @@ function generateTables(protocol: Indexer.Protocol, options: CliOptions): void {
 
   const envioFilePath = autogenFilePaths.envio(protocol);
   if (writeFileWithOverwrite({ content: envioTable, filePath: envioFilePath, options })) {
-    console.log(`✔️  Generated ${_.capitalize(protocol)} endpoints table for Envio at: ${getRelative(envioFilePath)}`);
+    console.log(
+      `✔️  Generated ${_.capitalize(protocol)} endpoints table for Envio at: ${getRelative(envioFilePath)}`
+    );
   }
 
   const graphFilePath = autogenFilePaths.graph(protocol);
   if (writeFileWithOverwrite({ content: graphTable, filePath: graphFilePath, options })) {
     console.log(
-      `✔️  Generated ${_.capitalize(protocol)} endpoints table for The Graph at: ${getRelative(graphFilePath)}`,
+      `✔️  Generated ${_.capitalize(protocol)} endpoints table for The Graph at: ${getRelative(graphFilePath)}`
     );
   }
 }
 
 function generateEnvioTable(indexers: Indexer[]): string {
-  let markdown = `| Chain | Production URL | Playground URL | Explorer URL |\n`;
-  markdown += `| -------- | -------------- | ----------- | ------------ |\n`;
+  let markdown = "| Chain | Production URL | Playground URL | Explorer URL |\n";
+  markdown += "| -------- | -------------- | ----------- | ------------ |\n";
 
   for (const indexer of indexers) {
     const chain = sablier.chains.get(indexer.chainId);
@@ -65,8 +67,8 @@ function generateEnvioTable(indexers: Indexer[]): string {
 }
 
 function generateGraphTable(indexers: Indexer[]): string {
-  let markdown = `| Chain | Production URL | Testing URL | Explorer URL |\n`;
-  markdown += `| -------- | -------------- | ----------- | ------------ |\n`;
+  let markdown = "| Chain | Production URL | Testing URL | Explorer URL |\n";
+  markdown += "| -------- | -------------- | ----------- | ------------ |\n";
 
   for (const indexer of indexers) {
     const chain = sablier.chains.getOrThrow(indexer.chainId);

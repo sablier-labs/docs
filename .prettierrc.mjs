@@ -1,4 +1,4 @@
-const baseConfig = require("@sablier/devkit/prettier");
+import baseConfig from "@sablier/devkit/prettier";
 
 /**
  * @see https://prettier.io/docs/configuration
@@ -17,4 +17,4 @@ const config = {
   ],
 };
 
-module.exports = config;
+export default config;

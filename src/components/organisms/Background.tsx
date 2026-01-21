@@ -45,8 +45,8 @@ const Light = styled.div<{ horizontal: "left" | "right"; vertical: string }>`
     filter: blur(60px);
   }
 
-  ${(props) => props.horizontal === "left" && `left: -50vw;`}
-  ${(props) => props.horizontal === "right" && `right: 0;`}
+  ${(props) => props.horizontal === "left" && "left: -50vw;"}
+  ${(props) => props.horizontal === "right" && "right: 0;"}
 `;
 
 type BackgroundProps = {
@@ -55,7 +55,12 @@ type BackgroundProps = {
   right?: "top" | "center" | "bottom" | "none";
 };
 
-function Background({ children, className, left = "top", right = "top" }: PropsWithChildren<BackgroundProps>) {
+function Background({
+  children,
+  className,
+  left = "top",
+  right = "top",
+}: PropsWithChildren<BackgroundProps>) {
   return (
     <Wrapper className={className}>
       <Container>
