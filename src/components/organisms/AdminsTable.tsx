@@ -19,6 +19,9 @@ const ADMIN_ADDRESSES: Record<number, string> = {
   59144: "0x72dCfa0483d5Ef91562817C6f20E8Ce07A81319D", // Linea
   88888: "0x74A234DcAdFCB395b37C8c2B3Edf7A13Be78c935", // Chiliz
   534352: "0x0F7Ad835235Ede685180A5c611111610813457a9", // Scroll
+  143: "0x58290bbdb51A4c6B022A81e9cDeD24BE19Ca57fd", // Monad
+  146: "0x58290bbdb51A4c6B022A81e9cDeD24BE19Ca57fd", // Sonic
+  999: "0x58290bbdb51A4c6B022A81e9cDeD24BE19Ca57fd", // HyperEVM
 };
 
 function getAdminAddress(chainId: number): string {
