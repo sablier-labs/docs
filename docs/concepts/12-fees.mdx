@@ -7,8 +7,8 @@ title: "Fees"
 import { Links } from "@site/src/constants";
 
 During the course of using Sablier, you may encounter up to three different types of fees:
-[Interface Fees](#interface-fees), [Contract Fees](#contract-fees), and [Gas Fees](#gas-fees). Below you can see a
-breakdown of how each fee is calculated and who receives it.
+[Interface Fees](#interface-fees), [Onchain Minimum Fees](#onchain-minimum-fees), and [Gas Fees](#gas-fees). Below you
+can see a breakdown of how each fee is calculated and who receives it.
 
 ## Interface Fees
 
@@ -44,11 +44,11 @@ using earlier releases.
 
 ### Airdrop Claims
 
-The Sablier Interface charges a flat fee when you claim an airdrop.
+The Sablier Interface charges a dynamic fee when you claim an airdrop.
 
 :::info[How much is the claim fee?]
 
-The fee is **$2** (in the gas token) per claim, regardless of the airdrop amount.
+The fee is **20% of your claim's value, up to a maximum of \$1.99** (in the gas token). The minimum fee is $0.05.
 
 :::
 
@@ -57,21 +57,22 @@ Claims from airdrops created with earlier versions do not incur any claim fee.
 
 ### Timeline for Interface Fees
 
-| Product  | Timeline                   | Operation     | Fee |
-| -------- | -------------------------- | ------------- | --- |
-| Airdrops | Apr 10, 2025 - present     | Airdrop claim | \$2 |
-| Lockup   | Feb 3, 2025 - present      | Withdraw      | \$1 |
-| Flow     | Feb 3, 2025 - present      | Withdraw      | \$1 |
-| Airdrops | Feb 3, 2025 - Apr 10, 2025 | Airdrop claim | \$3 |
-| Airdrops | Dec 18, 2023 - Feb 2, 2025 | Airdrop claim | 0   |
-| Lockup   | Jul 3, 2023 - Feb 2, 2025  | Withdraw      | 0   |
-| Flow     | Dec 4, 2024 - Feb 2, 2025  | Withdraw      | 0   |
+| Product  | Timeline                    | Operation     | Fee                      |
+| -------- | --------------------------- | ------------- | ------------------------ |
+| Airdrops | Jan 27, 2026 - present      | Airdrop claim | 20% of value, max \$1.99 |
+| Lockup   | Feb 3, 2025 - present       | Withdraw      | \$1                      |
+| Flow     | Feb 3, 2025 - present       | Withdraw      | \$1                      |
+| Airdrops | Apr 10, 2025 - Jan 26, 2026 | Airdrop claim | \$2                      |
+| Airdrops | Feb 3, 2025 - Apr 10, 2025  | Airdrop claim | \$3                      |
+| Airdrops | Dec 18, 2023 - Feb 2, 2025  | Airdrop claim | 0                        |
+| Lockup   | Jul 3, 2023 - Feb 2, 2025   | Withdraw      | 0                        |
+| Flow     | Dec 4, 2024 - Feb 2, 2025   | Withdraw      | 0                        |
 
-## Contract Fees
+## Onchain Minimum Fees
 
 :::important
 
-The contract fee applies to the following versions:
+The onchain minimum fee applies to the following versions:
 
 1. [Lockup v3.0 (or later)](/guides/lockup/deployments#versions)
 2. [Flow v2.0 (or later)](/guides/flow/deployments#versions)
@@ -79,7 +80,7 @@ The contract fee applies to the following versions:
 
 :::
 
-As opposed to the Interface Fees, the Contract Fees are charged by the Sablier contracts themselves. They apply
+As opposed to the Interface Fees, the Onchain Minimum Fees are charged by the Sablier contracts themselves. They apply
 regardless of the interface used to interact with the Sablier Protocol.
 
 This fee is also charged in USD but paid in the native gas token via the
@@ -93,15 +94,15 @@ equal to the fee amount returned by `calculateMinFeeWei` function which is avail
 
 :::tip[For Senders]
 
-Contract Fees can be subsidized - the person creating the stream or airdrop can choose to cover the fees that would
-normally be charged to recipients.
+Onchain Minimum Fees can be subsidized - the person creating the stream or airdrop can choose to cover the fees that
+would normally be charged to recipients.
 
 If you're interested in subsiding fees for your users, please <Link href={Links.Forms.CALL}>contact us</Link> to discuss
 your specific requirements.
 
 :::
 
-The [Comptroller](/concepts/governance/#comptroller) can update the Contract Fees.
+The [Comptroller](/concepts/governance/#comptroller) can update the Onchain Minimum Fees.
 
 - In case of Lockup and Flow, the new fee would apply to all the new streams created after the update, as well as the
   existing streams.
@@ -110,9 +111,9 @@ The [Comptroller](/concepts/governance/#comptroller) can update the Contract Fee
 
 :::warning
 
-The Contract Fee acts as a **minimum fee**, so it is NOT cumulative with the Interface Fee. When you interact with the
-contracts via Sablier interface, you only pay the Interface Fee. On the other hand, if you interact with the contract
-directly, you will only pay the Contract Fee.
+The Onchain Minimum Fee is NOT cumulative with the Interface Fee. When you interact with the contracts via Sablier
+interface, you only pay the Interface Fee. On the other hand, if you interact with the contract directly, you will only
+pay the Onchain Minimum Fee.
 
 :::
 
@@ -120,80 +121,65 @@ directly, you will only pay the Contract Fee.
 
 Lockup and Flow contracts charge a flat fee each time you withdraw from a stream.
 
-On the chains listed below, the fee is **$0.9** (in the gas token). For the chains NOT listed below, it is zero.
 [Click here](/concepts/chains#mainnets) to see the full list of supported chains.
 
-<span id="contract-fees-table"></span>
+<span id="onchain-fees-table"></span>
 
 | Chain      | Gas Token | Fee  |
 | ---------- | --------- | ---- |
+| Abstract   | ETH       | $0   |
 | Arbitrum   | ETH       | $0.9 |
 | Avalanche  | AVAX      | $0.9 |
 | Base       | ETH       | $0.9 |
+| Berachain  | BERA      | $0   |
+| Blast      | ETH       | $0   |
 | BNB Chain  | BNB       | $0.9 |
+| Chiliz     | CHZ       | $0   |
 | Ethereum   | ETH       | $0.9 |
 | Gnosis     | XDAI      | $0.9 |
 | HyperEVM   | HYPE      | $0.9 |
 | Linea      | ETH       | $0.9 |
+| Mode       | ETH       | $0   |
 | Monad      | MON       | $0.9 |
+| Morph      | ETH       | $0   |
 | Optimism   | ETH       | $0.9 |
 | Polygon    | POL       | $0.9 |
 | Scroll     | ETH       | $0.9 |
 | Sonic      | S         | $0.9 |
+| Superseed  | ETH       | $0   |
 | zkSync Era | ETH       | $0.9 |
 
 ### Airdrop Claims
 
 Airdrop contract charges a flat fee each time you claim an airdrop.
 
-On the chains listed below, the fee is **$0.9** (in the gas token). For the chains NOT listed below, it is zero.
 [Click here](/concepts/chains#mainnets) to see the full list of supported chains.
 
-<span id="contract-fees-table"></span>
+<span id="onchain-fees-table"></span>
 
-| Chain      | Gas Token | Fee  |
-| ---------- | --------- | ---- |
-| Arbitrum   | ETH       | $0.9 |
-| Avalanche  | AVAX      | $0.9 |
-| Base       | ETH       | $0.9 |
-| BNB Chain  | BNB       | $0.9 |
-| Ethereum   | ETH       | $0.9 |
-| Gnosis     | XDAI      | $0.9 |
-| HyperEVM   | HYPE      | $0.9 |
-| Linea      | ETH       | $0.9 |
-| Monad      | MON       | $0.9 |
-| Optimism   | ETH       | $0.9 |
-| Polygon    | POL       | $0.9 |
-| Scroll     | ETH       | $0.9 |
-| Sonic      | S         | $0.9 |
-| zkSync Era | ETH       | $0.9 |
-
-#### Merkle Airdrops v1.3
-
-In [Merkle Airdrops v1.3](/guides/airdrops/previous-deployments/v1.3), oracles were not used. As a result, the fees in
-v1.3 are specified in the native token. Therefore, the fees in the table above are applicable only to v2.0 and later.
-For v1.3, the fees are as follows:
-
-| Chain      | Gas Token | Fee              | Fee in Wei          |
-| ---------- | --------- | ---------------- | ------------------- |
-| Ethereum   | ETH       | 0.00036 ETH      | 360000000000000     |
-| Abstract   | ETH       | 0.00036 ETH      | 360000000000000     |
-| Arbitrum   | ETH       | 0.00036 ETH      | 360000000000000     |
-| Avalanche  | AVAX      | 0.038491147 AVAX | 38491147000000000   |
-| Base       | ETH       | 0.00036 ETH      | 360000000000000     |
-| Berachain  | BERA      | 0.15385 BERA     | 153850000000000000  |
-| Blast      | ETH       | 0.00036 ETH      | 360000000000000     |
-| BNB Chain  | BNB       | 0.0017620835 BNB | 1762083500000000    |
-| Chiliz     | CHZ       | 9.29 CHZ         | 9290000000000000000 |
-| Gnosis     | XDAI      | 1 XDAI           | 1000000000000000000 |
-| Linea      | ETH       | 0.00036 ETH      | 360000000000000     |
-| Mode       | ETH       | 0.00036 ETH      | 360000000000000     |
-| Morph      | ETH       | 0.00036 ETH      | 360000000000000     |
-| Optimism   | ETH       | 0.00036 ETH      | 360000000000000     |
-| Polygon    | POL       | 3.1897926635 POL | 3189792663500000000 |
-| Scroll     | ETH       | 0.00036 ETH      | 360000000000000     |
-| Superseed  | ETH       | 0.00036 ETH      | 360000000000000     |
-| zkSync Era | ETH       | 0.00036 ETH      | 360000000000000     |
+| Chain      | Gas Token | Fee   |
+| ---------- | --------- | ----- |
+| Abstract   | ETH       | $0    |
+| Arbitrum   | ETH       | $0.05 |
+| Avalanche  | AVAX      | $0.05 |
+| Base       | ETH       | $0.05 |
+| Berachain  | BERA      | $0    |
+| Blast      | ETH       | $0    |
+| BNB Chain  | BNB       | $0.05 |
+| Chiliz     | CHZ       | $0    |
+| Ethereum   | ETH       | $0.05 |
+| Gnosis     | XDAI      | $0.05 |
+| HyperEVM   | HYPE      | $0.05 |
+| Linea      | ETH       | $0.05 |
+| Mode       | ETH       | $0    |
+| Monad      | MON       | $0.05 |
+| Morph      | ETH       | $0    |
+| Optimism   | ETH       | $0.05 |
+| Polygon    | POL       | $0.05 |
+| Scroll     | ETH       | $0.05 |
+| Sonic      | S         | $0.05 |
+| Superseed  | ETH       | $0    |
+| zkSync Era | ETH       | $0.05 |
 
 ## Gas Fees
 
@@ -207,9 +193,10 @@ validators, which are not affiliated with Sablier Labs.
 
 ## Fee Subsidization
 
-Interface and Contract Fees can be subsidized, partially or fully, by the sender in certain cases. This means that the
-person creating the stream or airdrop can choose to cover the fees that would normally be charged to the recipient. Note
-that the gas fees cannot be subsidized as they are paid to the blockchain network validators on every transaction.
+Interface and Onchain Minimum Fees can be subsidized, partially or fully, by the sender in certain cases. This means
+that the person creating the stream or airdrop can choose to cover the fees that would normally be charged to the
+recipient. Note that the gas fees cannot be subsidized as they are paid to the blockchain network validators on every
+transaction.
 
 If you're interested in subsiding fees for your users, please
 [contact us](https://docs.google.com/forms/d/e/1FAIpQLSdqkcRjXl3urdE_yiT55itkcEX5LC4CM4HsNhjJbXB_CNMMjg/viewform) to
@@ -222,17 +209,17 @@ discuss your specific requirements.
 **A:** They are added to the gas fee. For example, if the gas fee is \$10 and the Interface Fee is \$1, you would pay
 \$11 in total (the payment is taken in the gas token, e.g., ETH).
 
-### Q: Are the Interface Fees and the Contract Fees cumulative?
+### Q: Are the Interface Fees and the Onchain Minimum Fees cumulative?
 
-**A:** No. The Contract Fee acts as a **minimum fee**, so it will not get added to the Interface Fee. You will pay the
-higher of the two fees.
+**A:** No. The Onchain Minimum Fee acts as a **minimum fee**, so it will not get added to the Interface Fee. You will
+pay the higher of the two fees.
 
 ### Q: Does the Stream Withdrawal Fee apply to each withdrawal?
 
 **A:** Yes, unless they are subsidized by the sender. The fee is charged each time you withdraw from a stream. For
 example, if you withdraw from a stream 10 times, you will pay $10 in fees.
 
-### Q: Can the Interface Fees and the Contract Fees be subsidized?
+### Q: Can the Interface Fees and the Onchain Minimum Fees be subsidized?
 
 **A:** Yes, they can be subsidized by the stream sender or the airdrop creator. Please
 [contact us](https://docs.google.com/forms/d/e/1FAIpQLSdqkcRjXl3urdE_yiT55itkcEX5LC4CM4HsNhjJbXB_CNMMjg/viewform) to
