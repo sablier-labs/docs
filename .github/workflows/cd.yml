@@ -10,11 +10,8 @@ jobs:
     environment: "production"
     runs-on: "ubuntu-latest"
     steps:
-      - name: "Check out the repo"
-        uses: "actions/checkout@v4"
-
       - name: "Set up devkit"
-        uses: "sablier-labs/devkit/actions/setup@main"
+        uses: "sablier-labs/devkit/actions/setup@v1"
         with:
           package-manager: "bun"
 
