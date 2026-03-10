@@ -65,6 +65,7 @@
     "@sablier/devkit": "^1.12.0",
     "@types/eslint": "^9.6.1",
     "@types/node": "^24.3.0",
+    "baseline-browser-mapping": "^2.10.0",
     "bufferutil": "^4.0.9",
     "eslint": "^9.33.0",
     "eslint-plugin-mdx": "^3.6.2",
