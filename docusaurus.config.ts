@@ -13,25 +13,26 @@ const config: Config = {
     v4: true, // Improve compatibility with the upcoming Docusaurus v4
   },
   headTags,
+  onBrokenLinks: "throw",
+  organizationName: "sablier-labs",
   markdown: {
     format: "detect",
+    mermaid: true,
     hooks: {
       onBrokenMarkdownLinks: "throw",
     },
-    mermaid: true,
   },
-  onBrokenLinks: "throw",
-  organizationName: "sablier-labs",
   plugins,
   presets,
   projectName: "sablier-docs",
+  staticDirectories: ["static"],
+  tagline: "Documentation and guides for Sablier",
   scripts: [
     {
       async: false,
       src: "/js/crisp-chat.js",
     },
   ],
-  staticDirectories: ["static"],
   stylesheets: [
     /** @see https://docusaurus.io/docs/markdown-features/math-equations */
     {
@@ -41,7 +42,6 @@ const config: Config = {
       type: "text/css",
     },
   ],
-  tagline: "Documentation and guides for Sablier",
   themeConfig,
   themes: ["@docusaurus/theme-mermaid", "docusaurus-theme-github-codeblock"],
   title: "Sablier Docs",

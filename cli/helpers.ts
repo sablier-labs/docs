@@ -3,7 +3,7 @@ import * as path from "node:path";
 import type { Sablier } from "sablier";
 import type { CliOptions } from "./types";
 
-const ROOT_DIR = path.join(__dirname, "..");
+const ROOT_DIR = path.join(import.meta.dirname, "..");
 if (!fs.existsSync(path.join(ROOT_DIR, "package.json"))) {
   throw new Error("ROOT_DIR is not set correctly");
 }

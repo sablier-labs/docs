@@ -43,12 +43,12 @@ const graphqlMarkdown: [string, GraphQLMarkdownOptions] = [
     } as LoaderOption,
     metatags: [{ content: "noindex", name: "robots" }, { charset: "utf-8" }],
     pretty: true,
+    rootPath: ".",
+    schema: "https://api.studio.thegraph.com/query/112500/sablier-flow-experimental/version/latest",
     printTypeOptions: {
       hierarchy: "entity",
       relatedTypeSection: false,
     },
-    rootPath: ".",
-    schema: "https://api.studio.thegraph.com/query/112500/sablier-flow-experimental/version/latest",
   } satisfies ConfigOptions,
 ];
 
@@ -70,66 +70,6 @@ const graphqlMarkdown: [string, GraphQLMarkdownOptions] = [
 const llmPlugin: [string, LlmPluginOptions & { [key: string]: unknown }] = [
   "@sablier/docusaurus-plugin-llms",
   {
-    // Protocol specific LLM files.
-    customLLMFiles: [
-      {
-        description:
-          "Merkle Airdrops is useful to distribute tokens to a large number of users efficiently.",
-        filename: "llms-airdrops.txt",
-        // Create a single markdown file with the full content of the section.
-        fullContent: true,
-        includePatterns: [
-          "**/airdrops/**/*.md",
-          "**/airdrops/**/*.mdx",
-          "apps/features/01-airdrops.mdx",
-          "apps/guides/*.md",
-          "apps/guides/*.mdx",
-          "concepts/05-merkle-airdrops.mdx",
-          "support/*.md",
-          "support/*.mdx",
-        ],
-        title: "Sablier Merkle Airdrops Documentation",
-      },
-      {
-        description:
-          "Sablier Flow is useful for payroll, grants, insurance premiums, loans interest and ESOPs.",
-        filename: "llms-flow.txt",
-        // Create a single markdown file with the full content of the section.
-        fullContent: true,
-        includePatterns: [
-          "**/flow/**/*.md",
-          "**/flow/**/*.mdx",
-          "apps/features/03-payments.mdx",
-          "apps/guides/*.md",
-          "apps/guides/*.mdx",
-          "support/*.md",
-          "support/*.mdx",
-        ],
-        title: "Sablier Flow Documentation",
-      },
-      {
-        description: "Sablier Lockup is useful for token vesting and airdrops.",
-        filename: "llms-lockup.txt",
-        // Create a single markdown file with the full content of the section.
-        fullContent: true,
-        includePatterns: [
-          "**/lockup/**/*.md",
-          "**/lockup/**/*.mdx",
-          "apps/features/02-vesting.mdx",
-          "apps/guides/*.md",
-          "apps/guides/*.mdx",
-          "support/*.md",
-          "support/*.mdx",
-        ],
-        title: "Sablier Lockup Documentation",
-      },
-      {
-        // Useful to train or fine-tune an LLM on Sablier docs.
-        filename: "llms-full.txt",
-        fullContent: true,
-        includePatterns: ["**/*.md", "**/*.mdx"],
-      },
-    ],
     docsDir: "docs",
     // Remove imports from mdx files.
     excludeImports: true,
@@ -153,6 +93,66 @@ const llmPlugin: [string, LlmPluginOptions & { [key: string]: unknown }] = [
       - For FAQs, use the "Support" section.
       `,
     title: "Sablier Docs",
+    // Protocol specific LLM files.
+    customLLMFiles: [
+      {
+        description:
+          "Merkle Airdrops is useful to distribute tokens to a large number of users efficiently.",
+        filename: "llms-airdrops.txt",
+        // Create a single markdown file with the full content of the section.
+        fullContent: true,
+        title: "Sablier Merkle Airdrops Documentation",
+        includePatterns: [
+          "**/airdrops/**/*.md",
+          "**/airdrops/**/*.mdx",
+          "apps/features/01-airdrops.mdx",
+          "apps/guides/*.md",
+          "apps/guides/*.mdx",
+          "concepts/05-merkle-airdrops.mdx",
+          "support/*.md",
+          "support/*.mdx",
+        ],
+      },
+      {
+        description:
+          "Sablier Flow is useful for payroll, grants, insurance premiums, loans interest and ESOPs.",
+        filename: "llms-flow.txt",
+        // Create a single markdown file with the full content of the section.
+        fullContent: true,
+        title: "Sablier Flow Documentation",
+        includePatterns: [
+          "**/flow/**/*.md",
+          "**/flow/**/*.mdx",
+          "apps/features/03-payments.mdx",
+          "apps/guides/*.md",
+          "apps/guides/*.mdx",
+          "support/*.md",
+          "support/*.mdx",
+        ],
+      },
+      {
+        description: "Sablier Lockup is useful for token vesting and airdrops.",
+        filename: "llms-lockup.txt",
+        // Create a single markdown file with the full content of the section.
+        fullContent: true,
+        title: "Sablier Lockup Documentation",
+        includePatterns: [
+          "**/lockup/**/*.md",
+          "**/lockup/**/*.mdx",
+          "apps/features/02-vesting.mdx",
+          "apps/guides/*.md",
+          "apps/guides/*.mdx",
+          "support/*.md",
+          "support/*.mdx",
+        ],
+      },
+      {
+        // Useful to train or fine-tune an LLM on Sablier docs.
+        filename: "llms-full.txt",
+        fullContent: true,
+        includePatterns: ["**/*.md", "**/*.mdx"],
+      },
+    ],
   },
 ];
 

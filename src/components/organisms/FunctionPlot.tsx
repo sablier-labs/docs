@@ -22,11 +22,11 @@ const FunctionPlot = memo(({ options }: FunctionPlotProps) => {
         disableZoom: true,
         grid: true,
         target: rootEl.current,
+        yAxis: { domain: [0, options?.yDomainLimit || 100], label: "y - earnings" },
         xAxis: {
           domain: [0, options?.xDomainLimit || 100],
           label: options?.xAxisLabel || "x - time",
         },
-        yAxis: { domain: [0, options?.yDomainLimit || 100], label: "y - earnings" },
       });
     } catch (err) {
       console.error("FunctionPlot error: ", err);

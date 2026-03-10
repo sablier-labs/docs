@@ -6,8 +6,10 @@ import { themes as prismThemes } from "prism-react-renderer";
 /* -------------------------------------------------------------------------- */
 
 const footer: Preset.ThemeConfig["footer"] = {
+  style: "dark",
   links: [
     {
+      title: "Company",
       items: [
         {
           href: "https://sablierlabs.co.uk",
@@ -26,9 +28,9 @@ const footer: Preset.ThemeConfig["footer"] = {
           label: "Privacy Policy",
         },
       ],
-      title: "Company",
     },
     {
+      title: "Community",
       items: [
         {
           href: "https://twitter.com/Sablier",
@@ -47,9 +49,9 @@ const footer: Preset.ThemeConfig["footer"] = {
           label: "Branding",
         },
       ],
-      title: "Community",
     },
     {
+      title: "Developers",
       items: [
         {
           href: "https://github.com/sablier-labs/lockup",
@@ -72,10 +74,8 @@ const footer: Preset.ThemeConfig["footer"] = {
           label: "Indexers",
         },
       ],
-      title: "Developers",
     },
   ],
-  style: "dark",
 };
 
 /* -------------------------------------------------------------------------- */
@@ -83,6 +83,7 @@ const footer: Preset.ThemeConfig["footer"] = {
 /* -------------------------------------------------------------------------- */
 
 const navbar: Preset.ThemeConfig["navbar"] = {
+  title: "Sablier Docs",
   items: [
     {
       activeBasePath: "/concepts",
@@ -148,7 +149,6 @@ const navbar: Preset.ThemeConfig["navbar"] = {
     src: "img/icon.svg",
     width: "20",
   },
-  title: "Sablier Docs",
 };
 
 /* -------------------------------------------------------------------------- */
