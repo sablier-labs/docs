@@ -10,12 +10,15 @@ export function createDeploymentsCommand() {
   return new Command("deployments")
     .description("Generate deployment tables for all Sablier releases")
     .action(async function () {
-      const options = this.parent ? this.parent.opts() : {};
-      await generateDeployments(options);
+      await generateDeployments(getCommandOptions(this));
     });
 }
 
 export const deploymentsCmd = createDeploymentsCommand();
+
+const PRIORITY_CHAIN_NAMES = ["Ethereum"] as const;
+const priorityChainIndexes = new Map(PRIORITY_CHAIN_NAMES.map((name, index) => [name, index]));
+type DeploymentOrdering = "alphabetical" | "priority-first";
 
 export function generateDeployments(options: CliOptions = {}): void {
   for (const release of sablier.releases.getAll()) {
@@ -41,6 +44,9 @@ export function generateDeployments(options: CliOptions = {}): void {
 }
 
 function generateTables(release: Sablier.Release) {
+  const isLatestRelease =
+    sablier.releases.getLatest({ protocol: release.protocol }).version === release.version;
+
   const mainnetDeployments = release.deployments.filter((d) => {
     const chain = sablier.chains.get(d.chainId);
     return !chain.isTestnet;
@@ -50,31 +56,85 @@ function generateTables(release: Sablier.Release) {
     return chain.isTestnet;
   });
 
-  let content = "## Mainnets\n\n";
-  for (const deployment of mainnetDeployments) {
+  const orderedMainnetDeployments = orderDeployments(
+    mainnetDeployments,
+    isLatestRelease,
+    "priority-first"
+  );
+  const orderedTestnetDeployments = orderDeployments(
+    testnetDeployments,
+    isLatestRelease,
+    "alphabetical"
+  );
+
+  return (
+    renderDeploymentSection("Mainnets", orderedMainnetDeployments, release) +
+    renderDeploymentSection("Testnets", orderedTestnetDeployments, release)
+  );
+}
+
+function orderDeployments(
+  deployments: Sablier.Deployment[],
+  isLatestRelease: boolean,
+  ordering: DeploymentOrdering
+): Sablier.Deployment[] {
+  if (!isLatestRelease) {
+    return deployments;
+  }
+
+  return [...deployments].sort((left, right) => compareDeployments(left, right, ordering));
+}
+
+function compareDeployments(
+  left: Sablier.Deployment,
+  right: Sablier.Deployment,
+  ordering: DeploymentOrdering
+): number {
+  const leftChain = sablier.chains.get(left.chainId);
+  const rightChain = sablier.chains.get(right.chainId);
+
+  if (ordering === "priority-first") {
+    const leftPriority = priorityChainIndexes.get(leftChain.name) ?? Number.POSITIVE_INFINITY;
+    const rightPriority = priorityChainIndexes.get(rightChain.name) ?? Number.POSITIVE_INFINITY;
+    if (leftPriority !== rightPriority) {
+      return leftPriority - rightPriority;
+    }
+  }
+
+  return leftChain.name.localeCompare(rightChain.name);
+}
+
+function getCommandOptions(command: Command): CliOptions {
+  if (command.parent?.parent) {
+    return command.parent.parent.opts() as CliOptions;
+  }
+
+  if (command.parent) {
+    return command.parent.opts() as CliOptions;
+  }
+
+  return {};
+}
+
+function renderDeploymentSection(
+  title: string,
+  deployments: Sablier.Deployment[],
+  release: Sablier.Release
+): string {
+  let section = `## ${title}\n\n`;
+
+  for (const deployment of deployments) {
     const chain = sablier.chains.get(deployment.chainId);
     const uiIndicator = chain.isSupportedByUI
       ? "✅ Supported in Sablier UI"
       : "❌ Not supported in Sablier UI";
-    content += `### ${chain.name}\n\n`;
-    content += `${uiIndicator}\n\n`;
-    content += generateDeploymentTable(deployment, release);
-    content += "\n";
+    section += `### ${chain.name}\n\n`;
+    section += `${uiIndicator}\n\n`;
+    section += generateDeploymentTable(deployment, release);
+    section += "\n";
   }
 
-  content += "## Testnets\n\n";
-  for (const deployment of testnetDeployments) {
-    const chain = sablier.chains.get(deployment.chainId);
-    const uiIndicator = chain.isSupportedByUI
-      ? "✅ Supported in Sablier UI"
-      : "❌ Not supported in Sablier UI";
-    content += `### ${chain.name}\n\n`;
-    content += `${uiIndicator}\n\n`;
-    content += generateDeploymentTable(deployment, release);
-    content += "\n";
-  }
-
-  return content;
+  return section;
 }
 
 function generateDeploymentTable(deployment: Sablier.Deployment, release: Sablier.Release): string {
