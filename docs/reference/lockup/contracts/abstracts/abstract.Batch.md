@@ -1,10 +1,12 @@
 # Batch
 
-[Git Source](https://github.com/sablier-labs/evm-utils/blob/0b3bc38ab8badd135fc178b757afaf6902f1f63c/src/Batch.sol)
+[Git Source](https://github.com/sablier-labs/evm-monorepo/blob/003a71932c0e26e767a02c21205a077469406ac8/src/Batch.sol)
 
-**Inherits:** [IBatch](/reference/lockup/contracts/interfaces/interface.IBatch.md)
+**Inherits:** [IBatch](/docs/reference/lockup/contracts/interfaces/interface.IBatch.md)
 
-See the documentation in [IBatch](/reference/lockup/contracts/interfaces/interface.IBatch.md).
+**Title:** Batch
+
+See the documentation in [IBatch](/docs/reference/lockup/contracts/interfaces/interface.IBatch.md).
 
 ## Functions
 
@@ -12,8 +14,8 @@ See the documentation in [IBatch](/reference/lockup/contracts/interfaces/interfa
 
 Allows batched calls to self, i.e., `this` contract.
 
-_Since `msg.value` can be reused across calls, be VERY CAREFUL when using it. Refer to
-https://paradigm.xyz/2021/08/two-rights-might-make-a-wrong for more information._
+Since `msg.value` can be reused across calls, be VERY CAREFUL when using it. Refer to
+https://paradigm.xyz/2021/08/two-rights-might-make-a-wrong for more information.
 
 ```solidity
 function batch(bytes[] calldata calls) external payable virtual override returns (bytes[] memory results);

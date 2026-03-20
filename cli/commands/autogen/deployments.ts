@@ -22,7 +22,7 @@ type DeploymentOrdering = "alphabetical" | "priority-first";
 
 export function generateDeployments(options: CliOptions = {}): void {
   for (const release of sablier.releases.getAll()) {
-    if (release.protocol === Protocol.Legacy) {
+    if (release.protocol === Protocol.Legacy || release.protocol === Protocol.Bob) {
       continue;
     }
 
@@ -47,14 +47,10 @@ function generateTables(release: Sablier.Release) {
   const isLatestRelease =
     sablier.releases.getLatest({ protocol: release.protocol }).version === release.version;
 
-  const mainnetDeployments = release.deployments.filter((d) => {
-    const chain = sablier.chains.get(d.chainId);
-    return !chain.isTestnet;
-  });
-  const testnetDeployments = release.deployments.filter((d) => {
-    const chain = sablier.chains.get(d.chainId);
-    return chain.isTestnet;
-  });
+  const [mainnetDeployments, testnetDeployments] = _.partition(
+    release.deployments,
+    (d) => !sablier.chains.get(d.chainId).isTestnet
+  );
 
   const orderedMainnetDeployments = orderDeployments(
     mainnetDeployments,
@@ -142,38 +138,16 @@ function generateDeploymentTable(deployment: Sablier.Deployment, release: Sablie
   table += "| :-------- | :-------- | :--------- |\n";
 
   const priorityNames = ["SablierLockup", "SablierBatchLockup", "SablierFlow"];
-  const priorityBuckets = new Map<string, Sablier.Deployment["contracts"]>();
-  const otherContracts: Sablier.Deployment["contracts"] = [];
-
-  for (const contract of deployment.contracts) {
-    if (priorityNames.includes(contract.name)) {
-      const bucket = priorityBuckets.get(contract.name);
-      if (bucket) {
-        bucket.push(contract);
-      } else {
-        priorityBuckets.set(contract.name, [contract]);
-      }
-    } else {
-      otherContracts.push(contract);
-    }
-  }
-
-  const orderedContracts: Sablier.Deployment["contracts"] = [];
-  for (const name of priorityNames) {
-    const bucket = priorityBuckets.get(name);
-    if (bucket) {
-      orderedContracts.push(...bucket);
-    }
-  }
-  orderedContracts.push(...otherContracts);
+  const orderedContracts = [...deployment.contracts].sort((a, b) => {
+    const ai = priorityNames.indexOf(a.name);
+    const bi = priorityNames.indexOf(b.name);
+    return (ai >= 0 ? ai : priorityNames.length) - (bi >= 0 ? bi : priorityNames.length);
+  });
 
   for (const contract of orderedContracts) {
-    let addressCell: string;
-    if (contract.explorerURL) {
-      addressCell = `[\`${contract.address}\`](${contract.explorerURL})`;
-    } else {
-      addressCell = `\`${contract.address}\``;
-    }
+    const addressCell = contract.explorerURL
+      ? `[\`${contract.address}\`](${contract.explorerURL})`
+      : `\`${contract.address}\``;
     const protocol = release.protocol;
     const version = release.version;
     const linkCell = `[\`${protocol}-${version}\`](${Links.GitHub.SDK}/blob/main/deployments/${protocol}/${version})`;

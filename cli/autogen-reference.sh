@@ -13,20 +13,28 @@ set -euo pipefail
 #                                    Common                                    #
 # ---------------------------------------------------------------------------- #
 
+# Root directory of the docs repo (all cd's return here)
+root=$(pwd)
+
+# Install monorepo dependencies (needed for forge doc to compile)
+bun install --ignore-scripts --cwd "$root/repos/evm-monorepo"
+
 # Define the contracts directories
 airdrops=docs/reference/airdrops/contracts
 flow=docs/reference/flow/contracts
 lockup=docs/reference/lockup/contracts
 
 # Delete the current contracts documentations
-find $airdrops -type f -name "*.md" -delete
-find $flow -type f -name "*.md" -delete
-find $lockup -type f -name "*.md" -delete
+for dir in $airdrops $flow $lockup; do
+  find "$dir" -type f -name "*.md" -delete
+done
 
 set_sidebar_position() {
   local file=$1
   local position=$2
-  echo "$(echo -en '---\nsidebar_position: '$position'\n---\n'; cat $file)" > $file
+  local content
+  content=$(cat "$file")
+  printf '%s\n' "---" "sidebar_position: $position" "---" "$content" > "$file"
 }
 
 lint() {
@@ -50,8 +58,8 @@ run() {
   # This is either "airdrops", "flow" or "lockup"
   repo=$1
 
-  # cd into the repo
-  cd repos/$repo
+  # cd into the package within the monorepo
+  cd "$root/repos/evm-monorepo/$repo"
 
   # Delete the previously generated docs
   rm -rf ./docs
@@ -60,7 +68,7 @@ run() {
   forge doc
 
   # Go back to the root
-  cd ../../
+  cd "$root"
 
   # Define the contracts directory
   contracts=docs/reference/$repo/contracts
@@ -69,7 +77,7 @@ run() {
   rsync --archive \
   --exclude "README.md" \
   --exclude "SUMMARY.md" \
-  repos/$repo/docs/src/src/* \
+  repos/evm-monorepo/$repo/docs/src/src/* \
   $contracts
 
   # Move all Markdown files one level up
@@ -86,9 +94,10 @@ run() {
 
   if [ "$repo" = "airdrops" ]; then
     # Airdrops-specific abstract patterns
-    sd "\{Sablier(\w+)Base\}" "[Sablier\${1}Base]($contracts/abstracts/abstract.Sablier\${1}Base.md)" $all_md_files
+    sd "\{Sablier(\w+)Base\}" "[Sablier\${1}Base](/$contracts/abstracts/abstract.Sablier\${1}Base.md)" $all_md_files
     sd "\{SablierFactoryMerkle(\w+)\}" "[SablierFactoryMerkle\$1](/$contracts/contract.SablierFactoryMerkle\$1.md)" $all_md_files
-    sd "\{SablierMerkleLockup\}" "[SablierMerkleLockup]($contracts/abstracts/abstract.SablierMerkleLockup.md)" $all_md_files
+    sd "\{SablierMerkleLockup\}" "[SablierMerkleLockup](/$contracts/abstracts/abstract.SablierMerkleLockup.md)" $all_md_files
+    sd "\{SablierMerkleSignature\}" "[SablierMerkleSignature](/$contracts/abstracts/abstract.SablierMerkleSignature.md)" $all_md_files
 
     # The Airdrops has certain references to the Lockup
     sd "\{SablierLockup\}" "[SablierLockup](/reference/lockup/contracts/contract.SablierLockup.md)" $all_md_files
@@ -99,28 +108,28 @@ run() {
 
   if [ "$repo" = "lockup" ]; then
     # Lockup-specific abstract patterns
-    sd "\{SablierLockup(Dynamic|Linear|Tranched)\}" "[SablierLockup\$1]($contracts/abstracts/abstract.SablierLockup\$1.md)" $all_md_files
-    sd "\{SablierLockup(Dynamic|Linear|Tranched)\.(\w+)\}" "[SablierLockup\$1.\$2]($contracts/abstracts/abstract.SablierLockup\$1.md#\$2)" $all_md_files
+    sd "\{SablierLockup(Dynamic|Linear|Tranched|PriceGated)\}" "[SablierLockup\$1](/$contracts/abstracts/abstract.SablierLockup\$1.md)" $all_md_files
+    sd "\{SablierLockup(Dynamic|Linear|Tranched|PriceGated)\.(\w+)\}" "[SablierLockup\$1.\$2](/$contracts/abstracts/abstract.SablierLockup\$1.md#\$2)" $all_md_files
 
     # Fix anchor casing for createWith* functions in types/ (Docusaurus lowercases all anchors)
     types_files=$(find $contracts/types -type f -name "*.md")
-    sd "(#createWithDurationsLD)" "#createwithdurationsld" $types_files
-    sd "(#createWithDurationsLL)" "#createwithdurationsll" $types_files
-    sd "(#createWithDurationsLT)" "#createwithdurationslt" $types_files
-    sd "(#createWithTimestampsLD)" "#createwithtimestampsld" $types_files
-    sd "(#createWithTimestampsLL)" "#createwithtimestampsll" $types_files
-    sd "(#createWithTimestampsLT)" "#createwithtimestampslt" $types_files
+    for suffix in LD LL LPG LT; do
+      lower=$(echo "$suffix" | tr '[:upper:]' '[:lower:]')
+      sd "(#createWithDurations$suffix)" "#createwithdurations$lower" $types_files
+      sd "(#createWithTimestamps$suffix)" "#createwithtimestamps$lower" $types_files
+    done
 
     # Fix some invalid references in Lockup
     sd "InvalidWithdrawalInWithdrawMultiple.md" "ISablierLockup.md#invalidwithdrawalinwithdrawmultiple" $all_md_files
     sd "/$lockup/interfaces/interface.InvalidStreamInCancelMultiple.md" "/$lockup/interfaces/interface.ISablierLockup.md#invalidstreamincancelmultiple" $all_md_files
     sd "/node_modules/forge-std/src/mocks/MockERC721.sol/contract.MockERC721.md" "https://eips.ethereum.org/EIPS/eip-165" $all_md_files
     sd "/node_modules/@arbitrum/token-bridge-contracts/contracts/tokenbridge/libraries/ERC165.sol/abstract.ERC165.md#supportsinterface" "https://eips.ethereum.org/EIPS/eip-165" $all_md_files
+    sd "/node_modules/@sablier/evm-utils/docs/reference/lockup/contracts/contract.SablierComptroller.md#supportsinterface" "https://eips.ethereum.org/EIPS/eip-165" $all_md_files
   fi
 
   if [ "$repo" = "flow" ]; then
     # Flow-specific abstract patterns
-    sd "\{SablierFlowState\}" "[SablierFlowState]($contracts/abstracts/abstract.SablierFlowState.md)" $all_md_files
+    sd "\{SablierFlowState\}" "[SablierFlowState](/$contracts/abstracts/abstract.SablierFlowState.md)" $all_md_files
   fi
 
   # Link to evm-utils abstracts (plain text - copied locally)
@@ -134,7 +143,7 @@ run() {
   fi
 
   # Replace the abstract contract references with hyperlinks (global fallback)
-  sd "\{Sablier(\w+)State\}" "[Sablier\${1}State]($contracts/abstracts/abstract.Sablier\${1}State.md)" $all_md_files
+  sd "\{Sablier(\w+)State\}" "[Sablier\${1}State](/$contracts/abstracts/abstract.Sablier\${1}State.md)" $all_md_files
 
   # Replace the contract references with hyperlinks
   sd "\{Sablier(\w+)\}" "[Sablier\$1](/$contracts/contract.Sablier\$1.md)" $all_md_files
@@ -171,10 +180,12 @@ set_sidebar_position $lockup/contract.LockupNFTDescriptor.md 3
 run "airdrops"
 
 # Reorder the contracts in the sidebar
+set_sidebar_position $airdrops/contract.SablierFactoryMerkleExecute.md 2
 set_sidebar_position $airdrops/contract.SablierFactoryMerkleInstant.md 2
 set_sidebar_position $airdrops/contract.SablierFactoryMerkleLL.md 2
 set_sidebar_position $airdrops/contract.SablierFactoryMerkleLT.md 2
 set_sidebar_position $airdrops/contract.SablierFactoryMerkleVCA.md 2
+set_sidebar_position $airdrops/contract.SablierMerkleExecute.md 3
 set_sidebar_position $airdrops/contract.SablierMerkleInstant.md 3
 set_sidebar_position $airdrops/contract.SablierMerkleLL.md 3
 set_sidebar_position $airdrops/contract.SablierMerkleLT.md 3
@@ -192,35 +203,35 @@ set_sidebar_position $flow/contract.SablierFlow.md 1
 set_sidebar_position $flow/contract.FlowNFTDescriptor.md 2
 
 # ---------------------------------------------------------------------------- #
-#                                   EVM Utils                                  #
+#                                     Utils                                    #
 # ---------------------------------------------------------------------------- #
 
-# Generate the raw docs with Forge for evm-utils (temporarily)
-cd repos/evm-utils
+# Generate the raw docs with Forge for utils (temporarily)
+cd "$root/repos/evm-monorepo/utils"
 rm -rf ./docs
 forge doc
-cd ../../
+cd "$root"
 
-# Define evm-utils contracts directory (temporary)
-evmutils_temp=repos/evm-utils/docs/src/src
+# Define utils contracts directory (temporary)
+utils_temp=repos/evm-monorepo/utils/docs/src/src
 
-# Copy relevant evm-utils files to each repo
+# Copy relevant utils files to each repo
 # Airdrops: Adminable, Comptrollerable
-cp $evmutils_temp/Adminable.sol/abstract.Adminable.md $airdrops/abstracts/ 2>/dev/null || true
-cp $evmutils_temp/Comptrollerable.sol/abstract.Comptrollerable.md $airdrops/abstracts/ 2>/dev/null || true
-cp $evmutils_temp/interfaces/IAdminable.sol/interface.IAdminable.md $airdrops/interfaces/ 2>/dev/null || true
-cp $evmutils_temp/interfaces/IComptrollerable.sol/interface.IComptrollerable.md $airdrops/interfaces/ 2>/dev/null || true
+cp $utils_temp/Adminable.sol/abstract.Adminable.md $airdrops/abstracts/ 2>/dev/null || true
+cp $utils_temp/Comptrollerable.sol/abstract.Comptrollerable.md $airdrops/abstracts/ 2>/dev/null || true
+cp $utils_temp/interfaces/IAdminable.sol/interface.IAdminable.md $airdrops/interfaces/ 2>/dev/null || true
+cp $utils_temp/interfaces/IComptrollerable.sol/interface.IComptrollerable.md $airdrops/interfaces/ 2>/dev/null || true
 
 # Lockup & Flow: Batch, Comptrollerable, NoDelegateCall
 for repo_dir in $lockup $flow; do
-  cp $evmutils_temp/Batch.sol/abstract.Batch.md $repo_dir/abstracts/ 2>/dev/null || true
-  cp $evmutils_temp/Comptrollerable.sol/abstract.Comptrollerable.md $repo_dir/abstracts/ 2>/dev/null || true
-  cp $evmutils_temp/NoDelegateCall.sol/abstract.NoDelegateCall.md $repo_dir/abstracts/ 2>/dev/null || true
-  cp $evmutils_temp/interfaces/IBatch.sol/interface.IBatch.md $repo_dir/interfaces/ 2>/dev/null || true
-  cp $evmutils_temp/interfaces/IComptrollerable.sol/interface.IComptrollerable.md $repo_dir/interfaces/ 2>/dev/null || true
+  cp $utils_temp/Batch.sol/abstract.Batch.md $repo_dir/abstracts/ 2>/dev/null || true
+  cp $utils_temp/Comptrollerable.sol/abstract.Comptrollerable.md $repo_dir/abstracts/ 2>/dev/null || true
+  cp $utils_temp/NoDelegateCall.sol/abstract.NoDelegateCall.md $repo_dir/abstracts/ 2>/dev/null || true
+  cp $utils_temp/interfaces/IBatch.sol/interface.IBatch.md $repo_dir/interfaces/ 2>/dev/null || true
+  cp $utils_temp/interfaces/IComptrollerable.sol/interface.IComptrollerable.md $repo_dir/interfaces/ 2>/dev/null || true
 done
 
-# Fix evm-utils files: self-referencing links, interface links, and convert curly braces
+# Fix utils files: self-referencing links, interface links, and convert curly braces
 # Airdrops-specific (IAdminable)
 sd "\(/src/interfaces/IAdminable\.sol/interface\.IAdminable\.md#" "(#" $airdrops/interfaces/interface.IAdminable.md
 sd "\[IAdminable\]\(/src/interfaces/IAdminable\.sol/interface\.IAdminable\.md\)" "[IAdminable](/$airdrops/interfaces/interface.IAdminable.md)" $airdrops/abstracts/abstract.Adminable.md
@@ -228,7 +239,7 @@ sd "\{IAdminable\}" "[IAdminable](/$airdrops/interfaces/interface.IAdminable.md)
 
 # Fix IComptrollerable for all three repos
 for repo in airdrops lockup flow; do
-  repo_dir=$(eval echo \$$repo)
+  repo_dir=${!repo}
   sd "\(/src/interfaces/IComptrollerable\.sol/interface\.IComptrollerable\.md#" "(#" $repo_dir/interfaces/interface.IComptrollerable.md
   sd "\[IComptrollerable\]\(/src/interfaces/IComptrollerable\.sol/interface\.IComptrollerable\.md\)" "[IComptrollerable](/$repo_dir/interfaces/interface.IComptrollerable.md)" $repo_dir/abstracts/abstract.Comptrollerable.md
   sd "\{IComptrollerable\}" "[IComptrollerable](/$repo_dir/interfaces/interface.IComptrollerable.md)" $repo_dir/abstracts/abstract.Comptrollerable.md
@@ -236,15 +247,15 @@ done
 
 # Fix IBatch and NoDelegateCall for lockup and flow
 for repo in lockup flow; do
-  repo_dir=$(eval echo \$$repo)
+  repo_dir=${!repo}
   sd "\(/src/interfaces/IBatch\.sol/interface\.IBatch\.md#" "(#" $repo_dir/interfaces/interface.IBatch.md
   sd "\[IBatch\]\(/src/interfaces/IBatch\.sol/interface\.IBatch\.md\)" "[IBatch](/$repo_dir/interfaces/interface.IBatch.md)" $repo_dir/abstracts/abstract.Batch.md
   sd "\{IBatch\}" "[IBatch](/$repo_dir/interfaces/interface.IBatch.md)" $repo_dir/abstracts/abstract.Batch.md
   sd "\[INoDelegateCall\]\(/src/interfaces/INoDelegateCall\.sol/interface\.INoDelegateCall\.md\)" "INoDelegateCall" $repo_dir/abstracts/abstract.NoDelegateCall.md
 done
 
-# Clean up the evm-utils temp docs (we don't need to keep them)
-rm -rf repos/evm-utils/docs
+# Clean up the utils temp docs (we don't need to keep them)
+rm -rf repos/evm-monorepo/utils/docs
 
 # ---------------------------------------------------------------------------- #
 #                                    Linting                                   #

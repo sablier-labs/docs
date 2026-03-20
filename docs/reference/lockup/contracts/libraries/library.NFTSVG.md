@@ -1,13 +1,13 @@
 # NFTSVG
 
-[Git Source](https://github.com/sablier-labs/lockup/blob/58eaac45c20c57a93b73d887c714e68f061ec3e6/src/libraries/NFTSVG.sol)
+[Git Source](https://github.com/sablier-labs/evm-monorepo/blob/003a71932c0e26e767a02c21205a077469406ac8/src/libraries/NFTSVG.sol)
 
 ## State Variables
 
 ### CARD_MARGIN
 
 ```solidity
-uint256 internal constant CARD_MARGIN = 16;
+uint256 internal constant CARD_MARGIN = 16
 ```
 
 ## Functions

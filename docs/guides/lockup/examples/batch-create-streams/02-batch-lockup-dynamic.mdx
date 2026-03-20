@@ -23,20 +23,20 @@ This guide assumes that you have already gone through the [Protocol Concepts](/c
 Declare the Solidity version used to compile the contract:
 
 <CodeBlock language="solidity" metastring={`reference title=""`}>
-  {`https://github.com/sablier-labs/evm-examples/blob/main/lockup/BatchLDStreamCreator.sol#L1-L2`}
+  {`https://github.com/sablier-labs/evm-monorepo/blob/main/misc/examples/lockup/BatchLDStreamCreator.sol#L1-L2`}
 </CodeBlock>
 
 Now, import the relevant symbols from `@sablier/lockup`:
 
 <CodeBlock language="solidity" metastring={`reference title=""`}>
-  {`https://github.com/sablier-labs/evm-examples/blob/main/lockup/BatchLDStreamCreator.sol#L4-L9`}
+  {`https://github.com/sablier-labs/evm-monorepo/blob/main/misc/examples/lockup/BatchLDStreamCreator.sol#L4-L9`}
 </CodeBlock>
 
 Create a contract called `BatchLDStreamCreator`, and declare a constant `DAI` of type `IERC20`, a constant `LOCKUP` of
 type `ISablierLockup`, and a constant `BATCH_LOCKUP` of type `ISablierBatchLockup`:
 
 <CodeBlock language="solidity" metastring={`reference title=""`}>
-  {`https://github.com/sablier-labs/evm-examples/blob/main/lockup/BatchLDStreamCreator.sol#L12-L16`}
+  {`https://github.com/sablier-labs/evm-monorepo/blob/main/misc/examples/lockup/BatchLDStreamCreator.sol#L12-L16`}
 </CodeBlock>
 
 <HardcodedDemonstration protocol="Lockup" />
@@ -59,19 +59,19 @@ Given that we declared a `batchSize` of two, we need to define two
 structs:
 
 <CodeBlock language="solidity" metastring={`reference title=""`}>
-  {`https://github.com/sablier-labs/evm-examples/blob/main/lockup/BatchLDStreamCreator.sol#L33-L54`}
+  {`https://github.com/sablier-labs/evm-monorepo/blob/main/misc/examples/lockup/BatchLDStreamCreator.sol#L33-L53`}
 </CodeBlock>
 
 To add some variety, we will change the parameters of the second stream:
 
 <CodeBlock language="solidity" metastring={`reference title=""`}>
-  {`https://github.com/sablier-labs/evm-examples/blob/main/lockup/BatchLDStreamCreator.sol#L57-L78`}
+  {`https://github.com/sablier-labs/evm-monorepo/blob/main/misc/examples/lockup/BatchLDStreamCreator.sol#L56-L76`}
 </CodeBlock>
 
 Once both structs are declared, the batch array has to be filled:
 
 <CodeBlock language="solidity" metastring={`reference title=""`}>
-  {`https://github.com/sablier-labs/evm-examples/blob/main/lockup/BatchLDStreamCreator.sol#L81-L83`}
+  {`https://github.com/sablier-labs/evm-monorepo/blob/main/misc/examples/lockup/BatchLDStreamCreator.sol#L79-L81`}
 </CodeBlock>
 
 ## Invoke the batch create function
@@ -80,14 +80,14 @@ With all parameters set, we can now call the `createWithTimestampsLD` function, 
 streams to the array:
 
 <CodeBlock language="solidity" metastring={`reference title=""`}>
-  {`https://github.com/sablier-labs/evm-examples/blob/main/lockup/BatchLDStreamCreator.sol#L85`}
+  {`https://github.com/sablier-labs/evm-monorepo/blob/main/misc/examples/lockup/BatchLDStreamCreator.sol#L83`}
 </CodeBlock>
 
 ## Full code
 
 Below you can see the full code. You can also access the code on GitHub through
-[this link](https://github.com/sablier-labs/evm-examples/blob/main/lockup/BatchLDStreamCreator.sol).
+[this link](https://github.com/sablier-labs/evm-monorepo/blob/main/misc/examples/lockup/BatchLDStreamCreator.sol).
 
 <CodeBlock language="solidity" showLineNumbers metastring={`reference title="Batch Lockup Dynamic stream creator"`}>
-  {`https://github.com/sablier-labs/evm-examples/blob/main/lockup/BatchLDStreamCreator.sol`}
+  {`https://github.com/sablier-labs/evm-monorepo/blob/main/misc/examples/lockup/BatchLDStreamCreator.sol`}
 </CodeBlock>

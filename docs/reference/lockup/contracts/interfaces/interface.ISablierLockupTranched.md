@@ -1,8 +1,10 @@
 # ISablierLockupTranched
 
-[Git Source](https://github.com/sablier-labs/lockup/blob/58eaac45c20c57a93b73d887c714e68f061ec3e6/src/interfaces/ISablierLockupTranched.sol)
+[Git Source](https://github.com/sablier-labs/evm-monorepo/blob/003a71932c0e26e767a02c21205a077469406ac8/src/interfaces/ISablierLockupTranched.sol)
 
 **Inherits:** [ISablierLockupState](/docs/reference/lockup/contracts/interfaces/interface.ISablierLockupState.md)
+
+**Title:** ISablierLockupTranched
 
 Creates Lockup streams with tranched distribution model.
 
@@ -16,7 +18,9 @@ all specified time durations. The tranche timestamps are derived from these dura
 
 Emits a {Transfer}, {CreateLockupTrancheStream} and {MetadataUpdate} event. Requirements:
 
-- All requirements in {createWithTimestampsLT} must be met for the calculated parameters.
+- All requirements in
+  [createWithTimestampsLT](/docs/reference/lockup/contracts/interfaces/interface.ISablierLockupTranched.md#createwithtimestampslt)
+  must be met for the calculated parameters.
 
 ```solidity
 function createWithDurationsLT(
@@ -94,7 +98,9 @@ Emitted when an LT stream is created.
 
 ```solidity
 event CreateLockupTranchedStream(
-    uint256 indexed streamId, Lockup.CreateEventCommon commonParams, LockupTranched.Tranche[] tranches
+    uint256 indexed streamId,
+    Lockup.CreateEventCommon commonParams,
+    LockupTranched.Tranche[] tranches
 );
 ```
 

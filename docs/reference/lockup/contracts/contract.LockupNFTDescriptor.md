@@ -4,9 +4,11 @@ sidebar_position: 3
 
 # LockupNFTDescriptor
 
-[Git Source](https://github.com/sablier-labs/lockup/blob/58eaac45c20c57a93b73d887c714e68f061ec3e6/src/LockupNFTDescriptor.sol)
+[Git Source](https://github.com/sablier-labs/evm-monorepo/blob/003a71932c0e26e767a02c21205a077469406ac8/src/LockupNFTDescriptor.sol)
 
 **Inherits:** [ILockupNFTDescriptor](/docs/reference/lockup/contracts/interfaces/interface.ILockupNFTDescriptor.md)
+
+**Title:** LockupNFTDescriptor
 
 See the documentation in
 [ILockupNFTDescriptor](/docs/reference/lockup/contracts/interfaces/interface.ILockupNFTDescriptor.md).
@@ -17,7 +19,7 @@ See the documentation in
 
 Produces the URI describing a particular stream NFT.
 
-_This is a data URI with the JSON contents directly inlined._
+This is a data URI with the JSON contents directly inlined.
 
 ```solidity
 function tokenURI(IERC721Metadata lockup, uint256 streamId) external view override returns (string memory uri);
@@ -77,7 +79,13 @@ function calculateDurationInDays(uint256 startTime, uint256 endTime) internal pu
 Calculates how much of the deposited amount has been streamed so far, as a percentage with 4 implied decimals.
 
 ```solidity
-function calculateStreamedPercentage(uint128 streamedAmount, uint128 depositedAmount) internal pure returns (uint256);
+function calculateStreamedPercentage(
+    uint128 streamedAmount,
+    uint128 depositedAmount
+)
+    internal
+    pure
+    returns (uint256);
 ```
 
 ### generateAccentColor
@@ -97,7 +105,7 @@ Generates an array of JSON objects that represent the NFT's attributes:
 - Sender address
 - Status
 
-_These attributes are useful for filtering and sorting the NFTs._
+These attributes are useful for filtering and sorting the NFTs.
 
 ```solidity
 function generateAttributes(
@@ -127,35 +135,14 @@ function generateDescription(
     returns (string memory);
 ```
 
-### isAllowedCharacter
-
-Checks whether the provided string contains only alphanumeric characters, spaces, and dashes.
-
-_Note that this returns true for empty strings._
-
-```solidity
-function isAllowedCharacter(string memory str) internal pure returns (bool);
-```
-
 ### safeTokenDecimals
 
 Retrieves the token's decimals safely, defaulting to "0" if an error occurs.
 
-_Performs a low-level call to handle tokens in which the decimals are not implemented._
+Performs a low-level call to handle tokens in which the decimals are not implemented.
 
 ```solidity
 function safeTokenDecimals(address token) internal view returns (uint8);
-```
-
-### safeTokenSymbol
-
-Retrieves the token's symbol safely, defaulting to a hard-coded value if an error occurs.
-
-_Performs a low-level call to handle tokens in which the symbol is not implemented or it is a bytes32 instead of a
-string._
-
-```solidity
-function safeTokenSymbol(address token) internal view returns (string memory);
 ```
 
 ### stringifyFractionalAmount
@@ -198,7 +185,7 @@ function stringifyStatus(Lockup.Status status) internal pure returns (string mem
 
 ### TokenURIVars
 
-_Needed to avoid Stack Too Deep._
+Needed to avoid Stack Too Deep.
 
 ```solidity
 struct TokenURIVars {

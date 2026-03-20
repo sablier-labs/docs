@@ -1,6 +1,8 @@
 # SignatureHash
 
-[Git Source](https://github.com/sablier-labs/airdrops/blob/077c6b9766ef7693ba9e82a9e001dc0097709c01/src/libraries/SignatureHash.sol)
+[Git Source](https://github.com/sablier-labs/evm-monorepo/blob/003a71932c0e26e767a02c21205a077469406ac8/src/libraries/SignatureHash.sol)
+
+**Title:** SignatureHash
 
 Library containing the hashes for the EIP-712 and EIP-1271 signatures.
 
@@ -8,11 +10,11 @@ Library containing the hashes for the EIP-712 and EIP-1271 signatures.
 
 ### CLAIM_TYPEHASH
 
-_The struct type hash for computing the domain separator for EIP-712 and EIP-1271 signatures._
+The struct type hash for the claim signature.
 
 ```solidity
 bytes32 public constant CLAIM_TYPEHASH =
-    keccak256("Claim(uint256 index,address recipient,address to,uint128 amount,uint40 validFrom)");
+    keccak256("Claim(uint256 index,address recipient,address to,uint128 amount,uint40 validFrom)")
 ```
 
 ### DOMAIN_TYPEHASH
@@ -21,7 +23,15 @@ The domain type hash for computing the domain separator.
 
 ```solidity
 bytes32 public constant DOMAIN_TYPEHASH =
-    keccak256("EIP712Domain(string name,uint256 chainId,address verifyingContract)");
+    keccak256("EIP712Domain(string name,uint256 chainId,address verifyingContract)")
+```
+
+### IDENTITY_TYPEHASH
+
+The struct type hash for the attestation signature.
+
+```solidity
+bytes32 public constant IDENTITY_TYPEHASH = keccak256("Identity(address recipient,uint40 expireAt)")
 ```
 
 ### PROTOCOL_NAME
@@ -29,5 +39,5 @@ bytes32 public constant DOMAIN_TYPEHASH =
 The protocol name for the EIP-712 and EIP-1271 signatures.
 
 ```solidity
-bytes32 public constant PROTOCOL_NAME = keccak256("Sablier Airdrops Protocol");
+bytes32 public constant PROTOCOL_NAME = keccak256("Sablier Airdrops Protocol")
 ```

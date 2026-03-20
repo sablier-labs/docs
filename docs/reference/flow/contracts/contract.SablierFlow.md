@@ -4,13 +4,15 @@ sidebar_position: 1
 
 # SablierFlow
 
-[Git Source](https://github.com/sablier-labs/flow/blob/a4143de45478f508bca8305fec2bd81b7ad25fe9/src/SablierFlow.sol)
+[Git Source](https://github.com/sablier-labs/evm-monorepo/blob/003a71932c0e26e767a02c21205a077469406ac8/src/SablierFlow.sol)
 
 **Inherits:** [Batch](/docs/reference/flow/contracts/abstracts/abstract.Batch.md),
 [Comptrollerable](/docs/reference/flow/contracts/abstracts/abstract.Comptrollerable.md), ERC721,
 [ISablierFlow](/docs/reference/flow/contracts/interfaces/interface.ISablierFlow.md),
 [NoDelegateCall](/docs/reference/flow/contracts/abstracts/abstract.NoDelegateCall.md),
 [SablierFlowState](/docs/reference/flow/contracts/abstracts/abstract.SablierFlowState.md)
+
+**Title:** SablierFlow
 
 See the documentation in [ISablierFlow](/docs/reference/flow/contracts/interfaces/interface.ISablierFlow.md).
 
@@ -40,14 +42,14 @@ constructor(
 Emits an ERC-4906 event to trigger an update of the NFT metadata.
 
 ```solidity
-modifier updateMetadata(uint256 streamId);
+modifier updateMetadata(uint256 streamId) ;
 ```
 
 ### calculateMinFeeWei
 
 Calculates the minimum fee in wei required to withdraw from the given stream ID.
 
-_Reverts if `streamId` references a null stream._
+Reverts if `streamId` references a null stream.
 
 ```solidity
 function calculateMinFeeWei(uint256 streamId) external view override notNull(streamId) returns (uint256 minFeeWei);
@@ -63,7 +65,7 @@ function calculateMinFeeWei(uint256 streamId) external view override notNull(str
 
 Returns the amount of debt covered by the stream balance, denoted in token's decimals.
 
-_Reverts if `streamId` references a null stream._
+Reverts if `streamId` references a null stream.
 
 ```solidity
 function coveredDebtOf(uint256 streamId) external view override notNull(streamId) returns (uint128 coveredDebt);
@@ -105,7 +107,7 @@ function depletionTimeOf(uint256 streamId)
 
 Retrieves the stream's recipient.
 
-_Reverts if `streamId` references a null stream._
+Reverts if `streamId` references a null stream.
 
 ```solidity
 function getRecipient(uint256 streamId) external view override notNull(streamId) returns (address recipient);
@@ -122,7 +124,7 @@ function getRecipient(uint256 streamId) external view override notNull(streamId)
 Returns the amount of debt accrued since the snapshot time until now, denoted as a fixed-point number where 1e18 is 1
 token. If the stream is pending, it returns zero.
 
-_Reverts if `streamId` references a null stream._
+Reverts if `streamId` references a null stream.
 
 ```solidity
 function ongoingDebtScaledOf(uint256 streamId)
@@ -143,7 +145,7 @@ function ongoingDebtScaledOf(uint256 streamId)
 
 Returns the amount that the sender can be refunded from the stream, denoted in token's decimals.
 
-_Reverts if `streamId` references a null stream._
+Reverts if `streamId` references a null stream.
 
 ```solidity
 function refundableAmountOf(uint256 streamId)
@@ -164,8 +166,8 @@ function refundableAmountOf(uint256 streamId)
 
 Returns the stream's status.
 
-_Reverts if `streamId` references a null stream. Integrators should exercise caution when depending on the return value
-of this function as streams can be paused and resumed at any moment._
+Reverts if `streamId` references a null stream. Integrators should exercise caution when depending on the return value
+of this function as streams can be paused and resumed at any moment.
 
 ```solidity
 function statusOf(uint256 streamId) external view override notNull(streamId) returns (Flow.Status status);
@@ -181,7 +183,7 @@ function statusOf(uint256 streamId) external view override notNull(streamId) ret
 
 Returns the total amount owed by the sender to the recipient, denoted in token's decimals.
 
-_Reverts if `streamId` references a null stream._
+Reverts if `streamId` references a null stream.
 
 ```solidity
 function totalDebtOf(uint256 streamId) external view override notNull(streamId) returns (uint256 totalDebt);
@@ -197,10 +199,15 @@ function totalDebtOf(uint256 streamId) external view override notNull(streamId) 
 
 Returns the amount of debt not covered by the stream balance, denoted in token's decimals.
 
-_Reverts if `streamId` references a null stream._
+Reverts if `streamId` references a null stream.
 
 ```solidity
-function uncoveredDebtOf(uint256 streamId) external view override notNull(streamId) returns (uint256 uncoveredDebt);
+function uncoveredDebtOf(uint256 streamId)
+    external
+    view
+    override
+    notNull(streamId)
+    returns (uint256 uncoveredDebt);
 ```
 
 **Parameters**
@@ -214,7 +221,7 @@ function uncoveredDebtOf(uint256 streamId) external view override notNull(stream
 Calculates the amount that the recipient can withdraw from the stream, denoted in token decimals. This is an alias for
 `coveredDebtOf`.
 
-_Reverts if `streamId` references a null stream._
+Reverts if `streamId` references a null stream.
 
 ```solidity
 function withdrawableAmountOf(uint256 streamId)
@@ -464,12 +471,11 @@ function pause(uint256 streamId)
 
 Recover the surplus amount of tokens.
 
-Emits a {Recover} event. Notes:
+Notes:
 
 - The surplus amount is defined as the difference between the total balance of the contract for the provided ERC-20
   token and the sum of balances of all streams created using the same ERC-20 token. Requirements:
 - `msg.sender` must be the comptroller contract.
-- The surplus amount must be greater than zero.
 
 ```solidity
 function recover(IERC20 token, address to) external override onlyComptroller;
@@ -652,7 +658,7 @@ Sets the native token address. Once set, it cannot be changed.
 For more information, see the documentation for {nativeToken}. Emits a {SetNativeToken} event. Requirements:
 
 - `msg.sender` must be the comptroller contract.
-- `newNativeToken` must not be zero address.
+- `newNativeToken` must not be the zero address.
 - The native token must not be already set.
 
 ```solidity
@@ -686,7 +692,7 @@ function setNFTDescriptor(IFlowNFTDescriptor newNFTDescriptor) external override
 
 ### supportsInterface
 
-_See {IERC165-supportsInterface}._
+See {IERC165-supportsInterface}.
 
 ```solidity
 function supportsInterface(bytes4 interfaceId) public view override(IERC165, ERC721) returns (bool);
@@ -694,11 +700,31 @@ function supportsInterface(bytes4 interfaceId) public view override(IERC165, ERC
 
 ### tokenURI
 
-_See {IERC721Metadata-tokenURI}._
+See {IERC721Metadata-tokenURI}.
 
 ```solidity
 function tokenURI(uint256 streamId) public view override(IERC721Metadata, ERC721) returns (string memory uri);
 ```
+
+### transferFromPayable
+
+Wrapper for {IERC721.transferFrom} with the `payable` specifier so that it can be called in conjunction with other
+functions using {IBatch.batch}. Requirements:
+
+- Refer to the requirements of `transferFrom` in:
+  https://github.com/OpenZeppelin/openzeppelin-contracts/blob/e4f70216d759d8e6a64144a9e1f7bbeed78e7079/contracts/token/ERC721/IERC721.sol#L75-L91.
+
+```solidity
+function transferFromPayable(address from, address to, uint256 streamId) external payable;
+```
+
+**Parameters**
+
+| Name       | Type      | Description                                    |
+| ---------- | --------- | ---------------------------------------------- |
+| `from`     | `address` | The owner of the stream ID.                    |
+| `to`       | `address` | The address of the new owner of the stream ID. |
+| `streamId` | `uint256` | The ID of the stream NFT to transfer.          |
 
 ### transferTokens
 
@@ -826,10 +852,10 @@ function withdrawMax(
 
 ### \_update
 
-Overrides the {ERC-721.\_update} function to check that the stream is transferable.
+Overrides the {ERC721.\_update} function to check that the stream is transferable.
 
-_The transferable flag is ignored if the current owner is 0, as the update in this case is a mint and is allowed.
-Transfers to the zero address are not allowed, preventing accidental burns._
+The transferable flag is ignored if the current owner is 0, as the update in this case is a mint and is allowed.
+Transfers to the zero address are not allowed, preventing accidental burns.
 
 ```solidity
 function _update(
@@ -859,7 +885,7 @@ function _update(
 
 ### \_coveredDebtOf
 
-_Calculates the amount of covered debt by the stream balance._
+Calculates the amount of covered debt by the stream balance.
 
 ```solidity
 function _coveredDebtOf(uint256 streamId) private view returns (uint128);
@@ -882,8 +908,8 @@ function _isCallerStreamRecipientOrApproved(uint256 streamId, address recipient)
 
 ### \_ongoingDebtScaledOf
 
-_Calculates the ongoing debt, as a 18-decimals fixed point number, accrued since last snapshot. Return 0 if the stream
-is paused or `block.timestamp` is less than or equal to snapshot time._
+Calculates the ongoing debt, as a 18-decimals fixed point number, accrued since last snapshot. Return 0 if the stream is
+paused or `block.timestamp` is less than or equal to snapshot time.
 
 ```solidity
 function _ongoingDebtScaledOf(uint256 streamId) private view returns (uint256);
@@ -891,7 +917,7 @@ function _ongoingDebtScaledOf(uint256 streamId) private view returns (uint256);
 
 ### \_refundableAmountOf
 
-_Calculates the refundable amount._
+Calculates the refundable amount.
 
 ```solidity
 function _refundableAmountOf(uint256 streamId) private view returns (uint128);
@@ -899,8 +925,8 @@ function _refundableAmountOf(uint256 streamId) private view returns (uint128);
 
 ### \_totalDebtOf
 
-_The total debt is the sum of the snapshot debt and the ongoing debt descaled to token's decimal. This value is
-independent of the stream's balance._
+The total debt is the sum of the snapshot debt and the ongoing debt descaled to token's decimal. This value is
+independent of the stream's balance.
 
 ```solidity
 function _totalDebtOf(uint256 streamId) private view returns (uint256);
@@ -908,7 +934,7 @@ function _totalDebtOf(uint256 streamId) private view returns (uint256);
 
 ### \_uncoveredDebtOf
 
-_Calculates the uncovered debt._
+Calculates the uncovered debt.
 
 ```solidity
 function _uncoveredDebtOf(uint256 streamId) private view returns (uint256);
@@ -916,7 +942,7 @@ function _uncoveredDebtOf(uint256 streamId) private view returns (uint256);
 
 ### \_verifyStreamSenderRecipient
 
-_Checks whether the provided addresses matches stream's sender and recipient._
+Checks whether the provided addresses matches stream's sender and recipient.
 
 ```solidity
 function _verifyStreamSenderRecipient(uint256 streamId, address sender, address recipient) private view;
@@ -924,7 +950,7 @@ function _verifyStreamSenderRecipient(uint256 streamId, address sender, address 
 
 ### \_adjustRatePerSecond
 
-_See the documentation for the user-facing functions that call this private function._
+See the documentation for the user-facing functions that call this private function.
 
 ```solidity
 function _adjustRatePerSecond(uint256 streamId, UD21x18 newRatePerSecond) private;
@@ -932,7 +958,7 @@ function _adjustRatePerSecond(uint256 streamId, UD21x18 newRatePerSecond) privat
 
 ### \_create
 
-_See the documentation for the user-facing functions that call this private function._
+See the documentation for the user-facing functions that call this private function.
 
 ```solidity
 function _create(
@@ -949,7 +975,7 @@ function _create(
 
 ### \_deposit
 
-_See the documentation for the user-facing functions that call this private function._
+See the documentation for the user-facing functions that call this private function.
 
 ```solidity
 function _deposit(uint256 streamId, uint128 amount) private;
@@ -957,7 +983,7 @@ function _deposit(uint256 streamId, uint128 amount) private;
 
 ### \_pause
 
-_See the documentation for the user-facing functions that call this private function._
+See the documentation for the user-facing functions that call this private function.
 
 ```solidity
 function _pause(uint256 streamId) private;
@@ -965,7 +991,7 @@ function _pause(uint256 streamId) private;
 
 ### \_refund
 
-_See the documentation for the user-facing functions that call this private function._
+See the documentation for the user-facing functions that call this private function.
 
 ```solidity
 function _refund(uint256 streamId, uint128 amount) private;
@@ -973,7 +999,7 @@ function _refund(uint256 streamId, uint128 amount) private;
 
 ### \_restart
 
-_See the documentation for the user-facing functions that call this private function._
+See the documentation for the user-facing functions that call this private function.
 
 ```solidity
 function _restart(uint256 streamId, UD21x18 ratePerSecond) private;
@@ -981,7 +1007,7 @@ function _restart(uint256 streamId, UD21x18 ratePerSecond) private;
 
 ### \_void
 
-_See the documentation for the user-facing functions that call this private function._
+See the documentation for the user-facing functions that call this private function.
 
 ```solidity
 function _void(uint256 streamId) private;
@@ -989,7 +1015,7 @@ function _void(uint256 streamId) private;
 
 ### \_withdraw
 
-_See the documentation for the user-facing functions that call this private function._
+See the documentation for the user-facing functions that call this private function.
 
 ```solidity
 function _withdraw(uint256 streamId, address to, uint128 amount) private;

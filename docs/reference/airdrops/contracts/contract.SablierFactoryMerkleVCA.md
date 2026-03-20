@@ -4,11 +4,13 @@ sidebar_position: 2
 
 # SablierFactoryMerkleVCA
 
-[Git Source](https://github.com/sablier-labs/airdrops/blob/077c6b9766ef7693ba9e82a9e001dc0097709c01/src/SablierFactoryMerkleVCA.sol)
+[Git Source](https://github.com/sablier-labs/evm-monorepo/blob/003a71932c0e26e767a02c21205a077469406ac8/src/SablierFactoryMerkleVCA.sol)
 
 **Inherits:**
 [ISablierFactoryMerkleVCA](/docs/reference/airdrops/contracts/interfaces/interface.ISablierFactoryMerkleVCA.md),
 [SablierFactoryMerkleBase](/docs/reference/airdrops/contracts/abstracts/abstract.SablierFactoryMerkleBase.md)
+
+**Title:** SablierFactoryMerkleVCA
 
 See the documentation in
 [ISablierFactoryMerkleVCA](/docs/reference/airdrops/contracts/interfaces/interface.ISablierFactoryMerkleVCA.md).
@@ -32,12 +34,12 @@ constructor(address initialComptroller) SablierFactoryMerkleBase(initialComptrol
 Computes the deterministic address where
 [SablierMerkleVCA](/docs/reference/airdrops/contracts/contract.SablierMerkleVCA.md) campaign will be deployed.
 
-_Reverts if the requirements from {createMerkleVCA} are not met._
+Reverts if the requirements from {createMerkleVCA} are not met.
 
 ```solidity
 function computeMerkleVCA(
     address campaignCreator,
-    MerkleVCA.ConstructorParams calldata params
+    MerkleVCA.ConstructorParams calldata campaignParams
 )
     external
     view
@@ -55,17 +57,18 @@ Emits a {CreateMerkleVCA} event. Notes:
 - The campaign's fee will be set to the min USD fee unless a custom fee is set for `msg.sender`.
 - Users interested into funding the campaign before its deployment must meet the below requirements, otherwise the
   campaign deployment will revert. Requirements:
-- `params.token` must not be the forbidden native token.
-- `params.expiration` must be greater than 0.
-- `params.expiration` must be at least 1 week beyond the end time to ensure loyal recipients have enough time to claim.
-- `params.vestingEndTime` must be greater than `params.vestingStartTime`.
-- Both `params.vestingStartTime` and `params.vestingEndTime` must be greater than 0.
-- `params.unlockPercentage` must not be greater than 1e18, equivalent to 100%.
+- `campaignParams.token` must not be the forbidden native token.
+- `campaignParams.aggregateAmount` must be greater than 0.
+- Both `campaignParams.vestingStartTime` and `campaignParams.vestingEndTime` must be greater than 0.
+- `campaignParams.vestingEndTime` must be greater than `campaignParams.vestingStartTime`.
+- `campaignParams.expiration` must be greater than 0.
+- `campaignParams.expiration` must be at least 1 week beyond the end time to ensure loyal recipients have enough time to
+  claim.
+- `campaignParams.unlockPercentage` must not be greater than 1e18, equivalent to 100%.
 
 ```solidity
 function createMerkleVCA(
-    MerkleVCA.ConstructorParams calldata params,
-    uint256 aggregateAmount,
+    MerkleVCA.ConstructorParams calldata campaignParams,
     uint256 recipientCount
 )
     external
@@ -74,11 +77,10 @@ function createMerkleVCA(
 
 **Parameters**
 
-| Name              | Type                          | Description                                                                                                                                                   |
-| ----------------- | ----------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `params`          | `MerkleVCA.ConstructorParams` | Struct encapsulating the [SablierMerkleVCA](/docs/reference/airdrops/contracts/contract.SablierMerkleVCA.md) parameters, which are documented in {DataTypes}. |
-| `aggregateAmount` | `uint256`                     | The total amount of ERC-20 tokens to be distributed to all recipients.                                                                                        |
-| `recipientCount`  | `uint256`                     | The total number of recipient addresses eligible for the airdrop.                                                                                             |
+| Name             | Type                          | Description                                                                                                              |
+| ---------------- | ----------------------------- | ------------------------------------------------------------------------------------------------------------------------ |
+| `campaignParams` | `MerkleVCA.ConstructorParams` | Struct encapsulating the [SablierMerkleVCA](/docs/reference/airdrops/contracts/contract.SablierMerkleVCA.md) parameters. |
+| `recipientCount` | `uint256`                     | The total number of recipient addresses eligible for the airdrop.                                                        |
 
 **Returns**
 
@@ -88,15 +90,16 @@ function createMerkleVCA(
 
 ### \_checkDeploymentParams
 
-_Validate the deployment parameters._
+Validate the deployment parameters.
 
 ```solidity
 function _checkDeploymentParams(
-    address token,
-    uint40 vestingStartTime,
-    uint40 vestingEndTime,
+    uint256 aggregateAmount,
     uint40 expiration,
-    UD60x18 unlockPercentage
+    address token,
+    UD60x18 unlockPercentage,
+    uint40 vestingEndTime,
+    uint40 vestingStartTime
 )
     private
     view;

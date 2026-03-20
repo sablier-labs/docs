@@ -24,7 +24,7 @@ Creates multiple streams in a single transaction.
 
 ### Libraries
 
-> [**Helpers Library**](./lockup/contracts/libraries/library.Helpers)
+> [**LockupHelpers Library**](./lockup/contracts/libraries/library.LockupHelpers)
 
 Library to validate input parameters when creating lockup streams.
 

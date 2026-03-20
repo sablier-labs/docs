@@ -1,6 +1,8 @@
 # LockupMath
 
-[Git Source](https://github.com/sablier-labs/lockup/blob/58eaac45c20c57a93b73d887c714e68f061ec3e6/src/libraries/LockupMath.sol)
+[Git Source](https://github.com/sablier-labs/evm-monorepo/blob/003a71932c0e26e767a02c21205a077469406ac8/src/libraries/LockupMath.sol)
+
+**Title:** LockupMath
 
 Provides functions for calculating the streamed amounts in Lockup streams. Note that 'streamed' is synonymous with
 'vested'.
@@ -53,31 +55,62 @@ Calculates the streamed amount of LL streams.
 The LL streaming model uses the following distribution function:
 
 $$
-( x * sa + s, block timestamp < cliff time
-f(x) = (
-( x * sa + s + c, block timestamp => cliff time
+f(x) = \begin{cases} s, & \text{block timestamp} < \text{cliff time} \\ x \cdot sa + s + c, & \text{block timestamp} \geq \text{cliff time} \end{cases}
 $$
 
 Where:
 
-- $x$ is the elapsed time in the streamable range divided by the total streamable range.
 - $sa$ is the streamable amount, i.e. deposited amount minus unlock amounts' sum.
 - $s$ is the start unlock amount.
-- $c$ is the cliff unlock amount. Assumptions:
+- $c$ is the cliff unlock amount.
+- $x$ is the elapsed time percentage with discrete unlocks:
+  $$
+  x = \frac{\lfloor \text{time elapsed} / \text{granularity} \rfloor \times \text{granularity}}{\text{streamable time}}
+  $$
+  The floor division in the numerator creates discrete unlock steps at every granularity seconds. Assumptions:
 
 1. The sum of the unlock amounts (start and cliff) does not overflow uint128 and is less than or equal to the deposit
    amount.
 2. The start time is before the end time.
 3. If the cliff time is not zero, it is after the start time and before the end time.
+4. Granularity is less than or equal to the streamable range.
+5. Granularity is not zero.
 
 ```solidity
 function calculateStreamedAmountLL(
     uint40 cliffTime,
     uint128 depositedAmount,
     uint40 endTime,
+    uint40 granularity,
     uint40 startTime,
     LockupLinear.UnlockAmounts calldata unlockAmounts,
     uint128 withdrawnAmount
+)
+    external
+    view
+    returns (uint128);
+```
+
+### calculateStreamedAmountLPG
+
+Calculates the streamed amount of LPG streams.
+
+The LPG streaming model uses all-or-nothing unlock based on price threshold:
+
+$$
+f(x) = \begin{cases} \text{deposited}, & \text{block timestamp} \geq \text{end time OR latest price} \geq \text{target price} \\ 0, & \text{otherwise} \end{cases}
+$$
+
+Assumptions:
+
+1. The stream is not canceled.
+2. The oracle is assumed to be returning the correct price.
+
+```solidity
+function calculateStreamedAmountLPG(
+    uint128 deposited,
+    uint40 endTime,
+    LockupPriceGated.UnlockParams memory unlockParams
 )
     external
     view

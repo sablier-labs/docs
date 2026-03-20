@@ -4,10 +4,13 @@ sidebar_position: 3
 
 # SablierMerkleLL
 
-[Git Source](https://github.com/sablier-labs/airdrops/blob/077c6b9766ef7693ba9e82a9e001dc0097709c01/src/SablierMerkleLL.sol)
+[Git Source](https://github.com/sablier-labs/evm-monorepo/blob/003a71932c0e26e767a02c21205a077469406ac8/src/SablierMerkleLL.sol)
 
 **Inherits:** [ISablierMerkleLL](/docs/reference/airdrops/contracts/interfaces/interface.ISablierMerkleLL.md),
+[SablierMerkleSignature](/docs/reference/airdrops/contracts/abstracts/abstract.SablierMerkleSignature.md),
 [SablierMerkleLockup](/docs/reference/airdrops/contracts/abstracts/abstract.SablierMerkleLockup.md)
+
+**Title:** SablierMerkleLL
 
 See the documentation in
 [ISablierMerkleLL](/docs/reference/airdrops/contracts/interfaces/interface.ISablierMerkleLL.md).
@@ -19,7 +22,7 @@ See the documentation in
 Retrieves the cliff duration of the vesting stream, in seconds.
 
 ```solidity
-uint40 public immutable override VESTING_CLIFF_DURATION;
+uint40 public immutable override VESTING_CLIFF_DURATION
 ```
 
 ### VESTING_CLIFF_UNLOCK_PERCENTAGE
@@ -28,7 +31,15 @@ Retrieves the percentage of the claim amount due to be unlocked at the vesting c
 1e18 is 100%.
 
 ```solidity
-UD60x18 public immutable override VESTING_CLIFF_UNLOCK_PERCENTAGE;
+UD60x18 public immutable override VESTING_CLIFF_UNLOCK_PERCENTAGE
+```
+
+### VESTING_GRANULARITY
+
+Retrieves the smallest step in time between two consecutive token unlocks. Zero is a sentinel value for 1 second.
+
+```solidity
+uint40 public immutable override VESTING_GRANULARITY
 ```
 
 ### VESTING_START_TIME
@@ -36,7 +47,7 @@ UD60x18 public immutable override VESTING_CLIFF_UNLOCK_PERCENTAGE;
 Retrieves the start time of the vesting stream, as a Unix timestamp. Zero is a sentinel value for `block.timestamp`.
 
 ```solidity
-uint40 public immutable override VESTING_START_TIME;
+uint40 public immutable override VESTING_START_TIME
 ```
 
 ### VESTING_START_UNLOCK_PERCENTAGE
@@ -45,7 +56,7 @@ Retrieves the percentage of the claim amount due to be unlocked at the vesting s
 1e18 is 100%.
 
 ```solidity
-UD60x18 public immutable override VESTING_START_UNLOCK_PERCENTAGE;
+UD60x18 public immutable override VESTING_START_UNLOCK_PERCENTAGE
 ```
 
 ### VESTING_TOTAL_DURATION
@@ -53,36 +64,39 @@ UD60x18 public immutable override VESTING_START_UNLOCK_PERCENTAGE;
 Retrieves the total duration of the vesting stream, in seconds.
 
 ```solidity
-uint40 public immutable override VESTING_TOTAL_DURATION;
+uint40 public immutable override VESTING_TOTAL_DURATION
 ```
 
 ## Functions
 
 ### constructor
 
-_Constructs the contract by initializing the immutable state variables, and max approving the Lockup contract._
+Constructs the contract by initializing the immutable state variables, and max approving the Lockup contract.
 
 ```solidity
 constructor(
-    MerkleLL.ConstructorParams memory params,
+    MerkleLL.ConstructorParams memory campaignParams,
     address campaignCreator,
     address comptroller
 )
-    SablierMerkleLockup(
-        campaignCreator,
-        params.campaignName,
-        params.campaignStartTime,
-        params.cancelable,
-        comptroller,
-        params.lockup,
-        params.expiration,
-        params.initialAdmin,
-        params.ipfsCID,
-        params.merkleRoot,
-        params.shape,
-        params.token,
-        params.transferable
-    );
+    SablierMerkleBase(MerkleBase.ConstructorParams({
+            campaignCreator: campaignCreator,
+            campaignName: campaignParams.campaignName,
+            campaignStartTime: campaignParams.campaignStartTime,
+            claimType: campaignParams.claimType,
+            comptroller: comptroller,
+            expiration: campaignParams.expiration,
+            initialAdmin: campaignParams.initialAdmin,
+            ipfsCID: campaignParams.ipfsCID,
+            merkleRoot: campaignParams.merkleRoot,
+            token: campaignParams.token
+        }))
+    SablierMerkleLockup(MerkleLockup.ConstructorParams({
+            cancelable: campaignParams.cancelable,
+            lockup: campaignParams.lockup,
+            shape: campaignParams.shape,
+            transferable: campaignParams.transferable
+        }));
 ```
 
 ### claim
@@ -92,6 +106,7 @@ stream, otherwise it transfers the tokens directly to the recipient address.
 
 It emits either {ClaimLLWithTransfer} or {ClaimLLWithVesting} event. Requirements:
 
+- `CLAIM_TYPE` must be `DEFAULT`.
 - The current time must be greater than or equal to the campaign start time.
 - The campaign must not have expired.
 - `msg.value` must not be less than the value returned by {COMPTROLLER.calculateMinFeeWei}.
@@ -108,7 +123,8 @@ function claim(
 )
     external
     payable
-    override;
+    override
+    revertIfNot(ClaimType.DEFAULT);
 ```
 
 **Parameters**
@@ -127,6 +143,7 @@ stream recipient, otherwise it transfers the tokens directly to the `to` address
 
 It emits either {ClaimLLWithTransfer} or {ClaimLLWithVesting} event. Requirements:
 
+- `CLAIM_TYPE` must be `DEFAULT`.
 - `msg.sender` must be the airdrop recipient.
 - The `to` must not be the zero address.
 - Refer to the requirements in {claim}.
@@ -141,6 +158,7 @@ function claimTo(
     external
     payable
     override
+    revertIfNot(ClaimType.DEFAULT)
     notZeroAddress(to);
 ```
 
@@ -153,6 +171,52 @@ function claimTo(
 | `amount`      | `uint128`   | The amount of ERC-20 tokens allocated to the `msg.sender`.                                  |
 | `merkleProof` | `bytes32[]` | The proof of inclusion in the Merkle tree.                                                  |
 
+### claimViaAttestation
+
+Claim airdrop using an external attestation from a trusted attestor (e.g., KYC verifier). If the vesting end time is in
+the future, it creates a Lockup Linear stream with `to` address as the stream recipient, otherwise it transfers the
+tokens directly to the `to` address.
+
+It emits either {ClaimLLWithTransfer} or {ClaimLLWithVesting} event. Notes:
+
+- The attestation must be an EIP-712 signature from the attestor.
+- See the example in the {claimViaSig} function.
+- If the attestor is not set in the campaign, the attestor from the comptroller is used. Requirements:
+- `msg.sender` must be the airdrop recipient.
+- `CLAIM_TYPE` must be `ATTEST`.
+- The `to` must not be the zero address.
+- The attestor must not be the zero address.
+- The `expireAt` timestamp must not be in the past.
+- The attestation signature must be valid.
+- Refer to the requirements in {claim}.
+
+```solidity
+function claimViaAttestation(
+    uint256 index,
+    address to,
+    uint128 amount,
+    uint40 expireAt,
+    bytes32[] calldata merkleProof,
+    bytes calldata attestation
+)
+    external
+    payable
+    override
+    revertIfNot(ClaimType.ATTEST)
+    notZeroAddress(to);
+```
+
+**Parameters**
+
+| Name          | Type        | Description                                                                                 |
+| ------------- | ----------- | ------------------------------------------------------------------------------------------- |
+| `index`       | `uint256`   | The index of the `msg.sender` in the Merkle tree.                                           |
+| `to`          | `address`   | The address to which Lockup stream or ERC-20 tokens will be sent on behalf of `msg.sender`. |
+| `amount`      | `uint128`   | The amount of ERC-20 tokens allocated to the `msg.sender`.                                  |
+| `expireAt`    | `uint40`    | The timestamp after which the attestation signature is no longer valid.                     |
+| `merkleProof` | `bytes32[]` | The proof of inclusion in the Merkle tree.                                                  |
+| `attestation` | `bytes`     | The EIP-712 signature from the attestor.                                                    |
+
 ### claimViaSig
 
 Claim airdrop on behalf of eligible recipient using an EIP-712 or EIP-1271 signature. If the vesting end time is in the
@@ -161,6 +225,7 @@ directly to the `to` address.
 
 It emits either {ClaimLLWithTransfer} or {ClaimLLWithVesting} event. Requirements:
 
+- `CLAIM_TYPE` must be `DEFAULT`.
 - If `recipient` is an EOA, it must match the recovered signer.
 - If `recipient` is a contract, it must implement the IERC-1271 interface.
 - The `to` must not be the zero address.
@@ -169,35 +234,33 @@ It emits either {ClaimLLWithTransfer} or {ClaimLLWithVesting} event. Requirement
   referenced from https://docs.metamask.io/wallet/how-to/sign-data/#example.
 
 ```json
-{
-  "types": {
-    "EIP712Domain": [
-      { "name": "name", "type": "string" },
-      { "name": "chainId", "type": "uint256" },
-      { "name": "verifyingContract", "type": "address" }
-    ],
-    "Claim": [
-      { "name": "index", "type": "uint256" },
-      { "name": "recipient", "type": "address" },
-      { "name": "to", "type": "address" },
-      { "name": "amount", "type": "uint128" },
-      { "name": "validFrom", "type": "uint40" }
-    ]
-  },
-  "domain": {
-    "name": "Sablier Airdrops Protocol",
-    "chainId": 1,
-    "verifyingContract": "0xTheAddressOfThisContract"
-  },
-  "primaryType": "Claim",
-  "message": {
-    "index": 2,
-    "recipient": "0xTheAddressOfTheRecipient",
-    "to": "0xTheAddressReceivingTheTokens",
-    "amount": "1000000000000000000000",
-    "validFrom": 1752425637
-  }
-}
+types: {
+EIP712Domain: [
+{ name: "name", type: "string" },
+{ name: "chainId", type: "uint256" },
+{ name: "verifyingContract", type: "address" },
+],
+Claim: [
+{ name: "index", type: "uint256" },
+{ name: "recipient", type: "address" },
+{ name: "to", type: "address" },
+{ name: "amount", type: "uint128" },
+{ name: "validFrom", type: "uint40" },
+],
+},
+domain: {
+name: "Sablier Airdrops Protocol",
+chainId: 1, // Chain on which the contract is deployed
+verifyingContract: "0xTheAddressOfThisContract", // The address of this contract
+},
+primaryType: "Claim",
+message: {
+index: 2, // The index of the signer in the Merkle tree
+recipient: "0xTheAddressOfTheRecipient", // The address of the airdrop recipient
+to: "0xTheAddressReceivingTheTokens", // The address where recipient wants to transfer the tokens
+amount: "1000000000000000000000", // The amount of tokens allocated to the recipient
+validFrom: 1752425637 // The timestamp from which the claim signature is valid
+},
 ```
 
 ```solidity
@@ -213,6 +276,7 @@ function claimViaSig(
     external
     payable
     override
+    revertIfNot(ClaimType.DEFAULT)
     notZeroAddress(to);
 ```
 
@@ -230,7 +294,7 @@ function claimViaSig(
 
 ### \_postProcessClaim
 
-_Post-processes the claim execution by creating the stream or transferring the tokens directly and emitting an event._
+Post-processes the claim execution by creating the stream or transferring the tokens directly and emitting an event.
 
 ```solidity
 function _postProcessClaim(uint256 index, address recipient, address to, uint128 amount, bool viaSig) private;
