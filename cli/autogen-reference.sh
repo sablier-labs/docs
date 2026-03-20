@@ -124,6 +124,7 @@ run() {
     sd "/$lockup/interfaces/interface.InvalidStreamInCancelMultiple.md" "/$lockup/interfaces/interface.ISablierLockup.md#invalidstreamincancelmultiple" $all_md_files
     sd "/node_modules/forge-std/src/mocks/MockERC721.sol/contract.MockERC721.md" "https://eips.ethereum.org/EIPS/eip-165" $all_md_files
     sd "/node_modules/@arbitrum/token-bridge-contracts/contracts/tokenbridge/libraries/ERC165.sol/abstract.ERC165.md#supportsinterface" "https://eips.ethereum.org/EIPS/eip-165" $all_md_files
+    sd "/node_modules/@sablier/evm-utils/docs/reference/lockup/contracts/contract.SablierComptroller.md#supportsinterface" "https://eips.ethereum.org/EIPS/eip-165" $all_md_files
   fi
 
   if [ "$repo" = "flow" ]; then

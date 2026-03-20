@@ -9,11 +9,9 @@
 Interface for recipient contracts capable of reacting to cancellations and withdrawals. For this to be able to hook into
 Sablier, it must fully implement this interface and it must have been allowlisted in the Lockup contract.
 
-See
-[IERC165-supportsInterface](/node_modules/@sablier/evm-utils/docs/reference/lockup/contracts/contract.SablierComptroller.md#supportsinterface).
-The implementation MUST implement the
-[IERC165-supportsInterface](/node_modules/@sablier/evm-utils/docs/reference/lockup/contracts/contract.SablierComptroller.md#supportsinterface)
-method, which MUST return `true` when called with `0xf8ee98d3`, i.e. `type(ISablierLockupRecipient).interfaceId`.
+See [IERC165-supportsInterface](https://eips.ethereum.org/EIPS/eip-165). The implementation MUST implement the
+[IERC165-supportsInterface](https://eips.ethereum.org/EIPS/eip-165) method, which MUST return `true` when called with
+`0xf8ee98d3`, i.e. `type(ISablierLockupRecipient).interfaceId`.
 
 ## Functions
 
