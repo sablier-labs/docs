@@ -24,20 +24,20 @@ This guide assumes that you have already gone through the [Protocol Concepts](/c
 Declare the Solidity version used to compile the contract:
 
 <CodeBlock language="solidity" metastring={`reference title=""`}>
-  {`https://github.com/sablier-labs/evm-examples/blob/main/lockup/LockupLinearStreamCreator.sol#L1-L2`}
+  {`https://github.com/sablier-labs/evm-monorepo/blob/main/misc/examples/lockup/LockupLinearStreamCreator.sol#L1-L2`}
 </CodeBlock>
 
 Import the relevant symbols from `@sablier/lockup`:
 
 <CodeBlock language="solidity" metastring={`reference title=""`}>
-  {`https://github.com/sablier-labs/evm-examples/blob/main/lockup/LockupLinearStreamCreator.sol#L4-L7`}
+  {`https://github.com/sablier-labs/evm-monorepo/blob/main/misc/examples/lockup/LockupLinearStreamCreator.sol#L4-L7`}
 </CodeBlock>
 
 Create a contract called `LockupLinearStreamCreator`, and declare a constant `DAI` of type `IERC20` and a constant
 `LOCKUP` of type `ISablierLockup`:
 
 <CodeBlock language="solidity" metastring={`reference title=""`}>
-  {`https://github.com/sablier-labs/evm-examples/blob/main/lockup/LockupLinearStreamCreator.sol#L13-L15`}
+  {`https://github.com/sablier-labs/evm-monorepo/blob/main/misc/examples/lockup/LockupLinearStreamCreator.sol#L13-L15`}
 </CodeBlock>
 
 <HardcodedDemonstration protocol="Lockup" />
@@ -55,26 +55,26 @@ Define a function called `createStream` which takes a single parameter `depositA
 created stream:
 
 <CodeBlock language="solidity" metastring={`reference title=""`}>
-  {`https://github.com/sablier-labs/evm-examples/blob/main/lockup/LockupLinearStreamCreator.sol#L18`}
+  {`https://github.com/sablier-labs/evm-monorepo/blob/main/misc/examples/lockup/LockupLinearStreamCreator.sol#L18`}
 </CodeBlock>
 
 <TokenApproval />
 
 ## Parameters
 
-The struct associated with
+The parameters for
 [`createWithDurationsLL`](/reference/lockup/contracts/interfaces/interface.ISablierLockupLinear#createwithdurationsll)
-are [`Lockup.CreateWithDurations`](/reference/lockup/contracts/types/library.Lockup#createwithdurations) (a shared
+include [`Lockup.CreateWithDurations`](/reference/lockup/contracts/types/library.Lockup#createwithdurations) (a shared
 struct across all the lockup streams),
-[`LockupLinear.UnlockAmounts`](/reference/lockup/contracts/types/library.LockupLinear#unlockamounts) and
-[`LockupLinear.Durations`](/reference/lockup/contracts/types/library.LockupLinear#durations).
+[`LockupLinear.UnlockAmounts`](/reference/lockup/contracts/types/library.LockupLinear#unlockamounts), a
+`uint40 granularity`, and [`LockupLinear.Durations`](/reference/lockup/contracts/types/library.LockupLinear#durations).
 
 Let's review each parameter in detail.
 
 ### Create With Durations
 
 <CodeBlock language="solidity" metastring={`reference title=""`}>
-  {`https://github.com/sablier-labs/evm-examples/blob/main/lockup/LockupLinearStreamCreator.sol#L26`}
+  {`https://github.com/sablier-labs/evm-monorepo/blob/main/misc/examples/lockup/LockupLinearStreamCreator.sol#L26`}
 </CodeBlock>
 
 <LockupParam />
@@ -84,7 +84,17 @@ Let's review each parameter in detail.
 Struct containing details on unlock amounts at start time and at cliff time.
 
 <CodeBlock language="solidity" metastring={`reference title=""`}>
-  {`https://github.com/sablier-labs/evm-examples/blob/main/lockup/LockupLinearStreamCreator.sol#L36`}
+  {`https://github.com/sablier-labs/evm-monorepo/blob/main/misc/examples/lockup/LockupLinearStreamCreator.sol#L36`}
+</CodeBlock>
+
+### Granularity
+
+The smallest step in time (in seconds) between two consecutive token unlocks. A value of zero is a sentinel for 1
+second. For standard linear streaming behavior, use `1 seconds`. For periodic unlock patterns (e.g., weekly), use the
+period duration (e.g., `1 weeks`).
+
+<CodeBlock language="solidity" metastring={`reference title=""`}>
+  {`https://github.com/sablier-labs/evm-monorepo/blob/main/misc/examples/lockup/LockupLinearStreamCreator.sol#L46`}
 </CodeBlock>
 
 ### Durations
@@ -92,7 +102,7 @@ Struct containing details on unlock amounts at start time and at cliff time.
 Struct containing (i) cliff duration and (ii) total stream duration, both denoted in seconds.
 
 <CodeBlock language="solidity" metastring={`reference title=""`}>
-  {`https://github.com/sablier-labs/evm-examples/blob/main/lockup/LockupLinearStreamCreator.sol#L37-L40`}
+  {`https://github.com/sablier-labs/evm-monorepo/blob/main/misc/examples/lockup/LockupLinearStreamCreator.sol#L37-L40`}
 </CodeBlock>
 
 ## Invoke the create function
@@ -101,14 +111,14 @@ With all parameters set, we can now call the `createWithDurationsLL` function, a
 stream to a variable:
 
 <CodeBlock language="solidity" metastring={`reference title=""`}>
-  {`https://github.com/sablier-labs/evm-examples/blob/main/lockup/LockupLinearStreamCreator.sol#L43`}
+  {`https://github.com/sablier-labs/evm-monorepo/blob/main/misc/examples/lockup/LockupLinearStreamCreator.sol#L43-L48`}
 </CodeBlock>
 
 ## Full code
 
 Below you can see the full code. You can also access the code on GitHub through
-[this link](https://github.com/sablier-labs/evm-examples/blob/main/lockup/LockupLinearStreamCreator.sol).
+[this link](https://github.com/sablier-labs/evm-monorepo/blob/main/misc/examples/lockup/LockupLinearStreamCreator.sol).
 
 <CodeBlock language="solidity" showLineNumbers metastring={`reference title="Lockup Linear Stream Creator"`}>
-  {`https://github.com/sablier-labs/evm-examples/blob/main/lockup/LockupLinearStreamCreator.sol`}
+  {`https://github.com/sablier-labs/evm-monorepo/blob/main/misc/examples/lockup/LockupLinearStreamCreator.sol`}
 </CodeBlock>

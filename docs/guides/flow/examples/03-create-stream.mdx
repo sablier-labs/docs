@@ -24,20 +24,20 @@ This guide assumes that you have already gone through the [Calculate Rate per Se
 Declare the Solidity version used to compile the contract:
 
 <CodeBlock language="solidity" metastring={`reference title=""`}>
-  {`https://github.com/sablier-labs/evm-examples/blob/main/flow/FlowStreamCreator.sol#L1-L2`}
+  {`https://github.com/sablier-labs/evm-monorepo/blob/main/misc/examples/flow/FlowStreamCreator.sol#L1-L2`}
 </CodeBlock>
 
 Import the relevant symbols from `@sablier/flow`, and the `FlowUtilities` library:
 
 <CodeBlock language="solidity" metastring={`reference title=""`}>
-  {`https://github.com/sablier-labs/evm-examples/blob/main/flow/FlowStreamCreator.sol#L4-L8`}
+  {`https://github.com/sablier-labs/evm-monorepo/blob/main/misc/examples/flow/FlowStreamCreator.sol#L4-L8`}
 </CodeBlock>
 
 Create a contract called `FlowStreamCreator`, and declare a constant `USDC` of type `IERC20` and a constant `FLOW` of
 type `ISablierFlow`:
 
 <CodeBlock language="solidity" metastring={`reference title=""`}>
-  {`https://github.com/sablier-labs/evm-examples/blob/main/flow/FlowStreamCreator.sol#L11-L13`}
+  {`https://github.com/sablier-labs/evm-monorepo/blob/main/misc/examples/flow/FlowStreamCreator.sol#L11-L13`}
 </CodeBlock>
 
 <HardcodedDemonstration protocol="Flow" />
@@ -50,7 +50,7 @@ Define a function to stream a salary of 1000 USDC per month, call it `createStre
 created stream ID:
 
 <CodeBlock language="solidity" metastring={`reference title=""`}>
-  {`https://github.com/sablier-labs/evm-examples/blob/main/flow/FlowStreamCreator.sol#L16-L16`}
+  {`https://github.com/sablier-labs/evm-monorepo/blob/main/misc/examples/flow/FlowStreamCreator.sol#L16-L16`}
 </CodeBlock>
 
 ## Input parameters
@@ -60,7 +60,7 @@ created stream ID:
 Use the [`FlowUtilities`](./02-calculate-rps.mdx) library to calculate the rate per second for the desired amount:
 
 <CodeBlock language="solidity" metastring={`reference title=""`}>
-  {`https://github.com/sablier-labs/evm-examples/blob/main/flow/FlowStreamCreator.sol#L17-L18`}
+  {`https://github.com/sablier-labs/evm-monorepo/blob/main/misc/examples/flow/FlowStreamCreator.sol#L17-L18`}
 </CodeBlock>
 
 ### Sender
@@ -68,7 +68,7 @@ Use the [`FlowUtilities`](./02-calculate-rps.mdx) library to calculate the rate 
 The address streaming the tokens, with the ability to `pause` the stream:
 
 <CodeBlock language="solidity" metastring={`reference title=""`}>
-  {`https://github.com/sablier-labs/evm-examples/blob/main/flow/FlowStreamCreator.sol#L21-L21`}
+  {`https://github.com/sablier-labs/evm-monorepo/blob/main/misc/examples/flow/FlowStreamCreator.sol#L21-L21`}
 </CodeBlock>
 
 ### Recipient
@@ -76,7 +76,7 @@ The address streaming the tokens, with the ability to `pause` the stream:
 The address receiving the tokens:
 
 <CodeBlock language="solidity" metastring={`reference title=""`}>
-  {`https://github.com/sablier-labs/evm-examples/blob/main/flow/FlowStreamCreator.sol#L22-L22`}
+  {`https://github.com/sablier-labs/evm-monorepo/blob/main/misc/examples/flow/FlowStreamCreator.sol#L22-L22`}
 </CodeBlock>
 
 ### Start time
@@ -84,7 +84,7 @@ The address receiving the tokens:
 The timestamp when the stream starts.
 
 <CodeBlock language="solidity" metastring={`reference title=""`}>
-  {`https://github.com/sablier-labs/evm-examples/blob/main/flow/FlowStreamCreator.sol#L24-L24`}
+  {`https://github.com/sablier-labs/evm-monorepo/blob/main/misc/examples/flow/FlowStreamCreator.sol#L24-L24`}
 </CodeBlock>
 
 ### Token
@@ -92,7 +92,7 @@ The timestamp when the stream starts.
 The contract address of the ERC-20 token used for streaming. In this example, we will stream `USDC`:
 
 <CodeBlock language="solidity" metastring={`reference title=""`}>
-  {`https://github.com/sablier-labs/evm-examples/blob/main/flow/FlowStreamCreator.sol#L25-L25`}
+  {`https://github.com/sablier-labs/evm-monorepo/blob/main/misc/examples/flow/FlowStreamCreator.sol#L25-L25`}
 </CodeBlock>
 
 ### Transferable
@@ -100,7 +100,7 @@ The contract address of the ERC-20 token used for streaming. In this example, we
 Boolean that indicates whether the stream will be transferable or not.
 
 <CodeBlock language="solidity" metastring={`reference title=""`}>
-  {`https://github.com/sablier-labs/evm-examples/blob/main/flow/FlowStreamCreator.sol#L26-L26`}
+  {`https://github.com/sablier-labs/evm-monorepo/blob/main/misc/examples/flow/FlowStreamCreator.sol#L26-L26`}
 </CodeBlock>
 
 ### Invoke the create function
@@ -109,7 +109,7 @@ With all the parameters, we can call the `create` function on the `FLOW` contrac
 `streamId` variable:
 
 <CodeBlock language="solidity" metastring={`reference title=""`}>
-  {`https://github.com/sablier-labs/evm-examples/blob/main/flow/FlowStreamCreator.sol#L20-L27`}
+  {`https://github.com/sablier-labs/evm-monorepo/blob/main/misc/examples/flow/FlowStreamCreator.sol#L20-L27`}
 </CodeBlock>
 
 ## Full code
@@ -117,5 +117,5 @@ With all the parameters, we can call the `create` function on the `FLOW` contrac
 Below you can see the complete `FlowStreamCreator` contract:
 
 <CodeBlock language="solidity" showLineNumbers metastring={`reference title="Flow Stream Creator"`}>
-  {`https://github.com/sablier-labs/evm-examples/blob/main/flow/FlowStreamCreator.sol`}
+  {`https://github.com/sablier-labs/evm-monorepo/blob/main/misc/examples/flow/FlowStreamCreator.sol`}
 </CodeBlock>

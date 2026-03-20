@@ -19,20 +19,20 @@ possible by the [`Batch`](/reference/flow/contracts/abstracts/abstract.Batch) co
 Declare the Solidity version used to compile the contract:
 
 <CodeBlock language="solidity" metastring={`reference title=""`}>
-  {`https://github.com/sablier-labs/evm-examples/blob/main/flow/FlowBatchable.sol#L1-L2`}
+  {`https://github.com/sablier-labs/evm-monorepo/blob/main/misc/examples/flow/FlowBatchable.sol#L1-L2`}
 </CodeBlock>
 
 Import the relevant symbols:
 
 <CodeBlock language="solidity" metastring={`reference title=""`}>
-  {`https://github.com/sablier-labs/evm-examples/blob/main/flow/FlowBatchable.sol#L4-L6`}
+  {`https://github.com/sablier-labs/evm-monorepo/blob/main/misc/examples/flow/FlowBatchable.sol#L4-L6`}
 </CodeBlock>
 
 Create a contract called `FlowBatchable`, and declare a constant `USDC` of type `IERC20` and a constant `FLOW` of type
 `ISablierFlow`:
 
 <CodeBlock language="solidity" metastring={`reference title=""`}>
-  {`https://github.com/sablier-labs/evm-examples/blob/main/flow/FlowBatchable.sol#L12-L14`}
+  {`https://github.com/sablier-labs/evm-monorepo/blob/main/misc/examples/flow/FlowBatchable.sol#L12-L14`}
 </CodeBlock>
 
 <HardcodedDemonstration protocol="Flow" />
@@ -45,7 +45,7 @@ Let's focus on it in this example.
 Define a function that creates multiple streams and returns their respective stream IDs:
 
 <CodeBlock language="solidity" metastring={`reference title=""`}>
-  {`https://github.com/sablier-labs/evm-examples/blob/main/flow/FlowBatchable.sol#L66-L66`}
+  {`https://github.com/sablier-labs/evm-monorepo/blob/main/misc/examples/flow/FlowBatchable.sol#L67`}
 </CodeBlock>
 
 ### Parameters
@@ -53,25 +53,25 @@ Define a function that creates multiple streams and returns their respective str
 We will create two streams with same stream parameters required by the `create` function.
 
 <CodeBlock language="solidity" metastring={`reference title=""`}>
-  {`https://github.com/sablier-labs/evm-examples/blob/main/flow/FlowBatchable.sol#L67-L72`}
+  {`https://github.com/sablier-labs/evm-monorepo/blob/main/misc/examples/flow/FlowBatchable.sol#L68-L73`}
 </CodeBlock>
 
 Construct an array of `bytes` of length 2 to be passed into the `batch` function:
 
 <CodeBlock language="solidity" metastring={`reference title=""`}>
-  {`https://github.com/sablier-labs/evm-examples/blob/main/flow/FlowBatchable.sol#L75-L81`}
+  {`https://github.com/sablier-labs/evm-monorepo/blob/main/misc/examples/flow/FlowBatchable.sol#L75-L82`}
 </CodeBlock>
 
 Since we are creating two streams, the function will return an array containing the two generated stream IDs:
 
 <CodeBlock language="solidity" metastring={`reference title=""`}>
-  {`https://github.com/sablier-labs/evm-examples/blob/main/flow/FlowBatchable.sol#L84-L87`}
+  {`https://github.com/sablier-labs/evm-monorepo/blob/main/misc/examples/flow/FlowBatchable.sol#L84-L88`}
 </CodeBlock>
 
 Execute the `batch`:
 
 <CodeBlock language="solidity" metastring={`reference title=""`}>
-  {`https://github.com/sablier-labs/evm-examples/blob/main/flow/FlowBatchable.sol#L90-L90`}
+  {`https://github.com/sablier-labs/evm-monorepo/blob/main/misc/examples/flow/FlowBatchable.sol#L91`}
 </CodeBlock>
 
 ## Homework
@@ -102,5 +102,5 @@ system. 🚀
 Below you can see the complete `FlowBatchable` contract:
 
 <CodeBlock language="solidity" showLineNumbers metastring={`reference title="Flow Batchable"`}>
-  {`https://github.com/sablier-labs/evm-examples/blob/main/flow/FlowBatchable.sol`}
+  {`https://github.com/sablier-labs/evm-monorepo/blob/main/misc/examples/flow/FlowBatchable.sol`}
 </CodeBlock>
