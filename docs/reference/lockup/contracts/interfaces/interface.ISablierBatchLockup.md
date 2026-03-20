@@ -1,6 +1,8 @@
 # ISablierBatchLockup
 
-[Git Source](https://github.com/sablier-labs/lockup/blob/58eaac45c20c57a93b73d887c714e68f061ec3e6/src/interfaces/ISablierBatchLockup.sol)
+[Git Source](https://github.com/sablier-labs/evm-monorepo/blob/7cb361717fd2f0289ad8d69469a3c00804b21657/src/interfaces/ISablierBatchLockup.sol)
+
+**Title:** ISablierBatchLockup
 
 Helper to batch create Lockup streams.
 
@@ -131,6 +133,42 @@ function createWithTimestampsLL(
 | `lockup` | `ISablierLockup`                       | The address of the [SablierLockup](/docs/reference/lockup/contracts/contract.SablierLockup.md) contract.             |
 | `token`  | `IERC20`                               | The contract address of the ERC-20 token to be distributed.                                                          |
 | `batch`  | `BatchLockup.CreateWithTimestampsLL[]` | An array of structs, each encapsulating a subset of the parameters of {ISablierLockupLinear.createWithTimestampsLL}. |
+
+**Returns**
+
+| Name        | Type        | Description                           |
+| ----------- | ----------- | ------------------------------------- |
+| `streamIds` | `uint256[]` | The ids of the newly created streams. |
+
+### createWithTimestampsLPG
+
+Creates a batch of LPG streams using `createWithTimestampsLPG`.
+
+Notes:
+
+- The LPG model does not support a "createWithDuration" function because the
+  [SablierLockup](/docs/reference/lockup/contracts/contract.SablierLockup.md) contract is at the size limit. If the EVM
+  contract size limit is increased in the future, this function will be added. Requirements:
+- There must be at least one element in `batch`.
+- All requirements from {ISablierLockupPriceGated.createWithTimestampsLPG} must be met for each stream.
+
+```solidity
+function createWithTimestampsLPG(
+    ISablierLockup lockup,
+    IERC20 token,
+    BatchLockup.CreateWithTimestampsLPG[] calldata batch
+)
+    external
+    returns (uint256[] memory streamIds);
+```
+
+**Parameters**
+
+| Name     | Type                                    | Description                                                                                                               |
+| -------- | --------------------------------------- | ------------------------------------------------------------------------------------------------------------------------- |
+| `lockup` | `ISablierLockup`                        | The address of the [SablierLockup](/docs/reference/lockup/contracts/contract.SablierLockup.md) contract.                  |
+| `token`  | `IERC20`                                | The contract address of the ERC-20 token to be distributed.                                                               |
+| `batch`  | `BatchLockup.CreateWithTimestampsLPG[]` | An array of structs, each encapsulating a subset of the parameters of {ISablierLockupPriceGated.createWithTimestampsLPG}. |
 
 **Returns**
 

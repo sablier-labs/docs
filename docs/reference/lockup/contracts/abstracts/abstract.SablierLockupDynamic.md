@@ -1,10 +1,12 @@
 # SablierLockupDynamic
 
-[Git Source](https://github.com/sablier-labs/lockup/blob/58eaac45c20c57a93b73d887c714e68f061ec3e6/src/abstracts/SablierLockupDynamic.sol)
+[Git Source](https://github.com/sablier-labs/evm-monorepo/blob/7cb361717fd2f0289ad8d69469a3c00804b21657/src/abstracts/SablierLockupDynamic.sol)
 
 **Inherits:** [ISablierLockupDynamic](/docs/reference/lockup/contracts/interfaces/interface.ISablierLockupDynamic.md),
 [NoDelegateCall](/docs/reference/lockup/contracts/abstracts/abstract.NoDelegateCall.md),
 [SablierLockupState](/docs/reference/lockup/contracts/abstracts/abstract.SablierLockupState.md)
+
+**Title:** SablierLockupDynamic
 
 See the documentation in
 [ISablierLockupDynamic](/docs/reference/lockup/contracts/interfaces/interface.ISablierLockupDynamic.md).
@@ -95,7 +97,7 @@ function createWithTimestampsLD(
 
 ### \_createLD
 
-_See the documentation for the user-facing functions that call this private function._
+See the documentation for the user-facing functions that call this private function.
 
 ```solidity
 function _createLD(

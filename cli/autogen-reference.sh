@@ -16,6 +16,9 @@ set -euo pipefail
 # Root directory of the docs repo (all cd's return here)
 root=$(pwd)
 
+# Install monorepo dependencies (needed for forge doc to compile)
+bun install --cwd "$root/repos/evm-monorepo"
+
 # Define the contracts directories
 airdrops=docs/reference/airdrops/contracts
 flow=docs/reference/flow/contracts
@@ -91,10 +94,10 @@ run() {
 
   if [ "$repo" = "airdrops" ]; then
     # Airdrops-specific abstract patterns
-    sd "\{Sablier(\w+)Base\}" "[Sablier\${1}Base]($contracts/abstracts/abstract.Sablier\${1}Base.md)" $all_md_files
+    sd "\{Sablier(\w+)Base\}" "[Sablier\${1}Base](/$contracts/abstracts/abstract.Sablier\${1}Base.md)" $all_md_files
     sd "\{SablierFactoryMerkle(\w+)\}" "[SablierFactoryMerkle\$1](/$contracts/contract.SablierFactoryMerkle\$1.md)" $all_md_files
-    sd "\{SablierMerkleLockup\}" "[SablierMerkleLockup]($contracts/abstracts/abstract.SablierMerkleLockup.md)" $all_md_files
-    sd "\{SablierMerkleSignature\}" "[SablierMerkleSignature]($contracts/abstracts/abstract.SablierMerkleSignature.md)" $all_md_files
+    sd "\{SablierMerkleLockup\}" "[SablierMerkleLockup](/$contracts/abstracts/abstract.SablierMerkleLockup.md)" $all_md_files
+    sd "\{SablierMerkleSignature\}" "[SablierMerkleSignature](/$contracts/abstracts/abstract.SablierMerkleSignature.md)" $all_md_files
 
     # The Airdrops has certain references to the Lockup
     sd "\{SablierLockup\}" "[SablierLockup](/reference/lockup/contracts/contract.SablierLockup.md)" $all_md_files
@@ -105,12 +108,12 @@ run() {
 
   if [ "$repo" = "lockup" ]; then
     # Lockup-specific abstract patterns
-    sd "\{SablierLockup(Dynamic|Linear|Tranched)\}" "[SablierLockup\$1]($contracts/abstracts/abstract.SablierLockup\$1.md)" $all_md_files
-    sd "\{SablierLockup(Dynamic|Linear|Tranched)\.(\w+)\}" "[SablierLockup\$1.\$2]($contracts/abstracts/abstract.SablierLockup\$1.md#\$2)" $all_md_files
+    sd "\{SablierLockup(Dynamic|Linear|Tranched|PriceGated)\}" "[SablierLockup\$1](/$contracts/abstracts/abstract.SablierLockup\$1.md)" $all_md_files
+    sd "\{SablierLockup(Dynamic|Linear|Tranched|PriceGated)\.(\w+)\}" "[SablierLockup\$1.\$2](/$contracts/abstracts/abstract.SablierLockup\$1.md#\$2)" $all_md_files
 
     # Fix anchor casing for createWith* functions in types/ (Docusaurus lowercases all anchors)
     types_files=$(find $contracts/types -type f -name "*.md")
-    for suffix in LD LL LT; do
+    for suffix in LD LL LPG LT; do
       lower=$(echo "$suffix" | tr '[:upper:]' '[:lower:]')
       sd "(#createWithDurations$suffix)" "#createwithdurations$lower" $types_files
       sd "(#createWithTimestamps$suffix)" "#createwithtimestamps$lower" $types_files
@@ -125,7 +128,7 @@ run() {
 
   if [ "$repo" = "flow" ]; then
     # Flow-specific abstract patterns
-    sd "\{SablierFlowState\}" "[SablierFlowState]($contracts/abstracts/abstract.SablierFlowState.md)" $all_md_files
+    sd "\{SablierFlowState\}" "[SablierFlowState](/$contracts/abstracts/abstract.SablierFlowState.md)" $all_md_files
   fi
 
   # Link to evm-utils abstracts (plain text - copied locally)
@@ -139,7 +142,7 @@ run() {
   fi
 
   # Replace the abstract contract references with hyperlinks (global fallback)
-  sd "\{Sablier(\w+)State\}" "[Sablier\${1}State]($contracts/abstracts/abstract.Sablier\${1}State.md)" $all_md_files
+  sd "\{Sablier(\w+)State\}" "[Sablier\${1}State](/$contracts/abstracts/abstract.Sablier\${1}State.md)" $all_md_files
 
   # Replace the contract references with hyperlinks
   sd "\{Sablier(\w+)\}" "[Sablier\$1](/$contracts/contract.Sablier\$1.md)" $all_md_files

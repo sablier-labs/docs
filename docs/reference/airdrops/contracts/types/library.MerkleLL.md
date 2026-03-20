@@ -1,6 +1,6 @@
 # MerkleLL
 
-[Git Source](https://github.com/sablier-labs/airdrops/blob/077c6b9766ef7693ba9e82a9e001dc0097709c01/src/types/DataTypes.sol)
+[Git Source](https://github.com/sablier-labs/evm-monorepo/blob/7cb361717fd2f0289ad8d69469a3c00804b21657/src/types/MerkleLL.sol)
 
 ## Structs
 
@@ -8,16 +8,18 @@
 
 Struct encapsulating the constructor parameters of Merkle Lockup Linear campaigns.
 
-_The fields are arranged alphabetically._
+The fields are arranged alphabetically.
 
 ```solidity
 struct ConstructorParams {
     string campaignName;
     uint40 campaignStartTime;
     bool cancelable;
+    ClaimType claimType;
     uint40 cliffDuration;
     UD60x18 cliffUnlockPercentage;
     uint40 expiration;
+    uint40 granularity;
     address initialAdmin;
     string ipfsCID;
     ISablierLockup lockup;
@@ -38,9 +40,11 @@ struct ConstructorParams {
 | `campaignName`          | `string`         | The name of the campaign.                                                                                                             |
 | `campaignStartTime`     | `uint40`         | The start time of the campaign, as a Unix timestamp.                                                                                  |
 | `cancelable`            | `bool`           | Indicates if the Lockup stream will be cancelable after claiming.                                                                     |
+| `claimType`             | `ClaimType`      | The type of claim functions supported by the campaign.                                                                                |
 | `cliffDuration`         | `uint40`         | The cliff duration of the vesting stream, in seconds.                                                                                 |
-| `cliffUnlockPercentage` | `UD60x18`        | The percentage of the claim amount due to be unlocked at the vesting cliff time, as a fixed-point number where 1e18 is 100%           |
+| `cliffUnlockPercentage` | `UD60x18`        | The percentage of the claim amount due to be unlocked at the vesting cliff time, as a fixed-point number where 1e18 is 100%.          |
 | `expiration`            | `uint40`         | The expiration of the campaign, as a Unix timestamp. A value of zero means the campaign does not expire.                              |
+| `granularity`           | `uint40`         | The smallest step in time between two consecutive token unlocks. Zero is a sentinel value for 1 second.                               |
 | `initialAdmin`          | `address`        | The initial admin of the campaign.                                                                                                    |
 | `ipfsCID`               | `string`         | The content identifier for indexing the contract on IPFS. An empty value may break certain UI features that depend upon the IPFS CID. |
 | `lockup`                | `ISablierLockup` | The address of the [SablierLockup](/reference/lockup/contracts/contract.SablierLockup.md) contract.                                   |

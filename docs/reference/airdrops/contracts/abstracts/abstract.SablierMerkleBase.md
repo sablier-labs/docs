@@ -1,41 +1,35 @@
 # SablierMerkleBase
 
-[Git Source](https://github.com/sablier-labs/airdrops/blob/077c6b9766ef7693ba9e82a9e001dc0097709c01/src/abstracts/SablierMerkleBase.sol)
+[Git Source](https://github.com/sablier-labs/evm-monorepo/blob/7cb361717fd2f0289ad8d69469a3c00804b21657/src/abstracts/SablierMerkleBase.sol)
 
 **Inherits:** [ISablierMerkleBase](/docs/reference/airdrops/contracts/interfaces/interface.ISablierMerkleBase.md),
 [Adminable](/docs/reference/airdrops/contracts/abstracts/abstract.Adminable.md)
+
+**Title:** SablierMerkleBase
 
 See the documentation in
 [ISablierMerkleBase](/docs/reference/airdrops/contracts/interfaces/interface.ISablierMerkleBase.md).
 
 ## State Variables
 
-### \_CACHED_CHAIN_ID
-
-_Cache the chain ID in order to invalidate the cached domain separator if the chain ID changes in case of a chain
-split._
-
-```solidity
-uint256 private immutable _CACHED_CHAIN_ID;
-```
-
-### \_CACHED_DOMAIN_SEPARATOR
-
-_The domain separator, as required by EIP-712 and EIP-1271, used for signing claim to prevent replay attacks across
-different campaigns._
-
-```solidity
-bytes32 private immutable _CACHED_DOMAIN_SEPARATOR;
-```
-
 ### CAMPAIGN_START_TIME
 
 The timestamp at which campaign starts and claim begins.
 
-_This is an immutable state variable._
+This is an immutable state variable.
 
 ```solidity
-uint40 public immutable override CAMPAIGN_START_TIME;
+uint40 public immutable override CAMPAIGN_START_TIME
+```
+
+### CLAIM_TYPE
+
+Retrieves the claim type supported by the campaign.
+
+This is an immutable state variable.
+
+```solidity
+ClaimType public immutable override CLAIM_TYPE
 ```
 
 ### COMPTROLLER
@@ -43,47 +37,47 @@ uint40 public immutable override CAMPAIGN_START_TIME;
 Retrieves the address of the comptroller contract.
 
 ```solidity
-address public immutable override COMPTROLLER;
+address public immutable override COMPTROLLER
 ```
 
 ### EXPIRATION
 
 The cut-off point for the campaign, as a Unix timestamp. A value of zero means there is no expiration.
 
-_This is an immutable state variable._
+This is an immutable state variable.
 
 ```solidity
-uint40 public immutable override EXPIRATION;
+uint40 public immutable override EXPIRATION
 ```
 
 ### IS_SABLIER_MERKLE
 
 Returns `true` indicating that this campaign contract is deployed using the Sablier Factory.
 
-_This is a constant state variable._
+This is a constant state variable.
 
 ```solidity
-bool public constant override IS_SABLIER_MERKLE = true;
+bool public constant override IS_SABLIER_MERKLE = true
 ```
 
 ### MERKLE_ROOT
 
 The root of the Merkle tree used to validate the proofs of inclusion.
 
-_This is an immutable state variable._
+This is an immutable state variable.
 
 ```solidity
-bytes32 public immutable override MERKLE_ROOT;
+bytes32 public immutable override MERKLE_ROOT
 ```
 
 ### TOKEN
 
 The ERC-20 token to distribute.
 
-_This is an immutable state variable._
+This is an immutable state variable.
 
 ```solidity
-IERC20 public immutable override TOKEN;
+IERC20 public immutable override TOKEN
 ```
 
 ### campaignName
@@ -91,7 +85,7 @@ IERC20 public immutable override TOKEN;
 Retrieves the name of the campaign.
 
 ```solidity
-string public override campaignName;
+string public override campaignName
 ```
 
 ### firstClaimTime
@@ -99,45 +93,53 @@ string public override campaignName;
 Retrieves the timestamp when the first claim is made, and zero if no claim was made yet.
 
 ```solidity
-uint40 public override firstClaimTime;
+uint40 public override firstClaimTime
 ```
 
 ### ipfsCID
 
 The content identifier for indexing the campaign on IPFS.
 
-_An empty value may break certain UI features that depend upon the IPFS CID._
+An empty value may break certain UI features that depend upon the IPFS CID.
 
 ```solidity
-string public override ipfsCID;
+string public override ipfsCID
 ```
 
 ### minFeeUSD
 
 Retrieves the min USD fee required to claim the airdrop, denominated in 8 decimals.
 
-_The denomination is based on Chainlink's 8-decimal format for USD prices, where 1e8 is $1._
+The denomination is based on Chainlink's 8-decimal format for USD prices, where 1e8 is $1.
 
 ```solidity
-uint256 public override minFeeUSD;
+uint256 public override minFeeUSD
 ```
 
 ### \_claimedBitMap
 
-_Packed booleans that record the history of claims._
+Packed booleans that record the history of claims.
 
 ```solidity
-BitMaps.BitMap internal _claimedBitMap;
+BitMaps.BitMap internal _claimedBitMap
 ```
 
 ## Functions
 
 ### notZeroAddress
 
-_Modifier to check that `to` is not zero address._
+Modifier to check that `to` is not zero address.
 
 ```solidity
-modifier notZeroAddress(address to);
+modifier notZeroAddress(address to) ;
+```
+
+### revertIfNot
+
+Modifier to revert if `claimType` value does not match the campaign's claim type.
+
+```solidity
+modifier revertIfNot(ClaimType claimType) ;
 ```
 
 ### constructor
@@ -145,17 +147,7 @@ modifier notZeroAddress(address to);
 Constructs the contract by initializing the immutable state variables.
 
 ```solidity
-constructor(
-    address campaignCreator,
-    string memory campaignName_,
-    uint40 campaignStartTime,
-    address comptroller,
-    uint40 expiration,
-    address initialAdmin,
-    string memory ipfsCID_,
-    bytes32 merkleRoot,
-    IERC20 token
-) Adminable(initialAdmin)
+constructor(MerkleBase.ConstructorParams memory baseParams) [Adminable](/docs/reference/airdrops/contracts/abstracts/abstract.Adminable.md)(baseParams.initialAdmin);
 ```
 
 ### calculateMinFeeWei
@@ -166,20 +158,11 @@ Calculates the minimum fee in wei required to claim the airdrop.
 function calculateMinFeeWei() external view override returns (uint256);
 ```
 
-### domainSeparator
-
-The domain separator, as required by EIP-712 and EIP-1271, used for signing claim to prevent replay attacks across
-different campaigns.
-
-```solidity
-function domainSeparator() external view override returns (bytes32);
-```
-
 ### hasClaimed
 
 Returns a flag indicating whether a claim has been made for a given index.
 
-_Uses a bitmap to save gas._
+Uses a bitmap to save gas.
 
 ```solidity
 function hasClaimed(uint256 index) public view override returns (bool);
@@ -239,53 +222,52 @@ function lowerMinFeeUSD(uint256 newMinFeeUSD) external override;
 | -------------- | --------- | ------------------------------------------------------ |
 | `newMinFeeUSD` | `uint256` | The new min USD fee to set, denominated in 8 decimals. |
 
-### \_checkSignature
+### sponsor
 
-_Verifies the signature against the provided parameters. It supports both EIP-712 and EIP-1271 signatures._
+Sponsors the claim fees for eligible recipients.
 
-```solidity
-function _checkSignature(
-    uint256 index,
-    address recipient,
-    address to,
-    uint128 amount,
-    uint40 validFrom,
-    bytes calldata signature
-)
-    internal
-    view;
-```
+Emits a {Sponsor} event. Notes:
 
-### \_domainSeparator
-
-_Returns the domain separator for the current chain._
+- This function only makes the payment. The claim fees are updated only after the payment has been verified off-chain.
+- Refer to the Sablier website in order to sponsor with the correct token, otherwise the sponsorship may be ignored.
+  Requirements:
+- `biller` must not be the zero address.
+- `amount` must be greater than zero.
+- `token` must not be the zero address and must be a valid ERC20 token.
+- `msg.sender` must have approved the contract to spend the tokens.
 
 ```solidity
-function _domainSeparator() private view returns (bytes32);
+function sponsor(IERC20 token, uint128 amount, address biller) external override notZeroAddress(biller);
 ```
+
+**Parameters**
+
+| Name     | Type      | Description                        |
+| -------- | --------- | ---------------------------------- |
+| `token`  | `IERC20`  | The ERC-20 token to transfer.      |
+| `amount` | `uint128` | The amount of tokens to transfer.  |
+| `biller` | `address` | The address to receive the tokens. |
 
 ### \_hasGracePeriodPassed
 
 Returns a flag indicating whether the grace period has passed.
 
-_The grace period is 7 days after the first claim._
+The grace period is 7 days after the first claim.
 
 ```solidity
 function _hasGracePeriodPassed() private view returns (bool);
 ```
 
-### \_revertIfToZeroAddress
-
-_This function checks if `to` is zero address._
-
-```solidity
-function _revertIfToZeroAddress(address to) private pure;
-```
-
 ### \_preProcessClaim
 
-_See the documentation for the user-facing functions that call this internal function._
+See the documentation for the user-facing functions that call this internal function.
 
 ```solidity
-function _preProcessClaim(uint256 index, address recipient, uint128 amount, bytes32[] calldata merkleProof) internal;
+function _preProcessClaim(
+    uint256 index,
+    address recipient,
+    uint128 amount,
+    bytes32[] calldata merkleProof
+)
+    internal;
 ```

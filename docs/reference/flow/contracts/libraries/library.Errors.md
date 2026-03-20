@@ -1,6 +1,8 @@
 # Errors
 
-[Git Source](https://github.com/sablier-labs/flow/blob/a4143de45478f508bca8305fec2bd81b7ad25fe9/src/libraries/Errors.sol)
+[Git Source](https://github.com/sablier-labs/evm-monorepo/blob/7cb361717fd2f0289ad8d69469a3c00804b21657/src/libraries/Errors.sol)
+
+**Title:** Errors
 
 Library with custom errors used across the Flow contract.
 
@@ -164,14 +166,6 @@ Thrown when trying to perform a disallowed action on a pending stream.
 
 ```solidity
 error SablierFlow_StreamPending(uint256 streamId, uint40 snapshotTime);
-```
-
-### SablierFlow_SurplusZero
-
-Thrown when trying to recover for a token with zero surplus.
-
-```solidity
-error SablierFlow_SurplusZero(address token);
 ```
 
 ### SablierFlow_Unauthorized

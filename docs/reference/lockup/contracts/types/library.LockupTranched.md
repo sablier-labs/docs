@@ -1,6 +1,6 @@
 # LockupTranched
 
-[Git Source](https://github.com/sablier-labs/lockup/blob/58eaac45c20c57a93b73d887c714e68f061ec3e6/src/types/LockupTranched.sol)
+[Git Source](https://github.com/sablier-labs/evm-monorepo/blob/7cb361717fd2f0289ad8d69469a3c00804b21657/src/types/LockupTranched.sol)
 
 Namespace for the structs used only in LT streams.
 
@@ -12,6 +12,7 @@ Tranche struct stored to represent LT streams.
 
 ```solidity
 struct Tranche {
+    // slot 0
     uint128 amount;
     uint40 timestamp;
 }

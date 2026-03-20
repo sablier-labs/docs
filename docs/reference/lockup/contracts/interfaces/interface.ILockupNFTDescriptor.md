@@ -1,10 +1,12 @@
 # ILockupNFTDescriptor
 
-[Git Source](https://github.com/sablier-labs/lockup/blob/58eaac45c20c57a93b73d887c714e68f061ec3e6/src/interfaces/ILockupNFTDescriptor.sol)
+[Git Source](https://github.com/sablier-labs/evm-monorepo/blob/7cb361717fd2f0289ad8d69469a3c00804b21657/src/interfaces/ILockupNFTDescriptor.sol)
+
+**Title:** ILockupNFTDescriptor
 
 This contract generates the URI describing the Sablier stream NFTs.
 
-_Inspired by Uniswap V3 Positions NFTs._
+Inspired by Uniswap V3 Positions NFTs.
 
 ## Functions
 
@@ -12,7 +14,7 @@ _Inspired by Uniswap V3 Positions NFTs._
 
 Produces the URI describing a particular stream NFT.
 
-_This is a data URI with the JSON contents directly inlined._
+This is a data URI with the JSON contents directly inlined.
 
 ```solidity
 function tokenURI(IERC721Metadata sablier, uint256 streamId) external view returns (string memory uri);

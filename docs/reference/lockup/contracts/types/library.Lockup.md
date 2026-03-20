@@ -1,6 +1,6 @@
 # Lockup
 
-[Git Source](https://github.com/sablier-labs/lockup/blob/58eaac45c20c57a93b73d887c714e68f061ec3e6/src/types/Lockup.sol)
+[Git Source](https://github.com/sablier-labs/evm-monorepo/blob/7cb361717fd2f0289ad8d69469a3c00804b21657/src/types/Lockup.sol)
 
 Namespace for the structs shared by all Lockup models.
 
@@ -10,12 +10,14 @@ Namespace for the structs shared by all Lockup models.
 
 Struct encapsulating the deposit, withdrawn, and refunded amounts, all denoted in units of the token's decimals.
 
-_The deposited and withdrawn amount are often read together, so declaring them in the same slot saves gas._
+The deposited and withdrawn amount are often read together, so declaring them in the same slot saves gas.
 
 ```solidity
 struct Amounts {
+    // slot 0
     uint128 deposited;
     uint128 withdrawn;
+    // slot 1
     uint128 refunded;
 }
 ```
@@ -122,19 +124,22 @@ struct CreateWithTimestamps {
 
 A common data structure to be stored in all Lockup models.
 
-_The fields are arranged like this to save gas via tight variable packing._
+The fields are arranged like this to save gas via tight variable packing.
 
 ```solidity
 struct Stream {
+    // slot 0
     address sender;
     uint40 startTime;
     uint40 endTime;
     bool isCancelable;
     bool wasCanceled;
+    // slot 1
     IERC20 token;
     bool isDepleted;
     bool isTransferable;
     Model lockupModel;
+    // slot 2 and 3
     Amounts amounts;
 }
 ```
@@ -178,13 +183,14 @@ struct Timestamps {
 
 Enum representing the different distribution models used to create Lockup streams.
 
-_This determines the streaming function used in the calculations of the unlocked tokens._
+This determines the streaming function used in the calculations of the unlocked tokens.
 
 ```solidity
 enum Model {
     LOCKUP_LINEAR,
     LOCKUP_DYNAMIC,
-    LOCKUP_TRANCHED
+    LOCKUP_TRANCHED,
+    LOCKUP_PRICE_GATED
 }
 ```
 
@@ -211,8 +217,10 @@ The status can have a "temperature":
 
 ```solidity
 enum Status {
+    // Warm
     PENDING,
     STREAMING,
+    // Cold
     SETTLED,
     CANCELED,
     DEPLETED

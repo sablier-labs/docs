@@ -1,8 +1,8 @@
 # BatchLockup
 
-[Git Source](https://github.com/sablier-labs/lockup/blob/58eaac45c20c57a93b73d887c714e68f061ec3e6/src/types/BatchLockup.sol)
+[Git Source](https://github.com/sablier-labs/evm-monorepo/blob/7cb361717fd2f0289ad8d69469a3c00804b21657/src/types/BatchLockup.sol)
 
-_Namespace for the structs used in `SablierBatchLockup` contract._
+Namespace for the structs used in `SablierBatchLockup` contract.
 
 ## Structs
 
@@ -39,6 +39,7 @@ struct CreateWithDurationsLL {
     bool transferable;
     LockupLinear.Durations durations;
     LockupLinear.UnlockAmounts unlockAmounts;
+    uint40 granularity;
     string shape;
 }
 ```
@@ -96,6 +97,24 @@ struct CreateWithTimestampsLL {
     Lockup.Timestamps timestamps;
     uint40 cliffTime;
     LockupLinear.UnlockAmounts unlockAmounts;
+    uint40 granularity;
+    string shape;
+}
+```
+
+### CreateWithTimestampsLPG
+
+A struct encapsulating all parameters of {SablierLockupPriceGated.createWithTimestampsLPG} except for the token.
+
+```solidity
+struct CreateWithTimestampsLPG {
+    address sender;
+    address recipient;
+    uint128 depositAmount;
+    bool cancelable;
+    bool transferable;
+    Lockup.Timestamps timestamps;
+    LockupPriceGated.UnlockParams unlockParams;
     string shape;
 }
 ```

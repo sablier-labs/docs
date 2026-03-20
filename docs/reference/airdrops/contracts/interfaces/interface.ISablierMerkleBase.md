@@ -1,10 +1,12 @@
 # ISablierMerkleBase
 
-[Git Source](https://github.com/sablier-labs/airdrops/blob/077c6b9766ef7693ba9e82a9e001dc0097709c01/src/interfaces/ISablierMerkleBase.sol)
+[Git Source](https://github.com/sablier-labs/evm-monorepo/blob/7cb361717fd2f0289ad8d69469a3c00804b21657/src/interfaces/ISablierMerkleBase.sol)
 
 **Inherits:** IAdminable
 
-_Common interface between campaign contracts._
+**Title:** ISablierMerkleBase
+
+Common interface between campaign contracts.
 
 ## Functions
 
@@ -12,10 +14,20 @@ _Common interface between campaign contracts._
 
 The timestamp at which campaign starts and claim begins.
 
-_This is an immutable state variable._
+This is an immutable state variable.
 
 ```solidity
 function CAMPAIGN_START_TIME() external view returns (uint40);
+```
+
+### CLAIM_TYPE
+
+Retrieves the claim type supported by the campaign.
+
+This is an immutable state variable.
+
+```solidity
+function CLAIM_TYPE() external view returns (ClaimType);
 ```
 
 ### COMPTROLLER
@@ -30,7 +42,7 @@ function COMPTROLLER() external view returns (address);
 
 The cut-off point for the campaign, as a Unix timestamp. A value of zero means there is no expiration.
 
-_This is an immutable state variable._
+This is an immutable state variable.
 
 ```solidity
 function EXPIRATION() external view returns (uint40);
@@ -40,7 +52,7 @@ function EXPIRATION() external view returns (uint40);
 
 Returns `true` indicating that this campaign contract is deployed using the Sablier Factory.
 
-_This is a constant state variable._
+This is a constant state variable.
 
 ```solidity
 function IS_SABLIER_MERKLE() external view returns (bool);
@@ -50,7 +62,7 @@ function IS_SABLIER_MERKLE() external view returns (bool);
 
 The root of the Merkle tree used to validate the proofs of inclusion.
 
-_This is an immutable state variable._
+This is an immutable state variable.
 
 ```solidity
 function MERKLE_ROOT() external view returns (bytes32);
@@ -60,7 +72,7 @@ function MERKLE_ROOT() external view returns (bytes32);
 
 The ERC-20 token to distribute.
 
-_This is an immutable state variable._
+This is an immutable state variable.
 
 ```solidity
 function TOKEN() external view returns (IERC20);
@@ -82,15 +94,6 @@ Retrieves the name of the campaign.
 function campaignName() external view returns (string memory);
 ```
 
-### domainSeparator
-
-The domain separator, as required by EIP-712 and EIP-1271, used for signing claim to prevent replay attacks across
-different campaigns.
-
-```solidity
-function domainSeparator() external view returns (bytes32);
-```
-
 ### firstClaimTime
 
 Retrieves the timestamp when the first claim is made, and zero if no claim was made yet.
@@ -103,7 +106,7 @@ function firstClaimTime() external view returns (uint40);
 
 Returns a flag indicating whether a claim has been made for a given index.
 
-_Uses a bitmap to save gas._
+Uses a bitmap to save gas.
 
 ```solidity
 function hasClaimed(uint256 index) external view returns (bool);
@@ -127,7 +130,7 @@ function hasExpired() external view returns (bool);
 
 The content identifier for indexing the campaign on IPFS.
 
-_An empty value may break certain UI features that depend upon the IPFS CID._
+An empty value may break certain UI features that depend upon the IPFS CID.
 
 ```solidity
 function ipfsCID() external view returns (string memory);
@@ -137,7 +140,7 @@ function ipfsCID() external view returns (string memory);
 
 Retrieves the min USD fee required to claim the airdrop, denominated in 8 decimals.
 
-_The denomination is based on Chainlink's 8-decimal format for USD prices, where 1e8 is $1._
+The denomination is based on Chainlink's 8-decimal format for USD prices, where 1e8 is $1.
 
 ```solidity
 function minFeeUSD() external view returns (uint256);
@@ -147,7 +150,7 @@ function minFeeUSD() external view returns (uint256);
 
 Claws back the unclaimed tokens.
 
-Emits a [Clawback](/docs/reference/airdrops/contracts/interfaces/interface.ISablierMerkleBase.md#clawback-1) event.
+Emits a [Clawback](/docs/reference/airdrops/contracts/interfaces/interface.ISablierMerkleBase.md#clawback) event.
 Requirements:
 
 - `msg.sender` must be the admin.
@@ -169,11 +172,12 @@ function clawback(address to, uint128 amount) external;
 
 Lowers the min USD fee.
 
-Emits a [LowerMinFeeUSD](/docs/reference/airdrops/contracts/interfaces/interface.ISablierMerkleBase.md#lowerminfeeusd-1)
+Emits a [LowerMinFeeUSD](/docs/reference/airdrops/contracts/interfaces/interface.ISablierMerkleBase.md#lowerminfeeusd)
 event. Requirements:
 
 - `msg.sender` must be the comptroller.
-- The new fee must be less than the current {minFeeUSD}.
+- The new fee must be less than the current
+  [minFeeUSD](/docs/reference/airdrops/contracts/interfaces/interface.ISablierMerkleBase.md#minfeeusd).
 
 ```solidity
 function lowerMinFeeUSD(uint256 newMinFeeUSD) external;
@@ -184,6 +188,32 @@ function lowerMinFeeUSD(uint256 newMinFeeUSD) external;
 | Name           | Type      | Description                                            |
 | -------------- | --------- | ------------------------------------------------------ |
 | `newMinFeeUSD` | `uint256` | The new min USD fee to set, denominated in 8 decimals. |
+
+### sponsor
+
+Sponsors the claim fees for eligible recipients.
+
+Emits a [Sponsor](/docs/reference/airdrops/contracts/interfaces/interface.ISablierMerkleBase.md#sponsor) event. Notes:
+
+- This function only makes the payment. The claim fees are updated only after the payment has been verified off-chain.
+- Refer to the Sablier website in order to sponsor with the correct token, otherwise the sponsorship may be ignored.
+  Requirements:
+- `biller` must not be the zero address.
+- `amount` must be greater than zero.
+- `token` must not be the zero address and must be a valid ERC20 token.
+- `msg.sender` must have approved the contract to spend the tokens.
+
+```solidity
+function sponsor(IERC20 token, uint128 amount, address biller) external;
+```
+
+**Parameters**
+
+| Name     | Type      | Description                        |
+| -------- | --------- | ---------------------------------- |
+| `token`  | `IERC20`  | The ERC-20 token to transfer.      |
+| `amount` | `uint128` | The amount of tokens to transfer.  |
+| `biller` | `address` | The address to receive the tokens. |
 
 ## Events
 
@@ -201,4 +231,12 @@ Emitted when the min USD fee is lowered by the comptroller.
 
 ```solidity
 event LowerMinFeeUSD(address indexed comptroller, uint256 newMinFeeUSD, uint256 previousMinFeeUSD);
+```
+
+### Sponsor
+
+Emitted when campaign owner sponsors the claim fees for eligible recipients.
+
+```solidity
+event Sponsor(address indexed caller, IERC20 indexed token, uint128 amount, address indexed biller);
 ```

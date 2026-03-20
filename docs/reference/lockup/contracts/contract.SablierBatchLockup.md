@@ -4,9 +4,11 @@ sidebar_position: 1
 
 # SablierBatchLockup
 
-[Git Source](https://github.com/sablier-labs/lockup/blob/58eaac45c20c57a93b73d887c714e68f061ec3e6/src/SablierBatchLockup.sol)
+[Git Source](https://github.com/sablier-labs/evm-monorepo/blob/7cb361717fd2f0289ad8d69469a3c00804b21657/src/SablierBatchLockup.sol)
 
 **Inherits:** [ISablierBatchLockup](/docs/reference/lockup/contracts/interfaces/interface.ISablierBatchLockup.md)
+
+**Title:** SablierBatchLockup
 
 See the documentation in
 [ISablierBatchLockup](/docs/reference/lockup/contracts/interfaces/interface.ISablierBatchLockup.md).
@@ -149,6 +151,43 @@ function createWithTimestampsLL(
 | ----------- | ----------- | ------------------------------------- |
 | `streamIds` | `uint256[]` | The ids of the newly created streams. |
 
+### createWithTimestampsLPG
+
+Creates a batch of LPG streams using `createWithTimestampsLPG`.
+
+Notes:
+
+- The LPG model does not support a "createWithDuration" function because the
+  [SablierLockup](/docs/reference/lockup/contracts/contract.SablierLockup.md) contract is at the size limit. If the EVM
+  contract size limit is increased in the future, this function will be added. Requirements:
+- There must be at least one element in `batch`.
+- All requirements from {ISablierLockupPriceGated.createWithTimestampsLPG} must be met for each stream.
+
+```solidity
+function createWithTimestampsLPG(
+    ISablierLockup lockup,
+    IERC20 token,
+    BatchLockup.CreateWithTimestampsLPG[] calldata batch
+)
+    external
+    override
+    returns (uint256[] memory streamIds);
+```
+
+**Parameters**
+
+| Name     | Type                                    | Description                                                                                                               |
+| -------- | --------------------------------------- | ------------------------------------------------------------------------------------------------------------------------- |
+| `lockup` | `ISablierLockup`                        | The address of the [SablierLockup](/docs/reference/lockup/contracts/contract.SablierLockup.md) contract.                  |
+| `token`  | `IERC20`                                | The contract address of the ERC-20 token to be distributed.                                                               |
+| `batch`  | `BatchLockup.CreateWithTimestampsLPG[]` | An array of structs, each encapsulating a subset of the parameters of {ISablierLockupPriceGated.createWithTimestampsLPG}. |
+
+**Returns**
+
+| Name        | Type        | Description                           |
+| ----------- | ----------- | ------------------------------------- |
+| `streamIds` | `uint256[]` | The ids of the newly created streams. |
+
 ### createWithDurationsLT
 
 Creates a batch of LT streams using `createWithDurationsLT`.
@@ -219,10 +258,10 @@ function createWithTimestampsLT(
 
 ### \_approve
 
-_Helper function to approve a Lockup contract to spend funds from the batchLockup. If the current allowance is
+Helper function to approve a Lockup contract to spend funds from the batchLockup. If the current allowance is
 insufficient, this function approves Lockup to spend the exact `amount`. The {SafeERC20.forceApprove} function is used
 to handle special ERC-20 tokens (e.g. USDT) that require the current allowance to be zero before setting it to a
-non-zero value._
+non-zero value.
 
 ```solidity
 function _approve(address lockup, IERC20 token, uint256 amount) internal;
@@ -230,7 +269,7 @@ function _approve(address lockup, IERC20 token, uint256 amount) internal;
 
 ### \_handleTransfer
 
-_Helper function to transfer tokens from the caller to the batchLockup contract and approve the Lockup contract._
+Helper function to transfer tokens from the caller to the batchLockup contract and approve the Lockup contract.
 
 ```solidity
 function _handleTransfer(address lockup, IERC20 token, uint256 amount) internal;

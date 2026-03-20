@@ -1,14 +1,16 @@
 # ISablierFactoryMerkleVCA
 
-[Git Source](https://github.com/sablier-labs/airdrops/blob/077c6b9766ef7693ba9e82a9e001dc0097709c01/src/interfaces/ISablierFactoryMerkleVCA.sol)
+[Git Source](https://github.com/sablier-labs/evm-monorepo/blob/7cb361717fd2f0289ad8d69469a3c00804b21657/src/interfaces/ISablierFactoryMerkleVCA.sol)
 
 **Inherits:**
 [ISablierFactoryMerkleBase](/docs/reference/airdrops/contracts/interfaces/interface.ISablierFactoryMerkleBase.md)
 
+**Title:** ISablierFactoryMerkleVCA
+
 A factory that deploys MerkleVCA campaign contracts.
 
-_See the documentation in
-[ISablierMerkleVCA](/docs/reference/airdrops/contracts/interfaces/interface.ISablierMerkleVCA.md)._
+See the documentation in
+[ISablierMerkleVCA](/docs/reference/airdrops/contracts/interfaces/interface.ISablierMerkleVCA.md).
 
 ## Functions
 
@@ -17,14 +19,14 @@ _See the documentation in
 Computes the deterministic address where
 [SablierMerkleVCA](/docs/reference/airdrops/contracts/contract.SablierMerkleVCA.md) campaign will be deployed.
 
-_Reverts if the requirements from
+Reverts if the requirements from
 [createMerkleVCA](/docs/reference/airdrops/contracts/interfaces/interface.ISablierFactoryMerkleVCA.md#createmerklevca)
-are not met._
+are not met.
 
 ```solidity
 function computeMerkleVCA(
     address campaignCreator,
-    MerkleVCA.ConstructorParams memory params
+    MerkleVCA.ConstructorParams calldata campaignParams
 )
     external
     view
@@ -36,24 +38,25 @@ function computeMerkleVCA(
 Creates a new MerkleVCA campaign for variable distribution of tokens.
 
 Emits a
-[CreateMerkleVCA](/docs/reference/airdrops/contracts/interfaces/interface.ISablierFactoryMerkleVCA.md#createmerklevca-1)
+[CreateMerkleVCA](/docs/reference/airdrops/contracts/interfaces/interface.ISablierFactoryMerkleVCA.md#createmerklevca)
 event. Notes:
 
 - The contract is created with CREATE2.
 - The campaign's fee will be set to the min USD fee unless a custom fee is set for `msg.sender`.
 - Users interested into funding the campaign before its deployment must meet the below requirements, otherwise the
   campaign deployment will revert. Requirements:
-- `params.token` must not be the forbidden native token.
-- `params.expiration` must be greater than 0.
-- `params.expiration` must be at least 1 week beyond the end time to ensure loyal recipients have enough time to claim.
-- `params.vestingEndTime` must be greater than `params.vestingStartTime`.
-- Both `params.vestingStartTime` and `params.vestingEndTime` must be greater than 0.
-- `params.unlockPercentage` must not be greater than 1e18, equivalent to 100%.
+- `campaignParams.token` must not be the forbidden native token.
+- `campaignParams.aggregateAmount` must be greater than 0.
+- Both `campaignParams.vestingStartTime` and `campaignParams.vestingEndTime` must be greater than 0.
+- `campaignParams.vestingEndTime` must be greater than `campaignParams.vestingStartTime`.
+- `campaignParams.expiration` must be greater than 0.
+- `campaignParams.expiration` must be at least 1 week beyond the end time to ensure loyal recipients have enough time to
+  claim.
+- `campaignParams.unlockPercentage` must not be greater than 1e18, equivalent to 100%.
 
 ```solidity
 function createMerkleVCA(
-    MerkleVCA.ConstructorParams memory params,
-    uint256 aggregateAmount,
+    MerkleVCA.ConstructorParams memory campaignParams,
     uint256 recipientCount
 )
     external
@@ -62,11 +65,10 @@ function createMerkleVCA(
 
 **Parameters**
 
-| Name              | Type                          | Description                                                                                                                                    |
-| ----------------- | ----------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------- |
-| `params`          | `MerkleVCA.ConstructorParams` | Struct encapsulating the input parameters, which are documented in [MerkleVCA](/docs/reference/airdrops/contracts/types/library.MerkleVCA.md). |
-| `aggregateAmount` | `uint256`                     | The total amount of ERC-20 tokens to be distributed to all recipients.                                                                         |
-| `recipientCount`  | `uint256`                     | The total number of recipient addresses eligible for the airdrop.                                                                              |
+| Name             | Type                          | Description                                                                                                              |
+| ---------------- | ----------------------------- | ------------------------------------------------------------------------------------------------------------------------ |
+| `campaignParams` | `MerkleVCA.ConstructorParams` | Struct encapsulating the [SablierMerkleVCA](/docs/reference/airdrops/contracts/contract.SablierMerkleVCA.md) parameters. |
+| `recipientCount` | `uint256`                     | The total number of recipient addresses eligible for the airdrop.                                                        |
 
 **Returns**
 
@@ -83,8 +85,7 @@ Emitted when a [SablierMerkleVCA](/docs/reference/airdrops/contracts/contract.Sa
 ```solidity
 event CreateMerkleVCA(
     ISablierMerkleVCA indexed merkleVCA,
-    MerkleVCA.ConstructorParams params,
-    uint256 aggregateAmount,
+    MerkleVCA.ConstructorParams campaignParams,
     uint256 recipientCount,
     address comptroller,
     uint256 minFeeUSD

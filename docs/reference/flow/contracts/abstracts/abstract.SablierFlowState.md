@@ -1,8 +1,10 @@
 # SablierFlowState
 
-[Git Source](https://github.com/sablier-labs/flow/blob/a4143de45478f508bca8305fec2bd81b7ad25fe9/src/abstracts/SablierFlowState.sol)
+[Git Source](https://github.com/sablier-labs/evm-monorepo/blob/7cb361717fd2f0289ad8d69469a3c00804b21657/src/abstracts/SablierFlowState.sol)
 
 **Inherits:** [ISablierFlowState](/docs/reference/flow/contracts/interfaces/interface.ISablierFlowState.md)
+
+**Title:** SablierFlowState
 
 See the documentation in [ISablierFlowState](/docs/reference/flow/contracts/interfaces/interface.ISablierFlowState.md).
 
@@ -10,27 +12,22 @@ See the documentation in [ISablierFlowState](/docs/reference/flow/contracts/inte
 
 ### aggregateAmount
 
-Retrieves the aggregate amount across all streams, denoted in units of the token's decimals.
-
-_If tokens are directly transferred to the contract without using the stream creation functions, the ERC-20 balance may
-be greater than the aggregate amount._
-
 ```solidity
-mapping(IERC20 token => uint256 amount) public override aggregateAmount;
+mapping(IERC20 token => uint256 amount) public override aggregateAmount
 ```
 
 ### nativeToken
 
 Retrieves the address of the ERC-20 interface of the native token, if it exists.
 
-_The native tokens on some chains have a dual interface as ERC-20. For example, on Polygon the $POL token is the native
+The native tokens on some chains have a dual interface as ERC-20. For example, on Polygon the $POL token is the native
 token and has an ERC-20 version at 0x0000000000000000000000000000000000001010. This means that `address(this).balance`
 returns the same value as `balanceOf(address(this))`. To avoid any unintended behavior, these tokens cannot be used in
 Sablier. As an alternative, users can use the Wrapped version of the token, i.e. WMATIC, which is a standard ERC-20
-token._
+token.
 
 ```solidity
-address public override nativeToken;
+address public override nativeToken
 ```
 
 ### nextStreamId
@@ -38,7 +35,7 @@ address public override nativeToken;
 Counter for stream ids.
 
 ```solidity
-uint256 public override nextStreamId;
+uint256 public override nextStreamId
 ```
 
 ### nftDescriptor
@@ -46,15 +43,15 @@ uint256 public override nextStreamId;
 Contract that generates the non-fungible token URI.
 
 ```solidity
-IFlowNFTDescriptor public override nftDescriptor;
+IFlowNFTDescriptor public override nftDescriptor
 ```
 
 ### \_streams
 
-_Sablier Flow streams mapped by unsigned integers._
+Sablier Flow streams mapped by unsigned integers.
 
 ```solidity
-mapping(uint256 id => Flow.Stream stream) internal _streams;
+mapping(uint256 id => Flow.Stream stream) internal _streams
 ```
 
 ## Functions
@@ -62,7 +59,7 @@ mapping(uint256 id => Flow.Stream stream) internal _streams;
 ### constructor
 
 ```solidity
-constructor(address initialNFTDescriptor);
+constructor(address initialNFTDescriptor) ;
 ```
 
 **Parameters**
@@ -73,35 +70,35 @@ constructor(address initialNFTDescriptor);
 
 ### notNull
 
-_Checks that `streamId` does not reference a null stream._
+Checks that `streamId` does not reference a null stream.
 
 ```solidity
-modifier notNull(uint256 streamId);
+modifier notNull(uint256 streamId) ;
 ```
 
 ### notPaused
 
-_Checks that `streamId` does not reference a paused stream. Note that this implicitly checks that the stream is not
-voided either._
+Checks that `streamId` does not reference a paused stream. Note that this implicitly checks that the stream is not
+voided either.
 
 ```solidity
-modifier notPaused(uint256 streamId);
+modifier notPaused(uint256 streamId) ;
 ```
 
 ### notVoided
 
-_Checks that `streamId` does not reference a voided stream._
+Checks that `streamId` does not reference a voided stream.
 
 ```solidity
-modifier notVoided(uint256 streamId);
+modifier notVoided(uint256 streamId) ;
 ```
 
 ### onlySender
 
-_Checks the `msg.sender` is the stream's sender._
+Checks the `msg.sender` is the stream's sender.
 
 ```solidity
-modifier onlySender(uint256 streamId);
+modifier onlySender(uint256 streamId) ;
 ```
 
 ### getBalance
@@ -109,7 +106,7 @@ modifier onlySender(uint256 streamId);
 Retrieves the balance of the stream, i.e. the total deposited amounts subtracted by the total withdrawn amounts, denoted
 in token's decimals.
 
-_Reverts if `streamId` references a null stream._
+Reverts if `streamId` references a null stream.
 
 ```solidity
 function getBalance(uint256 streamId) external view override notNull(streamId) returns (uint128 balance);
@@ -125,10 +122,15 @@ function getBalance(uint256 streamId) external view override notNull(streamId) r
 
 Retrieves the rate per second of the stream, denoted as a fixed-point number where 1e18 is 1 token per second.
 
-_Reverts if `streamId` references a null stream._
+Reverts if `streamId` references a null stream.
 
 ```solidity
-function getRatePerSecond(uint256 streamId) external view override notNull(streamId) returns (UD21x18 ratePerSecond);
+function getRatePerSecond(uint256 streamId)
+    external
+    view
+    override
+    notNull(streamId)
+    returns (UD21x18 ratePerSecond);
 ```
 
 **Parameters**
@@ -141,7 +143,7 @@ function getRatePerSecond(uint256 streamId) external view override notNull(strea
 
 Retrieves the stream's sender.
 
-_Reverts if `streamId` references a null stream._
+Reverts if `streamId` references a null stream.
 
 ```solidity
 function getSender(uint256 streamId) external view override notNull(streamId) returns (address sender);
@@ -157,7 +159,7 @@ function getSender(uint256 streamId) external view override notNull(streamId) re
 
 Retrieves the snapshot debt of the stream, denoted as a fixed-point number where 1e18 is 1 token.
 
-_Reverts if `streamId` references a null stream._
+Reverts if `streamId` references a null stream.
 
 ```solidity
 function getSnapshotDebtScaled(uint256 streamId)
@@ -178,7 +180,7 @@ function getSnapshotDebtScaled(uint256 streamId)
 
 Retrieves the snapshot time of the stream, which is a Unix timestamp.
 
-_Reverts if `streamId` references a null stream._
+Reverts if `streamId` references a null stream.
 
 ```solidity
 function getSnapshotTime(uint256 streamId) external view override notNull(streamId) returns (uint40 snapshotTime);
@@ -194,7 +196,7 @@ function getSnapshotTime(uint256 streamId) external view override notNull(stream
 
 Retrieves the stream entity.
 
-_Reverts if `streamId` references a null stream._
+Reverts if `streamId` references a null stream.
 
 ```solidity
 function getStream(uint256 streamId) external view override notNull(streamId) returns (Flow.Stream memory stream);
@@ -210,7 +212,7 @@ function getStream(uint256 streamId) external view override notNull(streamId) re
 
 Retrieves the token of the stream.
 
-_Reverts if `streamId` references a null stream._
+Reverts if `streamId` references a null stream.
 
 ```solidity
 function getToken(uint256 streamId) external view override notNull(streamId) returns (IERC20 token);
@@ -226,7 +228,7 @@ function getToken(uint256 streamId) external view override notNull(streamId) ret
 
 Retrieves the token decimals of the stream.
 
-_Reverts if `streamId` references a null stream._
+Reverts if `streamId` references a null stream.
 
 ```solidity
 function getTokenDecimals(uint256 streamId) external view override notNull(streamId) returns (uint8 tokenDecimals);
@@ -242,7 +244,7 @@ function getTokenDecimals(uint256 streamId) external view override notNull(strea
 
 Retrieves a flag indicating whether the stream exists.
 
-_Does not revert if `streamId` references a null stream._
+Does not revert if `streamId` references a null stream.
 
 ```solidity
 function isStream(uint256 streamId) external view override returns (bool result);
@@ -258,7 +260,7 @@ function isStream(uint256 streamId) external view override returns (bool result)
 
 Retrieves a flag indicating whether the stream NFT is transferable.
 
-_Reverts if `streamId` references a null stream._
+Reverts if `streamId` references a null stream.
 
 ```solidity
 function isTransferable(uint256 streamId) external view override notNull(streamId) returns (bool result);
@@ -274,7 +276,7 @@ function isTransferable(uint256 streamId) external view override notNull(streamI
 
 Retrieves a flag indicating whether the stream is voided.
 
-_Reverts if `streamId` references a null stream._
+Reverts if `streamId` references a null stream.
 
 ```solidity
 function isVoided(uint256 streamId) external view override notNull(streamId) returns (bool result);
@@ -288,8 +290,8 @@ function isVoided(uint256 streamId) external view override notNull(streamId) ret
 
 ### \_notNull
 
-_A private function is used instead of inlining this logic in a modifier because Solidity copies modifiers into every
-function that uses them._
+A private function is used instead of inlining this logic in a modifier because Solidity copies modifiers into every
+function that uses them.
 
 ```solidity
 function _notNull(uint256 streamId) private view;

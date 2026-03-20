@@ -4,9 +4,11 @@ sidebar_position: 2
 
 # FlowNFTDescriptor
 
-[Git Source](https://github.com/sablier-labs/flow/blob/a4143de45478f508bca8305fec2bd81b7ad25fe9/src/FlowNFTDescriptor.sol)
+[Git Source](https://github.com/sablier-labs/evm-monorepo/blob/7cb361717fd2f0289ad8d69469a3c00804b21657/src/FlowNFTDescriptor.sol)
 
 **Inherits:** [IFlowNFTDescriptor](/docs/reference/flow/contracts/interfaces/interface.IFlowNFTDescriptor.md)
+
+**Title:** FlowNFTDescriptor
 
 See the documentation in
 [IFlowNFTDescriptor](/docs/reference/flow/contracts/interfaces/interface.IFlowNFTDescriptor.md).
@@ -17,10 +19,17 @@ See the documentation in
 
 Produces the URI describing a particular stream NFT.
 
-_Currently it returns the Sablier logo as an SVG. In the future, it will return an NFT SVG._
+Currently it returns the Sablier logo as an SVG. In the future, it will return an NFT SVG.
 
 ```solidity
-function tokenURI(IERC721Metadata, uint256) external pure override returns (string memory uri);
+function tokenURI(
+    IERC721Metadata, /* sablierFlow */
+    uint256 /* streamId */
+)
+    external
+    pure
+    override
+    returns (string memory uri);
 ```
 
 **Parameters**

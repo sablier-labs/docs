@@ -1,6 +1,8 @@
-# Helpers
+# LockupHelpers
 
-[Git Source](https://github.com/sablier-labs/lockup/blob/58eaac45c20c57a93b73d887c714e68f061ec3e6/src/libraries/Helpers.sol)
+[Git Source](https://github.com/sablier-labs/evm-monorepo/blob/7cb361717fd2f0289ad8d69469a3c00804b21657/src/libraries/LockupHelpers.sol)
+
+**Title:** LockupHelpers
 
 Library with functions needed to validate input parameters across Lockup streams.
 
@@ -8,7 +10,7 @@ Library with functions needed to validate input parameters across Lockup streams
 
 ### calculateSegmentTimestamps
 
-_Calculate the timestamps and return the segments._
+Calculate the timestamps and return the segments.
 
 ```solidity
 function calculateSegmentTimestamps(
@@ -22,7 +24,7 @@ function calculateSegmentTimestamps(
 
 ### calculateTrancheTimestamps
 
-_Calculate the timestamps and return the tranches._
+Calculate the timestamps and return the tranches.
 
 ```solidity
 function calculateTrancheTimestamps(
@@ -36,9 +38,9 @@ function calculateTrancheTimestamps(
 
 ### checkCreateLD
 
-_Checks the parameters of the
+Checks the parameters of the
 [SablierLockup-\_createLD](/docs/reference/lockup/contracts/abstracts/abstract.SablierLockupDynamic.md#_createld)
-function._
+function.
 
 ```solidity
 function checkCreateLD(
@@ -56,30 +58,51 @@ function checkCreateLD(
 
 ### checkCreateLL
 
-_Checks the parameters of the
+Checks the parameters of the
 [SablierLockup-\_createLL](/docs/reference/lockup/contracts/abstracts/abstract.SablierLockupLinear.md#_createll)
-function._
+function.
 
 ```solidity
 function checkCreateLL(
-    address sender,
-    Lockup.Timestamps memory timestamps,
     uint40 cliffTime,
     uint128 depositAmount,
-    LockupLinear.UnlockAmounts memory unlockAmounts,
-    address token,
+    uint40 granularity,
     address nativeToken,
-    string memory shape
+    address sender,
+    string memory shape,
+    Lockup.Timestamps memory timestamps,
+    address token,
+    LockupLinear.UnlockAmounts memory unlockAmounts
 )
     public
     pure;
 ```
 
+### checkCreateLPG
+
+Checks the parameters of the
+[SablierLockup-\_createLPG](/docs/reference/lockup/contracts/abstracts/abstract.SablierLockupPriceGated.md#_createlpg)
+function.
+
+```solidity
+function checkCreateLPG(
+    address sender,
+    Lockup.Timestamps memory timestamps,
+    uint128 depositAmount,
+    address token,
+    address nativeToken,
+    string memory shape,
+    LockupPriceGated.UnlockParams memory unlockParams
+)
+    public
+    view;
+```
+
 ### checkCreateLT
 
-_Checks the parameters of the
+Checks the parameters of the
 [SablierLockup-\_createLT](/docs/reference/lockup/contracts/abstracts/abstract.SablierLockupTranched.md#_createlt)
-function._
+function.
 
 ```solidity
 function checkCreateLT(
@@ -97,13 +120,14 @@ function checkCreateLT(
 
 ### \_checkTimestampsAndUnlockAmounts
 
-_Checks the user-provided cliff, end times, and unlock amounts of an LL stream._
+Checks the user-provided timestamps of an LL stream.
 
 ```solidity
 function _checkTimestampsAndUnlockAmounts(
-    uint128 depositAmount,
-    Lockup.Timestamps memory timestamps,
     uint40 cliffTime,
+    uint128 depositAmount,
+    uint40 granularity,
+    Lockup.Timestamps memory timestamps,
     LockupLinear.UnlockAmounts memory unlockAmounts
 )
     private
@@ -112,7 +136,7 @@ function _checkTimestampsAndUnlockAmounts(
 
 ### \_checkCreateStream
 
-_Checks the user-provided common parameters across Lockup streams._
+Checks the user-provided common parameters across Lockup streams.
 
 ```solidity
 function _checkCreateStream(

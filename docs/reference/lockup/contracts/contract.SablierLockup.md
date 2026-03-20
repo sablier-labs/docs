@@ -4,14 +4,17 @@ sidebar_position: 1
 
 # SablierLockup
 
-[Git Source](https://github.com/sablier-labs/lockup/blob/58eaac45c20c57a93b73d887c714e68f061ec3e6/src/SablierLockup.sol)
+[Git Source](https://github.com/sablier-labs/evm-monorepo/blob/7cb361717fd2f0289ad8d69469a3c00804b21657/src/SablierLockup.sol)
 
 **Inherits:** [Batch](/docs/reference/lockup/contracts/abstracts/abstract.Batch.md),
 [Comptrollerable](/docs/reference/lockup/contracts/abstracts/abstract.Comptrollerable.md), ERC721,
 [ISablierLockup](/docs/reference/lockup/contracts/interfaces/interface.ISablierLockup.md),
 [SablierLockupDynamic](/docs/reference/lockup/contracts/abstracts/abstract.SablierLockupDynamic.md),
 [SablierLockupLinear](/docs/reference/lockup/contracts/abstracts/abstract.SablierLockupLinear.md),
+[SablierLockupPriceGated](/docs/reference/lockup/contracts/abstracts/abstract.SablierLockupPriceGated.md),
 [SablierLockupTranched](/docs/reference/lockup/contracts/abstracts/abstract.SablierLockupTranched.md)
+
+**Title:** SablierLockup
 
 See the documentation in [ISablierLockup](/docs/reference/lockup/contracts/interfaces/interface.ISablierLockup.md).
 
@@ -24,7 +27,7 @@ constructor(
     address initialComptroller,
     address initialNFTDescriptor
 )
-    Comptrollerable(initialComptroller)
+    [Comptrollerable](/docs/reference/lockup/contracts/abstracts/abstract.Comptrollerable.md)(initialComptroller)
     ERC721("Sablier Lockup NFT", "SAB-LOCKUP")
     SablierLockupState(initialNFTDescriptor);
 ```
@@ -40,7 +43,7 @@ constructor(
 
 Calculates the minimum fee in wei required to withdraw from the given stream ID.
 
-_Reverts if `streamId` references a null stream._
+Reverts if `streamId` references a null stream.
 
 ```solidity
 function calculateMinFeeWei(uint256 streamId) external view override notNull(streamId) returns (uint256 minFeeWei);
@@ -56,7 +59,7 @@ function calculateMinFeeWei(uint256 streamId) external view override notNull(str
 
 Retrieves the stream's recipient.
 
-_Reverts if the NFT has been burned._
+Reverts if the NFT has been burned.
 
 ```solidity
 function getRecipient(uint256 streamId) external view override returns (address recipient);
@@ -72,7 +75,7 @@ function getRecipient(uint256 streamId) external view override returns (address 
 
 Retrieves a flag indicating whether the stream is cold, i.e. settled, canceled, or depleted.
 
-_Reverts if `streamId` references a null stream._
+Reverts if `streamId` references a null stream.
 
 ```solidity
 function isCold(uint256 streamId) external view override notNull(streamId) returns (bool result);
@@ -88,7 +91,7 @@ function isCold(uint256 streamId) external view override notNull(streamId) retur
 
 Retrieves a flag indicating whether the stream is warm, i.e. either pending or streaming.
 
-_Reverts if `streamId` references a null stream._
+Reverts if `streamId` references a null stream.
 
 ```solidity
 function isWarm(uint256 streamId) external view override notNull(streamId) returns (bool result);
@@ -105,7 +108,7 @@ function isWarm(uint256 streamId) external view override notNull(streamId) retur
 Calculates the amount that the sender would be refunded if the stream were canceled, denoted in units of the token's
 decimals.
 
-_Reverts if `streamId` references a null stream._
+Reverts if `streamId` references a null stream.
 
 ```solidity
 function refundableAmountOf(uint256 streamId)
@@ -126,7 +129,7 @@ function refundableAmountOf(uint256 streamId)
 
 Retrieves the stream's status.
 
-_Reverts if `streamId` references a null stream._
+Reverts if `streamId` references a null stream.
 
 ```solidity
 function statusOf(uint256 streamId) external view override notNull(streamId) returns (Lockup.Status status);
@@ -149,7 +152,12 @@ Reverts if `streamId` references a null stream. Notes:
   amount withdrawn.
 
 ```solidity
-function streamedAmountOf(uint256 streamId) external view override notNull(streamId) returns (uint128 streamedAmount);
+function streamedAmountOf(uint256 streamId)
+    external
+    view
+    override
+    notNull(streamId)
+    returns (uint128 streamedAmount);
 ```
 
 **Parameters**
@@ -160,7 +168,7 @@ function streamedAmountOf(uint256 streamId) external view override notNull(strea
 
 ### supportsInterface
 
-_See {IERC165-supportsInterface}._
+See {IERC165-supportsInterface}.
 
 ```solidity
 function supportsInterface(bytes4 interfaceId) public view override(IERC165, ERC721) returns (bool);
@@ -168,7 +176,7 @@ function supportsInterface(bytes4 interfaceId) public view override(IERC165, ERC
 
 ### tokenURI
 
-_See {IERC721Metadata-tokenURI}._
+See {IERC721Metadata-tokenURI}.
 
 ```solidity
 function tokenURI(uint256 streamId) public view override(IERC721Metadata, ERC721) returns (string memory uri);
@@ -178,7 +186,7 @@ function tokenURI(uint256 streamId) public view override(IERC721Metadata, ERC721
 
 Calculates the amount that the recipient can withdraw from the stream, denoted in units of the token's decimals.
 
-_Reverts if `streamId` references a null stream._
+Reverts if `streamId` references a null stream.
 
 ```solidity
 function withdrawableAmountOf(uint256 streamId)
@@ -245,7 +253,7 @@ Cancels the stream and refunds any remaining tokens to the sender.
 
 Emits a {Transfer}, {CancelLockupStream} and {MetadataUpdate} event. Notes:
 
-- If there any tokens left for the recipient to withdraw, the stream is marked as canceled. Otherwise, the stream is
+- If there are any tokens left for the recipient to withdraw, the stream is marked as canceled. Otherwise, the stream is
   marked as depleted.
 - If the address is on the allowlist, this function will invoke a hook on the recipient. Requirements:
 - Must not be delegate called.
@@ -357,9 +365,9 @@ Sets the native token address. Once set, it cannot be changed.
 
 For more information, see the documentation for {nativeToken}. Notes:
 
-- If `newNativeToken` is zero address, the function does not revert. Requirements:
+- If `newNativeToken` is the zero address, the function does not revert. Requirements:
 - `msg.sender` must be the comptroller contract.
-- The current native token must be zero address.
+- The current native token must be the zero address.
 
 ```solidity
 function setNativeToken(address newNativeToken) external override onlyComptroller;
@@ -529,7 +537,7 @@ function withdrawMultiple(
 
 Calculates the streamed amount of the stream.
 
-_This function is implemented by child contract. The logic varies according to the distribution model._
+This function is implemented by child contract. The logic varies according to the distribution model.
 
 ```solidity
 function _streamedAmountOf(uint256 streamId) internal view override returns (uint128 streamedAmount);
@@ -542,8 +550,8 @@ in the [SablierLockupDynamic](docs/reference/lockup/contracts/abstracts/abstract
 [SablierLockupLinear](docs/reference/lockup/contracts/abstracts/abstract.SablierLockupLinear.md) and
 [SablierLockupTranched](docs/reference/lockup/contracts/abstracts/abstract.SablierLockupTranched.md) contracts.
 
-_It updates state variables based on the stream parameters, mints an NFT to the recipient, bumps stream ID, and
-transfers the deposit amount._
+It updates state variables based on the stream parameters, mints an NFT to the recipient, bumps stream ID, and transfers
+the deposit amount.
 
 ```solidity
 function _create(
@@ -563,7 +571,7 @@ function _create(
 
 ### \_update
 
-Overrides the {ERC-721.\_update} function to check that the stream is transferable, and emits an ERC-4906 event.
+Overrides the {ERC721.\_update} function to check that the stream is transferable, and emits an ERC-4906 event.
 
 There are two cases when the transferable flag is ignored:
 
@@ -606,7 +614,7 @@ function _isCallerStreamRecipientOrApproved(uint256 streamId, address recipient)
 
 ### \_withdrawableAmountOf
 
-_See the documentation for the user-facing functions that call this private function._
+See the documentation for the user-facing functions that call this private function.
 
 ```solidity
 function _withdrawableAmountOf(uint256 streamId) private view returns (uint128);
@@ -614,7 +622,7 @@ function _withdrawableAmountOf(uint256 streamId) private view returns (uint128);
 
 ### \_cancel
 
-_See the documentation for the user-facing functions that call this private function._
+See the documentation for the user-facing functions that call this private function.
 
 ```solidity
 function _cancel(uint256 streamId) private returns (uint128 senderAmount);
@@ -622,7 +630,7 @@ function _cancel(uint256 streamId) private returns (uint128 senderAmount);
 
 ### \_withdraw
 
-_See the documentation for the user-facing functions that call this private function._
+See the documentation for the user-facing functions that call this private function.
 
 ```solidity
 function _withdraw(uint256 streamId, address to, uint128 amount) private;

@@ -1,10 +1,12 @@
 # Comptrollerable
 
-[Git Source](https://github.com/sablier-labs/evm-utils/blob/0b3bc38ab8badd135fc178b757afaf6902f1f63c/src/Comptrollerable.sol)
+[Git Source](https://github.com/sablier-labs/evm-monorepo/blob/7cb361717fd2f0289ad8d69469a3c00804b21657/src/Comptrollerable.sol)
 
-**Inherits:** [IComptrollerable](/reference/flow/contracts/interfaces/interface.IComptrollerable.md)
+**Inherits:** [IComptrollerable](/docs/reference/flow/contracts/interfaces/interface.IComptrollerable.md)
 
-See the documentation in [IComptrollerable](/reference/flow/contracts/interfaces/interface.IComptrollerable.md).
+**Title:** Comptrollerable
+
+See the documentation in [IComptrollerable](/docs/reference/flow/contracts/interfaces/interface.IComptrollerable.md).
 
 ## State Variables
 
@@ -13,7 +15,7 @@ See the documentation in [IComptrollerable](/reference/flow/contracts/interfaces
 Retrieves the address of the comptroller contract.
 
 ```solidity
-ISablierComptroller public override comptroller;
+ISablierComptroller public override comptroller
 ```
 
 ## Functions
@@ -23,13 +25,13 @@ ISablierComptroller public override comptroller;
 Reverts if called by any account other than the comptroller.
 
 ```solidity
-modifier onlyComptroller();
+modifier onlyComptroller() ;
 ```
 
 ### constructor
 
 ```solidity
-constructor(address initialComptroller);
+constructor(address initialComptroller) ;
 ```
 
 **Parameters**
@@ -75,7 +77,7 @@ function transferFeesToComptroller() external override;
 
 ### \_checkComptroller
 
-_See the documentation for the user-facing functions that call this private function._
+See the documentation for the user-facing functions that call this private function.
 
 ```solidity
 function _checkComptroller() private view;
@@ -83,7 +85,7 @@ function _checkComptroller() private view;
 
 ### \_setComptroller
 
-_See the documentation for the user-facing functions that call this private function._
+See the documentation for the user-facing functions that call this private function.
 
 ```solidity
 function _setComptroller(

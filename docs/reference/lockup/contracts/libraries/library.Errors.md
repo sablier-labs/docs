@@ -1,6 +1,8 @@
 # Errors
 
-[Git Source](https://github.com/sablier-labs/lockup/blob/58eaac45c20c57a93b73d887c714e68f061ec3e6/src/libraries/Errors.sol)
+[Git Source](https://github.com/sablier-labs/evm-monorepo/blob/7cb361717fd2f0289ad8d69469a3c00804b21657/src/libraries/Errors.sol)
+
+**Title:** Errors
 
 Library containing all custom errors the protocol may revert with.
 
@@ -12,166 +14,196 @@ Library containing all custom errors the protocol may revert with.
 error SablierBatchLockup_BatchSizeZero();
 ```
 
-### SablierHelpers_CliffTimeNotLessThanEndTime
+### SablierLockupHelpers_CliffTimeNotLessThanEndTime
 
 Thrown when trying to create a linear stream with a cliff time not strictly less than the end time.
 
 ```solidity
-error SablierHelpers_CliffTimeNotLessThanEndTime(uint40 cliffTime, uint40 endTime);
+error SablierLockupHelpers_CliffTimeNotLessThanEndTime(uint40 cliffTime, uint40 endTime);
 ```
 
-### SablierHelpers_CliffTimeZeroUnlockAmountNotZero
+### SablierLockupHelpers_CliffTimeZeroUnlockAmountNotZero
 
 Thrown when trying to create a stream with a non zero cliff unlock amount when the cliff time is zero.
 
 ```solidity
-error SablierHelpers_CliffTimeZeroUnlockAmountNotZero(uint128 cliffUnlockAmount);
+error SablierLockupHelpers_CliffTimeZeroUnlockAmountNotZero(uint128 cliffUnlockAmount);
 ```
 
-### SablierHelpers_CreateNativeToken
+### SablierLockupHelpers_CreateNativeToken
 
 Thrown when trying to create a stream with the native token.
 
 ```solidity
-error SablierHelpers_CreateNativeToken(address nativeToken);
+error SablierLockupHelpers_CreateNativeToken(address nativeToken);
 ```
 
-### SablierHelpers_DepositAmountNotEqualToSegmentAmountsSum
+### SablierLockupHelpers_DepositAmountNotEqualToSegmentAmountsSum
 
 Thrown when trying to create a dynamic stream with a deposit amount not equal to the sum of the segment amounts.
 
 ```solidity
-error SablierHelpers_DepositAmountNotEqualToSegmentAmountsSum(uint128 depositAmount, uint128 segmentAmountsSum);
+error SablierLockupHelpers_DepositAmountNotEqualToSegmentAmountsSum(
+    uint128 depositAmount,
+    uint128 segmentAmountsSum
+);
 ```
 
-### SablierHelpers_DepositAmountNotEqualToTrancheAmountsSum
+### SablierLockupHelpers_DepositAmountNotEqualToTrancheAmountsSum
 
 Thrown when trying to create a tranched stream with a deposit amount not equal to the sum of the tranche amounts.
 
 ```solidity
-error SablierHelpers_DepositAmountNotEqualToTrancheAmountsSum(uint128 depositAmount, uint128 trancheAmountsSum);
+error SablierLockupHelpers_DepositAmountNotEqualToTrancheAmountsSum(
+    uint128 depositAmount,
+    uint128 trancheAmountsSum
+);
 ```
 
-### SablierHelpers_DepositAmountZero
+### SablierLockupHelpers_DepositAmountZero
 
 Thrown when trying to create a stream with a zero deposit amount.
 
 ```solidity
-error SablierHelpers_DepositAmountZero();
+error SablierLockupHelpers_DepositAmountZero();
 ```
 
-### SablierHelpers_EndTimeNotEqualToLastSegmentTimestamp
+### SablierLockupHelpers_EndTimeNotEqualToLastSegmentTimestamp
 
 Thrown when trying to create a dynamic stream with end time not equal to the last segment's timestamp.
 
 ```solidity
-error SablierHelpers_EndTimeNotEqualToLastSegmentTimestamp(uint40 endTime, uint40 lastSegmentTimestamp);
+error SablierLockupHelpers_EndTimeNotEqualToLastSegmentTimestamp(uint40 endTime, uint40 lastSegmentTimestamp);
 ```
 
-### SablierHelpers_EndTimeNotEqualToLastTrancheTimestamp
+### SablierLockupHelpers_EndTimeNotEqualToLastTrancheTimestamp
 
 Thrown when trying to create a tranched stream with end time not equal to the last tranche's timestamp.
 
 ```solidity
-error SablierHelpers_EndTimeNotEqualToLastTrancheTimestamp(uint40 endTime, uint40 lastTrancheTimestamp);
+error SablierLockupHelpers_EndTimeNotEqualToLastTrancheTimestamp(uint40 endTime, uint40 lastTrancheTimestamp);
 ```
 
-### SablierHelpers_SegmentCountZero
+### SablierLockupHelpers_GranularityTooHigh
+
+Thrown when trying to create a linear stream with granularity greater than the streamable range.
+
+```solidity
+error SablierLockupHelpers_GranularityTooHigh(uint40 granularity, uint40 streamableRange);
+```
+
+### SablierLockupHelpers_SegmentCountZero
 
 Thrown when trying to create a dynamic stream with no segments.
 
 ```solidity
-error SablierHelpers_SegmentCountZero();
+error SablierLockupHelpers_SegmentCountZero();
 ```
 
-### SablierHelpers_SegmentTimestampsNotOrdered
+### SablierLockupHelpers_SegmentTimestampsNotOrdered
 
 Thrown when trying to create a dynamic stream with unordered segment timestamps.
 
 ```solidity
-error SablierHelpers_SegmentTimestampsNotOrdered(uint256 index, uint40 previousTimestamp, uint40 currentTimestamp);
+error SablierLockupHelpers_SegmentTimestampsNotOrdered(
+    uint256 index,
+    uint40 previousTimestamp,
+    uint40 currentTimestamp
+);
 ```
 
-### SablierHelpers_SenderZeroAddress
+### SablierLockupHelpers_SenderZeroAddress
 
 Thrown when trying to create a stream with the sender as the zero address.
 
 ```solidity
-error SablierHelpers_SenderZeroAddress();
+error SablierLockupHelpers_SenderZeroAddress();
 ```
 
-### SablierHelpers_ShapeExceeds32Bytes
+### SablierLockupHelpers_ShapeExceeds32Bytes
 
 Thrown when trying to create a stream with a shape string exceeding 32 bytes.
 
 ```solidity
-error SablierHelpers_ShapeExceeds32Bytes(uint256 shapeLength);
+error SablierLockupHelpers_ShapeExceeds32Bytes(uint256 shapeLength);
 ```
 
-### SablierHelpers_StartTimeNotLessThanCliffTime
+### SablierLockupHelpers_StartTimeNotLessThanCliffTime
 
 Thrown when trying to create a linear stream with a start time not strictly less than the cliff time, when the cliff
 time does not have a zero value.
 
 ```solidity
-error SablierHelpers_StartTimeNotLessThanCliffTime(uint40 startTime, uint40 cliffTime);
+error SablierLockupHelpers_StartTimeNotLessThanCliffTime(uint40 startTime, uint40 cliffTime);
 ```
 
-### SablierHelpers_StartTimeNotLessThanEndTime
+### SablierLockupHelpers_StartTimeNotLessThanEndTime
 
 Thrown when trying to create a linear stream with a start time not strictly less than the end time.
 
 ```solidity
-error SablierHelpers_StartTimeNotLessThanEndTime(uint40 startTime, uint40 endTime);
+error SablierLockupHelpers_StartTimeNotLessThanEndTime(uint40 startTime, uint40 endTime);
 ```
 
-### SablierHelpers_StartTimeNotLessThanFirstSegmentTimestamp
+### SablierLockupHelpers_StartTimeNotLessThanFirstSegmentTimestamp
 
 Thrown when trying to create a dynamic stream with a start time not strictly less than the first segment timestamp.
 
 ```solidity
-error SablierHelpers_StartTimeNotLessThanFirstSegmentTimestamp(uint40 startTime, uint40 firstSegmentTimestamp);
+error SablierLockupHelpers_StartTimeNotLessThanFirstSegmentTimestamp(
+    uint40 startTime,
+    uint40 firstSegmentTimestamp
+);
 ```
 
-### SablierHelpers_StartTimeNotLessThanFirstTrancheTimestamp
+### SablierLockupHelpers_StartTimeNotLessThanFirstTrancheTimestamp
 
 Thrown when trying to create a tranched stream with a start time not strictly less than the first tranche timestamp.
 
 ```solidity
-error SablierHelpers_StartTimeNotLessThanFirstTrancheTimestamp(uint40 startTime, uint40 firstTrancheTimestamp);
+error SablierLockupHelpers_StartTimeNotLessThanFirstTrancheTimestamp(
+    uint40 startTime,
+    uint40 firstTrancheTimestamp
+);
 ```
 
-### SablierHelpers_StartTimeZero
+### SablierLockupHelpers_StartTimeZero
 
 Thrown when trying to create a stream with a zero start time.
 
 ```solidity
-error SablierHelpers_StartTimeZero();
+error SablierLockupHelpers_StartTimeZero();
 ```
 
-### SablierHelpers_TrancheCountZero
+### SablierLockupHelpers_TrancheCountZero
 
 Thrown when trying to create a tranched stream with no tranches.
 
 ```solidity
-error SablierHelpers_TrancheCountZero();
+error SablierLockupHelpers_TrancheCountZero();
 ```
 
-### SablierHelpers_TrancheTimestampsNotOrdered
+### SablierLockupHelpers_TrancheTimestampsNotOrdered
 
 Thrown when trying to create a tranched stream with unordered tranche timestamps.
 
 ```solidity
-error SablierHelpers_TrancheTimestampsNotOrdered(uint256 index, uint40 previousTimestamp, uint40 currentTimestamp);
+error SablierLockupHelpers_TrancheTimestampsNotOrdered(
+    uint256 index,
+    uint40 previousTimestamp,
+    uint40 currentTimestamp
+);
 ```
 
-### SablierHelpers_UnlockAmountsSumTooHigh
+### SablierLockupHelpers_UnlockAmountsSumTooHigh
 
 Thrown when trying to create a stream with the sum of the unlock amounts greater than the deposit amount.
 
 ```solidity
-error SablierHelpers_UnlockAmountsSumTooHigh(
-    uint128 depositAmount, uint128 startUnlockAmount, uint128 cliffUnlockAmount
+error SablierLockupHelpers_UnlockAmountsSumTooHigh(
+    uint128 depositAmount,
+    uint128 startUnlockAmount,
+    uint128 cliffUnlockAmount
 );
 ```
 
@@ -191,20 +223,20 @@ Thrown when trying to allow to hook an address with no code.
 error SablierLockup_AllowToHookZeroCodeSize(address recipient);
 ```
 
-### SablierLockup_InsufficientFeePayment
-
-Thrown when trying to withdraw with a fee amount less than the minimum fee.
-
-```solidity
-error SablierLockup_InsufficientFeePayment(uint256 feePaid, uint256 minFeeWei);
-```
-
 ### SablierLockup_FeeTransferFailed
 
 Thrown when the fee transfer fails.
 
 ```solidity
 error SablierLockup_FeeTransferFailed(address comptroller, uint256 feeAmount);
+```
+
+### SablierLockup_InsufficientFeePayment
+
+Thrown when trying to withdraw with a fee amount less than the minimum fee.
+
+```solidity
+error SablierLockup_InsufficientFeePayment(uint256 feePaid, uint256 minFeeWei);
 ```
 
 ### SablierLockup_InvalidHookSelector
@@ -237,6 +269,18 @@ Thrown when trying to withdraw an amount greater than the withdrawable amount.
 
 ```solidity
 error SablierLockup_Overdraw(uint256 streamId, uint128 amount, uint128 withdrawableAmount);
+```
+
+### SablierLockup_WithdrawAmountNotEqualWithdrawableAmount
+
+Thrown when trying to withdraw a partial amount from a LPG stream.
+
+```solidity
+error SablierLockup_WithdrawAmountNotEqualWithdrawableAmount(
+    uint256 streamId,
+    uint128 amount,
+    uint128 withdrawableAmount
+);
 ```
 
 ### SablierLockup_StreamCanceled
@@ -277,6 +321,14 @@ Thrown when trying to cancel or renounce a settled stream.
 
 ```solidity
 error SablierLockup_StreamSettled(uint256 streamId);
+```
+
+### SablierLockup_TargetPriceTooLow
+
+Thrown when trying to create a price-gated stream with a target price not greater than the current oracle price.
+
+```solidity
+error SablierLockup_TargetPriceTooLow(uint128 targetPrice, uint128 latestPrice);
 ```
 
 ### SablierLockup_Unauthorized

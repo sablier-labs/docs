@@ -1,10 +1,12 @@
 # Adminable
 
-[Git Source](https://github.com/sablier-labs/evm-utils/blob/0b3bc38ab8badd135fc178b757afaf6902f1f63c/src/Adminable.sol)
+[Git Source](https://github.com/sablier-labs/evm-monorepo/blob/7cb361717fd2f0289ad8d69469a3c00804b21657/src/Adminable.sol)
 
-**Inherits:** [IAdminable](/reference/airdrops/contracts/interfaces/interface.IAdminable.md)
+**Inherits:** [IAdminable](/docs/reference/airdrops/contracts/interfaces/interface.IAdminable.md)
 
-See the documentation in [IAdminable](/reference/airdrops/contracts/interfaces/interface.IAdminable.md).
+**Title:** Adminable
+
+See the documentation in [IAdminable](/docs/reference/airdrops/contracts/interfaces/interface.IAdminable.md).
 
 ## State Variables
 
@@ -13,7 +15,7 @@ See the documentation in [IAdminable](/reference/airdrops/contracts/interfaces/i
 The address of the admin account or contract.
 
 ```solidity
-address public override admin;
+address public override admin
 ```
 
 ## Functions
@@ -23,7 +25,7 @@ address public override admin;
 Reverts if called by any account other than the admin.
 
 ```solidity
-modifier onlyAdmin();
+modifier onlyAdmin() ;
 ```
 
 ### constructor
@@ -31,7 +33,7 @@ modifier onlyAdmin();
 Emits a {TransferAdmin} event.
 
 ```solidity
-constructor(address initialAdmin);
+constructor(address initialAdmin) ;
 ```
 
 **Parameters**
@@ -63,7 +65,7 @@ function transferAdmin(address newAdmin) public virtual override onlyAdmin;
 
 ### \_transferAdmin
 
-_An internal function to transfer the admin._
+An internal function to transfer the admin.
 
 ```solidity
 function _transferAdmin(address oldAdmin, address newAdmin) internal;
@@ -71,8 +73,8 @@ function _transferAdmin(address oldAdmin, address newAdmin) internal;
 
 ### \_onlyAdmin
 
-_A private function is used instead of inlining this logic in a modifier because Solidity copies modifiers into every
-function that uses them._
+A private function is used instead of inlining this logic in a modifier because Solidity copies modifiers into every
+function that uses them.
 
 ```solidity
 function _onlyAdmin() private view;

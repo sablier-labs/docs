@@ -1,6 +1,6 @@
 # LockupLinear
 
-[Git Source](https://github.com/sablier-labs/lockup/blob/58eaac45c20c57a93b73d887c714e68f061ec3e6/src/types/LockupLinear.sol)
+[Git Source](https://github.com/sablier-labs/evm-monorepo/blob/7cb361717fd2f0289ad8d69469a3c00804b21657/src/types/LockupLinear.sol)
 
 Namespace for the structs used only in LL streams.
 
@@ -30,10 +30,11 @@ struct Durations {
 
 Struct encapsulating the unlock amounts for the stream.
 
-_The sum of `start` and `cliff` must be less than or equal to deposit amount. Both amounts can be zero._
+The sum of `start` and `cliff` must be less than or equal to deposit amount. Both amounts can be zero.
 
 ```solidity
 struct UnlockAmounts {
+    // slot 0
     uint128 start;
     uint128 cliff;
 }

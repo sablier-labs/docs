@@ -1,14 +1,16 @@
 # ISablierFactoryMerkleLL
 
-[Git Source](https://github.com/sablier-labs/airdrops/blob/077c6b9766ef7693ba9e82a9e001dc0097709c01/src/interfaces/ISablierFactoryMerkleLL.sol)
+[Git Source](https://github.com/sablier-labs/evm-monorepo/blob/7cb361717fd2f0289ad8d69469a3c00804b21657/src/interfaces/ISablierFactoryMerkleLL.sol)
 
 **Inherits:**
 [ISablierFactoryMerkleBase](/docs/reference/airdrops/contracts/interfaces/interface.ISablierFactoryMerkleBase.md)
 
+**Title:** ISablierFactoryMerkleLL
+
 A factory that deploys MerkleLL campaign contracts.
 
-_See the documentation in
-[ISablierMerkleLL](/docs/reference/airdrops/contracts/interfaces/interface.ISablierMerkleLL.md)._
+See the documentation in
+[ISablierMerkleLL](/docs/reference/airdrops/contracts/interfaces/interface.ISablierMerkleLL.md).
 
 ## Functions
 
@@ -17,14 +19,14 @@ _See the documentation in
 Computes the deterministic address where
 [SablierMerkleLL](/docs/reference/airdrops/contracts/contract.SablierMerkleLL.md) campaign will be deployed.
 
-_Reverts if the requirements from
+Reverts if the requirements from
 [createMerkleLL](/docs/reference/airdrops/contracts/interfaces/interface.ISablierFactoryMerkleLL.md#createmerklell) are
-not met._
+not met.
 
 ```solidity
 function computeMerkleLL(
     address campaignCreator,
-    MerkleLL.ConstructorParams memory params
+    MerkleLL.ConstructorParams calldata campaignParams
 )
     external
     view
@@ -36,17 +38,18 @@ function computeMerkleLL(
 Creates a new Merkle Lockup campaign with a Lockup Linear distribution.
 
 Emits a
-[CreateMerkleLL](/docs/reference/airdrops/contracts/interfaces/interface.ISablierFactoryMerkleLL.md#createmerklell-1)
+[CreateMerkleLL](/docs/reference/airdrops/contracts/interfaces/interface.ISablierFactoryMerkleLL.md#createmerklell)
 event. Notes:
 
 - The contract is created with CREATE2.
 - The campaign's fee will be set to the min USD fee unless a custom fee is set for `msg.sender`.
-- A value of zero for `params.expiration` means the campaign does not expire. Requirements:
-- `params.token` must not be the forbidden native token.
+- A value of zero for `campaignParams.expiration` means the campaign does not expire.
+- A value of zero for `campaignParams.granularity` would store the granularity as 1 second. Requirements:
+- `campaignParams.token` must not be the forbidden native token.
 
 ```solidity
 function createMerkleLL(
-    MerkleLL.ConstructorParams memory params,
+    MerkleLL.ConstructorParams memory campaignParams,
     uint256 aggregateAmount,
     uint256 recipientCount
 )
@@ -56,11 +59,11 @@ function createMerkleLL(
 
 **Parameters**
 
-| Name              | Type                         | Description                                                                                                                                  |
-| ----------------- | ---------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------- |
-| `params`          | `MerkleLL.ConstructorParams` | Struct encapsulating the input parameters, which are documented in [MerkleLL](/docs/reference/airdrops/contracts/types/library.MerkleLL.md). |
-| `aggregateAmount` | `uint256`                    | The total amount of ERC-20 tokens to be distributed to all recipients.                                                                       |
-| `recipientCount`  | `uint256`                    | The total number of recipient addresses eligible for the airdrop.                                                                            |
+| Name              | Type                         | Description                                                                                                            |
+| ----------------- | ---------------------------- | ---------------------------------------------------------------------------------------------------------------------- |
+| `campaignParams`  | `MerkleLL.ConstructorParams` | Struct encapsulating the [SablierMerkleLL](/docs/reference/airdrops/contracts/contract.SablierMerkleLL.md) parameters. |
+| `aggregateAmount` | `uint256`                    | The total amount of ERC-20 tokens to be distributed to all recipients.                                                 |
+| `recipientCount`  | `uint256`                    | The total number of recipient addresses eligible for the airdrop.                                                      |
 
 **Returns**
 
@@ -77,7 +80,7 @@ Emitted when a [SablierMerkleLL](/docs/reference/airdrops/contracts/contract.Sab
 ```solidity
 event CreateMerkleLL(
     ISablierMerkleLL indexed merkleLL,
-    MerkleLL.ConstructorParams params,
+    MerkleLL.ConstructorParams campaignParams,
     uint256 aggregateAmount,
     uint256 recipientCount,
     address comptroller,

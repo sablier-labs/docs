@@ -1,13 +1,15 @@
 # ISablierMerkleLockup
 
-[Git Source](https://github.com/sablier-labs/airdrops/blob/077c6b9766ef7693ba9e82a9e001dc0097709c01/src/interfaces/ISablierMerkleLockup.sol)
+[Git Source](https://github.com/sablier-labs/evm-monorepo/blob/7cb361717fd2f0289ad8d69469a3c00804b21657/src/interfaces/ISablierMerkleLockup.sol)
 
 **Inherits:** [ISablierMerkleBase](/docs/reference/airdrops/contracts/interfaces/interface.ISablierMerkleBase.md)
+
+**Title:** ISablierMerkleLockup
 
 MerkleLockup enables Airstreams (a portmanteau of "airdrop" and "stream"), an airdrop model where the tokens are vested
 over time, as opposed to being unlocked at once. The vesting is provided by Sablier Lockup.
 
-_Common interface between MerkleLL and MerkleLT._
+Common interface between MerkleLL and MerkleLT.
 
 ## Functions
 
@@ -23,7 +25,7 @@ function SABLIER_LOCKUP() external view returns (ISablierLockup);
 
 A flag indicating whether the streams can be canceled.
 
-_This is an immutable state variable._
+This is an immutable state variable.
 
 ```solidity
 function STREAM_CANCELABLE() external view returns (bool);
@@ -33,7 +35,7 @@ function STREAM_CANCELABLE() external view returns (bool);
 
 A flag indicating whether the stream NFTs are transferable.
 
-_This is an immutable state variable._
+This is an immutable state variable.
 
 ```solidity
 function STREAM_TRANSFERABLE() external view returns (bool);
