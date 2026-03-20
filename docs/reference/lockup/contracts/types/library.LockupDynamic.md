@@ -1,6 +1,6 @@
 # LockupDynamic
 
-[Git Source](https://github.com/sablier-labs/evm-monorepo/blob/7cb361717fd2f0289ad8d69469a3c00804b21657/src/types/LockupDynamic.sol)
+[Git Source](https://github.com/sablier-labs/evm-monorepo/blob/003a71932c0e26e767a02c21205a077469406ac8/src/types/LockupDynamic.sol)
 
 Namespace for the structs used only in LD streams.
 
@@ -30,7 +30,7 @@ struct Segment {
 ### SegmentWithDuration
 
 Segment struct used at runtime in
-[SablierLockupDynamic.createWithDurationsLD](docs/reference/lockup/contracts/abstracts/abstract.SablierLockupDynamic.md#createwithdurationsld)
+[SablierLockupDynamic.createWithDurationsLD](/docs/reference/lockup/contracts/abstracts/abstract.SablierLockupDynamic.md#createwithdurationsld)
 function.
 
 ```solidity

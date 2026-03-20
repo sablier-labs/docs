@@ -17,7 +17,7 @@ set -euo pipefail
 root=$(pwd)
 
 # Install monorepo dependencies (needed for forge doc to compile)
-bun install --cwd "$root/repos/evm-monorepo"
+bun install --ignore-scripts --cwd "$root/repos/evm-monorepo"
 
 # Define the contracts directories
 airdrops=docs/reference/airdrops/contracts

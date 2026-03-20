@@ -1,6 +1,6 @@
 # SablierLockupState
 
-[Git Source](https://github.com/sablier-labs/evm-monorepo/blob/7cb361717fd2f0289ad8d69469a3c00804b21657/src/abstracts/SablierLockupState.sol)
+[Git Source](https://github.com/sablier-labs/evm-monorepo/blob/003a71932c0e26e767a02c21205a077469406ac8/src/abstracts/SablierLockupState.sol)
 
 **Inherits:** [ISablierLockupState](/docs/reference/lockup/contracts/interfaces/interface.ISablierLockupState.md)
 
@@ -559,9 +559,9 @@ function _streamedAmountOf(uint256 streamId) internal view virtual returns (uint
 ### \_create
 
 This function is implemented by [SablierLockup](/docs/reference/lockup/contracts/contract.SablierLockup.md) and is used
-in the [SablierLockupDynamic](docs/reference/lockup/contracts/abstracts/abstract.SablierLockupDynamic.md),
-[SablierLockupLinear](docs/reference/lockup/contracts/abstracts/abstract.SablierLockupLinear.md) and
-[SablierLockupTranched](docs/reference/lockup/contracts/abstracts/abstract.SablierLockupTranched.md) contracts.
+in the [SablierLockupDynamic](/docs/reference/lockup/contracts/abstracts/abstract.SablierLockupDynamic.md),
+[SablierLockupLinear](/docs/reference/lockup/contracts/abstracts/abstract.SablierLockupLinear.md) and
+[SablierLockupTranched](/docs/reference/lockup/contracts/abstracts/abstract.SablierLockupTranched.md) contracts.
 
 It updates state variables based on the stream parameters, mints an NFT to the recipient, bumps stream ID, and transfers
 the deposit amount.
