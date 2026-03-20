@@ -16,7 +16,7 @@ export function createDeploymentsCommand() {
 
 export const deploymentsCmd = createDeploymentsCommand();
 
-const PRIORITY_CHAIN_NAMES = ["Ethereum"] as const;
+const PRIORITY_CHAIN_NAMES: string[] = ["Ethereum"];
 const priorityChainIndexes = new Map(PRIORITY_CHAIN_NAMES.map((name, index) => [name, index]));
 type DeploymentOrdering = "alphabetical" | "priority-first";
 
