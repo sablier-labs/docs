@@ -1,16 +1,4 @@
-[submodule "repos/airdrops"]
-	branch = "main"
-	path = "repos/airdrops"
-	url = "https://github.com/sablier-labs/airdrops"
-[submodule "repos/evm-utils"]
+[submodule "repos/evm-monorepo"]
+	path = repos/evm-monorepo
+	url = https://github.com/sablier-labs/evm-monorepo
 	branch = main
-	path = repos/evm-utils
-	url = https://github.com/sablier-labs/evm-utils
-[submodule "repos/flow"]
-	branch = "main"
-	path = "repos/flow"
-	url = "https://github.com/sablier-labs/flow"
-[submodule "repos/lockup"]
-	branch = "main"
-	path = "repos/lockup"
-	url = "https://github.com/sablier-labs/lockup"
