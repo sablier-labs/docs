@@ -1,5 +1,6 @@
 # directories
 .docusaurus
+.serena
 build
 node_modules
 repos

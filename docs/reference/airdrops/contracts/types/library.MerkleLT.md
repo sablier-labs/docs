@@ -1,6 +1,6 @@
 # MerkleLT
 
-[Git Source](https://github.com/sablier-labs/airdrops/blob/077c6b9766ef7693ba9e82a9e001dc0097709c01/src/types/DataTypes.sol)
+[Git Source](https://github.com/sablier-labs/evm-monorepo/blob/003a71932c0e26e767a02c21205a077469406ac8/src/types/MerkleLT.sol)
 
 ## Structs
 
@@ -8,13 +8,14 @@
 
 Struct encapsulating the constructor parameters of Merkle Lockup Tranched campaigns.
 
-_The fields are arranged alphabetically._
+The fields are arranged alphabetically.
 
 ```solidity
 struct ConstructorParams {
     string campaignName;
     uint40 campaignStartTime;
     bool cancelable;
+    ClaimType claimType;
     uint40 expiration;
     address initialAdmin;
     string ipfsCID;
@@ -35,6 +36,7 @@ struct ConstructorParams {
 | `campaignName`            | `string`                           | The name of the campaign.                                                                                                             |
 | `campaignStartTime`       | `uint40`                           | The start time of the campaign, as a Unix timestamp.                                                                                  |
 | `cancelable`              | `bool`                             | Indicates if the Lockup stream will be cancelable after claiming.                                                                     |
+| `claimType`               | `ClaimType`                        | The type of claim functions supported by the campaign.                                                                                |
 | `expiration`              | `uint40`                           | The expiration of the campaign, as a Unix timestamp. A value of zero means the campaign does not expire.                              |
 | `initialAdmin`            | `address`                          | The initial admin of the campaign.                                                                                                    |
 | `ipfsCID`                 | `string`                           | The content identifier for indexing the contract on IPFS. An empty value may break certain UI features that depend upon the IPFS CID. |
@@ -50,12 +52,13 @@ struct ConstructorParams {
 
 Struct encapsulating the unlock percentage and duration of a tranche.
 
-_Since users may have different amounts allocated, this struct makes it possible to calculate the amounts at claim time.
+Since users may have different amounts allocated, this struct makes it possible to calculate the amounts at claim time.
 An 18-decimal format is used to represent percentages: 100% = 1e18. For more information, see the PRBMath documentation
-on UD2x18: https://github.com/PaulRBerg/prb-math_
+on UD2x18: https://github.com/PaulRBerg/prb-math
 
 ```solidity
 struct TrancheWithPercentage {
+    // slot 0
     UD2x18 unlockPercentage;
     uint40 duration;
 }

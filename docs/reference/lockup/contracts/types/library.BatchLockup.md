@@ -1,15 +1,15 @@
 # BatchLockup
 
-[Git Source](https://github.com/sablier-labs/lockup/blob/58eaac45c20c57a93b73d887c714e68f061ec3e6/src/types/BatchLockup.sol)
+[Git Source](https://github.com/sablier-labs/evm-monorepo/blob/003a71932c0e26e767a02c21205a077469406ac8/src/types/BatchLockup.sol)
 
-_Namespace for the structs used in `SablierBatchLockup` contract._
+Namespace for the structs used in `SablierBatchLockup` contract.
 
 ## Structs
 
 ### CreateWithDurationsLD
 
 A struct encapsulating all parameters of
-[SablierLockupDynamic.createWithDurationsLD](docs/reference/lockup/contracts/abstracts/abstract.SablierLockupDynamic.md#createwithdurationsld)
+[SablierLockupDynamic.createWithDurationsLD](/docs/reference/lockup/contracts/abstracts/abstract.SablierLockupDynamic.md#createwithdurationsld)
 except for the token.
 
 ```solidity
@@ -27,7 +27,7 @@ struct CreateWithDurationsLD {
 ### CreateWithDurationsLL
 
 A struct encapsulating all parameters of
-[SablierLockupLinear.createWithDurationsLL](docs/reference/lockup/contracts/abstracts/abstract.SablierLockupLinear.md#createwithdurationsll)
+[SablierLockupLinear.createWithDurationsLL](/docs/reference/lockup/contracts/abstracts/abstract.SablierLockupLinear.md#createwithdurationsll)
 except for the token.
 
 ```solidity
@@ -39,6 +39,7 @@ struct CreateWithDurationsLL {
     bool transferable;
     LockupLinear.Durations durations;
     LockupLinear.UnlockAmounts unlockAmounts;
+    uint40 granularity;
     string shape;
 }
 ```
@@ -46,7 +47,7 @@ struct CreateWithDurationsLL {
 ### CreateWithDurationsLT
 
 A struct encapsulating all parameters of
-[SablierLockupTranched.createWithDurationsLT](docs/reference/lockup/contracts/abstracts/abstract.SablierLockupTranched.md#createwithdurationslt)
+[SablierLockupTranched.createWithDurationsLT](/docs/reference/lockup/contracts/abstracts/abstract.SablierLockupTranched.md#createwithdurationslt)
 except for the token.
 
 ```solidity
@@ -64,7 +65,7 @@ struct CreateWithDurationsLT {
 ### CreateWithTimestampsLD
 
 A struct encapsulating all parameters of
-[SablierLockupDynamic.createWithTimestampsLD](docs/reference/lockup/contracts/abstracts/abstract.SablierLockupDynamic.md#createwithtimestampsld)
+[SablierLockupDynamic.createWithTimestampsLD](/docs/reference/lockup/contracts/abstracts/abstract.SablierLockupDynamic.md#createwithtimestampsld)
 except for the token.
 
 ```solidity
@@ -83,7 +84,7 @@ struct CreateWithTimestampsLD {
 ### CreateWithTimestampsLL
 
 A struct encapsulating all parameters of
-[SablierLockupLinear.createWithTimestampsLL](docs/reference/lockup/contracts/abstracts/abstract.SablierLockupLinear.md#createwithtimestampsll)
+[SablierLockupLinear.createWithTimestampsLL](/docs/reference/lockup/contracts/abstracts/abstract.SablierLockupLinear.md#createwithtimestampsll)
 except for the token.
 
 ```solidity
@@ -96,6 +97,26 @@ struct CreateWithTimestampsLL {
     Lockup.Timestamps timestamps;
     uint40 cliffTime;
     LockupLinear.UnlockAmounts unlockAmounts;
+    uint40 granularity;
+    string shape;
+}
+```
+
+### CreateWithTimestampsLPG
+
+A struct encapsulating all parameters of
+[SablierLockupPriceGated.createWithTimestampsLPG](/docs/reference/lockup/contracts/abstracts/abstract.SablierLockupPriceGated.md#createwithtimestampslpg)
+except for the token.
+
+```solidity
+struct CreateWithTimestampsLPG {
+    address sender;
+    address recipient;
+    uint128 depositAmount;
+    bool cancelable;
+    bool transferable;
+    Lockup.Timestamps timestamps;
+    LockupPriceGated.UnlockParams unlockParams;
     string shape;
 }
 ```
@@ -103,7 +124,7 @@ struct CreateWithTimestampsLL {
 ### CreateWithTimestampsLT
 
 A struct encapsulating all parameters of
-[SablierLockupTranched.createWithTimestampsLT](docs/reference/lockup/contracts/abstracts/abstract.SablierLockupTranched.md#createwithtimestampslt)
+[SablierLockupTranched.createWithTimestampsLT](/docs/reference/lockup/contracts/abstracts/abstract.SablierLockupTranched.md#createwithtimestampslt)
 except for the token.
 
 ```solidity

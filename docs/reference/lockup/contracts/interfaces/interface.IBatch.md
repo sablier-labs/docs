@@ -1,6 +1,6 @@
 # IBatch
 
-[Git Source](https://github.com/sablier-labs/evm-utils/blob/0b3bc38ab8badd135fc178b757afaf6902f1f63c/src/interfaces/IBatch.sol)
+[Git Source](https://github.com/sablier-labs/evm-monorepo/blob/003a71932c0e26e767a02c21205a077469406ac8/src/interfaces/IBatch.sol)
 
 This contract implements logic to batch call any function.
 
@@ -10,8 +10,8 @@ This contract implements logic to batch call any function.
 
 Allows batched calls to self, i.e., `this` contract.
 
-_Since `msg.value` can be reused across calls, be VERY CAREFUL when using it. Refer to
-https://paradigm.xyz/2021/08/two-rights-might-make-a-wrong for more information._
+Since `msg.value` can be reused across calls, be VERY CAREFUL when using it. Refer to
+https://paradigm.xyz/2021/08/two-rights-might-make-a-wrong for more information.
 
 ```solidity
 function batch(bytes[] calldata calls) external payable returns (bytes[] memory results);

@@ -1,6 +1,6 @@
 # Flow
 
-[Git Source](https://github.com/sablier-labs/flow/blob/a4143de45478f508bca8305fec2bd81b7ad25fe9/src/types/DataTypes.sol)
+[Git Source](https://github.com/sablier-labs/evm-monorepo/blob/003a71932c0e26e767a02c21205a077469406ac8/src/types/DataTypes.sol)
 
 ## Structs
 
@@ -8,19 +8,23 @@
 
 Struct representing Flow streams.
 
-_The fields are arranged like this to save gas via tight variable packing._
+The fields are arranged like this to save gas via tight variable packing.
 
 ```solidity
 struct Stream {
+    // slot 0
     uint128 balance;
     UD21x18 ratePerSecond;
+    // slot 1
     address sender;
     uint40 snapshotTime;
     bool isStream;
     bool isTransferable;
     bool isVoided;
+    // slot 2
     IERC20 token;
     uint8 tokenDecimals;
+    // slot 3
     uint256 snapshotDebtScaled;
 }
 ```

@@ -32,19 +32,19 @@ The calculation method is the same in either case.
 Declare the Solidity version used to compile the library:
 
 <CodeBlock language="solidity" metastring={`reference title=""`}>
-  {`https://github.com/sablier-labs/evm-examples/blob/main/flow/FlowUtilities.sol#L2`}
+  {`https://github.com/sablier-labs/evm-monorepo/blob/main/misc/examples/flow/FlowUtilities.sol#L2`}
 </CodeBlock>
 
 Import the relevant symbols:
 
 <CodeBlock language="solidity" metastring={`reference title=""`}>
-  {`https://github.com/sablier-labs/evm-examples/blob/main/flow/FlowUtilities.sol#L4-L5`}
+  {`https://github.com/sablier-labs/evm-monorepo/blob/main/misc/examples/flow/FlowUtilities.sol#L4-L5`}
 </CodeBlock>
 
 Declare a library that can be used in other contracts:
 
 <CodeBlock language="solidity" metastring={`reference title=""`}>
-  {`https://github.com/sablier-labs/evm-examples/blob/main/flow/FlowUtilities.sol#L8`}
+  {`https://github.com/sablier-labs/evm-monorepo/blob/main/misc/examples/flow/FlowUtilities.sol#L8`}
 </CodeBlock>
 
 ## Calculate the rate per second on a duration
@@ -52,31 +52,31 @@ Declare a library that can be used in other contracts:
 Define a function called `ratePerSecondWithDuration` that takes the following parameters and the returned value:
 
 <CodeBlock language="solidity" metastring={`reference title=""`}>
-  {`https://github.com/sablier-labs/evm-examples/blob/main/flow/FlowUtilities.sol#L15-L22`}
+  {`https://github.com/sablier-labs/evm-monorepo/blob/main/misc/examples/flow/FlowUtilities.sol#L15-L22`}
 </CodeBlock>
 
 First, retrieve the token's decimals. Note that not all ERC-20 tokens use the 18-decimal standard.
 
 <CodeBlock language="solidity" metastring={`reference title=""`}>
-  {`https://github.com/sablier-labs/evm-examples/blob/main/flow/FlowUtilities.sol#L25`}
+  {`https://github.com/sablier-labs/evm-monorepo/blob/main/misc/examples/flow/FlowUtilities.sol#L25`}
 </CodeBlock>
 
 If the token uses 18 decimals, simply divide the amount by the duration:
 
 <CodeBlock language="solidity" metastring={`reference title=""`}>
-  {`https://github.com/sablier-labs/evm-examples/blob/main/flow/FlowUtilities.sol#L29-L31`}
+  {`https://github.com/sablier-labs/evm-monorepo/blob/main/misc/examples/flow/FlowUtilities.sol#L29-L31`}
 </CodeBlock>
 
 If the token has less than 18 decimals, calculate the scale factor from the token's decimals:
 
 <CodeBlock language="solidity" metastring={`reference title=""`}>
-  {`https://github.com/sablier-labs/evm-examples/blob/main/flow/FlowUtilities.sol#L34`}
+  {`https://github.com/sablier-labs/evm-monorepo/blob/main/misc/examples/flow/FlowUtilities.sol#L34`}
 </CodeBlock>
 
 Then, multiply the amount by the scale factor and divide it by the duration:
 
 <CodeBlock language="solidity" metastring={`reference title=""`}>
-  {`https://github.com/sablier-labs/evm-examples/blob/main/flow/FlowUtilities.sol#L37`}
+  {`https://github.com/sablier-labs/evm-monorepo/blob/main/misc/examples/flow/FlowUtilities.sol#L37`}
 </CodeBlock>
 
 ## Calculate the rate per second on timestamps
@@ -84,19 +84,19 @@ Then, multiply the amount by the scale factor and divide it by the duration:
 Here, there are two time parameters, a start and an end time, instead of a duration. Let's define the function:
 
 <CodeBlock language="solidity" metastring={`reference title=""`}>
-  {`https://github.com/sablier-labs/evm-examples/blob/main/flow/FlowUtilities.sol#L47-L55`}
+  {`https://github.com/sablier-labs/evm-monorepo/blob/main/misc/examples/flow/FlowUtilities.sol#L47-L55`}
 </CodeBlock>
 
 The first step is to calculate the duration between the two timestamps:
 
 <CodeBlock language="solidity" metastring={`reference title=""`}>
-  {`https://github.com/sablier-labs/evm-examples/blob/main/flow/FlowUtilities.sol#L58`}
+  {`https://github.com/sablier-labs/evm-monorepo/blob/main/misc/examples/flow/FlowUtilities.sol#L58`}
 </CodeBlock>
 
 The remaining logic is identical to the duration-based calculation:
 
 <CodeBlock language="solidity" metastring={`reference title=""`}>
-  {`https://github.com/sablier-labs/evm-examples/blob/main/flow/FlowUtilities.sol#L61-L71`}
+  {`https://github.com/sablier-labs/evm-monorepo/blob/main/misc/examples/flow/FlowUtilities.sol#L61-L71`}
 </CodeBlock>
 
 ## Additional utilities
@@ -104,7 +104,7 @@ The remaining logic is identical to the duration-based calculation:
 To calculate earnings for specific durations from an existing stream, you can use the following functions:
 
 <CodeBlock language="solidity" metastring={`reference title=""`}>
-  {`https://github.com/sablier-labs/evm-examples/blob/main/flow/FlowUtilities.sol#L77-L95`}
+  {`https://github.com/sablier-labs/evm-monorepo/blob/main/misc/examples/flow/FlowUtilities.sol#L77-L95`}
 </CodeBlock>
 
 ## Full code
@@ -112,5 +112,5 @@ To calculate earnings for specific durations from an existing stream, you can us
 Below you can see the complete `FlowUtilities` library:
 
 <CodeBlock language="solidity" showLineNumbers metastring={`reference title="Flow Utilities library"`}>
-  {`https://github.com/sablier-labs/evm-examples/blob/main/flow/FlowUtilities.sol`}
+  {`https://github.com/sablier-labs/evm-monorepo/blob/main/misc/examples/flow/FlowUtilities.sol`}
 </CodeBlock>

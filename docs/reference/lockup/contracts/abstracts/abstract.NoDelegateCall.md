@@ -1,6 +1,8 @@
 # NoDelegateCall
 
-[Git Source](https://github.com/sablier-labs/evm-utils/blob/0b3bc38ab8badd135fc178b757afaf6902f1f63c/src/NoDelegateCall.sol)
+[Git Source](https://github.com/sablier-labs/evm-monorepo/blob/003a71932c0e26e767a02c21205a077469406ac8/src/NoDelegateCall.sol)
+
+**Title:** NoDelegateCall
 
 This contract implements logic to prevent delegate calls.
 
@@ -8,10 +10,10 @@ This contract implements logic to prevent delegate calls.
 
 ### ORIGINAL
 
-_The address of the original contract that was deployed._
+The address of the original contract that was deployed.
 
 ```solidity
-address private immutable ORIGINAL;
+address private immutable ORIGINAL
 ```
 
 ## Functions
@@ -21,15 +23,15 @@ address private immutable ORIGINAL;
 Prevents delegate calls.
 
 ```solidity
-modifier noDelegateCall();
+modifier noDelegateCall() ;
 ```
 
 ### constructor
 
-_Sets the original contract address._
+Sets the original contract address.
 
 ```solidity
-constructor();
+constructor() ;
 ```
 
 ### \_preventDelegateCall

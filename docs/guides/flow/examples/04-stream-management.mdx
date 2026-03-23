@@ -24,19 +24,19 @@ please note the following:
 Declare the Solidity version used to compile the contract:
 
 <CodeBlock language="solidity" metastring={`reference title=""`}>
-  {`https://github.com/sablier-labs/evm-examples/blob/main/flow/FlowStreamManager.sol#L1-L2`}
+  {`https://github.com/sablier-labs/evm-monorepo/blob/main/misc/examples/flow/FlowStreamManager.sol#L1-L2`}
 </CodeBlock>
 
 Import the relevant symbols from `@sablier/flow` and `@prb/math`:
 
 <CodeBlock language="solidity" metastring={`reference title=""`}>
-  {`https://github.com/sablier-labs/evm-examples/blob/main/flow/FlowStreamManager.sol#L4-L5`}
+  {`https://github.com/sablier-labs/evm-monorepo/blob/main/misc/examples/flow/FlowStreamManager.sol#L4-L5`}
 </CodeBlock>
 
 Declare a contract `FlowStreamManager` and add the Flow address as a constant:
 
 <CodeBlock language="solidity" metastring={`reference title=""`}>
-  {`https://github.com/sablier-labs/evm-examples/blob/main/flow/FlowStreamManager.sol#L8-L9`}
+  {`https://github.com/sablier-labs/evm-monorepo/blob/main/misc/examples/flow/FlowStreamManager.sol#L8-L9`}
 </CodeBlock>
 
 <HardcodedDemonstration protocol="Flow" />
@@ -59,7 +59,7 @@ There are three deposit functions:
    then pauses the stream.
 
 <CodeBlock language="solidity" metastring={`reference title=""`}>
-  {`https://github.com/sablier-labs/evm-examples/blob/main/flow/FlowStreamManager.sol#L15-L21`}
+  {`https://github.com/sablier-labs/evm-monorepo/blob/main/misc/examples/flow/FlowStreamManager.sol#L15-L21`}
 </CodeBlock>
 
 ## Withdraw
@@ -81,7 +81,7 @@ The `withdraw` functions requires a fee. Make sure to send the correct amount in
 :::
 
 <CodeBlock language="solidity" metastring={`reference title=""`}>
-  {`https://github.com/sablier-labs/evm-examples/blob/main/flow/FlowStreamManager.sol#L51-L59`}
+  {`https://github.com/sablier-labs/evm-monorepo/blob/main/misc/examples/flow/FlowStreamManager.sol#L51-L59`}
 </CodeBlock>
 
 ## Adjust Rate per Second
@@ -89,7 +89,7 @@ The `withdraw` functions requires a fee. Make sure to send the correct amount in
 Adjusting the rate per second means changing the amount of tokens that is streamed each second.
 
 <CodeBlock language="solidity" metastring={`reference title=""`}>
-  {`https://github.com/sablier-labs/evm-examples/blob/main/flow/FlowStreamManager.sol#L11-L13`}
+  {`https://github.com/sablier-labs/evm-monorepo/blob/main/misc/examples/flow/FlowStreamManager.sol#L11-L13`}
 </CodeBlock>
 
 ## Pause
@@ -97,7 +97,7 @@ Adjusting the rate per second means changing the amount of tokens that is stream
 Pausing a stream means setting the rate per second to zero, which means no more streaming.
 
 <CodeBlock language="solidity" metastring={`reference title=""`}>
-  {`https://github.com/sablier-labs/evm-examples/blob/main/flow/FlowStreamManager.sol#L23-L25`}
+  {`https://github.com/sablier-labs/evm-monorepo/blob/main/misc/examples/flow/FlowStreamManager.sol#L23-L25`}
 </CodeBlock>
 
 ## Restart
@@ -109,7 +109,7 @@ There are two restart functions:
    by depositing an amount of tokens into it.
 
 <CodeBlock language="solidity" metastring={`reference title=""`}>
-  {`https://github.com/sablier-labs/evm-examples/blob/main/flow/FlowStreamManager.sol#L39-L45`}
+  {`https://github.com/sablier-labs/evm-monorepo/blob/main/misc/examples/flow/FlowStreamManager.sol#L39-L45`}
 </CodeBlock>
 
 ## Refund
@@ -124,7 +124,7 @@ There are three refund functions:
    tokens.
 
 <CodeBlock language="solidity" metastring={`reference title=""`}>
-  {`https://github.com/sablier-labs/evm-examples/blob/main/flow/FlowStreamManager.sol#L27-L37`}
+  {`https://github.com/sablier-labs/evm-monorepo/blob/main/misc/examples/flow/FlowStreamManager.sol#L27-L37`}
 </CodeBlock>
 
 ## Void
@@ -133,7 +133,7 @@ Voiding a stream means permanently stopping it from streaming any tokens. This i
 stream because it also sets the stream's uncovered debt to zero.
 
 <CodeBlock language="solidity" metastring={`reference title=""`}>
-  {`https://github.com/sablier-labs/evm-examples/blob/main/flow/FlowStreamManager.sol#L47-L49`}
+  {`https://github.com/sablier-labs/evm-monorepo/blob/main/misc/examples/flow/FlowStreamManager.sol#L47-L49`}
 </CodeBlock>
 
 ## Full code
@@ -141,5 +141,5 @@ stream because it also sets the stream's uncovered debt to zero.
 Below you can see the complete `FlowStreamManager` contract:
 
 <CodeBlock language="solidity" showLineNumbers metastring={`reference title="Full code"`}>
-  {`https://github.com/sablier-labs/evm-examples/blob/main/flow/FlowStreamManager.sol`}
+  {`https://github.com/sablier-labs/evm-monorepo/blob/main/misc/examples/flow/FlowStreamManager.sol`}
 </CodeBlock>

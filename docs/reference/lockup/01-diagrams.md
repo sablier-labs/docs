@@ -93,7 +93,7 @@ outlined below.
 ### Linear Stream
 
 Apart from the above storage layout, Linear stream requires storing
-[unlock amounts](/reference/lockup/contracts/types/library.LockupLinear#unlockamounts) and cliff time.
+[unlock amounts](/reference/lockup/contracts/types/library.LockupLinear#unlockamounts), cliff time, and granularity.
 
 ```mermaid
 flowchart TD;
@@ -103,10 +103,12 @@ flowchart TD;
   S1([cliff])
   S2([start amount])
   S3([cliff amount])
+  S4([granularity])
   L --> S0;
   L --> S1;
   L --> S2;
   L --> S3;
+  L --> S4;
 ```
 
 ### Dynamic Stream

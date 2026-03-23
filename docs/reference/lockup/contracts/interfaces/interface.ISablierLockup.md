@@ -1,11 +1,14 @@
 # ISablierLockup
 
-[Git Source](https://github.com/sablier-labs/lockup/blob/58eaac45c20c57a93b73d887c714e68f061ec3e6/src/interfaces/ISablierLockup.sol)
+[Git Source](https://github.com/sablier-labs/evm-monorepo/blob/003a71932c0e26e767a02c21205a077469406ac8/src/interfaces/ISablierLockup.sol)
 
 **Inherits:** IBatch, IComptrollerable, IERC4906, IERC721Metadata,
 [ISablierLockupDynamic](/docs/reference/lockup/contracts/interfaces/interface.ISablierLockupDynamic.md),
 [ISablierLockupLinear](/docs/reference/lockup/contracts/interfaces/interface.ISablierLockupLinear.md),
+[ISablierLockupPriceGated](/docs/reference/lockup/contracts/interfaces/interface.ISablierLockupPriceGated.md),
 [ISablierLockupTranched](/docs/reference/lockup/contracts/interfaces/interface.ISablierLockupTranched.md)
+
+**Title:** ISablierLockup
 
 Interface to manage Lockup streams with various distribution models.
 
@@ -15,7 +18,7 @@ Interface to manage Lockup streams with various distribution models.
 
 Calculates the minimum fee in wei required to withdraw from the given stream ID.
 
-_Reverts if `streamId` references a null stream._
+Reverts if `streamId` references a null stream.
 
 ```solidity
 function calculateMinFeeWei(uint256 streamId) external view returns (uint256 minFeeWei);
@@ -31,7 +34,7 @@ function calculateMinFeeWei(uint256 streamId) external view returns (uint256 min
 
 Retrieves the stream's recipient.
 
-_Reverts if the NFT has been burned._
+Reverts if the NFT has been burned.
 
 ```solidity
 function getRecipient(uint256 streamId) external view returns (address recipient);
@@ -47,7 +50,7 @@ function getRecipient(uint256 streamId) external view returns (address recipient
 
 Retrieves a flag indicating whether the stream is cold, i.e. settled, canceled, or depleted.
 
-_Reverts if `streamId` references a null stream._
+Reverts if `streamId` references a null stream.
 
 ```solidity
 function isCold(uint256 streamId) external view returns (bool result);
@@ -63,7 +66,7 @@ function isCold(uint256 streamId) external view returns (bool result);
 
 Retrieves a flag indicating whether the stream is warm, i.e. either pending or streaming.
 
-_Reverts if `streamId` references a null stream._
+Reverts if `streamId` references a null stream.
 
 ```solidity
 function isWarm(uint256 streamId) external view returns (bool result);
@@ -80,7 +83,7 @@ function isWarm(uint256 streamId) external view returns (bool result);
 Calculates the amount that the sender would be refunded if the stream were canceled, denoted in units of the token's
 decimals.
 
-_Reverts if `streamId` references a null stream._
+Reverts if `streamId` references a null stream.
 
 ```solidity
 function refundableAmountOf(uint256 streamId) external view returns (uint128 refundableAmount);
@@ -96,7 +99,7 @@ function refundableAmountOf(uint256 streamId) external view returns (uint128 ref
 
 Retrieves the stream's status.
 
-_Reverts if `streamId` references a null stream._
+Reverts if `streamId` references a null stream.
 
 ```solidity
 function statusOf(uint256 streamId) external view returns (Lockup.Status status);
@@ -132,7 +135,7 @@ function streamedAmountOf(uint256 streamId) external view returns (uint128 strea
 
 Calculates the amount that the recipient can withdraw from the stream, denoted in units of the token's decimals.
 
-_Reverts if `streamId` references a null stream._
+Reverts if `streamId` references a null stream.
 
 ```solidity
 function withdrawableAmountOf(uint256 streamId) external view returns (uint128 withdrawableAmount);
@@ -193,9 +196,11 @@ function burn(uint256 streamId) external payable;
 
 Cancels the stream and refunds any remaining tokens to the sender.
 
-Emits a {Transfer}, {CancelLockupStream} and {MetadataUpdate} event. Notes:
+Emits a {Transfer},
+[CancelLockupStream](/docs/reference/lockup/contracts/interfaces/interface.ISablierLockup.md#cancellockupstream) and
+{MetadataUpdate} event. Notes:
 
-- If there any tokens left for the recipient to withdraw, the stream is marked as canceled. Otherwise, the stream is
+- If there are any tokens left for the recipient to withdraw, the stream is marked as canceled. Otherwise, the stream is
   marked as depleted.
 - If the address is on the allowlist, this function will invoke a hook on the recipient. Requirements:
 - Must not be delegate called.
@@ -222,13 +227,16 @@ function cancel(uint256 streamId) external payable returns (uint128 refundedAmou
 
 Cancels multiple streams and refunds any remaining tokens to the sender.
 
-Emits multiple {Transfer}, {CancelLockupStream} and {MetadataUpdate} events. For each reverted cancellation, it emits an
+Emits multiple {Transfer},
+[CancelLockupStream](/docs/reference/lockup/contracts/interfaces/interface.ISablierLockup.md#cancellockupstream) and
+{MetadataUpdate} events. For each reverted cancellation, it emits an
 [InvalidStreamInCancelMultiple](/docs/reference/lockup/contracts/interfaces/interface.ISablierLockup.md#invalidstreamincancelmultiple)
 event. Notes:
 
 - This function as a whole will not revert if one or more cancellations revert. A zero amount is returned for reverted
   streams.
-- Refer to the notes and requirements from {cancel}.
+- Refer to the notes and requirements from
+  [cancel](/docs/reference/lockup/contracts/interfaces/interface.ISablierLockup.md#cancel).
 
 ```solidity
 function cancelMultiple(uint256[] calldata streamIds) external payable returns (uint128[] memory refundedAmounts);
@@ -298,9 +306,9 @@ Sets the native token address. Once set, it cannot be changed.
 
 For more information, see the documentation for {nativeToken}. Notes:
 
-- If `newNativeToken` is zero address, the function does not revert. Requirements:
+- If `newNativeToken` is the zero address, the function does not revert. Requirements:
 - `msg.sender` must be the comptroller contract.
-- The current native token must be zero address.
+- The current native token must be the zero address.
 
 ```solidity
 function setNativeToken(address newNativeToken) external;
@@ -336,7 +344,9 @@ function setNFTDescriptor(ILockupNFTDescriptor newNFTDescriptor) external;
 
 Withdraws the provided amount of tokens from the stream to the `to` address.
 
-Emits a {Transfer}, {WithdrawFromLockupStream} and {MetadataUpdate} event. Notes:
+Emits a {Transfer},
+[WithdrawFromLockupStream](/docs/reference/lockup/contracts/interfaces/interface.ISablierLockup.md#withdrawfromlockupstream)
+and {MetadataUpdate} event. Notes:
 
 - If `msg.sender` is not the recipient and the address is on the allowlist, this function will invoke a hook on the
   recipient.
@@ -364,10 +374,14 @@ function withdraw(uint256 streamId, address to, uint128 amount) external payable
 
 Withdraws the maximum withdrawable amount from the stream to the provided address `to`.
 
-Emits a {Transfer}, {WithdrawFromLockupStream} and {MetadataUpdate} event. Notes:
+Emits a {Transfer},
+[WithdrawFromLockupStream](/docs/reference/lockup/contracts/interfaces/interface.ISablierLockup.md#withdrawfromlockupstream)
+and {MetadataUpdate} event. Notes:
 
-- Refer to the notes in {withdraw}. Requirements:
-- Refer to the requirements in {withdraw}.
+- Refer to the notes in [withdraw](/docs/reference/lockup/contracts/interfaces/interface.ISablierLockup.md#withdraw).
+  Requirements:
+- Refer to the requirements in
+  [withdraw](/docs/reference/lockup/contracts/interfaces/interface.ISablierLockup.md#withdraw).
 
 ```solidity
 function withdrawMax(uint256 streamId, address to) external payable returns (uint128 withdrawnAmount);
@@ -396,9 +410,11 @@ Emits a
 {Transfer} and {MetadataUpdate} event. Notes:
 
 - If the withdrawable amount is zero, the withdrawal is skipped.
-- Refer to the notes in {withdraw}. Requirements:
+- Refer to the notes in [withdraw](/docs/reference/lockup/contracts/interfaces/interface.ISablierLockup.md#withdraw).
+  Requirements:
 - `msg.sender` must be either the NFT owner or an approved third party.
-- Refer to the requirements in {withdraw}.
+- Refer to the requirements in
+  [withdraw](/docs/reference/lockup/contracts/interfaces/interface.ISablierLockup.md#withdraw).
 - Refer to the requirements in {IERC721.transferFrom}.
 
 ```solidity
@@ -428,14 +444,16 @@ function withdrawMaxAndTransfer(
 
 Withdraws tokens from streams to the recipient of each stream.
 
-Emits multiple {Transfer}, {WithdrawFromLockupStream} and {MetadataUpdate} events. For each reverting withdrawal, it
-emits an
+Emits multiple {Transfer},
+[WithdrawFromLockupStream](/docs/reference/lockup/contracts/interfaces/interface.ISablierLockup.md#withdrawfromlockupstream)
+and {MetadataUpdate} events. For each reverting withdrawal, it emits an
 [InvalidWithdrawalInWithdrawMultiple](/docs/reference/lockup/contracts/interfaces/interface.ISablierLockup.md#invalidwithdrawalinwithdrawmultiple)
 event. Notes:
 
 - This function as a whole will not revert if one or more withdrawals revert.
 - This function attempts to call a hook on the recipient of each stream, unless `msg.sender` is the recipient.
-- Refer to the notes and requirements from {withdraw}. Requirements:
+- Refer to the notes and requirements from
+  [withdraw](/docs/reference/lockup/contracts/interfaces/interface.ISablierLockup.md#withdraw). Requirements:
 - Must not be delegate called.
 - There must be an equal number of `streamIds` and `amounts`.
 

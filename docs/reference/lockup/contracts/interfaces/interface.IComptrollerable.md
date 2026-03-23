@@ -1,6 +1,8 @@
 # IComptrollerable
 
-[Git Source](https://github.com/sablier-labs/evm-utils/blob/0b3bc38ab8badd135fc178b757afaf6902f1f63c/src/interfaces/IComptrollerable.sol)
+[Git Source](https://github.com/sablier-labs/evm-monorepo/blob/003a71932c0e26e767a02c21205a077469406ac8/src/interfaces/IComptrollerable.sol)
+
+**Title:** IComptrollerable
 
 Contract module that provides a setter and getter for the Sablier Comptroller.
 
@@ -18,7 +20,7 @@ function comptroller() external view returns (ISablierComptroller);
 
 Sets the comptroller to a new address.
 
-Emits a [SetComptroller](#setcomptroller-1) event. Requirements:
+Emits a [SetComptroller](#setcomptroller) event. Requirements:
 
 - `msg.sender` must be the current comptroller.
 - The new comptroller must return `true` from {supportsInterface} with the comptroller's minimal interface ID which is
@@ -43,7 +45,7 @@ function setComptroller(ISablierComptroller newComptroller) external;
 
 Transfers the fees to the comptroller contract.
 
-Emits a [TransferFeesToComptroller](#transferfeestocomptroller-1) event.
+Emits a [TransferFeesToComptroller](#transferfeestocomptroller) event.
 
 ```solidity
 function transferFeesToComptroller() external;
@@ -64,5 +66,5 @@ event SetComptroller(ISablierComptroller oldComptroller, ISablierComptroller new
 Emitted when the fees are transferred to the comptroller contract.
 
 ```solidity
-event TransferFeesToComptroller(ISablierComptroller indexed comptroller, uint256 feeAmount);
+event TransferFeesToComptroller(address indexed comptroller, uint256 feeAmount);
 ```

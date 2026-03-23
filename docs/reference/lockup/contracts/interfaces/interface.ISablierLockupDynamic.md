@@ -1,8 +1,10 @@
 # ISablierLockupDynamic
 
-[Git Source](https://github.com/sablier-labs/lockup/blob/58eaac45c20c57a93b73d887c714e68f061ec3e6/src/interfaces/ISablierLockupDynamic.sol)
+[Git Source](https://github.com/sablier-labs/evm-monorepo/blob/003a71932c0e26e767a02c21205a077469406ac8/src/interfaces/ISablierLockupDynamic.sol)
 
 **Inherits:** [ISablierLockupState](/docs/reference/lockup/contracts/interfaces/interface.ISablierLockupState.md)
+
+**Title:** ISablierLockupDynamic
 
 Creates Lockup streams with dynamic distribution model.
 
@@ -14,9 +16,13 @@ Creates a stream by setting the start time to `block.timestamp`, and the end tim
 all specified time durations. The segment timestamps are derived from these durations. The stream is funded by
 `msg.sender` and is wrapped in an ERC-721 NFT.
 
-Emits a {Transfer}, {CreateLockupDynamicStream} and {MetadataUpdate} event. Requirements:
+Emits a {Transfer},
+[CreateLockupDynamicStream](/docs/reference/lockup/contracts/interfaces/interface.ISablierLockupDynamic.md#createlockupdynamicstream)
+and {MetadataUpdate} event. Requirements:
 
-- All requirements in {createWithTimestampsLD} must be met for the calculated parameters.
+- All requirements in
+  [createWithTimestampsLD](/docs/reference/lockup/contracts/interfaces/interface.ISablierLockupDynamic.md#createwithtimestampsld)
+  must be met for the calculated parameters.
 
 ```solidity
 function createWithDurationsLD(
@@ -46,7 +52,9 @@ function createWithDurationsLD(
 Creates a stream with the provided segment timestamps, implying the end time from the last timestamp. The stream is
 funded by `msg.sender` and is wrapped in an ERC-721 NFT.
 
-Emits a {Transfer}, {CreateLockupDynamicStream} and {MetadataUpdate} event. Notes:
+Emits a {Transfer},
+[CreateLockupDynamicStream](/docs/reference/lockup/contracts/interfaces/interface.ISablierLockupDynamic.md#createlockupdynamicstream)
+and {MetadataUpdate} event. Notes:
 
 - As long as the segment timestamps are arranged in ascending order, it is not an error for some of them to be in the
   past. Requirements:
@@ -94,7 +102,9 @@ Emitted when an LD stream is created.
 
 ```solidity
 event CreateLockupDynamicStream(
-    uint256 indexed streamId, Lockup.CreateEventCommon commonParams, LockupDynamic.Segment[] segments
+    uint256 indexed streamId,
+    Lockup.CreateEventCommon commonParams,
+    LockupDynamic.Segment[] segments
 );
 ```
 

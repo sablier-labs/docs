@@ -1,14 +1,16 @@
 # ISablierFactoryMerkleLT
 
-[Git Source](https://github.com/sablier-labs/airdrops/blob/077c6b9766ef7693ba9e82a9e001dc0097709c01/src/interfaces/ISablierFactoryMerkleLT.sol)
+[Git Source](https://github.com/sablier-labs/evm-monorepo/blob/003a71932c0e26e767a02c21205a077469406ac8/src/interfaces/ISablierFactoryMerkleLT.sol)
 
 **Inherits:**
 [ISablierFactoryMerkleBase](/docs/reference/airdrops/contracts/interfaces/interface.ISablierFactoryMerkleBase.md)
 
+**Title:** ISablierFactoryMerkleLT
+
 A factory that deploys MerkleLT campaign contracts.
 
-_See the documentation in
-[ISablierMerkleLT](/docs/reference/airdrops/contracts/interfaces/interface.ISablierMerkleLT.md)._
+See the documentation in
+[ISablierMerkleLT](/docs/reference/airdrops/contracts/interfaces/interface.ISablierMerkleLT.md).
 
 ## Functions
 
@@ -16,7 +18,7 @@ _See the documentation in
 
 Verifies if the sum of percentages in `tranches` equals 100%, i.e., 1e18.
 
-_This is a helper function for the frontend. It is not used anywhere in the contracts._
+This is a helper function for the frontend. It is not used anywhere in the contracts.
 
 ```solidity
 function isPercentagesSum100(MerkleLT.TrancheWithPercentage[] calldata tranches) external pure returns (bool result);
@@ -39,14 +41,14 @@ function isPercentagesSum100(MerkleLT.TrancheWithPercentage[] calldata tranches)
 Computes the deterministic address where
 [SablierMerkleLT](/docs/reference/airdrops/contracts/contract.SablierMerkleLT.md) campaign will be deployed.
 
-_Reverts if the requirements from
+Reverts if the requirements from
 [createMerkleLT](/docs/reference/airdrops/contracts/interfaces/interface.ISablierFactoryMerkleLT.md#createmerklelt) are
-not met._
+not met.
 
 ```solidity
 function computeMerkleLT(
     address campaignCreator,
-    MerkleLT.ConstructorParams memory params
+    MerkleLT.ConstructorParams calldata campaignParams
 )
     external
     view
@@ -58,18 +60,18 @@ function computeMerkleLT(
 Creates a new Merkle Lockup campaign with a Lockup Tranched distribution.
 
 Emits a
-[CreateMerkleLT](/docs/reference/airdrops/contracts/interfaces/interface.ISablierFactoryMerkleLT.md#createmerklelt-1)
+[CreateMerkleLT](/docs/reference/airdrops/contracts/interfaces/interface.ISablierFactoryMerkleLT.md#createmerklelt)
 event. Notes:
 
 - The contract is created with CREATE2.
 - The campaign's fee will be set to the min USD fee unless a custom fee is set for `msg.sender`.
-- A value of zero for `params.expiration` means the campaign does not expire. Requirements:
-- `params.token` must not be the forbidden native token.
+- A value of zero for `campaignParams.expiration` means the campaign does not expire. Requirements:
+- `campaignParams.token` must not be the forbidden native token.
 - The sum of percentages of the tranches must equal 100%.
 
 ```solidity
 function createMerkleLT(
-    MerkleLT.ConstructorParams memory params,
+    MerkleLT.ConstructorParams calldata campaignParams,
     uint256 aggregateAmount,
     uint256 recipientCount
 )
@@ -79,11 +81,11 @@ function createMerkleLT(
 
 **Parameters**
 
-| Name              | Type                         | Description                                                                                                                                  |
-| ----------------- | ---------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------- |
-| `params`          | `MerkleLT.ConstructorParams` | Struct encapsulating the input parameters, which are documented in [MerkleLT](/docs/reference/airdrops/contracts/types/library.MerkleLT.md). |
-| `aggregateAmount` | `uint256`                    | The total amount of ERC-20 tokens to be distributed to all recipients.                                                                       |
-| `recipientCount`  | `uint256`                    | The total number of recipient addresses eligible for the airdrop.                                                                            |
+| Name              | Type                         | Description                                                                                                            |
+| ----------------- | ---------------------------- | ---------------------------------------------------------------------------------------------------------------------- |
+| `campaignParams`  | `MerkleLT.ConstructorParams` | Struct encapsulating the [SablierMerkleLT](/docs/reference/airdrops/contracts/contract.SablierMerkleLT.md) parameters. |
+| `aggregateAmount` | `uint256`                    | The total amount of ERC-20 tokens to be distributed to all recipients.                                                 |
+| `recipientCount`  | `uint256`                    | The total number of recipient addresses eligible for the airdrop.                                                      |
 
 **Returns**
 
@@ -100,7 +102,7 @@ Emitted when a [SablierMerkleLT](/docs/reference/airdrops/contracts/contract.Sab
 ```solidity
 event CreateMerkleLT(
     ISablierMerkleLT indexed merkleLT,
-    MerkleLT.ConstructorParams params,
+    MerkleLT.ConstructorParams campaignParams,
     uint256 aggregateAmount,
     uint256 totalDuration,
     uint256 recipientCount,

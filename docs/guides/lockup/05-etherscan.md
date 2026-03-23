@@ -80,6 +80,7 @@ transaction. For this example, we will not be attaching any value and therefore 
   "timestamps": [1767261600, 1798797600],
   "shape": "",
   "unlockAmounts": ["0", "2000000000000000000"],
+  "granularity": 1,
   "cliffTime": 1769261600
 }
 ```
@@ -97,8 +98,8 @@ provide it like this:
   true,
   [1737936000, 1769472000],
   "",
-  ["0x0000000000000000000000000000000000000000", 0],
   ["0", "2000000000000000000"],
+  1,
   1738195200
 ]
 ```
@@ -135,6 +136,7 @@ the above method.
     [1767261600, 1798797600],
     1769261600,
     ["0", "2000000000000000000"],
+    1,
     ""
   ]
 ]
@@ -201,6 +203,14 @@ time.
 If you prefer to not have a cliff, you can simply set the cliff time to 0. If, however, you want to have a cliff, fill
 in the timestamp for the cliff there.
 
+#### Granularity
+
+The `granularity` field defines the smallest step in time (in seconds) between two consecutive token unlocks. For
+example, a granularity of `1` means tokens unlock every second (standard linear behavior), while `604800` means tokens
+unlock weekly in discrete steps.
+
+A value of `0` is a sentinel value that is equivalent to 1 second. For most standard linear streams, set this to `1`.
+
 :::caution
 
 Inside tuples/arrays (the `[ ... ]` structures in the example) make sure that you:
@@ -223,6 +233,7 @@ to represent the total duration of the stream (in seconds) and the duration of t
 
 ```json
 {
+  "granularity": 1,
   "durations": [0, 864000] // no cliff and a total duration of 10 days
 }
 ```

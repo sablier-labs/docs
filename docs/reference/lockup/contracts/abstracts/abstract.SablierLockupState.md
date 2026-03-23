@@ -1,8 +1,10 @@
 # SablierLockupState
 
-[Git Source](https://github.com/sablier-labs/lockup/blob/58eaac45c20c57a93b73d887c714e68f061ec3e6/src/abstracts/SablierLockupState.sol)
+[Git Source](https://github.com/sablier-labs/evm-monorepo/blob/003a71932c0e26e767a02c21205a077469406ac8/src/abstracts/SablierLockupState.sol)
 
 **Inherits:** [ISablierLockupState](/docs/reference/lockup/contracts/interfaces/interface.ISablierLockupState.md)
+
+**Title:** SablierLockupState
 
 See the documentation in
 [ISablierLockupState](/docs/reference/lockup/contracts/interfaces/interface.ISablierLockupState.md).
@@ -11,27 +13,22 @@ See the documentation in
 
 ### aggregateAmount
 
-Retrieves the aggregate amount across all streams, denoted in units of the token's decimals.
-
-_If tokens are directly transferred to the contract without using the stream creation functions, the ERC-20 balance may
-be greater than the aggregate amount._
-
 ```solidity
-mapping(IERC20 token => uint256 amount) public override aggregateAmount;
+mapping(IERC20 token => uint256 amount) public override aggregateAmount
 ```
 
 ### nativeToken
 
 Retrieves the address of the ERC-20 interface of the native token, if it exists.
 
-_The native tokens on some chains have a dual interface as ERC-20. For example, on Polygon the $POL token is the native
+The native tokens on some chains have a dual interface as ERC-20. For example, on Polygon the $POL token is the native
 token and has an ERC-20 version at 0x0000000000000000000000000000000000001010. This means that `address(this).balance`
 returns the same value as `balanceOf(address(this))`. To avoid any unintended behavior, these tokens cannot be used in
 Sablier. As an alternative, users can use the Wrapped version of the token, i.e. WMATIC, which is a standard ERC-20
-token._
+token.
 
 ```solidity
-address public override nativeToken;
+address public override nativeToken
 ```
 
 ### nextStreamId
@@ -39,7 +36,7 @@ address public override nativeToken;
 Counter for stream IDs, used in the create functions.
 
 ```solidity
-uint256 public override nextStreamId;
+uint256 public override nextStreamId
 ```
 
 ### nftDescriptor
@@ -47,71 +44,95 @@ uint256 public override nextStreamId;
 Contract that generates the non-fungible token URI.
 
 ```solidity
-ILockupNFTDescriptor public override nftDescriptor;
+ILockupNFTDescriptor public override nftDescriptor
 ```
 
 ### \_allowedToHook
 
-_Mapping of contracts allowed to hook to Sablier when a stream is canceled or when tokens are withdrawn._
+Mapping of contracts allowed to hook to Sablier when a stream is canceled or when tokens are withdrawn.
 
 ```solidity
-mapping(address recipient => bool allowed) internal _allowedToHook;
+mapping(address recipient => bool allowed) internal _allowedToHook
 ```
 
 ### \_cliffs
 
-_Cliff timestamp mapped by stream IDs, used in LL streams._
+Cliff timestamp mapped by stream IDs, used in LL streams.
 
 ```solidity
-mapping(uint256 streamId => uint40 cliffTime) internal _cliffs;
+mapping(uint256 streamId => uint40 cliffTime) internal _cliffs
+```
+
+### \_granularities
+
+Granularity mapped by stream IDs, used in LL streams.
+
+```solidity
+mapping(uint256 streamId => uint40 granularity) internal _granularities
+```
+
+### \_priceGatedUnlockParams
+
+Unlock parameters mapped by stream IDs, used in LPG streams.
+
+```solidity
+mapping(uint256 streamId => LockupPriceGated.UnlockParams unlockParams) internal _priceGatedUnlockParams
 ```
 
 ### \_segments
 
-_Stream segments mapped by stream IDs, used in LD streams._
+Stream segments mapped by stream IDs, used in LD streams.
 
 ```solidity
-mapping(uint256 streamId => LockupDynamic.Segment[] segments) internal _segments;
+mapping(uint256 streamId => LockupDynamic.Segment[] segments) internal _segments
 ```
 
 ### \_streams
 
-_Lockup streams mapped by unsigned integers._
+Lockup streams mapped by unsigned integers.
 
 ```solidity
-mapping(uint256 id => Lockup.Stream stream) internal _streams;
+mapping(uint256 id => Lockup.Stream stream) internal _streams
 ```
 
 ### \_tranches
 
-_Stream tranches mapped by stream IDs, used in LT streams._
+Stream tranches mapped by stream IDs, used in LT streams.
 
 ```solidity
-mapping(uint256 streamId => LockupTranched.Tranche[] tranches) internal _tranches;
+mapping(uint256 streamId => LockupTranched.Tranche[] tranches) internal _tranches
 ```
 
 ### \_unlockAmounts
 
-_Unlock amounts mapped by stream IDs, used in LL streams._
+Unlock amounts mapped by stream IDs, used in LL streams.
 
 ```solidity
-mapping(uint256 streamId => LockupLinear.UnlockAmounts unlockAmounts) internal _unlockAmounts;
+mapping(uint256 streamId => LockupLinear.UnlockAmounts unlockAmounts) internal _unlockAmounts
 ```
 
 ## Functions
 
-### notNull
+### modelCheck
 
-_Checks that `streamId` does not reference a null stream._
+Checks that actual model and expected model are equal.
 
 ```solidity
-modifier notNull(uint256 streamId);
+modifier modelCheck(Lockup.Model actualModel, Lockup.Model expectedModel) ;
+```
+
+### notNull
+
+Checks that `streamId` does not reference a null stream.
+
+```solidity
+modifier notNull(uint256 streamId) ;
 ```
 
 ### constructor
 
 ```solidity
-constructor(address initialNFTDescriptor);
+constructor(address initialNFTDescriptor) ;
 ```
 
 **Parameters**
@@ -124,10 +145,16 @@ constructor(address initialNFTDescriptor);
 
 Retrieves the stream's cliff time, which is a Unix timestamp. A value of zero means there is no cliff.
 
-_Reverts if `streamId` references either a null stream or a non-LL stream._
+Reverts if `streamId` references either a null stream or a non-LL stream.
 
 ```solidity
-function getCliffTime(uint256 streamId) external view override notNull(streamId) returns (uint40 cliffTime);
+function getCliffTime(uint256 streamId)
+    external
+    view
+    override
+    notNull(streamId)
+    modelCheck(_streams[streamId].lockupModel, Lockup.Model.LOCKUP_LINEAR)
+    returns (uint40 cliffTime);
 ```
 
 **Parameters**
@@ -140,7 +167,7 @@ function getCliffTime(uint256 streamId) external view override notNull(streamId)
 
 Retrieves the amount deposited in the stream, denoted in units of the token's decimals.
 
-_Reverts if `streamId` references a null stream._
+Reverts if `streamId` references a null stream.
 
 ```solidity
 function getDepositedAmount(uint256 streamId)
@@ -161,10 +188,32 @@ function getDepositedAmount(uint256 streamId)
 
 Retrieves the stream's end time, which is a Unix timestamp.
 
-_Reverts if `streamId` references a null stream._
+Reverts if `streamId` references a null stream.
 
 ```solidity
 function getEndTime(uint256 streamId) external view override notNull(streamId) returns (uint40 endTime);
+```
+
+**Parameters**
+
+| Name       | Type      | Description                  |
+| ---------- | --------- | ---------------------------- |
+| `streamId` | `uint256` | The stream ID for the query. |
+
+### getGranularity
+
+Retrieves the smallest step in time between two consecutive token unlocks.
+
+Reverts if `streamId` references either a null stream or a non-LL stream.
+
+```solidity
+function getGranularity(uint256 streamId)
+    external
+    view
+    override
+    notNull(streamId)
+    modelCheck(_streams[streamId].lockupModel, Lockup.Model.LOCKUP_LINEAR)
+    returns (uint40 granularity);
 ```
 
 **Parameters**
@@ -177,10 +226,15 @@ function getEndTime(uint256 streamId) external view override notNull(streamId) r
 
 Retrieves the distribution models used to create the stream.
 
-_Reverts if `streamId` references a null stream._
+Reverts if `streamId` references a null stream.
 
 ```solidity
-function getLockupModel(uint256 streamId) external view override notNull(streamId) returns (Lockup.Model lockupModel);
+function getLockupModel(uint256 streamId)
+    external
+    view
+    override
+    notNull(streamId)
+    returns (Lockup.Model lockupModel);
 ```
 
 **Parameters**
@@ -189,12 +243,40 @@ function getLockupModel(uint256 streamId) external view override notNull(streamI
 | ---------- | --------- | ---------------------------- |
 | `streamId` | `uint256` | The stream ID for the query. |
 
+### getPriceGatedUnlockParams
+
+Retrieves the unlock parameters of a price-gated stream.
+
+Reverts if `streamId` references either a null stream or a non-LPG stream.
+
+```solidity
+function getPriceGatedUnlockParams(uint256 streamId)
+    external
+    view
+    override
+    notNull(streamId)
+    modelCheck(_streams[streamId].lockupModel, Lockup.Model.LOCKUP_PRICE_GATED)
+    returns (LockupPriceGated.UnlockParams memory unlockParams);
+```
+
+**Parameters**
+
+| Name       | Type      | Description                  |
+| ---------- | --------- | ---------------------------- |
+| `streamId` | `uint256` | The stream ID for the query. |
+
+**Returns**
+
+| Name           | Type                            | Description                                       |
+| -------------- | ------------------------------- | ------------------------------------------------- |
+| `unlockParams` | `LockupPriceGated.UnlockParams` | See the documentation in {LockupPriceGated} type. |
+
 ### getRefundedAmount
 
 Retrieves the amount refunded to the sender after a cancellation, denoted in units of the token's decimals. This amount
 is always zero unless the stream was canceled.
 
-_Reverts if `streamId` references a null stream._
+Reverts if `streamId` references a null stream.
 
 ```solidity
 function getRefundedAmount(uint256 streamId)
@@ -215,7 +297,7 @@ function getRefundedAmount(uint256 streamId)
 
 Retrieves the segments used to compose the dynamic distribution function.
 
-_Reverts if `streamId` references either a null stream or a non-LD stream._
+Reverts if `streamId` references either a null stream or a non-LD stream.
 
 ```solidity
 function getSegments(uint256 streamId)
@@ -223,6 +305,7 @@ function getSegments(uint256 streamId)
     view
     override
     notNull(streamId)
+    modelCheck(_streams[streamId].lockupModel, Lockup.Model.LOCKUP_DYNAMIC)
     returns (LockupDynamic.Segment[] memory segments);
 ```
 
@@ -242,7 +325,7 @@ function getSegments(uint256 streamId)
 
 Retrieves the stream's sender.
 
-_Reverts if `streamId` references a null stream._
+Reverts if `streamId` references a null stream.
 
 ```solidity
 function getSender(uint256 streamId) external view override notNull(streamId) returns (address sender);
@@ -258,7 +341,7 @@ function getSender(uint256 streamId) external view override notNull(streamId) re
 
 Retrieves the stream's start time, which is a Unix timestamp.
 
-_Reverts if `streamId` references a null stream._
+Reverts if `streamId` references a null stream.
 
 ```solidity
 function getStartTime(uint256 streamId) external view override notNull(streamId) returns (uint40 startTime);
@@ -274,7 +357,7 @@ function getStartTime(uint256 streamId) external view override notNull(streamId)
 
 Retrieves the tranches used to compose the tranched distribution function.
 
-_Reverts if `streamId` references either a null stream or a non-LT stream._
+Reverts if `streamId` references either a null stream or a non-LT stream.
 
 ```solidity
 function getTranches(uint256 streamId)
@@ -282,6 +365,7 @@ function getTranches(uint256 streamId)
     view
     override
     notNull(streamId)
+    modelCheck(_streams[streamId].lockupModel, Lockup.Model.LOCKUP_TRANCHED)
     returns (LockupTranched.Tranche[] memory tranches);
 ```
 
@@ -301,7 +385,7 @@ function getTranches(uint256 streamId)
 
 Retrieves the address of the underlying ERC-20 token being distributed.
 
-_Reverts if `streamId` references a null stream._
+Reverts if `streamId` references a null stream.
 
 ```solidity
 function getUnderlyingToken(uint256 streamId) external view override notNull(streamId) returns (IERC20 token);
@@ -317,7 +401,7 @@ function getUnderlyingToken(uint256 streamId) external view override notNull(str
 
 Retrieves the unlock amounts used to compose the linear distribution function.
 
-_Reverts if `streamId` references either a null stream or a non-LL stream._
+Reverts if `streamId` references either a null stream or a non-LL stream.
 
 ```solidity
 function getUnlockAmounts(uint256 streamId)
@@ -325,6 +409,7 @@ function getUnlockAmounts(uint256 streamId)
     view
     override
     notNull(streamId)
+    modelCheck(_streams[streamId].lockupModel, Lockup.Model.LOCKUP_LINEAR)
     returns (LockupLinear.UnlockAmounts memory unlockAmounts);
 ```
 
@@ -344,7 +429,7 @@ function getUnlockAmounts(uint256 streamId)
 
 Retrieves the amount withdrawn from the stream, denoted in units of the token's decimals.
 
-_Reverts if `streamId` references a null stream._
+Reverts if `streamId` references a null stream.
 
 ```solidity
 function getWithdrawnAmount(uint256 streamId)
@@ -366,8 +451,8 @@ function getWithdrawnAmount(uint256 streamId)
 Retrieves a flag indicating whether the provided address is a contract allowed to hook to Sablier when a stream is
 canceled or when tokens are withdrawn.
 
-_See [ISablierLockupRecipient](/docs/reference/lockup/contracts/interfaces/interface.ISablierLockupRecipient.md) for
-more information._
+See [ISablierLockupRecipient](/docs/reference/lockup/contracts/interfaces/interface.ISablierLockupRecipient.md) for more
+information.
 
 ```solidity
 function isAllowedToHook(address recipient) external view returns (bool result);
@@ -377,7 +462,7 @@ function isAllowedToHook(address recipient) external view returns (bool result);
 
 Retrieves a flag indicating whether the stream can be canceled. When the stream is cold, this flag is always `false`.
 
-_Reverts if `streamId` references a null stream._
+Reverts if `streamId` references a null stream.
 
 ```solidity
 function isCancelable(uint256 streamId) external view override notNull(streamId) returns (bool result);
@@ -393,7 +478,7 @@ function isCancelable(uint256 streamId) external view override notNull(streamId)
 
 Retrieves a flag indicating whether the stream is depleted.
 
-_Reverts if `streamId` references a null stream._
+Reverts if `streamId` references a null stream.
 
 ```solidity
 function isDepleted(uint256 streamId) external view override notNull(streamId) returns (bool result);
@@ -409,7 +494,7 @@ function isDepleted(uint256 streamId) external view override notNull(streamId) r
 
 Retrieves a flag indicating whether the stream exists.
 
-_Does not revert if `streamId` references a null stream._
+Does not revert if `streamId` references a null stream.
 
 ```solidity
 function isStream(uint256 streamId) external view override returns (bool result);
@@ -425,7 +510,7 @@ function isStream(uint256 streamId) external view override returns (bool result)
 
 Retrieves a flag indicating whether the stream NFT can be transferred.
 
-_Reverts if `streamId` references a null stream._
+Reverts if `streamId` references a null stream.
 
 ```solidity
 function isTransferable(uint256 streamId) external view override notNull(streamId) returns (bool result);
@@ -441,7 +526,7 @@ function isTransferable(uint256 streamId) external view override notNull(streamI
 
 Retrieves a flag indicating whether the stream was canceled.
 
-_Reverts if `streamId` references a null stream._
+Reverts if `streamId` references a null stream.
 
 ```solidity
 function wasCanceled(uint256 streamId) external view override notNull(streamId) returns (bool result);
@@ -455,7 +540,7 @@ function wasCanceled(uint256 streamId) external view override notNull(streamId) 
 
 ### \_statusOf
 
-_Retrieves the stream's status without performing a null check._
+Retrieves the stream's status without performing a null check.
 
 ```solidity
 function _statusOf(uint256 streamId) internal view returns (Lockup.Status);
@@ -465,7 +550,7 @@ function _statusOf(uint256 streamId) internal view returns (Lockup.Status);
 
 Calculates the streamed amount of the stream.
 
-_This function is implemented by child contract. The logic varies according to the distribution model._
+This function is implemented by child contract. The logic varies according to the distribution model.
 
 ```solidity
 function _streamedAmountOf(uint256 streamId) internal view virtual returns (uint128);
@@ -474,12 +559,12 @@ function _streamedAmountOf(uint256 streamId) internal view virtual returns (uint
 ### \_create
 
 This function is implemented by [SablierLockup](/docs/reference/lockup/contracts/contract.SablierLockup.md) and is used
-in the [SablierLockupDynamic](docs/reference/lockup/contracts/abstracts/abstract.SablierLockupDynamic.md),
-[SablierLockupLinear](docs/reference/lockup/contracts/abstracts/abstract.SablierLockupLinear.md) and
-[SablierLockupTranched](docs/reference/lockup/contracts/abstracts/abstract.SablierLockupTranched.md) contracts.
+in the [SablierLockupDynamic](/docs/reference/lockup/contracts/abstracts/abstract.SablierLockupDynamic.md),
+[SablierLockupLinear](/docs/reference/lockup/contracts/abstracts/abstract.SablierLockupLinear.md) and
+[SablierLockupTranched](/docs/reference/lockup/contracts/abstracts/abstract.SablierLockupTranched.md) contracts.
 
-_It updates state variables based on the stream parameters, mints an NFT to the recipient, bumps stream ID, and
-transfers the deposit amount._
+It updates state variables based on the stream parameters, mints an NFT to the recipient, bumps stream ID, and transfers
+the deposit amount.
 
 ```solidity
 function _create(
@@ -497,10 +582,18 @@ function _create(
     virtual;
 ```
 
+### \_modelCheck
+
+Reverts if actual model and expected model are not equal.
+
+```solidity
+function _modelCheck(Lockup.Model actualModel, Lockup.Model expectedModel) private pure;
+```
+
 ### \_notNull
 
-_A private function is used instead of inlining this logic in a modifier because Solidity copies modifiers into every
-function that uses them._
+A private function is used instead of inlining this logic in a 3 because Solidity copies modifiers into every function
+that uses them.
 
 ```solidity
 function _notNull(uint256 streamId) private view;
