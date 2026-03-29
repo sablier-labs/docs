@@ -1,6 +1,6 @@
 # ISablierFlow
 
-[Git Source](https://github.com/sablier-labs/evm-monorepo/blob/003a71932c0e26e767a02c21205a077469406ac8/src/interfaces/ISablierFlow.sol)
+[Git Source](https://github.com/sablier-labs/evm-monorepo/blob/d6f6f1d4bb0a5bf508c1d0d7c1b59cd8879d56f9/src/interfaces/ISablierFlow.sol)
 
 **Inherits:** IBatch, IComptrollerable, IERC4906, IERC721Metadata,
 [ISablierFlowState](/docs/reference/flow/contracts/interfaces/interface.ISablierFlowState.md)

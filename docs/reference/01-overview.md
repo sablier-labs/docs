@@ -103,3 +103,33 @@ Generates the URI describing the Sablier Flow stream NFTs which, currently, is t
 > [**SablierFlow Reference**](./flow/contracts/contract.SablierFlow)
 
 Creates and manages payment streams.
+
+## Bob
+
+> [**Bob Source Code**](https://github.com/sablier-labs/evm-monorepo/tree/main/bob)
+
+The Bob package consists of the Bob contract, the escrow contract, and the Lido yield adapter contract.
+
+### SablierBob
+
+> [**SablierBob Reference**](./bob/contracts/contract.SablierBob)
+
+Creates and manages price-gated vaults.
+
+### SablierEscrow
+
+> [**SablierEscrow Reference**](./bob/contracts/contract.SablierEscrow)
+
+Creates and manages peer-to-peer orders for exchanging ERC-20 tokens.
+
+### SablierLidoAdapter
+
+> [**SablierLidoAdapter Reference**](./bob/contracts/contract.SablierLidoAdapter)
+
+Stakes WETH into Lido to earn yield on behalf of Bob's WETH vaults.
+
+### BobVaultShare
+
+> [**BobVaultShare Reference**](./bob/contracts/contract.BobVaultShare)
+
+ERC-20 share token deployed per Bob vault.

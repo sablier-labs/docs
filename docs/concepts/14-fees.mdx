@@ -1,6 +1,6 @@
 ---
 id: "fees"
-sidebar_position: 12
+sidebar_position: 14
 title: "Fees"
 ---
 
@@ -216,6 +216,27 @@ For v1.3, the fees are as follows:
 | zkSync Era | ETH       | 0.00036 ETH      | 360000000000000     |
 
 </details>
+
+### Bob Vaults
+
+When you redeem your tokens from a Bob vault, the fee depends on whether the vault earned yield or not:
+
+- **Vaults that earned yield** (e.g., ETH/WETH vaults with the [Lido adapter](/concepts/bob/lido-adapter)): a percentage
+  is taken from the yield you earned. Your original deposit is never touched.
+- **Vaults that don't earn yield**: a minimum fee in ETH, same as stream withdrawals.
+
+| Chain    | ETH/WETH vaults    | Other vaults |
+| -------- | ------------------ | ------------ |
+| Ethereum | 10% from the yield | $0.9 minimum |
+
+### Escrow Trade Fees
+
+Escrow charges a symmetric trade fee when an order is filled i.e. both the seller and buyer pay a percentage of their
+respective proceeds.
+
+| Chain    | Trade Fee |
+| -------- | --------- |
+| Ethereum | 0.3%      |
 
 ## Gas Fees
 

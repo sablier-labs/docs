@@ -1,6 +1,6 @@
 # LockupMath
 
-[Git Source](https://github.com/sablier-labs/evm-monorepo/blob/003a71932c0e26e767a02c21205a077469406ac8/src/libraries/LockupMath.sol)
+[Git Source](https://github.com/sablier-labs/evm-monorepo/blob/d6f6f1d4bb0a5bf508c1d0d7c1b59cd8879d56f9/src/libraries/LockupMath.sol)
 
 **Title:** LockupMath
 
@@ -55,7 +55,9 @@ Calculates the streamed amount of LL streams.
 The LL streaming model uses the following distribution function:
 
 $$
-f(x) = \begin{cases} s, & \text{block timestamp} < \text{cliff time} \\ x \cdot sa + s + c, & \text{block timestamp} \geq \text{cliff time} \end{cases}
+⎧ s,              block timestamp < cliff time
+f(x) = ⎨
+⎩ x * sa + s + c, block timestamp >= cliff time
 $$
 
 Where:
@@ -65,7 +67,9 @@ Where:
 - $c$ is the cliff unlock amount.
 - $x$ is the elapsed time percentage with discrete unlocks:
   $$
-  x = \frac{\lfloor \text{time elapsed} / \text{granularity} \rfloor \times \text{granularity}}{\text{streamable time}}
+  ⌊time elapsed / granularity⌋ * granularity
+  x = －－－－－－－－－－－－－－－－－－－－－－－－－
+  streamable time
   $$
   The floor division in the numerator creates discrete unlock steps at every granularity seconds. Assumptions:
 
@@ -98,7 +102,9 @@ Calculates the streamed amount of LPG streams.
 The LPG streaming model uses all-or-nothing unlock based on price threshold:
 
 $$
-f(x) = \begin{cases} \text{deposited}, & \text{block timestamp} \geq \text{end time OR latest price} \geq \text{target price} \\ 0, & \text{otherwise} \end{cases}
+⎧ deposited, block timestamp >= end time OR latest price >= target price
+f(x) = ⎨
+⎩ 0,         otherwise
 $$
 
 Assumptions:

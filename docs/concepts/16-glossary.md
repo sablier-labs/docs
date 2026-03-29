@@ -1,8 +1,18 @@
 ---
 id: "glossary"
-sidebar_position: 14
+sidebar_position: 16
 title: "Glossary"
 ---
+
+## Bob
+
+A price-gated vault protocol where deposited tokens unlock when the token price reaches a specific price or when the
+vault expires.
+
+### Bob Vault Share
+
+A fungible [ERC-20](/concepts/glossary#erc-20) token representing a user's claim on a vault's underlying tokens and any
+accrued yield. Each vault deploys its own share token.
 
 ## Claim Fee
 
@@ -45,6 +55,14 @@ where the admin can arbitrarily change balances are not supported.
 
 [ERC-721][erc-721] tokens are non-fungible tokens ("NFTs") on Ethereum. Both Lockup and Flow streams are represented as
 NFTs.
+
+## Escrow
+
+A peer-to-peer swap protocol for ERC-20 tokens.
+
+### Escrow Trade Fee
+
+A symmetric fee deducted from both sides of an escrow swap when an order is filled.
 
 ## Ethereum
 
