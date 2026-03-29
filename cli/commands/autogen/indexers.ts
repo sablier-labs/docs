@@ -48,7 +48,7 @@ function generateEnvioTable(indexers: Indexer[]): string {
 
   for (const indexer of indexers) {
     const chain = sablier.chains.get(indexer.chainId);
-    if (!chain || !chain.name) {
+    if (!chain?.name) {
       continue;
     }
 

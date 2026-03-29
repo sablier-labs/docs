@@ -6,7 +6,10 @@ import type {
   GraphQLMarkdownCliOptions,
   LoaderOption,
 } from "@graphql-markdown/types";
-import type { PluginOptions as LlmPluginOptions } from "@sablier/docusaurus-plugin-llms";
+import type { LlmfoodPluginOptions } from "llmfood/docusaurus";
+import llmfoodPlugin from "llmfood/docusaurus";
+
+import { BENCHMARKS_COMMIT, GITHUB_ORG } from "../src/constants";
 import { createRedirects, redirects } from "./redirects";
 
 /* -------------------------------------------------------------------------- */
@@ -56,105 +59,80 @@ const graphqlMarkdown: [string, GraphQLMarkdownOptions] = [
 /*                                 LLM PLUGIN                                 */
 /* -------------------------------------------------------------------------- */
 
-/**
- * The plugin follows llmstxt.org standards and generates the following files during the build process:
- * - llms.txt: Contains links to the markdown files of all sections.
- * - llms-airdrops.txt: Contains full content relevant to the Merkle Airdrops protocol.
- * - llms-flow.txt: Contains full content relevant to the Flow protocol.
- * - llms-lockup.txt: Contains full content relevant to the Lockup protocol.
- * - llms-full.txt: Contains full content of all markdown files.
- *
- * @see https://llmstxt.org
- * @see https://github.com/rachfop/docusaurus-plugin-llms
- */
-const llmPlugin: [string, LlmPluginOptions & { [key: string]: unknown }] = [
-  "@sablier/docusaurus-plugin-llms",
+const BENCHMARK_CALL_PATTERN = /^getBenchmarkURL\(["'](.+?)["']\)$/;
+
+const llmfood: [
+  typeof llmfoodPlugin,
+  LlmfoodPluginOptions & { resolveRemoteUrl: typeof resolveRemoteUrl },
+] = [
+  llmfoodPlugin,
   {
-    docsDir: "docs",
-    // Remove imports from mdx files.
-    excludeImports: true,
-    generateLLMsFullTxt: false,
-    // Generate index file linking to markdown files.
-    generateLLMsTxt: true,
-    // Generates individual markdown files and adds them to llms.txt.
-    generateMarkdownFiles: true,
-    // Ignore snippet files since they're already included via imports.
-    ignoreFiles: ["snippets/**/*"],
-    // Ignore files with HTML tags in their descriptions.
-    ignoreHTML: true,
-    // Section ordering in the index file.
-    includeOrder: ["concepts/*", "guides/*", "reference/*", "api/*", "apps/*", "support/*"],
-    // Remove duplicate content matching headings.
-    removeDuplicateHeadings: true,
-    rootContent: `Sablier docs is optimized for LLMs and AI assistants. Navigation tips:
-      - For subgraph APIs or Merkle APIs, use the "API" section.
-      - For deployment addresses and examples on using the contracts, use the "Guides" section.
-      - For contracts, use the "References" section.
-      - For FAQs, use the "Support" section.
-      `,
-    title: "Sablier Docs",
-    // Protocol specific LLM files.
-    customLLMFiles: [
+    customFiles: [
       {
         description:
           "Merkle Airdrops is useful to distribute tokens to a large number of users efficiently.",
         filename: "llms-airdrops.txt",
-        // Create a single markdown file with the full content of the section.
-        fullContent: true,
         title: "Sablier Merkle Airdrops Documentation",
         includePatterns: [
-          "**/airdrops/**/*.md",
-          "**/airdrops/**/*.mdx",
-          "apps/features/01-airdrops.mdx",
-          "apps/guides/*.md",
-          "apps/guides/*.mdx",
-          "concepts/05-merkle-airdrops.mdx",
-          "support/*.md",
-          "support/*.mdx",
+          /\/airdrops\//,
+          /\/apps\/features\/airdrops/,
+          /\/apps\/guides\//,
+          /\/concepts\/airdrops/,
+          /\/support\//,
         ],
       },
       {
         description:
           "Sablier Flow is useful for payroll, grants, insurance premiums, loans interest and ESOPs.",
         filename: "llms-flow.txt",
-        // Create a single markdown file with the full content of the section.
-        fullContent: true,
         title: "Sablier Flow Documentation",
         includePatterns: [
-          "**/flow/**/*.md",
-          "**/flow/**/*.mdx",
-          "apps/features/03-payments.mdx",
-          "apps/guides/*.md",
-          "apps/guides/*.mdx",
-          "support/*.md",
-          "support/*.mdx",
+          /\/flow\//,
+          /\/apps\/features\/payments/,
+          /\/apps\/guides\//,
+          /\/support\//,
         ],
       },
       {
         description: "Sablier Lockup is useful for token vesting and airdrops.",
         filename: "llms-lockup.txt",
-        // Create a single markdown file with the full content of the section.
-        fullContent: true,
         title: "Sablier Lockup Documentation",
         includePatterns: [
-          "**/lockup/**/*.md",
-          "**/lockup/**/*.mdx",
-          "apps/features/02-vesting.mdx",
-          "apps/guides/*.md",
-          "apps/guides/*.mdx",
-          "support/*.md",
-          "support/*.mdx",
+          /\/lockup\//,
+          /\/apps\/features\/vesting/,
+          /\/apps\/guides\//,
+          /\/support\//,
         ],
       },
       {
-        // Useful to train or fine-tune an LLM on Sablier docs.
         filename: "llms-full.txt",
-        fullContent: true,
-        includePatterns: ["**/*.md", "**/*.mdx"],
+        includePatterns: [/.*/],
+        title: "Sablier Full Documentation",
       },
     ],
+    ignorePatterns: [
+      /^\/api\/.+\/graphql\/(envio|the-graph)\//,
+      /^\/search$/,
+      /^\/graphql-overview$/,
+    ],
+    resolveRemoteUrl,
+    rootContent: `Sablier docs is optimized for LLMs and AI assistants. Navigation tips:
+- For subgraph APIs or Merkle APIs, use the "API" section.
+- For deployment addresses and examples on using the contracts, use the "Guides" section.
+- For contracts, use the "References" section.
+- For FAQs, use the "Support" section.`,
+    sectionLabels: { api: "API" },
+    sectionOrder: ["concepts", "guides", "reference", "api", "apps", "solana", "support"],
   },
 ];
+
+function resolveRemoteUrl(expression: string): string | undefined {
+  const match = expression.match(BENCHMARK_CALL_PATTERN);
+  if (!match) {
+    return undefined;
+  }
+  return `https://raw.githubusercontent.com/${GITHUB_ORG}/benchmarks/${BENCHMARKS_COMMIT}/${match[1]}`;
+}
 
 /* -------------------------------------------------------------------------- */
 /*                              VERCEL ANALYTICS                              */
@@ -170,6 +148,6 @@ const vercelAnalytics: [string, VercelAnalyticsOptions] = [
 export const plugins: DocusaurusConfig["plugins"] = [
   clientRedirects,
   graphqlMarkdown,
-  llmPlugin,
+  llmfood,
   vercelAnalytics,
 ];
