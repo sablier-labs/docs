@@ -54,7 +54,7 @@ const footer: Preset.ThemeConfig["footer"] = {
       title: "Developers",
       items: [
         {
-          href: "https://github.com/sablier-labs/lockup",
+          href: "https://github.com/sablier-labs/evm-monorepo/blob/main/lockup",
           label: "Lockup Contracts",
         },
         {
@@ -62,7 +62,7 @@ const footer: Preset.ThemeConfig["footer"] = {
           label: "Lockup Integration Template",
         },
         {
-          href: "https://github.com/sablier-labs/flow",
+          href: "https://github.com/sablier-labs/evm-monorepo/blob/main/flow",
           label: "Flow Contracts",
         },
         {

@@ -12,7 +12,7 @@ references.
 
 ## Lockup
 
-> [**Lockup Source Code**](https://github.com/sablier-labs/lockup/tree/release)
+> [**Lockup Source Code**](https://github.com/sablier-labs/evm-monorepo/blob/main/lockup)
 
 The Lockup repo consists of the Sablier Lockup contract, public libraries, Batch Lockup contract and an NFT descriptor.
 
@@ -46,7 +46,7 @@ Creates and manages Lockup streams with three different streaming functions.
 
 ## Merkle Airdrops
 
-> [**Merkle Airdrops Source Code**](https://github.com/sablier-labs/airdrops/tree/release)
+> [**Merkle Airdrops Source Code**](https://github.com/sablier-labs/evm-monorepo/blob/main/airdrops)
 
 The Merkle Airdrops repo is a collection of contracts to create various kinds of airdrop campaigns. Some of these
 campaigns make use of the Lockup protocol to create what we call [Airstreams](/concepts/airdrops). This repo consists of
@@ -88,7 +88,7 @@ forgoing the remaining amount, whereas claiming after the period grants the full
 
 ## Flow
 
-> [**Flow Source Code**](https://github.com/sablier-labs/flow/tree/release)
+> [**Flow Source Code**](https://github.com/sablier-labs/evm-monorepo/blob/main/flow)
 
 The Flow repo consists of the Sablier Flow contract, and an NFT descriptor.
 

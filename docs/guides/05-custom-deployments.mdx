@@ -48,20 +48,18 @@ section is not relevant to you.
 
 - Check if the deployments are not already made: [Airdrops](/guides/airdrops/deployments),
   [Flow](/guides/flow/deployments), [Lockup](/guides/lockup/deployments)
-- Follow the contributing guides for <Link href={`${Links.GitHub.AIRDROPS}/blob/main/CONTRIBUTING.md`}>Airdrops</Link>,
-  <Link href={`${Links.GitHub.FLOW}/blob/main/CONTRIBUTING.md`}>Flow</Link> and
-  <Link href={`${Links.GitHub.LOCKUP}/blob/main/CONTRIBUTING.md`}>Lockup</Link>.
+- Follow the <Link href={`${Links.GitHub.MONOREPO}/blob/main/CONTRIBUTING.md`}>contributing guide</Link>.
 - RPC endpoint, e.g., a paid [Infura](https://www.infura.io/) or [Alchemy](https://www.alchemy.com/) account
 - Have enough gas tokens (e.g., ETH) in your deployer account
 - Have an Etherscan API key (for source code verification)
 
 ### Comptroller Deployment
 
-#### Step 1: Clone the <Link href={Links.GitHub.EVMUTILS}>EVM Utils repo</Link> and checkout to the `v1.0.0` tag
+#### Step 1: Clone the <Link href={Links.GitHub.MONOREPO}>evm-monorepo</Link> and checkout to the `utils@v2.0.1` tag
 
 ```bash
-git clone -b v1.0.0 git@github.com:sablier-labs/evm-utils.git
-cd evm-utils
+git clone -b utils@v2.0.1 git@github.com:sablier-labs/evm-monorepo.git
+cd evm-monorepo/utils
 bun install --frozen-lockfile
 ```
 
@@ -109,19 +107,16 @@ should also refer to the forge script documentation for different wallet options
 #### Step 4: Update the EVM Utils repository
 
 Add the chain ID of your newly deployed chain to the `ChainId` library in the
-[EVM Utils repo](https://github.com/sablier-labs/evm-utils/blob/v1.0.1/src/tests/ChainId.sol). Then, bump the EVM Utils
-version in each protocol repository's `package.json` file (e.g.,
-[Lockup](https://github.com/sablier-labs/lockup/blob/58eaac45c20c57a93b73d887c714e68f061ec3e6/package.json#L16),
-[Flow](https://github.com/sablier-labs/flow/blob/a4143de45478f508bca8305fec2bd81b7ad25fe9/package.json#L16),
-[Airdrops](https://github.com/sablier-labs/airdrops/blob/077c6b9766ef7693ba9e82a9e001dc0097709c01/package.json#L16)).
+[evm-monorepo](https://github.com/sablier-labs/evm-monorepo/blob/main/utils/src/tests/ChainId.sol). Then, bump the EVM
+Utils version in each protocol's `package.json` file within the monorepo.
 
 ### Lockup Deployment
 
-#### Step 1: Clone the <Link href={Links.GitHub.LOCKUP}>Lockup repo</Link> and checkout to the `v3.0.1` tag
+#### Step 1: Clone the <Link href={Links.GitHub.MONOREPO}>evm-monorepo</Link> and checkout to the `lockup@v4.0.1` tag
 
 ```bash
-git clone -b v3.0.1 git@github.com:sablier-labs/lockup.git
-cd lockup
+git clone -b lockup@v4.0.1 git@github.com:sablier-labs/evm-monorepo.git
+cd evm-monorepo/lockup
 bun install --frozen-lockfile
 ```
 
@@ -168,11 +163,11 @@ should also refer to the forge script documentation for different wallet options
 
 ### Merkle Airdrops Deployment
 
-#### Step 1: Clone the <Link href={Links.GitHub.AIRDROPS}>Merkle Airdrops repo</Link> and checkout to `v2.0.1` tag
+#### Step 1: Clone the <Link href={Links.GitHub.MONOREPO}>evm-monorepo</Link> and checkout to the `airdrops@v3.0.1` tag
 
 ```bash
-git clone -b v2.0.1 git@github.com:sablier-labs/airdrops.git
-cd airdrops
+git clone -b airdrops@v3.0.1 git@github.com:sablier-labs/evm-monorepo.git
+cd evm-monorepo/airdrops
 bun install --frozen-lockfile
 ```
 
@@ -219,11 +214,11 @@ should also refer to the forge script documentation for different wallet options
 
 ### Flow Deployment
 
-#### Step 1: Clone the <Link href={Links.GitHub.FLOW}>Flow repo</Link> and checkout to `v2.0.0` tag
+#### Step 1: Clone the <Link href={Links.GitHub.MONOREPO}>evm-monorepo</Link> and checkout to the `flow@v3.0.1` tag
 
 ```bash
-git clone -b v2.0.0 git@github.com:sablier-labs/flow.git
-cd flow
+git clone -b flow@v3.0.1 git@github.com:sablier-labs/evm-monorepo.git
+cd evm-monorepo/flow
 bun install --frozen-lockfile
 ```
 

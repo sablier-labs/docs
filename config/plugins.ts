@@ -131,7 +131,7 @@ function resolveRemoteUrl(expression: string): string | undefined {
   if (!match) {
     return undefined;
   }
-  return `https://raw.githubusercontent.com/${GITHUB_ORG}/benchmarks/${BENCHMARKS_COMMIT}/${match[1]}`;
+  return `https://raw.githubusercontent.com/${GITHUB_ORG}/evm-monorepo/${BENCHMARKS_COMMIT}/misc/benchmarks/${match[1]}`;
 }
 
 /* -------------------------------------------------------------------------- */

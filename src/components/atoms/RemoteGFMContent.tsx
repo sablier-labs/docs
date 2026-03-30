@@ -5,7 +5,7 @@ import GFMContent from "./GFMContent";
 type RemoteGFMContentProps = {
   /**
    * URL of raw Markdown file
-   * e.g. https://raw.githubusercontent.com/sablier-labs/benchmarks/main/results/flow/flow.md
+   * e.g. https://raw.githubusercontent.com/sablier-labs/evm-monorepo/main/misc/benchmarks/results/flow/flow.md
    */
   url: string;
 };

@@ -33,7 +33,7 @@ greater consistency across protocol releases and NPM packages.
 
 # Resources
 
-- [Source Code](https://github.com/sablier-labs/lockup/tree/release)
+- [Source Code](https://github.com/sablier-labs/evm-monorepo/blob/main/lockup)
 - [Integration Templates](https://github.com/sablier-labs/lockup-integration-template)
-- [Examples](https://github.com/sablier-labs/examples/tree/main/lockup/)
+- [Examples](https://github.com/sablier-labs/evm-monorepo/tree/main/misc/examples/lockup/)
 - [Foundry Book](https://book.getfoundry.sh/)

@@ -23,7 +23,7 @@ For a deeper dive into the protocol specifications, read through the [technical 
 
 # Resources
 
-- [Source Code](https://github.com/sablier-labs/flow/tree/release)
+- [Source Code](https://github.com/sablier-labs/evm-monorepo/blob/main/flow)
 - [Integration Templates](https://github.com/sablier-labs/flow-integration-template)
-- [Examples](https://github.com/sablier-labs/examples/tree/main/flow/)
+- [Examples](https://github.com/sablier-labs/evm-monorepo/tree/main/misc/examples/flow/)
 - [Foundry Book](https://book.getfoundry.sh/)

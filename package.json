@@ -109,5 +109,8 @@
   "scripts": {
     "build": "bun run cli/index.ts autogen --overwrite && docusaurus build",
     "prepare": "bun husky"
+  },
+  "overrides": {
+    "graphql": "^16.13.1"
   }
 }

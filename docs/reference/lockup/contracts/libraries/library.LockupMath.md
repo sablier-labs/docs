@@ -55,9 +55,7 @@ Calculates the streamed amount of LL streams.
 The LL streaming model uses the following distribution function:
 
 $$
-⎧ s,              block timestamp < cliff time
-f(x) = ⎨
-⎩ x * sa + s + c, block timestamp >= cliff time
+f(x) = \begin{cases} s, & \text{block timestamp} < \text{cliff time} \\ x \cdot sa + s + c, & \text{block timestamp} \geq \text{cliff time} \end{cases}
 $$
 
 Where:
@@ -67,9 +65,7 @@ Where:
 - $c$ is the cliff unlock amount.
 - $x$ is the elapsed time percentage with discrete unlocks:
   $$
-  ⌊time elapsed / granularity⌋ * granularity
-  x = －－－－－－－－－－－－－－－－－－－－－－－－－
-  streamable time
+  x = \frac{\lfloor \text{time elapsed} / \text{granularity} \rfloor \times \text{granularity}}{\text{streamable time}}
   $$
   The floor division in the numerator creates discrete unlock steps at every granularity seconds. Assumptions:
 
@@ -102,9 +98,7 @@ Calculates the streamed amount of LPG streams.
 The LPG streaming model uses all-or-nothing unlock based on price threshold:
 
 $$
-⎧ deposited, block timestamp >= end time OR latest price >= target price
-f(x) = ⎨
-⎩ 0,         otherwise
+f(x) = \begin{cases} \text{deposited}, & \text{block timestamp} \geq \text{end time OR latest price} \geq \text{target price} \\ 0, & \text{otherwise} \end{cases}
 $$
 
 Assumptions:
