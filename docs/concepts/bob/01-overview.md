@@ -4,9 +4,9 @@ sidebar_position: 1
 title: "Overview"
 ---
 
-Unlike Lockup which unlocks tokens at a specific time, Bob is designed to unlock tokens when a specific price is
-reached. It allows you to deposit ERC-20 tokens into vaults that unlock when either a target price is reached or a
-specified time period elapses. In some cases such as ETH, the locked tokens also earn yield via Lido.
+Bob is designed to unlock tokens when a specific price is reached. It allows you to deposit ERC-20 tokens into vaults
+that unlock when either a target price is reached or a specified time period elapses. In some cases such as ETH, the
+locked tokens also earn yield via Lido.
 
 Let's take an example. Imagine Alice believes ETH will reach $5,000 within the next 12 months.
 

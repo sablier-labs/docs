@@ -38,8 +38,6 @@ Etherscan (e.g., [WETH](https://etherscan.io/token/0xC02aaA39b223FE8D0A0e5C4F27e
 
 Open the **`enter`** method on the SablierBob Write Contract page.
 
-![Etherscan Enter](/img/bob-etherscan/02-enter.webp)
-
 #### Vault ID
 
 The ID of the vault you want to deposit into.
@@ -47,6 +45,8 @@ The ID of the vault you want to deposit into.
 #### Amount
 
 The amount of tokens to deposit, **decimals included**. For WETH (18 decimals), 10 WETH is `10000000000000000000`.
+
+![Etherscan Enter](/img/bob-etherscan/02-enter.webp)
 
 Click "Write" and confirm the transaction. You will receive share tokens 1:1 with the deposited amount.
 
@@ -56,8 +56,6 @@ Once a vault has [settled or expired](/concepts/bob/statuses), you can redeem yo
 tokens.
 
 Open the **`redeem`** method.
-
-![Etherscan Redeem](/img/bob-etherscan/03-redeem.webp)
 
 ### Payable Amount
 
@@ -69,6 +67,8 @@ Open the **`redeem`** method.
 
 The ID of the vault to redeem from.
 
+![Etherscan Redeem](/img/bob-etherscan/03-redeem.webp)
+
 Click "Write" and confirm. Your share tokens will be burned and you will receive the underlying tokens (plus any yield,
 minus fees).
 
@@ -78,11 +78,11 @@ If you think that the last synced price is not accurate, you can sync it by call
 
 Open the **`syncPriceFromOracle`** method.
 
-![Etherscan Sync Price](/img/bob-etherscan/04-sync-price.webp)
-
 ### Vault ID
 
 The ID of the active vault whose price you want to sync.
+
+![Etherscan Sync Price](/img/bob-etherscan/04-sync-price.webp)
 
 Click "Write" and confirm. The vault's `lastSyncedPrice` will be updated. If the new price meets or exceeds the target
 price, the vault transitions to `SETTLED`.

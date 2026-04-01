@@ -220,9 +220,9 @@ run "bob"
 
 # Reorder the contracts in the sidebar
 set_sidebar_position $bob/contract.SablierBob.md 1
-set_sidebar_position $bob/contract.SablierEscrow.md 2
-set_sidebar_position $bob/contract.SablierLidoAdapter.md 3
-set_sidebar_position $bob/contract.BobVaultShare.md 4
+set_sidebar_position $bob/contract.SablierLidoAdapter.md 2
+set_sidebar_position $bob/contract.BobVaultShare.md 3
+set_sidebar_position $bob/contract.SablierEscrow.md 4
 
 # ---------------------------------------------------------------------------- #
 #                                     Utils                                    #
