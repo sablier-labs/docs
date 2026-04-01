@@ -11,7 +11,7 @@ An Escrow order can have one of four distinct statuses:
 | Status      | Description        |
 | ----------- | ------------------ |
 | `OPEN`      | An open order.     |
-| `FILLED`    | A filled order..   |
+| `FILLED`    | A filled order.    |
 | `CANCELLED` | A cancelled order. |
 | `EXPIRED`   | An expired order.  |
 

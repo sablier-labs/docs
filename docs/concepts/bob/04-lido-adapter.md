@@ -51,7 +51,7 @@ flowchart LR
 ```
 
 During the first redemption, the adapter converts wstETH back into WETH and transfers them to the Bob contract. There
-are two pathways implemented to in the adapter to convert wstETH back into WETH:
+are two pathways implemented in the adapter to convert wstETH back into WETH:
 
 ### Curve Swap (Default)
 

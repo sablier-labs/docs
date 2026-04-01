@@ -27,7 +27,7 @@ All the audits of Merkle Airdrops contracts can be found
 
 ## Flow Audits
 
-All the audits of Lockup contracts can be found [here](https://github.com/sablier-labs/audits/blob/main/flow).
+All the audits of Flow contracts can be found [here](https://github.com/sablier-labs/audits/blob/main/flow).
 
 ## Bob & Escrow Audits
 

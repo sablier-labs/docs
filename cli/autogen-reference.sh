@@ -56,7 +56,7 @@ lint() {
 }
 
 run() {
-  # This is either "airdrops", "flow" or "lockup"
+  # This is either "airdrops", "bob", "flow" or "lockup"
   repo=$1
 
   # cd into the package within the monorepo

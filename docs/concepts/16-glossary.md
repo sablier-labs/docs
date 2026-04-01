@@ -93,7 +93,7 @@ The amount of tokens that are streamed per second in a Flow stream.
 
 ### Status
 
-A Flow stream can have one out of six possible statuses:
+A Flow stream can have one out of seven possible statuses:
 
 1. NULL
 1. PENDING
