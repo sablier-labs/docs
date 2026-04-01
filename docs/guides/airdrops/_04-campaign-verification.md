@@ -72,10 +72,10 @@ Click on the "Query" button and copy the output, which is also the constructor a
 ## Step 5: Build the contracts
 
 Clone the [evm-monorepo](https://github.com/sablier-labs/evm-monorepo) repo, and build the contracts from the
-`airdrops@v3.0.1` tag. Note that you will need [Foundry](https://getfoundry.sh/) installed for this.
+`airdrops@v3.0` tag. Note that you will need [Foundry](https://getfoundry.sh/) installed for this.
 
 ```bash
-git clone -b airdrops@v3.0.1 git@github.com:sablier-labs/evm-monorepo.git
+git clone -b airdrops@v3.0 git@github.com:sablier-labs/evm-monorepo.git
 cd evm-monorepo/airdrops
 bun install --frozen-lockfile
 bun run build-optimized

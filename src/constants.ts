@@ -32,7 +32,7 @@ export const Links = {
     INDEXERS: `https://github.com/${GITHUB_ORG}/indexers`,
     LOCKUP: `${EVM_MONOREPO}/blob/main/lockup`,
     MONOREPO: EVM_MONOREPO,
-    ORG: EVM_MONOREPO,
+    ORG: `https://github.com/${GITHUB_ORG}`,
     SDK: `https://github.com/${GITHUB_ORG}/sdk`,
   },
 };
