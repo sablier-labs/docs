@@ -12,6 +12,7 @@ export const Algolia = {
  */
 export const BENCHMARKS_COMMIT = "d6f6f1d";
 export const GITHUB_ORG = "sablier-labs";
+export const EVM_MONOREPO = "https://github.com/sablier-labs/evm-monorepo";
 
 export const Links = {
   APP: "https://app.sablier.com",
@@ -23,16 +24,15 @@ export const Links = {
     CHAINS: "https://forms.gle/9EaRarDie98Fw1mw6",
   },
   GitHub: {
-    AIRDROPS: `https://github.com/${GITHUB_ORG}/evm-monorepo/blob/main/airdrops`,
-    BENCHMARKS: `https://github.com/${GITHUB_ORG}/evm-monorepo/blob/main/misc/benchmarks`,
-    BOB: `https://github.com/${GITHUB_ORG}/evm-monorepo/blob/main/bob`,
-    DEPLOYMENTS: `https://github.com/${GITHUB_ORG}/sdk/blob/main/deployments`,
-    EVMUTILS: `https://github.com/${GITHUB_ORG}/evm-monorepo/blob/main/utils`,
-    FLOW: `https://github.com/${GITHUB_ORG}/evm-monorepo/blob/main/flow`,
+    AIRDROPS: `${EVM_MONOREPO}/blob/main/airdrops`,
+    BENCHMARKS: `${EVM_MONOREPO}/blob/main/misc/benchmarks`,
+    BOB: `${EVM_MONOREPO}/blob/main/bob`,
+    EVM_UTILS: `${EVM_MONOREPO}/blob/main/utils`,
+    FLOW: `${EVM_MONOREPO}/blob/main/flow`,
     INDEXERS: `https://github.com/${GITHUB_ORG}/indexers`,
-    LOCKUP: `https://github.com/${GITHUB_ORG}/evm-monorepo/blob/main/lockup`,
-    MONOREPO: `https://github.com/${GITHUB_ORG}/evm-monorepo`,
-    ORG: `https://github.com/${GITHUB_ORG}`,
+    LOCKUP: `${EVM_MONOREPO}/blob/main/lockup`,
+    MONOREPO: EVM_MONOREPO,
+    ORG: EVM_MONOREPO,
     SDK: `https://github.com/${GITHUB_ORG}/sdk`,
   },
 };

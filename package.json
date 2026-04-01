@@ -82,14 +82,12 @@
     "node": ">=20.0"
   },
   "keywords": [
-    "asset-streaming",
     "blockchain",
     "crypto-assets",
     "crypto-tokens",
     "ethereum",
     "evm",
     "money-streaming",
-    "real-time-finance",
     "sablier",
     "sablier-airdrops",
     "sablier-docs",
@@ -102,6 +100,9 @@
     "token-vesting",
     "web3"
   ],
+  "overrides": {
+    "graphql": "^16.13.1"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/sablier-labs/docs.git"
@@ -109,8 +110,5 @@
   "scripts": {
     "build": "bun run cli/index.ts autogen --overwrite && docusaurus build",
     "prepare": "bun husky"
-  },
-  "overrides": {
-    "graphql": "^16.13.1"
   }
 }
