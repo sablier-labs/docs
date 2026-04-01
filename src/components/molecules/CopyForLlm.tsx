@@ -1,14 +1,12 @@
 import { useLocation } from "@docusaurus/router";
 import { css, keyframes } from "@emotion/react";
 import styled from "@emotion/styled";
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
-type CopyState = "idle" | "loading" | "copied" | "error";
+type CopyState = "idle" | "copied" | "error";
 
 const TRAILING_SLASH_RE = /\/$/;
 const RESET_DELAY = 2200;
-
-// --- Icons (16x16 viewBox) ---
 
 function Icon({ size = 16, children }: { size?: number; children: React.ReactNode }) {
   return (
@@ -85,12 +83,6 @@ function MarkdownIcon() {
   );
 }
 
-// --- Keyframes ---
-
-const spin = keyframes`
-  to { transform: rotate(360deg); }
-`;
-
 const fadeIn = keyframes`
   from { opacity: 0; transform: translateY(-4px) scale(0.98); }
   to   { opacity: 1; transform: translateY(0) scale(1); }
@@ -101,8 +93,6 @@ const popIn = keyframes`
   60%  { transform: scale(1.15); }
   100% { transform: scale(1); opacity: 1; }
 `;
-
-// --- Styled Components ---
 
 const Container = styled.div`
   position: relative;
@@ -149,11 +139,6 @@ const stateStyles = {
       background: var(--ifm-color-emphasis-100);
     }
   `,
-  loading: css`
-    color: var(--ifm-color-emphasis-600);
-    background: var(--ifm-color-emphasis-100);
-    cursor: wait;
-  `,
 };
 
 const MainButton = styled.button<{ $state: CopyState }>`
@@ -189,16 +174,6 @@ const IconWrap = styled.span`
   justify-content: center;
   width: 16px;
   height: 16px;
-`;
-
-const Spinner = styled.span`
-  display: block;
-  width: 14px;
-  height: 14px;
-  border: 1.5px solid currentColor;
-  border-top-color: transparent;
-  border-radius: 50%;
-  animation: ${spin} 0.6s linear infinite;
 `;
 
 const PopIcon = styled.span`
@@ -293,19 +268,14 @@ const MenuItemDesc = styled.span`
   color: var(--ifm-color-emphasis-500);
 `;
 
-// --- Component ---
-
 const STATE_LABELS: Record<CopyState, string> = {
   copied: "Copied!",
   error: "Copy failed",
   idle: "Copy for LLM",
-  loading: "Copying\u2026",
 };
 
 function StateIcon({ state }: { state: CopyState }) {
   switch (state) {
-    case "loading":
-      return <Spinner />;
     case "copied":
       return (
         <PopIcon>
@@ -330,20 +300,12 @@ export default function CopyForLlm() {
   const containerRef = useRef<HTMLDivElement>(null);
   const timerRef = useRef<ReturnType<typeof setTimeout>>(null);
   const dropdownRef = useRef<HTMLDivElement>(null);
+  const busyRef = useRef(false);
 
   const markdownUrl = `${location.pathname.replace(TRAILING_SLASH_RE, "")}.md`;
 
-  // Cleanup timer on unmount
-  useEffect(
-    () => () => {
-      if (timerRef.current) {
-        clearTimeout(timerRef.current);
-      }
-    },
-    []
-  );
+  useEffect(() => () => clearTimeout(timerRef.current), []);
 
-  // Close dropdown on outside click / Escape
   useEffect(() => {
     if (!open) {
       return;
@@ -368,7 +330,6 @@ export default function CopyForLlm() {
     };
   }, [open]);
 
-  // Focus first menu item when dropdown opens
   useEffect(() => {
     if (open && dropdownRef.current) {
       const firstItem = dropdownRef.current.querySelector<HTMLElement>("a, button");
@@ -376,15 +337,12 @@ export default function CopyForLlm() {
     }
   }, [open]);
 
-  const handleCopy = useCallback(async () => {
-    if (copyState === "loading") {
+  async function handleCopy() {
+    if (busyRef.current) {
       return;
     }
-
-    setCopyState("loading");
-    if (timerRef.current) {
-      clearTimeout(timerRef.current);
-    }
+    busyRef.current = true;
+    clearTimeout(timerRef.current);
 
     try {
       const res = await fetch(markdownUrl);
@@ -398,15 +356,10 @@ export default function CopyForLlm() {
     } catch {
       setCopyState("error");
       // Error state persists until next user click
+    } finally {
+      busyRef.current = false;
     }
-  }, [copyState, markdownUrl]);
-
-  const handleMainClick = useCallback(async () => {
-    if (copyState === "error") {
-      setCopyState("idle");
-    }
-    await handleCopy();
-  }, [copyState, handleCopy]);
+  }
 
   return (
     <Container ref={containerRef}>
@@ -414,7 +367,7 @@ export default function CopyForLlm() {
         <MainButton
           $state={copyState}
           aria-label={STATE_LABELS[copyState]}
-          onClick={handleMainClick}
+          onClick={handleCopy}
           type="button"
         >
           <IconWrap>
@@ -431,14 +384,7 @@ export default function CopyForLlm() {
           onClick={() => setOpen((v) => !v)}
           type="button"
         >
-          <svg
-            aria-hidden="true"
-            fill="none"
-            height="12"
-            viewBox="0 0 12 12"
-            width="12"
-            xmlns="http://www.w3.org/2000/svg"
-          >
+          <Icon size={12}>
             <path
               d="M3 4.5L6 7.5 9 4.5"
               stroke="currentColor"
@@ -446,7 +392,7 @@ export default function CopyForLlm() {
               strokeLinejoin="round"
               strokeWidth="1.2"
             />
-          </svg>
+          </Icon>
         </ChevronButton>
       </SplitGroup>
 
