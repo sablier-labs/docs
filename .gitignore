@@ -6,6 +6,7 @@ node_modules
 src/autogen/**/*.mdx
 
 # files
+**/.claude/settings.local.json
 *.env
 *.log
 *.tsbuildinfo
