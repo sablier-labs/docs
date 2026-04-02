@@ -14,18 +14,18 @@ Let's take an example. Imagine Alice believes ETH will reach $5,000 within the n
    12 months from now.
 2. Alice deposits 10 ETH into this vault and receives 10 [shares](./03-shares.md) in return.
 3. When ETH reaches $5,000, the vault enters into the settled state which means Alice can redeem her shares for ETH.
-4. If ETH does not reach $5,000 in the next 12 month, Alice can still redeem her shares because the vault has expired.
+4. If ETH does not reach $5,000 in the next 12 months, Alice can still redeem her shares because the vault has expired.
 5. For some tokens such as ETH, because of the [yield adapters](./04-lido-adapter.md), Alice's ETH would also earn while
    they are locked in the vault.
 
 ## Key Features
 
-1. **Price-gated unlocking:** Unlock token when the target price is reached or the expiry is reached (note that a vault
+1. **Price-gated unlocking:** Unlock tokens when the target price is reached or the expiry is reached (note that a vault
    can be set to never expire).
-2. **Yield generation:** Some tokens such as ETH, WETH allows locked tokens to earn yield automatically.
+2. **Yield generation:** Some tokens such as ETH and WETH allow locked tokens to earn yield automatically.
 3. **ERC-20 share tokens:** Each vault issues transferable share tokens that represent a depositor's claim on the
    vault's underlying tokens including any accrued yield.
-4. **Immutability:** Vault's target price and expiry cannot be changed once the vault is created.
+4. **Immutability:** A vault's target price and expiry cannot be changed once the vault is created.
 
 If you are looking for token vesting or airdrop distributions, please refer to our [Lockup](../lockup/overview) and
 [Airdrops](../airdrops) protocols.

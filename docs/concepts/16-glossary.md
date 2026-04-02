@@ -208,7 +208,7 @@ calculation of the custom streaming curve.
 
 ### Tranched Model
 
-A Lockup [distribution model](#distribution-model) with a streaming in discrete tranches.
+A Lockup [distribution model](#distribution-model) with streaming in discrete tranches.
 
 ### Unlock Amounts
 

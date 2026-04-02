@@ -10,7 +10,7 @@ A Bob vault can have one of three distinct statuses:
 
 | Status    | Description                                                        |
 | --------- | ------------------------------------------------------------------ |
-| `ACTIVE`  | Token can be deposited into the vault.                             |
+| `ACTIVE`  | Tokens can be deposited into the vault.                            |
 | `SETTLED` | The target price has been reached and tokens can be withdrawn.     |
 | `EXPIRED` | The expiry timestamp has been reached and tokens can be withdrawn. |
 
@@ -38,8 +38,8 @@ synced price.
 stateDiagram-v2
   direction LR
   Null --> Active
-  Active --> Settled
-  Active --> Expired
+  Active --> Settled : lastSyncedPrice ≥ targetPrice
+  Active --> Expired : block.timestamp ≥ expiry
 ```
 
 ## Q&A

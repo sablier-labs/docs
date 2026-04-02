@@ -6,9 +6,9 @@ title: "Lido Adapter"
 
 # Lido Adapter
 
-Lido adapter is a smart contract that is used to generate yield on the locked tokens in a vault.
+The Lido adapter is a smart contract that is used to generate yield on the locked tokens in a vault.
 
-Only the vaults with the following tokens on Ethereum mainnet can generate yield using Lido adapter:
+Only the vaults with the following tokens on Ethereum mainnet can generate yield using the Lido adapter:
 
 - ETH
 - WETH
@@ -21,8 +21,8 @@ Once a vault is created, the adapter cannot be changed. Any change to the adapte
 
 ## Deposit Flow
 
-When a user deposits into such vaults, the adapter transfers the tokens into Lido protocol to earn yield. The adapter
-then tracks the yield generated per user.
+When a user deposits into such vaults, the adapter transfers the tokens into the Lido protocol to earn yield. The
+adapter then tracks the yield generated per user.
 
 ```mermaid
 flowchart LR
@@ -33,7 +33,7 @@ flowchart LR
   LidoAdapter -- "wrap" --> wstETH[(wstETH)]
 ```
 
-When a user deposits WETH, adapter transfers it to the Lido protocol and receives stETH in return. It then wraps the
+When a user deposits WETH, the adapter transfers it to the Lido protocol and receives stETH in return. It then wraps the
 stETH into wstETH which is stored on the adapter contract address. The wstETH token represents the principal amount as
 well as the yield generated from Lido.
 

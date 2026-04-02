@@ -135,8 +135,8 @@ run() {
 
   if [ "$repo" = "bob" ]; then
     # Bob-specific abstract patterns
-    sd "\{SablierBobState\}" "[SablierBobState](/$contracts/abstracts/abstract.SablierBobState.md)" $all_md_files
     sd "\{BobVaultShare\}" "[BobVaultShare](/$contracts/contract.BobVaultShare.md)" $all_md_files
+    sd "\{SablierBobState\}" "[SablierBobState](/$contracts/abstracts/abstract.SablierBobState.md)" $all_md_files
   fi
 
   # Link to evm-utils abstracts (plain text - copied locally)
@@ -218,9 +218,9 @@ set_sidebar_position $flow/contract.FlowNFTDescriptor.md 2
 run "bob"
 
 # Reorder the contracts in the sidebar
-set_sidebar_position $bob/contract.SablierBob.md 1
-set_sidebar_position $bob/contract.SablierLidoAdapter.md 2
-set_sidebar_position $bob/contract.BobVaultShare.md 3
+set_sidebar_position $bob/contract.BobVaultShare.md 1
+set_sidebar_position $bob/contract.SablierBob.md 2
+set_sidebar_position $bob/contract.SablierLidoAdapter.md 3
 
 # ---------------------------------------------------------------------------- #
 #                                     Utils                                    #

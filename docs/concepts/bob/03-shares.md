@@ -36,6 +36,6 @@ Each vault's share token uses the following algorithm to generate its name and s
 | Symbol   | `{TOKEN}-{targetPrice}-{expiry}-{vaultId}` | `WETH-500000000000-1735689600-1` |
 | Decimals | Same as the underlying token               | `18` (for WETH)                  |
 
-This can help users to identify what vault does a share token represents by simply looking at them on the etherscan. For
-example, `WETH-500000000000-1735689600-1` represents a WETH vault with ID 1, a target price of $5,000, and an expiry of
+This can help users identify what vault a share token represents by simply looking at them on Etherscan. For example,
+`WETH-500000000000-1735689600-1` represents a WETH vault with ID 1, a target price of $5,000, and an expiry of
 2025-01-01.

@@ -67,7 +67,7 @@ sequenceDiagram
 
 In a variable claim airdrop campaign, there is a vesting of tokens similar to Airstream campaigns, however, user only
 receives an amount of token depending on the time elapsed since the start of the campaign. The forfeited amount of
-tokens is returned back the project.
+tokens is returned back to the project.
 
 ```mermaid
 sequenceDiagram

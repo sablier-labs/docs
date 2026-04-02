@@ -11,7 +11,7 @@ the blockchain. As soon as the chain clock hits the start time of the stream, a 
 "transferred" from the sender to the recipient once every second.
 
 We used scare quotes because what actually happens is not a transfer, but rather an abstract allocation of funds. Every
-second, the in-contract allowance of the sender decreases. while the recipient's allocation increases, even if the
+second, the in-contract allowance of the sender decreases, while the recipient's allocation increases, even if the
 tokens are not transferred to the recipient. Actually transferring the tokens would be excessively expensive in terms of
 gas costs.
 

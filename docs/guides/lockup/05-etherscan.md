@@ -177,8 +177,8 @@ it cannot become cancelable post-creation.
 
 #### Transferable
 
-The `transferable` field indicates whether the NFT owner is allowed to transfer te NFT or not. This can be set to either
-`true` or `false`.
+The `transferable` field indicates whether the NFT owner is allowed to transfer the NFT or not. This can be set to
+either `true` or `false`.
 
 This flag cannot be changed later.
 
@@ -363,8 +363,8 @@ For the purpose of creating a **LockupLinear** stream with Lockup, the spender w
 [SablierLockup](/guides/lockup/deployments) contract.
 
 As for the amount, you'll have to pad it with the right number of decimals. For DAI, that's 18 decimals, so a value of
-`100` will turn into `100 * 1e18` (100 followed by 18 zeroes). For USDC,that's 6 decimals, so a value of `100` will turn
-into `100 * 1e8` (100 followed by 8 zeroes). The same logic applies to the [deposit amounts](#deposit-amount) when
+`100` will turn into `100 * 1e18` (100 followed by 18 zeroes). For USDC, that's 6 decimals, so a value of `100` will
+turn into `100 * 1e6` (100 followed by 6 zeroes). The same logic applies to the [deposit amounts](#deposit-amount) when
 creating the stream.
 
 ```json
