@@ -65,8 +65,8 @@ sequenceDiagram
 
 ## Variable Claim Airdrop Campaigns
 
-In a variable claim airdrop campaign, there is a vesting of tokens similar to Airstream campaigns, however, user only
-receives an amount of token depending on the time elapsed since the start of the campaign. The forfeited amount of
+In a variable claim airdrop campaign, there is a vesting of tokens similar to Airstream campaigns, however, the user
+only receives an amount of token depending on the time elapsed since the start of the campaign. The forfeited amount of
 tokens is returned back to the project.
 
 ```mermaid
@@ -77,7 +77,7 @@ sequenceDiagram
   FactoryMerkleVCA -->> MerkleVCA: Deploy a new contract
 ```
 
-And this is how a typical claim flow looks like for recipients: Transfer
+And this is how a typical claim flow looks like for recipients:
 
 ```mermaid
 sequenceDiagram

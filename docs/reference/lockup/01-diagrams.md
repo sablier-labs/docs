@@ -8,7 +8,7 @@ title: "Diagrams"
 
 :::tip
 
-If you are interested in creating a stream with non-transferrable tokens, make sure to whitelist both `BatchLockup` and
+If you are interested in creating a stream with non-transferable tokens, make sure to whitelist both `BatchLockup` and
 `Lockup` contracts.
 
 :::

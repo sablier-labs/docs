@@ -308,7 +308,7 @@ are not the stream recipient, it MUST be the address of the recipient.
 
 This represents the amount of tokens that you want to withdraw, **DECIMALS INCLUDED**. For example, if the token you are
 looking to withdraw has 18 decimals, you will need to add eighteen zeros after the amount. Let's say you want to
-withdraw 100 DAI like in this example, you will need to put in `100000000000000000000`. Oh, and make sure that that
+withdraw 100 DAI like in this example, you will need to put in `100000000000000000000`. Oh, and make sure that the
 amount has already been streamed, you cannot withdraw funds that haven't yet been streamed over to you.
 
 Once ready, click on the "Write" button, and confirm the transaction in your wallet. You are done!
