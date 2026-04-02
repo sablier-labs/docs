@@ -11,7 +11,7 @@ the blockchain. As soon as the chain clock hits the start time of the stream, a 
 "transferred" from the sender to the recipient once every second.
 
 We used scare quotes because what actually happens is not a transfer, but rather an abstract allocation of funds. Every
-second, the in-contract allowance of the sender decreases. while the recipient's allocation increases, even if the
+second, the in-contract allowance of the sender decreases, while the recipient's allocation increases, even if the
 tokens are not transferred to the recipient. Actually transferring the tokens would be excessively expensive in terms of
 gas costs.
 
@@ -136,10 +136,10 @@ await withdrawFromStreamTx.wait();
 ## Cancel Stream
 
 The cancel stream function revokes a previously created stream and returns the tokens back to the sender and/or the
-recipient. If the chain clock did not hit the start time, all the tokens is returned to the sender. If the chain clock
+recipient. If the chain clock did not hit the start time, all the tokens are returned to the sender. If the chain clock
 did go past the start time, but not past the stop time, the sender and the recipient each get a pro-rata amount.
-Finally, if the chain clock went past the stop time, all the tokens goes the recipient. This function can be called only
-by the sender.
+Finally, if the chain clock went past the stop time, all the tokens go to the recipient. This function can be called
+only by the sender.
 
 ```solidity
 function cancelStream(uint256 streamId) returns (bool);

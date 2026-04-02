@@ -1,8 +1,10 @@
 ---
 id: "transferability"
-sidebar_position: 10
+sidebar_position: 12
 title: "Transferability"
 ---
+
+## Lockup & Flow Streams
 
 As you may know, all Sablier streams [are represented by NFTs](/concepts/nft). The NFT representing a stream is owned by
 the stream recipient. Whoever owns the stream NFT becomes the stream recipient.
@@ -22,3 +24,8 @@ If you are using Sablier for vesting, and do not want your investors and/or empl
 without the vesting being complete, you should set up the streams as untransferable.
 
 :::
+
+## Bob Vault Shares
+
+Unlike Lockup and Flow which use ERC-721 NFTs, Bob vaults use fungible ERC-20 [share tokens](/concepts/bob/shares).
+These shares are always transferable and grant the right to redeem the underlying tokens.

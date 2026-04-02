@@ -21,11 +21,12 @@ bun install --ignore-scripts --cwd "$root/repos/evm-monorepo"
 
 # Define the contracts directories
 airdrops=docs/reference/airdrops/contracts
+bob=docs/reference/bob/contracts
 flow=docs/reference/flow/contracts
 lockup=docs/reference/lockup/contracts
 
 # Delete the current contracts documentations
-for dir in $airdrops $flow $lockup; do
+for dir in $airdrops $bob $flow $lockup; do
   find "$dir" -type f -name "*.md" -delete
 done
 
@@ -55,7 +56,7 @@ lint() {
 }
 
 run() {
-  # This is either "airdrops", "flow" or "lockup"
+  # This is either "airdrops", "bob", "flow" or "lockup"
   repo=$1
 
   # cd into the package within the monorepo
@@ -132,6 +133,12 @@ run() {
     sd "\{SablierFlowState\}" "[SablierFlowState](/$contracts/abstracts/abstract.SablierFlowState.md)" $all_md_files
   fi
 
+  if [ "$repo" = "bob" ]; then
+    # Bob-specific abstract patterns
+    sd "\{BobVaultShare\}" "[BobVaultShare](/$contracts/contract.BobVaultShare.md)" $all_md_files
+    sd "\{SablierBobState\}" "[SablierBobState](/$contracts/abstracts/abstract.SablierBobState.md)" $all_md_files
+  fi
+
   # Link to evm-utils abstracts (plain text - copied locally)
   # Comptrollerable: all repos (airdrops, lockup, flow)
   sd "\bComptrollerable\b" "[Comptrollerable](/$contracts/abstracts/abstract.Comptrollerable.md)" $all_md_files
@@ -151,6 +158,7 @@ run() {
   # Fix external contract references that don't have docs
   if [ "$repo" = "lockup" ]; then
     sd "\[SablierComptroller\]\(/$lockup/contract\.SablierComptroller\.md\)" "**SablierComptroller**" $all_md_files
+    sd "/node_modules/@sablier/evm-utils[^\"]*contract\.SablierComptroller\.md[^\"]*" "https://eips.ethereum.org/EIPS/eip-165" $all_md_files
   fi
 
   # Update the hyperlinks to use the directory structure of the docs website
@@ -203,6 +211,18 @@ set_sidebar_position $flow/contract.SablierFlow.md 1
 set_sidebar_position $flow/contract.FlowNFTDescriptor.md 2
 
 # ---------------------------------------------------------------------------- #
+#                                      Bob                                     #
+# ---------------------------------------------------------------------------- #
+
+# Generate the raw docs with Forge
+run "bob"
+
+# Reorder the contracts in the sidebar
+set_sidebar_position $bob/contract.BobVaultShare.md 1
+set_sidebar_position $bob/contract.SablierBob.md 2
+set_sidebar_position $bob/contract.SablierLidoAdapter.md 3
+
+# ---------------------------------------------------------------------------- #
 #                                     Utils                                    #
 # ---------------------------------------------------------------------------- #
 
@@ -231,14 +251,18 @@ for repo_dir in $lockup $flow; do
   cp $utils_temp/interfaces/IComptrollerable.sol/interface.IComptrollerable.md $repo_dir/interfaces/ 2>/dev/null || true
 done
 
+# Bob: Comptrollerable only
+cp $utils_temp/Comptrollerable.sol/abstract.Comptrollerable.md $bob/abstracts/ 2>/dev/null || true
+cp $utils_temp/interfaces/IComptrollerable.sol/interface.IComptrollerable.md $bob/interfaces/ 2>/dev/null || true
+
 # Fix utils files: self-referencing links, interface links, and convert curly braces
 # Airdrops-specific (IAdminable)
 sd "\(/src/interfaces/IAdminable\.sol/interface\.IAdminable\.md#" "(#" $airdrops/interfaces/interface.IAdminable.md
 sd "\[IAdminable\]\(/src/interfaces/IAdminable\.sol/interface\.IAdminable\.md\)" "[IAdminable](/$airdrops/interfaces/interface.IAdminable.md)" $airdrops/abstracts/abstract.Adminable.md
 sd "\{IAdminable\}" "[IAdminable](/$airdrops/interfaces/interface.IAdminable.md)" $airdrops/abstracts/abstract.Adminable.md
 
-# Fix IComptrollerable for all three repos
-for repo in airdrops lockup flow; do
+# Fix IComptrollerable for all repos
+for repo in airdrops bob lockup flow; do
   repo_dir=${!repo}
   sd "\(/src/interfaces/IComptrollerable\.sol/interface\.IComptrollerable\.md#" "(#" $repo_dir/interfaces/interface.IComptrollerable.md
   sd "\[IComptrollerable\]\(/src/interfaces/IComptrollerable\.sol/interface\.IComptrollerable\.md\)" "[IComptrollerable](/$repo_dir/interfaces/interface.IComptrollerable.md)" $repo_dir/abstracts/abstract.Comptrollerable.md
@@ -264,4 +288,5 @@ rm -rf repos/evm-monorepo/utils/docs
 # Run lint on all repos.
 lint "lockup"
 lint "airdrops"
+lint "bob"
 lint "flow"

@@ -1,8 +1,18 @@
 ---
 id: "glossary"
-sidebar_position: 14
+sidebar_position: 16
 title: "Glossary"
 ---
+
+## Bob
+
+A price-gated vault protocol where deposited tokens unlock when the token price reaches a specific price or when the
+vault expires.
+
+### Bob Vault Share
+
+A fungible [ERC-20](/concepts/glossary#erc-20) token representing a user's claim on a vault's underlying tokens and any
+accrued yield. Each vault deploys its own share token.
 
 ## Claim Fee
 
@@ -75,7 +85,7 @@ The amount of tokens that are streamed per second in a Flow stream.
 
 ### Status
 
-A Flow stream can have one out of six possible statuses:
+A Flow stream can have one out of seven possible statuses:
 
 1. NULL
 1. PENDING
@@ -167,7 +177,7 @@ A data object that encapsulates these three properties:
 Segments are an essential component of Dynamic [distribution model](#distribution-model), as they facilitate the
 calculation of the custom streaming curve.
 
-##3 Start time
+### Start time
 
 The time when a stream is scheduled to start.
 
@@ -198,7 +208,7 @@ calculation of the custom streaming curve.
 
 ### Tranched Model
 
-A Lockup [distribution model](#distribution-model) with a streaming in discrete tranches.
+A Lockup [distribution model](#distribution-model) with streaming in discrete tranches.
 
 ### Unlock Amounts
 

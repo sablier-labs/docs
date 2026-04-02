@@ -3,7 +3,7 @@ import { sablier } from "sablier";
 import { BENCHMARKS_COMMIT, GITHUB_ORG } from "./constants";
 
 export function getBenchmarkURL(path: string): string {
-  return getRawContentURL("benchmarks", BENCHMARKS_COMMIT, path);
+  return getRawContentURL("evm-monorepo", BENCHMARKS_COMMIT, `misc/benchmarks/${path}`);
 }
 
 export function getRawContentURL(repo: string, ref: string, path: string): string {

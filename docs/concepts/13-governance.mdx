@@ -1,6 +1,6 @@
 ---
 id: "governance"
-sidebar_position: 11
+sidebar_position: 13
 title: "Governance"
 ---
 
@@ -58,6 +58,25 @@ Comptroller has the following permissions on each chain where Flow is deployed:
 | Recover            | [`recover`](/reference/flow/contracts/contract.SablierFlow#recover)                   |
 | Set Native Token   | [`setNativeToken`](/reference/flow/contracts/contract.SablierFlow#setnativetoken)     |
 | Set NFT Descriptor | [`setNFTDescriptor`](/reference/flow/contracts/contract.SablierFlow#setnftdescriptor) |
+
+### Bob
+
+Comptroller has the following permissions on each chain where Bob is deployed:
+
+| Permission          | Function                                                                              |
+| ------------------- | ------------------------------------------------------------------------------------- |
+| Set Default Adapter | [`setDefaultAdapter`](/reference/bob/contracts/contract.SablierBob#setdefaultadapter) |
+| Set Native Token    | [`setNativeToken`](/reference/bob/contracts/contract.SablierBob#setnativetoken)       |
+
+### Lido Adapter
+
+Comptroller has the following permissions on the Lido Adapter:
+
+| Permission              | Function                                                                                              |
+| ----------------------- | ----------------------------------------------------------------------------------------------------- |
+| Request Lido Withdrawal | [`requestLidoWithdrawal`](/reference/bob/contracts/contract.SablierLidoAdapter#requestlidowithdrawal) |
+| Set Slippage Tolerance  | [`setSlippageTolerance`](/reference/bob/contracts/contract.SablierLidoAdapter#setslippagetolerance)   |
+| Set Yield Fee           | [`setYieldFee`](/reference/bob/contracts/contract.SablierLidoAdapter#setyieldfee)                     |
 
 ## Trustlessness
 

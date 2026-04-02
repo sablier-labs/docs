@@ -12,7 +12,7 @@ This article will provide a comprehensive overview of the actions that can be pe
 
 :::note
 
-Every campaign has a creator and a recipient. An "public" caller is any address outside of creator and recipient. Anyone
+Every campaign has a creator and a recipient. A "public" caller is any address outside of creator and recipient. Anyone
 can call `claim` function on a campaign but the tokens will be transferred to the recipient.
 
 :::

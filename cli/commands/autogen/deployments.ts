@@ -22,7 +22,7 @@ type DeploymentOrdering = "alphabetical" | "priority-first";
 
 export function generateDeployments(options: CliOptions = {}): void {
   for (const release of sablier.releases.getAll()) {
-    if (release.protocol === Protocol.Legacy || release.protocol === Protocol.Bob) {
+    if (release.protocol === Protocol.Legacy) {
       continue;
     }
 

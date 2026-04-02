@@ -17,8 +17,8 @@ permission to do this. In the future, we may decentralize this process through g
 Hooks are a powerful feature that enable Sablier streams to interact with other DeFi protocols. Let's consider an
 example:
 
-You own a Sablier stream that expires in two years. You are interested into taking a loan against it with the intention
-to pay it all back after it expires. Hooks are what enable you to do that. With the help of Hooks, we can create an
+You own a Sablier stream that expires in two years. You are interested in taking a loan against it with the intention to
+pay it all back after it expires. Hooks are what enable you to do that. With the help of Hooks, we can create an
 ecosystem of varied use cases for Sablier streams. This can range from lending, staking, credit, and more.
 
 It is worth noting that once a hook has been allowlisted, it can never be removed. This is to ensure stronger
@@ -40,7 +40,7 @@ The requirements a hook contract must meet:
    1. Be aware that if the call reverts, the entire `cancel` execution would revert too.
 5. If it implements `onSablierLockupWithdraw`:
    1. It returns `ISablierLockupRecipient.onSablierLockupWithdraw.selector`.
-   1. It reverts if `msg.sender` is not Lockup contract.
+   1. It reverts if `msg.sender` is not the Lockup contract.
    1. It uses input parameters correctly: `streamId`, `caller`, `to`, `amount`.
    1. Be aware that if the call reverts, the entire `withdraw` execution would revert too.
 
@@ -84,6 +84,6 @@ sequenceDiagram
 
 ## Next steps
 
-If you are interested into using Sablier hooks into your protocol, please check the
+If you are interested in using Sablier hooks in your protocol, please check the
 [Hook guide](/guides/lockup/examples/hooks). If you are looking to get on the allowlist, reach out to us on
 [Discord](https://discord.sablier.com).

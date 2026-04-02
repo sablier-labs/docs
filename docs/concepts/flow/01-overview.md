@@ -55,7 +55,7 @@ the sender refunds from it or when a withdrawal happens.
 
 Total debt is the amount of tokens owed to the recipient. This value is further divided into two sub-categories:
 
-- **Covered debt:** The part of the total debt that covered by the stream balance. This is the same as the
+- **Covered debt:** The part of the total debt that is covered by the stream balance. This is the same as the
   **withdrawable amount**, which is an alias.
 - **Uncovered debt:** The part of the total debt that is not covered by the stream balance. This is what the sender owes
   to the stream.

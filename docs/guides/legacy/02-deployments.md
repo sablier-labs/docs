@@ -35,7 +35,7 @@ _This is an outdated deployment_.
 
 ## Unofficial deployments
 
-Unofficial deployments are made by external teams, an they are not supported in the official user interface.
+Unofficial deployments are made by external teams, and they are not supported in the official user interface.
 
 | Chain | Address                                                                                                                | Deployer                                   |
 | ----- | ---------------------------------------------------------------------------------------------------------------------- | ------------------------------------------ |

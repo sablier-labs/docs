@@ -12,7 +12,7 @@ references.
 
 ## Lockup
 
-> [**Lockup Source Code**](https://github.com/sablier-labs/lockup/tree/release)
+> [**Lockup Source Code**](https://github.com/sablier-labs/evm-monorepo/blob/main/lockup)
 
 The Lockup repo consists of the Sablier Lockup contract, public libraries, Batch Lockup contract and an NFT descriptor.
 
@@ -46,7 +46,7 @@ Creates and manages Lockup streams with three different streaming functions.
 
 ## Merkle Airdrops
 
-> [**Merkle Airdrops Source Code**](https://github.com/sablier-labs/airdrops/tree/release)
+> [**Merkle Airdrops Source Code**](https://github.com/sablier-labs/evm-monorepo/blob/main/airdrops)
 
 The Merkle Airdrops repo is a collection of contracts to create various kinds of airdrop campaigns. Some of these
 campaigns make use of the Lockup protocol to create what we call [Airstreams](/concepts/airdrops). This repo consists of
@@ -88,7 +88,7 @@ forgoing the remaining amount, whereas claiming after the period grants the full
 
 ## Flow
 
-> [**Flow Source Code**](https://github.com/sablier-labs/flow/tree/release)
+> [**Flow Source Code**](https://github.com/sablier-labs/evm-monorepo/blob/main/flow)
 
 The Flow repo consists of the Sablier Flow contract, and an NFT descriptor.
 
@@ -103,3 +103,27 @@ Generates the URI describing the Sablier Flow stream NFTs which, currently, is t
 > [**SablierFlow Reference**](./flow/contracts/contract.SablierFlow)
 
 Creates and manages payment streams.
+
+## Bob
+
+> [**Bob Source Code**](https://github.com/sablier-labs/evm-monorepo/tree/main/bob)
+
+The Bob package consists of the Bob contract and the Lido yield adapter contract.
+
+### SablierBob
+
+> [**SablierBob Reference**](./bob/contracts/contract.SablierBob)
+
+Creates and manages price-gated vaults.
+
+### SablierLidoAdapter
+
+> [**SablierLidoAdapter Reference**](./bob/contracts/contract.SablierLidoAdapter)
+
+Stakes WETH into Lido to earn yield on behalf of Bob's WETH vaults.
+
+### BobVaultShare
+
+> [**BobVaultShare Reference**](./bob/contracts/contract.BobVaultShare)
+
+ERC-20 share token deployed per Bob vault.

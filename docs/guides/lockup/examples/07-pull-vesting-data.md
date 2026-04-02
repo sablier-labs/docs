@@ -66,7 +66,7 @@ uint256 amountInStream = sablierLockup.getDepositedAmount(streamId)
                        - sablierLockup.getRefundedAmount(streamId);
 ```
 
-For non-cancelable stream, a more efficient way to calculate the amount in stream is:
+For a non-cancelable stream, a more efficient way to calculate the amount in stream is:
 
 ```solidity
 uint256 amountInStream = sablierLockup.getDepositedAmount(streamId)
@@ -84,7 +84,7 @@ uint256 lockedAmount = lockup.getDepositedAmount(streamId)
                      - sablierLockup.getRefundedAmount(streamId);
 ```
 
-For non-cancelable stream, a more efficient way to calculate locked amount is:
+For a non-cancelable stream, a more efficient way to calculate locked amount is:
 
 ```solidity
 uint256 lockedAmount = lockup.getDepositedAmount(streamId) - lockup.streamedAmountOf(streamId);
@@ -102,7 +102,7 @@ uint256 unlockedAmount = lockup.streamedAmountOf(streamId)
                        + sablierLockup.getRefundedAmount(streamId);
 ```
 
-For non-cancelable stream, a more efficient way to calculate unlocked amount is:
+For a non-cancelable stream, a more efficient way to calculate unlocked amount is:
 
 ```solidity
 uint256 unlockedAmount = lockup.streamedAmountOf(streamId);

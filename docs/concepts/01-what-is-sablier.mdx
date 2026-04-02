@@ -5,15 +5,15 @@ title: "What Is Sablier?"
 ---
 
 import ReleaseHistoryAirdrops from "../../src/snippets/_release-history-airdrops.mdx";
+import ReleaseHistoryBob from "../../src/snippets/_release-history-bob.mdx";
 import ReleaseHistoryFlow from "../../src/snippets/_release-history-flow.mdx";
 import ReleaseHistoryLegacy from "../../src/snippets/_release-history-legacy.mdx";
 import ReleaseHistoryLockup from "../../src/snippets/_release-history-lockup.mdx";
 
 Sablier is a powerful onchain token distribution protocol. Here are some key definitions:
 
-- **The Sablier Protocol**: A collection of persistent, non-upgradeable smart contracts to facilitate streaming of
-  ERC-20 tokens on Ethereum and other EVM blockchains. The Sablier Protocol consists of Lockup, Merkle Airdrops, and
-  Flow.
+- **The Sablier Protocol**: A collection of persistent, non-upgradeable smart contracts to facilitate streaming and
+  distribution of ERC-20 tokens on Ethereum and other EVM blockchains.
 - **The Sablier Interface**: A web interface that allows for easy interaction with the Sablier Protocol. The interface
   is only one of many ways to interact with the Sablier Protocol.
 - **Sablier Labs**: The company that develops the Sablier Protocol, the Sablier Interface, and the documentation website
@@ -32,11 +32,12 @@ A software protocol built with [Ethereum](https://ethereum.org/) smart contracts
 persistent and non-upgradable smart contracts that prioritize security, censorship resistance, self-custody, and
 functionality without the need for trusted intermediaries who may selectively restrict access.
 
-Currently, Sablier consists of three separate systems:
+Currently, Sablier consists of four separate systems:
 
 - **Lockup**: facilitates vesting and vested airdrops
 - **Merkle Airdrops**: enables on-chain airdrops
 - **Flow**: for payroll, grants etc.
+- **Bob**: allows locking tokens until a specific price is reached
 
 While most of these are licensed under BUSL-1.1, there are some components licensed under GPL v3. The source code can be
 accessed on Sablier's [GitHub account](https://github.com/sablier-labs), and a detailed technical reference can be found
@@ -121,6 +122,10 @@ Before v1.3, Merkle Airdrops contracts were part of the Sablier Lockup
 For more details on the UI alias, see the guide on [URL schemes](/apps/guides/url-schemes).
 
 <ReleaseHistoryFlow />
+
+### Bob
+
+<ReleaseHistoryBob />
 
 ### Legacy (Deprecated)
 

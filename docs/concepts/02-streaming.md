@@ -41,7 +41,7 @@ settle in real-time, with small amounts of tokens being released from the sender
 automates the payment process and ensures a continuous flow of funds.
 
 Lastly, streaming is more secure than lump-sum payments, because it makes it possible to correct errors. Suppose you
-accidentally started a steam worth 10 ETH to the wrong address. For example, if you accidentally initiated a stream
+accidentally started a stream worth 10 ETH to the wrong address. For example, if you accidentally initiated a stream
 worth 10 ETH to an incorrect address, you can cancel the stream and reclaim the unstreamed Ether (e.g., recovering 9.99
 of the 10 ETH). Conversely, recovering a lump-sum payment sent to the wrong address is not possible, unless the
 recipient is willing to return it.

@@ -1,6 +1,6 @@
 ---
 id: "fees"
-sidebar_position: 12
+sidebar_position: 14
 title: "Fees"
 ---
 
@@ -22,8 +22,8 @@ The fee amount is calculated based on market prices. For example, when ETH is \$
 Interface Fees can be subsidized - the person creating the stream or airdrop can choose to cover the fees that would
 normally be charged to recipients.
 
-If you're interested in subsiding fees for your users, please <Link href={Links.Forms.CALL}>contact us</Link> to discuss
-your specific requirements.
+If you're interested in subsidizing fees for your users, please <Link href={Links.Forms.CALL}>contact us</Link> to
+discuss your specific requirements.
 
 :::
 
@@ -103,8 +103,8 @@ equal to the fee amount returned by `calculateMinFeeWei` function which is avail
 Onchain Minimum Fees can be subsidized - the person creating the stream or airdrop can choose to cover the fees that
 would normally be charged to recipients.
 
-If you're interested in subsiding fees for your users, please <Link href={Links.Forms.CALL}>contact us</Link> to discuss
-your specific requirements.
+If you're interested in subsidizing fees for your users, please <Link href={Links.Forms.CALL}>contact us</Link> to
+discuss your specific requirements.
 
 :::
 
@@ -217,6 +217,18 @@ For v1.3, the fees are as follows:
 
 </details>
 
+### Bob Vaults
+
+When you redeem your tokens from a Bob vault, the fee depends on whether the vault earned yield or not:
+
+- **Vaults that earned yield** (e.g., ETH/WETH vaults with the [Lido adapter](/concepts/bob/lido-adapter)): a percentage
+  is taken from the yield you earned. Your original deposit is never touched.
+- **Vaults that don't earn yield**: a minimum fee in ETH, same as stream withdrawals.
+
+| Chain    | ETH/WETH vaults    | Other vaults |
+| -------- | ------------------ | ------------ |
+| Ethereum | 10% from the yield | $0.9 minimum |
+
 ## Gas Fees
 
 [Gas fees](https://investopedia.com/terms/g/gas-ethereum.asp) are transaction fees paid to the blockchain validators in
@@ -234,7 +246,7 @@ that the person creating the stream or airdrop can choose to cover the fees that
 recipient. Note that the gas fees cannot be subsidized as they are paid to the blockchain network validators on every
 transaction.
 
-If you're interested in subsiding fees for your users, please
+If you're interested in subsidizing fees for your users, please
 [contact us](https://docs.google.com/forms/d/e/1FAIpQLSdqkcRjXl3urdE_yiT55itkcEX5LC4CM4HsNhjJbXB_CNMMjg/viewform) to
 discuss your specific requirements.
 

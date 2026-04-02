@@ -43,6 +43,10 @@ multiple contracts.
 
 [Click here](flow/contracts/libraries/library.Errors) to see the full error list in Flow protocol.
 
+## Bob Error List
+
+[Click here](bob/contracts/libraries/library.Errors) to see the full error list in Bob protocol.
+
 ## Resources
 
 - [Custom Errors in Solidity](https://blog.soliditylang.org/2021/04/21/custom-errors/): deep dive into the custom error

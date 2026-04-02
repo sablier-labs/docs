@@ -24,6 +24,6 @@ For a deeper dive into the protocol specifications, read through the
 
 # Resources
 
-- [Source Code](https://github.com/sablier-labs/airdrops/tree/release)
-- [Examples](https://github.com/sablier-labs/examples/tree/main/airdrops/)
+- [Source Code](https://github.com/sablier-labs/evm-monorepo/blob/main/airdrops)
+- [Examples](https://github.com/sablier-labs/evm-monorepo/tree/main/misc/examples/airdrops/)
 - [Foundry Book](https://book.getfoundry.sh/)

@@ -8,8 +8,8 @@ title: "Diagrams"
 
 :::tip
 
-If you are interested into creating a stream with non-transferrable tokens, make sure to whitelist both `BatchLockup`
-and `Lockup` contracts.
+If you are interested in creating a stream with non-transferable tokens, make sure to whitelist both `BatchLockup` and
+`Lockup` contracts.
 
 :::
 
@@ -85,8 +85,8 @@ flowchart TD;
 
 :::info
 
-Each stream belongs to one of the three models: Linear, Dynamic and Tranched. Each of these model has its own storage as
-outlined below.
+Each stream belongs to one of the three models: Linear, Dynamic and Tranched. Each of these models has its own storage
+as outlined below.
 
 :::
 

@@ -1,6 +1,6 @@
 ---
 id: "security"
-sidebar_position: 13
+sidebar_position: 15
 title: "Security"
 ---
 
@@ -27,7 +27,11 @@ All the audits of Merkle Airdrops contracts can be found
 
 ## Flow Audits
 
-All the audits of Lockup contracts can be found [here](https://github.com/sablier-labs/audits/blob/main/flow).
+All the audits of Flow contracts can be found [here](https://github.com/sablier-labs/audits/blob/main/flow).
+
+## Bob Audits
+
+All the audits of Bob contracts can be found [here](https://github.com/sablier-labs/audits/blob/main/bob).
 
 ## Bug Bounty
 
