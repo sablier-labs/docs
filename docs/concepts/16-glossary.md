@@ -185,7 +185,7 @@ A data object that encapsulates these three properties:
 Segments are an essential component of Dynamic [distribution model](#distribution-model), as they facilitate the
 calculation of the custom streaming curve.
 
-##3 Start time
+### Start time
 
 The time when a stream is scheduled to start.
 
