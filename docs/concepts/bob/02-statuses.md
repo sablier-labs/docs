@@ -27,8 +27,11 @@ The vault status is computed on-the-fly as the following:
 
 :::info
 
-Expiry takes precedence over settlement. If the expiry has passed, the vault is always `EXPIRED` regardless of the last
-synced price.
+- Expiry takes precedence over settlement. If the expiry has passed, the vault is always `EXPIRED` regardless of the
+  last synced price.
+- A vault does not become `SETTLED` automatically when the target price is reached. An on-chain transaction must be
+  triggered manually — either by calling `redeem` or `syncPriceFromOracle` — to update the last synced price and
+  transition the vault to `SETTLED`.
 
 :::
 
@@ -38,8 +41,8 @@ synced price.
 stateDiagram-v2
   direction LR
   Null --> Active
-  Active --> Settled : lastSyncedPrice ≥ targetPrice
-  Active --> Expired : block.timestamp ≥ expiry
+  Active --> Settled
+  Active --> Expired : time
 ```
 
 ## Q&A
