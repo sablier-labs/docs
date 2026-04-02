@@ -4,7 +4,7 @@ sidebar_position: 1
 title: "Diagrams"
 ---
 
-## Token Flows in Bob
+## Tokens Flow
 
 ### Creating a Vault
 
@@ -100,38 +100,4 @@ sequenceDiagram
   SablierBob ->> BobVaultShare: burn()
   ShareHolder -->> BobVaultShare: Burn shares
   SablierBob -->> ShareHolder: Transfer WETH
-```
-
-## Token Flows in Escrow
-
-### Creating an Order
-
-```mermaid
-sequenceDiagram
-  actor Seller
-
-  Seller ->> SablierEscrow: createOrder()
-  Seller -->> SablierEscrow: Transfer sell tokens
-```
-
-### Filling an Order
-
-```mermaid
-sequenceDiagram
-  actor Buyer
-
-  Buyer ->> SablierEscrow: fillOrder()
-  Buyer -->> SablierEscrow: Transfer buy tokens
-  SablierEscrow -->> Seller: Transfer buy tokens (minus fee)
-  SablierEscrow -->> Buyer: Transfer sell tokens (minus fee)
-```
-
-### Cancelling an Order
-
-```mermaid
-sequenceDiagram
-  actor Seller
-
-  Seller ->> SablierEscrow: cancelOrder()
-  SablierEscrow -->> Seller: Transfer sell tokens
 ```

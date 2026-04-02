@@ -87,8 +87,3 @@ time and resume it at any time making it a more flexible option for payments.
 
 Bob vaults are not cancelable. Once a vault is created, its parameters (token, oracle, target price, expiry) are
 immutable. Depositors can only redeem their shares after the vault has [settled or expired](/concepts/bob/statuses).
-
-## Escrow Orders
-
-Escrow orders can be cancelled by the seller at any time, as long as the order has not been filled. Once an order is
-filled, it cannot be cancelled.

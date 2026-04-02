@@ -43,9 +43,9 @@ multiple contracts.
 
 [Click here](flow/contracts/libraries/library.Errors) to see the full error list in Flow protocol.
 
-## Bob & Escrow Error List
+## Bob Error List
 
-[Click here](bob/contracts/libraries/library.Errors) to see the full error list in Bob and Escrow protocols.
+[Click here](bob/contracts/libraries/library.Errors) to see the full error list in Bob protocol.
 
 ## Resources
 

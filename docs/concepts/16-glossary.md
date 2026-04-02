@@ -56,14 +56,6 @@ where the admin can arbitrarily change balances are not supported.
 [ERC-721][erc-721] tokens are non-fungible tokens ("NFTs") on Ethereum. Both Lockup and Flow streams are represented as
 NFTs.
 
-## Escrow
-
-A peer-to-peer swap protocol for ERC-20 tokens.
-
-### Escrow Trade Fee
-
-A symmetric fee deducted from both sides of an escrow swap when an order is filled.
-
 ## Ethereum
 
 A global, open-source platform for decentralized applications.

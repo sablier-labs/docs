@@ -136,7 +136,6 @@ run() {
   if [ "$repo" = "bob" ]; then
     # Bob-specific abstract patterns
     sd "\{SablierBobState\}" "[SablierBobState](/$contracts/abstracts/abstract.SablierBobState.md)" $all_md_files
-    sd "\{SablierEscrowState\}" "[SablierEscrowState](/$contracts/abstracts/abstract.SablierEscrowState.md)" $all_md_files
     sd "\{BobVaultShare\}" "[BobVaultShare](/$contracts/contract.BobVaultShare.md)" $all_md_files
   fi
 
@@ -222,7 +221,6 @@ run "bob"
 set_sidebar_position $bob/contract.SablierBob.md 1
 set_sidebar_position $bob/contract.SablierLidoAdapter.md 2
 set_sidebar_position $bob/contract.BobVaultShare.md 3
-set_sidebar_position $bob/contract.SablierEscrow.md 4
 
 # ---------------------------------------------------------------------------- #
 #                                     Utils                                    #

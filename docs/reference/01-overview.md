@@ -108,19 +108,13 @@ Creates and manages payment streams.
 
 > [**Bob Source Code**](https://github.com/sablier-labs/evm-monorepo/tree/main/bob)
 
-The Bob package consists of the Bob contract, the escrow contract, and the Lido yield adapter contract.
+The Bob package consists of the Bob contract and the Lido yield adapter contract.
 
 ### SablierBob
 
 > [**SablierBob Reference**](./bob/contracts/contract.SablierBob)
 
 Creates and manages price-gated vaults.
-
-### SablierEscrow
-
-> [**SablierEscrow Reference**](./bob/contracts/contract.SablierEscrow)
-
-Creates and manages peer-to-peer orders for exchanging ERC-20 tokens.
 
 ### SablierLidoAdapter
 

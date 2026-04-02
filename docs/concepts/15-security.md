@@ -29,9 +29,9 @@ All the audits of Merkle Airdrops contracts can be found
 
 All the audits of Flow contracts can be found [here](https://github.com/sablier-labs/audits/blob/main/flow).
 
-## Bob & Escrow Audits
+## Bob Audits
 
-All the audits of Bob and Escrow contracts can be found [here](https://github.com/sablier-labs/audits/blob/main/bob).
+All the audits of Bob contracts can be found [here](https://github.com/sablier-labs/audits/blob/main/bob).
 
 ## Bug Bounty
 

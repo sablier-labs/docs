@@ -44,7 +44,7 @@
     "commander": "^5.1.0",
     "docusaurus-theme-github-codeblock": "^2.0.2",
     "function-plot": "^1.25.1",
-    "llmfood": "1.0.0",
+    "llmfood": "^1.0",
     "lodash": "^4.17.21",
     "prism-react-renderer": "^2.4.1",
     "react": "18.2.0",

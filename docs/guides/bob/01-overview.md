@@ -4,18 +4,17 @@ sidebar_position: 1
 title: "Overview"
 ---
 
-# Sablier Bob and Escrow
+# Sablier Bob
 
-Welcome to the Sablier Bob and Escrow documentation.
+Welcome to the Sablier Bob documentation.
 
-This section contains guides and technical references for the Bob protocol which contains Bob and Escrow contracts.
+This section contains guides and technical references for the Bob protocol.
 
 # Guides
 
 If you are new to Sablier, we recommend you start with the [Concepts](/concepts/what-is-sablier) section first.
 
-Then, read the [Bob](/concepts/bob/overview) and [Escrow](/concepts/escrow/overview) concepts to understand how they
-work.
+Then, read the [Bob](/concepts/bob/overview) concepts to understand how it works.
 
 # Reference
 
