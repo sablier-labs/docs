@@ -1,0 +1,110 @@
+---
+id: asset-bool-exp
+title: Asset_bool_exp
+---
+
+<head>
+  <meta content="noindex" name="robots" />
+  <meta charset="utf-8" />
+</head>
+
+export const Bullet = () => (
+  <>
+    <span style={{ fontWeight: "normal", fontSize: ".5em", color: "var(--ifm-color-secondary-darkest)" }}>
+      &nbsp;●&nbsp;
+    </span>
+  </>
+);
+
+export const SpecifiedBy = (props) => (
+  <>
+    Specification
+    <a
+      className="link"
+      style={{ fontSize: "1.5em", paddingLeft: "4px" }}
+      target="_blank"
+      href={props.url}
+      title={"Specified by " + props.url}
+    >
+      ⎘
+    </a>
+  </>
+);
+
+export const Badge = (props) => (
+  <>
+    <span className={props.class}>{props.text}</span>
+  </>
+);
+
+import { useState } from "react";
+
+export const Details = ({ dataOpen, dataClose, children, startOpen = false }) => {
+  const [open, setOpen] = useState(startOpen);
+  return (
+    <details
+      {...(open ? { open: true } : {})}
+      className="details"
+      style={{ border: "none", boxShadow: "none", background: "var(--ifm-background-color)" }}
+    >
+      <summary
+        onClick={(e) => {
+          e.preventDefault();
+          setOpen((open) => !open);
+        }}
+        style={{ listStyle: "none" }}
+      >
+        {open ? dataOpen : dataClose}
+      </summary>
+      {open && children}
+    </details>
+  );
+};
+
+Boolean expression to filter rows from the table "Asset". All fields are combined with a logical 'AND'.
+
+```graphql
+input Asset_bool_exp {
+  _and: [Asset_bool_exp!]
+  _not: Asset_bool_exp
+  _or: [Asset_bool_exp!]
+  address: String_comparison_exp
+  chainId: numeric_comparison_exp
+  decimals: numeric_comparison_exp
+  flowStreams: FlowStream_bool_exp
+  flowStreams_aggregate: FlowStream_aggregate_bool_exp
+  id: String_comparison_exp
+  lockupStreams: LockupStream_bool_exp
+  lockupStreams_aggregate: LockupStream_aggregate_bool_exp
+  name: String_comparison_exp
+  symbol: String_comparison_exp
+}
+```
+
+### Fields
+
+#### [<code style={{ fontWeight: 'normal' }}>Asset_bool_exp.<b>\_and</b></code>](#and)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>[Asset_bool_exp!]</b></code>](/docs/api/streams/graphql/envio/inputs/asset-bool-exp.mdx) <Badge class="badge badge--secondary " text="list"/> <Badge class="badge badge--secondary " text="input"/> \{#and\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Asset_bool_exp.<b>\_not</b></code>](#not)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Asset_bool_exp</b></code>](/docs/api/streams/graphql/envio/inputs/asset-bool-exp.mdx) <Badge class="badge badge--secondary " text="input"/> \{#not\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Asset_bool_exp.<b>\_or</b></code>](#or)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>[Asset_bool_exp!]</b></code>](/docs/api/streams/graphql/envio/inputs/asset-bool-exp.mdx) <Badge class="badge badge--secondary " text="list"/> <Badge class="badge badge--secondary " text="input"/> \{#or\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Asset_bool_exp.<b>address</b></code>](#address)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String_comparison_exp</b></code>](/docs/api/streams/graphql/envio/inputs/string-comparison-exp.mdx) <Badge class="badge badge--secondary " text="input"/> \{#address\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Asset_bool_exp.<b>chainId</b></code>](#chain-id)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>numeric_comparison_exp</b></code>](/docs/api/streams/graphql/envio/inputs/numeric-comparison-exp.mdx) <Badge class="badge badge--secondary " text="input"/> \{#chain-id\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Asset_bool_exp.<b>decimals</b></code>](#decimals)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>numeric_comparison_exp</b></code>](/docs/api/streams/graphql/envio/inputs/numeric-comparison-exp.mdx) <Badge class="badge badge--secondary " text="input"/> \{#decimals\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Asset_bool_exp.<b>flowStreams</b></code>](#flow-streams)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>FlowStream_bool_exp</b></code>](/docs/api/streams/graphql/envio/inputs/flow-stream-bool-exp.mdx) <Badge class="badge badge--secondary " text="input"/> \{#flow-streams\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Asset_bool_exp.<b>flowStreams_aggregate</b></code>](#flow-streams-aggregate)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>FlowStream_aggregate_bool_exp</b></code>](/docs/api/streams/graphql/envio/inputs/flow-stream-aggregate-bool-exp.mdx) <Badge class="badge badge--secondary " text="input"/> \{#flow-streams-aggregate\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Asset_bool_exp.<b>id</b></code>](#id)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String_comparison_exp</b></code>](/docs/api/streams/graphql/envio/inputs/string-comparison-exp.mdx) <Badge class="badge badge--secondary " text="input"/> \{#id\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Asset_bool_exp.<b>lockupStreams</b></code>](#lockup-streams)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>LockupStream_bool_exp</b></code>](/docs/api/streams/graphql/envio/inputs/lockup-stream-bool-exp.mdx) <Badge class="badge badge--secondary " text="input"/> \{#lockup-streams\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Asset_bool_exp.<b>lockupStreams_aggregate</b></code>](#lockup-streams-aggregate)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>LockupStream_aggregate_bool_exp</b></code>](/docs/api/streams/graphql/envio/inputs/lockup-stream-aggregate-bool-exp.mdx) <Badge class="badge badge--secondary " text="input"/> \{#lockup-streams-aggregate\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Asset_bool_exp.<b>name</b></code>](#name)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String_comparison_exp</b></code>](/docs/api/streams/graphql/envio/inputs/string-comparison-exp.mdx) <Badge class="badge badge--secondary " text="input"/> \{#name\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Asset_bool_exp.<b>symbol</b></code>](#symbol)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String_comparison_exp</b></code>](/docs/api/streams/graphql/envio/inputs/string-comparison-exp.mdx) <Badge class="badge badge--secondary " text="input"/> \{#symbol\}

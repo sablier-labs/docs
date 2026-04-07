@@ -1,0 +1,107 @@
+---
+id: tranche-bool-exp
+title: Tranche_bool_exp
+---
+
+<head>
+  <meta content="noindex" name="robots" />
+  <meta charset="utf-8" />
+</head>
+
+export const Bullet = () => (
+  <>
+    <span style={{ fontWeight: "normal", fontSize: ".5em", color: "var(--ifm-color-secondary-darkest)" }}>
+      &nbsp;●&nbsp;
+    </span>
+  </>
+);
+
+export const SpecifiedBy = (props) => (
+  <>
+    Specification
+    <a
+      className="link"
+      style={{ fontSize: "1.5em", paddingLeft: "4px" }}
+      target="_blank"
+      href={props.url}
+      title={"Specified by " + props.url}
+    >
+      ⎘
+    </a>
+  </>
+);
+
+export const Badge = (props) => (
+  <>
+    <span className={props.class}>{props.text}</span>
+  </>
+);
+
+import { useState } from "react";
+
+export const Details = ({ dataOpen, dataClose, children, startOpen = false }) => {
+  const [open, setOpen] = useState(startOpen);
+  return (
+    <details
+      {...(open ? { open: true } : {})}
+      className="details"
+      style={{ border: "none", boxShadow: "none", background: "var(--ifm-background-color)" }}
+    >
+      <summary
+        onClick={(e) => {
+          e.preventDefault();
+          setOpen((open) => !open);
+        }}
+        style={{ listStyle: "none" }}
+      >
+        {open ? dataOpen : dataClose}
+      </summary>
+      {open && children}
+    </details>
+  );
+};
+
+Boolean expression to filter rows from the table "Tranche". All fields are combined with a logical 'AND'.
+
+```graphql
+input Tranche_bool_exp {
+  _and: [Tranche_bool_exp!]
+  _not: Tranche_bool_exp
+  _or: [Tranche_bool_exp!]
+  amount: numeric_comparison_exp
+  endAmount: numeric_comparison_exp
+  endTime: numeric_comparison_exp
+  id: String_comparison_exp
+  position: numeric_comparison_exp
+  startAmount: numeric_comparison_exp
+  startTime: numeric_comparison_exp
+  stream: LockupStream_bool_exp
+  stream_id: String_comparison_exp
+}
+```
+
+### Fields
+
+#### [<code style={{ fontWeight: 'normal' }}>Tranche_bool_exp.<b>\_and</b></code>](#and)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>[Tranche_bool_exp!]</b></code>](/docs/api/streams/graphql/envio/inputs/tranche-bool-exp.mdx) <Badge class="badge badge--secondary " text="list"/> <Badge class="badge badge--secondary " text="input"/> \{#and\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Tranche_bool_exp.<b>\_not</b></code>](#not)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Tranche_bool_exp</b></code>](/docs/api/streams/graphql/envio/inputs/tranche-bool-exp.mdx) <Badge class="badge badge--secondary " text="input"/> \{#not\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Tranche_bool_exp.<b>\_or</b></code>](#or)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>[Tranche_bool_exp!]</b></code>](/docs/api/streams/graphql/envio/inputs/tranche-bool-exp.mdx) <Badge class="badge badge--secondary " text="list"/> <Badge class="badge badge--secondary " text="input"/> \{#or\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Tranche_bool_exp.<b>amount</b></code>](#amount)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>numeric_comparison_exp</b></code>](/docs/api/streams/graphql/envio/inputs/numeric-comparison-exp.mdx) <Badge class="badge badge--secondary " text="input"/> \{#amount\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Tranche_bool_exp.<b>endAmount</b></code>](#end-amount)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>numeric_comparison_exp</b></code>](/docs/api/streams/graphql/envio/inputs/numeric-comparison-exp.mdx) <Badge class="badge badge--secondary " text="input"/> \{#end-amount\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Tranche_bool_exp.<b>endTime</b></code>](#end-time)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>numeric_comparison_exp</b></code>](/docs/api/streams/graphql/envio/inputs/numeric-comparison-exp.mdx) <Badge class="badge badge--secondary " text="input"/> \{#end-time\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Tranche_bool_exp.<b>id</b></code>](#id)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String_comparison_exp</b></code>](/docs/api/streams/graphql/envio/inputs/string-comparison-exp.mdx) <Badge class="badge badge--secondary " text="input"/> \{#id\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Tranche_bool_exp.<b>position</b></code>](#position)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>numeric_comparison_exp</b></code>](/docs/api/streams/graphql/envio/inputs/numeric-comparison-exp.mdx) <Badge class="badge badge--secondary " text="input"/> \{#position\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Tranche_bool_exp.<b>startAmount</b></code>](#start-amount)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>numeric_comparison_exp</b></code>](/docs/api/streams/graphql/envio/inputs/numeric-comparison-exp.mdx) <Badge class="badge badge--secondary " text="input"/> \{#start-amount\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Tranche_bool_exp.<b>startTime</b></code>](#start-time)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>numeric_comparison_exp</b></code>](/docs/api/streams/graphql/envio/inputs/numeric-comparison-exp.mdx) <Badge class="badge badge--secondary " text="input"/> \{#start-time\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Tranche_bool_exp.<b>stream</b></code>](#stream)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>LockupStream_bool_exp</b></code>](/docs/api/streams/graphql/envio/inputs/lockup-stream-bool-exp.mdx) <Badge class="badge badge--secondary " text="input"/> \{#stream\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Tranche_bool_exp.<b>stream_id</b></code>](#stream-id)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String_comparison_exp</b></code>](/docs/api/streams/graphql/envio/inputs/string-comparison-exp.mdx) <Badge class="badge badge--secondary " text="input"/> \{#stream-id\}

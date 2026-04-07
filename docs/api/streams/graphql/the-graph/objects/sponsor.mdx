@@ -1,0 +1,122 @@
+---
+id: sponsor
+title: Sponsor
+---
+
+<head>
+  <meta content="noindex" name="robots" />
+  <meta charset="utf-8" />
+</head>
+
+export const Bullet = () => (
+  <>
+    <span style={{ fontWeight: "normal", fontSize: ".5em", color: "var(--ifm-color-secondary-darkest)" }}>
+      &nbsp;●&nbsp;
+    </span>
+  </>
+);
+
+export const SpecifiedBy = (props) => (
+  <>
+    Specification
+    <a
+      className="link"
+      style={{ fontSize: "1.5em", paddingLeft: "4px" }}
+      target="_blank"
+      href={props.url}
+      title={"Specified by " + props.url}
+    >
+      ⎘
+    </a>
+  </>
+);
+
+export const Badge = (props) => (
+  <>
+    <span className={props.class}>{props.text}</span>
+  </>
+);
+
+import { useState } from "react";
+
+export const Details = ({ dataOpen, dataClose, children, startOpen = false }) => {
+  const [open, setOpen] = useState(startOpen);
+  return (
+    <details
+      {...(open ? { open: true } : {})}
+      className="details"
+      style={{ border: "none", boxShadow: "none", background: "var(--ifm-background-color)" }}
+    >
+      <summary
+        onClick={(e) => {
+          e.preventDefault();
+          setOpen((open) => !open);
+        }}
+        style={{ listStyle: "none" }}
+      >
+        {open ? dataOpen : dataClose}
+      </summary>
+      {open && children}
+    </details>
+  );
+};
+
+An address that has sent USDC to the Sablier treasury for the billing process.
+
+```graphql
+type Sponsor {
+  id: String!
+  address: String!
+  chainId: Int!
+  sponsorshipCount: Int!
+  sponsorships(
+    skip: Int = 0
+    first: Int = 100
+    orderBy: Sponsorship_orderBy
+    orderDirection: OrderDirection
+    where: Sponsorship_filter
+  ): [Sponsorship!]!
+  totalAmount: BigInt!
+  totalAmountDisplay: String!
+}
+```
+
+### Fields
+
+#### [<code style={{ fontWeight: 'normal' }}>Sponsor.<b>id</b></code>](#id)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String!</b></code>](/docs/api/streams/graphql/the-graph/scalars/string.mdx) <Badge class="badge badge--secondary badge--non_null" text="non-null"/> <Badge class="badge badge--secondary " text="scalar"/> \{#id\}
+
+Unique identifier: `{chainId}_{address}`
+
+#### [<code style={{ fontWeight: 'normal' }}>Sponsor.<b>address</b></code>](#address)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String!</b></code>](/docs/api/streams/graphql/the-graph/scalars/string.mdx) <Badge class="badge badge--secondary badge--non_null" text="non-null"/> <Badge class="badge badge--secondary " text="scalar"/> \{#address\}
+
+Address of the sponsor.
+
+#### [<code style={{ fontWeight: 'normal' }}>Sponsor.<b>chainId</b></code>](#chain-id)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Int!</b></code>](/docs/api/streams/graphql/the-graph/scalars/int.mdx) <Badge class="badge badge--secondary badge--non_null" text="non-null"/> <Badge class="badge badge--secondary " text="scalar"/> \{#chain-id\}
+
+The chain ID where the sponsorship was made (sponsorships are chain-specific).
+
+#### [<code style={{ fontWeight: 'normal' }}>Sponsor.<b>sponsorshipCount</b></code>](#sponsorship-count)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Int!</b></code>](/docs/api/streams/graphql/the-graph/scalars/int.mdx) <Badge class="badge badge--secondary badge--non_null" text="non-null"/> <Badge class="badge badge--secondary " text="scalar"/> \{#sponsorship-count\}
+
+Number of sponsorships made by this sponsor.
+
+#### [<code style={{ fontWeight: 'normal' }}>Sponsor.<b>sponsorships</b></code>](#sponsorships)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>[Sponsorship!]!</b></code>](/docs/api/streams/graphql/the-graph/objects/sponsorship.mdx) <Badge class="badge badge--secondary badge--non_null" text="non-null"/> <Badge class="badge badge--secondary " text="object"/> \{#sponsorships\}
+
+List of individual sponsorship transfers made by this sponsor.
+
+##### [<code style={{ fontWeight: 'normal' }}>Sponsor.sponsorships.<b>skip</b></code>](#sponsor-sponsorships-skip)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Int</b></code>](/docs/api/streams/graphql/the-graph/scalars/int.mdx) <Badge class="badge badge--secondary " text="scalar"/> \{#sponsor-sponsorships-skip\}
+
+##### [<code style={{ fontWeight: 'normal' }}>Sponsor.sponsorships.<b>first</b></code>](#sponsor-sponsorships-first)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Int</b></code>](/docs/api/streams/graphql/the-graph/scalars/int.mdx) <Badge class="badge badge--secondary " text="scalar"/> \{#sponsor-sponsorships-first\}
+
+##### [<code style={{ fontWeight: 'normal' }}>Sponsor.sponsorships.<b>orderBy</b></code>](#sponsor-sponsorships-order-by)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Sponsorship_orderBy</b></code>](/docs/api/streams/graphql/the-graph/enums/sponsorship-order-by.mdx) <Badge class="badge badge--secondary " text="enum"/> \{#sponsor-sponsorships-order-by\}
+
+##### [<code style={{ fontWeight: 'normal' }}>Sponsor.sponsorships.<b>orderDirection</b></code>](#sponsor-sponsorships-order-direction)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>OrderDirection</b></code>](/docs/api/streams/graphql/the-graph/enums/order-direction.mdx) <Badge class="badge badge--secondary " text="enum"/> \{#sponsor-sponsorships-order-direction\}
+
+##### [<code style={{ fontWeight: 'normal' }}>Sponsor.sponsorships.<b>where</b></code>](#sponsor-sponsorships-where)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Sponsorship_filter</b></code>](/docs/api/streams/graphql/the-graph/inputs/sponsorship-filter.mdx) <Badge class="badge badge--secondary " text="input"/> \{#sponsor-sponsorships-where\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Sponsor.<b>totalAmount</b></code>](#total-amount)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>BigInt!</b></code>](/docs/api/streams/graphql/the-graph/scalars/big-int.mdx) <Badge class="badge badge--secondary badge--non_null" text="non-null"/> <Badge class="badge badge--secondary " text="scalar"/> \{#total-amount\}
+
+Cumulative raw USDC amount paid by the sponsor.
+
+#### [<code style={{ fontWeight: 'normal' }}>Sponsor.<b>totalAmountDisplay</b></code>](#total-amount-display)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String!</b></code>](/docs/api/streams/graphql/the-graph/scalars/string.mdx) <Badge class="badge badge--secondary badge--non_null" text="non-null"/> <Badge class="badge badge--secondary " text="scalar"/> \{#total-amount-display\}
+
+Human-readable cumulative USDC amount paid by the sponsor (e.g., "1729.12").

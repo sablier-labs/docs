@@ -1,0 +1,147 @@
+---
+id: lockup-action
+title: LockupAction
+---
+
+<head>
+  <meta content="noindex" name="robots" />
+  <meta charset="utf-8" />
+</head>
+
+export const Bullet = () => (
+  <>
+    <span style={{ fontWeight: "normal", fontSize: ".5em", color: "var(--ifm-color-secondary-darkest)" }}>
+      &nbsp;●&nbsp;
+    </span>
+  </>
+);
+
+export const SpecifiedBy = (props) => (
+  <>
+    Specification
+    <a
+      className="link"
+      style={{ fontSize: "1.5em", paddingLeft: "4px" }}
+      target="_blank"
+      href={props.url}
+      title={"Specified by " + props.url}
+    >
+      ⎘
+    </a>
+  </>
+);
+
+export const Badge = (props) => (
+  <>
+    <span className={props.class}>{props.text}</span>
+  </>
+);
+
+import { useState } from "react";
+
+export const Details = ({ dataOpen, dataClose, children, startOpen = false }) => {
+  const [open, setOpen] = useState(startOpen);
+  return (
+    <details
+      {...(open ? { open: true } : {})}
+      className="details"
+      style={{ border: "none", boxShadow: "none", background: "var(--ifm-background-color)" }}
+    >
+      <summary
+        onClick={(e) => {
+          e.preventDefault();
+          setOpen((open) => !open);
+        }}
+        style={{ listStyle: "none" }}
+      >
+        {open ? dataOpen : dataClose}
+      </summary>
+      {open && children}
+    </details>
+  );
+};
+
+A generic entity for tracking Lockup protocol actions.
+
+```graphql
+type LockupAction {
+  id: String!
+  subgraphId: BigInt!
+  block: BigInt!
+  chainId: BigInt!
+  from: Bytes!
+  hash: Bytes!
+  timestamp: BigInt!
+  category: LockupActionCategory!
+  contract: Bytes!
+  fee: BigInt
+  stream: LockupStream
+  addressA: Bytes
+  addressB: Bytes
+  amountA: BigInt
+  amountB: BigInt
+}
+```
+
+### Fields
+
+#### [<code style={{ fontWeight: 'normal' }}>LockupAction.<b>id</b></code>](#id)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String!</b></code>](/docs/api/streams/graphql/the-graph/scalars/string.mdx) <Badge class="badge badge--secondary badge--non_null" text="non-null"/> <Badge class="badge badge--secondary " text="scalar"/> \{#id\}
+
+Unique identifier: `action-{chainId}-{txHash}-{logIndex}`
+
+#### [<code style={{ fontWeight: 'normal' }}>LockupAction.<b>subgraphId</b></code>](#subgraph-id)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>BigInt!</b></code>](/docs/api/streams/graphql/the-graph/scalars/big-int.mdx) <Badge class="badge badge--secondary badge--non_null" text="non-null"/> <Badge class="badge badge--secondary " text="scalar"/> \{#subgraph-id\}
+
+Unique global id as tracked by the `Watcher` entity.
+
+#### [<code style={{ fontWeight: 'normal' }}>LockupAction.<b>block</b></code>](#block)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>BigInt!</b></code>](/docs/api/streams/graphql/the-graph/scalars/big-int.mdx) <Badge class="badge badge--secondary badge--non_null" text="non-null"/> <Badge class="badge badge--secondary " text="scalar"/> \{#block\}
+
+Block number of the Ethereum transaction.
+
+#### [<code style={{ fontWeight: 'normal' }}>LockupAction.<b>chainId</b></code>](#chain-id)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>BigInt!</b></code>](/docs/api/streams/graphql/the-graph/scalars/big-int.mdx) <Badge class="badge badge--secondary badge--non_null" text="non-null"/> <Badge class="badge badge--secondary " text="scalar"/> \{#chain-id\}
+
+The chain ID where the action was created (e.g., 137 for Polygon).
+
+#### [<code style={{ fontWeight: 'normal' }}>LockupAction.<b>from</b></code>](#from)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Bytes!</b></code>](/docs/api/streams/graphql/the-graph/scalars/bytes.mdx) <Badge class="badge badge--secondary badge--non_null" text="non-null"/> <Badge class="badge badge--secondary " text="scalar"/> \{#from\}
+
+The tx.origin of the Ethereum transaction.
+
+#### [<code style={{ fontWeight: 'normal' }}>LockupAction.<b>hash</b></code>](#hash)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Bytes!</b></code>](/docs/api/streams/graphql/the-graph/scalars/bytes.mdx) <Badge class="badge badge--secondary badge--non_null" text="non-null"/> <Badge class="badge badge--secondary " text="scalar"/> \{#hash\}
+
+Hash of the Ethereum transaction.
+
+#### [<code style={{ fontWeight: 'normal' }}>LockupAction.<b>timestamp</b></code>](#timestamp)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>BigInt!</b></code>](/docs/api/streams/graphql/the-graph/scalars/big-int.mdx) <Badge class="badge badge--secondary badge--non_null" text="non-null"/> <Badge class="badge badge--secondary " text="scalar"/> \{#timestamp\}
+
+Unix timestamp of the Ethereum transaction.
+
+#### [<code style={{ fontWeight: 'normal' }}>LockupAction.<b>category</b></code>](#category)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>LockupActionCategory!</b></code>](/docs/api/streams/graphql/the-graph/enums/lockup-action-category.mdx) <Badge class="badge badge--secondary badge--non_null" text="non-null"/> <Badge class="badge badge--secondary " text="enum"/> \{#category\}
+
+Category of action, e.g., Deposit.
+
+#### [<code style={{ fontWeight: 'normal' }}>LockupAction.<b>contract</b></code>](#contract)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Bytes!</b></code>](/docs/api/streams/graphql/the-graph/scalars/bytes.mdx) <Badge class="badge badge--secondary badge--non_null" text="non-null"/> <Badge class="badge badge--secondary " text="scalar"/> \{#contract\}
+
+Contract through which the action was triggered.
+
+#### [<code style={{ fontWeight: 'normal' }}>LockupAction.<b>fee</b></code>](#fee)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>BigInt</b></code>](/docs/api/streams/graphql/the-graph/scalars/big-int.mdx) <Badge class="badge badge--secondary " text="scalar"/> \{#fee\}
+
+The Sablier fee paid in the native token of the chain (e.g., ETH for Mainnet). See
+https://docs.sablier.com/concepts/fees
+
+#### [<code style={{ fontWeight: 'normal' }}>LockupAction.<b>stream</b></code>](#stream)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>LockupStream</b></code>](/docs/api/streams/graphql/the-graph/objects/lockup-stream.mdx) <Badge class="badge badge--secondary " text="object"/> \{#stream\}
+
+Stream linked to this action, if any.
+
+#### [<code style={{ fontWeight: 'normal' }}>LockupAction.<b>addressA</b></code>](#address-a)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Bytes</b></code>](/docs/api/streams/graphql/the-graph/scalars/bytes.mdx) <Badge class="badge badge--secondary " text="scalar"/> \{#address-a\}
+
+Address of 1st actor. Who this is depends upon the action type, e.g. for Create, it is the sender.
+
+#### [<code style={{ fontWeight: 'normal' }}>LockupAction.<b>addressB</b></code>](#address-b)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Bytes</b></code>](/docs/api/streams/graphql/the-graph/scalars/bytes.mdx) <Badge class="badge badge--secondary " text="scalar"/> \{#address-b\}
+
+Address of 2nd actor. Who this is depends upon the action type, e.g. for Transfer, it is the recipient.
+
+#### [<code style={{ fontWeight: 'normal' }}>LockupAction.<b>amountA</b></code>](#amount-a)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>BigInt</b></code>](/docs/api/streams/graphql/the-graph/scalars/big-int.mdx) <Badge class="badge badge--secondary " text="scalar"/> \{#amount-a\}
+
+1st amount. What this is depends upon the action type, e.g. for Deposit, it is the deposit amount.
+
+#### [<code style={{ fontWeight: 'normal' }}>LockupAction.<b>amountB</b></code>](#amount-b)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>BigInt</b></code>](/docs/api/streams/graphql/the-graph/scalars/big-int.mdx) <Badge class="badge badge--secondary " text="scalar"/> \{#amount-b\}
+
+2nd amount. What this is depends upon the action type, e.g. for Withdraw, it is the refund amount.

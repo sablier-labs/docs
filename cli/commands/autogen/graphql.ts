@@ -20,7 +20,7 @@ type Category = {
 };
 
 type GraphQLOptions = CliOptions & {
-  protocol: string;
+  indexer: string;
   vendor: string;
 };
 
@@ -31,7 +31,10 @@ type GraphQLOptions = CliOptions & {
 export function createGraphQLCommand() {
   return new Command("graphql")
     .description("Generate GraphQL schema documentation")
-    .requiredOption("-p, --protocol <protocol>", "generate for specific protocol")
+    .requiredOption(
+      "-i, --indexer <indexer>",
+      "generate for specific indexer (airdrops, streams, all)"
+    )
     .requiredOption("-v, --vendor <vendor>", "generate for specific vendor")
     .action(async function () {
       const parentOptions = this.parent ? this.parent.opts() : {};
@@ -44,32 +47,30 @@ export function createGraphQLCommand() {
 export const graphQLCmd = createGraphQLCommand();
 
 export async function generateGraphQL(options: GraphQLOptions): Promise<void> {
-  const protocols: Indexer.Protocol[] = ["airdrops", "flow", "lockup"];
+  const indexerKeys: Indexer.IndexerKey[] = ["airdrops", "streams"];
   const vendors = ["graph", "envio"];
 
-  if (options.protocol !== "all" && !protocols.includes(options.protocol as Indexer.Protocol)) {
+  if (options.indexer !== "all" && !indexerKeys.includes(options.indexer as Indexer.IndexerKey)) {
     throw new Error(
-      `Invalid protocol: ${options.protocol}. Valid options: ${protocols.join(", ")}, all`
+      `Invalid indexer: ${options.indexer}. Valid options: ${indexerKeys.join(", ")}, all`
     );
   }
   if (options.vendor !== "all" && !vendors.includes(options.vendor as Indexer.Vendor)) {
     throw new Error(`Invalid vendor: ${options.vendor}. Valid options: ${vendors.join(", ")}, all`);
   }
 
-  let targetProtocols = protocols;
-  if (options.protocol !== "all") {
-    targetProtocols = _.filter(protocols, (p) => p === options.protocol);
-  }
+  const targetKeys =
+    options.indexer === "all" ? indexerKeys : [options.indexer as Indexer.IndexerKey];
 
   const docsPaths: string[] = [];
-  for (const p of targetProtocols) {
+  for (const key of targetKeys) {
     if (options.vendor === "all" || options.vendor === "graph") {
-      const docsPath = await generateGraph(p);
+      const docsPath = await generateGraph(key);
       docsPaths.push(docsPath);
       await runPrettier(docsPath);
     }
     if (options.vendor === "all" || options.vendor === "envio") {
-      const docsPath = await generateEnvio(p);
+      const docsPath = await generateEnvio(key);
       docsPaths.push(docsPath);
       await runPrettier(docsPath);
     }
@@ -115,14 +116,7 @@ function cleanupDocs(docsPaths: string[]): void {
     fs.rmSync(join(docsPath, "directives"), { force: true, recursive: true });
     fs.rmSync(join(docsPath, "subscriptions"), { force: true, recursive: true });
 
-    // Delete all _category_.yml files
-    fs.unlinkSync(join(docsPath, "enums", "_category_.yml"));
-    fs.unlinkSync(join(docsPath, "inputs", "_category_.yml"));
-    fs.unlinkSync(join(docsPath, "objects", "_category_.yml"));
-    fs.unlinkSync(join(docsPath, "queries", "_category_.yml"));
-    fs.unlinkSync(join(docsPath, "scalars", "_category_.yml"));
-
-    // Rewrite _category_.yml files
+    // Overwrite _category_.yml files (writeFileSync replaces existing content)
     fs.writeFileSync(join(docsPath, "enums", "_category_.yml"), yaml.dump(ENUMS_CATEGORY));
     fs.writeFileSync(join(docsPath, "inputs", "_category_.yml"), yaml.dump(INPUTS_CATEGORY));
     fs.writeFileSync(join(docsPath, "objects", "_category_.yml"), yaml.dump(OBJECTS_CATEGORY));
@@ -138,24 +132,22 @@ function cleanupDocs(docsPaths: string[]): void {
   }
 }
 
-async function generateEnvio(protocol: Indexer.Protocol): Promise<string> {
-  const docsPath = `./docs/api/${protocol}/graphql/envio`;
-  const schemaURL = getIndexerEnvio({ chainId: CHAIN_ID_SEPOLIA, protocol }).endpoint.url;
+async function generateEnvio(indexer: Indexer.IndexerKey): Promise<string> {
+  const docsPath = `./docs/api/${indexer}/graphql/envio`;
+  const schemaURL = getIndexerEnvio({ chainId: CHAIN_ID_SEPOLIA, indexer }).endpoint.url;
 
   await runCommand(docsPath, schemaURL);
-  console.log(
-    `✔️  Generated GraphQL docs for Envio vendor and ${_.capitalize(protocol)} protocol\n`
-  );
+  console.log(`✔️  Generated GraphQL docs for Envio vendor and ${_.capitalize(indexer)} indexer\n`);
   return docsPath;
 }
 
-async function generateGraph(protocol: Indexer.Protocol): Promise<string> {
-  const docsPath = `./docs/api/${protocol}/graphql/the-graph`;
-  const schemaURL = getIndexerGraph({ chainId: CHAIN_ID_SEPOLIA, protocol }).testingURL;
+async function generateGraph(indexer: Indexer.IndexerKey): Promise<string> {
+  const docsPath = `./docs/api/${indexer}/graphql/the-graph`;
+  const schemaURL = getIndexerGraph({ chainId: CHAIN_ID_SEPOLIA, indexer }).testingURL;
 
   await runCommand(docsPath, schemaURL);
   console.log(
-    `✔️  Generated GraphQL docs for The Graph vendor and ${_.capitalize(protocol)} protocol\n`
+    `✔️  Generated GraphQL docs for The Graph vendor and ${_.capitalize(indexer)} indexer\n`
   );
   return docsPath;
 }

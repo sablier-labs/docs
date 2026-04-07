@@ -1,0 +1,122 @@
+---
+id: lockup-batch
+title: LockupBatch
+---
+
+<head>
+  <meta content="noindex" name="robots" />
+  <meta charset="utf-8" />
+</head>
+
+export const Bullet = () => (
+  <>
+    <span style={{ fontWeight: "normal", fontSize: ".5em", color: "var(--ifm-color-secondary-darkest)" }}>
+      &nbsp;●&nbsp;
+    </span>
+  </>
+);
+
+export const SpecifiedBy = (props) => (
+  <>
+    Specification
+    <a
+      className="link"
+      style={{ fontSize: "1.5em", paddingLeft: "4px" }}
+      target="_blank"
+      href={props.url}
+      title={"Specified by " + props.url}
+    >
+      ⎘
+    </a>
+  </>
+);
+
+export const Badge = (props) => (
+  <>
+    <span className={props.class}>{props.text}</span>
+  </>
+);
+
+import { useState } from "react";
+
+export const Details = ({ dataOpen, dataClose, children, startOpen = false }) => {
+  const [open, setOpen] = useState(startOpen);
+  return (
+    <details
+      {...(open ? { open: true } : {})}
+      className="details"
+      style={{ border: "none", boxShadow: "none", background: "var(--ifm-background-color)" }}
+    >
+      <summary
+        onClick={(e) => {
+          e.preventDefault();
+          setOpen((open) => !open);
+        }}
+        style={{ listStyle: "none" }}
+      >
+        {open ? dataOpen : dataClose}
+      </summary>
+      {open && children}
+    </details>
+  );
+};
+
+Creating streams in bulk is possible using the Sablier batch contracts.
+
+```graphql
+type LockupBatch {
+  id: String!
+  hash: Bytes
+  timestamp: BigInt
+  batcher: LockupBatcher
+  position: BigInt
+  size: BigInt!
+  streams(
+    skip: Int = 0
+    first: Int = 100
+    orderBy: LockupStream_orderBy
+    orderDirection: OrderDirection
+    where: LockupStream_filter
+  ): [LockupStream!]!
+}
+```
+
+### Fields
+
+#### [<code style={{ fontWeight: 'normal' }}>LockupBatch.<b>id</b></code>](#id)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String!</b></code>](/docs/api/streams/graphql/the-graph/scalars/string.mdx) <Badge class="badge badge--secondary badge--non_null" text="non-null"/> <Badge class="badge badge--secondary " text="scalar"/> \{#id\}
+
+Unique identifier: `batch-{chainId}-{txHash}-{batcher}`
+
+#### [<code style={{ fontWeight: 'normal' }}>LockupBatch.<b>hash</b></code>](#hash)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Bytes</b></code>](/docs/api/streams/graphql/the-graph/scalars/bytes.mdx) <Badge class="badge badge--secondary " text="scalar"/> \{#hash\}
+
+Hash of the Ethereum transaction that created this batch.
+
+#### [<code style={{ fontWeight: 'normal' }}>LockupBatch.<b>timestamp</b></code>](#timestamp)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>BigInt</b></code>](/docs/api/streams/graphql/the-graph/scalars/big-int.mdx) <Badge class="badge badge--secondary " text="scalar"/> \{#timestamp\}
+
+Timestamp of the transaction that created this batch.
+
+#### [<code style={{ fontWeight: 'normal' }}>LockupBatch.<b>batcher</b></code>](#batcher)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>LockupBatcher</b></code>](/docs/api/streams/graphql/the-graph/objects/lockup-batcher.mdx) <Badge class="badge badge--secondary " text="object"/> \{#batcher\}
+
+The sender address that created this batch.
+
+#### [<code style={{ fontWeight: 'normal' }}>LockupBatch.<b>position</b></code>](#position)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>BigInt</b></code>](/docs/api/streams/graphql/the-graph/scalars/big-int.mdx) <Badge class="badge badge--secondary " text="scalar"/> \{#position\}
+
+Index of the batch based on the `batchCounter` in the `Batcher` entity.
+
+#### [<code style={{ fontWeight: 'normal' }}>LockupBatch.<b>size</b></code>](#size)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>BigInt!</b></code>](/docs/api/streams/graphql/the-graph/scalars/big-int.mdx) <Badge class="badge badge--secondary badge--non_null" text="non-null"/> <Badge class="badge badge--secondary " text="scalar"/> \{#size\}
+
+Number of streams part of this batch.
+
+#### [<code style={{ fontWeight: 'normal' }}>LockupBatch.<b>streams</b></code>](#streams)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>[LockupStream!]!</b></code>](/docs/api/streams/graphql/the-graph/objects/lockup-stream.mdx) <Badge class="badge badge--secondary badge--non_null" text="non-null"/> <Badge class="badge badge--secondary " text="object"/> \{#streams\}
+
+Streams part of this batch.
+
+##### [<code style={{ fontWeight: 'normal' }}>LockupBatch.streams.<b>skip</b></code>](#lockup-batch-streams-skip)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Int</b></code>](/docs/api/streams/graphql/the-graph/scalars/int.mdx) <Badge class="badge badge--secondary " text="scalar"/> \{#lockup-batch-streams-skip\}
+
+##### [<code style={{ fontWeight: 'normal' }}>LockupBatch.streams.<b>first</b></code>](#lockup-batch-streams-first)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Int</b></code>](/docs/api/streams/graphql/the-graph/scalars/int.mdx) <Badge class="badge badge--secondary " text="scalar"/> \{#lockup-batch-streams-first\}
+
+##### [<code style={{ fontWeight: 'normal' }}>LockupBatch.streams.<b>orderBy</b></code>](#lockup-batch-streams-order-by)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>LockupStream_orderBy</b></code>](/docs/api/streams/graphql/the-graph/enums/lockup-stream-order-by.mdx) <Badge class="badge badge--secondary " text="enum"/> \{#lockup-batch-streams-order-by\}
+
+##### [<code style={{ fontWeight: 'normal' }}>LockupBatch.streams.<b>orderDirection</b></code>](#lockup-batch-streams-order-direction)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>OrderDirection</b></code>](/docs/api/streams/graphql/the-graph/enums/order-direction.mdx) <Badge class="badge badge--secondary " text="enum"/> \{#lockup-batch-streams-order-direction\}
+
+##### [<code style={{ fontWeight: 'normal' }}>LockupBatch.streams.<b>where</b></code>](#lockup-batch-streams-where)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>LockupStream_filter</b></code>](/docs/api/streams/graphql/the-graph/inputs/lockup-stream-filter.mdx) <Badge class="badge badge--secondary " text="input"/> \{#lockup-batch-streams-where\}

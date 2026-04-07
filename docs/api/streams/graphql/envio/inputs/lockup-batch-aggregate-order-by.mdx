@@ -1,0 +1,104 @@
+---
+id: lockup-batch-aggregate-order-by
+title: LockupBatch_aggregate_order_by
+---
+
+<head>
+  <meta content="noindex" name="robots" />
+  <meta charset="utf-8" />
+</head>
+
+export const Bullet = () => (
+  <>
+    <span style={{ fontWeight: "normal", fontSize: ".5em", color: "var(--ifm-color-secondary-darkest)" }}>
+      &nbsp;●&nbsp;
+    </span>
+  </>
+);
+
+export const SpecifiedBy = (props) => (
+  <>
+    Specification
+    <a
+      className="link"
+      style={{ fontSize: "1.5em", paddingLeft: "4px" }}
+      target="_blank"
+      href={props.url}
+      title={"Specified by " + props.url}
+    >
+      ⎘
+    </a>
+  </>
+);
+
+export const Badge = (props) => (
+  <>
+    <span className={props.class}>{props.text}</span>
+  </>
+);
+
+import { useState } from "react";
+
+export const Details = ({ dataOpen, dataClose, children, startOpen = false }) => {
+  const [open, setOpen] = useState(startOpen);
+  return (
+    <details
+      {...(open ? { open: true } : {})}
+      className="details"
+      style={{ border: "none", boxShadow: "none", background: "var(--ifm-background-color)" }}
+    >
+      <summary
+        onClick={(e) => {
+          e.preventDefault();
+          setOpen((open) => !open);
+        }}
+        style={{ listStyle: "none" }}
+      >
+        {open ? dataOpen : dataClose}
+      </summary>
+      {open && children}
+    </details>
+  );
+};
+
+order by aggregate values of table "LockupBatch"
+
+```graphql
+input LockupBatch_aggregate_order_by {
+  avg: LockupBatch_avg_order_by
+  count: order_by
+  max: LockupBatch_max_order_by
+  min: LockupBatch_min_order_by
+  stddev: LockupBatch_stddev_order_by
+  stddev_pop: LockupBatch_stddev_pop_order_by
+  stddev_samp: LockupBatch_stddev_samp_order_by
+  sum: LockupBatch_sum_order_by
+  var_pop: LockupBatch_var_pop_order_by
+  var_samp: LockupBatch_var_samp_order_by
+  variance: LockupBatch_variance_order_by
+}
+```
+
+### Fields
+
+#### [<code style={{ fontWeight: 'normal' }}>LockupBatch_aggregate_order_by.<b>avg</b></code>](#avg)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>LockupBatch_avg_order_by</b></code>](/docs/api/streams/graphql/envio/inputs/lockup-batch-avg-order-by.mdx) <Badge class="badge badge--secondary " text="input"/> \{#avg\}
+
+#### [<code style={{ fontWeight: 'normal' }}>LockupBatch_aggregate_order_by.<b>count</b></code>](#count)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>order_by</b></code>](/docs/api/streams/graphql/envio/enums/order-by.mdx) <Badge class="badge badge--secondary " text="enum"/> \{#count\}
+
+#### [<code style={{ fontWeight: 'normal' }}>LockupBatch_aggregate_order_by.<b>max</b></code>](#max)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>LockupBatch_max_order_by</b></code>](/docs/api/streams/graphql/envio/inputs/lockup-batch-max-order-by.mdx) <Badge class="badge badge--secondary " text="input"/> \{#max\}
+
+#### [<code style={{ fontWeight: 'normal' }}>LockupBatch_aggregate_order_by.<b>min</b></code>](#min)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>LockupBatch_min_order_by</b></code>](/docs/api/streams/graphql/envio/inputs/lockup-batch-min-order-by.mdx) <Badge class="badge badge--secondary " text="input"/> \{#min\}
+
+#### [<code style={{ fontWeight: 'normal' }}>LockupBatch_aggregate_order_by.<b>stddev</b></code>](#stddev)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>LockupBatch_stddev_order_by</b></code>](/docs/api/streams/graphql/envio/inputs/lockup-batch-stddev-order-by.mdx) <Badge class="badge badge--secondary " text="input"/> \{#stddev\}
+
+#### [<code style={{ fontWeight: 'normal' }}>LockupBatch_aggregate_order_by.<b>stddev_pop</b></code>](#stddev-pop)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>LockupBatch_stddev_pop_order_by</b></code>](/docs/api/streams/graphql/envio/inputs/lockup-batch-stddev-pop-order-by.mdx) <Badge class="badge badge--secondary " text="input"/> \{#stddev-pop\}
+
+#### [<code style={{ fontWeight: 'normal' }}>LockupBatch_aggregate_order_by.<b>stddev_samp</b></code>](#stddev-samp)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>LockupBatch_stddev_samp_order_by</b></code>](/docs/api/streams/graphql/envio/inputs/lockup-batch-stddev-samp-order-by.mdx) <Badge class="badge badge--secondary " text="input"/> \{#stddev-samp\}
+
+#### [<code style={{ fontWeight: 'normal' }}>LockupBatch_aggregate_order_by.<b>sum</b></code>](#sum)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>LockupBatch_sum_order_by</b></code>](/docs/api/streams/graphql/envio/inputs/lockup-batch-sum-order-by.mdx) <Badge class="badge badge--secondary " text="input"/> \{#sum\}
+
+#### [<code style={{ fontWeight: 'normal' }}>LockupBatch_aggregate_order_by.<b>var_pop</b></code>](#var-pop)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>LockupBatch_var_pop_order_by</b></code>](/docs/api/streams/graphql/envio/inputs/lockup-batch-var-pop-order-by.mdx) <Badge class="badge badge--secondary " text="input"/> \{#var-pop\}
+
+#### [<code style={{ fontWeight: 'normal' }}>LockupBatch_aggregate_order_by.<b>var_samp</b></code>](#var-samp)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>LockupBatch_var_samp_order_by</b></code>](/docs/api/streams/graphql/envio/inputs/lockup-batch-var-samp-order-by.mdx) <Badge class="badge badge--secondary " text="input"/> \{#var-samp\}
+
+#### [<code style={{ fontWeight: 'normal' }}>LockupBatch_aggregate_order_by.<b>variance</b></code>](#variance)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>LockupBatch_variance_order_by</b></code>](/docs/api/streams/graphql/envio/inputs/lockup-batch-variance-order-by.mdx) <Badge class="badge badge--secondary " text="input"/> \{#variance\}

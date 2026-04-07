@@ -1,0 +1,108 @@
+---
+id: flow-stream-aggregate-fields
+title: FlowStream_aggregate_fields
+---
+
+<head>
+  <meta content="noindex" name="robots" />
+  <meta charset="utf-8" />
+</head>
+
+export const Bullet = () => (
+  <>
+    <span style={{ fontWeight: "normal", fontSize: ".5em", color: "var(--ifm-color-secondary-darkest)" }}>
+      &nbsp;●&nbsp;
+    </span>
+  </>
+);
+
+export const SpecifiedBy = (props) => (
+  <>
+    Specification
+    <a
+      className="link"
+      style={{ fontSize: "1.5em", paddingLeft: "4px" }}
+      target="_blank"
+      href={props.url}
+      title={"Specified by " + props.url}
+    >
+      ⎘
+    </a>
+  </>
+);
+
+export const Badge = (props) => (
+  <>
+    <span className={props.class}>{props.text}</span>
+  </>
+);
+
+import { useState } from "react";
+
+export const Details = ({ dataOpen, dataClose, children, startOpen = false }) => {
+  const [open, setOpen] = useState(startOpen);
+  return (
+    <details
+      {...(open ? { open: true } : {})}
+      className="details"
+      style={{ border: "none", boxShadow: "none", background: "var(--ifm-background-color)" }}
+    >
+      <summary
+        onClick={(e) => {
+          e.preventDefault();
+          setOpen((open) => !open);
+        }}
+        style={{ listStyle: "none" }}
+      >
+        {open ? dataOpen : dataClose}
+      </summary>
+      {open && children}
+    </details>
+  );
+};
+
+aggregate fields of "FlowStream"
+
+```graphql
+type FlowStream_aggregate_fields {
+  avg: FlowStream_avg_fields
+  count(columns: [FlowStream_select_column!], distinct: Boolean): Int!
+  max: FlowStream_max_fields
+  min: FlowStream_min_fields
+  stddev: FlowStream_stddev_fields
+  stddev_pop: FlowStream_stddev_pop_fields
+  stddev_samp: FlowStream_stddev_samp_fields
+  sum: FlowStream_sum_fields
+  var_pop: FlowStream_var_pop_fields
+  var_samp: FlowStream_var_samp_fields
+  variance: FlowStream_variance_fields
+}
+```
+
+### Fields
+
+#### [<code style={{ fontWeight: 'normal' }}>FlowStream_aggregate_fields.<b>avg</b></code>](#avg)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>FlowStream_avg_fields</b></code>](/docs/api/streams/graphql/envio/objects/flow-stream-avg-fields.mdx) <Badge class="badge badge--secondary " text="object"/> \{#avg\}
+
+#### [<code style={{ fontWeight: 'normal' }}>FlowStream_aggregate_fields.<b>count</b></code>](#count)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Int!</b></code>](/docs/api/streams/graphql/envio/scalars/int.mdx) <Badge class="badge badge--secondary badge--non_null" text="non-null"/> <Badge class="badge badge--secondary " text="scalar"/> \{#count\}
+
+##### [<code style={{ fontWeight: 'normal' }}>FlowStream_aggregate_fields.count.<b>columns</b></code>](#flow-stream-aggregate-fields-count-columns)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>[FlowStream_select_column!]</b></code>](/docs/api/streams/graphql/envio/enums/flow-stream-select-column.mdx) <Badge class="badge badge--secondary " text="list"/> <Badge class="badge badge--secondary " text="enum"/> \{#flow-stream-aggregate-fields-count-columns\}
+
+##### [<code style={{ fontWeight: 'normal' }}>FlowStream_aggregate_fields.count.<b>distinct</b></code>](#flow-stream-aggregate-fields-count-distinct)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Boolean</b></code>](/docs/api/streams/graphql/envio/scalars/boolean.mdx) <Badge class="badge badge--secondary " text="scalar"/> \{#flow-stream-aggregate-fields-count-distinct\}
+
+#### [<code style={{ fontWeight: 'normal' }}>FlowStream_aggregate_fields.<b>max</b></code>](#max)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>FlowStream_max_fields</b></code>](/docs/api/streams/graphql/envio/objects/flow-stream-max-fields.mdx) <Badge class="badge badge--secondary " text="object"/> \{#max\}
+
+#### [<code style={{ fontWeight: 'normal' }}>FlowStream_aggregate_fields.<b>min</b></code>](#min)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>FlowStream_min_fields</b></code>](/docs/api/streams/graphql/envio/objects/flow-stream-min-fields.mdx) <Badge class="badge badge--secondary " text="object"/> \{#min\}
+
+#### [<code style={{ fontWeight: 'normal' }}>FlowStream_aggregate_fields.<b>stddev</b></code>](#stddev)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>FlowStream_stddev_fields</b></code>](/docs/api/streams/graphql/envio/objects/flow-stream-stddev-fields.mdx) <Badge class="badge badge--secondary " text="object"/> \{#stddev\}
+
+#### [<code style={{ fontWeight: 'normal' }}>FlowStream_aggregate_fields.<b>stddev_pop</b></code>](#stddev-pop)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>FlowStream_stddev_pop_fields</b></code>](/docs/api/streams/graphql/envio/objects/flow-stream-stddev-pop-fields.mdx) <Badge class="badge badge--secondary " text="object"/> \{#stddev-pop\}
+
+#### [<code style={{ fontWeight: 'normal' }}>FlowStream_aggregate_fields.<b>stddev_samp</b></code>](#stddev-samp)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>FlowStream_stddev_samp_fields</b></code>](/docs/api/streams/graphql/envio/objects/flow-stream-stddev-samp-fields.mdx) <Badge class="badge badge--secondary " text="object"/> \{#stddev-samp\}
+
+#### [<code style={{ fontWeight: 'normal' }}>FlowStream_aggregate_fields.<b>sum</b></code>](#sum)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>FlowStream_sum_fields</b></code>](/docs/api/streams/graphql/envio/objects/flow-stream-sum-fields.mdx) <Badge class="badge badge--secondary " text="object"/> \{#sum\}
+
+#### [<code style={{ fontWeight: 'normal' }}>FlowStream_aggregate_fields.<b>var_pop</b></code>](#var-pop)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>FlowStream_var_pop_fields</b></code>](/docs/api/streams/graphql/envio/objects/flow-stream-var-pop-fields.mdx) <Badge class="badge badge--secondary " text="object"/> \{#var-pop\}
+
+#### [<code style={{ fontWeight: 'normal' }}>FlowStream_aggregate_fields.<b>var_samp</b></code>](#var-samp)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>FlowStream_var_samp_fields</b></code>](/docs/api/streams/graphql/envio/objects/flow-stream-var-samp-fields.mdx) <Badge class="badge badge--secondary " text="object"/> \{#var-samp\}
+
+#### [<code style={{ fontWeight: 'normal' }}>FlowStream_aggregate_fields.<b>variance</b></code>](#variance)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>FlowStream_variance_fields</b></code>](/docs/api/streams/graphql/envio/objects/flow-stream-variance-fields.mdx) <Badge class="badge badge--secondary " text="object"/> \{#variance\}

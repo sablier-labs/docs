@@ -1,0 +1,110 @@
+---
+id: meta-bool-exp
+title: _meta_bool_exp
+---
+
+<head>
+  <meta content="noindex" name="robots" />
+  <meta charset="utf-8" />
+</head>
+
+export const Bullet = () => (
+  <>
+    <span style={{ fontWeight: "normal", fontSize: ".5em", color: "var(--ifm-color-secondary-darkest)" }}>
+      &nbsp;●&nbsp;
+    </span>
+  </>
+);
+
+export const SpecifiedBy = (props) => (
+  <>
+    Specification
+    <a
+      className="link"
+      style={{ fontSize: "1.5em", paddingLeft: "4px" }}
+      target="_blank"
+      href={props.url}
+      title={"Specified by " + props.url}
+    >
+      ⎘
+    </a>
+  </>
+);
+
+export const Badge = (props) => (
+  <>
+    <span className={props.class}>{props.text}</span>
+  </>
+);
+
+import { useState } from "react";
+
+export const Details = ({ dataOpen, dataClose, children, startOpen = false }) => {
+  const [open, setOpen] = useState(startOpen);
+  return (
+    <details
+      {...(open ? { open: true } : {})}
+      className="details"
+      style={{ border: "none", boxShadow: "none", background: "var(--ifm-background-color)" }}
+    >
+      <summary
+        onClick={(e) => {
+          e.preventDefault();
+          setOpen((open) => !open);
+        }}
+        style={{ listStyle: "none" }}
+      >
+        {open ? dataOpen : dataClose}
+      </summary>
+      {open && children}
+    </details>
+  );
+};
+
+Boolean expression to filter rows from the table "\_meta". All fields are combined with a logical 'AND'.
+
+```graphql
+input _meta_bool_exp {
+  _and: [_meta_bool_exp!]
+  _not: _meta_bool_exp
+  _or: [_meta_bool_exp!]
+  bufferBlock: Int_comparison_exp
+  chainId: Int_comparison_exp
+  endBlock: Int_comparison_exp
+  eventsProcessed: Int_comparison_exp
+  firstEventBlock: Int_comparison_exp
+  isReady: Boolean_comparison_exp
+  progressBlock: Int_comparison_exp
+  readyAt: timestamptz_comparison_exp
+  sourceBlock: Int_comparison_exp
+  startBlock: Int_comparison_exp
+}
+```
+
+### Fields
+
+#### [<code style={{ fontWeight: 'normal' }}>\_meta_bool_exp.<b>\_and</b></code>](#and)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>[\_meta_bool_exp!]</b></code>](/docs/api/streams/graphql/envio/inputs/meta-bool-exp.mdx) <Badge class="badge badge--secondary " text="list"/> <Badge class="badge badge--secondary " text="input"/> \{#and\}
+
+#### [<code style={{ fontWeight: 'normal' }}>\_meta_bool_exp.<b>\_not</b></code>](#not)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>\_meta_bool_exp</b></code>](/docs/api/streams/graphql/envio/inputs/meta-bool-exp.mdx) <Badge class="badge badge--secondary " text="input"/> \{#not\}
+
+#### [<code style={{ fontWeight: 'normal' }}>\_meta_bool_exp.<b>\_or</b></code>](#or)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>[\_meta_bool_exp!]</b></code>](/docs/api/streams/graphql/envio/inputs/meta-bool-exp.mdx) <Badge class="badge badge--secondary " text="list"/> <Badge class="badge badge--secondary " text="input"/> \{#or\}
+
+#### [<code style={{ fontWeight: 'normal' }}>\_meta_bool_exp.<b>bufferBlock</b></code>](#buffer-block)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Int_comparison_exp</b></code>](/docs/api/streams/graphql/envio/inputs/int-comparison-exp.mdx) <Badge class="badge badge--secondary " text="input"/> \{#buffer-block\}
+
+#### [<code style={{ fontWeight: 'normal' }}>\_meta_bool_exp.<b>chainId</b></code>](#chain-id)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Int_comparison_exp</b></code>](/docs/api/streams/graphql/envio/inputs/int-comparison-exp.mdx) <Badge class="badge badge--secondary " text="input"/> \{#chain-id\}
+
+#### [<code style={{ fontWeight: 'normal' }}>\_meta_bool_exp.<b>endBlock</b></code>](#end-block)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Int_comparison_exp</b></code>](/docs/api/streams/graphql/envio/inputs/int-comparison-exp.mdx) <Badge class="badge badge--secondary " text="input"/> \{#end-block\}
+
+#### [<code style={{ fontWeight: 'normal' }}>\_meta_bool_exp.<b>eventsProcessed</b></code>](#events-processed)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Int_comparison_exp</b></code>](/docs/api/streams/graphql/envio/inputs/int-comparison-exp.mdx) <Badge class="badge badge--secondary " text="input"/> \{#events-processed\}
+
+#### [<code style={{ fontWeight: 'normal' }}>\_meta_bool_exp.<b>firstEventBlock</b></code>](#first-event-block)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Int_comparison_exp</b></code>](/docs/api/streams/graphql/envio/inputs/int-comparison-exp.mdx) <Badge class="badge badge--secondary " text="input"/> \{#first-event-block\}
+
+#### [<code style={{ fontWeight: 'normal' }}>\_meta_bool_exp.<b>isReady</b></code>](#is-ready)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Boolean_comparison_exp</b></code>](/docs/api/streams/graphql/envio/inputs/boolean-comparison-exp.mdx) <Badge class="badge badge--secondary " text="input"/> \{#is-ready\}
+
+#### [<code style={{ fontWeight: 'normal' }}>\_meta_bool_exp.<b>progressBlock</b></code>](#progress-block)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Int_comparison_exp</b></code>](/docs/api/streams/graphql/envio/inputs/int-comparison-exp.mdx) <Badge class="badge badge--secondary " text="input"/> \{#progress-block\}
+
+#### [<code style={{ fontWeight: 'normal' }}>\_meta_bool_exp.<b>readyAt</b></code>](#ready-at)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>timestamptz_comparison_exp</b></code>](/docs/api/streams/graphql/envio/inputs/timestamptz-comparison-exp.mdx) <Badge class="badge badge--secondary " text="input"/> \{#ready-at\}
+
+#### [<code style={{ fontWeight: 'normal' }}>\_meta_bool_exp.<b>sourceBlock</b></code>](#source-block)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Int_comparison_exp</b></code>](/docs/api/streams/graphql/envio/inputs/int-comparison-exp.mdx) <Badge class="badge badge--secondary " text="input"/> \{#source-block\}
+
+#### [<code style={{ fontWeight: 'normal' }}>\_meta_bool_exp.<b>startBlock</b></code>](#start-block)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Int_comparison_exp</b></code>](/docs/api/streams/graphql/envio/inputs/int-comparison-exp.mdx) <Badge class="badge badge--secondary " text="input"/> \{#start-block\}

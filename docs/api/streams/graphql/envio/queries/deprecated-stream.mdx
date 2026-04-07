@@ -1,0 +1,102 @@
+---
+id: deprecated-stream
+title: DeprecatedStream
+---
+
+<head>
+  <meta content="noindex" name="robots" />
+  <meta charset="utf-8" />
+</head>
+
+export const Bullet = () => (
+  <>
+    <span style={{ fontWeight: "normal", fontSize: ".5em", color: "var(--ifm-color-secondary-darkest)" }}>
+      &nbsp;●&nbsp;
+    </span>
+  </>
+);
+
+export const SpecifiedBy = (props) => (
+  <>
+    Specification
+    <a
+      className="link"
+      style={{ fontSize: "1.5em", paddingLeft: "4px" }}
+      target="_blank"
+      href={props.url}
+      title={"Specified by " + props.url}
+    >
+      ⎘
+    </a>
+  </>
+);
+
+export const Badge = (props) => (
+  <>
+    <span className={props.class}>{props.text}</span>
+  </>
+);
+
+import { useState } from "react";
+
+export const Details = ({ dataOpen, dataClose, children, startOpen = false }) => {
+  const [open, setOpen] = useState(startOpen);
+  return (
+    <details
+      {...(open ? { open: true } : {})}
+      className="details"
+      style={{ border: "none", boxShadow: "none", background: "var(--ifm-background-color)" }}
+    >
+      <summary
+        onClick={(e) => {
+          e.preventDefault();
+          setOpen((open) => !open);
+        }}
+        style={{ listStyle: "none" }}
+      >
+        {open ? dataOpen : dataClose}
+      </summary>
+      {open && children}
+    </details>
+  );
+};
+
+fetch data from the table: "DeprecatedStream"
+
+```graphql
+DeprecatedStream(
+  distinct_on: [DeprecatedStream_select_column!]
+  limit: Int
+  offset: Int
+  order_by: [DeprecatedStream_order_by!]
+  where: DeprecatedStream_bool_exp
+): [DeprecatedStream!]!
+```
+
+### Arguments
+
+#### [<code style={{ fontWeight: 'normal' }}>DeprecatedStream.<b>distinct_on</b></code>](#distinct-on)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>[DeprecatedStream_select_column!]</b></code>](/docs/api/streams/graphql/envio/enums/deprecated-stream-select-column.mdx) <Badge class="badge badge--secondary " text="list"/> <Badge class="badge badge--secondary " text="enum"/> \{#distinct-on\}
+
+distinct select on columns
+
+#### [<code style={{ fontWeight: 'normal' }}>DeprecatedStream.<b>limit</b></code>](#limit)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Int</b></code>](/docs/api/streams/graphql/envio/scalars/int.mdx) <Badge class="badge badge--secondary " text="scalar"/> \{#limit\}
+
+limit the number of rows returned
+
+#### [<code style={{ fontWeight: 'normal' }}>DeprecatedStream.<b>offset</b></code>](#offset)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Int</b></code>](/docs/api/streams/graphql/envio/scalars/int.mdx) <Badge class="badge badge--secondary " text="scalar"/> \{#offset\}
+
+skip the first n rows. Use only with order_by
+
+#### [<code style={{ fontWeight: 'normal' }}>DeprecatedStream.<b>order_by</b></code>](#order-by)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>[DeprecatedStream_order_by!]</b></code>](/docs/api/streams/graphql/envio/inputs/deprecated-stream-order-by.mdx) <Badge class="badge badge--secondary " text="list"/> <Badge class="badge badge--secondary " text="input"/> \{#order-by\}
+
+sort the rows by one or more columns
+
+#### [<code style={{ fontWeight: 'normal' }}>DeprecatedStream.<b>where</b></code>](#where)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>DeprecatedStream_bool_exp</b></code>](/docs/api/streams/graphql/envio/inputs/deprecated-stream-bool-exp.mdx) <Badge class="badge badge--secondary " text="input"/> \{#where\}
+
+filter the rows returned
+
+### Type
+
+#### [<code style={{ fontWeight: 'normal' }}><b>DeprecatedStream</b></code>](/docs/api/streams/graphql/envio/objects/deprecated-stream.mdx) <Badge class="badge badge--secondary " text="object"/>
+
+columns and relationships of "DeprecatedStream"

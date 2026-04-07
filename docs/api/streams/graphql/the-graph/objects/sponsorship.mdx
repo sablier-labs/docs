@@ -1,0 +1,121 @@
+---
+id: sponsorship
+title: Sponsorship
+---
+
+<head>
+  <meta content="noindex" name="robots" />
+  <meta charset="utf-8" />
+</head>
+
+export const Bullet = () => (
+  <>
+    <span style={{ fontWeight: "normal", fontSize: ".5em", color: "var(--ifm-color-secondary-darkest)" }}>
+      &nbsp;●&nbsp;
+    </span>
+  </>
+);
+
+export const SpecifiedBy = (props) => (
+  <>
+    Specification
+    <a
+      className="link"
+      style={{ fontSize: "1.5em", paddingLeft: "4px" }}
+      target="_blank"
+      href={props.url}
+      title={"Specified by " + props.url}
+    >
+      ⎘
+    </a>
+  </>
+);
+
+export const Badge = (props) => (
+  <>
+    <span className={props.class}>{props.text}</span>
+  </>
+);
+
+import { useState } from "react";
+
+export const Details = ({ dataOpen, dataClose, children, startOpen = false }) => {
+  const [open, setOpen] = useState(startOpen);
+  return (
+    <details
+      {...(open ? { open: true } : {})}
+      className="details"
+      style={{ border: "none", boxShadow: "none", background: "var(--ifm-background-color)" }}
+    >
+      <summary
+        onClick={(e) => {
+          e.preventDefault();
+          setOpen((open) => !open);
+        }}
+        style={{ listStyle: "none" }}
+      >
+        {open ? dataOpen : dataClose}
+      </summary>
+      {open && children}
+    </details>
+  );
+};
+
+A single USDC transfer to the Sablier treasury. Immutable — one per Transfer event.
+
+```graphql
+type Sponsorship {
+  id: String!
+  amount: BigInt!
+  amountDisplay: String!
+  block: Int!
+  chainId: Int!
+  logIndex: Int!
+  sender: String!
+  sponsor: Sponsor!
+  timestamp: Int!
+  txHash: String!
+}
+```
+
+### Fields
+
+#### [<code style={{ fontWeight: 'normal' }}>Sponsorship.<b>id</b></code>](#id)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String!</b></code>](/docs/api/streams/graphql/the-graph/scalars/string.mdx) <Badge class="badge badge--secondary badge--non_null" text="non-null"/> <Badge class="badge badge--secondary " text="scalar"/> \{#id\}
+
+Unique identifier: `{chainId}_{txHash}_{logIndex}`
+
+#### [<code style={{ fontWeight: 'normal' }}>Sponsorship.<b>amount</b></code>](#amount)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>BigInt!</b></code>](/docs/api/streams/graphql/the-graph/scalars/big-int.mdx) <Badge class="badge badge--secondary badge--non_null" text="non-null"/> <Badge class="badge badge--secondary " text="scalar"/> \{#amount\}
+
+Raw USDC amount.
+
+#### [<code style={{ fontWeight: 'normal' }}>Sponsorship.<b>amountDisplay</b></code>](#amount-display)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String!</b></code>](/docs/api/streams/graphql/the-graph/scalars/string.mdx) <Badge class="badge badge--secondary badge--non_null" text="non-null"/> <Badge class="badge badge--secondary " text="scalar"/> \{#amount-display\}
+
+Human-readable USDC amount (e.g., "1719.12").
+
+#### [<code style={{ fontWeight: 'normal' }}>Sponsorship.<b>block</b></code>](#block)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Int!</b></code>](/docs/api/streams/graphql/the-graph/scalars/int.mdx) <Badge class="badge badge--secondary badge--non_null" text="non-null"/> <Badge class="badge badge--secondary " text="scalar"/> \{#block\}
+
+Block number of the transaction.
+
+#### [<code style={{ fontWeight: 'normal' }}>Sponsorship.<b>chainId</b></code>](#chain-id)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Int!</b></code>](/docs/api/streams/graphql/the-graph/scalars/int.mdx) <Badge class="badge badge--secondary badge--non_null" text="non-null"/> <Badge class="badge badge--secondary " text="scalar"/> \{#chain-id\}
+
+The ID of the chain where the transfer occurred (e.g., 1 for Ethereum).
+
+#### [<code style={{ fontWeight: 'normal' }}>Sponsorship.<b>logIndex</b></code>](#log-index)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Int!</b></code>](/docs/api/streams/graphql/the-graph/scalars/int.mdx) <Badge class="badge badge--secondary badge--non_null" text="non-null"/> <Badge class="badge badge--secondary " text="scalar"/> \{#log-index\}
+
+Log index of the Transfer event within the transaction.
+
+#### [<code style={{ fontWeight: 'normal' }}>Sponsorship.<b>sender</b></code>](#sender)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String!</b></code>](/docs/api/streams/graphql/the-graph/scalars/string.mdx) <Badge class="badge badge--secondary badge--non_null" text="non-null"/> <Badge class="badge badge--secondary " text="scalar"/> \{#sender\}
+
+Address of the transaction signer (may differ from `from` for contract wallets).
+
+#### [<code style={{ fontWeight: 'normal' }}>Sponsorship.<b>sponsor</b></code>](#sponsor)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Sponsor!</b></code>](/docs/api/streams/graphql/the-graph/objects/sponsor.mdx) <Badge class="badge badge--secondary badge--non_null" text="non-null"/> <Badge class="badge badge--secondary " text="object"/> \{#sponsor\}
+
+The sponsor who made this transfer.
+
+#### [<code style={{ fontWeight: 'normal' }}>Sponsorship.<b>timestamp</b></code>](#timestamp)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Int!</b></code>](/docs/api/streams/graphql/the-graph/scalars/int.mdx) <Badge class="badge badge--secondary badge--non_null" text="non-null"/> <Badge class="badge badge--secondary " text="scalar"/> \{#timestamp\}
+
+Unix timestamp of the transaction.
+
+#### [<code style={{ fontWeight: 'normal' }}>Sponsorship.<b>txHash</b></code>](#tx-hash)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String!</b></code>](/docs/api/streams/graphql/the-graph/scalars/string.mdx) <Badge class="badge badge--secondary badge--non_null" text="non-null"/> <Badge class="badge badge--secondary " text="scalar"/> \{#tx-hash\}
+
+Hash of the transaction.

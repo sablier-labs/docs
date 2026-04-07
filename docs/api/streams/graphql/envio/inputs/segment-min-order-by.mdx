@@ -1,0 +1,98 @@
+---
+id: segment-min-order-by
+title: Segment_min_order_by
+---
+
+<head>
+  <meta content="noindex" name="robots" />
+  <meta charset="utf-8" />
+</head>
+
+export const Bullet = () => (
+  <>
+    <span style={{ fontWeight: "normal", fontSize: ".5em", color: "var(--ifm-color-secondary-darkest)" }}>
+      &nbsp;●&nbsp;
+    </span>
+  </>
+);
+
+export const SpecifiedBy = (props) => (
+  <>
+    Specification
+    <a
+      className="link"
+      style={{ fontSize: "1.5em", paddingLeft: "4px" }}
+      target="_blank"
+      href={props.url}
+      title={"Specified by " + props.url}
+    >
+      ⎘
+    </a>
+  </>
+);
+
+export const Badge = (props) => (
+  <>
+    <span className={props.class}>{props.text}</span>
+  </>
+);
+
+import { useState } from "react";
+
+export const Details = ({ dataOpen, dataClose, children, startOpen = false }) => {
+  const [open, setOpen] = useState(startOpen);
+  return (
+    <details
+      {...(open ? { open: true } : {})}
+      className="details"
+      style={{ border: "none", boxShadow: "none", background: "var(--ifm-background-color)" }}
+    >
+      <summary
+        onClick={(e) => {
+          e.preventDefault();
+          setOpen((open) => !open);
+        }}
+        style={{ listStyle: "none" }}
+      >
+        {open ? dataOpen : dataClose}
+      </summary>
+      {open && children}
+    </details>
+  );
+};
+
+order by min() on columns of table "Segment"
+
+```graphql
+input Segment_min_order_by {
+  amount: order_by
+  endAmount: order_by
+  endTime: order_by
+  exponent: order_by
+  id: order_by
+  position: order_by
+  startAmount: order_by
+  startTime: order_by
+  stream_id: order_by
+}
+```
+
+### Fields
+
+#### [<code style={{ fontWeight: 'normal' }}>Segment_min_order_by.<b>amount</b></code>](#amount)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>order_by</b></code>](/docs/api/streams/graphql/envio/enums/order-by.mdx) <Badge class="badge badge--secondary " text="enum"/> \{#amount\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Segment_min_order_by.<b>endAmount</b></code>](#end-amount)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>order_by</b></code>](/docs/api/streams/graphql/envio/enums/order-by.mdx) <Badge class="badge badge--secondary " text="enum"/> \{#end-amount\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Segment_min_order_by.<b>endTime</b></code>](#end-time)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>order_by</b></code>](/docs/api/streams/graphql/envio/enums/order-by.mdx) <Badge class="badge badge--secondary " text="enum"/> \{#end-time\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Segment_min_order_by.<b>exponent</b></code>](#exponent)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>order_by</b></code>](/docs/api/streams/graphql/envio/enums/order-by.mdx) <Badge class="badge badge--secondary " text="enum"/> \{#exponent\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Segment_min_order_by.<b>id</b></code>](#id)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>order_by</b></code>](/docs/api/streams/graphql/envio/enums/order-by.mdx) <Badge class="badge badge--secondary " text="enum"/> \{#id\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Segment_min_order_by.<b>position</b></code>](#position)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>order_by</b></code>](/docs/api/streams/graphql/envio/enums/order-by.mdx) <Badge class="badge badge--secondary " text="enum"/> \{#position\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Segment_min_order_by.<b>startAmount</b></code>](#start-amount)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>order_by</b></code>](/docs/api/streams/graphql/envio/enums/order-by.mdx) <Badge class="badge badge--secondary " text="enum"/> \{#start-amount\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Segment_min_order_by.<b>startTime</b></code>](#start-time)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>order_by</b></code>](/docs/api/streams/graphql/envio/enums/order-by.mdx) <Badge class="badge badge--secondary " text="enum"/> \{#start-time\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Segment_min_order_by.<b>stream_id</b></code>](#stream-id)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>order_by</b></code>](/docs/api/streams/graphql/envio/enums/order-by.mdx) <Badge class="badge badge--secondary " text="enum"/> \{#stream-id\}

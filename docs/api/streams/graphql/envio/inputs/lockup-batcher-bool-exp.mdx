@@ -1,0 +1,92 @@
+---
+id: lockup-batcher-bool-exp
+title: LockupBatcher_bool_exp
+---
+
+<head>
+  <meta content="noindex" name="robots" />
+  <meta charset="utf-8" />
+</head>
+
+export const Bullet = () => (
+  <>
+    <span style={{ fontWeight: "normal", fontSize: ".5em", color: "var(--ifm-color-secondary-darkest)" }}>
+      &nbsp;●&nbsp;
+    </span>
+  </>
+);
+
+export const SpecifiedBy = (props) => (
+  <>
+    Specification
+    <a
+      className="link"
+      style={{ fontSize: "1.5em", paddingLeft: "4px" }}
+      target="_blank"
+      href={props.url}
+      title={"Specified by " + props.url}
+    >
+      ⎘
+    </a>
+  </>
+);
+
+export const Badge = (props) => (
+  <>
+    <span className={props.class}>{props.text}</span>
+  </>
+);
+
+import { useState } from "react";
+
+export const Details = ({ dataOpen, dataClose, children, startOpen = false }) => {
+  const [open, setOpen] = useState(startOpen);
+  return (
+    <details
+      {...(open ? { open: true } : {})}
+      className="details"
+      style={{ border: "none", boxShadow: "none", background: "var(--ifm-background-color)" }}
+    >
+      <summary
+        onClick={(e) => {
+          e.preventDefault();
+          setOpen((open) => !open);
+        }}
+        style={{ listStyle: "none" }}
+      >
+        {open ? dataOpen : dataClose}
+      </summary>
+      {open && children}
+    </details>
+  );
+};
+
+Boolean expression to filter rows from the table "LockupBatcher". All fields are combined with a logical 'AND'.
+
+```graphql
+input LockupBatcher_bool_exp {
+  _and: [LockupBatcher_bool_exp!]
+  _not: LockupBatcher_bool_exp
+  _or: [LockupBatcher_bool_exp!]
+  batchCounter: numeric_comparison_exp
+  batches: LockupBatch_bool_exp
+  batches_aggregate: LockupBatch_aggregate_bool_exp
+  id: String_comparison_exp
+}
+```
+
+### Fields
+
+#### [<code style={{ fontWeight: 'normal' }}>LockupBatcher_bool_exp.<b>\_and</b></code>](#and)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>[LockupBatcher_bool_exp!]</b></code>](/docs/api/streams/graphql/envio/inputs/lockup-batcher-bool-exp.mdx) <Badge class="badge badge--secondary " text="list"/> <Badge class="badge badge--secondary " text="input"/> \{#and\}
+
+#### [<code style={{ fontWeight: 'normal' }}>LockupBatcher_bool_exp.<b>\_not</b></code>](#not)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>LockupBatcher_bool_exp</b></code>](/docs/api/streams/graphql/envio/inputs/lockup-batcher-bool-exp.mdx) <Badge class="badge badge--secondary " text="input"/> \{#not\}
+
+#### [<code style={{ fontWeight: 'normal' }}>LockupBatcher_bool_exp.<b>\_or</b></code>](#or)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>[LockupBatcher_bool_exp!]</b></code>](/docs/api/streams/graphql/envio/inputs/lockup-batcher-bool-exp.mdx) <Badge class="badge badge--secondary " text="list"/> <Badge class="badge badge--secondary " text="input"/> \{#or\}
+
+#### [<code style={{ fontWeight: 'normal' }}>LockupBatcher_bool_exp.<b>batchCounter</b></code>](#batch-counter)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>numeric_comparison_exp</b></code>](/docs/api/streams/graphql/envio/inputs/numeric-comparison-exp.mdx) <Badge class="badge badge--secondary " text="input"/> \{#batch-counter\}
+
+#### [<code style={{ fontWeight: 'normal' }}>LockupBatcher_bool_exp.<b>batches</b></code>](#batches)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>LockupBatch_bool_exp</b></code>](/docs/api/streams/graphql/envio/inputs/lockup-batch-bool-exp.mdx) <Badge class="badge badge--secondary " text="input"/> \{#batches\}
+
+#### [<code style={{ fontWeight: 'normal' }}>LockupBatcher_bool_exp.<b>batches_aggregate</b></code>](#batches-aggregate)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>LockupBatch_aggregate_bool_exp</b></code>](/docs/api/streams/graphql/envio/inputs/lockup-batch-aggregate-bool-exp.mdx) <Badge class="badge badge--secondary " text="input"/> \{#batches-aggregate\}
+
+#### [<code style={{ fontWeight: 'normal' }}>LockupBatcher_bool_exp.<b>id</b></code>](#id)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String_comparison_exp</b></code>](/docs/api/streams/graphql/envio/inputs/string-comparison-exp.mdx) <Badge class="badge badge--secondary " text="input"/> \{#id\}

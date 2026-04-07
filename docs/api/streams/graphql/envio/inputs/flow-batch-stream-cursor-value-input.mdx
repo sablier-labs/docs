@@ -1,0 +1,89 @@
+---
+id: flow-batch-stream-cursor-value-input
+title: FlowBatch_stream_cursor_value_input
+---
+
+<head>
+  <meta content="noindex" name="robots" />
+  <meta charset="utf-8" />
+</head>
+
+export const Bullet = () => (
+  <>
+    <span style={{ fontWeight: "normal", fontSize: ".5em", color: "var(--ifm-color-secondary-darkest)" }}>
+      &nbsp;●&nbsp;
+    </span>
+  </>
+);
+
+export const SpecifiedBy = (props) => (
+  <>
+    Specification
+    <a
+      className="link"
+      style={{ fontSize: "1.5em", paddingLeft: "4px" }}
+      target="_blank"
+      href={props.url}
+      title={"Specified by " + props.url}
+    >
+      ⎘
+    </a>
+  </>
+);
+
+export const Badge = (props) => (
+  <>
+    <span className={props.class}>{props.text}</span>
+  </>
+);
+
+import { useState } from "react";
+
+export const Details = ({ dataOpen, dataClose, children, startOpen = false }) => {
+  const [open, setOpen] = useState(startOpen);
+  return (
+    <details
+      {...(open ? { open: true } : {})}
+      className="details"
+      style={{ border: "none", boxShadow: "none", background: "var(--ifm-background-color)" }}
+    >
+      <summary
+        onClick={(e) => {
+          e.preventDefault();
+          setOpen((open) => !open);
+        }}
+        style={{ listStyle: "none" }}
+      >
+        {open ? dataOpen : dataClose}
+      </summary>
+      {open && children}
+    </details>
+  );
+};
+
+Initial value of the column from where the streaming should start
+
+```graphql
+input FlowBatch_stream_cursor_value_input {
+  batcher_id: String
+  hash: String
+  id: String
+  position: numeric
+  size: numeric
+  timestamp: numeric
+}
+```
+
+### Fields
+
+#### [<code style={{ fontWeight: 'normal' }}>FlowBatch_stream_cursor_value_input.<b>batcher_id</b></code>](#batcher-id)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String</b></code>](/docs/api/streams/graphql/envio/scalars/string.mdx) <Badge class="badge badge--secondary " text="scalar"/> \{#batcher-id\}
+
+#### [<code style={{ fontWeight: 'normal' }}>FlowBatch_stream_cursor_value_input.<b>hash</b></code>](#hash)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String</b></code>](/docs/api/streams/graphql/envio/scalars/string.mdx) <Badge class="badge badge--secondary " text="scalar"/> \{#hash\}
+
+#### [<code style={{ fontWeight: 'normal' }}>FlowBatch_stream_cursor_value_input.<b>id</b></code>](#id)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String</b></code>](/docs/api/streams/graphql/envio/scalars/string.mdx) <Badge class="badge badge--secondary " text="scalar"/> \{#id\}
+
+#### [<code style={{ fontWeight: 'normal' }}>FlowBatch_stream_cursor_value_input.<b>position</b></code>](#position)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>numeric</b></code>](/docs/api/streams/graphql/envio/scalars/numeric.mdx) <Badge class="badge badge--secondary " text="scalar"/> \{#position\}
+
+#### [<code style={{ fontWeight: 'normal' }}>FlowBatch_stream_cursor_value_input.<b>size</b></code>](#size)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>numeric</b></code>](/docs/api/streams/graphql/envio/scalars/numeric.mdx) <Badge class="badge badge--secondary " text="scalar"/> \{#size\}
+
+#### [<code style={{ fontWeight: 'normal' }}>FlowBatch_stream_cursor_value_input.<b>timestamp</b></code>](#timestamp)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>numeric</b></code>](/docs/api/streams/graphql/envio/scalars/numeric.mdx) <Badge class="badge badge--secondary " text="scalar"/> \{#timestamp\}

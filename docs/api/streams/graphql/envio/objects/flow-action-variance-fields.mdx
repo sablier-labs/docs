@@ -1,0 +1,92 @@
+---
+id: flow-action-variance-fields
+title: FlowAction_variance_fields
+---
+
+<head>
+  <meta content="noindex" name="robots" />
+  <meta charset="utf-8" />
+</head>
+
+export const Bullet = () => (
+  <>
+    <span style={{ fontWeight: "normal", fontSize: ".5em", color: "var(--ifm-color-secondary-darkest)" }}>
+      &nbsp;●&nbsp;
+    </span>
+  </>
+);
+
+export const SpecifiedBy = (props) => (
+  <>
+    Specification
+    <a
+      className="link"
+      style={{ fontSize: "1.5em", paddingLeft: "4px" }}
+      target="_blank"
+      href={props.url}
+      title={"Specified by " + props.url}
+    >
+      ⎘
+    </a>
+  </>
+);
+
+export const Badge = (props) => (
+  <>
+    <span className={props.class}>{props.text}</span>
+  </>
+);
+
+import { useState } from "react";
+
+export const Details = ({ dataOpen, dataClose, children, startOpen = false }) => {
+  const [open, setOpen] = useState(startOpen);
+  return (
+    <details
+      {...(open ? { open: true } : {})}
+      className="details"
+      style={{ border: "none", boxShadow: "none", background: "var(--ifm-background-color)" }}
+    >
+      <summary
+        onClick={(e) => {
+          e.preventDefault();
+          setOpen((open) => !open);
+        }}
+        style={{ listStyle: "none" }}
+      >
+        {open ? dataOpen : dataClose}
+      </summary>
+      {open && children}
+    </details>
+  );
+};
+
+aggregate variance on columns
+
+```graphql
+type FlowAction_variance_fields {
+  amountA: Float
+  amountB: Float
+  block: Float
+  chainId: Float
+  fee: Float
+  subgraphId: Float
+  timestamp: Float
+}
+```
+
+### Fields
+
+#### [<code style={{ fontWeight: 'normal' }}>FlowAction_variance_fields.<b>amountA</b></code>](#amount-a)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Float</b></code>](/docs/api/streams/graphql/envio/scalars/float.mdx) <Badge class="badge badge--secondary " text="scalar"/> \{#amount-a\}
+
+#### [<code style={{ fontWeight: 'normal' }}>FlowAction_variance_fields.<b>amountB</b></code>](#amount-b)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Float</b></code>](/docs/api/streams/graphql/envio/scalars/float.mdx) <Badge class="badge badge--secondary " text="scalar"/> \{#amount-b\}
+
+#### [<code style={{ fontWeight: 'normal' }}>FlowAction_variance_fields.<b>block</b></code>](#block)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Float</b></code>](/docs/api/streams/graphql/envio/scalars/float.mdx) <Badge class="badge badge--secondary " text="scalar"/> \{#block\}
+
+#### [<code style={{ fontWeight: 'normal' }}>FlowAction_variance_fields.<b>chainId</b></code>](#chain-id)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Float</b></code>](/docs/api/streams/graphql/envio/scalars/float.mdx) <Badge class="badge badge--secondary " text="scalar"/> \{#chain-id\}
+
+#### [<code style={{ fontWeight: 'normal' }}>FlowAction_variance_fields.<b>fee</b></code>](#fee)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Float</b></code>](/docs/api/streams/graphql/envio/scalars/float.mdx) <Badge class="badge badge--secondary " text="scalar"/> \{#fee\}
+
+#### [<code style={{ fontWeight: 'normal' }}>FlowAction_variance_fields.<b>subgraphId</b></code>](#subgraph-id)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Float</b></code>](/docs/api/streams/graphql/envio/scalars/float.mdx) <Badge class="badge badge--secondary " text="scalar"/> \{#subgraph-id\}
+
+#### [<code style={{ fontWeight: 'normal' }}>FlowAction_variance_fields.<b>timestamp</b></code>](#timestamp)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Float</b></code>](/docs/api/streams/graphql/envio/scalars/float.mdx) <Badge class="badge badge--secondary " text="scalar"/> \{#timestamp\}

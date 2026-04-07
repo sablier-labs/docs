@@ -17,8 +17,12 @@ export const redirects: RedirectOption[] = [
   /*                                    APIs                                    */
   /* -------------------------------------------------------------------------- */
   redirect("/api/airdrops/endpoints", "/api/airdrops/indexers"),
-  redirect("/api/flow/endpoints", "/api/flow/indexers"),
-  redirect("/api/lockup/endpoints", "/api/lockup/indexers"),
+  redirect("/api/flow/endpoints", "/api/streams/indexers"),
+  redirect("/api/flow/indexers", "/api/streams/indexers"),
+  redirect("/api/flow/graphql/schema", "/api/streams/graphql/schema"),
+  redirect("/api/lockup/endpoints", "/api/streams/indexers"),
+  redirect("/api/lockup/indexers", "/api/streams/indexers"),
+  redirect("/api/lockup/graphql/schema", "/api/streams/graphql/schema"),
   /* -------------------------------------------------------------------------- */
   /*                                    APPS                                    */
   /* -------------------------------------------------------------------------- */
@@ -80,6 +84,12 @@ export function createRedirects(existingPath: string) {
   // Redirect /contracts/v2/guides/** to /guides/lockup/examples/**
   else if (existingPath.startsWith("/guides/lockup/examples/")) {
     redirects.push(existingPath.replace("/guides/lockup/examples/", "/contracts/v2/guides/"));
+  }
+
+  // Redirect /api/lockup/** and /api/flow/** to /api/streams/**
+  if (existingPath.startsWith("/api/streams/")) {
+    redirects.push(existingPath.replace("/api/streams/", "/api/lockup/"));
+    redirects.push(existingPath.replace("/api/streams/", "/api/flow/"));
   }
 
   return redirects;

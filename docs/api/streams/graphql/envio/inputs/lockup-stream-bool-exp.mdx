@@ -1,0 +1,227 @@
+---
+id: lockup-stream-bool-exp
+title: LockupStream_bool_exp
+---
+
+<head>
+  <meta content="noindex" name="robots" />
+  <meta charset="utf-8" />
+</head>
+
+export const Bullet = () => (
+  <>
+    <span style={{ fontWeight: "normal", fontSize: ".5em", color: "var(--ifm-color-secondary-darkest)" }}>
+      &nbsp;●&nbsp;
+    </span>
+  </>
+);
+
+export const SpecifiedBy = (props) => (
+  <>
+    Specification
+    <a
+      className="link"
+      style={{ fontSize: "1.5em", paddingLeft: "4px" }}
+      target="_blank"
+      href={props.url}
+      title={"Specified by " + props.url}
+    >
+      ⎘
+    </a>
+  </>
+);
+
+export const Badge = (props) => (
+  <>
+    <span className={props.class}>{props.text}</span>
+  </>
+);
+
+import { useState } from "react";
+
+export const Details = ({ dataOpen, dataClose, children, startOpen = false }) => {
+  const [open, setOpen] = useState(startOpen);
+  return (
+    <details
+      {...(open ? { open: true } : {})}
+      className="details"
+      style={{ border: "none", boxShadow: "none", background: "var(--ifm-background-color)" }}
+    >
+      <summary
+        onClick={(e) => {
+          e.preventDefault();
+          setOpen((open) => !open);
+        }}
+        style={{ listStyle: "none" }}
+      >
+        {open ? dataOpen : dataClose}
+      </summary>
+      {open && children}
+    </details>
+  );
+};
+
+Boolean expression to filter rows from the table "LockupStream". All fields are combined with a logical 'AND'.
+
+```graphql
+input LockupStream_bool_exp {
+  _and: [LockupStream_bool_exp!]
+  _not: LockupStream_bool_exp
+  _or: [LockupStream_bool_exp!]
+  actions: LockupAction_bool_exp
+  actions_aggregate: LockupAction_aggregate_bool_exp
+  alias: String_comparison_exp
+  asset: Asset_bool_exp
+  assetDecimalsValue: numeric_comparison_exp
+  asset_id: String_comparison_exp
+  batch: LockupBatch_bool_exp
+  batch_id: String_comparison_exp
+  cancelable: Boolean_comparison_exp
+  canceled: Boolean_comparison_exp
+  canceledAction: LockupAction_bool_exp
+  canceledAction_id: String_comparison_exp
+  canceledTime: numeric_comparison_exp
+  category: lockupstreamcategory_comparison_exp
+  chainId: numeric_comparison_exp
+  cliff: Boolean_comparison_exp
+  cliffAmount: numeric_comparison_exp
+  cliffTime: numeric_comparison_exp
+  contract: String_comparison_exp
+  depleted: Boolean_comparison_exp
+  depositAmount: numeric_comparison_exp
+  duration: numeric_comparison_exp
+  endTime: numeric_comparison_exp
+  funder: String_comparison_exp
+  granularity: numeric_comparison_exp
+  hash: String_comparison_exp
+  id: String_comparison_exp
+  initial: Boolean_comparison_exp
+  initialAmount: numeric_comparison_exp
+  intactAmount: numeric_comparison_exp
+  position: numeric_comparison_exp
+  proxender: String_comparison_exp
+  proxied: Boolean_comparison_exp
+  recipient: String_comparison_exp
+  renounceAction: LockupAction_bool_exp
+  renounceAction_id: String_comparison_exp
+  renounceTime: numeric_comparison_exp
+  segments: Segment_bool_exp
+  sender: String_comparison_exp
+  shape: String_comparison_exp
+  shapeSource: shapesource_comparison_exp
+  startTime: numeric_comparison_exp
+  subgraphId: numeric_comparison_exp
+  timestamp: numeric_comparison_exp
+  tokenId: numeric_comparison_exp
+  tranches: Tranche_bool_exp
+  transferable: Boolean_comparison_exp
+  version: String_comparison_exp
+  withdrawnAmount: numeric_comparison_exp
+}
+```
+
+### Fields
+
+#### [<code style={{ fontWeight: 'normal' }}>LockupStream_bool_exp.<b>\_and</b></code>](#and)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>[LockupStream_bool_exp!]</b></code>](/docs/api/streams/graphql/envio/inputs/lockup-stream-bool-exp.mdx) <Badge class="badge badge--secondary " text="list"/> <Badge class="badge badge--secondary " text="input"/> \{#and\}
+
+#### [<code style={{ fontWeight: 'normal' }}>LockupStream_bool_exp.<b>\_not</b></code>](#not)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>LockupStream_bool_exp</b></code>](/docs/api/streams/graphql/envio/inputs/lockup-stream-bool-exp.mdx) <Badge class="badge badge--secondary " text="input"/> \{#not\}
+
+#### [<code style={{ fontWeight: 'normal' }}>LockupStream_bool_exp.<b>\_or</b></code>](#or)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>[LockupStream_bool_exp!]</b></code>](/docs/api/streams/graphql/envio/inputs/lockup-stream-bool-exp.mdx) <Badge class="badge badge--secondary " text="list"/> <Badge class="badge badge--secondary " text="input"/> \{#or\}
+
+#### [<code style={{ fontWeight: 'normal' }}>LockupStream_bool_exp.<b>actions</b></code>](#actions)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>LockupAction_bool_exp</b></code>](/docs/api/streams/graphql/envio/inputs/lockup-action-bool-exp.mdx) <Badge class="badge badge--secondary " text="input"/> \{#actions\}
+
+#### [<code style={{ fontWeight: 'normal' }}>LockupStream_bool_exp.<b>actions_aggregate</b></code>](#actions-aggregate)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>LockupAction_aggregate_bool_exp</b></code>](/docs/api/streams/graphql/envio/inputs/lockup-action-aggregate-bool-exp.mdx) <Badge class="badge badge--secondary " text="input"/> \{#actions-aggregate\}
+
+#### [<code style={{ fontWeight: 'normal' }}>LockupStream_bool_exp.<b>alias</b></code>](#alias)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String_comparison_exp</b></code>](/docs/api/streams/graphql/envio/inputs/string-comparison-exp.mdx) <Badge class="badge badge--secondary " text="input"/> \{#alias\}
+
+#### [<code style={{ fontWeight: 'normal' }}>LockupStream_bool_exp.<b>asset</b></code>](#asset)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Asset_bool_exp</b></code>](/docs/api/streams/graphql/envio/inputs/asset-bool-exp.mdx) <Badge class="badge badge--secondary " text="input"/> \{#asset\}
+
+#### [<code style={{ fontWeight: 'normal' }}>LockupStream_bool_exp.<b>assetDecimalsValue</b></code>](#asset-decimals-value)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>numeric_comparison_exp</b></code>](/docs/api/streams/graphql/envio/inputs/numeric-comparison-exp.mdx) <Badge class="badge badge--secondary " text="input"/> \{#asset-decimals-value\}
+
+#### [<code style={{ fontWeight: 'normal' }}>LockupStream_bool_exp.<b>asset_id</b></code>](#asset-id)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String_comparison_exp</b></code>](/docs/api/streams/graphql/envio/inputs/string-comparison-exp.mdx) <Badge class="badge badge--secondary " text="input"/> \{#asset-id\}
+
+#### [<code style={{ fontWeight: 'normal' }}>LockupStream_bool_exp.<b>batch</b></code>](#batch)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>LockupBatch_bool_exp</b></code>](/docs/api/streams/graphql/envio/inputs/lockup-batch-bool-exp.mdx) <Badge class="badge badge--secondary " text="input"/> \{#batch\}
+
+#### [<code style={{ fontWeight: 'normal' }}>LockupStream_bool_exp.<b>batch_id</b></code>](#batch-id)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String_comparison_exp</b></code>](/docs/api/streams/graphql/envio/inputs/string-comparison-exp.mdx) <Badge class="badge badge--secondary " text="input"/> \{#batch-id\}
+
+#### [<code style={{ fontWeight: 'normal' }}>LockupStream_bool_exp.<b>cancelable</b></code>](#cancelable)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Boolean_comparison_exp</b></code>](/docs/api/streams/graphql/envio/inputs/boolean-comparison-exp.mdx) <Badge class="badge badge--secondary " text="input"/> \{#cancelable\}
+
+#### [<code style={{ fontWeight: 'normal' }}>LockupStream_bool_exp.<b>canceled</b></code>](#canceled)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Boolean_comparison_exp</b></code>](/docs/api/streams/graphql/envio/inputs/boolean-comparison-exp.mdx) <Badge class="badge badge--secondary " text="input"/> \{#canceled\}
+
+#### [<code style={{ fontWeight: 'normal' }}>LockupStream_bool_exp.<b>canceledAction</b></code>](#canceled-action)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>LockupAction_bool_exp</b></code>](/docs/api/streams/graphql/envio/inputs/lockup-action-bool-exp.mdx) <Badge class="badge badge--secondary " text="input"/> \{#canceled-action\}
+
+#### [<code style={{ fontWeight: 'normal' }}>LockupStream_bool_exp.<b>canceledAction_id</b></code>](#canceled-action-id)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String_comparison_exp</b></code>](/docs/api/streams/graphql/envio/inputs/string-comparison-exp.mdx) <Badge class="badge badge--secondary " text="input"/> \{#canceled-action-id\}
+
+#### [<code style={{ fontWeight: 'normal' }}>LockupStream_bool_exp.<b>canceledTime</b></code>](#canceled-time)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>numeric_comparison_exp</b></code>](/docs/api/streams/graphql/envio/inputs/numeric-comparison-exp.mdx) <Badge class="badge badge--secondary " text="input"/> \{#canceled-time\}
+
+#### [<code style={{ fontWeight: 'normal' }}>LockupStream_bool_exp.<b>category</b></code>](#category)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>lockupstreamcategory_comparison_exp</b></code>](/docs/api/streams/graphql/envio/inputs/lockupstreamcategory-comparison-exp.mdx) <Badge class="badge badge--secondary " text="input"/> \{#category\}
+
+#### [<code style={{ fontWeight: 'normal' }}>LockupStream_bool_exp.<b>chainId</b></code>](#chain-id)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>numeric_comparison_exp</b></code>](/docs/api/streams/graphql/envio/inputs/numeric-comparison-exp.mdx) <Badge class="badge badge--secondary " text="input"/> \{#chain-id\}
+
+#### [<code style={{ fontWeight: 'normal' }}>LockupStream_bool_exp.<b>cliff</b></code>](#cliff)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Boolean_comparison_exp</b></code>](/docs/api/streams/graphql/envio/inputs/boolean-comparison-exp.mdx) <Badge class="badge badge--secondary " text="input"/> \{#cliff\}
+
+#### [<code style={{ fontWeight: 'normal' }}>LockupStream_bool_exp.<b>cliffAmount</b></code>](#cliff-amount)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>numeric_comparison_exp</b></code>](/docs/api/streams/graphql/envio/inputs/numeric-comparison-exp.mdx) <Badge class="badge badge--secondary " text="input"/> \{#cliff-amount\}
+
+#### [<code style={{ fontWeight: 'normal' }}>LockupStream_bool_exp.<b>cliffTime</b></code>](#cliff-time)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>numeric_comparison_exp</b></code>](/docs/api/streams/graphql/envio/inputs/numeric-comparison-exp.mdx) <Badge class="badge badge--secondary " text="input"/> \{#cliff-time\}
+
+#### [<code style={{ fontWeight: 'normal' }}>LockupStream_bool_exp.<b>contract</b></code>](#contract)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String_comparison_exp</b></code>](/docs/api/streams/graphql/envio/inputs/string-comparison-exp.mdx) <Badge class="badge badge--secondary " text="input"/> \{#contract\}
+
+#### [<code style={{ fontWeight: 'normal' }}>LockupStream_bool_exp.<b>depleted</b></code>](#depleted)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Boolean_comparison_exp</b></code>](/docs/api/streams/graphql/envio/inputs/boolean-comparison-exp.mdx) <Badge class="badge badge--secondary " text="input"/> \{#depleted\}
+
+#### [<code style={{ fontWeight: 'normal' }}>LockupStream_bool_exp.<b>depositAmount</b></code>](#deposit-amount)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>numeric_comparison_exp</b></code>](/docs/api/streams/graphql/envio/inputs/numeric-comparison-exp.mdx) <Badge class="badge badge--secondary " text="input"/> \{#deposit-amount\}
+
+#### [<code style={{ fontWeight: 'normal' }}>LockupStream_bool_exp.<b>duration</b></code>](#duration)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>numeric_comparison_exp</b></code>](/docs/api/streams/graphql/envio/inputs/numeric-comparison-exp.mdx) <Badge class="badge badge--secondary " text="input"/> \{#duration\}
+
+#### [<code style={{ fontWeight: 'normal' }}>LockupStream_bool_exp.<b>endTime</b></code>](#end-time)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>numeric_comparison_exp</b></code>](/docs/api/streams/graphql/envio/inputs/numeric-comparison-exp.mdx) <Badge class="badge badge--secondary " text="input"/> \{#end-time\}
+
+#### [<code style={{ fontWeight: 'normal' }}>LockupStream_bool_exp.<b>funder</b></code>](#funder)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String_comparison_exp</b></code>](/docs/api/streams/graphql/envio/inputs/string-comparison-exp.mdx) <Badge class="badge badge--secondary " text="input"/> \{#funder\}
+
+#### [<code style={{ fontWeight: 'normal' }}>LockupStream_bool_exp.<b>granularity</b></code>](#granularity)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>numeric_comparison_exp</b></code>](/docs/api/streams/graphql/envio/inputs/numeric-comparison-exp.mdx) <Badge class="badge badge--secondary " text="input"/> \{#granularity\}
+
+#### [<code style={{ fontWeight: 'normal' }}>LockupStream_bool_exp.<b>hash</b></code>](#hash)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String_comparison_exp</b></code>](/docs/api/streams/graphql/envio/inputs/string-comparison-exp.mdx) <Badge class="badge badge--secondary " text="input"/> \{#hash\}
+
+#### [<code style={{ fontWeight: 'normal' }}>LockupStream_bool_exp.<b>id</b></code>](#id)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String_comparison_exp</b></code>](/docs/api/streams/graphql/envio/inputs/string-comparison-exp.mdx) <Badge class="badge badge--secondary " text="input"/> \{#id\}
+
+#### [<code style={{ fontWeight: 'normal' }}>LockupStream_bool_exp.<b>initial</b></code>](#initial)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Boolean_comparison_exp</b></code>](/docs/api/streams/graphql/envio/inputs/boolean-comparison-exp.mdx) <Badge class="badge badge--secondary " text="input"/> \{#initial\}
+
+#### [<code style={{ fontWeight: 'normal' }}>LockupStream_bool_exp.<b>initialAmount</b></code>](#initial-amount)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>numeric_comparison_exp</b></code>](/docs/api/streams/graphql/envio/inputs/numeric-comparison-exp.mdx) <Badge class="badge badge--secondary " text="input"/> \{#initial-amount\}
+
+#### [<code style={{ fontWeight: 'normal' }}>LockupStream_bool_exp.<b>intactAmount</b></code>](#intact-amount)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>numeric_comparison_exp</b></code>](/docs/api/streams/graphql/envio/inputs/numeric-comparison-exp.mdx) <Badge class="badge badge--secondary " text="input"/> \{#intact-amount\}
+
+#### [<code style={{ fontWeight: 'normal' }}>LockupStream_bool_exp.<b>position</b></code>](#position)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>numeric_comparison_exp</b></code>](/docs/api/streams/graphql/envio/inputs/numeric-comparison-exp.mdx) <Badge class="badge badge--secondary " text="input"/> \{#position\}
+
+#### [<code style={{ fontWeight: 'normal' }}>LockupStream_bool_exp.<b>proxender</b></code>](#proxender)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String_comparison_exp</b></code>](/docs/api/streams/graphql/envio/inputs/string-comparison-exp.mdx) <Badge class="badge badge--secondary " text="input"/> \{#proxender\}
+
+#### [<code style={{ fontWeight: 'normal' }}>LockupStream_bool_exp.<b>proxied</b></code>](#proxied)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Boolean_comparison_exp</b></code>](/docs/api/streams/graphql/envio/inputs/boolean-comparison-exp.mdx) <Badge class="badge badge--secondary " text="input"/> \{#proxied\}
+
+#### [<code style={{ fontWeight: 'normal' }}>LockupStream_bool_exp.<b>recipient</b></code>](#recipient)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String_comparison_exp</b></code>](/docs/api/streams/graphql/envio/inputs/string-comparison-exp.mdx) <Badge class="badge badge--secondary " text="input"/> \{#recipient\}
+
+#### [<code style={{ fontWeight: 'normal' }}>LockupStream_bool_exp.<b>renounceAction</b></code>](#renounce-action)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>LockupAction_bool_exp</b></code>](/docs/api/streams/graphql/envio/inputs/lockup-action-bool-exp.mdx) <Badge class="badge badge--secondary " text="input"/> \{#renounce-action\}
+
+#### [<code style={{ fontWeight: 'normal' }}>LockupStream_bool_exp.<b>renounceAction_id</b></code>](#renounce-action-id)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String_comparison_exp</b></code>](/docs/api/streams/graphql/envio/inputs/string-comparison-exp.mdx) <Badge class="badge badge--secondary " text="input"/> \{#renounce-action-id\}
+
+#### [<code style={{ fontWeight: 'normal' }}>LockupStream_bool_exp.<b>renounceTime</b></code>](#renounce-time)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>numeric_comparison_exp</b></code>](/docs/api/streams/graphql/envio/inputs/numeric-comparison-exp.mdx) <Badge class="badge badge--secondary " text="input"/> \{#renounce-time\}
+
+#### [<code style={{ fontWeight: 'normal' }}>LockupStream_bool_exp.<b>segments</b></code>](#segments)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Segment_bool_exp</b></code>](/docs/api/streams/graphql/envio/inputs/segment-bool-exp.mdx) <Badge class="badge badge--secondary " text="input"/> \{#segments\}
+
+#### [<code style={{ fontWeight: 'normal' }}>LockupStream_bool_exp.<b>sender</b></code>](#sender)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String_comparison_exp</b></code>](/docs/api/streams/graphql/envio/inputs/string-comparison-exp.mdx) <Badge class="badge badge--secondary " text="input"/> \{#sender\}
+
+#### [<code style={{ fontWeight: 'normal' }}>LockupStream_bool_exp.<b>shape</b></code>](#shape)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String_comparison_exp</b></code>](/docs/api/streams/graphql/envio/inputs/string-comparison-exp.mdx) <Badge class="badge badge--secondary " text="input"/> \{#shape\}
+
+#### [<code style={{ fontWeight: 'normal' }}>LockupStream_bool_exp.<b>shapeSource</b></code>](#shape-source)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>shapesource_comparison_exp</b></code>](/docs/api/streams/graphql/envio/inputs/shapesource-comparison-exp.mdx) <Badge class="badge badge--secondary " text="input"/> \{#shape-source\}
+
+#### [<code style={{ fontWeight: 'normal' }}>LockupStream_bool_exp.<b>startTime</b></code>](#start-time)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>numeric_comparison_exp</b></code>](/docs/api/streams/graphql/envio/inputs/numeric-comparison-exp.mdx) <Badge class="badge badge--secondary " text="input"/> \{#start-time\}
+
+#### [<code style={{ fontWeight: 'normal' }}>LockupStream_bool_exp.<b>subgraphId</b></code>](#subgraph-id)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>numeric_comparison_exp</b></code>](/docs/api/streams/graphql/envio/inputs/numeric-comparison-exp.mdx) <Badge class="badge badge--secondary " text="input"/> \{#subgraph-id\}
+
+#### [<code style={{ fontWeight: 'normal' }}>LockupStream_bool_exp.<b>timestamp</b></code>](#timestamp)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>numeric_comparison_exp</b></code>](/docs/api/streams/graphql/envio/inputs/numeric-comparison-exp.mdx) <Badge class="badge badge--secondary " text="input"/> \{#timestamp\}
+
+#### [<code style={{ fontWeight: 'normal' }}>LockupStream_bool_exp.<b>tokenId</b></code>](#token-id)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>numeric_comparison_exp</b></code>](/docs/api/streams/graphql/envio/inputs/numeric-comparison-exp.mdx) <Badge class="badge badge--secondary " text="input"/> \{#token-id\}
+
+#### [<code style={{ fontWeight: 'normal' }}>LockupStream_bool_exp.<b>tranches</b></code>](#tranches)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Tranche_bool_exp</b></code>](/docs/api/streams/graphql/envio/inputs/tranche-bool-exp.mdx) <Badge class="badge badge--secondary " text="input"/> \{#tranches\}
+
+#### [<code style={{ fontWeight: 'normal' }}>LockupStream_bool_exp.<b>transferable</b></code>](#transferable)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Boolean_comparison_exp</b></code>](/docs/api/streams/graphql/envio/inputs/boolean-comparison-exp.mdx) <Badge class="badge badge--secondary " text="input"/> \{#transferable\}
+
+#### [<code style={{ fontWeight: 'normal' }}>LockupStream_bool_exp.<b>version</b></code>](#version)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String_comparison_exp</b></code>](/docs/api/streams/graphql/envio/inputs/string-comparison-exp.mdx) <Badge class="badge badge--secondary " text="input"/> \{#version\}
+
+#### [<code style={{ fontWeight: 'normal' }}>LockupStream_bool_exp.<b>withdrawnAmount</b></code>](#withdrawn-amount)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>numeric_comparison_exp</b></code>](/docs/api/streams/graphql/envio/inputs/numeric-comparison-exp.mdx) <Badge class="badge badge--secondary " text="input"/> \{#withdrawn-amount\}
