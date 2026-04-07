@@ -1,0 +1,146 @@
+---
+id: lockup-action-select-column
+title: LockupAction_select_column
+---
+
+<head>
+  <meta content="noindex" name="robots" />
+  <meta charset="utf-8" />
+</head>
+
+export const Bullet = () => (
+  <>
+    <span style={{ fontWeight: "normal", fontSize: ".5em", color: "var(--ifm-color-secondary-darkest)" }}>
+      &nbsp;●&nbsp;
+    </span>
+  </>
+);
+
+export const SpecifiedBy = (props) => (
+  <>
+    Specification
+    <a
+      className="link"
+      style={{ fontSize: "1.5em", paddingLeft: "4px" }}
+      target="_blank"
+      href={props.url}
+      title={"Specified by " + props.url}
+    >
+      ⎘
+    </a>
+  </>
+);
+
+export const Badge = (props) => (
+  <>
+    <span className={props.class}>{props.text}</span>
+  </>
+);
+
+import { useState } from "react";
+
+export const Details = ({ dataOpen, dataClose, children, startOpen = false }) => {
+  const [open, setOpen] = useState(startOpen);
+  return (
+    <details
+      {...(open ? { open: true } : {})}
+      className="details"
+      style={{ border: "none", boxShadow: "none", background: "var(--ifm-background-color)" }}
+    >
+      <summary
+        onClick={(e) => {
+          e.preventDefault();
+          setOpen((open) => !open);
+        }}
+        style={{ listStyle: "none" }}
+      >
+        {open ? dataOpen : dataClose}
+      </summary>
+      {open && children}
+    </details>
+  );
+};
+
+select columns of table "LockupAction"
+
+```graphql
+enum LockupAction_select_column {
+  addressA
+  addressB
+  amountA
+  amountB
+  block
+  category
+  chainId
+  contract
+  fee
+  from
+  hash
+  id
+  stream_id
+  subgraphId
+  timestamp
+}
+```
+
+### Values
+
+#### [<code style={{ fontWeight: 'normal' }}>LockupAction_select_column.<b>addressA</b></code>](#address-a) \{#address-a\}
+
+column name
+
+#### [<code style={{ fontWeight: 'normal' }}>LockupAction_select_column.<b>addressB</b></code>](#address-b) \{#address-b\}
+
+column name
+
+#### [<code style={{ fontWeight: 'normal' }}>LockupAction_select_column.<b>amountA</b></code>](#amount-a) \{#amount-a\}
+
+column name
+
+#### [<code style={{ fontWeight: 'normal' }}>LockupAction_select_column.<b>amountB</b></code>](#amount-b) \{#amount-b\}
+
+column name
+
+#### [<code style={{ fontWeight: 'normal' }}>LockupAction_select_column.<b>block</b></code>](#block) \{#block\}
+
+column name
+
+#### [<code style={{ fontWeight: 'normal' }}>LockupAction_select_column.<b>category</b></code>](#category) \{#category\}
+
+column name
+
+#### [<code style={{ fontWeight: 'normal' }}>LockupAction_select_column.<b>chainId</b></code>](#chain-id) \{#chain-id\}
+
+column name
+
+#### [<code style={{ fontWeight: 'normal' }}>LockupAction_select_column.<b>contract</b></code>](#contract) \{#contract\}
+
+column name
+
+#### [<code style={{ fontWeight: 'normal' }}>LockupAction_select_column.<b>fee</b></code>](#fee) \{#fee\}
+
+column name
+
+#### [<code style={{ fontWeight: 'normal' }}>LockupAction_select_column.<b>from</b></code>](#from) \{#from\}
+
+column name
+
+#### [<code style={{ fontWeight: 'normal' }}>LockupAction_select_column.<b>hash</b></code>](#hash) \{#hash\}
+
+column name
+
+#### [<code style={{ fontWeight: 'normal' }}>LockupAction_select_column.<b>id</b></code>](#id) \{#id\}
+
+column name
+
+#### [<code style={{ fontWeight: 'normal' }}>LockupAction_select_column.<b>stream_id</b></code>](#stream-id) \{#stream-id\}
+
+column name
+
+#### [<code style={{ fontWeight: 'normal' }}>LockupAction_select_column.<b>subgraphId</b></code>](#subgraph-id) \{#subgraph-id\}
+
+column name
+
+#### [<code style={{ fontWeight: 'normal' }}>LockupAction_select_column.<b>timestamp</b></code>](#timestamp) \{#timestamp\}
+
+column name

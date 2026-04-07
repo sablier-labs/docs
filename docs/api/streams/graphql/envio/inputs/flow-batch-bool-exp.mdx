@@ -1,0 +1,107 @@
+---
+id: flow-batch-bool-exp
+title: FlowBatch_bool_exp
+---
+
+<head>
+  <meta content="noindex" name="robots" />
+  <meta charset="utf-8" />
+</head>
+
+export const Bullet = () => (
+  <>
+    <span style={{ fontWeight: "normal", fontSize: ".5em", color: "var(--ifm-color-secondary-darkest)" }}>
+      &nbsp;●&nbsp;
+    </span>
+  </>
+);
+
+export const SpecifiedBy = (props) => (
+  <>
+    Specification
+    <a
+      className="link"
+      style={{ fontSize: "1.5em", paddingLeft: "4px" }}
+      target="_blank"
+      href={props.url}
+      title={"Specified by " + props.url}
+    >
+      ⎘
+    </a>
+  </>
+);
+
+export const Badge = (props) => (
+  <>
+    <span className={props.class}>{props.text}</span>
+  </>
+);
+
+import { useState } from "react";
+
+export const Details = ({ dataOpen, dataClose, children, startOpen = false }) => {
+  const [open, setOpen] = useState(startOpen);
+  return (
+    <details
+      {...(open ? { open: true } : {})}
+      className="details"
+      style={{ border: "none", boxShadow: "none", background: "var(--ifm-background-color)" }}
+    >
+      <summary
+        onClick={(e) => {
+          e.preventDefault();
+          setOpen((open) => !open);
+        }}
+        style={{ listStyle: "none" }}
+      >
+        {open ? dataOpen : dataClose}
+      </summary>
+      {open && children}
+    </details>
+  );
+};
+
+Boolean expression to filter rows from the table "FlowBatch". All fields are combined with a logical 'AND'.
+
+```graphql
+input FlowBatch_bool_exp {
+  _and: [FlowBatch_bool_exp!]
+  _not: FlowBatch_bool_exp
+  _or: [FlowBatch_bool_exp!]
+  batcher: FlowBatcher_bool_exp
+  batcher_id: String_comparison_exp
+  hash: String_comparison_exp
+  id: String_comparison_exp
+  position: numeric_comparison_exp
+  size: numeric_comparison_exp
+  streams: FlowStream_bool_exp
+  streams_aggregate: FlowStream_aggregate_bool_exp
+  timestamp: numeric_comparison_exp
+}
+```
+
+### Fields
+
+#### [<code style={{ fontWeight: 'normal' }}>FlowBatch_bool_exp.<b>\_and</b></code>](#and)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>[FlowBatch_bool_exp!]</b></code>](/docs/api/streams/graphql/envio/inputs/flow-batch-bool-exp.mdx) <Badge class="badge badge--secondary " text="list"/> <Badge class="badge badge--secondary " text="input"/> \{#and\}
+
+#### [<code style={{ fontWeight: 'normal' }}>FlowBatch_bool_exp.<b>\_not</b></code>](#not)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>FlowBatch_bool_exp</b></code>](/docs/api/streams/graphql/envio/inputs/flow-batch-bool-exp.mdx) <Badge class="badge badge--secondary " text="input"/> \{#not\}
+
+#### [<code style={{ fontWeight: 'normal' }}>FlowBatch_bool_exp.<b>\_or</b></code>](#or)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>[FlowBatch_bool_exp!]</b></code>](/docs/api/streams/graphql/envio/inputs/flow-batch-bool-exp.mdx) <Badge class="badge badge--secondary " text="list"/> <Badge class="badge badge--secondary " text="input"/> \{#or\}
+
+#### [<code style={{ fontWeight: 'normal' }}>FlowBatch_bool_exp.<b>batcher</b></code>](#batcher)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>FlowBatcher_bool_exp</b></code>](/docs/api/streams/graphql/envio/inputs/flow-batcher-bool-exp.mdx) <Badge class="badge badge--secondary " text="input"/> \{#batcher\}
+
+#### [<code style={{ fontWeight: 'normal' }}>FlowBatch_bool_exp.<b>batcher_id</b></code>](#batcher-id)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String_comparison_exp</b></code>](/docs/api/streams/graphql/envio/inputs/string-comparison-exp.mdx) <Badge class="badge badge--secondary " text="input"/> \{#batcher-id\}
+
+#### [<code style={{ fontWeight: 'normal' }}>FlowBatch_bool_exp.<b>hash</b></code>](#hash)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String_comparison_exp</b></code>](/docs/api/streams/graphql/envio/inputs/string-comparison-exp.mdx) <Badge class="badge badge--secondary " text="input"/> \{#hash\}
+
+#### [<code style={{ fontWeight: 'normal' }}>FlowBatch_bool_exp.<b>id</b></code>](#id)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String_comparison_exp</b></code>](/docs/api/streams/graphql/envio/inputs/string-comparison-exp.mdx) <Badge class="badge badge--secondary " text="input"/> \{#id\}
+
+#### [<code style={{ fontWeight: 'normal' }}>FlowBatch_bool_exp.<b>position</b></code>](#position)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>numeric_comparison_exp</b></code>](/docs/api/streams/graphql/envio/inputs/numeric-comparison-exp.mdx) <Badge class="badge badge--secondary " text="input"/> \{#position\}
+
+#### [<code style={{ fontWeight: 'normal' }}>FlowBatch_bool_exp.<b>size</b></code>](#size)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>numeric_comparison_exp</b></code>](/docs/api/streams/graphql/envio/inputs/numeric-comparison-exp.mdx) <Badge class="badge badge--secondary " text="input"/> \{#size\}
+
+#### [<code style={{ fontWeight: 'normal' }}>FlowBatch_bool_exp.<b>streams</b></code>](#streams)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>FlowStream_bool_exp</b></code>](/docs/api/streams/graphql/envio/inputs/flow-stream-bool-exp.mdx) <Badge class="badge badge--secondary " text="input"/> \{#streams\}
+
+#### [<code style={{ fontWeight: 'normal' }}>FlowBatch_bool_exp.<b>streams_aggregate</b></code>](#streams-aggregate)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>FlowStream_aggregate_bool_exp</b></code>](/docs/api/streams/graphql/envio/inputs/flow-stream-aggregate-bool-exp.mdx) <Badge class="badge badge--secondary " text="input"/> \{#streams-aggregate\}
+
+#### [<code style={{ fontWeight: 'normal' }}>FlowBatch_bool_exp.<b>timestamp</b></code>](#timestamp)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>numeric_comparison_exp</b></code>](/docs/api/streams/graphql/envio/inputs/numeric-comparison-exp.mdx) <Badge class="badge badge--secondary " text="input"/> \{#timestamp\}

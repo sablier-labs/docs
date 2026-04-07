@@ -1,0 +1,108 @@
+---
+id: lockup-batch-aggregate-fields
+title: LockupBatch_aggregate_fields
+---
+
+<head>
+  <meta content="noindex" name="robots" />
+  <meta charset="utf-8" />
+</head>
+
+export const Bullet = () => (
+  <>
+    <span style={{ fontWeight: "normal", fontSize: ".5em", color: "var(--ifm-color-secondary-darkest)" }}>
+      &nbsp;●&nbsp;
+    </span>
+  </>
+);
+
+export const SpecifiedBy = (props) => (
+  <>
+    Specification
+    <a
+      className="link"
+      style={{ fontSize: "1.5em", paddingLeft: "4px" }}
+      target="_blank"
+      href={props.url}
+      title={"Specified by " + props.url}
+    >
+      ⎘
+    </a>
+  </>
+);
+
+export const Badge = (props) => (
+  <>
+    <span className={props.class}>{props.text}</span>
+  </>
+);
+
+import { useState } from "react";
+
+export const Details = ({ dataOpen, dataClose, children, startOpen = false }) => {
+  const [open, setOpen] = useState(startOpen);
+  return (
+    <details
+      {...(open ? { open: true } : {})}
+      className="details"
+      style={{ border: "none", boxShadow: "none", background: "var(--ifm-background-color)" }}
+    >
+      <summary
+        onClick={(e) => {
+          e.preventDefault();
+          setOpen((open) => !open);
+        }}
+        style={{ listStyle: "none" }}
+      >
+        {open ? dataOpen : dataClose}
+      </summary>
+      {open && children}
+    </details>
+  );
+};
+
+aggregate fields of "LockupBatch"
+
+```graphql
+type LockupBatch_aggregate_fields {
+  avg: LockupBatch_avg_fields
+  count(columns: [LockupBatch_select_column!], distinct: Boolean): Int!
+  max: LockupBatch_max_fields
+  min: LockupBatch_min_fields
+  stddev: LockupBatch_stddev_fields
+  stddev_pop: LockupBatch_stddev_pop_fields
+  stddev_samp: LockupBatch_stddev_samp_fields
+  sum: LockupBatch_sum_fields
+  var_pop: LockupBatch_var_pop_fields
+  var_samp: LockupBatch_var_samp_fields
+  variance: LockupBatch_variance_fields
+}
+```
+
+### Fields
+
+#### [<code style={{ fontWeight: 'normal' }}>LockupBatch_aggregate_fields.<b>avg</b></code>](#avg)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>LockupBatch_avg_fields</b></code>](/docs/api/streams/graphql/envio/objects/lockup-batch-avg-fields.mdx) <Badge class="badge badge--secondary " text="object"/> \{#avg\}
+
+#### [<code style={{ fontWeight: 'normal' }}>LockupBatch_aggregate_fields.<b>count</b></code>](#count)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Int!</b></code>](/docs/api/streams/graphql/envio/scalars/int.mdx) <Badge class="badge badge--secondary badge--non_null" text="non-null"/> <Badge class="badge badge--secondary " text="scalar"/> \{#count\}
+
+##### [<code style={{ fontWeight: 'normal' }}>LockupBatch_aggregate_fields.count.<b>columns</b></code>](#lockup-batch-aggregate-fields-count-columns)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>[LockupBatch_select_column!]</b></code>](/docs/api/streams/graphql/envio/enums/lockup-batch-select-column.mdx) <Badge class="badge badge--secondary " text="list"/> <Badge class="badge badge--secondary " text="enum"/> \{#lockup-batch-aggregate-fields-count-columns\}
+
+##### [<code style={{ fontWeight: 'normal' }}>LockupBatch_aggregate_fields.count.<b>distinct</b></code>](#lockup-batch-aggregate-fields-count-distinct)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Boolean</b></code>](/docs/api/streams/graphql/envio/scalars/boolean.mdx) <Badge class="badge badge--secondary " text="scalar"/> \{#lockup-batch-aggregate-fields-count-distinct\}
+
+#### [<code style={{ fontWeight: 'normal' }}>LockupBatch_aggregate_fields.<b>max</b></code>](#max)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>LockupBatch_max_fields</b></code>](/docs/api/streams/graphql/envio/objects/lockup-batch-max-fields.mdx) <Badge class="badge badge--secondary " text="object"/> \{#max\}
+
+#### [<code style={{ fontWeight: 'normal' }}>LockupBatch_aggregate_fields.<b>min</b></code>](#min)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>LockupBatch_min_fields</b></code>](/docs/api/streams/graphql/envio/objects/lockup-batch-min-fields.mdx) <Badge class="badge badge--secondary " text="object"/> \{#min\}
+
+#### [<code style={{ fontWeight: 'normal' }}>LockupBatch_aggregate_fields.<b>stddev</b></code>](#stddev)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>LockupBatch_stddev_fields</b></code>](/docs/api/streams/graphql/envio/objects/lockup-batch-stddev-fields.mdx) <Badge class="badge badge--secondary " text="object"/> \{#stddev\}
+
+#### [<code style={{ fontWeight: 'normal' }}>LockupBatch_aggregate_fields.<b>stddev_pop</b></code>](#stddev-pop)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>LockupBatch_stddev_pop_fields</b></code>](/docs/api/streams/graphql/envio/objects/lockup-batch-stddev-pop-fields.mdx) <Badge class="badge badge--secondary " text="object"/> \{#stddev-pop\}
+
+#### [<code style={{ fontWeight: 'normal' }}>LockupBatch_aggregate_fields.<b>stddev_samp</b></code>](#stddev-samp)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>LockupBatch_stddev_samp_fields</b></code>](/docs/api/streams/graphql/envio/objects/lockup-batch-stddev-samp-fields.mdx) <Badge class="badge badge--secondary " text="object"/> \{#stddev-samp\}
+
+#### [<code style={{ fontWeight: 'normal' }}>LockupBatch_aggregate_fields.<b>sum</b></code>](#sum)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>LockupBatch_sum_fields</b></code>](/docs/api/streams/graphql/envio/objects/lockup-batch-sum-fields.mdx) <Badge class="badge badge--secondary " text="object"/> \{#sum\}
+
+#### [<code style={{ fontWeight: 'normal' }}>LockupBatch_aggregate_fields.<b>var_pop</b></code>](#var-pop)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>LockupBatch_var_pop_fields</b></code>](/docs/api/streams/graphql/envio/objects/lockup-batch-var-pop-fields.mdx) <Badge class="badge badge--secondary " text="object"/> \{#var-pop\}
+
+#### [<code style={{ fontWeight: 'normal' }}>LockupBatch_aggregate_fields.<b>var_samp</b></code>](#var-samp)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>LockupBatch_var_samp_fields</b></code>](/docs/api/streams/graphql/envio/objects/lockup-batch-var-samp-fields.mdx) <Badge class="badge badge--secondary " text="object"/> \{#var-samp\}
+
+#### [<code style={{ fontWeight: 'normal' }}>LockupBatch_aggregate_fields.<b>variance</b></code>](#variance)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>LockupBatch_variance_fields</b></code>](/docs/api/streams/graphql/envio/objects/lockup-batch-variance-fields.mdx) <Badge class="badge badge--secondary " text="object"/> \{#variance\}

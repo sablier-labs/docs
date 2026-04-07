@@ -1,0 +1,48 @@
+---
+id: "indexers"
+sidebar_position: 1
+title: "Indexers"
+---
+
+import LinkPreviewIndexers from "@site/src/components/molecules/LinkPreviewIndexers";
+import TableEnvio from "../../../src/autogen/streams/_table-envio.mdx";
+import TableTheGraph from "../../../src/autogen/streams/_table-graph.mdx";
+import ExplainerEnvio from "../../../src/snippets/_explainer-envio.mdx";
+import ExplainerTheGraph from "../../../src/snippets/_explainer-graph.mdx";
+
+# Sablier Streams
+
+This page documents the indexers for the Sablier Streams protocol, which covers both [Lockup](/concepts/lockup/overview)
+(powering the [Vesting](/apps/features/vesting) product) and [Flow](/concepts/flow/overview) (powering the
+[Payments](/apps/features/payments) product) in the Sablier Interface.
+
+:::info
+
+The Lockup and Flow protocols are served by a unified indexer. In the GraphQL schema, entities are prefixed by protocol:
+`FlowStream`, `LockupStream`, `FlowAction`, `LockupAction`, `FlowBatch`, `LockupBatch`, etc.
+
+:::
+
+## Envio
+
+### Source Code
+
+<LinkPreviewIndexers vendor="envio" indexer="streams" />
+
+### Endpoints
+
+<ExplainerEnvio />
+
+<TableEnvio />
+
+## The Graph
+
+### Source Code
+
+<LinkPreviewIndexers vendor="graph" indexer="streams" />
+
+### Endpoints
+
+<ExplainerTheGraph />
+
+<TableTheGraph />

@@ -1,0 +1,125 @@
+---
+id: flow-stream-var-samp-order-by
+title: FlowStream_var_samp_order_by
+---
+
+<head>
+  <meta content="noindex" name="robots" />
+  <meta charset="utf-8" />
+</head>
+
+export const Bullet = () => (
+  <>
+    <span style={{ fontWeight: "normal", fontSize: ".5em", color: "var(--ifm-color-secondary-darkest)" }}>
+      &nbsp;●&nbsp;
+    </span>
+  </>
+);
+
+export const SpecifiedBy = (props) => (
+  <>
+    Specification
+    <a
+      className="link"
+      style={{ fontSize: "1.5em", paddingLeft: "4px" }}
+      target="_blank"
+      href={props.url}
+      title={"Specified by " + props.url}
+    >
+      ⎘
+    </a>
+  </>
+);
+
+export const Badge = (props) => (
+  <>
+    <span className={props.class}>{props.text}</span>
+  </>
+);
+
+import { useState } from "react";
+
+export const Details = ({ dataOpen, dataClose, children, startOpen = false }) => {
+  const [open, setOpen] = useState(startOpen);
+  return (
+    <details
+      {...(open ? { open: true } : {})}
+      className="details"
+      style={{ border: "none", boxShadow: "none", background: "var(--ifm-background-color)" }}
+    >
+      <summary
+        onClick={(e) => {
+          e.preventDefault();
+          setOpen((open) => !open);
+        }}
+        style={{ listStyle: "none" }}
+      >
+        {open ? dataOpen : dataClose}
+      </summary>
+      {open && children}
+    </details>
+  );
+};
+
+order by var_samp() on columns of table "FlowStream"
+
+```graphql
+input FlowStream_var_samp_order_by {
+  assetDecimalsValue: order_by
+  availableAmount: order_by
+  chainId: order_by
+  depletionTime: order_by
+  depositedAmount: order_by
+  forgivenDebt: order_by
+  lastAdjustmentTimestamp: order_by
+  pausedTime: order_by
+  position: order_by
+  ratePerSecond: order_by
+  refundedAmount: order_by
+  snapshotAmount: order_by
+  startTime: order_by
+  subgraphId: order_by
+  timestamp: order_by
+  tokenId: order_by
+  voidedTime: order_by
+  withdrawnAmount: order_by
+}
+```
+
+### Fields
+
+#### [<code style={{ fontWeight: 'normal' }}>FlowStream_var_samp_order_by.<b>assetDecimalsValue</b></code>](#asset-decimals-value)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>order_by</b></code>](/docs/api/streams/graphql/envio/enums/order-by.mdx) <Badge class="badge badge--secondary " text="enum"/> \{#asset-decimals-value\}
+
+#### [<code style={{ fontWeight: 'normal' }}>FlowStream_var_samp_order_by.<b>availableAmount</b></code>](#available-amount)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>order_by</b></code>](/docs/api/streams/graphql/envio/enums/order-by.mdx) <Badge class="badge badge--secondary " text="enum"/> \{#available-amount\}
+
+#### [<code style={{ fontWeight: 'normal' }}>FlowStream_var_samp_order_by.<b>chainId</b></code>](#chain-id)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>order_by</b></code>](/docs/api/streams/graphql/envio/enums/order-by.mdx) <Badge class="badge badge--secondary " text="enum"/> \{#chain-id\}
+
+#### [<code style={{ fontWeight: 'normal' }}>FlowStream_var_samp_order_by.<b>depletionTime</b></code>](#depletion-time)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>order_by</b></code>](/docs/api/streams/graphql/envio/enums/order-by.mdx) <Badge class="badge badge--secondary " text="enum"/> \{#depletion-time\}
+
+#### [<code style={{ fontWeight: 'normal' }}>FlowStream_var_samp_order_by.<b>depositedAmount</b></code>](#deposited-amount)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>order_by</b></code>](/docs/api/streams/graphql/envio/enums/order-by.mdx) <Badge class="badge badge--secondary " text="enum"/> \{#deposited-amount\}
+
+#### [<code style={{ fontWeight: 'normal' }}>FlowStream_var_samp_order_by.<b>forgivenDebt</b></code>](#forgiven-debt)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>order_by</b></code>](/docs/api/streams/graphql/envio/enums/order-by.mdx) <Badge class="badge badge--secondary " text="enum"/> \{#forgiven-debt\}
+
+#### [<code style={{ fontWeight: 'normal' }}>FlowStream_var_samp_order_by.<b>lastAdjustmentTimestamp</b></code>](#last-adjustment-timestamp)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>order_by</b></code>](/docs/api/streams/graphql/envio/enums/order-by.mdx) <Badge class="badge badge--secondary " text="enum"/> \{#last-adjustment-timestamp\}
+
+#### [<code style={{ fontWeight: 'normal' }}>FlowStream_var_samp_order_by.<b>pausedTime</b></code>](#paused-time)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>order_by</b></code>](/docs/api/streams/graphql/envio/enums/order-by.mdx) <Badge class="badge badge--secondary " text="enum"/> \{#paused-time\}
+
+#### [<code style={{ fontWeight: 'normal' }}>FlowStream_var_samp_order_by.<b>position</b></code>](#position)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>order_by</b></code>](/docs/api/streams/graphql/envio/enums/order-by.mdx) <Badge class="badge badge--secondary " text="enum"/> \{#position\}
+
+#### [<code style={{ fontWeight: 'normal' }}>FlowStream_var_samp_order_by.<b>ratePerSecond</b></code>](#rate-per-second)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>order_by</b></code>](/docs/api/streams/graphql/envio/enums/order-by.mdx) <Badge class="badge badge--secondary " text="enum"/> \{#rate-per-second\}
+
+#### [<code style={{ fontWeight: 'normal' }}>FlowStream_var_samp_order_by.<b>refundedAmount</b></code>](#refunded-amount)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>order_by</b></code>](/docs/api/streams/graphql/envio/enums/order-by.mdx) <Badge class="badge badge--secondary " text="enum"/> \{#refunded-amount\}
+
+#### [<code style={{ fontWeight: 'normal' }}>FlowStream_var_samp_order_by.<b>snapshotAmount</b></code>](#snapshot-amount)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>order_by</b></code>](/docs/api/streams/graphql/envio/enums/order-by.mdx) <Badge class="badge badge--secondary " text="enum"/> \{#snapshot-amount\}
+
+#### [<code style={{ fontWeight: 'normal' }}>FlowStream_var_samp_order_by.<b>startTime</b></code>](#start-time)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>order_by</b></code>](/docs/api/streams/graphql/envio/enums/order-by.mdx) <Badge class="badge badge--secondary " text="enum"/> \{#start-time\}
+
+#### [<code style={{ fontWeight: 'normal' }}>FlowStream_var_samp_order_by.<b>subgraphId</b></code>](#subgraph-id)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>order_by</b></code>](/docs/api/streams/graphql/envio/enums/order-by.mdx) <Badge class="badge badge--secondary " text="enum"/> \{#subgraph-id\}
+
+#### [<code style={{ fontWeight: 'normal' }}>FlowStream_var_samp_order_by.<b>timestamp</b></code>](#timestamp)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>order_by</b></code>](/docs/api/streams/graphql/envio/enums/order-by.mdx) <Badge class="badge badge--secondary " text="enum"/> \{#timestamp\}
+
+#### [<code style={{ fontWeight: 'normal' }}>FlowStream_var_samp_order_by.<b>tokenId</b></code>](#token-id)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>order_by</b></code>](/docs/api/streams/graphql/envio/enums/order-by.mdx) <Badge class="badge badge--secondary " text="enum"/> \{#token-id\}
+
+#### [<code style={{ fontWeight: 'normal' }}>FlowStream_var_samp_order_by.<b>voidedTime</b></code>](#voided-time)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>order_by</b></code>](/docs/api/streams/graphql/envio/enums/order-by.mdx) <Badge class="badge badge--secondary " text="enum"/> \{#voided-time\}
+
+#### [<code style={{ fontWeight: 'normal' }}>FlowStream_var_samp_order_by.<b>withdrawnAmount</b></code>](#withdrawn-amount)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>order_by</b></code>](/docs/api/streams/graphql/envio/enums/order-by.mdx) <Badge class="badge badge--secondary " text="enum"/> \{#withdrawn-amount\}

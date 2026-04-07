@@ -1,0 +1,121 @@
+---
+id: meta-select-column
+title: _meta_select_column
+---
+
+<head>
+  <meta content="noindex" name="robots" />
+  <meta charset="utf-8" />
+</head>
+
+export const Bullet = () => (
+  <>
+    <span style={{ fontWeight: "normal", fontSize: ".5em", color: "var(--ifm-color-secondary-darkest)" }}>
+      &nbsp;●&nbsp;
+    </span>
+  </>
+);
+
+export const SpecifiedBy = (props) => (
+  <>
+    Specification
+    <a
+      className="link"
+      style={{ fontSize: "1.5em", paddingLeft: "4px" }}
+      target="_blank"
+      href={props.url}
+      title={"Specified by " + props.url}
+    >
+      ⎘
+    </a>
+  </>
+);
+
+export const Badge = (props) => (
+  <>
+    <span className={props.class}>{props.text}</span>
+  </>
+);
+
+import { useState } from "react";
+
+export const Details = ({ dataOpen, dataClose, children, startOpen = false }) => {
+  const [open, setOpen] = useState(startOpen);
+  return (
+    <details
+      {...(open ? { open: true } : {})}
+      className="details"
+      style={{ border: "none", boxShadow: "none", background: "var(--ifm-background-color)" }}
+    >
+      <summary
+        onClick={(e) => {
+          e.preventDefault();
+          setOpen((open) => !open);
+        }}
+        style={{ listStyle: "none" }}
+      >
+        {open ? dataOpen : dataClose}
+      </summary>
+      {open && children}
+    </details>
+  );
+};
+
+select columns of table "\_meta"
+
+```graphql
+enum _meta_select_column {
+  bufferBlock
+  chainId
+  endBlock
+  eventsProcessed
+  firstEventBlock
+  isReady
+  progressBlock
+  readyAt
+  sourceBlock
+  startBlock
+}
+```
+
+### Values
+
+#### [<code style={{ fontWeight: 'normal' }}>\_meta_select_column.<b>bufferBlock</b></code>](#buffer-block) \{#buffer-block\}
+
+column name
+
+#### [<code style={{ fontWeight: 'normal' }}>\_meta_select_column.<b>chainId</b></code>](#chain-id) \{#chain-id\}
+
+column name
+
+#### [<code style={{ fontWeight: 'normal' }}>\_meta_select_column.<b>endBlock</b></code>](#end-block) \{#end-block\}
+
+column name
+
+#### [<code style={{ fontWeight: 'normal' }}>\_meta_select_column.<b>eventsProcessed</b></code>](#events-processed) \{#events-processed\}
+
+column name
+
+#### [<code style={{ fontWeight: 'normal' }}>\_meta_select_column.<b>firstEventBlock</b></code>](#first-event-block) \{#first-event-block\}
+
+column name
+
+#### [<code style={{ fontWeight: 'normal' }}>\_meta_select_column.<b>isReady</b></code>](#is-ready) \{#is-ready\}
+
+column name
+
+#### [<code style={{ fontWeight: 'normal' }}>\_meta_select_column.<b>progressBlock</b></code>](#progress-block) \{#progress-block\}
+
+column name
+
+#### [<code style={{ fontWeight: 'normal' }}>\_meta_select_column.<b>readyAt</b></code>](#ready-at) \{#ready-at\}
+
+column name
+
+#### [<code style={{ fontWeight: 'normal' }}>\_meta_select_column.<b>sourceBlock</b></code>](#source-block) \{#source-block\}
+
+column name
+
+#### [<code style={{ fontWeight: 'normal' }}>\_meta_select_column.<b>startBlock</b></code>](#start-block) \{#start-block\}
+
+column name

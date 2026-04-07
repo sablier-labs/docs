@@ -1,0 +1,106 @@
+---
+id: lockup-stream-select-column-lockup-stream-aggregate-bool-exp-bool-and-arguments-columns
+title: LockupStream_select_column_LockupStream_aggregate_bool_exp_bool_and_arguments_columns
+---
+
+<head>
+  <meta content="noindex" name="robots" />
+  <meta charset="utf-8" />
+</head>
+
+export const Bullet = () => (
+  <>
+    <span style={{ fontWeight: "normal", fontSize: ".5em", color: "var(--ifm-color-secondary-darkest)" }}>
+      &nbsp;●&nbsp;
+    </span>
+  </>
+);
+
+export const SpecifiedBy = (props) => (
+  <>
+    Specification
+    <a
+      className="link"
+      style={{ fontSize: "1.5em", paddingLeft: "4px" }}
+      target="_blank"
+      href={props.url}
+      title={"Specified by " + props.url}
+    >
+      ⎘
+    </a>
+  </>
+);
+
+export const Badge = (props) => (
+  <>
+    <span className={props.class}>{props.text}</span>
+  </>
+);
+
+import { useState } from "react";
+
+export const Details = ({ dataOpen, dataClose, children, startOpen = false }) => {
+  const [open, setOpen] = useState(startOpen);
+  return (
+    <details
+      {...(open ? { open: true } : {})}
+      className="details"
+      style={{ border: "none", boxShadow: "none", background: "var(--ifm-background-color)" }}
+    >
+      <summary
+        onClick={(e) => {
+          e.preventDefault();
+          setOpen((open) => !open);
+        }}
+        style={{ listStyle: "none" }}
+      >
+        {open ? dataOpen : dataClose}
+      </summary>
+      {open && children}
+    </details>
+  );
+};
+
+select "LockupStream_aggregate_bool_exp_bool_and_arguments_columns" columns of table "LockupStream"
+
+```graphql
+enum LockupStream_select_column_LockupStream_aggregate_bool_exp_bool_and_arguments_columns {
+  cancelable
+  canceled
+  cliff
+  depleted
+  initial
+  proxied
+  transferable
+}
+```
+
+### Values
+
+#### [<code style={{ fontWeight: 'normal' }}>LockupStream_select_column_LockupStream_aggregate_bool_exp_bool_and_arguments_columns.<b>cancelable</b></code>](#cancelable) \{#cancelable\}
+
+column name
+
+#### [<code style={{ fontWeight: 'normal' }}>LockupStream_select_column_LockupStream_aggregate_bool_exp_bool_and_arguments_columns.<b>canceled</b></code>](#canceled) \{#canceled\}
+
+column name
+
+#### [<code style={{ fontWeight: 'normal' }}>LockupStream_select_column_LockupStream_aggregate_bool_exp_bool_and_arguments_columns.<b>cliff</b></code>](#cliff) \{#cliff\}
+
+column name
+
+#### [<code style={{ fontWeight: 'normal' }}>LockupStream_select_column_LockupStream_aggregate_bool_exp_bool_and_arguments_columns.<b>depleted</b></code>](#depleted) \{#depleted\}
+
+column name
+
+#### [<code style={{ fontWeight: 'normal' }}>LockupStream_select_column_LockupStream_aggregate_bool_exp_bool_and_arguments_columns.<b>initial</b></code>](#initial) \{#initial\}
+
+column name
+
+#### [<code style={{ fontWeight: 'normal' }}>LockupStream_select_column_LockupStream_aggregate_bool_exp_bool_and_arguments_columns.<b>proxied</b></code>](#proxied) \{#proxied\}
+
+column name
+
+#### [<code style={{ fontWeight: 'normal' }}>LockupStream_select_column_LockupStream_aggregate_bool_exp_bool_and_arguments_columns.<b>transferable</b></code>](#transferable) \{#transferable\}
+
+column name

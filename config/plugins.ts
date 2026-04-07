@@ -37,7 +37,7 @@ const graphqlMarkdown: [string, GraphQLMarkdownOptions] = [
    * @see https://graphql-markdown.dev/docs/settings
    */
   {
-    baseURL: "./docs/api/flow/the-graph",
+    baseURL: "./docs/api/streams/the-graph",
     homepage: "static/graphql-overview.md",
     loaders: {
       UrlLoader: {
@@ -47,7 +47,7 @@ const graphqlMarkdown: [string, GraphQLMarkdownOptions] = [
     metatags: [{ content: "noindex", name: "robots" }, { charset: "utf-8" }],
     pretty: true,
     rootPath: ".",
-    schema: "https://api.studio.thegraph.com/query/112500/sablier-flow-experimental/version/latest",
+    schema: "https://api.studio.thegraph.com/query/112500/sablier-streams-sepolia/version/latest",
     printTypeOptions: {
       hierarchy: "entity",
       relatedTypeSection: false,
@@ -88,6 +88,7 @@ const llmfood: [
         title: "Sablier Flow Documentation",
         includePatterns: [
           /\/flow\//,
+          /\/streams\//,
           /\/apps\/features\/payments/,
           /\/apps\/guides\//,
           /\/support\//,
@@ -99,6 +100,7 @@ const llmfood: [
         title: "Sablier Lockup Documentation",
         includePatterns: [
           /\/lockup\//,
+          /\/streams\//,
           /\/apps\/features\/vesting/,
           /\/apps\/guides\//,
           /\/support\//,

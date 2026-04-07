@@ -1,0 +1,104 @@
+---
+id: lockup-stream-aggregate-order-by
+title: LockupStream_aggregate_order_by
+---
+
+<head>
+  <meta content="noindex" name="robots" />
+  <meta charset="utf-8" />
+</head>
+
+export const Bullet = () => (
+  <>
+    <span style={{ fontWeight: "normal", fontSize: ".5em", color: "var(--ifm-color-secondary-darkest)" }}>
+      &nbsp;●&nbsp;
+    </span>
+  </>
+);
+
+export const SpecifiedBy = (props) => (
+  <>
+    Specification
+    <a
+      className="link"
+      style={{ fontSize: "1.5em", paddingLeft: "4px" }}
+      target="_blank"
+      href={props.url}
+      title={"Specified by " + props.url}
+    >
+      ⎘
+    </a>
+  </>
+);
+
+export const Badge = (props) => (
+  <>
+    <span className={props.class}>{props.text}</span>
+  </>
+);
+
+import { useState } from "react";
+
+export const Details = ({ dataOpen, dataClose, children, startOpen = false }) => {
+  const [open, setOpen] = useState(startOpen);
+  return (
+    <details
+      {...(open ? { open: true } : {})}
+      className="details"
+      style={{ border: "none", boxShadow: "none", background: "var(--ifm-background-color)" }}
+    >
+      <summary
+        onClick={(e) => {
+          e.preventDefault();
+          setOpen((open) => !open);
+        }}
+        style={{ listStyle: "none" }}
+      >
+        {open ? dataOpen : dataClose}
+      </summary>
+      {open && children}
+    </details>
+  );
+};
+
+order by aggregate values of table "LockupStream"
+
+```graphql
+input LockupStream_aggregate_order_by {
+  avg: LockupStream_avg_order_by
+  count: order_by
+  max: LockupStream_max_order_by
+  min: LockupStream_min_order_by
+  stddev: LockupStream_stddev_order_by
+  stddev_pop: LockupStream_stddev_pop_order_by
+  stddev_samp: LockupStream_stddev_samp_order_by
+  sum: LockupStream_sum_order_by
+  var_pop: LockupStream_var_pop_order_by
+  var_samp: LockupStream_var_samp_order_by
+  variance: LockupStream_variance_order_by
+}
+```
+
+### Fields
+
+#### [<code style={{ fontWeight: 'normal' }}>LockupStream_aggregate_order_by.<b>avg</b></code>](#avg)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>LockupStream_avg_order_by</b></code>](/docs/api/streams/graphql/envio/inputs/lockup-stream-avg-order-by.mdx) <Badge class="badge badge--secondary " text="input"/> \{#avg\}
+
+#### [<code style={{ fontWeight: 'normal' }}>LockupStream_aggregate_order_by.<b>count</b></code>](#count)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>order_by</b></code>](/docs/api/streams/graphql/envio/enums/order-by.mdx) <Badge class="badge badge--secondary " text="enum"/> \{#count\}
+
+#### [<code style={{ fontWeight: 'normal' }}>LockupStream_aggregate_order_by.<b>max</b></code>](#max)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>LockupStream_max_order_by</b></code>](/docs/api/streams/graphql/envio/inputs/lockup-stream-max-order-by.mdx) <Badge class="badge badge--secondary " text="input"/> \{#max\}
+
+#### [<code style={{ fontWeight: 'normal' }}>LockupStream_aggregate_order_by.<b>min</b></code>](#min)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>LockupStream_min_order_by</b></code>](/docs/api/streams/graphql/envio/inputs/lockup-stream-min-order-by.mdx) <Badge class="badge badge--secondary " text="input"/> \{#min\}
+
+#### [<code style={{ fontWeight: 'normal' }}>LockupStream_aggregate_order_by.<b>stddev</b></code>](#stddev)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>LockupStream_stddev_order_by</b></code>](/docs/api/streams/graphql/envio/inputs/lockup-stream-stddev-order-by.mdx) <Badge class="badge badge--secondary " text="input"/> \{#stddev\}
+
+#### [<code style={{ fontWeight: 'normal' }}>LockupStream_aggregate_order_by.<b>stddev_pop</b></code>](#stddev-pop)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>LockupStream_stddev_pop_order_by</b></code>](/docs/api/streams/graphql/envio/inputs/lockup-stream-stddev-pop-order-by.mdx) <Badge class="badge badge--secondary " text="input"/> \{#stddev-pop\}
+
+#### [<code style={{ fontWeight: 'normal' }}>LockupStream_aggregate_order_by.<b>stddev_samp</b></code>](#stddev-samp)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>LockupStream_stddev_samp_order_by</b></code>](/docs/api/streams/graphql/envio/inputs/lockup-stream-stddev-samp-order-by.mdx) <Badge class="badge badge--secondary " text="input"/> \{#stddev-samp\}
+
+#### [<code style={{ fontWeight: 'normal' }}>LockupStream_aggregate_order_by.<b>sum</b></code>](#sum)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>LockupStream_sum_order_by</b></code>](/docs/api/streams/graphql/envio/inputs/lockup-stream-sum-order-by.mdx) <Badge class="badge badge--secondary " text="input"/> \{#sum\}
+
+#### [<code style={{ fontWeight: 'normal' }}>LockupStream_aggregate_order_by.<b>var_pop</b></code>](#var-pop)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>LockupStream_var_pop_order_by</b></code>](/docs/api/streams/graphql/envio/inputs/lockup-stream-var-pop-order-by.mdx) <Badge class="badge badge--secondary " text="input"/> \{#var-pop\}
+
+#### [<code style={{ fontWeight: 'normal' }}>LockupStream_aggregate_order_by.<b>var_samp</b></code>](#var-samp)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>LockupStream_var_samp_order_by</b></code>](/docs/api/streams/graphql/envio/inputs/lockup-stream-var-samp-order-by.mdx) <Badge class="badge badge--secondary " text="input"/> \{#var-samp\}
+
+#### [<code style={{ fontWeight: 'normal' }}>LockupStream_aggregate_order_by.<b>variance</b></code>](#variance)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>LockupStream_variance_order_by</b></code>](/docs/api/streams/graphql/envio/inputs/lockup-stream-variance-order-by.mdx) <Badge class="badge badge--secondary " text="input"/> \{#variance\}

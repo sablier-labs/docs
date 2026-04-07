@@ -1,0 +1,206 @@
+---
+id: flow-stream-bool-exp
+title: FlowStream_bool_exp
+---
+
+<head>
+  <meta content="noindex" name="robots" />
+  <meta charset="utf-8" />
+</head>
+
+export const Bullet = () => (
+  <>
+    <span style={{ fontWeight: "normal", fontSize: ".5em", color: "var(--ifm-color-secondary-darkest)" }}>
+      &nbsp;●&nbsp;
+    </span>
+  </>
+);
+
+export const SpecifiedBy = (props) => (
+  <>
+    Specification
+    <a
+      className="link"
+      style={{ fontSize: "1.5em", paddingLeft: "4px" }}
+      target="_blank"
+      href={props.url}
+      title={"Specified by " + props.url}
+    >
+      ⎘
+    </a>
+  </>
+);
+
+export const Badge = (props) => (
+  <>
+    <span className={props.class}>{props.text}</span>
+  </>
+);
+
+import { useState } from "react";
+
+export const Details = ({ dataOpen, dataClose, children, startOpen = false }) => {
+  const [open, setOpen] = useState(startOpen);
+  return (
+    <details
+      {...(open ? { open: true } : {})}
+      className="details"
+      style={{ border: "none", boxShadow: "none", background: "var(--ifm-background-color)" }}
+    >
+      <summary
+        onClick={(e) => {
+          e.preventDefault();
+          setOpen((open) => !open);
+        }}
+        style={{ listStyle: "none" }}
+      >
+        {open ? dataOpen : dataClose}
+      </summary>
+      {open && children}
+    </details>
+  );
+};
+
+Boolean expression to filter rows from the table "FlowStream". All fields are combined with a logical 'AND'.
+
+```graphql
+input FlowStream_bool_exp {
+  _and: [FlowStream_bool_exp!]
+  _not: FlowStream_bool_exp
+  _or: [FlowStream_bool_exp!]
+  actions: FlowAction_bool_exp
+  actions_aggregate: FlowAction_aggregate_bool_exp
+  alias: String_comparison_exp
+  asset: Asset_bool_exp
+  assetDecimalsValue: numeric_comparison_exp
+  asset_id: String_comparison_exp
+  availableAmount: numeric_comparison_exp
+  batch: FlowBatch_bool_exp
+  batch_id: String_comparison_exp
+  category: flowstreamcategory_comparison_exp
+  chainId: numeric_comparison_exp
+  contract: String_comparison_exp
+  creator: String_comparison_exp
+  depletionTime: numeric_comparison_exp
+  depositedAmount: numeric_comparison_exp
+  forgivenDebt: numeric_comparison_exp
+  hash: String_comparison_exp
+  id: String_comparison_exp
+  lastAdjustmentAction: FlowAction_bool_exp
+  lastAdjustmentAction_id: String_comparison_exp
+  lastAdjustmentTimestamp: numeric_comparison_exp
+  paused: Boolean_comparison_exp
+  pausedAction: FlowAction_bool_exp
+  pausedAction_id: String_comparison_exp
+  pausedTime: numeric_comparison_exp
+  position: numeric_comparison_exp
+  ratePerSecond: numeric_comparison_exp
+  recipient: String_comparison_exp
+  refundedAmount: numeric_comparison_exp
+  sender: String_comparison_exp
+  snapshotAmount: numeric_comparison_exp
+  startTime: numeric_comparison_exp
+  subgraphId: numeric_comparison_exp
+  timestamp: numeric_comparison_exp
+  tokenId: numeric_comparison_exp
+  transferable: Boolean_comparison_exp
+  version: String_comparison_exp
+  voided: Boolean_comparison_exp
+  voidedAction: FlowAction_bool_exp
+  voidedAction_id: String_comparison_exp
+  voidedTime: numeric_comparison_exp
+  withdrawnAmount: numeric_comparison_exp
+}
+```
+
+### Fields
+
+#### [<code style={{ fontWeight: 'normal' }}>FlowStream_bool_exp.<b>\_and</b></code>](#and)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>[FlowStream_bool_exp!]</b></code>](/docs/api/streams/graphql/envio/inputs/flow-stream-bool-exp.mdx) <Badge class="badge badge--secondary " text="list"/> <Badge class="badge badge--secondary " text="input"/> \{#and\}
+
+#### [<code style={{ fontWeight: 'normal' }}>FlowStream_bool_exp.<b>\_not</b></code>](#not)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>FlowStream_bool_exp</b></code>](/docs/api/streams/graphql/envio/inputs/flow-stream-bool-exp.mdx) <Badge class="badge badge--secondary " text="input"/> \{#not\}
+
+#### [<code style={{ fontWeight: 'normal' }}>FlowStream_bool_exp.<b>\_or</b></code>](#or)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>[FlowStream_bool_exp!]</b></code>](/docs/api/streams/graphql/envio/inputs/flow-stream-bool-exp.mdx) <Badge class="badge badge--secondary " text="list"/> <Badge class="badge badge--secondary " text="input"/> \{#or\}
+
+#### [<code style={{ fontWeight: 'normal' }}>FlowStream_bool_exp.<b>actions</b></code>](#actions)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>FlowAction_bool_exp</b></code>](/docs/api/streams/graphql/envio/inputs/flow-action-bool-exp.mdx) <Badge class="badge badge--secondary " text="input"/> \{#actions\}
+
+#### [<code style={{ fontWeight: 'normal' }}>FlowStream_bool_exp.<b>actions_aggregate</b></code>](#actions-aggregate)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>FlowAction_aggregate_bool_exp</b></code>](/docs/api/streams/graphql/envio/inputs/flow-action-aggregate-bool-exp.mdx) <Badge class="badge badge--secondary " text="input"/> \{#actions-aggregate\}
+
+#### [<code style={{ fontWeight: 'normal' }}>FlowStream_bool_exp.<b>alias</b></code>](#alias)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String_comparison_exp</b></code>](/docs/api/streams/graphql/envio/inputs/string-comparison-exp.mdx) <Badge class="badge badge--secondary " text="input"/> \{#alias\}
+
+#### [<code style={{ fontWeight: 'normal' }}>FlowStream_bool_exp.<b>asset</b></code>](#asset)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Asset_bool_exp</b></code>](/docs/api/streams/graphql/envio/inputs/asset-bool-exp.mdx) <Badge class="badge badge--secondary " text="input"/> \{#asset\}
+
+#### [<code style={{ fontWeight: 'normal' }}>FlowStream_bool_exp.<b>assetDecimalsValue</b></code>](#asset-decimals-value)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>numeric_comparison_exp</b></code>](/docs/api/streams/graphql/envio/inputs/numeric-comparison-exp.mdx) <Badge class="badge badge--secondary " text="input"/> \{#asset-decimals-value\}
+
+#### [<code style={{ fontWeight: 'normal' }}>FlowStream_bool_exp.<b>asset_id</b></code>](#asset-id)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String_comparison_exp</b></code>](/docs/api/streams/graphql/envio/inputs/string-comparison-exp.mdx) <Badge class="badge badge--secondary " text="input"/> \{#asset-id\}
+
+#### [<code style={{ fontWeight: 'normal' }}>FlowStream_bool_exp.<b>availableAmount</b></code>](#available-amount)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>numeric_comparison_exp</b></code>](/docs/api/streams/graphql/envio/inputs/numeric-comparison-exp.mdx) <Badge class="badge badge--secondary " text="input"/> \{#available-amount\}
+
+#### [<code style={{ fontWeight: 'normal' }}>FlowStream_bool_exp.<b>batch</b></code>](#batch)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>FlowBatch_bool_exp</b></code>](/docs/api/streams/graphql/envio/inputs/flow-batch-bool-exp.mdx) <Badge class="badge badge--secondary " text="input"/> \{#batch\}
+
+#### [<code style={{ fontWeight: 'normal' }}>FlowStream_bool_exp.<b>batch_id</b></code>](#batch-id)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String_comparison_exp</b></code>](/docs/api/streams/graphql/envio/inputs/string-comparison-exp.mdx) <Badge class="badge badge--secondary " text="input"/> \{#batch-id\}
+
+#### [<code style={{ fontWeight: 'normal' }}>FlowStream_bool_exp.<b>category</b></code>](#category)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>flowstreamcategory_comparison_exp</b></code>](/docs/api/streams/graphql/envio/inputs/flowstreamcategory-comparison-exp.mdx) <Badge class="badge badge--secondary " text="input"/> \{#category\}
+
+#### [<code style={{ fontWeight: 'normal' }}>FlowStream_bool_exp.<b>chainId</b></code>](#chain-id)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>numeric_comparison_exp</b></code>](/docs/api/streams/graphql/envio/inputs/numeric-comparison-exp.mdx) <Badge class="badge badge--secondary " text="input"/> \{#chain-id\}
+
+#### [<code style={{ fontWeight: 'normal' }}>FlowStream_bool_exp.<b>contract</b></code>](#contract)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String_comparison_exp</b></code>](/docs/api/streams/graphql/envio/inputs/string-comparison-exp.mdx) <Badge class="badge badge--secondary " text="input"/> \{#contract\}
+
+#### [<code style={{ fontWeight: 'normal' }}>FlowStream_bool_exp.<b>creator</b></code>](#creator)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String_comparison_exp</b></code>](/docs/api/streams/graphql/envio/inputs/string-comparison-exp.mdx) <Badge class="badge badge--secondary " text="input"/> \{#creator\}
+
+#### [<code style={{ fontWeight: 'normal' }}>FlowStream_bool_exp.<b>depletionTime</b></code>](#depletion-time)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>numeric_comparison_exp</b></code>](/docs/api/streams/graphql/envio/inputs/numeric-comparison-exp.mdx) <Badge class="badge badge--secondary " text="input"/> \{#depletion-time\}
+
+#### [<code style={{ fontWeight: 'normal' }}>FlowStream_bool_exp.<b>depositedAmount</b></code>](#deposited-amount)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>numeric_comparison_exp</b></code>](/docs/api/streams/graphql/envio/inputs/numeric-comparison-exp.mdx) <Badge class="badge badge--secondary " text="input"/> \{#deposited-amount\}
+
+#### [<code style={{ fontWeight: 'normal' }}>FlowStream_bool_exp.<b>forgivenDebt</b></code>](#forgiven-debt)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>numeric_comparison_exp</b></code>](/docs/api/streams/graphql/envio/inputs/numeric-comparison-exp.mdx) <Badge class="badge badge--secondary " text="input"/> \{#forgiven-debt\}
+
+#### [<code style={{ fontWeight: 'normal' }}>FlowStream_bool_exp.<b>hash</b></code>](#hash)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String_comparison_exp</b></code>](/docs/api/streams/graphql/envio/inputs/string-comparison-exp.mdx) <Badge class="badge badge--secondary " text="input"/> \{#hash\}
+
+#### [<code style={{ fontWeight: 'normal' }}>FlowStream_bool_exp.<b>id</b></code>](#id)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String_comparison_exp</b></code>](/docs/api/streams/graphql/envio/inputs/string-comparison-exp.mdx) <Badge class="badge badge--secondary " text="input"/> \{#id\}
+
+#### [<code style={{ fontWeight: 'normal' }}>FlowStream_bool_exp.<b>lastAdjustmentAction</b></code>](#last-adjustment-action)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>FlowAction_bool_exp</b></code>](/docs/api/streams/graphql/envio/inputs/flow-action-bool-exp.mdx) <Badge class="badge badge--secondary " text="input"/> \{#last-adjustment-action\}
+
+#### [<code style={{ fontWeight: 'normal' }}>FlowStream_bool_exp.<b>lastAdjustmentAction_id</b></code>](#last-adjustment-action-id)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String_comparison_exp</b></code>](/docs/api/streams/graphql/envio/inputs/string-comparison-exp.mdx) <Badge class="badge badge--secondary " text="input"/> \{#last-adjustment-action-id\}
+
+#### [<code style={{ fontWeight: 'normal' }}>FlowStream_bool_exp.<b>lastAdjustmentTimestamp</b></code>](#last-adjustment-timestamp)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>numeric_comparison_exp</b></code>](/docs/api/streams/graphql/envio/inputs/numeric-comparison-exp.mdx) <Badge class="badge badge--secondary " text="input"/> \{#last-adjustment-timestamp\}
+
+#### [<code style={{ fontWeight: 'normal' }}>FlowStream_bool_exp.<b>paused</b></code>](#paused)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Boolean_comparison_exp</b></code>](/docs/api/streams/graphql/envio/inputs/boolean-comparison-exp.mdx) <Badge class="badge badge--secondary " text="input"/> \{#paused\}
+
+#### [<code style={{ fontWeight: 'normal' }}>FlowStream_bool_exp.<b>pausedAction</b></code>](#paused-action)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>FlowAction_bool_exp</b></code>](/docs/api/streams/graphql/envio/inputs/flow-action-bool-exp.mdx) <Badge class="badge badge--secondary " text="input"/> \{#paused-action\}
+
+#### [<code style={{ fontWeight: 'normal' }}>FlowStream_bool_exp.<b>pausedAction_id</b></code>](#paused-action-id)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String_comparison_exp</b></code>](/docs/api/streams/graphql/envio/inputs/string-comparison-exp.mdx) <Badge class="badge badge--secondary " text="input"/> \{#paused-action-id\}
+
+#### [<code style={{ fontWeight: 'normal' }}>FlowStream_bool_exp.<b>pausedTime</b></code>](#paused-time)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>numeric_comparison_exp</b></code>](/docs/api/streams/graphql/envio/inputs/numeric-comparison-exp.mdx) <Badge class="badge badge--secondary " text="input"/> \{#paused-time\}
+
+#### [<code style={{ fontWeight: 'normal' }}>FlowStream_bool_exp.<b>position</b></code>](#position)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>numeric_comparison_exp</b></code>](/docs/api/streams/graphql/envio/inputs/numeric-comparison-exp.mdx) <Badge class="badge badge--secondary " text="input"/> \{#position\}
+
+#### [<code style={{ fontWeight: 'normal' }}>FlowStream_bool_exp.<b>ratePerSecond</b></code>](#rate-per-second)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>numeric_comparison_exp</b></code>](/docs/api/streams/graphql/envio/inputs/numeric-comparison-exp.mdx) <Badge class="badge badge--secondary " text="input"/> \{#rate-per-second\}
+
+#### [<code style={{ fontWeight: 'normal' }}>FlowStream_bool_exp.<b>recipient</b></code>](#recipient)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String_comparison_exp</b></code>](/docs/api/streams/graphql/envio/inputs/string-comparison-exp.mdx) <Badge class="badge badge--secondary " text="input"/> \{#recipient\}
+
+#### [<code style={{ fontWeight: 'normal' }}>FlowStream_bool_exp.<b>refundedAmount</b></code>](#refunded-amount)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>numeric_comparison_exp</b></code>](/docs/api/streams/graphql/envio/inputs/numeric-comparison-exp.mdx) <Badge class="badge badge--secondary " text="input"/> \{#refunded-amount\}
+
+#### [<code style={{ fontWeight: 'normal' }}>FlowStream_bool_exp.<b>sender</b></code>](#sender)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String_comparison_exp</b></code>](/docs/api/streams/graphql/envio/inputs/string-comparison-exp.mdx) <Badge class="badge badge--secondary " text="input"/> \{#sender\}
+
+#### [<code style={{ fontWeight: 'normal' }}>FlowStream_bool_exp.<b>snapshotAmount</b></code>](#snapshot-amount)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>numeric_comparison_exp</b></code>](/docs/api/streams/graphql/envio/inputs/numeric-comparison-exp.mdx) <Badge class="badge badge--secondary " text="input"/> \{#snapshot-amount\}
+
+#### [<code style={{ fontWeight: 'normal' }}>FlowStream_bool_exp.<b>startTime</b></code>](#start-time)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>numeric_comparison_exp</b></code>](/docs/api/streams/graphql/envio/inputs/numeric-comparison-exp.mdx) <Badge class="badge badge--secondary " text="input"/> \{#start-time\}
+
+#### [<code style={{ fontWeight: 'normal' }}>FlowStream_bool_exp.<b>subgraphId</b></code>](#subgraph-id)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>numeric_comparison_exp</b></code>](/docs/api/streams/graphql/envio/inputs/numeric-comparison-exp.mdx) <Badge class="badge badge--secondary " text="input"/> \{#subgraph-id\}
+
+#### [<code style={{ fontWeight: 'normal' }}>FlowStream_bool_exp.<b>timestamp</b></code>](#timestamp)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>numeric_comparison_exp</b></code>](/docs/api/streams/graphql/envio/inputs/numeric-comparison-exp.mdx) <Badge class="badge badge--secondary " text="input"/> \{#timestamp\}
+
+#### [<code style={{ fontWeight: 'normal' }}>FlowStream_bool_exp.<b>tokenId</b></code>](#token-id)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>numeric_comparison_exp</b></code>](/docs/api/streams/graphql/envio/inputs/numeric-comparison-exp.mdx) <Badge class="badge badge--secondary " text="input"/> \{#token-id\}
+
+#### [<code style={{ fontWeight: 'normal' }}>FlowStream_bool_exp.<b>transferable</b></code>](#transferable)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Boolean_comparison_exp</b></code>](/docs/api/streams/graphql/envio/inputs/boolean-comparison-exp.mdx) <Badge class="badge badge--secondary " text="input"/> \{#transferable\}
+
+#### [<code style={{ fontWeight: 'normal' }}>FlowStream_bool_exp.<b>version</b></code>](#version)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String_comparison_exp</b></code>](/docs/api/streams/graphql/envio/inputs/string-comparison-exp.mdx) <Badge class="badge badge--secondary " text="input"/> \{#version\}
+
+#### [<code style={{ fontWeight: 'normal' }}>FlowStream_bool_exp.<b>voided</b></code>](#voided)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Boolean_comparison_exp</b></code>](/docs/api/streams/graphql/envio/inputs/boolean-comparison-exp.mdx) <Badge class="badge badge--secondary " text="input"/> \{#voided\}
+
+#### [<code style={{ fontWeight: 'normal' }}>FlowStream_bool_exp.<b>voidedAction</b></code>](#voided-action)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>FlowAction_bool_exp</b></code>](/docs/api/streams/graphql/envio/inputs/flow-action-bool-exp.mdx) <Badge class="badge badge--secondary " text="input"/> \{#voided-action\}
+
+#### [<code style={{ fontWeight: 'normal' }}>FlowStream_bool_exp.<b>voidedAction_id</b></code>](#voided-action-id)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String_comparison_exp</b></code>](/docs/api/streams/graphql/envio/inputs/string-comparison-exp.mdx) <Badge class="badge badge--secondary " text="input"/> \{#voided-action-id\}
+
+#### [<code style={{ fontWeight: 'normal' }}>FlowStream_bool_exp.<b>voidedTime</b></code>](#voided-time)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>numeric_comparison_exp</b></code>](/docs/api/streams/graphql/envio/inputs/numeric-comparison-exp.mdx) <Badge class="badge badge--secondary " text="input"/> \{#voided-time\}
+
+#### [<code style={{ fontWeight: 'normal' }}>FlowStream_bool_exp.<b>withdrawnAmount</b></code>](#withdrawn-amount)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>numeric_comparison_exp</b></code>](/docs/api/streams/graphql/envio/inputs/numeric-comparison-exp.mdx) <Badge class="badge badge--secondary " text="input"/> \{#withdrawn-amount\}

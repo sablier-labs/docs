@@ -1,0 +1,119 @@
+---
+id: sponsorship-order-by
+title: Sponsorship_orderBy
+---
+
+<head>
+  <meta content="noindex" name="robots" />
+  <meta charset="utf-8" />
+</head>
+
+export const Bullet = () => (
+  <>
+    <span style={{ fontWeight: "normal", fontSize: ".5em", color: "var(--ifm-color-secondary-darkest)" }}>
+      &nbsp;●&nbsp;
+    </span>
+  </>
+);
+
+export const SpecifiedBy = (props) => (
+  <>
+    Specification
+    <a
+      className="link"
+      style={{ fontSize: "1.5em", paddingLeft: "4px" }}
+      target="_blank"
+      href={props.url}
+      title={"Specified by " + props.url}
+    >
+      ⎘
+    </a>
+  </>
+);
+
+export const Badge = (props) => (
+  <>
+    <span className={props.class}>{props.text}</span>
+  </>
+);
+
+import { useState } from "react";
+
+export const Details = ({ dataOpen, dataClose, children, startOpen = false }) => {
+  const [open, setOpen] = useState(startOpen);
+  return (
+    <details
+      {...(open ? { open: true } : {})}
+      className="details"
+      style={{ border: "none", boxShadow: "none", background: "var(--ifm-background-color)" }}
+    >
+      <summary
+        onClick={(e) => {
+          e.preventDefault();
+          setOpen((open) => !open);
+        }}
+        style={{ listStyle: "none" }}
+      >
+        {open ? dataOpen : dataClose}
+      </summary>
+      {open && children}
+    </details>
+  );
+};
+
+No description
+
+```graphql
+enum Sponsorship_orderBy {
+  id
+  amount
+  amountDisplay
+  block
+  chainId
+  logIndex
+  sender
+  sponsor
+  sponsor__id
+  sponsor__address
+  sponsor__chainId
+  sponsor__sponsorshipCount
+  sponsor__totalAmount
+  sponsor__totalAmountDisplay
+  timestamp
+  txHash
+}
+```
+
+### Values
+
+#### [<code style={{ fontWeight: 'normal' }}>Sponsorship_orderBy.<b>id</b></code>](#id) \{#id\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Sponsorship_orderBy.<b>amount</b></code>](#amount) \{#amount\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Sponsorship_orderBy.<b>amountDisplay</b></code>](#amount-display) \{#amount-display\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Sponsorship_orderBy.<b>block</b></code>](#block) \{#block\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Sponsorship_orderBy.<b>chainId</b></code>](#chain-id) \{#chain-id\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Sponsorship_orderBy.<b>logIndex</b></code>](#log-index) \{#log-index\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Sponsorship_orderBy.<b>sender</b></code>](#sender) \{#sender\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Sponsorship_orderBy.<b>sponsor</b></code>](#sponsor) \{#sponsor\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Sponsorship_orderBy.<b>sponsor\_\_id</b></code>](#sponsor-id) \{#sponsor-id\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Sponsorship_orderBy.<b>sponsor\_\_address</b></code>](#sponsor-address) \{#sponsor-address\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Sponsorship_orderBy.<b>sponsor\_\_chainId</b></code>](#sponsor-chain-id) \{#sponsor-chain-id\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Sponsorship_orderBy.<b>sponsor\_\_sponsorshipCount</b></code>](#sponsor-sponsorship-count) \{#sponsor-sponsorship-count\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Sponsorship_orderBy.<b>sponsor\_\_totalAmount</b></code>](#sponsor-total-amount) \{#sponsor-total-amount\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Sponsorship_orderBy.<b>sponsor\_\_totalAmountDisplay</b></code>](#sponsor-total-amount-display) \{#sponsor-total-amount-display\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Sponsorship_orderBy.<b>timestamp</b></code>](#timestamp) \{#timestamp\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Sponsorship_orderBy.<b>txHash</b></code>](#tx-hash) \{#tx-hash\}

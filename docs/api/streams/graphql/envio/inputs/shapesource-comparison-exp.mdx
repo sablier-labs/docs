@@ -1,0 +1,98 @@
+---
+id: shapesource-comparison-exp
+title: shapesource_comparison_exp
+---
+
+<head>
+  <meta content="noindex" name="robots" />
+  <meta charset="utf-8" />
+</head>
+
+export const Bullet = () => (
+  <>
+    <span style={{ fontWeight: "normal", fontSize: ".5em", color: "var(--ifm-color-secondary-darkest)" }}>
+      &nbsp;●&nbsp;
+    </span>
+  </>
+);
+
+export const SpecifiedBy = (props) => (
+  <>
+    Specification
+    <a
+      className="link"
+      style={{ fontSize: "1.5em", paddingLeft: "4px" }}
+      target="_blank"
+      href={props.url}
+      title={"Specified by " + props.url}
+    >
+      ⎘
+    </a>
+  </>
+);
+
+export const Badge = (props) => (
+  <>
+    <span className={props.class}>{props.text}</span>
+  </>
+);
+
+import { useState } from "react";
+
+export const Details = ({ dataOpen, dataClose, children, startOpen = false }) => {
+  const [open, setOpen] = useState(startOpen);
+  return (
+    <details
+      {...(open ? { open: true } : {})}
+      className="details"
+      style={{ border: "none", boxShadow: "none", background: "var(--ifm-background-color)" }}
+    >
+      <summary
+        onClick={(e) => {
+          e.preventDefault();
+          setOpen((open) => !open);
+        }}
+        style={{ listStyle: "none" }}
+      >
+        {open ? dataOpen : dataClose}
+      </summary>
+      {open && children}
+    </details>
+  );
+};
+
+Boolean expression to compare columns of type "shapesource". All fields are combined with logical 'AND'.
+
+```graphql
+input shapesource_comparison_exp {
+  _eq: shapesource
+  _gt: shapesource
+  _gte: shapesource
+  _in: [shapesource!]
+  _is_null: Boolean
+  _lt: shapesource
+  _lte: shapesource
+  _neq: shapesource
+  _nin: [shapesource!]
+}
+```
+
+### Fields
+
+#### [<code style={{ fontWeight: 'normal' }}>shapesource_comparison_exp.<b>\_eq</b></code>](#eq)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>shapesource</b></code>](/docs/api/streams/graphql/envio/scalars/shapesource.mdx) <Badge class="badge badge--secondary " text="scalar"/> \{#eq\}
+
+#### [<code style={{ fontWeight: 'normal' }}>shapesource_comparison_exp.<b>\_gt</b></code>](#gt)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>shapesource</b></code>](/docs/api/streams/graphql/envio/scalars/shapesource.mdx) <Badge class="badge badge--secondary " text="scalar"/> \{#gt\}
+
+#### [<code style={{ fontWeight: 'normal' }}>shapesource_comparison_exp.<b>\_gte</b></code>](#gte)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>shapesource</b></code>](/docs/api/streams/graphql/envio/scalars/shapesource.mdx) <Badge class="badge badge--secondary " text="scalar"/> \{#gte\}
+
+#### [<code style={{ fontWeight: 'normal' }}>shapesource_comparison_exp.<b>\_in</b></code>](#in)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>[shapesource!]</b></code>](/docs/api/streams/graphql/envio/scalars/shapesource.mdx) <Badge class="badge badge--secondary " text="list"/> <Badge class="badge badge--secondary " text="scalar"/> \{#in\}
+
+#### [<code style={{ fontWeight: 'normal' }}>shapesource_comparison_exp.<b>\_is_null</b></code>](#is-null)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Boolean</b></code>](/docs/api/streams/graphql/envio/scalars/boolean.mdx) <Badge class="badge badge--secondary " text="scalar"/> \{#is-null\}
+
+#### [<code style={{ fontWeight: 'normal' }}>shapesource_comparison_exp.<b>\_lt</b></code>](#lt)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>shapesource</b></code>](/docs/api/streams/graphql/envio/scalars/shapesource.mdx) <Badge class="badge badge--secondary " text="scalar"/> \{#lt\}
+
+#### [<code style={{ fontWeight: 'normal' }}>shapesource_comparison_exp.<b>\_lte</b></code>](#lte)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>shapesource</b></code>](/docs/api/streams/graphql/envio/scalars/shapesource.mdx) <Badge class="badge badge--secondary " text="scalar"/> \{#lte\}
+
+#### [<code style={{ fontWeight: 'normal' }}>shapesource_comparison_exp.<b>\_neq</b></code>](#neq)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>shapesource</b></code>](/docs/api/streams/graphql/envio/scalars/shapesource.mdx) <Badge class="badge badge--secondary " text="scalar"/> \{#neq\}
+
+#### [<code style={{ fontWeight: 'normal' }}>shapesource_comparison_exp.<b>\_nin</b></code>](#nin)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>[shapesource!]</b></code>](/docs/api/streams/graphql/envio/scalars/shapesource.mdx) <Badge class="badge badge--secondary " text="list"/> <Badge class="badge badge--secondary " text="scalar"/> \{#nin\}

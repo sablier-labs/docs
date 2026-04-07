@@ -1,0 +1,113 @@
+---
+id: sponsorship-bool-exp
+title: Sponsorship_bool_exp
+---
+
+<head>
+  <meta content="noindex" name="robots" />
+  <meta charset="utf-8" />
+</head>
+
+export const Bullet = () => (
+  <>
+    <span style={{ fontWeight: "normal", fontSize: ".5em", color: "var(--ifm-color-secondary-darkest)" }}>
+      &nbsp;●&nbsp;
+    </span>
+  </>
+);
+
+export const SpecifiedBy = (props) => (
+  <>
+    Specification
+    <a
+      className="link"
+      style={{ fontSize: "1.5em", paddingLeft: "4px" }}
+      target="_blank"
+      href={props.url}
+      title={"Specified by " + props.url}
+    >
+      ⎘
+    </a>
+  </>
+);
+
+export const Badge = (props) => (
+  <>
+    <span className={props.class}>{props.text}</span>
+  </>
+);
+
+import { useState } from "react";
+
+export const Details = ({ dataOpen, dataClose, children, startOpen = false }) => {
+  const [open, setOpen] = useState(startOpen);
+  return (
+    <details
+      {...(open ? { open: true } : {})}
+      className="details"
+      style={{ border: "none", boxShadow: "none", background: "var(--ifm-background-color)" }}
+    >
+      <summary
+        onClick={(e) => {
+          e.preventDefault();
+          setOpen((open) => !open);
+        }}
+        style={{ listStyle: "none" }}
+      >
+        {open ? dataOpen : dataClose}
+      </summary>
+      {open && children}
+    </details>
+  );
+};
+
+Boolean expression to filter rows from the table "Sponsorship". All fields are combined with a logical 'AND'.
+
+```graphql
+input Sponsorship_bool_exp {
+  _and: [Sponsorship_bool_exp!]
+  _not: Sponsorship_bool_exp
+  _or: [Sponsorship_bool_exp!]
+  amount: numeric_comparison_exp
+  amountDisplay: String_comparison_exp
+  block: Int_comparison_exp
+  chainId: Int_comparison_exp
+  id: String_comparison_exp
+  logIndex: Int_comparison_exp
+  sender: String_comparison_exp
+  sponsor: Sponsor_bool_exp
+  sponsor_id: String_comparison_exp
+  timestamp: Int_comparison_exp
+  txHash: String_comparison_exp
+}
+```
+
+### Fields
+
+#### [<code style={{ fontWeight: 'normal' }}>Sponsorship_bool_exp.<b>\_and</b></code>](#and)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>[Sponsorship_bool_exp!]</b></code>](/docs/api/streams/graphql/envio/inputs/sponsorship-bool-exp.mdx) <Badge class="badge badge--secondary " text="list"/> <Badge class="badge badge--secondary " text="input"/> \{#and\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Sponsorship_bool_exp.<b>\_not</b></code>](#not)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Sponsorship_bool_exp</b></code>](/docs/api/streams/graphql/envio/inputs/sponsorship-bool-exp.mdx) <Badge class="badge badge--secondary " text="input"/> \{#not\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Sponsorship_bool_exp.<b>\_or</b></code>](#or)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>[Sponsorship_bool_exp!]</b></code>](/docs/api/streams/graphql/envio/inputs/sponsorship-bool-exp.mdx) <Badge class="badge badge--secondary " text="list"/> <Badge class="badge badge--secondary " text="input"/> \{#or\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Sponsorship_bool_exp.<b>amount</b></code>](#amount)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>numeric_comparison_exp</b></code>](/docs/api/streams/graphql/envio/inputs/numeric-comparison-exp.mdx) <Badge class="badge badge--secondary " text="input"/> \{#amount\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Sponsorship_bool_exp.<b>amountDisplay</b></code>](#amount-display)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String_comparison_exp</b></code>](/docs/api/streams/graphql/envio/inputs/string-comparison-exp.mdx) <Badge class="badge badge--secondary " text="input"/> \{#amount-display\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Sponsorship_bool_exp.<b>block</b></code>](#block)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Int_comparison_exp</b></code>](/docs/api/streams/graphql/envio/inputs/int-comparison-exp.mdx) <Badge class="badge badge--secondary " text="input"/> \{#block\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Sponsorship_bool_exp.<b>chainId</b></code>](#chain-id)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Int_comparison_exp</b></code>](/docs/api/streams/graphql/envio/inputs/int-comparison-exp.mdx) <Badge class="badge badge--secondary " text="input"/> \{#chain-id\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Sponsorship_bool_exp.<b>id</b></code>](#id)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String_comparison_exp</b></code>](/docs/api/streams/graphql/envio/inputs/string-comparison-exp.mdx) <Badge class="badge badge--secondary " text="input"/> \{#id\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Sponsorship_bool_exp.<b>logIndex</b></code>](#log-index)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Int_comparison_exp</b></code>](/docs/api/streams/graphql/envio/inputs/int-comparison-exp.mdx) <Badge class="badge badge--secondary " text="input"/> \{#log-index\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Sponsorship_bool_exp.<b>sender</b></code>](#sender)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String_comparison_exp</b></code>](/docs/api/streams/graphql/envio/inputs/string-comparison-exp.mdx) <Badge class="badge badge--secondary " text="input"/> \{#sender\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Sponsorship_bool_exp.<b>sponsor</b></code>](#sponsor)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Sponsor_bool_exp</b></code>](/docs/api/streams/graphql/envio/inputs/sponsor-bool-exp.mdx) <Badge class="badge badge--secondary " text="input"/> \{#sponsor\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Sponsorship_bool_exp.<b>sponsor_id</b></code>](#sponsor-id)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String_comparison_exp</b></code>](/docs/api/streams/graphql/envio/inputs/string-comparison-exp.mdx) <Badge class="badge badge--secondary " text="input"/> \{#sponsor-id\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Sponsorship_bool_exp.<b>timestamp</b></code>](#timestamp)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Int_comparison_exp</b></code>](/docs/api/streams/graphql/envio/inputs/int-comparison-exp.mdx) <Badge class="badge badge--secondary " text="input"/> \{#timestamp\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Sponsorship_bool_exp.<b>txHash</b></code>](#tx-hash)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String_comparison_exp</b></code>](/docs/api/streams/graphql/envio/inputs/string-comparison-exp.mdx) <Badge class="badge badge--secondary " text="input"/> \{#tx-hash\}

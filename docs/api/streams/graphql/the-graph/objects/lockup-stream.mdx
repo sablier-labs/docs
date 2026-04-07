@@ -1,0 +1,346 @@
+---
+id: lockup-stream
+title: LockupStream
+---
+
+<head>
+  <meta content="noindex" name="robots" />
+  <meta charset="utf-8" />
+</head>
+
+export const Bullet = () => (
+  <>
+    <span style={{ fontWeight: "normal", fontSize: ".5em", color: "var(--ifm-color-secondary-darkest)" }}>
+      &nbsp;●&nbsp;
+    </span>
+  </>
+);
+
+export const SpecifiedBy = (props) => (
+  <>
+    Specification
+    <a
+      className="link"
+      style={{ fontSize: "1.5em", paddingLeft: "4px" }}
+      target="_blank"
+      href={props.url}
+      title={"Specified by " + props.url}
+    >
+      ⎘
+    </a>
+  </>
+);
+
+export const Badge = (props) => (
+  <>
+    <span className={props.class}>{props.text}</span>
+  </>
+);
+
+import { useState } from "react";
+
+export const Details = ({ dataOpen, dataClose, children, startOpen = false }) => {
+  const [open, setOpen] = useState(startOpen);
+  return (
+    <details
+      {...(open ? { open: true } : {})}
+      className="details"
+      style={{ border: "none", boxShadow: "none", background: "var(--ifm-background-color)" }}
+    >
+      <summary
+        onClick={(e) => {
+          e.preventDefault();
+          setOpen((open) => !open);
+        }}
+        style={{ listStyle: "none" }}
+      >
+        {open ? dataOpen : dataClose}
+      </summary>
+      {open && children}
+    </details>
+  );
+};
+
+No description
+
+```graphql
+type LockupStream {
+  id: String!
+  alias: String!
+  chainId: BigInt!
+  subgraphId: BigInt!
+  tokenId: BigInt!
+  hash: Bytes!
+  timestamp: BigInt!
+  actions(
+    skip: Int = 0
+    first: Int = 100
+    orderBy: LockupAction_orderBy
+    orderDirection: OrderDirection
+    where: LockupAction_filter
+  ): [LockupAction!]!
+  asset: Asset!
+  assetDecimalsValue: BigInt!
+  batch: LockupBatch!
+  category: LockupStreamCategory!
+  contract: Bytes!
+  position: BigInt!
+  recipient: Bytes!
+  sender: Bytes!
+  startTime: BigInt!
+  transferable: Boolean!
+  version: String!
+  withdrawnAmount: BigInt!
+  canceledAction: LockupAction
+  renounceAction: LockupAction
+  cancelable: Boolean!
+  canceled: Boolean!
+  canceledTime: BigInt
+  depositAmount: BigInt!
+  duration: BigInt!
+  endTime: BigInt!
+  funder: Bytes!
+  intactAmount: BigInt!
+  depleted: Boolean!
+  proxender: Bytes
+  proxied: Boolean!
+  renounceTime: BigInt
+  shape: String
+  shapeSource: ShapeSource
+  cliff: Boolean
+  cliffAmount: BigInt
+  cliffTime: BigInt
+  granularity: BigInt
+  initial: Boolean
+  initialAmount: BigInt
+  segments(
+    skip: Int = 0
+    first: Int = 100
+    orderBy: Segment_orderBy
+    orderDirection: OrderDirection
+    where: Segment_filter
+  ): [Segment!]!
+  tranches(
+    skip: Int = 0
+    first: Int = 100
+    orderBy: Tranche_orderBy
+    orderDirection: OrderDirection
+    where: Tranche_filter
+  ): [Tranche!]!
+}
+```
+
+### Fields
+
+#### [<code style={{ fontWeight: 'normal' }}>LockupStream.<b>id</b></code>](#id)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String!</b></code>](/docs/api/streams/graphql/the-graph/scalars/string.mdx) <Badge class="badge badge--secondary badge--non_null" text="non-null"/> <Badge class="badge badge--secondary " text="scalar"/> \{#id\}
+
+Unique identifier: `\{contractAddress\}-\{chainId\}-\{tokenId\}`
+
+#### [<code style={{ fontWeight: 'normal' }}>LockupStream.<b>alias</b></code>](#alias)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String!</b></code>](/docs/api/streams/graphql/the-graph/scalars/string.mdx) <Badge class="badge badge--secondary badge--non_null" text="non-null"/> <Badge class="badge badge--secondary " text="scalar"/> \{#alias\}
+
+Like the id: `{contractAlias}-{chainId}-{tokenId}`
+
+#### [<code style={{ fontWeight: 'normal' }}>LockupStream.<b>chainId</b></code>](#chain-id)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>BigInt!</b></code>](/docs/api/streams/graphql/the-graph/scalars/big-int.mdx) <Badge class="badge badge--secondary badge--non_null" text="non-null"/> <Badge class="badge badge--secondary " text="scalar"/> \{#chain-id\}
+
+The chain ID where the stream was created (e.g., 137 for Polygon).
+
+#### [<code style={{ fontWeight: 'normal' }}>LockupStream.<b>subgraphId</b></code>](#subgraph-id)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>BigInt!</b></code>](/docs/api/streams/graphql/the-graph/scalars/big-int.mdx) <Badge class="badge badge--secondary badge--non_null" text="non-null"/> <Badge class="badge badge--secondary " text="scalar"/> \{#subgraph-id\}
+
+Unique global id as tracked by the `Watcher` entity. ኆ80 This may change if new data sources are added and the
+chronological order of streams changes.
+
+#### [<code style={{ fontWeight: 'normal' }}>LockupStream.<b>tokenId</b></code>](#token-id)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>BigInt!</b></code>](/docs/api/streams/graphql/the-graph/scalars/big-int.mdx) <Badge class="badge badge--secondary badge--non_null" text="non-null"/> <Badge class="badge badge--secondary " text="scalar"/> \{#token-id\}
+
+The id provided by the NFT contract. It's the ERC-721 tokenId.
+
+#### [<code style={{ fontWeight: 'normal' }}>LockupStream.<b>hash</b></code>](#hash)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Bytes!</b></code>](/docs/api/streams/graphql/the-graph/scalars/bytes.mdx) <Badge class="badge badge--secondary badge--non_null" text="non-null"/> <Badge class="badge badge--secondary " text="scalar"/> \{#hash\}
+
+Hash of the Ethereum transaction that created this stream.
+
+#### [<code style={{ fontWeight: 'normal' }}>LockupStream.<b>timestamp</b></code>](#timestamp)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>BigInt!</b></code>](/docs/api/streams/graphql/the-graph/scalars/big-int.mdx) <Badge class="badge badge--secondary badge--non_null" text="non-null"/> <Badge class="badge badge--secondary " text="scalar"/> \{#timestamp\}
+
+Unix timestamp of the Ethereum transaction that created this stream.
+
+#### [<code style={{ fontWeight: 'normal' }}>LockupStream.<b>actions</b></code>](#actions)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>[LockupAction!]!</b></code>](/docs/api/streams/graphql/the-graph/objects/lockup-action.mdx) <Badge class="badge badge--secondary badge--non_null" text="non-null"/> <Badge class="badge badge--secondary " text="object"/> \{#actions\}
+
+Actions triggered by this stream.
+
+##### [<code style={{ fontWeight: 'normal' }}>LockupStream.actions.<b>skip</b></code>](#lockup-stream-actions-skip)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Int</b></code>](/docs/api/streams/graphql/the-graph/scalars/int.mdx) <Badge class="badge badge--secondary " text="scalar"/> \{#lockup-stream-actions-skip\}
+
+##### [<code style={{ fontWeight: 'normal' }}>LockupStream.actions.<b>first</b></code>](#lockup-stream-actions-first)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Int</b></code>](/docs/api/streams/graphql/the-graph/scalars/int.mdx) <Badge class="badge badge--secondary " text="scalar"/> \{#lockup-stream-actions-first\}
+
+##### [<code style={{ fontWeight: 'normal' }}>LockupStream.actions.<b>orderBy</b></code>](#lockup-stream-actions-order-by)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>LockupAction_orderBy</b></code>](/docs/api/streams/graphql/the-graph/enums/lockup-action-order-by.mdx) <Badge class="badge badge--secondary " text="enum"/> \{#lockup-stream-actions-order-by\}
+
+##### [<code style={{ fontWeight: 'normal' }}>LockupStream.actions.<b>orderDirection</b></code>](#lockup-stream-actions-order-direction)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>OrderDirection</b></code>](/docs/api/streams/graphql/the-graph/enums/order-direction.mdx) <Badge class="badge badge--secondary " text="enum"/> \{#lockup-stream-actions-order-direction\}
+
+##### [<code style={{ fontWeight: 'normal' }}>LockupStream.actions.<b>where</b></code>](#lockup-stream-actions-where)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>LockupAction_filter</b></code>](/docs/api/streams/graphql/the-graph/inputs/lockup-action-filter.mdx) <Badge class="badge badge--secondary " text="input"/> \{#lockup-stream-actions-where\}
+
+#### [<code style={{ fontWeight: 'normal' }}>LockupStream.<b>asset</b></code>](#asset)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Asset!</b></code>](/docs/api/streams/graphql/the-graph/objects/asset.mdx) <Badge class="badge badge--secondary badge--non_null" text="non-null"/> <Badge class="badge badge--secondary " text="object"/> \{#asset\}
+
+ERC-20 token distributed via this stream.
+
+#### [<code style={{ fontWeight: 'normal' }}>LockupStream.<b>assetDecimalsValue</b></code>](#asset-decimals-value)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>BigInt!</b></code>](/docs/api/streams/graphql/the-graph/scalars/big-int.mdx) <Badge class="badge badge--secondary badge--non_null" text="non-null"/> <Badge class="badge badge--secondary " text="scalar"/> \{#asset-decimals-value\}
+
+ERC-20 token decimals. Stored here to avoid loading the asset entity on each stream. Note: the "Value" suffix is added
+because of a bug in GraphQL Code Generator.
+
+#### [<code style={{ fontWeight: 'normal' }}>LockupStream.<b>batch</b></code>](#batch)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>LockupBatch!</b></code>](/docs/api/streams/graphql/the-graph/objects/lockup-batch.mdx) <Badge class="badge badge--secondary badge--non_null" text="non-null"/> <Badge class="badge badge--secondary " text="object"/> \{#batch\}
+
+The batch the stream may be part of. Note: this is available only when created within a batch create transaction.
+
+#### [<code style={{ fontWeight: 'normal' }}>LockupStream.<b>category</b></code>](#category)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>LockupStreamCategory!</b></code>](/docs/api/streams/graphql/the-graph/enums/lockup-stream-category.mdx) <Badge class="badge badge--secondary badge--non_null" text="non-null"/> <Badge class="badge badge--secondary " text="enum"/> \{#category\}
+
+Category used for sorting.
+
+#### [<code style={{ fontWeight: 'normal' }}>LockupStream.<b>contract</b></code>](#contract)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Bytes!</b></code>](/docs/api/streams/graphql/the-graph/scalars/bytes.mdx) <Badge class="badge badge--secondary badge--non_null" text="non-null"/> <Badge class="badge badge--secondary " text="scalar"/> \{#contract\}
+
+The address of the contract the stream originates from.
+
+#### [<code style={{ fontWeight: 'normal' }}>LockupStream.<b>position</b></code>](#position)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>BigInt!</b></code>](/docs/api/streams/graphql/the-graph/scalars/big-int.mdx) <Badge class="badge badge--secondary badge--non_null" text="non-null"/> <Badge class="badge badge--secondary " text="scalar"/> \{#position\}
+
+Position in the batch, if available.
+
+#### [<code style={{ fontWeight: 'normal' }}>LockupStream.<b>recipient</b></code>](#recipient)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Bytes!</b></code>](/docs/api/streams/graphql/the-graph/scalars/bytes.mdx) <Badge class="badge badge--secondary badge--non_null" text="non-null"/> <Badge class="badge badge--secondary " text="scalar"/> \{#recipient\}
+
+Current recipient of the stream, with permission to withdraw funds to any third-party address. Note: the recipient can
+change on NFT transfer.
+
+#### [<code style={{ fontWeight: 'normal' }}>LockupStream.<b>sender</b></code>](#sender)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Bytes!</b></code>](/docs/api/streams/graphql/the-graph/scalars/bytes.mdx) <Badge class="badge badge--secondary badge--non_null" text="non-null"/> <Badge class="badge badge--secondary " text="scalar"/> \{#sender\}
+
+Manager of the stream, with ability to cancel the stream.
+
+#### [<code style={{ fontWeight: 'normal' }}>LockupStream.<b>startTime</b></code>](#start-time)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>BigInt!</b></code>](/docs/api/streams/graphql/the-graph/scalars/big-int.mdx) <Badge class="badge badge--secondary badge--non_null" text="non-null"/> <Badge class="badge badge--secondary " text="scalar"/> \{#start-time\}
+
+Unix timestamp for the start of the stream.
+
+#### [<code style={{ fontWeight: 'normal' }}>LockupStream.<b>transferable</b></code>](#transferable)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Boolean!</b></code>](/docs/api/streams/graphql/the-graph/scalars/boolean.mdx) <Badge class="badge badge--secondary badge--non_null" text="non-null"/> <Badge class="badge badge--secondary " text="scalar"/> \{#transferable\}
+
+Flag indicating the transferability of the stream. This is set when the stream is created, and cannot be changed later.
+
+#### [<code style={{ fontWeight: 'normal' }}>LockupStream.<b>version</b></code>](#version)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String!</b></code>](/docs/api/streams/graphql/the-graph/scalars/string.mdx) <Badge class="badge badge--secondary badge--non_null" text="non-null"/> <Badge class="badge badge--secondary " text="scalar"/> \{#version\}
+
+Version of contract, e.g., v1.0.
+
+#### [<code style={{ fontWeight: 'normal' }}>LockupStream.<b>withdrawnAmount</b></code>](#withdrawn-amount)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>BigInt!</b></code>](/docs/api/streams/graphql/the-graph/scalars/big-int.mdx) <Badge class="badge badge--secondary badge--non_null" text="non-null"/> <Badge class="badge badge--secondary " text="scalar"/> \{#withdrawn-amount\}
+
+The sum of all withdrawn amounts.
+
+#### [<code style={{ fontWeight: 'normal' }}>LockupStream.<b>canceledAction</b></code>](#canceled-action)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>LockupAction</b></code>](/docs/api/streams/graphql/the-graph/objects/lockup-action.mdx) <Badge class="badge badge--secondary " text="object"/> \{#canceled-action\}
+
+Action in which the stream was canceled.
+
+#### [<code style={{ fontWeight: 'normal' }}>LockupStream.<b>renounceAction</b></code>](#renounce-action)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>LockupAction</b></code>](/docs/api/streams/graphql/the-graph/objects/lockup-action.mdx) <Badge class="badge badge--secondary " text="object"/> \{#renounce-action\}
+
+Action in which the stream was made non-cancelable. Note: if the stream was made non-cancelable from the get-go, this is
+the same as the Create action.
+
+#### [<code style={{ fontWeight: 'normal' }}>LockupStream.<b>cancelable</b></code>](#cancelable)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Boolean!</b></code>](/docs/api/streams/graphql/the-graph/scalars/boolean.mdx) <Badge class="badge badge--secondary badge--non_null" text="non-null"/> <Badge class="badge badge--secondary " text="scalar"/> \{#cancelable\}
+
+Flag indicating the cancelability of the stream.
+
+#### [<code style={{ fontWeight: 'normal' }}>LockupStream.<b>canceled</b></code>](#canceled)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Boolean!</b></code>](/docs/api/streams/graphql/the-graph/scalars/boolean.mdx) <Badge class="badge badge--secondary badge--non_null" text="non-null"/> <Badge class="badge badge--secondary " text="scalar"/> \{#canceled\}
+
+Flag indicating if the stream was canceled.
+
+#### [<code style={{ fontWeight: 'normal' }}>LockupStream.<b>canceledTime</b></code>](#canceled-time)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>BigInt</b></code>](/docs/api/streams/graphql/the-graph/scalars/big-int.mdx) <Badge class="badge badge--secondary " text="scalar"/> \{#canceled-time\}
+
+Unix timestamp for the when the stream was canceled.
+
+#### [<code style={{ fontWeight: 'normal' }}>LockupStream.<b>depositAmount</b></code>](#deposit-amount)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>BigInt!</b></code>](/docs/api/streams/graphql/the-graph/scalars/big-int.mdx) <Badge class="badge badge--secondary badge--non_null" text="non-null"/> <Badge class="badge badge--secondary " text="scalar"/> \{#deposit-amount\}
+
+The amount deposited when the stream was created.
+
+#### [<code style={{ fontWeight: 'normal' }}>LockupStream.<b>duration</b></code>](#duration)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>BigInt!</b></code>](/docs/api/streams/graphql/the-graph/scalars/big-int.mdx) <Badge class="badge badge--secondary badge--non_null" text="non-null"/> <Badge class="badge badge--secondary " text="scalar"/> \{#duration\}
+
+Snapshot of the duration in seconds (the difference between end and start time).
+
+#### [<code style={{ fontWeight: 'normal' }}>LockupStream.<b>endTime</b></code>](#end-time)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>BigInt!</b></code>](/docs/api/streams/graphql/the-graph/scalars/big-int.mdx) <Badge class="badge badge--secondary badge--non_null" text="non-null"/> <Badge class="badge badge--secondary " text="scalar"/> \{#end-time\}
+
+Unix timestamp for the end of the stream.
+
+#### [<code style={{ fontWeight: 'normal' }}>LockupStream.<b>funder</b></code>](#funder)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Bytes!</b></code>](/docs/api/streams/graphql/the-graph/scalars/bytes.mdx) <Badge class="badge badge--secondary badge--non_null" text="non-null"/> <Badge class="badge badge--secondary " text="scalar"/> \{#funder\}
+
+The account that funded the stream, which can be different from the sender.
+
+#### [<code style={{ fontWeight: 'normal' }}>LockupStream.<b>intactAmount</b></code>](#intact-amount)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>BigInt!</b></code>](/docs/api/streams/graphql/the-graph/scalars/big-int.mdx) <Badge class="badge badge--secondary badge--non_null" text="non-null"/> <Badge class="badge badge--secondary " text="scalar"/> \{#intact-amount\}
+
+The amount that is still held by the stream regardless of whether if was fully vested or not. This is the difference
+between the deposit amount and all withdrawn amounts.
+
+#### [<code style={{ fontWeight: 'normal' }}>LockupStream.<b>depleted</b></code>](#depleted)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Boolean!</b></code>](/docs/api/streams/graphql/the-graph/scalars/boolean.mdx) <Badge class="badge badge--secondary badge--non_null" text="non-null"/> <Badge class="badge badge--secondary " text="scalar"/> \{#depleted\}
+
+Flag indicating if the stream has been fully withdrawn (intactAmount is zero).
+
+#### [<code style={{ fontWeight: 'normal' }}>LockupStream.<b>proxender</b></code>](#proxender)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Bytes</b></code>](/docs/api/streams/graphql/the-graph/scalars/bytes.mdx) <Badge class="badge badge--secondary " text="scalar"/> \{#proxender\}
+
+Owner of the proxy when the stream is created through a PRBProxy (https://github.com/PaulRBerg/prb-proxy) Note that
+proxy = stream sender, and proxender = owner of proxy
+
+#### [<code style={{ fontWeight: 'normal' }}>LockupStream.<b>proxied</b></code>](#proxied)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Boolean!</b></code>](/docs/api/streams/graphql/the-graph/scalars/boolean.mdx) <Badge class="badge badge--secondary badge--non_null" text="non-null"/> <Badge class="badge badge--secondary " text="scalar"/> \{#proxied\}
+
+Flag for streams created through a PRBProxy.
+
+#### [<code style={{ fontWeight: 'normal' }}>LockupStream.<b>renounceTime</b></code>](#renounce-time)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>BigInt</b></code>](/docs/api/streams/graphql/the-graph/scalars/big-int.mdx) <Badge class="badge badge--secondary " text="scalar"/> \{#renounce-time\}
+
+Unix timestamp for when the stream was made non-cancelable. This can coincide with the create time.
+
+#### [<code style={{ fontWeight: 'normal' }}>LockupStream.<b>shape</b></code>](#shape)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String</b></code>](/docs/api/streams/graphql/the-graph/scalars/string.mdx) <Badge class="badge badge--secondary " text="scalar"/> \{#shape\}
+
+An optional parameter to specify the shape of the distribution. Available since Lockup v2.0.
+
+#### [<code style={{ fontWeight: 'normal' }}>LockupStream.<b>shapeSource</b></code>](#shape-source)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>ShapeSource</b></code>](/docs/api/streams/graphql/the-graph/enums/shape-source.mdx) <Badge class="badge badge--secondary " text="enum"/> \{#shape-source\}
+
+The source of the shape value: Event (from contract event) or Inferred (computed by indexer).
+
+#### [<code style={{ fontWeight: 'normal' }}>LockupStream.<b>cliff</b></code>](#cliff)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Boolean</b></code>](/docs/api/streams/graphql/the-graph/scalars/boolean.mdx) <Badge class="badge badge--secondary " text="scalar"/> \{#cliff\}
+
+Flag for Linear streams with a cliff.
+
+#### [<code style={{ fontWeight: 'normal' }}>LockupStream.<b>cliffAmount</b></code>](#cliff-amount)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>BigInt</b></code>](/docs/api/streams/graphql/the-graph/scalars/big-int.mdx) <Badge class="badge badge--secondary " text="scalar"/> \{#cliff-amount\}
+
+The amount that will unlock at the cliff time.
+
+#### [<code style={{ fontWeight: 'normal' }}>LockupStream.<b>cliffTime</b></code>](#cliff-time)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>BigInt</b></code>](/docs/api/streams/graphql/the-graph/scalars/big-int.mdx) <Badge class="badge badge--secondary " text="scalar"/> \{#cliff-time\}
+
+Unix timestamp for the start of the cliff.
+
+#### [<code style={{ fontWeight: 'normal' }}>LockupStream.<b>granularity</b></code>](#granularity)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>BigInt</b></code>](/docs/api/streams/graphql/the-graph/scalars/big-int.mdx) <Badge class="badge badge--secondary " text="scalar"/> \{#granularity\}
+
+The smallest step in time between two consecutive token unlocks. Applies only for LockupLinear and available since
+Lockup v4.0
+
+#### [<code style={{ fontWeight: 'normal' }}>LockupStream.<b>initial</b></code>](#initial)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Boolean</b></code>](/docs/api/streams/graphql/the-graph/scalars/boolean.mdx) <Badge class="badge badge--secondary " text="scalar"/> \{#initial\}
+
+Flag for Linear stream with an initial unlock. Available since Lockup v2.0.
+
+#### [<code style={{ fontWeight: 'normal' }}>LockupStream.<b>initialAmount</b></code>](#initial-amount)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>BigInt</b></code>](/docs/api/streams/graphql/the-graph/scalars/big-int.mdx) <Badge class="badge badge--secondary " text="scalar"/> \{#initial-amount\}
+
+The initial unlock amount of a Linear stream. Available since Lockup v2.0.
+
+#### [<code style={{ fontWeight: 'normal' }}>LockupStream.<b>segments</b></code>](#segments)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>[Segment!]!</b></code>](/docs/api/streams/graphql/the-graph/objects/segment.mdx) <Badge class="badge badge--secondary badge--non_null" text="non-null"/> <Badge class="badge badge--secondary " text="object"/> \{#segments\}
+
+Segments of a Dynamic stream.
+
+##### [<code style={{ fontWeight: 'normal' }}>LockupStream.segments.<b>skip</b></code>](#lockup-stream-segments-skip)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Int</b></code>](/docs/api/streams/graphql/the-graph/scalars/int.mdx) <Badge class="badge badge--secondary " text="scalar"/> \{#lockup-stream-segments-skip\}
+
+##### [<code style={{ fontWeight: 'normal' }}>LockupStream.segments.<b>first</b></code>](#lockup-stream-segments-first)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Int</b></code>](/docs/api/streams/graphql/the-graph/scalars/int.mdx) <Badge class="badge badge--secondary " text="scalar"/> \{#lockup-stream-segments-first\}
+
+##### [<code style={{ fontWeight: 'normal' }}>LockupStream.segments.<b>orderBy</b></code>](#lockup-stream-segments-order-by)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Segment_orderBy</b></code>](/docs/api/streams/graphql/the-graph/enums/segment-order-by.mdx) <Badge class="badge badge--secondary " text="enum"/> \{#lockup-stream-segments-order-by\}
+
+##### [<code style={{ fontWeight: 'normal' }}>LockupStream.segments.<b>orderDirection</b></code>](#lockup-stream-segments-order-direction)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>OrderDirection</b></code>](/docs/api/streams/graphql/the-graph/enums/order-direction.mdx) <Badge class="badge badge--secondary " text="enum"/> \{#lockup-stream-segments-order-direction\}
+
+##### [<code style={{ fontWeight: 'normal' }}>LockupStream.segments.<b>where</b></code>](#lockup-stream-segments-where)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Segment_filter</b></code>](/docs/api/streams/graphql/the-graph/inputs/segment-filter.mdx) <Badge class="badge badge--secondary " text="input"/> \{#lockup-stream-segments-where\}
+
+#### [<code style={{ fontWeight: 'normal' }}>LockupStream.<b>tranches</b></code>](#tranches)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>[Tranche!]!</b></code>](/docs/api/streams/graphql/the-graph/objects/tranche.mdx) <Badge class="badge badge--secondary badge--non_null" text="non-null"/> <Badge class="badge badge--secondary " text="object"/> \{#tranches\}
+
+Segments of a Tranched stream.
+
+##### [<code style={{ fontWeight: 'normal' }}>LockupStream.tranches.<b>skip</b></code>](#lockup-stream-tranches-skip)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Int</b></code>](/docs/api/streams/graphql/the-graph/scalars/int.mdx) <Badge class="badge badge--secondary " text="scalar"/> \{#lockup-stream-tranches-skip\}
+
+##### [<code style={{ fontWeight: 'normal' }}>LockupStream.tranches.<b>first</b></code>](#lockup-stream-tranches-first)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Int</b></code>](/docs/api/streams/graphql/the-graph/scalars/int.mdx) <Badge class="badge badge--secondary " text="scalar"/> \{#lockup-stream-tranches-first\}
+
+##### [<code style={{ fontWeight: 'normal' }}>LockupStream.tranches.<b>orderBy</b></code>](#lockup-stream-tranches-order-by)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Tranche_orderBy</b></code>](/docs/api/streams/graphql/the-graph/enums/tranche-order-by.mdx) <Badge class="badge badge--secondary " text="enum"/> \{#lockup-stream-tranches-order-by\}
+
+##### [<code style={{ fontWeight: 'normal' }}>LockupStream.tranches.<b>orderDirection</b></code>](#lockup-stream-tranches-order-direction)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>OrderDirection</b></code>](/docs/api/streams/graphql/the-graph/enums/order-direction.mdx) <Badge class="badge badge--secondary " text="enum"/> \{#lockup-stream-tranches-order-direction\}
+
+##### [<code style={{ fontWeight: 'normal' }}>LockupStream.tranches.<b>where</b></code>](#lockup-stream-tranches-where)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Tranche_filter</b></code>](/docs/api/streams/graphql/the-graph/inputs/tranche-filter.mdx) <Badge class="badge badge--secondary " text="input"/> \{#lockup-stream-tranches-where\}

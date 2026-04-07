@@ -10,13 +10,13 @@ We provide auto-generated GraphQL schema documentation for both The Graph and En
 
 ## Query Syntax Differences
 
-| Feature      | The Graph                                          | Envio                                                   |
-| ------------ | -------------------------------------------------- | ------------------------------------------------------- |
-| Pagination   | `first`                                            | `limit`                                                 |
-| Pagination   | `skip`                                             | `offset`                                                |
-| Get by ID    | `stream(id: "...")`                                | `Stream_by_pk(id: "...")`                               |
-| Get multiple | `streams{}`                                        | `Stream(where: {chainId: {_eq: ""}}){}`                 |
-| Nested items | <nobr>`campaigns{ id, asset: {id, symbol}}`</nobr> | <nobr>`Campaign{ asset_id, asset: {id, symbol}}`</nobr> |
+| Feature      | The Graph                                           | Envio                                                           |
+| ------------ | --------------------------------------------------- | --------------------------------------------------------------- |
+| Pagination   | `first`                                             | `limit`                                                         |
+| Pagination   | `skip`                                              | `offset`                                                        |
+| Get by ID    | `lockupStream(id: "...")` / `flowStream(id: "...")` | `LockupStream_by_pk(id: "...")` / `FlowStream_by_pk(id: "...")` |
+| Get multiple | `lockupStreams{}` / `flowStreams{}`                 | `LockupStream(where: {...}){}` / `FlowStream(where: {...}){}`   |
+| Nested items | <nobr>`campaigns{ id, asset: {id, symbol}}`</nobr>  | <nobr>`Campaign{ asset_id, asset: {id, symbol}}`</nobr>         |
 
 ## Entities
 

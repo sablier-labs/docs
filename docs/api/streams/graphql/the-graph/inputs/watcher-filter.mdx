@@ -1,0 +1,262 @@
+---
+id: watcher-filter
+title: Watcher_filter
+---
+
+<head>
+  <meta content="noindex" name="robots" />
+  <meta charset="utf-8" />
+</head>
+
+export const Bullet = () => (
+  <>
+    <span style={{ fontWeight: "normal", fontSize: ".5em", color: "var(--ifm-color-secondary-darkest)" }}>
+      &nbsp;●&nbsp;
+    </span>
+  </>
+);
+
+export const SpecifiedBy = (props) => (
+  <>
+    Specification
+    <a
+      className="link"
+      style={{ fontSize: "1.5em", paddingLeft: "4px" }}
+      target="_blank"
+      href={props.url}
+      title={"Specified by " + props.url}
+    >
+      ⎘
+    </a>
+  </>
+);
+
+export const Badge = (props) => (
+  <>
+    <span className={props.class}>{props.text}</span>
+  </>
+);
+
+import { useState } from "react";
+
+export const Details = ({ dataOpen, dataClose, children, startOpen = false }) => {
+  const [open, setOpen] = useState(startOpen);
+  return (
+    <details
+      {...(open ? { open: true } : {})}
+      className="details"
+      style={{ border: "none", boxShadow: "none", background: "var(--ifm-background-color)" }}
+    >
+      <summary
+        onClick={(e) => {
+          e.preventDefault();
+          setOpen((open) => !open);
+        }}
+        style={{ listStyle: "none" }}
+      >
+        {open ? dataOpen : dataClose}
+      </summary>
+      {open && children}
+    </details>
+  );
+};
+
+No description
+
+```graphql
+input Watcher_filter {
+  id: String
+  id_not: String
+  id_gt: String
+  id_lt: String
+  id_gte: String
+  id_lte: String
+  id_in: [String!]
+  id_not_in: [String!]
+  id_contains: String
+  id_contains_nocase: String
+  id_not_contains: String
+  id_not_contains_nocase: String
+  id_starts_with: String
+  id_starts_with_nocase: String
+  id_not_starts_with: String
+  id_not_starts_with_nocase: String
+  id_ends_with: String
+  id_ends_with_nocase: String
+  id_not_ends_with: String
+  id_not_ends_with_nocase: String
+  chainId: BigInt
+  chainId_not: BigInt
+  chainId_gt: BigInt
+  chainId_lt: BigInt
+  chainId_gte: BigInt
+  chainId_lte: BigInt
+  chainId_in: [BigInt!]
+  chainId_not_in: [BigInt!]
+  flowActionCounter: BigInt
+  flowActionCounter_not: BigInt
+  flowActionCounter_gt: BigInt
+  flowActionCounter_lt: BigInt
+  flowActionCounter_gte: BigInt
+  flowActionCounter_lte: BigInt
+  flowActionCounter_in: [BigInt!]
+  flowActionCounter_not_in: [BigInt!]
+  flowStreamCounter: BigInt
+  flowStreamCounter_not: BigInt
+  flowStreamCounter_gt: BigInt
+  flowStreamCounter_lt: BigInt
+  flowStreamCounter_gte: BigInt
+  flowStreamCounter_lte: BigInt
+  flowStreamCounter_in: [BigInt!]
+  flowStreamCounter_not_in: [BigInt!]
+  lockupActionCounter: BigInt
+  lockupActionCounter_not: BigInt
+  lockupActionCounter_gt: BigInt
+  lockupActionCounter_lt: BigInt
+  lockupActionCounter_gte: BigInt
+  lockupActionCounter_lte: BigInt
+  lockupActionCounter_in: [BigInt!]
+  lockupActionCounter_not_in: [BigInt!]
+  lockupStreamCounter: BigInt
+  lockupStreamCounter_not: BigInt
+  lockupStreamCounter_gt: BigInt
+  lockupStreamCounter_lt: BigInt
+  lockupStreamCounter_gte: BigInt
+  lockupStreamCounter_lte: BigInt
+  lockupStreamCounter_in: [BigInt!]
+  lockupStreamCounter_not_in: [BigInt!]
+  _change_block: BlockChangedFilter
+  and: [Watcher_filter]
+  or: [Watcher_filter]
+}
+```
+
+### Fields
+
+#### [<code style={{ fontWeight: 'normal' }}>Watcher_filter.<b>id</b></code>](#id)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String</b></code>](/docs/api/streams/graphql/the-graph/scalars/string.mdx) <Badge class="badge badge--secondary " text="scalar"/> \{#id\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Watcher_filter.<b>id_not</b></code>](#id-not)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String</b></code>](/docs/api/streams/graphql/the-graph/scalars/string.mdx) <Badge class="badge badge--secondary " text="scalar"/> \{#id-not\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Watcher_filter.<b>id_gt</b></code>](#id-gt)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String</b></code>](/docs/api/streams/graphql/the-graph/scalars/string.mdx) <Badge class="badge badge--secondary " text="scalar"/> \{#id-gt\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Watcher_filter.<b>id_lt</b></code>](#id-lt)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String</b></code>](/docs/api/streams/graphql/the-graph/scalars/string.mdx) <Badge class="badge badge--secondary " text="scalar"/> \{#id-lt\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Watcher_filter.<b>id_gte</b></code>](#id-gte)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String</b></code>](/docs/api/streams/graphql/the-graph/scalars/string.mdx) <Badge class="badge badge--secondary " text="scalar"/> \{#id-gte\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Watcher_filter.<b>id_lte</b></code>](#id-lte)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String</b></code>](/docs/api/streams/graphql/the-graph/scalars/string.mdx) <Badge class="badge badge--secondary " text="scalar"/> \{#id-lte\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Watcher_filter.<b>id_in</b></code>](#id-in)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>[String!]</b></code>](/docs/api/streams/graphql/the-graph/scalars/string.mdx) <Badge class="badge badge--secondary " text="list"/> <Badge class="badge badge--secondary " text="scalar"/> \{#id-in\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Watcher_filter.<b>id_not_in</b></code>](#id-not-in)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>[String!]</b></code>](/docs/api/streams/graphql/the-graph/scalars/string.mdx) <Badge class="badge badge--secondary " text="list"/> <Badge class="badge badge--secondary " text="scalar"/> \{#id-not-in\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Watcher_filter.<b>id_contains</b></code>](#id-contains)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String</b></code>](/docs/api/streams/graphql/the-graph/scalars/string.mdx) <Badge class="badge badge--secondary " text="scalar"/> \{#id-contains\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Watcher_filter.<b>id_contains_nocase</b></code>](#id-contains-nocase)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String</b></code>](/docs/api/streams/graphql/the-graph/scalars/string.mdx) <Badge class="badge badge--secondary " text="scalar"/> \{#id-contains-nocase\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Watcher_filter.<b>id_not_contains</b></code>](#id-not-contains)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String</b></code>](/docs/api/streams/graphql/the-graph/scalars/string.mdx) <Badge class="badge badge--secondary " text="scalar"/> \{#id-not-contains\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Watcher_filter.<b>id_not_contains_nocase</b></code>](#id-not-contains-nocase)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String</b></code>](/docs/api/streams/graphql/the-graph/scalars/string.mdx) <Badge class="badge badge--secondary " text="scalar"/> \{#id-not-contains-nocase\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Watcher_filter.<b>id_starts_with</b></code>](#id-starts-with)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String</b></code>](/docs/api/streams/graphql/the-graph/scalars/string.mdx) <Badge class="badge badge--secondary " text="scalar"/> \{#id-starts-with\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Watcher_filter.<b>id_starts_with_nocase</b></code>](#id-starts-with-nocase)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String</b></code>](/docs/api/streams/graphql/the-graph/scalars/string.mdx) <Badge class="badge badge--secondary " text="scalar"/> \{#id-starts-with-nocase\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Watcher_filter.<b>id_not_starts_with</b></code>](#id-not-starts-with)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String</b></code>](/docs/api/streams/graphql/the-graph/scalars/string.mdx) <Badge class="badge badge--secondary " text="scalar"/> \{#id-not-starts-with\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Watcher_filter.<b>id_not_starts_with_nocase</b></code>](#id-not-starts-with-nocase)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String</b></code>](/docs/api/streams/graphql/the-graph/scalars/string.mdx) <Badge class="badge badge--secondary " text="scalar"/> \{#id-not-starts-with-nocase\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Watcher_filter.<b>id_ends_with</b></code>](#id-ends-with)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String</b></code>](/docs/api/streams/graphql/the-graph/scalars/string.mdx) <Badge class="badge badge--secondary " text="scalar"/> \{#id-ends-with\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Watcher_filter.<b>id_ends_with_nocase</b></code>](#id-ends-with-nocase)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String</b></code>](/docs/api/streams/graphql/the-graph/scalars/string.mdx) <Badge class="badge badge--secondary " text="scalar"/> \{#id-ends-with-nocase\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Watcher_filter.<b>id_not_ends_with</b></code>](#id-not-ends-with)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String</b></code>](/docs/api/streams/graphql/the-graph/scalars/string.mdx) <Badge class="badge badge--secondary " text="scalar"/> \{#id-not-ends-with\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Watcher_filter.<b>id_not_ends_with_nocase</b></code>](#id-not-ends-with-nocase)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String</b></code>](/docs/api/streams/graphql/the-graph/scalars/string.mdx) <Badge class="badge badge--secondary " text="scalar"/> \{#id-not-ends-with-nocase\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Watcher_filter.<b>chainId</b></code>](#chain-id)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>BigInt</b></code>](/docs/api/streams/graphql/the-graph/scalars/big-int.mdx) <Badge class="badge badge--secondary " text="scalar"/> \{#chain-id\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Watcher_filter.<b>chainId_not</b></code>](#chain-id-not)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>BigInt</b></code>](/docs/api/streams/graphql/the-graph/scalars/big-int.mdx) <Badge class="badge badge--secondary " text="scalar"/> \{#chain-id-not\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Watcher_filter.<b>chainId_gt</b></code>](#chain-id-gt)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>BigInt</b></code>](/docs/api/streams/graphql/the-graph/scalars/big-int.mdx) <Badge class="badge badge--secondary " text="scalar"/> \{#chain-id-gt\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Watcher_filter.<b>chainId_lt</b></code>](#chain-id-lt)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>BigInt</b></code>](/docs/api/streams/graphql/the-graph/scalars/big-int.mdx) <Badge class="badge badge--secondary " text="scalar"/> \{#chain-id-lt\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Watcher_filter.<b>chainId_gte</b></code>](#chain-id-gte)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>BigInt</b></code>](/docs/api/streams/graphql/the-graph/scalars/big-int.mdx) <Badge class="badge badge--secondary " text="scalar"/> \{#chain-id-gte\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Watcher_filter.<b>chainId_lte</b></code>](#chain-id-lte)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>BigInt</b></code>](/docs/api/streams/graphql/the-graph/scalars/big-int.mdx) <Badge class="badge badge--secondary " text="scalar"/> \{#chain-id-lte\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Watcher_filter.<b>chainId_in</b></code>](#chain-id-in)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>[BigInt!]</b></code>](/docs/api/streams/graphql/the-graph/scalars/big-int.mdx) <Badge class="badge badge--secondary " text="list"/> <Badge class="badge badge--secondary " text="scalar"/> \{#chain-id-in\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Watcher_filter.<b>chainId_not_in</b></code>](#chain-id-not-in)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>[BigInt!]</b></code>](/docs/api/streams/graphql/the-graph/scalars/big-int.mdx) <Badge class="badge badge--secondary " text="list"/> <Badge class="badge badge--secondary " text="scalar"/> \{#chain-id-not-in\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Watcher_filter.<b>flowActionCounter</b></code>](#flow-action-counter)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>BigInt</b></code>](/docs/api/streams/graphql/the-graph/scalars/big-int.mdx) <Badge class="badge badge--secondary " text="scalar"/> \{#flow-action-counter\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Watcher_filter.<b>flowActionCounter_not</b></code>](#flow-action-counter-not)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>BigInt</b></code>](/docs/api/streams/graphql/the-graph/scalars/big-int.mdx) <Badge class="badge badge--secondary " text="scalar"/> \{#flow-action-counter-not\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Watcher_filter.<b>flowActionCounter_gt</b></code>](#flow-action-counter-gt)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>BigInt</b></code>](/docs/api/streams/graphql/the-graph/scalars/big-int.mdx) <Badge class="badge badge--secondary " text="scalar"/> \{#flow-action-counter-gt\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Watcher_filter.<b>flowActionCounter_lt</b></code>](#flow-action-counter-lt)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>BigInt</b></code>](/docs/api/streams/graphql/the-graph/scalars/big-int.mdx) <Badge class="badge badge--secondary " text="scalar"/> \{#flow-action-counter-lt\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Watcher_filter.<b>flowActionCounter_gte</b></code>](#flow-action-counter-gte)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>BigInt</b></code>](/docs/api/streams/graphql/the-graph/scalars/big-int.mdx) <Badge class="badge badge--secondary " text="scalar"/> \{#flow-action-counter-gte\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Watcher_filter.<b>flowActionCounter_lte</b></code>](#flow-action-counter-lte)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>BigInt</b></code>](/docs/api/streams/graphql/the-graph/scalars/big-int.mdx) <Badge class="badge badge--secondary " text="scalar"/> \{#flow-action-counter-lte\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Watcher_filter.<b>flowActionCounter_in</b></code>](#flow-action-counter-in)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>[BigInt!]</b></code>](/docs/api/streams/graphql/the-graph/scalars/big-int.mdx) <Badge class="badge badge--secondary " text="list"/> <Badge class="badge badge--secondary " text="scalar"/> \{#flow-action-counter-in\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Watcher_filter.<b>flowActionCounter_not_in</b></code>](#flow-action-counter-not-in)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>[BigInt!]</b></code>](/docs/api/streams/graphql/the-graph/scalars/big-int.mdx) <Badge class="badge badge--secondary " text="list"/> <Badge class="badge badge--secondary " text="scalar"/> \{#flow-action-counter-not-in\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Watcher_filter.<b>flowStreamCounter</b></code>](#flow-stream-counter)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>BigInt</b></code>](/docs/api/streams/graphql/the-graph/scalars/big-int.mdx) <Badge class="badge badge--secondary " text="scalar"/> \{#flow-stream-counter\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Watcher_filter.<b>flowStreamCounter_not</b></code>](#flow-stream-counter-not)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>BigInt</b></code>](/docs/api/streams/graphql/the-graph/scalars/big-int.mdx) <Badge class="badge badge--secondary " text="scalar"/> \{#flow-stream-counter-not\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Watcher_filter.<b>flowStreamCounter_gt</b></code>](#flow-stream-counter-gt)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>BigInt</b></code>](/docs/api/streams/graphql/the-graph/scalars/big-int.mdx) <Badge class="badge badge--secondary " text="scalar"/> \{#flow-stream-counter-gt\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Watcher_filter.<b>flowStreamCounter_lt</b></code>](#flow-stream-counter-lt)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>BigInt</b></code>](/docs/api/streams/graphql/the-graph/scalars/big-int.mdx) <Badge class="badge badge--secondary " text="scalar"/> \{#flow-stream-counter-lt\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Watcher_filter.<b>flowStreamCounter_gte</b></code>](#flow-stream-counter-gte)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>BigInt</b></code>](/docs/api/streams/graphql/the-graph/scalars/big-int.mdx) <Badge class="badge badge--secondary " text="scalar"/> \{#flow-stream-counter-gte\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Watcher_filter.<b>flowStreamCounter_lte</b></code>](#flow-stream-counter-lte)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>BigInt</b></code>](/docs/api/streams/graphql/the-graph/scalars/big-int.mdx) <Badge class="badge badge--secondary " text="scalar"/> \{#flow-stream-counter-lte\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Watcher_filter.<b>flowStreamCounter_in</b></code>](#flow-stream-counter-in)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>[BigInt!]</b></code>](/docs/api/streams/graphql/the-graph/scalars/big-int.mdx) <Badge class="badge badge--secondary " text="list"/> <Badge class="badge badge--secondary " text="scalar"/> \{#flow-stream-counter-in\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Watcher_filter.<b>flowStreamCounter_not_in</b></code>](#flow-stream-counter-not-in)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>[BigInt!]</b></code>](/docs/api/streams/graphql/the-graph/scalars/big-int.mdx) <Badge class="badge badge--secondary " text="list"/> <Badge class="badge badge--secondary " text="scalar"/> \{#flow-stream-counter-not-in\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Watcher_filter.<b>lockupActionCounter</b></code>](#lockup-action-counter)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>BigInt</b></code>](/docs/api/streams/graphql/the-graph/scalars/big-int.mdx) <Badge class="badge badge--secondary " text="scalar"/> \{#lockup-action-counter\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Watcher_filter.<b>lockupActionCounter_not</b></code>](#lockup-action-counter-not)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>BigInt</b></code>](/docs/api/streams/graphql/the-graph/scalars/big-int.mdx) <Badge class="badge badge--secondary " text="scalar"/> \{#lockup-action-counter-not\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Watcher_filter.<b>lockupActionCounter_gt</b></code>](#lockup-action-counter-gt)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>BigInt</b></code>](/docs/api/streams/graphql/the-graph/scalars/big-int.mdx) <Badge class="badge badge--secondary " text="scalar"/> \{#lockup-action-counter-gt\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Watcher_filter.<b>lockupActionCounter_lt</b></code>](#lockup-action-counter-lt)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>BigInt</b></code>](/docs/api/streams/graphql/the-graph/scalars/big-int.mdx) <Badge class="badge badge--secondary " text="scalar"/> \{#lockup-action-counter-lt\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Watcher_filter.<b>lockupActionCounter_gte</b></code>](#lockup-action-counter-gte)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>BigInt</b></code>](/docs/api/streams/graphql/the-graph/scalars/big-int.mdx) <Badge class="badge badge--secondary " text="scalar"/> \{#lockup-action-counter-gte\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Watcher_filter.<b>lockupActionCounter_lte</b></code>](#lockup-action-counter-lte)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>BigInt</b></code>](/docs/api/streams/graphql/the-graph/scalars/big-int.mdx) <Badge class="badge badge--secondary " text="scalar"/> \{#lockup-action-counter-lte\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Watcher_filter.<b>lockupActionCounter_in</b></code>](#lockup-action-counter-in)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>[BigInt!]</b></code>](/docs/api/streams/graphql/the-graph/scalars/big-int.mdx) <Badge class="badge badge--secondary " text="list"/> <Badge class="badge badge--secondary " text="scalar"/> \{#lockup-action-counter-in\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Watcher_filter.<b>lockupActionCounter_not_in</b></code>](#lockup-action-counter-not-in)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>[BigInt!]</b></code>](/docs/api/streams/graphql/the-graph/scalars/big-int.mdx) <Badge class="badge badge--secondary " text="list"/> <Badge class="badge badge--secondary " text="scalar"/> \{#lockup-action-counter-not-in\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Watcher_filter.<b>lockupStreamCounter</b></code>](#lockup-stream-counter)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>BigInt</b></code>](/docs/api/streams/graphql/the-graph/scalars/big-int.mdx) <Badge class="badge badge--secondary " text="scalar"/> \{#lockup-stream-counter\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Watcher_filter.<b>lockupStreamCounter_not</b></code>](#lockup-stream-counter-not)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>BigInt</b></code>](/docs/api/streams/graphql/the-graph/scalars/big-int.mdx) <Badge class="badge badge--secondary " text="scalar"/> \{#lockup-stream-counter-not\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Watcher_filter.<b>lockupStreamCounter_gt</b></code>](#lockup-stream-counter-gt)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>BigInt</b></code>](/docs/api/streams/graphql/the-graph/scalars/big-int.mdx) <Badge class="badge badge--secondary " text="scalar"/> \{#lockup-stream-counter-gt\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Watcher_filter.<b>lockupStreamCounter_lt</b></code>](#lockup-stream-counter-lt)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>BigInt</b></code>](/docs/api/streams/graphql/the-graph/scalars/big-int.mdx) <Badge class="badge badge--secondary " text="scalar"/> \{#lockup-stream-counter-lt\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Watcher_filter.<b>lockupStreamCounter_gte</b></code>](#lockup-stream-counter-gte)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>BigInt</b></code>](/docs/api/streams/graphql/the-graph/scalars/big-int.mdx) <Badge class="badge badge--secondary " text="scalar"/> \{#lockup-stream-counter-gte\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Watcher_filter.<b>lockupStreamCounter_lte</b></code>](#lockup-stream-counter-lte)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>BigInt</b></code>](/docs/api/streams/graphql/the-graph/scalars/big-int.mdx) <Badge class="badge badge--secondary " text="scalar"/> \{#lockup-stream-counter-lte\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Watcher_filter.<b>lockupStreamCounter_in</b></code>](#lockup-stream-counter-in)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>[BigInt!]</b></code>](/docs/api/streams/graphql/the-graph/scalars/big-int.mdx) <Badge class="badge badge--secondary " text="list"/> <Badge class="badge badge--secondary " text="scalar"/> \{#lockup-stream-counter-in\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Watcher_filter.<b>lockupStreamCounter_not_in</b></code>](#lockup-stream-counter-not-in)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>[BigInt!]</b></code>](/docs/api/streams/graphql/the-graph/scalars/big-int.mdx) <Badge class="badge badge--secondary " text="list"/> <Badge class="badge badge--secondary " text="scalar"/> \{#lockup-stream-counter-not-in\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Watcher_filter.<b>\_change_block</b></code>](#change-block)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>BlockChangedFilter</b></code>](/docs/api/streams/graphql/the-graph/inputs/block-changed-filter.mdx) <Badge class="badge badge--secondary " text="input"/> \{#change-block\}
+
+Filter for the block changed event.
+
+#### [<code style={{ fontWeight: 'normal' }}>Watcher_filter.<b>and</b></code>](#and)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>[Watcher_filter]</b></code>](/docs/api/streams/graphql/the-graph/inputs/watcher-filter.mdx) <Badge class="badge badge--secondary " text="list"/> <Badge class="badge badge--secondary " text="input"/> \{#and\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Watcher_filter.<b>or</b></code>](#or)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>[Watcher_filter]</b></code>](/docs/api/streams/graphql/the-graph/inputs/watcher-filter.mdx) <Badge class="badge badge--secondary " text="list"/> <Badge class="badge badge--secondary " text="input"/> \{#or\}

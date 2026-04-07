@@ -1,0 +1,139 @@
+---
+id: flow-batcher
+title: FlowBatcher
+---
+
+<head>
+  <meta content="noindex" name="robots" />
+  <meta charset="utf-8" />
+</head>
+
+export const Bullet = () => (
+  <>
+    <span style={{ fontWeight: "normal", fontSize: ".5em", color: "var(--ifm-color-secondary-darkest)" }}>
+      &nbsp;●&nbsp;
+    </span>
+  </>
+);
+
+export const SpecifiedBy = (props) => (
+  <>
+    Specification
+    <a
+      className="link"
+      style={{ fontSize: "1.5em", paddingLeft: "4px" }}
+      target="_blank"
+      href={props.url}
+      title={"Specified by " + props.url}
+    >
+      ⎘
+    </a>
+  </>
+);
+
+export const Badge = (props) => (
+  <>
+    <span className={props.class}>{props.text}</span>
+  </>
+);
+
+import { useState } from "react";
+
+export const Details = ({ dataOpen, dataClose, children, startOpen = false }) => {
+  const [open, setOpen] = useState(startOpen);
+  return (
+    <details
+      {...(open ? { open: true } : {})}
+      className="details"
+      style={{ border: "none", boxShadow: "none", background: "var(--ifm-background-color)" }}
+    >
+      <summary
+        onClick={(e) => {
+          e.preventDefault();
+          setOpen((open) => !open);
+        }}
+        style={{ listStyle: "none" }}
+      >
+        {open ? dataOpen : dataClose}
+      </summary>
+      {open && children}
+    </details>
+  );
+};
+
+columns and relationships of "FlowBatcher"
+
+```graphql
+type FlowBatcher {
+  batchCounter: numeric!
+  batches(
+    distinct_on: [FlowBatch_select_column!]
+    limit: Int
+    offset: Int
+    order_by: [FlowBatch_order_by!]
+    where: FlowBatch_bool_exp
+  ): [FlowBatch!]!
+  batches_aggregate(
+    distinct_on: [FlowBatch_select_column!]
+    limit: Int
+    offset: Int
+    order_by: [FlowBatch_order_by!]
+    where: FlowBatch_bool_exp
+  ): FlowBatch_aggregate!
+  id: String!
+}
+```
+
+### Fields
+
+#### [<code style={{ fontWeight: 'normal' }}>FlowBatcher.<b>batchCounter</b></code>](#batch-counter)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>numeric!</b></code>](/docs/api/streams/graphql/envio/scalars/numeric.mdx) <Badge class="badge badge--secondary badge--non_null" text="non-null"/> <Badge class="badge badge--secondary " text="scalar"/> \{#batch-counter\}
+
+#### [<code style={{ fontWeight: 'normal' }}>FlowBatcher.<b>batches</b></code>](#batches)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>[FlowBatch!]!</b></code>](/docs/api/streams/graphql/envio/objects/flow-batch.mdx) <Badge class="badge badge--secondary badge--non_null" text="non-null"/> <Badge class="badge badge--secondary " text="object"/> \{#batches\}
+
+An array relationship
+
+##### [<code style={{ fontWeight: 'normal' }}>FlowBatcher.batches.<b>distinct_on</b></code>](#flow-batcher-batches-distinct-on)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>[FlowBatch_select_column!]</b></code>](/docs/api/streams/graphql/envio/enums/flow-batch-select-column.mdx) <Badge class="badge badge--secondary " text="list"/> <Badge class="badge badge--secondary " text="enum"/> \{#flow-batcher-batches-distinct-on\}
+
+distinct select on columns
+
+##### [<code style={{ fontWeight: 'normal' }}>FlowBatcher.batches.<b>limit</b></code>](#flow-batcher-batches-limit)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Int</b></code>](/docs/api/streams/graphql/envio/scalars/int.mdx) <Badge class="badge badge--secondary " text="scalar"/> \{#flow-batcher-batches-limit\}
+
+limit the number of rows returned
+
+##### [<code style={{ fontWeight: 'normal' }}>FlowBatcher.batches.<b>offset</b></code>](#flow-batcher-batches-offset)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Int</b></code>](/docs/api/streams/graphql/envio/scalars/int.mdx) <Badge class="badge badge--secondary " text="scalar"/> \{#flow-batcher-batches-offset\}
+
+skip the first n rows. Use only with order_by
+
+##### [<code style={{ fontWeight: 'normal' }}>FlowBatcher.batches.<b>order_by</b></code>](#flow-batcher-batches-order-by)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>[FlowBatch_order_by!]</b></code>](/docs/api/streams/graphql/envio/inputs/flow-batch-order-by.mdx) <Badge class="badge badge--secondary " text="list"/> <Badge class="badge badge--secondary " text="input"/> \{#flow-batcher-batches-order-by\}
+
+sort the rows by one or more columns
+
+##### [<code style={{ fontWeight: 'normal' }}>FlowBatcher.batches.<b>where</b></code>](#flow-batcher-batches-where)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>FlowBatch_bool_exp</b></code>](/docs/api/streams/graphql/envio/inputs/flow-batch-bool-exp.mdx) <Badge class="badge badge--secondary " text="input"/> \{#flow-batcher-batches-where\}
+
+filter the rows returned
+
+#### [<code style={{ fontWeight: 'normal' }}>FlowBatcher.<b>batches_aggregate</b></code>](#batches-aggregate)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>FlowBatch_aggregate!</b></code>](/docs/api/streams/graphql/envio/objects/flow-batch-aggregate.mdx) <Badge class="badge badge--secondary badge--non_null" text="non-null"/> <Badge class="badge badge--secondary " text="object"/> \{#batches-aggregate\}
+
+An aggregate relationship
+
+##### [<code style={{ fontWeight: 'normal' }}>FlowBatcher.batches_aggregate.<b>distinct_on</b></code>](#flow-batcher-batches-aggregate-distinct-on)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>[FlowBatch_select_column!]</b></code>](/docs/api/streams/graphql/envio/enums/flow-batch-select-column.mdx) <Badge class="badge badge--secondary " text="list"/> <Badge class="badge badge--secondary " text="enum"/> \{#flow-batcher-batches-aggregate-distinct-on\}
+
+distinct select on columns
+
+##### [<code style={{ fontWeight: 'normal' }}>FlowBatcher.batches_aggregate.<b>limit</b></code>](#flow-batcher-batches-aggregate-limit)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Int</b></code>](/docs/api/streams/graphql/envio/scalars/int.mdx) <Badge class="badge badge--secondary " text="scalar"/> \{#flow-batcher-batches-aggregate-limit\}
+
+limit the number of rows returned
+
+##### [<code style={{ fontWeight: 'normal' }}>FlowBatcher.batches_aggregate.<b>offset</b></code>](#flow-batcher-batches-aggregate-offset)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Int</b></code>](/docs/api/streams/graphql/envio/scalars/int.mdx) <Badge class="badge badge--secondary " text="scalar"/> \{#flow-batcher-batches-aggregate-offset\}
+
+skip the first n rows. Use only with order_by
+
+##### [<code style={{ fontWeight: 'normal' }}>FlowBatcher.batches_aggregate.<b>order_by</b></code>](#flow-batcher-batches-aggregate-order-by)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>[FlowBatch_order_by!]</b></code>](/docs/api/streams/graphql/envio/inputs/flow-batch-order-by.mdx) <Badge class="badge badge--secondary " text="list"/> <Badge class="badge badge--secondary " text="input"/> \{#flow-batcher-batches-aggregate-order-by\}
+
+sort the rows by one or more columns
+
+##### [<code style={{ fontWeight: 'normal' }}>FlowBatcher.batches_aggregate.<b>where</b></code>](#flow-batcher-batches-aggregate-where)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>FlowBatch_bool_exp</b></code>](/docs/api/streams/graphql/envio/inputs/flow-batch-bool-exp.mdx) <Badge class="badge badge--secondary " text="input"/> \{#flow-batcher-batches-aggregate-where\}
+
+filter the rows returned
+
+#### [<code style={{ fontWeight: 'normal' }}>FlowBatcher.<b>id</b></code>](#id)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String!</b></code>](/docs/api/streams/graphql/envio/scalars/string.mdx) <Badge class="badge badge--secondary badge--non_null" text="non-null"/> <Badge class="badge badge--secondary " text="scalar"/> \{#id\}

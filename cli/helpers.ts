@@ -17,10 +17,8 @@ export const autogenFilePaths = {
       release.protocol,
       `_table-deployments-${release.version}.mdx`
     ),
-  envio: (protocol: Sablier.Protocol) =>
-    path.join(ROOT_DIR, "src", "autogen", protocol, "_table-envio.mdx"),
-  graph: (protocol: Sablier.Protocol) =>
-    path.join(ROOT_DIR, "src", "autogen", protocol, "_table-graph.mdx"),
+  envio: (key: string) => path.join(ROOT_DIR, "src", "autogen", key, "_table-envio.mdx"),
+  graph: (key: string) => path.join(ROOT_DIR, "src", "autogen", key, "_table-graph.mdx"),
 };
 
 type FileWriteParams = {
@@ -38,9 +36,8 @@ export function writeFileWithOverwrite(params: FileWriteParams): boolean {
   const { filePath, content, encoding = "utf8", options } = params;
 
   if (fs.existsSync(filePath) && !options.overwrite) {
-    const relativePath = path.relative(process.cwd(), filePath);
     console.log(
-      `⚠️  Deployment table already exists at: ${relativePath}. Use --overwrite flag to overwrite.`
+      `⚠️  Deployment table already exists at: ${getRelative(filePath)}. Use --overwrite flag to overwrite.`
     );
     return false;
   }

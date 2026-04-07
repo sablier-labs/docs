@@ -8,7 +8,7 @@ import type { CliOptions } from "../../types";
 
 export function createIndexersCommand() {
   return new Command("indexers")
-    .description("Generate indexer endpoint tables for all Sablier protocols")
+    .description("Generate indexer endpoint tables for all Sablier indexers")
     .action(async function () {
       const options = this.parent ? this.parent.opts() : {};
       await generateIndexers(options);
@@ -19,25 +19,24 @@ export const indexersCmd = createIndexersCommand();
 
 export function generateIndexers(options: CliOptions = {}): void {
   generateTables("airdrops", options);
-  generateTables("flow", options);
-  generateTables("lockup", options);
+  generateTables("streams", options);
 }
 
-function generateTables(protocol: Indexer.Protocol, options: CliOptions): void {
-  const envioTable = generateEnvioTable(indexers.envio[protocol]);
-  const graphTable = generateGraphTable(indexers.graph[protocol]);
+function generateTables(indexerKey: Indexer.IndexerKey, options: CliOptions): void {
+  const envioTable = generateEnvioTable(indexers.envio[indexerKey]);
+  const graphTable = generateGraphTable(indexers.graph[indexerKey]);
 
-  const envioFilePath = autogenFilePaths.envio(protocol);
+  const envioFilePath = autogenFilePaths.envio(indexerKey);
   if (writeFileWithOverwrite({ content: envioTable, filePath: envioFilePath, options })) {
     console.log(
-      `✔️  Generated ${_.capitalize(protocol)} endpoints table for Envio at: ${getRelative(envioFilePath)}`
+      `✔️  Generated ${_.capitalize(indexerKey)} endpoints table for Envio at: ${getRelative(envioFilePath)}`
     );
   }
 
-  const graphFilePath = autogenFilePaths.graph(protocol);
+  const graphFilePath = autogenFilePaths.graph(indexerKey);
   if (writeFileWithOverwrite({ content: graphTable, filePath: graphFilePath, options })) {
     console.log(
-      `✔️  Generated ${_.capitalize(protocol)} endpoints table for The Graph at: ${getRelative(graphFilePath)}`
+      `✔️  Generated ${_.capitalize(indexerKey)} endpoints table for The Graph at: ${getRelative(graphFilePath)}`
     );
   }
 }
@@ -56,11 +55,10 @@ function generateEnvioTable(indexers: Indexer[]): string {
     const playgroundURL = indexer.testingURL;
     const explorerURL = indexer.explorerURL;
 
-    const productionCell = `${productionURL}`;
     const playgroundCell = playgroundURL ? `[Playground](${playgroundURL})` : "N/A";
     const explorerCell = explorerURL ? `[Explorer](${explorerURL})` : "N/A";
 
-    markdown += `| ${chain.name} | ${productionCell} | ${playgroundCell} | ${explorerCell} |\n`;
+    markdown += `| ${chain.name} | ${productionURL} | ${playgroundCell} | ${explorerCell} |\n`;
   }
 
   return markdown;

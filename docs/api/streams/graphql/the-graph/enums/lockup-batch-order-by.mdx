@@ -1,0 +1,98 @@
+---
+id: lockup-batch-order-by
+title: LockupBatch_orderBy
+---
+
+<head>
+  <meta content="noindex" name="robots" />
+  <meta charset="utf-8" />
+</head>
+
+export const Bullet = () => (
+  <>
+    <span style={{ fontWeight: "normal", fontSize: ".5em", color: "var(--ifm-color-secondary-darkest)" }}>
+      &nbsp;●&nbsp;
+    </span>
+  </>
+);
+
+export const SpecifiedBy = (props) => (
+  <>
+    Specification
+    <a
+      className="link"
+      style={{ fontSize: "1.5em", paddingLeft: "4px" }}
+      target="_blank"
+      href={props.url}
+      title={"Specified by " + props.url}
+    >
+      ⎘
+    </a>
+  </>
+);
+
+export const Badge = (props) => (
+  <>
+    <span className={props.class}>{props.text}</span>
+  </>
+);
+
+import { useState } from "react";
+
+export const Details = ({ dataOpen, dataClose, children, startOpen = false }) => {
+  const [open, setOpen] = useState(startOpen);
+  return (
+    <details
+      {...(open ? { open: true } : {})}
+      className="details"
+      style={{ border: "none", boxShadow: "none", background: "var(--ifm-background-color)" }}
+    >
+      <summary
+        onClick={(e) => {
+          e.preventDefault();
+          setOpen((open) => !open);
+        }}
+        style={{ listStyle: "none" }}
+      >
+        {open ? dataOpen : dataClose}
+      </summary>
+      {open && children}
+    </details>
+  );
+};
+
+No description
+
+```graphql
+enum LockupBatch_orderBy {
+  id
+  hash
+  timestamp
+  batcher
+  batcher__id
+  batcher__batchCounter
+  position
+  size
+  streams
+}
+```
+
+### Values
+
+#### [<code style={{ fontWeight: 'normal' }}>LockupBatch_orderBy.<b>id</b></code>](#id) \{#id\}
+
+#### [<code style={{ fontWeight: 'normal' }}>LockupBatch_orderBy.<b>hash</b></code>](#hash) \{#hash\}
+
+#### [<code style={{ fontWeight: 'normal' }}>LockupBatch_orderBy.<b>timestamp</b></code>](#timestamp) \{#timestamp\}
+
+#### [<code style={{ fontWeight: 'normal' }}>LockupBatch_orderBy.<b>batcher</b></code>](#batcher) \{#batcher\}
+
+#### [<code style={{ fontWeight: 'normal' }}>LockupBatch_orderBy.<b>batcher\_\_id</b></code>](#batcher-id) \{#batcher-id\}
+
+#### [<code style={{ fontWeight: 'normal' }}>LockupBatch_orderBy.<b>batcher\_\_batchCounter</b></code>](#batcher-batch-counter) \{#batcher-batch-counter\}
+
+#### [<code style={{ fontWeight: 'normal' }}>LockupBatch_orderBy.<b>position</b></code>](#position) \{#position\}
+
+#### [<code style={{ fontWeight: 'normal' }}>LockupBatch_orderBy.<b>size</b></code>](#size) \{#size\}
+
+#### [<code style={{ fontWeight: 'normal' }}>LockupBatch_orderBy.<b>streams</b></code>](#streams) \{#streams\}

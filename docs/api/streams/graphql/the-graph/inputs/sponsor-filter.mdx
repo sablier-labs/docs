@@ -1,0 +1,337 @@
+---
+id: sponsor-filter
+title: Sponsor_filter
+---
+
+<head>
+  <meta content="noindex" name="robots" />
+  <meta charset="utf-8" />
+</head>
+
+export const Bullet = () => (
+  <>
+    <span style={{ fontWeight: "normal", fontSize: ".5em", color: "var(--ifm-color-secondary-darkest)" }}>
+      &nbsp;●&nbsp;
+    </span>
+  </>
+);
+
+export const SpecifiedBy = (props) => (
+  <>
+    Specification
+    <a
+      className="link"
+      style={{ fontSize: "1.5em", paddingLeft: "4px" }}
+      target="_blank"
+      href={props.url}
+      title={"Specified by " + props.url}
+    >
+      ⎘
+    </a>
+  </>
+);
+
+export const Badge = (props) => (
+  <>
+    <span className={props.class}>{props.text}</span>
+  </>
+);
+
+import { useState } from "react";
+
+export const Details = ({ dataOpen, dataClose, children, startOpen = false }) => {
+  const [open, setOpen] = useState(startOpen);
+  return (
+    <details
+      {...(open ? { open: true } : {})}
+      className="details"
+      style={{ border: "none", boxShadow: "none", background: "var(--ifm-background-color)" }}
+    >
+      <summary
+        onClick={(e) => {
+          e.preventDefault();
+          setOpen((open) => !open);
+        }}
+        style={{ listStyle: "none" }}
+      >
+        {open ? dataOpen : dataClose}
+      </summary>
+      {open && children}
+    </details>
+  );
+};
+
+No description
+
+```graphql
+input Sponsor_filter {
+  id: String
+  id_not: String
+  id_gt: String
+  id_lt: String
+  id_gte: String
+  id_lte: String
+  id_in: [String!]
+  id_not_in: [String!]
+  id_contains: String
+  id_contains_nocase: String
+  id_not_contains: String
+  id_not_contains_nocase: String
+  id_starts_with: String
+  id_starts_with_nocase: String
+  id_not_starts_with: String
+  id_not_starts_with_nocase: String
+  id_ends_with: String
+  id_ends_with_nocase: String
+  id_not_ends_with: String
+  id_not_ends_with_nocase: String
+  address: String
+  address_not: String
+  address_gt: String
+  address_lt: String
+  address_gte: String
+  address_lte: String
+  address_in: [String!]
+  address_not_in: [String!]
+  address_contains: String
+  address_contains_nocase: String
+  address_not_contains: String
+  address_not_contains_nocase: String
+  address_starts_with: String
+  address_starts_with_nocase: String
+  address_not_starts_with: String
+  address_not_starts_with_nocase: String
+  address_ends_with: String
+  address_ends_with_nocase: String
+  address_not_ends_with: String
+  address_not_ends_with_nocase: String
+  chainId: Int
+  chainId_not: Int
+  chainId_gt: Int
+  chainId_lt: Int
+  chainId_gte: Int
+  chainId_lte: Int
+  chainId_in: [Int!]
+  chainId_not_in: [Int!]
+  sponsorshipCount: Int
+  sponsorshipCount_not: Int
+  sponsorshipCount_gt: Int
+  sponsorshipCount_lt: Int
+  sponsorshipCount_gte: Int
+  sponsorshipCount_lte: Int
+  sponsorshipCount_in: [Int!]
+  sponsorshipCount_not_in: [Int!]
+  sponsorships_: Sponsorship_filter
+  totalAmount: BigInt
+  totalAmount_not: BigInt
+  totalAmount_gt: BigInt
+  totalAmount_lt: BigInt
+  totalAmount_gte: BigInt
+  totalAmount_lte: BigInt
+  totalAmount_in: [BigInt!]
+  totalAmount_not_in: [BigInt!]
+  totalAmountDisplay: String
+  totalAmountDisplay_not: String
+  totalAmountDisplay_gt: String
+  totalAmountDisplay_lt: String
+  totalAmountDisplay_gte: String
+  totalAmountDisplay_lte: String
+  totalAmountDisplay_in: [String!]
+  totalAmountDisplay_not_in: [String!]
+  totalAmountDisplay_contains: String
+  totalAmountDisplay_contains_nocase: String
+  totalAmountDisplay_not_contains: String
+  totalAmountDisplay_not_contains_nocase: String
+  totalAmountDisplay_starts_with: String
+  totalAmountDisplay_starts_with_nocase: String
+  totalAmountDisplay_not_starts_with: String
+  totalAmountDisplay_not_starts_with_nocase: String
+  totalAmountDisplay_ends_with: String
+  totalAmountDisplay_ends_with_nocase: String
+  totalAmountDisplay_not_ends_with: String
+  totalAmountDisplay_not_ends_with_nocase: String
+  _change_block: BlockChangedFilter
+  and: [Sponsor_filter]
+  or: [Sponsor_filter]
+}
+```
+
+### Fields
+
+#### [<code style={{ fontWeight: 'normal' }}>Sponsor_filter.<b>id</b></code>](#id)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String</b></code>](/docs/api/streams/graphql/the-graph/scalars/string.mdx) <Badge class="badge badge--secondary " text="scalar"/> \{#id\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Sponsor_filter.<b>id_not</b></code>](#id-not)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String</b></code>](/docs/api/streams/graphql/the-graph/scalars/string.mdx) <Badge class="badge badge--secondary " text="scalar"/> \{#id-not\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Sponsor_filter.<b>id_gt</b></code>](#id-gt)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String</b></code>](/docs/api/streams/graphql/the-graph/scalars/string.mdx) <Badge class="badge badge--secondary " text="scalar"/> \{#id-gt\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Sponsor_filter.<b>id_lt</b></code>](#id-lt)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String</b></code>](/docs/api/streams/graphql/the-graph/scalars/string.mdx) <Badge class="badge badge--secondary " text="scalar"/> \{#id-lt\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Sponsor_filter.<b>id_gte</b></code>](#id-gte)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String</b></code>](/docs/api/streams/graphql/the-graph/scalars/string.mdx) <Badge class="badge badge--secondary " text="scalar"/> \{#id-gte\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Sponsor_filter.<b>id_lte</b></code>](#id-lte)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String</b></code>](/docs/api/streams/graphql/the-graph/scalars/string.mdx) <Badge class="badge badge--secondary " text="scalar"/> \{#id-lte\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Sponsor_filter.<b>id_in</b></code>](#id-in)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>[String!]</b></code>](/docs/api/streams/graphql/the-graph/scalars/string.mdx) <Badge class="badge badge--secondary " text="list"/> <Badge class="badge badge--secondary " text="scalar"/> \{#id-in\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Sponsor_filter.<b>id_not_in</b></code>](#id-not-in)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>[String!]</b></code>](/docs/api/streams/graphql/the-graph/scalars/string.mdx) <Badge class="badge badge--secondary " text="list"/> <Badge class="badge badge--secondary " text="scalar"/> \{#id-not-in\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Sponsor_filter.<b>id_contains</b></code>](#id-contains)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String</b></code>](/docs/api/streams/graphql/the-graph/scalars/string.mdx) <Badge class="badge badge--secondary " text="scalar"/> \{#id-contains\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Sponsor_filter.<b>id_contains_nocase</b></code>](#id-contains-nocase)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String</b></code>](/docs/api/streams/graphql/the-graph/scalars/string.mdx) <Badge class="badge badge--secondary " text="scalar"/> \{#id-contains-nocase\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Sponsor_filter.<b>id_not_contains</b></code>](#id-not-contains)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String</b></code>](/docs/api/streams/graphql/the-graph/scalars/string.mdx) <Badge class="badge badge--secondary " text="scalar"/> \{#id-not-contains\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Sponsor_filter.<b>id_not_contains_nocase</b></code>](#id-not-contains-nocase)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String</b></code>](/docs/api/streams/graphql/the-graph/scalars/string.mdx) <Badge class="badge badge--secondary " text="scalar"/> \{#id-not-contains-nocase\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Sponsor_filter.<b>id_starts_with</b></code>](#id-starts-with)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String</b></code>](/docs/api/streams/graphql/the-graph/scalars/string.mdx) <Badge class="badge badge--secondary " text="scalar"/> \{#id-starts-with\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Sponsor_filter.<b>id_starts_with_nocase</b></code>](#id-starts-with-nocase)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String</b></code>](/docs/api/streams/graphql/the-graph/scalars/string.mdx) <Badge class="badge badge--secondary " text="scalar"/> \{#id-starts-with-nocase\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Sponsor_filter.<b>id_not_starts_with</b></code>](#id-not-starts-with)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String</b></code>](/docs/api/streams/graphql/the-graph/scalars/string.mdx) <Badge class="badge badge--secondary " text="scalar"/> \{#id-not-starts-with\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Sponsor_filter.<b>id_not_starts_with_nocase</b></code>](#id-not-starts-with-nocase)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String</b></code>](/docs/api/streams/graphql/the-graph/scalars/string.mdx) <Badge class="badge badge--secondary " text="scalar"/> \{#id-not-starts-with-nocase\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Sponsor_filter.<b>id_ends_with</b></code>](#id-ends-with)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String</b></code>](/docs/api/streams/graphql/the-graph/scalars/string.mdx) <Badge class="badge badge--secondary " text="scalar"/> \{#id-ends-with\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Sponsor_filter.<b>id_ends_with_nocase</b></code>](#id-ends-with-nocase)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String</b></code>](/docs/api/streams/graphql/the-graph/scalars/string.mdx) <Badge class="badge badge--secondary " text="scalar"/> \{#id-ends-with-nocase\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Sponsor_filter.<b>id_not_ends_with</b></code>](#id-not-ends-with)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String</b></code>](/docs/api/streams/graphql/the-graph/scalars/string.mdx) <Badge class="badge badge--secondary " text="scalar"/> \{#id-not-ends-with\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Sponsor_filter.<b>id_not_ends_with_nocase</b></code>](#id-not-ends-with-nocase)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String</b></code>](/docs/api/streams/graphql/the-graph/scalars/string.mdx) <Badge class="badge badge--secondary " text="scalar"/> \{#id-not-ends-with-nocase\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Sponsor_filter.<b>address</b></code>](#address)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String</b></code>](/docs/api/streams/graphql/the-graph/scalars/string.mdx) <Badge class="badge badge--secondary " text="scalar"/> \{#address\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Sponsor_filter.<b>address_not</b></code>](#address-not)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String</b></code>](/docs/api/streams/graphql/the-graph/scalars/string.mdx) <Badge class="badge badge--secondary " text="scalar"/> \{#address-not\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Sponsor_filter.<b>address_gt</b></code>](#address-gt)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String</b></code>](/docs/api/streams/graphql/the-graph/scalars/string.mdx) <Badge class="badge badge--secondary " text="scalar"/> \{#address-gt\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Sponsor_filter.<b>address_lt</b></code>](#address-lt)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String</b></code>](/docs/api/streams/graphql/the-graph/scalars/string.mdx) <Badge class="badge badge--secondary " text="scalar"/> \{#address-lt\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Sponsor_filter.<b>address_gte</b></code>](#address-gte)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String</b></code>](/docs/api/streams/graphql/the-graph/scalars/string.mdx) <Badge class="badge badge--secondary " text="scalar"/> \{#address-gte\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Sponsor_filter.<b>address_lte</b></code>](#address-lte)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String</b></code>](/docs/api/streams/graphql/the-graph/scalars/string.mdx) <Badge class="badge badge--secondary " text="scalar"/> \{#address-lte\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Sponsor_filter.<b>address_in</b></code>](#address-in)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>[String!]</b></code>](/docs/api/streams/graphql/the-graph/scalars/string.mdx) <Badge class="badge badge--secondary " text="list"/> <Badge class="badge badge--secondary " text="scalar"/> \{#address-in\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Sponsor_filter.<b>address_not_in</b></code>](#address-not-in)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>[String!]</b></code>](/docs/api/streams/graphql/the-graph/scalars/string.mdx) <Badge class="badge badge--secondary " text="list"/> <Badge class="badge badge--secondary " text="scalar"/> \{#address-not-in\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Sponsor_filter.<b>address_contains</b></code>](#address-contains)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String</b></code>](/docs/api/streams/graphql/the-graph/scalars/string.mdx) <Badge class="badge badge--secondary " text="scalar"/> \{#address-contains\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Sponsor_filter.<b>address_contains_nocase</b></code>](#address-contains-nocase)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String</b></code>](/docs/api/streams/graphql/the-graph/scalars/string.mdx) <Badge class="badge badge--secondary " text="scalar"/> \{#address-contains-nocase\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Sponsor_filter.<b>address_not_contains</b></code>](#address-not-contains)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String</b></code>](/docs/api/streams/graphql/the-graph/scalars/string.mdx) <Badge class="badge badge--secondary " text="scalar"/> \{#address-not-contains\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Sponsor_filter.<b>address_not_contains_nocase</b></code>](#address-not-contains-nocase)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String</b></code>](/docs/api/streams/graphql/the-graph/scalars/string.mdx) <Badge class="badge badge--secondary " text="scalar"/> \{#address-not-contains-nocase\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Sponsor_filter.<b>address_starts_with</b></code>](#address-starts-with)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String</b></code>](/docs/api/streams/graphql/the-graph/scalars/string.mdx) <Badge class="badge badge--secondary " text="scalar"/> \{#address-starts-with\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Sponsor_filter.<b>address_starts_with_nocase</b></code>](#address-starts-with-nocase)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String</b></code>](/docs/api/streams/graphql/the-graph/scalars/string.mdx) <Badge class="badge badge--secondary " text="scalar"/> \{#address-starts-with-nocase\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Sponsor_filter.<b>address_not_starts_with</b></code>](#address-not-starts-with)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String</b></code>](/docs/api/streams/graphql/the-graph/scalars/string.mdx) <Badge class="badge badge--secondary " text="scalar"/> \{#address-not-starts-with\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Sponsor_filter.<b>address_not_starts_with_nocase</b></code>](#address-not-starts-with-nocase)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String</b></code>](/docs/api/streams/graphql/the-graph/scalars/string.mdx) <Badge class="badge badge--secondary " text="scalar"/> \{#address-not-starts-with-nocase\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Sponsor_filter.<b>address_ends_with</b></code>](#address-ends-with)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String</b></code>](/docs/api/streams/graphql/the-graph/scalars/string.mdx) <Badge class="badge badge--secondary " text="scalar"/> \{#address-ends-with\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Sponsor_filter.<b>address_ends_with_nocase</b></code>](#address-ends-with-nocase)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String</b></code>](/docs/api/streams/graphql/the-graph/scalars/string.mdx) <Badge class="badge badge--secondary " text="scalar"/> \{#address-ends-with-nocase\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Sponsor_filter.<b>address_not_ends_with</b></code>](#address-not-ends-with)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String</b></code>](/docs/api/streams/graphql/the-graph/scalars/string.mdx) <Badge class="badge badge--secondary " text="scalar"/> \{#address-not-ends-with\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Sponsor_filter.<b>address_not_ends_with_nocase</b></code>](#address-not-ends-with-nocase)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String</b></code>](/docs/api/streams/graphql/the-graph/scalars/string.mdx) <Badge class="badge badge--secondary " text="scalar"/> \{#address-not-ends-with-nocase\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Sponsor_filter.<b>chainId</b></code>](#chain-id)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Int</b></code>](/docs/api/streams/graphql/the-graph/scalars/int.mdx) <Badge class="badge badge--secondary " text="scalar"/> \{#chain-id\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Sponsor_filter.<b>chainId_not</b></code>](#chain-id-not)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Int</b></code>](/docs/api/streams/graphql/the-graph/scalars/int.mdx) <Badge class="badge badge--secondary " text="scalar"/> \{#chain-id-not\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Sponsor_filter.<b>chainId_gt</b></code>](#chain-id-gt)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Int</b></code>](/docs/api/streams/graphql/the-graph/scalars/int.mdx) <Badge class="badge badge--secondary " text="scalar"/> \{#chain-id-gt\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Sponsor_filter.<b>chainId_lt</b></code>](#chain-id-lt)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Int</b></code>](/docs/api/streams/graphql/the-graph/scalars/int.mdx) <Badge class="badge badge--secondary " text="scalar"/> \{#chain-id-lt\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Sponsor_filter.<b>chainId_gte</b></code>](#chain-id-gte)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Int</b></code>](/docs/api/streams/graphql/the-graph/scalars/int.mdx) <Badge class="badge badge--secondary " text="scalar"/> \{#chain-id-gte\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Sponsor_filter.<b>chainId_lte</b></code>](#chain-id-lte)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Int</b></code>](/docs/api/streams/graphql/the-graph/scalars/int.mdx) <Badge class="badge badge--secondary " text="scalar"/> \{#chain-id-lte\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Sponsor_filter.<b>chainId_in</b></code>](#chain-id-in)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>[Int!]</b></code>](/docs/api/streams/graphql/the-graph/scalars/int.mdx) <Badge class="badge badge--secondary " text="list"/> <Badge class="badge badge--secondary " text="scalar"/> \{#chain-id-in\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Sponsor_filter.<b>chainId_not_in</b></code>](#chain-id-not-in)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>[Int!]</b></code>](/docs/api/streams/graphql/the-graph/scalars/int.mdx) <Badge class="badge badge--secondary " text="list"/> <Badge class="badge badge--secondary " text="scalar"/> \{#chain-id-not-in\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Sponsor_filter.<b>sponsorshipCount</b></code>](#sponsorship-count)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Int</b></code>](/docs/api/streams/graphql/the-graph/scalars/int.mdx) <Badge class="badge badge--secondary " text="scalar"/> \{#sponsorship-count\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Sponsor_filter.<b>sponsorshipCount_not</b></code>](#sponsorship-count-not)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Int</b></code>](/docs/api/streams/graphql/the-graph/scalars/int.mdx) <Badge class="badge badge--secondary " text="scalar"/> \{#sponsorship-count-not\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Sponsor_filter.<b>sponsorshipCount_gt</b></code>](#sponsorship-count-gt)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Int</b></code>](/docs/api/streams/graphql/the-graph/scalars/int.mdx) <Badge class="badge badge--secondary " text="scalar"/> \{#sponsorship-count-gt\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Sponsor_filter.<b>sponsorshipCount_lt</b></code>](#sponsorship-count-lt)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Int</b></code>](/docs/api/streams/graphql/the-graph/scalars/int.mdx) <Badge class="badge badge--secondary " text="scalar"/> \{#sponsorship-count-lt\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Sponsor_filter.<b>sponsorshipCount_gte</b></code>](#sponsorship-count-gte)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Int</b></code>](/docs/api/streams/graphql/the-graph/scalars/int.mdx) <Badge class="badge badge--secondary " text="scalar"/> \{#sponsorship-count-gte\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Sponsor_filter.<b>sponsorshipCount_lte</b></code>](#sponsorship-count-lte)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Int</b></code>](/docs/api/streams/graphql/the-graph/scalars/int.mdx) <Badge class="badge badge--secondary " text="scalar"/> \{#sponsorship-count-lte\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Sponsor_filter.<b>sponsorshipCount_in</b></code>](#sponsorship-count-in)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>[Int!]</b></code>](/docs/api/streams/graphql/the-graph/scalars/int.mdx) <Badge class="badge badge--secondary " text="list"/> <Badge class="badge badge--secondary " text="scalar"/> \{#sponsorship-count-in\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Sponsor_filter.<b>sponsorshipCount_not_in</b></code>](#sponsorship-count-not-in)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>[Int!]</b></code>](/docs/api/streams/graphql/the-graph/scalars/int.mdx) <Badge class="badge badge--secondary " text="list"/> <Badge class="badge badge--secondary " text="scalar"/> \{#sponsorship-count-not-in\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Sponsor_filter.<b>sponsorships\_</b></code>](#sponsorships)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Sponsorship_filter</b></code>](/docs/api/streams/graphql/the-graph/inputs/sponsorship-filter.mdx) <Badge class="badge badge--secondary " text="input"/> \{#sponsorships\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Sponsor_filter.<b>totalAmount</b></code>](#total-amount)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>BigInt</b></code>](/docs/api/streams/graphql/the-graph/scalars/big-int.mdx) <Badge class="badge badge--secondary " text="scalar"/> \{#total-amount\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Sponsor_filter.<b>totalAmount_not</b></code>](#total-amount-not)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>BigInt</b></code>](/docs/api/streams/graphql/the-graph/scalars/big-int.mdx) <Badge class="badge badge--secondary " text="scalar"/> \{#total-amount-not\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Sponsor_filter.<b>totalAmount_gt</b></code>](#total-amount-gt)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>BigInt</b></code>](/docs/api/streams/graphql/the-graph/scalars/big-int.mdx) <Badge class="badge badge--secondary " text="scalar"/> \{#total-amount-gt\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Sponsor_filter.<b>totalAmount_lt</b></code>](#total-amount-lt)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>BigInt</b></code>](/docs/api/streams/graphql/the-graph/scalars/big-int.mdx) <Badge class="badge badge--secondary " text="scalar"/> \{#total-amount-lt\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Sponsor_filter.<b>totalAmount_gte</b></code>](#total-amount-gte)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>BigInt</b></code>](/docs/api/streams/graphql/the-graph/scalars/big-int.mdx) <Badge class="badge badge--secondary " text="scalar"/> \{#total-amount-gte\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Sponsor_filter.<b>totalAmount_lte</b></code>](#total-amount-lte)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>BigInt</b></code>](/docs/api/streams/graphql/the-graph/scalars/big-int.mdx) <Badge class="badge badge--secondary " text="scalar"/> \{#total-amount-lte\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Sponsor_filter.<b>totalAmount_in</b></code>](#total-amount-in)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>[BigInt!]</b></code>](/docs/api/streams/graphql/the-graph/scalars/big-int.mdx) <Badge class="badge badge--secondary " text="list"/> <Badge class="badge badge--secondary " text="scalar"/> \{#total-amount-in\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Sponsor_filter.<b>totalAmount_not_in</b></code>](#total-amount-not-in)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>[BigInt!]</b></code>](/docs/api/streams/graphql/the-graph/scalars/big-int.mdx) <Badge class="badge badge--secondary " text="list"/> <Badge class="badge badge--secondary " text="scalar"/> \{#total-amount-not-in\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Sponsor_filter.<b>totalAmountDisplay</b></code>](#total-amount-display)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String</b></code>](/docs/api/streams/graphql/the-graph/scalars/string.mdx) <Badge class="badge badge--secondary " text="scalar"/> \{#total-amount-display\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Sponsor_filter.<b>totalAmountDisplay_not</b></code>](#total-amount-display-not)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String</b></code>](/docs/api/streams/graphql/the-graph/scalars/string.mdx) <Badge class="badge badge--secondary " text="scalar"/> \{#total-amount-display-not\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Sponsor_filter.<b>totalAmountDisplay_gt</b></code>](#total-amount-display-gt)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String</b></code>](/docs/api/streams/graphql/the-graph/scalars/string.mdx) <Badge class="badge badge--secondary " text="scalar"/> \{#total-amount-display-gt\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Sponsor_filter.<b>totalAmountDisplay_lt</b></code>](#total-amount-display-lt)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String</b></code>](/docs/api/streams/graphql/the-graph/scalars/string.mdx) <Badge class="badge badge--secondary " text="scalar"/> \{#total-amount-display-lt\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Sponsor_filter.<b>totalAmountDisplay_gte</b></code>](#total-amount-display-gte)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String</b></code>](/docs/api/streams/graphql/the-graph/scalars/string.mdx) <Badge class="badge badge--secondary " text="scalar"/> \{#total-amount-display-gte\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Sponsor_filter.<b>totalAmountDisplay_lte</b></code>](#total-amount-display-lte)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String</b></code>](/docs/api/streams/graphql/the-graph/scalars/string.mdx) <Badge class="badge badge--secondary " text="scalar"/> \{#total-amount-display-lte\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Sponsor_filter.<b>totalAmountDisplay_in</b></code>](#total-amount-display-in)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>[String!]</b></code>](/docs/api/streams/graphql/the-graph/scalars/string.mdx) <Badge class="badge badge--secondary " text="list"/> <Badge class="badge badge--secondary " text="scalar"/> \{#total-amount-display-in\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Sponsor_filter.<b>totalAmountDisplay_not_in</b></code>](#total-amount-display-not-in)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>[String!]</b></code>](/docs/api/streams/graphql/the-graph/scalars/string.mdx) <Badge class="badge badge--secondary " text="list"/> <Badge class="badge badge--secondary " text="scalar"/> \{#total-amount-display-not-in\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Sponsor_filter.<b>totalAmountDisplay_contains</b></code>](#total-amount-display-contains)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String</b></code>](/docs/api/streams/graphql/the-graph/scalars/string.mdx) <Badge class="badge badge--secondary " text="scalar"/> \{#total-amount-display-contains\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Sponsor_filter.<b>totalAmountDisplay_contains_nocase</b></code>](#total-amount-display-contains-nocase)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String</b></code>](/docs/api/streams/graphql/the-graph/scalars/string.mdx) <Badge class="badge badge--secondary " text="scalar"/> \{#total-amount-display-contains-nocase\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Sponsor_filter.<b>totalAmountDisplay_not_contains</b></code>](#total-amount-display-not-contains)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String</b></code>](/docs/api/streams/graphql/the-graph/scalars/string.mdx) <Badge class="badge badge--secondary " text="scalar"/> \{#total-amount-display-not-contains\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Sponsor_filter.<b>totalAmountDisplay_not_contains_nocase</b></code>](#total-amount-display-not-contains-nocase)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String</b></code>](/docs/api/streams/graphql/the-graph/scalars/string.mdx) <Badge class="badge badge--secondary " text="scalar"/> \{#total-amount-display-not-contains-nocase\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Sponsor_filter.<b>totalAmountDisplay_starts_with</b></code>](#total-amount-display-starts-with)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String</b></code>](/docs/api/streams/graphql/the-graph/scalars/string.mdx) <Badge class="badge badge--secondary " text="scalar"/> \{#total-amount-display-starts-with\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Sponsor_filter.<b>totalAmountDisplay_starts_with_nocase</b></code>](#total-amount-display-starts-with-nocase)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String</b></code>](/docs/api/streams/graphql/the-graph/scalars/string.mdx) <Badge class="badge badge--secondary " text="scalar"/> \{#total-amount-display-starts-with-nocase\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Sponsor_filter.<b>totalAmountDisplay_not_starts_with</b></code>](#total-amount-display-not-starts-with)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String</b></code>](/docs/api/streams/graphql/the-graph/scalars/string.mdx) <Badge class="badge badge--secondary " text="scalar"/> \{#total-amount-display-not-starts-with\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Sponsor_filter.<b>totalAmountDisplay_not_starts_with_nocase</b></code>](#total-amount-display-not-starts-with-nocase)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String</b></code>](/docs/api/streams/graphql/the-graph/scalars/string.mdx) <Badge class="badge badge--secondary " text="scalar"/> \{#total-amount-display-not-starts-with-nocase\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Sponsor_filter.<b>totalAmountDisplay_ends_with</b></code>](#total-amount-display-ends-with)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String</b></code>](/docs/api/streams/graphql/the-graph/scalars/string.mdx) <Badge class="badge badge--secondary " text="scalar"/> \{#total-amount-display-ends-with\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Sponsor_filter.<b>totalAmountDisplay_ends_with_nocase</b></code>](#total-amount-display-ends-with-nocase)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String</b></code>](/docs/api/streams/graphql/the-graph/scalars/string.mdx) <Badge class="badge badge--secondary " text="scalar"/> \{#total-amount-display-ends-with-nocase\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Sponsor_filter.<b>totalAmountDisplay_not_ends_with</b></code>](#total-amount-display-not-ends-with)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String</b></code>](/docs/api/streams/graphql/the-graph/scalars/string.mdx) <Badge class="badge badge--secondary " text="scalar"/> \{#total-amount-display-not-ends-with\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Sponsor_filter.<b>totalAmountDisplay_not_ends_with_nocase</b></code>](#total-amount-display-not-ends-with-nocase)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String</b></code>](/docs/api/streams/graphql/the-graph/scalars/string.mdx) <Badge class="badge badge--secondary " text="scalar"/> \{#total-amount-display-not-ends-with-nocase\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Sponsor_filter.<b>\_change_block</b></code>](#change-block)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>BlockChangedFilter</b></code>](/docs/api/streams/graphql/the-graph/inputs/block-changed-filter.mdx) <Badge class="badge badge--secondary " text="input"/> \{#change-block\}
+
+Filter for the block changed event.
+
+#### [<code style={{ fontWeight: 'normal' }}>Sponsor_filter.<b>and</b></code>](#and)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>[Sponsor_filter]</b></code>](/docs/api/streams/graphql/the-graph/inputs/sponsor-filter.mdx) <Badge class="badge badge--secondary " text="list"/> <Badge class="badge badge--secondary " text="input"/> \{#and\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Sponsor_filter.<b>or</b></code>](#or)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>[Sponsor_filter]</b></code>](/docs/api/streams/graphql/the-graph/inputs/sponsor-filter.mdx) <Badge class="badge badge--secondary " text="list"/> <Badge class="badge badge--secondary " text="input"/> \{#or\}

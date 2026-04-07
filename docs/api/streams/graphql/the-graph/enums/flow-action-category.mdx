@@ -1,0 +1,104 @@
+---
+id: flow-action-category
+title: FlowActionCategory
+---
+
+<head>
+  <meta content="noindex" name="robots" />
+  <meta charset="utf-8" />
+</head>
+
+export const Bullet = () => (
+  <>
+    <span style={{ fontWeight: "normal", fontSize: ".5em", color: "var(--ifm-color-secondary-darkest)" }}>
+      &nbsp;●&nbsp;
+    </span>
+  </>
+);
+
+export const SpecifiedBy = (props) => (
+  <>
+    Specification
+    <a
+      className="link"
+      style={{ fontSize: "1.5em", paddingLeft: "4px" }}
+      target="_blank"
+      href={props.url}
+      title={"Specified by " + props.url}
+    >
+      ⎘
+    </a>
+  </>
+);
+
+export const Badge = (props) => (
+  <>
+    <span className={props.class}>{props.text}</span>
+  </>
+);
+
+import { useState } from "react";
+
+export const Details = ({ dataOpen, dataClose, children, startOpen = false }) => {
+  const [open, setOpen] = useState(startOpen);
+  return (
+    <details
+      {...(open ? { open: true } : {})}
+      className="details"
+      style={{ border: "none", boxShadow: "none", background: "var(--ifm-background-color)" }}
+    >
+      <summary
+        onClick={(e) => {
+          e.preventDefault();
+          setOpen((open) => !open);
+        }}
+        style={{ listStyle: "none" }}
+      >
+        {open ? dataOpen : dataClose}
+      </summary>
+      {open && children}
+    </details>
+  );
+};
+
+No description
+
+```graphql
+enum FlowActionCategory {
+  Approval
+  ApprovalForAll
+  Adjust
+  Create
+  Deposit
+  Pause
+  Refund
+  Restart
+  Transfer
+  Void
+  Withdraw
+}
+```
+
+### Values
+
+#### [<code style={{ fontWeight: 'normal' }}>FlowActionCategory.<b>Approval</b></code>](#approval) \{#approval\}
+
+#### [<code style={{ fontWeight: 'normal' }}>FlowActionCategory.<b>ApprovalForAll</b></code>](#approval-for-all) \{#approval-for-all\}
+
+#### [<code style={{ fontWeight: 'normal' }}>FlowActionCategory.<b>Adjust</b></code>](#adjust) \{#adjust\}
+
+#### [<code style={{ fontWeight: 'normal' }}>FlowActionCategory.<b>Create</b></code>](#create) \{#create\}
+
+#### [<code style={{ fontWeight: 'normal' }}>FlowActionCategory.<b>Deposit</b></code>](#deposit) \{#deposit\}
+
+#### [<code style={{ fontWeight: 'normal' }}>FlowActionCategory.<b>Pause</b></code>](#pause) \{#pause\}
+
+#### [<code style={{ fontWeight: 'normal' }}>FlowActionCategory.<b>Refund</b></code>](#refund) \{#refund\}
+
+#### [<code style={{ fontWeight: 'normal' }}>FlowActionCategory.<b>Restart</b></code>](#restart) \{#restart\}
+
+#### [<code style={{ fontWeight: 'normal' }}>FlowActionCategory.<b>Transfer</b></code>](#transfer) \{#transfer\}
+
+#### [<code style={{ fontWeight: 'normal' }}>FlowActionCategory.<b>Void</b></code>](#void) \{#void\}
+
+#### [<code style={{ fontWeight: 'normal' }}>FlowActionCategory.<b>Withdraw</b></code>](#withdraw) \{#withdraw\}

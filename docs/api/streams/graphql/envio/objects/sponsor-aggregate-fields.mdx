@@ -1,0 +1,108 @@
+---
+id: sponsor-aggregate-fields
+title: Sponsor_aggregate_fields
+---
+
+<head>
+  <meta content="noindex" name="robots" />
+  <meta charset="utf-8" />
+</head>
+
+export const Bullet = () => (
+  <>
+    <span style={{ fontWeight: "normal", fontSize: ".5em", color: "var(--ifm-color-secondary-darkest)" }}>
+      &nbsp;●&nbsp;
+    </span>
+  </>
+);
+
+export const SpecifiedBy = (props) => (
+  <>
+    Specification
+    <a
+      className="link"
+      style={{ fontSize: "1.5em", paddingLeft: "4px" }}
+      target="_blank"
+      href={props.url}
+      title={"Specified by " + props.url}
+    >
+      ⎘
+    </a>
+  </>
+);
+
+export const Badge = (props) => (
+  <>
+    <span className={props.class}>{props.text}</span>
+  </>
+);
+
+import { useState } from "react";
+
+export const Details = ({ dataOpen, dataClose, children, startOpen = false }) => {
+  const [open, setOpen] = useState(startOpen);
+  return (
+    <details
+      {...(open ? { open: true } : {})}
+      className="details"
+      style={{ border: "none", boxShadow: "none", background: "var(--ifm-background-color)" }}
+    >
+      <summary
+        onClick={(e) => {
+          e.preventDefault();
+          setOpen((open) => !open);
+        }}
+        style={{ listStyle: "none" }}
+      >
+        {open ? dataOpen : dataClose}
+      </summary>
+      {open && children}
+    </details>
+  );
+};
+
+aggregate fields of "Sponsor"
+
+```graphql
+type Sponsor_aggregate_fields {
+  avg: Sponsor_avg_fields
+  count(columns: [Sponsor_select_column!], distinct: Boolean): Int!
+  max: Sponsor_max_fields
+  min: Sponsor_min_fields
+  stddev: Sponsor_stddev_fields
+  stddev_pop: Sponsor_stddev_pop_fields
+  stddev_samp: Sponsor_stddev_samp_fields
+  sum: Sponsor_sum_fields
+  var_pop: Sponsor_var_pop_fields
+  var_samp: Sponsor_var_samp_fields
+  variance: Sponsor_variance_fields
+}
+```
+
+### Fields
+
+#### [<code style={{ fontWeight: 'normal' }}>Sponsor_aggregate_fields.<b>avg</b></code>](#avg)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Sponsor_avg_fields</b></code>](/docs/api/streams/graphql/envio/objects/sponsor-avg-fields.mdx) <Badge class="badge badge--secondary " text="object"/> \{#avg\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Sponsor_aggregate_fields.<b>count</b></code>](#count)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Int!</b></code>](/docs/api/streams/graphql/envio/scalars/int.mdx) <Badge class="badge badge--secondary badge--non_null" text="non-null"/> <Badge class="badge badge--secondary " text="scalar"/> \{#count\}
+
+##### [<code style={{ fontWeight: 'normal' }}>Sponsor_aggregate_fields.count.<b>columns</b></code>](#sponsor-aggregate-fields-count-columns)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>[Sponsor_select_column!]</b></code>](/docs/api/streams/graphql/envio/enums/sponsor-select-column.mdx) <Badge class="badge badge--secondary " text="list"/> <Badge class="badge badge--secondary " text="enum"/> \{#sponsor-aggregate-fields-count-columns\}
+
+##### [<code style={{ fontWeight: 'normal' }}>Sponsor_aggregate_fields.count.<b>distinct</b></code>](#sponsor-aggregate-fields-count-distinct)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Boolean</b></code>](/docs/api/streams/graphql/envio/scalars/boolean.mdx) <Badge class="badge badge--secondary " text="scalar"/> \{#sponsor-aggregate-fields-count-distinct\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Sponsor_aggregate_fields.<b>max</b></code>](#max)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Sponsor_max_fields</b></code>](/docs/api/streams/graphql/envio/objects/sponsor-max-fields.mdx) <Badge class="badge badge--secondary " text="object"/> \{#max\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Sponsor_aggregate_fields.<b>min</b></code>](#min)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Sponsor_min_fields</b></code>](/docs/api/streams/graphql/envio/objects/sponsor-min-fields.mdx) <Badge class="badge badge--secondary " text="object"/> \{#min\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Sponsor_aggregate_fields.<b>stddev</b></code>](#stddev)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Sponsor_stddev_fields</b></code>](/docs/api/streams/graphql/envio/objects/sponsor-stddev-fields.mdx) <Badge class="badge badge--secondary " text="object"/> \{#stddev\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Sponsor_aggregate_fields.<b>stddev_pop</b></code>](#stddev-pop)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Sponsor_stddev_pop_fields</b></code>](/docs/api/streams/graphql/envio/objects/sponsor-stddev-pop-fields.mdx) <Badge class="badge badge--secondary " text="object"/> \{#stddev-pop\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Sponsor_aggregate_fields.<b>stddev_samp</b></code>](#stddev-samp)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Sponsor_stddev_samp_fields</b></code>](/docs/api/streams/graphql/envio/objects/sponsor-stddev-samp-fields.mdx) <Badge class="badge badge--secondary " text="object"/> \{#stddev-samp\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Sponsor_aggregate_fields.<b>sum</b></code>](#sum)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Sponsor_sum_fields</b></code>](/docs/api/streams/graphql/envio/objects/sponsor-sum-fields.mdx) <Badge class="badge badge--secondary " text="object"/> \{#sum\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Sponsor_aggregate_fields.<b>var_pop</b></code>](#var-pop)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Sponsor_var_pop_fields</b></code>](/docs/api/streams/graphql/envio/objects/sponsor-var-pop-fields.mdx) <Badge class="badge badge--secondary " text="object"/> \{#var-pop\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Sponsor_aggregate_fields.<b>var_samp</b></code>](#var-samp)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Sponsor_var_samp_fields</b></code>](/docs/api/streams/graphql/envio/objects/sponsor-var-samp-fields.mdx) <Badge class="badge badge--secondary " text="object"/> \{#var-samp\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Sponsor_aggregate_fields.<b>variance</b></code>](#variance)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Sponsor_variance_fields</b></code>](/docs/api/streams/graphql/envio/objects/sponsor-variance-fields.mdx) <Badge class="badge badge--secondary " text="object"/> \{#variance\}

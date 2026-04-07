@@ -1,0 +1,125 @@
+---
+id: flow-stream-stddev-samp-fields
+title: FlowStream_stddev_samp_fields
+---
+
+<head>
+  <meta content="noindex" name="robots" />
+  <meta charset="utf-8" />
+</head>
+
+export const Bullet = () => (
+  <>
+    <span style={{ fontWeight: "normal", fontSize: ".5em", color: "var(--ifm-color-secondary-darkest)" }}>
+      &nbsp;●&nbsp;
+    </span>
+  </>
+);
+
+export const SpecifiedBy = (props) => (
+  <>
+    Specification
+    <a
+      className="link"
+      style={{ fontSize: "1.5em", paddingLeft: "4px" }}
+      target="_blank"
+      href={props.url}
+      title={"Specified by " + props.url}
+    >
+      ⎘
+    </a>
+  </>
+);
+
+export const Badge = (props) => (
+  <>
+    <span className={props.class}>{props.text}</span>
+  </>
+);
+
+import { useState } from "react";
+
+export const Details = ({ dataOpen, dataClose, children, startOpen = false }) => {
+  const [open, setOpen] = useState(startOpen);
+  return (
+    <details
+      {...(open ? { open: true } : {})}
+      className="details"
+      style={{ border: "none", boxShadow: "none", background: "var(--ifm-background-color)" }}
+    >
+      <summary
+        onClick={(e) => {
+          e.preventDefault();
+          setOpen((open) => !open);
+        }}
+        style={{ listStyle: "none" }}
+      >
+        {open ? dataOpen : dataClose}
+      </summary>
+      {open && children}
+    </details>
+  );
+};
+
+aggregate stddev_samp on columns
+
+```graphql
+type FlowStream_stddev_samp_fields {
+  assetDecimalsValue: Float
+  availableAmount: Float
+  chainId: Float
+  depletionTime: Float
+  depositedAmount: Float
+  forgivenDebt: Float
+  lastAdjustmentTimestamp: Float
+  pausedTime: Float
+  position: Float
+  ratePerSecond: Float
+  refundedAmount: Float
+  snapshotAmount: Float
+  startTime: Float
+  subgraphId: Float
+  timestamp: Float
+  tokenId: Float
+  voidedTime: Float
+  withdrawnAmount: Float
+}
+```
+
+### Fields
+
+#### [<code style={{ fontWeight: 'normal' }}>FlowStream_stddev_samp_fields.<b>assetDecimalsValue</b></code>](#asset-decimals-value)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Float</b></code>](/docs/api/streams/graphql/envio/scalars/float.mdx) <Badge class="badge badge--secondary " text="scalar"/> \{#asset-decimals-value\}
+
+#### [<code style={{ fontWeight: 'normal' }}>FlowStream_stddev_samp_fields.<b>availableAmount</b></code>](#available-amount)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Float</b></code>](/docs/api/streams/graphql/envio/scalars/float.mdx) <Badge class="badge badge--secondary " text="scalar"/> \{#available-amount\}
+
+#### [<code style={{ fontWeight: 'normal' }}>FlowStream_stddev_samp_fields.<b>chainId</b></code>](#chain-id)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Float</b></code>](/docs/api/streams/graphql/envio/scalars/float.mdx) <Badge class="badge badge--secondary " text="scalar"/> \{#chain-id\}
+
+#### [<code style={{ fontWeight: 'normal' }}>FlowStream_stddev_samp_fields.<b>depletionTime</b></code>](#depletion-time)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Float</b></code>](/docs/api/streams/graphql/envio/scalars/float.mdx) <Badge class="badge badge--secondary " text="scalar"/> \{#depletion-time\}
+
+#### [<code style={{ fontWeight: 'normal' }}>FlowStream_stddev_samp_fields.<b>depositedAmount</b></code>](#deposited-amount)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Float</b></code>](/docs/api/streams/graphql/envio/scalars/float.mdx) <Badge class="badge badge--secondary " text="scalar"/> \{#deposited-amount\}
+
+#### [<code style={{ fontWeight: 'normal' }}>FlowStream_stddev_samp_fields.<b>forgivenDebt</b></code>](#forgiven-debt)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Float</b></code>](/docs/api/streams/graphql/envio/scalars/float.mdx) <Badge class="badge badge--secondary " text="scalar"/> \{#forgiven-debt\}
+
+#### [<code style={{ fontWeight: 'normal' }}>FlowStream_stddev_samp_fields.<b>lastAdjustmentTimestamp</b></code>](#last-adjustment-timestamp)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Float</b></code>](/docs/api/streams/graphql/envio/scalars/float.mdx) <Badge class="badge badge--secondary " text="scalar"/> \{#last-adjustment-timestamp\}
+
+#### [<code style={{ fontWeight: 'normal' }}>FlowStream_stddev_samp_fields.<b>pausedTime</b></code>](#paused-time)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Float</b></code>](/docs/api/streams/graphql/envio/scalars/float.mdx) <Badge class="badge badge--secondary " text="scalar"/> \{#paused-time\}
+
+#### [<code style={{ fontWeight: 'normal' }}>FlowStream_stddev_samp_fields.<b>position</b></code>](#position)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Float</b></code>](/docs/api/streams/graphql/envio/scalars/float.mdx) <Badge class="badge badge--secondary " text="scalar"/> \{#position\}
+
+#### [<code style={{ fontWeight: 'normal' }}>FlowStream_stddev_samp_fields.<b>ratePerSecond</b></code>](#rate-per-second)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Float</b></code>](/docs/api/streams/graphql/envio/scalars/float.mdx) <Badge class="badge badge--secondary " text="scalar"/> \{#rate-per-second\}
+
+#### [<code style={{ fontWeight: 'normal' }}>FlowStream_stddev_samp_fields.<b>refundedAmount</b></code>](#refunded-amount)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Float</b></code>](/docs/api/streams/graphql/envio/scalars/float.mdx) <Badge class="badge badge--secondary " text="scalar"/> \{#refunded-amount\}
+
+#### [<code style={{ fontWeight: 'normal' }}>FlowStream_stddev_samp_fields.<b>snapshotAmount</b></code>](#snapshot-amount)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Float</b></code>](/docs/api/streams/graphql/envio/scalars/float.mdx) <Badge class="badge badge--secondary " text="scalar"/> \{#snapshot-amount\}
+
+#### [<code style={{ fontWeight: 'normal' }}>FlowStream_stddev_samp_fields.<b>startTime</b></code>](#start-time)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Float</b></code>](/docs/api/streams/graphql/envio/scalars/float.mdx) <Badge class="badge badge--secondary " text="scalar"/> \{#start-time\}
+
+#### [<code style={{ fontWeight: 'normal' }}>FlowStream_stddev_samp_fields.<b>subgraphId</b></code>](#subgraph-id)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Float</b></code>](/docs/api/streams/graphql/envio/scalars/float.mdx) <Badge class="badge badge--secondary " text="scalar"/> \{#subgraph-id\}
+
+#### [<code style={{ fontWeight: 'normal' }}>FlowStream_stddev_samp_fields.<b>timestamp</b></code>](#timestamp)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Float</b></code>](/docs/api/streams/graphql/envio/scalars/float.mdx) <Badge class="badge badge--secondary " text="scalar"/> \{#timestamp\}
+
+#### [<code style={{ fontWeight: 'normal' }}>FlowStream_stddev_samp_fields.<b>tokenId</b></code>](#token-id)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Float</b></code>](/docs/api/streams/graphql/envio/scalars/float.mdx) <Badge class="badge badge--secondary " text="scalar"/> \{#token-id\}
+
+#### [<code style={{ fontWeight: 'normal' }}>FlowStream_stddev_samp_fields.<b>voidedTime</b></code>](#voided-time)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Float</b></code>](/docs/api/streams/graphql/envio/scalars/float.mdx) <Badge class="badge badge--secondary " text="scalar"/> \{#voided-time\}
+
+#### [<code style={{ fontWeight: 'normal' }}>FlowStream_stddev_samp_fields.<b>withdrawnAmount</b></code>](#withdrawn-amount)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Float</b></code>](/docs/api/streams/graphql/envio/scalars/float.mdx) <Badge class="badge badge--secondary " text="scalar"/> \{#withdrawn-amount\}

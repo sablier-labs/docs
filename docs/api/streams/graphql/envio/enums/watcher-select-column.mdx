@@ -1,0 +1,101 @@
+---
+id: watcher-select-column
+title: Watcher_select_column
+---
+
+<head>
+  <meta content="noindex" name="robots" />
+  <meta charset="utf-8" />
+</head>
+
+export const Bullet = () => (
+  <>
+    <span style={{ fontWeight: "normal", fontSize: ".5em", color: "var(--ifm-color-secondary-darkest)" }}>
+      &nbsp;●&nbsp;
+    </span>
+  </>
+);
+
+export const SpecifiedBy = (props) => (
+  <>
+    Specification
+    <a
+      className="link"
+      style={{ fontSize: "1.5em", paddingLeft: "4px" }}
+      target="_blank"
+      href={props.url}
+      title={"Specified by " + props.url}
+    >
+      ⎘
+    </a>
+  </>
+);
+
+export const Badge = (props) => (
+  <>
+    <span className={props.class}>{props.text}</span>
+  </>
+);
+
+import { useState } from "react";
+
+export const Details = ({ dataOpen, dataClose, children, startOpen = false }) => {
+  const [open, setOpen] = useState(startOpen);
+  return (
+    <details
+      {...(open ? { open: true } : {})}
+      className="details"
+      style={{ border: "none", boxShadow: "none", background: "var(--ifm-background-color)" }}
+    >
+      <summary
+        onClick={(e) => {
+          e.preventDefault();
+          setOpen((open) => !open);
+        }}
+        style={{ listStyle: "none" }}
+      >
+        {open ? dataOpen : dataClose}
+      </summary>
+      {open && children}
+    </details>
+  );
+};
+
+select columns of table "Watcher"
+
+```graphql
+enum Watcher_select_column {
+  chainId
+  flowActionCounter
+  flowStreamCounter
+  id
+  lockupActionCounter
+  lockupStreamCounter
+}
+```
+
+### Values
+
+#### [<code style={{ fontWeight: 'normal' }}>Watcher_select_column.<b>chainId</b></code>](#chain-id) \{#chain-id\}
+
+column name
+
+#### [<code style={{ fontWeight: 'normal' }}>Watcher_select_column.<b>flowActionCounter</b></code>](#flow-action-counter) \{#flow-action-counter\}
+
+column name
+
+#### [<code style={{ fontWeight: 'normal' }}>Watcher_select_column.<b>flowStreamCounter</b></code>](#flow-stream-counter) \{#flow-stream-counter\}
+
+column name
+
+#### [<code style={{ fontWeight: 'normal' }}>Watcher_select_column.<b>id</b></code>](#id) \{#id\}
+
+column name
+
+#### [<code style={{ fontWeight: 'normal' }}>Watcher_select_column.<b>lockupActionCounter</b></code>](#lockup-action-counter) \{#lockup-action-counter\}
+
+column name
+
+#### [<code style={{ fontWeight: 'normal' }}>Watcher_select_column.<b>lockupStreamCounter</b></code>](#lockup-stream-counter) \{#lockup-stream-counter\}
+
+column name
