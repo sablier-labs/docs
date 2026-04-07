@@ -18,11 +18,7 @@ export const redirects: RedirectOption[] = [
   /* -------------------------------------------------------------------------- */
   redirect("/api/airdrops/endpoints", "/api/airdrops/indexers"),
   redirect("/api/flow/endpoints", "/api/streams/indexers"),
-  redirect("/api/flow/indexers", "/api/streams/indexers"),
-  redirect("/api/flow/graphql/schema", "/api/streams/graphql/schema"),
   redirect("/api/lockup/endpoints", "/api/streams/indexers"),
-  redirect("/api/lockup/indexers", "/api/streams/indexers"),
-  redirect("/api/lockup/graphql/schema", "/api/streams/graphql/schema"),
   /* -------------------------------------------------------------------------- */
   /*                                    APPS                                    */
   /* -------------------------------------------------------------------------- */
