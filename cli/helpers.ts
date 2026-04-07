@@ -42,6 +42,7 @@ export function writeFileWithOverwrite(params: FileWriteParams): boolean {
     return false;
   }
 
+  fs.mkdirSync(path.dirname(filePath), { recursive: true });
   fs.writeFileSync(filePath, content, encoding);
   return true;
 }
