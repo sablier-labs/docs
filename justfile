@@ -1,4 +1,5 @@
 # See https://github.com/sablier-labs/devkit/blob/main/just/base.just
+
 import "./node_modules/@sablier/devkit/just/base.just"
 
 # ---------------------------------------------------------------------------- #
@@ -17,11 +18,13 @@ default:
 # Check code with ESLint
 @eslint-check:
     bun eslint --cache .
+
 alias ec := eslint-check
 
 # Fix code with ESLint
 @eslint-write:
     bun eslint --cache --fix .
+
 alias ew := eslint-write
 
 # Run all code checks
@@ -36,11 +39,6 @@ alias ew := eslint-write
     just rws biome-write
     just rws prettier-write
     just rws eslint-write
-
-# Run Jest tests
-@test:
-    bun jest
-alias t := test
 
 # ---------------------------------------------------------------------------- #
 #                                    AUTOGEN                                   #
