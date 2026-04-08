@@ -42,8 +42,8 @@ function generateTables(indexerKey: Indexer.IndexerKey, options: CliOptions): vo
 }
 
 function generateEnvioTable(indexers: Indexer[]): string {
-  let markdown = "| Chain | Production URL | Playground URL | Explorer URL |\n";
-  markdown += "| -------- | -------------- | ----------- | ------------ |\n";
+  let markdown = "| Chain | Production URL | Converter URL | Playground URL | Explorer URL |\n";
+  markdown += "| -------- | -------------- | ------------- | ----------- | ------------ |\n";
 
   for (const indexer of indexers) {
     const chain = sablier.chains.get(indexer.chainId);
@@ -52,13 +52,16 @@ function generateEnvioTable(indexers: Indexer[]): string {
     }
 
     const productionURL = indexer.endpoint.url;
+    const converterURL = `${productionURL}/converter`;
     const playgroundURL = indexer.testingURL;
     const explorerURL = indexer.explorerURL;
 
+    const productionCell = `[Production](${productionURL})`;
+    const converterCell = `[Converter](${converterURL})`;
     const playgroundCell = playgroundURL ? `[Playground](${playgroundURL})` : "N/A";
     const explorerCell = explorerURL ? `[Explorer](${explorerURL})` : "N/A";
 
-    markdown += `| ${chain.name} | ${productionURL} | ${playgroundCell} | ${explorerCell} |\n`;
+    markdown += `| ${chain.name} | ${productionCell} | ${converterCell} | ${playgroundCell} | ${explorerCell} |\n`;
   }
 
   return markdown;

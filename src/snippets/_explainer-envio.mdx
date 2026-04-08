@@ -1,2 +1,12 @@
 Envio is a multi-chain indexer. There's a single GraphQL API endpoint that aggregates data across chains. This approach
 differs from other vendors like The Graph, which require a separate indexer for each chain where Sablier is available.
+
+The standard Envio endpoints require [Hasura](https://docs.envio.dev/docs/HyperIndex/navigating-hasura) GraphQL query
+syntax.
+
+:::tip[Migrating from The Graph?]
+
+Envio also exposes `/converter` endpoints (see the table below) that accept subgraph-compatible queries, convert them to
+HyperIndex (standard GraphQL), and return responses in the same format as a standard subgraph.
+
+:::
