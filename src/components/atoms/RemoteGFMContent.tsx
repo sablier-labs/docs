@@ -1,4 +1,3 @@
-import axios from "axios";
 import { useEffect, useState } from "react";
 import GFMContent from "./GFMContent";
 
@@ -19,11 +18,16 @@ export default function RemoteGFMContent({ url }: RemoteGFMContentProps) {
     let isMounted = true;
     setLoading(true);
 
-    axios
-      .get<string>(url)
+    fetch(url)
       .then((response) => {
+        if (!response.ok) {
+          throw new Error(`${response.status} ${response.statusText}`);
+        }
+        return response.text();
+      })
+      .then((text) => {
         if (isMounted) {
-          setContent(response.data);
+          setContent(text);
           setError(null);
         }
       })

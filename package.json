@@ -40,7 +40,6 @@
     "@mermaid-js/layout-elk": "^0.2.1",
     "@sablier/indexers": "4.0.0",
     "@vercel/analytics": "^1.5.0",
-    "axios": "^1.11.0",
     "commander": "^5.1.0",
     "docusaurus-theme-github-codeblock": "^2.0.2",
     "function-plot": "^1.25.3",
