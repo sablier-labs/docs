@@ -1,0 +1,68 @@
+---
+id: "ai-agents"
+sidebar_position: 1
+title: "AI Agents"
+---
+
+# AI Agents
+
+Sablier provides [skills](https://github.com/sablier-labs/sablier-skills) for AI coding agents like Claude Code and
+Codex. These skills let agents create streams, vesting schedules, and airdrops directly from natural language
+instructions.
+
+## Installation
+
+Install all skills at once:
+
+```bash
+npx skills add sablier-labs/sablier-skills
+```
+
+Or install a specific skill:
+
+```bash
+npx skills add sablier-labs/sablier-skills --skill sablier-create-vesting
+```
+
+## Available skills
+
+| Skill                              | Protocol | Description                                                                 |
+| ---------------------------------- | -------- | --------------------------------------------------------------------------- |
+| `sablier-create-vesting`           | Lockup   | Create fixed-schedule vesting streams with cliff periods and custom unlocks |
+| `sablier-create-open-ended-stream` | Flow     | Create open-ended payment streams with configurable per-second rates        |
+| `sablier-create-airdrop`           | Airdrops | Create Merkle-based airdrop campaigns (instant, linear, or tranched)        |
+| `sablier-protocol`                 | --       | Advisory skill explaining Sablier concepts and routing to the right tool    |
+
+## Usage examples
+
+Once installed, you can ask your AI agent to perform tasks using natural language:
+
+- _"Create a 4-year vesting stream with a 12-month cliff on Arbitrum for 0xABCD..."_
+- _"Stream 1 USDC per day on Base to 0x1234..."_
+- _"Create an instant Merkle airdrop on Ethereum from this CSV"_
+- _"Explain the difference between Lockup, Flow, and Airdrops"_
+
+## LLM-friendly documentation
+
+Beyond skills, we make our docs easy for any LLM to consume -- whether you're pasting context into a chat or building
+automated integrations.
+
+### Plain text markdown
+
+Append `.md` to any docs URL to get a plain text version (e.g.
+[docs.sablier.com/guides/ai-agents.md](https://docs.sablier.com/guides/ai-agents.md)). This format uses fewer tokens,
+includes content hidden behind tabs, and preserves markdown hierarchy that LLMs parse well.
+
+### llms.txt
+
+Our [/llms.txt file](https://docs.sablier.com/llms.txt) lists all pages in plain text format, following the
+[llmstxt.org](https://llmstxt.org/) standard.
+
+### Protocol-specific files
+
+Pre-built markdown files scoped to individual protocols:
+
+- **[llms-lockup.txt](https://docs.sablier.com/llms-lockup.txt)** -- Lockup documentation
+- **[llms-flow.txt](https://docs.sablier.com/llms-flow.txt)** -- Flow documentation
+- **[llms-airdrops.txt](https://docs.sablier.com/llms-airdrops.txt)** -- Merkle Airdrops documentation
+- **[llms-full.txt](https://docs.sablier.com/llms-full.txt)** -- Complete documentation bundle

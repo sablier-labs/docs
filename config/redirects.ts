@@ -57,6 +57,10 @@ export const redirects: RedirectOption[] = [
   redirect("/contracts/v2/reference/overview", "/reference/overview"),
   redirect("/contracts/v2/security", "/concepts/security"),
   redirect("/csv", "/apps/guides/csv-support"),
+  /* -------------------------------------------------------------------------- */
+  /*                                   GUIDES                                   */
+  /* -------------------------------------------------------------------------- */
+  redirect("/guides/building-with-llms", "/guides/ai-agents"),
 ];
 
 export function createRedirects(existingPath: string) {

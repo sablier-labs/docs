@@ -95,7 +95,7 @@ const navbar: Preset.ThemeConfig["navbar"] = {
       activeBasePath: "/guides",
       label: "Guides",
       position: "left",
-      to: "/guides/lockup/overview",
+      to: "/guides/ai-agents",
     },
     {
       activeBasePath: "/api",
