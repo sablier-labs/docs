@@ -43,6 +43,7 @@ stateDiagram-v2
   Null --> Active
   Active --> Settled
   Active --> Expired : time
+  Settled --> Expired : time
 ```
 
 ## Q&A
