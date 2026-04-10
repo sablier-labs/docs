@@ -1,5 +1,4 @@
 import type { Options as ClientRedirectsOptions } from "@docusaurus/plugin-client-redirects";
-import type { Options as VercelAnalyticsOptions } from "@docusaurus/plugin-vercel-analytics";
 import type { DocusaurusConfig, PluginOptions } from "@docusaurus/types";
 import type {
   ConfigOptions,
@@ -136,20 +135,4 @@ function resolveRemoteUrl(expression: string): string | undefined {
   return `https://raw.githubusercontent.com/${GITHUB_ORG}/evm-monorepo/${BENCHMARKS_COMMIT}/misc/benchmarks/${match[1]}`;
 }
 
-/* -------------------------------------------------------------------------- */
-/*                              VERCEL ANALYTICS                              */
-/* -------------------------------------------------------------------------- */
-
-const vercelAnalytics: [string, VercelAnalyticsOptions] = [
-  "vercel-analytics",
-  {
-    mode: "auto",
-  },
-];
-
-export const plugins: DocusaurusConfig["plugins"] = [
-  clientRedirects,
-  graphqlMarkdown,
-  llmfood,
-  vercelAnalytics,
-];
+export const plugins: DocusaurusConfig["plugins"] = [clientRedirects, graphqlMarkdown, llmfood];
