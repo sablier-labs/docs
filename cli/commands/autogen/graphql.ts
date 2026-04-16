@@ -6,6 +6,7 @@ import { Command } from "commander";
 import $ from "execa";
 import * as yaml from "js-yaml";
 import _ from "lodash";
+import { getMergedOpts } from "../../helpers";
 import type { CliOptions } from "../../types";
 
 const CHAIN_ID_SEPOLIA = 11_155_111;
@@ -37,10 +38,7 @@ export function createGraphQLCommand() {
     )
     .requiredOption("-v, --vendor <vendor>", "generate for specific vendor")
     .action(async function () {
-      const parentOptions = this.parent ? this.parent.opts() : {};
-      const commandOptions = this.opts();
-      const mergedOptions: GraphQLOptions = { ...parentOptions, ...commandOptions };
-      await generateGraphQL(mergedOptions);
+      await generateGraphQL(getMergedOpts(this) as GraphQLOptions);
     });
 }
 

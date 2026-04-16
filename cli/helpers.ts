@@ -1,5 +1,6 @@
 import * as fs from "node:fs";
 import * as path from "node:path";
+import type { Command } from "commander";
 import type { Sablier } from "sablier";
 import type { CliOptions } from "./types";
 
@@ -30,6 +31,18 @@ type FileWriteParams = {
 
 export function getRelative(absolutePath: string): string {
   return path.relative(process.cwd(), absolutePath);
+}
+
+export function getMergedOpts(command: Command): CliOptions {
+  const chain: Command[] = [];
+  for (let current: Command | null = command; current; current = current.parent) {
+    chain.unshift(current);
+  }
+  const merged: CliOptions = {};
+  for (const cmd of chain) {
+    Object.assign(merged, cmd.opts());
+  }
+  return merged;
 }
 
 export function writeFileWithOverwrite(params: FileWriteParams): boolean {

@@ -1,4 +1,5 @@
 import { Command } from "commander";
+import { getMergedOpts } from "../../helpers";
 import { deploymentsCmd, generateDeployments } from "./deployments";
 import { graphQLCmd } from "./graphql";
 import { generateIndexers, indexersCmd } from "./indexers";
@@ -7,7 +8,7 @@ export function createAutogenCommand() {
   const autogenCommand = new Command("autogen")
     .description("Auto-generate documentation and indexers tables")
     .action(async function () {
-      const globalOptions = this.parent ? this.parent.opts() : {};
+      const globalOptions = getMergedOpts(this);
 
       console.log("🚀 Generating all documentation tables...\n");
 

@@ -3,15 +3,19 @@ import { indexers } from "@sablier/indexers";
 import { Command } from "commander";
 import _ from "lodash";
 import { sablier } from "sablier";
-import { autogenFilePaths, getRelative, writeFileWithOverwrite } from "../../helpers";
+import {
+  autogenFilePaths,
+  getMergedOpts,
+  getRelative,
+  writeFileWithOverwrite,
+} from "../../helpers";
 import type { CliOptions } from "../../types";
 
 export function createIndexersCommand() {
   return new Command("indexers")
     .description("Generate indexer endpoint tables for all Sablier indexers")
     .action(async function () {
-      const options = this.parent ? this.parent.opts() : {};
-      await generateIndexers(options);
+      await generateIndexers(getMergedOpts(this));
     });
 }
 

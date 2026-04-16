@@ -3,14 +3,19 @@ import _ from "lodash";
 import type { Sablier } from "sablier";
 import { Protocol, sablier } from "sablier";
 import { Links } from "../../../src/constants";
-import { autogenFilePaths, getRelative, writeFileWithOverwrite } from "../../helpers";
+import {
+  autogenFilePaths,
+  getMergedOpts,
+  getRelative,
+  writeFileWithOverwrite,
+} from "../../helpers";
 import type { CliOptions } from "../../types";
 
 export function createDeploymentsCommand() {
   return new Command("deployments")
     .description("Generate deployment tables for all Sablier releases")
     .action(async function () {
-      await generateDeployments(getCommandOptions(this));
+      await generateDeployments(getMergedOpts(this));
     });
 }
 
@@ -98,18 +103,6 @@ function compareDeployments(
   }
 
   return leftChain.name.localeCompare(rightChain.name);
-}
-
-function getCommandOptions(command: Command): CliOptions {
-  if (command.parent?.parent) {
-    return command.parent.parent.opts() as CliOptions;
-  }
-
-  if (command.parent) {
-    return command.parent.opts() as CliOptions;
-  }
-
-  return {};
 }
 
 function renderDeploymentSection(
