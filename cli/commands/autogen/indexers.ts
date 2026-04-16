@@ -78,7 +78,7 @@ function generateGraphTable(indexers: Indexer[]): string {
     const testingURL = indexer.testingURL;
     const explorerURL = indexer.explorerURL;
 
-    const productionCell = `[${indexer.name}](${productionURL})`;
+    const productionCell = `[Production](${productionURL})`;
     const testingCell = testingURL ? `[Testing](${testingURL})` : "N/A";
     const explorerCell = explorerURL ? `[Explorer](${explorerURL})` : "N/A";
 
