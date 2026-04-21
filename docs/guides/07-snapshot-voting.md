@@ -14,7 +14,7 @@ stored in Lockup streams.
 If you started using Sablier in July 2023 or later, you should be using the Lockup strategies.
 
 - [Snapshot playground](https://snapshot.org/#/playground/sablier-v2) - test the strategies
-- [Snapshot code repository](https://github.com/snapshot-labs/snapshot-strategies/tree/master/src/strategies/sablier-v2) -
+- [Snapshot code repository](https://github.com/snapshot-labs/score-api/tree/master/src/strategies/strategies/sablier-v2) -
   see the implementation
 
 The following strategies will read the various amounts that can be found in Lockup streams. The voting power will be
@@ -171,7 +171,7 @@ unstreamed amount will be `0`.
 If you started using Sablier before July 2023, you should be using the Legacy strategies.
 
 - [Snapshot playground](https://snapshot.org/#/playground/sablier-v1-deposit) - test the strategies
-- [Snapshot code repository](https://github.com/snapshot-labs/snapshot-strategies/tree/master/src/strategies/sablier-v1-deposit) -
+- [Snapshot code repository](https://github.com/snapshot-labs/score-api/tree/master/src/strategies/strategies/sablier-v1-deposit) -
   dive into the implementation
 
 The Legacy strategy regards the stream recipient as the voter. It returns the voting power for any voter as the **sum of
