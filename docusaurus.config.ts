@@ -27,12 +27,6 @@ const config: Config = {
   projectName: "sablier-docs",
   staticDirectories: ["static"],
   tagline: "Documentation and guides for Sablier",
-  scripts: [
-    {
-      async: false,
-      src: "/js/crisp-chat.js",
-    },
-  ],
   stylesheets: [
     /** @see https://docusaurus.io/docs/markdown-features/math-equations */
     {
