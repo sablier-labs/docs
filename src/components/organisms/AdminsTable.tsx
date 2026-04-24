@@ -1,76 +1,91 @@
-import _ from "lodash";
 import { useMemo } from "react";
-import { sablier } from "sablier";
+import type { Sablier } from "sablier";
+import { chains, sablier } from "sablier";
 import GFMContent from "../atoms/GFMContent";
 
-// Hardcoded admin addresses per chain.
-// - 0x58290bbdb51A4c6B022A81e9cDeD24BE19Ca57fd: Safe multisig, deployed at the same address across chains.
-// - 0xb1bEF51ebCA01EB12001a639bDBbFF6eEcA12B9F: EOA.
-const ADMIN_ADDRESSES: Record<number, string> = {
-  1: "0x58290bbdb51A4c6B022A81e9cDeD24BE19Ca57fd", // Ethereum
-  10: "0x58290bbdb51A4c6B022A81e9cDeD24BE19Ca57fd", // OP Mainnet
-  50: "0xb1bEF51ebCA01EB12001a639bDBbFF6eEcA12B9F", // XDC
-  56: "0x58290bbdb51A4c6B022A81e9cDeD24BE19Ca57fd", // BNB Chain
-  100: "0x58290bbdb51A4c6B022A81e9cDeD24BE19Ca57fd", // Gnosis
-  130: "0xb1bEF51ebCA01EB12001a639bDBbFF6eEcA12B9F", // Unichain
-  137: "0x58290bbdb51A4c6B022A81e9cDeD24BE19Ca57fd", // Polygon
-  143: "0x58290bbdb51A4c6B022A81e9cDeD24BE19Ca57fd", // Monad
-  146: "0x58290bbdb51A4c6B022A81e9cDeD24BE19Ca57fd", // Sonic
-  324: "0x58290bbdb51A4c6B022A81e9cDeD24BE19Ca57fd", // ZKsync Era
-  999: "0x58290bbdb51A4c6B022A81e9cDeD24BE19Ca57fd", // HyperEVM
-  1890: "0xb1bEF51ebCA01EB12001a639bDBbFF6eEcA12B9F", // Lightlink
-  2741: "0xb1bEF51ebCA01EB12001a639bDBbFF6eEcA12B9F", // Abstract
-  2818: "0xb1bEF51ebCA01EB12001a639bDBbFF6eEcA12B9F", // Morph
-  5330: "0xb1bEF51ebCA01EB12001a639bDBbFF6eEcA12B9F", // Superseed
-  8453: "0x58290bbdb51A4c6B022A81e9cDeD24BE19Ca57fd", // Base
-  34443: "0xb1bEF51ebCA01EB12001a639bDBbFF6eEcA12B9F", // Mode
-  42161: "0x58290bbdb51A4c6B022A81e9cDeD24BE19Ca57fd", // Arbitrum
-  43114: "0x58290bbdb51A4c6B022A81e9cDeD24BE19Ca57fd", // Avalanche
-  59144: "0x58290bbdb51A4c6B022A81e9cDeD24BE19Ca57fd", // Linea
-  80094: "0xb1bEF51ebCA01EB12001a639bDBbFF6eEcA12B9F", // Berachain
-  88888: "0x74A234DcAdFCB395b37C8c2B3Edf7A13Be78c935", // Chiliz
-  369369: "0xb1bEF51ebCA01EB12001a639bDBbFF6eEcA12B9F", // Denergy
-  534352: "0x58290bbdb51A4c6B022A81e9cDeD24BE19Ca57fd", // Scroll
-};
+type Address = Sablier.Address;
+type Chain = Sablier.Chain;
 
-function getAdminAddress(chainId: number): string {
-  const address = ADMIN_ADDRESSES[chainId];
-  if (!address) {
-    throw new Error(`Sablier admin address missing for chain ${chainId}.`);
+// Safe multisig, deterministically deployed at the same address across most chains.
+const MULTISIG: Address = "0x58290bbdb51A4c6B022A81e9cDeD24BE19Ca57fd";
+// Sablier-controlled EOA, used on chains that do not yet have the multisig.
+const EOA: Address = "0xb1bEF51ebCA01EB12001a639bDBbFF6eEcA12B9F";
+// Chiliz does not support the CreateX factory used by the canonical multisig, so a chain-specific Safe is used.
+const CHILIZ_MULTISIG: Address = "0x74A234DcAdFCB395b37C8c2B3Edf7A13Be78c935";
+
+// Single source of truth for the admin governing each mainnet. Iterating this
+// list (rather than the sablier catalog) makes the rendered rows typed: every
+// entry is a `[Chain, Address]` tuple, so a missing admin is a compile error
+// by construction.
+//
+// The catalog-coverage invariant below guarantees we don't silently omit a
+// mainnet that sablier starts deploying to.
+const CHAIN_ADMINS: ReadonlyArray<readonly [Chain, Address]> = [
+  [chains.abstract, EOA],
+  [chains.arbitrum, MULTISIG],
+  [chains.avalanche, MULTISIG],
+  [chains.base, MULTISIG],
+  [chains.berachain, EOA],
+  [chains.blast, EOA],
+  [chains.bsc, MULTISIG],
+  [chains.chiliz, CHILIZ_MULTISIG],
+  [chains.denergy, EOA],
+  [chains.gnosis, MULTISIG],
+  [chains.hyperevm, MULTISIG],
+  [chains.lightlink, EOA],
+  [chains.linea, MULTISIG],
+  [chains.mainnet, MULTISIG],
+  [chains.mode, EOA],
+  [chains.monad, MULTISIG],
+  [chains.morph, EOA],
+  [chains.optimism, MULTISIG],
+  [chains.polygon, MULTISIG],
+  [chains.scroll, MULTISIG],
+  [chains.sonic, MULTISIG],
+  [chains.superseed, EOA],
+  [chains.unichain, EOA],
+  [chains.xdc, EOA],
+  [chains.zksync, MULTISIG],
+];
+
+// Build-start invariant: every UI-supported mainnet with a v3.0 Lockup
+// deployment must be represented in CHAIN_ADMINS. If sablier ships a new one,
+// throw here (at module load) so the error lands before Docusaurus starts
+// SSG, instead of deep inside per-page rendering.
+(function assertCoverage(): void {
+  const release = sablier.releases.get({ protocol: "lockup", version: "v3.0" });
+  const knownIds = new Set(CHAIN_ADMINS.map(([chain]) => chain.id));
+  const missingById = new Map<number, Chain>();
+  for (const contract of sablier.contracts.getAll({ release })) {
+    if (knownIds.has(contract.chainId) || missingById.has(contract.chainId)) {
+      continue;
+    }
+    const chain = sablier.chains.get(contract.chainId);
+    if (chain && !chain.isTestnet && chain.isSupportedByUI) {
+      missingById.set(chain.id, chain);
+    }
   }
-  return address;
-}
+  if (missingById.size > 0) {
+    const missing = [...missingById.values()].map((chain) => `${chain.name} (${chain.id})`);
+    throw new Error(
+      `AdminsTable: missing admin entries for chain(s) ${missing.join(", ")}. ` +
+        "Add them to CHAIN_ADMINS in src/components/organisms/AdminsTable.tsx."
+    );
+  }
+})();
 
 export function AdminsTable() {
   const content = useMemo(() => {
-    // Get the v2.0 lockup release
-    const release = sablier.releases.get({
-      protocol: "lockup",
-      version: "v3.0",
-    });
-
-    // Get all chains that have v2.0 lockup contracts
-    const allContracts = sablier.contracts.getAll({
-      release,
-    });
-
-    // Get unique chains from the contracts
-    const chainIds = _.uniq(allContracts.map((c) => c.chainId));
-
-    // Get chain details and filter for mainnets supported by UI
-    const chains = chainIds
-      .map((chainId) => sablier.chains.get(chainId))
-      .filter((chain) => chain && !chain.isTestnet && chain.isSupportedByUI)
-      .sort((a, b) => a.name.localeCompare(b.name));
+    const rows = CHAIN_ADMINS.filter(([chain]) => !chain.isTestnet && chain.isSupportedByUI).sort(
+      ([a], [b]) => a.name.localeCompare(b.name)
+    );
 
     let content = "| Chain | Address |\n";
     content += "| :---- | :------ |\n";
 
-    for (const chain of chains) {
-      const adminAddress = getAdminAddress(chain.id);
-
+    for (const [chain, admin] of rows) {
       const explorerBaseUrl = chain.blockExplorers.default.url;
-      const addressLink = `[${adminAddress}](${explorerBaseUrl}/address/${adminAddress})`;
+      const addressLink = `[${admin}](${explorerBaseUrl}/address/${admin})`;
       content += `| ${chain.name} | ${addressLink} |\n`;
     }
 

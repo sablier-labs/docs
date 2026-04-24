@@ -1,28 +1,30 @@
 import { useMemo } from "react";
 import { sablier } from "sablier";
-import { getLatestLockupChainIds } from "../../helpers";
 import GFMContent from "../atoms/GFMContent";
 
 export function ComptrollersTable() {
   const content = useMemo(() => {
-    // Get chain IDs that have the latest Lockup v3.0 release deployed
-    const chainIds = getLatestLockupChainIds();
-
-    // Get chain details and filter for mainnets supported by UI
-    const chains = chainIds
-      .map((chainId) => sablier.chains.get(chainId))
-      .filter((chain) => chain && !chain.isTestnet && chain.isSupportedByUI)
-      .sort((a, b) => a.name.localeCompare(b.name));
+    // The comptroller catalog covers every chain where a Sablier protocol
+    // (Lockup, Airdrops, Flow, Bob) that uses the comptroller is deployed, so
+    // iterating it keeps the table in sync automatically without coupling to
+    // a specific Lockup release.
+    const rows = sablier.comptroller
+      .getAll()
+      .flatMap((comptroller) => {
+        const chain = sablier.chains.get(comptroller.chainId);
+        if (!chain || chain.isTestnet || !chain.isSupportedByUI) {
+          return [];
+        }
+        return [{ address: comptroller.address, chain }];
+      })
+      .sort((a, b) => a.chain.name.localeCompare(b.chain.name));
 
     let content = "| Chain | Address |\n";
     content += "| :---- | :------ |\n";
 
-    for (const chain of chains) {
-      // Get comptroller address from sablier package
-      const comptrollerAddress = sablier.comptroller.get(chain.id).address;
-
+    for (const { chain, address } of rows) {
       const explorerBaseUrl = chain.blockExplorers.default.url;
-      const addressLink = `[${comptrollerAddress}](${explorerBaseUrl}/address/${comptrollerAddress})`;
+      const addressLink = `[${address}](${explorerBaseUrl}/address/${address})`;
       content += `| ${chain.name} | ${addressLink} |\n`;
     }
 
