@@ -10,9 +10,9 @@ type Chain = Sablier.Chain;
 const EOA: Address = "0xb1bEF51ebCA01EB12001a639bDBbFF6eEcA12B9F";
 
 // Current Safe multisig, deterministically deployed at the same address across
-// most chains. Governs Lockup v3.0+, Flow v2.0+ and Airdrops v2.0+ (via the
+// most chains. Governs Lockup v2.0+, Flow v1.0+ and Airdrops v1.3+ (via the
 // Comptroller).
-const CURRENT_MULTISIG: Address = "0x58290bbdb51A4c6B022A81e9cDeD24BE19Ca57fd";
+const MULTISIG: Address = "0x58290bbdb51A4c6B022A81e9cDeD24BE19Ca57fd";
 
 // Single source of truth for the current admin governing each mainnet.
 // Iterating this list (rather than the sablier catalog) makes the rendered
@@ -23,34 +23,34 @@ const CURRENT_MULTISIG: Address = "0x58290bbdb51A4c6B022A81e9cDeD24BE19Ca57fd";
 // mainnet that sablier starts deploying to.
 const CURRENT_CHAIN_ADMINS: ReadonlyArray<readonly [Chain, Address]> = [
   [chains.abstract, EOA],
-  [chains.arbitrum, CURRENT_MULTISIG],
+  [chains.arbitrum, MULTISIG],
   [chains.avalanche, EOA],
-  [chains.base, CURRENT_MULTISIG],
+  [chains.base, MULTISIG],
   [chains.berachain, EOA],
   [chains.blast, EOA],
-  [chains.bsc, CURRENT_MULTISIG],
+  [chains.bsc, MULTISIG],
   [chains.chiliz, EOA],
   [chains.denergy, EOA],
   [chains.gnosis, EOA],
-  [chains.hyperevm, CURRENT_MULTISIG],
+  [chains.hyperevm, MULTISIG],
   [chains.lightlink, EOA],
-  [chains.linea, CURRENT_MULTISIG],
-  [chains.mainnet, CURRENT_MULTISIG],
+  [chains.linea, EOA],
+  [chains.mainnet, MULTISIG],
   [chains.mode, EOA],
-  [chains.monad, CURRENT_MULTISIG],
+  [chains.monad, MULTISIG],
   [chains.morph, EOA],
-  [chains.optimism, CURRENT_MULTISIG],
-  [chains.polygon, CURRENT_MULTISIG],
+  [chains.optimism, MULTISIG],
+  [chains.polygon, MULTISIG],
   [chains.scroll, EOA],
-  [chains.sonic, CURRENT_MULTISIG],
+  [chains.sonic, EOA],
   [chains.superseed, EOA],
   [chains.unichain, EOA],
   [chains.xdc, EOA],
-  [chains.zksync, CURRENT_MULTISIG],
+  [chains.zksync, MULTISIG],
 ];
 
-// Old admins that governed the pre-Comptroller releases:
-// Lockup v1.0/v1.1/v1.2/v2.0, Flow v1.0/v1.1, and Airdrops v1.1/v1.2/v1.3.
+// Old admins that are governing older, pre-Comptroller releases:
+// Lockup v1.0/v1.1/v1.2, Flow v1.0, and Airdrops v1.1/v1.2.
 // Each entry is either a 1-of-N Safe deployed alongside the original launch,
 // or the same Sablier-controlled EOA used on chains that never received a
 // multisig. Verified against the on-chain `admin()` getter on every chain in
