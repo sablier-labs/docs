@@ -4,7 +4,7 @@ sidebar_position: 13
 title: "Governance"
 ---
 
-import AdminsTable from "@site/src/components/organisms/AdminsTable";
+import { AdminsTable, OldAdminsTable } from "@site/src/components/organisms/AdminsTable";
 import ComptrollersTable from "@site/src/components/organisms/ComptrollersTable";
 
 ## Comptroller
@@ -26,7 +26,20 @@ These admin accounts have the same authority as the current Comptroller contract
 protocol functions. More concretely, the admins are a collection of multisig wallets and EOAs currently in control of
 Sablier Labs.
 
+### Current Admins
+
+Used in Lockup v3.0 and v4.0, Flow v2.0 and v3.0, and Airdrops v2.0 and v3.0. These addresses control the Comptroller on
+each chain.
+
 <AdminsTable />
+
+### Old Admins
+
+Used in all previous versions: Lockup v1.0, v1.1, v1.2 and v2.0; Flow v1.0 and v1.1; and Airdrops v1.1, v1.2 and v1.3.
+Each of these addresses had direct admin authority over the corresponding protocol contracts before the Comptroller was
+introduced.
+
+<OldAdminsTable />
 
 ## Contract Permissions
 
