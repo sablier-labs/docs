@@ -59,9 +59,8 @@ Creating campaigns involves a simple 3-step process:
 
 ### Open source
 
-If you'd like to support Airdrops in your UI or have additional requirements, you can do so by using a self-hosted
-[Merkle service](/api/airdrops/merkle-api/overview). Reach out to us on [Discord](https://discord.sablier.com) for more
-details and customer support.
+If you'd like to support Airdrops in your UI, you can do so by using a self-hosted
+[Merkle service](/api/airdrops/merkle-api/overview).
 
 ### Explore the dashboard
 

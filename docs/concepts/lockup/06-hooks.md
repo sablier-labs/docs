@@ -85,5 +85,4 @@ sequenceDiagram
 ## Next steps
 
 If you are interested in using Sablier hooks in your protocol, please check the
-[Hook guide](/guides/lockup/examples/hooks). If you are looking to get on the allowlist, reach out to us on
-[Discord](https://discord.sablier.com).
+[Hook guide](/guides/lockup/examples/hooks).

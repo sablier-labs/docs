@@ -4,10 +4,10 @@ sidebar_position: 1
 title: "Sablier on Solana"
 ---
 
-:::note
+:::warning[Maintenance Mode]
 
-This part of the documentation is in its early stages and will be continuously improved over time. We're actively
-working on the content to include more guides, examples, and detailed explanations.
+Sablier on Solana is in **Maintenance Mode**. The Solana programs are no longer actively developed or supported.
+Creating new streams and airdrop campaigns is no longer supported.
 
 :::
 
@@ -24,14 +24,13 @@ For more information on the original Sablier Protocol, refer to the
 
 ## App
 
-Start exploring at [solana.sablier.com](https://solana.sablier.com) or continue reading below to learn more about the
-available features on Solana.
+The Solana app is available at [solana.sablier.com](https://solana.sablier.com) for interacting with existing streams
+and airdrop campaigns.
 
 ## SolSab
 
-[SolSab](https://github.com/sablier-labs/solsab) is a collection of Solana protocols currently featuring two programs:
-**Sablier Lockup** and **Sablier Merkle Instant**. While not all of our Ethereum protocols are also available on Solana,
-we aim to bridge this gap in the future.
+[SolSab](https://github.com/sablier-labs/solsab) is a collection of Solana programs featuring two protocols: **Sablier
+Lockup** and **Sablier Merkle Instant**.
 
 ### Lockup
 
@@ -61,8 +60,7 @@ their entire allocation at once after the campaign starts.
 
 #### Key differences from the Ethereum [Airdrops](../concepts/05-merkle-airdrops.mdx) protocols
 
-- The Solana protocol only includes the Instant airdrop model, for now. The Vesting airdrop models are coming in the
-  future.
+- The Solana protocol only includes the Instant airdrop model.
 - Due to Solana’s account architecture, a single program handles both creation and claiming. In contrast to Ethereum,
   where a factory contract deploys a stand-alone contract for each airdrop campaign, and claiming is performed on that
   contract.

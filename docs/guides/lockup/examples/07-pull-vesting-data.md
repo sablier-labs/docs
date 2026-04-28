@@ -172,5 +172,4 @@ for (uint i; i < tranches.length; ++i) {
 }
 ```
 
-We hope you have found this guide helpful. If you have a use case that is not covered here, please reach out to us on
-[Discord](https://discord.sablier.com), and we will assist you.
+We hope you have found this guide helpful.
