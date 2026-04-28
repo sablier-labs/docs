@@ -151,6 +151,16 @@ run() {
     sd "/node_modules/@arbitrum/token-bridge-contracts/contracts/tokenbridge/libraries/ERC165.sol/abstract.ERC165.md#supportsinterface" "https://eips.ethereum.org/EIPS/eip-165" $all_md_files
     # TODO: retarget to /reference/utils/contracts/contract.SablierComptroller.md now that the page exists
     sd "/node_modules/@sablier/evm-utils/docs/reference/lockup/contracts/contract.SablierComptroller.md#supportsinterface" "https://eips.ethereum.org/EIPS/eip-165" $all_md_files
+
+    # Rewrite Unicode-art math in LockupMath natspec to KaTeX-compatible LaTeX.
+    # The .sol natspec uses Unicode (⎧⎨⎩, ⌊⌋, *, ─) for in-source readability,
+    # but Docusaurus/KaTeX renders these as broken math. See AGENTS.md.
+    perl -i -0pe '
+      s/x\^\{exp\} \* csa/x^{exp} \\cdot csa/;
+      s{\$\$\n[^\$]*?⎧ s,.*?⎩ x \* sa[^\$]*?\$\$}{\$\$\nf(x) = \\begin{cases} s & \\text{if block timestamp} < \\text{cliff time} \\\\ x \\cdot sa + s + c & \\text{if block timestamp} \\geq \\text{cliff time} \\end{cases}\n\$\$}s;
+      s{\$\$\n[^\$]*?⌊time elapsed.*?streamable time[^\$]*?\$\$}{\$\$\nx = \\frac{\\lfloor \\text{time elapsed} / \\text{granularity} \\rfloor \\cdot \\text{granularity}}{\\text{streamable time}}\n\$\$}s;
+      s{\$\$\n[^\$]*?⎧ deposited,.*?⎩ 0,[^\$]*?\$\$}{\$\$\nf(x) = \\begin{cases} \\text{deposited} & \\text{if block timestamp} \\geq \\text{end time or latest price} \\geq \\text{target price} \\\\ 0 & \\text{otherwise} \\end{cases}\n\$\$}s;
+    ' $contracts/libraries/library.LockupMath.md
   fi
 
   if [ "$repo" = "flow" ]; then
