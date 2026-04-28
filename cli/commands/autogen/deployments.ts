@@ -49,24 +49,13 @@ export function generateDeployments(options: CliOptions = {}): void {
 }
 
 function generateTables(release: Sablier.Release) {
-  const isLatestRelease =
-    sablier.releases.getLatest({ protocol: release.protocol }).version === release.version;
-
   const [mainnetDeployments, testnetDeployments] = _.partition(
     release.deployments,
     (d) => !sablier.chains.get(d.chainId).isTestnet
   );
 
-  const orderedMainnetDeployments = orderDeployments(
-    mainnetDeployments,
-    isLatestRelease,
-    "priority-first"
-  );
-  const orderedTestnetDeployments = orderDeployments(
-    testnetDeployments,
-    isLatestRelease,
-    "alphabetical"
-  );
+  const orderedMainnetDeployments = orderDeployments(mainnetDeployments, "priority-first");
+  const orderedTestnetDeployments = orderDeployments(testnetDeployments, "alphabetical");
 
   return (
     renderDeploymentSection("Mainnets", orderedMainnetDeployments, release) +
@@ -76,13 +65,8 @@ function generateTables(release: Sablier.Release) {
 
 function orderDeployments(
   deployments: Sablier.Deployment[],
-  isLatestRelease: boolean,
   ordering: DeploymentOrdering
 ): Sablier.Deployment[] {
-  if (!isLatestRelease) {
-    return deployments;
-  }
-
   return [...deployments].sort((left, right) => compareDeployments(left, right, ordering));
 }
 
