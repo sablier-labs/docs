@@ -4,13 +4,13 @@ sidebar_position: 2
 
 # SablierFactoryMerkleInstant
 
-[Git Source](https://github.com/sablier-labs/evm-monorepo/blob/d6f6f1d4bb0a5bf508c1d0d7c1b59cd8879d56f9/src/SablierFactoryMerkleInstant.sol)
+[Git Source](https://github.com/sablier-labs/evm-monorepo/blob/003a71932c0e26e767a02c21205a077469406ac8/src/SablierFactoryMerkleInstant.sol)
 
-**Inherits:**
+Inherits:
 [ISablierFactoryMerkleInstant](/docs/reference/airdrops/contracts/interfaces/interface.ISablierFactoryMerkleInstant.md),
 [SablierFactoryMerkleBase](/docs/reference/airdrops/contracts/abstracts/abstract.SablierFactoryMerkleBase.md)
 
-**Title:** SablierFactoryMerkleInstant
+Title: SablierFactoryMerkleInstant
 
 See the documentation in
 [ISablierFactoryMerkleInstant](/docs/reference/airdrops/contracts/interfaces/interface.ISablierFactoryMerkleInstant.md).
@@ -23,7 +23,7 @@ See the documentation in
 constructor(address initialComptroller) SablierFactoryMerkleBase(initialComptroller);
 ```
 
-**Parameters**
+Parameters
 
 | Name                 | Type      | Description                                      |
 | -------------------- | --------- | ------------------------------------------------ |
@@ -69,7 +69,7 @@ function createMerkleInstant(
     returns (ISablierMerkleInstant merkleInstant);
 ```
 
-**Parameters**
+Parameters
 
 | Name              | Type                              | Description                                                                                                                      |
 | ----------------- | --------------------------------- | -------------------------------------------------------------------------------------------------------------------------------- |
@@ -77,7 +77,7 @@ function createMerkleInstant(
 | `aggregateAmount` | `uint256`                         | The total amount of ERC-20 tokens to be distributed to all recipients.                                                           |
 | `recipientCount`  | `uint256`                         | The total number of recipient addresses eligible for the airdrop.                                                                |
 
-**Returns**
+Returns
 
 | Name            | Type                    | Description                                              |
 | --------------- | ----------------------- | -------------------------------------------------------- |

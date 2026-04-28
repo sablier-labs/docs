@@ -24,9 +24,10 @@ airdrops=docs/reference/airdrops/contracts
 bob=docs/reference/bob/contracts
 flow=docs/reference/flow/contracts
 lockup=docs/reference/lockup/contracts
+utils=docs/reference/utils/contracts
 
 # Delete the current contracts documentations
-for dir in $airdrops $bob $flow $lockup; do
+for dir in $airdrops $bob $flow $lockup $utils; do
   find "$dir" -type f -name "*.md" -delete
 done
 
@@ -36,6 +37,23 @@ set_sidebar_position() {
   local content
   content=$(cat "$file")
   printf '%s\n' "---" "sidebar_position: $position" "---" "$content" > "$file"
+}
+
+# Rewrite forge-generated paths in a utils-copied abstract+interface pair.
+# Performs three fixes:
+#   1. Self-referencing anchor fix on the interface page
+#   2. Markdown link fix on the abstract page
+#   3. {Symbol} natspec ref fix on the abstract page
+fix_utils_abstract() {
+  local symbol=$1   # interface symbol, e.g., IAdminable
+  local repo_dir=$2 # contracts dir, e.g., $airdrops
+  local stripped=${symbol#I}
+  sd "\(/src/interfaces/${symbol}\.sol/interface\.${symbol}\.md#" "(#" "$repo_dir/interfaces/interface.${symbol}.md"
+  sd "\[${symbol}\]\(/src/interfaces/${symbol}\.sol/interface\.${symbol}\.md\)" \
+    "[${symbol}](/$repo_dir/interfaces/interface.${symbol}.md)" \
+    "$repo_dir/abstracts/abstract.${stripped}.md"
+  sd "\{${symbol}\}" "[${symbol}](/$repo_dir/interfaces/interface.${symbol}.md)" \
+    "$repo_dir/abstracts/abstract.${stripped}.md"
 }
 
 lint() {
@@ -87,6 +105,12 @@ run() {
   # Delete empty *.sol directories
   find $contracts -type d -empty -delete
 
+  # Repo-specific exclusions of generated files we don't ship
+  if [ "$repo" = "bob" ]; then
+    # Skip Escrow contracts/library — not documented in the developer site
+    find $contracts -type f -name "*Escrow*" -delete
+  fi
+
   # Cache find result to avoid redundant filesystem scans throughout this function
   all_md_files=$(find $contracts -type f -name "*.md")
 
@@ -125,6 +149,7 @@ run() {
     sd "/$lockup/interfaces/interface.InvalidStreamInCancelMultiple.md" "/$lockup/interfaces/interface.ISablierLockup.md#invalidstreamincancelmultiple" $all_md_files
     sd "/node_modules/forge-std/src/mocks/MockERC721.sol/contract.MockERC721.md" "https://eips.ethereum.org/EIPS/eip-165" $all_md_files
     sd "/node_modules/@arbitrum/token-bridge-contracts/contracts/tokenbridge/libraries/ERC165.sol/abstract.ERC165.md#supportsinterface" "https://eips.ethereum.org/EIPS/eip-165" $all_md_files
+    # TODO: retarget to /reference/utils/contracts/contract.SablierComptroller.md now that the page exists
     sd "/node_modules/@sablier/evm-utils/docs/reference/lockup/contracts/contract.SablierComptroller.md#supportsinterface" "https://eips.ethereum.org/EIPS/eip-165" $all_md_files
   fi
 
@@ -157,6 +182,7 @@ run() {
 
   # Fix external contract references that don't have docs
   if [ "$repo" = "lockup" ]; then
+    # TODO: retarget to /reference/utils/contracts/contract.SablierComptroller.md now that the page exists
     sd "\[SablierComptroller\]\(/$lockup/contract\.SablierComptroller\.md\)" "**SablierComptroller**" $all_md_files
     sd "/node_modules/@sablier/evm-utils[^\"]*contract\.SablierComptroller\.md[^\"]*" "https://eips.ethereum.org/EIPS/eip-165" $all_md_files
   fi
@@ -255,28 +281,57 @@ done
 cp $utils_temp/Comptrollerable.sol/abstract.Comptrollerable.md $bob/abstracts/ 2>/dev/null || true
 cp $utils_temp/interfaces/IComptrollerable.sol/interface.IComptrollerable.md $bob/interfaces/ 2>/dev/null || true
 
-# Fix utils files: self-referencing links, interface links, and convert curly braces
-# Airdrops-specific (IAdminable)
-sd "\(/src/interfaces/IAdminable\.sol/interface\.IAdminable\.md#" "(#" $airdrops/interfaces/interface.IAdminable.md
-sd "\[IAdminable\]\(/src/interfaces/IAdminable\.sol/interface\.IAdminable\.md\)" "[IAdminable](/$airdrops/interfaces/interface.IAdminable.md)" $airdrops/abstracts/abstract.Adminable.md
-sd "\{IAdminable\}" "[IAdminable](/$airdrops/interfaces/interface.IAdminable.md)" $airdrops/abstracts/abstract.Adminable.md
+# Utils: SablierComptroller (canonical reference page)
+mkdir -p $utils/interfaces
+cp $utils_temp/SablierComptroller.sol/contract.SablierComptroller.md $utils/
+cp $utils_temp/interfaces/ISablierComptroller.sol/interface.ISablierComptroller.md $utils/interfaces/
 
-# Fix IComptrollerable for all repos
+utils_md_files=$(find $utils -type f -name "*.md")
+
+# Replace markdown-link inheritance refs to non-generated abstracts with bold (must run before path rewrites)
+sd "\[IRoleAdminable\]\([^)]*IRoleAdminable\.md\)" "**IRoleAdminable**" $utils_md_files
+sd "\[RoleAdminable\]\([^)]*RoleAdminable\.md\)" "**RoleAdminable**" $utils_md_files
+sd "\[IAdminable\]\([^)]*IAdminable\.md\)" "**IAdminable**" $utils_md_files
+sd "\[Adminable\]\([^)]*[/.]Adminable\.md\)" "**Adminable**" $utils_md_files
+
+# Resolve {ISablierComptroller} → link to the generated interface page
+sd "\{ISablierComptroller\}" "[ISablierComptroller](/$utils/interfaces/interface.ISablierComptroller.md)" $utils_md_files
+
+# Bold-replace natspec refs to non-generated or cross-package symbols
+sd "\{IRoleAdminable\.([A-Z_]+)\}" "\`IRoleAdminable.\$1\`" $utils_md_files
+sd "\{IRoleAdminable\}" "**IRoleAdminable**" $utils_md_files
+sd "\{RoleAdminable\}" "**RoleAdminable**" $utils_md_files
+sd "\{Adminable\}" "**Adminable**" $utils_md_files
+sd "\{IAdminable\}" "**IAdminable**" $utils_md_files
+sd "\{IComptrollerable\}" "**IComptrollerable**" $utils_md_files
+sd "\{ERC1967Proxy\}" "**ERC1967Proxy**" $utils_md_files
+sd "\{UUPSUpgradeable\.([A-Za-z]+)\}" "\`UUPSUpgradeable.\$1\`" $utils_md_files
+sd "\{ISablierMerkleBase\.([A-Za-z]+)\}" "\`ISablierMerkleBase.\$1\`" $utils_md_files
+
+# Update src/ paths
+sd "src/interfaces/\w+\.sol/([\w.]+)" $utils'/interfaces/$1' $utils_md_files
+sd "src/\w+\.sol/([\w.]+)" $utils'/$1' $utils_md_files
+
+# Self-referencing anchor fix on the interface page
+sd "\(/src/interfaces/ISablierComptroller\.sol/interface\.ISablierComptroller\.md#" "(#" $utils/interfaces/interface.ISablierComptroller.md
+
+# Fix utils-copied abstract+interface pairs: rewrite forge-generated /src/...
+# paths to docs-website paths and resolve {Symbol} natspec refs.
+fix_utils_abstract IAdminable "$airdrops"
+
 for repo in airdrops bob lockup flow; do
-  repo_dir=${!repo}
-  sd "\(/src/interfaces/IComptrollerable\.sol/interface\.IComptrollerable\.md#" "(#" $repo_dir/interfaces/interface.IComptrollerable.md
-  sd "\[IComptrollerable\]\(/src/interfaces/IComptrollerable\.sol/interface\.IComptrollerable\.md\)" "[IComptrollerable](/$repo_dir/interfaces/interface.IComptrollerable.md)" $repo_dir/abstracts/abstract.Comptrollerable.md
-  sd "\{IComptrollerable\}" "[IComptrollerable](/$repo_dir/interfaces/interface.IComptrollerable.md)" $repo_dir/abstracts/abstract.Comptrollerable.md
+  fix_utils_abstract IComptrollerable "${!repo}"
 done
 
-# Fix IBatch and NoDelegateCall for lockup and flow
 for repo in lockup flow; do
   repo_dir=${!repo}
-  sd "\(/src/interfaces/IBatch\.sol/interface\.IBatch\.md#" "(#" $repo_dir/interfaces/interface.IBatch.md
-  sd "\[IBatch\]\(/src/interfaces/IBatch\.sol/interface\.IBatch\.md\)" "[IBatch](/$repo_dir/interfaces/interface.IBatch.md)" $repo_dir/abstracts/abstract.Batch.md
-  sd "\{IBatch\}" "[IBatch](/$repo_dir/interfaces/interface.IBatch.md)" $repo_dir/abstracts/abstract.Batch.md
+  fix_utils_abstract IBatch "$repo_dir"
+  # NoDelegateCall has no natspec/anchor refs; just unlink the broken markdown link.
   sd "\[INoDelegateCall\]\(/src/interfaces/INoDelegateCall\.sol/interface\.INoDelegateCall\.md\)" "INoDelegateCall" $repo_dir/abstracts/abstract.NoDelegateCall.md
 done
+
+# Set sidebar position for the utils SablierComptroller reference page
+set_sidebar_position $utils/contract.SablierComptroller.md 1
 
 # Clean up the utils temp docs (we don't need to keep them)
 rm -rf repos/evm-monorepo/utils/docs
@@ -290,3 +345,4 @@ lint "lockup"
 lint "airdrops"
 lint "bob"
 lint "flow"
+lint "utils"

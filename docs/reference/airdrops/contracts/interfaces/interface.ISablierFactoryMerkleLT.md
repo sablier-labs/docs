@@ -1,11 +1,11 @@
 # ISablierFactoryMerkleLT
 
-[Git Source](https://github.com/sablier-labs/evm-monorepo/blob/d6f6f1d4bb0a5bf508c1d0d7c1b59cd8879d56f9/src/interfaces/ISablierFactoryMerkleLT.sol)
+[Git Source](https://github.com/sablier-labs/evm-monorepo/blob/003a71932c0e26e767a02c21205a077469406ac8/src/interfaces/ISablierFactoryMerkleLT.sol)
 
-**Inherits:**
+Inherits:
 [ISablierFactoryMerkleBase](/docs/reference/airdrops/contracts/interfaces/interface.ISablierFactoryMerkleBase.md)
 
-**Title:** ISablierFactoryMerkleLT
+Title: ISablierFactoryMerkleLT
 
 A factory that deploys MerkleLT campaign contracts.
 
@@ -24,13 +24,13 @@ This is a helper function for the frontend. It is not used anywhere in the contr
 function isPercentagesSum100(MerkleLT.TrancheWithPercentage[] calldata tranches) external pure returns (bool result);
 ```
 
-**Parameters**
+Parameters
 
 | Name       | Type                               | Description                                            |
 | ---------- | ---------------------------------- | ------------------------------------------------------ |
 | `tranches` | `MerkleLT.TrancheWithPercentage[]` | The tranches with their respective unlock percentages. |
 
-**Returns**
+Returns
 
 | Name     | Type   | Description                                                  |
 | -------- | ------ | ------------------------------------------------------------ |
@@ -79,7 +79,7 @@ function createMerkleLT(
     returns (ISablierMerkleLT merkleLT);
 ```
 
-**Parameters**
+Parameters
 
 | Name              | Type                         | Description                                                                                                            |
 | ----------------- | ---------------------------- | ---------------------------------------------------------------------------------------------------------------------- |
@@ -87,7 +87,7 @@ function createMerkleLT(
 | `aggregateAmount` | `uint256`                    | The total amount of ERC-20 tokens to be distributed to all recipients.                                                 |
 | `recipientCount`  | `uint256`                    | The total number of recipient addresses eligible for the airdrop.                                                      |
 
-**Returns**
+Returns
 
 | Name       | Type               | Description                                              |
 | ---------- | ------------------ | -------------------------------------------------------- |

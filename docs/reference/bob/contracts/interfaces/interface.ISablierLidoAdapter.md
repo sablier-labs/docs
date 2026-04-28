@@ -1,10 +1,10 @@
 # ISablierLidoAdapter
 
-[Git Source](https://github.com/sablier-labs/evm-monorepo/blob/d6f6f1d4bb0a5bf508c1d0d7c1b59cd8879d56f9/src/interfaces/ISablierLidoAdapter.sol)
+[Git Source](https://github.com/sablier-labs/evm-monorepo/blob/003a71932c0e26e767a02c21205a077469406ac8/src/interfaces/ISablierLidoAdapter.sol)
 
-**Inherits:** [ISablierBobAdapter](/docs/reference/bob/contracts/interfaces/interface.ISablierBobAdapter.md)
+Inherits: [ISablierBobAdapter](/docs/reference/bob/contracts/interfaces/interface.ISablierBobAdapter.md)
 
-**Title:** ISablierLidoAdapter
+Title: ISablierLidoAdapter
 
 Interface for the Lido yield adapter that stakes WETH as wstETH and unstakes it via Curve.
 
@@ -100,7 +100,7 @@ Returns the total WETH received after unstaking for a vault.
 function getWethReceivedAfterUnstaking(uint256 vaultId) external view returns (uint256);
 ```
 
-**Parameters**
+Parameters
 
 | Name      | Type      | Description          |
 | --------- | --------- | -------------------- |
@@ -137,7 +137,7 @@ event. Notes:
 function requestLidoWithdrawal(uint256 vaultId) external;
 ```
 
-**Parameters**
+Parameters
 
 | Name      | Type      | Description          |
 | --------- | --------- | -------------------- |
@@ -159,7 +159,7 @@ event. Notes:
 function setSlippageTolerance(UD60x18 newTolerance) external;
 ```
 
-**Parameters**
+Parameters
 
 | Name           | Type      | Description                            |
 | -------------- | --------- | -------------------------------------- |

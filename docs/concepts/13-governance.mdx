@@ -30,6 +30,45 @@ Sablier Labs.
 
 ## Contract Permissions
 
+### Comptroller
+
+The Comptroller itself has admin- and role-gated functions. Roles are managed by the admin via `grantRole` /
+`revokeRole`; the admin can also call any role-gated function directly.
+
+#### Admin Only
+
+| Permission          | Function                                                                                          |
+| ------------------- | ------------------------------------------------------------------------------------------------- |
+| Execute             | [`execute`](/reference/utils/contracts/contract.SablierComptroller#execute)                       |
+| Grant Role          | `grantRole` (inherited)                                                                           |
+| Revoke Role         | `revokeRole` (inherited)                                                                          |
+| Set Oracle          | [`setOracle`](/reference/utils/contracts/contract.SablierComptroller#setoracle)                   |
+| Transfer Admin      | `transferAdmin` (inherited)                                                                       |
+| Upgrade To And Call | `upgradeToAndCall` (inherited)                                                                    |
+| Withdraw ERC-20     | [`withdrawERC20Token`](/reference/utils/contracts/contract.SablierComptroller#withdrawerc20token) |
+
+#### Fee Management Role
+
+| Permission                 | Function                                                                                                        |
+| -------------------------- | --------------------------------------------------------------------------------------------------------------- |
+| Disable Custom Fee USD For | [`disableCustomFeeUSDFor`](/reference/utils/contracts/contract.SablierComptroller#disablecustomfeeusdfor)       |
+| Lower Min Fee USD Campaign | [`lowerMinFeeUSDForCampaign`](/reference/utils/contracts/contract.SablierComptroller#lowerminfeeusdforcampaign) |
+| Set Custom Fee USD For     | [`setCustomFeeUSDFor`](/reference/utils/contracts/contract.SablierComptroller#setcustomfeeusdfor)               |
+| Set Min Fee USD            | [`setMinFeeUSD`](/reference/utils/contracts/contract.SablierComptroller#setminfeeusd)                           |
+
+#### Attestor Manager Role
+
+| Permission                | Function                                                                                                  |
+| ------------------------- | --------------------------------------------------------------------------------------------------------- |
+| Set Attestor              | [`setAttestor`](/reference/utils/contracts/contract.SablierComptroller#setattestor)                       |
+| Set Attestor For Campaign | [`setAttestorForCampaign`](/reference/utils/contracts/contract.SablierComptroller#setattestorforcampaign) |
+
+#### Fee Collector Role
+
+| Permission    | Function                                                                              |
+| ------------- | ------------------------------------------------------------------------------------- |
+| Transfer Fees | [`transferFees`](/reference/utils/contracts/contract.SablierComptroller#transferfees) |
+
 ### Lockup
 
 Comptroller has the following permissions on each chain where Lockup is deployed:

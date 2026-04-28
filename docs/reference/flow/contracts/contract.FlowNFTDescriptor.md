@@ -4,11 +4,11 @@ sidebar_position: 2
 
 # FlowNFTDescriptor
 
-[Git Source](https://github.com/sablier-labs/evm-monorepo/blob/d6f6f1d4bb0a5bf508c1d0d7c1b59cd8879d56f9/src/FlowNFTDescriptor.sol)
+[Git Source](https://github.com/sablier-labs/evm-monorepo/blob/003a71932c0e26e767a02c21205a077469406ac8/src/FlowNFTDescriptor.sol)
 
-**Inherits:** [IFlowNFTDescriptor](/docs/reference/flow/contracts/interfaces/interface.IFlowNFTDescriptor.md)
+Inherits: [IFlowNFTDescriptor](/docs/reference/flow/contracts/interfaces/interface.IFlowNFTDescriptor.md)
 
-**Title:** FlowNFTDescriptor
+Title: FlowNFTDescriptor
 
 See the documentation in
 [IFlowNFTDescriptor](/docs/reference/flow/contracts/interfaces/interface.IFlowNFTDescriptor.md).
@@ -23,8 +23,8 @@ Currently it returns the Sablier logo as an SVG. In the future, it will return a
 
 ```solidity
 function tokenURI(
-    IERC721Metadata, /* sablierFlow */
-    uint256 /* streamId */
+    IERC721Metadata, / sablierFlow /
+    uint256 / streamId /
 )
     external
     pure
@@ -32,14 +32,14 @@ function tokenURI(
     returns (string memory uri);
 ```
 
-**Parameters**
+Parameters
 
 | Name     | Type              | Description |
 | -------- | ----------------- | ----------- |
 | `<none>` | `IERC721Metadata` |             |
 | `<none>` | `uint256`         |             |
 
-**Returns**
+Returns
 
 | Name  | Type     | Description                               |
 | ----- | -------- | ----------------------------------------- |

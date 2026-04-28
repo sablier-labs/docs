@@ -1,8 +1,8 @@
 # ILidoWithdrawalQueue
 
-[Git Source](https://github.com/sablier-labs/evm-monorepo/blob/d6f6f1d4bb0a5bf508c1d0d7c1b59cd8879d56f9/src/interfaces/external/ILidoWithdrawalQueue.sol)
+[Git Source](https://github.com/sablier-labs/evm-monorepo/blob/003a71932c0e26e767a02c21205a077469406ac8/src/interfaces/external/ILidoWithdrawalQueue.sol)
 
-**Title:** ILidoWithdrawalQueue
+Title: ILidoWithdrawalQueue
 
 Minimal interface for Lido's WithdrawalQueueERC721 contract.
 
@@ -46,7 +46,7 @@ function findCheckpointHints(
     returns (uint256[] memory hintIds);
 ```
 
-**Parameters**
+Parameters
 
 | Name          | Type        | Description                                                                                     |
 | ------------- | ----------- | ----------------------------------------------------------------------------------------------- |
@@ -54,7 +54,7 @@ function findCheckpointHints(
 | `_firstIndex` | `uint256`   | Left boundary of the search range. Should be greater than 0.                                    |
 | `_lastIndex`  | `uint256`   | Right boundary of the search range. Should be less than or equal to `getLastCheckpointIndex()`. |
 
-**Returns**
+Returns
 
 | Name      | Type        | Description                                                      |
 | --------- | ----------- | ---------------------------------------------------------------- |
@@ -83,7 +83,7 @@ Reverts if any of the following conditions are met:
 function claimWithdrawals(uint256[] calldata _requestIds, uint256[] calldata _hints) external;
 ```
 
-**Parameters**
+Parameters
 
 | Name          | Type        | Description                                                               |
 | ------------- | ----------- | ------------------------------------------------------------------------- |
@@ -103,14 +103,14 @@ function requestWithdrawals(
     returns (uint256[] memory requestIds);
 ```
 
-**Parameters**
+Parameters
 
 | Name       | Type        | Description                                                                                                              |
 | ---------- | ----------- | ------------------------------------------------------------------------------------------------------------------------ |
 | `_amounts` | `uint256[]` | Array of stETH amount values. The standalone withdrawal request will be created for each item in the passed list.        |
 | `_owner`   | `address`   | Address that will be able to manage the created requests. If `address(0)` is passed, `msg.sender` will be used as owner. |
 
-**Returns**
+Returns
 
 | Name         | Type        | Description                                  |
 | ------------ | ----------- | -------------------------------------------- |

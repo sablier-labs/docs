@@ -1,8 +1,8 @@
 # ICurveStETHPool
 
-[Git Source](https://github.com/sablier-labs/evm-monorepo/blob/d6f6f1d4bb0a5bf508c1d0d7c1b59cd8879d56f9/src/interfaces/external/ICurveStETHPool.sol)
+[Git Source](https://github.com/sablier-labs/evm-monorepo/blob/003a71932c0e26e767a02c21205a077469406ac8/src/interfaces/external/ICurveStETHPool.sol)
 
-**Title:** ICurveStETHPool
+Title: ICurveStETHPool
 
 Minimal interface for the Curve stETH/ETH pool.
 
@@ -18,7 +18,7 @@ Get the amount of output coin for a given input.
 function get_dy(int128 i, int128 j, uint256 dx) external view returns (uint256 dy);
 ```
 
-**Parameters**
+Parameters
 
 | Name | Type      | Description                   |
 | ---- | --------- | ----------------------------- |
@@ -26,7 +26,7 @@ function get_dy(int128 i, int128 j, uint256 dx) external view returns (uint256 d
 | `j`  | `int128`  | The index of the output coin. |
 | `dx` | `uint256` | The amount of input coin.     |
 
-**Returns**
+Returns
 
 | Name | Type      | Description                         |
 | ---- | --------- | ----------------------------------- |
@@ -40,7 +40,7 @@ Exchange between two tokens in the pool.
 function exchange(int128 i, int128 j, uint256 dx, uint256 minDy) external payable returns (uint256 dy);
 ```
 
-**Parameters**
+Parameters
 
 | Name    | Type      | Description                                        |
 | ------- | --------- | -------------------------------------------------- |
@@ -49,7 +49,7 @@ function exchange(int128 i, int128 j, uint256 dx, uint256 minDy) external payabl
 | `dx`    | `uint256` | The amount of input coin to exchange.              |
 | `minDy` | `uint256` | The minimum amount of output coin to receive.      |
 
-**Returns**
+Returns
 
 | Name | Type      | Description                                |
 | ---- | --------- | ------------------------------------------ |

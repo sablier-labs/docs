@@ -4,15 +4,15 @@ sidebar_position: 1
 
 # SablierFlow
 
-[Git Source](https://github.com/sablier-labs/evm-monorepo/blob/d6f6f1d4bb0a5bf508c1d0d7c1b59cd8879d56f9/src/SablierFlow.sol)
+[Git Source](https://github.com/sablier-labs/evm-monorepo/blob/003a71932c0e26e767a02c21205a077469406ac8/src/SablierFlow.sol)
 
-**Inherits:** [Batch](/docs/reference/flow/contracts/abstracts/abstract.Batch.md),
+Inherits: [Batch](/docs/reference/flow/contracts/abstracts/abstract.Batch.md),
 [Comptrollerable](/docs/reference/flow/contracts/abstracts/abstract.Comptrollerable.md), ERC721,
 [ISablierFlow](/docs/reference/flow/contracts/interfaces/interface.ISablierFlow.md),
 [NoDelegateCall](/docs/reference/flow/contracts/abstracts/abstract.NoDelegateCall.md),
 [SablierFlowState](/docs/reference/flow/contracts/abstracts/abstract.SablierFlowState.md)
 
-**Title:** SablierFlow
+Title: SablierFlow
 
 See the documentation in [ISablierFlow](/docs/reference/flow/contracts/interfaces/interface.ISablierFlow.md).
 
@@ -30,7 +30,7 @@ constructor(
     SablierFlowState(initialNFTDescriptor);
 ```
 
-**Parameters**
+Parameters
 
 | Name                   | Type      | Description                                      |
 | ---------------------- | --------- | ------------------------------------------------ |
@@ -55,7 +55,7 @@ Reverts if `streamId` references a null stream.
 function calculateMinFeeWei(uint256 streamId) external view override notNull(streamId) returns (uint256 minFeeWei);
 ```
 
-**Parameters**
+Parameters
 
 | Name       | Type      | Description                  |
 | ---------- | --------- | ---------------------------- |
@@ -71,7 +71,7 @@ Reverts if `streamId` references a null stream.
 function coveredDebtOf(uint256 streamId) external view override notNull(streamId) returns (uint128 coveredDebt);
 ```
 
-**Parameters**
+Parameters
 
 | Name       | Type      | Description                  |
 | ---------- | --------- | ---------------------------- |
@@ -97,7 +97,7 @@ function depletionTimeOf(uint256 streamId)
     returns (uint256 depletionTime);
 ```
 
-**Parameters**
+Parameters
 
 | Name       | Type      | Description                  |
 | ---------- | --------- | ---------------------------- |
@@ -113,7 +113,7 @@ Reverts if `streamId` references a null stream.
 function getRecipient(uint256 streamId) external view override notNull(streamId) returns (address recipient);
 ```
 
-**Parameters**
+Parameters
 
 | Name       | Type      | Description                  |
 | ---------- | --------- | ---------------------------- |
@@ -135,7 +135,7 @@ function ongoingDebtScaledOf(uint256 streamId)
     returns (uint256 ongoingDebtScaled);
 ```
 
-**Parameters**
+Parameters
 
 | Name       | Type      | Description                  |
 | ---------- | --------- | ---------------------------- |
@@ -156,7 +156,7 @@ function refundableAmountOf(uint256 streamId)
     returns (uint128 refundableAmount);
 ```
 
-**Parameters**
+Parameters
 
 | Name       | Type      | Description                  |
 | ---------- | --------- | ---------------------------- |
@@ -173,7 +173,7 @@ of this function as streams can be paused and resumed at any moment.
 function statusOf(uint256 streamId) external view override notNull(streamId) returns (Flow.Status status);
 ```
 
-**Parameters**
+Parameters
 
 | Name       | Type      | Description                  |
 | ---------- | --------- | ---------------------------- |
@@ -189,7 +189,7 @@ Reverts if `streamId` references a null stream.
 function totalDebtOf(uint256 streamId) external view override notNull(streamId) returns (uint256 totalDebt);
 ```
 
-**Parameters**
+Parameters
 
 | Name       | Type      | Description                  |
 | ---------- | --------- | ---------------------------- |
@@ -210,7 +210,7 @@ function uncoveredDebtOf(uint256 streamId)
     returns (uint256 uncoveredDebt);
 ```
 
-**Parameters**
+Parameters
 
 | Name       | Type      | Description                  |
 | ---------- | --------- | ---------------------------- |
@@ -232,13 +232,13 @@ function withdrawableAmountOf(uint256 streamId)
     returns (uint128 withdrawableAmount);
 ```
 
-**Parameters**
+Parameters
 
 | Name       | Type      | Description                  |
 | ---------- | --------- | ---------------------------- |
 | `streamId` | `uint256` | The stream ID for the query. |
 
-**Returns**
+Returns
 
 | Name                 | Type      | Description                                 |
 | -------------------- | --------- | ------------------------------------------- |
@@ -271,7 +271,7 @@ function adjustRatePerSecond(
     updateMetadata(streamId);
 ```
 
-**Parameters**
+Parameters
 
 | Name               | Type      | Description                                                                                |
 | ------------------ | --------- | ------------------------------------------------------------------------------------------ |
@@ -308,7 +308,7 @@ function create(
     returns (uint256 streamId);
 ```
 
-**Parameters**
+Parameters
 
 | Name            | Type      | Description                                                                                                                                  |
 | --------------- | --------- | -------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -319,7 +319,7 @@ function create(
 | `token`         | `IERC20`  | The contract address of the ERC-20 token to be streamed.                                                                                     |
 | `transferable`  | `bool`    | Boolean indicating if the stream NFT is transferable.                                                                                        |
 
-**Returns**
+Returns
 
 | Name       | Type      | Description                         |
 | ---------- | --------- | ----------------------------------- |
@@ -352,7 +352,7 @@ function createAndDeposit(
     returns (uint256 streamId);
 ```
 
-**Parameters**
+Parameters
 
 | Name            | Type      | Description                                                                                                                                  |
 | --------------- | --------- | -------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -364,7 +364,7 @@ function createAndDeposit(
 | `transferable`  | `bool`    | Boolean indicating if the stream NFT is transferable.                                                                                        |
 | `amount`        | `uint128` | The deposit amount, denoted in token's decimals.                                                                                             |
 
-**Returns**
+Returns
 
 | Name       | Type      | Description                         |
 | ---------- | --------- | ----------------------------------- |
@@ -397,7 +397,7 @@ function deposit(
     updateMetadata(streamId);
 ```
 
-**Parameters**
+Parameters
 
 | Name        | Type      | Description                                      |
 | ----------- | --------- | ------------------------------------------------ |
@@ -430,7 +430,7 @@ function depositAndPause(
     updateMetadata(streamId);
 ```
 
-**Parameters**
+Parameters
 
 | Name       | Type      | Description                                         |
 | ---------- | --------- | --------------------------------------------------- |
@@ -461,7 +461,7 @@ function pause(uint256 streamId)
     updateMetadata(streamId);
 ```
 
-**Parameters**
+Parameters
 
 | Name       | Type      | Description                    |
 | ---------- | --------- | ------------------------------ |
@@ -481,7 +481,7 @@ Notes:
 function recover(IERC20 token, address to) external override onlyComptroller;
 ```
 
-**Parameters**
+Parameters
 
 | Name    | Type      | Description                                              |
 | ------- | --------- | -------------------------------------------------------- |
@@ -513,7 +513,7 @@ function refund(
     updateMetadata(streamId);
 ```
 
-**Parameters**
+Parameters
 
 | Name       | Type      | Description                                        |
 | ---------- | --------- | -------------------------------------------------- |
@@ -544,7 +544,7 @@ function refundAndPause(
     updateMetadata(streamId);
 ```
 
-**Parameters**
+Parameters
 
 | Name       | Type      | Description                                         |
 | ---------- | --------- | --------------------------------------------------- |
@@ -571,13 +571,13 @@ function refundMax(uint256 streamId)
     returns (uint128 refundedAmount);
 ```
 
-**Parameters**
+Parameters
 
 | Name       | Type      | Description                          |
 | ---------- | --------- | ------------------------------------ |
 | `streamId` | `uint256` | The ID of the stream to refund from. |
 
-**Returns**
+Returns
 
 | Name             | Type      | Description                                                            |
 | ---------------- | --------- | ---------------------------------------------------------------------- |
@@ -610,7 +610,7 @@ function restart(
     updateMetadata(streamId);
 ```
 
-**Parameters**
+Parameters
 
 | Name            | Type      | Description                                                                                                                |
 | --------------- | --------- | -------------------------------------------------------------------------------------------------------------------------- |
@@ -643,7 +643,7 @@ function restartAndDeposit(
     updateMetadata(streamId);
 ```
 
-**Parameters**
+Parameters
 
 | Name            | Type      | Description                                                                                                                |
 | --------------- | --------- | -------------------------------------------------------------------------------------------------------------------------- |
@@ -665,7 +665,7 @@ For more information, see the documentation for {nativeToken}. Emits a {SetNativ
 function setNativeToken(address newNativeToken) external override onlyComptroller;
 ```
 
-**Parameters**
+Parameters
 
 | Name             | Type      | Description                      |
 | ---------------- | --------- | -------------------------------- |
@@ -684,7 +684,7 @@ Emits a {SetNFTDescriptor} and {BatchMetadataUpdate} event. Notes:
 function setNFTDescriptor(IFlowNFTDescriptor newNFTDescriptor) external override onlyComptroller;
 ```
 
-**Parameters**
+Parameters
 
 | Name               | Type                 | Description                                     |
 | ------------------ | -------------------- | ----------------------------------------------- |
@@ -718,7 +718,7 @@ functions using {IBatch.batch}. Requirements:
 function transferFromPayable(address from, address to, uint256 streamId) external payable;
 ```
 
-**Parameters**
+Parameters
 
 | Name       | Type      | Description                                    |
 | ---------- | --------- | ---------------------------------------------- |
@@ -738,7 +738,7 @@ Emits a {Transfer} event. Requirements:
 function transferTokens(IERC20 token, address to, uint128 amount) external payable;
 ```
 
-**Parameters**
+Parameters
 
 | Name     | Type      | Description                                                    |
 | -------- | --------- | -------------------------------------------------------------- |
@@ -772,7 +772,7 @@ function void(uint256 streamId)
     updateMetadata(streamId);
 ```
 
-**Parameters**
+Parameters
 
 | Name       | Type      | Description                   |
 | ---------- | --------- | ----------------------------- |
@@ -806,7 +806,7 @@ function withdraw(
     updateMetadata(streamId);
 ```
 
-**Parameters**
+Parameters
 
 | Name       | Type      | Description                                          |
 | ---------- | --------- | ---------------------------------------------------- |
@@ -837,14 +837,14 @@ function withdrawMax(
     returns (uint128 withdrawnAmount);
 ```
 
-**Parameters**
+Parameters
 
 | Name       | Type      | Description                                 |
 | ---------- | --------- | ------------------------------------------- |
 | `streamId` | `uint256` | The ID of the stream to withdraw from.      |
 | `to`       | `address` | The address receiving the withdrawn tokens. |
 
-**Returns**
+Returns
 
 | Name              | Type      | Description                                                         |
 | ----------------- | --------- | ------------------------------------------------------------------- |
@@ -869,7 +869,7 @@ function _update(
     returns (address);
 ```
 
-**Parameters**
+Parameters
 
 | Name       | Type      | Description                                                                                                                                                           |
 | ---------- | --------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -877,7 +877,7 @@ function _update(
 | `streamId` | `uint256` | ID of the stream to update.                                                                                                                                           |
 | `auth`     | `address` | Optional parameter. If the value is not zero, the overridden implementation will check that `auth` is either the recipient of the stream, or an approved third party. |
 
-**Returns**
+Returns
 
 | Name     | Type      | Description                                                 |
 | -------- | --------- | ----------------------------------------------------------- |
@@ -899,7 +899,7 @@ Checks whether `msg.sender` is the stream's recipient or an approved third party
 function _isCallerStreamRecipientOrApproved(uint256 streamId, address recipient) private view returns (bool);
 ```
 
-**Parameters**
+Parameters
 
 | Name        | Type      | Description                  |
 | ----------- | --------- | ---------------------------- |

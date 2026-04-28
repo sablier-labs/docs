@@ -4,9 +4,9 @@ sidebar_position: 1
 
 # SablierLockup
 
-[Git Source](https://github.com/sablier-labs/evm-monorepo/blob/d6f6f1d4bb0a5bf508c1d0d7c1b59cd8879d56f9/src/SablierLockup.sol)
+[Git Source](https://github.com/sablier-labs/evm-monorepo/blob/003a71932c0e26e767a02c21205a077469406ac8/src/SablierLockup.sol)
 
-**Inherits:** [Batch](/docs/reference/lockup/contracts/abstracts/abstract.Batch.md),
+Inherits: [Batch](/docs/reference/lockup/contracts/abstracts/abstract.Batch.md),
 [Comptrollerable](/docs/reference/lockup/contracts/abstracts/abstract.Comptrollerable.md), ERC721,
 [ISablierLockup](/docs/reference/lockup/contracts/interfaces/interface.ISablierLockup.md),
 [SablierLockupDynamic](/docs/reference/lockup/contracts/abstracts/abstract.SablierLockupDynamic.md),
@@ -14,7 +14,7 @@ sidebar_position: 1
 [SablierLockupPriceGated](/docs/reference/lockup/contracts/abstracts/abstract.SablierLockupPriceGated.md),
 [SablierLockupTranched](/docs/reference/lockup/contracts/abstracts/abstract.SablierLockupTranched.md)
 
-**Title:** SablierLockup
+Title: SablierLockup
 
 See the documentation in [ISablierLockup](/docs/reference/lockup/contracts/interfaces/interface.ISablierLockup.md).
 
@@ -32,7 +32,7 @@ constructor(
     SablierLockupState(initialNFTDescriptor);
 ```
 
-**Parameters**
+Parameters
 
 | Name                   | Type      | Description                                      |
 | ---------------------- | --------- | ------------------------------------------------ |
@@ -49,7 +49,7 @@ Reverts if `streamId` references a null stream.
 function calculateMinFeeWei(uint256 streamId) external view override notNull(streamId) returns (uint256 minFeeWei);
 ```
 
-**Parameters**
+Parameters
 
 | Name       | Type      | Description                  |
 | ---------- | --------- | ---------------------------- |
@@ -65,7 +65,7 @@ Reverts if the NFT has been burned.
 function getRecipient(uint256 streamId) external view override returns (address recipient);
 ```
 
-**Parameters**
+Parameters
 
 | Name       | Type      | Description                  |
 | ---------- | --------- | ---------------------------- |
@@ -81,7 +81,7 @@ Reverts if `streamId` references a null stream.
 function isCold(uint256 streamId) external view override notNull(streamId) returns (bool result);
 ```
 
-**Parameters**
+Parameters
 
 | Name       | Type      | Description                  |
 | ---------- | --------- | ---------------------------- |
@@ -97,7 +97,7 @@ Reverts if `streamId` references a null stream.
 function isWarm(uint256 streamId) external view override notNull(streamId) returns (bool result);
 ```
 
-**Parameters**
+Parameters
 
 | Name       | Type      | Description                  |
 | ---------- | --------- | ---------------------------- |
@@ -119,7 +119,7 @@ function refundableAmountOf(uint256 streamId)
     returns (uint128 refundableAmount);
 ```
 
-**Parameters**
+Parameters
 
 | Name       | Type      | Description                  |
 | ---------- | --------- | ---------------------------- |
@@ -135,7 +135,7 @@ Reverts if `streamId` references a null stream.
 function statusOf(uint256 streamId) external view override notNull(streamId) returns (Lockup.Status status);
 ```
 
-**Parameters**
+Parameters
 
 | Name       | Type      | Description                  |
 | ---------- | --------- | ---------------------------- |
@@ -160,7 +160,7 @@ function streamedAmountOf(uint256 streamId)
     returns (uint128 streamedAmount);
 ```
 
-**Parameters**
+Parameters
 
 | Name       | Type      | Description                  |
 | ---------- | --------- | ---------------------------- |
@@ -197,7 +197,7 @@ function withdrawableAmountOf(uint256 streamId)
     returns (uint128 withdrawableAmount);
 ```
 
-**Parameters**
+Parameters
 
 | Name       | Type      | Description                  |
 | ---------- | --------- | ---------------------------- |
@@ -220,7 +220,7 @@ Emits an {AllowToHook} event. Notes:
 function allowToHook(address recipient) external override onlyComptroller;
 ```
 
-**Parameters**
+Parameters
 
 | Name        | Type      | Description                                     |
 | ----------- | --------- | ----------------------------------------------- |
@@ -241,7 +241,7 @@ Emits a {Transfer} and {MetadataUpdate} event. Requirements:
 function burn(uint256 streamId) external payable override noDelegateCall notNull(streamId);
 ```
 
-**Parameters**
+Parameters
 
 | Name       | Type      | Description                       |
 | ---------- | --------- | --------------------------------- |
@@ -270,13 +270,13 @@ function cancel(uint256 streamId)
     returns (uint128 refundedAmount);
 ```
 
-**Parameters**
+Parameters
 
 | Name       | Type      | Description                     |
 | ---------- | --------- | ------------------------------- |
 | `streamId` | `uint256` | The ID of the stream to cancel. |
 
-**Returns**
+Returns
 
 | Name             | Type      | Description                                                                  |
 | ---------------- | --------- | ---------------------------------------------------------------------------- |
@@ -303,13 +303,13 @@ function cancelMultiple(uint256[] calldata streamIds)
     returns (uint128[] memory refundedAmounts);
 ```
 
-**Parameters**
+Parameters
 
 | Name        | Type        | Description                       |
 | ----------- | ----------- | --------------------------------- |
 | `streamIds` | `uint256[]` | The IDs of the streams to cancel. |
 
-**Returns**
+Returns
 
 | Name              | Type        | Description                                                                   |
 | ----------------- | ----------- | ----------------------------------------------------------------------------- |
@@ -330,7 +330,7 @@ Notes:
 function recover(IERC20 token, address to) external override onlyComptroller;
 ```
 
-**Parameters**
+Parameters
 
 | Name    | Type      | Description                                              |
 | ------- | --------- | -------------------------------------------------------- |
@@ -353,7 +353,7 @@ Emits a {RenounceLockupStream} event. Notes:
 function renounce(uint256 streamId) public payable override noDelegateCall notNull(streamId);
 ```
 
-**Parameters**
+Parameters
 
 | Name       | Type      | Description                       |
 | ---------- | --------- | --------------------------------- |
@@ -373,7 +373,7 @@ For more information, see the documentation for {nativeToken}. Notes:
 function setNativeToken(address newNativeToken) external override onlyComptroller;
 ```
 
-**Parameters**
+Parameters
 
 | Name             | Type      | Description                      |
 | ---------------- | --------- | -------------------------------- |
@@ -392,7 +392,7 @@ Emits a {SetNFTDescriptor} and {BatchMetadataUpdate} event. Notes:
 function setNFTDescriptor(ILockupNFTDescriptor newNFTDescriptor) external override onlyComptroller;
 ```
 
-**Parameters**
+Parameters
 
 | Name               | Type                   | Description                                     |
 | ------------------ | ---------------------- | ----------------------------------------------- |
@@ -406,7 +406,7 @@ Emits a {Transfer}, {WithdrawFromLockupStream} and {MetadataUpdate} event. Notes
 
 - If `msg.sender` is not the recipient and the address is on the allowlist, this function will invoke a hook on the
   recipient.
-- The minimum fee in wei is calculated for the stream's sender using the **SablierComptroller** contract. Requirements:
+- The minimum fee in wei is calculated for the stream's sender using the SablierComptroller contract. Requirements:
 - Must not be delegate called.
 - `streamId` must not reference a null or depleted stream.
 - `to` must not be the zero address.
@@ -427,7 +427,7 @@ function withdraw(
     notNull(streamId);
 ```
 
-**Parameters**
+Parameters
 
 | Name       | Type      | Description                                                       |
 | ---------- | --------- | ----------------------------------------------------------------- |
@@ -448,14 +448,14 @@ Emits a {Transfer}, {WithdrawFromLockupStream} and {MetadataUpdate} event. Notes
 function withdrawMax(uint256 streamId, address to) external payable override returns (uint128 withdrawnAmount);
 ```
 
-**Parameters**
+Parameters
 
 | Name       | Type      | Description                                 |
 | ---------- | --------- | ------------------------------------------- |
 | `streamId` | `uint256` | The ID of the stream to withdraw from.      |
 | `to`       | `address` | The address receiving the withdrawn tokens. |
 
-**Returns**
+Returns
 
 | Name              | Type      | Description                                                     |
 | ----------------- | --------- | --------------------------------------------------------------- |
@@ -487,14 +487,14 @@ function withdrawMaxAndTransfer(
     returns (uint128 withdrawnAmount);
 ```
 
-**Parameters**
+Parameters
 
 | Name           | Type      | Description                                     |
 | -------------- | --------- | ----------------------------------------------- |
 | `streamId`     | `uint256` | The ID of the stream NFT to transfer.           |
 | `newRecipient` | `address` | The address of the new owner of the stream NFT. |
 
-**Returns**
+Returns
 
 | Name              | Type      | Description                                                     |
 | ----------------- | --------- | --------------------------------------------------------------- |
@@ -526,7 +526,7 @@ function withdrawMultiple(
     noDelegateCall;
 ```
 
-**Parameters**
+Parameters
 
 | Name        | Type        | Description                                                        |
 | ----------- | ----------- | ------------------------------------------------------------------ |
@@ -582,7 +582,7 @@ There are two cases when the transferable flag is ignored:
 function _update(address to, uint256 streamId, address auth) internal override returns (address);
 ```
 
-**Parameters**
+Parameters
 
 | Name       | Type      | Description                                                                                                                                                           |
 | ---------- | --------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -590,7 +590,7 @@ function _update(address to, uint256 streamId, address auth) internal override r
 | `streamId` | `uint256` | ID of the stream to update.                                                                                                                                           |
 | `auth`     | `address` | Optional parameter. If the value is not zero, the overridden implementation will check that `auth` is either the recipient of the stream, or an approved third party. |
 
-**Returns**
+Returns
 
 | Name     | Type      | Description                                                 |
 | -------- | --------- | ----------------------------------------------------------- |
@@ -605,7 +605,7 @@ advance.
 function _isCallerStreamRecipientOrApproved(uint256 streamId, address recipient) private view returns (bool);
 ```
 
-**Parameters**
+Parameters
 
 | Name        | Type      | Description                            |
 | ----------- | --------- | -------------------------------------- |

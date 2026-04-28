@@ -1,8 +1,8 @@
 # ISablierBobState
 
-[Git Source](https://github.com/sablier-labs/evm-monorepo/blob/d6f6f1d4bb0a5bf508c1d0d7c1b59cd8879d56f9/src/interfaces/ISablierBobState.sol)
+[Git Source](https://github.com/sablier-labs/evm-monorepo/blob/003a71932c0e26e767a02c21205a077469406ac8/src/interfaces/ISablierBobState.sol)
 
-**Title:** ISablierBobState
+Title: ISablierBobState
 
 Contract with state variables for the [SablierBob](/docs/reference/bob/contracts/contract.SablierBob.md) contract, their
 respective getters and modifiers.
@@ -29,13 +29,13 @@ Zero address means no adapter is set.
 function getDefaultAdapterFor(IERC20 token) external view returns (ISablierBobAdapter adapter);
 ```
 
-**Parameters**
+Parameters
 
 | Name    | Type     | Description                                        |
 | ------- | -------- | -------------------------------------------------- |
 | `token` | `IERC20` | The ERC-20 token to query the default adapter for. |
 
-**Returns**
+Returns
 
 | Name      | Type                 | Description                        |
 | --------- | -------------------- | ---------------------------------- |

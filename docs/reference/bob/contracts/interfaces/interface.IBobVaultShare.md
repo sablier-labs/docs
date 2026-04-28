@@ -1,10 +1,10 @@
 # IBobVaultShare
 
-[Git Source](https://github.com/sablier-labs/evm-monorepo/blob/d6f6f1d4bb0a5bf508c1d0d7c1b59cd8879d56f9/src/interfaces/IBobVaultShare.sol)
+[Git Source](https://github.com/sablier-labs/evm-monorepo/blob/003a71932c0e26e767a02c21205a077469406ac8/src/interfaces/IBobVaultShare.sol)
 
-**Inherits:** IERC20Metadata
+Inherits: IERC20Metadata
 
-**Title:** IBobVaultShare
+Title: IBobVaultShare
 
 Interface for the ERC-20 token representing shares in a Bob vault.
 
@@ -44,7 +44,7 @@ Emits a {Transfer} event. Requirements:
 function mint(uint256 vaultId, address to, uint256 amount) external;
 ```
 
-**Parameters**
+Parameters
 
 | Name      | Type      | Description                                    |
 | --------- | --------- | ---------------------------------------------- |
@@ -67,7 +67,7 @@ Emits a {Transfer} event. Requirements:
 function burn(uint256 vaultId, address from, uint256 amount) external;
 ```
 
-**Parameters**
+Parameters
 
 | Name      | Type      | Description                                    |
 | --------- | --------- | ---------------------------------------------- |

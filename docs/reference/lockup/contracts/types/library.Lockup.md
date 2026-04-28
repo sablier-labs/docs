@@ -1,6 +1,6 @@
 # Lockup
 
-[Git Source](https://github.com/sablier-labs/evm-monorepo/blob/d6f6f1d4bb0a5bf508c1d0d7c1b59cd8879d56f9/src/types/Lockup.sol)
+[Git Source](https://github.com/sablier-labs/evm-monorepo/blob/003a71932c0e26e767a02c21205a077469406ac8/src/types/Lockup.sol)
 
 Namespace for the structs shared by all Lockup models.
 
@@ -22,7 +22,7 @@ struct Amounts {
 }
 ```
 
-**Properties**
+Properties
 
 | Name        | Type      | Description                                                                             |
 | ----------- | --------- | --------------------------------------------------------------------------------------- |
@@ -48,7 +48,7 @@ struct CreateEventCommon {
 }
 ```
 
-**Properties**
+Properties
 
 | Name            | Type                | Description                                                                                                          |
 | --------------- | ------------------- | -------------------------------------------------------------------------------------------------------------------- |
@@ -78,7 +78,7 @@ struct CreateWithDurations {
 }
 ```
 
-**Properties**
+Properties
 
 | Name            | Type      | Description                                                                                                                 |
 | --------------- | --------- | --------------------------------------------------------------------------------------------------------------------------- |
@@ -107,7 +107,7 @@ struct CreateWithTimestamps {
 }
 ```
 
-**Properties**
+Properties
 
 | Name            | Type         | Description                                                                                                                 |
 | --------------- | ------------ | --------------------------------------------------------------------------------------------------------------------------- |
@@ -144,7 +144,7 @@ struct Stream {
 }
 ```
 
-**Properties**
+Properties
 
 | Name             | Type      | Description                                                                                                       |
 | ---------------- | --------- | ----------------------------------------------------------------------------------------------------------------- |
@@ -170,7 +170,7 @@ struct Timestamps {
 }
 ```
 
-**Properties**
+Properties
 
 | Name    | Type     | Description                                |
 | ------- | -------- | ------------------------------------------ |
@@ -203,7 +203,7 @@ The status can have a "temperature":
 1. Warm: Pending, Streaming. The passage of time alone can change the status.
 2. Cold: Settled, Canceled, Depleted. The passage of time alone cannot change the status.
 
-**Notes:**
+Notes:
 
 - value0: PENDING Stream created but not started; tokens are in a pending state.
 

@@ -1,10 +1,10 @@
 # ISablierMerkleLockup
 
-[Git Source](https://github.com/sablier-labs/evm-monorepo/blob/d6f6f1d4bb0a5bf508c1d0d7c1b59cd8879d56f9/src/interfaces/ISablierMerkleLockup.sol)
+[Git Source](https://github.com/sablier-labs/evm-monorepo/blob/003a71932c0e26e767a02c21205a077469406ac8/src/interfaces/ISablierMerkleLockup.sol)
 
-**Inherits:** [ISablierMerkleBase](/docs/reference/airdrops/contracts/interfaces/interface.ISablierMerkleBase.md)
+Inherits: [ISablierMerkleBase](/docs/reference/airdrops/contracts/interfaces/interface.ISablierMerkleBase.md)
 
-**Title:** ISablierMerkleLockup
+Title: ISablierMerkleLockup
 
 MerkleLockup enables Airstreams (a portmanteau of "airdrop" and "stream"), an airdrop model where the tokens are vested
 over time, as opposed to being unlocked at once. The vesting is provided by Sablier Lockup.

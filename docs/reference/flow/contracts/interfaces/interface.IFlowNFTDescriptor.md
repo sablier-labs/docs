@@ -1,8 +1,8 @@
 # IFlowNFTDescriptor
 
-[Git Source](https://github.com/sablier-labs/evm-monorepo/blob/d6f6f1d4bb0a5bf508c1d0d7c1b59cd8879d56f9/src/interfaces/IFlowNFTDescriptor.sol)
+[Git Source](https://github.com/sablier-labs/evm-monorepo/blob/003a71932c0e26e767a02c21205a077469406ac8/src/interfaces/IFlowNFTDescriptor.sol)
 
-**Title:** IFlowNFTDescriptor
+Title: IFlowNFTDescriptor
 
 This contract generates the URI describing the Sablier Flow stream NFTs.
 
@@ -18,14 +18,14 @@ Currently it returns the Sablier logo as an SVG. In the future, it will return a
 function tokenURI(IERC721Metadata sablierFlow, uint256 streamId) external view returns (string memory uri);
 ```
 
-**Parameters**
+Parameters
 
 | Name          | Type              | Description                                                |
 | ------------- | ----------------- | ---------------------------------------------------------- |
 | `sablierFlow` | `IERC721Metadata` | The address of the Sablier Flow the stream was created in. |
 | `streamId`    | `uint256`         | The ID of the stream for which to produce a description.   |
 
-**Returns**
+Returns
 
 | Name  | Type     | Description                               |
 | ----- | -------- | ----------------------------------------- |

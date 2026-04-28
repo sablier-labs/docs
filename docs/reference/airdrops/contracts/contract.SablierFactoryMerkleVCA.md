@@ -4,13 +4,13 @@ sidebar_position: 2
 
 # SablierFactoryMerkleVCA
 
-[Git Source](https://github.com/sablier-labs/evm-monorepo/blob/d6f6f1d4bb0a5bf508c1d0d7c1b59cd8879d56f9/src/SablierFactoryMerkleVCA.sol)
+[Git Source](https://github.com/sablier-labs/evm-monorepo/blob/003a71932c0e26e767a02c21205a077469406ac8/src/SablierFactoryMerkleVCA.sol)
 
-**Inherits:**
+Inherits:
 [ISablierFactoryMerkleVCA](/docs/reference/airdrops/contracts/interfaces/interface.ISablierFactoryMerkleVCA.md),
 [SablierFactoryMerkleBase](/docs/reference/airdrops/contracts/abstracts/abstract.SablierFactoryMerkleBase.md)
 
-**Title:** SablierFactoryMerkleVCA
+Title: SablierFactoryMerkleVCA
 
 See the documentation in
 [ISablierFactoryMerkleVCA](/docs/reference/airdrops/contracts/interfaces/interface.ISablierFactoryMerkleVCA.md).
@@ -23,7 +23,7 @@ See the documentation in
 constructor(address initialComptroller) SablierFactoryMerkleBase(initialComptroller);
 ```
 
-**Parameters**
+Parameters
 
 | Name                 | Type      | Description                                      |
 | -------------------- | --------- | ------------------------------------------------ |
@@ -75,14 +75,14 @@ function createMerkleVCA(
     returns (ISablierMerkleVCA merkleVCA);
 ```
 
-**Parameters**
+Parameters
 
 | Name             | Type                          | Description                                                                                                              |
 | ---------------- | ----------------------------- | ------------------------------------------------------------------------------------------------------------------------ |
 | `campaignParams` | `MerkleVCA.ConstructorParams` | Struct encapsulating the [SablierMerkleVCA](/docs/reference/airdrops/contracts/contract.SablierMerkleVCA.md) parameters. |
 | `recipientCount` | `uint256`                     | The total number of recipient addresses eligible for the airdrop.                                                        |
 
-**Returns**
+Returns
 
 | Name        | Type                | Description                                          |
 | ----------- | ------------------- | ---------------------------------------------------- |

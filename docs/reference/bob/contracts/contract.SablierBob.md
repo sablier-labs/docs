@@ -4,13 +4,13 @@ sidebar_position: 2
 
 # SablierBob
 
-[Git Source](https://github.com/sablier-labs/evm-monorepo/blob/d6f6f1d4bb0a5bf508c1d0d7c1b59cd8879d56f9/src/SablierBob.sol)
+[Git Source](https://github.com/sablier-labs/evm-monorepo/blob/003a71932c0e26e767a02c21205a077469406ac8/src/SablierBob.sol)
 
-**Inherits:** [Comptrollerable](/docs/reference/bob/contracts/abstracts/abstract.Comptrollerable.md),
+Inherits: [Comptrollerable](/docs/reference/bob/contracts/abstracts/abstract.Comptrollerable.md),
 [ISablierBob](/docs/reference/bob/contracts/interfaces/interface.ISablierBob.md), ReentrancyGuard,
 [SablierBobState](/docs/reference/bob/contracts/abstracts/abstract.SablierBobState.md)
 
-**Title:** SablierBob
+Title: SablierBob
 
 See the documentation in [ISablierBob](/docs/reference/bob/contracts/interfaces/interface.ISablierBob.md).
 
@@ -30,7 +30,7 @@ modifier onlyActive(uint256 vaultId) ;
 constructor(address initialComptroller) [Comptrollerable](/docs/reference/bob/contracts/abstracts/abstract.Comptrollerable.md)(initialComptroller) SablierBobState();
 ```
 
-**Parameters**
+Parameters
 
 | Name                 | Type      | Description                                      |
 | -------------------- | --------- | ------------------------------------------------ |
@@ -47,7 +47,7 @@ Reverts if `vaultId` references a null vault.
 function calculateMinFeeWei(uint256 vaultId) external view override notNull(vaultId) returns (uint256 minFeeWei);
 ```
 
-**Parameters**
+Parameters
 
 | Name      | Type      | Description                 |
 | --------- | --------- | --------------------------- |
@@ -84,7 +84,7 @@ function createVault(
     returns (uint256 vaultId);
 ```
 
-**Parameters**
+Parameters
 
 | Name          | Type                    | Description                                                                                                               |
 | ------------- | ----------------------- | ------------------------------------------------------------------------------------------------------------------------- |
@@ -93,7 +93,7 @@ function createVault(
 | `expiry`      | `uint40`                | The Unix timestamp when the vault expires.                                                                                |
 | `targetPrice` | `uint128`               | The target price at which the vault settles, denominated in Chainlink's 8-decimal format for USD prices, where 1e8 is $1. |
 
-**Returns**
+Returns
 
 | Name      | Type      | Description                        |
 | --------- | --------- | ---------------------------------- |
@@ -121,7 +121,7 @@ function enter(uint256 vaultId, uint128 amount)
     onlyActive(vaultId);
 ```
 
-**Parameters**
+Parameters
 
 | Name      | Type      | Description                          |
 | --------- | --------- | ------------------------------------ |
@@ -149,7 +149,7 @@ function enterWithNativeToken(uint256 vaultId)
     onlyActive(vaultId);
 ```
 
-**Parameters**
+Parameters
 
 | Name      | Type      | Description                          |
 | --------- | --------- | ------------------------------------ |
@@ -183,13 +183,13 @@ function redeem(uint256 vaultId)
     returns (uint128 transferAmount, uint128 feeAmountDeductedFromYield);
 ```
 
-**Parameters**
+Parameters
 
 | Name      | Type      | Description                         |
 | --------- | --------- | ----------------------------------- |
 | `vaultId` | `uint256` | The ID of the vault to redeem from. |
 
-**Returns**
+Returns
 
 | Name                         | Type      | Description                                                                                                  |
 | ---------------------------- | --------- | ------------------------------------------------------------------------------------------------------------ |
@@ -210,7 +210,7 @@ For more information, see the documentation for {nativeToken}. Emits a {SetNativ
 function setNativeToken(address newNativeToken) external override onlyComptroller;
 ```
 
-**Parameters**
+Parameters
 
 | Name             | Type      | Description                      |
 | ---------------- | --------- | -------------------------------- |
@@ -231,7 +231,7 @@ Emits a {SetDefaultAdapter} event. Notes:
 function setDefaultAdapter(IERC20 token, ISablierBobAdapter newAdapter) external override onlyComptroller;
 ```
 
-**Parameters**
+Parameters
 
 | Name         | Type                 | Description                               |
 | ------------ | -------------------- | ----------------------------------------- |
@@ -261,13 +261,13 @@ function syncPriceFromOracle(uint256 vaultId)
     returns (uint128 latestPrice);
 ```
 
-**Parameters**
+Parameters
 
 | Name      | Type      | Description                  |
 | --------- | --------- | ---------------------------- |
 | `vaultId` | `uint256` | The ID of the vault to sync. |
 
-**Returns**
+Returns
 
 | Name          | Type      | Description                                                                                                            |
 | ------------- | --------- | ---------------------------------------------------------------------------------------------------------------------- |
@@ -295,13 +295,13 @@ function unstakeTokensViaAdapter(uint256 vaultId)
     returns (uint128 amountReceivedFromAdapter);
 ```
 
-**Parameters**
+Parameters
 
 | Name      | Type      | Description          |
 | --------- | --------- | -------------------- |
 | `vaultId` | `uint256` | The ID of the vault. |
 
-**Returns**
+Returns
 
 | Name                        | Type      | Description                                     |
 | --------------------------- | --------- | ----------------------------------------------- |
@@ -327,7 +327,7 @@ function onShareTransfer(
     override;
 ```
 
-**Parameters**
+Parameters
 
 | Name                | Type      | Description                                                    |
 | ------------------- | --------- | -------------------------------------------------------------- |
@@ -345,7 +345,7 @@ Common function to enter into a vault by depositing tokens into it and minting s
 function _enter(uint256 vaultId, address from, uint128 amount, IERC20 token) private;
 ```
 
-**Parameters**
+Parameters
 
 | Name      | Type      | Description                                                                                                                                   |
 | --------- | --------- | --------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -362,7 +362,7 @@ Private function that reverts if the vault is settled or expired.
 function _revertIfSettledOrExpired(uint256 vaultId) private view;
 ```
 
-**Parameters**
+Parameters
 
 | Name      | Type      | Description          |
 | --------- | --------- | -------------------- |
@@ -376,13 +376,13 @@ Private function to fetch the latest oracle price and update it in the vault sto
 function _syncPriceFromOracle(uint256 vaultId) private returns (uint128 latestPrice);
 ```
 
-**Parameters**
+Parameters
 
 | Name      | Type      | Description          |
 | --------- | --------- | -------------------- |
 | `vaultId` | `uint256` | The ID of the vault. |
 
-**Returns**
+Returns
 
 | Name          | Type      | Description                       |
 | ------------- | --------- | --------------------------------- |
@@ -401,14 +401,14 @@ function _unstakeFullAmountViaAdapter(
     returns (uint128 amountReceivedFromAdapter);
 ```
 
-**Parameters**
+Parameters
 
 | Name      | Type                 | Description                       |
 | --------- | -------------------- | --------------------------------- |
 | `vaultId` | `uint256`            | The ID of the vault.              |
 | `adapter` | `ISablierBobAdapter` | The adapter to use for unstaking. |
 
-**Returns**
+Returns
 
 | Name                        | Type      | Description                                                     |
 | --------------------------- | --------- | --------------------------------------------------------------- |

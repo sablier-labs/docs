@@ -1,11 +1,10 @@
 # ISablierMerkleVCA
 
-[Git Source](https://github.com/sablier-labs/evm-monorepo/blob/d6f6f1d4bb0a5bf508c1d0d7c1b59cd8879d56f9/src/interfaces/ISablierMerkleVCA.sol)
+[Git Source](https://github.com/sablier-labs/evm-monorepo/blob/003a71932c0e26e767a02c21205a077469406ac8/src/interfaces/ISablierMerkleVCA.sol)
 
-**Inherits:**
-[ISablierMerkleSignature](/docs/reference/airdrops/contracts/interfaces/interface.ISablierMerkleSignature.md)
+Inherits: [ISablierMerkleSignature](/docs/reference/airdrops/contracts/interfaces/interface.ISablierMerkleSignature.md)
 
-**Title:** ISablierMerkleVCA
+Title: ISablierMerkleVCA
 
 VCA stands for Variable Claim Amount, and is an airdrop model where the claim amount increases linearly until the
 airdrop period ends. Claiming early results in forgoing the remaining amount, whereas claiming after the period grants
@@ -56,14 +55,14 @@ This is for informational purposes only. To actually claim the airdrop, a Merkle
 function calculateClaimAmount(uint128 fullAmount, uint40 claimTime) external view returns (uint128);
 ```
 
-**Parameters**
+Parameters
 
 | Name         | Type      | Description                                                                                     |
 | ------------ | --------- | ----------------------------------------------------------------------------------------------- |
 | `fullAmount` | `uint128` | The amount of tokens allocated to a user, denominated in the token's decimals.                  |
 | `claimTime`  | `uint40`  | A hypothetical time at which to make the claim. Zero is a sentinel value for `block.timestamp`. |
 
-**Returns**
+Returns
 
 | Name     | Type      | Description                                                            |
 | -------- | --------- | ---------------------------------------------------------------------- |
@@ -80,14 +79,14 @@ cannot be made, no amount can be forgone.
 function calculateForgoneAmount(uint128 fullAmount, uint40 claimTime) external view returns (uint128);
 ```
 
-**Parameters**
+Parameters
 
 | Name         | Type      | Description                                                                                     |
 | ------------ | --------- | ----------------------------------------------------------------------------------------------- |
 | `fullAmount` | `uint128` | The amount of tokens allocated to a user, denominated in the token's decimals.                  |
 | `claimTime`  | `uint40`  | A hypothetical time at which to make the claim. Zero is a sentinel value for `block.timestamp`. |
 
-**Returns**
+Returns
 
 | Name     | Type      | Description                                                            |
 | -------- | --------- | ---------------------------------------------------------------------- |
@@ -107,7 +106,7 @@ Notes:
 function calculateRedistributionRewards(uint128 fullAmount) external view returns (uint128);
 ```
 
-**Parameters**
+Parameters
 
 | Name         | Type      | Description                                                                    |
 | ------------ | --------- | ------------------------------------------------------------------------------ |
@@ -169,7 +168,7 @@ event if the redistribution is enabled. Notes:
 function claimTo(uint256 index, address to, uint128 fullAmount, bytes32[] calldata merkleProof) external payable;
 ```
 
-**Parameters**
+Parameters
 
 | Name          | Type        | Description                                                        |
 | ------------- | ----------- | ------------------------------------------------------------------ |
@@ -212,7 +211,7 @@ function claimViaAttestation(
     payable;
 ```
 
-**Parameters**
+Parameters
 
 | Name          | Type        | Description                                                             |
 | ------------- | ----------- | ----------------------------------------------------------------------- |
@@ -285,7 +284,7 @@ function claimViaSig(
     payable;
 ```
 
-**Parameters**
+Parameters
 
 | Name          | Type        | Description                                                          |
 | ------------- | ----------- | -------------------------------------------------------------------- |

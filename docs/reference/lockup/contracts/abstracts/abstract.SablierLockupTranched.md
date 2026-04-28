@@ -1,12 +1,12 @@
 # SablierLockupTranched
 
-[Git Source](https://github.com/sablier-labs/evm-monorepo/blob/d6f6f1d4bb0a5bf508c1d0d7c1b59cd8879d56f9/src/abstracts/SablierLockupTranched.sol)
+[Git Source](https://github.com/sablier-labs/evm-monorepo/blob/003a71932c0e26e767a02c21205a077469406ac8/src/abstracts/SablierLockupTranched.sol)
 
-**Inherits:** [ISablierLockupTranched](/docs/reference/lockup/contracts/interfaces/interface.ISablierLockupTranched.md),
+Inherits: [ISablierLockupTranched](/docs/reference/lockup/contracts/interfaces/interface.ISablierLockupTranched.md),
 [NoDelegateCall](/docs/reference/lockup/contracts/abstracts/abstract.NoDelegateCall.md),
 [SablierLockupState](/docs/reference/lockup/contracts/abstracts/abstract.SablierLockupState.md)
 
-**Title:** SablierLockupTranched
+Title: SablierLockupTranched
 
 See the documentation in
 [ISablierLockupTranched](/docs/reference/lockup/contracts/interfaces/interface.ISablierLockupTranched.md).
@@ -35,14 +35,14 @@ function createWithDurationsLT(
     returns (uint256 streamId);
 ```
 
-**Parameters**
+Parameters
 
 | Name                   | Type                                   | Description                                                                                                                                                                                  |
 | ---------------------- | -------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `params`               | `Lockup.CreateWithDurations`           | Struct encapsulating the function parameters, which are documented in {Lockup} type.                                                                                                         |
 | `tranchesWithDuration` | `LockupTranched.TrancheWithDuration[]` | Tranches with durations used to compose the tranched distribution function. Timestamps are calculated by starting from `block.timestamp` and adding each duration to the previous timestamp. |
 
-**Returns**
+Returns
 
 | Name       | Type      | Description                         |
 | ---------- | --------- | ----------------------------------- |
@@ -82,14 +82,14 @@ function createWithTimestampsLT(
     returns (uint256 streamId);
 ```
 
-**Parameters**
+Parameters
 
 | Name       | Type                          | Description                                                                          |
 | ---------- | ----------------------------- | ------------------------------------------------------------------------------------ |
 | `params`   | `Lockup.CreateWithTimestamps` | Struct encapsulating the function parameters, which are documented in {Lockup} type. |
 | `tranches` | `LockupTranched.Tranche[]`    | Tranches used to compose the tranched distribution function.                         |
 
-**Returns**
+Returns
 
 | Name       | Type      | Description                         |
 | ---------- | --------- | ----------------------------------- |

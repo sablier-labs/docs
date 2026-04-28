@@ -1,11 +1,11 @@
 # ISablierFlow
 
-[Git Source](https://github.com/sablier-labs/evm-monorepo/blob/d6f6f1d4bb0a5bf508c1d0d7c1b59cd8879d56f9/src/interfaces/ISablierFlow.sol)
+[Git Source](https://github.com/sablier-labs/evm-monorepo/blob/003a71932c0e26e767a02c21205a077469406ac8/src/interfaces/ISablierFlow.sol)
 
-**Inherits:** IBatch, IComptrollerable, IERC4906, IERC721Metadata,
+Inherits: IBatch, IComptrollerable, IERC4906, IERC721Metadata,
 [ISablierFlowState](/docs/reference/flow/contracts/interfaces/interface.ISablierFlowState.md)
 
-**Title:** ISablierFlow
+Title: ISablierFlow
 
 Creates and manages Flow streams with linear streaming functions.
 
@@ -21,7 +21,7 @@ Reverts if `streamId` references a null stream.
 function calculateMinFeeWei(uint256 streamId) external view returns (uint256 minFeeWei);
 ```
 
-**Parameters**
+Parameters
 
 | Name       | Type      | Description                  |
 | ---------- | --------- | ---------------------------- |
@@ -37,7 +37,7 @@ Reverts if `streamId` references a null stream.
 function coveredDebtOf(uint256 streamId) external view returns (uint128 coveredDebt);
 ```
 
-**Parameters**
+Parameters
 
 | Name       | Type      | Description                  |
 | ---------- | --------- | ---------------------------- |
@@ -57,7 +57,7 @@ Reverts on the following conditions:
 function depletionTimeOf(uint256 streamId) external view returns (uint256 depletionTime);
 ```
 
-**Parameters**
+Parameters
 
 | Name       | Type      | Description                  |
 | ---------- | --------- | ---------------------------- |
@@ -73,7 +73,7 @@ Reverts if `streamId` references a null stream.
 function getRecipient(uint256 streamId) external view returns (address recipient);
 ```
 
-**Parameters**
+Parameters
 
 | Name       | Type      | Description                  |
 | ---------- | --------- | ---------------------------- |
@@ -90,7 +90,7 @@ Reverts if `streamId` references a null stream.
 function ongoingDebtScaledOf(uint256 streamId) external view returns (uint256 ongoingDebtScaled);
 ```
 
-**Parameters**
+Parameters
 
 | Name       | Type      | Description                  |
 | ---------- | --------- | ---------------------------- |
@@ -106,7 +106,7 @@ Reverts if `streamId` references a null stream.
 function refundableAmountOf(uint256 streamId) external view returns (uint128 refundableAmount);
 ```
 
-**Parameters**
+Parameters
 
 | Name       | Type      | Description                  |
 | ---------- | --------- | ---------------------------- |
@@ -123,7 +123,7 @@ of this function as streams can be paused and resumed at any moment.
 function statusOf(uint256 streamId) external view returns (Flow.Status status);
 ```
 
-**Parameters**
+Parameters
 
 | Name       | Type      | Description                  |
 | ---------- | --------- | ---------------------------- |
@@ -139,7 +139,7 @@ Reverts if `streamId` references a null stream.
 function totalDebtOf(uint256 streamId) external view returns (uint256 totalDebt);
 ```
 
-**Parameters**
+Parameters
 
 | Name       | Type      | Description                  |
 | ---------- | --------- | ---------------------------- |
@@ -155,7 +155,7 @@ Reverts if `streamId` references a null stream.
 function uncoveredDebtOf(uint256 streamId) external view returns (uint256 uncoveredDebt);
 ```
 
-**Parameters**
+Parameters
 
 | Name       | Type      | Description                  |
 | ---------- | --------- | ---------------------------- |
@@ -172,13 +172,13 @@ Reverts if `streamId` references a null stream.
 function withdrawableAmountOf(uint256 streamId) external view returns (uint128 withdrawableAmount);
 ```
 
-**Parameters**
+Parameters
 
 | Name       | Type      | Description                  |
 | ---------- | --------- | ---------------------------- |
 | `streamId` | `uint256` | The stream ID for the query. |
 
-**Returns**
+Returns
 
 | Name                 | Type      | Description                                 |
 | -------------------- | --------- | ------------------------------------------- |
@@ -201,7 +201,7 @@ Emits a [AdjustFlowStream](/docs/reference/flow/contracts/interfaces/interface.I
 function adjustRatePerSecond(uint256 streamId, UD21x18 newRatePerSecond) external payable;
 ```
 
-**Parameters**
+Parameters
 
 | Name               | Type      | Description                                                                                |
 | ------------------ | --------- | ------------------------------------------------------------------------------------------ |
@@ -237,7 +237,7 @@ function create(
     returns (uint256 streamId);
 ```
 
-**Parameters**
+Parameters
 
 | Name            | Type      | Description                                                                                                                                  |
 | --------------- | --------- | -------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -248,7 +248,7 @@ function create(
 | `token`         | `IERC20`  | The contract address of the ERC-20 token to be streamed.                                                                                     |
 | `transferable`  | `bool`    | Boolean indicating if the stream NFT is transferable.                                                                                        |
 
-**Returns**
+Returns
 
 | Name       | Type      | Description                         |
 | ---------- | --------- | ----------------------------------- |
@@ -284,7 +284,7 @@ function createAndDeposit(
     returns (uint256 streamId);
 ```
 
-**Parameters**
+Parameters
 
 | Name            | Type      | Description                                                                                                                                  |
 | --------------- | --------- | -------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -296,7 +296,7 @@ function createAndDeposit(
 | `transferable`  | `bool`    | Boolean indicating if the stream NFT is transferable.                                                                                        |
 | `amount`        | `uint128` | The deposit amount, denoted in token's decimals.                                                                                             |
 
-**Returns**
+Returns
 
 | Name       | Type      | Description                         |
 | ---------- | --------- | ----------------------------------- |
@@ -319,7 +319,7 @@ Emits a {Transfer},
 function deposit(uint256 streamId, uint128 amount, address sender, address recipient) external payable;
 ```
 
-**Parameters**
+Parameters
 
 | Name        | Type      | Description                                      |
 | ----------- | --------- | ------------------------------------------------ |
@@ -346,7 +346,7 @@ Emits a {Transfer},
 function depositAndPause(uint256 streamId, uint128 amount) external payable;
 ```
 
-**Parameters**
+Parameters
 
 | Name       | Type      | Description                                         |
 | ---------- | --------- | --------------------------------------------------- |
@@ -370,7 +370,7 @@ Emits a [PauseFlowStream](/docs/reference/flow/contracts/interfaces/interface.IS
 function pause(uint256 streamId) external payable;
 ```
 
-**Parameters**
+Parameters
 
 | Name       | Type      | Description                    |
 | ---------- | --------- | ------------------------------ |
@@ -390,7 +390,7 @@ Notes:
 function recover(IERC20 token, address to) external;
 ```
 
-**Parameters**
+Parameters
 
 | Name    | Type      | Description                                              |
 | ------- | --------- | -------------------------------------------------------- |
@@ -414,7 +414,7 @@ Emits a {Transfer},
 function refund(uint256 streamId, uint128 amount) external payable;
 ```
 
-**Parameters**
+Parameters
 
 | Name       | Type      | Description                                        |
 | ---------- | --------- | -------------------------------------------------- |
@@ -439,7 +439,7 @@ Emits a {Transfer},
 function refundAndPause(uint256 streamId, uint128 amount) external payable;
 ```
 
-**Parameters**
+Parameters
 
 | Name       | Type      | Description                                         |
 | ---------- | --------- | --------------------------------------------------- |
@@ -460,13 +460,13 @@ Emits a {Transfer},
 function refundMax(uint256 streamId) external payable returns (uint128 refundedAmount);
 ```
 
-**Parameters**
+Parameters
 
 | Name       | Type      | Description                          |
 | ---------- | --------- | ------------------------------------ |
 | `streamId` | `uint256` | The ID of the stream to refund from. |
 
-**Returns**
+Returns
 
 | Name             | Type      | Description                                                            |
 | ---------------- | --------- | ---------------------------------------------------------------------- |
@@ -489,7 +489,7 @@ Emits a [RestartFlowStream](/docs/reference/flow/contracts/interfaces/interface.
 function restart(uint256 streamId, UD21x18 ratePerSecond) external payable;
 ```
 
-**Parameters**
+Parameters
 
 | Name            | Type      | Description                                                                                                                |
 | --------------- | --------- | -------------------------------------------------------------------------------------------------------------------------- |
@@ -513,7 +513,7 @@ and {MetadataUpdate} event. Notes:
 function restartAndDeposit(uint256 streamId, UD21x18 ratePerSecond, uint128 amount) external payable;
 ```
 
-**Parameters**
+Parameters
 
 | Name            | Type      | Description                                                                                                                |
 | --------------- | --------- | -------------------------------------------------------------------------------------------------------------------------- |
@@ -537,7 +537,7 @@ Requirements:
 function setNativeToken(address newNativeToken) external;
 ```
 
-**Parameters**
+Parameters
 
 | Name             | Type      | Description                      |
 | ---------------- | --------- | -------------------------------- |
@@ -557,7 +557,7 @@ Emits a [SetNFTDescriptor](/docs/reference/flow/contracts/interfaces/interface.I
 function setNFTDescriptor(IFlowNFTDescriptor newNFTDescriptor) external;
 ```
 
-**Parameters**
+Parameters
 
 | Name               | Type                 | Description                                     |
 | ------------------ | -------------------- | ----------------------------------------------- |
@@ -575,7 +575,7 @@ functions using {IBatch.batch}. Requirements:
 function transferFromPayable(address from, address to, uint256 streamId) external payable;
 ```
 
-**Parameters**
+Parameters
 
 | Name       | Type      | Description                                    |
 | ---------- | --------- | ---------------------------------------------- |
@@ -595,7 +595,7 @@ Emits a {Transfer} event. Requirements:
 function transferTokens(IERC20 token, address to, uint128 amount) external payable;
 ```
 
-**Parameters**
+Parameters
 
 | Name     | Type      | Description                                                    |
 | -------- | --------- | -------------------------------------------------------------- |
@@ -623,7 +623,7 @@ Emits a [VoidFlowStream](/docs/reference/flow/contracts/interfaces/interface.ISa
 function void(uint256 streamId) external payable;
 ```
 
-**Parameters**
+Parameters
 
 | Name       | Type      | Description                   |
 | ---------- | --------- | ----------------------------- |
@@ -649,7 +649,7 @@ Emits a {Transfer},
 function withdraw(uint256 streamId, address to, uint128 amount) external payable;
 ```
 
-**Parameters**
+Parameters
 
 | Name       | Type      | Description                                          |
 | ---------- | --------- | ---------------------------------------------------- |
@@ -673,14 +673,14 @@ Emits a {Transfer},
 function withdrawMax(uint256 streamId, address to) external payable returns (uint128 withdrawnAmount);
 ```
 
-**Parameters**
+Parameters
 
 | Name       | Type      | Description                                 |
 | ---------- | --------- | ------------------------------------------- |
 | `streamId` | `uint256` | The ID of the stream to withdraw from.      |
 | `to`       | `address` | The address receiving the withdrawn tokens. |
 
-**Returns**
+Returns
 
 | Name              | Type      | Description                                                         |
 | ----------------- | --------- | ------------------------------------------------------------------- |
@@ -701,7 +701,7 @@ event AdjustFlowStream(
 );
 ```
 
-**Parameters**
+Parameters
 
 | Name               | Type      | Description                                                                                |
 | ------------------ | --------- | ------------------------------------------------------------------------------------------ |
@@ -727,7 +727,7 @@ event CreateFlowStream(
 );
 ```
 
-**Parameters**
+Parameters
 
 | Name            | Type      | Description                                                                                                                |
 | --------------- | --------- | -------------------------------------------------------------------------------------------------------------------------- |
@@ -748,7 +748,7 @@ Emitted when a stream is funded.
 event DepositFlowStream(uint256 indexed streamId, address indexed funder, uint128 amount);
 ```
 
-**Parameters**
+Parameters
 
 | Name       | Type      | Description                                                                  |
 | ---------- | --------- | ---------------------------------------------------------------------------- |
@@ -769,7 +769,7 @@ event PauseFlowStream(
 );
 ```
 
-**Parameters**
+Parameters
 
 | Name        | Type      | Description                                                                            |
 | ----------- | --------- | -------------------------------------------------------------------------------------- |
@@ -786,7 +786,7 @@ Emitted when a sender is refunded from a stream.
 event RefundFromFlowStream(uint256 indexed streamId, address indexed sender, uint128 amount);
 ```
 
-**Parameters**
+Parameters
 
 | Name       | Type      | Description                                                               |
 | ---------- | --------- | ------------------------------------------------------------------------- |
@@ -802,7 +802,7 @@ Emitted when a stream is restarted by the sender.
 event RestartFlowStream(uint256 indexed streamId, address indexed sender, UD21x18 ratePerSecond);
 ```
 
-**Parameters**
+Parameters
 
 | Name            | Type      | Description                                                                                                                |
 | --------------- | --------- | -------------------------------------------------------------------------------------------------------------------------- |
@@ -830,7 +830,7 @@ event SetNFTDescriptor(
 );
 ```
 
-**Parameters**
+Parameters
 
 | Name               | Type                  | Description                                     |
 | ------------------ | --------------------- | ----------------------------------------------- |
@@ -853,7 +853,7 @@ event VoidFlowStream(
 );
 ```
 
-**Parameters**
+Parameters
 
 | Name             | Type      | Description                                                                                      |
 | ---------------- | --------- | ------------------------------------------------------------------------------------------------ |
@@ -878,7 +878,7 @@ event WithdrawFromFlowStream(
 );
 ```
 
-**Parameters**
+Parameters
 
 | Name             | Type      | Description                                                                                    |
 | ---------------- | --------- | ---------------------------------------------------------------------------------------------- |

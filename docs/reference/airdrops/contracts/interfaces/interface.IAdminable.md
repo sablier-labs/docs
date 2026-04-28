@@ -1,8 +1,8 @@
 # IAdminable
 
-[Git Source](https://github.com/sablier-labs/evm-monorepo/blob/d6f6f1d4bb0a5bf508c1d0d7c1b59cd8879d56f9/src/interfaces/IAdminable.sol)
+[Git Source](https://github.com/sablier-labs/evm-monorepo/blob/003a71932c0e26e767a02c21205a077469406ac8/src/interfaces/IAdminable.sol)
 
-**Title:** IAdminable
+Title: IAdminable
 
 Contract module that provides a basic access control mechanism, with an admin that can be granted exclusive access to
 specific functions. The inheriting contract must set the initial admin in the constructor.
@@ -32,7 +32,7 @@ Notes:
 function transferAdmin(address newAdmin) external;
 ```
 
-**Parameters**
+Parameters
 
 | Name       | Type      | Description                   |
 | ---------- | --------- | ----------------------------- |
@@ -48,7 +48,7 @@ Emitted when the admin is transferred.
 event TransferAdmin(address indexed oldAdmin, address indexed newAdmin);
 ```
 
-**Parameters**
+Parameters
 
 | Name       | Type      | Description                   |
 | ---------- | --------- | ----------------------------- |

@@ -4,11 +4,11 @@ sidebar_position: 3
 
 # LockupNFTDescriptor
 
-[Git Source](https://github.com/sablier-labs/evm-monorepo/blob/d6f6f1d4bb0a5bf508c1d0d7c1b59cd8879d56f9/src/LockupNFTDescriptor.sol)
+[Git Source](https://github.com/sablier-labs/evm-monorepo/blob/003a71932c0e26e767a02c21205a077469406ac8/src/LockupNFTDescriptor.sol)
 
-**Inherits:** [ILockupNFTDescriptor](/docs/reference/lockup/contracts/interfaces/interface.ILockupNFTDescriptor.md)
+Inherits: [ILockupNFTDescriptor](/docs/reference/lockup/contracts/interfaces/interface.ILockupNFTDescriptor.md)
 
-**Title:** LockupNFTDescriptor
+Title: LockupNFTDescriptor
 
 See the documentation in
 [ILockupNFTDescriptor](/docs/reference/lockup/contracts/interfaces/interface.ILockupNFTDescriptor.md).
@@ -25,14 +25,14 @@ This is a data URI with the JSON contents directly inlined.
 function tokenURI(IERC721Metadata lockup, uint256 streamId) external view override returns (string memory uri);
 ```
 
-**Parameters**
+Parameters
 
 | Name       | Type              | Description                                              |
 | ---------- | ----------------- | -------------------------------------------------------- |
 | `lockup`   | `IERC721Metadata` |                                                          |
 | `streamId` | `uint256`         | The ID of the stream for which to produce a description. |
 
-**Returns**
+Returns
 
 | Name  | Type     | Description                               |
 | ----- | -------- | ----------------------------------------- |
@@ -53,14 +53,14 @@ The abbreviation uses these suffixes:
 function abbreviateAmount(uint256 amount, uint256 decimals) internal pure returns (string memory);
 ```
 
-**Parameters**
+Parameters
 
 | Name       | Type      | Description                                                    |
 | ---------- | --------- | -------------------------------------------------------------- |
 | `amount`   | `uint256` | The amount to abbreviate, denoted in units of `decimals`.      |
 | `decimals` | `uint256` | The number of decimals to assume when abbreviating the amount. |
 
-**Returns**
+Returns
 
 | Name     | Type     | Description                                                                      |
 | -------- | -------- | -------------------------------------------------------------------------------- |
@@ -153,7 +153,7 @@ Converts the provided fractional amount to a string prefixed by a dot.
 function stringifyFractionalAmount(uint256 fractionalAmount) internal pure returns (string memory);
 ```
 
-**Parameters**
+Parameters
 
 | Name               | Type      | Description                                |
 | ------------------ | --------- | ------------------------------------------ |
@@ -167,7 +167,7 @@ Converts the provided percentage to a string.
 function stringifyPercentage(uint256 percentage) internal pure returns (string memory);
 ```
 
-**Parameters**
+Parameters
 
 | Name         | Type      | Description                                |
 | ------------ | --------- | ------------------------------------------ |

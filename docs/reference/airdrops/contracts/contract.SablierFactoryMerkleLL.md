@@ -4,13 +4,12 @@ sidebar_position: 2
 
 # SablierFactoryMerkleLL
 
-[Git Source](https://github.com/sablier-labs/evm-monorepo/blob/d6f6f1d4bb0a5bf508c1d0d7c1b59cd8879d56f9/src/SablierFactoryMerkleLL.sol)
+[Git Source](https://github.com/sablier-labs/evm-monorepo/blob/003a71932c0e26e767a02c21205a077469406ac8/src/SablierFactoryMerkleLL.sol)
 
-**Inherits:**
-[ISablierFactoryMerkleLL](/docs/reference/airdrops/contracts/interfaces/interface.ISablierFactoryMerkleLL.md),
+Inherits: [ISablierFactoryMerkleLL](/docs/reference/airdrops/contracts/interfaces/interface.ISablierFactoryMerkleLL.md),
 [SablierFactoryMerkleBase](/docs/reference/airdrops/contracts/abstracts/abstract.SablierFactoryMerkleBase.md)
 
-**Title:** SablierFactoryMerkleLL
+Title: SablierFactoryMerkleLL
 
 See the documentation in
 [ISablierFactoryMerkleLL](/docs/reference/airdrops/contracts/interfaces/interface.ISablierFactoryMerkleLL.md).
@@ -23,7 +22,7 @@ See the documentation in
 constructor(address initialComptroller) SablierFactoryMerkleBase(initialComptroller);
 ```
 
-**Parameters**
+Parameters
 
 | Name                 | Type      | Description                                      |
 | -------------------- | --------- | ------------------------------------------------ |
@@ -70,7 +69,7 @@ function createMerkleLL(
     returns (ISablierMerkleLL merkleLL);
 ```
 
-**Parameters**
+Parameters
 
 | Name              | Type                         | Description                                                                                                            |
 | ----------------- | ---------------------------- | ---------------------------------------------------------------------------------------------------------------------- |
@@ -78,7 +77,7 @@ function createMerkleLL(
 | `aggregateAmount` | `uint256`                    | The total amount of ERC-20 tokens to be distributed to all recipients.                                                 |
 | `recipientCount`  | `uint256`                    | The total number of recipient addresses eligible for the airdrop.                                                      |
 
-**Returns**
+Returns
 
 | Name       | Type               | Description                                              |
 | ---------- | ------------------ | -------------------------------------------------------- |

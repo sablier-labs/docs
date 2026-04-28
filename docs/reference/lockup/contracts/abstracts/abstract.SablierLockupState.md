@@ -1,10 +1,10 @@
 # SablierLockupState
 
-[Git Source](https://github.com/sablier-labs/evm-monorepo/blob/d6f6f1d4bb0a5bf508c1d0d7c1b59cd8879d56f9/src/abstracts/SablierLockupState.sol)
+[Git Source](https://github.com/sablier-labs/evm-monorepo/blob/003a71932c0e26e767a02c21205a077469406ac8/src/abstracts/SablierLockupState.sol)
 
-**Inherits:** [ISablierLockupState](/docs/reference/lockup/contracts/interfaces/interface.ISablierLockupState.md)
+Inherits: [ISablierLockupState](/docs/reference/lockup/contracts/interfaces/interface.ISablierLockupState.md)
 
-**Title:** SablierLockupState
+Title: SablierLockupState
 
 See the documentation in
 [ISablierLockupState](/docs/reference/lockup/contracts/interfaces/interface.ISablierLockupState.md).
@@ -135,7 +135,7 @@ modifier notNull(uint256 streamId) ;
 constructor(address initialNFTDescriptor) ;
 ```
 
-**Parameters**
+Parameters
 
 | Name                   | Type      | Description                                |
 | ---------------------- | --------- | ------------------------------------------ |
@@ -157,7 +157,7 @@ function getCliffTime(uint256 streamId)
     returns (uint40 cliffTime);
 ```
 
-**Parameters**
+Parameters
 
 | Name       | Type      | Description                  |
 | ---------- | --------- | ---------------------------- |
@@ -178,7 +178,7 @@ function getDepositedAmount(uint256 streamId)
     returns (uint128 depositedAmount);
 ```
 
-**Parameters**
+Parameters
 
 | Name       | Type      | Description                  |
 | ---------- | --------- | ---------------------------- |
@@ -194,7 +194,7 @@ Reverts if `streamId` references a null stream.
 function getEndTime(uint256 streamId) external view override notNull(streamId) returns (uint40 endTime);
 ```
 
-**Parameters**
+Parameters
 
 | Name       | Type      | Description                  |
 | ---------- | --------- | ---------------------------- |
@@ -216,7 +216,7 @@ function getGranularity(uint256 streamId)
     returns (uint40 granularity);
 ```
 
-**Parameters**
+Parameters
 
 | Name       | Type      | Description                  |
 | ---------- | --------- | ---------------------------- |
@@ -237,7 +237,7 @@ function getLockupModel(uint256 streamId)
     returns (Lockup.Model lockupModel);
 ```
 
-**Parameters**
+Parameters
 
 | Name       | Type      | Description                  |
 | ---------- | --------- | ---------------------------- |
@@ -259,13 +259,13 @@ function getPriceGatedUnlockParams(uint256 streamId)
     returns (LockupPriceGated.UnlockParams memory unlockParams);
 ```
 
-**Parameters**
+Parameters
 
 | Name       | Type      | Description                  |
 | ---------- | --------- | ---------------------------- |
 | `streamId` | `uint256` | The stream ID for the query. |
 
-**Returns**
+Returns
 
 | Name           | Type                            | Description                                       |
 | -------------- | ------------------------------- | ------------------------------------------------- |
@@ -287,7 +287,7 @@ function getRefundedAmount(uint256 streamId)
     returns (uint128 refundedAmount);
 ```
 
-**Parameters**
+Parameters
 
 | Name       | Type      | Description                  |
 | ---------- | --------- | ---------------------------- |
@@ -309,13 +309,13 @@ function getSegments(uint256 streamId)
     returns (LockupDynamic.Segment[] memory segments);
 ```
 
-**Parameters**
+Parameters
 
 | Name       | Type      | Description                  |
 | ---------- | --------- | ---------------------------- |
 | `streamId` | `uint256` | The stream ID for the query. |
 
-**Returns**
+Returns
 
 | Name       | Type                      | Description                                    |
 | ---------- | ------------------------- | ---------------------------------------------- |
@@ -331,7 +331,7 @@ Reverts if `streamId` references a null stream.
 function getSender(uint256 streamId) external view override notNull(streamId) returns (address sender);
 ```
 
-**Parameters**
+Parameters
 
 | Name       | Type      | Description                  |
 | ---------- | --------- | ---------------------------- |
@@ -347,7 +347,7 @@ Reverts if `streamId` references a null stream.
 function getStartTime(uint256 streamId) external view override notNull(streamId) returns (uint40 startTime);
 ```
 
-**Parameters**
+Parameters
 
 | Name       | Type      | Description                  |
 | ---------- | --------- | ---------------------------- |
@@ -369,13 +369,13 @@ function getTranches(uint256 streamId)
     returns (LockupTranched.Tranche[] memory tranches);
 ```
 
-**Parameters**
+Parameters
 
 | Name       | Type      | Description                  |
 | ---------- | --------- | ---------------------------- |
 | `streamId` | `uint256` | The stream ID for the query. |
 
-**Returns**
+Returns
 
 | Name       | Type                       | Description                                     |
 | ---------- | -------------------------- | ----------------------------------------------- |
@@ -391,7 +391,7 @@ Reverts if `streamId` references a null stream.
 function getUnderlyingToken(uint256 streamId) external view override notNull(streamId) returns (IERC20 token);
 ```
 
-**Parameters**
+Parameters
 
 | Name       | Type      | Description                  |
 | ---------- | --------- | ---------------------------- |
@@ -413,13 +413,13 @@ function getUnlockAmounts(uint256 streamId)
     returns (LockupLinear.UnlockAmounts memory unlockAmounts);
 ```
 
-**Parameters**
+Parameters
 
 | Name       | Type      | Description                  |
 | ---------- | --------- | ---------------------------- |
 | `streamId` | `uint256` | The stream ID for the query. |
 
-**Returns**
+Returns
 
 | Name            | Type                         | Description                                   |
 | --------------- | ---------------------------- | --------------------------------------------- |
@@ -440,7 +440,7 @@ function getWithdrawnAmount(uint256 streamId)
     returns (uint128 withdrawnAmount);
 ```
 
-**Parameters**
+Parameters
 
 | Name       | Type      | Description                  |
 | ---------- | --------- | ---------------------------- |
@@ -468,7 +468,7 @@ Reverts if `streamId` references a null stream.
 function isCancelable(uint256 streamId) external view override notNull(streamId) returns (bool result);
 ```
 
-**Parameters**
+Parameters
 
 | Name       | Type      | Description                  |
 | ---------- | --------- | ---------------------------- |
@@ -484,7 +484,7 @@ Reverts if `streamId` references a null stream.
 function isDepleted(uint256 streamId) external view override notNull(streamId) returns (bool result);
 ```
 
-**Parameters**
+Parameters
 
 | Name       | Type      | Description                  |
 | ---------- | --------- | ---------------------------- |
@@ -500,7 +500,7 @@ Does not revert if `streamId` references a null stream.
 function isStream(uint256 streamId) external view override returns (bool result);
 ```
 
-**Parameters**
+Parameters
 
 | Name       | Type      | Description                  |
 | ---------- | --------- | ---------------------------- |
@@ -516,7 +516,7 @@ Reverts if `streamId` references a null stream.
 function isTransferable(uint256 streamId) external view override notNull(streamId) returns (bool result);
 ```
 
-**Parameters**
+Parameters
 
 | Name       | Type      | Description                  |
 | ---------- | --------- | ---------------------------- |
@@ -532,7 +532,7 @@ Reverts if `streamId` references a null stream.
 function wasCanceled(uint256 streamId) external view override notNull(streamId) returns (bool result);
 ```
 
-**Parameters**
+Parameters
 
 | Name       | Type      | Description                  |
 | ---------- | --------- | ---------------------------- |

@@ -1,10 +1,10 @@
 # ISablierMerkleBase
 
-[Git Source](https://github.com/sablier-labs/evm-monorepo/blob/d6f6f1d4bb0a5bf508c1d0d7c1b59cd8879d56f9/src/interfaces/ISablierMerkleBase.sol)
+[Git Source](https://github.com/sablier-labs/evm-monorepo/blob/003a71932c0e26e767a02c21205a077469406ac8/src/interfaces/ISablierMerkleBase.sol)
 
-**Inherits:** IAdminable
+Inherits: IAdminable
 
-**Title:** ISablierMerkleBase
+Title: ISablierMerkleBase
 
 Common interface between campaign contracts.
 
@@ -112,7 +112,7 @@ Uses a bitmap to save gas.
 function hasClaimed(uint256 index) external view returns (bool);
 ```
 
-**Parameters**
+Parameters
 
 | Name    | Type      | Description                          |
 | ------- | --------- | ------------------------------------ |
@@ -161,7 +161,7 @@ Requirements:
 function clawback(address to, uint128 amount) external;
 ```
 
-**Parameters**
+Parameters
 
 | Name     | Type      | Description                        |
 | -------- | --------- | ---------------------------------- |
@@ -183,7 +183,7 @@ event. Requirements:
 function lowerMinFeeUSD(uint256 newMinFeeUSD) external;
 ```
 
-**Parameters**
+Parameters
 
 | Name           | Type      | Description                                            |
 | -------------- | --------- | ------------------------------------------------------ |
@@ -207,7 +207,7 @@ Emits a [Sponsor](/docs/reference/airdrops/contracts/interfaces/interface.ISabli
 function sponsor(IERC20 token, uint128 amount, address biller) external;
 ```
 
-**Parameters**
+Parameters
 
 | Name     | Type      | Description                        |
 | -------- | --------- | ---------------------------------- |

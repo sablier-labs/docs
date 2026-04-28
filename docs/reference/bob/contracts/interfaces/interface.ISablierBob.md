@@ -1,15 +1,14 @@
 # ISablierBob
 
-[Git Source](https://github.com/sablier-labs/evm-monorepo/blob/d6f6f1d4bb0a5bf508c1d0d7c1b59cd8879d56f9/src/interfaces/ISablierBob.sol)
+[Git Source](https://github.com/sablier-labs/evm-monorepo/blob/003a71932c0e26e767a02c21205a077469406ac8/src/interfaces/ISablierBob.sol)
 
-**Inherits:** IComptrollerable,
-[ISablierBobState](/docs/reference/bob/contracts/interfaces/interface.ISablierBobState.md)
+Inherits: IComptrollerable, [ISablierBobState](/docs/reference/bob/contracts/interfaces/interface.ISablierBobState.md)
 
-**Title:** ISablierBob
+Title: ISablierBob
 
 Price-gated vaults that unlock deposited tokens when the price returned by the oracle is greater than or equal to the
 target price set by the vault creator. The tokens are also unlocked if the vault expires. When a vault is configured
-with an adapter, the protocol automatically stakes the tokens via adapter and earns yield on the deposit amount.
+with a adapter, the protocol automatically stakes the tokens via adapter and earns yield on the deposit amount.
 
 ## Functions
 
@@ -24,7 +23,7 @@ Reverts if `vaultId` references a null vault.
 function calculateMinFeeWei(uint256 vaultId) external view returns (uint256 minFeeWei);
 ```
 
-**Parameters**
+Parameters
 
 | Name      | Type      | Description                 |
 | --------- | --------- | --------------------------- |
@@ -60,7 +59,7 @@ function createVault(
     returns (uint256 vaultId);
 ```
 
-**Parameters**
+Parameters
 
 | Name          | Type                    | Description                                                                                                               |
 | ------------- | ----------------------- | ------------------------------------------------------------------------------------------------------------------------- |
@@ -69,7 +68,7 @@ function createVault(
 | `expiry`      | `uint40`                | The Unix timestamp when the vault expires.                                                                                |
 | `targetPrice` | `uint128`               | The target price at which the vault settles, denominated in Chainlink's 8-decimal format for USD prices, where 1e8 is $1. |
 
-**Returns**
+Returns
 
 | Name      | Type      | Description                        |
 | --------- | --------- | ---------------------------------- |
@@ -92,7 +91,7 @@ Emits an [Enter](/docs/reference/bob/contracts/interfaces/interface.ISablierBob.
 function enter(uint256 vaultId, uint128 amount) external;
 ```
 
-**Parameters**
+Parameters
 
 | Name      | Type      | Description                          |
 | --------- | --------- | ------------------------------------ |
@@ -114,7 +113,7 @@ Emits an [Enter](/docs/reference/bob/contracts/interfaces/interface.ISablierBob.
 function enterWithNativeToken(uint256 vaultId) external payable;
 ```
 
-**Parameters**
+Parameters
 
 | Name      | Type      | Description                          |
 | --------- | --------- | ------------------------------------ |
@@ -139,7 +138,7 @@ function onShareTransfer(
     external;
 ```
 
-**Parameters**
+Parameters
 
 | Name                | Type      | Description                                                    |
 | ------------------- | --------- | -------------------------------------------------------------- |
@@ -174,13 +173,13 @@ function redeem(uint256 vaultId)
     returns (uint128 transferAmount, uint128 feeAmountDeductedFromYield);
 ```
 
-**Parameters**
+Parameters
 
 | Name      | Type      | Description                         |
 | --------- | --------- | ----------------------------------- |
 | `vaultId` | `uint256` | The ID of the vault to redeem from. |
 
-**Returns**
+Returns
 
 | Name                         | Type      | Description                                                                                                  |
 | ---------------------------- | --------- | ------------------------------------------------------------------------------------------------------------ |
@@ -203,7 +202,7 @@ Notes:
 function setDefaultAdapter(IERC20 token, ISablierBobAdapter newAdapter) external;
 ```
 
-**Parameters**
+Parameters
 
 | Name         | Type                 | Description                               |
 | ------------ | -------------------- | ----------------------------------------- |
@@ -225,7 +224,7 @@ For more information, see the documentation for {nativeToken}. Emits a
 function setNativeToken(address newNativeToken) external;
 ```
 
-**Parameters**
+Parameters
 
 | Name             | Type      | Description                      |
 | ---------------- | --------- | -------------------------------- |
@@ -251,13 +250,13 @@ event. Notes:
 function syncPriceFromOracle(uint256 vaultId) external returns (uint128 latestPrice);
 ```
 
-**Parameters**
+Parameters
 
 | Name      | Type      | Description                  |
 | --------- | --------- | ---------------------------- |
 | `vaultId` | `uint256` | The ID of the vault to sync. |
 
-**Returns**
+Returns
 
 | Name          | Type      | Description                                                                                                            |
 | ------------- | --------- | ---------------------------------------------------------------------------------------------------------------------- |
@@ -281,13 +280,13 @@ event. Requirements:
 function unstakeTokensViaAdapter(uint256 vaultId) external returns (uint128 amountReceivedFromAdapter);
 ```
 
-**Parameters**
+Parameters
 
 | Name      | Type      | Description          |
 | --------- | --------- | -------------------- |
 | `vaultId` | `uint256` | The ID of the vault. |
 
-**Returns**
+Returns
 
 | Name                        | Type      | Description                                     |
 | --------------------------- | --------- | ----------------------------------------------- |

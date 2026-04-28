@@ -1,11 +1,11 @@
 # SablierMerkleBase
 
-[Git Source](https://github.com/sablier-labs/evm-monorepo/blob/d6f6f1d4bb0a5bf508c1d0d7c1b59cd8879d56f9/src/abstracts/SablierMerkleBase.sol)
+[Git Source](https://github.com/sablier-labs/evm-monorepo/blob/003a71932c0e26e767a02c21205a077469406ac8/src/abstracts/SablierMerkleBase.sol)
 
-**Inherits:** [ISablierMerkleBase](/docs/reference/airdrops/contracts/interfaces/interface.ISablierMerkleBase.md),
+Inherits: [ISablierMerkleBase](/docs/reference/airdrops/contracts/interfaces/interface.ISablierMerkleBase.md),
 [Adminable](/docs/reference/airdrops/contracts/abstracts/abstract.Adminable.md)
 
-**Title:** SablierMerkleBase
+Title: SablierMerkleBase
 
 See the documentation in
 [ISablierMerkleBase](/docs/reference/airdrops/contracts/interfaces/interface.ISablierMerkleBase.md).
@@ -168,7 +168,7 @@ Uses a bitmap to save gas.
 function hasClaimed(uint256 index) public view override returns (bool);
 ```
 
-**Parameters**
+Parameters
 
 | Name    | Type      | Description                          |
 | ------- | --------- | ------------------------------------ |
@@ -196,7 +196,7 @@ Emits a {Clawback} event. Requirements:
 function clawback(address to, uint128 amount) external override onlyAdmin;
 ```
 
-**Parameters**
+Parameters
 
 | Name     | Type      | Description                        |
 | -------- | --------- | ---------------------------------- |
@@ -216,7 +216,7 @@ Emits a {LowerMinFeeUSD} event. Requirements:
 function lowerMinFeeUSD(uint256 newMinFeeUSD) external override;
 ```
 
-**Parameters**
+Parameters
 
 | Name           | Type      | Description                                            |
 | -------------- | --------- | ------------------------------------------------------ |
@@ -240,7 +240,7 @@ Emits a {Sponsor} event. Notes:
 function sponsor(IERC20 token, uint128 amount, address biller) external override notZeroAddress(biller);
 ```
 
-**Parameters**
+Parameters
 
 | Name     | Type      | Description                        |
 | -------- | --------- | ---------------------------------- |

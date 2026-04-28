@@ -1,14 +1,14 @@
 # ISablierLockup
 
-[Git Source](https://github.com/sablier-labs/evm-monorepo/blob/d6f6f1d4bb0a5bf508c1d0d7c1b59cd8879d56f9/src/interfaces/ISablierLockup.sol)
+[Git Source](https://github.com/sablier-labs/evm-monorepo/blob/003a71932c0e26e767a02c21205a077469406ac8/src/interfaces/ISablierLockup.sol)
 
-**Inherits:** IBatch, IComptrollerable, IERC4906, IERC721Metadata,
+Inherits: IBatch, IComptrollerable, IERC4906, IERC721Metadata,
 [ISablierLockupDynamic](/docs/reference/lockup/contracts/interfaces/interface.ISablierLockupDynamic.md),
 [ISablierLockupLinear](/docs/reference/lockup/contracts/interfaces/interface.ISablierLockupLinear.md),
 [ISablierLockupPriceGated](/docs/reference/lockup/contracts/interfaces/interface.ISablierLockupPriceGated.md),
 [ISablierLockupTranched](/docs/reference/lockup/contracts/interfaces/interface.ISablierLockupTranched.md)
 
-**Title:** ISablierLockup
+Title: ISablierLockup
 
 Interface to manage Lockup streams with various distribution models.
 
@@ -24,7 +24,7 @@ Reverts if `streamId` references a null stream.
 function calculateMinFeeWei(uint256 streamId) external view returns (uint256 minFeeWei);
 ```
 
-**Parameters**
+Parameters
 
 | Name       | Type      | Description                  |
 | ---------- | --------- | ---------------------------- |
@@ -40,7 +40,7 @@ Reverts if the NFT has been burned.
 function getRecipient(uint256 streamId) external view returns (address recipient);
 ```
 
-**Parameters**
+Parameters
 
 | Name       | Type      | Description                  |
 | ---------- | --------- | ---------------------------- |
@@ -56,7 +56,7 @@ Reverts if `streamId` references a null stream.
 function isCold(uint256 streamId) external view returns (bool result);
 ```
 
-**Parameters**
+Parameters
 
 | Name       | Type      | Description                  |
 | ---------- | --------- | ---------------------------- |
@@ -72,7 +72,7 @@ Reverts if `streamId` references a null stream.
 function isWarm(uint256 streamId) external view returns (bool result);
 ```
 
-**Parameters**
+Parameters
 
 | Name       | Type      | Description                  |
 | ---------- | --------- | ---------------------------- |
@@ -89,7 +89,7 @@ Reverts if `streamId` references a null stream.
 function refundableAmountOf(uint256 streamId) external view returns (uint128 refundableAmount);
 ```
 
-**Parameters**
+Parameters
 
 | Name       | Type      | Description                  |
 | ---------- | --------- | ---------------------------- |
@@ -105,7 +105,7 @@ Reverts if `streamId` references a null stream.
 function statusOf(uint256 streamId) external view returns (Lockup.Status status);
 ```
 
-**Parameters**
+Parameters
 
 | Name       | Type      | Description                  |
 | ---------- | --------- | ---------------------------- |
@@ -125,7 +125,7 @@ Reverts if `streamId` references a null stream. Notes:
 function streamedAmountOf(uint256 streamId) external view returns (uint128 streamedAmount);
 ```
 
-**Parameters**
+Parameters
 
 | Name       | Type      | Description                  |
 | ---------- | --------- | ---------------------------- |
@@ -141,7 +141,7 @@ Reverts if `streamId` references a null stream.
 function withdrawableAmountOf(uint256 streamId) external view returns (uint128 withdrawableAmount);
 ```
 
-**Parameters**
+Parameters
 
 | Name       | Type      | Description                  |
 | ---------- | --------- | ---------------------------- |
@@ -165,7 +165,7 @@ Notes:
 function allowToHook(address recipient) external;
 ```
 
-**Parameters**
+Parameters
 
 | Name        | Type      | Description                                     |
 | ----------- | --------- | ----------------------------------------------- |
@@ -186,7 +186,7 @@ Emits a {Transfer} and {MetadataUpdate} event. Requirements:
 function burn(uint256 streamId) external payable;
 ```
 
-**Parameters**
+Parameters
 
 | Name       | Type      | Description                       |
 | ---------- | --------- | --------------------------------- |
@@ -211,13 +211,13 @@ Emits a {Transfer},
 function cancel(uint256 streamId) external payable returns (uint128 refundedAmount);
 ```
 
-**Parameters**
+Parameters
 
 | Name       | Type      | Description                     |
 | ---------- | --------- | ------------------------------- |
 | `streamId` | `uint256` | The ID of the stream to cancel. |
 
-**Returns**
+Returns
 
 | Name             | Type      | Description                                                                  |
 | ---------------- | --------- | ---------------------------------------------------------------------------- |
@@ -242,13 +242,13 @@ event. Notes:
 function cancelMultiple(uint256[] calldata streamIds) external payable returns (uint128[] memory refundedAmounts);
 ```
 
-**Parameters**
+Parameters
 
 | Name        | Type        | Description                       |
 | ----------- | ----------- | --------------------------------- |
 | `streamIds` | `uint256[]` | The IDs of the streams to cancel. |
 
-**Returns**
+Returns
 
 | Name              | Type        | Description                                                                   |
 | ----------------- | ----------- | ----------------------------------------------------------------------------- |
@@ -269,7 +269,7 @@ Notes:
 function recover(IERC20 token, address to) external;
 ```
 
-**Parameters**
+Parameters
 
 | Name    | Type      | Description                                              |
 | ------- | --------- | -------------------------------------------------------- |
@@ -294,7 +294,7 @@ event. Notes:
 function renounce(uint256 streamId) external payable;
 ```
 
-**Parameters**
+Parameters
 
 | Name       | Type      | Description                       |
 | ---------- | --------- | --------------------------------- |
@@ -314,7 +314,7 @@ For more information, see the documentation for {nativeToken}. Notes:
 function setNativeToken(address newNativeToken) external;
 ```
 
-**Parameters**
+Parameters
 
 | Name             | Type      | Description                      |
 | ---------------- | --------- | -------------------------------- |
@@ -334,7 +334,7 @@ Emits a [SetNFTDescriptor](/docs/reference/lockup/contracts/interfaces/interface
 function setNFTDescriptor(ILockupNFTDescriptor newNFTDescriptor) external;
 ```
 
-**Parameters**
+Parameters
 
 | Name               | Type                   | Description                                     |
 | ------------------ | ---------------------- | ----------------------------------------------- |
@@ -350,7 +350,7 @@ and {MetadataUpdate} event. Notes:
 
 - If `msg.sender` is not the recipient and the address is on the allowlist, this function will invoke a hook on the
   recipient.
-- The minimum fee in wei is calculated for the stream's sender using the **SablierComptroller** contract. Requirements:
+- The minimum fee in wei is calculated for the stream's sender using the SablierComptroller contract. Requirements:
 - Must not be delegate called.
 - `streamId` must not reference a null or depleted stream.
 - `to` must not be the zero address.
@@ -362,7 +362,7 @@ and {MetadataUpdate} event. Notes:
 function withdraw(uint256 streamId, address to, uint128 amount) external payable;
 ```
 
-**Parameters**
+Parameters
 
 | Name       | Type      | Description                                                       |
 | ---------- | --------- | ----------------------------------------------------------------- |
@@ -387,14 +387,14 @@ and {MetadataUpdate} event. Notes:
 function withdrawMax(uint256 streamId, address to) external payable returns (uint128 withdrawnAmount);
 ```
 
-**Parameters**
+Parameters
 
 | Name       | Type      | Description                                 |
 | ---------- | --------- | ------------------------------------------- |
 | `streamId` | `uint256` | The ID of the stream to withdraw from.      |
 | `to`       | `address` | The address receiving the withdrawn tokens. |
 
-**Returns**
+Returns
 
 | Name              | Type      | Description                                                     |
 | ----------------- | --------- | --------------------------------------------------------------- |
@@ -427,14 +427,14 @@ function withdrawMaxAndTransfer(
     returns (uint128 withdrawnAmount);
 ```
 
-**Parameters**
+Parameters
 
 | Name           | Type      | Description                                     |
 | -------------- | --------- | ----------------------------------------------- |
 | `streamId`     | `uint256` | The ID of the stream NFT to transfer.           |
 | `newRecipient` | `address` | The address of the new owner of the stream NFT. |
 
-**Returns**
+Returns
 
 | Name              | Type      | Description                                                     |
 | ----------------- | --------- | --------------------------------------------------------------- |
@@ -461,7 +461,7 @@ event. Notes:
 function withdrawMultiple(uint256[] calldata streamIds, uint128[] calldata amounts) external payable;
 ```
 
-**Parameters**
+Parameters
 
 | Name        | Type        | Description                                                        |
 | ----------- | ----------- | ------------------------------------------------------------------ |
@@ -478,7 +478,7 @@ Emitted when the comptroller allows a new recipient contract to hook to Sablier.
 event AllowToHook(ISablierComptroller indexed comptroller, address indexed recipient);
 ```
 
-**Parameters**
+Parameters
 
 | Name          | Type                  | Description                                                 |
 | ------------- | --------------------- | ----------------------------------------------------------- |
@@ -500,7 +500,7 @@ event CancelLockupStream(
 );
 ```
 
-**Parameters**
+Parameters
 
 | Name              | Type      | Description                                                                                                 |
 | ----------------- | --------- | ----------------------------------------------------------------------------------------------------------- |
@@ -519,7 +519,7 @@ Emitted when canceling multiple streams and one particular cancellation reverts.
 event InvalidStreamInCancelMultiple(uint256 indexed streamId, bytes revertData);
 ```
 
-**Parameters**
+Parameters
 
 | Name         | Type      | Description                                          |
 | ------------ | --------- | ---------------------------------------------------- |
@@ -534,7 +534,7 @@ Emitted when withdrawing from multiple streams and one particular withdrawal rev
 event InvalidWithdrawalInWithdrawMultiple(uint256 indexed streamId, bytes revertData);
 ```
 
-**Parameters**
+Parameters
 
 | Name         | Type      | Description                                        |
 | ------------ | --------- | -------------------------------------------------- |
@@ -549,7 +549,7 @@ Emitted when a sender gives up the right to cancel a stream.
 event RenounceLockupStream(uint256 indexed streamId);
 ```
 
-**Parameters**
+Parameters
 
 | Name       | Type      | Description           |
 | ---------- | --------- | --------------------- |
@@ -567,7 +567,7 @@ event SetNFTDescriptor(
 );
 ```
 
-**Parameters**
+Parameters
 
 | Name               | Type                   | Description                                     |
 | ------------------ | ---------------------- | ----------------------------------------------- |
@@ -583,7 +583,7 @@ Emitted when tokens are withdrawn from a stream.
 event WithdrawFromLockupStream(uint256 indexed streamId, address indexed to, IERC20 indexed token, uint128 amount);
 ```
 
-**Parameters**
+Parameters
 
 | Name       | Type      | Description                                                               |
 | ---------- | --------- | ------------------------------------------------------------------------- |

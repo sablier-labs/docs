@@ -1,10 +1,10 @@
 # ISablierMerkleSignature
 
-[Git Source](https://github.com/sablier-labs/evm-monorepo/blob/d6f6f1d4bb0a5bf508c1d0d7c1b59cd8879d56f9/src/interfaces/ISablierMerkleSignature.sol)
+[Git Source](https://github.com/sablier-labs/evm-monorepo/blob/003a71932c0e26e767a02c21205a077469406ac8/src/interfaces/ISablierMerkleSignature.sol)
 
-**Inherits:** [ISablierMerkleBase](/docs/reference/airdrops/contracts/interfaces/interface.ISablierMerkleBase.md)
+Inherits: [ISablierMerkleBase](/docs/reference/airdrops/contracts/interfaces/interface.ISablierMerkleBase.md)
 
-**Title:** ISablierMerkleSignature
+Title: ISablierMerkleSignature
 
 Abstract contract providing helper functions for verifying EIP-712 and EIP-1271 signatures for Merkle campaigns.
 
@@ -40,7 +40,7 @@ event. Requirements:
 function setAttestor(address newAttestor) external;
 ```
 
-**Parameters**
+Parameters
 
 | Name          | Type      | Description                                                                        |
 | ------------- | --------- | ---------------------------------------------------------------------------------- |

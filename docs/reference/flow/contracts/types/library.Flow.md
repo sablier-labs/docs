@@ -1,6 +1,6 @@
 # Flow
 
-[Git Source](https://github.com/sablier-labs/evm-monorepo/blob/d6f6f1d4bb0a5bf508c1d0d7c1b59cd8879d56f9/src/types/DataTypes.sol)
+[Git Source](https://github.com/sablier-labs/evm-monorepo/blob/003a71932c0e26e767a02c21205a077469406ac8/src/types/DataTypes.sol)
 
 ## Structs
 
@@ -29,12 +29,12 @@ struct Stream {
 }
 ```
 
-**Properties**
+Properties
 
 | Name                 | Type      | Description                                                                                                                                                                                                                      |
 | -------------------- | --------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `balance`            | `uint128` | The amount of tokens that are currently available in the stream, denoted in the token's decimals. This is the sum of deposited amounts minus the sum of withdrawn amounts.                                                       |
-| `ratePerSecond`      | `UD21x18` | The payment rate per second, denoted as a fixed-point number where 1e18 is 1 token per second. For example, to stream 1000 tokens per week, this parameter would have the value $(1000 * 10^18) / (7 days in seconds)$.          |
+| `ratePerSecond`      | `UD21x18` | The payment rate per second, denoted as a fixed-point number where 1e18 is 1 token per second. For example, to stream 1000 tokens per week, this parameter would have the value $(1000  10^18) / (7 days in seconds)$.           |
 | `sender`             | `address` | The address streaming the tokens, with the ability to pause the stream.                                                                                                                                                          |
 | `snapshotTime`       | `uint40`  | The Unix timestamp used for the ongoing debt calculation.                                                                                                                                                                        |
 | `isStream`           | `bool`    | Boolean indicating if the struct entity exists.                                                                                                                                                                                  |
@@ -50,7 +50,7 @@ struct Stream {
 
 Enum representing the different statuses of a stream.
 
-**Notes:**
+Notes:
 
 - value0: PENDING Stream scheduled to start in the future.
 

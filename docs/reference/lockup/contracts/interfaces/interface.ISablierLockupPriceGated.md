@@ -1,10 +1,10 @@
 # ISablierLockupPriceGated
 
-[Git Source](https://github.com/sablier-labs/evm-monorepo/blob/d6f6f1d4bb0a5bf508c1d0d7c1b59cd8879d56f9/src/interfaces/ISablierLockupPriceGated.sol)
+[Git Source](https://github.com/sablier-labs/evm-monorepo/blob/003a71932c0e26e767a02c21205a077469406ac8/src/interfaces/ISablierLockupPriceGated.sol)
 
-**Inherits:** [ISablierLockupState](/docs/reference/lockup/contracts/interfaces/interface.ISablierLockupState.md)
+Inherits: [ISablierLockupState](/docs/reference/lockup/contracts/interfaces/interface.ISablierLockupState.md)
 
-**Title:** ISablierLockupPriceGated
+Title: ISablierLockupPriceGated
 
 Creates Lockup streams with price-gated distribution model.
 
@@ -55,14 +55,14 @@ function createWithTimestampsLPG(
     returns (uint256 streamId);
 ```
 
-**Parameters**
+Parameters
 
 | Name           | Type                            | Description                                                                          |
 | -------------- | ------------------------------- | ------------------------------------------------------------------------------------ |
 | `params`       | `Lockup.CreateWithTimestamps`   | Struct encapsulating the function parameters, which are documented in {Lockup} type. |
 | `unlockParams` | `LockupPriceGated.UnlockParams` | Struct encapsulating the unlock parameters, documented in {LockupPriceGated}.        |
 
-**Returns**
+Returns
 
 | Name       | Type      | Description                         |
 | ---------- | --------- | ----------------------------------- |
@@ -82,7 +82,7 @@ event CreateLockupPriceGatedStream(
 );
 ```
 
-**Parameters**
+Parameters
 
 | Name          | Type                    | Description                                                                                                |
 | ------------- | ----------------------- | ---------------------------------------------------------------------------------------------------------- |

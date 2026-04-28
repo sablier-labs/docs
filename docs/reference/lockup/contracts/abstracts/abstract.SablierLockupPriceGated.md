@@ -1,13 +1,12 @@
 # SablierLockupPriceGated
 
-[Git Source](https://github.com/sablier-labs/evm-monorepo/blob/d6f6f1d4bb0a5bf508c1d0d7c1b59cd8879d56f9/src/abstracts/SablierLockupPriceGated.sol)
+[Git Source](https://github.com/sablier-labs/evm-monorepo/blob/003a71932c0e26e767a02c21205a077469406ac8/src/abstracts/SablierLockupPriceGated.sol)
 
-**Inherits:**
-[ISablierLockupPriceGated](/docs/reference/lockup/contracts/interfaces/interface.ISablierLockupPriceGated.md),
+Inherits: [ISablierLockupPriceGated](/docs/reference/lockup/contracts/interfaces/interface.ISablierLockupPriceGated.md),
 [NoDelegateCall](/docs/reference/lockup/contracts/abstracts/abstract.NoDelegateCall.md),
 [SablierLockupState](/docs/reference/lockup/contracts/abstracts/abstract.SablierLockupState.md)
 
-**Title:** SablierLockupPriceGated
+Title: SablierLockupPriceGated
 
 See the documentation in
 [ISablierLockupPriceGated](/docs/reference/lockup/contracts/interfaces/interface.ISablierLockupPriceGated.md).
@@ -59,14 +58,14 @@ function createWithTimestampsLPG(
     returns (uint256 streamId);
 ```
 
-**Parameters**
+Parameters
 
 | Name           | Type                            | Description                                                                          |
 | -------------- | ------------------------------- | ------------------------------------------------------------------------------------ |
 | `params`       | `Lockup.CreateWithTimestamps`   | Struct encapsulating the function parameters, which are documented in {Lockup} type. |
 | `unlockParams` | `LockupPriceGated.UnlockParams` | Struct encapsulating the unlock parameters, documented in {LockupPriceGated}.        |
 
-**Returns**
+Returns
 
 | Name       | Type      | Description                         |
 | ---------- | --------- | ----------------------------------- |

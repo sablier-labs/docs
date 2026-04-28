@@ -1,8 +1,8 @@
 # ISablierFlowState
 
-[Git Source](https://github.com/sablier-labs/evm-monorepo/blob/d6f6f1d4bb0a5bf508c1d0d7c1b59cd8879d56f9/src/interfaces/ISablierFlowState.sol)
+[Git Source](https://github.com/sablier-labs/evm-monorepo/blob/003a71932c0e26e767a02c21205a077469406ac8/src/interfaces/ISablierFlowState.sol)
 
-**Title:** ISablierFlowState
+Title: ISablierFlowState
 
 Contract with state variables (storage and constants) for the
 [SablierFlow](/docs/reference/flow/contracts/contract.SablierFlow.md) contract, their respective getters and helpful
@@ -21,7 +21,7 @@ be greater than the aggregate amount.
 function aggregateAmount(IERC20 token) external view returns (uint256);
 ```
 
-**Parameters**
+Parameters
 
 | Name    | Type     | Description                     |
 | ------- | -------- | ------------------------------- |
@@ -38,7 +38,7 @@ Reverts if `streamId` references a null stream.
 function getBalance(uint256 streamId) external view returns (uint128 balance);
 ```
 
-**Parameters**
+Parameters
 
 | Name       | Type      | Description                  |
 | ---------- | --------- | ---------------------------- |
@@ -54,7 +54,7 @@ Reverts if `streamId` references a null stream.
 function getRatePerSecond(uint256 streamId) external view returns (UD21x18 ratePerSecond);
 ```
 
-**Parameters**
+Parameters
 
 | Name       | Type      | Description                                 |
 | ---------- | --------- | ------------------------------------------- |
@@ -70,7 +70,7 @@ Reverts if `streamId` references a null stream.
 function getSender(uint256 streamId) external view returns (address sender);
 ```
 
-**Parameters**
+Parameters
 
 | Name       | Type      | Description                  |
 | ---------- | --------- | ---------------------------- |
@@ -86,7 +86,7 @@ Reverts if `streamId` references a null stream.
 function getSnapshotDebtScaled(uint256 streamId) external view returns (uint256 snapshotDebtScaled);
 ```
 
-**Parameters**
+Parameters
 
 | Name       | Type      | Description                  |
 | ---------- | --------- | ---------------------------- |
@@ -102,7 +102,7 @@ Reverts if `streamId` references a null stream.
 function getSnapshotTime(uint256 streamId) external view returns (uint40 snapshotTime);
 ```
 
-**Parameters**
+Parameters
 
 | Name       | Type      | Description                                 |
 | ---------- | --------- | ------------------------------------------- |
@@ -118,7 +118,7 @@ Reverts if `streamId` references a null stream.
 function getStream(uint256 streamId) external view returns (Flow.Stream memory stream);
 ```
 
-**Parameters**
+Parameters
 
 | Name       | Type      | Description                  |
 | ---------- | --------- | ---------------------------- |
@@ -134,7 +134,7 @@ Reverts if `streamId` references a null stream.
 function getToken(uint256 streamId) external view returns (IERC20 token);
 ```
 
-**Parameters**
+Parameters
 
 | Name       | Type      | Description                                 |
 | ---------- | --------- | ------------------------------------------- |
@@ -150,7 +150,7 @@ Reverts if `streamId` references a null stream.
 function getTokenDecimals(uint256 streamId) external view returns (uint8 tokenDecimals);
 ```
 
-**Parameters**
+Parameters
 
 | Name       | Type      | Description                                 |
 | ---------- | --------- | ------------------------------------------- |
@@ -166,7 +166,7 @@ Does not revert if `streamId` references a null stream.
 function isStream(uint256 streamId) external view returns (bool result);
 ```
 
-**Parameters**
+Parameters
 
 | Name       | Type      | Description                  |
 | ---------- | --------- | ---------------------------- |
@@ -182,7 +182,7 @@ Reverts if `streamId` references a null stream.
 function isTransferable(uint256 streamId) external view returns (bool result);
 ```
 
-**Parameters**
+Parameters
 
 | Name       | Type      | Description                  |
 | ---------- | --------- | ---------------------------- |
@@ -198,7 +198,7 @@ Reverts if `streamId` references a null stream.
 function isVoided(uint256 streamId) external view returns (bool result);
 ```
 
-**Parameters**
+Parameters
 
 | Name       | Type      | Description                  |
 | ---------- | --------- | ---------------------------- |
@@ -226,7 +226,7 @@ Counter for stream ids.
 function nextStreamId() external view returns (uint256);
 ```
 
-**Returns**
+Returns
 
 | Name     | Type      | Description         |
 | -------- | --------- | ------------------- |

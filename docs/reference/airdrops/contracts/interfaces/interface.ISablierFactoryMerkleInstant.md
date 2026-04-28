@@ -1,11 +1,11 @@
 # ISablierFactoryMerkleInstant
 
-[Git Source](https://github.com/sablier-labs/evm-monorepo/blob/d6f6f1d4bb0a5bf508c1d0d7c1b59cd8879d56f9/src/interfaces/ISablierFactoryMerkleInstant.sol)
+[Git Source](https://github.com/sablier-labs/evm-monorepo/blob/003a71932c0e26e767a02c21205a077469406ac8/src/interfaces/ISablierFactoryMerkleInstant.sol)
 
-**Inherits:**
+Inherits:
 [ISablierFactoryMerkleBase](/docs/reference/airdrops/contracts/interfaces/interface.ISablierFactoryMerkleBase.md)
 
-**Title:** ISablierFactoryMerkleInstant
+Title: ISablierFactoryMerkleInstant
 
 A factory that deploys MerkleInstant campaign contracts.
 
@@ -56,7 +56,7 @@ function createMerkleInstant(
     returns (ISablierMerkleInstant merkleInstant);
 ```
 
-**Parameters**
+Parameters
 
 | Name              | Type                              | Description                                                                                                                      |
 | ----------------- | --------------------------------- | -------------------------------------------------------------------------------------------------------------------------------- |
@@ -64,7 +64,7 @@ function createMerkleInstant(
 | `aggregateAmount` | `uint256`                         | The total amount of ERC-20 tokens to be distributed to all recipients.                                                           |
 | `recipientCount`  | `uint256`                         | The total number of recipient addresses eligible for the airdrop.                                                                |
 
-**Returns**
+Returns
 
 | Name            | Type                    | Description                                              |
 | --------------- | ----------------------- | -------------------------------------------------------- |

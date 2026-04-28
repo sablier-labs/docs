@@ -1,8 +1,8 @@
 # ILockupNFTDescriptor
 
-[Git Source](https://github.com/sablier-labs/evm-monorepo/blob/d6f6f1d4bb0a5bf508c1d0d7c1b59cd8879d56f9/src/interfaces/ILockupNFTDescriptor.sol)
+[Git Source](https://github.com/sablier-labs/evm-monorepo/blob/003a71932c0e26e767a02c21205a077469406ac8/src/interfaces/ILockupNFTDescriptor.sol)
 
-**Title:** ILockupNFTDescriptor
+Title: ILockupNFTDescriptor
 
 This contract generates the URI describing the Sablier stream NFTs.
 
@@ -20,14 +20,14 @@ This is a data URI with the JSON contents directly inlined.
 function tokenURI(IERC721Metadata sablier, uint256 streamId) external view returns (string memory uri);
 ```
 
-**Parameters**
+Parameters
 
 | Name       | Type              | Description                                                    |
 | ---------- | ----------------- | -------------------------------------------------------------- |
 | `sablier`  | `IERC721Metadata` | The address of the Sablier contract the stream was created in. |
 | `streamId` | `uint256`         | The ID of the stream for which to produce a description.       |
 
-**Returns**
+Returns
 
 | Name  | Type     | Description                               |
 | ----- | -------- | ----------------------------------------- |

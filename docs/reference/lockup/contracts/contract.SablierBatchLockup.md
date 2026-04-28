@@ -4,11 +4,11 @@ sidebar_position: 1
 
 # SablierBatchLockup
 
-[Git Source](https://github.com/sablier-labs/evm-monorepo/blob/d6f6f1d4bb0a5bf508c1d0d7c1b59cd8879d56f9/src/SablierBatchLockup.sol)
+[Git Source](https://github.com/sablier-labs/evm-monorepo/blob/003a71932c0e26e767a02c21205a077469406ac8/src/SablierBatchLockup.sol)
 
-**Inherits:** [ISablierBatchLockup](/docs/reference/lockup/contracts/interfaces/interface.ISablierBatchLockup.md)
+Inherits: [ISablierBatchLockup](/docs/reference/lockup/contracts/interfaces/interface.ISablierBatchLockup.md)
 
-**Title:** SablierBatchLockup
+Title: SablierBatchLockup
 
 See the documentation in
 [ISablierBatchLockup](/docs/reference/lockup/contracts/interfaces/interface.ISablierBatchLockup.md).
@@ -35,7 +35,7 @@ function createWithDurationsLD(
     returns (uint256[] memory streamIds);
 ```
 
-**Parameters**
+Parameters
 
 | Name     | Type                                  | Description                                                                                                          |
 | -------- | ------------------------------------- | -------------------------------------------------------------------------------------------------------------------- |
@@ -43,7 +43,7 @@ function createWithDurationsLD(
 | `token`  | `IERC20`                              | The contract address of the ERC-20 token to be distributed.                                                          |
 | `batch`  | `BatchLockup.CreateWithDurationsLD[]` | An array of structs, each encapsulating a subset of the parameters of {ISablierLockupDynamic.createWithDurationsLD}. |
 
-**Returns**
+Returns
 
 | Name        | Type        | Description                           |
 | ----------- | ----------- | ------------------------------------- |
@@ -69,7 +69,7 @@ function createWithTimestampsLD(
     returns (uint256[] memory streamIds);
 ```
 
-**Parameters**
+Parameters
 
 | Name     | Type                                   | Description                                                                                                           |
 | -------- | -------------------------------------- | --------------------------------------------------------------------------------------------------------------------- |
@@ -77,7 +77,7 @@ function createWithTimestampsLD(
 | `token`  | `IERC20`                               | The contract address of the ERC-20 token to be distributed.                                                           |
 | `batch`  | `BatchLockup.CreateWithTimestampsLD[]` | An array of structs, each encapsulating a subset of the parameters of {ISablierLockupDynamic.createWithTimestampsLD}. |
 
-**Returns**
+Returns
 
 | Name        | Type        | Description                           |
 | ----------- | ----------- | ------------------------------------- |
@@ -103,7 +103,7 @@ function createWithDurationsLL(
     returns (uint256[] memory streamIds);
 ```
 
-**Parameters**
+Parameters
 
 | Name     | Type                                  | Description                                                                                                         |
 | -------- | ------------------------------------- | ------------------------------------------------------------------------------------------------------------------- |
@@ -111,7 +111,7 @@ function createWithDurationsLL(
 | `token`  | `IERC20`                              | The contract address of the ERC-20 token to be distributed.                                                         |
 | `batch`  | `BatchLockup.CreateWithDurationsLL[]` | An array of structs, each encapsulating a subset of the parameters of {ISablierLockupLinear.createWithDurationsLL}. |
 
-**Returns**
+Returns
 
 | Name        | Type        | Description                           |
 | ----------- | ----------- | ------------------------------------- |
@@ -137,7 +137,7 @@ function createWithTimestampsLL(
     returns (uint256[] memory streamIds);
 ```
 
-**Parameters**
+Parameters
 
 | Name     | Type                                   | Description                                                                                                          |
 | -------- | -------------------------------------- | -------------------------------------------------------------------------------------------------------------------- |
@@ -145,7 +145,7 @@ function createWithTimestampsLL(
 | `token`  | `IERC20`                               | The contract address of the ERC-20 token to be distributed.                                                          |
 | `batch`  | `BatchLockup.CreateWithTimestampsLL[]` | An array of structs, each encapsulating a subset of the parameters of {ISablierLockupLinear.createWithTimestampsLL}. |
 
-**Returns**
+Returns
 
 | Name        | Type        | Description                           |
 | ----------- | ----------- | ------------------------------------- |
@@ -174,7 +174,7 @@ function createWithTimestampsLPG(
     returns (uint256[] memory streamIds);
 ```
 
-**Parameters**
+Parameters
 
 | Name     | Type                                    | Description                                                                                                               |
 | -------- | --------------------------------------- | ------------------------------------------------------------------------------------------------------------------------- |
@@ -182,7 +182,7 @@ function createWithTimestampsLPG(
 | `token`  | `IERC20`                                | The contract address of the ERC-20 token to be distributed.                                                               |
 | `batch`  | `BatchLockup.CreateWithTimestampsLPG[]` | An array of structs, each encapsulating a subset of the parameters of {ISablierLockupPriceGated.createWithTimestampsLPG}. |
 
-**Returns**
+Returns
 
 | Name        | Type        | Description                           |
 | ----------- | ----------- | ------------------------------------- |
@@ -208,7 +208,7 @@ function createWithDurationsLT(
     returns (uint256[] memory streamIds);
 ```
 
-**Parameters**
+Parameters
 
 | Name     | Type                                  | Description                                                                                                           |
 | -------- | ------------------------------------- | --------------------------------------------------------------------------------------------------------------------- |
@@ -216,7 +216,7 @@ function createWithDurationsLT(
 | `token`  | `IERC20`                              | The contract address of the ERC-20 token to be distributed.                                                           |
 | `batch`  | `BatchLockup.CreateWithDurationsLT[]` | An array of structs, each encapsulating a subset of the parameters of {ISablierLockupTranched.createWithDurationsLT}. |
 
-**Returns**
+Returns
 
 | Name        | Type        | Description                           |
 | ----------- | ----------- | ------------------------------------- |
@@ -242,7 +242,7 @@ function createWithTimestampsLT(
     returns (uint256[] memory streamIds);
 ```
 
-**Parameters**
+Parameters
 
 | Name     | Type                                   | Description                                                                                                            |
 | -------- | -------------------------------------- | ---------------------------------------------------------------------------------------------------------------------- |
@@ -250,7 +250,7 @@ function createWithTimestampsLT(
 | `token`  | `IERC20`                               | The contract address of the ERC-20 token to be distributed.                                                            |
 | `batch`  | `BatchLockup.CreateWithTimestampsLT[]` | An array of structs, each encapsulating a subset of the parameters of {ISablierLockupTranched.createWithTimestampsLT}. |
 
-**Returns**
+Returns
 
 | Name        | Type        | Description                           |
 | ----------- | ----------- | ------------------------------------- |

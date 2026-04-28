@@ -1,10 +1,10 @@
 # ISablierMerkleExecute
 
-[Git Source](https://github.com/sablier-labs/evm-monorepo/blob/d6f6f1d4bb0a5bf508c1d0d7c1b59cd8879d56f9/src/interfaces/ISablierMerkleExecute.sol)
+[Git Source](https://github.com/sablier-labs/evm-monorepo/blob/003a71932c0e26e767a02c21205a077469406ac8/src/interfaces/ISablierMerkleExecute.sol)
 
-**Inherits:** [ISablierMerkleBase](/docs/reference/airdrops/contracts/interfaces/interface.ISablierMerkleBase.md)
+Inherits: [ISablierMerkleBase](/docs/reference/airdrops/contracts/interfaces/interface.ISablierMerkleBase.md)
 
-**Title:** ISablierMerkleExecute
+Title: ISablierMerkleExecute
 
 MerkleExecute enables an airdrop distribution model where eligible users claim tokens and immediately execute a call on
 a target contract (useful for staking, lending pool deposits). This is achieved by approving the target contract to
@@ -64,7 +64,7 @@ function claimAndExecute(
     payable;
 ```
 
-**Parameters**
+Parameters
 
 | Name                | Type        | Description                                                                                                                                   |
 | ------------------- | ----------- | --------------------------------------------------------------------------------------------------------------------------------------------- |

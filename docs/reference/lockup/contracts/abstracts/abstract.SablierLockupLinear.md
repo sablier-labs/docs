@@ -1,12 +1,12 @@
 # SablierLockupLinear
 
-[Git Source](https://github.com/sablier-labs/evm-monorepo/blob/d6f6f1d4bb0a5bf508c1d0d7c1b59cd8879d56f9/src/abstracts/SablierLockupLinear.sol)
+[Git Source](https://github.com/sablier-labs/evm-monorepo/blob/003a71932c0e26e767a02c21205a077469406ac8/src/abstracts/SablierLockupLinear.sol)
 
-**Inherits:** [ISablierLockupLinear](/docs/reference/lockup/contracts/interfaces/interface.ISablierLockupLinear.md),
+Inherits: [ISablierLockupLinear](/docs/reference/lockup/contracts/interfaces/interface.ISablierLockupLinear.md),
 [NoDelegateCall](/docs/reference/lockup/contracts/abstracts/abstract.NoDelegateCall.md),
 [SablierLockupState](/docs/reference/lockup/contracts/abstracts/abstract.SablierLockupState.md)
 
-**Title:** SablierLockupLinear
+Title: SablierLockupLinear
 
 See the documentation in
 [ISablierLockupLinear](/docs/reference/lockup/contracts/interfaces/interface.ISablierLockupLinear.md).
@@ -36,7 +36,7 @@ function createWithDurationsLL(
     returns (uint256 streamId);
 ```
 
-**Parameters**
+Parameters
 
 | Name            | Type                         | Description                                                                                                      |
 | --------------- | ---------------------------- | ---------------------------------------------------------------------------------------------------------------- |
@@ -45,7 +45,7 @@ function createWithDurationsLL(
 | `granularity`   | `uint40`                     | The smallest step in time between two consecutive token unlocks. Zero is a sentinel value for 1 second.          |
 | `durations`     | `LockupLinear.Durations`     | Struct encapsulating (i) cliff period duration and (ii) total stream duration, both in seconds.                  |
 
-**Returns**
+Returns
 
 | Name       | Type      | Description                         |
 | ---------- | --------- | ----------------------------------- |
@@ -88,7 +88,7 @@ function createWithTimestampsLL(
     returns (uint256 streamId);
 ```
 
-**Parameters**
+Parameters
 
 | Name            | Type                          | Description                                                                                                      |
 | --------------- | ----------------------------- | ---------------------------------------------------------------------------------------------------------------- |
@@ -97,7 +97,7 @@ function createWithTimestampsLL(
 | `granularity`   | `uint40`                      | The smallest step in time between two consecutive token unlocks. Zero is a sentinel value for 1 second.          |
 | `cliffTime`     | `uint40`                      | The Unix timestamp for the cliff period's end. A value of zero means there is no cliff.                          |
 
-**Returns**
+Returns
 
 | Name       | Type      | Description                         |
 | ---------- | --------- | ----------------------------------- |

@@ -4,11 +4,11 @@ sidebar_position: 1
 
 # BobVaultShare
 
-[Git Source](https://github.com/sablier-labs/evm-monorepo/blob/d6f6f1d4bb0a5bf508c1d0d7c1b59cd8879d56f9/src/BobVaultShare.sol)
+[Git Source](https://github.com/sablier-labs/evm-monorepo/blob/003a71932c0e26e767a02c21205a077469406ac8/src/BobVaultShare.sol)
 
-**Inherits:** ERC20, [IBobVaultShare](/docs/reference/bob/contracts/interfaces/interface.IBobVaultShare.md)
+Inherits: ERC20, [IBobVaultShare](/docs/reference/bob/contracts/interfaces/interface.IBobVaultShare.md)
 
-**Title:** BobVaultShare
+Title: BobVaultShare
 
 ERC-20 token representing shares in a Bob vault.
 
@@ -78,7 +78,7 @@ constructor(
     ERC20(name_, symbol_);
 ```
 
-**Parameters**
+Parameters
 
 | Name         | Type      | Description                                                                                                                                                                                         |
 | ------------ | --------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -109,7 +109,7 @@ Emits a {Transfer} event. Requirements:
 function mint(uint256 vaultId, address to, uint256 amount) external override onlySablierBob onlyVault(vaultId);
 ```
 
-**Parameters**
+Parameters
 
 | Name      | Type      | Description                                    |
 | --------- | --------- | ---------------------------------------------- |
@@ -131,7 +131,7 @@ Emits a {Transfer} event. Requirements:
 function burn(uint256 vaultId, address from, uint256 amount) external override onlySablierBob onlyVault(vaultId);
 ```
 
-**Parameters**
+Parameters
 
 | Name      | Type      | Description                                    |
 | --------- | --------- | ---------------------------------------------- |

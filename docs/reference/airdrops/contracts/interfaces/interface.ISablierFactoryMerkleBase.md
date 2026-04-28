@@ -1,10 +1,10 @@
 # ISablierFactoryMerkleBase
 
-[Git Source](https://github.com/sablier-labs/evm-monorepo/blob/d6f6f1d4bb0a5bf508c1d0d7c1b59cd8879d56f9/src/interfaces/ISablierFactoryMerkleBase.sol)
+[Git Source](https://github.com/sablier-labs/evm-monorepo/blob/003a71932c0e26e767a02c21205a077469406ac8/src/interfaces/ISablierFactoryMerkleBase.sol)
 
-**Inherits:** IComptrollerable
+Inherits: IComptrollerable
 
-**Title:** ISablierFactoryMerkleBase
+Title: ISablierFactoryMerkleBase
 
 Common interface between factories that deploy campaign contracts. The contracts are deployed using CREATE2.
 
@@ -41,7 +41,7 @@ event. Requirements:
 function setNativeToken(address newNativeToken) external;
 ```
 
-**Parameters**
+Parameters
 
 | Name             | Type      | Description                      |
 | ---------------- | --------- | -------------------------------- |

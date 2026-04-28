@@ -1,12 +1,11 @@
 # ISablierMerkleLL
 
-[Git Source](https://github.com/sablier-labs/evm-monorepo/blob/d6f6f1d4bb0a5bf508c1d0d7c1b59cd8879d56f9/src/interfaces/ISablierMerkleLL.sol)
+[Git Source](https://github.com/sablier-labs/evm-monorepo/blob/003a71932c0e26e767a02c21205a077469406ac8/src/interfaces/ISablierMerkleLL.sol)
 
-**Inherits:**
-[ISablierMerkleSignature](/docs/reference/airdrops/contracts/interfaces/interface.ISablierMerkleSignature.md),
+Inherits: [ISablierMerkleSignature](/docs/reference/airdrops/contracts/interfaces/interface.ISablierMerkleSignature.md),
 [ISablierMerkleLockup](/docs/reference/airdrops/contracts/interfaces/interface.ISablierMerkleLockup.md)
 
-**Title:** ISablierMerkleLL
+Title: ISablierMerkleLL
 
 MerkleLL enables an airdrop model with a vesting period powered by the Lockup Linear model.
 
@@ -84,7 +83,7 @@ event. Requirements:
 function claim(uint256 index, address recipient, uint128 amount, bytes32[] calldata merkleProof) external payable;
 ```
 
-**Parameters**
+Parameters
 
 | Name          | Type        | Description                                             |
 | ------------- | ----------- | ------------------------------------------------------- |
@@ -113,7 +112,7 @@ event. Requirements:
 function claimTo(uint256 index, address to, uint128 amount, bytes32[] calldata merkleProof) external payable;
 ```
 
-**Parameters**
+Parameters
 
 | Name          | Type        | Description                                                                                 |
 | ------------- | ----------- | ------------------------------------------------------------------------------------------- |
@@ -159,7 +158,7 @@ function claimViaAttestation(
     payable;
 ```
 
-**Parameters**
+Parameters
 
 | Name          | Type        | Description                                                                                 |
 | ------------- | ----------- | ------------------------------------------------------------------------------------------- |
@@ -235,7 +234,7 @@ function claimViaSig(
     payable;
 ```
 
-**Parameters**
+Parameters
 
 | Name          | Type        | Description                                                                                  |
 | ------------- | ----------- | -------------------------------------------------------------------------------------------- |

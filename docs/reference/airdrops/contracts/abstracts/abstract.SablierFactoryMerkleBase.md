@@ -1,11 +1,11 @@
 # SablierFactoryMerkleBase
 
-[Git Source](https://github.com/sablier-labs/evm-monorepo/blob/d6f6f1d4bb0a5bf508c1d0d7c1b59cd8879d56f9/src/abstracts/SablierFactoryMerkleBase.sol)
+[Git Source](https://github.com/sablier-labs/evm-monorepo/blob/003a71932c0e26e767a02c21205a077469406ac8/src/abstracts/SablierFactoryMerkleBase.sol)
 
-**Inherits:** [Comptrollerable](/docs/reference/airdrops/contracts/abstracts/abstract.Comptrollerable.md),
+Inherits: [Comptrollerable](/docs/reference/airdrops/contracts/abstracts/abstract.Comptrollerable.md),
 [ISablierFactoryMerkleBase](/docs/reference/airdrops/contracts/interfaces/interface.ISablierFactoryMerkleBase.md)
 
-**Title:** SablierFactoryMerkleBase
+Title: SablierFactoryMerkleBase
 
 See the documentation in
 [ISablierFactoryMerkleBase](/docs/reference/airdrops/contracts/interfaces/interface.ISablierFactoryMerkleBase.md).
@@ -34,7 +34,7 @@ address public override nativeToken
 constructor(address initialComptroller) [Comptrollerable](/docs/reference/airdrops/contracts/abstracts/abstract.Comptrollerable.md)(initialComptroller);
 ```
 
-**Parameters**
+Parameters
 
 | Name                 | Type      | Description                                      |
 | -------------------- | --------- | ------------------------------------------------ |
@@ -54,7 +54,7 @@ For more information, see the documentation for {nativeToken}. Emits a {SetNativ
 function setNativeToken(address newNativeToken) external override onlyComptroller;
 ```
 
-**Parameters**
+Parameters
 
 | Name             | Type      | Description                      |
 | ---------------- | --------- | -------------------------------- |

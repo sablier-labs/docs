@@ -1,10 +1,10 @@
 # IWstETH
 
-[Git Source](https://github.com/sablier-labs/evm-monorepo/blob/d6f6f1d4bb0a5bf508c1d0d7c1b59cd8879d56f9/src/interfaces/external/IWstETH.sol)
+[Git Source](https://github.com/sablier-labs/evm-monorepo/blob/003a71932c0e26e767a02c21205a077469406ac8/src/interfaces/external/IWstETH.sol)
 
-**Inherits:** IERC20
+Inherits: IERC20
 
-**Title:** IWstETH
+Title: IWstETH
 
 Minimal interface for Lido's wstETH.
 
@@ -18,13 +18,13 @@ Returns the amount of stETH for a given amount of wstETH.
 function getStETHByWstETH(uint256 wstETHAmount) external view returns (uint256);
 ```
 
-**Parameters**
+Parameters
 
 | Name           | Type      | Description           |
 | -------------- | --------- | --------------------- |
 | `wstETHAmount` | `uint256` | The amount of wstETH. |
 
-**Returns**
+Returns
 
 | Name     | Type      | Description                     |
 | -------- | --------- | ------------------------------- |
@@ -38,13 +38,13 @@ Returns the amount of wstETH for a given amount of stETH.
 function getWstETHByStETH(uint256 stETHAmount) external view returns (uint256);
 ```
 
-**Parameters**
+Parameters
 
 | Name          | Type      | Description          |
 | ------------- | --------- | -------------------- |
 | `stETHAmount` | `uint256` | The amount of stETH. |
 
-**Returns**
+Returns
 
 | Name     | Type      | Description                      |
 | -------- | --------- | -------------------------------- |

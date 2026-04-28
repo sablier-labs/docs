@@ -4,12 +4,12 @@ sidebar_position: 3
 
 # SablierLidoAdapter
 
-[Git Source](https://github.com/sablier-labs/evm-monorepo/blob/d6f6f1d4bb0a5bf508c1d0d7c1b59cd8879d56f9/src/SablierLidoAdapter.sol)
+[Git Source](https://github.com/sablier-labs/evm-monorepo/blob/003a71932c0e26e767a02c21205a077469406ac8/src/SablierLidoAdapter.sol)
 
-**Inherits:** [Comptrollerable](/docs/reference/bob/contracts/abstracts/abstract.Comptrollerable.md), ERC165,
+Inherits: [Comptrollerable](/docs/reference/bob/contracts/abstracts/abstract.Comptrollerable.md), ERC165,
 [ISablierLidoAdapter](/docs/reference/bob/contracts/interfaces/interface.ISablierLidoAdapter.md)
 
-**Title:** SablierLidoAdapter
+Title: SablierLidoAdapter
 
 Lido yield adapter for the SablierBob protocol.
 
@@ -185,7 +185,7 @@ constructor(
     [Comptrollerable](/docs/reference/bob/contracts/abstracts/abstract.Comptrollerable.md)(initialComptroller);
 ```
 
-**Parameters**
+Parameters
 
 | Name                       | Type      | Description                                                |
 | -------------------------- | --------- | ---------------------------------------------------------- |
@@ -226,13 +226,13 @@ Returns the total amount of yield-bearing tokens held in a vault.
 function getTotalYieldBearingTokenBalance(uint256 vaultId) external view override returns (uint128);
 ```
 
-**Parameters**
+Parameters
 
 | Name      | Type      | Description          |
 | --------- | --------- | -------------------- |
 | `vaultId` | `uint256` | The ID of the vault. |
 
-**Returns**
+Returns
 
 | Name     | Type      | Description                                            |
 | -------- | --------- | ------------------------------------------------------ |
@@ -246,13 +246,13 @@ Returns the yield fee stored for a specific vault.
 function getVaultYieldFee(uint256 vaultId) external view override returns (UD60x18);
 ```
 
-**Parameters**
+Parameters
 
 | Name      | Type      | Description          |
 | --------- | --------- | -------------------- |
 | `vaultId` | `uint256` | The ID of the vault. |
 
-**Returns**
+Returns
 
 | Name     | Type      | Description                                                            |
 | -------- | --------- | ---------------------------------------------------------------------- |
@@ -266,7 +266,7 @@ Returns the total WETH received after unstaking for a vault.
 function getWethReceivedAfterUnstaking(uint256 vaultId) external view override returns (uint256);
 ```
 
-**Parameters**
+Parameters
 
 | Name      | Type      | Description          |
 | --------- | --------- | -------------------- |
@@ -280,14 +280,14 @@ Returns the amount of yield-bearing tokens held for a specific user in a vault.
 function getYieldBearingTokenBalanceFor(uint256 vaultId, address user) external view override returns (uint128);
 ```
 
-**Parameters**
+Parameters
 
 | Name      | Type      | Description              |
 | --------- | --------- | ------------------------ |
 | `vaultId` | `uint256` | The ID of the vault.     |
 | `user`    | `address` | The address of the user. |
 
-**Returns**
+Returns
 
 | Name     | Type      | Description                                               |
 | -------- | --------- | --------------------------------------------------------- |
@@ -322,7 +322,7 @@ function processRedemption(
     returns (uint128 transferAmount, uint128 feeAmountDeductedFromYield);
 ```
 
-**Parameters**
+Parameters
 
 | Name           | Type      | Description                            |
 | -------------- | --------- | -------------------------------------- |
@@ -330,7 +330,7 @@ function processRedemption(
 | `user`         | `address` | The address of the user.               |
 | `shareBalance` | `uint128` | The user's share balance in the vault. |
 
-**Returns**
+Returns
 
 | Name                         | Type      | Description                          |
 | ---------------------------- | --------- | ------------------------------------ |
@@ -347,7 +347,7 @@ Register a new vault with the adapter and snapshot the current fee on yield. Req
 function registerVault(uint256 vaultId) external override onlySablierBob;
 ```
 
-**Parameters**
+Parameters
 
 | Name      | Type      | Description                        |
 | --------- | --------- | ---------------------------------- |
@@ -374,7 +374,7 @@ Emits a {RequestLidoWithdrawal} event. Notes:
 function requestLidoWithdrawal(uint256 vaultId) external override onlyComptroller;
 ```
 
-**Parameters**
+Parameters
 
 | Name      | Type      | Description          |
 | --------- | --------- | -------------------- |
@@ -394,7 +394,7 @@ Emits a {SetSlippageTolerance} event. Notes:
 function setSlippageTolerance(UD60x18 newTolerance) external override onlyComptroller;
 ```
 
-**Parameters**
+Parameters
 
 | Name           | Type      | Description                            |
 | -------------- | --------- | -------------------------------------- |
@@ -414,7 +414,7 @@ Emits a {SetYieldFee} event. Notes:
 function setYieldFee(UD60x18 newFee) external override onlyComptroller;
 ```
 
-**Parameters**
+Parameters
 
 | Name     | Type      | Description                                     |
 | -------- | --------- | ----------------------------------------------- |
@@ -433,7 +433,7 @@ Emits a {Stake} event. Requirements:
 function stake(uint256 vaultId, address user, uint256 amount) external override onlySablierBob;
 ```
 
-**Parameters**
+Parameters
 
 | Name      | Type      | Description                                    |
 | --------- | --------- | ---------------------------------------------- |
@@ -458,13 +458,13 @@ function unstakeFullAmount(uint256 vaultId)
     returns (uint128 totalWstETH, uint128 amountReceivedFromUnstaking);
 ```
 
-**Parameters**
+Parameters
 
 | Name      | Type      | Description          |
 | --------- | --------- | -------------------- |
 | `vaultId` | `uint256` | The ID of the vault. |
 
-**Returns**
+Returns
 
 | Name                          | Type      | Description                                                                          |
 | ----------------------------- | --------- | ------------------------------------------------------------------------------------ |
@@ -492,7 +492,7 @@ function updateStakedTokenBalance(
     onlySablierBob;
 ```
 
-**Parameters**
+Parameters
 
 | Name                             | Type      | Description                                           |
 | -------------------------------- | --------- | ----------------------------------------------------- |

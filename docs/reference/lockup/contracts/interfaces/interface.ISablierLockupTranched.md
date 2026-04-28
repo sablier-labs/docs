@@ -1,10 +1,10 @@
 # ISablierLockupTranched
 
-[Git Source](https://github.com/sablier-labs/evm-monorepo/blob/d6f6f1d4bb0a5bf508c1d0d7c1b59cd8879d56f9/src/interfaces/ISablierLockupTranched.sol)
+[Git Source](https://github.com/sablier-labs/evm-monorepo/blob/003a71932c0e26e767a02c21205a077469406ac8/src/interfaces/ISablierLockupTranched.sol)
 
-**Inherits:** [ISablierLockupState](/docs/reference/lockup/contracts/interfaces/interface.ISablierLockupState.md)
+Inherits: [ISablierLockupState](/docs/reference/lockup/contracts/interfaces/interface.ISablierLockupState.md)
 
-**Title:** ISablierLockupTranched
+Title: ISablierLockupTranched
 
 Creates Lockup streams with tranched distribution model.
 
@@ -32,14 +32,14 @@ function createWithDurationsLT(
     returns (uint256 streamId);
 ```
 
-**Parameters**
+Parameters
 
 | Name                   | Type                                   | Description                                                                                                                                                                                  |
 | ---------------------- | -------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `params`               | `Lockup.CreateWithDurations`           | Struct encapsulating the function parameters, which are documented in {Lockup} type.                                                                                                         |
 | `tranchesWithDuration` | `LockupTranched.TrancheWithDuration[]` | Tranches with durations used to compose the tranched distribution function. Timestamps are calculated by starting from `block.timestamp` and adding each duration to the previous timestamp. |
 
-**Returns**
+Returns
 
 | Name       | Type      | Description                         |
 | ---------- | --------- | ----------------------------------- |
@@ -77,14 +77,14 @@ function createWithTimestampsLT(
     returns (uint256 streamId);
 ```
 
-**Parameters**
+Parameters
 
 | Name       | Type                          | Description                                                                          |
 | ---------- | ----------------------------- | ------------------------------------------------------------------------------------ |
 | `params`   | `Lockup.CreateWithTimestamps` | Struct encapsulating the function parameters, which are documented in {Lockup} type. |
 | `tranches` | `LockupTranched.Tranche[]`    | Tranches used to compose the tranched distribution function.                         |
 
-**Returns**
+Returns
 
 | Name       | Type      | Description                         |
 | ---------- | --------- | ----------------------------------- |
@@ -104,7 +104,7 @@ event CreateLockupTranchedStream(
 );
 ```
 
-**Parameters**
+Parameters
 
 | Name           | Type                       | Description                                                                   |
 | -------------- | -------------------------- | ----------------------------------------------------------------------------- |
