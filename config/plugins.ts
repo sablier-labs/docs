@@ -1,5 +1,5 @@
 import type { Options as ClientRedirectsOptions } from "@docusaurus/plugin-client-redirects";
-import type { DocusaurusConfig, PluginOptions } from "@docusaurus/types";
+import type { DocusaurusConfig, Plugin, PluginOptions } from "@docusaurus/types";
 import type {
   ConfigOptions,
   GraphQLMarkdownCliOptions,
@@ -135,4 +135,25 @@ function resolveRemoteUrl(expression: string): string | undefined {
   return `https://raw.githubusercontent.com/${GITHUB_ORG}/evm-monorepo/${BENCHMARKS_COMMIT}/misc/benchmarks/${match[1]}`;
 }
 
-export const plugins: DocusaurusConfig["plugins"] = [clientRedirects, graphqlMarkdown, llmfood];
+/* -------------------------------------------------------------------------- */
+/*                          Webpack Warning Filters                           */
+/* -------------------------------------------------------------------------- */
+
+// vscode-languageserver-types ships a UMD wrapper whose `factory(require, exports)` call
+// triggers webpack's "Critical dependency: require function is used in a way..." warning.
+// Pulled in transitively via mermaid → langium → vscode-languageserver.
+const VSCODE_LST_UMD_PATTERN = /vscode-languageserver-types[\\/]lib[\\/]umd[\\/]main\.js/;
+
+const ignoreWebpackWarnings = (): Plugin => ({
+  name: "ignore-webpack-warnings",
+  configureWebpack: () => ({
+    ignoreWarnings: [{ module: VSCODE_LST_UMD_PATTERN }],
+  }),
+});
+
+export const plugins: DocusaurusConfig["plugins"] = [
+  clientRedirects,
+  graphqlMarkdown,
+  llmfood,
+  ignoreWebpackWarnings,
+];
