@@ -1,31 +1,31 @@
-name: "Deploy to Vercel"
+name: Deploy to Vercel
 
 on:
   workflow_dispatch:
   push:
-    branches: ["main"]
+    branches: [main]
 
 jobs:
   cd:
-    environment: "production"
-    runs-on: "ubuntu-latest"
+    environment: production
+    runs-on: ubuntu-latest
     steps:
-      - name: "Set up devkit"
-        uses: "sablier-labs/devkit/actions/setup@v1"
+      - name: Set up devkit
+        uses: sablier-labs/devkit/actions/setup@v1
         with:
-          package-manager: "bun"
+          save-cache: true
 
-      - name: "Run the code checks"
-        run: "just full-check"
+      - name: Run the code checks
+        run: just full-check
 
-      - name: "Deploy to Vercel"
+      - name: Deploy to Vercel
         env:
           VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
           VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
           VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
-        run: "just deploy"
+        run: just deploy
 
-      - name: "Add summary"
+      - name: Add summary
         run: |
           echo "## Continuous Deployment results" >> $GITHUB_STEP_SUMMARY
           echo "✅ Passed" >> $GITHUB_STEP_SUMMARY
