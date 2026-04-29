@@ -19,10 +19,6 @@ export const Links = {
   BLOG: "https://blog.sablier.com",
   DISCORD: "https://discord.gg/bSwRCwWRsT",
   EXAMPLE: "https://app.sablier.com/vesting/stream/LL-1-273/",
-  Forms: {
-    CALL: "https://forms.gle/6z3XyfSLXDoRghG99",
-    CHAINS: "https://forms.gle/9EaRarDie98Fw1mw6",
-  },
   GitHub: {
     AIRDROPS: `${EVM_MONOREPO}/blob/main/airdrops`,
     BENCHMARKS: `${EVM_MONOREPO}/blob/main/misc/benchmarks`,
