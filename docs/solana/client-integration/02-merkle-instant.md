@@ -98,67 +98,6 @@ async function setUp() {
 }
 ```
 
-## Create an Airdrop Campaign
-
-Create a new airdrop campaign with merkle tree distribution:
-
-```typescript
-async function createAirdropCampaign(merkleRoot: number[], ipfsCid: string) {
-  // Ensure the set up is done
-  await setUp();
-
-  // The signer is the creator
-  const creator = signerKeys.publicKey;
-
-  const name = "My Airdrop Campaign";
-
-  // Campaign timing
-  const startTime = new BN(Math.floor(Date.now() / 1000));
-  const expirationTime = startTime.add(new BN(24 * 60 * 60 * 30)); // 30 days later
-
-  // Distribution parameters
-  const aggregateAmount = new BN(10000 * 10 ** 6); // 10,000 tokens (assuming 6 decimals)
-  const recipientCount = 10;
-  const airdropTokenMint = new PublicKey("AIRDROP_TOKEN_MINT");
-
-  // Set a higher compute unit limit so that the transaction doesn't fail
-  const increaseCULimitIx = ComputeBudgetProgram.setComputeUnitLimit({
-    units: 1_000_000,
-  });
-
-  // Call the `createCampaign` instruction
-  const txSignature = await merkleInstantProgram.methods
-    .createCampaign(merkleRoot, startTime, expirationTime, name, ipfsCid, aggregateAmount, recipientCount)
-    .accounts({
-      airdropTokenMint,
-      airdropTokenProgram: TOKEN_PROGRAM_ID,
-      creator,
-    })
-    .preInstructions([increaseCULimitIx])
-    .rpc();
-
-  console.log("Airdrop campaign created successfully!");
-  console.log("Transaction signature:", txSignature);
-}
-```
-
-Make sure to call the `createAirdropCampaign` function to execute it on-chain:
-
-```typescript
-// Some dummy values for demonstration purposes
-const merkleRoot = Array.from(Buffer.from("d52549cb072a1fcd052412fc80f678effe92aeeedccd1cae632c5c6e1de89379", "hex"));
-const ipfsCid = "bafkreiecpwdhvkmw4y6iihfndk7jhwjas3m5htm7nczovt6m37mucwgsrq";
-createAirdropCampaign(merkleRoot, ipfsCid);
-```
-
-Execute the below command (change `ANCHOR_WALLET` if your wallet config is located at a different path):
-
-```shell
-ANCHOR_WALLET=~/.config/solana/id.json \
-ANCHOR_PROVIDER_URL="https://api.devnet.solana.com" \
-bun run merkle-instant-example.ts
-```
-
 ## Claim from an Airdrop Campaign
 
 Claim tokens from an existing airdrop campaign:
