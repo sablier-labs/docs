@@ -143,8 +143,45 @@ function renderTable(rows: ReadonlyArray<readonly [Chain, Address]>): string {
   return content;
 }
 
-export function AdminsTable() {
-  const content = useMemo(() => renderTable(CURRENT_CHAIN_ADMINS), []);
+const CURRENT_ADMIN_BY_CHAIN_ID: ReadonlyMap<number, Address> = new Map(
+  CURRENT_CHAIN_ADMINS.map(([chain, admin]) => [chain.id, admin])
+);
+
+function renderComptrollerAdminsTable(): string {
+  // Iterating the comptroller catalog (rather than CURRENT_CHAIN_ADMINS) keeps
+  // the table in sync with deployments automatically; the admin lookup throws
+  // at module load if the hand-maintained map falls out of step.
+  const rows = sablier.comptroller
+    .getAll()
+    .flatMap((comptroller) => {
+      const chain = sablier.chains.get(comptroller.chainId);
+      if (!chain || chain.isTestnet || !chain.isSupportedByUI) {
+        return [];
+      }
+      const admin = CURRENT_ADMIN_BY_CHAIN_ID.get(chain.id);
+      if (!admin) {
+        throw new Error(
+          `AdminsTable: missing current admin for chain ${chain.name} (${chain.id}). ` +
+            "Add it to CURRENT_CHAIN_ADMINS in src/components/organisms/AdminsTable.tsx."
+        );
+      }
+      return [{ admin, chain, comptroller: comptroller.address }];
+    })
+    .sort((a, b) => a.chain.name.localeCompare(b.chain.name));
+
+  let content = "| Chain | Comptroller | Comptroller Admin |\n";
+  content += "| :---- | :---------- | :---- |\n";
+  for (const { admin, chain, comptroller } of rows) {
+    const explorerBaseUrl = chain.blockExplorers.default.url;
+    const comptrollerLink = `[${comptroller}](${explorerBaseUrl}/address/${comptroller})`;
+    const adminLink = `[${admin}](${explorerBaseUrl}/address/${admin})`;
+    content += `| ${chain.name} | ${comptrollerLink} | ${adminLink} |\n`;
+  }
+  return content;
+}
+
+export function ComptrollerAdminsTable() {
+  const content = useMemo(() => renderComptrollerAdminsTable(), []);
   return <GFMContent content={content} />;
 }
 
@@ -153,4 +190,4 @@ export function OldAdminsTable() {
   return <GFMContent content={content} />;
 }
 
-export default AdminsTable;
+export default ComptrollerAdminsTable;

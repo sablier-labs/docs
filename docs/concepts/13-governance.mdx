@@ -4,36 +4,22 @@ sidebar_position: 13
 title: "Governance"
 ---
 
-import { AdminsTable, OldAdminsTable } from "@site/src/components/organisms/AdminsTable";
-import ComptrollersTable from "@site/src/components/organisms/ComptrollersTable";
+import { ComptrollerAdminsTable, OldAdminsTable } from "@site/src/components/organisms/AdminsTable";
 
-## Comptroller
+## Comptroller and Admins
 
 The Sablier Comptroller is a smart contract that acts as an intermediary between the protocols and the Sablier admin
 addresses. It has exclusive access to specific protocol functions. This design provides a more flexible approach to
 access control across all protocols while maintaining security.
 
-Admin addresses that control the Comptroller are listed below in the [Admin Addresses](#admin-addresses) section.
+### Current
 
-<ComptrollersTable />
+Used in Lockup v2.0, v3.0 and v4.0, Flow v1.1, v2.0 and v3.0, and Airdrops v1.3, v2.0 and v3.0. The table below lists
+the deployed Comptroller and the admin that controls it on each chain.
 
-## Admin Addresses
+<ComptrollerAdminsTable />
 
-The Comptroller was introduced in Lockup v3.0, Airdrops v2.0, and Flow v2.0. Prior to these, we used a direct admin role
-for governance.
-
-These admin accounts have the same authority as the current Comptroller contract, with direct access to specific
-protocol functions. More concretely, the admins are a collection of multisig wallets and EOAs currently in control of
-Sablier Labs.
-
-### Current Admins
-
-Used in Lockup v2.0, v3.0 and v4.0, Flow v1.1, v2.0 and v3.0, and Airdrops v1.3, v2.0 and v3.0. These addresses control
-the Comptroller on each chain.
-
-<AdminsTable />
-
-### Old Admins
+### Old
 
 Used in all previous versions: Lockup v1.0, v1.1 and v1.2; Flow v1.0; and Airdrops v1.1 and v1.2. Each of these
 addresses had direct admin authority over the corresponding protocol contracts before the Comptroller was introduced.
