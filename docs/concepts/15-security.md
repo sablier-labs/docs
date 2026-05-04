@@ -35,10 +35,11 @@ All the audits of Bob contracts can be found [here](https://github.com/sablier-l
 
 ## Bug Bounty
 
-The details of the bug bounty program can be found [here](https://sablier.notion.site/bug-bounty).
+The details of the now deprecated bug bounty program can be found [here](https://sablier.notion.site/bug-bounty).
 
-:::info
+:::important[This bug bounty program has been deprecated]
 
-The bounty is up to $100,000 for reporting critical vulnerabilities.
+Effective May 1, 2026, the Sablier bug bounty program is no longer applicable. We thank all researchers who contributed
+to the security of the protocol.
 
 :::
