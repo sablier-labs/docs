@@ -7,7 +7,11 @@ type Address = Sablier.Address;
 type Chain = Sablier.Chain;
 
 // Sablier-controlled EOA, used on chains that never received a multisig.
-const EOA: Address = "0xb1bEF51ebCA01EB12001a639bDBbFF6eEcA12B9F";
+const EOA: Address = "0xcB88fBf459000853F22a7296b23d163901BB385E";
+
+// Previous Sablier-controlled EOA, retained as the on-chain admin of
+// pre-Comptroller releases on chains that never received a multisig.
+const LEGACY_EOA: Address = "0xb1bEF51ebCA01EB12001a639bDBbFF6eEcA12B9F";
 
 // Current Safe multisig, deterministically deployed at the same address across
 // most chains. Governs Lockup v2.0+, Flow v1.0+ and Airdrops v1.3+ (via the
@@ -56,29 +60,29 @@ const CURRENT_CHAIN_ADMINS: ReadonlyArray<readonly [Chain, Address]> = [
 // multisig. Verified against the on-chain `admin()` getter on every chain in
 // the Lockup v2.0 release (the latest direct-admin release).
 const OLD_CHAIN_ADMINS: ReadonlyArray<readonly [Chain, Address]> = [
-  [chains.abstract, EOA],
+  [chains.abstract, LEGACY_EOA],
   [chains.arbitrum, "0xF34E41a6f6Ce5A45559B1D3Ee92E141a3De96376"],
   [chains.avalanche, "0x4735517616373c5137dE8bcCDc887637B8ac85Ce"],
   [chains.base, "0x83A6fA8c04420B3F9C7A4CF1c040b63Fbbc89B66"],
-  [chains.berachain, EOA],
-  [chains.blast, EOA],
+  [chains.berachain, LEGACY_EOA],
+  [chains.blast, LEGACY_EOA],
   [chains.bsc, "0x6666cA940D2f4B65883b454b7Bc7EEB039f64fa3"],
   [chains.chiliz, "0x74A234DcAdFCB395b37C8c2B3Edf7A13Be78c935"],
   [chains.gnosis, "0x72ACB57fa6a8fa768bE44Db453B1CDBa8B12A399"],
-  [chains.hyperevm, EOA],
-  [chains.lightlink, EOA],
+  [chains.hyperevm, LEGACY_EOA],
+  [chains.lightlink, LEGACY_EOA],
   [chains.linea, "0x72dCfa0483d5Ef91562817C6f20E8Ce07A81319D"],
   [chains.mainnet, "0x79Fb3e81aAc012c08501f41296CCC145a1E15844"],
-  [chains.mode, EOA],
-  [chains.morph, EOA],
+  [chains.mode, LEGACY_EOA],
+  [chains.morph, LEGACY_EOA],
   [chains.optimism, "0x43c76FE8Aec91F63EbEfb4f5d2a4ba88ef880350"],
   [chains.polygon, "0x40A518C5B9c1d3D6d62Ba789501CE4D526C9d9C6"],
   [chains.scroll, "0x0F7Ad835235Ede685180A5c611111610813457a9"],
-  [chains.sonic, EOA],
-  [chains.superseed, EOA],
-  [chains.tangle, EOA],
-  [chains.unichain, EOA],
-  [chains.xdc, EOA],
+  [chains.sonic, LEGACY_EOA],
+  [chains.superseed, LEGACY_EOA],
+  [chains.tangle, LEGACY_EOA],
+  [chains.unichain, LEGACY_EOA],
+  [chains.xdc, LEGACY_EOA],
   [chains.zksync, "0xaFeA787Ef04E280ad5Bb907363f214E4BAB9e288"],
 ];
 
