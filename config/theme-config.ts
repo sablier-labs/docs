@@ -16,6 +16,10 @@ const footer: Preset.ThemeConfig["footer"] = {
           label: "About",
         },
         {
+          href: "mailto:contact@sablier.com",
+          label: "Contact",
+        },
+        {
           href: "https://files.sablier.com/risk-notice.pdf",
           label: "Risk Notice",
         },
