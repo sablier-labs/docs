@@ -33,7 +33,9 @@ const FunctionPlot = memo(({ options }: FunctionPlotProps) => {
     }
   }, [options]);
 
-  return <div ref={rootEl} />;
+  // Reserve the SVG's intrinsic height (function-plot DEFAULT_HEIGHT) so the
+  // post-mount paint doesn't shift layout and break in-page anchor scrolling.
+  return <div ref={rootEl} style={{ minHeight: 350 }} />;
 });
 
 FunctionPlot.displayName = "FunctionPlot";
