@@ -4,10 +4,21 @@ sidebar_position: 2
 title: "Stream Shapes"
 ---
 
+import { Shape } from "sablier";
+
 The stream shapes below are examples. Not an exhaustive list.
 
 The model for each shape is not a requirement, but a recommendation - for example, the Timelock shape can also be
 implemented via Linear or Dynamic models, but is most efficient with the Tranched model.
+
+:::tip
+
+When creating streams programmatically, pass the corresponding **Shape ID** (shown under each shape below) as the
+`shape` field. The Sablier app uses this ID to render the matching curve in its
+[UI gallery](https://app.sablier.com/vesting/gallery/). Install the [`sablier`](https://github.com/sablier-labs/sdk) SDK
+to import the IDs as a typed enum (`Shape.Lockup`).
+
+:::
 
 :::note
 
@@ -18,14 +29,13 @@ implemented via Linear or Dynamic models, but is most efficient with the Tranche
   [examples](https://github.com/sablier-labs/evm-monorepo/blob/main/misc/examples/lockup/) repository and the
   "CurvesCreator" files.
 
-- Using TypeScript? Install our [`sablier`](https://github.com/sablier-labs/sdk) SDK package, which provides bespoke
-  types for shapes.
-
 :::
 
 ## Lockup Linear
 
 ### Linear
+
+**Shape ID:** <code>{Shape.Lockup.Linear}</code>
 
 Lockup Linear streams are the simplest token distribution curve in Sablier. The streamed amount over time follows a
 straight line that goes up and to the right on a graph, which corresponds to the identity function $f(x) = x$:
@@ -43,6 +53,8 @@ The gas cost to create this shape is approximately _168,923_ on Mainnet. This ma
 :::
 
 ### Unlock Linear
+
+**Shape ID:** <code>{Shape.Lockup.LinearUnlockLinear}</code>
 
 The Unlock Linear shape combines an initial immediate release of tokens with a steady, linear payout over time. This
 shape is ideal for employment contracts that include a signing bonus along with a regular payout schedule.
@@ -80,6 +92,8 @@ The gas cost to create this shape is approximately _191,182_ on Mainnet. This ma
 
 ### Cliff
 
+**Shape ID:** <code>{Shape.Lockup.Cliff}</code>
+
 It is possible to attach a "cliff" to a Lockup Linear stream, which sets a cut-off point for releasing tokens. Prior to
 the cliff, the recipient cannot withdraw any tokens, but the stream continues to accrue them. After the cliff, the
 constant payment rate per second kicks in.
@@ -114,6 +128,8 @@ The gas cost to create this shape is approximately _213,708_ on Mainnet. This ma
 :::
 
 ### Unlock Cliff
+
+**Shape ID:** <code>{Shape.Lockup.LinearUnlockCliff}</code>
 
 This shape is useful for companies who want to distribute tokens to their investors using a cliff followed by linear
 vesting but also want to unlock some liquidity at the beginning to be able to allow investors to bootstrap AMM pools.
@@ -162,6 +178,8 @@ engine, capable of supporting any custom streaming curve.
 
 ### Exponential
 
+**Shape ID:** <code>{Shape.Lockup.DynamicExponential}</code>
+
 A fantastic use case for Lockup Dynamic is Exponential streams, a shape through which the recipient receives
 increasingly more tokens as time passes.
 
@@ -178,6 +196,8 @@ The gas cost to create this shape is approximately _219,629_ on Mainnet. This ma
 :::
 
 ### Cliff Exponential
+
+**Shape ID:** <code>{Shape.Lockup.DynamicCliffExponential}</code>
 
 Another use case for Lockup Dynamic is a variation of the previous design: an Cliff Exponential.
 
@@ -224,6 +244,9 @@ tranches article.
 
 ### Unlock in Steps
 
+**Shape ID:** <code>{Shape.Lockup.LinearStepper}</code> <em>(the legacy <code>{Shape.Lockup.TranchedStepper}</code> is
+deprecated)</em>
+
 You can use Lockup Tranched to create a traditional vesting contract with periodic unlocks. In this case, the
 "streaming" rate would not be by the second, but by the week, month, or year.
 
@@ -266,6 +289,8 @@ multiple factors to consider.
 
 ### Unlock Monthly
 
+**Shape ID:** <code>{Shape.Lockup.TranchedMonthly}</code>
+
 Unlock Monthly is a special case of Unlock in Steps where tokens are unlocked on the same day every month, e.g. the 1st
 of every month. This is suited for use cases like traditional monthly salaries or ESOPs plans.
 
@@ -301,6 +326,8 @@ vary as there are multiple factors to consider.
 :::
 
 ### Backweighted
+
+**Shape ID:** <code>{Shape.Lockup.TranchedBackweighted}</code>
 
 Backweighted is a type of tranched vesting curve where the tokens are vested in a backweighted way, meaning little vests
 early on, and large chunks vest towards the end.
@@ -346,6 +373,8 @@ vary as there are multiple factors to consider.
 :::
 
 ### Timelock
+
+**Shape ID:** <code>{Shape.Lockup.TranchedTimelock}</code>
 
 The Timelock shape locks all tokens for a specified period. Users cannot access the tokens until the set period elapses.
 
