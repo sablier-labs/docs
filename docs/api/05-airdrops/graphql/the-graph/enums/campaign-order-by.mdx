@@ -1,0 +1,299 @@
+---
+id: campaign-order-by
+title: Campaign_orderBy
+---
+
+<head>
+  <meta content="noindex" name="robots" />
+  <meta charset="utf-8" />
+</head>
+
+export const Bullet = () => (
+  <>
+    <span style={{ fontWeight: "normal", fontSize: ".5em", color: "var(--ifm-color-secondary-darkest)" }}>
+      &nbsp;●&nbsp;
+    </span>
+  </>
+);
+
+export const SpecifiedBy = (props) => (
+  <>
+    Specification
+    <a
+      className="link"
+      style={{ fontSize: "1.5em", paddingLeft: "4px" }}
+      target="_blank"
+      href={props.url}
+      title={"Specified by " + props.url}
+    >
+      ⎘
+    </a>
+  </>
+);
+
+export const Badge = (props) => (
+  <>
+    <span className={props.class}>{props.text}</span>
+  </>
+);
+
+import { useState } from "react";
+
+export const Details = ({ dataOpen, dataClose, children, startOpen = false }) => {
+  const [open, setOpen] = useState(startOpen);
+  return (
+    <details
+      {...(open ? { open: true } : {})}
+      className="details"
+      style={{ border: "none", boxShadow: "none", background: "var(--ifm-background-color)" }}
+    >
+      <summary
+        onClick={(e) => {
+          e.preventDefault();
+          setOpen((open) => !open);
+        }}
+        style={{ listStyle: "none" }}
+      >
+        {open ? dataOpen : dataClose}
+      </summary>
+      {open && children}
+    </details>
+  );
+};
+
+No description
+
+```graphql
+enum Campaign_orderBy {
+  id
+  chainId
+  subgraphId
+  hash
+  timestamp
+  actions
+  clawbackAction
+  clawbackAction__id
+  clawbackAction__subgraphId
+  clawbackAction__block
+  clawbackAction__chainId
+  clawbackAction__from
+  clawbackAction__hash
+  clawbackAction__timestamp
+  clawbackAction__category
+  clawbackAction__fee
+  clawbackAction__claimAmount
+  clawbackAction__claimIndex
+  clawbackAction__claimRecipient
+  clawbackAction__claimTo
+  clawbackAction__claimStreamId
+  clawbackAction__claimTokenId
+  clawbackAction__clawbackAmount
+  clawbackAction__clawbackFrom
+  clawbackAction__clawbackTo
+  clawbackAction__vcaForgoneAmount
+  category
+  name
+  nickname
+  activities
+  address
+  admin
+  aggregateAmount
+  asset
+  asset__id
+  asset__address
+  asset__chainId
+  asset__decimals
+  asset__name
+  asset__symbol
+  claimedAmount
+  claimedCount
+  clawbackTime
+  expiration
+  expires
+  factory
+  factory__id
+  factory__address
+  factory__alias
+  factory__campaignCounter
+  factory__chainId
+  fee
+  ipfsCID
+  position
+  root
+  campaignStartTime
+  totalRecipients
+  version
+  lockup
+  streamCancelable
+  streamCliff
+  streamCliffDuration
+  streamCliffPercentage
+  streamInitial
+  streamInitialPercentage
+  streamShape
+  streamStart
+  streamStartTime
+  streamTotalDuration
+  streamTranches
+  streamTransferable
+  vcaRedistributionEnabled
+  vcaForgoneAmount
+  vcaUnlockPercentage
+  vcaStartTime
+  vcaEndTime
+}
+```
+
+### Values
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_orderBy.<b>id</b></code>](#id) \{#id\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_orderBy.<b>chainId</b></code>](#chain-id) \{#chain-id\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_orderBy.<b>subgraphId</b></code>](#subgraph-id) \{#subgraph-id\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_orderBy.<b>hash</b></code>](#hash) \{#hash\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_orderBy.<b>timestamp</b></code>](#timestamp) \{#timestamp\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_orderBy.<b>actions</b></code>](#actions) \{#actions\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_orderBy.<b>clawbackAction</b></code>](#clawback-action) \{#clawback-action\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_orderBy.<b>clawbackAction\_\_id</b></code>](#clawback-action-id) \{#clawback-action-id\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_orderBy.<b>clawbackAction\_\_subgraphId</b></code>](#clawback-action-subgraph-id) \{#clawback-action-subgraph-id\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_orderBy.<b>clawbackAction\_\_block</b></code>](#clawback-action-block) \{#clawback-action-block\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_orderBy.<b>clawbackAction\_\_chainId</b></code>](#clawback-action-chain-id) \{#clawback-action-chain-id\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_orderBy.<b>clawbackAction\_\_from</b></code>](#clawback-action-from) \{#clawback-action-from\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_orderBy.<b>clawbackAction\_\_hash</b></code>](#clawback-action-hash) \{#clawback-action-hash\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_orderBy.<b>clawbackAction\_\_timestamp</b></code>](#clawback-action-timestamp) \{#clawback-action-timestamp\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_orderBy.<b>clawbackAction\_\_category</b></code>](#clawback-action-category) \{#clawback-action-category\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_orderBy.<b>clawbackAction\_\_fee</b></code>](#clawback-action-fee) \{#clawback-action-fee\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_orderBy.<b>clawbackAction\_\_claimAmount</b></code>](#clawback-action-claim-amount) \{#clawback-action-claim-amount\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_orderBy.<b>clawbackAction\_\_claimIndex</b></code>](#clawback-action-claim-index) \{#clawback-action-claim-index\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_orderBy.<b>clawbackAction\_\_claimRecipient</b></code>](#clawback-action-claim-recipient) \{#clawback-action-claim-recipient\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_orderBy.<b>clawbackAction\_\_claimTo</b></code>](#clawback-action-claim-to) \{#clawback-action-claim-to\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_orderBy.<b>clawbackAction\_\_claimStreamId</b></code>](#clawback-action-claim-stream-id) \{#clawback-action-claim-stream-id\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_orderBy.<b>clawbackAction\_\_claimTokenId</b></code>](#clawback-action-claim-token-id) \{#clawback-action-claim-token-id\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_orderBy.<b>clawbackAction\_\_clawbackAmount</b></code>](#clawback-action-clawback-amount) \{#clawback-action-clawback-amount\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_orderBy.<b>clawbackAction\_\_clawbackFrom</b></code>](#clawback-action-clawback-from) \{#clawback-action-clawback-from\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_orderBy.<b>clawbackAction\_\_clawbackTo</b></code>](#clawback-action-clawback-to) \{#clawback-action-clawback-to\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_orderBy.<b>clawbackAction\_\_vcaForgoneAmount</b></code>](#clawback-action-vca-forgone-amount) \{#clawback-action-vca-forgone-amount\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_orderBy.<b>category</b></code>](#category) \{#category\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_orderBy.<b>name</b></code>](#name) \{#name\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_orderBy.<b>nickname</b></code>](#nickname) \{#nickname\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_orderBy.<b>activities</b></code>](#activities) \{#activities\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_orderBy.<b>address</b></code>](#address) \{#address\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_orderBy.<b>admin</b></code>](#admin) \{#admin\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_orderBy.<b>aggregateAmount</b></code>](#aggregate-amount) \{#aggregate-amount\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_orderBy.<b>asset</b></code>](#asset) \{#asset\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_orderBy.<b>asset\_\_id</b></code>](#asset-id) \{#asset-id\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_orderBy.<b>asset\_\_address</b></code>](#asset-address) \{#asset-address\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_orderBy.<b>asset\_\_chainId</b></code>](#asset-chain-id) \{#asset-chain-id\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_orderBy.<b>asset\_\_decimals</b></code>](#asset-decimals) \{#asset-decimals\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_orderBy.<b>asset\_\_name</b></code>](#asset-name) \{#asset-name\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_orderBy.<b>asset\_\_symbol</b></code>](#asset-symbol) \{#asset-symbol\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_orderBy.<b>claimedAmount</b></code>](#claimed-amount) \{#claimed-amount\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_orderBy.<b>claimedCount</b></code>](#claimed-count) \{#claimed-count\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_orderBy.<b>clawbackTime</b></code>](#clawback-time) \{#clawback-time\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_orderBy.<b>expiration</b></code>](#expiration) \{#expiration\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_orderBy.<b>expires</b></code>](#expires) \{#expires\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_orderBy.<b>factory</b></code>](#factory) \{#factory\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_orderBy.<b>factory\_\_id</b></code>](#factory-id) \{#factory-id\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_orderBy.<b>factory\_\_address</b></code>](#factory-address) \{#factory-address\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_orderBy.<b>factory\_\_alias</b></code>](#factory-alias) \{#factory-alias\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_orderBy.<b>factory\_\_campaignCounter</b></code>](#factory-campaign-counter) \{#factory-campaign-counter\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_orderBy.<b>factory\_\_chainId</b></code>](#factory-chain-id) \{#factory-chain-id\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_orderBy.<b>fee</b></code>](#fee) \{#fee\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_orderBy.<b>ipfsCID</b></code>](#ipfs-cid) \{#ipfs-cid\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_orderBy.<b>position</b></code>](#position) \{#position\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_orderBy.<b>root</b></code>](#root) \{#root\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_orderBy.<b>campaignStartTime</b></code>](#campaign-start-time) \{#campaign-start-time\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_orderBy.<b>totalRecipients</b></code>](#total-recipients) \{#total-recipients\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_orderBy.<b>version</b></code>](#version) \{#version\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_orderBy.<b>lockup</b></code>](#lockup) \{#lockup\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_orderBy.<b>streamCancelable</b></code>](#stream-cancelable) \{#stream-cancelable\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_orderBy.<b>streamCliff</b></code>](#stream-cliff) \{#stream-cliff\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_orderBy.<b>streamCliffDuration</b></code>](#stream-cliff-duration) \{#stream-cliff-duration\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_orderBy.<b>streamCliffPercentage</b></code>](#stream-cliff-percentage) \{#stream-cliff-percentage\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_orderBy.<b>streamInitial</b></code>](#stream-initial) \{#stream-initial\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_orderBy.<b>streamInitialPercentage</b></code>](#stream-initial-percentage) \{#stream-initial-percentage\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_orderBy.<b>streamShape</b></code>](#stream-shape) \{#stream-shape\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_orderBy.<b>streamStart</b></code>](#stream-start) \{#stream-start\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_orderBy.<b>streamStartTime</b></code>](#stream-start-time) \{#stream-start-time\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_orderBy.<b>streamTotalDuration</b></code>](#stream-total-duration) \{#stream-total-duration\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_orderBy.<b>streamTranches</b></code>](#stream-tranches) \{#stream-tranches\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_orderBy.<b>streamTransferable</b></code>](#stream-transferable) \{#stream-transferable\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_orderBy.<b>vcaRedistributionEnabled</b></code>](#vca-redistribution-enabled) \{#vca-redistribution-enabled\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_orderBy.<b>vcaForgoneAmount</b></code>](#vca-forgone-amount) \{#vca-forgone-amount\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_orderBy.<b>vcaUnlockPercentage</b></code>](#vca-unlock-percentage) \{#vca-unlock-percentage\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_orderBy.<b>vcaStartTime</b></code>](#vca-start-time) \{#vca-start-time\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_orderBy.<b>vcaEndTime</b></code>](#vca-end-time) \{#vca-end-time\}

@@ -42,11 +42,11 @@ progressively transfers the ownership of the funds to the recipient (who can wit
 streaming rate is influenced by various factors, such as the start and end times, the total amount of tokens deposited,
 etc.
 
-#### Key differences from the Ethereum [Lockup](../concepts/lockup/01-overview.md) protocol
+#### Key differences from the Ethereum [Lockup](../concepts/04-lockup/01-overview.md) protocol
 
 - On Solana, we currently support all shapes from the
-  [Lockup Linear](../concepts/lockup/02-stream-shapes.mdx#lockup-linear) category, as well as the
-  [Timelock](../concepts/lockup/02-stream-shapes.mdx#timelock) shape (also implemented via the Linear program).
+  [Lockup Linear](../concepts/04-lockup/02-stream-shapes.mdx#lockup-linear) category, as well as the
+  [Timelock](../concepts/04-lockup/02-stream-shapes.mdx#timelock) shape (also implemented via the Linear program).
 - Due to the limitations of the [Token Metadata](https://developers.metaplex.com/token-metadata) NFT standard, we don't
   support non-transferable Streams on Solana.
 - Instead of the tokens from all of the streams being stored at a single address, on Solana, they're kept in dedicated

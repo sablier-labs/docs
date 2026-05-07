@@ -1,0 +1,179 @@
+---
+id: campaign-max-order-by
+title: Campaign_max_order_by
+---
+
+<head>
+  <meta content="noindex" name="robots" />
+  <meta charset="utf-8" />
+</head>
+
+export const Bullet = () => (
+  <>
+    <span style={{ fontWeight: "normal", fontSize: ".5em", color: "var(--ifm-color-secondary-darkest)" }}>
+      &nbsp;●&nbsp;
+    </span>
+  </>
+);
+
+export const SpecifiedBy = (props) => (
+  <>
+    Specification
+    <a
+      className="link"
+      style={{ fontSize: "1.5em", paddingLeft: "4px" }}
+      target="_blank"
+      href={props.url}
+      title={"Specified by " + props.url}
+    >
+      ⎘
+    </a>
+  </>
+);
+
+export const Badge = (props) => (
+  <>
+    <span className={props.class}>{props.text}</span>
+  </>
+);
+
+import { useState } from "react";
+
+export const Details = ({ dataOpen, dataClose, children, startOpen = false }) => {
+  const [open, setOpen] = useState(startOpen);
+  return (
+    <details
+      {...(open ? { open: true } : {})}
+      className="details"
+      style={{ border: "none", boxShadow: "none", background: "var(--ifm-background-color)" }}
+    >
+      <summary
+        onClick={(e) => {
+          e.preventDefault();
+          setOpen((open) => !open);
+        }}
+        style={{ listStyle: "none" }}
+      >
+        {open ? dataOpen : dataClose}
+      </summary>
+      {open && children}
+    </details>
+  );
+};
+
+order by max() on columns of table "Campaign"
+
+```graphql
+input Campaign_max_order_by {
+  address: order_by
+  admin: order_by
+  aggregateAmount: order_by
+  asset_id: order_by
+  campaignStartTime: order_by
+  category: order_by
+  chainId: order_by
+  claimedAmount: order_by
+  claimedCount: order_by
+  clawbackAction_id: order_by
+  clawbackTime: order_by
+  expiration: order_by
+  factory_id: order_by
+  fee: order_by
+  hash: order_by
+  id: order_by
+  ipfsCID: order_by
+  lockup: order_by
+  name: order_by
+  nickname: order_by
+  position: order_by
+  root: order_by
+  streamCliffDuration: order_by
+  streamCliffPercentage: order_by
+  streamInitialPercentage: order_by
+  streamShape: order_by
+  streamStartTime: order_by
+  streamTotalDuration: order_by
+  subgraphId: order_by
+  timestamp: order_by
+  totalRecipients: order_by
+  vcaEndTime: order_by
+  vcaForgoneAmount: order_by
+  vcaStartTime: order_by
+  vcaUnlockPercentage: order_by
+  version: order_by
+}
+```
+
+### Fields
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_max_order_by.<b>address</b></code>](#address)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>order_by</b></code>](/docs/api/05-airdrops/graphql/envio/enums/order-by.mdx) <Badge class="badge badge--secondary " text="enum"/> \{#address\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_max_order_by.<b>admin</b></code>](#admin)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>order_by</b></code>](/docs/api/05-airdrops/graphql/envio/enums/order-by.mdx) <Badge class="badge badge--secondary " text="enum"/> \{#admin\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_max_order_by.<b>aggregateAmount</b></code>](#aggregate-amount)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>order_by</b></code>](/docs/api/05-airdrops/graphql/envio/enums/order-by.mdx) <Badge class="badge badge--secondary " text="enum"/> \{#aggregate-amount\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_max_order_by.<b>asset_id</b></code>](#asset-id)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>order_by</b></code>](/docs/api/05-airdrops/graphql/envio/enums/order-by.mdx) <Badge class="badge badge--secondary " text="enum"/> \{#asset-id\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_max_order_by.<b>campaignStartTime</b></code>](#campaign-start-time)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>order_by</b></code>](/docs/api/05-airdrops/graphql/envio/enums/order-by.mdx) <Badge class="badge badge--secondary " text="enum"/> \{#campaign-start-time\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_max_order_by.<b>category</b></code>](#category)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>order_by</b></code>](/docs/api/05-airdrops/graphql/envio/enums/order-by.mdx) <Badge class="badge badge--secondary " text="enum"/> \{#category\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_max_order_by.<b>chainId</b></code>](#chain-id)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>order_by</b></code>](/docs/api/05-airdrops/graphql/envio/enums/order-by.mdx) <Badge class="badge badge--secondary " text="enum"/> \{#chain-id\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_max_order_by.<b>claimedAmount</b></code>](#claimed-amount)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>order_by</b></code>](/docs/api/05-airdrops/graphql/envio/enums/order-by.mdx) <Badge class="badge badge--secondary " text="enum"/> \{#claimed-amount\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_max_order_by.<b>claimedCount</b></code>](#claimed-count)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>order_by</b></code>](/docs/api/05-airdrops/graphql/envio/enums/order-by.mdx) <Badge class="badge badge--secondary " text="enum"/> \{#claimed-count\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_max_order_by.<b>clawbackAction_id</b></code>](#clawback-action-id)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>order_by</b></code>](/docs/api/05-airdrops/graphql/envio/enums/order-by.mdx) <Badge class="badge badge--secondary " text="enum"/> \{#clawback-action-id\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_max_order_by.<b>clawbackTime</b></code>](#clawback-time)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>order_by</b></code>](/docs/api/05-airdrops/graphql/envio/enums/order-by.mdx) <Badge class="badge badge--secondary " text="enum"/> \{#clawback-time\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_max_order_by.<b>expiration</b></code>](#expiration)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>order_by</b></code>](/docs/api/05-airdrops/graphql/envio/enums/order-by.mdx) <Badge class="badge badge--secondary " text="enum"/> \{#expiration\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_max_order_by.<b>factory_id</b></code>](#factory-id)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>order_by</b></code>](/docs/api/05-airdrops/graphql/envio/enums/order-by.mdx) <Badge class="badge badge--secondary " text="enum"/> \{#factory-id\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_max_order_by.<b>fee</b></code>](#fee)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>order_by</b></code>](/docs/api/05-airdrops/graphql/envio/enums/order-by.mdx) <Badge class="badge badge--secondary " text="enum"/> \{#fee\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_max_order_by.<b>hash</b></code>](#hash)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>order_by</b></code>](/docs/api/05-airdrops/graphql/envio/enums/order-by.mdx) <Badge class="badge badge--secondary " text="enum"/> \{#hash\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_max_order_by.<b>id</b></code>](#id)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>order_by</b></code>](/docs/api/05-airdrops/graphql/envio/enums/order-by.mdx) <Badge class="badge badge--secondary " text="enum"/> \{#id\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_max_order_by.<b>ipfsCID</b></code>](#ipfs-cid)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>order_by</b></code>](/docs/api/05-airdrops/graphql/envio/enums/order-by.mdx) <Badge class="badge badge--secondary " text="enum"/> \{#ipfs-cid\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_max_order_by.<b>lockup</b></code>](#lockup)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>order_by</b></code>](/docs/api/05-airdrops/graphql/envio/enums/order-by.mdx) <Badge class="badge badge--secondary " text="enum"/> \{#lockup\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_max_order_by.<b>name</b></code>](#name)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>order_by</b></code>](/docs/api/05-airdrops/graphql/envio/enums/order-by.mdx) <Badge class="badge badge--secondary " text="enum"/> \{#name\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_max_order_by.<b>nickname</b></code>](#nickname)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>order_by</b></code>](/docs/api/05-airdrops/graphql/envio/enums/order-by.mdx) <Badge class="badge badge--secondary " text="enum"/> \{#nickname\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_max_order_by.<b>position</b></code>](#position)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>order_by</b></code>](/docs/api/05-airdrops/graphql/envio/enums/order-by.mdx) <Badge class="badge badge--secondary " text="enum"/> \{#position\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_max_order_by.<b>root</b></code>](#root)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>order_by</b></code>](/docs/api/05-airdrops/graphql/envio/enums/order-by.mdx) <Badge class="badge badge--secondary " text="enum"/> \{#root\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_max_order_by.<b>streamCliffDuration</b></code>](#stream-cliff-duration)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>order_by</b></code>](/docs/api/05-airdrops/graphql/envio/enums/order-by.mdx) <Badge class="badge badge--secondary " text="enum"/> \{#stream-cliff-duration\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_max_order_by.<b>streamCliffPercentage</b></code>](#stream-cliff-percentage)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>order_by</b></code>](/docs/api/05-airdrops/graphql/envio/enums/order-by.mdx) <Badge class="badge badge--secondary " text="enum"/> \{#stream-cliff-percentage\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_max_order_by.<b>streamInitialPercentage</b></code>](#stream-initial-percentage)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>order_by</b></code>](/docs/api/05-airdrops/graphql/envio/enums/order-by.mdx) <Badge class="badge badge--secondary " text="enum"/> \{#stream-initial-percentage\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_max_order_by.<b>streamShape</b></code>](#stream-shape)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>order_by</b></code>](/docs/api/05-airdrops/graphql/envio/enums/order-by.mdx) <Badge class="badge badge--secondary " text="enum"/> \{#stream-shape\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_max_order_by.<b>streamStartTime</b></code>](#stream-start-time)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>order_by</b></code>](/docs/api/05-airdrops/graphql/envio/enums/order-by.mdx) <Badge class="badge badge--secondary " text="enum"/> \{#stream-start-time\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_max_order_by.<b>streamTotalDuration</b></code>](#stream-total-duration)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>order_by</b></code>](/docs/api/05-airdrops/graphql/envio/enums/order-by.mdx) <Badge class="badge badge--secondary " text="enum"/> \{#stream-total-duration\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_max_order_by.<b>subgraphId</b></code>](#subgraph-id)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>order_by</b></code>](/docs/api/05-airdrops/graphql/envio/enums/order-by.mdx) <Badge class="badge badge--secondary " text="enum"/> \{#subgraph-id\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_max_order_by.<b>timestamp</b></code>](#timestamp)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>order_by</b></code>](/docs/api/05-airdrops/graphql/envio/enums/order-by.mdx) <Badge class="badge badge--secondary " text="enum"/> \{#timestamp\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_max_order_by.<b>totalRecipients</b></code>](#total-recipients)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>order_by</b></code>](/docs/api/05-airdrops/graphql/envio/enums/order-by.mdx) <Badge class="badge badge--secondary " text="enum"/> \{#total-recipients\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_max_order_by.<b>vcaEndTime</b></code>](#vca-end-time)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>order_by</b></code>](/docs/api/05-airdrops/graphql/envio/enums/order-by.mdx) <Badge class="badge badge--secondary " text="enum"/> \{#vca-end-time\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_max_order_by.<b>vcaForgoneAmount</b></code>](#vca-forgone-amount)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>order_by</b></code>](/docs/api/05-airdrops/graphql/envio/enums/order-by.mdx) <Badge class="badge badge--secondary " text="enum"/> \{#vca-forgone-amount\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_max_order_by.<b>vcaStartTime</b></code>](#vca-start-time)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>order_by</b></code>](/docs/api/05-airdrops/graphql/envio/enums/order-by.mdx) <Badge class="badge badge--secondary " text="enum"/> \{#vca-start-time\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_max_order_by.<b>vcaUnlockPercentage</b></code>](#vca-unlock-percentage)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>order_by</b></code>](/docs/api/05-airdrops/graphql/envio/enums/order-by.mdx) <Badge class="badge badge--secondary " text="enum"/> \{#vca-unlock-percentage\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_max_order_by.<b>version</b></code>](#version)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>order_by</b></code>](/docs/api/05-airdrops/graphql/envio/enums/order-by.mdx) <Badge class="badge badge--secondary " text="enum"/> \{#version\}

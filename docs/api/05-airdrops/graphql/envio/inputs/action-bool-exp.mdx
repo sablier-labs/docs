@@ -1,0 +1,143 @@
+---
+id: action-bool-exp
+title: Action_bool_exp
+---
+
+<head>
+  <meta content="noindex" name="robots" />
+  <meta charset="utf-8" />
+</head>
+
+export const Bullet = () => (
+  <>
+    <span style={{ fontWeight: "normal", fontSize: ".5em", color: "var(--ifm-color-secondary-darkest)" }}>
+      &nbsp;●&nbsp;
+    </span>
+  </>
+);
+
+export const SpecifiedBy = (props) => (
+  <>
+    Specification
+    <a
+      className="link"
+      style={{ fontSize: "1.5em", paddingLeft: "4px" }}
+      target="_blank"
+      href={props.url}
+      title={"Specified by " + props.url}
+    >
+      ⎘
+    </a>
+  </>
+);
+
+export const Badge = (props) => (
+  <>
+    <span className={props.class}>{props.text}</span>
+  </>
+);
+
+import { useState } from "react";
+
+export const Details = ({ dataOpen, dataClose, children, startOpen = false }) => {
+  const [open, setOpen] = useState(startOpen);
+  return (
+    <details
+      {...(open ? { open: true } : {})}
+      className="details"
+      style={{ border: "none", boxShadow: "none", background: "var(--ifm-background-color)" }}
+    >
+      <summary
+        onClick={(e) => {
+          e.preventDefault();
+          setOpen((open) => !open);
+        }}
+        style={{ listStyle: "none" }}
+      >
+        {open ? dataOpen : dataClose}
+      </summary>
+      {open && children}
+    </details>
+  );
+};
+
+Boolean expression to filter rows from the table "Action". All fields are combined with a logical 'AND'.
+
+```graphql
+input Action_bool_exp {
+  _and: [Action_bool_exp!]
+  _not: Action_bool_exp
+  _or: [Action_bool_exp!]
+  block: numeric_comparison_exp
+  campaign: Campaign_bool_exp
+  campaign_id: String_comparison_exp
+  category: actioncategory_comparison_exp
+  chainId: numeric_comparison_exp
+  claimAmount: numeric_comparison_exp
+  claimIndex: numeric_comparison_exp
+  claimRecipient: String_comparison_exp
+  claimStreamId: String_comparison_exp
+  claimTo: String_comparison_exp
+  claimTokenId: numeric_comparison_exp
+  clawbackAmount: numeric_comparison_exp
+  clawbackFrom: String_comparison_exp
+  clawbackTo: String_comparison_exp
+  fee: numeric_comparison_exp
+  from: String_comparison_exp
+  hash: String_comparison_exp
+  id: String_comparison_exp
+  subgraphId: numeric_comparison_exp
+  timestamp: numeric_comparison_exp
+  vcaForgoneAmount: numeric_comparison_exp
+}
+```
+
+### Fields
+
+#### [<code style={{ fontWeight: 'normal' }}>Action_bool_exp.<b>\_and</b></code>](#and)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>[Action_bool_exp!]</b></code>](/docs/api/05-airdrops/graphql/envio/inputs/action-bool-exp.mdx) <Badge class="badge badge--secondary " text="list"/> <Badge class="badge badge--secondary " text="input"/> \{#and\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Action_bool_exp.<b>\_not</b></code>](#not)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Action_bool_exp</b></code>](/docs/api/05-airdrops/graphql/envio/inputs/action-bool-exp.mdx) <Badge class="badge badge--secondary " text="input"/> \{#not\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Action_bool_exp.<b>\_or</b></code>](#or)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>[Action_bool_exp!]</b></code>](/docs/api/05-airdrops/graphql/envio/inputs/action-bool-exp.mdx) <Badge class="badge badge--secondary " text="list"/> <Badge class="badge badge--secondary " text="input"/> \{#or\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Action_bool_exp.<b>block</b></code>](#block)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>numeric_comparison_exp</b></code>](/docs/api/05-airdrops/graphql/envio/inputs/numeric-comparison-exp.mdx) <Badge class="badge badge--secondary " text="input"/> \{#block\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Action_bool_exp.<b>campaign</b></code>](#campaign)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Campaign_bool_exp</b></code>](/docs/api/05-airdrops/graphql/envio/inputs/campaign-bool-exp.mdx) <Badge class="badge badge--secondary " text="input"/> \{#campaign\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Action_bool_exp.<b>campaign_id</b></code>](#campaign-id)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String_comparison_exp</b></code>](/docs/api/05-airdrops/graphql/envio/inputs/string-comparison-exp.mdx) <Badge class="badge badge--secondary " text="input"/> \{#campaign-id\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Action_bool_exp.<b>category</b></code>](#category)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>actioncategory_comparison_exp</b></code>](/docs/api/05-airdrops/graphql/envio/inputs/actioncategory-comparison-exp.mdx) <Badge class="badge badge--secondary " text="input"/> \{#category\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Action_bool_exp.<b>chainId</b></code>](#chain-id)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>numeric_comparison_exp</b></code>](/docs/api/05-airdrops/graphql/envio/inputs/numeric-comparison-exp.mdx) <Badge class="badge badge--secondary " text="input"/> \{#chain-id\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Action_bool_exp.<b>claimAmount</b></code>](#claim-amount)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>numeric_comparison_exp</b></code>](/docs/api/05-airdrops/graphql/envio/inputs/numeric-comparison-exp.mdx) <Badge class="badge badge--secondary " text="input"/> \{#claim-amount\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Action_bool_exp.<b>claimIndex</b></code>](#claim-index)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>numeric_comparison_exp</b></code>](/docs/api/05-airdrops/graphql/envio/inputs/numeric-comparison-exp.mdx) <Badge class="badge badge--secondary " text="input"/> \{#claim-index\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Action_bool_exp.<b>claimRecipient</b></code>](#claim-recipient)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String_comparison_exp</b></code>](/docs/api/05-airdrops/graphql/envio/inputs/string-comparison-exp.mdx) <Badge class="badge badge--secondary " text="input"/> \{#claim-recipient\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Action_bool_exp.<b>claimStreamId</b></code>](#claim-stream-id)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String_comparison_exp</b></code>](/docs/api/05-airdrops/graphql/envio/inputs/string-comparison-exp.mdx) <Badge class="badge badge--secondary " text="input"/> \{#claim-stream-id\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Action_bool_exp.<b>claimTo</b></code>](#claim-to)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String_comparison_exp</b></code>](/docs/api/05-airdrops/graphql/envio/inputs/string-comparison-exp.mdx) <Badge class="badge badge--secondary " text="input"/> \{#claim-to\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Action_bool_exp.<b>claimTokenId</b></code>](#claim-token-id)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>numeric_comparison_exp</b></code>](/docs/api/05-airdrops/graphql/envio/inputs/numeric-comparison-exp.mdx) <Badge class="badge badge--secondary " text="input"/> \{#claim-token-id\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Action_bool_exp.<b>clawbackAmount</b></code>](#clawback-amount)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>numeric_comparison_exp</b></code>](/docs/api/05-airdrops/graphql/envio/inputs/numeric-comparison-exp.mdx) <Badge class="badge badge--secondary " text="input"/> \{#clawback-amount\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Action_bool_exp.<b>clawbackFrom</b></code>](#clawback-from)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String_comparison_exp</b></code>](/docs/api/05-airdrops/graphql/envio/inputs/string-comparison-exp.mdx) <Badge class="badge badge--secondary " text="input"/> \{#clawback-from\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Action_bool_exp.<b>clawbackTo</b></code>](#clawback-to)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String_comparison_exp</b></code>](/docs/api/05-airdrops/graphql/envio/inputs/string-comparison-exp.mdx) <Badge class="badge badge--secondary " text="input"/> \{#clawback-to\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Action_bool_exp.<b>fee</b></code>](#fee)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>numeric_comparison_exp</b></code>](/docs/api/05-airdrops/graphql/envio/inputs/numeric-comparison-exp.mdx) <Badge class="badge badge--secondary " text="input"/> \{#fee\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Action_bool_exp.<b>from</b></code>](#from)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String_comparison_exp</b></code>](/docs/api/05-airdrops/graphql/envio/inputs/string-comparison-exp.mdx) <Badge class="badge badge--secondary " text="input"/> \{#from\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Action_bool_exp.<b>hash</b></code>](#hash)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String_comparison_exp</b></code>](/docs/api/05-airdrops/graphql/envio/inputs/string-comparison-exp.mdx) <Badge class="badge badge--secondary " text="input"/> \{#hash\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Action_bool_exp.<b>id</b></code>](#id)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String_comparison_exp</b></code>](/docs/api/05-airdrops/graphql/envio/inputs/string-comparison-exp.mdx) <Badge class="badge badge--secondary " text="input"/> \{#id\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Action_bool_exp.<b>subgraphId</b></code>](#subgraph-id)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>numeric_comparison_exp</b></code>](/docs/api/05-airdrops/graphql/envio/inputs/numeric-comparison-exp.mdx) <Badge class="badge badge--secondary " text="input"/> \{#subgraph-id\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Action_bool_exp.<b>timestamp</b></code>](#timestamp)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>numeric_comparison_exp</b></code>](/docs/api/05-airdrops/graphql/envio/inputs/numeric-comparison-exp.mdx) <Badge class="badge badge--secondary " text="input"/> \{#timestamp\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Action_bool_exp.<b>vcaForgoneAmount</b></code>](#vca-forgone-amount)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>numeric_comparison_exp</b></code>](/docs/api/05-airdrops/graphql/envio/inputs/numeric-comparison-exp.mdx) <Badge class="badge badge--secondary " text="input"/> \{#vca-forgone-amount\}

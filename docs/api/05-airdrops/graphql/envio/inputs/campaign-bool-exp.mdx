@@ -1,0 +1,233 @@
+---
+id: campaign-bool-exp
+title: Campaign_bool_exp
+---
+
+<head>
+  <meta content="noindex" name="robots" />
+  <meta charset="utf-8" />
+</head>
+
+export const Bullet = () => (
+  <>
+    <span style={{ fontWeight: "normal", fontSize: ".5em", color: "var(--ifm-color-secondary-darkest)" }}>
+      &nbsp;●&nbsp;
+    </span>
+  </>
+);
+
+export const SpecifiedBy = (props) => (
+  <>
+    Specification
+    <a
+      className="link"
+      style={{ fontSize: "1.5em", paddingLeft: "4px" }}
+      target="_blank"
+      href={props.url}
+      title={"Specified by " + props.url}
+    >
+      ⎘
+    </a>
+  </>
+);
+
+export const Badge = (props) => (
+  <>
+    <span className={props.class}>{props.text}</span>
+  </>
+);
+
+import { useState } from "react";
+
+export const Details = ({ dataOpen, dataClose, children, startOpen = false }) => {
+  const [open, setOpen] = useState(startOpen);
+  return (
+    <details
+      {...(open ? { open: true } : {})}
+      className="details"
+      style={{ border: "none", boxShadow: "none", background: "var(--ifm-background-color)" }}
+    >
+      <summary
+        onClick={(e) => {
+          e.preventDefault();
+          setOpen((open) => !open);
+        }}
+        style={{ listStyle: "none" }}
+      >
+        {open ? dataOpen : dataClose}
+      </summary>
+      {open && children}
+    </details>
+  );
+};
+
+Boolean expression to filter rows from the table "Campaign". All fields are combined with a logical 'AND'.
+
+```graphql
+input Campaign_bool_exp {
+  _and: [Campaign_bool_exp!]
+  _not: Campaign_bool_exp
+  _or: [Campaign_bool_exp!]
+  actions: Action_bool_exp
+  actions_aggregate: Action_aggregate_bool_exp
+  activities: Activity_bool_exp
+  activities_aggregate: Activity_aggregate_bool_exp
+  address: String_comparison_exp
+  admin: String_comparison_exp
+  aggregateAmount: numeric_comparison_exp
+  asset: Asset_bool_exp
+  asset_id: String_comparison_exp
+  campaignStartTime: numeric_comparison_exp
+  category: campaigncategory_comparison_exp
+  chainId: numeric_comparison_exp
+  claimedAmount: numeric_comparison_exp
+  claimedCount: numeric_comparison_exp
+  clawbackAction: Action_bool_exp
+  clawbackAction_id: String_comparison_exp
+  clawbackTime: numeric_comparison_exp
+  expiration: numeric_comparison_exp
+  expires: Boolean_comparison_exp
+  factory: Factory_bool_exp
+  factory_id: String_comparison_exp
+  fee: numeric_comparison_exp
+  hash: String_comparison_exp
+  id: String_comparison_exp
+  ipfsCID: String_comparison_exp
+  lockup: String_comparison_exp
+  name: String_comparison_exp
+  nickname: String_comparison_exp
+  position: numeric_comparison_exp
+  root: String_comparison_exp
+  streamCancelable: Boolean_comparison_exp
+  streamCliff: Boolean_comparison_exp
+  streamCliffDuration: numeric_comparison_exp
+  streamCliffPercentage: numeric_comparison_exp
+  streamInitial: Boolean_comparison_exp
+  streamInitialPercentage: numeric_comparison_exp
+  streamShape: String_comparison_exp
+  streamStart: Boolean_comparison_exp
+  streamStartTime: numeric_comparison_exp
+  streamTotalDuration: numeric_comparison_exp
+  streamTranches: Tranche_bool_exp
+  streamTransferable: Boolean_comparison_exp
+  subgraphId: numeric_comparison_exp
+  timestamp: numeric_comparison_exp
+  totalRecipients: numeric_comparison_exp
+  vcaEndTime: numeric_comparison_exp
+  vcaForgoneAmount: numeric_comparison_exp
+  vcaRedistributionEnabled: Boolean_comparison_exp
+  vcaStartTime: numeric_comparison_exp
+  vcaUnlockPercentage: numeric_comparison_exp
+  version: String_comparison_exp
+}
+```
+
+### Fields
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_bool_exp.<b>\_and</b></code>](#and)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>[Campaign_bool_exp!]</b></code>](/docs/api/05-airdrops/graphql/envio/inputs/campaign-bool-exp.mdx) <Badge class="badge badge--secondary " text="list"/> <Badge class="badge badge--secondary " text="input"/> \{#and\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_bool_exp.<b>\_not</b></code>](#not)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Campaign_bool_exp</b></code>](/docs/api/05-airdrops/graphql/envio/inputs/campaign-bool-exp.mdx) <Badge class="badge badge--secondary " text="input"/> \{#not\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_bool_exp.<b>\_or</b></code>](#or)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>[Campaign_bool_exp!]</b></code>](/docs/api/05-airdrops/graphql/envio/inputs/campaign-bool-exp.mdx) <Badge class="badge badge--secondary " text="list"/> <Badge class="badge badge--secondary " text="input"/> \{#or\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_bool_exp.<b>actions</b></code>](#actions)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Action_bool_exp</b></code>](/docs/api/05-airdrops/graphql/envio/inputs/action-bool-exp.mdx) <Badge class="badge badge--secondary " text="input"/> \{#actions\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_bool_exp.<b>actions_aggregate</b></code>](#actions-aggregate)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Action_aggregate_bool_exp</b></code>](/docs/api/05-airdrops/graphql/envio/inputs/action-aggregate-bool-exp.mdx) <Badge class="badge badge--secondary " text="input"/> \{#actions-aggregate\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_bool_exp.<b>activities</b></code>](#activities)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Activity_bool_exp</b></code>](/docs/api/05-airdrops/graphql/envio/inputs/activity-bool-exp.mdx) <Badge class="badge badge--secondary " text="input"/> \{#activities\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_bool_exp.<b>activities_aggregate</b></code>](#activities-aggregate)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Activity_aggregate_bool_exp</b></code>](/docs/api/05-airdrops/graphql/envio/inputs/activity-aggregate-bool-exp.mdx) <Badge class="badge badge--secondary " text="input"/> \{#activities-aggregate\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_bool_exp.<b>address</b></code>](#address)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String_comparison_exp</b></code>](/docs/api/05-airdrops/graphql/envio/inputs/string-comparison-exp.mdx) <Badge class="badge badge--secondary " text="input"/> \{#address\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_bool_exp.<b>admin</b></code>](#admin)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String_comparison_exp</b></code>](/docs/api/05-airdrops/graphql/envio/inputs/string-comparison-exp.mdx) <Badge class="badge badge--secondary " text="input"/> \{#admin\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_bool_exp.<b>aggregateAmount</b></code>](#aggregate-amount)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>numeric_comparison_exp</b></code>](/docs/api/05-airdrops/graphql/envio/inputs/numeric-comparison-exp.mdx) <Badge class="badge badge--secondary " text="input"/> \{#aggregate-amount\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_bool_exp.<b>asset</b></code>](#asset)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Asset_bool_exp</b></code>](/docs/api/05-airdrops/graphql/envio/inputs/asset-bool-exp.mdx) <Badge class="badge badge--secondary " text="input"/> \{#asset\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_bool_exp.<b>asset_id</b></code>](#asset-id)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String_comparison_exp</b></code>](/docs/api/05-airdrops/graphql/envio/inputs/string-comparison-exp.mdx) <Badge class="badge badge--secondary " text="input"/> \{#asset-id\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_bool_exp.<b>campaignStartTime</b></code>](#campaign-start-time)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>numeric_comparison_exp</b></code>](/docs/api/05-airdrops/graphql/envio/inputs/numeric-comparison-exp.mdx) <Badge class="badge badge--secondary " text="input"/> \{#campaign-start-time\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_bool_exp.<b>category</b></code>](#category)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>campaigncategory_comparison_exp</b></code>](/docs/api/05-airdrops/graphql/envio/inputs/campaigncategory-comparison-exp.mdx) <Badge class="badge badge--secondary " text="input"/> \{#category\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_bool_exp.<b>chainId</b></code>](#chain-id)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>numeric_comparison_exp</b></code>](/docs/api/05-airdrops/graphql/envio/inputs/numeric-comparison-exp.mdx) <Badge class="badge badge--secondary " text="input"/> \{#chain-id\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_bool_exp.<b>claimedAmount</b></code>](#claimed-amount)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>numeric_comparison_exp</b></code>](/docs/api/05-airdrops/graphql/envio/inputs/numeric-comparison-exp.mdx) <Badge class="badge badge--secondary " text="input"/> \{#claimed-amount\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_bool_exp.<b>claimedCount</b></code>](#claimed-count)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>numeric_comparison_exp</b></code>](/docs/api/05-airdrops/graphql/envio/inputs/numeric-comparison-exp.mdx) <Badge class="badge badge--secondary " text="input"/> \{#claimed-count\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_bool_exp.<b>clawbackAction</b></code>](#clawback-action)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Action_bool_exp</b></code>](/docs/api/05-airdrops/graphql/envio/inputs/action-bool-exp.mdx) <Badge class="badge badge--secondary " text="input"/> \{#clawback-action\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_bool_exp.<b>clawbackAction_id</b></code>](#clawback-action-id)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String_comparison_exp</b></code>](/docs/api/05-airdrops/graphql/envio/inputs/string-comparison-exp.mdx) <Badge class="badge badge--secondary " text="input"/> \{#clawback-action-id\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_bool_exp.<b>clawbackTime</b></code>](#clawback-time)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>numeric_comparison_exp</b></code>](/docs/api/05-airdrops/graphql/envio/inputs/numeric-comparison-exp.mdx) <Badge class="badge badge--secondary " text="input"/> \{#clawback-time\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_bool_exp.<b>expiration</b></code>](#expiration)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>numeric_comparison_exp</b></code>](/docs/api/05-airdrops/graphql/envio/inputs/numeric-comparison-exp.mdx) <Badge class="badge badge--secondary " text="input"/> \{#expiration\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_bool_exp.<b>expires</b></code>](#expires)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Boolean_comparison_exp</b></code>](/docs/api/05-airdrops/graphql/envio/inputs/boolean-comparison-exp.mdx) <Badge class="badge badge--secondary " text="input"/> \{#expires\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_bool_exp.<b>factory</b></code>](#factory)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Factory_bool_exp</b></code>](/docs/api/05-airdrops/graphql/envio/inputs/factory-bool-exp.mdx) <Badge class="badge badge--secondary " text="input"/> \{#factory\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_bool_exp.<b>factory_id</b></code>](#factory-id)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String_comparison_exp</b></code>](/docs/api/05-airdrops/graphql/envio/inputs/string-comparison-exp.mdx) <Badge class="badge badge--secondary " text="input"/> \{#factory-id\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_bool_exp.<b>fee</b></code>](#fee)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>numeric_comparison_exp</b></code>](/docs/api/05-airdrops/graphql/envio/inputs/numeric-comparison-exp.mdx) <Badge class="badge badge--secondary " text="input"/> \{#fee\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_bool_exp.<b>hash</b></code>](#hash)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String_comparison_exp</b></code>](/docs/api/05-airdrops/graphql/envio/inputs/string-comparison-exp.mdx) <Badge class="badge badge--secondary " text="input"/> \{#hash\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_bool_exp.<b>id</b></code>](#id)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String_comparison_exp</b></code>](/docs/api/05-airdrops/graphql/envio/inputs/string-comparison-exp.mdx) <Badge class="badge badge--secondary " text="input"/> \{#id\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_bool_exp.<b>ipfsCID</b></code>](#ipfs-cid)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String_comparison_exp</b></code>](/docs/api/05-airdrops/graphql/envio/inputs/string-comparison-exp.mdx) <Badge class="badge badge--secondary " text="input"/> \{#ipfs-cid\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_bool_exp.<b>lockup</b></code>](#lockup)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String_comparison_exp</b></code>](/docs/api/05-airdrops/graphql/envio/inputs/string-comparison-exp.mdx) <Badge class="badge badge--secondary " text="input"/> \{#lockup\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_bool_exp.<b>name</b></code>](#name)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String_comparison_exp</b></code>](/docs/api/05-airdrops/graphql/envio/inputs/string-comparison-exp.mdx) <Badge class="badge badge--secondary " text="input"/> \{#name\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_bool_exp.<b>nickname</b></code>](#nickname)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String_comparison_exp</b></code>](/docs/api/05-airdrops/graphql/envio/inputs/string-comparison-exp.mdx) <Badge class="badge badge--secondary " text="input"/> \{#nickname\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_bool_exp.<b>position</b></code>](#position)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>numeric_comparison_exp</b></code>](/docs/api/05-airdrops/graphql/envio/inputs/numeric-comparison-exp.mdx) <Badge class="badge badge--secondary " text="input"/> \{#position\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_bool_exp.<b>root</b></code>](#root)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String_comparison_exp</b></code>](/docs/api/05-airdrops/graphql/envio/inputs/string-comparison-exp.mdx) <Badge class="badge badge--secondary " text="input"/> \{#root\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_bool_exp.<b>streamCancelable</b></code>](#stream-cancelable)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Boolean_comparison_exp</b></code>](/docs/api/05-airdrops/graphql/envio/inputs/boolean-comparison-exp.mdx) <Badge class="badge badge--secondary " text="input"/> \{#stream-cancelable\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_bool_exp.<b>streamCliff</b></code>](#stream-cliff)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Boolean_comparison_exp</b></code>](/docs/api/05-airdrops/graphql/envio/inputs/boolean-comparison-exp.mdx) <Badge class="badge badge--secondary " text="input"/> \{#stream-cliff\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_bool_exp.<b>streamCliffDuration</b></code>](#stream-cliff-duration)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>numeric_comparison_exp</b></code>](/docs/api/05-airdrops/graphql/envio/inputs/numeric-comparison-exp.mdx) <Badge class="badge badge--secondary " text="input"/> \{#stream-cliff-duration\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_bool_exp.<b>streamCliffPercentage</b></code>](#stream-cliff-percentage)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>numeric_comparison_exp</b></code>](/docs/api/05-airdrops/graphql/envio/inputs/numeric-comparison-exp.mdx) <Badge class="badge badge--secondary " text="input"/> \{#stream-cliff-percentage\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_bool_exp.<b>streamInitial</b></code>](#stream-initial)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Boolean_comparison_exp</b></code>](/docs/api/05-airdrops/graphql/envio/inputs/boolean-comparison-exp.mdx) <Badge class="badge badge--secondary " text="input"/> \{#stream-initial\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_bool_exp.<b>streamInitialPercentage</b></code>](#stream-initial-percentage)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>numeric_comparison_exp</b></code>](/docs/api/05-airdrops/graphql/envio/inputs/numeric-comparison-exp.mdx) <Badge class="badge badge--secondary " text="input"/> \{#stream-initial-percentage\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_bool_exp.<b>streamShape</b></code>](#stream-shape)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String_comparison_exp</b></code>](/docs/api/05-airdrops/graphql/envio/inputs/string-comparison-exp.mdx) <Badge class="badge badge--secondary " text="input"/> \{#stream-shape\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_bool_exp.<b>streamStart</b></code>](#stream-start)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Boolean_comparison_exp</b></code>](/docs/api/05-airdrops/graphql/envio/inputs/boolean-comparison-exp.mdx) <Badge class="badge badge--secondary " text="input"/> \{#stream-start\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_bool_exp.<b>streamStartTime</b></code>](#stream-start-time)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>numeric_comparison_exp</b></code>](/docs/api/05-airdrops/graphql/envio/inputs/numeric-comparison-exp.mdx) <Badge class="badge badge--secondary " text="input"/> \{#stream-start-time\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_bool_exp.<b>streamTotalDuration</b></code>](#stream-total-duration)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>numeric_comparison_exp</b></code>](/docs/api/05-airdrops/graphql/envio/inputs/numeric-comparison-exp.mdx) <Badge class="badge badge--secondary " text="input"/> \{#stream-total-duration\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_bool_exp.<b>streamTranches</b></code>](#stream-tranches)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Tranche_bool_exp</b></code>](/docs/api/05-airdrops/graphql/envio/inputs/tranche-bool-exp.mdx) <Badge class="badge badge--secondary " text="input"/> \{#stream-tranches\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_bool_exp.<b>streamTransferable</b></code>](#stream-transferable)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Boolean_comparison_exp</b></code>](/docs/api/05-airdrops/graphql/envio/inputs/boolean-comparison-exp.mdx) <Badge class="badge badge--secondary " text="input"/> \{#stream-transferable\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_bool_exp.<b>subgraphId</b></code>](#subgraph-id)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>numeric_comparison_exp</b></code>](/docs/api/05-airdrops/graphql/envio/inputs/numeric-comparison-exp.mdx) <Badge class="badge badge--secondary " text="input"/> \{#subgraph-id\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_bool_exp.<b>timestamp</b></code>](#timestamp)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>numeric_comparison_exp</b></code>](/docs/api/05-airdrops/graphql/envio/inputs/numeric-comparison-exp.mdx) <Badge class="badge badge--secondary " text="input"/> \{#timestamp\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_bool_exp.<b>totalRecipients</b></code>](#total-recipients)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>numeric_comparison_exp</b></code>](/docs/api/05-airdrops/graphql/envio/inputs/numeric-comparison-exp.mdx) <Badge class="badge badge--secondary " text="input"/> \{#total-recipients\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_bool_exp.<b>vcaEndTime</b></code>](#vca-end-time)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>numeric_comparison_exp</b></code>](/docs/api/05-airdrops/graphql/envio/inputs/numeric-comparison-exp.mdx) <Badge class="badge badge--secondary " text="input"/> \{#vca-end-time\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_bool_exp.<b>vcaForgoneAmount</b></code>](#vca-forgone-amount)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>numeric_comparison_exp</b></code>](/docs/api/05-airdrops/graphql/envio/inputs/numeric-comparison-exp.mdx) <Badge class="badge badge--secondary " text="input"/> \{#vca-forgone-amount\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_bool_exp.<b>vcaRedistributionEnabled</b></code>](#vca-redistribution-enabled)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Boolean_comparison_exp</b></code>](/docs/api/05-airdrops/graphql/envio/inputs/boolean-comparison-exp.mdx) <Badge class="badge badge--secondary " text="input"/> \{#vca-redistribution-enabled\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_bool_exp.<b>vcaStartTime</b></code>](#vca-start-time)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>numeric_comparison_exp</b></code>](/docs/api/05-airdrops/graphql/envio/inputs/numeric-comparison-exp.mdx) <Badge class="badge badge--secondary " text="input"/> \{#vca-start-time\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_bool_exp.<b>vcaUnlockPercentage</b></code>](#vca-unlock-percentage)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>numeric_comparison_exp</b></code>](/docs/api/05-airdrops/graphql/envio/inputs/numeric-comparison-exp.mdx) <Badge class="badge badge--secondary " text="input"/> \{#vca-unlock-percentage\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Campaign_bool_exp.<b>version</b></code>](#version)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String_comparison_exp</b></code>](/docs/api/05-airdrops/graphql/envio/inputs/string-comparison-exp.mdx) <Badge class="badge badge--secondary " text="input"/> \{#version\}

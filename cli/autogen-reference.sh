@@ -20,11 +20,11 @@ root=$(pwd)
 bun install --cwd "$root/repos/evm-monorepo"
 
 # Define the contracts directories
-airdrops=docs/reference/airdrops/contracts
-bob=docs/reference/bob/contracts
-flow=docs/reference/flow/contracts
-lockup=docs/reference/lockup/contracts
-utils=docs/reference/utils/contracts
+airdrops=docs/reference/03-airdrops/contracts
+bob=docs/reference/05-bob/contracts
+flow=docs/reference/04-flow/contracts
+lockup=docs/reference/02-lockup/contracts
+utils=docs/reference/06-utils/contracts
 
 # Delete the current contracts documentations
 for dir in $airdrops $bob $flow $lockup $utils; do
@@ -57,7 +57,7 @@ fix_utils_abstract() {
 }
 
 lint() {
-  contracts=docs/reference/$1/contracts
+  contracts=${!1}
 
   # Cache find result to avoid redundant filesystem scan
   all_md_files=$(find $contracts -type f -name "*.md")
@@ -90,7 +90,7 @@ run() {
   cd "$root"
 
   # Define the contracts directory
-  contracts=docs/reference/$repo/contracts
+  contracts=${!repo}
 
   # Copy over the auto-generated files
   rsync --archive \
@@ -125,7 +125,7 @@ run() {
     sd "\{SablierMerkleSignature\}" "[SablierMerkleSignature](/$contracts/abstracts/abstract.SablierMerkleSignature.md)" $all_md_files
 
     # The Airdrops has certain references to the Lockup
-    sd "\{SablierLockup\}" "[SablierLockup](/reference/lockup/contracts/contract.SablierLockup.md)" $all_md_files
+    sd "\{SablierLockup\}" "[SablierLockup](/$lockup/contract.SablierLockup.md)" $all_md_files
 
     # Airdrops-only evm-utils abstract
     sd "\bAdminable\b" "[Adminable](/$contracts/abstracts/abstract.Adminable.md)" $all_md_files
@@ -149,7 +149,7 @@ run() {
     sd "/$lockup/interfaces/interface.InvalidStreamInCancelMultiple.md" "/$lockup/interfaces/interface.ISablierLockup.md#invalidstreamincancelmultiple" $all_md_files
     sd "/node_modules/forge-std/src/mocks/MockERC721.sol/contract.MockERC721.md" "https://eips.ethereum.org/EIPS/eip-165" $all_md_files
     sd "/node_modules/@arbitrum/token-bridge-contracts/contracts/tokenbridge/libraries/ERC165.sol/abstract.ERC165.md#supportsinterface" "https://eips.ethereum.org/EIPS/eip-165" $all_md_files
-    # TODO: retarget to /reference/utils/contracts/contract.SablierComptroller.md now that the page exists
+    # TODO: retarget to /reference/06-utils/contracts/contract.SablierComptroller.md now that the page exists
     sd "/node_modules/@sablier/evm-utils/docs/reference/lockup/contracts/contract.SablierComptroller.md#supportsinterface" "https://eips.ethereum.org/EIPS/eip-165" $all_md_files
 
     # Rewrite Unicode-art math in LockupMath natspec to KaTeX-compatible LaTeX.
@@ -192,7 +192,7 @@ run() {
 
   # Fix external contract references that don't have docs
   if [ "$repo" = "lockup" ]; then
-    # TODO: retarget to /reference/utils/contracts/contract.SablierComptroller.md now that the page exists
+    # TODO: retarget to /reference/06-utils/contracts/contract.SablierComptroller.md now that the page exists
     sd "\[SablierComptroller\]\(/$lockup/contract\.SablierComptroller\.md\)" "**SablierComptroller**" $all_md_files
     sd "/node_modules/@sablier/evm-utils[^\"]*contract\.SablierComptroller\.md[^\"]*" "https://eips.ethereum.org/EIPS/eip-165" $all_md_files
   fi

@@ -1,0 +1,174 @@
+---
+id: action
+title: Action
+---
+
+<head>
+  <meta content="noindex" name="robots" />
+  <meta charset="utf-8" />
+</head>
+
+export const Bullet = () => (
+  <>
+    <span style={{ fontWeight: "normal", fontSize: ".5em", color: "var(--ifm-color-secondary-darkest)" }}>
+      &nbsp;●&nbsp;
+    </span>
+  </>
+);
+
+export const SpecifiedBy = (props) => (
+  <>
+    Specification
+    <a
+      className="link"
+      style={{ fontSize: "1.5em", paddingLeft: "4px" }}
+      target="_blank"
+      href={props.url}
+      title={"Specified by " + props.url}
+    >
+      ⎘
+    </a>
+  </>
+);
+
+export const Badge = (props) => (
+  <>
+    <span className={props.class}>{props.text}</span>
+  </>
+);
+
+import { useState } from "react";
+
+export const Details = ({ dataOpen, dataClose, children, startOpen = false }) => {
+  const [open, setOpen] = useState(startOpen);
+  return (
+    <details
+      {...(open ? { open: true } : {})}
+      className="details"
+      style={{ border: "none", boxShadow: "none", background: "var(--ifm-background-color)" }}
+    >
+      <summary
+        onClick={(e) => {
+          e.preventDefault();
+          setOpen((open) => !open);
+        }}
+        style={{ listStyle: "none" }}
+      >
+        {open ? dataOpen : dataClose}
+      </summary>
+      {open && children}
+    </details>
+  );
+};
+
+A generic entity for tracking protocol actions. There may be multiple actions for a single tx.
+
+```graphql
+type Action {
+  id: String!
+  subgraphId: BigInt!
+  block: BigInt!
+  chainId: BigInt!
+  from: Bytes!
+  hash: Bytes!
+  timestamp: BigInt!
+  campaign: Campaign!
+  category: ActionCategory!
+  fee: BigInt
+  claimAmount: BigInt
+  claimIndex: BigInt
+  claimRecipient: Bytes
+  claimTo: Bytes
+  claimStreamId: String
+  claimTokenId: BigInt
+  clawbackAmount: BigInt
+  clawbackFrom: Bytes
+  clawbackTo: Bytes
+  vcaForgoneAmount: BigInt
+}
+```
+
+### Fields
+
+#### [<code style={{ fontWeight: 'normal' }}>Action.<b>id</b></code>](#id)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String!</b></code>](/docs/api/05-airdrops/graphql/the-graph/scalars/string.mdx) <Badge class="badge badge--secondary badge--non_null" text="non-null"/> <Badge class="badge badge--secondary " text="scalar"/> \{#id\}
+
+Unique identifier: `action-{chainId}-{txHash}-{logIndex}`
+
+#### [<code style={{ fontWeight: 'normal' }}>Action.<b>subgraphId</b></code>](#subgraph-id)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>BigInt!</b></code>](/docs/api/05-airdrops/graphql/the-graph/scalars/big-int.mdx) <Badge class="badge badge--secondary badge--non_null" text="non-null"/> <Badge class="badge badge--secondary " text="scalar"/> \{#subgraph-id\}
+
+Unique global id as tracked by the `Watcher` entity.
+
+#### [<code style={{ fontWeight: 'normal' }}>Action.<b>block</b></code>](#block)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>BigInt!</b></code>](/docs/api/05-airdrops/graphql/the-graph/scalars/big-int.mdx) <Badge class="badge badge--secondary badge--non_null" text="non-null"/> <Badge class="badge badge--secondary " text="scalar"/> \{#block\}
+
+Transaction details: block number
+
+#### [<code style={{ fontWeight: 'normal' }}>Action.<b>chainId</b></code>](#chain-id)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>BigInt!</b></code>](/docs/api/05-airdrops/graphql/the-graph/scalars/big-int.mdx) <Badge class="badge badge--secondary badge--non_null" text="non-null"/> <Badge class="badge badge--secondary " text="scalar"/> \{#chain-id\}
+
+The chain ID where the action was created (e.g., 137 for Polygon).
+
+#### [<code style={{ fontWeight: 'normal' }}>Action.<b>from</b></code>](#from)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Bytes!</b></code>](/docs/api/05-airdrops/graphql/the-graph/scalars/bytes.mdx) <Badge class="badge badge--secondary badge--non_null" text="non-null"/> <Badge class="badge badge--secondary " text="scalar"/> \{#from\}
+
+The tx.origin of the Ethereum transaction.
+
+#### [<code style={{ fontWeight: 'normal' }}>Action.<b>hash</b></code>](#hash)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Bytes!</b></code>](/docs/api/05-airdrops/graphql/the-graph/scalars/bytes.mdx) <Badge class="badge badge--secondary badge--non_null" text="non-null"/> <Badge class="badge badge--secondary " text="scalar"/> \{#hash\}
+
+Transaction details: hash
+
+#### [<code style={{ fontWeight: 'normal' }}>Action.<b>timestamp</b></code>](#timestamp)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>BigInt!</b></code>](/docs/api/05-airdrops/graphql/the-graph/scalars/big-int.mdx) <Badge class="badge badge--secondary badge--non_null" text="non-null"/> <Badge class="badge badge--secondary " text="scalar"/> \{#timestamp\}
+
+Transaction details: timestamp
+
+#### [<code style={{ fontWeight: 'normal' }}>Action.<b>campaign</b></code>](#campaign)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Campaign!</b></code>](/docs/api/05-airdrops/graphql/the-graph/objects/campaign.mdx) <Badge class="badge badge--secondary badge--non_null" text="non-null"/> <Badge class="badge badge--secondary " text="object"/> \{#campaign\}
+
+Contract through which the stream actions has been triggered
+
+#### [<code style={{ fontWeight: 'normal' }}>Action.<b>category</b></code>](#category)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>ActionCategory!</b></code>](/docs/api/05-airdrops/graphql/the-graph/enums/action-category.mdx) <Badge class="badge badge--secondary badge--non_null" text="non-null"/> <Badge class="badge badge--secondary " text="enum"/> \{#category\}
+
+Category of action, e.g., Create.
+
+#### [<code style={{ fontWeight: 'normal' }}>Action.<b>fee</b></code>](#fee)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>BigInt</b></code>](/docs/api/05-airdrops/graphql/the-graph/scalars/big-int.mdx) <Badge class="badge badge--secondary " text="scalar"/> \{#fee\}
+
+The Sablier fee paid in the native token of the chain (e.g., ETH for Mainnet). See
+https://docs.sablier.com/concepts/fees
+
+#### [<code style={{ fontWeight: 'normal' }}>Action.<b>claimAmount</b></code>](#claim-amount)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>BigInt</b></code>](/docs/api/05-airdrops/graphql/the-graph/scalars/big-int.mdx) <Badge class="badge badge--secondary " text="scalar"/> \{#claim-amount\}
+
+Claim action data: amount.
+
+#### [<code style={{ fontWeight: 'normal' }}>Action.<b>claimIndex</b></code>](#claim-index)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>BigInt</b></code>](/docs/api/05-airdrops/graphql/the-graph/scalars/big-int.mdx) <Badge class="badge badge--secondary " text="scalar"/> \{#claim-index\}
+
+Claim action data: index.
+
+#### [<code style={{ fontWeight: 'normal' }}>Action.<b>claimRecipient</b></code>](#claim-recipient)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Bytes</b></code>](/docs/api/05-airdrops/graphql/the-graph/scalars/bytes.mdx) <Badge class="badge badge--secondary " text="scalar"/> \{#claim-recipient\}
+
+Claim action data: original recipient address of the airdrop, which is part of the Merkle tree.
+
+#### [<code style={{ fontWeight: 'normal' }}>Action.<b>claimTo</b></code>](#claim-to)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Bytes</b></code>](/docs/api/05-airdrops/graphql/the-graph/scalars/bytes.mdx) <Badge class="badge badge--secondary " text="scalar"/> \{#claim-to\}
+
+Claim action data: the actual address that will receive the airdrop, which can be different from the `claimRecipient`.
+This field is available in v2.0 and later.
+
+#### [<code style={{ fontWeight: 'normal' }}>Action.<b>claimStreamId</b></code>](#claim-stream-id)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String</b></code>](/docs/api/05-airdrops/graphql/the-graph/scalars/string.mdx) <Badge class="badge badge--secondary " text="scalar"/> \{#claim-stream-id\}
+
+Claim action data: stream ID as provided by the Lockup subgraph:
+&#x007B;contractAddress&#x007D;-&#x007B;chainId&#x007D;-&#x007B;tokenId&#x007D;.
+
+#### [<code style={{ fontWeight: 'normal' }}>Action.<b>claimTokenId</b></code>](#claim-token-id)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>BigInt</b></code>](/docs/api/05-airdrops/graphql/the-graph/scalars/big-int.mdx) <Badge class="badge badge--secondary " text="scalar"/> \{#claim-token-id\}
+
+Claim action data: ERC-721 token id as provided by the Lockup contract.
+
+#### [<code style={{ fontWeight: 'normal' }}>Action.<b>clawbackAmount</b></code>](#clawback-amount)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>BigInt</b></code>](/docs/api/05-airdrops/graphql/the-graph/scalars/big-int.mdx) <Badge class="badge badge--secondary " text="scalar"/> \{#clawback-amount\}
+
+Clawback action data: amount
+
+#### [<code style={{ fontWeight: 'normal' }}>Action.<b>clawbackFrom</b></code>](#clawback-from)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Bytes</b></code>](/docs/api/05-airdrops/graphql/the-graph/scalars/bytes.mdx) <Badge class="badge badge--secondary " text="scalar"/> \{#clawback-from\}
+
+Clawback action data: from
+
+#### [<code style={{ fontWeight: 'normal' }}>Action.<b>clawbackTo</b></code>](#clawback-to)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Bytes</b></code>](/docs/api/05-airdrops/graphql/the-graph/scalars/bytes.mdx) <Badge class="badge badge--secondary " text="scalar"/> \{#clawback-to\}
+
+Clawback action data: to
+
+#### [<code style={{ fontWeight: 'normal' }}>Action.<b>vcaForgoneAmount</b></code>](#vca-forgone-amount)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>BigInt</b></code>](/docs/api/05-airdrops/graphql/the-graph/scalars/big-int.mdx) <Badge class="badge badge--secondary " text="scalar"/> \{#vca-forgone-amount\}
+
+Forgone amount for VCA campaigns only.

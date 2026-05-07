@@ -1,0 +1,108 @@
+---
+id: action-aggregate-fields
+title: Action_aggregate_fields
+---
+
+<head>
+  <meta content="noindex" name="robots" />
+  <meta charset="utf-8" />
+</head>
+
+export const Bullet = () => (
+  <>
+    <span style={{ fontWeight: "normal", fontSize: ".5em", color: "var(--ifm-color-secondary-darkest)" }}>
+      &nbsp;●&nbsp;
+    </span>
+  </>
+);
+
+export const SpecifiedBy = (props) => (
+  <>
+    Specification
+    <a
+      className="link"
+      style={{ fontSize: "1.5em", paddingLeft: "4px" }}
+      target="_blank"
+      href={props.url}
+      title={"Specified by " + props.url}
+    >
+      ⎘
+    </a>
+  </>
+);
+
+export const Badge = (props) => (
+  <>
+    <span className={props.class}>{props.text}</span>
+  </>
+);
+
+import { useState } from "react";
+
+export const Details = ({ dataOpen, dataClose, children, startOpen = false }) => {
+  const [open, setOpen] = useState(startOpen);
+  return (
+    <details
+      {...(open ? { open: true } : {})}
+      className="details"
+      style={{ border: "none", boxShadow: "none", background: "var(--ifm-background-color)" }}
+    >
+      <summary
+        onClick={(e) => {
+          e.preventDefault();
+          setOpen((open) => !open);
+        }}
+        style={{ listStyle: "none" }}
+      >
+        {open ? dataOpen : dataClose}
+      </summary>
+      {open && children}
+    </details>
+  );
+};
+
+aggregate fields of "Action"
+
+```graphql
+type Action_aggregate_fields {
+  avg: Action_avg_fields
+  count(columns: [Action_select_column!], distinct: Boolean): Int!
+  max: Action_max_fields
+  min: Action_min_fields
+  stddev: Action_stddev_fields
+  stddev_pop: Action_stddev_pop_fields
+  stddev_samp: Action_stddev_samp_fields
+  sum: Action_sum_fields
+  var_pop: Action_var_pop_fields
+  var_samp: Action_var_samp_fields
+  variance: Action_variance_fields
+}
+```
+
+### Fields
+
+#### [<code style={{ fontWeight: 'normal' }}>Action_aggregate_fields.<b>avg</b></code>](#avg)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Action_avg_fields</b></code>](/docs/api/05-airdrops/graphql/envio/objects/action-avg-fields.mdx) <Badge class="badge badge--secondary " text="object"/> \{#avg\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Action_aggregate_fields.<b>count</b></code>](#count)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Int!</b></code>](/docs/api/05-airdrops/graphql/envio/scalars/int.mdx) <Badge class="badge badge--secondary badge--non_null" text="non-null"/> <Badge class="badge badge--secondary " text="scalar"/> \{#count\}
+
+##### [<code style={{ fontWeight: 'normal' }}>Action_aggregate_fields.count.<b>columns</b></code>](#action-aggregate-fields-count-columns)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>[Action_select_column!]</b></code>](/docs/api/05-airdrops/graphql/envio/enums/action-select-column.mdx) <Badge class="badge badge--secondary " text="list"/> <Badge class="badge badge--secondary " text="enum"/> \{#action-aggregate-fields-count-columns\}
+
+##### [<code style={{ fontWeight: 'normal' }}>Action_aggregate_fields.count.<b>distinct</b></code>](#action-aggregate-fields-count-distinct)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Boolean</b></code>](/docs/api/05-airdrops/graphql/envio/scalars/boolean.mdx) <Badge class="badge badge--secondary " text="scalar"/> \{#action-aggregate-fields-count-distinct\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Action_aggregate_fields.<b>max</b></code>](#max)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Action_max_fields</b></code>](/docs/api/05-airdrops/graphql/envio/objects/action-max-fields.mdx) <Badge class="badge badge--secondary " text="object"/> \{#max\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Action_aggregate_fields.<b>min</b></code>](#min)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Action_min_fields</b></code>](/docs/api/05-airdrops/graphql/envio/objects/action-min-fields.mdx) <Badge class="badge badge--secondary " text="object"/> \{#min\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Action_aggregate_fields.<b>stddev</b></code>](#stddev)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Action_stddev_fields</b></code>](/docs/api/05-airdrops/graphql/envio/objects/action-stddev-fields.mdx) <Badge class="badge badge--secondary " text="object"/> \{#stddev\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Action_aggregate_fields.<b>stddev_pop</b></code>](#stddev-pop)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Action_stddev_pop_fields</b></code>](/docs/api/05-airdrops/graphql/envio/objects/action-stddev-pop-fields.mdx) <Badge class="badge badge--secondary " text="object"/> \{#stddev-pop\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Action_aggregate_fields.<b>stddev_samp</b></code>](#stddev-samp)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Action_stddev_samp_fields</b></code>](/docs/api/05-airdrops/graphql/envio/objects/action-stddev-samp-fields.mdx) <Badge class="badge badge--secondary " text="object"/> \{#stddev-samp\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Action_aggregate_fields.<b>sum</b></code>](#sum)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Action_sum_fields</b></code>](/docs/api/05-airdrops/graphql/envio/objects/action-sum-fields.mdx) <Badge class="badge badge--secondary " text="object"/> \{#sum\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Action_aggregate_fields.<b>var_pop</b></code>](#var-pop)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Action_var_pop_fields</b></code>](/docs/api/05-airdrops/graphql/envio/objects/action-var-pop-fields.mdx) <Badge class="badge badge--secondary " text="object"/> \{#var-pop\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Action_aggregate_fields.<b>var_samp</b></code>](#var-samp)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Action_var_samp_fields</b></code>](/docs/api/05-airdrops/graphql/envio/objects/action-var-samp-fields.mdx) <Badge class="badge badge--secondary " text="object"/> \{#var-samp\}
+
+#### [<code style={{ fontWeight: 'normal' }}>Action_aggregate_fields.<b>variance</b></code>](#variance)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Action_variance_fields</b></code>](/docs/api/05-airdrops/graphql/envio/objects/action-variance-fields.mdx) <Badge class="badge badge--secondary " text="object"/> \{#variance\}

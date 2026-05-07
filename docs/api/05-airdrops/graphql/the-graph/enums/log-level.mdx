@@ -1,0 +1,97 @@
+---
+id: log-level
+title: LogLevel
+---
+
+<head>
+  <meta content="noindex" name="robots" />
+  <meta charset="utf-8" />
+</head>
+
+export const Bullet = () => (
+  <>
+    <span style={{ fontWeight: "normal", fontSize: ".5em", color: "var(--ifm-color-secondary-darkest)" }}>
+      &nbsp;●&nbsp;
+    </span>
+  </>
+);
+
+export const SpecifiedBy = (props) => (
+  <>
+    Specification
+    <a
+      className="link"
+      style={{ fontSize: "1.5em", paddingLeft: "4px" }}
+      target="_blank"
+      href={props.url}
+      title={"Specified by " + props.url}
+    >
+      ⎘
+    </a>
+  </>
+);
+
+export const Badge = (props) => (
+  <>
+    <span className={props.class}>{props.text}</span>
+  </>
+);
+
+import { useState } from "react";
+
+export const Details = ({ dataOpen, dataClose, children, startOpen = false }) => {
+  const [open, setOpen] = useState(startOpen);
+  return (
+    <details
+      {...(open ? { open: true } : {})}
+      className="details"
+      style={{ border: "none", boxShadow: "none", background: "var(--ifm-background-color)" }}
+    >
+      <summary
+        onClick={(e) => {
+          e.preventDefault();
+          setOpen((open) => !open);
+        }}
+        style={{ listStyle: "none" }}
+      >
+        {open ? dataOpen : dataClose}
+      </summary>
+      {open && children}
+    </details>
+  );
+};
+
+The severity level of a log entry. Log levels are ordered from most to least severe: CRITICAL &#x003E; ERROR &#x003E;
+WARNING &#x003E; INFO &#x003E; DEBUG
+
+```graphql
+enum LogLevel {
+  CRITICAL
+  ERROR
+  WARNING
+  INFO
+  DEBUG
+}
+```
+
+### Values
+
+#### [<code style={{ fontWeight: 'normal' }}>LogLevel.<b>CRITICAL</b></code>](#critical) \{#critical\}
+
+Critical errors that require immediate attention
+
+#### [<code style={{ fontWeight: 'normal' }}>LogLevel.<b>ERROR</b></code>](#error) \{#error\}
+
+Error conditions that indicate a failure
+
+#### [<code style={{ fontWeight: 'normal' }}>LogLevel.<b>WARNING</b></code>](#warning) \{#warning\}
+
+Warning conditions that may require attention
+
+#### [<code style={{ fontWeight: 'normal' }}>LogLevel.<b>INFO</b></code>](#info) \{#info\}
+
+Informational messages about normal operations
+
+#### [<code style={{ fontWeight: 'normal' }}>LogLevel.<b>DEBUG</b></code>](#debug) \{#debug\}
+
+Detailed diagnostic information for debugging

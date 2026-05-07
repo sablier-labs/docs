@@ -1,0 +1,34 @@
+# Batch
+
+[Git Source](https://github.com/sablier-labs/evm-monorepo/blob/8b6823c019ff7556ac9ad24cbb5ac62821854d2f/src/Batch.sol)
+
+**Inherits:** [IBatch](/docs/reference/04-flow/contracts/interfaces/interface.IBatch.md)
+
+**Title:** Batch
+
+See the documentation in [IBatch](/docs/reference/04-flow/contracts/interfaces/interface.IBatch.md).
+
+## Functions
+
+### batch
+
+Allows batched calls to self, i.e., `this` contract.
+
+Since `msg.value` can be reused across calls, be VERY CAREFUL when using it. Refer to
+https://paradigm.xyz/2021/08/two-rights-might-make-a-wrong for more information.
+
+```solidity
+function batch(bytes[] calldata calls) external payable virtual override returns (bytes[] memory results);
+```
+
+**Parameters**
+
+| Name    | Type      | Description                       |
+| ------- | --------- | --------------------------------- |
+| `calls` | `bytes[]` | An array of inputs for each call. |
+
+**Returns**
+
+| Name      | Type      | Description                                                                      |
+| --------- | --------- | -------------------------------------------------------------------------------- |
+| `results` | `bytes[]` | An array of results from each call. Empty when the calls do not return anything. |

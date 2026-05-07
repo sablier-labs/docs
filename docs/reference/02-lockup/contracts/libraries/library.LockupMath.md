@@ -1,0 +1,149 @@
+# LockupMath
+
+[Git Source](https://github.com/sablier-labs/evm-monorepo/blob/8b6823c019ff7556ac9ad24cbb5ac62821854d2f/src/libraries/LockupMath.sol)
+
+**Title:** LockupMath
+
+Provides functions for calculating the streamed amounts in Lockup streams. Note that 'streamed' is synonymous with
+'vested'.
+
+## Functions
+
+### calculateStreamedAmountLD
+
+Calculates the streamed amount of LD streams.
+
+The LD streaming model uses the following distribution function:
+
+$$
+f(x) = x^{exp} \cdot csa + \Sigma(esa)
+$$
+
+Where:
+
+- $x$ is the elapsed time divided by the total duration of the current segment.
+- $exp$ is the current segment exponent.
+- $csa$ is the current segment amount.
+- $\Sigma(esa)$ is the sum of all streamed segments' amounts. Notes:
+
+1. Normalization to 18 decimals is not needed because there is no mix of amounts with different decimals.
+2. The stream's start time must be in the past so that the calculations below do not overflow.
+3. The stream's end time must be in the future so that the loop below does not panic with an "index out of bounds"
+   error. Assumptions:
+4. The sum of all segment amounts does not overflow uint128 and equals the deposited amount.
+5. The first segment's timestamp is greater than the start time.
+6. The last segment's timestamp equals the end time.
+7. The segment timestamps are arranged in ascending order.
+
+```solidity
+function calculateStreamedAmountLD(
+    uint128 depositedAmount,
+    uint40 endTime,
+    LockupDynamic.Segment[] calldata segments,
+    uint40 startTime,
+    uint128 withdrawnAmount
+)
+    external
+    view
+    returns (uint128);
+```
+
+### calculateStreamedAmountLL
+
+Calculates the streamed amount of LL streams.
+
+The LL streaming model uses the following distribution function:
+
+$$
+f(x) = \begin{cases} s & \text{if block timestamp} < \text{cliff time} \\ x \cdot sa + s + c & \text{if block timestamp} \geq \text{cliff time} \end{cases}
+$$
+
+Where:
+
+- $sa$ is the streamable amount, i.e. deposited amount minus unlock amounts' sum.
+- $s$ is the start unlock amount.
+- $c$ is the cliff unlock amount.
+- $x$ is the elapsed time percentage with discrete unlocks:
+  $$
+  x = \frac{\lfloor \text{time elapsed} / \text{granularity} \rfloor \cdot \text{granularity}}{\text{streamable time}}
+  $$
+  The floor division in the numerator creates discrete unlock steps at every granularity seconds. Assumptions:
+
+1. The sum of the unlock amounts (start and cliff) does not overflow uint128 and is less than or equal to the deposit
+   amount.
+2. The start time is before the end time.
+3. If the cliff time is not zero, it is after the start time and before the end time.
+4. Granularity is less than or equal to the streamable range.
+5. Granularity is not zero.
+
+```solidity
+function calculateStreamedAmountLL(
+    uint40 cliffTime,
+    uint128 depositedAmount,
+    uint40 endTime,
+    uint40 granularity,
+    uint40 startTime,
+    LockupLinear.UnlockAmounts calldata unlockAmounts,
+    uint128 withdrawnAmount
+)
+    external
+    view
+    returns (uint128);
+```
+
+### calculateStreamedAmountLPG
+
+Calculates the streamed amount of LPG streams.
+
+The LPG streaming model uses all-or-nothing unlock based on price threshold:
+
+$$
+f(x) = \begin{cases} \text{deposited} & \text{if block timestamp} \geq \text{end time or latest price} \geq \text{target price} \\ 0 & \text{otherwise} \end{cases}
+$$
+
+Assumptions:
+
+1. The stream is not canceled.
+2. The oracle is assumed to be returning the correct price.
+
+```solidity
+function calculateStreamedAmountLPG(
+    uint128 deposited,
+    uint40 endTime,
+    LockupPriceGated.UnlockParams memory unlockParams
+)
+    external
+    view
+    returns (uint128);
+```
+
+### calculateStreamedAmountLT
+
+Calculates the streamed amount of LT streams.
+
+The LT streaming model uses the following distribution function:
+
+$$
+f(x) = \Sigma(eta)
+$$
+
+Where:
+
+- $\Sigma(eta)$ is the sum of all streamed tranches' amounts. Assumptions:
+
+1. The sum of all tranche amounts does not overflow uint128, and equals the deposited amount.
+2. The first tranche's timestamp is greater than the start time.
+3. The last tranche's timestamp equals the end time.
+4. The tranche timestamps are arranged in ascending order.
+
+```solidity
+function calculateStreamedAmountLT(
+    uint128 depositedAmount,
+    uint40 endTime,
+    uint40 startTime,
+    LockupTranched.Tranche[] calldata tranches
+)
+    external
+    view
+    returns (uint128);
+```

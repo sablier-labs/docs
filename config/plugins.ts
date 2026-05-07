@@ -32,11 +32,10 @@ type GraphQLMarkdownOptions = GraphQLMarkdownCliOptions & Partial<PluginOptions>
 const graphqlMarkdown: [string, GraphQLMarkdownOptions] = [
   "@graphql-markdown/docusaurus",
   /**
-   * Some settings will be overridden by the CLI.
+   * The CLI provides `--base` and `--schema` per invocation; everything below is shared config.
    * @see https://graphql-markdown.dev/docs/settings
    */
   {
-    baseURL: "./docs/api/streams/the-graph",
     homepage: "static/graphql-overview.md",
     loaders: {
       UrlLoader: {
