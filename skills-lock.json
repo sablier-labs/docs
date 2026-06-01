@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "skills": {
+    "sablier-withdraw-vesting": {
+      "source": "sablier-labs/sablier-skills",
+      "sourceType": "github",
+      "skillPath": "skills/sablier-withdraw-vesting/SKILL.md",
+      "computedHash": "16e977708b45a9f8a5017b738441abea5987d7474f61a6a086be8c213b6ae2e7"
+    }
+  }
+}

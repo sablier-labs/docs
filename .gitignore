@@ -1,8 +1,11 @@
 # directories
+.agents
 .cache-loader
+.claude/skills
 .docusaurus
 build
 node_modules
+screenshots
 src/autogen/**/*.mdx
 
 # files
