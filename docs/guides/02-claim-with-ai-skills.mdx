@@ -1,0 +1,215 @@
+---
+id: "claim-with-ai-skills"
+sidebar_position: 2
+title: "Claim Streams with AI Skills"
+---
+
+# Claim Streams with AI Skills
+
+Recipients can drain every unlocked Sablier stream they own from the terminal by asking an AI coding agent in plain
+English. The agent discovers the streams via the Sablier indexer, groups them by Lockup contract, previews the batch,
+and broadcasts one `withdrawMultiple` per group after you sign in your browser wallet.
+
+This guide focuses on [`sablier-withdraw-vesting`](https://github.com/sablier-labs/sablier-skills), the skill for
+withdrawing unlocked tokens from Lockup vesting streams.
+
+:::tip[Payments streams]
+
+For Sablier Payments (Flow) streams, the analogue is [`sablier-withdraw-open-ended-stream`](#payments-streams). Same
+philosophy, different skill. Jump to the [pointer at the end](#payments-streams) of this guide.
+
+:::
+
+:::info
+
+The Sablier app at `app.sablier.com` is being deprecated. Claiming through an AI skill is the recommended path for
+recipients going forward.
+
+:::
+
+## Prerequisites
+
+- One of the following AI coding agents:
+  - [**Claude Code CLI**](https://docs.claude.com/en/docs/claude-code/overview) — the terminal tool
+  - [**Codex**](https://github.com/openai/codex) — OpenAI's coding agent
+- [**Foundry**](https://getfoundry.sh/) — the skill drives `cast` for RPC reads and signing. Your `cast` must be recent
+  enough to support the `--browser` flag; if you installed Foundry months ago, run `foundryup` first.
+- `curl` and `jq` — for talking to the Sablier indexer and parsing transaction receipts.
+- A **browser wallet extension** (MetaMask, Rabby, Frame, …) holding the recipient address.
+- A small balance of the chain's native token to cover gas, plus the protocol withdraw fee on Lockup v3.0+ (often `0`,
+  but not always — the skill previews the exact amount before broadcasting).
+
+:::caution[Claude Code CLI, not the desktop app]
+
+The skill runs in **Claude Code**, the terminal CLI. The Claude **desktop app** (`claude.ai` chat client) is not
+supported — it cannot install skills or sign on-chain transactions on your behalf.
+
+:::
+
+## Install
+
+Add the withdraw skill to your agent:
+
+```bash
+npx skills add sablier-labs/sablier-skills --skill sablier-withdraw-vesting
+```
+
+This pulls the skill from [`sablier-labs/sablier-skills`](https://github.com/sablier-labs/sablier-skills) and registers
+it under `~/.claude/skills/sablier-withdraw-vesting` (global install) or `./.claude/skills/sablier-withdraw-vesting`
+(project-local). Claude Code auto-discovers it on the next session — no restart of the shell required, just start a new
+Claude Code conversation.
+
+## Run the claim
+
+Open Claude Code (or Codex) in any working directory and ask in plain English. The skill takes up to three optional
+arguments — chain, wallet, token — and asks for anything missing.
+
+Some example prompts that all work:
+
+```text
+withdraw everything I can claim from Sablier
+```
+
+```text
+claim my Sablier streams on Ethereum
+```
+
+```text
+withdraw my Sablier USDC vesting on Base for 0xMyWalletAddress
+```
+
+There is **no stream URL** to copy. The skill queries the Sablier indexer for every active, non-depleted stream where
+your wallet is the recipient and surfaces only the ones with a positive `withdrawableAmountOf` at the current block.
+
+| Terminal session running the skill                                         |
+| -------------------------------------------------------------------------- |
+| ![Terminal session](/img/guides/claim-with-ai-skills/terminal-session.png) |
+
+Under the hood the skill walks through:
+
+1. **Chain discovery** — if you did not name a chain, it asks the indexer where your wallet has active streams and
+   either auto-picks the single chain or asks you to choose.
+2. **Stream discovery** — pulls every non-depleted stream where you are the recipient on the chosen chain, then drops
+   any stream with `withdrawableAmountOf == 0` via a single Multicall3 round trip.
+3. **Selection** — defaults to draining every eligible stream; you can narrow the selection.
+4. **Grouping** — splits the selection by Lockup contract address. Each group becomes one `withdrawMultiple` call, one
+   signature.
+5. **Preflight** — estimates per-group gas and computes the per-group `MSG_VALUE` (the max `calculateMinFeeWei` on
+   Lockup v3.0+, `0` on v1.x / v2.x), then verifies you have enough native balance for the whole batch.
+6. **Preview + confirmation** — shows the batch and waits for you to reply literally `YES`.
+7. **Broadcast** — opens one browser tab per group on `localhost:9545`; you approve each transaction in MetaMask / Rabby
+   / etc. `cast send --browser` routes the signing request to the extension, so your private key never enters the
+   terminal or chat.
+8. **Receipt verification** — polls each receipt for up to 5 minutes, then scans the logs for any
+   `InvalidWithdrawalInWithdrawMultiple` events (Lockup v2.0+) so silently-failed streams are surfaced rather than
+   hidden behind a green "success".
+
+This works across every chain where Sablier Lockup is deployed — see the
+[Lockup deployments](/guides/lockup/deployments) page for the full list. One invocation handles one chain; re-run the
+skill for a different chain.
+
+| Browser wallet signing prompt                                          |
+| ---------------------------------------------------------------------- |
+| ![Wallet signing](/img/guides/claim-with-ai-skills/wallet-signing.png) |
+
+The skill charges no markup. Costs are limited to on-chain gas and (on Lockup v3.0+) the protocol fee returned by
+`calculateMinFeeWei`, which is frequently `0`.
+
+## What the preview shows
+
+Before any signature request, the skill prints a single human-readable preview covering every group it is about to
+broadcast. Trimmed example for a wallet holding v1.2 USDC streams and v4.0 SABL streams on the same chain:
+
+```text
+Chain:         Ethereum (1)
+Signer:        0xOwner…  (matches recipient)
+Total fee:     0.0005 ETH
+Estimated gas: 0.0021 ETH
+
+Group 1/2 — Lockup Linear v1.2
+  Contract:    0xAAA…
+  Streams (2):
+    LL2-1-887  →  120 USDC      (sender 0xc517…063c)
+    LL2-1-902  →   45.5 USDC    (sender 0xc517…063c)
+  Group fee:   0 ETH   (non-payable)
+
+Group 2/2 — Lockup v4.0
+  Contract:    0x93b37Bd5B6b278373217333Ac30D7E74c85fBDCB
+  Streams (3):
+    LK3-1-42   →  1,234.56789 SABL  (sender 0xab12…cd34)
+    LK3-1-58   →    250 SABL        (sender 0xab12…cd34)
+    LK3-1-77   →    100 SABL        (sender 0x99aa…bbcc)
+  Group fee:   0.0005 ETH
+
+Per-token totals:
+  USDC:  165.5
+  SABL:  1,584.56789
+
+Confirm broadcast for 2 transactions?
+Reply exactly: YES
+```
+
+Anything other than a literal `YES` aborts before any transaction is broadcast.
+
+| Batch preview before broadcast                           |
+| -------------------------------------------------------- |
+| ![Preview](/img/guides/claim-with-ai-skills/preview.png) |
+
+After each group lands, the skill prints the per-stream `https://app.sablier.com/vesting/stream/{alias}` links so you
+can spot-check the result.
+
+| Post-broadcast confirmation                                              |
+| ------------------------------------------------------------------------ |
+| ![Tx confirmation](/img/guides/claim-with-ai-skills/tx-confirmation.png) |
+
+## Troubleshooting
+
+**`cast: command not found`.** Foundry isn't installed (or not on `PATH`). Install it from
+[getfoundry.sh](https://getfoundry.sh/) and start a new shell.
+
+**`cast send` doesn't recognise `--browser`.** Your Foundry is too old. Run `foundryup` to pull the current release; the
+skill's prerequisite check enforces this and stops early.
+
+**"No active Sablier streams were found".** Either the wallet address is wrong (typo, wrong account in the extension) or
+the streams live on a different chain than the one you named. Re-run without a chain to let the skill scan indexer-wide.
+
+**"Nothing currently unlocked".** Streams exist but every one has `withdrawableAmountOf == 0` at this block. Wait for
+more tokens to vest and retry.
+
+**Insufficient native balance.** Fund the wallet with the chain's native token to cover gas, plus the protocol fee on
+Lockup v3.0+. The preview prints the exact `wei` shortfall.
+
+**Some streams silently failed.** Lockup v2.0+ emits `InvalidWithdrawalInWithdrawMultiple` instead of reverting when an
+individual stream in the batch can't be withdrawn. The skill scans the receipt logs and prints the affected stream IDs.
+Re-run the skill to retry the surviving streams, or check the failed stream on `app.sablier.com` for a hint (cancelled,
+hook revert, etc.).
+
+**Transaction still pending after 5 minutes.** The skill stops polling and prints the hash. Check the explorer for the
+chain — if it confirms later, you're done; if it gets dropped, re-run the skill.
+
+**Declined a signature mid-batch.** Earlier groups that already broadcast stay confirmed; the skill stops and tells you
+which groups did not get attempted. Re-run the skill to pick up the rest.
+
+## Solana streams
+
+The same skill covers Solana mainnet-beta. Pass `solana` as the chain:
+
+```text
+withdraw my Sablier streams on Solana for <my-base58-pubkey>
+```
+
+The Solana runbook is a separate single-stream flow (no `withdrawMultiple` equivalent fits in Solana's 1232-byte
+transaction limit) — re-run the skill once per stream. The protocol fee is the program's `WITHDRAWAL_FEE_USD` constant
+(currently `0` on mainnet, otherwise about $1 in SOL via Chainlink). See
+[solana.sablier.com](https://solana.sablier.com) for the program details.
+
+## Payments streams
+
+For Sablier Payments (Flow) streams, install the sibling skill:
+
+```bash
+npx skills add sablier-labs/sablier-skills --skill sablier-withdraw-open-ended-stream
+```
+
+Same shape — natural-language prompt, indexer-driven discovery, browser-wallet signing — applied to open-ended Flow
+streams instead of vesting Lockup streams. See [AI Agents](/guides/ai-agents) for the full skill catalogue.

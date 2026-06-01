@@ -4,6 +4,8 @@
   "files": {
     "includes": [
       "**/*.{css,js,json,jsonc,jsx,ts,tsx}",
+      "!.agents",
+      "!.claude",
       "!node_modules",
       "!repos",
       "!src/autogen",
