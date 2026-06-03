@@ -10,7 +10,8 @@ Recipients can claim unlocked Sablier vesting streams from the terminal by askin
 The agent discovers claimable streams, previews the transaction plan, and asks you to sign with your wallet.
 
 This guide focuses on [`sablier-withdraw-vesting`](https://github.com/sablier-labs/sablier-skills), the skill for
-withdrawing unlocked tokens from Lockup vesting streams on EVM chains and Solana.
+withdrawing unlocked tokens from Lockup vesting streams on EVM chains. For Solana, see
+[Claim with AI on Solana](/solana/claim-with-ai).
 
 :::tip[Payments streams]
 
@@ -23,9 +24,6 @@ different skill.
 
 `app.sablier.com` is not being deprecated. The EVM app will remain available for claiming until June 2028. The
 limitation is creation: new EVM streams cannot be created from `app.sablier.com`.
-
-`solana.sablier.com` is the app being deprecated. For Solana claims, use the AI skill or interact with the program
-directly.
 
 :::
 
@@ -43,24 +41,14 @@ skills or sign on-chain transactions on your behalf.
 
 :::
 
-### Shared tools
+### Tools
 
 - `curl` and `jq`, for talking to the Sablier indexer and parsing transaction receipts.
-- A wallet that controls the stream recipient address.
-- A small native-token balance for transaction fees.
-
-### EVM tools
-
 - [**Foundry**](https://getfoundry.sh/), because the skill drives `cast` for RPC reads and signing. Your `cast` must
   support `--browser`; if you installed Foundry months ago, run `foundryup` first.
 - A browser wallet extension, such as MetaMask, Rabby, or Frame, holding the recipient address.
 - Enough native token to cover gas, plus the protocol withdraw fee on Lockup v3.0+ (often `0`, but not always). The
   skill previews the exact amount before broadcasting.
-
-### Solana tools
-
-- A Solana wallet that controls the recipient public key.
-- Enough SOL to cover transaction fees, plus the program withdrawal fee when it is nonzero.
 
 ## Install
 
@@ -178,42 +166,7 @@ spot-check the result.
 | ----------------------------------------------------------------- |
 | ![Tx confirmation](/img/guides/claim-with-ai/tx-confirmation.png) |
 
-## Solana Lockup streams
-
-### Prompt
-
-The same skill covers Solana mainnet-beta. Pass `solana` as the chain and provide the recipient public key:
-
-```text
-withdraw my Sablier streams on Solana for <my-base58-pubkey>
-```
-
-### Discovery and batching
-
-Solana uses a single-stream claim flow. There is no `withdrawMultiple` equivalent that fits Solana's 1232-byte
-transaction limit, so re-run the skill once per stream.
-
-The Solana flow is:
-
-1. **Stream discovery**: the skill looks up claimable Solana streams for the recipient public key.
-2. **Selection**: you choose one claimable stream.
-3. **Preflight**: the skill checks the currently withdrawable amount and the required fee.
-4. **Preview**: it shows the stream, token, recipient, and fee before signing.
-5. **Broadcast**: you sign one transaction for the selected stream.
-6. **Verification**: the skill checks the resulting transaction and prints the outcome.
-
-### Costs and app status
-
-The Solana protocol fee is the program's `WITHDRAWAL_FEE_USD` constant. It is currently `0` on mainnet; otherwise it is
-about $1 in SOL via Chainlink.
-
-Sablier on Solana is in maintenance mode. Creating new Solana streams and airdrop campaigns is no longer supported, and
-`solana.sablier.com` is the app being deprecated. See [Sablier on Solana](/solana/sablier-on-solana) for protocol
-details.
-
 ## Troubleshooting
-
-### Shared
 
 **"No active Sablier streams were found".** Either the wallet address is wrong, the connected account is wrong, or the
 streams live on a different chain than the one you named. Re-run without a chain to let the skill scan indexer-wide.
@@ -230,8 +183,6 @@ chain. If it confirms later, you are done; if it gets dropped, re-run the skill.
 **Declined a signature mid-batch.** Earlier groups that already broadcast stay confirmed. The skill stops and tells you
 which groups were not attempted. Re-run the skill to pick up the rest.
 
-### EVM
-
 **`cast: command not found`.** Foundry is not installed or is not on `PATH`. Install it from
 [getfoundry.sh](https://getfoundry.sh/) and start a new shell.
 
@@ -242,14 +193,6 @@ enforces this and stops early.
 individual stream in the batch cannot be withdrawn. The skill scans receipt logs and prints the affected stream IDs.
 Re-run the skill to retry the surviving streams, or check the failed stream on `app.sablier.com` for a hint (cancelled,
 hook revert, etc.).
-
-### Solana
-
-**Multiple streams are claimable.** Re-run the skill once per stream. The Solana transaction size limit prevents one
-`withdrawMultiple`-style claim from covering the whole wallet.
-
-**The fee is nonzero.** The Solana program fee follows `WITHDRAWAL_FEE_USD`. Fund the wallet with enough SOL for the
-network fee and withdrawal fee, then retry.
 
 ## Payments streams
 
