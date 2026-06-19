@@ -1,0 +1,87 @@
+---
+id: "examples"
+sidebar_position: 2
+title: "Examples"
+---
+
+import TabItem from "@theme/TabItem";
+import Tabs from "@theme/Tabs";
+
+# GraphQL examples
+
+Use one of the official endpoints from [Airdrops Indexers](/api/airdrops/indexers). Address filter inputs must be
+lowercase.
+
+## Get recent campaigns for an asset
+
+This query returns recent campaigns for an ERC-20 asset on a specific chain.
+
+<Tabs>
+
+<TabItem value="TheGraph" label="The Graph" default>
+
+```graphql
+query getCampaignsForAsset($assetAddress: Bytes!, $chainId: BigInt!, $first: Int = 10) {
+  campaigns(
+    first: $first
+    orderBy: timestamp
+    orderDirection: desc
+    where: { chainId: $chainId, asset_: { address: $assetAddress } }
+  ) {
+    id
+    address
+    chainId
+    category
+    admin
+    lockup
+    aggregateAmount
+    claimedAmount
+    claimedCount
+    totalRecipients
+    asset {
+      address
+      symbol
+      decimals
+    }
+  }
+}
+```
+
+</TabItem>
+
+<TabItem value="Envio" label="Envio">
+
+```graphql
+query getCampaignsForAsset($assetAddress: String!, $chainId: numeric!, $limit: Int = 10) {
+  campaigns: Campaign(
+    limit: $limit
+    order_by: [{ timestamp: desc }]
+    where: { chainId: { _eq: $chainId }, asset: { address: { _eq: $assetAddress } } }
+  ) {
+    id
+    address
+    chainId
+    category
+    admin
+    lockup
+    aggregateAmount
+    claimedAmount
+    claimedCount
+    totalRecipients
+    asset {
+      address
+      symbol
+      decimals
+    }
+  }
+}
+```
+
+</TabItem>
+
+</Tabs>
+
+For larger maintained fixtures, see the
+[Indexers equivalence queries](https://github.com/sablier-labs/indexers/blob/main/tests/vendors/equivalence/queries.ts).
+Schema source:
+[src/schemas/airdrops.graphql](https://github.com/sablier-labs/indexers/blob/main/src/schemas/airdrops.graphql).

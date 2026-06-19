@@ -1,0 +1,136 @@
+---
+id: "examples"
+sidebar_position: 2
+title: "Examples"
+---
+
+import TabItem from "@theme/TabItem";
+import Tabs from "@theme/Tabs";
+
+# GraphQL examples
+
+Use one of the official endpoints from [Streams Indexers](/api/streams/indexers). Address filter inputs must be
+lowercase.
+
+## Get recent streams for a wallet
+
+This query returns recent Lockup and Flow streams where the wallet is one of the stream parties.
+
+<Tabs>
+
+<TabItem value="TheGraph" label="The Graph" default>
+
+```graphql
+query getStreamsForWallet($wallet: Bytes!, $first: Int = 10) {
+  lockupStreams(
+    first: $first
+    orderBy: timestamp
+    orderDirection: desc
+    where: { or: [{ sender: $wallet }, { proxender: $wallet }, { recipient: $wallet }] }
+  ) {
+    id
+    alias
+    chainId
+    contract
+    tokenId
+    sender
+    proxender
+    recipient
+    depositAmount
+    intactAmount
+    withdrawnAmount
+    asset {
+      address
+      symbol
+      decimals
+    }
+  }
+  flowStreams(
+    first: $first
+    orderBy: timestamp
+    orderDirection: desc
+    where: { or: [{ sender: $wallet }, { recipient: $wallet }] }
+  ) {
+    id
+    alias
+    chainId
+    contract
+    tokenId
+    sender
+    recipient
+    depositedAmount
+    withdrawnAmount
+    snapshotAmount
+    availableAmount
+    ratePerSecond
+    asset {
+      address
+      symbol
+      decimals
+    }
+  }
+}
+```
+
+</TabItem>
+
+<TabItem value="Envio" label="Envio">
+
+```graphql
+query getStreamsForWallet($wallet: String!, $limit: Int = 10) {
+  lockupStreams: LockupStream(
+    limit: $limit
+    order_by: [{ timestamp: desc }]
+    where: { _or: [{ sender: { _eq: $wallet } }, { proxender: { _eq: $wallet } }, { recipient: { _eq: $wallet } }] }
+  ) {
+    id
+    alias
+    chainId
+    contract
+    tokenId
+    sender
+    proxender
+    recipient
+    depositAmount
+    intactAmount
+    withdrawnAmount
+    asset {
+      address
+      symbol
+      decimals
+    }
+  }
+  flowStreams: FlowStream(
+    limit: $limit
+    order_by: [{ timestamp: desc }]
+    where: { _or: [{ sender: { _eq: $wallet } }, { recipient: { _eq: $wallet } }] }
+  ) {
+    id
+    alias
+    chainId
+    contract
+    tokenId
+    sender
+    recipient
+    depositedAmount
+    withdrawnAmount
+    snapshotAmount
+    availableAmount
+    ratePerSecond
+    asset {
+      address
+      symbol
+      decimals
+    }
+  }
+}
+```
+
+</TabItem>
+
+</Tabs>
+
+For larger maintained fixtures, see the
+[Indexers equivalence queries](https://github.com/sablier-labs/indexers/blob/main/tests/vendors/equivalence/queries.ts).
+Schema source:
+[src/schemas/streams.graphql](https://github.com/sablier-labs/indexers/blob/main/src/schemas/streams.graphql).
