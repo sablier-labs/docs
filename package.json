@@ -84,7 +84,7 @@
     "crypto-tokens",
     "ethereum",
     "evm",
-    "money-streaming",
+    "recurring-payments",
     "sablier",
     "sablier-airdrops",
     "sablier-docs",
@@ -93,7 +93,6 @@
     "smart-contracts",
     "solidity",
     "token-distribution",
-    "token-streaming",
     "token-vesting",
     "web3"
   ],

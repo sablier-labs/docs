@@ -67,7 +67,7 @@ The technical architecture of Ethereum, which many other blockchains have approp
 ## Flow
 
 A term coined by us for our debt tracking protocol that tracks tokens owed between two parties, enabling open-ended
-token streaming.
+token distribution.
 
 ### Covered debt
 
@@ -81,7 +81,7 @@ the Flow protocol.
 
 ### Rate Per Second
 
-The amount of tokens that are streamed per second in a Flow stream.
+The amount of tokens that accrues per second in a Flow stream.
 
 ### Status
 
@@ -127,8 +127,8 @@ accrue in the stream.
 
 ### Distribution Model
 
-A distribution model represents the streaming function used to create lockup streams. There are three types of models
-supported by the Lockup protocol:
+A distribution model represents the function used to create Lockup streams. There are three types of models supported by
+the Lockup protocol:
 
 1. Linear
 2. Dynamic
@@ -136,7 +136,7 @@ supported by the Lockup protocol:
 
 ### Dynamic Model
 
-A Lockup [distribution model](#distribution-model) with a streaming rate per second that can vary over time.
+A Lockup [distribution model](#distribution-model) with a rate per second that can vary over time.
 
 ### End Time
 
@@ -144,7 +144,7 @@ The time when a stream is scheduled to end.
 
 ### Linear Model
 
-A Lockup [distribution model](#distribution-model) with a constant streaming rate per second.
+A Lockup [distribution model](#distribution-model) with a constant rate per second.
 
 ### Lockup Math
 
@@ -175,7 +175,7 @@ A data object that encapsulates these three properties:
 3. Timestamp
 
 Segments are an essential component of Dynamic [distribution model](#distribution-model), as they facilitate the
-calculation of the custom streaming curve.
+calculation of the custom distribution curve.
 
 ### Start time
 
@@ -204,11 +204,11 @@ A data object that encapsulates these two properties:
 2. Timestamp
 
 Tranches are an essential component of Tranched [distribution model](#distribution-model), as they facilitate the
-calculation of the custom streaming curve.
+calculation of the custom distribution curve.
 
 ### Tranched Model
 
-A Lockup [distribution model](#distribution-model) with streaming in discrete tranches.
+A Lockup [distribution model](#distribution-model) with token releases in discrete tranches.
 
 ### Unlock Amounts
 
@@ -238,24 +238,38 @@ A term coined by us in 2019 to emphasize the wide-ranging use cases for the Sabl
 Since the withdrawable amounts in streams are updated every second, they embody the concept of real-time financial
 transactions.
 
+## Recurring Payments
+
+A business use case for open-ended streams, where payments such as salaries, grants, or subscriptions accrue over time
+and can be topped up periodically.
+
 ## Stream
 
-A new financial primitive that permits by-the-second payments.
+A digital agreement for distributing financial assets over time.
 
-Currently, Sablier offers two distribution protocols called Lockup and Flow. In Lockup, the creator has to lock up a
-specified amount of tokens, whereas in Flow, creator is not required to lock up any amount of tokens.
+In Sablier, streams distribute ERC-20 tokens over time and are represented as ERC-721 NFTs. Sablier offers two stream
+protocols called Lockup and Flow. In Lockup, the creator has to lock up a specified amount of tokens, whereas in Flow,
+the creator is not required to lock up any amount of tokens.
 
 ## Streaming
 
-By-the-second payments.
+The continuous form of token distribution where tokens become withdrawable over time, often by the second.
+
+Streaming is Sablier's flagship feature, but Sablier also includes non-stream distribution systems such as Merkle
+Airdrops and Bob.
 
 ## Token
 
-Digital tokens can exist in various forms, but the Sablier Protocol exclusively supports the streaming of ERC-20 tokens.
+Digital tokens can exist in various forms, but the Sablier Protocol exclusively supports distribution of ERC-20 tokens.
+
+## Token Distribution
+
+The umbrella category for releasing tokens to recipients over time or through claims. Sablier supports token
+distribution through streams, Merkle Airdrops, and price-gated vaults.
 
 ## Vesting
 
-One of the most popular use cases for streaming today.
+One of the most popular use cases for token distribution over time.
 
 The purpose of vesting is to delay gratification. Founders, investors, and employees must wait a certain amount of time
 before being able to access tokens.

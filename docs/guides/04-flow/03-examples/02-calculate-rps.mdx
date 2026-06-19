@@ -10,13 +10,13 @@ import CautionNonProduction from "../../../../src/snippets/_caution-non-producti
 This guide explains how to calculate the rate per second when creating a Flow stream. It is the most important step in
 setting up a stream since the rate per second is a key parameter in the stream's configuration.
 
-We assume that you have already gone through the [Protocol Concepts](/concepts/streaming) and the
+We assume that you have already gone through the [Token Distribution](/concepts/streaming) and the
 [Flow Overview](/concepts/flow/overview) sections.
 
 <CautionNonProduction />
 
-The rate per second is the amount of tokens streamed in one second. It is represented as a fixed-point number with 18
-decimals, specifically as a `UD21x18` type from the `PRBMath` library. The underlying native Solidity type associated
+The rate per second is the amount of tokens that accrues in one second. It is represented as a fixed-point number with
+18 decimals, specifically as a `UD21x18` type from the `PRBMath` library. The underlying native Solidity type associated
 with `UD21x18` is `uint128`.
 
 Depending on how you receive payments, you have to calculate the rate per second and scale its value to 18 decimals

@@ -86,7 +86,7 @@ The `withdraw` functions requires a fee. Make sure to send the correct amount in
 
 ## Adjust Rate per Second
 
-Adjusting the rate per second means changing the amount of tokens that is streamed each second.
+Adjusting the rate per second means changing the amount of tokens that accrues each second.
 
 <CodeBlock language="solidity" metastring={`reference title=""`}>
   {`https://github.com/sablier-labs/evm-monorepo/blob/main/misc/examples/flow/FlowStreamManager.sol#L11-L13`}
@@ -94,7 +94,7 @@ Adjusting the rate per second means changing the amount of tokens that is stream
 
 ## Pause
 
-Pausing a stream means setting the rate per second to zero, which means no more streaming.
+Pausing a stream means setting the rate per second to zero, which means no more accrual.
 
 <CodeBlock language="solidity" metastring={`reference title=""`}>
   {`https://github.com/sablier-labs/evm-monorepo/blob/main/misc/examples/flow/FlowStreamManager.sol#L23-L25`}
@@ -129,7 +129,7 @@ There are three refund functions:
 
 ## Void
 
-Voiding a stream means permanently stopping it from streaming any tokens. This is slightly different from pausing a
+Voiding a stream means permanently stopping it from accruing any tokens. This is slightly different from pausing a
 stream because it also sets the stream's uncovered debt to zero.
 
 <CodeBlock language="solidity" metastring={`reference title=""`}>

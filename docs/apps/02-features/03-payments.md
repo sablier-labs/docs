@@ -4,8 +4,9 @@ sidebar_position: 3
 title: "Payments"
 ---
 
-The Sablier Interface displays [Flow](/concepts/flow/overview) streams under the Payments tab. These are token streams
-with no end time, an ever-increasing amount (meaning the streams can be topped up), and a flexible rate per second.
+The Sablier Interface displays [Flow](/concepts/flow/overview) streams under the Payments tab. These are recurring
+payment streams with no end time, an ever-increasing amount (meaning the streams can be topped up), and a flexible rate
+per second.
 
 ![Banner Payments](/img/banners/docs-payments.webp)
 
@@ -22,7 +23,7 @@ decisions.
 Enter the Dashboard and discover a detailed overview of your incoming and outgoing flow streams.
 
 Take advantage of the Search functionality to explore the chain and gain more insight into how others are using Flow for
-continuous payments, grants, salaries and more.
+recurring payments, grants, salaries and more.
 
 |                                                    |
 | -------------------------------------------------- |
@@ -65,7 +66,8 @@ Thus streams can be transferred, traded, and used as collateral in NFT lending p
 
 ### Multi-chain experience
 
-Streaming, everywhere. We enable payments on 11+ EVM chains and testnets where you can stream or get paid using Sablier.
+Recurring payments, everywhere. We enable payments on 11+ EVM chains and testnets where you can pay or get paid using
+Sablier.
 
 |                                                |
 | ---------------------------------------------- |
@@ -82,7 +84,7 @@ As an alternative to manually filling out the form, you can upload a CSV file wi
 
 ### Mobile-ready layout
 
-Token streams on the go!
+Recurring payments on the go!
 
 Yes, the Sablier app works on mobile. And yes, we support dark mode by default (light mode coming soon).
 
@@ -105,5 +107,5 @@ reference you as a key participant (e.g. sender, recipient) directly from the in
 
 ### Safe multisig support
 
-Payments are fully integrated with [Safe](https://safe.global). Start streaming from the safety and comfort of your
-multisig wallet.
+Payments are fully integrated with [Safe](https://safe.global). Start creating recurring payments from the safety and
+comfort of your multisig wallet.

@@ -42,11 +42,11 @@ type `ISablierFlow`:
 
 <HardcodedDemonstration protocol="Flow" />
 
-We will declare two functions, based on the amount desired to stream over a period of time.
+We will declare two functions, based on the amount desired to pay over a period of time.
 
 ## Define a function
 
-Define a function to stream a salary of 1000 USDC per month, call it `createStream_1K_PerMonth` which returns the newly
+Define a function to pay a salary of 1000 USDC per month, call it `createStream_1K_PerMonth` which returns the newly
 created stream ID:
 
 <CodeBlock language="solidity" metastring={`reference title=""`}>
@@ -65,7 +65,7 @@ Use the [`FlowUtilities`](./02-calculate-rps.mdx) library to calculate the rate 
 
 ### Sender
 
-The address streaming the tokens, with the ability to `pause` the stream:
+The address distributing the tokens, with the ability to `pause` the stream:
 
 <CodeBlock language="solidity" metastring={`reference title=""`}>
   {`https://github.com/sablier-labs/evm-monorepo/blob/main/misc/examples/flow/FlowStreamCreator.sol#L21-L21`}
@@ -89,7 +89,7 @@ The timestamp when the stream starts.
 
 ### Token
 
-The contract address of the ERC-20 token used for streaming. In this example, we will stream `USDC`:
+The contract address of the ERC-20 token distributed by the stream. In this example, we will use `USDC`:
 
 <CodeBlock language="solidity" metastring={`reference title=""`}>
   {`https://github.com/sablier-labs/evm-monorepo/blob/main/misc/examples/flow/FlowStreamCreator.sol#L25-L25`}

@@ -11,7 +11,7 @@ A token stream has six properties:
 1. Sender.
 2. Recipient.
 3. Fixed deposit amount.
-4. ERC-20 token used as streaming currency.
+4. ERC-20 token used as the stream currency.
 5. Start time
 6. Stop Time
 

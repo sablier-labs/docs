@@ -37,13 +37,13 @@ to import the IDs as a typed enum (`Shape.Lockup`).
 
 **Shape ID:** <code>{Shape.Lockup.Linear}</code>
 
-Lockup Linear streams are the simplest token distribution curve in Sablier. The streamed amount over time follows a
+Lockup Linear streams are the simplest token distribution curve in Sablier. The vested amount over time follows a
 straight line that goes up and to the right on a graph, which corresponds to the identity function $f(x) = x$:
 
 <FunctionPlot options={{ data: [{ fn: "x", color: "#f77423" }] }} />
 
 With this shape of stream, the payment rate remains constant, meaning that the same fraction of the deposit amount is
-streamed to the recipient every second. This provides greater predictability and is easy to understand because of how
+released to the recipient every second. This provides greater predictability and is easy to understand because of how
 intuitive it is. Imagine a diagonal line going up and to the right – that's how simple it is.
 
 :::info
@@ -78,7 +78,7 @@ shape is ideal for employment contracts that include a signing bonus along with 
 />
 
 At the beginning of the stream, a fixed amount of tokens is instantly available to the recipient — this is your "signing
-bonus". Following this, the remaining tokens begin to stream continuously at a consistent rate until the end of the
+bonus". Following this, the remaining tokens become withdrawable continuously at a consistent rate until the end of the
 contract term — this is your "salary".
 
 Another use case is a token distribution to investors where a particular amount gets unlocked immediately followed by a
@@ -117,9 +117,9 @@ constant payment rate per second kicks in.
 />
 
 This feature is especially useful for vesting ERC-20 tokens as it allows you to have, for example, a 1-year cliff, and
-then 3 additional years of linear streaming. If the stream is for an employee, you can make it cancellable so that if
-the employee leaves your company during the stream, you can cancel it and recover the tokens that have not yet been
-streamed.
+then 3 additional years of linear vesting. If the stream is for an employee, you can make it cancellable so that if the
+employee leaves your company during the stream, you can cancel it and recover the tokens that have not yet been
+released.
 
 :::info
 
@@ -165,16 +165,16 @@ The gas cost to create this shape is approximately _214,067_ on Mainnet. This ma
 
 ## Lockup Dynamic
 
-Lockup Dynamic streams are what makes Sablier so unique, since they enable the creation of an arbitrary streaming curve,
-including non-linear curves.
+Lockup Dynamic streams are what makes Sablier so unique, since they enable the creation of an arbitrary distribution
+curve, including non-linear curves.
 
 On the Sablier Interface, we support only some distribution shapes (the ones enumerated below), but the potential for
 innovation is limitless when you interact programmatically with the contracts. For example, one could design a
 logarithmic stream that emulates the $f(x) = log(x)$ function.
 
 These streams are powered by a number of user-provided [segments](/concepts/lockup/segments), which we will cover in the
-next article. What is important to note here is that with Lockup Dynamic, Sablier has evolved into a universal streaming
-engine, capable of supporting any custom streaming curve.
+next article. What is important to note here is that with Lockup Dynamic, Sablier has evolved into a universal token
+distribution engine, capable of supporting any custom distribution curve.
 
 ### Exponential
 
@@ -186,7 +186,7 @@ increasingly more tokens as time passes.
 <FunctionPlot options={{ data: [{ fn: "(x/70)^6 * 12", color: "#f77423" }] }} />
 
 Exponentials are a great fit if you are looking to airdrop tokens, because your community members will receive the
-majority of the tokens towards the end of the stream instead of receiving the tokens all at once (no streaming) or in a
+majority of the tokens towards the end of the stream instead of receiving the tokens all at once (no vesting) or in a
 linear fashion (Lockup Linear). This incentivizes long-term behavior and a constructive attitude.
 
 :::info
@@ -220,7 +220,7 @@ Another use case for Lockup Dynamic is a variation of the previous design: an Cl
 />
 
 The stream starts with a cliff (which can be how long you want), a specific amount instantly unlocked when the cliff
-ends, and then the rest of the stream is exponentially streamed.
+ends, and then the rest of the stream is released exponentially.
 
 This is an excellent distribution if you are a company looking to set up a token vesting plan for your employees. Your
 employees will have an incentive to remain with your company in the long run, as they will receive an increasingly
@@ -247,8 +247,8 @@ tranches article.
 **Shape ID:** <code>{Shape.Lockup.LinearStepper}</code> <em>(the legacy <code>{Shape.Lockup.TranchedStepper}</code> is
 deprecated)</em>
 
-You can use Lockup Tranched to create a traditional vesting contract with periodic unlocks. In this case, the
-"streaming" rate would not be by the second, but by the week, month, or year.
+You can use Lockup Tranched to create a traditional vesting contract with periodic unlocks. In this case, the release
+rate would not be by the second, but by the week, month, or year.
 
 <FunctionPlot
   options={{

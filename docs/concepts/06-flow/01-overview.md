@@ -4,7 +4,7 @@ sidebar_position: 1
 title: "Overview"
 ---
 
-Flow is a debt tracking protocol that tracks tokens owed between two parties, enabling indefinite token streaming. A
+Flow is a debt tracking protocol that tracks tokens owed between two parties, enabling open-ended token distribution. A
 Flow stream is characterized by its rate per second (rps). The relationship between the amount owed and time elapsed is
 linear and can be defined as:
 
@@ -35,16 +35,15 @@ The definitions below will help you understand some terms used in Sablier Flow:
 
 ## Open-Ended Streams
 
-Open-ended streams on Sablier are token streams without a predefined end date. They continue indefinitely until voided
-by the sender.
+Open-ended streams on Sablier do not have a predefined end date. They continue indefinitely until voided by the sender.
 
 Key traits:
 
 - No end time: the stream has a start time but no fixed end time.
-- Funds are streamed continuously at a fixed rate per second.
+- Funds become withdrawable continuously at a fixed rate per second.
 - Stream must be topped up periodically to maintain solvency,
   [debt is otherwise accumulated](/concepts/flow/overview#total-debt).
-- Useful for ongoing payments like salaries, grants, or subscriptions.
+- Useful for recurring payments like salaries, grants, or subscriptions.
 
 ### Stream balance
 

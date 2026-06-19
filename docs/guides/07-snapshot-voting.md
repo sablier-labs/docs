@@ -128,7 +128,7 @@ Aggregates historical deposits up to the snapshot time, counting only the stream
 
 :::caution Caveat
 
-- Streaming, canceling and streaming again will cause tokens to be counted multiple times.
+- Creating a stream, canceling it, and creating another stream will cause tokens to be counted multiple times.
 
 :::
 
@@ -138,7 +138,7 @@ Aggregates historical deposits up to the snapshot time, counting only the stream
 
 :::caution Caveats
 
-- Streaming, canceling and streaming again will cause tokens to be counted multiple times.
+- Creating a stream, canceling it, and creating another stream will cause tokens to be counted multiple times.
 - Takes into account streams created through [PRBProxy](/reference/lockup/contracts/contract.SablierBatchLockup)
   instances configured through the official [Sablier Interface](https://app.sablier.com/).
 

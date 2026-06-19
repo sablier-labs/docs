@@ -8,19 +8,19 @@ title: "Segments"
 
 ## Definition
 
-A Dynamic stream is composed of multiple segments, which are separate partitions with different streaming amount and
-rates. The protocol uses these segments to enable custom streaming curves, which power exponential streams, cliff
-streams, etc.
+A Dynamic stream is composed of multiple segments, which are separate partitions with different token amounts and rates.
+The protocol uses these segments to enable custom distribution curves, which power exponential streams, cliff streams,
+etc.
 
 Technically, a segment is a [struct](/reference/lockup/contracts/types/library.LockupDynamic#segment) with three fields:
 
-| Field     | Type      | Description                                                                                    |
-| :-------- | :-------- | :--------------------------------------------------------------------------------------------- |
-| Amount    | `uint128` | The amount of tokens to be streamed in this segment, denoted in units of the token's decimals. |
-| Exponent  | `UD2x18`  | The exponent of this segment, denoted as a fixed-point number.                                 |
-| Timestamp | `uint40`  | The Unix timestamp indicating this segment's end.                                              |
+| Field     | Type      | Description                                                                                       |
+| :-------- | :-------- | :------------------------------------------------------------------------------------------------ |
+| Amount    | `uint128` | The amount of tokens to be distributed in this segment, denoted in units of the token's decimals. |
+| Exponent  | `UD2x18`  | The exponent of this segment, denoted as a fixed-point number.                                    |
+| Timestamp | `uint40`  | The Unix timestamp indicating this segment's end.                                                 |
 
-Each segment has its own streaming function:
+Each segment has its own distribution function:
 
 $$
 f(x) = x^{exp} * csa

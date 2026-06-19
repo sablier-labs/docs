@@ -12,10 +12,10 @@ import TokenApproval from "../../../../../src/snippets/_token-approval.mdx";
 
 # Create a Lockup Linear Stream
 
-Linear streams are streams with a linear streaming function. In this guide, we will show you how to create a Lockup
+Linear streams are streams with a linear distribution function. In this guide, we will show you how to create a Lockup
 Linear stream using Solidity.
 
-This guide assumes that you have already gone through the [Protocol Concepts](/concepts/streaming) section.
+This guide assumes that you have already gone through the [Token Distribution](/concepts/streaming) section.
 
 <CautionNonProduction />
 
@@ -90,7 +90,7 @@ Struct containing details on unlock amounts at start time and at cliff time.
 ### Granularity
 
 The smallest step in time (in seconds) between two consecutive token unlocks. A value of zero is a sentinel for 1
-second. For standard linear streaming behavior, use `1 seconds`. For periodic unlock patterns (e.g., weekly), use the
+second. For standard linear distribution behavior, use `1 seconds`. For periodic unlock patterns (e.g., weekly), use the
 period duration (e.g., `1 weeks`).
 
 <CodeBlock language="solidity" metastring={`reference title=""`}>

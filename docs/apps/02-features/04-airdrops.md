@@ -18,7 +18,7 @@ distribute tokens to a large number of users in a fair and efficient manner. Sta
 **Airdrops should be vested!**
 
 At Sablier, we believe in long-term distributions with aligned incentives. That's why we engineered Airstreams, a
-solution which allows you to airdrop streams with a vesting schedule.
+solution which allows you to airdrop vested allocations.
 
 Pick a vesting curve (e.g., linear), define the rules (e.g. duration, clawback window), and allow recipients to claim
 their airdrops as vesting streams.

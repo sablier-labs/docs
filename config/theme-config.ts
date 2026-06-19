@@ -180,7 +180,7 @@ export const themeConfig: Preset.ThemeConfig = {
   metadata: [
     {
       content:
-        "blockchain, dao, decentralized finance, defi, docs, ethereum, evm, foundry, money streaming, nft, open source, payments, payroll, Sablier, Safe, smart contracts, solidity, token distribution, token streaming, vesting, web3",
+        "blockchain, dao, decentralized finance, defi, docs, ethereum, evm, foundry, nft, open source, payments, payroll, recurring payments, Sablier, Safe, smart contracts, solidity, token distribution, vesting, web3",
       name: "keywords",
     },
   ],

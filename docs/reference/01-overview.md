@@ -42,7 +42,7 @@ Generates the URI describing the Sablier Lockup stream NFTs.
 
 > [**SablierLockup Reference**](./lockup/contracts/contract.SablierLockup)
 
-Creates and manages Lockup streams with three different streaming functions.
+Creates and manages Lockup streams with three different distribution functions.
 
 ## Merkle Airdrops
 
