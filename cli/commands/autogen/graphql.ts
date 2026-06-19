@@ -10,6 +10,7 @@ import { getMergedOpts } from "../../helpers";
 import type { CliOptions } from "../../types";
 
 const CHAIN_ID_SEPOLIA = 11_155_111;
+const GRAPH_GATEWAY_HOST = "gateway.thegraph.com";
 
 // Numeric prefix encodes the sidebar position; keep in sync with `docs/api/` folders.
 const INDEXER_FOLDER: Record<Indexer.IndexerKey, string> = {
@@ -147,7 +148,7 @@ async function generateEnvio(indexer: Indexer.IndexerKey): Promise<string> {
 
 async function generateGraph(indexer: Indexer.IndexerKey): Promise<string> {
   const docsPath = `./docs/api/${INDEXER_FOLDER[indexer]}/graphql/the-graph`;
-  const schemaURL = getIndexerGraph({ chainId: CHAIN_ID_SEPOLIA, indexer }).testingURL;
+  const schemaURL = getIndexerGraph({ chainId: CHAIN_ID_SEPOLIA, indexer }).endpoint.url;
 
   await runCommand(docsPath, schemaURL);
   console.log(
@@ -161,8 +162,18 @@ async function generateGraph(indexer: Indexer.IndexerKey): Promise<string> {
  * @see {@link file://./../../../config/plugins.ts}
  */
 async function runCommand(base: string, schema: string): Promise<void> {
+  if (isGraphGatewaySchema(schema) && !process.env.GRAPH_QUERY_KEY?.trim()) {
+    throw new Error(
+      "GRAPH_QUERY_KEY is required to generate The Graph schema docs from production gateway endpoints"
+    );
+  }
+
   const options = ["--base", base, "--schema", schema];
   await $("bun", ["docusaurus", "graphql-to-doc", ...options], { stdio: "inherit" });
+}
+
+function isGraphGatewaySchema(schema: string): boolean {
+  return schema.includes(GRAPH_GATEWAY_HOST);
 }
 
 async function runPrettier(targetPath: string): Promise<void> {

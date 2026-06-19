@@ -71,11 +71,11 @@ type raw_events {
   block_timestamp: Int!
   chain_id: Int!
   contract_name: String!
-  event_id: numeric!
+  event_id: bigint!
   event_name: String!
   log_index: Int!
   params(path: String): jsonb!
-  serial: Int!
+  serial: bigint!
   src_address: String!
   transaction_fields(path: String): jsonb!
 }
@@ -99,7 +99,7 @@ JSON select path
 
 #### [<code style={{ fontWeight: 'normal' }}>raw_events.<b>contract_name</b></code>](#contract-name)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String!</b></code>](/docs/api/04-streams/graphql/envio/scalars/string.mdx) <Badge class="badge badge--secondary badge--non_null" text="non-null"/> <Badge class="badge badge--secondary " text="scalar"/> \{#contract-name\}
 
-#### [<code style={{ fontWeight: 'normal' }}>raw_events.<b>event_id</b></code>](#event-id)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>numeric!</b></code>](/docs/api/04-streams/graphql/envio/scalars/numeric.mdx) <Badge class="badge badge--secondary badge--non_null" text="non-null"/> <Badge class="badge badge--secondary " text="scalar"/> \{#event-id\}
+#### [<code style={{ fontWeight: 'normal' }}>raw_events.<b>event_id</b></code>](#event-id)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>bigint!</b></code>](/docs/api/04-streams/graphql/envio/scalars/bigint.mdx) <Badge class="badge badge--secondary badge--non_null" text="non-null"/> <Badge class="badge badge--secondary " text="scalar"/> \{#event-id\}
 
 #### [<code style={{ fontWeight: 'normal' }}>raw_events.<b>event_name</b></code>](#event-name)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String!</b></code>](/docs/api/04-streams/graphql/envio/scalars/string.mdx) <Badge class="badge badge--secondary badge--non_null" text="non-null"/> <Badge class="badge badge--secondary " text="scalar"/> \{#event-name\}
 
@@ -111,7 +111,7 @@ JSON select path
 
 JSON select path
 
-#### [<code style={{ fontWeight: 'normal' }}>raw_events.<b>serial</b></code>](#serial)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>Int!</b></code>](/docs/api/04-streams/graphql/envio/scalars/int.mdx) <Badge class="badge badge--secondary badge--non_null" text="non-null"/> <Badge class="badge badge--secondary " text="scalar"/> \{#serial\}
+#### [<code style={{ fontWeight: 'normal' }}>raw_events.<b>serial</b></code>](#serial)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>bigint!</b></code>](/docs/api/04-streams/graphql/envio/scalars/bigint.mdx) <Badge class="badge badge--secondary badge--non_null" text="non-null"/> <Badge class="badge badge--secondary " text="scalar"/> \{#serial\}
 
 #### [<code style={{ fontWeight: 'normal' }}>raw_events.<b>src_address</b></code>](#src-address)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String!</b></code>](/docs/api/04-streams/graphql/envio/scalars/string.mdx) <Badge class="badge badge--secondary badge--non_null" text="non-null"/> <Badge class="badge badge--secondary " text="scalar"/> \{#src-address\}
 

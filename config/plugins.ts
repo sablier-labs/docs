@@ -29,6 +29,47 @@ const clientRedirects: [string, ClientRedirectsOptions] = [
 /* -------------------------------------------------------------------------- */
 type GraphQLMarkdownOptions = GraphQLMarkdownCliOptions & Partial<PluginOptions>;
 
+const GRAPH_GATEWAY_HOST = "gateway.thegraph.com";
+
+function getArgValue(flag: string): string | undefined {
+  const exactArg = process.argv.find((arg) => arg.startsWith(`${flag}=`));
+  if (exactArg) {
+    return exactArg.slice(flag.length + 1);
+  }
+
+  const flagIndex = process.argv.indexOf(flag);
+  return flagIndex === -1 ? undefined : process.argv.at(flagIndex + 1);
+}
+
+function getGraphQLLoaders(): LoaderOption {
+  const schema = getArgValue("--schema") ?? "";
+  if (!isGraphGatewaySchema(schema)) {
+    return {
+      UrlLoader: {
+        module: "@graphql-tools/url-loader",
+      },
+    } as LoaderOption;
+  }
+
+  const graphQueryKey = process.env.GRAPH_QUERY_KEY?.trim();
+  if (!graphQueryKey) {
+    throw new Error(
+      "GRAPH_QUERY_KEY is required to generate The Graph schema docs from production gateway endpoints"
+    );
+  }
+
+  return {
+    UrlLoader: {
+      module: "@graphql-tools/url-loader",
+      options: { headers: { Authorization: `Bearer ${graphQueryKey}` } },
+    },
+  } as LoaderOption;
+}
+
+function isGraphGatewaySchema(schema: string): boolean {
+  return schema.includes(GRAPH_GATEWAY_HOST);
+}
+
 const graphqlMarkdown: [string, GraphQLMarkdownOptions] = [
   "@graphql-markdown/docusaurus",
   /**
@@ -37,11 +78,7 @@ const graphqlMarkdown: [string, GraphQLMarkdownOptions] = [
    */
   {
     homepage: "static/graphql-overview.md",
-    loaders: {
-      UrlLoader: {
-        module: "@graphql-tools/url-loader",
-      },
-    } as LoaderOption,
+    loaders: getGraphQLLoaders(),
     metatags: [{ content: "noindex", name: "robots" }, { charset: "utf-8" }],
     pretty: true,
     rootPath: ".",

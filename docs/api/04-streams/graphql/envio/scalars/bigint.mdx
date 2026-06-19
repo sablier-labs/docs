@@ -1,6 +1,6 @@
 ---
-id: action-by-pk
-title: Action_by_pk
+id: bigint
+title: bigint
 ---
 
 <head>
@@ -61,20 +61,8 @@ export const Details = ({ dataOpen, dataClose, children, startOpen = false }) =>
   );
 };
 
-fetch data from the table: "Action" using primary key columns
+No description
 
 ```graphql
-Action_by_pk(
-  id: String!
-): Action
+scalar bigint
 ```
-
-### Arguments
-
-#### [<code style={{ fontWeight: 'normal' }}>Action_by_pk.<b>id</b></code>](#id)<Bullet />[<code style={{ fontWeight: 'normal' }}><b>String!</b></code>](/docs/api/05-airdrops/graphql/envio/scalars/string.mdx) <Badge class="badge badge--secondary badge--non_null" text="non-null"/> <Badge class="badge badge--secondary " text="scalar"/> \{#id\}
-
-### Type
-
-#### [<code style={{ fontWeight: 'normal' }}><b>Action</b></code>](/docs/api/05-airdrops/graphql/envio/objects/action.mdx) <Badge class="badge badge--secondary " text="object"/>
-
-columns and relationships of "Action"

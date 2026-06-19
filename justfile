@@ -56,10 +56,10 @@ alias ew := eslint-write
 
 # Generate GraphQL schema documentation
 [group("autogen")]
-@autogen-graphql vendor="all" protocol="all":
+@autogen-graphql indexer="all" vendor="all":
     just cli autogen graphql \
+        --indexer {{ indexer }} \
         --vendor {{ vendor }} \
-        --protocol {{ protocol }} \
         --overwrite
 
 # Generate indexer documentation

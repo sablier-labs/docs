@@ -17,4 +17,7 @@ async function main(): Promise<void> {
   await program.parseAsync();
 }
 
-main().catch(console.error);
+main().catch((error: unknown) => {
+  console.error(error);
+  process.exitCode = 1;
+});
