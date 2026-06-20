@@ -24,8 +24,11 @@ For more information on the original Sablier Protocol, refer to the
 
 ## App
 
-The Solana app is available at [solana.sablier.com](https://solana.sablier.com) for interacting with existing streams
-and airdrop campaigns.
+The hosted Solana app at [solana.sablier.com](https://solana.sablier.com) is deprecated and will be removed on June
+30, 2026. The onchain programs, SDKs, and these docs remain available.
+
+To claim or withdraw from existing Solana streams and airdrop campaigns, use the [Claim with AI](/solana/claim-with-ai)
+skill or interact with the programs directly.
 
 ## SolSab
 
