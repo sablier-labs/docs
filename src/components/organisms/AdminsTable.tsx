@@ -45,6 +45,7 @@ const CURRENT_CHAIN_ADMINS: ReadonlyArray<readonly [Chain, Address]> = [
   [chains.morph, EOA],
   [chains.optimism, MULTISIG],
   [chains.polygon, MULTISIG],
+  [chains.robinhood, EOA],
   [chains.scroll, EOA],
   [chains.sonic, EOA],
   [chains.superseed, EOA],
