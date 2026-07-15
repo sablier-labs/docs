@@ -16,8 +16,9 @@ withdrawing unlocked tokens from Lockup vesting streams. The same skill also cov
 :::info[App status]
 
 Sablier on Solana is in maintenance mode. Creating new Solana streams and airdrop campaigns is no longer supported, and
-`solana.sablier.com` is the app being deprecated. For Solana claims, use the AI skill or interact with the program
-directly. See [Sablier on Solana](/solana/sablier-on-solana) for protocol details.
+`solana.sablier.com` has been reduced to a lightweight claiming app. This skill is an alternative way to withdraw from
+the terminal, without connecting a wallet to the app. See [Sablier on Solana](/solana/sablier-on-solana) for protocol
+details.
 
 :::
 

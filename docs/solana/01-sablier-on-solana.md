@@ -24,8 +24,12 @@ For more information on the original Sablier Protocol, refer to the
 
 ## App
 
-The Solana app is available at [solana.sablier.com](https://solana.sablier.com) for interacting with existing streams
-and airdrop campaigns.
+The hosted Solana app at [solana.sablier.com](https://solana.sablier.com) has been reduced to a lightweight claiming
+app: connect your wallet to review vested Lockup NFTs and withdraw. It no longer supports creating new streams and
+airdrop campaigns, or canceling existing streams.
+
+To claim or withdraw from existing Solana streams and airdrop campaigns, use the app above, the
+[Claim with AI](/solana/claim-with-ai) skill, or interact with the programs directly.
 
 ## SolSab
 
