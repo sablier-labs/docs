@@ -53,13 +53,13 @@
     "viem": "^2.55.2"
   },
   "devDependencies": {
-    "@biomejs/biome": "^2.4.10",
+    "@biomejs/biome": "^2.5.14",
     "@docusaurus/tsconfig": "^3.10.0",
     "@docusaurus/types": "^3.10.0",
     "@eslint/compat": "^1.4.1",
     "@graphql-markdown/types": "^1.11.0",
     "@graphql-tools/url-loader": "^9.1.0",
-    "@sablier/devkit": "^1.15.3",
+    "@prb/devkit": "^1.0.4",
     "@types/eslint": "^9.6.1",
     "@types/node": "^25.5.2",
     "baseline-browser-mapping": "^2.10.16",

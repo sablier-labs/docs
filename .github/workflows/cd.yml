@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Set up devkit
-        uses: sablier-labs/devkit/actions/setup@v1
+        uses: PaulRBerg/devkit/actions/setup@v1
         with:
           save-cache: true
 

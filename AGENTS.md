@@ -8,7 +8,7 @@ Static documentation site for the Sablier protocols (Lockup, Flow, Airdrops). Bu
 - **TypeScript** 5.8 (strict, extends `@docusaurus/tsconfig`)
 - **React** 18.2 (pinned)
 - **Bun** as package manager and runtime (Node >=20 required)
-- **Just** as command runner (extends `@sablier/devkit/just/base.just`)
+- **Just** as command runner (extends `@prb/devkit/just/base.just`)
 - **MDX** with KaTeX (math), Mermaid (diagrams), `llmfood` (LLM-optimized output)
 
 ## Layout
@@ -70,7 +70,7 @@ matching substitution. Long-term fix: rewrite the natspec in `evm-monorepo` as L
 
 ## Code Style
 
-- BiomeJS (`ultracite/core` + `@sablier/devkit/biome/base`) is the source of truth for TS/JS/JSON/CSS — run
+- BiomeJS (`ultracite/core` + `@prb/devkit/biome/base`) is the source of truth for TS/JS/JSON/CSS — run
   `just biome-write` before committing.
 - ESLint runs **only** on MD/MDX (see `eslint.config.mjs`). Don't add ESLint rules for TS.
 - Prettier handles MD/MDX formatting; Biome handles everything else. Don't fight them.
