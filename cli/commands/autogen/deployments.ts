@@ -125,8 +125,7 @@ function generateDeploymentTable(deployment: Sablier.Deployment, release: Sablie
     const addressCell = contract.explorerURL
       ? `[\`${contract.address}\`](${contract.explorerURL})`
       : `\`${contract.address}\``;
-    const protocol = release.protocol;
-    const version = release.version;
+    const { protocol, version } = release;
     const linkCell = `[\`${protocol}-${version}\`](${Links.GitHub.SDK}/blob/main/deployments/${protocol}/${version})`;
     table += `| ${contract.name} | ${addressCell} | ${linkCell} |\n`;
   }

@@ -94,7 +94,7 @@ const graphqlMarkdown: [string, GraphQLMarkdownOptions] = [
 /*                                 LLM PLUGIN                                 */
 /* -------------------------------------------------------------------------- */
 
-const BENCHMARK_CALL_PATTERN = /^getBenchmarkURL\(["'](.+?)["']\)$/;
+const BENCHMARK_CALL_PATTERN = /^getBenchmarkURL\(["'](?<filename>.+?)["']\)$/u;
 
 const llmfood: [
   typeof llmfoodPlugin,
@@ -109,11 +109,11 @@ const llmfood: [
         filename: "llms-airdrops.txt",
         title: "Sablier Merkle Airdrops Documentation",
         includePatterns: [
-          /\/airdrops\//,
-          /\/apps\/features\/airdrops/,
-          /\/apps\/guides\//,
-          /\/concepts\/airdrops/,
-          /\/support\//,
+          /\/airdrops\//u,
+          /\/apps\/features\/airdrops/u,
+          /\/apps\/guides\//u,
+          /\/concepts\/airdrops/u,
+          /\/support\//u,
         ],
       },
       {
@@ -122,11 +122,11 @@ const llmfood: [
         filename: "llms-flow.txt",
         title: "Sablier Flow Documentation",
         includePatterns: [
-          /\/flow\//,
-          /\/streams\//,
-          /\/apps\/features\/payments/,
-          /\/apps\/guides\//,
-          /\/support\//,
+          /\/flow\//u,
+          /\/streams\//u,
+          /\/apps\/features\/payments/u,
+          /\/apps\/guides\//u,
+          /\/support\//u,
         ],
       },
       {
@@ -134,23 +134,23 @@ const llmfood: [
         filename: "llms-lockup.txt",
         title: "Sablier Lockup Documentation",
         includePatterns: [
-          /\/lockup\//,
-          /\/streams\//,
-          /\/apps\/features\/vesting/,
-          /\/apps\/guides\//,
-          /\/support\//,
+          /\/lockup\//u,
+          /\/streams\//u,
+          /\/apps\/features\/vesting/u,
+          /\/apps\/guides\//u,
+          /\/support\//u,
         ],
       },
       {
         filename: "llms-full.txt",
-        includePatterns: [/.*/],
+        includePatterns: [/.*/u],
         title: "Sablier Full Documentation",
       },
     ],
     ignorePatterns: [
-      /^\/api\/.+\/graphql\/(envio|the-graph)\//,
-      /^\/search$/,
-      /^\/graphql-overview$/,
+      /^\/api\/.+\/graphql\/(?:envio|the-graph)\//u,
+      /^\/search$/u,
+      /^\/graphql-overview$/u,
     ],
     resolveRemoteUrl,
     rootContent: `Sablier docs is optimized for LLMs and AI assistants. Navigation tips:
@@ -168,7 +168,7 @@ function resolveRemoteUrl(expression: string): string | undefined {
   if (!match) {
     return undefined;
   }
-  return `https://raw.githubusercontent.com/${GITHUB_ORG}/evm-monorepo/${BENCHMARKS_COMMIT}/misc/benchmarks/${match[1]}`;
+  return `https://raw.githubusercontent.com/${GITHUB_ORG}/evm-monorepo/${BENCHMARKS_COMMIT}/misc/benchmarks/${match.groups?.filename}`;
 }
 
 /* -------------------------------------------------------------------------- */
@@ -178,7 +178,7 @@ function resolveRemoteUrl(expression: string): string | undefined {
 // vscode-languageserver-types ships a UMD wrapper whose `factory(require, exports)` call
 // triggers webpack's "Critical dependency: require function is used in a way..." warning.
 // Pulled in transitively via mermaid → langium → vscode-languageserver.
-const VSCODE_LST_UMD_PATTERN = /vscode-languageserver-types[\\/]lib[\\/]umd[\\/]main\.js/;
+const VSCODE_LST_UMD_PATTERN = /vscode-languageserver-types[\\/]lib[\\/]umd[\\/]main\.js/u;
 
 const ignoreWebpackWarnings = (): Plugin => ({
   name: "ignore-webpack-warnings",

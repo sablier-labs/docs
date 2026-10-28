@@ -64,33 +64,35 @@ export const redirects: RedirectOption[] = [
 ];
 
 export function createRedirects(existingPath: string) {
-  const redirects: string[] = [];
+  const generatedRedirects: string[] = [];
   // Redirect /concepts/protocol/** to /concepts/lockup/**
   if (existingPath.startsWith("/concepts/lockup/")) {
-    redirects.push(existingPath.replace("/concepts/lockup/", "/concepts/protocol/"));
+    generatedRedirects.push(existingPath.replace("/concepts/lockup/", "/concepts/protocol/"));
   }
   // Redirect /contracts/v1/guides/** to /guides/legacy/**
   else if (existingPath.startsWith("/guides/legacy/")) {
-    redirects.push(existingPath.replace("/guides/legacy/", "/contracts/v1/guides/"));
+    generatedRedirects.push(existingPath.replace("/guides/legacy/", "/contracts/v1/guides/"));
   }
   // Redirect /contracts/v2/reference/** to /reference/lockup/**
   else if (existingPath.startsWith("/reference/lockup/")) {
-    redirects.push(existingPath.replace("/reference/lockup/", "/contracts/v2/reference/"));
+    generatedRedirects.push(existingPath.replace("/reference/lockup/", "/contracts/v2/reference/"));
   }
   // Redirect /contracts/v1/** to /reference/legacy/**
   else if (existingPath.startsWith("/reference/legacy/")) {
-    redirects.push(existingPath.replace("/reference/legacy/", "/contracts/v1/"));
+    generatedRedirects.push(existingPath.replace("/reference/legacy/", "/contracts/v1/"));
   }
   // Redirect /contracts/v2/guides/** to /guides/lockup/examples/**
   else if (existingPath.startsWith("/guides/lockup/examples/")) {
-    redirects.push(existingPath.replace("/guides/lockup/examples/", "/contracts/v2/guides/"));
+    generatedRedirects.push(
+      existingPath.replace("/guides/lockup/examples/", "/contracts/v2/guides/")
+    );
   }
 
   // Redirect /api/lockup/** and /api/flow/** to /api/streams/**
   if (existingPath.startsWith("/api/streams/")) {
-    redirects.push(existingPath.replace("/api/streams/", "/api/lockup/"));
-    redirects.push(existingPath.replace("/api/streams/", "/api/flow/"));
+    generatedRedirects.push(existingPath.replace("/api/streams/", "/api/lockup/"));
+    generatedRedirects.push(existingPath.replace("/api/streams/", "/api/flow/"));
   }
 
-  return redirects;
+  return generatedRedirects;
 }

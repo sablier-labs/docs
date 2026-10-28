@@ -1,5 +1,5 @@
 import type { Indexer } from "@sablier/indexers";
-import { indexers } from "@sablier/indexers";
+import { indexers as indexerCatalog } from "@sablier/indexers";
 import { Command } from "commander";
 import _ from "lodash";
 import { sablier } from "sablier";
@@ -27,8 +27,8 @@ export function generateIndexers(options: CliOptions = {}): void {
 }
 
 function generateTables(indexerKey: Indexer.IndexerKey, options: CliOptions): void {
-  const envioTable = generateEnvioTable(indexers.envio[indexerKey]);
-  const graphTable = generateGraphTable(indexers.graph[indexerKey]);
+  const envioTable = generateEnvioTable(indexerCatalog.envio[indexerKey]);
+  const graphTable = generateGraphTable(indexerCatalog.graph[indexerKey]);
 
   const envioFilePath = autogenFilePaths.envio(indexerKey);
   if (writeFileWithOverwrite({ content: envioTable, filePath: envioFilePath, options })) {
@@ -58,7 +58,7 @@ function generateEnvioTable(indexers: Indexer[]): string {
     const productionURL = indexer.endpoint.url;
     const converterURL = `${productionURL}/converter`;
     const playgroundURL = indexer.testingURL;
-    const explorerURL = indexer.explorerURL;
+    const { explorerURL } = indexer;
 
     const productionCell = `[Production](${productionURL})`;
     const converterCell = `[Converter](${converterURL})`;
@@ -79,8 +79,7 @@ function generateGraphTable(indexers: Indexer[]): string {
     const chain = sablier.chains.getOrThrow(indexer.chainId);
 
     const productionURL = indexer.endpoint.url;
-    const testingURL = indexer.testingURL;
-    const explorerURL = indexer.explorerURL;
+    const { testingURL, explorerURL } = indexer;
 
     const productionCell = `[Production](${productionURL})`;
     const testingCell = testingURL ? `[Testing](${testingURL})` : "N/A";

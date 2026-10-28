@@ -11,9 +11,9 @@ export function Chains({ kind }: ChainProps) {
   const content = useMemo(() => {
     const latestLockupChainIds = new Set(getLatestLockupChainIds());
 
-    let content = "";
-    content += "| Name | Chain ID | In UI? | Native Token | Explorer |\n";
-    content += "| :--- | :------- | :----- | :----------- | :------- |\n";
+    let table = "";
+    table += "| Name | Chain ID | In UI? | Native Token | Explorer |\n";
+    table += "| :--- | :------- | :----- | :----------- | :------- |\n";
 
     const getter = kind === "mainnets" ? sablier.chains.getMainnets : sablier.chains.getTestnets;
 
@@ -27,10 +27,10 @@ export function Chains({ kind }: ChainProps) {
       const symbolCell = chain.nativeCurrency.symbol;
       const explorerURL = chain.blockExplorers.default.url;
       const explorerCell = `[${new URL(explorerURL).host}](${explorerURL})`;
-      content += `| ${chain.name} | ${chain.id} | ${supportedCell} | ${symbolCell} | ${explorerCell} |\n`;
+      table += `| ${chain.name} | ${chain.id} | ${supportedCell} | ${symbolCell} | ${explorerCell} |\n`;
     }
 
-    return content;
+    return table;
   }, [kind]);
 
   return <GFMContent content={content} />;
@@ -44,7 +44,7 @@ export function getChainCount(kind: "mainnets" | "testnets"): number {
   let count = 0;
   for (const chain of query()) {
     if (latestLockupChainIds.has(chain.id)) {
-      count++;
+      count += 1;
     }
   }
 

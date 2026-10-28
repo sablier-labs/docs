@@ -12,13 +12,15 @@ type GFMContentProps = {
  * Renders GitHub-Flavored Markdown content using MDX.
  */
 export default function GFMContent({ content }: GFMContentProps) {
-  const { default: Content } = useMemo(() => {
-    return evaluateSync(content, {
-      ...runtime,
-      rehypePlugins: [[rehypeExternalLinks, { target: "_blank" }]],
-      remarkPlugins: [remarkGfm],
-    });
-  }, [content]);
+  const { default: Content } = useMemo(
+    () =>
+      evaluateSync(content, {
+        ...runtime,
+        rehypePlugins: [[rehypeExternalLinks, { target: "_blank" }]],
+        remarkPlugins: [remarkGfm],
+      }),
+    [content]
+  );
 
   return <Content />;
 }

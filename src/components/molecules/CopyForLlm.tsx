@@ -1,11 +1,11 @@
 import { useLocation } from "@docusaurus/router";
 import { css, keyframes } from "@emotion/react";
 import styled from "@emotion/styled";
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 
 type CopyState = "idle" | "copied" | "error";
 
-const TRAILING_SLASH_RE = /\/$/;
+const TRAILING_SLASH_RE = /\/$/u;
 const RESET_DELAY = 2200;
 
 function Icon({ size = 16, children }: { size?: number; children: React.ReactNode }) {
@@ -300,7 +300,7 @@ export default function CopyForLlm() {
   const containerRef = useRef<HTMLDivElement>(null);
   const timerRef = useRef<ReturnType<typeof setTimeout>>(null);
   const dropdownRef = useRef<HTMLDivElement>(null);
-  const busyRef = useRef(false);
+  const busyRef = useRef<boolean>(false);
 
   const markdownUrl = `${location.pathname.replace(TRAILING_SLASH_RE, "")}.md`;
 
@@ -336,6 +336,9 @@ export default function CopyForLlm() {
       firstItem?.focus();
     }
   }, [open]);
+
+  const toggleMenu = useCallback(() => setOpen((value) => !value), []);
+  const closeMenu = useCallback(() => setOpen(false), []);
 
   async function handleCopy() {
     if (busyRef.current) {
@@ -381,7 +384,7 @@ export default function CopyForLlm() {
           aria-expanded={open}
           aria-haspopup="menu"
           aria-label="More options"
-          onClick={() => setOpen((v) => !v)}
+          onClick={toggleMenu}
           type="button"
         >
           <Icon size={12}>
@@ -400,7 +403,7 @@ export default function CopyForLlm() {
         <Dropdown ref={dropdownRef} role="menu">
           <MenuItem
             href={markdownUrl}
-            onClick={() => setOpen(false)}
+            onClick={closeMenu}
             rel="noopener noreferrer"
             role="menuitem"
             target="_blank"

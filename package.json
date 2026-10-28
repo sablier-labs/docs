@@ -1,11 +1,40 @@
 {
   "name": "@sablier/docs",
-  "description": "Documentation and guides for Sablier",
-  "homepage": "https://docs.sablier.com",
   "private": true,
+  "description": "Documentation and guides for Sablier",
+  "keywords": [
+    "blockchain",
+    "crypto-assets",
+    "crypto-tokens",
+    "ethereum",
+    "evm",
+    "recurring-payments",
+    "sablier",
+    "sablier-airdrops",
+    "sablier-docs",
+    "sablier-flow",
+    "sablier-lockup",
+    "smart-contracts",
+    "solidity",
+    "token-distribution",
+    "token-vesting",
+    "web3"
+  ],
+  "homepage": "https://docs.sablier.com",
+  "bugs": {
+    "url": "https://github.com/sablier-labs/docs/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sablier-labs/docs.git"
+  },
   "author": {
     "name": "Sablier Labs Ltd",
     "url": "https://sablier.com"
+  },
+  "scripts": {
+    "build": "bun run cli/index.ts autogen --overwrite && docusaurus build",
+    "prepare": "bun husky"
   },
   "browserslist": {
     "production": [
@@ -19,11 +48,12 @@
       "last 1 safari version"
     ]
   },
-  "bugs": {
-    "url": "https://github.com/sablier-labs/docs/issues"
+  "overrides": {
+    "graphql": "^16.13.2"
   },
   "dependencies": {
     "@algolia/client-search": "^5.50.1",
+    "@docsearch/css": "^4.6.2",
     "@docsearch/react": "^4.6.2",
     "@docusaurus/core": "^3.10.0",
     "@docusaurus/faster": "^3.10.0",
@@ -48,18 +78,20 @@
     "react-dom": "18.2.0",
     "rehype-external-links": "^3.0.0",
     "rehype-katex": "7.0.1",
+    "remark-gfm": "^4.0.1",
     "remark-math": "6.0.0",
     "sablier": "^3.12.0",
     "viem": "^2.55.2"
   },
   "devDependencies": {
-    "@biomejs/biome": "^2.5.14",
+    "@biomejs/biome": "^2.6.2",
+    "@docusaurus/plugin-content-docs": "^3.10.0",
     "@docusaurus/tsconfig": "^3.10.0",
     "@docusaurus/types": "^3.10.0",
     "@eslint/compat": "^1.4.1",
     "@graphql-markdown/types": "^1.11.0",
     "@graphql-tools/url-loader": "^9.1.0",
-    "@prb/devkit": "^1.0.4",
+    "@prb/devkit": "^1.2.0",
     "@types/eslint": "^9.6.1",
     "@types/node": "^25.5.2",
     "baseline-browser-mapping": "^2.10.16",
@@ -72,39 +104,10 @@
     "lint-staged": "^16.4.0",
     "prettier": "^3.8.1",
     "typescript": "5.8.3",
-    "ultracite": "^7.4.3",
+    "ultracite": "^8.1.0",
     "vercel": "^50.41.0"
   },
   "engines": {
     "node": ">=20.0"
-  },
-  "keywords": [
-    "blockchain",
-    "crypto-assets",
-    "crypto-tokens",
-    "ethereum",
-    "evm",
-    "recurring-payments",
-    "sablier",
-    "sablier-airdrops",
-    "sablier-docs",
-    "sablier-flow",
-    "sablier-lockup",
-    "smart-contracts",
-    "solidity",
-    "token-distribution",
-    "token-vesting",
-    "web3"
-  ],
-  "overrides": {
-    "graphql": "^16.13.2"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/sablier-labs/docs.git"
-  },
-  "scripts": {
-    "build": "bun run cli/index.ts autogen --overwrite && docusaurus build",
-    "prepare": "bun husky"
   }
 }

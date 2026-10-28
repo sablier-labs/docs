@@ -1,6 +1,6 @@
 {
   "$schema": "./node_modules/@biomejs/biome/configuration_schema.json",
-  "extends": ["ultracite/core", "@prb/devkit/biome/base"],
+  "extends": ["ultracite/biome/core", "@prb/devkit/biome/base"],
   "files": {
     "includes": [
       "**/*.{css,js,json,jsonc,jsx,ts,tsx}",
@@ -18,5 +18,55 @@
         "noImportantStyles": "off"
       }
     }
-  }
+  },
+  "overrides": [
+    {
+      // Preserve both named and default component exports for existing import contracts.
+      "includes": [
+        "src/components/organisms/AdminsTable.tsx",
+        "src/components/organisms/Chains.tsx"
+      ],
+      "linter": {
+        "rules": {
+          "complexity": {
+            "noRedundantDefaultExport": "off"
+          }
+        }
+      }
+    },
+    {
+      // These Docusaurus modules use webpack virtual aliases, not npm dependencies.
+      "includes": [
+        "src/components/molecules/CopyForLlm.tsx",
+        "src/components/molecules/EnvioEndpointTable.tsx",
+        "src/components/molecules/Feature.tsx",
+        "src/components/molecules/LinkPreview.tsx",
+        "src/components/organisms/Header.tsx",
+        "src/components/organisms/Socials.tsx",
+        "src/components/organisms/header/Underlay.tsx",
+        "src/pages/index.tsx",
+        "src/theme/DocItem/Layout/index.js",
+        "src/theme/MDXComponents.js",
+        "src/theme/MDXComponents/A.js"
+      ],
+      "linter": {
+        "rules": {
+          "correctness": {
+            "noUndeclaredDependencies": "off"
+          }
+        }
+      }
+    },
+    {
+      // Generate and format each GraphQL tree serially before starting the next one.
+      "includes": ["cli/commands/autogen/graphql.ts"],
+      "linter": {
+        "rules": {
+          "performance": {
+            "noAwaitInLoops": "off"
+          }
+        }
+      }
+    }
+  ]
 }
