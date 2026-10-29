@@ -1,5 +1,6 @@
 import type { Indexer } from "@sablier/indexers";
 import { indexers as indexerCatalog } from "@sablier/indexers";
+import { getEnvioDeployment } from "@sablier/indexers/indexers/envio-deployments";
 import { Command } from "commander";
 import _ from "lodash";
 import { sablier } from "sablier";
@@ -56,7 +57,7 @@ function generateEnvioTable(indexers: Indexer[]): string {
     }
 
     const productionURL = indexer.endpoint.url;
-    const converterURL = `${productionURL}/converter`;
+    const { converterURL } = getEnvioDeployment(indexer.indexer);
     const playgroundURL = indexer.testingURL;
     const { explorerURL } = indexer;
 

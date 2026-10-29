@@ -7,7 +7,7 @@ Contributions to Sablier Docs are welcome by anyone interested in improving read
 
 ## Prerequisites
 
-- [Node.js](https://nodejs.org) (v20+)
+- [Node.js](https://nodejs.org) (v22+)
 - [Just](https://github.com/casey/just) (command runner)
 - [Bun](https://bun.sh) (package manager)
 - [Ni](https://github.com/antfu-collective/ni) (package manager resolver)

@@ -1,2 +1,18 @@
-#!/bin/sh
-bun lint-staged
+#!/usr/bin/env sh
+set -e
+
+staged=$(git diff --cached --name-only)
+if [ -z "$staged" ]; then
+  exit 0
+fi
+
+# Agents share this worktree. Without --no-stash, a failing lint-staged task runs
+# `git reset --hard` and re-applies a stash over everyone's uncommitted work, so
+# require whole-file staging instead of letting lint-staged hide partial changes.
+partially_staged=$(git diff --name-only | grep -Fx -- "$staged" || true)
+if [ -n "$partially_staged" ]; then
+  printf 'error: partially staged files are unsafe in the shared worktree; stage or unstage them fully:\n%s\n' "$partially_staged" >&2
+  exit 1
+fi
+
+bunx --no-install lint-staged --no-stash --no-hide-partially-staged

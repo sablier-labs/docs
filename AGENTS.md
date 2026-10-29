@@ -7,7 +7,7 @@ Static documentation site for the Sablier protocols (Lockup, Flow, Airdrops). Bu
 - **Docusaurus** 3.10 with `future.v4` and `faster` flags (static site generator)
 - **TypeScript** 5.8 (strict, extends `@docusaurus/tsconfig`)
 - **React** 18.2 (pinned)
-- **Bun** as package manager and runtime (Node >=20 required)
+- **Bun** as package manager and runtime (Node >=22 required)
 - **Just** as command runner (extends `@prb/devkit/just/base.just`)
 - **MDX** with KaTeX (math), Mermaid (diagrams), `llmfood` (LLM-optimized output)
 
@@ -34,9 +34,11 @@ Run via `just` (not raw `bun docusaurus ...`) so autogen runs first.
 - `just clean` — clear Docusaurus cache and `src/autogen/**`
 - `just full-check` — Biome + Prettier + ESLint + `tsc --noEmit`
 - `just full-write` — apply Biome + Prettier + ESLint fixes
-- `just autogen` — regenerate everything with `--overwrite`
+- `just autogen` — regenerate deployment and indexer endpoint tables with `--overwrite`
 - `just autogen-deployments` / `autogen-graphql` / `autogen-indexers` / `autogen-reference`
 - `just deploy` — Vercel prod deploy (requires `$VERCEL_TOKEN`)
+
+GraphQL schema docs and Solidity reference docs use their separate `autogen-graphql` and `autogen-reference` commands.
 
 ## Autogen Reference
 
@@ -84,7 +86,9 @@ matching substitution. Long-term fix: rewrite the natspec in `evm-monorepo` as L
 - Never edit files under `repos/` — they are git submodules.
 - Don't bump `react`/`react-dom` past 18.2 without checking Docusaurus compatibility.
 - `node_modules`, `build`, `.docusaurus`, `repos`, `src/autogen` are excluded from Biome and `tsc`.
-- Husky + lint-staged run on commit — don't `--no-verify` to bypass failures; fix the lint issue.
+- Husky + lint-staged run on commit. Fix lint failures instead of bypassing the hook with `--no-verify`.
+- The hook rejects partially staged files and disables stashing and hiding partial changes. Stage or unstage each file
+  fully before committing.
 
 ## Git
 
