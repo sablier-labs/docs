@@ -139,7 +139,9 @@ function cleanupDocs(docsPaths: string[]): void {
 
 async function generateEnvio(indexer: Indexer.IndexerKey): Promise<string> {
   const docsPath = `./docs/api/${INDEXER_FOLDER[indexer]}/graphql/envio`;
-  const schemaURL = getIndexerEnvio({ chainId: CHAIN_ID_SEPOLIA, indexer }).endpoint.url;
+  const schemaURL =
+    process.env[`CODEGEN_ENVIO_${indexer.toUpperCase()}_URL`] ??
+    getIndexerEnvio({ chainId: CHAIN_ID_SEPOLIA, indexer }).endpoint.url;
 
   await runCommand(docsPath, schemaURL);
   console.log(`✔️  Generated GraphQL docs for Envio vendor and ${_.capitalize(indexer)} indexer\n`);

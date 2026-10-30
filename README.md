@@ -29,6 +29,33 @@ $ just build
 This command generates static content into the `build` directory, and can be served using any static contents hosting
 service.
 
+### Preview Envio GraphQL references
+
+GraphQL references are generated explicitly with `just autogen-graphql <indexer> envio`. To inspect a nonproduction
+schema, resolve its public query URL from a local indexers checkout, then pass it only to the generation command:
+
+```sh
+indexers_root="$HOME/sablier/backend/indexers"
+streams_url="$(just --justfile "$indexers_root/justfile" envio::endpoint streams latest-nonproduction)" &&
+  CODEGEN_ENVIO_STREAMS_URL="$streams_url" just autogen-graphql streams envio
+
+airdrops_url="$(just --justfile "$indexers_root/justfile" envio::endpoint airdrops latest-nonproduction)" &&
+  CODEGEN_ENVIO_AIRDROPS_URL="$airdrops_url" just autogen-graphql airdrops envio
+```
+
+Each override affects only its Envio indexer's schema reference generation. Without an override, generation uses the
+existing production endpoint. The Graph generation, normal `just autogen` endpoint tables, and static page behavior are
+unchanged. The docs app needs only the resolved query URL. Authenticate through the indexers CLI; do not copy Envio
+management credentials into this repository.
+
+Prefer replacing `latest-nonproduction` with a specific prepared commit for repeatable generation; the latest selector
+can resolve to a different deployment on the next run. Resolution failures stop generation instead of falling back to
+production.
+
+Use a disposable checkout to review preview references locally. These commands overwrite the reference files under
+`docs/api/`; do not commit or publish preview-generated references accidentally. Regenerate with production endpoints
+before publishing.
+
 ### Clear cache
 
 ```sh
